@@ -1,0 +1,27 @@
+# Environment
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+
+# Data
+data/*.csv
+data/*.parquet
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Claude
+.claude/
+
+# IDE
+.vscode/
+.idea/

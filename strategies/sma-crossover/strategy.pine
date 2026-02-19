@@ -1,0 +1,21 @@
+//@version=5
+strategy("SMA Crossover", overlay=true)
+
+fastLen = input.int(10, "Fast SMA Length")
+slowLen = input.int(30, "Slow SMA Length")
+
+fast = ta.sma(close, fastLen)
+slow = ta.sma(close, slowLen)
+
+if ta.crossover(fast, slow)
+    strategy.entry("Long", strategy.long)
+
+if ta.crossunder(fast, slow)
+    strategy.close("Long")
+    strategy.entry("Short", strategy.short)
+
+if ta.crossover(fast, slow)
+    strategy.close("Short")
+
+plot(fast, color=color.blue, title="Fast SMA")
+plot(slow, color=color.red, title="Slow SMA")

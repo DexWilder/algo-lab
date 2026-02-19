@@ -1,0 +1,15 @@
+{
+  "name": "strategy-name",
+  "version": "1.0",
+  "description": "Brief description of what the strategy does",
+  "source": "TradingView URL or 'original'",
+  "author": "Original author name",
+  "instrument": "MES",
+  "timeframe": "5m",
+  "indicators": ["indicator1", "indicator2"],
+  "parameters": {
+    "param1": 14,
+    "param2": 28
+  },
+  "notes": "Any additional notes about conversion or behavior"
+}

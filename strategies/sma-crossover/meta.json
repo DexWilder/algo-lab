@@ -1,0 +1,15 @@
+{
+  "name": "sma-crossover",
+  "version": "1.0",
+  "description": "Simple SMA crossover: long when fast SMA crosses above slow, short on cross below",
+  "source": "original",
+  "author": "algo-lab",
+  "instrument": "MES",
+  "timeframe": "5m",
+  "indicators": ["SMA"],
+  "parameters": {
+    "fast_len": 10,
+    "slow_len": 30
+  },
+  "notes": "Reference implementation used as the sample strategy for contract validation"
+}
