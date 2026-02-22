@@ -1,0 +1,1 @@
+test_id,version,market,timeframe,dates_start,dates_end,net_pnl,max_dd,profit_factor,win_pct,total_trades,days_to_lock,green_lock_days,halt_days,loss_halts,streak_halts,weekly_halts,dd_halts,avg_daily_pnl,largest_losing_streak,lucid_busted,lucid_locked,notes,changed_setting,csv_file
