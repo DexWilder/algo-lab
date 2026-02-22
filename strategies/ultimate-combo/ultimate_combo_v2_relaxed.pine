@@ -1,0 +1,131 @@
+// ============================================================================
+// ULTIMATE COMBO v2 (Relaxed) — Higher Frequency Variant
+// ============================================================================
+// Same core logic as v1 but with relaxed filters for more trades:
+//   - No 200 EMA trend requirement (trades counter-trend pullbacks too)
+//   - VWAP used as soft bias, not hard filter
+//   - RSI used for mean-reversion entries at extremes
+//   - Adds EMA pullback entries (not just crossovers)
+//
+// Designed for: MES / ES 5-minute charts
+// ============================================================================
+
+//@version=6
+strategy("Ultimate Combo v2 (Relaxed)", overlay=true,
+     default_qty_type=strategy.fixed,
+     default_qty_value=1,
+     initial_capital=50000,
+     currency=currency.USD,
+     commission_type=strategy.commission.cash_per_contract,
+     commission_value=0.62,
+     slippage=1,
+     calc_on_every_tick=false,
+     process_orders_on_close=false)
+
+// ─── INPUTS ─────────────────────────────────────────────────────────────────
+
+// EMA Settings
+fastLen     = input.int(9,   "Fast EMA Length",    minval=1, group="EMA")
+slowLen     = input.int(21,  "Slow EMA Length",    minval=1, group="EMA")
+
+// RSI Settings
+rsiLen      = input.int(14,  "RSI Length",          minval=1,  group="RSI")
+rsiOB       = input.int(70,  "RSI Overbought",      minval=50, group="RSI")
+rsiOS       = input.int(30,  "RSI Oversold",         maxval=50, group="RSI")
+
+// ATR Risk Management
+atrLen      = input.int(14,  "ATR Length",           minval=1,  group="Risk")
+slMult      = input.float(1.5, "Stop Loss ATR Mult",   minval=0.5, step=0.1, group="Risk")
+tpMult      = input.float(2.0, "Take Profit ATR Mult",  minval=0.5, step=0.1, group="Risk")
+
+// Session Filter
+useSession  = input.bool(true, "Filter to Session Hours", group="Session")
+sessStart   = input.session("0830-1500", "Session Window (Exchange TZ)", group="Session")
+
+// Mode
+tradeMode   = input.string("Both", "Trade Direction", options=["Long Only", "Short Only", "Both"], group="Mode")
+
+// ─── CALCULATIONS ───────────────────────────────────────────────────────────
+
+emaFast  = ta.ema(close, fastLen)
+emaSlow  = ta.ema(close, slowLen)
+vwapVal  = ta.vwap(hlc3)
+rsiVal   = ta.rsi(close, rsiLen)
+atrVal   = ta.atr(atrLen)
+inSession = useSession ? not na(time(timeframe.period, sessStart)) : true
+
+// ─── ENTRY TYPE 1: EMA CROSSOVER + VWAP CONFIRMATION ───────────────────────
+// Classic momentum — EMA cross with VWAP on same side
+
+crossLong  = ta.crossover(emaFast, emaSlow) and close > vwapVal
+crossShort = ta.crossunder(emaFast, emaSlow) and close < vwapVal
+
+// ─── ENTRY TYPE 2: RSI MEAN REVERSION AT VWAP ──────────────────────────────
+// Price pulls back to VWAP while RSI hits extreme, then reverses
+
+vwapProximity  = math.abs(close - vwapVal) < atrVal * 0.5  // Within half ATR of VWAP
+rsiOversold    = rsiVal < rsiOS and rsiVal > rsiVal[1]      // RSI was oversold, now turning up
+rsiOverbought  = rsiVal > rsiOB and rsiVal < rsiVal[1]      // RSI was overbought, now turning down
+
+meanRevLong  = vwapProximity and rsiOversold  and emaFast > emaSlow
+meanRevShort = vwapProximity and rsiOverbought and emaFast < emaSlow
+
+// ─── ENTRY TYPE 3: EMA PULLBACK ────────────────────────────────────────────
+// Price pulls back to slow EMA in a trending move, then bounces
+
+pullbackToEMA  = low <= emaSlow and close > emaSlow   // Touched slow EMA and bounced
+pullbackFromEMA = high >= emaSlow and close < emaSlow  // Touched slow EMA and rejected
+
+pullbackLong  = pullbackToEMA   and emaFast > emaSlow and close > vwapVal
+pullbackShort = pullbackFromEMA and emaFast < emaSlow and close < vwapVal
+
+// ─── COMBINED ENTRIES ───────────────────────────────────────────────────────
+
+longEntry  = (crossLong or meanRevLong or pullbackLong) and inSession
+shortEntry = (crossShort or meanRevShort or pullbackShort) and inSession
+
+canLong  = tradeMode == "Both" or tradeMode == "Long Only"
+canShort = tradeMode == "Both" or tradeMode == "Short Only"
+
+// ─── TRADE EXECUTION ────────────────────────────────────────────────────────
+
+if longEntry and canLong
+    strategy.entry("Long", strategy.long)
+    strategy.exit("Long Exit", "Long",
+         stop=close - (atrVal * slMult),
+         limit=close + (atrVal * tpMult))
+
+if shortEntry and canShort
+    strategy.entry("Short", strategy.short)
+    strategy.exit("Short Exit", "Short",
+         stop=close + (atrVal * slMult),
+         limit=close - (atrVal * tpMult))
+
+// ─── REVERSALS ──────────────────────────────────────────────────────────────
+
+if shortEntry and strategy.position_size > 0
+    strategy.close("Long", comment="Reverse")
+
+if longEntry and strategy.position_size < 0
+    strategy.close("Short", comment="Reverse")
+
+// ─── SESSION CLOSE ──────────────────────────────────────────────────────────
+
+if useSession and not inSession and strategy.position_size != 0
+    strategy.close_all(comment="Session End")
+
+// ─── PLOTS ──────────────────────────────────────────────────────────────────
+
+plot(emaFast, "EMA Fast", color.green, 1)
+plot(emaSlow, "EMA Slow", color.orange, 1)
+plot(vwapVal, "VWAP", color.purple, 2, plot.style_circles)
+
+bgcolor(useSession and inSession ? color.new(color.green, 95) : na)
+
+// Entry type labels
+plotshape(crossLong    and canLong,  "Cross Long",     shape.triangleup,   location.belowbar, color.green,  size=size.small, text="X")
+plotshape(meanRevLong  and canLong,  "MeanRev Long",   shape.triangleup,   location.belowbar, color.lime,   size=size.small, text="MR")
+plotshape(pullbackLong and canLong,  "Pullback Long",  shape.triangleup,   location.belowbar, color.teal,   size=size.small, text="PB")
+plotshape(crossShort    and canShort, "Cross Short",    shape.triangledown, location.abovebar, color.red,    size=size.small, text="X")
+plotshape(meanRevShort  and canShort, "MeanRev Short",  shape.triangledown, location.abovebar, color.orange, size=size.small, text="MR")
+plotshape(pullbackShort and canShort, "Pullback Short", shape.triangledown, location.abovebar, color.maroon, size=size.small, text="PB")

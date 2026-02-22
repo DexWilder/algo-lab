@@ -1,0 +1,195 @@
+// ============================================================================
+// ULTIMATE COMBO v1 — Multi-Factor Futures Strategy
+// ============================================================================
+// Combines 5 proven edge components:
+//   1. VWAP        — Institutional bias filter (above = bullish, below = bearish)
+//   2. EMA Stack   — 9/21 crossover for momentum + 200 EMA trend filter
+//   3. RSI         — Momentum confirmation + extreme rejection
+//   4. ATR         — Adaptive stop-loss & take-profit
+//   5. Volume      — Participation confirmation
+//
+// Designed for: MES / ES 5-minute charts
+// ============================================================================
+
+//@version=6
+strategy("Ultimate Combo v1", overlay=true,
+     default_qty_type=strategy.fixed,
+     default_qty_value=1,
+     initial_capital=50000,
+     currency=currency.USD,
+     commission_type=strategy.commission.cash_per_contract,
+     commission_value=0.62,
+     slippage=1,
+     calc_on_every_tick=false,
+     process_orders_on_close=false)
+
+// ─── INPUTS ─────────────────────────────────────────────────────────────────
+
+// EMA Settings
+fastLen     = input.int(9,   "Fast EMA Length",   minval=1, group="EMA")
+slowLen     = input.int(21,  "Slow EMA Length",   minval=1, group="EMA")
+trendLen    = input.int(200, "Trend EMA Length",   minval=1, group="EMA")
+
+// RSI Settings
+rsiLen      = input.int(14,  "RSI Length",         minval=1,  group="RSI")
+rsiOB       = input.int(70,  "RSI Overbought",     minval=50, group="RSI")
+rsiOS       = input.int(30,  "RSI Oversold",        maxval=50, group="RSI")
+
+// ATR Risk Management
+atrLen      = input.int(14,  "ATR Length",          minval=1,  group="Risk")
+slMult      = input.float(1.5, "Stop Loss ATR Mult",  minval=0.5, step=0.1, group="Risk")
+tpMult      = input.float(2.5, "Take Profit ATR Mult", minval=0.5, step=0.1, group="Risk")
+useTrailing = input.bool(true, "Use Trailing Stop",   group="Risk")
+trailMult   = input.float(1.0, "Trailing ATR Mult",   minval=0.5, step=0.1, group="Risk")
+
+// Volume Filter
+volLen      = input.int(20,  "Volume MA Length",    minval=1,  group="Volume")
+volMult     = input.float(1.0, "Volume Threshold Mult", minval=0.5, step=0.1, group="Volume")
+
+// Session Filter (RTH for futures)
+useSession  = input.bool(true, "Filter to Session Hours", group="Session")
+sessStart   = input.session("0830-1500", "Session Window (Exchange TZ)", group="Session")
+
+// Mode
+tradeMode   = input.string("Both", "Trade Direction", options=["Long Only", "Short Only", "Both"], group="Mode")
+
+// ─── CALCULATIONS ───────────────────────────────────────────────────────────
+
+// EMAs
+emaFast  = ta.ema(close, fastLen)
+emaSlow  = ta.ema(close, slowLen)
+emaTrend = ta.ema(close, trendLen)
+
+// VWAP
+vwapVal = ta.vwap(hlc3)
+
+// RSI
+rsiVal = ta.rsi(close, rsiLen)
+
+// ATR
+atrVal = ta.atr(atrLen)
+
+// Volume
+volMA     = ta.sma(volume, volLen)
+volStrong = volume > (volMA * volMult)
+
+// Session
+inSession = useSession ? not na(time(timeframe.period, sessStart)) : true
+
+// ─── SIGNAL LOGIC ───────────────────────────────────────────────────────────
+
+// EMA crossover events
+emaBullCross = ta.crossover(emaFast, emaSlow)
+emaBearCross = ta.crossunder(emaFast, emaSlow)
+
+// Trend alignment
+bullTrend = close > emaTrend
+bearTrend = close < emaTrend
+
+// VWAP bias
+aboveVWAP = close > vwapVal
+belowVWAP = close < vwapVal
+
+// RSI filter — not at extremes (avoids chasing)
+rsiBullOK = rsiVal > rsiOS and rsiVal < rsiOB
+rsiBearOK = rsiVal > rsiOS and rsiVal < rsiOB
+
+// ─── ENTRY CONDITIONS ───────────────────────────────────────────────────────
+
+longEntry = emaBullCross        // Momentum trigger
+     and bullTrend              // With the 200 EMA trend
+     and aboveVWAP              // Institutional bias bullish
+     and rsiBullOK              // RSI not overbought
+     and volStrong              // Volume confirms participation
+     and inSession              // Within trading hours
+
+shortEntry = emaBearCross       // Momentum trigger
+     and bearTrend              // With the 200 EMA trend
+     and belowVWAP              // Institutional bias bearish
+     and rsiBearOK              // RSI not oversold
+     and volStrong              // Volume confirms participation
+     and inSession              // Within trading hours
+
+// ─── TRADE EXECUTION ────────────────────────────────────────────────────────
+
+canLong  = tradeMode == "Both" or tradeMode == "Long Only"
+canShort = tradeMode == "Both" or tradeMode == "Short Only"
+
+if longEntry and canLong
+    strategy.entry("Long", strategy.long)
+
+    slPrice = close - (atrVal * slMult)
+    tpPrice = close + (atrVal * tpMult)
+
+    if useTrailing
+        strategy.exit("Long Exit", "Long",
+             stop=slPrice,
+             limit=tpPrice,
+             trail_points=atrVal * trailMult / syminfo.mintick,
+             trail_offset=atrVal * trailMult / syminfo.mintick)
+    else
+        strategy.exit("Long Exit", "Long",
+             stop=slPrice,
+             limit=tpPrice)
+
+if shortEntry and canShort
+    strategy.entry("Short", strategy.short)
+
+    slPrice = close + (atrVal * slMult)
+    tpPrice = close - (atrVal * tpMult)
+
+    if useTrailing
+        strategy.exit("Short Exit", "Short",
+             stop=slPrice,
+             limit=tpPrice,
+             trail_points=atrVal * trailMult / syminfo.mintick,
+             trail_offset=atrVal * trailMult / syminfo.mintick)
+    else
+        strategy.exit("Short Exit", "Short",
+             stop=slPrice,
+             limit=tpPrice)
+
+// ─── CLOSE ON OPPOSING SIGNAL (reversal) ────────────────────────────────────
+
+if shortEntry and strategy.position_size > 0
+    strategy.close("Long", comment="Reverse to Short")
+
+if longEntry and strategy.position_size < 0
+    strategy.close("Short", comment="Reverse to Long")
+
+// ─── CLOSE AT SESSION END ───────────────────────────────────────────────────
+
+if useSession and not inSession and strategy.position_size != 0
+    strategy.close_all(comment="Session End")
+
+// ─── PLOTS ──────────────────────────────────────────────────────────────────
+
+plot(emaFast,  "EMA Fast",  color=color.new(color.green, 0),  linewidth=1)
+plot(emaSlow,  "EMA Slow",  color=color.new(color.orange, 0), linewidth=1)
+plot(emaTrend, "EMA Trend", color=color.new(color.blue, 60),  linewidth=2)
+plot(vwapVal,  "VWAP",      color=color.new(color.purple, 0), linewidth=2, style=plot.style_circles)
+
+// Background color for session
+bgcolor(useSession and inSession ? color.new(color.green, 95) : na)
+
+// Entry markers
+plotshape(longEntry  and canLong,  "Long Signal",  shape.triangleup,   location.belowbar, color.green, size=size.small)
+plotshape(shortEntry and canShort, "Short Signal", shape.triangledown, location.abovebar, color.red,   size=size.small)
+
+// ─── INFO TABLE ─────────────────────────────────────────────────────────────
+
+var table infoTbl = table.new(position.top_right, 2, 6, bgcolor=color.new(color.black, 80))
+
+if barstate.islast
+    table.cell(infoTbl, 0, 0, "Indicator",  text_color=color.white, text_size=size.small)
+    table.cell(infoTbl, 1, 0, "Value",      text_color=color.white, text_size=size.small)
+    table.cell(infoTbl, 0, 1, "RSI",        text_color=color.gray,  text_size=size.small)
+    table.cell(infoTbl, 1, 1, str.tostring(rsiVal, "#.#"), text_color=rsiVal > rsiOB ? color.red : rsiVal < rsiOS ? color.green : color.white, text_size=size.small)
+    table.cell(infoTbl, 0, 2, "ATR",        text_color=color.gray,  text_size=size.small)
+    table.cell(infoTbl, 1, 2, str.tostring(atrVal, "#.##"), text_color=color.white, text_size=size.small)
+    table.cell(infoTbl, 0, 3, "VWAP Bias",  text_color=color.gray,  text_size=size.small)
+    table.cell(infoTbl, 1, 3, aboveVWAP ? "BULL" : "BEAR", text_color=aboveVWAP ? color.green : color.red, text_size=size.small)
+    table.cell(infoTbl, 0, 4, "Trend",      text_color=color.gray,  text_size=size.small)
+    table.cell(infoTbl, 1, 4, bullTrend ? "BULL" : "BEAR", text_color=bullTrend ? color.green : color.red, text_size=size.small)
+    table.cell(infoTbl, 0, 5, "Vol OK",     text_color=color.gray,  text_size=size.small)
+    table.cell(infoTbl, 1, 5, volStrong ? "YES" : "NO", text_color=volStrong ? color.green : color.red, text_size=size.small)

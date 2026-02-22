@@ -1,0 +1,567 @@
+// ============================================================================
+// LUCID 100K v6.2 — PATCHED PROP BOT (MES/MGC/MNQ 5m)
+// ============================================================================
+// v6.2 Patches vs v6.1 (Claude + GPT merged):
+//  - Min stop distance floor in ticks (prevents ATR compression sizing issues)
+//  - Use actual fill price (strategy.position_avg_price) for BE/Trail logic
+//  - Optional: Reversion requires MTF bias toggle (default ON for P1 safety)
+//  - Optional: Intraday DD only after dayPeak > dayStart toggle
+//  - Risk cap targets QTY not stop distance (ATR stops never squeezed)
+//  - Stable P2 gate: PF 1.1 / 25 trades + halt-day block
+//  - Time-based warmup (works on any timeframe)
+//  - Strong close alternative entry (top/bottom 20% of bar)
+//  - entryPx reset to na between trades (cleaner state machine)
+// ============================================================================
+
+//@version=6
+strategy("Lucid 100K v6.2 (MES/MGC/MNQ)", overlay=true,
+     pyramiding=0,
+     default_qty_type=strategy.fixed,
+     default_qty_value=1,
+     initial_capital=50000,
+     currency=currency.USD,
+     commission_type=strategy.commission.cash_per_contract,
+     commission_value=0.62,
+     slippage=1,
+     calc_on_every_tick=false,
+     process_orders_on_close=false)
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 1) PHASE CONTROL
+// ─────────────────────────────────────────────────────────────────────────────
+phase2ProfitUsd  = input.float(3100, "Lock Target ($)", minval=0, step=100, group="Phase")
+usePhaseSizing   = input.bool(true,  "Phase Sizing", group="Phase")
+qtyPhase1        = input.int(2,      "Qty P1 (Lock)", minval=1, group="Phase")
+qtyPhase2        = input.int(5,      "Qty P2 (Payout)", minval=1, group="Phase")
+qtyCooldown      = input.int(1,      "Qty Cooldown", minval=1, group="Phase")
+usePhase2Gate    = input.bool(true,  "Use Phase 2 Gate", group="Phase")
+phase2ReqPF      = input.float(1.1,  "P2 Min Recent PF", minval=1.0, step=0.1, group="Phase")
+phase2Lookback   = input.int(25,     "P2 PF Lookback", minval=3, group="Phase")
+blockP2AfterHalt = input.bool(true,  "Block P2 After Halt Day", group="Phase")
+forceTrendP1     = input.bool(true,  "Force Trend-only P1", group="Phase")
+
+profit = strategy.equity - strategy.initial_capital
+
+recentPF() =>
+    n = math.min(strategy.closedtrades, phase2Lookback)
+    if n < 3
+        0.0
+    else
+        gW = 0.0
+        gL = 0.0
+        for i = 0 to n - 1
+            p = strategy.closedtrades.profit(strategy.closedtrades - 1 - i)
+            if p > 0
+                gW += p
+            else
+                gL += math.abs(p)
+        gL > 0 ? gW / gL : (gW > 0 ? 99.0 : 0.0)
+
+rpf = recentPF()
+var bool haltedYesterday = false  // declared early — set in guardrails section
+phase2Gate      = not usePhase2Gate or (rpf >= phase2ReqPF and strategy.closedtrades >= phase2Lookback)
+phase2HaltBlock = blockP2AfterHalt and haltedYesterday
+inPhase2        = profit >= phase2ProfitUsd and phase2Gate and not phase2HaltBlock
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 2) SESSION + WINDOWS
+// ─────────────────────────────────────────────────────────────────────────────
+useSession  = input.bool(true,  "Session Filter", group="Session")
+sessWindow  = input.session("0830-1515", "RTH Window", group="Session")
+flattenEnd  = input.bool(true,  "Flatten End", group="Session")
+warmupMins  = input.int(15,     "Warmup Mins", minval=0, maxval=60, group="Session")
+
+useWindows  = input.bool(true,  "Power Windows", group="Windows")
+win1        = input.session("0845-1100", "AM Window", group="Windows")
+win2        = input.session("1330-1510", "PM Window", group="Windows")
+
+revBlackout = input.int(30, "Rev Blackout Mins", minval=0, maxval=60, group="Session")
+
+inSession = useSession ? not na(time(timeframe.period, sessWindow)) : true
+inWin1    = not na(time(timeframe.period, win1))
+inWin2    = not na(time(timeframe.period, win2))
+inWindows = useWindows ? (inWin1 or inWin2) : true
+
+newDay = ta.change(time("D"))
+
+// Time-based warmup (works correctly on any timeframe)
+var int sessionOpenTime = na
+if inSession and (not inSession[1] or newDay)
+    sessionOpenTime := time
+
+minsFromOpen  = nz(sessionOpenTime) > 0 ? (time - sessionOpenTime) / 60000.0 : 0.0
+pastWarmup    = warmupMins <= 0 or minsFromOpen >= warmupMins
+revTimeOK     = minsFromOpen >= revBlackout
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 3) MODE + MTF (phase-aware)
+// ─────────────────────────────────────────────────────────────────────────────
+phase1Mode = input.string("Trend Pullback", "P1 Mode",
+     options=["Trend Pullback", "Auto (Regime)"], group="Modes")
+phase2Mode = input.string("Auto (Regime)", "P2 Mode",
+     options=["Trend Pullback", "VWAP Reversion", "Both (Always)", "Auto (Regime)"], group="Modes")
+mode = inPhase2 ? phase2Mode : phase1Mode
+
+mtfP1 = input.string("15m + 60m", "P1 MTF", options=["Off","15m Only","15m + 60m"], group="Modes")
+mtfP2 = input.string("15m Only",  "P2 MTF", options=["Off","15m Only","15m + 60m"], group="Modes")
+mtfMode = inPhase2 ? mtfP2 : mtfP1
+
+tradeDir = input.string("Both", "Direction",
+     options=["Long Only","Short Only","Both"], group="Modes")
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 4) GUARDRAILS (phase-aware + intraday DD)
+// ─────────────────────────────────────────────────────────────────────────────
+maxTradesP1      = input.int(2,      "Max Trades/Day P1", minval=1, group="Guardrails")
+maxTradesP2      = input.int(4,      "Max Trades/Day P2", minval=1, group="Guardrails")
+maxDailyLossP1   = input.float(600,  "Max Daily Loss $ P1", minval=0, step=50, group="Guardrails")
+maxDailyLossP2   = input.float(1200, "Max Daily Loss $ P2", minval=0, step=50, group="Guardrails")
+maxIntradayDDP1  = input.float(900,  "Max Intraday DD $ P1", minval=0, step=100, group="Guardrails")
+maxIntradayDDP2  = input.float(1800, "Max Intraday DD $ P2", minval=0, step=100, group="Guardrails")
+maxWeeklyLoss    = input.float(1500, "Max Weekly Loss $", minval=0, step=100, group="Guardrails")
+maxConsecLosses  = input.int(2,      "Max Consec Losses", minval=1, group="Guardrails")
+
+// v6.2: only count intraday DD after we have a green peak (protects against
+// false halts on days that open with immediate losses)
+ddOnlyAfterGreen = input.bool(false, "Intraday DD only after green dayPeak", group="Guardrails")
+
+var float dayStartEquity  = na
+var float dayPeakEquity   = na
+var float weekStartEquity = na
+var int   tradesToday      = 0
+var int   lossStreak       = 0
+var int   prevClosed       = 0
+var bool  halted            = false
+// haltedYesterday declared in Phase Control (section 1)
+
+newWeek = ta.change(time("W"))
+
+if newDay
+    haltedYesterday := halted
+    dayStartEquity  := strategy.equity
+    dayPeakEquity   := strategy.equity
+    tradesToday     := 0
+    lossStreak      := 0
+    halted          := false
+
+if newWeek
+    weekStartEquity := strategy.equity
+
+// Track intraday peak for intraday DD calc
+if strategy.equity > nz(dayPeakEquity, strategy.equity)
+    dayPeakEquity := strategy.equity
+
+dayPnL      = strategy.equity - nz(dayStartEquity, strategy.equity)
+weekPnL     = strategy.equity - nz(weekStartEquity, strategy.equity)
+intradayDD  = nz(dayPeakEquity, strategy.equity) - strategy.equity
+
+if strategy.closedtrades > prevClosed
+    idx = strategy.closedtrades - 1
+    p = strategy.closedtrades.profit(idx)
+    lossStreak := p < 0 ? lossStreak + 1 : 0
+    prevClosed := strategy.closedtrades
+
+maxTradesToday   = inPhase2 ? maxTradesP2 : maxTradesP1
+maxDailyLossUsd  = inPhase2 ? maxDailyLossP2 : maxDailyLossP1
+maxIntradayDDUsd = inPhase2 ? maxIntradayDDP2 : maxIntradayDDP1
+
+tooManyTrades  = tradesToday >= maxTradesToday
+hitDailyLoss   = maxDailyLossUsd > 0 and dayPnL <= -maxDailyLossUsd
+hitWeeklyLoss  = maxWeeklyLoss > 0 and weekPnL <= -maxWeeklyLoss
+hitLossStreak  = lossStreak >= maxConsecLosses
+
+hitIntradayDDBase = maxIntradayDDUsd > 0 and intradayDD >= maxIntradayDDUsd
+hitIntradayDD     = hitIntradayDDBase and (not ddOnlyAfterGreen or nz(dayPeakEquity, strategy.equity) > nz(dayStartEquity, strategy.equity))
+
+if hitDailyLoss or hitLossStreak or hitWeeklyLoss or hitIntradayDD
+    halted := true
+
+// Dynamic throttle: P1 down day → trend-only
+phase1Throttle = not inPhase2 and dayPnL < 0
+
+// Cooldown sizing
+qtyNow = usePhaseSizing ?
+     (haltedYesterday ? qtyCooldown :
+      (inPhase2 ? qtyPhase2 : qtyPhase1)) :
+     int(strategy.default_qty_value)
+
+allowedToTrade = inSession and pastWarmup and inWindows
+     and not halted and not tooManyTrades
+
+if halted and strategy.position_size != 0
+    strategy.close_all(comment="Guardrail Halt")
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 5) INDICATORS
+// ─────────────────────────────────────────────────────────────────────────────
+fastLen  = input.int(9,   "Fast EMA", group="Indicators")
+slowLen  = input.int(21,  "Slow EMA", group="Indicators")
+trendLen = input.int(200, "Trend EMA", group="Indicators")
+rsiLen   = input.int(14,  "RSI Len", group="Indicators")
+atrLen   = input.int(14,  "ATR Len", group="Indicators")
+
+emaFast  = ta.ema(close, fastLen)
+emaSlow  = ta.ema(close, slowLen)
+emaTrend = ta.ema(close, trendLen)
+vwapVal  = ta.vwap(hlc3)
+rsiVal   = ta.rsi(close, rsiLen)
+atrVal   = ta.atr(atrLen)
+
+useAdx  = input.bool(true,  "Use ADX", group="Quality")
+adxLen  = input.int(14,     "ADX Len", group="Quality")
+adxMin  = input.float(16.0, "ADX Min", step=0.5, group="Quality")
+adxVal  = ta.adx(adxLen)
+
+useVol  = input.bool(true,  "Use Volume", group="Quality")
+volLen  = input.int(20,     "Vol MA Len", group="Quality")
+volMult = input.float(1.0,  "Vol Mult", step=0.1, group="Quality")
+volMA   = ta.sma(volume, volLen)
+volOK   = not useVol or volume > volMA * volMult
+
+qualityOK = (not useAdx or adxVal >= adxMin) and volOK
+
+// Range expansion filter
+barRange = high - low
+avgRange = ta.sma(barRange, 10)
+rangeOK  = barRange >= avgRange * 0.6
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 6) MTF FILTERS
+// ─────────────────────────────────────────────────────────────────────────────
+getEma(_tf, _len) => request.security(syminfo.tickerid, _tf, ta.ema(close, _len))
+
+ema200_15 = getEma("15", 200)
+ema200_60 = getEma("60", 200)
+
+mtfBull = switch mtfMode
+    "Off"      => true
+    "15m Only" => close > ema200_15
+    =>            close > ema200_15 and close > ema200_60
+
+mtfBear = switch mtfMode
+    "Off"      => true
+    "15m Only" => close < ema200_15
+    =>            close < ema200_15 and close < ema200_60
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 7) ALGO #1: TREND PULLBACK
+// ─────────────────────────────────────────────────────────────────────────────
+trendBull = emaFast > emaSlow and close > emaTrend and close > vwapVal and mtfBull
+trendBear = emaFast < emaSlow and close < emaTrend and close < vwapVal and mtfBear
+
+// Strong close: close in top/bottom 20% of bar range (alternative to prior-bar break)
+closePos        = barRange > 0 ? (close - low) / barRange : 0.5
+strongCloseUp   = closePos >= 0.80
+strongCloseDown = closePos <= 0.20
+
+pbLong = trendBull and low <= emaSlow and close > emaFast
+     and (close > high[1] or strongCloseUp) and rangeOK
+
+pbShort = trendBear and high >= emaSlow and close < emaFast
+     and (close < low[1] or strongCloseDown) and rangeOK
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 8) ALGO #2: VWAP REVERSION
+// ─────────────────────────────────────────────────────────────────────────────
+revDistATR = input.float(1.4, "Rev Dist (ATR)", step=0.1, group="Reversion")
+revRsiLow  = input.int(35,   "Rev RSI Low", group="Reversion")
+revRsiHigh = input.int(65,   "Rev RSI High", group="Reversion")
+
+// v6.2: should reversion require MTF alignment?
+// Default ON — safer for P1 capital preservation. Turn OFF in P2 to increase trade count.
+revRequireMTF = input.bool(true, "Reversion requires MTF bias", group="Reversion")
+
+distAtr    = (close - vwapVal) / atrVal
+emaSep     = math.abs(emaFast - emaSlow) / atrVal
+neutralish = emaSep < 0.6
+
+vwapSlope = vwapVal - vwapVal[5]
+vwapFlat  = math.abs(vwapSlope) < atrVal * 0.3
+
+bodySize  = math.abs(close - open)
+wickRatio = barRange > 0 ? (barRange - bodySize) / barRange : 0
+strongRej = wickRatio >= 0.4
+
+bullRej = close > open and close > (high + low) / 2 and strongRej
+bearRej = close < open and close < (high + low) / 2 and strongRej
+
+revLong = neutralish and vwapFlat and revTimeOK
+     and distAtr <= -revDistATR and rsiVal <= revRsiLow
+     and bullRej and (not revRequireMTF or mtfBull)
+
+revShort = neutralish and vwapFlat and revTimeOK
+     and distAtr >= revDistATR and rsiVal >= revRsiHigh
+     and bearRej and (not revRequireMTF or mtfBear)
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 9) REGIME GATE
+// ─────────────────────────────────────────────────────────────────────────────
+emaSlope    = emaFast - emaFast[5]
+trendRegime = adxVal >= adxMin
+     and math.abs(emaSlope) > syminfo.mintick * 2
+     and math.abs(vwapSlope) > syminfo.mintick * 2
+rangeRegime = adxVal < adxMin and neutralish
+
+useTrend = mode == "Trend Pullback" or mode == "Both (Always)"
+     or (mode == "Auto (Regime)" and trendRegime)
+useRev = mode == "VWAP Reversion" or mode == "Both (Always)"
+     or (mode == "Auto (Regime)" and rangeRegime)
+
+// Throttle: P1 losing day or forceTrendP1 → reversion off
+useRevEff = (phase1Throttle or (forceTrendP1 and not inPhase2)) ? false : useRev
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 10) RISK-PER-TRADE CAP
+// ─────────────────────────────────────────────────────────────────────────────
+maxRiskP1 = input.float(150, "Max $ Risk/Trade P1", minval=0, step=25, group="Risk Sizing")
+maxRiskP2 = input.float(300, "Max $ Risk/Trade P2", minval=0, step=25, group="Risk Sizing")
+
+// v6.2: stop distance floor in ticks (protects against ATR compression
+// during low-vol periods that would create absurdly tight stops)
+minStopTicks = input.int(20, "Min Stop (ticks)", minval=1, group="Risk Sizing")
+
+maxRiskNow  = inPhase2 ? maxRiskP2 : maxRiskP1
+pointVal    = syminfo.pointvalue  // auto: MES=5, MGC=10, MNQ=2
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 11) SIGNALS
+// ─────────────────────────────────────────────────────────────────────────────
+canLong  = tradeDir == "Both" or tradeDir == "Long Only"
+canShort = tradeDir == "Both" or tradeDir == "Short Only"
+
+pbLongSig   = useTrend  and pbLong
+pbShortSig  = useTrend  and pbShort
+revLongSig  = useRevEff and revLong
+revShortSig = useRevEff and revShort
+
+longSignal = allowedToTrade and qualityOK and canLong
+     and strategy.position_size == 0
+     and (pbLongSig or revLongSig)
+
+shortSignal = allowedToTrade and qualityOK and canShort
+     and strategy.position_size == 0
+     and (pbShortSig or revShortSig)
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 12) EXITS — Phase-aware 3-stage: Bracket → Break-Even → Trail
+// ─────────────────────────────────────────────────────────────────────────────
+slATR_P1    = input.float(1.5, "Stop ATR P1",   step=0.1, group="Exits P1")
+tpATR_P1    = input.float(2.1, "Target ATR P1", step=0.1, group="Exits P1")
+beR_P1      = input.float(1.25,"BE after R P1", step=0.25, group="Exits P1")
+trR_P1      = input.float(1.75,"Trail after R P1", step=0.25, group="Exits P1")
+trATR_P1    = input.float(1.0, "Trail ATR P1",  step=0.1, group="Exits P1")
+
+slATR_P2    = input.float(1.5, "Stop ATR P2",   step=0.1, group="Exits P2")
+tpATR_P2    = input.float(2.5, "Target ATR P2", step=0.1, group="Exits P2")
+beR_P2      = input.float(1.0, "BE after R P2", step=0.25, group="Exits P2")
+trR_P2      = input.float(1.5, "Trail after R P2", step=0.25, group="Exits P2")
+trATR_P2    = input.float(1.0, "Trail ATR P2",  step=0.1, group="Exits P2")
+
+slATR    = inPhase2 ? slATR_P2  : slATR_P1
+tpATR    = inPhase2 ? tpATR_P2  : tpATR_P1
+beAfterR = inPhase2 ? beR_P2    : beR_P1
+trAfterR = inPhase2 ? trR_P2    : trR_P1
+trATR    = inPhase2 ? trATR_P2  : trATR_P1
+
+// v6.2: stop distance with floor (never tighter than minStopTicks)
+stopDistRaw   = atrVal * slATR
+stopDist      = math.max(stopDistRaw, minStopTicks * syminfo.mintick)
+targetDist    = atrVal * tpATR
+trailDist     = atrVal * trATR
+
+// Cap CONTRACT QTY by max dollar risk (ATR stops never squeezed)
+riskPerContract = stopDist * pointVal
+maxQtyByRisk    = maxRiskNow > 0 ? math.floor(maxRiskNow / riskPerContract) : qtyNow
+qtyFinal        = math.max(1, math.min(qtyNow, int(maxQtyByRisk)))
+
+var float entryPx  = na
+var float riskDist = na
+var int   side     = 0
+var int   exitStg  = 0
+
+if strategy.position_size == 0
+    side    := 0
+    exitStg := 0
+    entryPx := na
+
+if longSignal
+    side     := 1
+    exitStg  := 0
+    entryPx  := na       // cleared — will capture actual fill next bar
+    riskDist := stopDist
+    strategy.entry("L", strategy.long, qty=qtyFinal)
+    tradesToday += 1
+    strategy.exit("L-X", "L",
+         stop=close - stopDist, limit=close + targetDist)
+
+if shortSignal
+    side     := -1
+    exitStg  := 0
+    entryPx  := na       // cleared — will capture actual fill next bar
+    riskDist := stopDist
+    strategy.entry("S", strategy.short, qty=qtyFinal)
+    tradesToday += 1
+    strategy.exit("S-X", "S",
+         stop=close + stopDist, limit=close - targetDist)
+
+// v6.2: capture actual fill price once position is live
+// (process_orders_on_close=false → fill happens at next bar's open)
+if strategy.position_size != 0 and na(entryPx)
+    entryPx := strategy.position_avg_price
+
+// 3-stage exit management (uses real fill price for accurate R calculations)
+if strategy.position_size != 0 and not na(entryPx)
+    if side == 1
+        moved = close - entryPx
+        if exitStg == 0 and moved >= riskDist * beAfterR
+            exitStg := 1
+            strategy.exit("L-X", "L",
+                 stop=entryPx + syminfo.mintick,
+                 limit=entryPx + targetDist)
+        if exitStg == 1 and moved >= riskDist * trAfterR
+            exitStg := 2
+            ticks = math.max(1, math.round(trailDist / syminfo.mintick))
+            strategy.exit("L-X", "L",
+                 limit=entryPx + targetDist,
+                 trail_points=ticks, trail_offset=ticks)
+
+    if side == -1
+        moved = entryPx - close
+        if exitStg == 0 and moved >= riskDist * beAfterR
+            exitStg := 1
+            strategy.exit("S-X", "S",
+                 stop=entryPx - syminfo.mintick,
+                 limit=entryPx - targetDist)
+        if exitStg == 1 and moved >= riskDist * trAfterR
+            exitStg := 2
+            ticks = math.max(1, math.round(trailDist / syminfo.mintick))
+            strategy.exit("S-X", "S",
+                 limit=entryPx - targetDist,
+                 trail_points=ticks, trail_offset=ticks)
+
+if flattenEnd and useSession and not inSession and strategy.position_size != 0
+    strategy.close_all(comment="Session End")
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 13) LUCID EOD DRAWDOWN SIM
+// ─────────────────────────────────────────────────────────────────────────────
+lucidMLL      = input.float(4000, "Lucid MLL ($)", group="Lucid Sim")
+lucidLockProf = input.float(3100, "Lucid Lock ($)", group="Lucid Sim")
+
+var float lucidHighEOD = strategy.initial_capital
+var float lucidFloor   = strategy.initial_capital - lucidMLL
+var bool  lucidLocked  = false
+var bool  lucidBusted  = false
+
+if newDay
+    eodBal = strategy.equity
+    if not lucidLocked
+        if eodBal > lucidHighEOD
+            lucidHighEOD := eodBal
+            lucidFloor   := lucidHighEOD - lucidMLL
+        if eodBal >= strategy.initial_capital + lucidLockProf
+            lucidLocked := true
+    if eodBal < lucidFloor
+        lucidBusted := true
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 14) LEARNING METRICS
+// ─────────────────────────────────────────────────────────────────────────────
+var int  daysCount        = 0
+var int  dayLossHalts     = 0
+var int  streakHalts      = 0
+var int  weeklyHalts      = 0
+var int  intradayDDHalts  = 0
+var bool reachedTarget    = false
+var int  daysToTarget     = na
+var bool countedHaltToday = false
+
+if newDay
+    daysCount += 1
+    countedHaltToday := false
+
+if (hitDailyLoss or hitLossStreak or hitWeeklyLoss or hitIntradayDD) and not countedHaltToday
+    countedHaltToday := true
+    if hitDailyLoss
+        dayLossHalts += 1
+    if hitLossStreak
+        streakHalts += 1
+    if hitWeeklyLoss
+        weeklyHalts += 1
+    if hitIntradayDD
+        intradayDDHalts += 1
+
+if not reachedTarget and profit >= phase2ProfitUsd
+    reachedTarget := true
+    daysToTarget  := daysCount
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 15) PLOTS
+// ─────────────────────────────────────────────────────────────────────────────
+plot(emaFast,  "EMA 9",   color.new(color.green,  0),  1)
+plot(emaSlow,  "EMA 21",  color.new(color.orange, 0),  1)
+plot(emaTrend, "EMA 200", color.new(color.blue,   60), 2)
+plot(vwapVal,  "VWAP",    color.new(color.purple,  0), 2)
+
+bgcolor(halted ? color.new(color.red, 90) : na)
+bgcolor(lucidBusted ? color.new(color.red, 80) : na)
+bgcolor(phase1Throttle ? color.new(color.yellow, 93) : na)
+bgcolor(useSession and inSession and pastWarmup and inWindows ? color.new(color.green, 96) : na)
+
+plotshape(longSignal  and pbLongSig,   "PB L",  shape.triangleup,   location.belowbar, color.green,  size=size.small, text="PB")
+plotshape(longSignal  and revLongSig,  "REV L", shape.triangleup,   location.belowbar, color.lime,   size=size.small, text="REV")
+plotshape(shortSignal and pbShortSig,  "PB S",  shape.triangledown, location.abovebar, color.red,    size=size.small, text="PB")
+plotshape(shortSignal and revShortSig, "REV S", shape.triangledown, location.abovebar, color.orange, size=size.small, text="REV")
+
+plotshape(exitStg == 1 and exitStg[1] == 0, "BE",
+     shape.diamond, location.abovebar, color.blue, size=size.tiny, text="BE")
+plotshape(exitStg == 2 and exitStg[1] == 1, "TR",
+     shape.diamond, location.abovebar, color.teal, size=size.tiny, text="TR")
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 16) STATUS LABEL
+// ─────────────────────────────────────────────────────────────────────────────
+var label st = na
+if barstate.islast
+    label.delete(st)
+    st := label.new(bar_index, high,
+      "═══ LUCID v6.2 ═══" +
+      "\n" + syminfo.ticker + " | PtVal: $" + str.tostring(pointVal) +
+      "\nPhase: " + (inPhase2 ? "PAYOUT (P2)" : "LOCK (P1)") +
+      "\nMode: " + mode + " | MTF: " + mtfMode +
+      "\nQty: " + str.tostring(qtyFinal) + " (cap: " + str.tostring(qtyNow) + ")" +
+      (haltedYesterday ? " [COOLDOWN]" : "") +
+      (phase2HaltBlock ? " [P2 BLOCKED]" : "") +
+      "\n─── P&L ───" +
+      "\nTotal: $" + str.tostring(profit, "#") +
+      "\nDay: $" + str.tostring(dayPnL, "#") +
+      "\nWeek: $" + str.tostring(weekPnL, "#") +
+      "\nIntraday DD: $" + str.tostring(intradayDD, "#") +
+      "\n─── Guards ───" +
+      "\nTrades: " + str.tostring(tradesToday) + "/" + str.tostring(maxTradesToday) +
+      "\nStreaks: " + str.tostring(lossStreak) + "/" + str.tostring(maxConsecLosses) +
+      "\nHalted: " + str.tostring(halted) +
+      (phase1Throttle ? " | THROTTLE" : "") +
+      "\n─── Exits ───" +
+      "\nStage: " + (exitStg == 0 ? "SL/TP" : exitStg == 1 ? "Break-Even" : "Trailing") +
+      "\nSL: " + str.tostring(stopDist / syminfo.mintick, "#") + " ticks" +
+      " (min " + str.tostring(minStopTicks) + ")" +
+      "\nMax Risk: $" + str.tostring(maxRiskNow) +
+      " | Risk/Ct: $" + str.tostring(riskPerContract, "#") +
+      "\n─── Prop ───" +
+      "\nLock in: " + (reachedTarget ? str.tostring(daysToTarget) + " days" : "—") +
+      "\nRecent PF: " + str.tostring(rpf, "#.##") +
+      " (" + str.tostring(strategy.closedtrades) + " trades)" +
+      "\n─── Lucid ───" +
+      "\nFloor: $" + str.tostring(lucidFloor, "#") +
+      "\nLocked: " + str.tostring(lucidLocked) +
+      "\nBusted: " + str.tostring(lucidBusted) +
+      "\n─── Halts ───" +
+      "\nDaily:" + str.tostring(dayLossHalts) +
+      " Streak:" + str.tostring(streakHalts) +
+      " Week:" + str.tostring(weeklyHalts) +
+      " DD:" + str.tostring(intradayDDHalts),
+      style=label.style_label_down,
+      textcolor=color.white,
+      color=color.new(lucidBusted ? color.red : (inPhase2 ? color.teal : color.black), 70),
+      size=size.normal)

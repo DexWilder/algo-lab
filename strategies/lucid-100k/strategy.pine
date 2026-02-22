@@ -1,0 +1,229 @@
+//@version=6
+strategy("Lucid 100K — Prop Bot Optimizer Harness (MES 5m)", overlay=true,
+     pyramiding=0,
+     default_qty_type=strategy.fixed,
+     default_qty_value=1,
+     initial_capital=50000,
+     commission_type=strategy.commission.cash_per_contract,
+     commission_value=0.62,
+     slippage=1,
+     process_orders_on_close=true)
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 1) TEST HARNESS SWITCHES
+// ─────────────────────────────────────────────────────────────────────────────
+mode = input.string("Auto (Regime)", "Algo Mode",
+     options=["Trend Pullback", "VWAP Reversion", "Both (Always)", "Auto (Regime)"], group="Harness")
+
+mtfMode = input.string("15m + 60m", "MTF Filters",
+     options=["Off", "15m Only", "15m + 60m"], group="Harness")
+
+tradeDir = input.string("Both", "Direction", options=["Long Only","Short Only","Both"], group="Harness")
+
+// Session (edit if needed)
+useSession  = input.bool(true, "Session Filter", group="Session")
+sessWindow  = input.session("0830-1515", "RTH Window (Exchange TZ)", group="Session")
+flattenEnd  = input.bool(true, "Flatten End", group="Session")
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 2) PHASE SIZING (LOCK FIRST, THEN SCALE)
+// ─────────────────────────────────────────────────────────────────────────────
+usePhaseSizing  = input.bool(true, "Phase Sizing", group="Phase")
+qtyPhase1       = input.int(2, "Qty Phase 1", minval=1, group="Phase")
+qtyPhase2       = input.int(5, "Qty Phase 2", minval=1, group="Phase")
+phase2ProfitUsd = input.float(3100, "Switch to Phase 2 after Profit ($)", minval=0, step=100, group="Phase")
+
+profit = strategy.equity - strategy.initial_capital
+qtyNow = usePhaseSizing ? (profit >= phase2ProfitUsd ? qtyPhase2 : qtyPhase1) : int(strategy.default_qty_value)
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 3) PROP GUARDRAILS
+// ─────────────────────────────────────────────────────────────────────────────
+maxTradesPerDay = input.int(3, "Max Trades/Day", minval=1, group="Guardrails")
+maxDailyLossUsd = input.float(600, "Max Daily Loss ($)", minval=0, step=50, group="Guardrails")
+maxConsecLosses = input.int(2, "Max Consecutive Losses", minval=1, group="Guardrails")
+
+var float dayStartEquity = na
+var int tradesToday = 0
+var int lossStreak = 0
+var int prevClosed = 0
+var bool halted = false
+
+newDay = ta.change(time("D"))
+if newDay
+    dayStartEquity := strategy.equity
+    tradesToday := 0
+    lossStreak := 0
+    halted := false
+
+dayPnL = strategy.equity - nz(dayStartEquity, strategy.equity)
+
+if strategy.closedtrades > prevClosed
+    idx = strategy.closedtrades - 1
+    p = strategy.closedtrades.profit(idx)
+    lossStreak := p < 0 ? (lossStreak + 1) : 0
+    prevClosed := strategy.closedtrades
+
+tooManyTrades = tradesToday >= maxTradesPerDay
+hitDailyLoss  = (maxDailyLossUsd > 0) and (dayPnL <= -maxDailyLossUsd)
+hitLossStreak = lossStreak >= maxConsecLosses
+
+if hitDailyLoss or hitLossStreak
+    halted := true
+
+inSession = useSession ? not na(time(timeframe.period, sessWindow)) : true
+allowedToTrade = inSession and not halted and not tooManyTrades
+
+if halted and strategy.position_size != 0
+    strategy.close_all(comment="Guardrail Halt")
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 4) INDICATORS (BASE TF = 5m)
+// ─────────────────────────────────────────────────────────────────────────────
+fastLen  = input.int(9, "Fast EMA", group="Indicators")
+slowLen  = input.int(21, "Slow EMA", group="Indicators")
+trendLen = input.int(200, "Trend EMA", group="Indicators")
+
+rsiLen = input.int(14, "RSI", group="Indicators")
+atrLen = input.int(14, "ATR", group="Indicators")
+
+emaFast  = ta.ema(close, fastLen)
+emaSlow  = ta.ema(close, slowLen)
+emaTrend = ta.ema(close, trendLen)
+
+vwapVal = ta.vwap(hlc3)
+rsiVal  = ta.rsi(close, rsiLen)
+atrVal  = ta.atr(atrLen)
+
+// Quality filters
+useAdx = input.bool(true, "Use ADX", group="Quality")
+adxLen = input.int(14, "ADX Len", group="Quality")
+adxMin = input.float(16.0, "ADX Min", step=0.5, group="Quality")
+adxVal = ta.adx(adxLen)
+
+useVol  = input.bool(true, "Use Volume", group="Quality")
+volLen  = input.int(20, "Vol MA", group="Quality")
+volMult = input.float(1.0, "Vol Mult", step=0.1, group="Quality")
+volMA   = ta.sma(volume, volLen)
+volOK   = not useVol ? true : (volume > volMA * volMult)
+
+qualityOK = (not useAdx ? true : adxVal >= adxMin) and volOK
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 5) MTF FILTERS (15m + 60m bias)
+// ─────────────────────────────────────────────────────────────────────────────
+getEma(_tf, _len) => request.security(syminfo.tickerid, _tf, ta.ema(close, _len))
+
+ema200_15 = getEma("15", 200)
+ema200_60 = getEma("60", 200)
+
+mtfBull = mtfMode == "Off" ? true :
+     (mtfMode == "15m Only" ? (close > ema200_15) : (close > ema200_15 and close > ema200_60))
+
+mtfBear = mtfMode == "Off" ? true :
+     (mtfMode == "15m Only" ? (close < ema200_15) : (close < ema200_15 and close < ema200_60))
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 6) ALGO #1: TREND PULLBACK (safer)
+// ─────────────────────────────────────────────────────────────────────────────
+trendBull = (emaFast > emaSlow) and (close > emaTrend) and (close > vwapVal) and mtfBull
+trendBear = (emaFast < emaSlow) and (close < emaTrend) and (close < vwapVal) and mtfBear
+
+pbLong  = trendBull and (low <= emaSlow) and (close > emaFast) and (close > open)
+pbShort = trendBear and (high >= emaSlow) and (close < emaFast) and (close < open)
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 7) ALGO #2: VWAP REVERSION (faster, riskier)
+// ─────────────────────────────────────────────────────────────────────────────
+revDistATR = input.float(1.4, "Reversion Dist (ATR)", step=0.1, group="Reversion")
+revRsiLow  = input.int(35, "Reversion RSI Low", group="Reversion")
+revRsiHigh = input.int(65, "Reversion RSI High", group="Reversion")
+
+distAtr = (close - vwapVal) / atrVal
+emaSep = math.abs(emaFast - emaSlow) / atrVal
+neutralish = emaSep < 0.6
+
+bullRej = (close > open) and (close > (high + low) / 2)
+bearRej = (close < open) and (close < (high + low) / 2)
+
+revLong  = neutralish and (distAtr <= -revDistATR) and (rsiVal <= revRsiLow)  and bullRej and mtfBull
+revShort = neutralish and (distAtr >=  revDistATR) and (rsiVal >= revRsiHigh) and bearRej and mtfBear
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 8) REGIME GATE (AUTO MODE)
+// ─────────────────────────────────────────────────────────────────────────────
+emaSlope = emaFast - emaFast[5]
+vwapSlope = vwapVal - vwapVal[5]
+trendRegime = (adxVal >= adxMin) and (math.abs(emaSlope) > syminfo.mintick * 2) and (math.abs(vwapSlope) > syminfo.mintick * 2)
+rangeRegime = (adxVal < adxMin) and neutralish
+
+useTrend = mode == "Trend Pullback" or mode == "Both (Always)" or (mode == "Auto (Regime)" and trendRegime)
+useRev   = mode == "VWAP Reversion" or mode == "Both (Always)" or (mode == "Auto (Regime)" and rangeRegime)
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 9) FINAL SIGNALS
+// ─────────────────────────────────────────────────────────────────────────────
+canLong  = tradeDir == "Both" or tradeDir == "Long Only"
+canShort = tradeDir == "Both" or tradeDir == "Short Only"
+
+longSignal  = allowedToTrade and qualityOK and canLong  and strategy.position_size == 0 and ((useTrend and pbLong)  or (useRev and revLong))
+shortSignal = allowedToTrade and qualityOK and canShort and strategy.position_size == 0 and ((useTrend and pbShort) or (useRev and revShort))
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 10) EXITS (ATR-based in ticks; correct units)
+// ─────────────────────────────────────────────────────────────────────────────
+slATR    = input.float(1.5, "Stop ATR", step=0.1, group="Exits")
+tpATR    = input.float(2.2, "Target ATR", step=0.1, group="Exits")
+useTrail = input.bool(true, "Use Trail", group="Exits")
+trailATR = input.float(1.0, "Trail ATR", step=0.1, group="Exits")
+
+stopTicks   = math.max(1, math.round((atrVal * slATR) / syminfo.mintick))
+targetTicks = math.max(1, math.round((atrVal * tpATR) / syminfo.mintick))
+trailTicks  = math.max(1, math.round((atrVal * trailATR) / syminfo.mintick))
+
+longStop  = close - stopTicks * syminfo.mintick
+longLimit = close + targetTicks * syminfo.mintick
+shortStop  = close + stopTicks * syminfo.mintick
+shortLimit = close - targetTicks * syminfo.mintick
+
+if longSignal
+    strategy.entry("L", strategy.long, qty=qtyNow)
+    tradesToday += 1
+    if useTrail
+        strategy.exit("L-X", "L", stop=longStop, limit=longLimit, trail_points=trailTicks, trail_offset=trailTicks)
+    else
+        strategy.exit("L-X", "L", stop=longStop, limit=longLimit)
+
+if shortSignal
+    strategy.entry("S", strategy.short, qty=qtyNow)
+    tradesToday += 1
+    if useTrail
+        strategy.exit("S-X", "S", stop=shortStop, limit=shortLimit, trail_points=trailTicks, trail_offset=trailTicks)
+    else
+        strategy.exit("S-X", "S", stop=shortStop, limit=shortLimit)
+
+// Flatten at session end
+if flattenEnd and useSession and not inSession and strategy.position_size != 0
+    strategy.close_all(comment="Session End")
+
+// ─────────────────────────────────────────────────────────────────────────────
+// PLOTS / STATUS
+// ─────────────────────────────────────────────────────────────────────────────
+plot(emaFast, "EMA 9", color=color.new(color.green,0))
+plot(emaSlow, "EMA 21", color=color.new(color.orange,0))
+plot(emaTrend,"EMA 200", color=color.new(color.blue,60), linewidth=2)
+plot(vwapVal, "VWAP", color=color.new(color.purple,0), linewidth=2)
+
+var label st = na
+if barstate.islast
+    label.delete(st)
+    st := label.new(bar_index, high,
+      "Mode: " + mode +
+      "\nMTF: " + mtfMode +
+      "\nQtyNow: " + str.tostring(qtyNow) +
+      "\nProfit: " + str.tostring(profit, "#") +
+      "\nDayPnL: " + str.tostring(dayPnL, "#") +
+      "\nTradesToday: " + str.tostring(tradesToday) +
+      "\nLossStreak: " + str.tostring(lossStreak) +
+      "\nHalted: " + str.tostring(halted),
+      style=label.style_label_down, textcolor=color.white, color=color.new(color.black, 70))

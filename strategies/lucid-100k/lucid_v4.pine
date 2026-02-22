@@ -1,0 +1,438 @@
+// ============================================================================
+// LUCID 100K — Prop Bot v4 (MES 5m)
+// ============================================================================
+// Changes from v3:
+//   1. BREAK-EVEN STOP replaces trailing — move SL to entry after 1R profit
+//      (trailing on 5m MES chops out winners; break-even protects capital)
+//   2. SESSION WARMUP — skip first 15 min after RTH open (8:30-8:45 is noise)
+//   3. STRONGER ENTRY CONFIRMATION — close above prior high (longs) / below
+//      prior low (shorts), not just close > open
+//   4. REVERSION TIME GATE — no mean reversion in first 30 min or last 30 min
+//   5. PERFORMANCE-GATED PHASE 2 — require PF > 1.2 on recent trades, not
+//      just cumulative profit
+//   6. LUCID EOD DRAWDOWN SIM — tracks EOD trailing MLL per Lucid $100K rules
+//   7. WEEKLY LOSS GUARD — additional layer on top of daily
+//   8. COOLDOWN AFTER HALT — reduce size day after halt
+// ============================================================================
+
+//@version=6
+strategy("Lucid 100K v4 — Prop Bot (MES 5m)", overlay=true,
+     pyramiding=0,
+     default_qty_type=strategy.fixed,
+     default_qty_value=1,
+     initial_capital=50000,
+     currency=currency.USD,
+     commission_type=strategy.commission.cash_per_contract,
+     commission_value=0.62,
+     slippage=1,
+     calc_on_every_tick=false,
+     process_orders_on_close=false)
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 1) HARNESS SWITCHES
+// ─────────────────────────────────────────────────────────────────────────────
+mode = input.string("Auto (Regime)", "Algo Mode",
+     options=["Trend Pullback", "VWAP Reversion", "Both (Always)", "Auto (Regime)"], group="Harness")
+
+mtfMode = input.string("15m + 60m", "MTF Filters",
+     options=["Off", "15m Only", "15m + 60m"], group="Harness")
+
+tradeDir = input.string("Both", "Direction",
+     options=["Long Only", "Short Only", "Both"], group="Harness")
+
+// Session
+useSession   = input.bool(true,  "Session Filter", group="Session")
+sessWindow   = input.session("0830-1515", "RTH Window", group="Session")
+flattenEnd   = input.bool(true,  "Flatten at Session End", group="Session")
+warmupMins   = input.int(15,     "Warmup Minutes (skip after open)", minval=0, maxval=60, group="Session")
+revBlackout  = input.int(30,     "Reversion Blackout (mins from open/close)", minval=0, maxval=60, group="Session")
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 2) PHASE SIZING
+// ─────────────────────────────────────────────────────────────────────────────
+usePhaseSizing   = input.bool(true,  "Phase Sizing", group="Phase")
+qtyPhase1        = input.int(2,      "Qty Phase 1", minval=1, group="Phase")
+qtyPhase2        = input.int(5,      "Qty Phase 2", minval=1, group="Phase")
+qtyCooldown      = input.int(1,      "Qty Cooldown (day after halt)", minval=1, group="Phase")
+phase2ProfitUsd  = input.float(3100, "Phase 2 Profit Threshold ($)", minval=0, step=100, group="Phase")
+phase2ReqPF      = input.float(1.2,  "Phase 2 Min Profit Factor (recent)", minval=1.0, step=0.1, group="Phase")
+phase2LookbackN  = input.int(10,     "Phase 2 PF Lookback Trades", minval=5, group="Phase")
+
+profit = strategy.equity - strategy.initial_capital
+
+// Recent profit factor calculation
+recentPF() =>
+    n = math.min(strategy.closedtrades, phase2LookbackN)
+    if n < 3
+        0.0
+    else
+        grossW = 0.0
+        grossL = 0.0
+        for i = 0 to n - 1
+            p = strategy.closedtrades.profit(strategy.closedtrades - 1 - i)
+            if p > 0
+                grossW += p
+            else
+                grossL += math.abs(p)
+        grossL > 0 ? grossW / grossL : (grossW > 0 ? 999.0 : 0.0)
+
+rpf = recentPF()
+phase2OK = profit >= phase2ProfitUsd and rpf >= phase2ReqPF
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 3) PROP GUARDRAILS
+// ─────────────────────────────────────────────────────────────────────────────
+maxTradesPerDay  = input.int(3,     "Max Trades/Day", minval=1, group="Guardrails")
+maxDailyLossUsd  = input.float(600, "Max Daily Loss ($)", minval=0, step=50, group="Guardrails")
+maxWeeklyLossUsd = input.float(1500,"Max Weekly Loss ($)", minval=0, step=100, group="Guardrails")
+maxConsecLosses  = input.int(2,     "Max Consecutive Losses", minval=1, group="Guardrails")
+
+var float dayStartEquity  = na
+var float weekStartEquity = na
+var int   tradesToday      = 0
+var int   lossStreak       = 0
+var int   prevClosed       = 0
+var bool  halted            = false
+var bool  haltedYesterday   = false
+
+newDay  = ta.change(time("D"))
+newWeek = ta.change(time("W"))
+
+if newDay
+    haltedYesterday := halted
+    dayStartEquity  := strategy.equity
+    tradesToday     := 0
+    lossStreak      := 0
+    halted          := false
+
+if newWeek
+    weekStartEquity := strategy.equity
+
+dayPnL  = strategy.equity - nz(dayStartEquity, strategy.equity)
+weekPnL = strategy.equity - nz(weekStartEquity, strategy.equity)
+
+if strategy.closedtrades > prevClosed
+    idx = strategy.closedtrades - 1
+    p = strategy.closedtrades.profit(idx)
+    lossStreak := p < 0 ? lossStreak + 1 : 0
+    prevClosed := strategy.closedtrades
+
+tooManyTrades = tradesToday >= maxTradesPerDay
+hitDailyLoss  = maxDailyLossUsd > 0 and dayPnL <= -maxDailyLossUsd
+hitWeeklyLoss = maxWeeklyLossUsd > 0 and weekPnL <= -maxWeeklyLossUsd
+hitLossStreak = lossStreak >= maxConsecLosses
+
+if hitDailyLoss or hitLossStreak or hitWeeklyLoss
+    halted := true
+
+// Determine position size
+qtyNow = usePhaseSizing ?
+     (haltedYesterday ? qtyCooldown :
+      (phase2OK ? qtyPhase2 : qtyPhase1)) :
+     int(strategy.default_qty_value)
+
+// Session timing
+inSession = useSession ? not na(time(timeframe.period, sessWindow)) : true
+
+// Warmup: skip first N minutes after session open
+var int sessionOpenBar = na
+if inSession and (not inSession[1] or newDay)
+    sessionOpenBar := bar_index
+
+barsSinceOpen = bar_index - nz(sessionOpenBar, bar_index)
+pastWarmup = warmupMins <= 0 or (barsSinceOpen * timeframe.multiplier >= warmupMins)
+
+// Reversion blackout: no reversion near session open or close
+barsForBlackout = math.ceil(revBlackout / timeframe.multiplier)
+sessEndBar = na(time(timeframe.period, sessWindow)) and inSession[1]  // transitioning out
+revTimeOK = barsSinceOpen >= barsForBlackout  // far enough from open
+
+allowedToTrade = inSession and pastWarmup and not halted and not tooManyTrades
+
+if halted and strategy.position_size != 0
+    strategy.close_all(comment="Guardrail Halt")
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 4) INDICATORS
+// ─────────────────────────────────────────────────────────────────────────────
+fastLen  = input.int(9,   "Fast EMA", group="Indicators")
+slowLen  = input.int(21,  "Slow EMA", group="Indicators")
+trendLen = input.int(200, "Trend EMA", group="Indicators")
+rsiLen   = input.int(14,  "RSI", group="Indicators")
+atrLen   = input.int(14,  "ATR", group="Indicators")
+
+emaFast  = ta.ema(close, fastLen)
+emaSlow  = ta.ema(close, slowLen)
+emaTrend = ta.ema(close, trendLen)
+vwapVal  = ta.vwap(hlc3)
+rsiVal   = ta.rsi(close, rsiLen)
+atrVal   = ta.atr(atrLen)
+
+// Quality filters
+useAdx  = input.bool(true,  "Use ADX", group="Quality")
+adxLen  = input.int(14,     "ADX Len", group="Quality")
+adxMin  = input.float(16.0, "ADX Min (Trend)", step=0.5, group="Quality")
+adxVal  = ta.adx(adxLen)
+
+useVol  = input.bool(true,  "Use Volume", group="Quality")
+volLen  = input.int(20,     "Vol MA", group="Quality")
+volMult = input.float(1.0,  "Vol Mult", step=0.1, group="Quality")
+volMA   = ta.sma(volume, volLen)
+volOK   = not useVol or volume > volMA * volMult
+
+qualityOK = (not useAdx or adxVal >= adxMin) and volOK
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 5) MTF FILTERS
+// ─────────────────────────────────────────────────────────────────────────────
+getEma(_tf, _len) => request.security(syminfo.tickerid, _tf, ta.ema(close, _len))
+
+ema200_15 = getEma("15", 200)
+ema200_60 = getEma("60", 200)
+
+mtfBull = switch mtfMode
+    "Off"       => true
+    "15m Only"  => close > ema200_15
+    =>             close > ema200_15 and close > ema200_60
+
+mtfBear = switch mtfMode
+    "Off"       => true
+    "15m Only"  => close < ema200_15
+    =>             close < ema200_15 and close < ema200_60
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 6) ALGO #1: TREND PULLBACK
+// ─────────────────────────────────────────────────────────────────────────────
+// v4 change: stronger confirmation — close must break prior bar's high/low
+trendBull = emaFast > emaSlow and close > emaTrend and close > vwapVal and mtfBull
+trendBear = emaFast < emaSlow and close < emaTrend and close < vwapVal and mtfBear
+
+pbLong = trendBull
+     and low <= emaSlow              // pulled back to slow EMA
+     and close > emaFast             // closed back above fast EMA
+     and close > high[1]             // v4: broke prior bar high (momentum confirm)
+
+pbShort = trendBear
+     and high >= emaSlow             // pulled back to slow EMA
+     and close < emaFast             // closed back below fast EMA
+     and close < low[1]              // v4: broke prior bar low (momentum confirm)
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 7) ALGO #2: VWAP REVERSION
+// ─────────────────────────────────────────────────────────────────────────────
+revDistATR = input.float(1.4, "Reversion Dist (ATR)", step=0.1, group="Reversion")
+revRsiLow  = input.int(35,   "Reversion RSI Low", group="Reversion")
+revRsiHigh = input.int(65,   "Reversion RSI High", group="Reversion")
+
+distAtr    = (close - vwapVal) / atrVal
+emaSep     = math.abs(emaFast - emaSlow) / atrVal
+neutralish = emaSep < 0.6
+
+bullRej = close > open and close > (high + low) / 2
+bearRej = close < open and close < (high + low) / 2
+
+// v4: reversion only allowed outside blackout windows
+revLong = neutralish and distAtr <= -revDistATR and rsiVal <= revRsiLow
+     and bullRej and mtfBull and revTimeOK
+
+revShort = neutralish and distAtr >= revDistATR and rsiVal >= revRsiHigh
+     and bearRej and mtfBear and revTimeOK
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 8) REGIME GATE
+// ─────────────────────────────────────────────────────────────────────────────
+emaSlope  = emaFast - emaFast[5]
+vwapSlope = vwapVal - vwapVal[5]
+trendRegime = adxVal >= adxMin
+     and math.abs(emaSlope)  > syminfo.mintick * 2
+     and math.abs(vwapSlope) > syminfo.mintick * 2
+rangeRegime = adxVal < adxMin and neutralish
+
+useTrend = mode == "Trend Pullback" or mode == "Both (Always)"
+     or (mode == "Auto (Regime)" and trendRegime)
+useRev = mode == "VWAP Reversion" or mode == "Both (Always)"
+     or (mode == "Auto (Regime)" and rangeRegime)
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 9) FINAL SIGNALS
+// ─────────────────────────────────────────────────────────────────────────────
+canLong  = tradeDir == "Both" or tradeDir == "Long Only"
+canShort = tradeDir == "Both" or tradeDir == "Short Only"
+
+longSignal = allowedToTrade and qualityOK and canLong
+     and strategy.position_size == 0
+     and ((useTrend and pbLong) or (useRev and revLong))
+
+shortSignal = allowedToTrade and qualityOK and canShort
+     and strategy.position_size == 0
+     and ((useTrend and pbShort) or (useRev and revShort))
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 10) EXITS — BRACKET + BREAK-EVEN (replaces trailing)
+// ─────────────────────────────────────────────────────────────────────────────
+slATR = input.float(1.5, "Stop ATR Mult",  step=0.1, group="Exits")
+tpATR = input.float(2.5, "Target ATR Mult", step=0.1, group="Exits")
+useBE = input.bool(true, "Break-Even after 1R", group="Exits")
+
+stopDist   = atrVal * slATR
+targetDist = atrVal * tpATR
+
+// Track entry price and whether break-even has been activated
+var float entryPx   = na
+var bool  beActive   = false
+var float initStop   = na
+var int   tradeSide  = 0  // 1=long, -1=short
+
+if longSignal
+    entryPx  := close
+    initStop := close - stopDist
+    beActive := false
+    tradeSide := 1
+    strategy.entry("L", strategy.long, qty=qtyNow)
+    tradesToday += 1
+    strategy.exit("L-X", "L",
+         stop  = close - stopDist,
+         limit = close + targetDist)
+
+if shortSignal
+    entryPx  := close
+    initStop := close + stopDist
+    beActive := false
+    tradeSide := -1
+    strategy.entry("S", strategy.short, qty=qtyNow)
+    tradesToday += 1
+    strategy.exit("S-X", "S",
+         stop  = close + stopDist,
+         limit = close - targetDist)
+
+// Break-even logic: after price moves 1R in our favor, move stop to entry
+if useBE and strategy.position_size != 0 and not beActive
+    if tradeSide == 1 and close >= entryPx + stopDist
+        // Price moved 1R in favor for long — move stop to break-even
+        beActive := true
+        strategy.exit("L-X", "L",
+             stop  = entryPx + syminfo.mintick,  // 1 tick above entry
+             limit = entryPx + targetDist)
+    if tradeSide == -1 and close <= entryPx - stopDist
+        // Price moved 1R in favor for short — move stop to break-even
+        beActive := true
+        strategy.exit("S-X", "S",
+             stop  = entryPx - syminfo.mintick,  // 1 tick below entry
+             limit = entryPx - targetDist)
+
+// Reset on flat
+if strategy.position_size == 0
+    tradeSide := 0
+    beActive  := false
+
+// Flatten at session end
+if flattenEnd and useSession and not inSession and strategy.position_size != 0
+    strategy.close_all(comment="Session End")
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 11) LUCID DRAWDOWN SIMULATION (EOD trailing)
+// ─────────────────────────────────────────────────────────────────────────────
+lucidMLL      = input.float(4000, "Lucid MLL ($)", group="Lucid Sim")
+lucidLockProf = input.float(3100, "Lucid Lock Profit ($)", group="Lucid Sim")
+
+var float lucidHighEOD = strategy.initial_capital
+var float lucidFloor   = strategy.initial_capital - lucidMLL
+var bool  lucidLocked  = false
+var bool  lucidBusted  = false
+
+if newDay
+    eodBal = strategy.equity
+    if not lucidLocked
+        if eodBal > lucidHighEOD
+            lucidHighEOD := eodBal
+            lucidFloor   := lucidHighEOD - lucidMLL
+        if eodBal >= strategy.initial_capital + lucidLockProf
+            lucidLocked := true
+            // Floor locks permanently
+    if eodBal < lucidFloor
+        lucidBusted := true
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 12) LEARNING METRICS
+// ─────────────────────────────────────────────────────────────────────────────
+var int  daysCount       = 0
+var int  dayLossHalts    = 0
+var int  streakHalts     = 0
+var int  weeklyHalts     = 0
+var bool reachedTarget   = false
+var int  daysToTarget    = na
+var bool countedHaltToday = false
+
+if newDay
+    daysCount += 1
+    countedHaltToday := false
+
+if (hitDailyLoss or hitLossStreak or hitWeeklyLoss) and not countedHaltToday
+    countedHaltToday := true
+    if hitDailyLoss
+        dayLossHalts += 1
+    if hitLossStreak
+        streakHalts += 1
+    if hitWeeklyLoss
+        weeklyHalts += 1
+
+if not reachedTarget and profit >= phase2ProfitUsd
+    reachedTarget := true
+    daysToTarget  := daysCount
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 13) PLOTS
+// ─────────────────────────────────────────────────────────────────────────────
+plot(emaFast,  "EMA 9",   color.new(color.green,  0),  1)
+plot(emaSlow,  "EMA 21",  color.new(color.orange, 0),  1)
+plot(emaTrend, "EMA 200", color.new(color.blue,   60), 2)
+plot(vwapVal,  "VWAP",    color.new(color.purple,  0), 2)
+
+bgcolor(useSession and inSession and pastWarmup ? color.new(color.green, 95) : na)
+bgcolor(halted ? color.new(color.red, 90) : na)
+bgcolor(lucidBusted ? color.new(color.red, 80) : na)
+
+// Entry markers
+plotshape(longSignal,  "Long",  shape.triangleup,   location.belowbar, color.green, size=size.small)
+plotshape(shortSignal, "Short", shape.triangledown,  location.abovebar, color.red,   size=size.small)
+
+// Break-even marker
+plotshape(beActive and beActive != beActive[1], "BE Active",
+     shape.diamond, location.abovebar, color.blue, size=size.tiny)
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 14) STATUS LABEL
+// ─────────────────────────────────────────────────────────────────────────────
+var label st = na
+if barstate.islast
+    label.delete(st)
+    st := label.new(bar_index, high,
+      "═══ LUCID 100K v4 ═══" +
+      "\nMode: " + mode +
+      "\nMTF: " + mtfMode +
+      "\n─── Position ───" +
+      "\nQty: " + str.tostring(qtyNow) +
+      "\nBE Active: " + str.tostring(beActive) +
+      "\n─── Session ───" +
+      "\nProfit: $" + str.tostring(profit, "#") +
+      "\nDay P&L: $" + str.tostring(dayPnL, "#") +
+      "\nWeek P&L: $" + str.tostring(weekPnL, "#") +
+      "\nTrades Today: " + str.tostring(tradesToday) +
+      "\nLoss Streak: " + str.tostring(lossStreak) +
+      "\nHalted: " + str.tostring(halted) +
+      "\n─── Prop Metrics ───" +
+      "\nDays to Target: " + (reachedTarget ? str.tostring(daysToTarget) : "—") +
+      "\nRecent PF: " + str.tostring(rpf, "#.##") +
+      "\nPhase 2 OK: " + str.tostring(phase2OK) +
+      "\n─── Lucid Sim ───" +
+      "\nDD Floor: $" + str.tostring(lucidFloor, "#") +
+      "\nDD Locked: " + str.tostring(lucidLocked) +
+      "\nBusted: " + str.tostring(lucidBusted) +
+      "\n─── Halt Counts ───" +
+      "\nDaily Loss Halts: " + str.tostring(dayLossHalts) +
+      "\nStreak Halts: " + str.tostring(streakHalts) +
+      "\nWeekly Halts: " + str.tostring(weeklyHalts),
+      style=label.style_label_down,
+      textcolor=color.white,
+      color=color.new(lucidBusted ? color.red : color.black, 70),
+      size=size.normal)
