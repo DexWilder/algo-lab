@@ -21,7 +21,7 @@
 // ============================================================================
 
 //@version=6
-strategy("Lucid 100K v6.3 (MES/MGC/MNQ)", overlay=true,
+strategy("Lucid 100K v6.3.1 (MES/MGC/MNQ)", overlay=true,
      pyramiding=0,
      default_qty_type=strategy.fixed,
      default_qty_value=1,
@@ -96,7 +96,7 @@ inWin1    = not na(time(timeframe.period, win1))
 inWin2    = not na(time(timeframe.period, win2))
 inWindows = useWindows ? (inWin1 or inWin2) : true
 
-newDay = ta.change(time("D"))
+newDay = bool(ta.change(time("D")))
 
 // Time-based warmup (works correctly on any timeframe)
 var int sessionOpenTime = na
@@ -110,8 +110,7 @@ revTimeOK     = minsFromOpen >= revBlackout
 // ─────────────────────────────────────────────────────────────────────────────
 // 3) MODE + MTF (phase-aware)
 // ─────────────────────────────────────────────────────────────────────────────
-phase1Mode = input.string("Trend Pullback", "P1 Mode",
-     options=["Trend Pullback", "Auto (Regime)"], group="Modes")
+phase1Mode = "Trend Pullback"  // v6.3: P1 is always trend-only (reversion hard-killed)
 phase2Mode = input.string("Auto (Regime)", "P2 Mode",
      options=["Trend Pullback", "VWAP Reversion", "Both (Always)", "Auto (Regime)"], group="Modes")
 mode = inPhase2 ? phase2Mode : phase1Mode
@@ -148,7 +147,7 @@ var int   prevClosed       = 0
 var bool  halted            = false
 // haltedYesterday declared in Phase Control (section 1)
 
-newWeek = ta.change(time("W"))
+newWeek = bool(ta.change(time("W")))
 
 var bool doneTradingToday = false
 
@@ -214,7 +213,7 @@ p2CooldownMode = inPhase2 and p2ProfitLockAction == "Cooldown"
 qtyNow = usePhaseSizing ?
      (haltedYesterday or p2CooldownMode ? qtyCooldown :
       (inPhase2 ? qtyPhase2 : qtyPhase1)) :
-     int(strategy.default_qty_value)
+     1
 
 allowedToTrade = inSession and pastWarmup and inWindows
      and not halted and not tooManyTrades and not doneTradingToday
@@ -241,7 +240,7 @@ atrVal   = ta.atr(atrLen)
 useAdx  = input.bool(true,  "Use ADX", group="Quality")
 adxLen  = input.int(14,     "ADX Len", group="Quality")
 adxMin  = input.float(16.0, "ADX Min", step=0.5, group="Quality")
-adxVal  = ta.adx(adxLen)
+[diPlus, diMinus, adxVal] = ta.dmi(adxLen, adxLen)
 
 useVol  = input.bool(true,  "Use Volume", group="Quality")
 volLen  = input.int(20,     "Vol MA Len", group="Quality")
@@ -505,6 +504,8 @@ var int  streakHalts      = 0
 var int  weeklyHalts      = 0
 var int  intradayDDHalts  = 0
 var int  greenLockDays    = 0
+var int  p2BankedDays     = 0
+var int  p2CooldownDays   = 0
 var bool reachedTarget    = false
 var int  daysToTarget     = na
 var bool countedHaltToday = false
@@ -517,7 +518,14 @@ if newDay
 
 if doneTradingToday and not countedLockToday and not halted
     countedLockToday := true
-    greenLockDays += 1
+    if not inPhase2
+        greenLockDays += 1
+    else
+        p2BankedDays += 1
+
+if p2CooldownMode and not countedLockToday and not doneTradingToday
+    countedLockToday := true
+    p2CooldownDays += 1
 
 if (hitDailyLoss or hitLossStreak or hitWeeklyLoss or hitIntradayDD) and not countedHaltToday
     countedHaltToday := true
@@ -564,7 +572,7 @@ var label st = na
 if barstate.islast
     label.delete(st)
     st := label.new(bar_index, high,
-      "═══ LUCID v6.3 ═══" +
+      "═══ LUCID v6.3.1 ═══" +
       "\n" + syminfo.ticker + " | PtVal: $" + str.tostring(pointVal) +
       "\nPhase: " + (inPhase2 ? "PAYOUT (P2)" : "LOCK (P1)") +
       "\nMode: " + mode + " | MTF: " + mtfMode +
@@ -603,7 +611,9 @@ if barstate.islast
       " Streak:" + str.tostring(streakHalts) +
       " Week:" + str.tostring(weeklyHalts) +
       " DD:" + str.tostring(intradayDDHalts) +
-      "\nGreen Locks: " + str.tostring(greenLockDays),
+      "\nP1 Green Locks: " + str.tostring(greenLockDays) +
+      " | P2 Banked: " + str.tostring(p2BankedDays) +
+      " | P2 Cooldown: " + str.tostring(p2CooldownDays),
       style=label.style_label_down,
       textcolor=color.white,
       color=color.new(lucidBusted ? color.red : (inPhase2 ? color.teal : color.black), 70),
