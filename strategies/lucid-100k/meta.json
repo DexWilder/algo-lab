@@ -6,7 +6,7 @@
   "market": "MES/MGC/MNQ",
   "timeframe": "5m",
   "type": "mixed",
-  "version": "6.2",
+  "version": "6.3",
   "uses_security_mtf": true,
   "repaint_risk_notes": "MTF request.security calls use default repainting behavior — verify with barmerge.lookahead_off if needed",
   "notes": "Dual-algo regime-switching prop bot: Trend Pullback + VWAP Mean Reversion. Phase-aware everything (mode, MTF, exits, guardrails, sizing). 3-stage exits (bracket → BE → trail). Risk cap on qty (not stop). Min stop floor. Actual fill price for BE/Trail. Designed for Lucid 100K straight-to-funded.",

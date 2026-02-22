@@ -1,20 +1,27 @@
 // ============================================================================
-// LUCID 100K v6.2 — PATCHED PROP BOT (MES/MGC/MNQ 5m)
+// LUCID 100K v6.3 — LOCK FAST + PAYOUT FAST (MES/MGC/MNQ 5m)
 // ============================================================================
-// v6.2 Patches vs v6.1 (Claude + GPT merged):
-//  - Min stop distance floor in ticks (prevents ATR compression sizing issues)
-//  - Use actual fill price (strategy.position_avg_price) for BE/Trail logic
-//  - Optional: Reversion requires MTF bias toggle (default ON for P1 safety)
-//  - Optional: Intraday DD only after dayPeak > dayStart toggle
-//  - Risk cap targets QTY not stop distance (ATR stops never squeezed)
-//  - Stable P2 gate: PF 1.1 / 25 trades + halt-day block
-//  - Time-based warmup (works on any timeframe)
-//  - Strong close alternative entry (top/bottom 20% of bar)
-//  - entryPx reset to na between trades (cleaner state machine)
+// v6.3 — Phase behavior spec from GPT, implemented by Claude:
+//  P1 (LOCK FAST):
+//   - Trend Pullback ONLY — reversion always disabled regardless of regime
+//   - Strict MTF (15m + 60m default)
+//   - Green-Day Lock: stop trading when dayPnL >= p1GreenLockUsd (protect wins)
+//   - All existing guardrails (daily loss, intraday DD, streak, weekly)
+//  P2 (PAYOUT FAST):
+//   - Auto regime switching (Trend + Reversion)
+//   - Relaxed MTF (15m Only default)
+//   - Profit Lock: stop trading when dayPnL >= p2ProfitLockUsd (bank wins)
+//   - Optional Cooldown mode instead of full stop
+//   - Higher trade limits, wider loss caps
+//
+// Inherited from v6.2:
+//  - Min stop ticks floor, actual fill price for BE/Trail
+//  - Risk cap on qty (not stop distance), stable P2 gate
+//  - Time-based warmup, strong close entries, clean state machine
 // ============================================================================
 
 //@version=6
-strategy("Lucid 100K v6.2 (MES/MGC/MNQ)", overlay=true,
+strategy("Lucid 100K v6.3 (MES/MGC/MNQ)", overlay=true,
      pyramiding=0,
      default_qty_type=strategy.fixed,
      default_qty_value=1,
@@ -39,6 +46,13 @@ phase2ReqPF      = input.float(1.1,  "P2 Min Recent PF", minval=1.0, step=0.1, g
 phase2Lookback   = input.int(25,     "P2 PF Lookback", minval=3, group="Phase")
 blockP2AfterHalt = input.bool(true,  "Block P2 After Halt Day", group="Phase")
 forceTrendP1     = input.bool(true,  "Force Trend-only P1", group="Phase")
+p1GreenLockUsd   = input.float(600,  "P1 Green Lock ($)", minval=0, step=50, group="Phase",
+     tooltip="Stop trading for the day once P1 hits this daily profit. Protects green days.")
+p2ProfitLockUsd  = input.float(1200, "P2 Profit Lock ($)", minval=0, step=100, group="Phase",
+     tooltip="Stop trading for the day once P2 hits this daily profit. Banks the win.")
+p2ProfitLockAction = input.string("Stop", "P2 Profit Lock Action",
+     options=["Stop", "Cooldown"], group="Phase",
+     tooltip="Stop = done for day. Cooldown = reduce to cooldown qty.")
 
 profit = strategy.equity - strategy.initial_capital
 
@@ -136,13 +150,16 @@ var bool  halted            = false
 
 newWeek = ta.change(time("W"))
 
+var bool doneTradingToday = false
+
 if newDay
-    haltedYesterday := halted
-    dayStartEquity  := strategy.equity
-    dayPeakEquity   := strategy.equity
-    tradesToday     := 0
-    lossStreak      := 0
-    halted          := false
+    haltedYesterday  := halted
+    doneTradingToday := false
+    dayStartEquity   := strategy.equity
+    dayPeakEquity    := strategy.equity
+    tradesToday      := 0
+    lossStreak       := 0
+    halted           := false
 
 if newWeek
     weekStartEquity := strategy.equity
@@ -176,17 +193,31 @@ hitIntradayDD     = hitIntradayDDBase and (not ddOnlyAfterGreen or nz(dayPeakEqu
 if hitDailyLoss or hitLossStreak or hitWeeklyLoss or hitIntradayDD
     halted := true
 
+// v6.3: Green-Day Lock (P1) + Profit Lock (P2)
+// Highest priority — protect green days, bank wins
+if not doneTradingToday
+    if not inPhase2 and p1GreenLockUsd > 0 and dayPnL >= p1GreenLockUsd
+        doneTradingToday := true
+    if inPhase2 and p2ProfitLockUsd > 0 and dayPnL >= p2ProfitLockUsd
+        if p2ProfitLockAction == "Stop"
+            doneTradingToday := true
+        // Cooldown action handled via qty override below
+
 // Dynamic throttle: P1 down day → trend-only
 phase1Throttle = not inPhase2 and dayPnL < 0
 
+// P2 profit lock in cooldown mode (still trading but reduced size)
+p2CooldownMode = inPhase2 and p2ProfitLockAction == "Cooldown"
+     and p2ProfitLockUsd > 0 and dayPnL >= p2ProfitLockUsd
+
 // Cooldown sizing
 qtyNow = usePhaseSizing ?
-     (haltedYesterday ? qtyCooldown :
+     (haltedYesterday or p2CooldownMode ? qtyCooldown :
       (inPhase2 ? qtyPhase2 : qtyPhase1)) :
      int(strategy.default_qty_value)
 
 allowedToTrade = inSession and pastWarmup and inWindows
-     and not halted and not tooManyTrades
+     and not halted and not tooManyTrades and not doneTradingToday
 
 if halted and strategy.position_size != 0
     strategy.close_all(comment="Guardrail Halt")
@@ -307,8 +338,9 @@ useTrend = mode == "Trend Pullback" or mode == "Both (Always)"
 useRev = mode == "VWAP Reversion" or mode == "Both (Always)"
      or (mode == "Auto (Regime)" and rangeRegime)
 
-// Throttle: P1 losing day or forceTrendP1 → reversion off
-useRevEff = (phase1Throttle or (forceTrendP1 and not inPhase2)) ? false : useRev
+// v6.3: P1 reversion is ALWAYS off — trend pullback only during lock phase
+// P2: reversion allowed per regime gate
+useRevEff = inPhase2 ? useRev : false
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 10) RISK-PER-TRADE CAP
@@ -472,13 +504,20 @@ var int  dayLossHalts     = 0
 var int  streakHalts      = 0
 var int  weeklyHalts      = 0
 var int  intradayDDHalts  = 0
+var int  greenLockDays    = 0
 var bool reachedTarget    = false
 var int  daysToTarget     = na
 var bool countedHaltToday = false
+var bool countedLockToday = false
 
 if newDay
     daysCount += 1
     countedHaltToday := false
+    countedLockToday := false
+
+if doneTradingToday and not countedLockToday and not halted
+    countedLockToday := true
+    greenLockDays += 1
 
 if (hitDailyLoss or hitLossStreak or hitWeeklyLoss or hitIntradayDD) and not countedHaltToday
     countedHaltToday := true
@@ -505,8 +544,8 @@ plot(vwapVal,  "VWAP",    color.new(color.purple,  0), 2)
 
 bgcolor(halted ? color.new(color.red, 90) : na)
 bgcolor(lucidBusted ? color.new(color.red, 80) : na)
-bgcolor(phase1Throttle ? color.new(color.yellow, 93) : na)
-bgcolor(useSession and inSession and pastWarmup and inWindows ? color.new(color.green, 96) : na)
+bgcolor(doneTradingToday ? color.new(color.aqua, 90) : na)
+bgcolor(useSession and inSession and pastWarmup and inWindows and not doneTradingToday ? color.new(color.green, 96) : na)
 
 plotshape(longSignal  and pbLongSig,   "PB L",  shape.triangleup,   location.belowbar, color.green,  size=size.small, text="PB")
 plotshape(longSignal  and revLongSig,  "REV L", shape.triangleup,   location.belowbar, color.lime,   size=size.small, text="REV")
@@ -525,16 +564,19 @@ var label st = na
 if barstate.islast
     label.delete(st)
     st := label.new(bar_index, high,
-      "═══ LUCID v6.2 ═══" +
+      "═══ LUCID v6.3 ═══" +
       "\n" + syminfo.ticker + " | PtVal: $" + str.tostring(pointVal) +
       "\nPhase: " + (inPhase2 ? "PAYOUT (P2)" : "LOCK (P1)") +
       "\nMode: " + mode + " | MTF: " + mtfMode +
       "\nQty: " + str.tostring(qtyFinal) + " (cap: " + str.tostring(qtyNow) + ")" +
       (haltedYesterday ? " [COOLDOWN]" : "") +
       (phase2HaltBlock ? " [P2 BLOCKED]" : "") +
+      (doneTradingToday ? " [DONE_TODAY]" : "") +
+      (p2CooldownMode ? " [P2_COOLDOWN]" : "") +
       "\n─── P&L ───" +
       "\nTotal: $" + str.tostring(profit, "#") +
       "\nDay: $" + str.tostring(dayPnL, "#") +
+      " / Lock: $" + str.tostring(inPhase2 ? p2ProfitLockUsd : p1GreenLockUsd, "#") +
       "\nWeek: $" + str.tostring(weekPnL, "#") +
       "\nIntraday DD: $" + str.tostring(intradayDD, "#") +
       "\n─── Guards ───" +
@@ -560,7 +602,8 @@ if barstate.islast
       "\nDaily:" + str.tostring(dayLossHalts) +
       " Streak:" + str.tostring(streakHalts) +
       " Week:" + str.tostring(weeklyHalts) +
-      " DD:" + str.tostring(intradayDDHalts),
+      " DD:" + str.tostring(intradayDDHalts) +
+      "\nGreen Locks: " + str.tostring(greenLockDays),
       style=label.style_label_down,
       textcolor=color.white,
       color=color.new(lucidBusted ? color.red : (inPhase2 ? color.teal : color.black), 70),

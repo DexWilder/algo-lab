@@ -61,13 +61,25 @@
 - **Time-based warmup**: `(time - sessionOpenTime) / 60000` instead of bar count (works on any TF)
 - **Strong close entry**: `closePos >= 0.80` / `<= 0.20` as OR alternative to prior-bar break
 
-### v6.2 — Current (GPT patches + Claude validation)
+### v6.2 (GPT patches + Claude validation)
 - **Min stop ticks floor**: `minStopTicks=20` prevents ATR compression from creating absurd stops
 - **Actual fill price**: `strategy.position_avg_price` for BE/Trail math (not signal bar close)
 - **Reversion MTF toggle**: `revRequireMTF` — Claude set default to `true` (GPT had `false`)
 - **DD after green peak**: `ddOnlyAfterGreen` toggle — only count intraday DD if day was profitable first
 - **entryPx := na reset**: Clean state machine between trades
 - **Status label**: Added min stop display, total trades count, cleaner risk formatting
+
+### v6.3 — Current (GPT phase spec + Claude implementation)
+- **GREEN-DAY LOCK (P1)**: `p1GreenLockUsd=600` — stop trading when daily PnL hits target, protect green days
+- **PROFIT LOCK (P2)**: `p2ProfitLockUsd=1200` — bank the win, stop or cooldown
+- **P2 Cooldown option**: instead of full stop, reduce to `qtyCooldown` contracts
+- **P1 reversion ALWAYS OFF**: explicit kill — `useRevEff = inPhase2 ? useRev : false`
+- **`doneTradingToday` state**: separate from halt — no red background, aqua "done" indicator
+- **Green Lock counter**: tracks how many days hit green lock (ideal = high count)
+- **Label shows daily lock target**: "Day: $X / Lock: $Y" so you see progress toward lock
+- **Status tags**: `[DONE_TODAY]`, `[P2_COOLDOWN]` visible on chart
+
+**Key insight (GPT)**: "The fastest way to lock is NOT more trades — it's avoiding red days, protecting green days, preventing streak damage, compounding stable wins to +$3,100."
 
 ---
 
@@ -98,6 +110,9 @@
 - **Block Phase 2 after halt day** — if guardrails fired yesterday, don't scale up today
 - **Cooldown sizing** — day after halt, reduce to 1 contract
 - **Dynamic throttle** — P1 losing day disables reversion entirely
+- **GREEN-DAY LOCK is the #1 P1 feature** — stop at +$600/day, never give back green days
+- **Fastest path to lock ≠ more trades** — it's zero red days + protected green days
+- **P2 profit lock prevents "house money" blowups** — bank wins at +$1,200/day
 - **Mean reversion needs MTF protection in P1** — counter-trend trades against HTF = danger
 
 ### Session/Timing
