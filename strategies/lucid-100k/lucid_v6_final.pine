@@ -523,7 +523,7 @@ if doneTradingToday and not countedLockToday and not halted
     else
         p2BankedDays += 1
 
-if p2CooldownMode and not countedLockToday and not doneTradingToday
+if p2CooldownMode and not countedLockToday
     countedLockToday := true
     p2CooldownDays += 1
 
