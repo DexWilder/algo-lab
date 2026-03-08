@@ -16,6 +16,9 @@ data/*.csv
 data/*.parquet
 data/databento/
 
+# Large backtest artifacts (regenerable)
+backtests/**/*_equity.csv
+
 # OS
 .DS_Store
 Thumbs.db

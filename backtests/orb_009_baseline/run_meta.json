@@ -1,0 +1,20 @@
+{
+  "strategy": "orb_009",
+  "strategy_name": "ORB Breakout + VWAP + Volume Filters",
+  "family": "orb",
+  "source_url": "https://www.tradingview.com/script/wLSGHPUe-ORB-Breakout-Strategy-with-VWAP-and-Volume-Filters/",
+  "conversion_type": "faithful",
+  "run_date": "2026-03-07 22:16:42",
+  "assets": [
+    "MES",
+    "MGC",
+    "MNQ"
+  ],
+  "modes": [
+    "long",
+    "both",
+    "short"
+  ],
+  "engine": "fill-at-next-open",
+  "notes": "Baseline run \u2014 faithful conversion, no optimization"
+}

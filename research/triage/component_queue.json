@@ -1,0 +1,267 @@
+{
+  "generated": "auto",
+  "description": "Strategies with extractable components \u2014 primary (component_only) and secondary (hold scripts with unique parts)",
+  "primary": [
+    {
+      "id": "signalsr--vwap-bands-backtest",
+      "title": "VWAP Bands Backtest",
+      "family": "vwap",
+      "extractable_components": [
+        "multi-target exit system"
+      ],
+      "automation_fitness": 4,
+      "url": "https://www.tradingview.com/script/uS2KUNc7-vwap-bands-backtest/"
+    },
+    {
+      "id": "orb-001-volumevigilante-orb-pivot-points",
+      "title": "Long-Only Opening Range Breakout (ORB) with Pivot Points",
+      "family": "orb",
+      "extractable_components": [
+        "pivot-based trailing stop"
+      ],
+      "automation_fitness": 4,
+      "url": "https://www.tradingview.com/script/6kDE9bLA-Long-Only-Opening-Range-Breakout-ORB-with-Pivot-Points/"
+    },
+    {
+      "id": "orb-015-script-algo-orb-filters",
+      "title": "Script_Algo - ORB Strategy with Filters",
+      "family": "orb",
+      "extractable_components": [
+        "SuperTrend filter"
+      ],
+      "automation_fitness": 3,
+      "url": "https://www.tradingview.com/script/Y0KEwo8o-script-algo-orb-strategy-with-filters/"
+    }
+  ],
+  "secondary": [
+    {
+      "id": "lindittl--vwap-retest-ema9-cross-candle-pattern-v2",
+      "title": "VWAP Retest + EMA9 Cross + Candle Pattern V2",
+      "family": "vwap",
+      "extractable_components": [
+        "retest confirmation entry",
+        "candle pattern detection"
+      ],
+      "automation_fitness": 5,
+      "label": "hold_for_later",
+      "url": "https://www.tradingview.com/script/SHcKDpLu-VWAP-Retest-EMA9-Cross-Candle-Pattern-V2/"
+    },
+    {
+      "id": "mohanee--rsi-of-vwap",
+      "title": "RSI of VWAP",
+      "family": "vwap",
+      "extractable_components": [
+        "RSI-of-VWAP indicator",
+        "multi-target exit system"
+      ],
+      "automation_fitness": 5,
+      "label": "hold_for_later",
+      "url": "https://www.tradingview.com/script/OUzp2NR6-RSI-of-VWAP/"
+    },
+    {
+      "id": "ict-007-tsunafire-pinescript-smc",
+      "title": "PineScript-SMC-Strategy",
+      "family": "ict",
+      "extractable_components": [
+        "sweep_reversal entry logic",
+        "order_block entry logic"
+      ],
+      "automation_fitness": 5,
+      "label": "hold_for_later",
+      "url": "https://github.com/tsunafire/PineScript-SMC-Strategy"
+    },
+    {
+      "id": "ict-009-tagstrading-ob-volumatic-fvg",
+      "title": "Order Block Volumatic FVG Strategy",
+      "family": "ict",
+      "extractable_components": [
+        "fvg entry logic"
+      ],
+      "automation_fitness": 5,
+      "label": "hold_for_later",
+      "url": "https://www.tradingview.com/script/PjH7wg3n/"
+    },
+    {
+      "id": "orb-006-wealth-guru-atr-trailing-orb",
+      "title": "High-Low Breakout Strategy with ATR Trailing Stop Loss",
+      "family": "orb",
+      "extractable_components": [
+        "multi-target exit system"
+      ],
+      "automation_fitness": 5,
+      "label": "hold_for_later",
+      "url": "https://www.tradingview.com/script/UPuf4zqJ-High-Low-Breakout-Strategy-with-ATR-traling-Stop-Loss/"
+    },
+    {
+      "id": "orb-008-mambafx-ny-orb-breakout",
+      "title": "NY ORB Breakout Strategy (MambaFX x DoyleStyle)",
+      "family": "orb",
+      "extractable_components": [
+        "retest confirmation entry"
+      ],
+      "automation_fitness": 5,
+      "label": "hold_for_later",
+      "url": "https://www.tradingview.com/script/UNwEIDXH-NY-ORB-Breakout-Strategy-MambaFX-x-DoyleStyle/"
+    },
+    {
+      "id": "orb-014-cashport-15min-orb-retest",
+      "title": "15 min orb (15min ORB Retest Strategy)",
+      "family": "orb",
+      "extractable_components": [
+        "retest confirmation entry"
+      ],
+      "automation_fitness": 5,
+      "label": "hold_for_later",
+      "url": "https://www.tradingview.com/script/dzuBSwXS-15-min-orb/"
+    },
+    {
+      "id": "greatestusername--babyshark-vwap-strategy",
+      "title": "BabyShark VWAP Strategy",
+      "family": "vwap",
+      "extractable_components": [
+        "OBV-RSI confirmation filter"
+      ],
+      "automation_fitness": 4,
+      "label": "hold_for_later",
+      "url": "https://www.tradingview.com/script/brQS2OHa-BabyShark-VWAP-Strategy/"
+    },
+    {
+      "id": "js-techtrading--js-techtrading-vwap-momentum-pullback-strategy",
+      "title": "JS-TechTrading: VWAP Momentum_Pullback Strategy",
+      "family": "vwap",
+      "extractable_components": [
+        "Minervini trend template qualifier"
+      ],
+      "automation_fitness": 4,
+      "label": "hold_for_later",
+      "url": "https://www.tradingview.com/script/uhdaobby-JS-TechTrading-VWAP-Momentum-Pullback-Strategy/"
+    },
+    {
+      "id": "qamberabbas4--vwap-stdev-bands-strategy-long-only",
+      "title": "VWAP Stdev Bands Strategy (Long Only)",
+      "family": "vwap",
+      "extractable_components": [
+        "mean_reversion entry logic",
+        "gap entry logic"
+      ],
+      "automation_fitness": 4,
+      "label": "hold_for_later",
+      "url": "https://www.tradingview.com/script/zr743ECk-VWAP-Stdev-Bands-Strategy-Long-Only/"
+    },
+    {
+      "id": "cryptocu84--ema-vwap-strategy",
+      "title": "EMA + VWAP Strategy",
+      "family": "vwap",
+      "extractable_components": [
+        "chop/flat market filter"
+      ],
+      "automation_fitness": 4,
+      "label": "hold_for_later",
+      "url": "https://www.tradingview.com/script/2dvhxn9p-EMA-VWAP-Strategy/"
+    },
+    {
+      "id": "unknownunicorn2151907--rsi-vwap-indicator-strategy",
+      "title": "RSI-VWAP Indicator Strategy",
+      "family": "vwap",
+      "extractable_components": [
+        "laddered/pyramid entry system",
+        "RSI-of-VWAP indicator"
+      ],
+      "automation_fitness": 4,
+      "label": "hold_for_later",
+      "url": "https://www.tradingview.com/script/d0FZtMLp/"
+    },
+    {
+      "id": "catalystnq--vwap-breakout-strategy-emas-clean-cycle-tp-sl-plots",
+      "title": "VWAP Breakout Strategy + EMAs + Clean Cycle/TP/SL Plots",
+      "family": "vwap",
+      "extractable_components": [
+        "cycle zone / round number detection"
+      ],
+      "automation_fitness": 4,
+      "label": "hold_for_later",
+      "url": "https://www.tradingview.com/script/39HGmmqK-VWAP-Breakout-Strategy-EMAs-Clean-Cycle-TP-SL-Plots/"
+    },
+    {
+      "id": "ict-001-trading-iq-master-suite",
+      "title": "ICT Master Suite [Trading IQ]",
+      "family": "ict",
+      "extractable_components": [
+        "fvg entry logic",
+        "order_block entry logic"
+      ],
+      "automation_fitness": 4,
+      "label": "hold_for_later",
+      "url": "https://www.tradingview.com/script/ABYnIcdl-ICT-Master-Suite-Trading-IQ/"
+    },
+    {
+      "id": "ict-005-unclesam-smc-strategy",
+      "title": "Smart Money Concept Strategy - Uncle Sam",
+      "family": "ict",
+      "extractable_components": [
+        "trendline breakout detection"
+      ],
+      "automation_fitness": 4,
+      "label": "hold_for_later",
+      "url": "https://www.tradingview.com/script/KUeL7SY5-Smart-Money-Concept-Strategy-Uncle-Sam/"
+    },
+    {
+      "id": "ict-011-alphawings-smc-backtesting-toolkit",
+      "title": "Smart Money Concept + Strategy Backtesting Toolkit [Shah]",
+      "family": "ict",
+      "extractable_components": [
+        "multi-target exit system",
+        "DCA/position averaging"
+      ],
+      "automation_fitness": 4,
+      "label": "hold_for_later",
+      "url": "https://www.tradingview.com/script/WTMcQK3B-Smart-Money-Concept-Strategy-Backtesting-Toolkit-Shah/"
+    },
+    {
+      "id": "ict-013-karoshi-fvg-strategy",
+      "title": "FVG Strategy - Fair Value Gap",
+      "family": "ict",
+      "extractable_components": [
+        "pullback entry logic",
+        "fvg entry logic"
+      ],
+      "automation_fitness": 4,
+      "label": "hold_for_later",
+      "url": "https://www.tradingview.com/script/BdvSzhqW-FVG-Strategy-Fair-Value-Gap/"
+    },
+    {
+      "id": "orb-002-marcn5-open-drive",
+      "title": "Open Drive",
+      "family": "orb",
+      "extractable_components": [
+        "market profile open drive detection"
+      ],
+      "automation_fitness": 4,
+      "label": "hold_for_later",
+      "url": "https://www.tradingview.com/script/nyTw4KmR-Open-Drive/"
+    },
+    {
+      "id": "orb-012-stock-reaver-reversal-breakout-orb",
+      "title": "Reversal & Breakout Strategy with ORB",
+      "family": "orb",
+      "extractable_components": [
+        "laddered/pyramid entry system"
+      ],
+      "automation_fitness": 4,
+      "label": "hold_for_later",
+      "url": "https://www.tradingview.com/script/D94ChhXj-Reversal-Breakout-Strategy-with-ORB/"
+    },
+    {
+      "id": "ict-012-hasnocool-gold-fvg-entry",
+      "title": "Gold Fair Value Gap Entry (FVG GOLD)",
+      "family": "ict",
+      "extractable_components": [
+        "fvg entry logic",
+        "gap entry logic"
+      ],
+      "automation_fitness": 3,
+      "label": "hold_for_later",
+      "url": "https://github.com/hasnocool/tradingview-pine-scripts/blob/main/Gold%20Fair%20Value%20Gap%20Entry(FVG%20GOLD).pine"
+    }
+  ]
+}

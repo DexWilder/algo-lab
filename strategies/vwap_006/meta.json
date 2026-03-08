@@ -1,0 +1,30 @@
+{
+  "strategy_id": "vwap_006",
+  "intake_id": "michaelriggs--vwap-rsi-scalper-final-v1",
+  "name": "VWAP-RSI Scalper FINAL v1",
+  "version": "1.0",
+  "origin": "TradingView — michaelriggs",
+  "source_url": "https://www.tradingview.com/script/S9hY3huK-VWAP-RSI-Scalper-FINAL-v1/",
+  "family": "vwap",
+  "status": "converted",
+  "conversion_type": "faithful",
+  "primary_asset": null,
+  "secondary_assets": [],
+  "timeframe": "5m",
+  "data_source": "databento",
+  "parameters": {
+    "rsi_period": 3,
+    "rsi_low": 30,
+    "rsi_high": 70,
+    "fast_ema": 9,
+    "slow_ema": 21,
+    "atr_len": 14,
+    "sl_atr": 1.5,
+    "tp_atr": 3.0,
+    "session": "09:30-15:15",
+    "warmup_mins": 15
+  },
+  "entry_logic": "Price > VWAP + EMA(9) > EMA(21) + RSI(3) crosses above 30 for long; inverse for short",
+  "exit_logic": "SL = 1.5x ATR, TP = 3.0x ATR, EOD flatten 15:15",
+  "max_trades_per_day": "unlimited"
+}

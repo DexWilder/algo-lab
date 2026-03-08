@@ -1,0 +1,20 @@
+{
+  "strategy": "ict_010",
+  "strategy_name": "Captain Backtest Model [TFO]",
+  "family": "ict",
+  "source_url": "https://www.tradingview.com/script/tOQ8gnxj-Captain-Backtest-Model-TFO/",
+  "conversion_type": "faithful",
+  "run_date": "2026-03-07 22:19:54",
+  "assets": [
+    "MES",
+    "MGC",
+    "MNQ"
+  ],
+  "modes": [
+    "short",
+    "long",
+    "both"
+  ],
+  "engine": "fill-at-next-open",
+  "notes": "Baseline run \u2014 faithful conversion, no optimization"
+}

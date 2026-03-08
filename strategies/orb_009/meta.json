@@ -1,0 +1,30 @@
+{
+  "strategy_id": "orb_009",
+  "intake_id": "orb-009-luiscaballero-orb-vwap-volume",
+  "name": "ORB Breakout + VWAP + Volume Filters",
+  "version": "1.0",
+  "origin": "TradingView — luiscaballero",
+  "source_url": "https://www.tradingview.com/script/wLSGHPUe-ORB-Breakout-Strategy-with-VWAP-and-Volume-Filters/",
+  "family": "orb",
+  "status": "converted",
+  "conversion_type": "faithful",
+  "primary_asset": null,
+  "secondary_assets": [],
+  "timeframe": "5m",
+  "data_source": "databento",
+  "parameters": {
+    "or_minutes": 30,
+    "vwap_slope_bars": 5,
+    "vol_mult": 1.5,
+    "vol_ma_len": 20,
+    "candle_strength": 0.30,
+    "tp_mult": 2.0,
+    "be_pct": 0.50,
+    "session": "09:30-15:15",
+    "or_period": "09:30-10:00",
+    "entry_window": "10:00-15:00"
+  },
+  "entry_logic": "Close breaks above/below opening range high/low with triple filter gate (VWAP slope, volume surge, candle strength)",
+  "exit_logic": "SL at opposite OR bound, TP at 2x OR range, BE at 50% of TP distance, EOD flatten 15:15",
+  "max_trades_per_day": "1 per direction"
+}

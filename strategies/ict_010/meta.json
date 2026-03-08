@@ -1,0 +1,27 @@
+{
+  "strategy_id": "ict_010",
+  "intake_id": "ict-010-tfo-captain-backtest-model",
+  "name": "Captain Backtest Model [TFO]",
+  "version": "1.0",
+  "origin": "TradingView — tradeforopp",
+  "source_url": "https://www.tradingview.com/script/tOQ8gnxj-Captain-Backtest-Model-TFO/",
+  "family": "ict",
+  "status": "converted",
+  "conversion_type": "faithful",
+  "primary_asset": null,
+  "secondary_assets": [],
+  "timeframe": "5m",
+  "data_source": "databento",
+  "parameters": {
+    "range_minutes": 30,
+    "sweep_deadline": "11:15",
+    "entry_deadline": "14:00",
+    "rr_ratio": 2.0,
+    "stop_points": {"MES": 5.0, "MNQ": 25.0, "MGC": 5.0},
+    "session": "09:30-15:15",
+    "range_period": "09:30-10:00"
+  },
+  "entry_logic": "Session range sweep (wick beyond range, close inside) sets directional bias, then pullback confirmation (close beyond prior bar in opposite direction, then close back in bias direction)",
+  "exit_logic": "Fixed stop (MES 5pt, MNQ 25pt, MGC 5pt), TP at 2x stop, EOD flatten 15:15",
+  "max_trades_per_day": "1"
+}

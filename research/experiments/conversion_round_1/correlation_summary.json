@@ -1,0 +1,121 @@
+{
+  "analysis": "conversion_round_1_correlation",
+  "date_range": "2024-03-01 to 2026-03-06",
+  "trading_days": 522,
+  "strategies_analyzed": [
+    "PB-MGC-Short",
+    "PB-MNQ-Long",
+    "PB-MES-Short",
+    "ORB009-MES-Both",
+    "ORB009-MES-Long",
+    "ORB009-MES-Short",
+    "ORB009-MGC-Both",
+    "ORB009-MGC-Long",
+    "ORB009-MGC-Short",
+    "ORB009-MNQ-Both",
+    "ORB009-MNQ-Long",
+    "ORB009-MNQ-Short",
+    "VWAP006-MES-Both",
+    "VWAP006-MES-Long",
+    "VWAP006-MES-Short",
+    "VWAP006-MGC-Both",
+    "VWAP006-MGC-Long",
+    "VWAP006-MGC-Short",
+    "VWAP006-MNQ-Both",
+    "VWAP006-MNQ-Long",
+    "VWAP006-MNQ-Short",
+    "ICT010-MES-Both",
+    "ICT010-MES-Long",
+    "ICT010-MES-Short",
+    "ICT010-MGC-Both",
+    "ICT010-MGC-Long",
+    "ICT010-MGC-Short",
+    "ICT010-MNQ-Both",
+    "ICT010-MNQ-Long",
+    "ICT010-MNQ-Short"
+  ],
+  "pb_family": [
+    "PB-MGC-Short",
+    "PB-MNQ-Long",
+    "PB-MES-Short"
+  ],
+  "top_independent_pairs": [
+    {
+      "strategy": "ICT010-MGC-Both",
+      "vs": "PB-MGC-Short",
+      "correlation": 0.0007
+    },
+    {
+      "strategy": "VWAP006-MES-Short",
+      "vs": "PB-MGC-Short",
+      "correlation": 0.0008
+    },
+    {
+      "strategy": "ICT010-MES-Both",
+      "vs": "PB-MES-Short",
+      "correlation": 0.0011
+    },
+    {
+      "strategy": "ICT010-MNQ-Both",
+      "vs": "PB-MES-Short",
+      "correlation": 0.0013
+    },
+    {
+      "strategy": "ORB009-MGC-Both",
+      "vs": "PB-MNQ-Long",
+      "correlation": -0.0053
+    },
+    {
+      "strategy": "ORB009-MGC-Short",
+      "vs": "PB-MGC-Short",
+      "correlation": 0.0056
+    },
+    {
+      "strategy": "ORB009-MGC-Short",
+      "vs": "PB-MNQ-Long",
+      "correlation": 0.0057
+    },
+    {
+      "strategy": "VWAP006-MES-Both",
+      "vs": "PB-MGC-Short",
+      "correlation": -0.0068
+    },
+    {
+      "strategy": "VWAP006-MES-Long",
+      "vs": "PB-MES-Short",
+      "correlation": -0.0073
+    },
+    {
+      "strategy": "VWAP006-MGC-Both",
+      "vs": "PB-MES-Short",
+      "correlation": 0.0075
+    }
+  ],
+  "most_correlated_pairs": [
+    {
+      "strategy": "VWAP006-MES-Both",
+      "vs": "PB-MES-Short",
+      "correlation": 0.2451
+    },
+    {
+      "strategy": "VWAP006-MNQ-Short",
+      "vs": "PB-MES-Short",
+      "correlation": 0.2555
+    },
+    {
+      "strategy": "VWAP006-MES-Long",
+      "vs": "PB-MNQ-Long",
+      "correlation": 0.2987
+    },
+    {
+      "strategy": "VWAP006-MES-Short",
+      "vs": "PB-MES-Short",
+      "correlation": 0.3175
+    },
+    {
+      "strategy": "VWAP006-MNQ-Long",
+      "vs": "PB-MNQ-Long",
+      "correlation": 0.326
+    }
+  ]
+}

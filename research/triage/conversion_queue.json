@@ -1,0 +1,475 @@
+{
+  "generated": "auto",
+  "description": "Prioritized conversion queue \u2014 convert_now first, then hold_for_later",
+  "convert_now": [
+    {
+      "id": "vvedding--rvwap-mean-reversion-strategy",
+      "title": "RVWAP Mean Reversion Strategy",
+      "family": "vwap",
+      "cluster": "VWAP-breakout-1",
+      "automation_fitness": 5,
+      "conversion_complexity": "medium",
+      "entry_models": [
+        "breakout",
+        "mean_reversion",
+        "pullback",
+        "crossover"
+      ],
+      "trade_frequency": "medium",
+      "regime_dependence": "range_bound",
+      "url": "https://www.tradingview.com/script/oZcWZsvU-RVWAP-Mean-Reversion-Strategy/",
+      "rationale": "highest automation fitness; best in cluster; range_bound regime specialist; source code available"
+    },
+    {
+      "id": "hye0619--hye-mean-reversion-vwap-strategy",
+      "title": "HYE Mean Reversion VWAP Strategy",
+      "family": "vwap",
+      "cluster": "VWAP-mean_reversion-2",
+      "automation_fitness": 5,
+      "conversion_complexity": "easy",
+      "entry_models": [
+        "mean_reversion",
+        "crossover"
+      ],
+      "trade_frequency": "medium",
+      "regime_dependence": "range_bound",
+      "url": "https://www.tradingview.com/script/WeAMGj9j/",
+      "rationale": "highest automation fitness; best in cluster; low conversion effort; range_bound regime specialist; source code available"
+    },
+    {
+      "id": "ict-002-mejunda-liquidity-sweeper",
+      "title": "Liquidity Sweeper",
+      "family": "ict",
+      "cluster": "ICT-sweep_reversal-3",
+      "automation_fitness": 5,
+      "conversion_complexity": "medium",
+      "entry_models": [
+        "sweep_reversal"
+      ],
+      "trade_frequency": "low",
+      "regime_dependence": "volatile",
+      "url": "https://www.tradingview.com/script/5JUfuuqL-Liquidity-Sweeper/",
+      "rationale": "highest automation fitness; best in cluster; volatile regime specialist"
+    },
+    {
+      "id": "orb-003-krypson-gold-orb-strategy",
+      "title": "Gold ORB Strategy (15-min Range, 5-min Entry)",
+      "family": "orb",
+      "cluster": "ORB-breakout-4",
+      "automation_fitness": 5,
+      "conversion_complexity": "medium",
+      "entry_models": [],
+      "trade_frequency": "medium",
+      "regime_dependence": "mixed",
+      "url": "https://www.tradingview.com/script/oYW9gdag-Gold-ORB-Strategy-15-min-Range-5-min-Entry/",
+      "rationale": "highest automation fitness; best in cluster"
+    },
+    {
+      "id": "pineindicators--dynamic-swing-anchored-vwap-strat",
+      "title": "Dynamic Swing Anchored VWAP STRAT",
+      "family": "vwap",
+      "cluster": "VWAP-mixed-5",
+      "automation_fitness": 4,
+      "conversion_complexity": "medium",
+      "entry_models": [],
+      "trade_frequency": "low",
+      "regime_dependence": "mixed",
+      "url": "https://www.tradingview.com/script/gjFSGRCo-Dynamic-Swing-Anchored-VWAP-STRAT-Zeiierman-PineIndicators/",
+      "rationale": "high automation fitness; best in cluster; source code available"
+    },
+    {
+      "id": "gckprofittrading--gck-vwap-bot",
+      "title": "GCK VWAP BOT",
+      "family": "vwap",
+      "cluster": "VWAP-mixed-6",
+      "automation_fitness": 4,
+      "conversion_complexity": "medium",
+      "entry_models": [],
+      "trade_frequency": "medium",
+      "regime_dependence": "mixed",
+      "url": "https://www.tradingview.com/script/yOwYHGxp-GCK-VWAP-BOT/",
+      "rationale": "high automation fitness; best in cluster; source code available"
+    },
+    {
+      "id": "ict-004-danieltbolsch-smc-strategy",
+      "title": "SMC Strategy",
+      "family": "ict",
+      "cluster": "ICT-mixed-7",
+      "automation_fitness": 4,
+      "conversion_complexity": "medium",
+      "entry_models": [],
+      "trade_frequency": "medium",
+      "regime_dependence": "mixed",
+      "url": "https://www.tradingview.com/script/Zcf69Yqd-SMC-Strategy/",
+      "rationale": "high automation fitness; best in cluster"
+    },
+    {
+      "id": "orb-018-pinecodertasc-gap-momentum",
+      "title": "Gap Momentum System (TASC 2024.01)",
+      "family": "orb",
+      "cluster": "ORB-gap-8",
+      "automation_fitness": 4,
+      "conversion_complexity": "medium",
+      "entry_models": [
+        "gap"
+      ],
+      "trade_frequency": "medium",
+      "regime_dependence": "mixed",
+      "url": "https://www.tradingview.com/script/52wKLj6P-TASC-2024-01-Gap-Momentum-System/",
+      "rationale": "high automation fitness; best in cluster"
+    }
+  ],
+  "hold_for_later": [
+    {
+      "id": "lindittl--vwap-retest-ema9-cross-candle-pattern-v2",
+      "title": "VWAP Retest + EMA9 Cross + Candle Pattern V2",
+      "family": "vwap",
+      "cluster": "VWAP-mean_reversion-2",
+      "automation_fitness": 5,
+      "conversion_complexity": "medium",
+      "url": "https://www.tradingview.com/script/SHcKDpLu-VWAP-Retest-EMA9-Cross-Candle-Pattern-V2/"
+    },
+    {
+      "id": "mohanee--rsi-of-vwap",
+      "title": "RSI of VWAP",
+      "family": "vwap",
+      "cluster": "VWAP-mean_reversion-2",
+      "automation_fitness": 5,
+      "conversion_complexity": "easy",
+      "url": "https://www.tradingview.com/script/OUzp2NR6-RSI-of-VWAP/"
+    },
+    {
+      "id": "eemani123--vwap-and-rsi-strategy",
+      "title": "VWAP and RSI Strategy",
+      "family": "vwap",
+      "cluster": "VWAP-mean_reversion-2",
+      "automation_fitness": 5,
+      "conversion_complexity": "easy",
+      "url": "https://www.tradingview.com/script/oDnkONvx-VWAP-and-RSI-strategy/"
+    },
+    {
+      "id": "ramtrading--es-scalping-pro-ema-vwap-atr",
+      "title": "ES Scalping Pro: EMA + VWAP + ATR",
+      "family": "vwap",
+      "cluster": "VWAP-mean_reversion-2",
+      "automation_fitness": 5,
+      "conversion_complexity": "easy",
+      "url": "https://www.tradingview.com/script/HKRlu96a-ES-Scalping-Pro-EMA-VWAP-ATR/"
+    },
+    {
+      "id": "ict-003-algoalpha-liquidity-sweep-filter",
+      "title": "Liquidity Sweep Filter Strategy [AlgoAlpha X PineIndicators]",
+      "family": "ict",
+      "cluster": "ICT-sweep_reversal-3",
+      "automation_fitness": 5,
+      "conversion_complexity": "medium",
+      "url": "https://www.tradingview.com/script/gx7267BR-Liquidity-Sweep-Filter-Strategy-AlgoAlpha-X-PineIndicators/"
+    },
+    {
+      "id": "ict-007-tsunafire-pinescript-smc",
+      "title": "PineScript-SMC-Strategy",
+      "family": "ict",
+      "cluster": "ICT-sweep_reversal-3",
+      "automation_fitness": 5,
+      "conversion_complexity": "easy",
+      "url": "https://github.com/tsunafire/PineScript-SMC-Strategy"
+    },
+    {
+      "id": "ict-009-tagstrading-ob-volumatic-fvg",
+      "title": "Order Block Volumatic FVG Strategy",
+      "family": "ict",
+      "cluster": "ICT-sweep_reversal-3",
+      "automation_fitness": 5,
+      "conversion_complexity": "medium",
+      "url": "https://www.tradingview.com/script/PjH7wg3n/"
+    },
+    {
+      "id": "orb-004-shivam-iu-orb-strategy",
+      "title": "IU Opening Range Breakout Strategy",
+      "family": "orb",
+      "cluster": "ORB-breakout-4",
+      "automation_fitness": 5,
+      "conversion_complexity": "medium",
+      "url": "https://in.tradingview.com/script/JnOdejSN-IU-Opening-range-Breakout-Strategy/"
+    },
+    {
+      "id": "orb-006-wealth-guru-atr-trailing-orb",
+      "title": "High-Low Breakout Strategy with ATR Trailing Stop Loss",
+      "family": "orb",
+      "cluster": "ORB-breakout-4",
+      "automation_fitness": 5,
+      "conversion_complexity": "medium",
+      "url": "https://www.tradingview.com/script/UPuf4zqJ-High-Low-Breakout-Strategy-with-ATR-traling-Stop-Loss/"
+    },
+    {
+      "id": "orb-007-shui-ny-orb-ma-stop",
+      "title": "NY Opening Range Breakout - MA Stop",
+      "family": "orb",
+      "cluster": "ORB-breakout-4",
+      "automation_fitness": 5,
+      "conversion_complexity": "medium",
+      "url": "https://www.tradingview.com/script/an0r9e6i-NY-Opening-Range-Breakout-MA-Stop/"
+    },
+    {
+      "id": "orb-008-mambafx-ny-orb-breakout",
+      "title": "NY ORB Breakout Strategy (MambaFX x DoyleStyle)",
+      "family": "orb",
+      "cluster": "ORB-breakout-4",
+      "automation_fitness": 5,
+      "conversion_complexity": "medium",
+      "url": "https://www.tradingview.com/script/UNwEIDXH-NY-ORB-Breakout-Strategy-MambaFX-x-DoyleStyle/"
+    },
+    {
+      "id": "orb-010-luiscaballero-15min-orb-vwap",
+      "title": "15-Minute ORB Breakout Strategy with VWAP and Volume Filters",
+      "family": "orb",
+      "cluster": "ORB-breakout-4",
+      "automation_fitness": 5,
+      "conversion_complexity": "medium",
+      "url": "https://www.tradingview.com/script/teHyqPNT-15-Minute-ORB-Breakout-Strategy-with-VWAP-and-Volume-Filters/"
+    },
+    {
+      "id": "orb-011-fluxcharts-orb-algo",
+      "title": "ORB Algo | Flux Charts",
+      "family": "orb",
+      "cluster": "ORB-breakout-4",
+      "automation_fitness": 5,
+      "conversion_complexity": "medium",
+      "url": "https://www.tradingview.com/script/UQxtKcrL-ORB-Algo-Flux-Charts/"
+    },
+    {
+      "id": "orb-013-juanmr888-orb-backtesting",
+      "title": "ORB Strategy + Backtesting (fixed timestamp)",
+      "family": "orb",
+      "cluster": "ORB-breakout-4",
+      "automation_fitness": 5,
+      "conversion_complexity": "medium",
+      "url": "https://www.tradingview.com/script/5qDr70Vp/"
+    },
+    {
+      "id": "orb-014-cashport-15min-orb-retest",
+      "title": "15 min orb (15min ORB Retest Strategy)",
+      "family": "orb",
+      "cluster": "ORB-breakout-4",
+      "automation_fitness": 5,
+      "conversion_complexity": "medium",
+      "url": "https://www.tradingview.com/script/dzuBSwXS-15-min-orb/"
+    },
+    {
+      "id": "orb-017-hardest-easy-money-15min-orb",
+      "title": "15-Min Opening Range Breakout",
+      "family": "orb",
+      "cluster": "ORB-breakout-4",
+      "automation_fitness": 5,
+      "conversion_complexity": "medium",
+      "url": "https://www.tradingview.com/script/PSsXSq80-15-Min-Opening-Range-Breakout/"
+    },
+    {
+      "id": "natha-horton--vwap-mean-reversion-v2",
+      "title": "VWAP Mean Reversion v2",
+      "family": "vwap",
+      "cluster": "VWAP-mean_reversion-2",
+      "automation_fitness": 4,
+      "conversion_complexity": "medium",
+      "url": "https://www.tradingview.com/script/kbKOecdF-VWAP-Mean-Reversion-v2/"
+    },
+    {
+      "id": "greatestusername--babyshark-vwap-strategy",
+      "title": "BabyShark VWAP Strategy",
+      "family": "vwap",
+      "cluster": "VWAP-mean_reversion-2",
+      "automation_fitness": 4,
+      "conversion_complexity": "medium",
+      "url": "https://www.tradingview.com/script/brQS2OHa-BabyShark-VWAP-Strategy/"
+    },
+    {
+      "id": "james-buchanan--ema-and-vwap-cross",
+      "title": "EMA and VWAP CROSS",
+      "family": "vwap",
+      "cluster": "VWAP-mean_reversion-2",
+      "automation_fitness": 4,
+      "conversion_complexity": "easy",
+      "url": "https://www.tradingview.com/script/Yet4DpeW-EMA-and-VWAP-CROSS/"
+    },
+    {
+      "id": "eemani123--vwap-and-bb-strategy-eemani",
+      "title": "VWAP and BB Strategy [EEMANI]",
+      "family": "vwap",
+      "cluster": "VWAP-mean_reversion-2",
+      "automation_fitness": 4,
+      "conversion_complexity": "medium",
+      "url": "https://www.tradingview.com/script/oZYSB6Ui-VWAP-and-BB-strategy-EEMANI/"
+    },
+    {
+      "id": "fullportdav--vwap-breakout-ny-open-only",
+      "title": "VWAP Breakout NY Open Only",
+      "family": "vwap",
+      "cluster": "VWAP-mean_reversion-2",
+      "automation_fitness": 4,
+      "conversion_complexity": "medium",
+      "url": "https://www.tradingview.com/script/MoZSgPYN-VWAP-Breakout-NY-Open-Only/"
+    },
+    {
+      "id": "js-techtrading--vwap-breakout-strategy-momentum-vol-vwap-rsi-trsl",
+      "title": "VWAP Breakout Strategy (Momentum, Vol, VWAP, RSI, TrSL)",
+      "family": "vwap",
+      "cluster": "VWAP-mean_reversion-2",
+      "automation_fitness": 4,
+      "conversion_complexity": "medium",
+      "url": "https://www.tradingview.com/script/eAOJqXTL-VWAP-Breakout-Strategy-Momentum-Vol-VWAP-RSI-TrSL/"
+    },
+    {
+      "id": "js-techtrading--js-techtrading-vwap-momentum-pullback-strategy",
+      "title": "JS-TechTrading: VWAP Momentum_Pullback Strategy",
+      "family": "vwap",
+      "cluster": "VWAP-mean_reversion-2",
+      "automation_fitness": 4,
+      "conversion_complexity": "medium",
+      "url": "https://www.tradingview.com/script/uhdaobby-JS-TechTrading-VWAP-Momentum-Pullback-Strategy/"
+    },
+    {
+      "id": "qamberabbas4--vwap-stdev-bands-strategy-long-only",
+      "title": "VWAP Stdev Bands Strategy (Long Only)",
+      "family": "vwap",
+      "cluster": "VWAP-mean_reversion-2",
+      "automation_fitness": 4,
+      "conversion_complexity": "medium",
+      "url": "https://www.tradingview.com/script/zr743ECk-VWAP-Stdev-Bands-Strategy-Long-Only/"
+    },
+    {
+      "id": "cryptocu84--ema-vwap-strategy",
+      "title": "EMA + VWAP Strategy",
+      "family": "vwap",
+      "cluster": "VWAP-mean_reversion-2",
+      "automation_fitness": 4,
+      "conversion_complexity": "medium",
+      "url": "https://www.tradingview.com/script/2dvhxn9p-EMA-VWAP-Strategy/"
+    },
+    {
+      "id": "unknownunicorn2151907--rsi-vwap-indicator-strategy",
+      "title": "RSI-VWAP Indicator Strategy",
+      "family": "vwap",
+      "cluster": "VWAP-mean_reversion-2",
+      "automation_fitness": 4,
+      "conversion_complexity": "medium",
+      "url": "https://www.tradingview.com/script/d0FZtMLp/"
+    },
+    {
+      "id": "catalystnq--vwap-breakout-strategy-emas-clean-cycle-tp-sl-plots",
+      "title": "VWAP Breakout Strategy + EMAs + Clean Cycle/TP/SL Plots",
+      "family": "vwap",
+      "cluster": "VWAP-mean_reversion-2",
+      "automation_fitness": 4,
+      "conversion_complexity": "medium",
+      "url": "https://www.tradingview.com/script/39HGmmqK-VWAP-Breakout-Strategy-EMAs-Clean-Cycle-TP-SL-Plots/"
+    },
+    {
+      "id": "neptuko--vwap-strategy-neptuko",
+      "title": "VWAP Strategy (Neptuko)",
+      "family": "vwap",
+      "cluster": "VWAP-mean_reversion-2",
+      "automation_fitness": 4,
+      "conversion_complexity": "medium",
+      "url": "https://www.tradingview.com/script/WhqvxciX-VWAP-Strategy/"
+    },
+    {
+      "id": "ict-001-trading-iq-master-suite",
+      "title": "ICT Master Suite [Trading IQ]",
+      "family": "ict",
+      "cluster": "ICT-sweep_reversal-3",
+      "automation_fitness": 4,
+      "conversion_complexity": "hard",
+      "url": "https://www.tradingview.com/script/ABYnIcdl-ICT-Master-Suite-Trading-IQ/"
+    },
+    {
+      "id": "ict-005-unclesam-smc-strategy",
+      "title": "Smart Money Concept Strategy - Uncle Sam",
+      "family": "ict",
+      "cluster": "ICT-sweep_reversal-3",
+      "automation_fitness": 4,
+      "conversion_complexity": "medium",
+      "url": "https://www.tradingview.com/script/KUeL7SY5-Smart-Money-Concept-Strategy-Uncle-Sam/"
+    },
+    {
+      "id": "ict-008-mitchell917-liquidity-sweep-reversal",
+      "title": "Liquidity Sweep Reversal Strategy",
+      "family": "ict",
+      "cluster": "ICT-sweep_reversal-3",
+      "automation_fitness": 4,
+      "conversion_complexity": "easy",
+      "url": "https://github.com/mitchell-917/tradingview-pinescript-lab/blob/master/strategies/liquidity-sweep-reversal-strategy.pine"
+    },
+    {
+      "id": "ict-011-alphawings-smc-backtesting-toolkit",
+      "title": "Smart Money Concept + Strategy Backtesting Toolkit [Shah]",
+      "family": "ict",
+      "cluster": "ICT-mixed-7",
+      "automation_fitness": 4,
+      "conversion_complexity": "hard",
+      "url": "https://www.tradingview.com/script/WTMcQK3B-Smart-Money-Concept-Strategy-Backtesting-Toolkit-Shah/"
+    },
+    {
+      "id": "ict-013-karoshi-fvg-strategy",
+      "title": "FVG Strategy - Fair Value Gap",
+      "family": "ict",
+      "cluster": "ICT-sweep_reversal-3",
+      "automation_fitness": 4,
+      "conversion_complexity": "medium",
+      "url": "https://www.tradingview.com/script/BdvSzhqW-FVG-Strategy-Fair-Value-Gap/"
+    },
+    {
+      "id": "orb-002-marcn5-open-drive",
+      "title": "Open Drive",
+      "family": "orb",
+      "cluster": "ORB-breakout-4",
+      "automation_fitness": 4,
+      "conversion_complexity": "medium",
+      "url": "https://www.tradingview.com/script/nyTw4KmR-Open-Drive/"
+    },
+    {
+      "id": "orb-012-stock-reaver-reversal-breakout-orb",
+      "title": "Reversal & Breakout Strategy with ORB",
+      "family": "orb",
+      "cluster": "ORB-breakout-4",
+      "automation_fitness": 4,
+      "conversion_complexity": "hard",
+      "url": "https://www.tradingview.com/script/D94ChhXj-Reversal-Breakout-Strategy-with-ORB/"
+    },
+    {
+      "id": "soeccke--vwap-15ema-with-rsi",
+      "title": "VWAP+15EMA with RSI",
+      "family": "vwap",
+      "cluster": "VWAP-mean_reversion-2",
+      "automation_fitness": 3,
+      "conversion_complexity": "easy",
+      "url": "https://www.tradingview.com/script/eX30cxM7-VWAP-15EMA-with-RSI/"
+    },
+    {
+      "id": "ict-012-hasnocool-gold-fvg-entry",
+      "title": "Gold Fair Value Gap Entry (FVG GOLD)",
+      "family": "ict",
+      "cluster": "ICT-sweep_reversal-3",
+      "automation_fitness": 3,
+      "conversion_complexity": "easy",
+      "url": "https://github.com/hasnocool/tradingview-pine-scripts/blob/main/Gold%20Fair%20Value%20Gap%20Entry(FVG%20GOLD).pine"
+    },
+    {
+      "id": "orb-005-pradipandsuvra-range-breakout",
+      "title": "Strategy: Range Breakout",
+      "family": "orb",
+      "cluster": "ORB-breakout-4",
+      "automation_fitness": 3,
+      "conversion_complexity": "easy",
+      "url": "https://in.tradingview.com/script/pEf6ohWk-Strategy-Range-Breakout/"
+    },
+    {
+      "id": "orb-016-ciuchers-orb-reversal",
+      "title": "ORB Breakout Strategy with reversal",
+      "family": "orb",
+      "cluster": "ORB-breakout-4",
+      "automation_fitness": 3,
+      "conversion_complexity": "medium",
+      "url": "https://www.tradingview.com/script/no6RmH7L/"
+    }
+  ]
+}

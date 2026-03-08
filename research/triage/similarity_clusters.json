@@ -1,0 +1,466 @@
+{
+  "generated": "auto",
+  "description": "Strategy similarity clusters \u2014 near-duplicates grouped together",
+  "similarity_threshold": 0.55,
+  "total_clusters": 8,
+  "clusters": [
+    {
+      "cluster_id": "VWAP-mean_reversion-2",
+      "family": "vwap",
+      "dominant_entry": "mean_reversion",
+      "size": 20,
+      "representative": "hye0619--hye-mean-reversion-vwap-strategy",
+      "representative_title": "HYE Mean Reversion VWAP Strategy",
+      "members": [
+        {
+          "id": "hye0619--hye-mean-reversion-vwap-strategy",
+          "title": "HYE Mean Reversion VWAP Strategy",
+          "rank": 1,
+          "label": "convert_now",
+          "automation_fitness": 5
+        },
+        {
+          "id": "michaelriggs--vwap-rsi-scalper-final-v1",
+          "title": "VWAP-RSI Scalper FINAL v1",
+          "rank": 2,
+          "label": "already_converted",
+          "automation_fitness": 5
+        },
+        {
+          "id": "lindittl--vwap-retest-ema9-cross-candle-pattern-v2",
+          "title": "VWAP Retest + EMA9 Cross + Candle Pattern V2",
+          "rank": 3,
+          "label": "hold_for_later",
+          "automation_fitness": 5
+        },
+        {
+          "id": "mohanee--rsi-of-vwap",
+          "title": "RSI of VWAP",
+          "rank": 4,
+          "label": "hold_for_later",
+          "automation_fitness": 5
+        },
+        {
+          "id": "ramtrading--es-scalping-pro-ema-vwap-atr",
+          "title": "ES Scalping Pro: EMA + VWAP + ATR",
+          "rank": 5,
+          "label": "hold_for_later",
+          "automation_fitness": 5
+        },
+        {
+          "id": "eemani123--vwap-and-rsi-strategy",
+          "title": "VWAP and RSI Strategy",
+          "rank": 6,
+          "label": "hold_for_later",
+          "automation_fitness": 5
+        },
+        {
+          "id": "natha-horton--vwap-mean-reversion-v2",
+          "title": "VWAP Mean Reversion v2",
+          "rank": 7,
+          "label": "hold_for_later",
+          "automation_fitness": 4
+        },
+        {
+          "id": "signalsr--vwap-bands-backtest",
+          "title": "VWAP Bands Backtest",
+          "rank": 8,
+          "label": "component_only",
+          "automation_fitness": 4
+        },
+        {
+          "id": "james-buchanan--ema-and-vwap-cross",
+          "title": "EMA and VWAP CROSS",
+          "rank": 9,
+          "label": "hold_for_later",
+          "automation_fitness": 4
+        },
+        {
+          "id": "js-techtrading--vwap-breakout-strategy-momentum-vol-vwap-rsi-trsl",
+          "title": "VWAP Breakout Strategy (Momentum, Vol, VWAP, RSI, TrSL)",
+          "rank": 10,
+          "label": "hold_for_later",
+          "automation_fitness": 4
+        },
+        {
+          "id": "js-techtrading--js-techtrading-vwap-momentum-pullback-strategy",
+          "title": "JS-TechTrading: VWAP Momentum_Pullback Strategy",
+          "rank": 11,
+          "label": "hold_for_later",
+          "automation_fitness": 4
+        },
+        {
+          "id": "qamberabbas4--vwap-stdev-bands-strategy-long-only",
+          "title": "VWAP Stdev Bands Strategy (Long Only)",
+          "rank": 12,
+          "label": "hold_for_later",
+          "automation_fitness": 4
+        },
+        {
+          "id": "unknownunicorn2151907--rsi-vwap-indicator-strategy",
+          "title": "RSI-VWAP Indicator Strategy",
+          "rank": 13,
+          "label": "hold_for_later",
+          "automation_fitness": 4
+        },
+        {
+          "id": "neptuko--vwap-strategy-neptuko",
+          "title": "VWAP Strategy (Neptuko)",
+          "rank": 14,
+          "label": "hold_for_later",
+          "automation_fitness": 4
+        },
+        {
+          "id": "greatestusername--babyshark-vwap-strategy",
+          "title": "BabyShark VWAP Strategy",
+          "rank": 15,
+          "label": "hold_for_later",
+          "automation_fitness": 4
+        },
+        {
+          "id": "eemani123--vwap-and-bb-strategy-eemani",
+          "title": "VWAP and BB Strategy [EEMANI]",
+          "rank": 16,
+          "label": "hold_for_later",
+          "automation_fitness": 4
+        },
+        {
+          "id": "fullportdav--vwap-breakout-ny-open-only",
+          "title": "VWAP Breakout NY Open Only",
+          "rank": 17,
+          "label": "hold_for_later",
+          "automation_fitness": 4
+        },
+        {
+          "id": "cryptocu84--ema-vwap-strategy",
+          "title": "EMA + VWAP Strategy",
+          "rank": 18,
+          "label": "hold_for_later",
+          "automation_fitness": 4
+        },
+        {
+          "id": "catalystnq--vwap-breakout-strategy-emas-clean-cycle-tp-sl-plots",
+          "title": "VWAP Breakout Strategy + EMAs + Clean Cycle/TP/SL Plots",
+          "rank": 19,
+          "label": "hold_for_later",
+          "automation_fitness": 4
+        },
+        {
+          "id": "soeccke--vwap-15ema-with-rsi",
+          "title": "VWAP+15EMA with RSI",
+          "rank": 20,
+          "label": "hold_for_later",
+          "automation_fitness": 3
+        }
+      ]
+    },
+    {
+      "cluster_id": "ORB-breakout-4",
+      "family": "orb",
+      "dominant_entry": "breakout",
+      "size": 17,
+      "representative": "orb-003-krypson-gold-orb-strategy",
+      "representative_title": "Gold ORB Strategy (15-min Range, 5-min Entry)",
+      "members": [
+        {
+          "id": "orb-003-krypson-gold-orb-strategy",
+          "title": "Gold ORB Strategy (15-min Range, 5-min Entry)",
+          "rank": 1,
+          "label": "convert_now",
+          "automation_fitness": 5
+        },
+        {
+          "id": "orb-004-shivam-iu-orb-strategy",
+          "title": "IU Opening Range Breakout Strategy",
+          "rank": 2,
+          "label": "hold_for_later",
+          "automation_fitness": 5
+        },
+        {
+          "id": "orb-007-shui-ny-orb-ma-stop",
+          "title": "NY Opening Range Breakout - MA Stop",
+          "rank": 3,
+          "label": "hold_for_later",
+          "automation_fitness": 5
+        },
+        {
+          "id": "orb-008-mambafx-ny-orb-breakout",
+          "title": "NY ORB Breakout Strategy (MambaFX x DoyleStyle)",
+          "rank": 4,
+          "label": "hold_for_later",
+          "automation_fitness": 5
+        },
+        {
+          "id": "orb-009-luiscaballero-orb-vwap-volume",
+          "title": "ORB Breakout Strategy with VWAP and Volume Filters",
+          "rank": 5,
+          "label": "already_converted",
+          "automation_fitness": 5
+        },
+        {
+          "id": "orb-010-luiscaballero-15min-orb-vwap",
+          "title": "15-Minute ORB Breakout Strategy with VWAP and Volume Filters",
+          "rank": 6,
+          "label": "hold_for_later",
+          "automation_fitness": 5
+        },
+        {
+          "id": "orb-011-fluxcharts-orb-algo",
+          "title": "ORB Algo | Flux Charts",
+          "rank": 7,
+          "label": "hold_for_later",
+          "automation_fitness": 5
+        },
+        {
+          "id": "orb-013-juanmr888-orb-backtesting",
+          "title": "ORB Strategy + Backtesting (fixed timestamp)",
+          "rank": 8,
+          "label": "hold_for_later",
+          "automation_fitness": 5
+        },
+        {
+          "id": "orb-014-cashport-15min-orb-retest",
+          "title": "15 min orb (15min ORB Retest Strategy)",
+          "rank": 9,
+          "label": "hold_for_later",
+          "automation_fitness": 5
+        },
+        {
+          "id": "orb-017-hardest-easy-money-15min-orb",
+          "title": "15-Min Opening Range Breakout",
+          "rank": 10,
+          "label": "hold_for_later",
+          "automation_fitness": 5
+        },
+        {
+          "id": "orb-006-wealth-guru-atr-trailing-orb",
+          "title": "High-Low Breakout Strategy with ATR Trailing Stop Loss",
+          "rank": 11,
+          "label": "hold_for_later",
+          "automation_fitness": 5
+        },
+        {
+          "id": "orb-001-volumevigilante-orb-pivot-points",
+          "title": "Long-Only Opening Range Breakout (ORB) with Pivot Points",
+          "rank": 12,
+          "label": "component_only",
+          "automation_fitness": 4
+        },
+        {
+          "id": "orb-012-stock-reaver-reversal-breakout-orb",
+          "title": "Reversal & Breakout Strategy with ORB",
+          "rank": 13,
+          "label": "hold_for_later",
+          "automation_fitness": 4
+        },
+        {
+          "id": "orb-002-marcn5-open-drive",
+          "title": "Open Drive",
+          "rank": 14,
+          "label": "hold_for_later",
+          "automation_fitness": 4
+        },
+        {
+          "id": "orb-015-script-algo-orb-filters",
+          "title": "Script_Algo - ORB Strategy with Filters",
+          "rank": 15,
+          "label": "component_only",
+          "automation_fitness": 3
+        },
+        {
+          "id": "orb-016-ciuchers-orb-reversal",
+          "title": "ORB Breakout Strategy with reversal",
+          "rank": 16,
+          "label": "hold_for_later",
+          "automation_fitness": 3
+        },
+        {
+          "id": "orb-005-pradipandsuvra-range-breakout",
+          "title": "Strategy: Range Breakout",
+          "rank": 17,
+          "label": "hold_for_later",
+          "automation_fitness": 3
+        }
+      ]
+    },
+    {
+      "cluster_id": "ICT-sweep_reversal-3",
+      "family": "ict",
+      "dominant_entry": "sweep_reversal",
+      "size": 11,
+      "representative": "ict-002-mejunda-liquidity-sweeper",
+      "representative_title": "Liquidity Sweeper",
+      "members": [
+        {
+          "id": "ict-002-mejunda-liquidity-sweeper",
+          "title": "Liquidity Sweeper",
+          "rank": 1,
+          "label": "convert_now",
+          "automation_fitness": 5
+        },
+        {
+          "id": "ict-003-algoalpha-liquidity-sweep-filter",
+          "title": "Liquidity Sweep Filter Strategy [AlgoAlpha X PineIndicators]",
+          "rank": 2,
+          "label": "hold_for_later",
+          "automation_fitness": 5
+        },
+        {
+          "id": "ict-007-tsunafire-pinescript-smc",
+          "title": "PineScript-SMC-Strategy",
+          "rank": 3,
+          "label": "hold_for_later",
+          "automation_fitness": 5
+        },
+        {
+          "id": "ict-010-tfo-captain-backtest-model",
+          "title": "Captain Backtest Model [TFO]",
+          "rank": 4,
+          "label": "already_converted",
+          "automation_fitness": 5
+        },
+        {
+          "id": "ict-009-tagstrading-ob-volumatic-fvg",
+          "title": "Order Block Volumatic FVG Strategy",
+          "rank": 5,
+          "label": "hold_for_later",
+          "automation_fitness": 5
+        },
+        {
+          "id": "ict-008-mitchell917-liquidity-sweep-reversal",
+          "title": "Liquidity Sweep Reversal Strategy",
+          "rank": 6,
+          "label": "hold_for_later",
+          "automation_fitness": 4
+        },
+        {
+          "id": "ict-001-trading-iq-master-suite",
+          "title": "ICT Master Suite [Trading IQ]",
+          "rank": 7,
+          "label": "hold_for_later",
+          "automation_fitness": 4
+        },
+        {
+          "id": "ict-005-unclesam-smc-strategy",
+          "title": "Smart Money Concept Strategy - Uncle Sam",
+          "rank": 8,
+          "label": "hold_for_later",
+          "automation_fitness": 4
+        },
+        {
+          "id": "ict-013-karoshi-fvg-strategy",
+          "title": "FVG Strategy - Fair Value Gap",
+          "rank": 9,
+          "label": "hold_for_later",
+          "automation_fitness": 4
+        },
+        {
+          "id": "ict-012-hasnocool-gold-fvg-entry",
+          "title": "Gold Fair Value Gap Entry (FVG GOLD)",
+          "rank": 10,
+          "label": "hold_for_later",
+          "automation_fitness": 3
+        },
+        {
+          "id": "ict-006-blessed-ict-paper-trading",
+          "title": "ICT Indicator with Paper Trading",
+          "rank": 11,
+          "label": "reject",
+          "automation_fitness": 2
+        }
+      ]
+    },
+    {
+      "cluster_id": "ICT-mixed-7",
+      "family": "ict",
+      "dominant_entry": "mixed",
+      "size": 2,
+      "representative": "ict-004-danieltbolsch-smc-strategy",
+      "representative_title": "SMC Strategy",
+      "members": [
+        {
+          "id": "ict-004-danieltbolsch-smc-strategy",
+          "title": "SMC Strategy",
+          "rank": 1,
+          "label": "convert_now",
+          "automation_fitness": 4
+        },
+        {
+          "id": "ict-011-alphawings-smc-backtesting-toolkit",
+          "title": "Smart Money Concept + Strategy Backtesting Toolkit [Shah]",
+          "rank": 2,
+          "label": "hold_for_later",
+          "automation_fitness": 4
+        }
+      ]
+    },
+    {
+      "cluster_id": "VWAP-breakout-1",
+      "family": "vwap",
+      "dominant_entry": "breakout",
+      "size": 1,
+      "representative": "vvedding--rvwap-mean-reversion-strategy",
+      "representative_title": "RVWAP Mean Reversion Strategy",
+      "members": [
+        {
+          "id": "vvedding--rvwap-mean-reversion-strategy",
+          "title": "RVWAP Mean Reversion Strategy",
+          "rank": 1,
+          "label": "convert_now",
+          "automation_fitness": 5
+        }
+      ]
+    },
+    {
+      "cluster_id": "VWAP-mixed-5",
+      "family": "vwap",
+      "dominant_entry": "mixed",
+      "size": 1,
+      "representative": "pineindicators--dynamic-swing-anchored-vwap-strat",
+      "representative_title": "Dynamic Swing Anchored VWAP STRAT",
+      "members": [
+        {
+          "id": "pineindicators--dynamic-swing-anchored-vwap-strat",
+          "title": "Dynamic Swing Anchored VWAP STRAT",
+          "rank": 1,
+          "label": "convert_now",
+          "automation_fitness": 4
+        }
+      ]
+    },
+    {
+      "cluster_id": "VWAP-mixed-6",
+      "family": "vwap",
+      "dominant_entry": "mixed",
+      "size": 1,
+      "representative": "gckprofittrading--gck-vwap-bot",
+      "representative_title": "GCK VWAP BOT",
+      "members": [
+        {
+          "id": "gckprofittrading--gck-vwap-bot",
+          "title": "GCK VWAP BOT",
+          "rank": 1,
+          "label": "convert_now",
+          "automation_fitness": 4
+        }
+      ]
+    },
+    {
+      "cluster_id": "ORB-gap-8",
+      "family": "orb",
+      "dominant_entry": "gap",
+      "size": 1,
+      "representative": "orb-018-pinecodertasc-gap-momentum",
+      "representative_title": "Gap Momentum System (TASC 2024.01)",
+      "members": [
+        {
+          "id": "orb-018-pinecodertasc-gap-momentum",
+          "title": "Gap Momentum System (TASC 2024.01)",
+          "rank": 1,
+          "label": "convert_now",
+          "automation_fitness": 4
+        }
+      ]
+    }
+  ]
+}

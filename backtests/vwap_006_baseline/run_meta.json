@@ -1,0 +1,20 @@
+{
+  "strategy": "vwap_006",
+  "strategy_name": "VWAP-RSI Scalper FINAL v1",
+  "family": "vwap",
+  "source_url": "https://www.tradingview.com/script/S9hY3huK-VWAP-RSI-Scalper-FINAL-v1/",
+  "conversion_type": "faithful",
+  "run_date": "2026-03-07 22:18:05",
+  "assets": [
+    "MES",
+    "MGC",
+    "MNQ"
+  ],
+  "modes": [
+    "short",
+    "long",
+    "both"
+  ],
+  "engine": "fill-at-next-open",
+  "notes": "Baseline run \u2014 faithful conversion, no optimization"
+}
