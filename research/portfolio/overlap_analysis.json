@@ -1,0 +1,187 @@
+{
+  "strategies": [
+    "PB-MGC-Short",
+    "ORB-009 MGC-Long"
+  ],
+  "date_range": "2024-03-01 to 2026-03-05",
+  "return_correlation": {
+    "full_period": 0.0037,
+    "active_days_only": null
+  },
+  "trade_overlap": {
+    "dates_1": 26,
+    "dates_2": 106,
+    "overlap_dates": 2,
+    "jaccard_pct": 1.5
+  },
+  "drawdown_overlap": {
+    "dd_days_1": 95,
+    "dd_days_2": 109,
+    "both_in_dd": 78,
+    "overlap_pct": 61.9
+  },
+  "rolling_30d": {
+    "correlation_mean": 0.024,
+    "correlation_median": 0.0011,
+    "pct_negative_corr": 49.6,
+    "dd_overlap_mean": 59.7
+  },
+  "portfolio": {
+    "total_pnl": 3354.84,
+    "sharpe": 3.306,
+    "maxdd": 858.64,
+    "recovery_factor": 3.91,
+    "total_trades": 134,
+    "profitable_months": "15",
+    "total_months": 23
+  },
+  "worst_drawdowns": [
+    {
+      "start": "2024-03-05",
+      "end": "2025-05-20",
+      "depth": 858.64,
+      "days": 441
+    },
+    {
+      "start": "2026-01-09",
+      "end": "2026-01-19",
+      "depth": 309.72,
+      "days": 10
+    },
+    {
+      "start": "2025-11-07",
+      "end": "2025-11-10",
+      "depth": 298.48,
+      "days": 3
+    },
+    {
+      "start": "2025-09-03",
+      "end": "2025-09-19",
+      "depth": 197.2,
+      "days": 16
+    },
+    {
+      "start": "2025-11-21",
+      "end": "2025-11-21",
+      "depth": 123.24,
+      "days": 0
+    }
+  ],
+  "monthly_pnl": {
+    "2024-03": {
+      "pb_short": 95.52,
+      "orb_long": -30.16,
+      "portfolio": 65.36
+    },
+    "2024-04": {
+      "pb_short": 0.0,
+      "orb_long": -154.96,
+      "portfolio": -154.96
+    },
+    "2024-05": {
+      "pb_short": 39.8,
+      "orb_long": -119.92,
+      "portfolio": -80.12
+    },
+    "2024-06": {
+      "pb_short": 0.0,
+      "orb_long": -24.24,
+      "portfolio": -24.24
+    },
+    "2024-07": {
+      "pb_short": 27.28,
+      "orb_long": -74.16,
+      "portfolio": -46.88
+    },
+    "2024-08": {
+      "pb_short": 0.0,
+      "orb_long": -21.24,
+      "portfolio": -21.24
+    },
+    "2024-09": {
+      "pb_short": -39.24,
+      "orb_long": -31.4,
+      "portfolio": -70.64
+    },
+    "2024-11": {
+      "pb_short": 0.0,
+      "orb_long": -62.48,
+      "portfolio": -62.48
+    },
+    "2024-12": {
+      "pb_short": 31.76,
+      "orb_long": 18.76,
+      "portfolio": 50.52
+    },
+    "2025-01": {
+      "pb_short": -67.72,
+      "orb_long": 69.56,
+      "portfolio": 1.84
+    },
+    "2025-03": {
+      "pb_short": 4.28,
+      "orb_long": 279.08,
+      "portfolio": 283.36
+    },
+    "2025-04": {
+      "pb_short": 0.0,
+      "orb_long": -184.24,
+      "portfolio": -184.24
+    },
+    "2025-05": {
+      "pb_short": 133.28,
+      "orb_long": 408.32,
+      "portfolio": 541.6
+    },
+    "2025-06": {
+      "pb_short": 0.0,
+      "orb_long": 89.76,
+      "portfolio": 89.76
+    },
+    "2025-07": {
+      "pb_short": -4.96,
+      "orb_long": 350.56,
+      "portfolio": 345.6
+    },
+    "2025-08": {
+      "pb_short": 0.0,
+      "orb_long": 235.52,
+      "portfolio": 235.52
+    },
+    "2025-09": {
+      "pb_short": 0.0,
+      "orb_long": 449.12,
+      "portfolio": 449.12
+    },
+    "2025-10": {
+      "pb_short": 0.0,
+      "orb_long": 132.76,
+      "portfolio": 132.76
+    },
+    "2025-11": {
+      "pb_short": -97.24,
+      "orb_long": 215.56,
+      "portfolio": 118.32
+    },
+    "2025-12": {
+      "pb_short": 0.0,
+      "orb_long": 579.76,
+      "portfolio": 579.76
+    },
+    "2026-01": {
+      "pb_short": 0.0,
+      "orb_long": 544.84,
+      "portfolio": 544.84
+    },
+    "2026-02": {
+      "pb_short": 0.0,
+      "orb_long": 7.76,
+      "portfolio": 7.76
+    },
+    "2026-03": {
+      "pb_short": 553.52,
+      "orb_long": 0.0,
+      "portfolio": 553.52
+    }
+  }
+}
