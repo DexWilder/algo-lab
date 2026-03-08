@@ -1,0 +1,105 @@
+{
+  "strategies": [
+    "PB-MGC-Short",
+    "ORB-009 MGC-Long"
+  ],
+  "starting_capital": 50000.0,
+  "target_annual_vol": 0.1,
+  "trade_stats": {
+    "PB-MGC-Short": {
+      "mean_pnl": 24.1529,
+      "std_pnl": 101.8537,
+      "n_trades": 28,
+      "win_rate": 0.5357,
+      "avg_win": 97.96,
+      "avg_loss": 61.0092
+    },
+    "ORB-009 MGC-Long": {
+      "mean_pnl": 25.2694,
+      "std_pnl": 124.7297,
+      "n_trades": 106,
+      "win_rate": 0.5094,
+      "avg_win": 109.3711,
+      "avg_loss": 62.0669
+    }
+  },
+  "kelly_results": {
+    "PB-MGC-Short": {
+      "full_kelly": 0.2466,
+      "quarter_kelly": 0.0616,
+      "b_ratio": 1.606
+    },
+    "ORB-009 MGC-Long": {
+      "full_kelly": 0.231,
+      "quarter_kelly": 0.0578,
+      "b_ratio": 1.762
+    }
+  },
+  "methods": {
+    "Equal Weight": {
+      "label": "Equal Weight",
+      "total_pnl": 3354.84,
+      "sharpe": 3.306,
+      "sortino": 7.1085,
+      "maxdd": 858.64,
+      "maxdd_pct": 1.71,
+      "recovery_factor": 3.91,
+      "calmar": 7.57,
+      "annual_return": 6503.23,
+      "profitable_months": "15/25",
+      "daily_vol": 123.92,
+      "annual_vol_pct": 3.93
+    },
+    "Equal Risk Contribution": {
+      "label": "Equal Risk Contribution",
+      "total_pnl": 2590.2,
+      "sharpe": 3.1972,
+      "sortino": 5.8836,
+      "maxdd": 559.12,
+      "maxdd_pct": 1.11,
+      "recovery_factor": 4.63,
+      "calmar": 8.98,
+      "annual_return": 5021.01,
+      "profitable_months": "13/25",
+      "daily_vol": 98.93,
+      "annual_vol_pct": 3.14
+    },
+    "Vol Target 10%": {
+      "label": "Vol Target 10%",
+      "total_pnl": 8527.29,
+      "sharpe": 3.306,
+      "sortino": 7.1085,
+      "maxdd": 2182.48,
+      "maxdd_pct": 4.3,
+      "recovery_factor": 3.91,
+      "calmar": 7.57,
+      "annual_return": 16529.82,
+      "profitable_months": "15/25",
+      "daily_vol": 314.97,
+      "annual_vol_pct": 10.0
+    },
+    "Quarter Kelly": {
+      "label": "Quarter Kelly",
+      "total_pnl": 158862.26,
+      "sharpe": 3.3137,
+      "sortino": 7.0574,
+      "maxdd": 39868.24,
+      "maxdd_pct": 63.41,
+      "recovery_factor": 3.98,
+      "calmar": 7.72,
+      "annual_return": 307948.39,
+      "profitable_months": "14/25",
+      "daily_vol": 5854.15,
+      "annual_vol_pct": 185.86
+    }
+  },
+  "erc_weights": {
+    "PB-MGC-Short": 0.6909,
+    "ORB-009 MGC-Long": 0.3091
+  },
+  "vol_target_scale": 2.5418,
+  "kelly_scales": {
+    "PB-MGC-Short": 50.4842,
+    "ORB-009 MGC-Long": 46.5626
+  }
+}
