@@ -30,5 +30,11 @@
     "session": "08:30-15:15",
     "power_windows": ["08:45-11:00", "13:30-15:10"],
     "warmup_mins": 15
+  },
+  "regime_gate": {
+    "type": "ATR percentile",
+    "skip": "low (< 33rd percentile)",
+    "impact": "PF 1.85→2.36, Sharpe 3.68→5.27, PnL +$119 (low-vol trades were net losers)",
+    "verdict": "BENEFICIAL"
   }
 }

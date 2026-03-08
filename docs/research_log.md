@@ -186,4 +186,75 @@
 
 ---
 
-*Last updated: 2026-03-07*
+## 2026-03-08 — Phase 5.1: Regime Gate Testing (Both Strategies)
+
+**Experiment:** Run ATR regime classification on both validated strategies. Test whether a simple low-vol gate improves net performance.
+
+**Results:**
+
+| Strategy | Metric | Ungated | Gated | Delta |
+|----------|--------|---------|-------|-------|
+| ORB-009 MGC-Long | PF | 1.83 | 2.07 | +0.24 |
+| ORB-009 MGC-Long | Sharpe | 3.22 | 3.93 | +0.71 |
+| ORB-009 MGC-Long | MaxDD | $933 | $685 | -$248 |
+| PB-MGC-Short | PF | 1.85 | 2.36 | +0.51 |
+| PB-MGC-Short | Sharpe | 3.68 | 5.27 | +1.60 |
+| PB-MGC-Short | PnL | $676 | $795 | +$119 |
+
+PB-MGC-Short: low-vol trades were net losers (PF=0.43), so gating actually increases PnL. Zero trades in high-vol regime.
+
+**Decision:** Gate both strategies. Skip low-vol days (ATR < 33rd percentile).
+
+---
+
+## 2026-03-08 — Phase 5.2: Portfolio Overlap Realism
+
+**Experiment:** Deep dive into 2-strategy portfolio (PB-MGC-Short + ORB-009 MGC-Long) — return correlation, trade overlap, drawdown overlap, rolling 30-day metrics.
+
+**Results:**
+- Daily PnL correlation: 0.004 (zero)
+- Trade date overlap: 1.5% (2 out of 130 days)
+- Drawdown overlap: 61.9% (structural — same asset)
+- Rolling 30d correlation: median 0.001, range [-0.11, 0.32]
+- Rolling 30d DD overlap: mean 59.7%
+- Profitable months: 15/23 (65%)
+
+**Decision:** Overlap is structural (both trade MGC). Acceptable for initial deployment. Adding a non-gold strategy would reduce DD overlap.
+
+---
+
+## 2026-03-08 — Phase 5.3: Sizing Comparison
+
+**Experiment:** Compare 4 sizing methods — equal weight, equal risk contribution, vol targeting (10% annual), quarter-Kelly.
+
+**Results:**
+| Method | Sharpe | Calmar | MaxDD |
+|--------|--------|--------|-------|
+| Equal Weight | 3.31 | 7.57 | $859 |
+| ERC | 3.20 | 8.98 | $559 |
+| Vol Target 10% | 3.31 | 7.57 | $2,182 |
+| Quarter Kelly | 3.31 | 7.72 | $39,868 |
+
+**Decision:** ERC for prop accounts (best Calmar, lowest MaxDD). Vol targeting for growth. Kelly impractical at 46-50 contracts on $50K.
+
+---
+
+## 2026-03-08 — Phase 5.4: Gated Portfolio Equity Simulation
+
+**Experiment:** Full equity simulation with regime gate active on both strategies. Compare ungated vs gated.
+
+**Results:**
+| Metric | Ungated | Gated |
+|--------|---------|-------|
+| PnL | $3,355 | $3,389 |
+| Sharpe | 3.31 | 4.20 |
+| MaxDD | $859 | $703 |
+| Trades | 134 | 96 |
+| Portfolio DSR | — | 1.000 SIG |
+| Bootstrap PF CI | — | [1.25, 3.61] |
+
+**Decision:** Regime-gated portfolio is the final Phase 5 output. Both strategies pass DSR individually. Portfolio DSR = 1.000 SIGNIFICANT. Proceed to paper trade validation.
+
+---
+
+*Last updated: 2026-03-08*

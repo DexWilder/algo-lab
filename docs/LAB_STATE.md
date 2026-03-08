@@ -12,12 +12,36 @@
 | Rejected | 2 |
 | Effectively dead (costs) | 1 |
 
-## Core Portfolio
+## Core Portfolio (Phase 5 — Regime-Gated)
 
-| Strategy | Asset | Mode | Net PF | DSR | Status |
-|----------|-------|------|--------|-----|--------|
-| PB-Trend | MGC | Short | 1.85 | 0.993 SIGNIFICANT | candidate_validated |
-| ORB-009 | MGC | Long | 1.83 | 1.000 SIGNIFICANT | candidate_validated |
+| Strategy | Asset | Mode | Gated PF | Gated Sharpe | DSR | Status |
+|----------|-------|------|----------|-------------|-----|--------|
+| PB-Trend | MGC | Short | 2.36 | 5.27 | 0.952 SIG | candidate_validated |
+| ORB-009 | MGC | Long | 2.07 | 3.93 | 1.000 SIG | candidate_validated |
+
+**Regime Gate:** Skip low-vol days (ATR < 33rd percentile). Applied to both strategies.
+
+### Portfolio Metrics (Gated, 2-Strategy)
+
+| Metric | Value |
+|--------|-------|
+| Total PnL | $3,389 |
+| Sharpe | 4.20 |
+| MaxDD | $703 (1.40%) |
+| Recovery Factor | 4.82 |
+| Total Trades | 96 |
+| DSR | 1.000 SIGNIFICANT |
+| Bootstrap PF CI | [1.245, 3.613] |
+| Daily PnL Correlation | -0.009 |
+| Profitable Months | 13/19 (68%) |
+
+### Sizing Research (Equal Weight baseline)
+
+| Method | Sharpe | Calmar | MaxDD | Best For |
+|--------|--------|--------|-------|----------|
+| Equal Weight | 3.31 | 7.57 | $859 | Simplicity |
+| Equal Risk Contribution | 3.20 | 8.98 | $559 | Prop accounts (hard DD limits) |
+| Vol Target 10% | 3.31 | 7.57 | $2,182 | Growth (2.5 contracts) |
 
 ## Demoted / Removed
 
@@ -34,13 +58,15 @@
 - [x] Bootstrap confidence intervals (10K resamples)
 - [x] Deflated Sharpe Ratio (multiple testing correction)
 - [x] ATR percentile regime detection (low/medium/high vol)
+- [x] Regime gate testing (ungated vs gated comparison)
 - [x] Portfolio equity curve + drawdown overlap analysis
+- [x] Portfolio overlap realism (rolling correlation, trade overlap, DD overlap)
+- [x] Sizing comparison (equal weight, ERC, vol target, fractional Kelly)
 - [x] Top-trade removal robustness test
 - [x] Walk-forward year splits
 - [x] Parameter stability testing
 - [x] Monthly consistency analysis
 - [ ] Prop controller enforcement (stub only)
-- [ ] Kelly / risk parity position sizing
 - [ ] Monte Carlo equity simulation
 - [ ] HMM regime detection
 - [ ] Alternative data filters (COT, GVZ)
@@ -54,26 +80,18 @@
 - [x] Validation framework (8-criterion promotion standard)
 - [x] Correlation analysis pipeline
 - [x] Hardened baselines (gross vs net)
+- [x] Research governance (LAB_STATE, research log, phase audits)
 - [ ] Strategy evolution engine
 - [ ] Automatic combination testing
 
-## Key Metrics (with costs)
-
-| Metric | Value |
-|--------|-------|
-| Portfolio PnL (2-strategy) | ~$3,355 |
-| Portfolio Sharpe (est.) | >2.0 |
-| ORB-009 bootstrap PF CI | [1.07, 3.09] |
-| PB-MGC bootstrap PF CI | [0.72, 4.77] |
-| Drawdown overlap | 65-80% |
-
 ## Next Milestone
 
-**Phase 5: Regime Modeling + Portfolio Optimization**
-- Deploy ATR regime gate on ORB-009 (filter low-vol days)
-- Run 2-strategy portfolio (without PB-MNQ-Long)
-- Kelly sizing for PB-MGC-Short + ORB-009 MGC-Long
-- Paper trade validation
+**Phase 6: Paper Trade Validation + Execution Prep**
+- Paper trade both strategies with regime gate active
+- Monitor for edge decay (ORB-009 had weak 2024)
+- Build prop controller enforcement
+- Monte Carlo equity simulation for account sizing
+- Connect execution infrastructure (Tradovate/Rithmic)
 
 ## Completed Phases
 
@@ -83,6 +101,7 @@
 | Phase 2 — Strategy Conversion | Complete | docs/audits/phase_2_conversion.md |
 | Phase 3 — Baseline Backtesting | Complete | docs/audits/phase_3_baselines.md |
 | Phase 4 — Engine Hardening | Complete | docs/audits/phase_4_hardening.md |
+| Phase 5 — Regime Modeling + Portfolio Optimization | Complete | docs/audits/phase_5_regime_portfolio.md |
 
 ---
-*Last updated: 2026-03-07*
+*Last updated: 2026-03-08*

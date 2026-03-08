@@ -29,5 +29,11 @@
   },
   "entry_logic": "Close breaks above/below opening range high/low with triple filter gate (VWAP slope, volume surge, candle strength)",
   "exit_logic": "SL at opposite OR bound, TP at 2x OR range, BE at 50% of TP distance, EOD flatten 15:15",
-  "max_trades_per_day": "1 per direction"
+  "max_trades_per_day": "1 per direction",
+  "regime_gate": {
+    "type": "ATR percentile",
+    "skip": "low (< 33rd percentile)",
+    "impact": "PF 1.83→2.07, Sharpe 3.22→3.93, MaxDD -27%, PnL -3%",
+    "verdict": "BENEFICIAL"
+  }
 }
