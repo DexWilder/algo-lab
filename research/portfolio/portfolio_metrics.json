@@ -1,0 +1,95 @@
+{
+  "date_range": "2024-03-01 to 2026-03-05",
+  "trading_days": 297,
+  "strategies": {
+    "PB-MGC-Short": {
+      "trades": 28,
+      "pnl": 676.28,
+      "sharpe": 3.677,
+      "bootstrap_pf_ci": [
+        0.7185,
+        4.7723
+      ],
+      "bootstrap_sharpe_ci": [
+        -2.2683,
+        9.4383
+      ],
+      "bootstrap_maxdd_ci": [
+        116.707,
+        654.373
+      ],
+      "pf_point": 1.8527
+    },
+    "PB-MNQ-Long": {
+      "trades": 342,
+      "pnl": 1221.92,
+      "sharpe": 0.6019,
+      "bootstrap_pf_ci": [
+        0.8236,
+        1.3995
+      ],
+      "bootstrap_sharpe_ci": [
+        -1.2351,
+        2.1145
+      ],
+      "bootstrap_maxdd_ci": [
+        979.194,
+        4486.766
+      ],
+      "pf_point": 1.0769
+    },
+    "ORB009-MGC-Long": {
+      "trades": 106,
+      "pnl": 2678.56,
+      "sharpe": 3.2161,
+      "bootstrap_pf_ci": [
+        1.0707,
+        3.0871
+      ],
+      "bootstrap_sharpe_ci": [
+        0.3784,
+        5.8158
+      ],
+      "bootstrap_maxdd_ci": [
+        298.959,
+        1271.681
+      ],
+      "pf_point": 1.8299
+    }
+  },
+  "portfolio": {
+    "total_pnl": 4576.76,
+    "sharpe": 1.6615,
+    "max_drawdown": 1565.64,
+    "max_drawdown_pct": 2.92,
+    "recovery_factor": 2.92,
+    "total_trades": 476
+  },
+  "correlations": {
+    "PB-MGC-Short_vs_PB-MNQ-Long": -0.002,
+    "PB-MGC-Short_vs_ORB009-MGC-Long": 0.0142,
+    "PB-MNQ-Long_vs_ORB009-MGC-Long": -0.0227
+  },
+  "dsr": {
+    "dsr": 0.0,
+    "expected_max_sharpe": 2.225,
+    "observed_sharpe": 1.6615,
+    "n_trials": 36,
+    "n_observations": 297,
+    "skewness": 0.3394,
+    "kurtosis": 3.8272,
+    "sharpe_se": 0.0897,
+    "significant": false
+  },
+  "bootstrap": {
+    "pf_ci": [
+      0.977,
+      1.5432
+    ],
+    "pf_point": 1.2298,
+    "maxdd_ci": [
+      921.917,
+      3554.7625
+    ]
+  }
+}
