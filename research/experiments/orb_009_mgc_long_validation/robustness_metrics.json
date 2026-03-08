@@ -1,0 +1,208 @@
+{
+  "strategy": "orb_009",
+  "asset": "MGC",
+  "mode": "long",
+  "data_range": "2024-02-29 19:00:00 to 2026-03-06 16:55:00",
+  "trading_days": 596,
+  "baseline": {
+    "profit_factor": 1.987,
+    "sharpe": 3.6284,
+    "expectancy": 28.51,
+    "max_drawdown": 826.0,
+    "max_drawdown_pct": 1.64,
+    "win_rate": 0.5189,
+    "trade_count": 106,
+    "avg_R": 0.466,
+    "total_pnl": 3022.0,
+    "roi_pct": 6.04,
+    "avg_win": 110.62,
+    "avg_loss": -61.24,
+    "best_trade": 583.0,
+    "worst_trade": -214.0,
+    "max_consecutive_wins": 6,
+    "max_consecutive_losses": 5,
+    "long_trades": 106,
+    "short_trades": 0,
+    "long_win_rate": 0.5189,
+    "short_win_rate": 0,
+    "gross_profit": 6084.0,
+    "gross_loss": -3062.0,
+    "session_distribution": {
+      "4": 1,
+      "10": 41,
+      "11": 18,
+      "12": 10,
+      "13": 20,
+      "14": 13,
+      "15": 1,
+      "16": 1,
+      "18": 1
+    },
+    "trading_days": 106,
+    "avg_trades_per_day": 1.0
+  },
+  "top_trade_removal": [
+    {
+      "test": "base",
+      "trades": 106,
+      "pf": 1.987,
+      "sharpe": 3.6284,
+      "pnl": 3022.0,
+      "maxdd": 791.0,
+      "wr": 51.9,
+      "avgR": 0.466,
+      "exp": 28.51,
+      "removed_pnl": 0.0
+    },
+    {
+      "test": "remove_top_1",
+      "trades": 105,
+      "pf": 1.797,
+      "sharpe": 3.2692,
+      "pnl": 2439.0,
+      "maxdd": 791.0,
+      "wr": 51.4,
+      "avgR": 0.379,
+      "exp": 23.23,
+      "removed_pnl": 583.0
+    },
+    {
+      "test": "remove_top_2",
+      "trades": 104,
+      "pf": 1.66,
+      "sharpe": 2.8996,
+      "pnl": 2021.0,
+      "maxdd": 791.0,
+      "wr": 51.0,
+      "avgR": 0.317,
+      "exp": 19.43,
+      "removed_pnl": 1001.0
+    },
+    {
+      "test": "remove_top_3",
+      "trades": 103,
+      "pf": 1.54,
+      "sharpe": 2.5192,
+      "pnl": 1653.0,
+      "maxdd": 791.0,
+      "wr": 50.5,
+      "avgR": 0.262,
+      "exp": 16.05,
+      "removed_pnl": 1369.0
+    }
+  ],
+  "walk_forward": [
+    {
+      "segment": "2024",
+      "trades": 45,
+      "pf": 0.723,
+      "sharpe": -1.8983,
+      "pnl": -354.0,
+      "maxdd": 826.0,
+      "wr": 40.0,
+      "avgR": -0.166,
+      "exp": -7.87
+    },
+    {
+      "segment": "2025",
+      "trades": 51,
+      "pf": 2.989,
+      "sharpe": 6.1944,
+      "pnl": 2791.0,
+      "maxdd": 442.0,
+      "wr": 60.8,
+      "avgR": 0.741,
+      "exp": 54.73
+    },
+    {
+      "segment": "2026 YTD",
+      "trades": 10,
+      "pf": 2.535,
+      "sharpe": 4.6688,
+      "pnl": 585.0,
+      "maxdd": 370.0,
+      "wr": 60.0,
+      "avgR": 0.614,
+      "exp": 58.5
+    }
+  ],
+  "session_windows": [
+    {
+      "window": "full (baseline)",
+      "trades": 106,
+      "pf": 1.987,
+      "sharpe": 3.6284,
+      "pnl": 3022.0,
+      "maxdd": 826.0,
+      "wr": 51.9,
+      "avgR": 0.466,
+      "exp": 28.51
+    },
+    {
+      "window": "10:00-10:30",
+      "trades": 33,
+      "pf": 2.767,
+      "sharpe": 5.9232,
+      "pnl": 1601.0,
+      "maxdd": 517.0,
+      "wr": 48.5,
+      "avgR": 0.91,
+      "exp": 48.52
+    },
+    {
+      "window": "10:00-11:00",
+      "trades": 42,
+      "pf": 2.961,
+      "sharpe": 6.386,
+      "pnl": 2169.0,
+      "maxdd": 377.0,
+      "wr": 54.8,
+      "avgR": 0.887,
+      "exp": 51.64
+    },
+    {
+      "window": "10:00-12:00",
+      "trades": 61,
+      "pf": 2.264,
+      "sharpe": 4.8141,
+      "pnl": 2317.0,
+      "maxdd": 394.0,
+      "wr": 55.7,
+      "avgR": 0.559,
+      "exp": 37.98
+    },
+    {
+      "window": "10:00-13:00",
+      "trades": 73,
+      "pf": 2.087,
+      "sharpe": 4.1517,
+      "pnl": 2622.0,
+      "maxdd": 662.0,
+      "wr": 52.0,
+      "avgR": 0.521,
+      "exp": 35.92
+    }
+  ],
+  "param_stability_summary": {
+    "total_variations": 25,
+    "all_profitable": 25,
+    "pf_range": [
+      1.362,
+      2.182
+    ],
+    "sharpe_range": [
+      1.6199,
+      4.0508
+    ]
+  },
+  "monthly_summary": {
+    "total_months": 22,
+    "positive_months": 14,
+    "negative_months": 8,
+    "consistency_pct": 63.6
+  },
+  "drawdown": {
+    "max_drawdown": 826.0,
+    "max_drawdown_pct": 1.64
+  }
+}
