@@ -1,0 +1,5 @@
+strategy,asset,mode,trades,gross_pf,gross_sharpe,gross_pnl,gross_maxdd,gross_wr,gross_exp,net_pf,net_sharpe,net_pnl,net_maxdd,net_wr,net_exp,total_friction,pnl_impact,pnl_impact_pct,cost_per_trade
+PB-MGC-Short,MGC,short,28,2.02,4.176,767.0,283.0,57.1,27.39,1.853,3.677,676.28,283.0,53.6,24.15,90.72,-90.72,-11.8,3.24
+PB-MNQ-Long,MNQ,long,342,1.128,0.9804,1988.0,1951.0,46.2,5.81,1.077,0.6019,1221.92,2225.68,46.2,3.57,766.08,-766.08,-38.5,2.24
+ORB009-MGC-Long,MGC,long,106,1.987,3.6284,3022.0,826.0,51.9,28.51,1.83,3.2161,2678.56,964.04,50.9,25.27,343.44,-343.44,-11.4,3.24
+VWAP006-MES-Long,MES,long,572,1.212,1.3231,2878.75,1245.0,40.7,5.03,1.05,0.3409,739.47,1535.33,40.2,1.29,2139.28,-2139.28,-74.3,3.74
