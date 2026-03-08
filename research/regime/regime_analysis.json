@@ -1,0 +1,140 @@
+{
+  "ORB-009 MGC-Long": {
+    "regime_breakdown": [
+      {
+        "regime": "low",
+        "trades": 31,
+        "pf": 1.105,
+        "sharpe": 0.5817,
+        "pnl": 84.56,
+        "maxdd": 222.4,
+        "wr": 48.4,
+        "exp": 2.73,
+        "avg_pnl": 2.73,
+        "pct_of_trades": 29.2
+      },
+      {
+        "regime": "medium",
+        "trades": 66,
+        "pf": 2.048,
+        "sharpe": 4.0171,
+        "pnl": 2098.16,
+        "maxdd": 548.84,
+        "wr": 51.5,
+        "exp": 31.79,
+        "avg_pnl": 31.79,
+        "pct_of_trades": 62.3
+      },
+      {
+        "regime": "high",
+        "trades": 9,
+        "pf": 2.184,
+        "sharpe": 3.8404,
+        "pnl": 495.84,
+        "maxdd": 418.96,
+        "wr": 55.6,
+        "exp": 55.09,
+        "avg_pnl": 55.09,
+        "pct_of_trades": 8.5
+      }
+    ],
+    "ungated": {
+      "trades": 106,
+      "pf": 1.83,
+      "sharpe": 3.2161,
+      "pnl": 2678.56,
+      "maxdd": 933.04,
+      "wr": 50.9,
+      "exp": 25.27
+    },
+    "gated": {
+      "trades": 75,
+      "pf": 2.072,
+      "sharpe": 3.929,
+      "pnl": 2594.0,
+      "maxdd": 685.48,
+      "wr": 52.0,
+      "exp": 34.59
+    },
+    "gate_verdict": "BENEFICIAL",
+    "gated_bootstrap": {
+      "pf_ci": [
+        1.1093,
+        3.7398
+      ],
+      "sharpe_ci": [
+        0.6032,
+        6.9196
+      ]
+    }
+  },
+  "PB-MGC-Short": {
+    "regime_breakdown": [
+      {
+        "regime": "low",
+        "trades": 7,
+        "pf": 0.433,
+        "sharpe": -6.0309,
+        "pnl": -118.68,
+        "maxdd": 91.44,
+        "wr": 28.6,
+        "exp": -16.95,
+        "avg_pnl": -16.95,
+        "pct_of_trades": 25.0
+      },
+      {
+        "regime": "medium",
+        "trades": 21,
+        "pf": 2.361,
+        "sharpe": 5.2726,
+        "pnl": 794.96,
+        "maxdd": 233.48,
+        "wr": 61.9,
+        "exp": 37.86,
+        "avg_pnl": 37.86,
+        "pct_of_trades": 75.0
+      },
+      {
+        "regime": "high",
+        "trades": 0,
+        "pf": 0.0,
+        "sharpe": 0.0,
+        "pnl": 0.0,
+        "maxdd": 0.0,
+        "wr": 0.0,
+        "exp": 0.0,
+        "avg_pnl": 0.0,
+        "pct_of_trades": 0.0
+      }
+    ],
+    "ungated": {
+      "trades": 28,
+      "pf": 1.853,
+      "sharpe": 3.677,
+      "pnl": 676.28,
+      "maxdd": 233.48,
+      "wr": 53.6,
+      "exp": 24.15
+    },
+    "gated": {
+      "trades": 21,
+      "pf": 2.361,
+      "sharpe": 5.2726,
+      "pnl": 794.96,
+      "maxdd": 233.48,
+      "wr": 61.9,
+      "exp": 37.86
+    },
+    "gate_verdict": "BENEFICIAL",
+    "gated_bootstrap": {
+      "pf_ci": [
+        0.8356,
+        8.1536
+      ],
+      "sharpe_ci": [
+        -1.2081,
+        12.7234
+      ]
+    }
+  }
+}
