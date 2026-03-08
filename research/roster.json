@@ -115,7 +115,7 @@
       "risk_model": "atr",
       "exit_model": "trail",
       "desired_frequency": "medium",
-      "status": "in_progress",
+      "status": "validated",
       "current_version": "lucid-100k v6.3",
       "source_scripts": ["strategies/lucid-100k/lucid_v6_final.pine"],
       "victory_definition": {
@@ -130,7 +130,7 @@
           "Already has baseline: Lucid v6.3 trend pullback module"
         ]
       },
-      "notes": "Lucid v6.3 trend pullback module is the baseline. PB module extracted to strategies/pb_trend/."
+      "notes": "Lucid v6.3 trend pullback module is the baseline. PB module extracted to strategies/pb_trend/. Family formalized as ALGO-FAMILY-PB-001."
     },
     {
       "id": "ALGO-CORE-PB-MGC-001",
