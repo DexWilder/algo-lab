@@ -1,0 +1,30 @@
+{
+  "strategy_id": "vwap_rev",
+  "roster_target": "ALGO-CORE-VWAP-001-REV",
+  "name": "VWAP Reversion — Mean Reversion Engine",
+  "version": "0.1",
+  "origin": "Extracted from Lucid v6.3 (Algo 2 — reversion module)",
+  "status": "experimental",
+  "notes": "Produces very few signals (~6 total across 3 assets over 2 years). Compound condition stack is too restrictive. Needs threshold tuning or architectural rework.",
+  "timeframe": "5m",
+  "data_source": "databento",
+  "parameters": {
+    "rev_dist_atr": 1.2,
+    "rev_rsi_low": 40,
+    "rev_rsi_high": 60,
+    "rev_neutral_sep": 1.0,
+    "rev_adx_max": 25.0,
+    "vwap_flat_mult": 0.5,
+    "rej_wick_min": 0.4,
+    "sl_atr": 1.5,
+    "tp_atr": 2.1
+  },
+  "todo": [
+    "Relax rejection candle threshold (0.4 -> 0.3?) — biggest signal killer",
+    "Test without MTF filter — may over-constrain ranging conditions",
+    "Consider removing vwap_flat requirement — VWAP slope may be irrelevant for extension trades",
+    "Test on 3m timeframe — more bars may produce more signal overlap",
+    "Compare against simple Bollinger Band mean reversion as baseline",
+    "Evaluate whether regime gate (ADX < 25) is needed when other conditions already filter"
+  ]
+}

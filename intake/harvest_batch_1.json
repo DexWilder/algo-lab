@@ -1,0 +1,93 @@
+{
+  "batch_id": "harvest_batch_1",
+  "status": "prepared",
+  "created": "2026-03-07",
+  "description": "First strategy harvest — 60 TradingView scripts across 3 families",
+  "targets": [
+    {
+      "family": "ict",
+      "roster_target": "ALGO-CORE-ICT-001",
+      "count": 20,
+      "search_terms": [
+        "ICT liquidity sweep",
+        "fair value gap FVG",
+        "order block entry",
+        "ICT kill zone",
+        "displacement entry",
+        "liquidity grab",
+        "breaker block",
+        "ICT market structure shift",
+        "smart money concepts",
+        "ICT optimal trade entry"
+      ],
+      "filters": {
+        "must_have": ["futures compatible", "clear entry/exit rules", "no repaint"],
+        "prefer": ["backtestable", "uses alerts", "open source"],
+        "reject": ["indicator only", "no exit logic", "forex-only"]
+      }
+    },
+    {
+      "family": "orb",
+      "roster_target": "ALGO-CORE-ORB-001",
+      "count": 20,
+      "search_terms": [
+        "opening range breakout",
+        "ORB strategy",
+        "first 30 minute breakout",
+        "opening drive",
+        "initial balance breakout",
+        "gap and go",
+        "opening bar strategy",
+        "session open breakout",
+        "A period breakout",
+        "range expansion open"
+      ],
+      "filters": {
+        "must_have": ["futures compatible", "defined range period", "breakout trigger"],
+        "prefer": ["time-based exit", "ATR stops", "volume confirmation"],
+        "reject": ["stocks only", "no stop loss", "manual discretion required"]
+      }
+    },
+    {
+      "family": "vwap",
+      "roster_target": "ALGO-CORE-VWAP-001",
+      "count": 20,
+      "search_terms": [
+        "VWAP mean reversion",
+        "VWAP bounce",
+        "VWAP standard deviation bands",
+        "anchored VWAP strategy",
+        "VWAP pullback",
+        "VWAP cross strategy",
+        "volume weighted price reversion",
+        "VWAP extension trade",
+        "VWAP rejection",
+        "VWAP scalping strategy"
+      ],
+      "filters": {
+        "must_have": ["uses VWAP", "clear entry rules", "defined exits"],
+        "prefer": ["RSI confirmation", "volume filter", "session filter"],
+        "reject": ["indicator only", "no backtest logic", "crypto-only"]
+      }
+    }
+  ],
+  "pipeline": {
+    "status_flow": "raw → reviewed → cleaned → standardized → converted → backtested → validated",
+    "review_criteria": {
+      "testability": "Can this be backtested without discretion? (weight: 25%)",
+      "futures_fit": "Does this work on futures/micro futures? (weight: 20%)",
+      "prop_fit": "Compatible with prop firm rules? (weight: 20%)",
+      "clarity": "Are entry/exit rules clearly defined? (weight: 15%)",
+      "conversion_difficulty": "How hard to convert to Python? (weight: 10%)",
+      "diversification_potential": "Different from existing strategies? (weight: 10%)"
+    },
+    "rejection_criteria": [
+      "Repaint confirmed",
+      "No defined exit logic",
+      "Requires discretionary judgment",
+      "Duplicate of existing intake script",
+      "Indicator-only (no strategy logic)"
+    ]
+  },
+  "notes": "Do NOT begin harvesting until PB-MGC-001 evaluation is complete."
+}

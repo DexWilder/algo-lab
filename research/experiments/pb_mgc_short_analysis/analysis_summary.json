@@ -1,0 +1,107 @@
+{
+  "strategy": "PB Trend \u2014 Pullback (short-only)",
+  "roster_target": "ALGO-CORE-PB-MGC-001",
+  "asset": "MGC",
+  "mode": "short",
+  "data_source": "databento (GLBX.MDP3)",
+  "data_range": "2024-02-29 to 2026-03-06",
+  "trading_days": 596,
+  "performance": {
+    "profit_factor": 2.02,
+    "sharpe": 4.176,
+    "expectancy": 27.39,
+    "max_drawdown": 283.0,
+    "max_drawdown_pct": 0.56,
+    "win_rate": 0.5714,
+    "trade_count": 28,
+    "avg_R": 0.437,
+    "total_pnl": 767.0,
+    "roi_pct": 1.53,
+    "avg_win": 94.94,
+    "avg_loss": -62.67,
+    "best_trade": 290.0,
+    "worst_trade": -118.0,
+    "max_consecutive_wins": 3,
+    "max_consecutive_losses": 2,
+    "long_trades": 0,
+    "short_trades": 28,
+    "long_win_rate": 0,
+    "short_win_rate": 0.5714,
+    "gross_profit": 1519.0,
+    "gross_loss": -752.0,
+    "session_distribution": {
+      "8": 2,
+      "9": 11,
+      "10": 12,
+      "13": 1,
+      "14": 1,
+      "15": 1
+    },
+    "trading_days": 26,
+    "avg_trades_per_day": 1.08,
+    "symbol": "MGC",
+    "mode": "short"
+  },
+  "duration_stats": {
+    "mean_mins": 41.8,
+    "median_mins": 15.0,
+    "min_mins": 5.0,
+    "max_mins": 265.0,
+    "std_mins": 66.3,
+    "pct_under_30m": 78.6,
+    "pct_under_60m": 89.3,
+    "pct_over_120m": 10.7
+  },
+  "drawdown_clusters": [
+    {
+      "start_trade": 3,
+      "end_trade": 7,
+      "duration_trades": 4,
+      "max_dd": 227.0
+    },
+    {
+      "start_trade": 11,
+      "end_trade": 19,
+      "duration_trades": 8,
+      "max_dd": 160.0
+    },
+    {
+      "start_trade": 20,
+      "end_trade": 21,
+      "duration_trades": 1,
+      "max_dd": 77.0
+    },
+    {
+      "start_trade": 26,
+      "end_trade": 27,
+      "duration_trades": 1,
+      "max_dd": 125.0
+    }
+  ],
+  "monthly_summary": {
+    "total_months": 11,
+    "positive_months": 8,
+    "negative_months": 3,
+    "consistency_pct": 72.7,
+    "best_month": {
+      "month": "2026-03",
+      "trades": 2,
+      "pnl": 560.0,
+      "wins": 2,
+      "avg_pnl": 280.0,
+      "best": 290.0,
+      "worst": 270.0,
+      "wr": 100.0
+    },
+    "worst_month": {
+      "month": "2025-11",
+      "trades": 1,
+      "pnl": -94.0,
+      "wins": 0,
+      "avg_pnl": -94.0,
+      "best": -94.0,
+      "worst": -94.0,
+      "wr": 0.0
+    }
+  }
+}

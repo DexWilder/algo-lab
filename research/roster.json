@@ -130,7 +130,51 @@
           "Already has baseline: Lucid v6.3 trend pullback module"
         ]
       },
-      "notes": "Lucid v6.3 trend pullback module is the baseline. Needs Python conversion and standalone extraction."
+      "notes": "Lucid v6.3 trend pullback module is the baseline. PB module extracted to strategies/pb_trend/."
+    },
+    {
+      "id": "ALGO-CORE-PB-MGC-001",
+      "name": "PB Trend — MGC Short-Only",
+      "layer": "A",
+      "mission": "Gold-specific pullback trend-following on the short side",
+      "strategy_class": "trend",
+      "product_track": "Product 1 — Best Standalone Breakout Algo",
+      "target_assets": ["MGC"],
+      "target_timeframes": ["5m"],
+      "target_sessions": ["08:45-11:00 ET"],
+      "entry_model": "pullback_retrace",
+      "risk_model": "atr",
+      "exit_model": "bracket",
+      "desired_frequency": "low",
+      "status": "validated",
+      "current_version": "pb_trend v1.0",
+      "source_scripts": ["strategies/pb_trend/strategy.py"],
+      "baseline_results": {
+        "pf": 2.02,
+        "sharpe": 4.176,
+        "win_rate": 0.5714,
+        "total_pnl": 767.0,
+        "max_dd": 283.0,
+        "trade_count": 28,
+        "monthly_consistency": 0.727,
+        "data_range": "2024-02-29 to 2026-03-06"
+      },
+      "victory_definition": {
+        "summary": "Validated pullback short on MGC with PF > 1.5 and controlled drawdown",
+        "conditions": [
+          "PF > 1.5 sustained over 50+ trades",
+          "Monthly consistency > 60%",
+          "Max drawdown < $500",
+          "Positive expectancy > $20/trade",
+          "Sample size > 50 trades for statistical confidence"
+        ]
+      },
+      "risk_flags": [
+        "Small sample (28 trades) — below 50-trade threshold",
+        "March 2026 contributes 73% of total PnL",
+        "Low frequency — many months with zero activity"
+      ],
+      "notes": "First validated candidate from the lab. Extracted from Lucid v6.3 PB module. Needs extended data (4+ years) to confirm edge."
     },
     {
       "id": "PORT-PROP-MASTER-001",
