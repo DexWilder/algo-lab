@@ -38,5 +38,13 @@
     "description": "SL at prior swing high/low (structural level).",
     "parameters": {"swing_lookback": 20},
     "source_strategies": ["ICT-007", "ICT-010"]
+  },
+  {
+    "id": "RISK-DCA-001",
+    "name": "DCA / Position Averaging",
+    "category": "risk_model",
+    "description": "Dollar-cost average into losing position with max layers. Reduces avg entry but increases exposure.",
+    "parameters": {"max_layers": 3, "layer_spacing_pct": 0.005},
+    "source_strategies": ["ICT-011"]
   }
 ]

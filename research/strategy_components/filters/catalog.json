@@ -62,5 +62,29 @@
     "description": "Skip if opening range > N% of price (too volatile for reliable breakout).",
     "parameters": {"max_range_pct": 0.008},
     "source_strategies": ["BLOG-ORB-005"]
+  },
+  {
+    "id": "FILTER-SUPERTREND-001",
+    "name": "SuperTrend Confirmation",
+    "category": "filter",
+    "description": "Use SuperTrend indicator as trend confirmation filter to reject counter-trend entries.",
+    "parameters": {"atr_period": 10, "atr_mult": 3.0},
+    "source_strategies": ["ORB-015"]
+  },
+  {
+    "id": "FILTER-MINERVINI-001",
+    "name": "Minervini Trend Template",
+    "category": "filter",
+    "description": "Stage-2 uptrend qualification using Minervini criteria (50MA > 150MA > 200MA, etc.).",
+    "parameters": {"ma_stack": [50, 150, 200]},
+    "source_strategies": ["VWAP-017"]
+  },
+  {
+    "id": "FILTER-CYCLE-RN-001",
+    "name": "Cycle Zone / Round Number Detection",
+    "category": "filter",
+    "description": "Identify Full Cycle Zones from pivot lows and round-number psychological levels as confluence.",
+    "parameters": {"round_number_spacing": 100},
+    "source_strategies": ["VWAP-022"]
   }
 ]

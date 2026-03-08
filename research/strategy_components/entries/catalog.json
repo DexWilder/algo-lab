@@ -115,5 +115,41 @@
     "parameters": {"signal_sma": 20},
     "source_strategies": ["ORB-018"],
     "automation_fitness": 5
+  },
+  {
+    "id": "ENTRY-LADDER-001",
+    "name": "Laddered/Pyramid Entry",
+    "category": "entry",
+    "description": "Scale into position at multiple price levels to improve average entry price.",
+    "parameters": {"max_entries": 3, "spacing_pct": 0.01},
+    "source_strategies": ["VWAP-021"],
+    "automation_fitness": 4
+  },
+  {
+    "id": "ENTRY-TRENDLINE-001",
+    "name": "Trendline Breakout",
+    "category": "entry",
+    "description": "Detect swing-based trendline and enter on confirmed breakout with volume.",
+    "parameters": {"swing_lookback": 20, "require_volume": true},
+    "source_strategies": ["ICT-005"],
+    "automation_fitness": 4
+  },
+  {
+    "id": "ENTRY-OPEN-DRIVE-001",
+    "name": "Market Profile Open Drive",
+    "category": "entry",
+    "description": "Market-profile-inspired open drive detection from cash market open. 5-bar breakout threshold.",
+    "parameters": {"breakout_bars": 5, "hold_bars": 3},
+    "source_strategies": ["ORB-002"],
+    "automation_fitness": 4
+  },
+  {
+    "id": "ENTRY-CANDLE-PATTERN-001",
+    "name": "Candle Pattern Confirmation",
+    "category": "entry",
+    "description": "Enter on bullish/bearish candle patterns (hammer, engulfing, momentum) as confirmation layer.",
+    "parameters": {"patterns": ["hammer", "engulfing", "momentum"]},
+    "source_strategies": ["VWAP-008"],
+    "automation_fitness": 4
   }
 ]
