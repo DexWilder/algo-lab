@@ -1,0 +1,17 @@
+{
+  "strategy": "PB Trend v1.1",
+  "change": "Session window restricted to 09:30-10:30 ET",
+  "asset": "MGC",
+  "mode": "short",
+  "trades": 19,
+  "pf": 2.217,
+  "sharpe": 5.0672,
+  "pnl": 741.0,
+  "maxdd": 283.0,
+  "wr": 57.9,
+  "avgR": 0.512,
+  "exp": 39.0,
+  "monthly_positive": 6,
+  "monthly_total": 9,
+  "monthly_consistency": 66.7
+}

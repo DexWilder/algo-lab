@@ -1,0 +1,19 @@
+{
+  "variants": [
+    "PB-MGC-Short",
+    "PB-MNQ-Long",
+    "PB-MES-Short"
+  ],
+  "return_correlations": {
+    "PB-MGC-Short_vs_PB-MNQ-Long": -0.0013,
+    "PB-MGC-Short_vs_PB-MES-Short": -0.1005,
+    "PB-MNQ-Long_vs_PB-MES-Short": 0.0135
+  },
+  "combined_portfolio": {
+    "pnl": 3341.25,
+    "sharpe": 1.197,
+    "maxdd": 1949.5,
+    "active_days": 329,
+    "win_day_pct": 52.0
+  }
+}
