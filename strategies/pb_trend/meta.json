@@ -4,7 +4,7 @@
   "name": "PB Trend — Pullback Trend-Following",
   "version": "1.0",
   "origin": "Extracted from Lucid v6.3 (Algo 1 — pullback module)",
-  "status": "validated",
+  "status": "candidate_validated",
   "primary_asset": "MGC",
   "secondary_assets": ["MNQ", "MES"],
   "recommended_modes": {
