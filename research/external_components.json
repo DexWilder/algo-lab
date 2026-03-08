@@ -1,0 +1,326 @@
+[
+  {
+    "id": "COMP-ENTRY-001",
+    "category": "entry",
+    "name": "5-Minute Opening Range Breakout",
+    "description": "Capture high/low of first 5 minutes after market open. Enter long on close above range high, short on close below range low. Most academically validated ORB window for US markets (Zarattini 2024, IEEE TORB 2019).",
+    "source_strategy": "QC-ORB-001, RESEARCH-ORB-001, RESEARCH-ORB-002",
+    "family": "orb",
+    "automation_fitness": 5
+  },
+  {
+    "id": "COMP-ENTRY-002",
+    "category": "entry",
+    "name": "Dual Thrust Threshold Breakout",
+    "description": "Calculate upper/lower thresholds from previous day OHLC (not just today's range). Entry when price exceeds threshold. Reversal when price crosses to opposite threshold. More adaptive than fixed-range ORB because thresholds incorporate prior day volatility.",
+    "source_strategy": "GH-ORB-003",
+    "family": "orb",
+    "automation_fitness": 5
+  },
+  {
+    "id": "COMP-ENTRY-003",
+    "category": "entry",
+    "name": "Session Transition Breakout (London Breakout Pattern)",
+    "description": "Establish range during one session's final hour, trade breakout in next session's open. Exploits information arbitrage across time zones. Adaptable to pre-market/RTH transition for MES.",
+    "source_strategy": "GH-ORB-004",
+    "family": "orb",
+    "automation_fitness": 5
+  },
+  {
+    "id": "COMP-ENTRY-004",
+    "category": "entry",
+    "name": "4-Phase State Machine Pullback Entry",
+    "description": "SCANNING (6-layer validation: ATR, Angle, Price, Candle Direction, EMA Ordering, Time) -> ARMED (pullback confirmation 1-3 candles) -> WINDOW_OPEN (breakout window 1-20 bars with success/failure boundaries) -> ENTRY (ATR-based SL/TP). Prevents premature entries and provides systematic invalidation.",
+    "source_strategy": "GH-ORB-007",
+    "family": "orb",
+    "automation_fitness": 5
+  },
+  {
+    "id": "COMP-ENTRY-005",
+    "category": "entry",
+    "name": "VWAP + 2 StdDev Band Touch (Mean Reversion)",
+    "description": "Enter counter-trend when price touches or breaches VWAP +/- 2 standard deviation band. Long below lower band, short above upper band. Classic statistical mean reversion entry.",
+    "source_strategy": "FMZ-VWAP-001, GH-VWAP-002",
+    "family": "vwap",
+    "automation_fitness": 5
+  },
+  {
+    "id": "COMP-ENTRY-006",
+    "category": "entry",
+    "name": "VWAP Band + OBV-RSI Dual Confirmation",
+    "description": "Require BOTH price at VWAP deviation band AND OBV-RSI in oversold/overbought territory (<=30 or >=70). Dual confirmation dramatically reduces false signals by requiring both price AND volume-momentum extremes.",
+    "source_strategy": "FMZ-VWAP-002",
+    "family": "vwap",
+    "automation_fitness": 5
+  },
+  {
+    "id": "COMP-ENTRY-007",
+    "category": "entry",
+    "name": "Z-Score Threshold Entry (Half-Life Calibrated)",
+    "description": "Enter when z-score exceeds threshold (typically 1.8 StdDev). Window for standard deviation calculation calibrated to k * half-life of mean reversion (e.g., half-life=20 -> window=60-80). Prevents arbitrary parameter selection.",
+    "source_strategy": "GH-VWAP-003, GH-VWAP-004",
+    "family": "vwap",
+    "automation_fitness": 5
+  },
+  {
+    "id": "COMP-ENTRY-008",
+    "category": "entry",
+    "name": "FVG Fill Entry (ICT)",
+    "description": "Identify Fair Value Gap (bullish: prev high < next low; bearish: prev low > next high). Enter when price returns to fill the gap zone. Requires directional confirmation via BOS/CHoCH.",
+    "source_strategy": "GH-ICT-001, BLOG-ICT-002",
+    "family": "ict",
+    "automation_fitness": 4
+  },
+  {
+    "id": "COMP-ENTRY-009",
+    "category": "entry",
+    "name": "Order Block Retest Entry (ICT)",
+    "description": "Identify Order Block (final accumulation/distribution candle before institutional move, measured by volume + 2 adjacent volumes). Enter on price retest of OB zone. OB strength measured by percentage metric.",
+    "source_strategy": "GH-ICT-001, BLOG-ICT-002",
+    "family": "ict",
+    "automation_fitness": 4
+  },
+  {
+    "id": "COMP-ENTRY-010",
+    "category": "entry",
+    "name": "Liquidity Sweep Entry (ICT)",
+    "description": "Detect liquidity zones (multiple highs/lows clustered in small range). Enter after price sweeps through liquidity level and reverses. Liquidity detection returns level, direction, end index, and sweep candle index.",
+    "source_strategy": "GH-ICT-001",
+    "family": "ict",
+    "automation_fitness": 4
+  },
+  {
+    "id": "COMP-ENTRY-011",
+    "category": "entry",
+    "name": "Triple Indicator Confirmation (VWAP + EMA Stack + RSI)",
+    "description": "Require all three: price above/below VWAP (trend), EMA stack ordered (9>20>50 for long), RSI crossing 50. Enter on 9 EMA crossing VWAP with confirmation. High-conviction entry with low frequency.",
+    "source_strategy": "BLOG-VWAP-003, GH-VWAP-001",
+    "family": "vwap",
+    "automation_fitness": 5
+  },
+  {
+    "id": "COMP-ENTRY-012",
+    "category": "entry",
+    "name": "Rolling Window Breakout (Multi-Period)",
+    "description": "Long when price > N-bar high, short when price < N-bar low. Combine multiple window sizes (80, 160, 320 bars) for diversification. Signal smoothed with lookback = window/4. Sharpe ~0.77-0.79 per window.",
+    "source_strategy": "GH-TREND-001",
+    "family": "orb",
+    "automation_fitness": 5
+  },
+  {
+    "id": "COMP-EXIT-001",
+    "category": "exit",
+    "name": "ATR-Based Stop Loss (10% of 14-day ATR)",
+    "description": "Stop loss placed at 10% of the 14-day ATR from entry price. Tight enough to limit losses, wide enough to avoid noise stops. Validated on 7000+ stocks (Zarattini 2024).",
+    "source_strategy": "QC-ORB-001, RESEARCH-ORB-002",
+    "family": "orb",
+    "automation_fitness": 5
+  },
+  {
+    "id": "COMP-EXIT-002",
+    "category": "exit",
+    "name": "EOD Flat (Time-Based Close)",
+    "description": "Close all positions at end of trading session regardless of P&L. Eliminates overnight risk. Standard for intraday ORB and mean reversion strategies.",
+    "source_strategy": "QC-ORB-001, GH-ORB-003, FMZ-VWAP-001",
+    "family": "orb",
+    "automation_fitness": 5
+  },
+  {
+    "id": "COMP-EXIT-003",
+    "category": "exit",
+    "name": "VWAP Reversion Exit",
+    "description": "Exit when price reverts to VWAP baseline after entering on deviation band touch. Primary profit target for mean reversion strategies. Can be combined with fixed stop loss (0.6% typical).",
+    "source_strategy": "FMZ-VWAP-001, FMZ-VWAP-002",
+    "family": "vwap",
+    "automation_fitness": 5
+  },
+  {
+    "id": "COMP-EXIT-004",
+    "category": "exit",
+    "name": "Asymmetric StdDev Exit",
+    "description": "Enter at 1.8 StdDev, exit at -1.2 StdDev (for longs). Asymmetric thresholds capture most of the reversion move without waiting for full mean reversion. Based on Ernest Chan methodology.",
+    "source_strategy": "GH-VWAP-003",
+    "family": "vwap",
+    "automation_fitness": 5
+  },
+  {
+    "id": "COMP-EXIT-005",
+    "category": "exit",
+    "name": "1.5x ATR Trailing Stop",
+    "description": "Trailing stop set at 1.5 times the current ATR. Adapts to volatility. Conservative enough for prop-safe trading. Used in VWAP scalping and trend-following contexts.",
+    "source_strategy": "BLOG-VWAP-003",
+    "family": "vwap",
+    "automation_fitness": 5
+  },
+  {
+    "id": "COMP-EXIT-006",
+    "category": "exit",
+    "name": "Opposite Breakout Signal (Reversal Exit)",
+    "description": "Exit (and optionally reverse) when price triggers the opposite breakout threshold. Used in Dual Thrust and N-bar breakout systems. Always in market - reduces missed moves but increases whipsaw risk.",
+    "source_strategy": "GH-ORB-003, GH-TREND-001",
+    "family": "orb",
+    "automation_fitness": 5
+  },
+  {
+    "id": "COMP-EXIT-007",
+    "category": "exit",
+    "name": "State Machine Failure Boundary",
+    "description": "If breakout window (1-20 bars) expires without hitting success boundary, reset to SCANNING state. No trade taken. Prevents forcing entries in ambiguous price action.",
+    "source_strategy": "GH-ORB-007",
+    "family": "orb",
+    "automation_fitness": 5
+  },
+  {
+    "id": "COMP-EXIT-008",
+    "category": "exit",
+    "name": "Fixed Stop + Mean Reversion Dual Exit",
+    "description": "Combine hard stop loss (0.6% or fixed point distance) with VWAP reversion target. Whichever hits first determines exit. Protects against trend continuation while allowing reversion profit.",
+    "source_strategy": "FMZ-VWAP-002",
+    "family": "vwap",
+    "automation_fitness": 5
+  },
+  {
+    "id": "COMP-FILTER-001",
+    "category": "filter",
+    "name": "Stocks in Play / Abnormal Volume Filter",
+    "description": "Only trade instruments showing abnormally high pre-market or early-session volume relative to average. This IS the edge in ORB - raw ORB without this filter shows 0.04% avg gain (essentially zero). For futures: use volume spike detection at session open.",
+    "source_strategy": "QC-ORB-001, RESEARCH-ORB-002, BLOG-ORB-008",
+    "family": "orb",
+    "automation_fitness": 5
+  },
+  {
+    "id": "COMP-FILTER-002",
+    "category": "filter",
+    "name": "Maximum Range Size Gate",
+    "description": "No trade if opening range exceeds 0.8% of price. Prevents entering on already-volatile days where range has used up most of the daily move. Simple but effective volatility gate.",
+    "source_strategy": "BLOG-ORB-005",
+    "family": "orb",
+    "automation_fitness": 5
+  },
+  {
+    "id": "COMP-FILTER-003",
+    "category": "filter",
+    "name": "Day-of-Week Filter",
+    "description": "Exclude specific days of the week that historically underperform for the strategy. Requires periodic recalibration. Simple edge that compounds over time.",
+    "source_strategy": "BLOG-ORB-005",
+    "family": "orb",
+    "automation_fitness": 5
+  },
+  {
+    "id": "COMP-FILTER-004",
+    "category": "filter",
+    "name": "6-Layer Entry Validation (ATR/Angle/Price/Candle/EMA/Time)",
+    "description": "Validate six conditions before arming entry: ATR within acceptable range, price slope angle sufficient, price at correct level, candle direction confirms, EMA ordering correct, time window valid. All six must pass.",
+    "source_strategy": "GH-ORB-007",
+    "family": "orb",
+    "automation_fitness": 5
+  },
+  {
+    "id": "COMP-FILTER-005",
+    "category": "filter",
+    "name": "OBV-RSI Extreme Filter (<=30 or >=70)",
+    "description": "Only take mean reversion entries when OBV-RSI (RSI applied to On-Balance Volume) reaches extreme levels. Confirms that volume is supporting the reversion hypothesis, not just price.",
+    "source_strategy": "FMZ-VWAP-002",
+    "family": "vwap",
+    "automation_fitness": 5
+  },
+  {
+    "id": "COMP-FILTER-006",
+    "category": "filter",
+    "name": "CTI (Commodity Trend Index) < -0.8",
+    "description": "Require CTI below -0.8 for long entries. CTI measures trend strength - values below -0.8 indicate countertrend exhaustion. Reduces false mean reversion signals in trending markets.",
+    "source_strategy": "GH-VWAP-002",
+    "family": "vwap",
+    "automation_fitness": 4
+  },
+  {
+    "id": "COMP-FILTER-007",
+    "category": "filter",
+    "name": "Stationarity Test (ADF) Pre-Filter",
+    "description": "Run Augmented Dickey-Fuller test on price series before deploying mean reversion strategy. Only trade instruments/periods that pass stationarity test. Academically rigorous but computationally expensive for real-time.",
+    "source_strategy": "GH-VWAP-003",
+    "family": "vwap",
+    "automation_fitness": 3
+  },
+  {
+    "id": "COMP-FILTER-008",
+    "category": "filter",
+    "name": "BOS/CHoCH Directional Confirmation (ICT)",
+    "description": "Require Break of Structure or Change of Character alignment before taking FVG/OB entries. BOS confirms existing trend continuation, CHoCH identifies trend reversal. Prevents fighting institutional flow.",
+    "source_strategy": "GH-ICT-001, BLOG-ICT-002",
+    "family": "ict",
+    "automation_fitness": 4
+  },
+  {
+    "id": "COMP-FILTER-009",
+    "category": "filter",
+    "name": "Multi-Timeframe Structure Alignment (ICT)",
+    "description": "Confirm higher-timeframe structure direction before taking lower-timeframe entries. Used in ICT 2022 model to ensure trades align with institutional order flow on daily/4H before entering on 15M/5M.",
+    "source_strategy": "BLOG-ICT-002",
+    "family": "ict",
+    "automation_fitness": 4
+  },
+  {
+    "id": "COMP-FILTER-010",
+    "category": "filter",
+    "name": "5-Minute Close Confirmation (No Wick-Only Breaks)",
+    "description": "Require a 5-minute candle CLOSE outside the range, not just a wick. Eliminates false breakouts from spike wicks. If first 5-min candle closes back inside range, no trade that day.",
+    "source_strategy": "BLOG-ORB-005",
+    "family": "orb",
+    "automation_fitness": 5
+  },
+  {
+    "id": "COMP-FILTER-011",
+    "category": "filter",
+    "name": "Daily Bar Filter (Higher Timeframe Trend)",
+    "description": "Add one daily-timeframe condition to intraday ORB. Exact filter varies but dramatically improved raw ORB results from near-zero to tradeable edge per QuantifiedStrategies live trading.",
+    "source_strategy": "BLOG-ORB-008",
+    "family": "orb",
+    "automation_fitness": 5
+  },
+  {
+    "id": "COMP-SESSION-001",
+    "category": "session",
+    "name": "NY Open Only (9:30-10:00 AM ET)",
+    "description": "Establish opening range during first 5-30 minutes of NY session. Most volume and institutional activity occurs at open. Used by most ORB strategies.",
+    "source_strategy": "QC-ORB-001, BLOG-ORB-005, BLOG-ORB-008",
+    "family": "orb",
+    "automation_fitness": 5
+  },
+  {
+    "id": "COMP-SESSION-002",
+    "category": "session",
+    "name": "London Open (3:00-3:30 AM ET / GMT 7:00-8:00 AM)",
+    "description": "Last hour before London market open used as range-setting period. Breakout traded at London open. Captures Asian-to-London session transition volatility.",
+    "source_strategy": "GH-ORB-004, BLOG-ICT-002",
+    "family": "orb",
+    "automation_fitness": 5
+  },
+  {
+    "id": "COMP-SESSION-003",
+    "category": "session",
+    "name": "London Close (10:30 AM GMT)",
+    "description": "ICT 2022 model secondary session. Institutional activity at London close creates FVG/OB setups. Used as alternative entry window when London Open doesn't trigger.",
+    "source_strategy": "BLOG-ICT-002",
+    "family": "ict",
+    "automation_fitness": 4
+  },
+  {
+    "id": "COMP-SESSION-004",
+    "category": "session",
+    "name": "Full Intraday (RTH Only, EOD Flat)",
+    "description": "Trade only during Regular Trading Hours. Mandatory flat by session close. Eliminates overnight gap risk. Standard for all prop trading strategies.",
+    "source_strategy": "QC-ORB-001, GH-ORB-003, FMZ-VWAP-001",
+    "family": "orb",
+    "automation_fitness": 5
+  },
+  {
+    "id": "COMP-SESSION-005",
+    "category": "session",
+    "name": "Multi-Session Detection (Sydney/Tokyo/London/NY)",
+    "description": "Smart Money Concepts library can mark specific trading session boundaries. Enables session-aware strategies that behave differently across global sessions.",
+    "source_strategy": "GH-ICT-001",
+    "family": "ict",
+    "automation_fitness": 5
+  }
+]

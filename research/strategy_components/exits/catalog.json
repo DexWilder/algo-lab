@@ -1,0 +1,82 @@
+[
+  {
+    "id": "EXIT-ATR-TRAIL-001",
+    "name": "ATR Trailing Stop",
+    "category": "exit",
+    "description": "Trailing stop at Nx ATR from highest/lowest point since entry.",
+    "parameters": {"atr_mult": 3.5, "atr_period": 14},
+    "source_strategies": ["ORB-006", "VWAP-020"]
+  },
+  {
+    "id": "EXIT-FIXED-RR-001",
+    "name": "Fixed R:R Bracket",
+    "category": "exit",
+    "description": "Fixed risk-reward ratio. SL and TP set at entry time.",
+    "parameters": {"rr_ratio": 2.0},
+    "source_strategies": ["ORB-007", "ORB-008", "ORB-014", "ICT-002"]
+  },
+  {
+    "id": "EXIT-PARTIAL-001",
+    "name": "Partial Profit (50% at Threshold)",
+    "category": "exit",
+    "description": "Close 50% of position at configurable profit threshold, hold remainder.",
+    "parameters": {"partial_pct": 0.5, "trigger_pct": 0.03},
+    "source_strategies": ["ORB-006"]
+  },
+  {
+    "id": "EXIT-3TARGET-001",
+    "name": "3-Level TP System",
+    "category": "exit",
+    "description": "Three take-profit levels: TP1 (60%), TP2 (120%), TP3 (200%) of target distance.",
+    "parameters": {"tp1_mult": 0.6, "tp2_mult": 1.2, "tp3_mult": 2.0},
+    "source_strategies": ["ORB-013", "VWAP-009"]
+  },
+  {
+    "id": "EXIT-EOD-001",
+    "name": "End-of-Day Session Flatten",
+    "category": "exit",
+    "description": "Force-close all positions at session end (3:15 PM ET).",
+    "parameters": {"flatten_time": "15:15 ET"},
+    "source_strategies": ["ORB-001", "ORB-004", "ORB-006", "ORB-014"]
+  },
+  {
+    "id": "EXIT-VWAP-RETURN-001",
+    "name": "VWAP Center Reversion Exit",
+    "category": "exit",
+    "description": "Exit when price returns to VWAP center line.",
+    "parameters": {},
+    "source_strategies": ["VWAP-001", "VWAP-004", "VWAP-007", "FMZ-VWAP-001"]
+  },
+  {
+    "id": "EXIT-MA-CROSSBACK-001",
+    "name": "MA Crossback Exit",
+    "category": "exit",
+    "description": "Exit when MA crosses back (trend reversal signal).",
+    "parameters": {"ma_period": 20},
+    "source_strategies": ["ORB-007", "ORB-011"]
+  },
+  {
+    "id": "EXIT-RSI-EXTREME-001",
+    "name": "RSI Extreme Exit",
+    "category": "exit",
+    "description": "Exit at RSI overbought/oversold threshold.",
+    "parameters": {"exit_level": 90},
+    "source_strategies": ["VWAP-012", "VWAP-013"]
+  },
+  {
+    "id": "EXIT-BE-ADJUST-001",
+    "name": "Breakeven Adjustment",
+    "category": "exit",
+    "description": "Move SL to breakeven when price reaches 50% of TP distance.",
+    "parameters": {"trigger_pct": 0.5},
+    "source_strategies": ["ORB-009", "ORB-010"]
+  },
+  {
+    "id": "EXIT-TREND-REVERSAL-001",
+    "name": "Cut-and-Reverse (Opposite Signal)",
+    "category": "exit",
+    "description": "Exit on opposite entry signal, immediately reverse position.",
+    "parameters": {},
+    "source_strategies": ["VWAP-010", "ICT-003"]
+  }
+]

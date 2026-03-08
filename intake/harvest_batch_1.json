@@ -1,24 +1,64 @@
 {
   "batch_id": "harvest_batch_1",
-  "status": "prepared",
+  "status": "complete",
+  "completed": "2026-03-07",
   "created": "2026-03-07",
-  "description": "First strategy harvest — 60 TradingView scripts across 3 families",
+  "started": "2026-03-07",
+  "description": "First strategy harvest — 60+ candidates across 3 families from multiple sources",
+  "sources": [
+    {
+      "id": "tradingview",
+      "name": "TradingView Pine Script Community",
+      "type": "script_library",
+      "priority": "primary"
+    },
+    {
+      "id": "github",
+      "name": "GitHub algorithmic trading repositories",
+      "type": "code_repository",
+      "priority": "primary"
+    },
+    {
+      "id": "quantconnect",
+      "name": "QuantConnect community algorithms",
+      "type": "algorithm_library",
+      "priority": "secondary"
+    },
+    {
+      "id": "quantpedia",
+      "name": "Quantpedia / academic strategy summaries",
+      "type": "research",
+      "priority": "secondary"
+    },
+    {
+      "id": "freqtrade",
+      "name": "Freqtrade open strategy library",
+      "type": "code_repository",
+      "priority": "secondary"
+    },
+    {
+      "id": "backtrader",
+      "name": "Backtrader community strategies",
+      "type": "code_repository",
+      "priority": "secondary"
+    },
+    {
+      "id": "blogs",
+      "name": "Quant research blogs and writeups",
+      "type": "research",
+      "priority": "tertiary"
+    }
+  ],
   "targets": [
     {
       "family": "ict",
       "roster_target": "ALGO-CORE-ICT-001",
       "count": 20,
       "search_terms": [
-        "ICT liquidity sweep",
-        "fair value gap FVG",
-        "order block entry",
-        "ICT kill zone",
-        "displacement entry",
-        "liquidity grab",
-        "breaker block",
-        "ICT market structure shift",
-        "smart money concepts",
-        "ICT optimal trade entry"
+        "ICT liquidity sweep", "fair value gap FVG", "order block entry",
+        "ICT kill zone", "displacement entry", "liquidity grab",
+        "breaker block", "ICT market structure shift",
+        "smart money concepts", "ICT optimal trade entry"
       ],
       "filters": {
         "must_have": ["futures compatible", "clear entry/exit rules", "no repaint"],
@@ -31,16 +71,10 @@
       "roster_target": "ALGO-CORE-ORB-001",
       "count": 20,
       "search_terms": [
-        "opening range breakout",
-        "ORB strategy",
-        "first 30 minute breakout",
-        "opening drive",
-        "initial balance breakout",
-        "gap and go",
-        "opening bar strategy",
-        "session open breakout",
-        "A period breakout",
-        "range expansion open"
+        "opening range breakout", "ORB strategy", "first 30 minute breakout",
+        "opening drive", "initial balance breakout", "gap and go",
+        "opening bar strategy", "session open breakout",
+        "A period breakout", "range expansion open"
       ],
       "filters": {
         "must_have": ["futures compatible", "defined range period", "breakout trigger"],
@@ -53,16 +87,10 @@
       "roster_target": "ALGO-CORE-VWAP-001",
       "count": 20,
       "search_terms": [
-        "VWAP mean reversion",
-        "VWAP bounce",
-        "VWAP standard deviation bands",
-        "anchored VWAP strategy",
-        "VWAP pullback",
-        "VWAP cross strategy",
-        "volume weighted price reversion",
-        "VWAP extension trade",
-        "VWAP rejection",
-        "VWAP scalping strategy"
+        "VWAP mean reversion", "VWAP bounce", "VWAP standard deviation bands",
+        "anchored VWAP strategy", "VWAP pullback", "VWAP cross strategy",
+        "volume weighted price reversion", "VWAP extension trade",
+        "VWAP rejection", "VWAP scalping strategy"
       ],
       "filters": {
         "must_have": ["uses VWAP", "clear entry rules", "defined exits"],
@@ -74,20 +102,50 @@
   "pipeline": {
     "status_flow": "raw → reviewed → cleaned → standardized → converted → backtested → validated",
     "review_criteria": {
-      "testability": "Can this be backtested without discretion? (weight: 25%)",
-      "futures_fit": "Does this work on futures/micro futures? (weight: 20%)",
-      "prop_fit": "Compatible with prop firm rules? (weight: 20%)",
-      "clarity": "Are entry/exit rules clearly defined? (weight: 15%)",
+      "testability": "Can this be backtested without discretion? (weight: 20%)",
+      "futures_fit": "Does this work on futures/micro futures? (weight: 15%)",
+      "prop_fit": "Compatible with prop firm rules? (weight: 15%)",
+      "clarity": "Are entry/exit rules clearly defined? (weight: 10%)",
       "conversion_difficulty": "How hard to convert to Python? (weight: 10%)",
-      "diversification_potential": "Different from existing strategies? (weight: 10%)"
+      "diversification_potential": "Different from existing strategies? (weight: 10%)",
+      "automation_fitness": "Can this run unattended without ambiguity? (weight: 20%)"
+    },
+    "automation_fitness_scoring": {
+      "description": "7-dimension score for automation readiness",
+      "dimensions": [
+        "deterministic_entries: Entry rules produce same signal given same data",
+        "deterministic_exits: Exit rules are fixed (ATR, time, level), not discretionary",
+        "no_discretion: No human interpretation needed at any step",
+        "session_clarity: Clear session start/end, no ambiguous timing",
+        "fixed_stop_target: Stop and target levels are computable at entry time",
+        "no_repaint: Signals use only confirmed/closed bar data",
+        "order_compatible: Executable with market/limit/stop orders only"
+      ],
+      "scoring": "Each dimension: 0 (fail) or 1 (pass). Total 0-7. Score >= 5 = automation-ready."
     },
     "rejection_criteria": [
       "Repaint confirmed",
       "No defined exit logic",
       "Requires discretionary judgment",
       "Duplicate of existing intake script",
-      "Indicator-only (no strategy logic)"
+      "Indicator-only (no strategy logic)",
+      "Automation fitness < 3"
     ]
   },
-  "notes": "Do NOT begin harvesting until PB-MGC-001 evaluation is complete."
+  "component_extraction": {
+    "enabled": true,
+    "categories": ["entries", "filters", "exits", "risk_models", "session_models"],
+    "output_dir": "research/strategy_components/",
+    "notes": "Extract reusable building blocks from every harvested strategy, even rejected ones. Components can be recombined into new strategies."
+  },
+  "report_requirements": [
+    "candidates_collected",
+    "rejected_scripts",
+    "top_automation_ready_strategies",
+    "extracted_components",
+    "unique_entry_logic_discovered",
+    "top_10_automation_ready",
+    "top_10_unique_entries",
+    "top_10_exit_models"
+  ]
 }

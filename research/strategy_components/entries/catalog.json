@@ -1,0 +1,119 @@
+[
+  {
+    "id": "ENTRY-VWAP-BAND-001",
+    "name": "VWAP StdDev Band Touch",
+    "category": "entry",
+    "description": "Enter when price touches/crosses VWAP standard deviation band and reverses. Mean reversion entry.",
+    "parameters": {"band_mult": 2.0, "direction": "mean_reversion"},
+    "source_strategies": ["VWAP-001", "VWAP-004", "VWAP-005", "VWAP-007", "FMZ-VWAP-001"],
+    "automation_fitness": 5
+  },
+  {
+    "id": "ENTRY-VWAP-RSI-001",
+    "name": "VWAP + RSI Pullback",
+    "category": "entry",
+    "description": "RSI(3) oversold/overbought with VWAP directional filter and EMA trend confirmation.",
+    "parameters": {"rsi_period": 3, "rsi_low": 30, "rsi_high": 70},
+    "source_strategies": ["VWAP-006", "VWAP-013"],
+    "automation_fitness": 5
+  },
+  {
+    "id": "ENTRY-VWAP-CROSS-001",
+    "name": "EMA/VWAP Crossover",
+    "category": "entry",
+    "description": "Enter when EMA crosses above/below VWAP with trend confirmation.",
+    "parameters": {"ema_period": 9, "require_slope": true},
+    "source_strategies": ["VWAP-010", "VWAP-018", "VWAP-020"],
+    "automation_fitness": 5
+  },
+  {
+    "id": "ENTRY-VWAP-RECLAIM-001",
+    "name": "VWAP Reclaim + Pullback Hold",
+    "category": "entry",
+    "description": "Enter when price reclaims VWAP, pulls back to hold it, with EMA stack (5/8/13) confirmation.",
+    "parameters": {"ema_stack": [5, 8, 13]},
+    "source_strategies": ["VWAP-023"],
+    "automation_fitness": 4
+  },
+  {
+    "id": "ENTRY-VWAP-OBVRS-001",
+    "name": "VWAP Band + OBV-RSI Dual Confirmation",
+    "category": "entry",
+    "description": "Enter when price at VWAP band extreme AND OBV-RSI at oversold/overbought. Dual confirmation.",
+    "parameters": {"band_mult": 2.0, "obv_rsi_low": 30, "obv_rsi_high": 70},
+    "source_strategies": ["FMZ-VWAP-002"],
+    "automation_fitness": 5
+  },
+  {
+    "id": "ENTRY-RSIVWAP-001",
+    "name": "RSI Calculated on VWAP Source",
+    "category": "entry",
+    "description": "RSI where source is VWAP instead of close price. Different signal timing than standard RSI.",
+    "parameters": {"rsi_period": 14, "rsi_source": "vwap"},
+    "source_strategies": ["VWAP-012", "VWAP-021"],
+    "automation_fitness": 5
+  },
+  {
+    "id": "ENTRY-ORB-BREAK-001",
+    "name": "Opening Range Breakout (Classic)",
+    "category": "entry",
+    "description": "Enter when price closes above/below opening range high/low.",
+    "parameters": {"range_minutes": 30, "trigger": "close"},
+    "source_strategies": ["ORB-001", "ORB-004", "ORB-005", "ORB-013", "ORB-017"],
+    "automation_fitness": 5
+  },
+  {
+    "id": "ENTRY-ORB-RETEST-001",
+    "name": "ORB Breakout with Retest Confirmation",
+    "category": "entry",
+    "description": "Full candle outside OR + optional pullback retest before entry. Reduces false breakouts.",
+    "parameters": {"range_minutes": 15, "require_retest": true},
+    "source_strategies": ["ORB-008", "ORB-014"],
+    "automation_fitness": 5
+  },
+  {
+    "id": "ENTRY-ORB-FILTER-001",
+    "name": "ORB + Triple Filter (VWAP/Volume/Candle)",
+    "category": "entry",
+    "description": "ORB breakout gated by VWAP slope, volume threshold, and candle strength (close in top/bottom 30%).",
+    "parameters": {"vwap_slope": true, "vol_mult": 1.5, "candle_strength": 0.3},
+    "source_strategies": ["ORB-009", "ORB-010"],
+    "automation_fitness": 5
+  },
+  {
+    "id": "ENTRY-ICT-SWEEP-001",
+    "name": "Liquidity Sweep Reversal",
+    "category": "entry",
+    "description": "Detect stop hunt at swing high/low (wick beyond, close inside), enter reversal.",
+    "parameters": {"swing_lookback": 20, "require_volume": true},
+    "source_strategies": ["ICT-002", "ICT-003", "ICT-007", "ICT-008"],
+    "automation_fitness": 5
+  },
+  {
+    "id": "ENTRY-ICT-FVG-001",
+    "name": "FVG Mitigation Depth Entry",
+    "category": "entry",
+    "description": "Detect Fair Value Gap, enter when price penetrates FVG box to configurable mitigation depth.",
+    "parameters": {"mitigation_pct": 0.5, "max_age_bars": 20},
+    "source_strategies": ["ICT-009", "ICT-013"],
+    "automation_fitness": 5
+  },
+  {
+    "id": "ENTRY-ICT-SESSBIAS-001",
+    "name": "Session Sweep → Bias → Pullback",
+    "category": "entry",
+    "description": "Wait for session range high/low sweep to determine bias, enter on pullback retracement.",
+    "parameters": {"bias_deadline": "11:15 EST", "entry_via": "pullback"},
+    "source_strategies": ["ICT-010"],
+    "automation_fitness": 5
+  },
+  {
+    "id": "ENTRY-GAP-MOM-001",
+    "name": "Cumulative Gap Momentum",
+    "category": "entry",
+    "description": "Cumulative gap series (like OBV but for open gaps) with SMA signal line. Long when rising.",
+    "parameters": {"signal_sma": 20},
+    "source_strategies": ["ORB-018"],
+    "automation_fitness": 5
+  }
+]

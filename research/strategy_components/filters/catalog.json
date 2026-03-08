@@ -1,0 +1,66 @@
+[
+  {
+    "id": "FILTER-EMA-TREND-001",
+    "name": "Multi-EMA Trend Alignment",
+    "category": "filter",
+    "description": "Require EMA stack alignment (e.g., 200/50/13 all pointing same direction).",
+    "parameters": {"emas": [200, 50, 13]},
+    "source_strategies": ["ORB-008", "VWAP-013"]
+  },
+  {
+    "id": "FILTER-VWAP-FLAT-001",
+    "name": "VWAP Flat/Chop Detector",
+    "category": "filter",
+    "description": "Skip entries when VWAP slope is flat (range-bound market detection).",
+    "parameters": {"slope_threshold": 0.001},
+    "source_strategies": ["VWAP-020"]
+  },
+  {
+    "id": "FILTER-VOL-AVG-001",
+    "name": "Volume Above Average",
+    "category": "filter",
+    "description": "Only enter when current bar volume exceeds Nx moving average volume.",
+    "parameters": {"vol_mult": 1.5, "vol_ma_period": 20},
+    "source_strategies": ["ORB-009", "ORB-010", "ICT-008"]
+  },
+  {
+    "id": "FILTER-SESSION-001",
+    "name": "Session Time Window Gate",
+    "category": "filter",
+    "description": "Only allow entries during specific session windows.",
+    "parameters": {"windows": ["09:30-11:00 ET"]},
+    "source_strategies": ["VWAP-006", "VWAP-008", "ORB-007"]
+  },
+  {
+    "id": "FILTER-CANDLE-STRENGTH-001",
+    "name": "Candle Close Strength",
+    "category": "filter",
+    "description": "Only enter if candle closes in top/bottom N% of its range (strong close).",
+    "parameters": {"strength_pct": 0.3},
+    "source_strategies": ["ORB-009"]
+  },
+  {
+    "id": "FILTER-MAXTRADES-001",
+    "name": "Max Trades Per Day",
+    "category": "filter",
+    "description": "Limit maximum number of entries per session.",
+    "parameters": {"max_trades": 2},
+    "source_strategies": ["ORB-001", "ORB-004"]
+  },
+  {
+    "id": "FILTER-CONFIDENCE-001",
+    "name": "Multi-Factor Confidence Score",
+    "category": "filter",
+    "description": "Composite score from HTF analysis, market structure, session quality, volatility, volume profile.",
+    "parameters": {"min_score": 500, "max_score": 975},
+    "source_strategies": ["VWAP-009"]
+  },
+  {
+    "id": "FILTER-ORB-MAXRANGE-001",
+    "name": "Max Opening Range Size",
+    "category": "filter",
+    "description": "Skip if opening range > N% of price (too volatile for reliable breakout).",
+    "parameters": {"max_range_pct": 0.008},
+    "source_strategies": ["BLOG-ORB-005"]
+  }
+]

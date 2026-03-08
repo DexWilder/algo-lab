@@ -1,0 +1,42 @@
+[
+  {
+    "id": "RISK-ATR-STOP-001",
+    "name": "ATR-Based Stop Loss",
+    "category": "risk_model",
+    "description": "SL at Nx ATR from entry price.",
+    "parameters": {"atr_mult": 1.5, "atr_period": 14},
+    "source_strategies": ["ORB-006", "VWAP-006", "VWAP-020", "PB-TREND"]
+  },
+  {
+    "id": "RISK-OR-OPPOSITE-001",
+    "name": "OR Opposite Side Stop",
+    "category": "risk_model",
+    "description": "SL at opposite side of opening range.",
+    "parameters": {},
+    "source_strategies": ["ORB-007", "ORB-009", "ORB-013"]
+  },
+  {
+    "id": "RISK-FIXED-TICK-001",
+    "name": "Fixed Tick/Point Stop",
+    "category": "risk_model",
+    "description": "Fixed number of ticks/points for SL and TP.",
+    "parameters": {"sl_ticks": 40, "tp_ticks": 80},
+    "source_strategies": ["VWAP-018", "ORB-017"]
+  },
+  {
+    "id": "RISK-PERCENT-001",
+    "name": "Fixed Percentage Stop",
+    "category": "risk_model",
+    "description": "SL at N% from entry price.",
+    "parameters": {"sl_pct": 0.006},
+    "source_strategies": ["VWAP-012", "VWAP-013", "FMZ-VWAP-001", "FMZ-VWAP-002"]
+  },
+  {
+    "id": "RISK-STRUCTURE-001",
+    "name": "Structure-Based Stop",
+    "category": "risk_model",
+    "description": "SL at prior swing high/low (structural level).",
+    "parameters": {"swing_lookback": 20},
+    "source_strategies": ["ICT-007", "ICT-010"]
+  }
+]

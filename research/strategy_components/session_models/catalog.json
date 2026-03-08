@@ -1,0 +1,34 @@
+[
+  {
+    "id": "SESSION-NY-OPEN-001",
+    "name": "NY Open Window (First 90 Min)",
+    "category": "session_model",
+    "description": "Trade only during first 90 minutes of NY session.",
+    "parameters": {"start": "09:30 ET", "end": "11:00 ET"},
+    "source_strategies": ["ORB-007", "ORB-008", "VWAP-008"]
+  },
+  {
+    "id": "SESSION-MORNING-001",
+    "name": "Morning Session (3 Hours)",
+    "category": "session_model",
+    "description": "Trade only during morning session.",
+    "parameters": {"start": "09:30 ET", "end": "12:30 ET"},
+    "source_strategies": ["VWAP-008", "ORB-009"]
+  },
+  {
+    "id": "SESSION-FULL-DAY-001",
+    "name": "Full Day with EOD Flatten",
+    "category": "session_model",
+    "description": "Trade full session, force-close all positions before close.",
+    "parameters": {"start": "09:30 ET", "end": "15:15 ET", "flatten": "15:15 ET"},
+    "source_strategies": ["ORB-001", "ORB-004", "ORB-006"]
+  },
+  {
+    "id": "SESSION-KILLZONE-001",
+    "name": "Kill Zones (Open + Power Hour)",
+    "category": "session_model",
+    "description": "Trade only during high-volume kill zone windows.",
+    "parameters": {"windows": ["09:30-11:00 ET", "14:00-15:00 ET"]},
+    "source_strategies": ["ICT-010", "PB-TREND"]
+  }
+]
