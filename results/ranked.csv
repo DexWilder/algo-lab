@@ -1,4 +1,5 @@
 name,mode,roi,max_drawdown,sharpe,expected_value,trades,score
+lucid-100k,both,-0.4975,292.5,-7.219,-49.75,5,-65.8397
 sma-crossover,short,-0.635,637.5,-1.1302,-7.22,44,-128.8151
 sma-crossover,long,-1.2925,842.5,-3.7569,-14.69,44,-171.6131
 sma-crossover,both,-1.9275,1037.5,-2.0786,-10.95,88,-209.9896

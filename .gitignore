@@ -14,6 +14,7 @@ venv/
 # Data
 data/*.csv
 data/*.parquet
+data/databento/
 
 # OS
 .DS_Store

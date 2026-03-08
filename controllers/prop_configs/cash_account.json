@@ -1,0 +1,13 @@
+{
+  "name": "Cash Account",
+  "account_size": 25000,
+  "trailing_drawdown": null,
+  "trailing_type": null,
+  "daily_loss_limit": 500,
+  "max_contracts": 3,
+  "consistency_rule": null,
+  "risk_per_trade_pct": 1.0,
+  "max_portfolio_risk_pct": 5.0,
+  "phases": null,
+  "notes": "Personal cash futures account. 1% risk per trade, 5% total portfolio risk."
+}

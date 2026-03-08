@@ -1,0 +1,13 @@
+{
+  "name": "Generic Prop Template",
+  "account_size": 50000,
+  "trailing_drawdown": 2500,
+  "trailing_type": "eod",
+  "daily_loss_limit": null,
+  "max_contracts": 5,
+  "consistency_rule": null,
+  "profit_target": null,
+  "lock_profit": null,
+  "phases": null,
+  "notes": "Generic template — copy and customize for any prop firm."
+}

@@ -1,0 +1,180 @@
+{
+  "version": "1.1",
+  "milestone": "Architecture LOCKED — 2026-03-07",
+  "description": "Official strategy roster — named build targets with missions, roles, and victory definitions",
+  "layers": {
+    "A": "Core standalone killers — strong enough to trade alone",
+    "B": "Specialist enhancers — improve the portfolio, not necessarily top earners",
+    "C": "Master stack — regime/asset/session-aware deployment engine"
+  },
+  "targets": [
+    {
+      "id": "ALGO-CORE-ORB-001",
+      "name": "Opening Range Breakout Engine",
+      "layer": "A",
+      "mission": "Opening drive capture — exploit the first directional move after the opening range forms",
+      "strategy_class": "breakout",
+      "product_track": "Product 1 — Best Standalone Breakout Algo",
+      "target_assets": ["MES", "MNQ", "YM"],
+      "target_timeframes": ["1m", "3m", "5m"],
+      "target_sessions": ["09:30-11:00 ET"],
+      "entry_model": "stop_breakout",
+      "risk_model": "atr",
+      "exit_model": "hybrid",
+      "desired_frequency": "medium",
+      "status": "not_started",
+      "current_version": null,
+      "source_scripts": [],
+      "victory_definition": {
+        "summary": "Robust breakout system that captures opening drive on 5m futures with prop-safe drawdown",
+        "conditions": [
+          "Robust on 5m futures data across MES and MNQ minimum",
+          "Performs best during open session (09:30-11:00 ET)",
+          "Sufficient trade count (target 3+ trades/day in open session)",
+          "Low overfit signs — stable across 3+ month test windows",
+          "Prop-safe drawdown — max intraday DD stays under $2,000",
+          "Profit factor > 1.5 on primary asset",
+          "Positive expectancy per trade > $20"
+        ]
+      },
+      "notes": "Primary breakout weapon. Should work across MES and MNQ at minimum."
+    },
+    {
+      "id": "ALGO-CORE-VWAP-001",
+      "name": "VWAP Mean Reversion Engine",
+      "layer": "A",
+      "mission": "Mean reversion / snapback capture — trade price returning to VWAP after overextension",
+      "strategy_class": "mean_reversion",
+      "product_track": "Product 2 — Best Standalone Reversion Algo",
+      "target_assets": ["MES", "MNQ", "MGC"],
+      "target_timeframes": ["3m", "5m", "15m"],
+      "target_sessions": ["09:30-16:00 ET"],
+      "entry_model": "limit_retrace",
+      "risk_model": "atr",
+      "exit_model": "fixed_R",
+      "desired_frequency": "medium",
+      "status": "not_started",
+      "current_version": null,
+      "source_scripts": [],
+      "victory_definition": {
+        "summary": "Stable snapback system with limited trend-day damage that complements breakout systems",
+        "conditions": [
+          "Stable snapback behavior — consistent win rate on range/chop days",
+          "Limited trend-day damage — max losing day capped relative to avg winning day",
+          "Good expectancy — positive EV per trade > $15",
+          "Complements breakout systems — correlation < 0.3 with ALGO-CORE-ORB-001",
+          "Different failure mode from breakout (fails on chop, not trends)",
+          "Prop-safe — drawdown stays within trailing DD limits",
+          "Works on at least 2 assets (MES + one other)"
+        ]
+      },
+      "notes": "Primary reversion weapon. Lucid v6 already has a VWAP reversion module to build from."
+    },
+    {
+      "id": "ALGO-CORE-ICT-001",
+      "name": "ICT Liquidity Sweep Engine",
+      "layer": "A",
+      "mission": "Sweep / displacement / liquidity capture — exploit stop hunts and FVG fills",
+      "strategy_class": "liquidity",
+      "product_track": "Product 1 — Best Standalone Breakout Algo",
+      "target_assets": ["MES", "MNQ"],
+      "target_timeframes": ["5m", "15m"],
+      "target_sessions": ["09:30-11:00 ET", "14:00-15:00 ET"],
+      "entry_model": "limit_retrace",
+      "risk_model": "structure_based",
+      "exit_model": "liquidity_target",
+      "desired_frequency": "low",
+      "status": "not_started",
+      "current_version": null,
+      "source_scripts": [],
+      "victory_definition": {
+        "summary": "Executable and testable sweep/displacement logic that survives cleaning without becoming discretionary",
+        "conditions": [
+          "Executable and testable — fully codified, no discretionary judgment required",
+          "Sweep/displacement logic survives cleaning — core edge preserved after removing chart UI",
+          "Not overly discretionary — clear, programmable entry/exit rules",
+          "Distinct from trend and VWAP behavior — correlation < 0.3 with both",
+          "FVG detection is reliable and not repaint-prone",
+          "Positive expectancy despite lower frequency",
+          "Session-specific edge — measurably better in kill zones vs random hours"
+        ]
+      },
+      "notes": "ICT concepts are harder to codify. Needs careful review for repaint risk and false signal rate."
+    },
+    {
+      "id": "ALGO-CORE-TREND-001",
+      "name": "Trend Pullback Engine",
+      "layer": "A",
+      "mission": "Trend continuation via pullback entries — ride established trends with controlled entries",
+      "strategy_class": "trend",
+      "product_track": "Product 1 — Best Standalone Breakout Algo",
+      "target_assets": ["MES", "MNQ", "YM"],
+      "target_timeframes": ["5m", "15m"],
+      "target_sessions": ["09:30-16:00 ET"],
+      "entry_model": "limit_retrace",
+      "risk_model": "atr",
+      "exit_model": "trail",
+      "desired_frequency": "medium",
+      "status": "in_progress",
+      "current_version": "lucid-100k v6.3",
+      "source_scripts": ["strategies/lucid-100k/lucid_v6_final.pine"],
+      "victory_definition": {
+        "summary": "Trend-following pullback system with trailing exits that captures extended moves on trend days",
+        "conditions": [
+          "Strong performance on trend days — captures 50%+ of major daily moves",
+          "Controlled losses on chop days — quick stops, no bleed",
+          "Trailing exit captures extended runners beyond 1.5R",
+          "Robust across MES and MNQ at minimum",
+          "MTF confirmation reduces false entries in ranging markets",
+          "Prop-safe — intraday DD under $2,000, daily max loss controlled",
+          "Already has baseline: Lucid v6.3 trend pullback module"
+        ]
+      },
+      "notes": "Lucid v6.3 trend pullback module is the baseline. Needs Python conversion and standalone extraction."
+    },
+    {
+      "id": "PORT-PROP-MASTER-001",
+      "name": "Prop Master Stack",
+      "layer": "C",
+      "mission": "Best prop deployment engine — stack non-correlated algos for maximum daily profit with controlled drawdown",
+      "strategy_class": null,
+      "product_track": "Product 3 — Best Prop Master Stack",
+      "target_assets": ["MES", "MNQ", "MGC", "YM"],
+      "target_timeframes": ["1m", "3m", "5m", "15m"],
+      "target_sessions": ["08:30-16:00 ET"],
+      "entry_model": null,
+      "risk_model": null,
+      "exit_model": null,
+      "desired_frequency": "high",
+      "status": "not_started",
+      "current_version": null,
+      "source_scripts": [],
+      "components": {
+        "breakout_slot": "ALGO-CORE-ORB-001",
+        "reversion_slot": "ALGO-CORE-VWAP-001",
+        "liquidity_slot": "ALGO-CORE-ICT-001",
+        "trend_slot": "ALGO-CORE-TREND-001",
+        "enhancer_slots": []
+      },
+      "requirements": {
+        "max_correlation_between_components": 0.3,
+        "min_unique_sessions": 2,
+        "min_unique_failure_modes": 3,
+        "prop_rules": "Lucid 100K — $4,000 EOD trailing DD, lock at +$3,100"
+      },
+      "victory_definition": {
+        "summary": "Combined stack with lower DD than any single component and improved payout probability under prop rules",
+        "conditions": [
+          "Lower max drawdown than any single component alone",
+          "Improved payout probability vs best standalone algo",
+          "No dominant single-strategy dependence — removing any one component degrades but doesn't break the stack",
+          "Survives Monte Carlo simulation under prop rules (1000+ iterations)",
+          "Combined daily PnL variance is lower than individual components",
+          "Handles all market regimes — at least one component profitable in trend, range, and volatile days",
+          "Total trade frequency supports consistency rules"
+        ]
+      },
+      "notes": "Built from the best of Layer A + Layer B. Only promoted after portfolio_tested status."
+    }
+  ]
+}

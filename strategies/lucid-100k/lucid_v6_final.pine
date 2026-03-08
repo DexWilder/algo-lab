@@ -115,7 +115,7 @@ phase2Mode = input.string("Auto (Regime)", "P2 Mode",
      options=["Trend Pullback", "VWAP Reversion", "Both (Always)", "Auto (Regime)"], group="Modes")
 mode = inPhase2 ? phase2Mode : phase1Mode
 
-mtfP1 = input.string("15m + 60m", "P1 MTF", options=["Off","15m Only","15m + 60m"], group="Modes")
+mtfP1 = input.string("15m Only", "P1 MTF", options=["Off","15m Only","15m + 60m"], group="Modes")
 mtfP2 = input.string("15m Only",  "P2 MTF", options=["Off","15m Only","15m + 60m"], group="Modes")
 mtfMode = inPhase2 ? mtfP2 : mtfP1
 
@@ -239,7 +239,7 @@ atrVal   = ta.atr(atrLen)
 
 useAdx  = input.bool(true,  "Use ADX", group="Quality")
 adxLen  = input.int(14,     "ADX Len", group="Quality")
-adxMin  = input.float(16.0, "ADX Min", step=0.5, group="Quality")
+adxMin  = input.float(14.0, "ADX Min", step=0.5, group="Quality")
 [diPlus, diMinus, adxVal] = ta.dmi(adxLen, adxLen)
 
 useVol  = input.bool(true,  "Use Volume", group="Quality")

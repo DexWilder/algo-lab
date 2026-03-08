@@ -1,0 +1,18 @@
+{
+  "strategy": "lucid-100k",
+  "version": "v6.3 (Python v1.0)",
+  "roster_target": "ALGO-CORE-TREND-001",
+  "run_date": "2026-03-07 21:02:13",
+  "assets": [
+    "MES",
+    "MGC",
+    "MNQ"
+  ],
+  "modes": [
+    "both",
+    "long",
+    "short"
+  ],
+  "engine": "fill-at-next-open",
+  "notes": "Baseline run \u2014 pure signal logic, no prop rules, no phase sizing"
+}

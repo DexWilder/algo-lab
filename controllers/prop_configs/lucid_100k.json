@@ -1,0 +1,32 @@
+{
+  "name": "Lucid 100K Straight-to-Funded",
+  "account_size": 100000,
+  "trailing_drawdown": 4000,
+  "trailing_type": "eod",
+  "daily_loss_limit": null,
+  "max_contracts": 10,
+  "consistency_rule": null,
+  "lock_profit": 3100,
+  "lock_behavior": "trailing_stops_at_lock",
+  "phases": {
+    "P1": {
+      "label": "Lock Fast",
+      "profit_range": [0, 3100],
+      "max_contracts": 2,
+      "max_trades_per_day": 2,
+      "max_daily_loss": 600,
+      "max_intraday_dd": 900,
+      "green_lock": 600
+    },
+    "P2": {
+      "label": "Payout Fast",
+      "profit_range": [3100, null],
+      "max_contracts": 5,
+      "max_trades_per_day": 4,
+      "max_daily_loss": 1200,
+      "max_intraday_dd": 1800,
+      "profit_lock": 1200
+    }
+  },
+  "notes": "Lucid 100K straight-to-funded. EOD trailing DD, locks at +$3,100."
+}

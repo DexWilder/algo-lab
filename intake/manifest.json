@@ -1,0 +1,27 @@
+{
+  "version": "1.0",
+  "description": "TradingView script intake manifest \u2014 tracks all imported candidates",
+  "status_flow": [
+    "raw",
+    "reviewed",
+    "cleaned",
+    "standardized",
+    "converted",
+    "backtested",
+    "validated",
+    "portfolio_tested",
+    "rejected",
+    "deployed"
+  ],
+  "families": [
+    "ict",
+    "orb",
+    "vwap",
+    "trend",
+    "mean_reversion",
+    "breakout",
+    "opening_drive",
+    "session"
+  ],
+  "scripts": []
+}

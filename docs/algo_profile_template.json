@@ -1,0 +1,46 @@
+{
+  "identity": {
+    "strategy_id": "",
+    "version": "",
+    "name": "",
+    "strategy_class": "",
+    "asset_variants": [],
+    "portfolio_role": "core | enhancer | stack_component",
+    "layer": "A | B | C",
+    "roster_target": ""
+  },
+  "logic_profile": {
+    "entry_model": "",
+    "exit_model": "",
+    "risk_model": "",
+    "regime_fit": "trending | ranging | volatile | all",
+    "session_fit": "",
+    "trade_frequency": "low | medium | high",
+    "indicators": [],
+    "edge_description": ""
+  },
+  "performance_profile": {
+    "profit_factor": null,
+    "sharpe": null,
+    "expectancy": null,
+    "max_drawdown": null,
+    "trade_count": null,
+    "win_rate": null,
+    "avg_winner": null,
+    "avg_loser": null,
+    "pass_probability": null,
+    "fail_probability": null,
+    "payout_probability": null,
+    "test_window": "",
+    "test_asset": "",
+    "test_timeframe": ""
+  },
+  "failure_profile": {
+    "invalidation_reason": "",
+    "primary_failure_mode": "",
+    "worst_regime": "",
+    "worst_session": "",
+    "fragility_notes": "",
+    "overlap_risk": []
+  }
+}

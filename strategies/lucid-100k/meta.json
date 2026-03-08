@@ -7,9 +7,28 @@
   "timeframe": "5m",
   "type": "mixed",
   "version": "6.3",
+  "python_version": "1.0",
+  "roster_target": "ALGO-CORE-TREND-001",
   "uses_security_mtf": true,
   "repaint_risk_notes": "MTF request.security calls use default repainting behavior — verify with barmerge.lookahead_off if needed",
-  "notes": "Dual-algo regime-switching prop bot: Trend Pullback + VWAP Mean Reversion. Phase-aware everything (mode, MTF, exits, guardrails, sizing). 3-stage exits (bracket → BE → trail). Risk cap on qty (not stop). Min stop floor. Actual fill price for BE/Trail. Designed for Lucid 100K straight-to-funded.",
+  "notes": "Dual-algo regime-switching strategy: Trend Pullback + VWAP Mean Reversion. Platform-agnostic — prop rules live in controllers/. Python v1.0 converts core signal logic only (no phases, no guardrails). See CONVERSION_NOTES.md for approximations.",
+  "indicators": ["EMA9", "EMA21", "EMA200", "RSI14", "ATR14", "ADX14", "VWAP", "Volume MA"],
+  "parameters": {
+    "fast_ema": 9,
+    "slow_ema": 21,
+    "trend_ema": 200,
+    "rsi_len": 14,
+    "atr_len": 14,
+    "adx_min": 14.0,
+    "sl_atr": 1.5,
+    "tp_atr": 2.1,
+    "rev_dist_atr": 1.4,
+    "rev_rsi_low": 35,
+    "rev_rsi_high": 65,
+    "min_stop_ticks": 20,
+    "warmup_mins": 15,
+    "mode": "auto"
+  },
   "date_added": "2026-02-21",
-  "last_updated": "2026-02-21"
+  "last_updated": "2026-03-07"
 }
