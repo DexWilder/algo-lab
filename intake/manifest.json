@@ -2373,6 +2373,332 @@
       "imported_date": "2026-03-07",
       "reviewed_date": null,
       "reviewed_by": null
+    },
+    {
+      "id": "idx-001-exlux-vix-channel",
+      "title": "NY VIX Channel Trend US Futures Day Trade Strategy",
+      "url": "https://www.tradingview.com/script/TlOcVraF-NY-VIX-Channel-Trend-US-Futures-Day-Trade-Strategy/",
+      "author": "exlux",
+      "type": "strategy",
+      "description": "Session-anchored VIX-derived channel for ES/NQ day trading. First window bias + implied volatility channel. One trade per session.",
+      "pine_version": "5",
+      "family": "session",
+      "tags": [
+        "session_trend",
+        "vix",
+        "implied_volatility",
+        "index_futures",
+        "day_trade"
+      ],
+      "status": "raw",
+      "pine_file": null,
+      "notes": "Index-specific. VIX channel, session anchored 9:30 AM. AF=5. Batch 2 harvest.",
+      "imported_date": "2026-03-09",
+      "batch": 2
+    },
+    {
+      "id": "idx-002-varuns-ema-rsi-adx",
+      "title": "EMA Cross + RSI + ADX Autotrade Strategy V2",
+      "url": "https://www.tradingview.com/script/e7XQPek8-EMA-Cross-RSI-ADX-Autotrade-Strategy-V2/",
+      "author": "varuns_back",
+      "type": "strategy",
+      "description": "EMA 9/21 crossover with RSI momentum filter (55/45) and optional ADX trend strength. 2% stop loss.",
+      "pine_version": "5",
+      "family": "trend",
+      "tags": [
+        "ema_crossover",
+        "rsi",
+        "adx",
+        "trend_following",
+        "multi_asset"
+      ],
+      "status": "raw",
+      "pine_file": null,
+      "notes": "Multi-asset trend following. EMA 9/21 + RSI + ADX. AF=5. Batch 2 harvest.",
+      "imported_date": "2026-03-09",
+      "batch": 2
+    },
+    {
+      "id": "idx-003-jake-ema-sessions",
+      "title": "EMA + Sessions + RSI Strategy v1.0",
+      "url": "https://www.tradingview.com/script/5DOEFwJx/",
+      "author": "jake_theboss",
+      "type": "strategy",
+      "description": "EMA 21/100 crossover with EMA 750 trend filter. Session filtering, RSI confirmation. Trailing stop and breakeven logic.",
+      "pine_version": "5",
+      "family": "trend",
+      "tags": [
+        "ema_crossover",
+        "session_filter",
+        "rsi",
+        "trailing_stop",
+        "trend_following"
+      ],
+      "status": "raw",
+      "pine_file": null,
+      "notes": "Triple EMA with session filter. AF=4. Batch 2 harvest.",
+      "imported_date": "2026-03-09",
+      "batch": 2
+    },
+    {
+      "id": "idx-004-traderspost-855ema",
+      "title": "8-55 EMA Crossover NQ Futures Strategy",
+      "url": "https://github.com/TradersPost/pinescript/blob/master/strategies/8-55-EMA-Crossover-NQ-Futures-Strategy.pinescript",
+      "author": "TradersPost",
+      "type": "strategy",
+      "description": "EMA 8/55 crossover for NQ/MNQ futures. Close above 8 EMA within N bars. GitHub source.",
+      "pine_version": "5",
+      "family": "trend",
+      "tags": [
+        "ema_crossover",
+        "nq_specific",
+        "futures",
+        "trend_following"
+      ],
+      "status": "raw",
+      "pine_file": null,
+      "notes": "NQ-specific EMA crossover. GitHub open source. AF=5. Batch 2 harvest.",
+      "imported_date": "2026-03-09",
+      "batch": 2
+    },
+    {
+      "id": "idx-005-orion-vol-breakout",
+      "title": "ORION: Hybrid Volatility Breakout Strategy",
+      "url": "https://www.tradingview.com/script/6xLkMWMC-ORION-Hybrid-Volatility-Breakout-Strategy/",
+      "author": "ana_gagua",
+      "type": "strategy",
+      "description": "Compression-to-expansion volatility breakout. ATR tightness filter, linear regression flatness, squeeze detection. EMA 150 trend filter. 1:1.9 R:R.",
+      "pine_version": "5",
+      "family": "breakout",
+      "tags": [
+        "volatility_compression",
+        "squeeze",
+        "atr",
+        "ema_filter",
+        "breakout"
+      ],
+      "status": "raw",
+      "pine_file": null,
+      "notes": "Compression\u2192expansion with multi-filter. Originally for XAUUSD but concept applies to indices. AF=5. Batch 2 harvest.",
+      "imported_date": "2026-03-09",
+      "batch": 2
+    },
+    {
+      "id": "idx-006-chenzy-vol-expansion",
+      "title": "Volatility Expansion Breakout",
+      "url": "https://www.tradingview.com/script/zhEefWDB-Volatility-Expansion-Breakout/",
+      "author": "ChenzyForex",
+      "type": "strategy",
+      "description": "Short-term volatility breakout that works well on indices. 15-minute timeframe. US 100 (NQ) example.",
+      "pine_version": "5",
+      "family": "breakout",
+      "tags": [
+        "volatility_breakout",
+        "indices",
+        "short_term",
+        "15min"
+      ],
+      "status": "raw",
+      "pine_file": null,
+      "notes": "Index-specific volatility breakout. 15min. AF=4. Batch 2 harvest.",
+      "imported_date": "2026-03-09",
+      "batch": 2
+    },
+    {
+      "id": "idx-007-lazybear-bbkc-squeeze",
+      "title": "Trading Strategy based on BB/KC Squeeze",
+      "url": "https://www.tradingview.com/script/x9r2dOhI-Trading-Strategy-based-on-BB-KC-squeeze/",
+      "author": "LazyBear",
+      "type": "strategy",
+      "description": "Bollinger Bands inside Keltner Channel = squeeze. Enter when BB exits KC (expansion). SAR trend filter for direction.",
+      "pine_version": "4",
+      "family": "breakout",
+      "tags": [
+        "squeeze",
+        "bollinger",
+        "keltner",
+        "volatility_compression",
+        "sar"
+      ],
+      "status": "raw",
+      "pine_file": null,
+      "notes": "Classic BB/KC squeeze. LazyBear (Pine legend). AF=5. Batch 2 harvest.",
+      "imported_date": "2026-03-09",
+      "batch": 2
+    },
+    {
+      "id": "idx-008-leafalgo-vol-compress",
+      "title": "Volatility Compression Breakout",
+      "url": "https://www.tradingview.com/script/Lc8WH9UF-Volatility-Compression-Breakout/",
+      "author": "LeafAlgo",
+      "type": "indicator",
+      "description": "Keltner channel compression with EMA trend filter. Identifies low-vol periods before breakouts. Bar coloring for direction.",
+      "pine_version": "5",
+      "family": "breakout",
+      "tags": [
+        "keltner",
+        "compression",
+        "ema_filter",
+        "indicator"
+      ],
+      "status": "raw",
+      "pine_file": null,
+      "notes": "Indicator only (not strategy). Component extraction candidate. AF=4. Batch 2 harvest.",
+      "imported_date": "2026-03-09",
+      "batch": 2
+    },
+    {
+      "id": "idx-009-cryptoeason-bb-st-kc",
+      "title": "BB Squeeze + SuperTrend + Keltner Channel",
+      "url": "https://www.tradingview.com/script/yvAeU1bx/",
+      "author": "CryptoEason4134",
+      "type": "indicator",
+      "description": "Combined squeeze indicator. SuperTrend for trend direction, Keltner for squeeze detection, Bollinger for volatility.",
+      "pine_version": "5",
+      "family": "breakout",
+      "tags": [
+        "squeeze",
+        "supertrend",
+        "keltner",
+        "bollinger",
+        "indicator"
+      ],
+      "status": "raw",
+      "pine_file": null,
+      "notes": "Combined squeeze indicator. Component extraction. AF=4. Batch 2 harvest.",
+      "imported_date": "2026-03-09",
+      "batch": 2
+    },
+    {
+      "id": "idx-010-dropio-mtf-ema-alma",
+      "title": "MTF EMA ALMA Strategy with RSI Supertrend",
+      "url": "https://github.com/Dropio12/MTF-EMA-ALMA-Strategy-with-RSI-Supertrend-and-Advanced-Volume-Delta-Divergence-Visualization",
+      "author": "Dropio12",
+      "type": "strategy",
+      "description": "Multi-timeframe EMA + ALMA with RSI, Supertrend signals. Tested on NQ. Volume delta divergence.",
+      "pine_version": "5",
+      "family": "trend",
+      "tags": [
+        "multi_timeframe",
+        "ema",
+        "alma",
+        "rsi",
+        "supertrend",
+        "nq"
+      ],
+      "status": "raw",
+      "pine_file": null,
+      "notes": "MTF trend system tested on NQ. GitHub. AF=4. Batch 2 harvest.",
+      "imported_date": "2026-03-09",
+      "batch": 2
+    },
+    {
+      "id": "idx-011-darshak-supertrend-ema",
+      "title": "SuperTrend + Fast/Slow EMA Strategy",
+      "url": "https://www.tradingview.com/script/dJDWRnCA-Supertrend-and-Fast-and-Slow-EMA-Strategy/",
+      "author": "darshakssc",
+      "type": "strategy",
+      "description": "SuperTrend for trend direction with EMA crossover for entries. Dual confirmation system.",
+      "pine_version": "5",
+      "family": "trend",
+      "tags": [
+        "supertrend",
+        "ema_crossover",
+        "trend_following",
+        "dual_confirmation"
+      ],
+      "status": "raw",
+      "pine_file": null,
+      "notes": "SuperTrend + EMA dual confirmation. AF=4. Batch 2 harvest.",
+      "imported_date": "2026-03-09",
+      "batch": 2
+    },
+    {
+      "id": "idx-012-dearvn-futures-es-nq",
+      "title": "ES/NQ Futures Trading Script",
+      "url": "https://github.com/dearvn/trading-futures-tradingview-script",
+      "author": "dearvn",
+      "type": "strategy",
+      "description": "Pine scripts for trading ES and NQ futures. Multiple strategy variants in repository.",
+      "pine_version": "5",
+      "family": "trend",
+      "tags": [
+        "es_specific",
+        "nq_specific",
+        "futures",
+        "multi_strategy"
+      ],
+      "status": "raw",
+      "pine_file": null,
+      "notes": "ES/NQ specific scripts. GitHub repo with multiple variants. AF=3. Batch 2 harvest.",
+      "imported_date": "2026-03-09",
+      "batch": 2
+    },
+    {
+      "id": "idx-013-dicargo-vol-breakout",
+      "title": "Volatility Breakout Strategy (Larry Williams)",
+      "url": "https://www.tradingview.com/script/vzWeDyXd-Volatility-Breakout-Strategy/",
+      "author": "Dicargo_Beam",
+      "type": "strategy",
+      "description": "Larry Williams volatility breakout. Entry = close[1] + k*(high[1]-low[1]). Exit at fixed time. Long only.",
+      "pine_version": "5",
+      "family": "breakout",
+      "tags": [
+        "larry_williams",
+        "volatility_breakout",
+        "range_expansion",
+        "long_only"
+      ],
+      "status": "raw",
+      "pine_file": null,
+      "notes": "Academic source (Larry Williams). Range expansion momentum. AF=5. Batch 2 harvest.",
+      "imported_date": "2026-03-09",
+      "batch": 2
+    },
+    {
+      "id": "idx-014-revolution-momentum",
+      "title": "Momentum Strategy",
+      "url": "https://www.tradingview.com/script/XhCZbT4b-Momentum-Strategy/",
+      "author": "REV0LUTI0N",
+      "type": "strategy",
+      "description": "Dual momentum crossover above/below zero. Optional EMA filter, time-based exit for day traders. Configurable TP/SL.",
+      "pine_version": "5",
+      "family": "trend",
+      "tags": [
+        "momentum",
+        "crossover",
+        "ema_filter",
+        "day_trading",
+        "multi_asset"
+      ],
+      "status": "raw",
+      "pine_file": null,
+      "notes": "Dual momentum with EMA filter. Configurable for day trading. AF=4. Batch 2 harvest.",
+      "imported_date": "2026-03-09",
+      "batch": 2
+    },
+    {
+      "id": "idx-015-juanc-fvbo-squeeze",
+      "title": "BB-Keltner Squeeze Failed Volatility Breakout",
+      "url": "https://www.tradingview.com/script/KqtrEiQS-Bollinger-Band-Keltner-Squeeze-Failed-Volatility-Breakout/",
+      "author": "juanc2316",
+      "type": "indicator",
+      "description": "Bollinger-Keltner squeeze with failed volatility breakout system (FVBO). Identifies compression and failed breakouts.",
+      "pine_version": "5",
+      "family": "breakout",
+      "tags": [
+        "squeeze",
+        "fvbo",
+        "bollinger",
+        "keltner",
+        "failed_breakout"
+      ],
+      "status": "raw",
+      "pine_file": null,
+      "notes": "FVBO system \u2014 trades failed breakouts from squeeze. Contrarian. AF=4. Batch 2 harvest.",
+      "imported_date": "2026-03-09",
+      "batch": 2
     }
-  ]
+  ],
+  "last_updated": "2026-03-09"
 }

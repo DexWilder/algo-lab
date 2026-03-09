@@ -379,4 +379,42 @@ Monthly pass rate: 13/19 (68%). No prop guardrails triggered.
 
 ---
 
-*Last updated: 2026-03-08*
+## 2026-03-09 — Phase 7.6: ORB-018 Portfolio Assessment
+
+**Experiment:** Full portfolio assessment of Gap Momentum MGC-Long as potential 3rd gold strategy.
+
+**Results:**
+| Metric | Value | Threshold | Pass? |
+|--------|-------|-----------|-------|
+| Correlation vs ORB-009 | -0.011 | < 0.3 | YES |
+| Correlation vs PB-Short | -0.010 | < 0.3 | YES |
+| DD overlap vs PB-Short | 82.5% | < 60% | NO |
+| DD overlap vs ORB-009 | 69.3% | < 60% | NO |
+| Top-trade removal PF | 1.34 | > 1.0 | YES (barely) |
+
+3-strategy portfolio: Calmar improves (5.58→7.45) but MaxDD increases ($679→$874) and Sharpe drops (3.75→3.07).
+
+**Decision:** Not ready for portfolio inclusion. 86% PnL from one trade, fails DD overlap, top-trade removal barely passes. Keep as watch candidate.
+
+---
+
+## 2026-03-09 — Phase 7.7: Targeted MES/MNQ Harvest (Batch 2)
+
+**Experiment:** Targeted harvest of 15 index-specific strategy candidates. Focused on families proven to work on index futures: session trend following, volatility compression breakout, trend following, range expansion momentum.
+
+**Results:** 15 candidates harvested across 4 families:
+- Session trend following: 4 (VIX Channel, EMA+RSI+ADX, EMA+Sessions, 8-55 EMA NQ)
+- Volatility compression breakout: 5 (ORION, Vol Expansion, BB/KC Squeeze, Vol Compress, BB+ST+KC)
+- Trend following: 4 (MTF EMA ALMA, SuperTrend+EMA, ES/NQ Scripts, Momentum)
+- Range expansion: 2 (Larry Williams Vol Breakout, FVBO Squeeze)
+
+**Top 3 for conversion:**
+1. NY VIX Channel Trend (idx-001) — only strategy in pipeline using VIX/implied volatility
+2. ORION Hybrid Volatility Breakout (idx-005) — best compression→expansion framework
+3. BB/KC Squeeze Strategy (idx-007) — classic squeeze, simplest to convert
+
+**Decision:** Proceed with conversion of top 3. This resolves the "new harvest needed" blocker.
+
+---
+
+*Last updated: 2026-03-09*

@@ -6,7 +6,7 @@
 
 | Stage | Count |
 |-------|-------|
-| Strategies harvested | 76 |
+| Strategies harvested | 91 (76 batch 1 + 15 batch 2) |
 | Strategies converted | 6 |
 | candidate_validated | 2 |
 | Rejected | 3 |
@@ -101,7 +101,7 @@
 
 ## Research Infrastructure
 
-- [x] Intake pipeline (76 scripts, 8 families)
+- [x] Intake pipeline (91 scripts, 8 families — batch 1 + batch 2)
 - [x] Triage system (8 clusters, convert_now/hold/reject labels)
 - [x] Component catalog (entries/exits/filters/risk/session)
 - [x] Validation framework (8-criterion promotion standard)
@@ -121,7 +121,9 @@
 - Gap-Mom MGC-Long: PF=3.26 net, but 86% PnL from 1 trade — needs robustness check
 - Execution skeleton ready: `execution/tradovate_adapter.py` + `execution/signal_logger.py`
 - Evolution engine spec: `docs/EVOLUTION_ENGINE_SPEC.md` (design only)
-- **Blocker:** All strategies with edge trade gold. MES/MNQ diversification requires new harvest.
+- **Blocker resolved:** Batch 2 harvest (15 index-specific candidates) completed
+- Top 3 for conversion: VIX Channel Trend, ORION Vol Breakout, BB/KC Squeeze
+- Families: session trend (4), volatility compression (5), trend following (4), range expansion (2)
 
 ## Completed Phases
 
