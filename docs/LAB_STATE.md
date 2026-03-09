@@ -136,17 +136,28 @@
 - [x] Hardened baselines (gross vs net)
 - [x] Research governance (LAB_STATE, research log, phase audits)
 - [x] Strategy DNA profiling (9 strategies fingerprinted, 8 clusters, 3 true diversifiers)
-- [ ] Strategy evolution engine
-- [ ] Automatic combination testing
+- [x] Strategy evolution engine (15 candidates, 4 mutation types, template-based generation)
+- [x] Automatic combination testing (evolution scheduler — mutations + backtest + DNA novelty + regime)
 - [x] Diversification expansion (MES/MNQ strategies — VIX Channel candidate found)
+
+## Evolution Engine (Phase 9)
+
+- **Mutations library:** 4 reusable components (compression, squeeze, momentum_state, sweep)
+- **Evolution queue:** 15 recipes across 3 parents × 4 mutation types
+- **Pipeline:** generate → backtest → quality gate → DNA novelty → regime → stats
+- **Results:** 2 promoted, 13 rejected, 0 errors
+  - `vix_atr_stops` — VIX + ATR risk model, MNQ-long PF=1.36, 263 trades, Sharpe=1.87 (marginal novelty)
+  - `pb_relaxed_filters` — PB with relaxed gates, MES-short PF=1.25, 274 trades, Sharpe=1.71 (marginal novelty)
+- **Key finding:** Adding filters to already-selective strategies (ORB, PB) mostly kills trade count. Risk model swaps and filter relaxation create genuinely different profiles.
+- **Artifacts:** `research/evolution/` — mutations.py, evolution_queue.json, evolution_scheduler.py, generated_candidates/, evolution_results.json, evolution_results.md, evolution_summary_matrix.md
 
 ## Next Milestone
 
-**Phase 9: Live Paper Trading + Strategy Evolution** (PENDING)
+**Phase 10: Live Paper Trading** (PENDING)
 - Paper trading plan ready: `docs/PHASE_7_PAPER_TRADING_PLAN.md`
 - Pending: Tradovate sim account setup for live paper trading
 - Execution skeleton ready: `execution/tradovate_adapter.py` + `execution/signal_logger.py`
-- Evolution engine spec: `docs/EVOLUTION_ENGINE_SPEC.md` (design only)
+- Evolution engine complete: `research/evolution/` (Phase 9)
 - **VIX Channel MES-Both:** Passes 5/8 robustness criteria, fails 3 (net PF 1.298, DSR, MC ruin)
   - Remains pending_validation — strong diversifier (r=-0.024) but doesn't meet full promotion bar
   - Regime-profiled 3-strat portfolio: Calmar 9.77, 84% monthly consistency
@@ -167,6 +178,7 @@
 | Phase 7 — Diversification + Paper Trading Prep | Complete | (entries in research_log.md) |
 | Phase 8 — Regime Engine + Portfolio Intelligence | Complete | docs/audits/phase_8_regime_engine.md |
 | Phase 8.5 — Strategy DNA Clustering | Complete | docs/audits/phase_8_5_dna_clustering.md |
+| Phase 9 — Evolution Scheduler | Complete | research/evolution/evolution_results.md |
 
 ---
 *Last updated: 2026-03-09*

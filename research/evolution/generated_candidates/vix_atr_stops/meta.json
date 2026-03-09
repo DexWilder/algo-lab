@@ -1,0 +1,9 @@
+{
+  "candidate_id": "vix_atr_stops",
+  "parent": "vix_channel",
+  "mutation_type": "swap_risk",
+  "mutation_fn": null,
+  "description": "VIX Channel with ATR-based stops instead of RV-scaled implied move",
+  "priority": 6.15,
+  "generated_date": "2026-03-09"
+}

@@ -1,0 +1,9 @@
+{
+  "candidate_id": "vix_sweep_confirm",
+  "parent": "vix_channel",
+  "mutation_type": "add_filter",
+  "mutation_fn": "compute_sweep",
+  "description": "VIX Channel + ICT sweep confirmation: only enter in sweep direction",
+  "priority": 5.95,
+  "generated_date": "2026-03-09"
+}

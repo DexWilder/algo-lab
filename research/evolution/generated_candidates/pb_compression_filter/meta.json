@@ -1,0 +1,9 @@
+{
+  "candidate_id": "pb_compression_filter",
+  "parent": "pb_trend",
+  "mutation_type": "add_filter",
+  "mutation_fn": "compute_compression",
+  "description": "PB + ORION compression pre-filter: only enter pullback in compression zones",
+  "priority": 7.4,
+  "generated_date": "2026-03-09"
+}

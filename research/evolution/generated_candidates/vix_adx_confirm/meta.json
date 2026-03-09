@@ -1,0 +1,9 @@
+{
+  "candidate_id": "vix_adx_confirm",
+  "parent": "vix_channel",
+  "mutation_type": "add_filter",
+  "mutation_fn": null,
+  "description": "VIX Channel + ADX trend filter: only enter when ADX > 14 confirms trending",
+  "priority": 5.7,
+  "generated_date": "2026-03-09"
+}

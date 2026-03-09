@@ -1,0 +1,9 @@
+{
+  "candidate_id": "orb_atr_stops",
+  "parent": "orb_009",
+  "mutation_type": "swap_risk",
+  "mutation_fn": null,
+  "description": "ORB with ATR-based stops instead of range-based stops",
+  "priority": 7.65,
+  "generated_date": "2026-03-09"
+}

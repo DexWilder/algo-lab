@@ -1,0 +1,9 @@
+{
+  "candidate_id": "orb_sweep_confirm",
+  "parent": "orb_009",
+  "mutation_type": "add_filter",
+  "mutation_fn": "compute_sweep",
+  "description": "ORB + ICT sweep confirmation: long only after low sweep, short only after high sweep",
+  "priority": 7.55,
+  "generated_date": "2026-03-09"
+}

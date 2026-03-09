@@ -1,0 +1,9 @@
+{
+  "candidate_id": "pb_relaxed_filters",
+  "parent": "pb_trend",
+  "mutation_type": "relax_filter",
+  "mutation_fn": null,
+  "description": "PB with relaxed filters: remove ADX gate, widen session windows, lower vol threshold",
+  "priority": 5.85,
+  "generated_date": "2026-03-09"
+}

@@ -1,0 +1,9 @@
+{
+  "candidate_id": "pb_range_stops",
+  "parent": "pb_trend",
+  "mutation_type": "swap_risk",
+  "mutation_fn": null,
+  "description": "PB with range-based stops instead of ATR-based stops",
+  "priority": 6.9,
+  "generated_date": "2026-03-09"
+}

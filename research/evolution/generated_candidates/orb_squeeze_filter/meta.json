@@ -1,0 +1,9 @@
+{
+  "candidate_id": "orb_squeeze_filter",
+  "parent": "orb_009",
+  "mutation_type": "add_filter",
+  "mutation_fn": "compute_squeeze",
+  "description": "ORB + BBKC squeeze release gate: only enter breakout on squeeze release events",
+  "priority": 7.85,
+  "generated_date": "2026-03-09"
+}

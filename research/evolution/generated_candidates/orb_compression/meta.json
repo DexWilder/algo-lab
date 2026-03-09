@@ -1,0 +1,9 @@
+{
+  "candidate_id": "orb_compression",
+  "parent": "orb_009",
+  "mutation_type": "add_filter",
+  "mutation_fn": "compute_compression",
+  "description": "ORB + ORION compression pre-filter: only enter breakout when market is in compression zone",
+  "priority": 8.15,
+  "generated_date": "2026-03-09"
+}

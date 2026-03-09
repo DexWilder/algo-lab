@@ -1,0 +1,9 @@
+{
+  "candidate_id": "vix_momentum_exit",
+  "parent": "vix_channel",
+  "mutation_type": "swap_exit",
+  "mutation_fn": "compute_momentum_state",
+  "description": "VIX Channel with momentum state exit: exit long on green, exit short on maroon",
+  "priority": 6.45,
+  "generated_date": "2026-03-09"
+}

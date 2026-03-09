@@ -1,0 +1,9 @@
+{
+  "candidate_id": "orb_momentum_confirm",
+  "parent": "orb_009",
+  "mutation_type": "add_filter",
+  "mutation_fn": "compute_momentum_state",
+  "description": "ORB + BBKC momentum direction: long only when lime, short only when red",
+  "priority": 7.3,
+  "generated_date": "2026-03-09"
+}

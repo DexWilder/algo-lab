@@ -1,0 +1,267 @@
+[
+  {
+    "id": "orb_compression",
+    "parent": "orb_009",
+    "mutation_type": "add_filter",
+    "mutation_fn": "compute_compression",
+    "description": "ORB + ORION compression pre-filter: only enter breakout when market is in compression zone",
+    "complexity": "easy",
+    "filter_column": "compression_active",
+    "filter_logic": "AND",
+    "priority_scores": {
+      "testability": 0.9,
+      "dna_novelty": 0.7,
+      "complexity_inv": 0.9,
+      "regime_impact": 0.7,
+      "parent_strength": 0.9
+    },
+    "priority": 8.15
+  },
+  {
+    "id": "orb_squeeze_filter",
+    "parent": "orb_009",
+    "mutation_type": "add_filter",
+    "mutation_fn": "compute_squeeze",
+    "description": "ORB + BBKC squeeze release gate: only enter breakout on squeeze release events",
+    "complexity": "easy",
+    "filter_column": "squeeze_release",
+    "filter_logic": "AND",
+    "priority_scores": {
+      "testability": 0.9,
+      "dna_novelty": 0.8,
+      "complexity_inv": 0.9,
+      "regime_impact": 0.6,
+      "parent_strength": 0.9
+    },
+    "priority": 7.85
+  },
+  {
+    "id": "orb_atr_stops",
+    "parent": "orb_009",
+    "mutation_type": "swap_risk",
+    "mutation_fn": null,
+    "description": "ORB with ATR-based stops instead of range-based stops",
+    "complexity": "medium",
+    "risk_params": {"sl_atr": 1.5, "tp_atr": 3.0},
+    "priority_scores": {
+      "testability": 0.8,
+      "dna_novelty": 0.7,
+      "complexity_inv": 0.7,
+      "regime_impact": 0.8,
+      "parent_strength": 0.9
+    },
+    "priority": 7.65
+  },
+  {
+    "id": "orb_sweep_confirm",
+    "parent": "orb_009",
+    "mutation_type": "add_filter",
+    "mutation_fn": "compute_sweep",
+    "description": "ORB + ICT sweep confirmation: long only after low sweep, short only after high sweep",
+    "complexity": "easy",
+    "filter_column": "sweep_bias",
+    "filter_logic": "DIRECTIONAL",
+    "priority_scores": {
+      "testability": 0.8,
+      "dna_novelty": 0.8,
+      "complexity_inv": 0.9,
+      "regime_impact": 0.5,
+      "parent_strength": 0.9
+    },
+    "priority": 7.55
+  },
+  {
+    "id": "orb_momentum_confirm",
+    "parent": "orb_009",
+    "mutation_type": "add_filter",
+    "mutation_fn": "compute_momentum_state",
+    "description": "ORB + BBKC momentum direction: long only when lime, short only when red",
+    "complexity": "easy",
+    "filter_column": "mom_lime|mom_red",
+    "filter_logic": "DIRECTIONAL",
+    "priority_scores": {
+      "testability": 0.8,
+      "dna_novelty": 0.6,
+      "complexity_inv": 0.9,
+      "regime_impact": 0.6,
+      "parent_strength": 0.9
+    },
+    "priority": 7.30
+  },
+  {
+    "id": "pb_squeeze_filter",
+    "parent": "pb_trend",
+    "mutation_type": "add_filter",
+    "mutation_fn": "compute_squeeze",
+    "description": "PB + BBKC squeeze release gate: only enter pullback on squeeze release",
+    "complexity": "easy",
+    "filter_column": "squeeze_release",
+    "filter_logic": "AND",
+    "priority_scores": {
+      "testability": 0.8,
+      "dna_novelty": 0.8,
+      "complexity_inv": 0.9,
+      "regime_impact": 0.6,
+      "parent_strength": 0.7
+    },
+    "priority": 7.60
+  },
+  {
+    "id": "pb_compression_filter",
+    "parent": "pb_trend",
+    "mutation_type": "add_filter",
+    "mutation_fn": "compute_compression",
+    "description": "PB + ORION compression pre-filter: only enter pullback in compression zones",
+    "complexity": "easy",
+    "filter_column": "compression_active",
+    "filter_logic": "AND",
+    "priority_scores": {
+      "testability": 0.8,
+      "dna_novelty": 0.7,
+      "complexity_inv": 0.9,
+      "regime_impact": 0.6,
+      "parent_strength": 0.7
+    },
+    "priority": 7.40
+  },
+  {
+    "id": "pb_momentum_exit",
+    "parent": "pb_trend",
+    "mutation_type": "swap_exit",
+    "mutation_fn": "compute_momentum_state",
+    "description": "PB with BBKC momentum deceleration exit: exit long on green, exit short on maroon",
+    "complexity": "hard",
+    "exit_logic": "momentum_decel",
+    "priority_scores": {
+      "testability": 0.6,
+      "dna_novelty": 0.9,
+      "complexity_inv": 0.5,
+      "regime_impact": 0.7,
+      "parent_strength": 0.7
+    },
+    "priority": 7.20
+  },
+  {
+    "id": "pb_range_stops",
+    "parent": "pb_trend",
+    "mutation_type": "swap_risk",
+    "mutation_fn": null,
+    "description": "PB with range-based stops instead of ATR-based stops",
+    "complexity": "medium",
+    "risk_params": {"use_range": true, "tp_mult": 2.0},
+    "priority_scores": {
+      "testability": 0.7,
+      "dna_novelty": 0.6,
+      "complexity_inv": 0.7,
+      "regime_impact": 0.7,
+      "parent_strength": 0.7
+    },
+    "priority": 6.90
+  },
+  {
+    "id": "pb_relaxed_filters",
+    "parent": "pb_trend",
+    "mutation_type": "relax_filter",
+    "mutation_fn": null,
+    "description": "PB with relaxed filters: remove ADX gate, widen session windows, lower vol threshold",
+    "complexity": "easy",
+    "relax_params": {"remove_adx": true, "vol_mult": 0.5, "single_window": true},
+    "priority_scores": {
+      "testability": 0.7,
+      "dna_novelty": 0.3,
+      "complexity_inv": 0.9,
+      "regime_impact": 0.5,
+      "parent_strength": 0.7
+    },
+    "priority": 5.85
+  },
+  {
+    "id": "vix_momentum_exit",
+    "parent": "vix_channel",
+    "mutation_type": "swap_exit",
+    "mutation_fn": "compute_momentum_state",
+    "description": "VIX Channel with momentum state exit: exit long on green, exit short on maroon",
+    "complexity": "hard",
+    "exit_logic": "momentum_decel",
+    "priority_scores": {
+      "testability": 0.6,
+      "dna_novelty": 0.8,
+      "complexity_inv": 0.5,
+      "regime_impact": 0.6,
+      "parent_strength": 0.6
+    },
+    "priority": 6.45
+  },
+  {
+    "id": "vix_atr_stops",
+    "parent": "vix_channel",
+    "mutation_type": "swap_risk",
+    "mutation_fn": null,
+    "description": "VIX Channel with ATR-based stops instead of RV-scaled implied move",
+    "complexity": "medium",
+    "risk_params": {"sl_atr": 1.5, "tp_atr": 2.0, "atr_period": 14},
+    "priority_scores": {
+      "testability": 0.7,
+      "dna_novelty": 0.5,
+      "complexity_inv": 0.7,
+      "regime_impact": 0.6,
+      "parent_strength": 0.6
+    },
+    "priority": 6.15
+  },
+  {
+    "id": "vix_compression_confirm",
+    "parent": "vix_channel",
+    "mutation_type": "add_filter",
+    "mutation_fn": "compute_compression",
+    "description": "VIX Channel + compression confirmation: only enter when compression is active",
+    "complexity": "medium",
+    "filter_column": "compression_active",
+    "filter_logic": "AND",
+    "priority_scores": {
+      "testability": 0.7,
+      "dna_novelty": 0.5,
+      "complexity_inv": 0.7,
+      "regime_impact": 0.5,
+      "parent_strength": 0.6
+    },
+    "priority": 6.00
+  },
+  {
+    "id": "vix_sweep_confirm",
+    "parent": "vix_channel",
+    "mutation_type": "add_filter",
+    "mutation_fn": "compute_sweep",
+    "description": "VIX Channel + ICT sweep confirmation: only enter in sweep direction",
+    "complexity": "easy",
+    "filter_column": "sweep_bias",
+    "filter_logic": "DIRECTIONAL",
+    "priority_scores": {
+      "testability": 0.7,
+      "dna_novelty": 0.6,
+      "complexity_inv": 0.9,
+      "regime_impact": 0.4,
+      "parent_strength": 0.6
+    },
+    "priority": 5.95
+  },
+  {
+    "id": "vix_adx_confirm",
+    "parent": "vix_channel",
+    "mutation_type": "add_filter",
+    "mutation_fn": null,
+    "description": "VIX Channel + ADX trend filter: only enter when ADX > 14 confirms trending",
+    "complexity": "easy",
+    "filter_column": "adx_ok",
+    "filter_logic": "AND",
+    "adx_params": {"adx_len": 14, "adx_min": 14.0},
+    "priority_scores": {
+      "testability": 0.7,
+      "dna_novelty": 0.4,
+      "complexity_inv": 0.9,
+      "regime_impact": 0.5,
+      "parent_strength": 0.6
+    },
+    "priority": 5.70
+  }
+]

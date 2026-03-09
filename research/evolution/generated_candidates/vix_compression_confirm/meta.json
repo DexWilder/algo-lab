@@ -1,0 +1,9 @@
+{
+  "candidate_id": "vix_compression_confirm",
+  "parent": "vix_channel",
+  "mutation_type": "add_filter",
+  "mutation_fn": "compute_compression",
+  "description": "VIX Channel + compression confirmation: only enter when compression is active",
+  "priority": 6.0,
+  "generated_date": "2026-03-09"
+}

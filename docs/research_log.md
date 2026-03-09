@@ -700,4 +700,65 @@ Mapped all active strategies to their regime niches:
 
 ---
 
+## 2026-03-09 — Phase 9: Evolution Scheduler
+
+**Goal:** Build practical evolution engine to generate hybrid candidates by injecting donor components (ORION compression, BBKC squeeze/momentum, ICT sweep) into parent strategies (ORB-009, PB-Trend, VIX Channel), then validate through existing pipeline.
+
+**Approach:** Template-based generation — copy parent strategy, inject mutations at known source landmarks. Four mutation types: add_filter (AND a new boolean column), swap_risk (replace stop/target calculation), swap_exit (add momentum deceleration exit), relax_filter (remove conditions).
+
+**Infrastructure built:**
+- `research/evolution/mutations.py` — 4 stateless indicator functions extracted from donor strategies
+  - `compute_compression()` — ORION-VOL tightness + flatness (5.5% of bars active on MES)
+  - `compute_squeeze()` — BBKC BB/KC overlap + release detection (39.4% squeeze_on, 5.2% release)
+  - `compute_momentum_state()` — BBKC linreg momentum color states (4 mutually exclusive states)
+  - `compute_sweep()` — ICT-010 session range sweep bias (1/-1/0 per bar)
+- `research/evolution/evolution_queue.json` — 15 prioritized recipes with weighted scoring
+- `research/evolution/evolution_scheduler.py` — CLI orchestrator with 8-stage pipeline
+
+**Pipeline stages:** generate → backtest (3 assets × 3 modes) → quality gate (PF>1.0, trades≥30) → DNA novelty (min_distance>0.3) → regime analysis → mutation impact → statistical check (bootstrap CI + DSR) → report generation
+
+**Results — 15 candidates evaluated:**
+
+| # | Candidate | Parent | Type | Best Combo | PF | Trades | Status | Reason |
+|---|-----------|--------|------|------------|-----|--------|--------|--------|
+| 1 | orb_compression | orb_009 | add_filter | MGC-both | ∞ | 2 | rejected | trades < 30 |
+| 2 | orb_squeeze_filter | orb_009 | add_filter | MGC-long | 7.29 | 20 | rejected | trades < 30 |
+| 3 | orb_atr_stops | orb_009 | swap_risk | MES-short | 1.22 | 217 | rejected | DNA duplicate (0.250) |
+| 4 | pb_squeeze_filter | pb_trend | add_filter | MGC-both | 1.61 | 3 | rejected | trades < 30 |
+| 5 | orb_sweep_confirm | orb_009 | add_filter | MGC-long | 2.16 | 17 | rejected | trades < 30 |
+| 6 | pb_compression_filter | pb_trend | add_filter | MGC-short | ∞ | 1 | rejected | trades < 30 |
+| 7 | orb_momentum_confirm | orb_009 | add_filter | MGC-long | 1.67 | 91 | rejected | DNA duplicate (0.200) |
+| 8 | pb_momentum_exit | pb_trend | swap_exit | MGC-short | 1.95 | 29 | rejected | trades < 30 |
+| 9 | pb_range_stops | pb_trend | swap_risk | MGC-short | 1.89 | 28 | rejected | trades < 30 |
+| 10 | vix_momentum_exit | vix_channel | swap_exit | MES-short | 1.53 | 240 | rejected | DNA duplicate (0.000) |
+| 11 | **vix_atr_stops** | vix_channel | swap_risk | **MNQ-long** | **1.36** | **263** | **promoted** | marginal novelty (0.500) |
+| 12 | vix_compression_confirm | vix_channel | add_filter | MNQ-long | 1.24 | 166 | rejected | DNA duplicate (0.200) |
+| 13 | vix_sweep_confirm | vix_channel | add_filter | MES-long | 1.50 | 37 | rejected | DNA duplicate (0.200) |
+| 14 | **pb_relaxed_filters** | pb_trend | relax_filter | **MES-short** | **1.25** | **274** | **promoted** | marginal novelty (0.449) |
+| 15 | vix_adx_confirm | vix_channel | add_filter | MES-short | 1.46 | 240 | rejected | DNA duplicate (0.200) |
+
+**Promoted candidates:**
+- `vix_atr_stops`: VIX Channel with ATR-based risk instead of RV-scaled. Found edge on MNQ-long (PF=1.36, Sharpe=1.87, 263 trades, DSR=1.000). DNA distance 0.500 = genuinely different risk model.
+- `pb_relaxed_filters`: PB with ADX removed, vol threshold halved, single session window. Found on MES-short (PF=1.25, Sharpe=1.71, 274 trades, DSR=1.000). But mutation_hurt — PF dropped from 2.36 to 1.25 (traded selectivity for volume).
+
+**Key insights:**
+1. **Filter stacking on ORB/PB kills trade count.** These strategies are already selective (75 and 21 trades). Adding compression/squeeze/sweep filters pushes most below 30 trades. The mutation adds value per-trade (PF 2-7+) but destroys statistical significance.
+2. **Risk model swaps create genuine structural novelty.** DNA distance 0.5 for vix_atr_stops vs 0.0-0.25 for filter additions. Changing HOW you risk (ATR vs range vs RV) is more structurally distinct than changing what confirms entry.
+3. **VIX Channel is the best mutation host** — 503 base trades gives room to filter down while maintaining statistical minimums. All VIX filter candidates passed PF>1.0 gate; most failed DNA novelty.
+4. **DNA novelty gate is appropriately strict.** add_filter mutations don't change entry_type/risk_model/holding_time_class, so they register as duplicates. This correctly prevents portfolio clutter.
+5. **pb_momentum_exit and pb_range_stops were tantalizingly close** (29 and 28 trades, PF 1.95 and 1.89). With slightly more data or a lower trade threshold, these would promote. Worth revisiting when more data is available.
+
+**Decision:** Both promoted candidates are marked for monitoring but NOT added to core portfolio yet. vix_atr_stops on MNQ-long is the most interesting — a new asset/direction combo for VIX Channel.
+
+**Artifacts:**
+- `research/evolution/mutations.py` — reusable mutation components
+- `research/evolution/evolution_queue.json` — 15 prioritized recipes
+- `research/evolution/evolution_scheduler.py` — CLI orchestrator
+- `research/evolution/generated_candidates/` — 15 strategy.py + meta.json files
+- `research/evolution/evolution_results.json` — machine-readable results
+- `research/evolution/evolution_results.md` — executive summary
+- `research/evolution/evolution_summary_matrix.md` — compact comparison table
+
+---
+
 *Last updated: 2026-03-09*
