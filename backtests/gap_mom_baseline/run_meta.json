@@ -1,0 +1,20 @@
+{
+  "strategy": "gap_mom",
+  "strategy_name": "Gap Momentum System",
+  "family": "orb",
+  "source_url": "https://www.tradingview.com/script/52wKLj6P-TASC-2024-01-Gap-Momentum-System/",
+  "conversion_type": "faithful",
+  "run_date": "2026-03-08 20:29:46",
+  "assets": [
+    "MES",
+    "MGC",
+    "MNQ"
+  ],
+  "modes": [
+    "long",
+    "short",
+    "both"
+  ],
+  "engine": "fill-at-next-open",
+  "notes": "Baseline run \u2014 faithful conversion, no optimization"
+}

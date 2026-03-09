@@ -1,0 +1,20 @@
+{
+  "name": "Gap Momentum System",
+  "family": "orb",
+  "source_url": "https://www.tradingview.com/script/52wKLj6P-TASC-2024-01-Gap-Momentum-System/",
+  "source_author": "PineCodersTASC (Perry Kaufman)",
+  "pine_version": "5",
+  "conversion_type": "faithful",
+  "conversion_date": "2026-03-08",
+  "description": "Perry Kaufman's Gap Momentum from TASC magazine. Cumulative gap series with SMA signal line for long-only entries. Enter when gap momentum crosses above signal, exit on reversal.",
+  "entry_model": "gap",
+  "regime_dependence": "mixed",
+  "parameters": {
+    "signal_sma": 20,
+    "atr_period": 14,
+    "sl_atr": 2.0,
+    "session": "09:30-15:15 ET",
+    "entry_cutoff": "14:00 ET"
+  },
+  "status": "baseline_testing"
+}

@@ -340,11 +340,42 @@ Monthly pass rate: 13/19 (68%). No prop guardrails triggered.
 
 ---
 
-## 2026-03-08 — Phase 7.3: Evolution Engine Design
+## 2026-03-08 — Phase 7.3: Gap Momentum Conversion (ORB-018)
+
+**Experiment:** Faithful conversion of Perry Kaufman's Gap Momentum System from TASC 2024.01. Cumulative gap series (today's open - yesterday's close) with 20-day SMA signal line. Long when gap momentum crosses above signal. Exit on reversal, stop, or EOD.
+
+**Results:**
+| Asset | Mode | Trades | PF | Sharpe | PnL | MaxDD |
+|-------|------|--------|-----|--------|-----|-------|
+| MES | Long | 27 | 0.24 | -9.87 | -$984 | $1,160 |
+| MGC | Long | 24 | 3.41 | 3.67 | $2,718 | $518 |
+| MNQ | Long | 28 | 0.48 | -4.71 | -$1,412 | $1,905 |
+
+**Cost analysis (MGC):** Net PF=3.26, friction 2.9% ($78). Correlation with existing portfolio: r=-0.01 (zero).
+
+**WARNING:** Best trade = $2,332 (86% of total PnL). Only 24 trades.
+
+**Decision:** FAILS diversification goal (no MES/MNQ edge). MGC result is interesting but doesn't reduce gold concentration. Potential as 3rd gold strategy pending robustness validation.
+
+---
+
+## 2026-03-08 — Phase 7.4: Evolution Engine Design
 
 **Deliverable:** Strategy evolution engine architecture specification. Covers component registry, combiner, evaluator, promotion pipeline, portfolio optimizer, and automation roadmap in three phases (semi-automated → fully automated → adaptive).
 
 **Status:** Design only. No code until Phase 7 paper trading completes.
+
+---
+
+## 2026-03-08 — Phase 7.5: Execution Infrastructure Skeleton
+
+**Deliverable:** Execution adapter skeleton (`execution/tradovate_adapter.py`) and signal logger (`execution/signal_logger.py`).
+
+**Adapter:** Connects signal engine → regime gate → prop controller → Tradovate API. Currently all methods are no-ops that log intent. Covers: authentication, market/bracket orders, position management, kill switch, daily reconciliation, heartbeat.
+
+**Logger:** Produces daily JSON logs matching PHASE_7_PAPER_TRADING_PLAN.md format. Records: regime state, signals, trades, controller state, operational notes. Summary statistics across all logged days.
+
+**Status:** Skeleton mode — logs everything, executes nothing. Will be activated after paper trading validation.
 
 ---
 

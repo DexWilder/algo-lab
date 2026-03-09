@@ -7,9 +7,10 @@
 | Stage | Count |
 |-------|-------|
 | Strategies harvested | 76 |
-| Strategies converted | 5 |
+| Strategies converted | 6 |
 | candidate_validated | 2 |
 | Rejected | 3 |
+| Pending validation | 1 (Gap-Mom MGC, needs robustness) |
 | Effectively dead (costs) | 1 |
 
 ## Core Portfolio (Phase 6 — Deployment Validated)
@@ -69,6 +70,8 @@
 | ICT-010 | — | — | <1.0 | — | No edge on any asset/mode |
 | RVWAP-MR | MES/MNQ/MGC | Both | <1.01 | — | No edge; VWAP mean reversion thesis fails on 5m |
 | ORB-009 | MNQ | Long | 1.20 | — | Marginal after costs; below 1.3 threshold |
+| Gap-Mom | MES | Long | 0.24 | — | No edge on index futures |
+| Gap-Mom | MNQ | Long | 0.48 | — | No edge on index futures |
 
 ## Engine Capabilities
 
@@ -89,6 +92,8 @@
 - [x] Monte Carlo equity simulation (10K resamples)
 - [x] Paper trade simulation with prop rules
 - [x] Execution architecture design
+- [x] Execution adapter skeleton (Tradovate, no-op mode)
+- [x] Paper trade signal/equity logger
 - [ ] HMM regime detection
 - [ ] Alternative data filters (COT, GVZ)
 - [ ] Execution infrastructure (Tradovate/Rithmic API)
@@ -112,9 +117,11 @@
 **Phase 7: Live Paper Trading + Diversification** (IN PROGRESS)
 - Paper trading plan ready: `docs/PHASE_7_PAPER_TRADING_PLAN.md`
 - Pending: Tradovate sim account setup for live paper trading
-- Diversification search: RVWAP-MR rejected, ORB-009 MNQ marginal
+- Diversification search: RVWAP-MR rejected, Gap-Mom fails MES/MNQ, ORB-009 MNQ marginal
+- Gap-Mom MGC-Long: PF=3.26 net, but 86% PnL from 1 trade — needs robustness check
+- Execution skeleton ready: `execution/tradovate_adapter.py` + `execution/signal_logger.py`
 - Evolution engine spec: `docs/EVOLUTION_ENGINE_SPEC.md` (design only)
-- Next diversification candidates: HYE Mean Reversion, Gap Momentum, or targeted harvest
+- **Blocker:** All strategies with edge trade gold. MES/MNQ diversification requires new harvest.
 
 ## Completed Phases
 

@@ -169,19 +169,37 @@ Converted and backtested on all three assets. No edge found.
 
 Strategy requires 30-minute bars (market profile concept). Would need bar aggregation adapter or separate engine config. Deferred to future research.
 
+### Round 2: Gap Momentum (ORB-018) — MIXED
+
+| Asset | Mode | Trades | PF | Sharpe | PnL | MaxDD |
+|-------|------|--------|-----|--------|-----|-------|
+| MES | Long | 27 | 0.24 | -9.87 | -$984 | $1,160 |
+| MGC | Long | 24 | 3.41 | 3.67 | $2,718 | $518 |
+| MNQ | Long | 28 | 0.48 | -4.71 | -$1,412 | $1,905 |
+
+**MGC-Long cost analysis:** Net PF=3.26, friction only 2.9%. Perfectly uncorrelated with existing portfolio (r=-0.01, zero trade date overlap with PB-Short).
+
+**CRITICAL WARNING:** Best trade = $2,332 (86% of total PnL). Top-trade removal would likely collapse PF. Only 24 trades — bootstrap CI will be wide.
+
+**Verdict for diversification:** FAILS. No edge on MES or MNQ. MGC result is strong but adds another gold strategy, not diversification. Could be a portfolio enhancement candidate (3rd gold strategy with independent alpha) after robustness validation.
+
 ### Remaining Queue
 
 | # | Candidate | Status |
 |---|-----------|--------|
-| ~~1~~ | ~~RVWAP Mean Reversion~~ | REJECTED |
-| 2 | HYE Mean Reversion VWAP | Pending — easy conversion, but same VWAP MR thesis may be dead |
-| ~~3~~ | ~~Open Drive~~ | DEFERRED — needs 30m bars |
-| 4 | Gap Momentum (ORB-018) | Pending — different entry model |
-| 5 | New harvest needed | MES/MNQ trend or session strategies |
+| ~~1~~ | ~~RVWAP Mean Reversion~~ | REJECTED (no edge) |
+| ~~2~~ | ~~Gap Momentum~~ | FAILS diversification (no MES/MNQ edge) |
+| ~~3~~ | ~~Open Drive~~ | DEFERRED (needs 30m bars) |
+| 4 | HYE Mean Reversion VWAP | Low priority (VWAP MR thesis likely dead) |
+| 5 | **New harvest needed** | MES/MNQ trend, session, volatility compression |
 
-### Key Insight
+### Key Insights
 
-The VWAP mean reversion thesis may not work on 5m futures data after realistic fills. The lab's edge appears concentrated in breakout/pullback strategies (ORB-009, PB-Trend). A targeted harvest for pure trend following or volatility compression strategies on MES/MNQ may be more productive than converting more VWAP variants.
+1. **The lab's edge is concentrated in gold.** All strategies that show PF > 1.5 trade MGC. Index futures (MES/MNQ) consistently show marginal or no edge.
+2. **VWAP mean reversion doesn't work** on 5m futures after realistic fills.
+3. **Gap momentum works on gold** but not on indices — gold has unique overnight gap dynamics.
+4. **Diversification requires new harvest.** The existing triage queue is dominated by VWAP and ORB variants. Need to harvest: pure trend following, volatility compression breakout, and session-specific strategies designed for MES/MNQ.
+5. **Gold portfolio enhancement is possible:** Gap Momentum could become a 3rd gold strategy if it passes robustness. But this doesn't reduce gold concentration risk.
 
 ---
 *Report generated 2026-03-08 | Updated 2026-03-08 with conversion results*
