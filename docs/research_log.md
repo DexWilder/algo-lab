@@ -307,4 +307,45 @@ Monthly pass rate: 13/19 (68%). No prop guardrails triggered.
 
 ---
 
+## 2026-03-08 — Phase 7.0: Paper Trading Plan
+
+**Deliverable:** Full paper trading plan with portfolio config, expected behavior, pass/fail conditions, invalidation criteria, weekly review checklist, and transition criteria.
+
+**Key parameters:** 2-4 week duration, regime-gated PB-MGC-Short + ORB-009 MGC-Long, equal weight 1 contract, $0.62/side + 1 tick slippage.
+
+---
+
+## 2026-03-08 — Phase 7.1: Diversification Search
+
+**Experiment:** Identify non-gold (MES/MNQ) strategies to reduce MGC concentration risk. Evaluated triage queue candidates and existing cross-asset data.
+
+**Top candidates identified:** RVWAP Mean Reversion (AF=5), HYE Mean Reversion VWAP (AF=5), Open Drive (AF=4).
+
+**Existing data:** ORB-009 MNQ-Long gross PF=1.237 (net PF=1.201 after costs — marginal).
+
+---
+
+## 2026-03-08 — Phase 7.2: RVWAP Mean Reversion Conversion
+
+**Experiment:** Faithful conversion of RVWAP Mean Reversion (vvedding) from Pine Script to Python. Session-anchored VWAP with rolling stdev bands. Long on lower band crossover, short on upper band crossover. Exit at VWAP center cross.
+
+**Results:**
+| Asset | Mode | Trades | PF | Sharpe | PnL |
+|-------|------|--------|-----|--------|-----|
+| MES | Both | 1,004 | 0.83 | -1.83 | -$5,373 |
+| MGC | Both | 405 | 1.01 | 0.04 | $117 |
+| MNQ | Both | 904 | 0.87 | -1.21 | -$7,263 |
+
+**Decision:** REJECTED. No edge on any asset/mode. VWAP mean reversion via stdev bands does not produce an edge on 5m futures data with fill-at-next-open engine.
+
+---
+
+## 2026-03-08 — Phase 7.3: Evolution Engine Design
+
+**Deliverable:** Strategy evolution engine architecture specification. Covers component registry, combiner, evaluator, promotion pipeline, portfolio optimizer, and automation roadmap in three phases (semi-automated → fully automated → adaptive).
+
+**Status:** Design only. No code until Phase 7 paper trading completes.
+
+---
+
 *Last updated: 2026-03-08*

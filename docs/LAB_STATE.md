@@ -7,9 +7,9 @@
 | Stage | Count |
 |-------|-------|
 | Strategies harvested | 76 |
-| Strategies converted | 4 |
+| Strategies converted | 5 |
 | candidate_validated | 2 |
-| Rejected | 2 |
+| Rejected | 3 |
 | Effectively dead (costs) | 1 |
 
 ## Core Portfolio (Phase 6 — Deployment Validated)
@@ -67,6 +67,8 @@
 | PB-Trend | MNQ | Long | 1.08 | 0.000 | Fails DSR, 38.5% friction impact |
 | VWAP-006 | MES | Long | 1.05 | — | 74% PnL eaten by friction |
 | ICT-010 | — | — | <1.0 | — | No edge on any asset/mode |
+| RVWAP-MR | MES/MNQ/MGC | Both | <1.01 | — | No edge; VWAP mean reversion thesis fails on 5m |
+| ORB-009 | MNQ | Long | 1.20 | — | Marginal after costs; below 1.3 threshold |
 
 ## Engine Capabilities
 
@@ -107,11 +109,12 @@
 
 ## Next Milestone
 
-**Phase 7: Live Paper Trading + Diversification**
-- Deploy on Tradovate sim for 2+ weeks
-- Monitor for edge decay (ORB-009 2024 weakness)
-- Add MES or MNQ strategy for gold-only diversification
-- Begin strategy evolution engine design
+**Phase 7: Live Paper Trading + Diversification** (IN PROGRESS)
+- Paper trading plan ready: `docs/PHASE_7_PAPER_TRADING_PLAN.md`
+- Pending: Tradovate sim account setup for live paper trading
+- Diversification search: RVWAP-MR rejected, ORB-009 MNQ marginal
+- Evolution engine spec: `docs/EVOLUTION_ENGINE_SPEC.md` (design only)
+- Next diversification candidates: HYE Mean Reversion, Gap Momentum, or targeted harvest
 
 ## Completed Phases
 

@@ -140,4 +140,48 @@ A candidate advances to the portfolio if:
 - Reduces portfolio drawdown overlap below 50%
 
 ---
-*Report generated 2026-03-08*
+
+## Conversion Results
+
+### Round 1: RVWAP Mean Reversion → REJECTED
+
+Converted and backtested on all three assets. No edge found.
+
+| Asset | Mode | Trades | PF | Sharpe | PnL | MaxDD |
+|-------|------|--------|-----|--------|-----|-------|
+| MES | Both | 1,004 | 0.83 | -1.83 | -$5,373 | $5,943 |
+| MGC | Both | 405 | 1.01 | 0.04 | $117 | $3,252 |
+| MNQ | Both | 904 | 0.87 | -1.21 | -$7,263 | $9,198 |
+
+**Verdict:** REJECTED. PF < 1.0 on MES/MNQ, breakeven on MGC. Mean reversion via VWAP stdev bands does not produce an edge on 5m futures data with our engine.
+
+### ORB-009 MNQ-Long Cost Analysis
+
+| Metric | Gross | Net |
+|--------|-------|-----|
+| PF | 1.237 | 1.201 |
+| PnL | $2,739 | $2,356 |
+| Friction | — | $383 (14.0%) |
+
+**Verdict:** MARGINAL. Net PF 1.201 < 1.3 threshold. Not recommended for portfolio inclusion without further optimization.
+
+### Open Drive (ORB-002) — Deferred
+
+Strategy requires 30-minute bars (market profile concept). Would need bar aggregation adapter or separate engine config. Deferred to future research.
+
+### Remaining Queue
+
+| # | Candidate | Status |
+|---|-----------|--------|
+| ~~1~~ | ~~RVWAP Mean Reversion~~ | REJECTED |
+| 2 | HYE Mean Reversion VWAP | Pending — easy conversion, but same VWAP MR thesis may be dead |
+| ~~3~~ | ~~Open Drive~~ | DEFERRED — needs 30m bars |
+| 4 | Gap Momentum (ORB-018) | Pending — different entry model |
+| 5 | New harvest needed | MES/MNQ trend or session strategies |
+
+### Key Insight
+
+The VWAP mean reversion thesis may not work on 5m futures data after realistic fills. The lab's edge appears concentrated in breakout/pullback strategies (ORB-009, PB-Trend). A targeted harvest for pure trend following or volatility compression strategies on MES/MNQ may be more productive than converting more VWAP variants.
+
+---
+*Report generated 2026-03-08 | Updated 2026-03-08 with conversion results*

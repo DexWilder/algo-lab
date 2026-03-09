@@ -1,0 +1,20 @@
+{
+  "strategy": "rvwap_mr",
+  "strategy_name": "RVWAP Mean Reversion",
+  "family": "vwap",
+  "source_url": "https://www.tradingview.com/script/oZcWZsvU-RVWAP-Mean-Reversion-Strategy/",
+  "conversion_type": "faithful",
+  "run_date": "2026-03-08 20:14:28",
+  "assets": [
+    "MES",
+    "MGC",
+    "MNQ"
+  ],
+  "modes": [
+    "both",
+    "long",
+    "short"
+  ],
+  "engine": "fill-at-next-open",
+  "notes": "Baseline run \u2014 faithful conversion, no optimization"
+}

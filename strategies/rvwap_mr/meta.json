@@ -1,0 +1,21 @@
+{
+  "name": "RVWAP Mean Reversion",
+  "family": "vwap",
+  "source_url": "https://www.tradingview.com/script/oZcWZsvU-RVWAP-Mean-Reversion-Strategy/",
+  "source_author": "vvedding",
+  "pine_version": "5",
+  "conversion_type": "faithful",
+  "conversion_date": "2026-03-08",
+  "description": "Rolling VWAP mean reversion using stdev bands. Long when price dips below lower band and crosses above. Short when price crosses below upper band. Exits at VWAP cross.",
+  "entry_model": "mean_reversion",
+  "regime_dependence": "range_bound",
+  "parameters": {
+    "stdev_mult": 2.0,
+    "stdev_lookback": 20,
+    "atr_period": 14,
+    "sl_atr": 2.0,
+    "session": "09:30-15:15 ET",
+    "warmup_mins": 30
+  },
+  "status": "baseline_testing"
+}
