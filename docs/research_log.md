@@ -257,4 +257,54 @@ PB-MGC-Short: low-vol trades were net losers (PF=0.43), so gating actually incre
 
 ---
 
+## 2026-03-08 — Phase 6.1: Prop Controller Implementation
+
+**Experiment:** Replace prop controller stub with full trade-by-trade simulation. Enforce trailing drawdown, daily loss limits, contract caps, profit lock, and phase transitions.
+
+**Result:** Controller implemented with simulate() method. Handles EOD trailing DD, per-phase rules, and profit locking. Tested with Lucid 100K config — correctly identifies P1→P2 transition at $3,100 profit.
+
+---
+
+## 2026-03-08 — Phase 6.2: Monte Carlo Risk Gate
+
+**Experiment:** Reshuffle 96 gated portfolio trades 10,000 times. Measure MaxDD distribution and prop account survival.
+
+**Results:**
+| Metric | Value |
+|--------|-------|
+| Median MaxDD | $516 |
+| 95th pct MaxDD | $840 |
+| 99th pct MaxDD | $1,034 |
+| P(ruin at $2K DD) | 0.0% |
+| P(ruin at $4K DD) | 0.0% |
+| Prop survival | 100% (all configs) |
+
+**Decision:** PASS. Portfolio survives all 10,000 orderings under every prop DD limit tested. Not path-dependent.
+
+---
+
+## 2026-03-08 — Phase 6.3: Paper Trade Simulation
+
+**Experiment:** Run gated portfolio through Lucid 100K and Generic $50K prop controllers. Track skipped trades, halted days, phase transitions.
+
+**Results:**
+| Config | Result | Skipped | Halted Days | Lock |
+|--------|--------|---------|-------------|------|
+| Lucid 100K | PASSED | 0 | 0 | YES ($3,122) |
+| Generic $50K | PASSED | 0 | 0 | N/A |
+
+Monthly pass rate: 13/19 (68%). No prop guardrails triggered.
+
+**Decision:** Portfolio is deployment-ready. Proceed to live paper trading.
+
+---
+
+## 2026-03-08 — Phase 6.4: Execution Architecture
+
+**Deliverable:** Design document for live trading infrastructure — signal pipeline, order routing, failure handling, kill switch, logging, monitoring.
+
+**Recommendation:** Tradovate REST API for initial deployment. 5-minute bar latency budget. 12-step deployment checklist.
+
+---
+
 *Last updated: 2026-03-08*

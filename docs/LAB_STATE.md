@@ -12,12 +12,12 @@
 | Rejected | 2 |
 | Effectively dead (costs) | 1 |
 
-## Core Portfolio (Phase 5 — Regime-Gated)
+## Core Portfolio (Phase 6 — Deployment Validated)
 
 | Strategy | Asset | Mode | Gated PF | Gated Sharpe | DSR | Status |
 |----------|-------|------|----------|-------------|-----|--------|
-| PB-Trend | MGC | Short | 2.36 | 5.27 | 0.952 SIG | candidate_validated |
-| ORB-009 | MGC | Long | 2.07 | 3.93 | 1.000 SIG | candidate_validated |
+| PB-Trend | MGC | Short | 2.36 | 5.27 | 0.952 SIG | deployment_ready |
+| ORB-009 | MGC | Long | 2.07 | 3.93 | 1.000 SIG | deployment_ready |
 
 **Regime Gate:** Skip low-vol days (ATR < 33rd percentile). Applied to both strategies.
 
@@ -35,13 +35,30 @@
 | Daily PnL Correlation | -0.009 |
 | Profitable Months | 13/19 (68%) |
 
-### Sizing Research (Equal Weight baseline)
+### Monte Carlo Risk Gate
+
+| Metric | Value |
+|--------|-------|
+| Median MaxDD (10K sims) | $516 |
+| 99th percentile MaxDD | $1,034 |
+| P(ruin at $4K DD) | 0.0% |
+| P(ruin at $2K DD) | 0.0% |
+| Prop survival (all configs) | 100% |
+
+### Prop Account Simulation
+
+| Config | Result | Skipped Trades | Halted Days |
+|--------|--------|---------------|-------------|
+| Lucid 100K ($4K DD) | PASSED, locked at $3,122 | 0 | 0 |
+| Generic $50K ($2.5K DD) | PASSED | 0 | 0 |
+
+### Sizing Research
 
 | Method | Sharpe | Calmar | MaxDD | Best For |
 |--------|--------|--------|-------|----------|
 | Equal Weight | 3.31 | 7.57 | $859 | Simplicity |
-| Equal Risk Contribution | 3.20 | 8.98 | $559 | Prop accounts (hard DD limits) |
-| Vol Target 10% | 3.31 | 7.57 | $2,182 | Growth (2.5 contracts) |
+| Equal Risk Contribution | 3.20 | 8.98 | $559 | Prop accounts |
+| Vol Target 10% | 3.31 | 7.57 | $2,182 | Growth |
 
 ## Demoted / Removed
 
@@ -66,11 +83,14 @@
 - [x] Walk-forward year splits
 - [x] Parameter stability testing
 - [x] Monthly consistency analysis
-- [ ] Prop controller enforcement (stub only)
-- [ ] Monte Carlo equity simulation
+- [x] Prop controller enforcement (trailing DD, phases, daily limits)
+- [x] Monte Carlo equity simulation (10K resamples)
+- [x] Paper trade simulation with prop rules
+- [x] Execution architecture design
 - [ ] HMM regime detection
 - [ ] Alternative data filters (COT, GVZ)
 - [ ] Execution infrastructure (Tradovate/Rithmic API)
+- [ ] Live execution adapter
 
 ## Research Infrastructure
 
@@ -83,15 +103,15 @@
 - [x] Research governance (LAB_STATE, research log, phase audits)
 - [ ] Strategy evolution engine
 - [ ] Automatic combination testing
+- [ ] Diversification expansion (MES/MNQ strategies)
 
 ## Next Milestone
 
-**Phase 6: Paper Trade Validation + Execution Prep**
-- Paper trade both strategies with regime gate active
-- Monitor for edge decay (ORB-009 had weak 2024)
-- Build prop controller enforcement
-- Monte Carlo equity simulation for account sizing
-- Connect execution infrastructure (Tradovate/Rithmic)
+**Phase 7: Live Paper Trading + Diversification**
+- Deploy on Tradovate sim for 2+ weeks
+- Monitor for edge decay (ORB-009 2024 weakness)
+- Add MES or MNQ strategy for gold-only diversification
+- Begin strategy evolution engine design
 
 ## Completed Phases
 
@@ -102,6 +122,7 @@
 | Phase 3 — Baseline Backtesting | Complete | docs/audits/phase_3_baselines.md |
 | Phase 4 — Engine Hardening | Complete | docs/audits/phase_4_hardening.md |
 | Phase 5 — Regime Modeling + Portfolio Optimization | Complete | docs/audits/phase_5_regime_portfolio.md |
+| Phase 6 — Deployment Validation | Complete | docs/audits/phase_6_deployment.md |
 
 ---
 *Last updated: 2026-03-08*
