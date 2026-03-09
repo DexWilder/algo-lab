@@ -1,0 +1,371 @@
+{
+  "PB-MGC-Short": {
+    "label": "PB-MGC-Short",
+    "asset": "MGC",
+    "mode": "short",
+    "vol_regime": {
+      "LOW_VOL": {
+        "trades": 7,
+        "pf": 0.433,
+        "sharpe": -6.0309,
+        "pnl": -118.68,
+        "maxdd": 91.44,
+        "wr": 28.6,
+        "exp": -16.95,
+        "pct_of_trades": 25.0,
+        "profitable_months": "1",
+        "total_months": 5,
+        "monthly_consistency": 20.0,
+        "recommendation": "avoid"
+      },
+      "NORMAL": {
+        "trades": 21,
+        "pf": 2.361,
+        "sharpe": 5.2726,
+        "pnl": 794.96,
+        "maxdd": 233.48,
+        "wr": 61.9,
+        "exp": 37.86,
+        "pct_of_trades": 75.0,
+        "profitable_months": "7",
+        "total_months": 9,
+        "monthly_consistency": 77.8,
+        "recommendation": "active"
+      },
+      "HIGH_VOL": {
+        "trades": 0,
+        "pf": 0,
+        "sharpe": 0,
+        "pnl": 0,
+        "maxdd": 0,
+        "wr": 0,
+        "exp": 0,
+        "pct_of_trades": 0,
+        "profitable_months": 0,
+        "total_months": 0,
+        "monthly_consistency": 0,
+        "recommendation": "avoid"
+      }
+    },
+    "trend_regime": {
+      "TRENDING": {
+        "trades": 18,
+        "pf": 2.047,
+        "sharpe": 4.1823,
+        "pnl": 492.68,
+        "maxdd": 278.92,
+        "wr": 61.1,
+        "exp": 27.37,
+        "pct_of_trades": 64.3,
+        "profitable_months": "6",
+        "total_months": 10,
+        "monthly_consistency": 60.0,
+        "recommendation": "active"
+      },
+      "RANGING": {
+        "trades": 10,
+        "pf": 1.569,
+        "sharpe": 2.6308,
+        "pnl": 183.6,
+        "maxdd": 295.2,
+        "wr": 40.0,
+        "exp": 18.36,
+        "pct_of_trades": 35.7,
+        "profitable_months": "3",
+        "total_months": 7,
+        "monthly_consistency": 42.9,
+        "recommendation": "active"
+      }
+    },
+    "rv_regime": {
+      "LOW_RV": {
+        "trades": 10,
+        "pf": 0.445,
+        "sharpe": -5.4862,
+        "pnl": -166.4,
+        "maxdd": 177.2,
+        "wr": 30.0,
+        "exp": -16.64,
+        "pct_of_trades": 35.7,
+        "profitable_months": "1",
+        "total_months": 5,
+        "monthly_consistency": 20.0,
+        "recommendation": "avoid"
+      },
+      "NORMAL_RV": {
+        "trades": 7,
+        "pf": 0.947,
+        "sharpe": -0.3151,
+        "pnl": -14.68,
+        "maxdd": 233.48,
+        "wr": 57.1,
+        "exp": -2.1,
+        "pct_of_trades": 25.0,
+        "profitable_months": "3",
+        "total_months": 4,
+        "monthly_consistency": 75.0,
+        "recommendation": "avoid"
+      },
+      "HIGH_RV": {
+        "trades": 11,
+        "pf": 4.993,
+        "sharpe": 10.2172,
+        "pnl": 857.36,
+        "maxdd": 97.24,
+        "wr": 72.7,
+        "exp": 77.94,
+        "pct_of_trades": 39.3,
+        "profitable_months": "4",
+        "total_months": 6,
+        "monthly_consistency": 66.7,
+        "recommendation": "active"
+      }
+    }
+  },
+  "ORB-009-MGC-Long": {
+    "label": "ORB-009-MGC-Long",
+    "asset": "MGC",
+    "mode": "long",
+    "vol_regime": {
+      "LOW_VOL": {
+        "trades": 31,
+        "pf": 1.105,
+        "sharpe": 0.5817,
+        "pnl": 84.56,
+        "maxdd": 222.4,
+        "wr": 48.4,
+        "exp": 2.73,
+        "pct_of_trades": 29.2,
+        "profitable_months": "5",
+        "total_months": 12,
+        "monthly_consistency": 41.7,
+        "recommendation": "neutral"
+      },
+      "NORMAL": {
+        "trades": 66,
+        "pf": 2.048,
+        "sharpe": 4.0171,
+        "pnl": 2098.16,
+        "maxdd": 548.84,
+        "wr": 51.5,
+        "exp": 31.79,
+        "pct_of_trades": 62.3,
+        "profitable_months": "11",
+        "total_months": 15,
+        "monthly_consistency": 73.3,
+        "recommendation": "active"
+      },
+      "HIGH_VOL": {
+        "trades": 9,
+        "pf": 2.184,
+        "sharpe": 3.8404,
+        "pnl": 495.84,
+        "maxdd": 418.96,
+        "wr": 55.6,
+        "exp": 55.09,
+        "pct_of_trades": 8.5,
+        "profitable_months": "3",
+        "total_months": 7,
+        "monthly_consistency": 42.9,
+        "recommendation": "active"
+      }
+    },
+    "trend_regime": {
+      "TRENDING": {
+        "trades": 95,
+        "pf": 2.064,
+        "sharpe": 3.7834,
+        "pnl": 2812.2,
+        "maxdd": 801.08,
+        "wr": 51.6,
+        "exp": 29.6,
+        "pct_of_trades": 89.6,
+        "profitable_months": "11",
+        "total_months": 19,
+        "monthly_consistency": 57.9,
+        "recommendation": "active"
+      },
+      "RANGING": {
+        "trades": 11,
+        "pf": 0.771,
+        "sharpe": -1.4959,
+        "pnl": -133.64,
+        "maxdd": 324.48,
+        "wr": 45.5,
+        "exp": -12.15,
+        "pct_of_trades": 10.4,
+        "profitable_months": "3",
+        "total_months": 8,
+        "monthly_consistency": 37.5,
+        "recommendation": "avoid"
+      }
+    },
+    "rv_regime": {
+      "LOW_RV": {
+        "trades": 50,
+        "pf": 2.791,
+        "sharpe": 5.0132,
+        "pnl": 1933.0,
+        "maxdd": 235.84,
+        "wr": 56.0,
+        "exp": 38.66,
+        "pct_of_trades": 47.2,
+        "profitable_months": "7",
+        "total_months": 10,
+        "monthly_consistency": 70.0,
+        "recommendation": "active"
+      },
+      "NORMAL_RV": {
+        "trades": 23,
+        "pf": 1.022,
+        "sharpe": 0.1309,
+        "pnl": 18.48,
+        "maxdd": 441.16,
+        "wr": 43.5,
+        "exp": 0.8,
+        "pct_of_trades": 21.7,
+        "profitable_months": "3",
+        "total_months": 7,
+        "monthly_consistency": 42.9,
+        "recommendation": "neutral"
+      },
+      "HIGH_RV": {
+        "trades": 33,
+        "pf": 1.555,
+        "sharpe": 2.422,
+        "pnl": 727.08,
+        "maxdd": 632.64,
+        "wr": 48.5,
+        "exp": 22.03,
+        "pct_of_trades": 31.1,
+        "profitable_months": "6",
+        "total_months": 13,
+        "monthly_consistency": 46.2,
+        "recommendation": "active"
+      }
+    }
+  },
+  "VIX-Channel-MES-Both": {
+    "label": "VIX-Channel-MES-Both",
+    "asset": "MES",
+    "mode": "both",
+    "vol_regime": {
+      "LOW_VOL": {
+        "trades": 119,
+        "pf": 1.787,
+        "sharpe": 3.8609,
+        "pnl": 2577.44,
+        "maxdd": 384.86,
+        "wr": 56.3,
+        "exp": 21.66,
+        "pct_of_trades": 23.7,
+        "profitable_months": "15",
+        "total_months": 20,
+        "monthly_consistency": 75.0,
+        "recommendation": "active"
+      },
+      "NORMAL": {
+        "trades": 176,
+        "pf": 1.166,
+        "sharpe": 1.03,
+        "pnl": 1349.26,
+        "maxdd": 1271.83,
+        "wr": 50.6,
+        "exp": 7.67,
+        "pct_of_trades": 35.0,
+        "profitable_months": "13",
+        "total_months": 24,
+        "monthly_consistency": 54.2,
+        "recommendation": "neutral"
+      },
+      "HIGH_VOL": {
+        "trades": 208,
+        "pf": 1.254,
+        "sharpe": 1.3426,
+        "pnl": 3062.08,
+        "maxdd": 1598.42,
+        "wr": 51.4,
+        "exp": 14.72,
+        "pct_of_trades": 41.4,
+        "profitable_months": "13",
+        "total_months": 25,
+        "monthly_consistency": 52.0,
+        "recommendation": "neutral"
+      }
+    },
+    "trend_regime": {
+      "TRENDING": {
+        "trades": 398,
+        "pf": 1.214,
+        "sharpe": 1.1547,
+        "pnl": 4010.23,
+        "maxdd": 1212.29,
+        "wr": 49.5,
+        "exp": 10.08,
+        "pct_of_trades": 79.1,
+        "profitable_months": "13",
+        "total_months": 25,
+        "monthly_consistency": 52.0,
+        "recommendation": "neutral"
+      },
+      "RANGING": {
+        "trades": 105,
+        "pf": 1.641,
+        "sharpe": 3.2324,
+        "pnl": 2978.55,
+        "maxdd": 592.46,
+        "wr": 62.9,
+        "exp": 28.37,
+        "pct_of_trades": 20.9,
+        "profitable_months": "17",
+        "total_months": 24,
+        "monthly_consistency": 70.8,
+        "recommendation": "active"
+      }
+    },
+    "rv_regime": {
+      "LOW_RV": {
+        "trades": 194,
+        "pf": 0.973,
+        "sharpe": -0.1868,
+        "pnl": -204.31,
+        "maxdd": 1138.14,
+        "wr": 49.0,
+        "exp": -1.05,
+        "pct_of_trades": 38.6,
+        "profitable_months": "10",
+        "total_months": 20,
+        "monthly_consistency": 50.0,
+        "recommendation": "avoid"
+      },
+      "NORMAL_RV": {
+        "trades": 132,
+        "pf": 1.392,
+        "sharpe": 2.2346,
+        "pnl": 2093.82,
+        "maxdd": 889.86,
+        "wr": 55.3,
+        "exp": 15.86,
+        "pct_of_trades": 26.2,
+        "profitable_months": "16",
+        "total_months": 21,
+        "monthly_consistency": 76.2,
+        "recommendation": "active"
+      },
+      "HIGH_RV": {
+        "trades": 177,
+        "pf": 1.482,
+        "sharpe": 2.4035,
+        "pnl": 5099.27,
+        "maxdd": 1161.99,
+        "wr": 53.7,
+        "exp": 28.81,
+        "pct_of_trades": 35.2,
+        "profitable_months": "8",
+        "total_months": 16,
+        "monthly_consistency": 50.0,
+        "recommendation": "active"
+      }
+    }
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "clusters": {
+    "cluster_0": {
+      "members": [
+        "PB-MGC-Short"
+      ],
+      "entry_types": [
+        "pullback"
+      ],
+      "risk_models": [
+        "atr_adaptive"
+      ],
+      "size": 1
+    },
+    "cluster_1": {
+      "members": [
+        "ORB-009-MGC-Long"
+      ],
+      "entry_types": [
+        "breakout"
+      ],
+      "risk_models": [
+        "range_based"
+      ],
+      "size": 1
+    },
+    "cluster_2": {
+      "members": [
+        "VIX-Channel-MES-Both"
+      ],
+      "entry_types": [
+        "regime_detection"
+      ],
+      "risk_models": [
+        "rv_scaled"
+      ],
+      "size": 1
+    },
+    "cluster_3": {
+      "members": [
+        "GAP-MOM-MGC-Long"
+      ],
+      "entry_types": [
+        "gap_signal"
+      ],
+      "risk_models": [
+        "atr_adaptive"
+      ],
+      "size": 1
+    },
+    "cluster_4": {
+      "members": [
+        "VWAP-006-MES-Long"
+      ],
+      "entry_types": [
+        "crossover"
+      ],
+      "risk_models": [
+        "atr_adaptive"
+      ],
+      "size": 1
+    },
+    "cluster_5": {
+      "members": [
+        "RVWAP-MR-MES-Both",
+        "BBKC-SQUEEZE-MES-Both"
+      ],
+      "entry_types": [
+        "mean_reversion",
+        "squeeze_release"
+      ],
+      "risk_models": [
+        "atr_adaptive"
+      ],
+      "size": 2
+    },
+    "cluster_6": {
+      "members": [
+        "ICT-010-MES-Both"
+      ],
+      "entry_types": [
+        "pullback"
+      ],
+      "risk_models": [
+        "fixed_points"
+      ],
+      "size": 1
+    },
+    "cluster_7": {
+      "members": [
+        "ORION-VOL-MES-Both"
+      ],
+      "entry_types": [
+        "breakout"
+      ],
+      "risk_models": [
+        "compression_based"
+      ],
+      "size": 1
+    }
+  },
+  "classifications": {
+    "PB-MGC-Short": "true_diversifier",
+    "ORB-009-MGC-Long": "true_diversifier",
+    "VIX-Channel-MES-Both": "true_diversifier",
+    "GAP-MOM-MGC-Long": "watchlist",
+    "VWAP-006-MES-Long": "rejected_but_informative",
+    "RVWAP-MR-MES-Both": "rejected_but_informative",
+    "ICT-010-MES-Both": "rejected_but_informative",
+    "ORION-VOL-MES-Both": "component_donor",
+    "BBKC-SQUEEZE-MES-Both": "component_donor"
+  },
+  "overrepresented": [
+    "pullback",
+    "breakout"
+  ],
+  "missing_entry_types": [],
+  "structural_gaps": [
+    "trend_following \u2014 no dedicated trend strategy (EMA/SuperTrend/Donchian)",
+    "overnight \u2014 no globex/overnight session strategies",
+    "event_driven \u2014 no CPI/FOMC/NFP targeted strategies",
+    "pairs \u2014 no inter-market spread strategies",
+    "higher_timeframe \u2014 all strategies operate on 5m only"
+  ],
+  "distance_threshold": 0.4,
+  "n_strategies": 9
+}

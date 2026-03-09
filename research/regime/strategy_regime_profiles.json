@@ -1,0 +1,47 @@
+{
+  "PB-MGC-Short": {
+    "asset": "MGC",
+    "mode": "short",
+    "preferred_regimes": [
+      "TRENDING",
+      "HIGH_RV",
+      "RANGING",
+      "NORMAL"
+    ],
+    "avoid_regimes": [
+      "LOW_VOL",
+      "NORMAL_RV",
+      "LOW_RV"
+    ],
+    "source": "regime_performance_report"
+  },
+  "ORB-009-MGC-Long": {
+    "asset": "MGC",
+    "mode": "long",
+    "preferred_regimes": [
+      "HIGH_VOL",
+      "HIGH_RV",
+      "LOW_RV",
+      "TRENDING",
+      "NORMAL"
+    ],
+    "avoid_regimes": [
+      "RANGING"
+    ],
+    "source": "regime_performance_report"
+  },
+  "VIX-Channel-MES-Both": {
+    "asset": "MES",
+    "mode": "both",
+    "preferred_regimes": [
+      "RANGING",
+      "HIGH_RV",
+      "LOW_VOL",
+      "NORMAL_RV"
+    ],
+    "avoid_regimes": [
+      "LOW_RV"
+    ],
+    "source": "regime_performance_report"
+  }
+}

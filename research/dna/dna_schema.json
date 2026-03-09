@@ -1,0 +1,135 @@
+{
+  "$schema": "Strategy DNA Profile Schema v1.0",
+  "description": "Structural fingerprint for each strategy in the lab. Used for clustering, dedup, portfolio construction, and evolution engine targeting.",
+  "fields": {
+    "strategy_id": {
+      "type": "string",
+      "description": "Unique identifier (e.g., PB-MGC-Short, ORB-009-MGC-Long)"
+    },
+    "strategy_name": {
+      "type": "string",
+      "description": "Module name in strategies/ directory"
+    },
+    "family": {
+      "type": "enum",
+      "values": ["pullback", "orb", "session", "gap_momentum", "vwap", "mean_reversion", "ict", "vol_compression", "squeeze", "trend", "other"],
+      "description": "Strategy family label from intake pipeline"
+    },
+    "asset": {
+      "type": "string",
+      "description": "Primary asset (MES, MNQ, MGC)"
+    },
+    "mode": {
+      "type": "enum",
+      "values": ["long", "short", "both"],
+      "description": "Validated directional mode"
+    },
+    "status": {
+      "type": "enum",
+      "values": ["deployment_ready", "candidate_validated", "pending_validation", "rejected", "watchlist"],
+      "description": "Current lab status"
+    },
+    "entry_type": {
+      "type": "enum",
+      "values": ["breakout", "pullback", "crossover", "mean_reversion", "regime_detection", "squeeze_release", "gap_signal"],
+      "description": "Core entry mechanism"
+    },
+    "entry_trigger": {
+      "type": "string",
+      "description": "Specific trigger condition (free text)"
+    },
+    "confirmation_type": {
+      "type": "list",
+      "values": ["trend_filter", "volume_filter", "momentum_filter", "vwap_filter", "atr_filter", "ema_filter", "adx_filter", "rsi_filter", "regime_gate", "session_gate", "compression_filter", "none"],
+      "description": "Filter stack applied before entry"
+    },
+    "filter_depth": {
+      "type": "integer",
+      "description": "Number of independent confirmation layers (1-5)"
+    },
+    "exit_type": {
+      "type": "enum",
+      "values": ["bracket", "signal_reversal", "channel_boundary", "momentum_decel", "dynamic_target", "fixed_points"],
+      "description": "Primary exit mechanism"
+    },
+    "exit_features": {
+      "type": "list",
+      "values": ["atr_stop", "range_stop", "fixed_stop", "trailing_stop", "breakeven", "eod_flatten", "signal_exit", "channel_exit", "momentum_exit"],
+      "description": "All exit features present"
+    },
+    "risk_model": {
+      "type": "enum",
+      "values": ["atr_adaptive", "range_based", "rv_scaled", "compression_based", "fixed_points"],
+      "description": "How stop/target distances are calculated"
+    },
+    "session_window": {
+      "type": "string",
+      "description": "Trading hours (e.g., 09:30-15:15)"
+    },
+    "session_restriction": {
+      "type": "enum",
+      "values": ["full_rth", "power_windows", "morning_only", "custom"],
+      "description": "How restrictive the session filter is"
+    },
+    "regime_dependency": {
+      "type": "object",
+      "description": "From strategy_regime_profiles.json — preferred and avoid regimes",
+      "properties": {
+        "preferred_regimes": {"type": "list"},
+        "avoid_regimes": {"type": "list"},
+        "best_regime": {"type": "string"},
+        "best_regime_pf": {"type": "number"}
+      }
+    },
+    "holding_time_class": {
+      "type": "enum",
+      "values": ["scalp", "intraday_swing", "day_trade"],
+      "description": "scalp: <30min, intraday_swing: 30min-2h, day_trade: 2h+"
+    },
+    "direction_bias": {
+      "type": "enum",
+      "values": ["long_only", "short_only", "bidirectional"],
+      "description": "Directional flexibility of the strategy logic"
+    },
+    "trade_frequency_bucket": {
+      "type": "enum",
+      "values": ["rare", "low", "medium", "high"],
+      "description": "rare: <50 trades/yr, low: 50-150, medium: 150-500, high: 500+"
+    },
+    "cost_sensitivity": {
+      "type": "enum",
+      "values": ["low", "medium", "high"],
+      "description": "low: <15% friction, medium: 15-35%, high: >35% friction"
+    },
+    "portfolio_role": {
+      "type": "enum",
+      "values": ["core", "diversifier", "regime_filler", "component_donor", "rejected"],
+      "description": "Role in the portfolio construction"
+    },
+    "overlap_risk": {
+      "type": "enum",
+      "values": ["none", "low", "moderate", "high"],
+      "description": "Risk of duplicating another strategy's edge"
+    },
+    "confidence_level": {
+      "type": "enum",
+      "values": ["high", "medium", "low"],
+      "description": "Confidence in profile accuracy. high: 100+ trades + validated. medium: 50-100 trades or partial validation. low: <50 trades or rejected early."
+    },
+    "key_performance": {
+      "type": "object",
+      "description": "Summary performance metrics",
+      "properties": {
+        "net_pf": {"type": "number"},
+        "sharpe": {"type": "number"},
+        "trades": {"type": "integer"},
+        "maxdd": {"type": "number"},
+        "correlation_vs_portfolio": {"type": "number"}
+      }
+    },
+    "structural_notes": {
+      "type": "string",
+      "description": "Free-text notes on unique structural features"
+    }
+  }
+}

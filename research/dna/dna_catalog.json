@@ -1,0 +1,429 @@
+[
+  {
+    "strategy_id": "PB-MGC-Short",
+    "strategy_name": "pb_trend",
+    "family": "pullback",
+    "asset": "MGC",
+    "mode": "short",
+    "status": "deployment_ready",
+    "entry_type": "pullback",
+    "entry_trigger": "Price dips toward slow EMA in established trend, bounces through fast EMA with strong close (top/bottom 20% of range)",
+    "confirmation_type": [
+      "trend_filter",
+      "adx_filter",
+      "volume_filter",
+      "vwap_filter",
+      "regime_gate",
+      "ema_filter"
+    ],
+    "filter_depth": 6,
+    "exit_type": "bracket",
+    "exit_features": [
+      "atr_stop",
+      "eod_flatten"
+    ],
+    "risk_model": "atr_adaptive",
+    "session_window": "08:30-15:15",
+    "session_restriction": "power_windows",
+    "regime_dependency": {
+      "preferred_regimes": [
+        "TRENDING",
+        "HIGH_RV",
+        "RANGING",
+        "NORMAL"
+      ],
+      "avoid_regimes": [
+        "LOW_VOL",
+        "NORMAL_RV",
+        "LOW_RV"
+      ],
+      "best_regime": "HIGH_RV",
+      "best_regime_pf": 4.99
+    },
+    "holding_time_class": "intraday_swing",
+    "direction_bias": "bidirectional",
+    "trade_frequency_bucket": "rare",
+    "cost_sensitivity": "low",
+    "portfolio_role": "core",
+    "overlap_risk": "none",
+    "confidence_level": "medium",
+    "key_performance": {
+      "net_pf": 2.36,
+      "sharpe": 5.27,
+      "trades": 21,
+      "maxdd": 233.48,
+      "correlation_vs_portfolio": -0.009
+    },
+    "structural_notes": "Extracted from Lucid v6.3. Deepest filter stack in the lab (6 layers). Only 21 gated trades \u2014 high confidence in direction, low confidence in precise PF. Power windows restrict to 08:45-11:00 + 13:30-15:10."
+  },
+  {
+    "strategy_id": "ORB-009-MGC-Long",
+    "strategy_name": "orb_009",
+    "family": "orb",
+    "asset": "MGC",
+    "mode": "long",
+    "status": "deployment_ready",
+    "entry_type": "breakout",
+    "entry_trigger": "Price closes outside 30-min opening range (09:30-10:00). Long above OR_high, short below OR_low.",
+    "confirmation_type": [
+      "vwap_filter",
+      "volume_filter",
+      "momentum_filter"
+    ],
+    "filter_depth": 3,
+    "exit_type": "bracket",
+    "exit_features": [
+      "range_stop",
+      "breakeven",
+      "eod_flatten"
+    ],
+    "risk_model": "range_based",
+    "session_window": "09:30-15:15",
+    "session_restriction": "full_rth",
+    "regime_dependency": {
+      "preferred_regimes": [
+        "HIGH_VOL",
+        "HIGH_RV",
+        "LOW_RV",
+        "TRENDING",
+        "NORMAL"
+      ],
+      "avoid_regimes": [
+        "RANGING"
+      ],
+      "best_regime": "TRENDING",
+      "best_regime_pf": 2.06
+    },
+    "holding_time_class": "intraday_swing",
+    "direction_bias": "bidirectional",
+    "trade_frequency_bucket": "low",
+    "cost_sensitivity": "low",
+    "portfolio_role": "core",
+    "overlap_risk": "none",
+    "confidence_level": "high",
+    "key_performance": {
+      "net_pf": 2.07,
+      "sharpe": 3.93,
+      "trades": 75,
+      "maxdd": 685.48,
+      "correlation_vs_portfolio": 0.001
+    },
+    "structural_notes": "Faithful conversion from luiscaballero. Range-based risk (SL at OR boundary, TP at 2x range). Breakeven at 50% TP. Most statistically robust strategy in the lab (DSR=1.000)."
+  },
+  {
+    "strategy_id": "VIX-Channel-MES-Both",
+    "strategy_name": "vix_channel",
+    "family": "session",
+    "asset": "MES",
+    "mode": "both",
+    "status": "pending_validation",
+    "entry_type": "regime_detection",
+    "entry_trigger": "30-min observation window determines trend direction from session open anchor. Enter in detected direction. One trade per day.",
+    "confirmation_type": [
+      "session_gate"
+    ],
+    "filter_depth": 1,
+    "exit_type": "channel_boundary",
+    "exit_features": [
+      "channel_exit",
+      "atr_stop",
+      "eod_flatten"
+    ],
+    "risk_model": "rv_scaled",
+    "session_window": "09:30-15:45",
+    "session_restriction": "full_rth",
+    "regime_dependency": {
+      "preferred_regimes": [
+        "RANGING",
+        "HIGH_RV",
+        "LOW_VOL",
+        "NORMAL_RV"
+      ],
+      "avoid_regimes": [
+        "LOW_RV"
+      ],
+      "best_regime": "LOW_VOL",
+      "best_regime_pf": 1.79
+    },
+    "holding_time_class": "day_trade",
+    "direction_bias": "bidirectional",
+    "trade_frequency_bucket": "medium",
+    "cost_sensitivity": "medium",
+    "portfolio_role": "regime_filler",
+    "overlap_risk": "none",
+    "confidence_level": "medium",
+    "key_performance": {
+      "net_pf": 1.298,
+      "sharpe": 1.6,
+      "trades": 503,
+      "maxdd": 1339.57,
+      "correlation_vs_portfolio": -0.024
+    },
+    "structural_notes": "Unique in lab: uses realized vol proxy (VIX-like) for dynamic channel sizing. Only strategy that thrives in LOW_VOL regime. Near-zero correlation with gold portfolio. Passes 5/8 validation criteria."
+  },
+  {
+    "strategy_id": "GAP-MOM-MGC-Long",
+    "strategy_name": "gap_mom",
+    "family": "gap_momentum",
+    "asset": "MGC",
+    "mode": "long",
+    "status": "watchlist",
+    "entry_type": "gap_signal",
+    "entry_trigger": "Cumulative gap series (today open - yesterday close) crosses above 20-day SMA signal line at session open.",
+    "confirmation_type": [
+      "session_gate"
+    ],
+    "filter_depth": 1,
+    "exit_type": "signal_reversal",
+    "exit_features": [
+      "signal_exit",
+      "atr_stop",
+      "eod_flatten"
+    ],
+    "risk_model": "atr_adaptive",
+    "session_window": "09:30-15:15",
+    "session_restriction": "full_rth",
+    "regime_dependency": {
+      "preferred_regimes": [],
+      "avoid_regimes": [],
+      "best_regime": "unknown",
+      "best_regime_pf": 0
+    },
+    "holding_time_class": "day_trade",
+    "direction_bias": "long_only",
+    "trade_frequency_bucket": "rare",
+    "cost_sensitivity": "low",
+    "portfolio_role": "watchlist",
+    "overlap_risk": "low",
+    "confidence_level": "low",
+    "key_performance": {
+      "net_pf": 3.26,
+      "sharpe": 3.67,
+      "trades": 24,
+      "maxdd": 518,
+      "correlation_vs_portfolio": -0.01
+    },
+    "structural_notes": "Perry Kaufman TASC 2024.01. Only 24 trades, top trade = 86% of PnL. Fails diversification goal (no MES/MNQ edge). MGC result interesting but single-trade dependent. Long-only bias unique in lab."
+  },
+  {
+    "strategy_id": "VWAP-006-MES-Long",
+    "strategy_name": "vwap_006",
+    "family": "vwap",
+    "asset": "MES",
+    "mode": "long",
+    "status": "rejected",
+    "entry_type": "crossover",
+    "entry_trigger": "RSI(3) crosses above 30 (oversold) with EMA9 > EMA21 alignment and price above VWAP.",
+    "confirmation_type": [
+      "rsi_filter",
+      "ema_filter",
+      "vwap_filter"
+    ],
+    "filter_depth": 3,
+    "exit_type": "bracket",
+    "exit_features": [
+      "atr_stop",
+      "eod_flatten"
+    ],
+    "risk_model": "atr_adaptive",
+    "session_window": "09:30-15:15",
+    "session_restriction": "full_rth",
+    "regime_dependency": {
+      "preferred_regimes": [],
+      "avoid_regimes": [],
+      "best_regime": "unknown",
+      "best_regime_pf": 0
+    },
+    "holding_time_class": "scalp",
+    "direction_bias": "bidirectional",
+    "trade_frequency_bucket": "high",
+    "cost_sensitivity": "high",
+    "portfolio_role": "rejected",
+    "overlap_risk": "moderate",
+    "confidence_level": "medium",
+    "key_performance": {
+      "net_pf": 1.05,
+      "sharpe": 1.32,
+      "trades": 572,
+      "maxdd": 0,
+      "correlation_vs_portfolio": 0
+    },
+    "structural_notes": "michaelriggs. 74% PnL eaten by friction (572 trades \u00d7 high round-trip cost). Short side destroyed value. Structurally similar to any RSI+VWAP scalper \u2014 not a unique edge."
+  },
+  {
+    "strategy_id": "RVWAP-MR-MES-Both",
+    "strategy_name": "rvwap_mr",
+    "family": "mean_reversion",
+    "asset": "MES",
+    "mode": "both",
+    "status": "rejected",
+    "entry_type": "mean_reversion",
+    "entry_trigger": "Price crosses back inside VWAP \u00b1 2.0\u03c3 rolling stdev band after breaching it.",
+    "confirmation_type": [
+      "vwap_filter"
+    ],
+    "filter_depth": 1,
+    "exit_type": "dynamic_target",
+    "exit_features": [
+      "signal_exit",
+      "atr_stop",
+      "eod_flatten"
+    ],
+    "risk_model": "atr_adaptive",
+    "session_window": "09:30-15:15",
+    "session_restriction": "full_rth",
+    "regime_dependency": {
+      "preferred_regimes": [],
+      "avoid_regimes": [],
+      "best_regime": "unknown",
+      "best_regime_pf": 0
+    },
+    "holding_time_class": "intraday_swing",
+    "direction_bias": "bidirectional",
+    "trade_frequency_bucket": "high",
+    "cost_sensitivity": "high",
+    "portfolio_role": "rejected",
+    "overlap_risk": "high",
+    "confidence_level": "medium",
+    "key_performance": {
+      "net_pf": 0.83,
+      "sharpe": -1.83,
+      "trades": 1004,
+      "maxdd": 0,
+      "correlation_vs_portfolio": 0
+    },
+    "structural_notes": "vvedding. VWAP stdev band reversion fails completely on 5m with fill-at-next-open. 1,004 trades generates massive friction. Same structural flaw as VWAP-006: too many low-quality entries. Mean reversion thesis may need higher timeframe."
+  },
+  {
+    "strategy_id": "ICT-010-MES-Both",
+    "strategy_name": "ict_010",
+    "family": "ict",
+    "asset": "MES",
+    "mode": "both",
+    "status": "rejected",
+    "entry_type": "pullback",
+    "entry_trigger": "3-phase state machine: range formation \u2192 sweep detection (wick breaks range, close recaptures) \u2192 pullback entry (close reversal pattern).",
+    "confirmation_type": [
+      "session_gate"
+    ],
+    "filter_depth": 1,
+    "exit_type": "fixed_points",
+    "exit_features": [
+      "fixed_stop",
+      "eod_flatten"
+    ],
+    "risk_model": "fixed_points",
+    "session_window": "09:30-15:15",
+    "session_restriction": "custom",
+    "regime_dependency": {
+      "preferred_regimes": [],
+      "avoid_regimes": [],
+      "best_regime": "unknown",
+      "best_regime_pf": 0
+    },
+    "holding_time_class": "day_trade",
+    "direction_bias": "bidirectional",
+    "trade_frequency_bucket": "medium",
+    "cost_sensitivity": "medium",
+    "portfolio_role": "rejected",
+    "overlap_risk": "moderate",
+    "confidence_level": "medium",
+    "key_performance": {
+      "net_pf": 0.65,
+      "sharpe": -2.95,
+      "trades": 232,
+      "maxdd": 1603,
+      "correlation_vs_portfolio": 0
+    },
+    "structural_notes": "tradeforopp (Captain Backtest). Only strategy with FIXED stop distances (not ATR-adaptive). Sweep detection is structurally unique but unfiltered pullback entry generates noise. PF < 1.0 on all assets. Fixed stops = key failure vector."
+  },
+  {
+    "strategy_id": "ORION-VOL-MES-Both",
+    "strategy_name": "orion_vol",
+    "family": "vol_compression",
+    "asset": "MES",
+    "mode": "both",
+    "status": "rejected",
+    "entry_type": "breakout",
+    "entry_trigger": "Volatility compression box (15-bar high/low). Enter on breakout above/below box when tightness + flatness filters pass. EMA150 trend gate.",
+    "confirmation_type": [
+      "compression_filter",
+      "trend_filter"
+    ],
+    "filter_depth": 2,
+    "exit_type": "bracket",
+    "exit_features": [
+      "range_stop",
+      "eod_flatten"
+    ],
+    "risk_model": "compression_based",
+    "session_window": "09:30-15:15",
+    "session_restriction": "full_rth",
+    "regime_dependency": {
+      "preferred_regimes": [],
+      "avoid_regimes": [],
+      "best_regime": "unknown",
+      "best_regime_pf": 0
+    },
+    "holding_time_class": "intraday_swing",
+    "direction_bias": "bidirectional",
+    "trade_frequency_bucket": "medium",
+    "cost_sensitivity": "medium",
+    "portfolio_role": "component_donor",
+    "overlap_risk": "moderate",
+    "confidence_level": "medium",
+    "key_performance": {
+      "net_pf": 0.94,
+      "sharpe": -0.35,
+      "trades": 400,
+      "maxdd": 3271,
+      "correlation_vs_portfolio": 0
+    },
+    "structural_notes": "ana_gagua. Compression box concept (tightness + flatness filters) is structurally interesting. Box breakout is similar to ORB-009 in shape but triggered by compression, not time. Failed on MES/MNQ. Compression filters could be reused as entry components."
+  },
+  {
+    "strategy_id": "BBKC-SQUEEZE-MES-Both",
+    "strategy_name": "bbkc_squeeze",
+    "family": "squeeze",
+    "asset": "MES",
+    "mode": "both",
+    "status": "rejected",
+    "entry_type": "squeeze_release",
+    "entry_trigger": "BB exits KC (squeeze release) + momentum direction (linreg of close - KC midline). Lime momentum = long, red momentum = short.",
+    "confirmation_type": [
+      "momentum_filter",
+      "session_gate"
+    ],
+    "filter_depth": 2,
+    "exit_type": "momentum_decel",
+    "exit_features": [
+      "momentum_exit",
+      "atr_stop",
+      "eod_flatten"
+    ],
+    "risk_model": "atr_adaptive",
+    "session_window": "09:30-15:15",
+    "session_restriction": "full_rth",
+    "regime_dependency": {
+      "preferred_regimes": [],
+      "avoid_regimes": [],
+      "best_regime": "unknown",
+      "best_regime_pf": 0
+    },
+    "holding_time_class": "intraday_swing",
+    "direction_bias": "bidirectional",
+    "trade_frequency_bucket": "high",
+    "cost_sensitivity": "high",
+    "portfolio_role": "component_donor",
+    "overlap_risk": "high",
+    "confidence_level": "medium",
+    "key_performance": {
+      "net_pf": 1.24,
+      "sharpe": 2.87,
+      "trades": 1295,
+      "maxdd": 1002,
+      "correlation_vs_portfolio": 0
+    },
+    "structural_notes": "LazyBear classic. Gross PF=1.49 but 1,295 trades \u00d7 $3.74/RT = 50% friction impact. Momentum color state machine (lime/green/red/maroon) is unique exit logic. Structurally similar to ORION-VOL (both are compression\u2192expansion). Component value: squeeze detection + momentum states could enhance other strategies."
+  }
+]

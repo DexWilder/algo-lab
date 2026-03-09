@@ -1,0 +1,234 @@
+{
+  "2-Strategy": {
+    "none": {
+      "label": "Baseline (no gate)",
+      "pnl": 3354.84,
+      "sharpe": 3.306,
+      "maxdd": 858.64,
+      "calmar": 3.9072,
+      "profitable_months": "15",
+      "total_months": 25,
+      "monthly_pct": 60.0,
+      "total_trades": 134,
+      "per_strategy": {
+        "PB-MGC-Short": {
+          "label": "PB-MGC-Short",
+          "pnl": 676.28,
+          "sharpe": 1.6344,
+          "maxdd": 233.48,
+          "calmar": 2.8965,
+          "profitable_months": "7",
+          "total_months": 25,
+          "monthly_pct": 28.0
+        },
+        "ORB-009-MGC-Long": {
+          "label": "ORB-009-MGC-Long",
+          "pnl": 2678.56,
+          "sharpe": 2.8956,
+          "maxdd": 933.04,
+          "calmar": 2.8708,
+          "profitable_months": "13",
+          "total_months": 25,
+          "monthly_pct": 52.0
+        }
+      }
+    },
+    "atr": {
+      "label": "ATR-Gated (skip low-vol)",
+      "pnl": 3388.96,
+      "sharpe": 4.2022,
+      "maxdd": 702.84,
+      "calmar": 4.8218,
+      "profitable_months": "13",
+      "total_months": 25,
+      "monthly_pct": 52.0,
+      "total_trades": 96,
+      "per_strategy": {
+        "PB-MGC-Short": {
+          "label": "PB-MGC-Short",
+          "pnl": 794.96,
+          "sharpe": 2.3425,
+          "maxdd": 233.48,
+          "calmar": 3.4048,
+          "profitable_months": "7",
+          "total_months": 25,
+          "monthly_pct": 28.0
+        },
+        "ORB-009-MGC-Long": {
+          "label": "ORB-009-MGC-Long",
+          "pnl": 2594.0,
+          "sharpe": 3.5317,
+          "maxdd": 685.48,
+          "calmar": 3.7842,
+          "profitable_months": "12",
+          "total_months": 25,
+          "monthly_pct": 48.0
+        }
+      }
+    },
+    "regime_profiled": {
+      "label": "Regime-Profiled",
+      "pnl": 3661.04,
+      "sharpe": 4.4568,
+      "maxdd": 541.8,
+      "calmar": 6.7572,
+      "profitable_months": "13",
+      "total_months": 25,
+      "monthly_pct": 52.0,
+      "total_trades": 104,
+      "per_strategy": {
+        "PB-MGC-Short": {
+          "label": "PB-MGC-Short",
+          "pnl": 825.6,
+          "sharpe": 2.7057,
+          "maxdd": 97.24,
+          "calmar": 8.4903,
+          "profitable_months": "3",
+          "total_months": 25,
+          "monthly_pct": 12.0
+        },
+        "ORB-009-MGC-Long": {
+          "label": "ORB-009-MGC-Long",
+          "pnl": 2835.44,
+          "sharpe": 3.6592,
+          "maxdd": 777.84,
+          "calmar": 3.6453,
+          "profitable_months": "11",
+          "total_months": 25,
+          "monthly_pct": 44.0
+        }
+      }
+    }
+  },
+  "3-Strategy": {
+    "none": {
+      "label": "Baseline (no gate)",
+      "pnl": 10343.62,
+      "sharpe": 2.1556,
+      "maxdd": 1281.19,
+      "calmar": 8.0734,
+      "profitable_months": "19",
+      "total_months": 25,
+      "monthly_pct": 76.0,
+      "total_trades": 637,
+      "per_strategy": {
+        "PB-MGC-Short": {
+          "label": "PB-MGC-Short",
+          "pnl": 676.28,
+          "sharpe": 0.83,
+          "maxdd": 233.48,
+          "calmar": 2.8965,
+          "profitable_months": "7",
+          "total_months": 25,
+          "monthly_pct": 28.0
+        },
+        "ORB-009-MGC-Long": {
+          "label": "ORB-009-MGC-Long",
+          "pnl": 2678.56,
+          "sharpe": 1.4583,
+          "maxdd": 933.04,
+          "calmar": 2.8708,
+          "profitable_months": "13",
+          "total_months": 25,
+          "monthly_pct": 52.0
+        },
+        "VIX-Channel-MES-Both": {
+          "label": "VIX-Channel-MES-Both",
+          "pnl": 6988.78,
+          "sharpe": 1.5866,
+          "maxdd": 1339.57,
+          "calmar": 5.2172,
+          "profitable_months": "16",
+          "total_months": 25,
+          "monthly_pct": 64.0
+        }
+      }
+    },
+    "atr": {
+      "label": "ATR-Gated (skip low-vol)",
+      "pnl": 7800.3,
+      "sharpe": 1.9024,
+      "maxdd": 1429.0,
+      "calmar": 5.4586,
+      "profitable_months": "16",
+      "total_months": 25,
+      "monthly_pct": 64.0,
+      "total_trades": 480,
+      "per_strategy": {
+        "PB-MGC-Short": {
+          "label": "PB-MGC-Short",
+          "pnl": 794.96,
+          "sharpe": 1.1104,
+          "maxdd": 233.48,
+          "calmar": 3.4048,
+          "profitable_months": "7",
+          "total_months": 25,
+          "monthly_pct": 28.0
+        },
+        "ORB-009-MGC-Long": {
+          "label": "ORB-009-MGC-Long",
+          "pnl": 2594.0,
+          "sharpe": 1.6566,
+          "maxdd": 685.48,
+          "calmar": 3.7842,
+          "profitable_months": "12",
+          "total_months": 25,
+          "monthly_pct": 48.0
+        },
+        "VIX-Channel-MES-Both": {
+          "label": "VIX-Channel-MES-Both",
+          "pnl": 4411.34,
+          "sharpe": 1.1698,
+          "maxdd": 1983.54,
+          "calmar": 2.224,
+          "profitable_months": "14",
+          "total_months": 25,
+          "monthly_pct": 56.0
+        }
+      }
+    },
+    "regime_profiled": {
+      "label": "Regime-Profiled",
+      "pnl": 10854.13,
+      "sharpe": 2.9682,
+      "maxdd": 1111.07,
+      "calmar": 9.7691,
+      "profitable_months": "21",
+      "total_months": 25,
+      "monthly_pct": 84.0,
+      "total_trades": 413,
+      "per_strategy": {
+        "PB-MGC-Short": {
+          "label": "PB-MGC-Short",
+          "pnl": 825.6,
+          "sharpe": 1.4558,
+          "maxdd": 97.24,
+          "calmar": 8.4903,
+          "profitable_months": "3",
+          "total_months": 25,
+          "monthly_pct": 12.0
+        },
+        "ORB-009-MGC-Long": {
+          "label": "ORB-009-MGC-Long",
+          "pnl": 2835.44,
+          "sharpe": 1.9524,
+          "maxdd": 777.84,
+          "calmar": 3.6453,
+          "profitable_months": "11",
+          "total_months": 25,
+          "monthly_pct": 44.0
+        },
+        "VIX-Channel-MES-Both": {
+          "label": "VIX-Channel-MES-Both",
+          "pnl": 7193.09,
+          "sharpe": 2.142,
+          "maxdd": 1266.11,
+          "calmar": 5.6813,
+          "profitable_months": "15",
+          "total_months": 25,
+          "monthly_pct": 60.0
+        }
+      }
+    }
+  }
+}
