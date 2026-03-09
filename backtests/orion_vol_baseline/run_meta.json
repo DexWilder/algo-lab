@@ -1,0 +1,20 @@
+{
+  "strategy": "orion_vol",
+  "strategy_name": "ORION Hybrid Volatility Breakout",
+  "family": "breakout",
+  "source_url": "https://www.tradingview.com/script/6xLkMWMC-ORION-Hybrid-Volatility-Breakout-Strategy/",
+  "conversion_type": "faithful",
+  "run_date": "2026-03-09 05:43:53",
+  "assets": [
+    "MES",
+    "MGC",
+    "MNQ"
+  ],
+  "modes": [
+    "long",
+    "both",
+    "short"
+  ],
+  "engine": "fill-at-next-open",
+  "notes": "Baseline run \u2014 faithful conversion, no optimization"
+}

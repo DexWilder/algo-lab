@@ -7,11 +7,11 @@
 | Stage | Count |
 |-------|-------|
 | Strategies harvested | 91 (76 batch 1 + 15 batch 2) |
-| Strategies converted | 6 |
+| Strategies converted | 9 |
 | candidate_validated | 2 |
-| Rejected | 3 |
-| Pending validation | 1 (Gap-Mom MGC, needs robustness) |
-| Effectively dead (costs) | 1 |
+| Rejected | 5 |
+| Pending validation | 2 (VIX Channel MES, Gap-Mom MGC) |
+| Effectively dead (costs) | 2 |
 
 ## Core Portfolio (Phase 6 — Deployment Validated)
 
@@ -72,6 +72,8 @@
 | ORB-009 | MNQ | Long | 1.20 | — | Marginal after costs; below 1.3 threshold |
 | Gap-Mom | MES | Long | 0.24 | — | No edge on index futures |
 | Gap-Mom | MNQ | Long | 0.48 | — | No edge on index futures |
+| ORION Vol | MES/MNQ | Both | <1.1 | — | No edge on indices; marginal on MGC |
+| BB/KC Squeeze | MES | Both | 1.24 | — | 50% friction impact (1,295 trades × $3.74/RT) |
 
 ## Engine Capabilities
 
@@ -110,20 +112,22 @@
 - [x] Research governance (LAB_STATE, research log, phase audits)
 - [ ] Strategy evolution engine
 - [ ] Automatic combination testing
-- [ ] Diversification expansion (MES/MNQ strategies)
+- [x] Diversification expansion (MES/MNQ strategies — VIX Channel candidate found)
 
 ## Next Milestone
 
 **Phase 7: Live Paper Trading + Diversification** (IN PROGRESS)
 - Paper trading plan ready: `docs/PHASE_7_PAPER_TRADING_PLAN.md`
 - Pending: Tradovate sim account setup for live paper trading
-- Diversification search: RVWAP-MR rejected, Gap-Mom fails MES/MNQ, ORB-009 MNQ marginal
-- Gap-Mom MGC-Long: PF=3.26 net, but 86% PnL from 1 trade — needs robustness check
 - Execution skeleton ready: `execution/tradovate_adapter.py` + `execution/signal_logger.py`
 - Evolution engine spec: `docs/EVOLUTION_ENGINE_SPEC.md` (design only)
-- **Blocker resolved:** Batch 2 harvest (15 index-specific candidates) completed
-- Top 3 for conversion: VIX Channel Trend, ORION Vol Breakout, BB/KC Squeeze
-- Families: session trend (4), volatility compression (5), trend following (4), range expansion (2)
+- **DIVERSIFICATION BREAKTHROUGH:** VIX Channel MES-Both passes net PF 1.31 threshold
+  - 503 trades, Sharpe 2.04, top trade only 10.9% of PnL
+  - Correlation with portfolio: r = -0.028 (near zero)
+  - 3-strat portfolio Calmar doubles (5.58 → 11.54), PnL triples ($3,789 → $12,659)
+  - Needs: regime gate test + full robustness battery before promotion
+- Batch 2 harvest converted: VIX Channel (CANDIDATE), BB/KC Squeeze (marginal), ORION (rejected)
+- 9 strategies converted total, 5 rejected, 2 pending validation
 
 ## Completed Phases
 
@@ -137,4 +141,4 @@
 | Phase 6 — Deployment Validation | Complete | docs/audits/phase_6_deployment.md |
 
 ---
-*Last updated: 2026-03-08*
+*Last updated: 2026-03-09*

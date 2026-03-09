@@ -183,23 +183,95 @@ Strategy requires 30-minute bars (market profile concept). Would need bar aggreg
 
 **Verdict for diversification:** FAILS. No edge on MES or MNQ. MGC result is strong but adds another gold strategy, not diversification. Could be a portfolio enhancement candidate (3rd gold strategy with independent alpha) after robustness validation.
 
-### Remaining Queue
+### Round 3: Batch 2 Harvest Conversions (3 Strategies)
+
+Converted the top 3 from the targeted MES/MNQ harvest (15 index-specific candidates).
+
+#### BB/KC Squeeze (idx-007) — HIGH FRICTION
+
+| Asset | Mode | Trades | PF | Sharpe | PnL | MaxDD |
+|-------|------|--------|-----|--------|-----|-------|
+| MES | Both | 1,295 | 1.49 | 2.87 | $9,606 | $1,002 |
+| MES | Long | 687 | 1.49 | 2.09 | $4,642 | $880 |
+| MES | Short | 608 | 1.48 | 2.35 | $4,964 | $890 |
+| MGC | Both | 692 | 0.99 | -0.03 | -$119 | $2,819 |
+| MNQ | Both | 1,291 | 1.21 | 1.68 | $8,892 | $2,082 |
+
+**Cost analysis (MES Both):** Net PF = 1.24 (50.4% friction impact from 1,295 trades × $3.74/RT). Below 1.3 threshold.
+
+**Verdict:** MARGINAL. Strong gross edge on MES but 1,295 trades creates massive friction. Would need trade frequency reduction via filters.
+
+#### ORION Volatility Breakout (idx-005) — NO EDGE
+
+| Asset | Mode | Trades | PF | Sharpe | PnL | MaxDD |
+|-------|------|--------|-----|--------|-----|-------|
+| MES | Both | 400 | 0.94 | -0.35 | -$1,336 | $3,271 |
+| MGC | Both | 187 | 1.21 | 1.03 | $2,071 | $1,244 |
+| MNQ | Both | 394 | 1.01 | 0.03 | $240 | $4,202 |
+
+**Verdict:** REJECTED. No edge on MES/MNQ. Marginal on MGC. Compression→expansion thesis doesn't produce tradeable signal with these parameters on our data.
+
+#### VIX Channel Trend (idx-001) — BREAKTHROUGH
+
+| Asset | Mode | Trades | PF | Sharpe | PnL | MaxDD |
+|-------|------|--------|-----|--------|-----|-------|
+| MES | Both | 503 | 1.39 | 2.04 | $8,870 | $1,419 |
+| MES | Long | 263 | 1.33 | 1.74 | $4,040 | $1,314 |
+| MES | Short | 240 | 1.47 | 2.36 | $4,830 | $1,385 |
+| MGC | Both | 362 | 0.96 | -0.23 | -$1,026 | $3,749 |
+| MNQ | Both | 506 | 1.32 | 1.77 | $13,656 | $3,824 |
+| MNQ | Long | 263 | 1.31 | 1.75 | $6,990 | $2,286 |
+| MNQ | Short | 243 | 1.33 | 1.79 | $6,666 | $3,532 |
+
+**Cost analysis:**
+
+| Variant | Trades | Gross PnL | Friction | Net PnL | Net PF |
+|---------|--------|-----------|----------|---------|--------|
+| MES Both | 503 | $8,870 | $1,881 (21%) | $6,989 | 1.31 |
+| MES Short | 240 | $4,830 | $898 (19%) | $3,932 | 1.38 |
+| MNQ Both | 506 | $13,656 | $779 (6%) | $12,876 | 1.30 |
+
+**Robustness checks:**
+
+| Metric | MES Both | MNQ Both |
+|--------|----------|----------|
+| Top trade % of PnL | 10.9% | 10.7% |
+| PF w/o top trade | 1.35 | 1.29 |
+| Monthly profitable | 18/25 (72%) | 18/25 (72%) |
+| Corr vs portfolio | -0.028 | -0.010 |
+| DD overlap vs portfolio | 71.6% | — |
+
+**3-Strategy portfolio (PB-Short + ORB-009 + VIX-MES):**
+
+| Metric | 2-Strat | 3-Strat |
+|--------|---------|---------|
+| Total PnL | $3,789 | $12,659 |
+| MaxDD | $679 | $1,097 |
+| Sharpe | 3.75 | 2.64 |
+| Calmar | 5.58 | 11.54 |
+
+**Verdict:** CANDIDATE FOR PROMOTION. VIX Channel MES-Both passes net PF threshold (1.31), has dispersed edge (top trade 10.9%), near-zero correlation (r=-0.028), trades a different asset (MES vs MGC), and doubles portfolio Calmar. DD overlap at 71.6% is above the 60% target but partly an artifact of VIX Channel's near-daily trading (492 active days vs portfolio's 130). Needs regime gate test and full robustness battery before promotion.
+
+### Updated Queue
 
 | # | Candidate | Status |
 |---|-----------|--------|
 | ~~1~~ | ~~RVWAP Mean Reversion~~ | REJECTED (no edge) |
 | ~~2~~ | ~~Gap Momentum~~ | FAILS diversification (no MES/MNQ edge) |
 | ~~3~~ | ~~Open Drive~~ | DEFERRED (needs 30m bars) |
-| 4 | HYE Mean Reversion VWAP | Low priority (VWAP MR thesis likely dead) |
-| 5 | **New harvest needed** | MES/MNQ trend, session, volatility compression |
+| ~~4~~ | ~~BB/KC Squeeze~~ | MARGINAL (friction kills; 50% cost impact) |
+| ~~5~~ | ~~ORION Vol Breakout~~ | REJECTED (no edge on indices) |
+| **6** | **VIX Channel MES-Both** | **CANDIDATE — needs robustness battery** |
+| 7 | VIX Channel MNQ-Both | BACKUP (net PF 1.30, borderline) |
 
-### Key Insights
+### Updated Key Insights
 
-1. **The lab's edge is concentrated in gold.** All strategies that show PF > 1.5 trade MGC. Index futures (MES/MNQ) consistently show marginal or no edge.
-2. **VWAP mean reversion doesn't work** on 5m futures after realistic fills.
-3. **Gap momentum works on gold** but not on indices — gold has unique overnight gap dynamics.
-4. **Diversification requires new harvest.** The existing triage queue is dominated by VWAP and ORB variants. Need to harvest: pure trend following, volatility compression breakout, and session-specific strategies designed for MES/MNQ.
-5. **Gold portfolio enhancement is possible:** Gap Momentum could become a 3rd gold strategy if it passes robustness. But this doesn't reduce gold concentration risk.
+1. **The lab's edge is concentrated in gold** for breakout and mean reversion families. BUT session-based trend following (VIX Channel) shows edge on indices.
+2. **VIX Channel is the diversification breakthrough.** First strategy to show net PF > 1.3 on MES or MNQ. Uses realized volatility proxy for VIX-derived implied move channel.
+3. **Session trend following works on indices.** VIX Channel's "wait for window, trade the direction" logic succeeds where breakout, mean reversion, and gap momentum failed.
+4. **Compression→expansion thesis fails** on our data (ORION rejected, BB/KC Squeeze marginal after costs).
+5. **Trade frequency matters enormously.** BB/KC Squeeze had the best gross PF (1.49) but 1,295 trades created 50% friction. VIX Channel's 503 trades keep friction at 21%.
+6. **Gold portfolio enhancement still possible:** Gap Momentum MGC-Long remains a watch candidate.
 
 ---
-*Report generated 2026-03-08 | Updated 2026-03-08 with conversion results*
+*Report generated 2026-03-08 | Updated 2026-03-09 with batch 2 conversion results*

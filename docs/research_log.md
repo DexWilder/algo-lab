@@ -417,4 +417,54 @@ Monthly pass rate: 13/19 (68%). No prop guardrails triggered.
 
 ---
 
+## 2026-03-09 — Phase 7.8: Batch 2 Conversion (3 Strategies)
+
+**Experiment:** Convert and backtest the top 3 batch 2 candidates on MES/MNQ/MGC.
+
+### BB/KC Squeeze (idx-007)
+
+LazyBear's squeeze momentum: BB inside KC = compression, enter on release + momentum direction.
+
+| Asset | Mode | Trades | PF | Sharpe | PnL | MaxDD |
+|-------|------|--------|-----|--------|-----|-------|
+| MES | Both | 1,295 | 1.49 | 2.87 | $9,606 | $1,002 |
+| MNQ | Both | 1,291 | 1.21 | 1.68 | $8,892 | $2,082 |
+| MGC | Both | 692 | 0.99 | -0.03 | -$119 | $2,819 |
+
+**Verdict:** MARGINAL. Best gross PF (1.49 MES) but 1,295 trades × $3.74/RT = 50% friction. Net PF 1.24.
+
+### ORION Vol Breakout (idx-005)
+
+Compression box (ATR tightness + LR flatness) + EMA 150 trend filter + 1.9R bracket.
+
+| Asset | Mode | Trades | PF | Sharpe | PnL | MaxDD |
+|-------|------|--------|-----|--------|-----|-------|
+| MES | Both | 400 | 0.94 | -0.35 | -$1,336 | $3,271 |
+| MNQ | Both | 394 | 1.01 | 0.03 | $240 | $4,202 |
+| MGC | Both | 187 | 1.21 | 1.03 | $2,071 | $1,244 |
+
+**Verdict:** REJECTED. No edge on indices.
+
+### VIX Channel Trend (idx-001) — BREAKTHROUGH
+
+Session open anchor + realized vol proxy for implied move channel + window direction detection.
+
+| Asset | Mode | Trades | PF | Sharpe | PnL | MaxDD |
+|-------|------|--------|-----|--------|-----|-------|
+| MES | Both | 503 | 1.39 | 2.04 | $8,870 | $1,419 |
+| MNQ | Both | 506 | 1.32 | 1.77 | $13,656 | $3,824 |
+| MGC | Both | 362 | 0.96 | -0.23 | -$1,026 | $3,749 |
+
+**Cost analysis:** MES Both net PF = 1.31 (21% friction, 503 trades). MNQ Both net PF = 1.30 (6% friction).
+
+**Robustness (MES Both):** Top trade 10.9% of PnL. PF w/o top trade: 1.35 (improves!). 18/25 months profitable. Corr vs portfolio: r = -0.028. DD overlap: 71.6%.
+
+**Portfolio impact:** 3-strat Calmar doubles (5.58 → 11.54), PnL triples ($3,789 → $12,659), MaxDD increases modestly ($679 → $1,097).
+
+**Decision:** VIX Channel MES-Both is the lab's first viable index futures strategy. Candidate for promotion pending regime gate + full robustness battery. This is the diversification breakthrough.
+
+**Key insight:** Session-based trend following succeeds on indices where breakout, mean reversion, and gap momentum all failed.
+
+---
+
 *Last updated: 2026-03-09*

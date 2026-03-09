@@ -1,0 +1,20 @@
+{
+  "name": "ORION Hybrid Volatility Breakout",
+  "family": "breakout",
+  "source_url": "https://www.tradingview.com/script/6xLkMWMC-ORION-Hybrid-Volatility-Breakout-Strategy/",
+  "author": "ana_gagua",
+  "conversion_type": "faithful",
+  "harvest_id": "idx-005",
+  "batch": 2,
+  "description": "Compression box via ATR tightness + LR flatness. EMA 150 trend filter. Breakout entry with 1.9R target. 45-bar box expiry.",
+  "parameters": {
+    "LOOKBACK": 15,
+    "ATR_MULT": 2.5,
+    "SLOPE_THRESHOLD": 0.2,
+    "EMA_LENGTH": 150,
+    "RR_RATIO": 1.9,
+    "BOX_EXPIRY": 45,
+    "SESSION_START": "09:30",
+    "SESSION_END": "15:15"
+  }
+}

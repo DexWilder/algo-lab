@@ -1,0 +1,20 @@
+{
+  "strategy": "vix_channel",
+  "strategy_name": "NY VIX Channel Trend",
+  "family": "session",
+  "source_url": "https://www.tradingview.com/script/TlOcVraF-NY-VIX-Channel-Trend-US-Futures-Day-Trade-Strategy/",
+  "conversion_type": "adapted",
+  "run_date": "2026-03-09 05:44:03",
+  "assets": [
+    "MES",
+    "MGC",
+    "MNQ"
+  ],
+  "modes": [
+    "both",
+    "short",
+    "long"
+  ],
+  "engine": "fill-at-next-open",
+  "notes": "Baseline run \u2014 faithful conversion, no optimization"
+}

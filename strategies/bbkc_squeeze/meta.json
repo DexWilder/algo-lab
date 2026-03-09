@@ -1,0 +1,19 @@
+{
+  "name": "BB/KC Squeeze Momentum",
+  "family": "breakout",
+  "source_url": "https://www.tradingview.com/script/x9r2dOhI-Trading-Strategy-based-on-BB-KC-squeeze/",
+  "author": "LazyBear",
+  "conversion_type": "faithful",
+  "harvest_id": "idx-007",
+  "batch": 2,
+  "description": "Bollinger Bands inside Keltner Channel = compression/squeeze. Entry on squeeze release + momentum direction. Exit on momentum deceleration.",
+  "parameters": {
+    "BB_LENGTH": 14,
+    "BB_MULT": 2.0,
+    "KC_LENGTH": 16,
+    "KC_MULT": 1.5,
+    "SL_ATR": 2.0,
+    "SESSION_START": "09:30",
+    "SESSION_END": "15:15"
+  }
+}

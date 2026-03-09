@@ -1,0 +1,19 @@
+{
+  "name": "NY VIX Channel Trend",
+  "family": "session",
+  "source_url": "https://www.tradingview.com/script/TlOcVraF-NY-VIX-Channel-Trend-US-Futures-Day-Trade-Strategy/",
+  "author": "exlux",
+  "conversion_type": "adapted",
+  "harvest_id": "idx-001",
+  "batch": 2,
+  "description": "VIX-derived implied move channel anchored at session open. Window-based direction detection. VIX-scaled TP/SL. Uses realized vol proxy for VIX.",
+  "parameters": {
+    "WINDOW_MINUTES": 30,
+    "TP_FACTOR": 1.0,
+    "SL_FACTOR": 0.5,
+    "EXIT_MINUTES_BEFORE": 30,
+    "VOL_LOOKBACK": 14,
+    "SESSION_START": "09:30",
+    "SESSION_END": "15:45"
+  }
+}
