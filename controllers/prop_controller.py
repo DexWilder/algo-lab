@@ -70,7 +70,9 @@ class PropController:
                 "max_trades_per_day": None,
             }
 
-        for phase_key in sorted(self.config.phases.keys()):
+        sorted_keys = sorted(self.config.phases.keys())
+
+        for phase_key in sorted_keys:
             phase = self.config.phases[phase_key]
             low = phase["profit_range"][0]
             high = phase["profit_range"][1]
@@ -79,8 +81,15 @@ class PropController:
             if low <= cumulative_profit < high:
                 return phase_key, phase
 
-        # Default to last phase
-        last_key = sorted(self.config.phases.keys())[-1]
+        # If profit is below first phase's lower bound (e.g., negative),
+        # stay in the first phase
+        first_key = sorted_keys[0]
+        first_phase = self.config.phases[first_key]
+        if cumulative_profit < first_phase["profit_range"][0]:
+            return first_key, first_phase
+
+        # Default to last phase (profit above all ranges)
+        last_key = sorted_keys[-1]
         return last_key, self.config.phases[last_key]
 
     def simulate(self, trades_df, starting_equity=None):
