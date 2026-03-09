@@ -1,0 +1,88 @@
+{
+  "n_simulations": 10000,
+  "n_trades": 96,
+  "seed": 42,
+  "starting_capital": 50000.0,
+  "observed": {
+    "pnl": 3388.96,
+    "maxdd": 685.48
+  },
+  "pnl_distribution": {
+    "mean": 3388.96,
+    "median": 3388.96,
+    "std": 0.0,
+    "percentiles": {
+      "p1": 3388.96,
+      "p5": 3388.96,
+      "p10": 3388.96,
+      "p25": 3388.96,
+      "p50": 3388.96,
+      "p75": 3388.96,
+      "p90": 3388.96,
+      "p95": 3388.96,
+      "p99": 3388.96
+    },
+    "prob_positive": 100.0,
+    "prob_gt_3k": 100.0
+  },
+  "maxdd_distribution": {
+    "mean": 544.51,
+    "median": 516.04,
+    "std": 154.76,
+    "percentiles": {
+      "p1": 300.71,
+      "p5": 345.44,
+      "p10": 374.86,
+      "p25": 432.4,
+      "p50": 516.04,
+      "p75": 626.36,
+      "p90": 748.05,
+      "p95": 839.56,
+      "p99": 1034.29
+    }
+  },
+  "ruin_probability": {
+    "$1,000": 1.32,
+    "$2,000": 0.0,
+    "$3,000": 0.0,
+    "$4,000": 0.0,
+    "$5,000": 0.0
+  },
+  "prop_survival": {
+    "prop_2k": {
+      "dd_limit": 2000,
+      "survival_pct": 100.0,
+      "median_pnl_surviving": 3388.96
+    },
+    "prop_3k": {
+      "dd_limit": 3000,
+      "survival_pct": 100.0,
+      "median_pnl_surviving": 3388.96
+    },
+    "prop_4k": {
+      "dd_limit": 4000,
+      "survival_pct": 100.0,
+      "median_pnl_surviving": 3388.96
+    },
+    "prop_5k": {
+      "dd_limit": 5000,
+      "survival_pct": 100.0,
+      "median_pnl_surviving": 3388.96
+    }
+  },
+  "dd_duration": {
+    "mean": 20.7,
+    "median": 19.0,
+    "percentiles": {
+      "p1": 9.0,
+      "p5": 11.0,
+      "p10": 12.0,
+      "p25": 15.0,
+      "p50": 19.0,
+      "p75": 25.0,
+      "p90": 32.0,
+      "p95": 37.0,
+      "p99": 47.0
+    }
+  }
+}
