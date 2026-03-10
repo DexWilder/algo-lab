@@ -1,6 +1,6 @@
 """Reusable mutation components extracted from donor strategies.
 
-Four stateless indicator functions that add columns to a DataFrame
+Stateless indicator functions that add columns to a DataFrame
 without touching position state. Used by the evolution scheduler to
 inject donor components into parent strategies.
 
@@ -9,6 +9,8 @@ Sources:
 - compute_squeeze: BBKC-SQUEEZE (LazyBear) — BB inside KC detection
 - compute_momentum_state: BBKC-SQUEEZE — linreg momentum color states
 - compute_sweep: ICT-010 (tradeforopp) — session range sweep bias
+- compute_ema_alignment: Multi-EMA trend continuation (Batch 2)
+- compute_range_fade: Bollinger band range fade signals (Batch 2)
 """
 
 import numpy as np
@@ -272,4 +274,83 @@ def compute_sweep(
 
     df["sweep_bias"] = sweep_bias_arr
     df.drop(columns=["_sweep_date", "_range_high", "_range_low"], inplace=True, errors="ignore")
+    return df
+
+
+def compute_ema_alignment(
+    df: pd.DataFrame,
+    fast: int = 9,
+    slow: int = 21,
+    trend: int = 50,
+) -> pd.DataFrame:
+    """Multi-EMA trend alignment for continuation entries.
+
+    Detects when EMAs are stacked in order (fast > slow > trend) AND
+    the fast EMA is moving in trend direction. Targets HIGH_VOL_TRENDING_LOW_RV
+    regime where sustained directional grinds dominate.
+
+    Adds columns:
+        ema_aligned_long (bool) — fast > slow > trend, fast rising
+        ema_aligned_short (bool) — fast < slow < trend, fast falling
+
+    Typical distribution: ~25-40% of bars aligned in one direction.
+    """
+    df = df.copy()
+    ema_fast = df["close"].ewm(span=fast, adjust=False).mean()
+    ema_slow = df["close"].ewm(span=slow, adjust=False).mean()
+    ema_trend = df["close"].ewm(span=trend, adjust=False).mean()
+
+    fast_rising = ema_fast > ema_fast.shift(1)
+    fast_falling = ema_fast < ema_fast.shift(1)
+
+    df["ema_aligned_long"] = (
+        (ema_fast > ema_slow) & (ema_slow > ema_trend) & fast_rising
+    ).fillna(False)
+    df["ema_aligned_short"] = (
+        (ema_fast < ema_slow) & (ema_slow < ema_trend) & fast_falling
+    ).fillna(False)
+
+    return df
+
+
+def compute_range_fade(
+    df: pd.DataFrame,
+    bb_len: int = 20,
+    bb_mult: float = 2.0,
+    bounce_bars: int = 3,
+) -> pd.DataFrame:
+    """Bollinger Band range fade signals for mean reversion.
+
+    Detects when price reaches range extremes and starts reverting.
+    Targets RANGING regime cells where breakout/trend strategies fail.
+
+    Adds columns:
+        range_fade_long (bool) — price touched lower BB and closed higher than open
+        range_fade_short (bool) — price touched upper BB and closed lower than open
+        in_range (bool) — price within BB ±1σ (inner bands)
+
+    Typical distribution: range_fade_long/short ~3-8% of bars.
+    """
+    df = df.copy()
+
+    bb_basis = _sma(df["close"], bb_len)
+    bb_dev = _stdev(df["close"], bb_len)
+
+    upper_bb = bb_basis + bb_mult * bb_dev
+    lower_bb = bb_basis - bb_mult * bb_dev
+    inner_upper = bb_basis + bb_dev
+    inner_lower = bb_basis - bb_dev
+
+    # Touch lower band AND bullish close (close > open = bounce)
+    touched_lower = df["low"] <= lower_bb
+    bullish_close = df["close"] > df["open"]
+
+    # Touch upper band AND bearish close (close < open = fade)
+    touched_upper = df["high"] >= upper_bb
+    bearish_close = df["close"] < df["open"]
+
+    df["range_fade_long"] = (touched_lower & bullish_close).fillna(False)
+    df["range_fade_short"] = (touched_upper & bearish_close).fillna(False)
+    df["in_range"] = ((df["close"] >= inner_lower) & (df["close"] <= inner_upper)).fillna(False)
+
     return df

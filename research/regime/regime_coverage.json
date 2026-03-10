@@ -1,0 +1,354 @@
+{
+  "generated": "2026-03-09",
+  "total_days": 630,
+  "strategies_analyzed": [
+    "PB-MGC-Short",
+    "ORB-009-MGC-Long",
+    "VIX-Channel-MES-Both"
+  ],
+  "factors": {
+    "vol_regime": [
+      "LOW_VOL",
+      "NORMAL",
+      "HIGH_VOL"
+    ],
+    "trend_regime": [
+      "TRENDING",
+      "RANGING"
+    ],
+    "rv_regime": [
+      "LOW_RV",
+      "NORMAL_RV",
+      "HIGH_RV"
+    ]
+  },
+  "cells": [
+    {
+      "vol_regime": "LOW_VOL",
+      "trend_regime": "TRENDING",
+      "rv_regime": "LOW_RV",
+      "cell_key": "LOW_VOL_TRENDING_LOW_RV",
+      "days": 80,
+      "pct_of_total": 12.7,
+      "strategies_active": [
+        "PB-MGC-Short",
+        "ORB-009-MGC-Long",
+        "VIX-Channel-MES-Both"
+      ],
+      "total_trades_in_cell": 93,
+      "total_pnl_in_cell": 890.93,
+      "avg_pf_in_cell": 1.35,
+      "coverage": "STRONG",
+      "gap_priority": "none"
+    },
+    {
+      "vol_regime": "LOW_VOL",
+      "trend_regime": "TRENDING",
+      "rv_regime": "NORMAL_RV",
+      "cell_key": "LOW_VOL_TRENDING_NORMAL_RV",
+      "days": 33,
+      "pct_of_total": 5.2,
+      "strategies_active": [
+        "ORB-009-MGC-Long",
+        "VIX-Channel-MES-Both"
+      ],
+      "total_trades_in_cell": 32,
+      "total_pnl_in_cell": 693.07,
+      "avg_pf_in_cell": 1.87,
+      "coverage": "STRONG",
+      "gap_priority": "none"
+    },
+    {
+      "vol_regime": "LOW_VOL",
+      "trend_regime": "TRENDING",
+      "rv_regime": "HIGH_RV",
+      "cell_key": "LOW_VOL_TRENDING_HIGH_RV",
+      "days": 15,
+      "pct_of_total": 2.4,
+      "strategies_active": [
+        "PB-MGC-Short",
+        "ORB-009-MGC-Long",
+        "VIX-Channel-MES-Both"
+      ],
+      "total_trades_in_cell": 16,
+      "total_pnl_in_cell": 524.16,
+      "avg_pf_in_cell": 1.88,
+      "coverage": "COVERED",
+      "gap_priority": "none"
+    },
+    {
+      "vol_regime": "LOW_VOL",
+      "trend_regime": "RANGING",
+      "rv_regime": "LOW_RV",
+      "cell_key": "LOW_VOL_RANGING_LOW_RV",
+      "days": 9,
+      "pct_of_total": 1.4,
+      "strategies_active": [
+        "PB-MGC-Short",
+        "VIX-Channel-MES-Both"
+      ],
+      "total_trades_in_cell": 8,
+      "total_pnl_in_cell": 161.58,
+      "avg_pf_in_cell": 1.8,
+      "coverage": "THIN",
+      "gap_priority": "medium"
+    },
+    {
+      "vol_regime": "LOW_VOL",
+      "trend_regime": "RANGING",
+      "rv_regime": "NORMAL_RV",
+      "cell_key": "LOW_VOL_RANGING_NORMAL_RV",
+      "days": 5,
+      "pct_of_total": 0.8,
+      "strategies_active": [
+        "PB-MGC-Short",
+        "VIX-Channel-MES-Both"
+      ],
+      "total_trades_in_cell": 5,
+      "total_pnl_in_cell": 311.05,
+      "avg_pf_in_cell": 2.84,
+      "coverage": "THIN",
+      "gap_priority": "medium"
+    },
+    {
+      "vol_regime": "LOW_VOL",
+      "trend_regime": "RANGING",
+      "rv_regime": "HIGH_RV",
+      "cell_key": "LOW_VOL_RANGING_HIGH_RV",
+      "days": 1,
+      "pct_of_total": 0.2,
+      "strategies_active": [
+        "ORB-009-MGC-Long",
+        "VIX-Channel-MES-Both"
+      ],
+      "total_trades_in_cell": 4,
+      "total_pnl_in_cell": 40.04,
+      "avg_pf_in_cell": 1.84,
+      "coverage": "THIN",
+      "gap_priority": "medium"
+    },
+    {
+      "vol_regime": "NORMAL",
+      "trend_regime": "TRENDING",
+      "rv_regime": "LOW_RV",
+      "cell_key": "NORMAL_TRENDING_LOW_RV",
+      "days": 74,
+      "pct_of_total": 11.7,
+      "strategies_active": [
+        "PB-MGC-Short",
+        "ORB-009-MGC-Long",
+        "VIX-Channel-MES-Both"
+      ],
+      "total_trades_in_cell": 75,
+      "total_pnl_in_cell": 858.75,
+      "avg_pf_in_cell": 1.34,
+      "coverage": "STRONG",
+      "gap_priority": "none"
+    },
+    {
+      "vol_regime": "NORMAL",
+      "trend_regime": "TRENDING",
+      "rv_regime": "NORMAL_RV",
+      "cell_key": "NORMAL_TRENDING_NORMAL_RV",
+      "days": 55,
+      "pct_of_total": 8.7,
+      "strategies_active": [
+        "PB-MGC-Short",
+        "ORB-009-MGC-Long",
+        "VIX-Channel-MES-Both"
+      ],
+      "total_trades_in_cell": 66,
+      "total_pnl_in_cell": 458.41,
+      "avg_pf_in_cell": 1.17,
+      "coverage": "COVERED",
+      "gap_priority": "none"
+    },
+    {
+      "vol_regime": "NORMAL",
+      "trend_regime": "TRENDING",
+      "rv_regime": "HIGH_RV",
+      "cell_key": "NORMAL_TRENDING_HIGH_RV",
+      "days": 46,
+      "pct_of_total": 7.3,
+      "strategies_active": [
+        "PB-MGC-Short",
+        "ORB-009-MGC-Long",
+        "VIX-Channel-MES-Both"
+      ],
+      "total_trades_in_cell": 62,
+      "total_pnl_in_cell": 2293.87,
+      "avg_pf_in_cell": 1.9,
+      "coverage": "STRONG",
+      "gap_priority": "none"
+    },
+    {
+      "vol_regime": "NORMAL",
+      "trend_regime": "RANGING",
+      "rv_regime": "LOW_RV",
+      "cell_key": "NORMAL_RANGING_LOW_RV",
+      "days": 20,
+      "pct_of_total": 3.2,
+      "strategies_active": [
+        "PB-MGC-Short",
+        "ORB-009-MGC-Long",
+        "VIX-Channel-MES-Both"
+      ],
+      "total_trades_in_cell": 20,
+      "total_pnl_in_cell": 14.95,
+      "avg_pf_in_cell": 1.02,
+      "coverage": "COVERED",
+      "gap_priority": "none"
+    },
+    {
+      "vol_regime": "NORMAL",
+      "trend_regime": "RANGING",
+      "rv_regime": "NORMAL_RV",
+      "cell_key": "NORMAL_RANGING_NORMAL_RV",
+      "days": 19,
+      "pct_of_total": 3.0,
+      "strategies_active": [
+        "PB-MGC-Short",
+        "ORB-009-MGC-Long",
+        "VIX-Channel-MES-Both"
+      ],
+      "total_trades_in_cell": 14,
+      "total_pnl_in_cell": 302.14,
+      "avg_pf_in_cell": 1.61,
+      "coverage": "THIN",
+      "gap_priority": "medium"
+    },
+    {
+      "vol_regime": "NORMAL",
+      "trend_regime": "RANGING",
+      "rv_regime": "HIGH_RV",
+      "cell_key": "NORMAL_RANGING_HIGH_RV",
+      "days": 26,
+      "pct_of_total": 4.1,
+      "strategies_active": [
+        "PB-MGC-Short",
+        "ORB-009-MGC-Long",
+        "VIX-Channel-MES-Both"
+      ],
+      "total_trades_in_cell": 26,
+      "total_pnl_in_cell": 738.01,
+      "avg_pf_in_cell": 1.52,
+      "coverage": "COVERED",
+      "gap_priority": "none"
+    },
+    {
+      "vol_regime": "HIGH_VOL",
+      "trend_regime": "TRENDING",
+      "rv_regime": "LOW_RV",
+      "cell_key": "HIGH_VOL_TRENDING_LOW_RV",
+      "days": 46,
+      "pct_of_total": 7.3,
+      "strategies_active": [
+        "ORB-009-MGC-Long",
+        "VIX-Channel-MES-Both"
+      ],
+      "total_trades_in_cell": 43,
+      "total_pnl_in_cell": -1398.82,
+      "avg_pf_in_cell": 0.39,
+      "coverage": "THIN",
+      "gap_priority": "medium"
+    },
+    {
+      "vol_regime": "HIGH_VOL",
+      "trend_regime": "TRENDING",
+      "rv_regime": "NORMAL_RV",
+      "cell_key": "HIGH_VOL_TRENDING_NORMAL_RV",
+      "days": 42,
+      "pct_of_total": 6.7,
+      "strategies_active": [
+        "ORB-009-MGC-Long",
+        "VIX-Channel-MES-Both"
+      ],
+      "total_trades_in_cell": 31,
+      "total_pnl_in_cell": 816.31,
+      "avg_pf_in_cell": 1.54,
+      "coverage": "STRONG",
+      "gap_priority": "none"
+    },
+    {
+      "vol_regime": "HIGH_VOL",
+      "trend_regime": "TRENDING",
+      "rv_regime": "HIGH_RV",
+      "cell_key": "HIGH_VOL_TRENDING_HIGH_RV",
+      "days": 106,
+      "pct_of_total": 16.8,
+      "strategies_active": [
+        "ORB-009-MGC-Long",
+        "VIX-Channel-MES-Both"
+      ],
+      "total_trades_in_cell": 93,
+      "total_pnl_in_cell": 1934.68,
+      "avg_pf_in_cell": 1.29,
+      "coverage": "COVERED",
+      "gap_priority": "none"
+    },
+    {
+      "vol_regime": "HIGH_VOL",
+      "trend_regime": "RANGING",
+      "rv_regime": "LOW_RV",
+      "cell_key": "HIGH_VOL_RANGING_LOW_RV",
+      "days": 14,
+      "pct_of_total": 2.2,
+      "strategies_active": [
+        "VIX-Channel-MES-Both"
+      ],
+      "total_trades_in_cell": 12,
+      "total_pnl_in_cell": 432.62,
+      "avg_pf_in_cell": 2.09,
+      "coverage": "THIN",
+      "gap_priority": "medium"
+    },
+    {
+      "vol_regime": "HIGH_VOL",
+      "trend_regime": "RANGING",
+      "rv_regime": "NORMAL_RV",
+      "cell_key": "HIGH_VOL_RANGING_NORMAL_RV",
+      "days": 16,
+      "pct_of_total": 2.5,
+      "strategies_active": [
+        "VIX-Channel-MES-Both"
+      ],
+      "total_trades_in_cell": 16,
+      "total_pnl_in_cell": -32.34,
+      "avg_pf_in_cell": 0.96,
+      "coverage": "THIN",
+      "gap_priority": "medium"
+    },
+    {
+      "vol_regime": "HIGH_VOL",
+      "trend_regime": "RANGING",
+      "rv_regime": "HIGH_RV",
+      "cell_key": "HIGH_VOL_RANGING_HIGH_RV",
+      "days": 23,
+      "pct_of_total": 3.7,
+      "strategies_active": [
+        "ORB-009-MGC-Long",
+        "VIX-Channel-MES-Both"
+      ],
+      "total_trades_in_cell": 21,
+      "total_pnl_in_cell": 1304.21,
+      "avg_pf_in_cell": 2.46,
+      "coverage": "COVERED",
+      "gap_priority": "none"
+    }
+  ],
+  "summary": {
+    "strong": 5,
+    "covered": 11,
+    "thin": 7,
+    "missing": 0,
+    "gap_cells": [
+      "LOW_VOL_RANGING_LOW_RV",
+      "LOW_VOL_RANGING_NORMAL_RV",
+      "LOW_VOL_RANGING_HIGH_RV",
+      "NORMAL_RANGING_NORMAL_RV",
+      "HIGH_VOL_TRENDING_LOW_RV",
+      "HIGH_VOL_RANGING_LOW_RV",
+      "HIGH_VOL_RANGING_NORMAL_RV"
+    ]
+  }
+}

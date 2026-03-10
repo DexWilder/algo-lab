@@ -1,0 +1,9 @@
+{
+  "candidate_id": "orb_relaxed_entry",
+  "parent": "orb_009",
+  "mutation_type": "relax_filter",
+  "mutation_fn": null,
+  "description": "Remove VWAP slope + widen candle strength + extend window",
+  "priority": 8.1,
+  "generated_date": "2026-03-09"
+}

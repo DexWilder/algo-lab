@@ -1,0 +1,9 @@
+{
+  "candidate_id": "orb_ema_trend",
+  "parent": "orb_009",
+  "mutation_type": "add_filter",
+  "mutation_fn": "compute_ema_alignment",
+  "description": "EMA alignment confirmation on breakout direction",
+  "priority": 8.0,
+  "generated_date": "2026-03-09"
+}

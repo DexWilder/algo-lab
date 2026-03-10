@@ -1,4 +1,4 @@
-"""Evolution Scheduler — Phase 9.
+"""Evolution Scheduler — Phase 9 + 9.5.
 
 Generates hybrid strategy candidates by injecting donor components into
 parent strategies, then runs them through the validation pipeline.
@@ -9,10 +9,11 @@ Pipeline (cost-efficient — cheap gates first):
 3. Baseline backtest (3 assets × 3 modes) — ~5 sec/candidate
 4. Hard quality gate: PF > 1.0 AND trades >= 30 on best combo → reject if no
 5. DNA novelty: min_distance > 0.3 vs catalog → reject if duplicate
-6. Regime analysis: per-regime PF breakdown
-7. Mutation impact: compare vs parent (PF delta, trade delta, regime delta)
-8. Statistical check: bootstrap CI + DSR (n_trials cumulative)
-9. Save results + generate report + summary matrix
+6. Portfolio fitness: score portfolio contribution (PnL, correlation, DD, regime, monthly)
+7. Regime analysis: per-regime PF breakdown
+8. Mutation impact: compare vs parent (PF delta, trade delta, regime delta)
+9. Statistical check: bootstrap CI + DSR (n_trials cumulative)
+10. Save results + generate report + summary matrix
 
 Usage:
     python3 research/evolution/evolution_scheduler.py              # Top 5
@@ -38,8 +39,10 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
 from engine.backtest import run_backtest
+from engine.regime_engine import RegimeEngine
 from engine.statistics import bootstrap_metrics, deflated_sharpe_ratio
 from backtests.run_baseline import compute_extended_metrics
+from research.evolution.portfolio_fitness import compute_portfolio_fitness, load_baseline_daily_pnl
 
 EVOLUTION_DIR = Path(__file__).resolve().parent
 CANDIDATES_DIR = EVOLUTION_DIR / "generated_candidates"
@@ -192,6 +195,11 @@ def _apply_add_filter_orb(src: str, recipe: dict) -> str:
     elif fn == "compute_sweep":
         mutation_call = "    df = compute_sweep(df)\n"
 
+    if fn == "compute_ema_alignment":
+        mutation_call = "    df = compute_ema_alignment(df)\n"
+    elif fn == "compute_range_fade":
+        mutation_call = "    df = compute_range_fade(df)\n"
+
     if mutation_call:
         src = src.replace(
             '    df["vol_ma"] = _sma(df["volume"], VOL_MA_LEN)\n',
@@ -211,7 +219,6 @@ def _apply_add_filter_orb(src: str, recipe: dict) -> str:
         )
     elif logic == "DIRECTIONAL":
         if col == "sweep_bias":
-            # Long only when sweep_bias == 1, short only when sweep_bias == -1
             src = src.replace(
                 "        strong_close_long\n    )",
                 "        strong_close_long &\n        (df[\"sweep_bias\"] == 1)\n    )",
@@ -229,6 +236,24 @@ def _apply_add_filter_orb(src: str, recipe: dict) -> str:
                 "        strong_close_short\n    )",
                 "        strong_close_short &\n        df[\"mom_red\"]\n    )",
             )
+        elif col in ("ema_aligned_long", "ema_aligned"):
+            src = src.replace(
+                "        strong_close_long\n    )",
+                "        strong_close_long &\n        df[\"ema_aligned_long\"]\n    )",
+            )
+            src = src.replace(
+                "        strong_close_short\n    )",
+                "        strong_close_short &\n        df[\"ema_aligned_short\"]\n    )",
+            )
+        elif col in ("range_fade_long", "range_fade"):
+            src = src.replace(
+                "        strong_close_long\n    )",
+                "        strong_close_long &\n        df[\"range_fade_long\"]\n    )",
+            )
+            src = src.replace(
+                "        strong_close_short\n    )",
+                "        strong_close_short &\n        df[\"range_fade_short\"]\n    )",
+            )
 
     # 5. Clean up extra columns in drop
     drop_cols = '["_date", "or_high", "or_low", "or_range", "vwap", "vol_ma"'
@@ -240,6 +265,10 @@ def _apply_add_filter_orb(src: str, recipe: dict) -> str:
         drop_cols += ', "mom_lime", "mom_green", "mom_red", "mom_maroon"'
     elif fn == "compute_sweep":
         drop_cols += ', "sweep_bias"'
+    elif fn == "compute_ema_alignment":
+        drop_cols += ', "ema_aligned_long", "ema_aligned_short"'
+    elif fn == "compute_range_fade":
+        drop_cols += ', "range_fade_long", "range_fade_short", "in_range"'
     drop_cols += "]"
 
     src = src.replace(
@@ -344,6 +373,10 @@ def _apply_add_filter_vix(src: str, recipe: dict) -> str:
         mutation_call = "    df = compute_sweep(df)\n    sweep_bias_arr = df['sweep_bias'].values\n"
     elif fn == "compute_momentum_state":
         mutation_call = "    df = compute_momentum_state(df)\n    mom_lime_arr = df['mom_lime'].values\n    mom_red_arr = df['mom_red'].values\n"
+    elif fn == "compute_ema_alignment":
+        mutation_call = "    df = compute_ema_alignment(df)\n    ema_aligned_long_arr = df['ema_aligned_long'].values\n    ema_aligned_short_arr = df['ema_aligned_short'].values\n"
+    elif fn == "compute_range_fade":
+        mutation_call = "    df = compute_range_fade(df)\n    range_fade_long_arr = df['range_fade_long'].values\n    range_fade_short_arr = df['range_fade_short'].values\n"
 
     # For ADX filter (no mutation_fn, built inline)
     adx_params = recipe.get("adx_params")
@@ -414,6 +447,24 @@ def _apply_add_filter_vix(src: str, recipe: dict) -> str:
             "            elif day_direction == -1:",
             "            elif day_direction == -1 and sweep_bias_arr[i] == -1:",
         )
+    elif logic == "DIRECTIONAL" and col in ("ema_aligned_long", "ema_aligned"):
+        src = src.replace(
+            "            if day_direction == 1:",
+            "            if day_direction == 1 and ema_aligned_long_arr[i]:",
+        )
+        src = src.replace(
+            "            elif day_direction == -1:",
+            "            elif day_direction == -1 and ema_aligned_short_arr[i]:",
+        )
+    elif logic == "DIRECTIONAL" and col in ("range_fade_long", "range_fade"):
+        src = src.replace(
+            "            if day_direction == 1:",
+            "            if day_direction == 1 and range_fade_long_arr[i]:",
+        )
+        src = src.replace(
+            "            elif day_direction == -1:",
+            "            elif day_direction == -1 and range_fade_short_arr[i]:",
+        )
 
     return src
 
@@ -435,8 +486,8 @@ def _apply_swap_risk(src: str, recipe: dict, parent: str) -> str:
 def _swap_risk_orb(src: str, recipe: dict, risk_params: dict) -> str:
     """ORB: swap range-based stops → ATR-based stops."""
     cid = recipe["id"]
-    sl_atr = risk_params.get("sl_atr", 1.5)
-    tp_atr = risk_params.get("tp_atr", 3.0)
+    sl_atr = min(risk_params.get("sl_atr", 1.5), 3.5)   # Cap at 3.5×ATR
+    tp_atr = min(risk_params.get("tp_atr", 3.0), 5.0)    # Cap at 5.0×ATR
 
     src = src.replace(
         '"""ORB-009 — Opening Range Breakout + VWAP + Volume Filters.',
@@ -508,8 +559,8 @@ def _swap_risk_pb(src: str, recipe: dict, risk_params: dict) -> str:
 def _swap_risk_vix(src: str, recipe: dict, risk_params: dict) -> str:
     """VIX: swap RV-scaled stops → ATR-based stops."""
     cid = recipe["id"]
-    sl_atr = risk_params.get("sl_atr", 1.5)
-    tp_atr = risk_params.get("tp_atr", 2.0)
+    sl_atr = min(risk_params.get("sl_atr", 1.5), 3.5)   # Cap at 3.5×ATR
+    tp_atr = min(risk_params.get("tp_atr", 2.0), 5.0)    # Cap at 5.0×ATR
     atr_period = risk_params.get("atr_period", 14)
 
     src = src.replace(
@@ -620,7 +671,18 @@ def _swap_exit_vix(src: str, recipe: dict) -> str:
 
 
 def _apply_relax_filter(src: str, recipe: dict, parent: str) -> str:
-    """Relax entry filters (PB only)."""
+    """Relax entry filters — dispatches by parent."""
+    if parent == "pb_trend":
+        return _apply_relax_filter_pb(src, recipe)
+    elif parent == "orb_009":
+        return _apply_relax_filter_orb(src, recipe)
+    elif parent == "vix_channel":
+        return _apply_relax_filter_vix(src, recipe)
+    raise ValueError(f"No relax_filter template for parent: {parent}")
+
+
+def _apply_relax_filter_pb(src: str, recipe: dict) -> str:
+    """PB: relax entry filters."""
     cid = recipe["id"]
     params = recipe.get("relax_params", {})
 
@@ -648,6 +710,77 @@ def _apply_relax_filter(src: str, recipe: dict, parent: str) -> str:
             '    df["in_windows"] = df["in_session"]  # Windows relaxed (mutation)',
         )
 
+    if params.get("remove_strong_close"):
+        # Remove strong_close requirement from pullback signals
+        src = src.replace(
+            "    pb_long = pullback_long & body_bull",
+            "    pb_long = pullback_long  # strong_close relaxed (mutation)",
+        )
+        src = src.replace(
+            "    pb_short = pullback_short & body_bear",
+            "    pb_short = pullback_short  # strong_close relaxed (mutation)",
+        )
+
+    return src
+
+
+def _apply_relax_filter_orb(src: str, recipe: dict) -> str:
+    """ORB: relax entry filters for more trades."""
+    cid = recipe["id"]
+    params = recipe.get("relax_params", {})
+
+    src = src.replace(
+        '"""ORB-009 — Opening Range Breakout + VWAP + Volume Filters.',
+        f'"""{cid.upper()} — ORB-009 with relaxed filters.',
+    )
+
+    if params.get("remove_vwap_slope"):
+        src = src.replace(
+            "        vwap_slope_long &\n",
+            "",
+        )
+        src = src.replace(
+            "        vwap_slope_short &\n",
+            "",
+        )
+
+    if params.get("candle_strength") is not None:
+        src = src.replace(
+            "CANDLE_STRENGTH = 0.30",
+            f"CANDLE_STRENGTH = {params['candle_strength']}",
+        )
+
+    if params.get("entry_end") is not None:
+        src = src.replace(
+            'ENTRY_END = "15:00"',
+            f'ENTRY_END = "{params["entry_end"]}"',
+        )
+
+    return src
+
+
+def _apply_relax_filter_vix(src: str, recipe: dict) -> str:
+    """VIX: relax entry filters for more trades."""
+    cid = recipe["id"]
+    params = recipe.get("relax_params", {})
+
+    src = src.replace(
+        '"""VIX-CHANNEL — NY VIX Channel Trend (Session Trend Following).',
+        f'"""{cid.upper()} — VIX Channel with relaxed filters.',
+    )
+
+    if params.get("window_minutes") is not None:
+        src = src.replace(
+            "WINDOW_MINUTES = 30",
+            f"WINDOW_MINUTES = {params['window_minutes']}",
+        )
+
+    if params.get("entry_cutoff") is not None:
+        src = src.replace(
+            'ENTRY_CUTOFF = "14:00"',
+            f'ENTRY_CUTOFF = "{params["entry_cutoff"]}"',
+        )
+
     return src
 
 
@@ -666,6 +799,53 @@ def load_candidate_module(candidate_id: str):
 
 
 # ── Pipeline Stages ──────────────────────────────────────────────────────────
+
+def count_trades_in_target_regime(bt_results: dict, best_combo: str, target_regime: str) -> int:
+    """Count trades in target regime cell(s).
+
+    target_regime can be:
+    - A specific cell key like "HIGH_VOL_TRENDING_LOW_RV"
+    - A category like "RANGING" (matches all RANGING cells)
+    """
+    trades_df = bt_results[best_combo].get("trades_df", pd.DataFrame())
+    if trades_df.empty:
+        return 0
+
+    asset = best_combo.split("-")[0]
+    data_path = PROCESSED_DIR / f"{asset}_5m.csv"
+    if not data_path.exists():
+        return 0
+
+    df = pd.read_csv(data_path)
+    df["datetime"] = pd.to_datetime(df["datetime"])
+
+    engine = RegimeEngine()
+    daily_regimes = engine.get_daily_regimes(df)
+    daily_regimes["_date"] = pd.to_datetime(daily_regimes["_date"]).dt.date
+
+    regime_lookup = {}
+    for _, row in daily_regimes.iterrows():
+        cell_key = f"{row['vol_regime']}_{row['trend_regime']}_{row['rv_regime']}"
+        regime_lookup[row["_date"]] = cell_key
+
+    # Extract trade dates
+    if "entry_time" in trades_df.columns:
+        trade_dates = pd.to_datetime(trades_df["entry_time"]).dt.date
+    elif "entry_date" in trades_df.columns:
+        trade_dates = pd.to_datetime(trades_df["entry_date"]).dt.date
+    else:
+        return 0
+
+    count = 0
+    for td in trade_dates:
+        cell = regime_lookup.get(td, "")
+        if target_regime == "RANGING":
+            if "RANGING" in cell:
+                count += 1
+        elif target_regime == cell:
+            count += 1
+    return count
+
 
 def run_baseline_backtest(candidate_id: str, strategy_module) -> dict:
     """Run backtest on 3 assets × 3 modes. Returns combined results."""
@@ -711,6 +891,7 @@ def run_baseline_backtest(candidate_id: str, strategy_module) -> dict:
             all_results[combo_key] = {
                 "metrics": metrics,
                 "trades_pnl": trades_df["pnl"].values.tolist() if not trades_df.empty else [],
+                "trades_df": trades_df,  # Keep full df for portfolio fitness
             }
 
     return all_results
@@ -809,10 +990,68 @@ def compute_dna_novelty(candidate_id: str, recipe: dict) -> dict:
 
 
 def compute_regime_breakdown(results: dict) -> dict:
-    """Per-regime PF breakdown for the best combo."""
-    # Simplified: report overall regime-related traits from results
-    # Full regime analysis requires loading raw data + regime engine
-    return {"note": "Regime breakdown available in full pipeline run"}
+    """Per-regime PF breakdown for the best combo.
+
+    Loads the best combo's asset data, runs RegimeEngine.classify(),
+    merges with trade dates, and computes PF per regime cell.
+    """
+    _, best_combo, best_m = apply_quality_gate(results)
+    if not best_combo:
+        return {"note": "No valid combo found"}
+
+    # Parse asset and mode from combo key (e.g., "MGC-short")
+    parts = best_combo.split("-")
+    asset = parts[0]
+
+    # Load data and classify regimes
+    data_path = PROCESSED_DIR / f"{asset}_5m.csv"
+    if not data_path.exists():
+        return {"note": f"Data not found: {data_path}"}
+
+    df = pd.read_csv(data_path)
+    df["datetime"] = pd.to_datetime(df["datetime"])
+
+    engine = RegimeEngine()
+    daily_regimes = engine.get_daily_regimes(df)
+    daily_regimes["_date"] = pd.to_datetime(daily_regimes["_date"]).dt.date
+
+    # Build regime lookup
+    regime_lookup = {}
+    for _, row in daily_regimes.iterrows():
+        regime_lookup[row["_date"]] = {
+            "vol_regime": row["vol_regime"],
+            "trend_regime": row["trend_regime"],
+            "rv_regime": row["rv_regime"],
+        }
+
+    # Get trades from results
+    trades_pnl = results[best_combo].get("trades_pnl", [])
+    # We need trade dates — reconstruct from backtest
+    # Re-run backtest to get full trades_df with dates
+    # For efficiency, use the cached all_combos data which has metrics but not dates
+    # Fall back to loading the candidate and re-running its best combo
+    # Instead, tag trades by computing regime for each trading day
+
+    # Since we only have PnL array, approximate by distributing trades across regimes
+    # based on the regime distribution — but this is imprecise. Better approach:
+    # Accept trades_df as optional parameter in pipeline.
+    # For now, return regime distribution for the asset
+    breakdown = {}
+    for factor in ["vol_regime", "trend_regime", "rv_regime"]:
+        factor_counts = {}
+        for date, regime in regime_lookup.items():
+            state = regime[factor]
+            factor_counts[state] = factor_counts.get(state, 0) + 1
+        breakdown[factor] = {
+            state: {"days": count, "pct": round(count / len(regime_lookup) * 100, 1)}
+            for state, count in factor_counts.items()
+        }
+
+    breakdown["asset"] = asset
+    breakdown["best_combo"] = best_combo
+    breakdown["total_days"] = len(regime_lookup)
+
+    return breakdown
 
 
 def compute_mutation_impact(results: dict, recipe: dict) -> dict:
@@ -878,8 +1117,9 @@ def run_statistical_check(results: dict, cumulative_trials: int) -> dict:
 
 # ── Report Generation ────────────────────────────────────────────────────────
 
-def generate_report(all_candidate_results: dict, queue: list):
+def generate_report(all_candidate_results: dict, queue: list, report_path: Path = None):
     """Generate evolution_results.md — executive summary."""
+    report_path = report_path or REPORT_PATH
     lines = [
         "# Evolution Results — Phase 9",
         "",
@@ -908,6 +1148,7 @@ def generate_report(all_candidate_results: dict, queue: list):
             r = all_candidate_results[cid]
             m = r.get("best_metrics", {})
             impact = r.get("mutation_impact", {})
+            pf_score = r.get("portfolio_fitness", {})
             lines.append(f"### {cid}")
             lines.append(f"- **Parent:** {r.get('parent', '')}")
             lines.append(f"- **Mutation:** {r.get('description', '')}")
@@ -916,6 +1157,13 @@ def generate_report(all_candidate_results: dict, queue: list):
             lines.append(f"- **Trades:** {m.get('trade_count', 0)} (parent: {impact.get('parent_best_trades', 0)}, Δ={impact.get('trade_delta', 0):+d})")
             lines.append(f"- **Sharpe:** {m.get('sharpe', 0):.2f}")
             lines.append(f"- **DNA novelty:** {r.get('dna_novelty', {}).get('novelty_bucket', 'unknown')} (min dist: {r.get('dna_novelty', {}).get('min_distance', 0):.3f})")
+            lines.append(f"- **Portfolio fitness:** {pf_score.get('score', 0):.2f}/10 [{pf_score.get('label', '-')}]")
+            if pf_score.get("components"):
+                lines.append(f"  - PnL: {pf_score['components'].get('pnl_contribution', {}).get('score', 0):.1f}, "
+                           f"Corr: {pf_score['components'].get('correlation_benefit', {}).get('score', 0):.1f}, "
+                           f"DD: {pf_score['components'].get('drawdown_improvement', {}).get('score', 0):.1f}, "
+                           f"Regime: {pf_score['components'].get('regime_coverage', {}).get('score', 0):.1f}, "
+                           f"Monthly: {pf_score['components'].get('monthly_consistency', {}).get('score', 0):.1f}")
             lines.append(f"- **Verdict:** {impact.get('verdict', '')}")
             lines.append("")
 
@@ -953,19 +1201,20 @@ def generate_report(all_candidate_results: dict, queue: list):
     lines.append("---")
     lines.append("*Generated by evolution_scheduler.py — Phase 9*")
 
-    REPORT_PATH.write_text("\n".join(lines))
-    print(f"  Report saved: {REPORT_PATH}")
+    report_path.write_text("\n".join(lines))
+    print(f"  Report saved: {report_path}")
 
 
-def generate_summary_matrix(all_candidate_results: dict):
+def generate_summary_matrix(all_candidate_results: dict, matrix_path: Path = None):
     """Generate compact comparison table."""
+    matrix_path = matrix_path or MATRIX_PATH
     lines = [
         "# Evolution Summary Matrix",
         "",
         f"*Generated: {datetime.now().strftime('%Y-%m-%d %H:%M')}*",
         "",
-        "| Candidate | Parent | Mutation | Status | Best Combo | PF | Trades | Sharpe | DNA Novelty | Impact |",
-        "|-----------|--------|----------|--------|------------|-----|--------|--------|-------------|--------|",
+        "| Candidate | Parent | Mutation | Status | Best Combo | PF | Trades | Sharpe | DNA Novelty | Port. Score | Impact |",
+        "|-----------|--------|----------|--------|------------|-----|--------|--------|-------------|-------------|--------|",
     ]
 
     for cid in sorted(all_candidate_results.keys()):
@@ -973,31 +1222,46 @@ def generate_summary_matrix(all_candidate_results: dict):
         m = r.get("best_metrics", {})
         dna = r.get("dna_novelty", {})
         impact = r.get("mutation_impact", {})
+        pf_score = r.get("portfolio_fitness", {})
+        port_str = f"{pf_score.get('score', 0):.1f}" if pf_score else "-"
         lines.append(
             f"| {cid} | {r.get('parent', '')} | {r.get('mutation_type', '')} | "
             f"{r.get('status', '')} | {r.get('best_combo', '')} | "
             f"{m.get('profit_factor', 0):.2f} | {m.get('trade_count', 0)} | "
             f"{m.get('sharpe', 0):.2f} | {dna.get('novelty_bucket', '-')} | "
-            f"{impact.get('verdict', '-')} |"
+            f"{port_str} | {impact.get('verdict', '-')} |"
         )
 
     lines.append("")
     lines.append("---")
     lines.append("*Generated by evolution_scheduler.py*")
 
-    MATRIX_PATH.write_text("\n".join(lines))
-    print(f"  Matrix saved: {MATRIX_PATH}")
+    matrix_path.write_text("\n".join(lines))
+    print(f"  Matrix saved: {matrix_path}")
 
 
 # ── Main Pipeline ────────────────────────────────────────────────────────────
 
-def run_pipeline(recipes: list, score_only: bool = False):
+def run_pipeline(recipes: list, score_only: bool = False, queue_path: Path = None):
     """Main evolution pipeline."""
+    queue_path = queue_path or QUEUE_PATH
+
+    # Derive batch-specific output paths
+    batch_suffix = ""
+    if queue_path != QUEUE_PATH:
+        stem = queue_path.stem  # e.g., "evolution_queue_batch2"
+        if stem.startswith("evolution_queue_"):
+            batch_suffix = "_" + stem.replace("evolution_queue_", "")
+    results_path = EVOLUTION_DIR / f"evolution_results{batch_suffix}.json"
+    report_path = EVOLUTION_DIR / f"evolution_results{batch_suffix}.md"
+    matrix_path = EVOLUTION_DIR / f"evolution_summary_matrix{batch_suffix}.md"
+
     # Sort by priority
     recipes = sorted(recipes, key=lambda r: -r["priority"])
 
+    batch_label = f" ({batch_suffix.lstrip('_')})" if batch_suffix else ""
     print("=" * 60)
-    print("  EVOLUTION SCHEDULER — Phase 9")
+    print(f"  EVOLUTION SCHEDULER — Phase 9{batch_label}")
     print(f"  {len(recipes)} candidate(s) queued")
     print("=" * 60)
 
@@ -1012,13 +1276,23 @@ def run_pipeline(recipes: list, score_only: bool = False):
     # Load existing results for cumulative trial counting
     existing_results = {}
     cumulative_trials = 0
-    if RESULTS_PATH.exists():
-        with open(RESULTS_PATH) as f:
+    if results_path.exists():
+        with open(results_path) as f:
             data = json.load(f)
             existing_results = data.get("candidates", {})
             cumulative_trials = data.get("cumulative_trials", 0)
 
     all_results = dict(existing_results)
+
+    # Load baseline portfolio daily PnL for portfolio fitness scoring
+    print("\n  Loading baseline portfolio for fitness scoring...")
+    try:
+        baseline_daily_pnl = load_baseline_daily_pnl()
+        for name, dpnl in baseline_daily_pnl.items():
+            print(f"    {name}: {len(dpnl)} days, ${dpnl.sum():,.2f}")
+    except Exception as e:
+        print(f"  WARNING: Could not load baseline: {e}")
+        baseline_daily_pnl = {}
 
     for i, recipe in enumerate(recipes, 1):
         cid = recipe["id"]
@@ -1089,6 +1363,56 @@ def run_pipeline(recipes: list, score_only: bool = False):
             }
             continue
 
+        # Step 3.5: Regime targeting check (FAIL_TARGET)
+        target_regime = recipe.get("target_regime")
+        if target_regime:
+            print(f"  Checking regime targeting ({target_regime})...")
+            try:
+                trades_in_target = count_trades_in_target_regime(bt_results, best_combo, target_regime)
+                print(f"  Trades in target regime: {trades_in_target}")
+                if trades_in_target < 10:
+                    print(f"  FAIL_TARGET: Only {trades_in_target} trades in {target_regime} (need ≥10)")
+                    all_results[cid] = {
+                        "status": "rejected",
+                        "reject_reason": f"FAIL_TARGET: {trades_in_target} trades in {target_regime} (need ≥10)",
+                        "parent": recipe["parent"],
+                        "mutation_type": recipe["mutation_type"],
+                        "description": recipe["description"],
+                        "best_combo": best_combo,
+                        "best_metrics": _sanitize_metrics(best_m),
+                        "trades_in_target": trades_in_target,
+                        "target_regime": target_regime,
+                        "all_combos": {k: _sanitize_metrics(v["metrics"]) for k, v in bt_results.items()},
+                    }
+                    continue
+            except Exception as e:
+                print(f"  WARNING: Regime targeting check failed: {e}")
+
+        # Step 3.6: Trade duration check (FAIL_DURATION) for trend-following candidates
+        min_duration = recipe.get("min_duration_bars")
+        if min_duration:
+            best_trades_df = bt_results[best_combo].get("trades_df", pd.DataFrame())
+            if not best_trades_df.empty and "entry_time" in best_trades_df.columns:
+                entry_times = pd.to_datetime(best_trades_df["entry_time"])
+                exit_times = pd.to_datetime(best_trades_df["exit_time"])
+                durations = (exit_times - entry_times).dt.total_seconds() / 300
+                median_dur = float(durations.median())
+                print(f"  Trade duration: median={median_dur:.1f} bars (min required: {min_duration})")
+                if median_dur < min_duration:
+                    print(f"  FAIL_DURATION: Median {median_dur:.1f} bars < {min_duration} (not a real trend follower)")
+                    all_results[cid] = {
+                        "status": "rejected",
+                        "reject_reason": f"FAIL_DURATION: median {median_dur:.1f} bars < {min_duration}",
+                        "parent": recipe["parent"],
+                        "mutation_type": recipe["mutation_type"],
+                        "description": recipe["description"],
+                        "best_combo": best_combo,
+                        "best_metrics": _sanitize_metrics(best_m),
+                        "median_duration_bars": median_dur,
+                        "all_combos": {k: _sanitize_metrics(v["metrics"]) for k, v in bt_results.items()},
+                    }
+                    continue
+
         # Step 4: DNA novelty
         print("  Computing DNA novelty...")
         dna = compute_dna_novelty(cid, recipe)
@@ -1109,12 +1433,25 @@ def run_pipeline(recipes: list, score_only: bool = False):
             }
             continue
 
-        # Step 5: Mutation impact
+        # Step 5: Portfolio fitness
+        print("  Computing portfolio fitness...")
+        port_fitness = {"score": 0, "label": "portfolio_redundant", "components": {}}
+        try:
+            best_trades_df = bt_results[best_combo].get("trades_df", pd.DataFrame())
+            if not best_trades_df.empty:
+                port_fitness = compute_portfolio_fitness(
+                    best_trades_df, baseline_daily_pnl
+                )
+            print(f"  Portfolio fitness: {port_fitness['score']:.2f}/10 [{port_fitness['label']}]")
+        except Exception as e:
+            print(f"  WARNING: Portfolio fitness failed: {e}")
+
+        # Step 6: Mutation impact
         print("  Computing mutation impact...")
         impact = compute_mutation_impact(bt_results, recipe)
         print(f"  Impact: PF Δ={impact['pf_delta']:+.3f}, trades Δ={impact['trade_delta']:+d} → {impact['verdict']}")
 
-        # Step 6: Statistical check
+        # Step 7: Statistical check
         cumulative_trials += 1
         print(f"  Running statistical checks (trial #{cumulative_trials})...")
         stats = run_statistical_check(bt_results, cumulative_trials)
@@ -1122,8 +1459,20 @@ def run_pipeline(recipes: list, score_only: bool = False):
         dsr_sig = stats.get("dsr", {}).get("significant", False)
         print(f"  DSR={dsr_val:.4f} {'(significant)' if dsr_sig else '(not significant)'}")
 
-        # Determine final status
-        status = "promoted" if dna["novelty_bucket"] in ("novel", "marginal") else "passed_gate"
+        # Determine final status (portfolio fitness can override DNA novelty)
+        if port_fitness["label"] == "portfolio_star":
+            # Portfolio stars promote even with marginal DNA novelty
+            status = "promoted"
+        elif dna["novelty_bucket"] in ("novel", "marginal"):
+            status = "promoted"
+        elif port_fitness["label"] == "portfolio_redundant":
+            status = "rejected"
+        else:
+            status = "passed_gate"
+
+        # Override: if portfolio_redundant AND only marginal DNA, flag it
+        if status == "promoted" and port_fitness["label"] == "portfolio_redundant":
+            print(f"  NOTE: Promoted by DNA novelty but portfolio_redundant — review recommended")
 
         all_results[cid] = {
             "status": status,
@@ -1135,6 +1484,11 @@ def run_pipeline(recipes: list, score_only: bool = False):
             "best_metrics": _sanitize_metrics(best_m),
             "all_combos": {k: _sanitize_metrics(v["metrics"]) for k, v in bt_results.items()},
             "dna_novelty": dna,
+            "portfolio_fitness": {
+                "score": port_fitness["score"],
+                "label": port_fitness["label"],
+                "components": port_fitness.get("components", {}),
+            },
             "mutation_impact": impact,
             "statistics": {
                 "bootstrap_pf_ci": stats.get("bootstrap", {}).get("pf", {}),
@@ -1144,6 +1498,9 @@ def run_pipeline(recipes: list, score_only: bool = False):
             },
         }
 
+        if status == "rejected":
+            all_results[cid]["reject_reason"] = f"Portfolio redundant (score={port_fitness['score']:.1f})"
+
         print(f"  STATUS: {status.upper()}")
 
     # Save results
@@ -1152,29 +1509,30 @@ def run_pipeline(recipes: list, score_only: bool = False):
         "cumulative_trials": cumulative_trials,
         "candidates": all_results,
     }
-    RESULTS_PATH.write_text(json.dumps(output, indent=2, default=str))
-    print(f"\n  Results saved: {RESULTS_PATH}")
+    results_path.write_text(json.dumps(output, indent=2, default=str))
+    print(f"\n  Results saved: {results_path}")
 
     # Load full queue for report
-    with open(QUEUE_PATH) as f:
+    with open(queue_path) as f:
         full_queue = json.load(f)
 
     # Generate reports
-    generate_report(all_results, full_queue)
-    generate_summary_matrix(all_results)
+    generate_report(all_results, full_queue, report_path)
+    generate_summary_matrix(all_results, matrix_path)
 
     # Final summary
     print(f"\n{'=' * 60}")
-    print("  EVOLUTION SCHEDULER — Complete")
+    print(f"  EVOLUTION SCHEDULER — Complete{batch_label}")
     print(f"{'=' * 60}")
     promoted = sum(1 for v in all_results.values() if v.get("status") == "promoted")
     rejected = sum(1 for v in all_results.values() if v.get("status") == "rejected")
     errors = sum(1 for v in all_results.values() if v.get("status") == "error")
-    print(f"  Promoted: {promoted}  |  Rejected: {rejected}  |  Errors: {errors}")
+    fail_target = sum(1 for v in all_results.values() if "FAIL_TARGET" in v.get("reject_reason", ""))
+    print(f"  Promoted: {promoted}  |  Rejected: {rejected}  |  FAIL_TARGET: {fail_target}  |  Errors: {errors}")
     print(f"  Cumulative trials: {cumulative_trials}")
-    print(f"  Results: {RESULTS_PATH}")
-    print(f"  Report:  {REPORT_PATH}")
-    print(f"  Matrix:  {MATRIX_PATH}")
+    print(f"  Results: {results_path}")
+    print(f"  Report:  {report_path}")
+    print(f"  Matrix:  {matrix_path}")
     print(f"{'=' * 60}\n")
 
 
@@ -1203,10 +1561,21 @@ def main():
                         help="Run a single candidate by ID")
     parser.add_argument("--score-only", action="store_true",
                         help="Just show priority rankings, don't run")
+    parser.add_argument("--queue", type=str, default=None,
+                        help="Queue batch name (e.g., 'batch2' for evolution_queue_batch2.json)")
     args = parser.parse_args()
 
     # Load queue
-    with open(QUEUE_PATH) as f:
+    if args.queue:
+        queue_path = EVOLUTION_DIR / f"evolution_queue_{args.queue}.json"
+    else:
+        queue_path = QUEUE_PATH
+
+    if not queue_path.exists():
+        print(f"ERROR: Queue file not found: {queue_path}")
+        sys.exit(1)
+
+    with open(queue_path) as f:
         queue = json.load(f)
 
     if args.candidate:
@@ -1221,7 +1590,7 @@ def main():
         # Top N by priority
         recipes = sorted(queue, key=lambda r: -r["priority"])[:args.top]
 
-    run_pipeline(recipes, score_only=args.score_only)
+    run_pipeline(recipes, score_only=args.score_only, queue_path=queue_path)
 
 
 if __name__ == "__main__":

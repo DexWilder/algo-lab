@@ -1,0 +1,9 @@
+{
+  "candidate_id": "vix_fast_observation",
+  "parent": "vix_channel",
+  "mutation_type": "relax_filter",
+  "mutation_fn": null,
+  "description": "15-min observation window + later entry cutoff",
+  "priority": 8.4,
+  "generated_date": "2026-03-09"
+}

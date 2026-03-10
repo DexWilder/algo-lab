@@ -125,6 +125,13 @@ def compute_extended_metrics(
     entry_hours = pd.to_datetime(trades_df["entry_time"]).dt.hour
     session_dist = entry_hours.value_counts().sort_index().to_dict()
 
+    # Trade duration (in bars — 5-minute bars)
+    entry_times = pd.to_datetime(trades_df["entry_time"])
+    exit_times = pd.to_datetime(trades_df["exit_time"])
+    durations = (exit_times - entry_times).dt.total_seconds() / 300  # 5-min bars
+    median_duration_bars = float(durations.median()) if len(durations) > 0 else 0
+    avg_duration_bars = float(durations.mean()) if len(durations) > 0 else 0
+
     # ROI
     total_pnl = pnl.sum()
     roi = (total_pnl / starting_capital) * 100
@@ -155,6 +162,8 @@ def compute_extended_metrics(
         "session_distribution": session_dist,
         "trading_days": len(daily_pnl),
         "avg_trades_per_day": round(len(trades_df) / max(len(daily_pnl), 1), 2),
+        "median_trade_duration_bars": round(median_duration_bars, 1),
+        "avg_trade_duration_bars": round(avg_duration_bars, 1),
     }
 
 

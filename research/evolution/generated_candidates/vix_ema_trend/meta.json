@@ -1,0 +1,9 @@
+{
+  "candidate_id": "vix_ema_trend",
+  "parent": "vix_channel",
+  "mutation_type": "add_filter",
+  "mutation_fn": "compute_ema_alignment",
+  "description": "EMA alignment confirmation on entry direction",
+  "priority": 8.3,
+  "generated_date": "2026-03-09"
+}

@@ -35,6 +35,10 @@ DEFAULT_CONFIG = {
     "rv_low_pct": 33.3,
     "rv_high_pct": 66.7,
     "rv_ranking_lookback": 252,
+
+    # Trend persistence (rolling directional consistency)
+    "persistence_window": 20,
+    "persistence_grind_threshold": 8,  # abs(score) >= 8 out of 20 = GRINDING (~12% of days)
 }
 
 
@@ -45,6 +49,8 @@ class RegimeEngine:
     - Volatility: ATR percentile rank (LOW_VOL / NORMAL / HIGH_VOL)
     - Trend: 20-day EMA slope sign + magnitude (TRENDING / RANGING)
     - Realized Vol: 14-day rolling stdev of returns × √252 (LOW_RV / NORMAL_RV / HIGH_RV)
+    - Trend Persistence: rolling sum of daily direction signs (GRINDING / CHOPPY)
+      Separates sustained directional grinds from breakout/reversal days.
 
     Composite regime is the combination of vol + trend states.
     """
@@ -127,6 +133,29 @@ class RegimeEngine:
         out = out.merge(rv_df, on="_date", how="left")
         out["rv_regime"] = out["rv_regime"].fillna("NORMAL_RV")
 
+        # ── Factor 4: Trend Persistence ────────────────────────────────
+        # Rolling sum of sign(daily returns) over N days.
+        # High absolute value = sustained directional grind (GRINDING)
+        # Low absolute value = choppy, no directional consistency (CHOPPY)
+        daily_direction = np.sign(daily_close.diff())
+        persistence = daily_direction.rolling(
+            window=cfg["persistence_window"], min_periods=10
+        ).sum()
+
+        grind_thresh = cfg["persistence_grind_threshold"]
+        persistence_labels = persistence.map(
+            lambda p: "GRINDING" if (not pd.isna(p) and abs(p) >= grind_thresh) else "CHOPPY"
+        )
+
+        persist_df = pd.DataFrame({
+            "_date": persistence_labels.index,
+            "trend_persistence": persistence_labels.values,
+            "persistence_score": persistence.values,
+        })
+        out = out.merge(persist_df, on="_date", how="left")
+        out["trend_persistence"] = out["trend_persistence"].fillna("CHOPPY")
+        out["persistence_score"] = out["persistence_score"].fillna(0.0)
+
         # ── Composite Regime ─────────────────────────────────────────────
         # Combination of vol + trend (not mutually exclusive)
         out["composite_regime"] = out["vol_regime"] + "_" + out["trend_regime"]
@@ -143,6 +172,8 @@ class RegimeEngine:
             vol_regime=("vol_regime", "last"),
             trend_regime=("trend_regime", "last"),
             rv_regime=("rv_regime", "last"),
+            trend_persistence=("trend_persistence", "last"),
+            persistence_score=("persistence_score", "last"),
             composite_regime=("composite_regime", "last"),
         ).reset_index()
         return daily
@@ -186,7 +217,7 @@ class RegimeEngine:
         n_days = len(daily)
 
         summary = {}
-        for col in ["vol_regime", "trend_regime", "rv_regime", "composite_regime"]:
+        for col in ["vol_regime", "trend_regime", "rv_regime", "trend_persistence", "composite_regime"]:
             counts = daily[col].value_counts()
             summary[col] = {
                 state: {"count": int(cnt), "pct": round(cnt / n_days * 100, 1)}

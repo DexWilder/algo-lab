@@ -1,0 +1,111 @@
+[
+  {
+    "id": "vix_wide_atr_low_rv",
+    "parent": "vix_channel",
+    "mutation_type": "swap_risk",
+    "mutation_fn": null,
+    "description": "ATR stops at 2.0x/3.0x (wider for LOW_RV survival)",
+    "risk_params": {"sl_atr": 2.0, "tp_atr": 3.0, "atr_period": 14},
+    "target_regime": "HIGH_VOL_TRENDING_LOW_RV",
+    "priority": 9.2
+  },
+  {
+    "id": "orb_wide_atr",
+    "parent": "orb_009",
+    "mutation_type": "swap_risk",
+    "mutation_fn": null,
+    "description": "ATR stops at 2.0x/4.0x (wider for HIGH_VOL noise)",
+    "risk_params": {"sl_atr": 2.0, "tp_atr": 4.0},
+    "target_regime": "HIGH_VOL_TRENDING_LOW_RV",
+    "priority": 8.8
+  },
+  {
+    "id": "pb_shallow_pullback",
+    "parent": "pb_trend",
+    "mutation_type": "relax_filter",
+    "mutation_fn": null,
+    "description": "Remove ADX + lower VOL_MULT + single window + remove strong_close",
+    "relax_params": {
+      "remove_adx": true,
+      "vol_mult": 0.5,
+      "single_window": true,
+      "remove_strong_close": true
+    },
+    "target_regime": "HIGH_VOL_TRENDING_LOW_RV",
+    "priority": 8.5
+  },
+  {
+    "id": "vix_ema_trend",
+    "parent": "vix_channel",
+    "mutation_type": "add_filter",
+    "mutation_fn": "compute_ema_alignment",
+    "filter_column": "ema_aligned_long",
+    "filter_logic": "DIRECTIONAL",
+    "description": "EMA alignment confirmation on entry direction",
+    "target_regime": "HIGH_VOL_TRENDING_LOW_RV",
+    "priority": 8.3
+  },
+  {
+    "id": "orb_ema_trend",
+    "parent": "orb_009",
+    "mutation_type": "add_filter",
+    "mutation_fn": "compute_ema_alignment",
+    "filter_column": "ema_aligned_long",
+    "filter_logic": "DIRECTIONAL",
+    "description": "EMA alignment confirmation on breakout direction",
+    "target_regime": "HIGH_VOL_TRENDING_LOW_RV",
+    "priority": 8.0
+  },
+  {
+    "id": "vix_tight_targets",
+    "parent": "vix_channel",
+    "mutation_type": "swap_risk",
+    "mutation_fn": null,
+    "description": "RV-scaled channel with 0.5x TP (quick profits in RANGING)",
+    "risk_params": {"sl_atr": 1.0, "tp_atr": 1.0, "atr_period": 14},
+    "target_regime": "RANGING",
+    "priority": 8.7
+  },
+  {
+    "id": "vix_fast_observation",
+    "parent": "vix_channel",
+    "mutation_type": "relax_filter",
+    "mutation_fn": null,
+    "description": "15-min observation window + later entry cutoff",
+    "relax_params": {"window_minutes": 15, "entry_cutoff": "14:30"},
+    "target_regime": "RANGING",
+    "priority": 8.4
+  },
+  {
+    "id": "orb_relaxed_entry",
+    "parent": "orb_009",
+    "mutation_type": "relax_filter",
+    "mutation_fn": null,
+    "description": "Remove VWAP slope + widen candle strength + extend window",
+    "relax_params": {"remove_vwap_slope": true, "candle_strength": 0.45, "entry_end": "15:15"},
+    "target_regime": "RANGING",
+    "priority": 8.1
+  },
+  {
+    "id": "vix_range_fade",
+    "parent": "vix_channel",
+    "mutation_type": "add_filter",
+    "mutation_fn": "compute_range_fade",
+    "filter_column": "range_fade_long",
+    "filter_logic": "DIRECTIONAL",
+    "description": "Range fade filter (enter at Bollinger extremes)",
+    "target_regime": "RANGING",
+    "priority": 7.8
+  },
+  {
+    "id": "orb_range_fade",
+    "parent": "orb_009",
+    "mutation_type": "add_filter",
+    "mutation_fn": "compute_range_fade",
+    "filter_column": "range_fade_long",
+    "filter_logic": "DIRECTIONAL",
+    "description": "Range fade filter (fade range boundaries after OR)",
+    "target_regime": "RANGING",
+    "priority": 7.5
+  }
+]

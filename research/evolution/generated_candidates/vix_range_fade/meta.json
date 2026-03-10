@@ -1,0 +1,9 @@
+{
+  "candidate_id": "vix_range_fade",
+  "parent": "vix_channel",
+  "mutation_type": "add_filter",
+  "mutation_fn": "compute_range_fade",
+  "description": "Range fade filter (enter at Bollinger extremes)",
+  "priority": 7.8,
+  "generated_date": "2026-03-09"
+}

@@ -761,4 +761,296 @@ Mapped all active strategies to their regime niches:
 
 ---
 
+## 2026-03-09 — Phase 9.5: Portfolio Fitness Function + Regime Coverage Map
+
+**Goal:** Replace standalone PF as the evolution objective with portfolio-aware fitness scoring. Generate machine-readable regime coverage map for gap-aware harvesting and evolution.
+
+**Motivation:** Phase 9's portfolio comparison proved standalone PF is the wrong objective: `vix_atr_stops` (PF=1.36) adds $4.6K uncorrelated PnL and lifts Calmar from 1.94→2.78, while `pb_relaxed_filters` (PF=1.25) degrades the portfolio. A PF 1.36 strategy filling a new regime/asset cell is worth more than a PF 2.0 clone.
+
+### Portfolio Fitness Function
+
+**Module:** `research/evolution/portfolio_fitness.py`
+
+5-component scoring engine (weights sum to 1.0):
+
+| Component | Weight | Measures |
+|-----------|--------|----------|
+| pnl_contribution | 0.25 | Relative PnL increase when added to portfolio |
+| correlation_benefit | 0.25 | 1 - max abs correlation with existing strategies |
+| drawdown_improvement | 0.20 | Calmar improvement + MaxDD reduction |
+| regime_coverage | 0.20 | New regime cells filled (from coverage map) |
+| monthly_consistency | 0.10 | Delta in profitable months % |
+
+**Validation against known ground truth:**
+
+| Candidate | Score | Label | Key Drivers |
+|-----------|-------|-------|-------------|
+| vix_atr_stops MNQ-Long | 5.88 | portfolio_useful | Corr: 9.78, PnL: 6.32, Monthly: 9.0 |
+| pb_relaxed_filters MES-Short | 2.99 | portfolio_redundant | PnL: 0.09, DD: 0.0, Monthly: 3.0 |
+
+Correctly identifies vix_atr_stops as the better portfolio addition (2× higher score).
+
+### Regime Coverage Map
+
+**Module:** `research/regime/regime_coverage_map.py`
+
+18-cell grid (3 vol × 2 trend × 3 rv). Coverage classification:
+
+| Level | Rule | Count |
+|-------|------|-------|
+| STRONG | ≥2 strategies, ≥30 trades, PF≥1.3 | 5 |
+| COVERED | 1+ strategy, ≥15 trades, PF≥1.0 | 6 |
+| THIN | 1 strategy, <15 trades or PF<1.3 | 7 |
+| MISSING | 0 strategies | 0 |
+
+All 18 cells have at least 1 strategy active, but 7 are THIN — insufficient evidence for confidence.
+
+### Scheduler Integration
+
+Evolution scheduler pipeline updated: `generate → backtest → quality_gate → dna_novelty → portfolio_fitness → regime → mutation_impact → stats → report`. Portfolio fitness column added to summary matrix. Promotion criteria updated: portfolio_star (≥7) can override marginal DNA, portfolio_redundant (<4) flags candidates even if other gates pass.
+
+**Decision:** Portfolio fitness is now the primary evaluator for evolution candidates. Standalone PF remains as a quality gate (>1.0) but no longer drives promotion.
+
+**Artifacts:**
+- `research/evolution/portfolio_fitness.py` — reusable fitness scorer
+- `research/regime/regime_coverage_map.py` — coverage map generator
+- `research/regime/regime_coverage.json` — machine-readable coverage data
+- `research/regime/regime_coverage_report.md` — human-readable coverage report
+- `research/evolution/evolution_scheduler.py` — updated with portfolio fitness stage
+
+---
+
+## 2026-03-09 — Phase 9.5.1: Evolution Batch 2 (Regime-Gap-Targeted)
+
+**Goal:** Run 10 regime-targeted evolution recipes to fill the 7 THIN cells identified by the coverage map. Two critical gaps: HIGH_VOL_TRENDING_LOW_RV (PF=0.39, lab loses money) and 5 RANGING cells with thin coverage.
+
+**Approach:** Unlike Batch 1 (generic filter stacking), Batch 2 targets specific regime cells. Two new safeguards enforced:
+- **FAIL_TARGET gate:** Candidates must have ≥10 trades in their target regime to avoid promoting strategies that pass quality gate but don't actually trade where needed.
+- **ATR sanity cap:** Stop distance capped at 3.5×ATR, target at 5.0×ATR to prevent degenerate wide-stop variants.
+
+**New mutations added:** `compute_ema_alignment` (multi-EMA trend continuation) and `compute_range_fade` (Bollinger Band mean reversion at range extremes).
+
+### Results: 10 candidates evaluated, 4 promoted, 6 rejected
+
+| Candidate | Parent | Mutation | Best Combo | PF | Trades | Target Trades | Port. Score | Status |
+|-----------|--------|----------|------------|-----|--------|--------------|-------------|--------|
+| vix_wide_atr_low_rv | vix_channel | swap_risk | MES-short | 1.34 | 240 | 15 (HV_T_LRV) | 2.70 | promoted |
+| vix_tight_targets | vix_channel | swap_risk | MES-long | 1.37 | 263 | 54 (RANGING) | 3.75 | promoted |
+| pb_shallow_pullback | pb_trend | relax_filter | MES-short | 1.25 | 274 | 18 (HV_T_LRV) | 3.40 | promoted |
+| orb_relaxed_entry | orb_009 | relax_filter | MGC-long | 1.72 | 134 | 17 (RANGING) | 3.30 | promoted |
+| orb_wide_atr | orb_009 | swap_risk | MGC-short | 1.61 | 93 | 0 (HV_T_LRV) | — | FAIL_TARGET |
+| orb_ema_trend | orb_009 | add_filter | MGC-long | 1.69 | 98 | 2 (HV_T_LRV) | — | FAIL_TARGET |
+| vix_fast_observation | vix_channel | relax_filter | MES-short | 1.32 | 245 | — | — | DNA duplicate |
+| vix_ema_trend | vix_channel | add_filter | MES-short | 1.48 | 210 | — | — | DNA duplicate |
+| vix_range_fade | vix_channel | add_filter | MGC-long | 1.36 | 100 | — | — | DNA duplicate |
+| orb_range_fade | orb_009 | add_filter | MGC-long | 4.83 | 9 | — | — | trades<30 |
+
+### Key Findings
+
+1. **FAIL_TARGET gate works:** `orb_wide_atr` had PF=1.61 and 93 trades — would have promoted in Batch 1 — but had ZERO trades in its target regime (HIGH_VOL_TRENDING_LOW_RV). The gate correctly caught this.
+2. **VIX add_filter mutations all hit DNA duplicate:** VIX Channel's DNA profile is too close to existing catalog for filter additions to create structural novelty. Only risk model swaps (swap_risk) create enough DNA distance.
+3. **orb_range_fade is interesting but data-starved:** PF=4.83 on 9 trades. Range fade on ORB shows promise conceptually but the filter is too restrictive on current data. Needs longer history or relaxed parameters.
+4. **All 4 promoted scored portfolio_redundant:** No portfolio_star emerged. The HIGH_VOL_TRENDING_LOW_RV gap remains structurally hard to fill — existing parents (VIX, ORB, PB) weren't designed for sustained trend-following.
+5. **Regime-targeted evolution improves targeting:** vix_tight_targets placed 54 trades in RANGING cells, confirming that tighter targets do shift the distribution toward RANGING activity.
+
+**Decision:** No candidates meet the bar for full promotion to the core portfolio. The THIN regime gaps may require genuinely new strategy families (trend-following, mean-reversion specialists) rather than mutations of existing parents. Evolution is a useful tool for optimization but cannot create structural novelty from structurally similar parents.
+
+**Artifacts:**
+- `research/evolution/evolution_queue_batch2.json` — 10 regime-targeted recipes
+- `research/evolution/evolution_results_batch2.json` — full results
+- `research/evolution/evolution_results_batch2.md` — executive summary
+- `research/evolution/evolution_summary_matrix_batch2.md` — comparison table
+- `research/evolution/mutations.py` — 6 mutation functions (2 new)
+
+---
+
+## 2026-03-09 — Phase 10 Prep: Trend Persistence + Trade Duration + New Parent Discovery Plan
+
+**Goal:** Three pre-Phase-10 improvements to ensure new parent strategies are evaluated correctly.
+
+### 1. Trend Persistence Score (Factor 4 in RegimeEngine)
+
+Added GRINDING/CHOPPY classification to separate sustained directional grinds from breakout/reversal days.
+
+**Implementation:** `rolling_sum(sign(daily_close_diff), 20)`. Score ranges -20 to +20. Threshold ≥8 → GRINDING.
+
+**Distribution (MES, 630 days):**
+- GRINDING: 71 days (11.3%)
+- CHOPPY: 559 days (88.7%)
+
+Within HIGH_VOL + TRENDING (the problem regime): 21 GRINDING days (10.8%) — these are the exact days where a trend-follower should be trading.
+
+### 2. Trade Duration Analysis
+
+Added `median_trade_duration_bars` and `avg_trade_duration_bars` to `compute_extended_metrics()`.
+
+**Current portfolio durations:**
+
+| Strategy | Median Hold | Avg Hold | Profile |
+|----------|-----------|---------|---------|
+| PB-MGC-Short | 3 bars (15 min) | 8 bars | Scalper |
+| ORB-MGC-Long | 28 bars (2.3 hrs) | 41 bars | Intraday swing |
+| VIX-MES-Both | 42 bars (3.5 hrs) | 45 bars | Intraday swing |
+
+True trend-followers should show 60-200+ bars — structurally different from all current parents.
+
+### 3. New Parent Discovery Plan
+
+Phase 10 execution order established (simple → complex):
+
+**Trend Gap:** Donchian → Keltner → VWAP Continuation → EMA Crossover → SuperTrend
+**Range Gap:** Bollinger Equilibrium → FVBO → VWAP MR → Session Profile
+
+**Architecture decision:** Event trading = regime override layer, not strategy family.
+
+**Artifacts:**
+- `engine/regime_engine.py` — trend_persistence factor added (GRINDING/CHOPPY)
+- `backtests/run_baseline.py` — trade duration metrics added
+- `docs/LAB_STATE.md` — Phase 10 plan, new insights, updated capabilities
+
+---
+
+## 2026-03-09 — Phase 10.1: Donchian Trend Evaluation (First New Parent)
+
+**Goal:** Build and evaluate the first new strategy family for HIGH_VOL_TRENDING_LOW_RV regime gap. Donchian Channel Breakout + ATR Trailing Stop — a classic trend-following system.
+
+**Implementation:** `strategies/donchian_trend/strategy.py` — hand-built, platform-agnostic.
+- Entry: close breaks above N-bar high (long) or below N-bar low (short)
+- Risk: ATR-based initial stop, trails with price using ATR distance
+- No fixed target — trail captures full trend move
+- Exit: trailing stop hit or pre-close session flatten
+- Max 1 trade per direction per day
+
+**Parameter sweep:** Tested CHANNEL_LEN [20, 30, 40, 55, 78] × ATR_TRAIL_MULT [2.0, 2.5, 3.0, 3.5]. Optimal: CHANNEL_LEN=30, ATR_TRAIL_MULT=3.0.
+
+**Results (3×3 baseline, best combos):**
+
+| Asset | Mode | Trades | PF | Sharpe | PnL | Median Hold | Avg Hold |
+|-------|------|--------|-----|--------|-----|-------------|----------|
+| MNQ | Both | 654 | 1.29 | 1.64 | $18,192 | 48 bars | 55 bars |
+| MNQ | Long | 356 | 1.32 | 1.43 | $10,189 | 61 bars | 67 bars |
+| MES | Long | 375 | 1.23 | — | — | 54 bars | — |
+
+**Portfolio fitness (MNQ-Both):** 4.12/10 (portfolio_useful)
+
+**Correlation with existing portfolio:**
+- vs PB-MGC-Short: r = -0.026 (near-zero)
+- vs ORB-009-MGC-Long: r = +0.012 (near-zero)
+
+**Regime analysis:**
+- GRINDING trades: 84 trades, $2,577 PnL (profitable — architecture validated)
+- HIGH_VOL_TRENDING_LOW_RV: **Still loses -$1,158** (target cell NOT fixed)
+- Overall TRENDING: profitable. LOW_RV component is the fundamental problem.
+
+**Key findings:**
+1. **GRINDING detection works.** 84 trades in GRINDING regime with net-positive PnL confirms the trend persistence factor (Factor 4) correctly identifies days where trend-followers make money.
+2. **Donchian is a genuine structural diversifier.** Median hold 61 bars (MNQ-long) vs PB=3, ORB=28, VIX=42. Near-zero correlation. Different DNA entirely.
+3. **Breakout entry can't solve the LOW_RV problem.** In LOW_RV conditions, breakout moves are too small to cover the ATR-based stop distance. The system bleeds on false breakouts that don't develop into sustained trends.
+4. **Next candidate should try pullback entries.** VWAP Trend Continuation enters on pullbacks to VWAP within an existing trend — this avoids the "buying the high" problem that kills breakout entries in LOW_RV.
+
+**Decision:** Donchian confirmed as portfolio_useful but doesn't fix the critical target cell. Keep as candidate. Proceed to Keltner Channel Breakout (next in build order) — may produce smoother entries. Then VWAP Trend Continuation as the fundamentally different approach.
+
+---
+
+## 2026-03-09 — Phase 10.2: GRINDING Filter Deep Dive (Donchian)
+
+**Goal:** Test Donchian with GRINDING persistence filter per user request.
+
+**Results (MNQ-Long):**
+
+| Variant | PF | Sharpe | Trades | PnL | Median Hold |
+|---------|-----|--------|--------|-----|-------------|
+| Unfiltered | 1.29 | 1.32 | 356 | $9,392 | 61 bars |
+| GRINDING only | **1.76** | **3.38** | 48 | $1,981 | 60 bars |
+
+**GRINDING + LOW_RV intersection:** Only 5 trades in target cell (all GRINDING), PnL=-$308. Too few to conclude.
+
+**Key finding:** GRINDING + LOW_RV overall is profitable ($877 from 22 trades). The loss concentrates specifically in HIGH_VOL + LOW_RV, not LOW_RV alone.
+
+**Decision:** GRINDING filter is a validated strategy activation layer. PF improvement of +36% and Sharpe improvement of +156% confirm trend persistence is a real, tradeable signal.
+
+---
+
+## 2026-03-09 — Phase 10.3: Keltner Channel Breakout
+
+**Goal:** Test EMA-based channel breakout with EMA reversion exit. Expected to produce smoother entries than Donchian.
+
+**Implementation:** `strategies/keltner_channel/strategy.py`
+- Entry: close > upper KC (EMA + ATR×2.0) for long, close < lower KC for short
+- Exit: close crosses below exit EMA (50-period), or ATR trailing stop
+- Min hold: 10 bars before EMA exit activates
+
+**Results (MNQ-Short, best combo):**
+
+| Metric | Value |
+|--------|-------|
+| PF | 1.46 |
+| Sharpe | 1.90 |
+| Trades | 340 |
+| PnL | $11,433 |
+| MaxDD | $3,219 |
+| Median hold | **14 bars** |
+| Corr vs PB | -0.145 |
+| Corr vs ORB | **-0.170** |
+| Target cell PnL | +$13 (breakeven) |
+
+**Key finding:** EMA exit on 5m bars creates a momentum scalper (14-bar hold), not a trend-follower. Any "close below X level" exit degenerates on 5m bars because intrabar noise constantly crosses these levels. Only pure ATR trailing stops achieve 60+ bar holds.
+
+**Decision:** Keltner has better PF/Sharpe than Donchian but is not a trend-follower. Different structural role: momentum swing system.
+
+---
+
+## 2026-03-09 — Phase 10.4: VWAP Trend Continuation
+
+**Goal:** Test pullback entry model — structurally different from breakout entries. Enters at VWAP support in established trends, not at new highs/lows.
+
+**Implementation:** `strategies/vwap_trend/strategy.py`
+- Trend filter: EMA slope confirms direction
+- Entry: price pulls back to session VWAP after MIN_TREND_BARS above/below
+- Exit: N consecutive closes below VWAP (2), or ATR trailing stop
+- Min hold: 10 bars before VWAP exit activates
+
+**Results (MNQ-Long, best combo):**
+
+| Metric | Value |
+|--------|-------|
+| PF | **1.67** |
+| Sharpe | **2.62** |
+| Trades | 195 |
+| PnL | $5,776 |
+| MaxDD | $1,290 |
+| Median hold | 14 bars |
+| Corr vs PB | **-0.087** |
+| Corr vs ORB | 0.039 |
+| Target cell PnL | -$301 |
+
+**Key finding:** Best risk-adjusted metrics of all three trend candidates. Pullback entries produce superior PF (1.67 vs 1.29/1.46) and Sharpe (2.62 vs 1.32/1.90). The target cell improved (-$301 vs -$823) but remains negative — confirming the problem is structural, not entry-dependent.
+
+---
+
+## 2026-03-09 — Phase 10.5: 4-Strategy Portfolio Test
+
+**Goal:** Test combined portfolio: PB + ORB + VWAP Trend + Donchian (GRINDING-only).
+
+**Results:**
+
+| Metric | 2-Strat Baseline | 3-Strat (+VWAP) | 4-Strat (Full) |
+|--------|-----------------|-----------------|----------------|
+| PnL | $3,355 | $9,131 | **$11,113** |
+| Sharpe | 3.31 | 3.02 | **3.15** |
+| Calmar | 3.91 | 6.76 | **7.52** |
+| MaxDD | $859 | $1,351 | $1,477 |
+| Trades | 134 | 329 | 377 |
+| Monthly | 60% | 72% | **80%** |
+
+**Correlation matrix:** All pairwise correlations between -0.087 and +0.061. Genuinely diversified.
+
+**Per-strategy contribution:** VWAP 52%, ORB 24%, Donchian 18%, PB 6%.
+
+**Monthly improvement:** 5 negative months (4-strat) vs 10 (2-strat). The new strategies fill exactly the months where the old portfolio was flat or negative.
+
+**Decision:** The 4-strategy structure is the target portfolio architecture. PnL triples with maintained Sharpe and 80% monthly consistency. Next step: exit evolution on existing strategies to address the remaining bleed, plus full validation battery on VWAP Trend and Donchian.
+
+---
+
 *Last updated: 2026-03-09*

@@ -1,0 +1,9 @@
+{
+  "candidate_id": "vix_tight_targets",
+  "parent": "vix_channel",
+  "mutation_type": "swap_risk",
+  "mutation_fn": null,
+  "description": "RV-scaled channel with 0.5x TP (quick profits in RANGING)",
+  "priority": 8.7,
+  "generated_date": "2026-03-09"
+}

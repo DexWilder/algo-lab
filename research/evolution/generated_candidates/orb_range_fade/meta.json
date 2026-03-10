@@ -1,0 +1,9 @@
+{
+  "candidate_id": "orb_range_fade",
+  "parent": "orb_009",
+  "mutation_type": "add_filter",
+  "mutation_fn": "compute_range_fade",
+  "description": "Range fade filter (fade range boundaries after OR)",
+  "priority": 7.5,
+  "generated_date": "2026-03-09"
+}

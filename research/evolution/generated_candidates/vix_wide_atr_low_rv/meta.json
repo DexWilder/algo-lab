@@ -1,0 +1,9 @@
+{
+  "candidate_id": "vix_wide_atr_low_rv",
+  "parent": "vix_channel",
+  "mutation_type": "swap_risk",
+  "mutation_fn": null,
+  "description": "ATR stops at 2.0x/3.0x (wider for LOW_RV survival)",
+  "priority": 9.2,
+  "generated_date": "2026-03-09"
+}

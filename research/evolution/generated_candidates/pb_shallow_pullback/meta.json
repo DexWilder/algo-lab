@@ -1,0 +1,9 @@
+{
+  "candidate_id": "pb_shallow_pullback",
+  "parent": "pb_trend",
+  "mutation_type": "relax_filter",
+  "mutation_fn": null,
+  "description": "Remove ADX + lower VOL_MULT + single window + remove strong_close",
+  "priority": 8.5,
+  "generated_date": "2026-03-09"
+}

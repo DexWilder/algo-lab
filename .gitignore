@@ -15,6 +15,7 @@ venv/
 data/*.csv
 data/*.parquet
 data/databento/
+data/raw/
 
 # Large backtest artifacts (regenerable)
 backtests/**/*_equity.csv

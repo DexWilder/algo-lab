@@ -1,0 +1,9 @@
+{
+  "candidate_id": "orb_wide_atr",
+  "parent": "orb_009",
+  "mutation_type": "swap_risk",
+  "mutation_fn": null,
+  "description": "ATR stops at 2.0x/4.0x (wider for HIGH_VOL noise)",
+  "priority": 8.8,
+  "generated_date": "2026-03-09"
+}
