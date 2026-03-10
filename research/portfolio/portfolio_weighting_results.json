@@ -1,0 +1,144 @@
+{
+  "schemes": {
+    "Equal Weight": {
+      "weights": {
+        "PB": 1.0,
+        "ORB": 1.0,
+        "VWAP": 1.0,
+        "XB-PB": 1.0,
+        "DONCH": 1.0
+      },
+      "sharpe": 3.511,
+      "calmar": 9.022,
+      "maxdd": 1602.6,
+      "total_pnl": 14458.25,
+      "monthly_pct": 84.0,
+      "mc_ruin_2k": 4.32
+    },
+    "Vol Target": {
+      "weights": {
+        "PB": 1.2138,
+        "ORB": 1.0928,
+        "VWAP": 0.7583,
+        "XB-PB": 1.2284,
+        "DONCH": 0.7067
+      },
+      "sharpe": 3.686,
+      "calmar": 9.843,
+      "maxdd": 1370.37,
+      "total_pnl": 13488.72,
+      "monthly_pct": 80.0,
+      "mc_ruin_2k": 1.83
+    },
+    "Risk Parity": {
+      "weights": {
+        "PB": 1.2138,
+        "ORB": 1.0928,
+        "VWAP": 0.7583,
+        "XB-PB": 1.2284,
+        "DONCH": 0.7067
+      },
+      "sharpe": 3.686,
+      "calmar": 9.843,
+      "maxdd": 1370.37,
+      "total_pnl": 13488.72,
+      "monthly_pct": 80.0,
+      "mc_ruin_2k": 1.83
+    },
+    "Half-Kelly": {
+      "weights": {
+        "PB": 1.079,
+        "ORB": 0.9437,
+        "VWAP": 0.7677,
+        "XB-PB": 1.044,
+        "DONCH": 1.1657
+      },
+      "sharpe": 3.589,
+      "calmar": 8.283,
+      "maxdd": 1633.28,
+      "total_pnl": 13529.28,
+      "monthly_pct": 84.0,
+      "mc_ruin_2k": 2.54
+    },
+    "DD-Adjusted": {
+      "weights": {
+        "PB": 2.0883,
+        "ORB": 0.5226,
+        "VWAP": 0.4928,
+        "XB-PB": 1.2919,
+        "DONCH": 0.6044
+      },
+      "sharpe": 3.584,
+      "calmar": 9.675,
+      "maxdd": 1134.99,
+      "total_pnl": 10981.23,
+      "monthly_pct": 84.0,
+      "mc_ruin_2k": 0.68
+    }
+  },
+  "best_scheme": "Vol Target",
+  "best_weights": {
+    "PB": 1.2138,
+    "ORB": 1.0928,
+    "VWAP": 0.7583,
+    "XB-PB": 1.2284,
+    "DONCH": 0.7067
+  },
+  "stress_tests": {
+    "leave_one_out": [
+      {
+        "removed": "PB",
+        "sharpe": 3.585,
+        "pnl": 12667.86
+      },
+      {
+        "removed": "ORB",
+        "sharpe": 3.551,
+        "pnl": 10561.61
+      },
+      {
+        "removed": "VWAP",
+        "sharpe": 3.778,
+        "pnl": 9108.41
+      },
+      {
+        "removed": "XB-PB",
+        "sharpe": 3.334,
+        "pnl": 9731.38
+      },
+      {
+        "removed": "DONCH",
+        "sharpe": 3.562,
+        "pnl": 11885.6
+      }
+    ],
+    "remove_best_trades": [
+      {
+        "label": "Remove top 1",
+        "sharpe": 3.686,
+        "pnl": 13488.72
+      },
+      {
+        "label": "Remove top 3",
+        "sharpe": 3.686,
+        "pnl": 13488.72
+      },
+      {
+        "label": "Remove top 5",
+        "sharpe": 3.686,
+        "pnl": 13488.72
+      }
+    ],
+    "shuffle_order": {
+      "sharpe_median": 4.9839163748667055,
+      "sharpe_p5": 4.6177199296406455,
+      "sharpe_p95": 5.4008235714855575,
+      "maxdd_median": 914.4931680143527,
+      "maxdd_p95": 1445.7245424244081,
+      "pnl_median": 13488.716507370129,
+      "pnl_p5": 13488.716507370129,
+      "pnl_p95": 13488.71650737013
+    }
+  },
+  "verdict": "ROBUST"
+}

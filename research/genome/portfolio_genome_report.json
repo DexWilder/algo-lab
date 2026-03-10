@@ -1,0 +1,108 @@
+{
+  "strategies_analyzed": 5,
+  "engine_coverage": {
+    "present": [
+      "trend_continuation",
+      "pullback_scalper",
+      "trend_follower",
+      "breakout"
+    ],
+    "missing": [
+      "momentum_scalper",
+      "mean_reversion",
+      "counter_trend",
+      "session_structure",
+      "volatility_compression",
+      "overnight_gap"
+    ],
+    "overlapping": {
+      "breakout": [
+        "vwap_trend",
+        "bb_equilibrium"
+      ]
+    }
+  },
+  "similarity_matrix": {
+    "pb_trend_vs_orb_009": 0.597,
+    "pb_trend_vs_vwap_trend": 0.597,
+    "pb_trend_vs_donchian_trend": 0.538,
+    "pb_trend_vs_bb_equilibrium": 0.653,
+    "orb_009_vs_vwap_trend": 0.649,
+    "orb_009_vs_donchian_trend": 0.616,
+    "orb_009_vs_bb_equilibrium": 0.633,
+    "vwap_trend_vs_donchian_trend": 0.637,
+    "vwap_trend_vs_bb_equilibrium": 0.848,
+    "donchian_trend_vs_bb_equilibrium": 0.547
+  },
+  "redundant_pairs": [
+    [
+      "vwap_trend",
+      "bb_equilibrium",
+      0.848
+    ]
+  ],
+  "regime_concentration": {
+    "HIGH_VOL_TRENDING_HIGH_RV": {
+      "pnl": 8929.58,
+      "share": 0.3388032587349334
+    },
+    "NORMAL_TRENDING_HIGH_RV": {
+      "pnl": 4055.16,
+      "share": 0.153859579363369
+    },
+    "NORMAL_TRENDING_LOW_RV": {
+      "pnl": 3966.2,
+      "share": 0.1504842875918568
+    },
+    "LOW_VOL_TRENDING_LOW_RV": {
+      "pnl": 2564.06,
+      "share": 0.09728474167787211
+    },
+    "LOW_VOL_TRENDING_HIGH_RV": {
+      "pnl": 2084.7200000000003,
+      "share": 0.07909777722467243
+    },
+    "LOW_VOL_TRENDING_NORMAL_RV": {
+      "pnl": 2066.62,
+      "share": 0.07841103283321142
+    },
+    "NORMAL_RANGING_HIGH_RV": {
+      "pnl": 1672.2399999999998,
+      "share": 0.06344759343517892
+    },
+    "NORMAL_TRENDING_NORMAL_RV": {
+      "pnl": 622.98,
+      "share": 0.023636907237147637
+    },
+    "NORMAL_RANGING_NORMAL_RV": {
+      "pnl": 260.15999999999997,
+      "share": 0.009870907231076967
+    },
+    "HIGH_VOL_RANGING_HIGH_RV": {
+      "pnl": 90.19999999999999,
+      "share": 0.0034223394535791143
+    }
+  },
+  "diversification_scores": {
+    "engine_diversity": 0.6666666666666666,
+    "asset_coverage": 0.6666666666666666,
+    "behavioral_spread": 0.36850000000000005,
+    "regime_coverage": 0.6111111111111112,
+    "no_redundancy": 0.8
+  },
+  "overall_score": 6.2,
+  "research_targets": [
+    "  \u2192 Build momentum_scalper strategy (engine gap)",
+    "  \u2192 Build mean_reversion strategy (engine gap)",
+    "  \u2192 Build counter_trend strategy (engine gap)",
+    "  \u2192 Build session_structure strategy (engine gap)",
+    "  \u2192 Build volatility_compression strategy (engine gap)",
+    "  \u2192 Build overnight_gap strategy (engine gap)",
+    "  \u2192 Find strategy for LOW_VOL_RANGING_LOW_RV regime cell",
+    "  \u2192 Find strategy for LOW_VOL_RANGING_NORMAL_RV regime cell",
+    "  \u2192 Find strategy for NORMAL_RANGING_LOW_RV regime cell",
+    "  \u2192 Find strategy for HIGH_VOL_TRENDING_LOW_RV regime cell",
+    "  \u2192 Find strategy for LOW_VOL_RANGING_HIGH_RV regime cell",
+    "  \u2192 Develop MES strategy (asset gap)"
+  ]
+}

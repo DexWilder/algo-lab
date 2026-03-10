@@ -1,0 +1,450 @@
+{
+  "strategies": {
+    "PB": "pb_trend",
+    "ORB": "orb_009",
+    "VWAP": "vwap_trend",
+    "XB-PB": "xb_pb_ema_timestop",
+    "DONCH": "donchian_trend"
+  },
+  "Lucid 100K": {
+    "baseline": {
+      "passed": true,
+      "busted": false,
+      "final_profit": 13138.23,
+      "trades_executed": 484,
+      "skipped": 16,
+      "locked": true
+    },
+    "payout_cycle": {
+      "num_payouts": 7,
+      "total_withdrawn": 9303.76,
+      "monthly_avg": 385.31,
+      "yearly_est": 4623.78,
+      "days_to_first": 402,
+      "busted": false,
+      "payouts": [
+        {
+          "date": "2025-04-07",
+          "gross_profit": 3516.91,
+          "payout_amount": 1573.53,
+          "equity_after": 101943.38
+        },
+        {
+          "date": "2025-05-05",
+          "gross_profit": 3123.36,
+          "payout_amount": 1258.69,
+          "equity_after": 102258.05
+        },
+        {
+          "date": "2025-06-02",
+          "gross_profit": 3130.43,
+          "payout_amount": 1264.34,
+          "equity_after": 102574.14
+        },
+        {
+          "date": "2025-09-02",
+          "gross_profit": 3293.23,
+          "payout_amount": 1394.59,
+          "equity_after": 102922.79
+        },
+        {
+          "date": "2025-12-23",
+          "gross_profit": 3118.91,
+          "payout_amount": 1255.12,
+          "equity_after": 103236.57
+        },
+        {
+          "date": "2026-01-27",
+          "gross_profit": 3106.41,
+          "payout_amount": 1245.13,
+          "equity_after": 103547.85
+        },
+        {
+          "date": "2026-02-17",
+          "gross_profit": 3190.45,
+          "payout_amount": 1312.36,
+          "equity_after": 103875.94
+        }
+      ]
+    },
+    "monte_carlo": {
+      "p_single_bust": 0.0,
+      "n_sims": 5000,
+      "median_profit": 13486.97,
+      "p5_profit": 13486.97,
+      "median_maxdd": 1019.66,
+      "p95_maxdd": 1589.07,
+      "multi_account": {
+        "3_accounts": {
+          "n_accounts": 3,
+          "p_at_least_one_bust": 0.0,
+          "p_all_bust": 0.0,
+          "expected_survivors": 3.0,
+          "expected_busted": 0.0
+        },
+        "5_accounts": {
+          "n_accounts": 5,
+          "p_at_least_one_bust": 0.0,
+          "p_all_bust": 0.0,
+          "expected_survivors": 5.0,
+          "expected_busted": 0.0
+        },
+        "10_accounts": {
+          "n_accounts": 10,
+          "p_at_least_one_bust": 0.0,
+          "p_all_bust": 0.0,
+          "expected_survivors": 10.0,
+          "expected_busted": 0.0
+        }
+      }
+    },
+    "income_projections": {
+      "3_accounts": {
+        "monthly_gross": 1155.93,
+        "yearly_gross": 13871.34,
+        "monthly_fees": 0,
+        "yearly_fees": 0,
+        "monthly_net": 1155.93,
+        "yearly_net": 13871.34,
+        "reset_cost_per_bust": 99
+      },
+      "5_accounts": {
+        "monthly_gross": 1926.55,
+        "yearly_gross": 23118.9,
+        "monthly_fees": 0,
+        "yearly_fees": 0,
+        "monthly_net": 1926.55,
+        "yearly_net": 23118.9,
+        "reset_cost_per_bust": 99
+      },
+      "10_accounts": {
+        "monthly_gross": 3853.1,
+        "yearly_gross": 46237.8,
+        "monthly_fees": 0,
+        "yearly_fees": 0,
+        "monthly_net": 3853.1,
+        "yearly_net": 46237.8,
+        "reset_cost_per_bust": 99
+      }
+    },
+    "stress_strategy_failure": [
+      {
+        "removed": "PB",
+        "p_bust": 0.0,
+        "p_5acct_bust": 0.0,
+        "median_profit": 12665.96
+      },
+      {
+        "removed": "ORB",
+        "p_bust": 0.0,
+        "p_5acct_bust": 0.0,
+        "median_profit": 10559.3
+      },
+      {
+        "removed": "VWAP",
+        "p_bust": 0.0,
+        "p_5acct_bust": 0.0,
+        "median_profit": 9108.61
+      },
+      {
+        "removed": "XB-PB",
+        "p_bust": 0.0,
+        "p_5acct_bust": 0.0,
+        "median_profit": 9730.84
+      },
+      {
+        "removed": "DONCH",
+        "p_bust": 0.0,
+        "p_5acct_bust": 0.0,
+        "median_profit": 11883.15
+      }
+    ],
+    "stress_correlated_dd": [
+      {
+        "shock_size": "$500",
+        "p_bust": 0.0
+      },
+      {
+        "shock_size": "$1000",
+        "p_bust": 0.0
+      },
+      {
+        "shock_size": "$1500",
+        "p_bust": 0.1
+      },
+      {
+        "shock_size": "$2000",
+        "p_bust": 0.1
+      }
+    ],
+    "stress_vol_spike": [
+      {
+        "vol_multiplier": "1.5x",
+        "p_bust": 0.0
+      },
+      {
+        "vol_multiplier": "2.0x",
+        "p_bust": 0.0
+      },
+      {
+        "vol_multiplier": "2.5x",
+        "p_bust": 0.3
+      }
+    ]
+  },
+  "Apex 50K": {
+    "baseline": {
+      "passed": true,
+      "busted": false,
+      "final_profit": 13486.97,
+      "trades_executed": 500,
+      "skipped": 0,
+      "locked": false
+    },
+    "payout_cycle": {
+      "num_payouts": 7,
+      "total_withdrawn": 10173.76,
+      "monthly_avg": 421.35,
+      "yearly_est": 5056.15,
+      "days_to_first": 399,
+      "busted": false,
+      "payouts": [
+        {
+          "date": "2025-04-04",
+          "gross_profit": 3074.8,
+          "payout_amount": 1417.32,
+          "equity_after": 51657.48
+        },
+        {
+          "date": "2025-04-21",
+          "gross_profit": 3132.92,
+          "payout_amount": 1469.62,
+          "equity_after": 51820.77
+        },
+        {
+          "date": "2025-05-20",
+          "gross_profit": 3035.99,
+          "payout_amount": 1382.39,
+          "equity_after": 51974.37
+        },
+        {
+          "date": "2025-08-06",
+          "gross_profit": 3126.02,
+          "payout_amount": 1463.42,
+          "equity_after": 52136.97
+        },
+        {
+          "date": "2025-11-12",
+          "gross_profit": 3086.51,
+          "payout_amount": 1427.86,
+          "equity_after": 52295.62
+        },
+        {
+          "date": "2026-01-09",
+          "gross_profit": 3142.97,
+          "payout_amount": 1478.67,
+          "equity_after": 52459.92
+        },
+        {
+          "date": "2026-02-12",
+          "gross_profit": 3204.98,
+          "payout_amount": 1534.48,
+          "equity_after": 52630.42
+        }
+      ]
+    },
+    "monte_carlo": {
+      "p_single_bust": 0.0,
+      "n_sims": 5000,
+      "median_profit": 13486.97,
+      "p5_profit": 13486.97,
+      "median_maxdd": 1019.61,
+      "p95_maxdd": 1588.51,
+      "multi_account": {
+        "3_accounts": {
+          "n_accounts": 3,
+          "p_at_least_one_bust": 0.1,
+          "p_all_bust": 0.0,
+          "expected_survivors": 3.0,
+          "expected_busted": 0.0
+        },
+        "5_accounts": {
+          "n_accounts": 5,
+          "p_at_least_one_bust": 0.1,
+          "p_all_bust": 0.0,
+          "expected_survivors": 5.0,
+          "expected_busted": 0.0
+        },
+        "10_accounts": {
+          "n_accounts": 10,
+          "p_at_least_one_bust": 0.2,
+          "p_all_bust": 0.0,
+          "expected_survivors": 10.0,
+          "expected_busted": 0.0
+        }
+      }
+    },
+    "income_projections": {
+      "3_accounts": {
+        "monthly_gross": 1264.05,
+        "yearly_gross": 15168.45,
+        "monthly_fees": 0,
+        "yearly_fees": 0,
+        "monthly_net": 1264.05,
+        "yearly_net": 15168.45,
+        "reset_cost_per_bust": 147
+      },
+      "5_accounts": {
+        "monthly_gross": 2106.75,
+        "yearly_gross": 25280.75,
+        "monthly_fees": 0,
+        "yearly_fees": 0,
+        "monthly_net": 2106.75,
+        "yearly_net": 25280.75,
+        "reset_cost_per_bust": 147
+      },
+      "10_accounts": {
+        "monthly_gross": 4213.5,
+        "yearly_gross": 50561.5,
+        "monthly_fees": 0,
+        "yearly_fees": 0,
+        "monthly_net": 4213.5,
+        "yearly_net": 50561.5,
+        "reset_cost_per_bust": 147
+      }
+    }
+  },
+  "Generic 50K": {
+    "baseline": {
+      "passed": true,
+      "busted": false,
+      "final_profit": 13486.97,
+      "trades_executed": 500,
+      "skipped": 0,
+      "locked": false
+    },
+    "payout_cycle": {
+      "num_payouts": 8,
+      "total_withdrawn": 9243.36,
+      "monthly_avg": 382.81,
+      "yearly_est": 4593.76,
+      "days_to_first": 384,
+      "busted": false,
+      "payouts": [
+        {
+          "date": "2025-03-20",
+          "gross_profit": 2527.63,
+          "payout_amount": 1022.11,
+          "equity_after": 51505.53
+        },
+        {
+          "date": "2025-04-08",
+          "gross_profit": 2724.35,
+          "payout_amount": 1179.48,
+          "equity_after": 51800.4
+        },
+        {
+          "date": "2025-05-13",
+          "gross_profit": 2969.72,
+          "payout_amount": 1375.78,
+          "equity_after": 52144.34
+        },
+        {
+          "date": "2025-07-16",
+          "gross_profit": 2624.31,
+          "payout_amount": 1099.45,
+          "equity_after": 52419.2
+        },
+        {
+          "date": "2025-09-02",
+          "gross_profit": 2567.92,
+          "payout_amount": 1054.33,
+          "equity_after": 52682.79
+        },
+        {
+          "date": "2025-11-13",
+          "gross_profit": 2527.17,
+          "payout_amount": 1021.74,
+          "equity_after": 52938.22
+        },
+        {
+          "date": "2026-01-09",
+          "gross_profit": 2658.1,
+          "payout_amount": 1126.48,
+          "equity_after": 53219.84
+        },
+        {
+          "date": "2026-02-12",
+          "gross_profit": 2954.98,
+          "payout_amount": 1363.99,
+          "equity_after": 53560.84
+        }
+      ]
+    },
+    "monte_carlo": {
+      "p_single_bust": 0.0,
+      "n_sims": 5000,
+      "median_profit": 13486.97,
+      "p5_profit": 13486.97,
+      "median_maxdd": 1019.61,
+      "p95_maxdd": 1588.51,
+      "multi_account": {
+        "3_accounts": {
+          "n_accounts": 3,
+          "p_at_least_one_bust": 0.1,
+          "p_all_bust": 0.0,
+          "expected_survivors": 3.0,
+          "expected_busted": 0.0
+        },
+        "5_accounts": {
+          "n_accounts": 5,
+          "p_at_least_one_bust": 0.1,
+          "p_all_bust": 0.0,
+          "expected_survivors": 5.0,
+          "expected_busted": 0.0
+        },
+        "10_accounts": {
+          "n_accounts": 10,
+          "p_at_least_one_bust": 0.2,
+          "p_all_bust": 0.0,
+          "expected_survivors": 10.0,
+          "expected_busted": 0.0
+        }
+      }
+    },
+    "income_projections": {
+      "3_accounts": {
+        "monthly_gross": 1148.43,
+        "yearly_gross": 13781.28,
+        "monthly_fees": 0,
+        "yearly_fees": 0,
+        "monthly_net": 1148.43,
+        "yearly_net": 13781.28,
+        "reset_cost_per_bust": 100
+      },
+      "5_accounts": {
+        "monthly_gross": 1914.05,
+        "yearly_gross": 22968.8,
+        "monthly_fees": 0,
+        "yearly_fees": 0,
+        "monthly_net": 1914.05,
+        "yearly_net": 22968.8,
+        "reset_cost_per_bust": 100
+      },
+      "10_accounts": {
+        "monthly_gross": 3828.1,
+        "yearly_gross": 45937.6,
+        "monthly_fees": 0,
+        "yearly_fees": 0,
+        "monthly_net": 3828.1,
+        "yearly_net": 45937.6,
+        "reset_cost_per_bust": 100
+      }
+    }
+  },
+  "verdict": [
+    "PASS: MC bust risk < 5%",
+    "PASS: 7 payouts achieved",
+    "CAUTION: First payout took 402 days"
+  ]
+}

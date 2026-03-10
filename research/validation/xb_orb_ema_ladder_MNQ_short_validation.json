@@ -1,0 +1,342 @@
+{
+  "baseline": {
+    "trades": 117,
+    "pf": 1.9148,
+    "sharpe": 3.8024,
+    "pnl": 12366.92,
+    "maxdd": 2331.4,
+    "wr": 60.7
+  },
+  "walk_forward": {
+    "year_splits": {
+      "2024": {
+        "trades": 44,
+        "pf": 2.7008,
+        "sharpe": 6.1576,
+        "pnl": 6139.94,
+        "maxdd": 798.22,
+        "wr": 65.9,
+        "low_sample": false
+      },
+      "2025": {
+        "trades": 55,
+        "pf": 1.5506,
+        "sharpe": 2.4774,
+        "pnl": 4551.3,
+        "maxdd": 2331.4,
+        "wr": 52.7,
+        "low_sample": false
+      },
+      "2026": {
+        "trades": 16,
+        "pf": 1.6093,
+        "sharpe": 3.0488,
+        "pnl": 1000.66,
+        "maxdd": 969.2,
+        "wr": 68.8,
+        "low_sample": false
+      }
+    },
+    "year_splits_pass": true,
+    "rolling_windows": {
+      "W1": {
+        "trades": 21,
+        "pf": 2.1968,
+        "sharpe": 4.9766,
+        "pnl": 2376.46,
+        "maxdd": 490.98,
+        "wr": 57.1,
+        "low_sample": false
+      },
+      "W2": {
+        "trades": 27,
+        "pf": 1.5903,
+        "sharpe": 2.7576,
+        "pnl": 2649.52,
+        "maxdd": 2331.4,
+        "wr": 51.9,
+        "low_sample": false
+      },
+      "W3": {
+        "trades": 26,
+        "pf": 2.0188,
+        "sharpe": 3.646,
+        "pnl": 3045.26,
+        "maxdd": 836.98,
+        "wr": 65.4,
+        "low_sample": false
+      }
+    },
+    "rolling_pass_count": 3,
+    "rolling_total": 3,
+    "rolling_pass": true
+  },
+  "regime_stability": {
+    "grid": {
+      "HIGH_VOL_RANGING_HIGH_RV": {
+        "trades": 4,
+        "pf": 0.0822,
+        "pnl": -1488.46,
+        "low_sample": true
+      },
+      "HIGH_VOL_RANGING_LOW_RV": {
+        "trades": 5,
+        "pf": 3.2121,
+        "pnl": 232.8,
+        "low_sample": true
+      },
+      "HIGH_VOL_RANGING_NORMAL_RV": {
+        "trades": 3,
+        "pf": 1.1189,
+        "pnl": 27.78,
+        "low_sample": true
+      },
+      "HIGH_VOL_TRENDING_HIGH_RV": {
+        "trades": 54,
+        "pf": 2.7628,
+        "pnl": 11188.04,
+        "low_sample": false
+      },
+      "HIGH_VOL_TRENDING_LOW_RV": {
+        "trades": 1,
+        "pf": 100.0,
+        "pnl": 305.76,
+        "low_sample": true
+      },
+      "HIGH_VOL_TRENDING_NORMAL_RV": {
+        "trades": 15,
+        "pf": 2.4849,
+        "pnl": 2079.9,
+        "low_sample": false
+      },
+      "LOW_VOL_RANGING_LOW_RV": {
+        "trades": 1,
+        "pf": 0.0,
+        "pnl": -171.74,
+        "low_sample": true
+      },
+      "LOW_VOL_TRENDING_NORMAL_RV": {
+        "trades": 2,
+        "pf": 100.0,
+        "pnl": 484.02,
+        "low_sample": true
+      },
+      "NORMAL_RANGING_HIGH_RV": {
+        "trades": 2,
+        "pf": 0.1503,
+        "pnl": -261.48,
+        "low_sample": true
+      },
+      "NORMAL_RANGING_LOW_RV": {
+        "trades": 1,
+        "pf": 0.0,
+        "pnl": -18.74,
+        "low_sample": true
+      },
+      "NORMAL_RANGING_NORMAL_RV": {
+        "trades": 5,
+        "pf": 100.0,
+        "pnl": 739.8,
+        "low_sample": true
+      },
+      "NORMAL_TRENDING_HIGH_RV": {
+        "trades": 12,
+        "pf": 0.5162,
+        "pnl": -893.88,
+        "low_sample": true
+      },
+      "NORMAL_TRENDING_LOW_RV": {
+        "trades": 2,
+        "pf": 0.0,
+        "pnl": -598.98,
+        "low_sample": true
+      },
+      "NORMAL_TRENDING_NORMAL_RV": {
+        "trades": 10,
+        "pf": 1.858,
+        "pnl": 742.1,
+        "low_sample": true
+      }
+    },
+    "catastrophic_cells": [],
+    "grinding_breakdown": {
+      "CHOPPY": {
+        "trades": 112,
+        "pf": 1.9268,
+        "pnl": 12085.12
+      },
+      "GRINDING": {
+        "trades": 5,
+        "pf": 1.5889,
+        "pnl": 281.8
+      }
+    },
+    "caution_low_sample": true,
+    "passes": true
+  },
+  "asset_robustness": {
+    "assets": {
+      "MNQ": {
+        "trades": 117,
+        "pf": 1.9148,
+        "sharpe": 3.8024,
+        "pnl": 12366.92,
+        "maxdd": 2331.4,
+        "wr": 60.7,
+        "low_sample": false
+      },
+      "MES": {
+        "trades": 107,
+        "pf": 1.5933,
+        "sharpe": 2.7951,
+        "pnl": 4907.32,
+        "maxdd": 1087.43,
+        "wr": 54.2,
+        "low_sample": false
+      },
+      "MGC": {
+        "trades": 42,
+        "pf": 1.5382,
+        "sharpe": 2.5394,
+        "pnl": 883.92,
+        "maxdd": 594.08,
+        "wr": 57.1,
+        "low_sample": false
+      }
+    },
+    "profitable_count": 3,
+    "passes": true
+  },
+  "timeframe_robustness": {
+    "timeframes": {
+      "5m": {
+        "trades": 117,
+        "pf": 1.9148,
+        "sharpe": 3.8024,
+        "pnl": 12366.92,
+        "maxdd": 2331.4,
+        "wr": 60.7,
+        "low_sample": false
+      },
+      "10m": {
+        "trades": 92,
+        "pf": 2.2044,
+        "sharpe": 4.3394,
+        "pnl": 10935.92,
+        "maxdd": 1756.66,
+        "wr": 65.2,
+        "low_sample": false
+      },
+      "15m": {
+        "trades": 79,
+        "pf": 1.8892,
+        "sharpe": 3.225,
+        "pnl": 7490.54,
+        "maxdd": 2675.4,
+        "wr": 57.0,
+        "low_sample": false
+      }
+    },
+    "profitable_count": 3,
+    "passes": true
+  },
+  "monte_carlo_bootstrap": {
+    "bootstrap": {
+      "pf": {
+        "mean": 1.9798,
+        "median": 1.9198,
+        "ci_low": 1.1938,
+        "ci_high": 3.1413,
+        "point_estimate": 1.9148
+      },
+      "sharpe": {
+        "mean": 3.7939,
+        "median": 3.8174,
+        "ci_low": 1.0766,
+        "ci_high": 6.439,
+        "point_estimate": 3.7829
+      },
+      "max_dd": {
+        "mean": 2333.2568,
+        "median": 2151.92,
+        "ci_low": 1153.72,
+        "ci_high": 4540.8595,
+        "point_estimate": 2331.4
+      },
+      "n_trades": 117,
+      "passes": true
+    },
+    "dsr": {
+      "dsr": 1.0,
+      "observed_sharpe": 3.8024,
+      "expected_max_sharpe": 2.5219,
+      "passes": true
+    },
+    "monte_carlo": {
+      "n_simulations": 10000,
+      "ruin_probability": {
+        "$1,000": 99.99,
+        "$2,000": 59.63,
+        "$3,000": 11.79,
+        "$4,000": 1.42,
+        "$5,000": 0.19
+      },
+      "median_maxdd": 2131.44,
+      "p95_maxdd": 3422.41,
+      "passes": false
+    },
+    "top_trade": {
+      "top_trade_pnl": 1724.26,
+      "top_trade_pct": 13.9,
+      "pf_without_top": 1.7873,
+      "passes": true
+    },
+    "bootstrap_pass": true,
+    "dsr_pass": true,
+    "mc_pass": false,
+    "top_trade_pass": true
+  },
+  "parameter_stability": {
+    "total_combinations": 27,
+    "profitable": 27,
+    "pct_profitable": 100.0,
+    "passes": true,
+    "best": {
+      "pf": 1.9427,
+      "params": {
+        "STOP_MULT": 0.3,
+        "TARGET_MULT": 3.0,
+        "TRAIL_MULT": 2.0
+      }
+    },
+    "worst": {
+      "pf": 1.8982,
+      "params": {
+        "STOP_MULT": 0.7,
+        "TARGET_MULT": 3.0,
+        "TRAIL_MULT": 2.0
+      }
+    }
+  },
+  "stability_score": 9.0,
+  "hard_failures": 1,
+  "promotion": "CONDITIONAL - REVIEW NEEDED",
+  "deployment_summary": {
+    "strategy": "xb_orb_ema_ladder",
+    "primary_asset": "MNQ",
+    "primary_mode": "short",
+    "strongest_asset": "MNQ (PF=1.91, 117 trades)",
+    "weakest_asset": "MGC (PF=1.54, 42 trades)",
+    "strongest_timeframe": "10m (PF=2.20)",
+    "weakest_timeframe": "15m (PF=1.89)",
+    "best_regimes": [
+      "NORMAL_RANGING_NORMAL_RV",
+      "HIGH_VOL_RANGING_LOW_RV",
+      "HIGH_VOL_TRENDING_HIGH_RV"
+    ],
+    "avoid_regimes": [
+      "NORMAL_TRENDING_HIGH_RV"
+    ],
+    "recommended_profile": "MNQ 5m short, regime-gated"
+  }
+}

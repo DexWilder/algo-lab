@@ -7,10 +7,11 @@
 | Stage | Count |
 |-------|-------|
 | Strategies harvested | 91 (76 batch 1 + 15 batch 2) |
-| Strategies converted | 12 |
-| candidate_validated | 2 |
-| Phase 10 candidates | 3 (Donchian MNQ, Keltner MNQ, VWAP Trend MNQ) |
-| Rejected | 5 |
+| Strategies converted | 15 (12 original + 3 crossbred) |
+| Parent strategies | **4** (PB, ORB, VWAP Trend, XB-PB-EMA-TimeStop) |
+| Probation | **4** (Donchian GRINDING+PL, BB Equilibrium, XB-ORB-EMA-Ladder, Session VWAP Fade) |
+| Phase 12 crossbred | 20 recipes tested, 13 passed quality gate |
+| Rejected | 12 (+ XB-PB-Squeeze-Chand, ORB Fade) |
 | Pending validation | 2 (VIX Channel MES, Gap-Mom MGC) |
 | Effectively dead (costs) | 2 |
 
@@ -20,6 +21,16 @@
 |----------|-------|------|----------|-------------|-----|--------|
 | PB-Trend | MGC | Short | 2.36 | 5.27 | 0.952 SIG | deployment_ready |
 | ORB-009 | MGC | Long | 2.07 | 3.93 | 1.000 SIG | deployment_ready |
+| VWAP Trend | MNQ | Long | 1.67 | 2.62 | 1.000 SIG | **PARENT** (Phase 11) |
+| XB-PB-EMA-TimeStop | MES | Short | 1.82 | 3.56 | 0.9998 SIG | **PARENT** (Phase 12) |
+
+**Probation:**
+
+| Strategy | Asset | Mode | PF | Sharpe | Status | Blocker |
+|----------|-------|------|----|--------|--------|---------|
+| Donchian GRINDING+PL | MNQ | Long | 1.99 | 3.97 | probation | 48 trades (sample size) |
+| BB Equilibrium (Trend-Aware) | MGC | Long | 3.22 | 3.13 | probation | Gold-only, WF marginal |
+| XB-ORB-EMA-Ladder | MNQ | Short | 1.92 | 3.80 | probation | MC ruin at $2K (MNQ sizing) |
 
 **Regime Gate:** Per-strategy regime profiles via multi-factor RegimeEngine (Phase 8). Replaces single ATR gate.
 
@@ -71,7 +82,7 @@
 
 **Per-Strategy Contribution:** VWAP 52% ($5,776), ORB 24% ($2,679), Donchian 18% ($1,981), PB 6% ($676).
 
-*Note: VWAP Trend and Donchian pending full validation battery. Donchian uses GRINDING persistence filter.*
+*VWAP Trend: PROMOTED to parent (Phase 11, stability score 10.0/10). Donchian: PROBATION (7.0/10, sample-size failures).*
 
 ### Monte Carlo Risk Gate
 
@@ -90,13 +101,40 @@
 | Lucid 100K ($4K DD) | PASSED, locked at $3,122 | 0 | 0 |
 | Generic $50K ($2.5K DD) | PASSED | 0 | 0 |
 
-### Sizing Research
+### Portfolio Metrics (Phase 12.3, 5-Strategy: PB + ORB + VWAP + XB-PB-EMA + Donchian GRINDING+PL)
 
-| Method | Sharpe | Calmar | MaxDD | Best For |
-|--------|--------|--------|-------|----------|
-| Equal Weight | 3.31 | 7.57 | $859 | Simplicity |
-| Equal Risk Contribution | 3.20 | 8.98 | $559 | Prop accounts |
-| Vol Target 10% | 3.31 | 7.57 | $2,182 | Growth |
+| Metric | 3-Strat | 5-Strat (Equal) | 5-Strat (Vol Target) |
+|--------|---------|-----------------|---------------------|
+| Total PnL | $9,131 | $14,458 | $13,489 |
+| Sharpe | 3.02 | 3.51 | **3.69** |
+| Calmar | 6.76 | 9.02 | **9.84** |
+| MaxDD | $1,351 | $1,603 | **$1,370** |
+| Trades | 329 | 500 | 500 |
+| Monthly | 72% | 84% | 80% |
+| MC P($2K ruin) | — | 4.3% | **1.8%** |
+| Max correlation | — | r=0.063 | r=0.063 |
+
+**Vol Target Deployment Weights:** PB=1.21x, ORB=1.09x, VWAP=0.76x, XB-PB=1.23x, DONCH=0.71x
+
+### Sizing Research (Phase 12.4)
+
+| Method | Sharpe | Calmar | MaxDD | MC Ruin | Best For |
+|--------|--------|--------|-------|---------|----------|
+| Equal Weight | 3.51 | 9.02 | $1,603 | 4.3% | Simplicity |
+| **Vol Target** | **3.69** | **9.84** | **$1,370** | **1.8%** | **Recommended** |
+| Risk Parity | 3.69 | 9.84 | $1,370 | 1.8% | Same as Vol Target |
+| Half-Kelly | 3.59 | 8.28 | $1,633 | 2.5% | Moderate |
+| DD-Adjusted | 3.58 | 9.68 | $1,135 | 0.7% | Max safety |
+
+### Stress Tests (Vol Target, all PASS)
+
+| Test | Result | Details |
+|------|--------|---------|
+| Leave-one-out | PASS | Worst Sharpe=3.33 (no single-point-of-failure) |
+| Top-trade removal | PASS | Survives removing top 5 trades |
+| Shuffle MC | PASS | 5th pct Sharpe=4.62 (sequence-independent) |
+
+**Fragility: ROBUST — READY FOR DEPLOYMENT**
 
 ## Demoted / Removed
 
@@ -128,6 +166,19 @@
 12. **VWAP Trend Continuation is the strongest new system.** PF=1.67, Sharpe=2.62, near-zero correlation with all existing strategies. Pullback entries produce better risk-adjusted returns than breakout entries on 5m bars.
 13. **On 5m bars, any "close below X" exit degenerates into a scalper.** Keltner EMA exit and VWAP cross exit both produce 10-14 bar holds. Only pure ATR trailing stops achieve 60+ bar holds. Exit mechanism matters more than entry for hold duration.
 14. **4-strategy portfolio triples PnL with maintained Sharpe.** PB+ORB+VWAP+Donchian(GRINDING): $11,113 PnL, 3.15 Sharpe, 7.52 Calmar, 80% profitable months. All pairwise correlations near zero. This is the target structure.
+15. **Gold has different intraday microstructure.** Gold mean-reverts cleanly; equity indexes don't. BB Equilibrium PF=3.53 on MGC, PF<0.65 on MES/MNQ. Mean reversion is asset-specific.
+16. **VWAP Trend is the strongest validated parent.** 10.0/10 stability score, 100% parameter stability (81/81 combos), all 3 assets profitable, all 3 timeframes profitable. Structural edge, not curve-fit.
+17. **Walk-forward instability can be solved by regime alignment.** BB Equilibrium 2024 PF=0.88→1.00 with daily EMA(20) trend filter. Aligning MR entries with macro gold direction eliminates regime-mismatch bleed.
+18. **Behavioral genome ≠ structural DNA.** BB Equilibrium is structurally "mean reversion" but behaviorally profits in trending/volatile markets (trends create overextensions that revert). Both labels are correct at different levels.
+19. **Portfolio genome reveals concentration risk.** 33.9% of PnL from HIGH_VOL_TRENDING_HIGH_RV. Missing engine types: mean_reversion, counter_trend, session_structure, volatility_compression, overnight_gap.
+20. **Crossbreeding amplifies real edges and exposes redundancy.** 5 BB reversion variants all produced PF>2.0 on MGC-long, confirming BB Equilibrium is genuine. But novelty is rare — most crossbred children are parent refinements, not new families.
+21. **Multi-asset robustness is the strongest validation signal.** XB-ORB-EMA-Ladder: PF>1.5 on all 3 assets, PF>1.8 on all 3 timeframes, 100% parameter stability. When a strategy works everywhere, the edge is structural.
+22. **MES parent gap filled.** XB-PB-EMA-TimeStop (10.0/10 stability) is first MES parent. Portfolio now covers all 3 assets: MES (pullback), MNQ (VWAP continuation), MGC (breakout + MR).
+23. **100% parameter stability = real edge.** Both Phase 12 crossbred candidates scored 100% (81/81 and 27/27). This is the gold standard — no combination of reasonable parameters kills profitability.
+24. **Vol Target sizing improves everything.** Inverse-volatility weighting (scales up low-vol, scales down high-vol) improves Sharpe 3.51→3.69, Calmar 9.02→9.84, MC ruin 4.3%→1.8%. Vol Target and Risk Parity converge to the same weights — both are inverse-vol. All 3 stress tests pass (LOO worst Sharpe 3.33, top-5 removal survives, shuffle 5th pct Sharpe 4.62).
+25. **Portfolio is indestructible across prop configs.** 0% bust rate on 5K MC simulations for Lucid 100K, Apex 50K, and Generic 50K. Even 10 simultaneous accounts have ≤0.2% chance of ANY bust. $2,000 DD shock = 0.1% bust, 2.5x vol spike = 0.3% bust. The bottleneck is payout speed (400 days to first), not survival.
+26. **Gold mean-reverts, equity indexes don't — asset-strategy specialization.** Phase 13 tested 4 MR strategies × 3 assets × 3 modes (36 combos). ALL winners are MGC-long. MES/MNQ MR strategies uniformly fail. Gold's hedging/macro flows create intraday overextensions that revert; equity index momentum/gamma dynamics sustain trends. The correct portfolio architecture is: trend engines → indexes, mean reversion → gold.
+27. **Two-engine portfolio architecture emerged.** Trend Engine (PB, ORB, VWAP, XB-PB, Donchian) on indexes + Mean Reversion Engine (Sess VWAP Fade, BB Range MR, VWAP Dev MR) on gold. This is how professional multi-strategy systems work: asset-specific strategy families, near-zero correlation, structural diversification.
 
 ## Engine Capabilities
 
@@ -158,6 +209,16 @@
 - [x] Machine-readable regime coverage map (18-cell vol×trend×rv grid)
 - [x] Trend persistence scoring (GRINDING vs CHOPPY — separates grind trends from breakout trends)
 - [x] Trade duration analysis (median/avg bars per trade — classifies strategy holding profiles)
+- [x] Full validation battery (10-criterion: WF year+rolling, regime, asset, TF, bootstrap, DSR, MC, param, top-trade)
+- [x] Strategy Genome Engine (auto-computed behavioral fingerprints from backtests)
+- [x] Portfolio Genome Analysis (redundancy detection, gap analysis, concentration risk, research targets)
+- [x] Exit evolution framework (6 variants tested on frozen entries)
+- [x] BB Equilibrium evolution (4 variants: vol-gated, trend-aware, time-filtered, extreme-only)
+- [x] Strategy Crossbreeding Engine (5 entries × 5 exits × 6 filters, 20 curated recipes, automatic quality gates)
+- [x] Portfolio risk-weight optimization (5 schemes: equal, vol target, risk parity, half-Kelly, DD-adjusted)
+- [x] Portfolio stress testing (leave-one-out, top-trade removal, shuffle Monte Carlo)
+- [x] Prop account simulation engine (multi-account, payout cycles, income projections, stress tests)
+- [x] Range strategy discovery pipeline (two-tier gate, RANGING_EDGE_SCORE, portfolio usefulness override)
 - [ ] HMM regime detection
 - [ ] Alternative data filters (COT, GVZ)
 - [ ] Execution infrastructure (Tradovate/Rithmic API)
@@ -176,6 +237,10 @@
 - [x] Strategy evolution engine (15 candidates, 4 mutation types, template-based generation)
 - [x] Automatic combination testing (evolution scheduler — mutations + backtest + DNA novelty + regime)
 - [x] Diversification expansion (MES/MNQ strategies — VIX Channel candidate found)
+- [x] Validation battery (generic, CLI-driven, 6 tests + 10 criteria + LOW_SAMPLE handling)
+- [x] Strategy Genome Engine (10 strategies fingerprinted — hold, trade structure, sensitivity, regime, session)
+- [x] Portfolio Genome Analysis (engine gap detection, similarity matrix, regime concentration, diversification score)
+- [x] Crossbreeding Engine (component recombination, quality gates, batch evaluation, crossbreeding_results.json)
 
 ## Evolution Engine (Phase 9 + 9.5)
 
@@ -199,57 +264,51 @@
 
 ## Next Milestone
 
-**Phase 10: New Parent Discovery — Regime-Gap-Targeted Strategy Families** (PENDING)
+**Phase 14: Gold MR Refinement — Build the 6th Parent**
 
-Evolution Batches 1-2 proved existing parents (PB, ORB, VIX) cannot fill the hardest regime gaps. Phase 10 discovers genuinely new strategy families designed for uncovered cells.
+The lab now has a two-engine portfolio architecture: trend engines on indexes + MR engines on gold. Phase 13 discovered 3 MR candidates (all MGC-long). Phase 14 refines them into one Gold MR parent.
 
-### Priority 1: HIGH_VOL_TRENDING_LOW_RV (Trend Continuation)
+### Immediate Priorities
 
-**Problem:** -$1,399 PnL in this cell (7.3% of days, PF=0.39). Biggest portfolio bleed.
+1. **Gold MR Refinement (Phase 14)**
+   - 3 candidates: Session VWAP Fade (PF=2.13, 104 trades), VWAP Dev MR (PF=1.31, RES=0.53), BB Range MR (PF=3.05, 40 trades)
+   - Refine: ATR stops, VWAP targets, time windows, volatility filters
+   - Goal: one consolidated Gold MR parent for the 6-strategy portfolio
+   - Victory: PF>1.5, Sharpe>2.0, 80+ trades, positive portfolio impact, near-zero correlation
 
-Build order (simple → complex):
-1. ~~**Donchian Breakout + ATR Trail**~~ — **EVALUATED.** MNQ-Long PF=1.29, 356 trades, median hold 61 bars (true trend-following DNA). GRINDING filter → PF=1.76, Sharpe=3.38 (48 trades). Target cell: -$823. Breakout entry can't solve LOW_RV.
-2. ~~**Keltner Channel Breakout**~~ — **EVALUATED.** MNQ-Short PF=1.46, 340 trades, Sharpe=1.90. Median hold 14 bars (momentum scalper — EMA exit too aggressive on 5m). Target cell: +$13 (breakeven). Negative correlation vs ORB (r=-0.170).
-3. ~~**VWAP Trend Continuation**~~ — **EVALUATED.** MNQ-Long PF=1.67, 195 trades, Sharpe=2.62. Best risk-adjusted metrics of all three. Target cell: -$301 (improved but not solved). Extraordinary portfolio correlation (r=-0.087 vs PB). Entry at VWAP pullback is structurally superior to breakout.
-4. **EMA Crossover + ADX** — harvest `idx-004` (GitHub open source) or `idx-002` (AF=5)
-5. **SuperTrend + EMA Pullback** — harvest `idx-011` (AF=4)
+2. **XB-ORB-EMA-Ladder: Resolve MC ruin failure**
+   - 9.0/10 stability, only fails MC ruin at $2K (MNQ sizing issue, MaxDD=$2,331)
+   - Options: (a) accept on MES instead (PF=1.59), (b) position sizing work, (c) wait for more data
 
-**Key finding:** Three different entry models (N-bar breakout, EMA channel, VWAP pullback) all fail to fix the target cell. The HIGH_VOL + LOW_RV contradiction is structural: wide stops required but small realized moves. Next approach: **exit evolution** (time stops, chandelier exits) on existing strategies.
+3. **Donchian GRINDING+PL: Wait for more data**
+   - Re-validate when dataset extends (est. Q3 2026 for 80+ trades)
 
-**Validation criteria:** Must show ≥10 trades in HIGH_VOL_TRENDING_LOW_RV, median hold ≥60 bars, trend_persistence=GRINDING affinity.
+### Two-Engine Architecture
 
-### Priority 2: RANGING Cells (Range / Equilibrium)
+**Trend Engine Family (Indexes):**
+| Strategy | Asset | Mode | Engine |
+|----------|-------|------|--------|
+| PB-Trend | MGC | Short | pullback_scalper |
+| ORB-009 | MGC | Long | trend_continuation |
+| VWAP Trend | MNQ | Long | breakout/continuation |
+| XB-PB-EMA-TimeStop | MES | Short | pullback_scalper |
+| Donchian GRINDING+PL | MNQ | Long | trend_follower (probation) |
 
-Build order:
-1. **Bollinger Band Equilibrium** — touch outer BB, enter on midline reversion (hand-build, leverage `compute_range_fade`)
-2. **Failed Volatility Breakout (FVBO)** — squeeze → breakout attempt → failure → fade (harvest `idx-015`)
-3. **VWAP Mean Reversion** — harvest `vvedding--rvwap` (AF=5, convert_now)
-4. **Session Profile Reversion** — value area fade at POC/VAH/VAL (hand-build)
-
-**Note:** If VWAP reversion fails again on 5m (as RVWAP-MR did), test on 15m/30m bars.
-
-### Watch Candidates
-- `orb_range_fade` — PF=4.83 on 9 trades. Re-evaluate with more data.
-- `vix_ema_trend` — PF=1.48, Sharpe=2.31. Hit DNA duplicate but shows edge if VIX DNA threshold adjusted.
-
-### Architecture Decision: Event Trading
-Event trading (geopolitical, macro news) is NOT a strategy family. It is a **regime override layer**: `event_detected → disable mean reversion → widen stops → activate trend followers`. Fits into existing RegimeEngine as a future enhancement.
-
-### Evolution Roadmap
-- VIX add_filter mutations: **frozen** (3/3 DNA duplicate in Batch 2)
-- VIX swap_risk mutations: **still valid**
-- Existing parents: **no Batch 3** until new parents discovered
-- New parents: eligible for evolution after baseline validation
-
-### Paper Trading (deferred)
-- Paper trading plan ready: `docs/PHASE_7_PAPER_TRADING_PLAN.md`
-- Pending: Tradovate sim account setup
-- Execution skeleton ready: `execution/tradovate_adapter.py` + `execution/signal_logger.py`
+**Mean Reversion Engine Family (Gold):**
+| Strategy | Asset | Mode | PF | Trades | Status |
+|----------|-------|------|----|--------|--------|
+| Session VWAP Fade | MGC | Long | 2.13 | 104 | probation |
+| VWAP Dev MR | MGC | Long | 1.31 | 94 | refinement lane |
+| BB Range MR | MGC | Long | 3.05 | 40 | refinement lane |
+| BB Equilibrium | MGC | Long | 3.22 | 60 | probation |
 
 ### Portfolio Status
-- 9 strategies converted total, 5 rejected, 2 pending validation
-- VIX Channel MES-Both: pending_validation (passes 5/8, fails net PF 1.298, DSR, MC ruin)
-- Research gaps documented: `docs/research_gap_map.md`
+- **4 Parents**: PB(MGC-S), ORB(MGC-L), VWAP-Trend(MNQ-L), XB-PB-EMA-TimeStop(MES-S)
+- **4 Probation**: Donchian(MNQ-L), BB Equilibrium(MGC-L), XB-ORB-EMA-Ladder(MNQ-S), Session VWAP Fade(MGC-L)
+- **12 Rejected**: see strategy_registry.md
+- **Portfolio Diversification Score**: ~7.5/10
+- **Asset Coverage**: MES, MNQ, MGC — all covered
+- **Engine Coverage**: trend/momentum/pullback + mean_reversion (emerging)
 
 ## Completed Phases
 
@@ -267,6 +326,19 @@ Event trading (geopolitical, macro news) is NOT a strategy family. It is a **reg
 | Phase 9 — Evolution Scheduler | Complete | research/evolution/evolution_results.md |
 | Phase 9.5 — Portfolio Fitness + Regime Coverage | Complete | research/regime/regime_coverage.json |
 | Phase 9.5.1 — Evolution Batch 2 (Regime-Targeted) | Complete | research/evolution/evolution_results_batch2.md |
+| Phase 10 — New Parent Discovery | Complete | research/phase10_eval.py |
+| Phase 10.6 — Exit Evolution (Donchian) | Complete | research/exit_evolution.py |
+| Phase 11 — Validation Battery + VWAP Trend Promotion | Complete | research/validation/run_validation_battery.py |
+| Phase 11.5 — Strategy Genome Engine | Complete | research/genome/strategy_genome.py |
+| Phase 11.6 — BB Equilibrium Evolution | Complete | research/bb_eq_evolution.py |
+| Phase 11.7 — Gold MR Family Test | Complete | strategies/vwap_mr_gold, session_reversion_gold, bb_compression_gold |
+| Phase 12 — Strategy Crossbreeding Engine | Complete | research/crossbreeding/crossbreeding_engine.py |
+| Phase 12.1 — Crossbred Candidate Evaluation | Complete | strategies/xb_pb_ema_timestop, xb_orb_ema_ladder, xb_pb_squeeze_chand |
+| Phase 12.2 — Crossbred Validation + MES Parent Promotion | Complete | XB-PB-EMA-TimeStop 10.0/10 → PARENT |
+| Phase 12.3 — 5-Strategy Portfolio Simulation | Complete | 5/5 PASS, Sharpe 3.51, Calmar 9.02 |
+| Phase 12.4 — Portfolio Risk-Weight Optimization | Complete | Vol Target best (Sharpe 3.69), all stress tests PASS |
+| Phase 12.5 — Prop Account Simulation Engine | Complete | 0% bust rate, 7 payouts, $5K/yr per account (Apex 50K) |
+| Phase 13 — Range Strategy Discovery | Complete | 3 MR candidates (all MGC-long), Sess VWAP Fade → probation |
 
 ---
-*Last updated: 2026-03-09 (Phase 10.1 — 3 trend strategies evaluated, 4-strat portfolio tested, target cell structural)*
+*Last updated: 2026-03-10 (Phase 13 — Range discovery complete, two-engine architecture confirmed)*

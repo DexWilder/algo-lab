@@ -1,0 +1,101 @@
+{
+  "baseline_3strat": {
+    "total_pnl": 9131.039999999999,
+    "sharpe": 3.0207347114111265,
+    "calmar": 6.758526764566551,
+    "maxdd": 1351.0400000000009,
+    "trades": 329,
+    "profitable_months_str": "18/25 (72%)",
+    "profitable_months_pct": 72.0,
+    "trading_days": 283
+  },
+  "portfolio_4strat": {
+    "total_pnl": 12189.769999999997,
+    "sharpe": 3.3762154398602187,
+    "calmar": 9.244899661747075,
+    "maxdd": 1318.5400000000009,
+    "trades": 452,
+    "profitable_months_str": "20/25 (80%)",
+    "profitable_months_pct": 80.0,
+    "trading_days": 344
+  },
+  "portfolio_5strat": {
+    "total_pnl": 14458.249999999996,
+    "sharpe": 3.5109108073776065,
+    "calmar": 9.021745912891557,
+    "maxdd": 1602.5999999999985,
+    "trades": 500,
+    "profitable_months_str": "21/25 (84%)",
+    "profitable_months_pct": 84.0,
+    "trading_days": 362
+  },
+  "correlation_matrix": {
+    "PB-MGC-Short": {
+      "PB-MGC-Short": 1.0,
+      "ORB-MGC-Long": 0.015630075368509654,
+      "VWAP-MNQ-Long": -0.08506012279245322,
+      "XB-PB-EMA-MES-Short": -0.01568702003351662,
+      "Donchian-MNQ-Long-GRINDING": 0.06283371925752072
+    },
+    "ORB-MGC-Long": {
+      "PB-MGC-Short": 0.015630075368509654,
+      "ORB-MGC-Long": 1.0,
+      "VWAP-MNQ-Long": 0.005502315844690467,
+      "XB-PB-EMA-MES-Short": 0.00811319872604073,
+      "Donchian-MNQ-Long-GRINDING": -0.00033606251793596813
+    },
+    "VWAP-MNQ-Long": {
+      "PB-MGC-Short": -0.08506012279245322,
+      "ORB-MGC-Long": 0.005502315844690467,
+      "VWAP-MNQ-Long": 1.0,
+      "XB-PB-EMA-MES-Short": -0.029448668936371308,
+      "Donchian-MNQ-Long-GRINDING": 0.054858665118863705
+    },
+    "XB-PB-EMA-MES-Short": {
+      "PB-MGC-Short": -0.01568702003351662,
+      "ORB-MGC-Long": 0.00811319872604073,
+      "VWAP-MNQ-Long": -0.029448668936371308,
+      "XB-PB-EMA-MES-Short": 1.0,
+      "Donchian-MNQ-Long-GRINDING": -0.013225112617737683
+    },
+    "Donchian-MNQ-Long-GRINDING": {
+      "PB-MGC-Short": 0.06283371925752072,
+      "ORB-MGC-Long": -0.00033606251793596813,
+      "VWAP-MNQ-Long": 0.054858665118863705,
+      "XB-PB-EMA-MES-Short": -0.013225112617737683,
+      "Donchian-MNQ-Long-GRINDING": 1.0
+    }
+  },
+  "per_strategy": {
+    "PB-MGC-Short": {
+      "pnl": 676.2800000000001,
+      "trades": 28,
+      "pf": 1.853,
+      "sharpe": 3.677
+    },
+    "ORB-MGC-Long": {
+      "pnl": 2678.5599999999995,
+      "trades": 106,
+      "pf": 1.83,
+      "sharpe": 3.2161
+    },
+    "VWAP-MNQ-Long": {
+      "pnl": 5776.199999999999,
+      "trades": 195,
+      "pf": 1.669,
+      "sharpe": 2.6162
+    },
+    "XB-PB-EMA-MES-Short": {
+      "pnl": 3058.7300000000005,
+      "trades": 123,
+      "pf": 1.816,
+      "sharpe": 3.5577
+    },
+    "Donchian-MNQ-Long-GRINDING": {
+      "pnl": 2268.4800000000014,
+      "trades": 48,
+      "pf": 1.994,
+      "sharpe": 3.9725
+    }
+  }
+}

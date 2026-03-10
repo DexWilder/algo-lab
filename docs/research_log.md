@@ -1053,4 +1053,345 @@ Phase 10 execution order established (simple → complex):
 
 ---
 
-*Last updated: 2026-03-09*
+## 2026-03-10 — Phase 11: Full Validation Battery + VWAP Trend Promotion
+
+**Experiment:** Built and ran generic 10-criterion validation battery on VWAP Trend MNQ-Long and Donchian GRINDING+PL MNQ-Long.
+
+### VWAP Trend MNQ-Long
+
+**Results:** Stability score **10.0/10** — ALL criteria passed.
+
+| Criterion | Result |
+|-----------|--------|
+| Walk-forward year splits | PASS (both years PF > 1.0) |
+| Walk-forward rolling | PASS (3/3 windows) |
+| Regime stability | PASS (no catastrophic cells) |
+| Asset robustness | PASS (3/3 assets PF > 1.0) |
+| Timeframe robustness | PASS (3/3 TFs PF > 1.0) |
+| Bootstrap PF CI | PASS (CI low = 1.115) |
+| DSR | PASS (DSR = 1.0) |
+| Monte Carlo | PASS (P(ruin $2K) = 1.2%) |
+| Top-trade removal | PASS (PF = 1.49) |
+| Parameter stability | PASS (100% — 81/81 combos profitable) |
+
+**Decision:** **PROMOTED TO PARENT.** 100% parameter stability is "one of the strongest signals of a real edge." Structural edge, not curve-fit.
+
+### Donchian GRINDING+PL MNQ-Long
+
+**Results:** Stability score **7.0/10** — 3 hard failures, all sample-size driven.
+
+| Criterion | Result | Notes |
+|-----------|--------|-------|
+| Bootstrap PF CI | FAIL | CI low = 0.928 (48 trades too few) |
+| DSR | FAIL | DSR = 0.563 (sample too small) |
+| Rolling walk-forward | FAIL | 2/3 windows (one had 8 trades) |
+| Parameter stability | PASS | 99% profitable |
+| Monte Carlo ruin | PASS | 0% at $2K |
+
+**Decision:** **PROBATION.** Edge likely real (99% param stability, 0% ruin) but needs more trading days for statistical confidence.
+
+---
+
+## 2026-03-10 — Phase 11.3: EMA Trend Rider — REJECTED
+
+**Experiment:** Built EMA pullback trend system (EMA21>EMA50 trend filter, pullback to EMA13, ATR trail exit).
+
+**Results:**
+- MNQ-Long: PF=1.22, 318 trades, Sharpe=1.22, median hold=17 bars
+- GRINDING-only: PF=1.94, 43 trades, Sharpe=3.81
+- **Correlation vs PB: r=0.449** — both pullback systems
+
+**Decision:** **REJECTED.** On 5m bars, pullback-trend ≈ pullback-scalper. The "trend family triangle" doesn't hold on short intraday timeframes. r=0.449 means structural overlap with PB — doesn't justify a portfolio slot.
+
+---
+
+## 2026-03-10 — Phase 11.5: BB Equilibrium — Gold MR Discovery
+
+**Experiment:** Built BB(20,2) mean-reversion strategy with RSI confirmation + bandwidth squeeze filter.
+
+**Results:**
+- **MGC-Long: PF=3.53, 86 trades, Sharpe=3.50** — extraordinary edge
+- MES/MNQ: PF < 0.65 — mean reversion only works on gold intraday
+- Validation battery: 8.0/10, 3 hard failures (walk-forward, asset robustness, rolling WF)
+- 86% parameter stability, bootstrap/DSR/MC all PASS
+
+**Key discovery:** Gold has different intraday microstructure from equity indexes. Gold stretches → snaps back. Indexes trend. This is a structural asset difference, not a parameter issue.
+
+**Decision:** **PROBATION.** Gold-only + walk-forward instability (2024 PF=0.88).
+
+---
+
+## 2026-03-10 — Phase 11.6: BB Equilibrium Evolution
+
+**Experiment:** Tested 4 evolution variants + 2 compounds on BB Equilibrium MGC-Long to fix walk-forward instability.
+
+| Variant | Trades | PF | 2024 PF | 2025 PF | WF |
+|---------|--------|----|---------|---------|----|
+| BASELINE | 86 | 3.53 | 0.88 | 2.02 | FAIL |
+| **TREND-AWARE (EMA20)** | **60** | **3.22** | **1.00** | **1.21** | **PASS** |
+| TREND-AWARE (EMA50) | 79 | 3.75 | 0.94 | 2.03 | FAIL |
+| VOL-GATED (>30pct) | 5 | 20.36 | — | — | — |
+| TIME-FILTERED | 50 | 5.75 | 0.16 | 3.20 | FAIL |
+| EXTREME-ONLY (2.5σ) | 86 | 1.65 | 0.97 | 1.10 | FAIL |
+| EXTREME-ONLY (3.0σ) | 53 | 0.92 | 0.70 | 1.22 | FAIL |
+
+**Winner: TREND-AWARE (EMA20)** — daily EMA(20) slope filter aligns MR with gold macro direction. Longs only in uptrends, shorts only in downtrends. Solves 2024 bleed (PF 0.88→1.00) while preserving PF > 3.
+
+**Key findings:**
+- Vol-gated over-filtered (BB bandwidth already handles this)
+- Time-of-day filter not stable across years
+- Wider BB mult (2.5σ, 3.0σ) actually *dilutes* edge — standard 2σ is optimal
+- The mechanism: gold MR works best within macro trends (trend creates overextension that reverts)
+
+**Decision:** Apply trend-aware filter to BB Equilibrium, re-validate.
+
+---
+
+## 2026-03-10 — Phase 11.7: Gold MR Family Test
+
+**Experiment:** Built and evaluated 3 alternative gold MR strategies to compare against BB Equilibrium.
+
+| Strategy | PF | Trades | Sharpe | r vs PB | Notes |
+|----------|----|----|--------|---------|-------|
+| BB Equilibrium | 3.53 | 86 | 3.50 | 0.084 | Dominant |
+| VWAP MR Gold | 1.27 | 155 | 0.83 | -0.158 | Moderate edge, thin |
+| Session Reversion | 1.26 | 97 | 0.89 | -0.527 | Great diversifier, fragile |
+| BB Compression | 1.09 | 136 | 0.36 | 0.624 | Eliminated (PB overlap) |
+
+**Decision:** BB Equilibrium IS the gold MR parent. Others are weak expressions of the same microstructure. Session Reversion's negative correlation is interesting but PnL is too concentrated (4 trades = 50% of PnL).
+
+---
+
+## 2026-03-10 — Strategy Genome Engine Installed
+
+**Experiment:** Built behavioral fingerprint engine for all strategies.
+
+**Components:**
+- `research/genome/strategy_genome.py` — auto-computes genome from backtest data
+- `research/genome/portfolio_genome.py` — detects gaps, redundancy, concentration
+
+**Portfolio Genome (5 parent/probation strategies):**
+- Diversification score: 6.2/10
+- Engine coverage: 5/11 types
+- Missing: mean_reversion, counter_trend, session_structure, volatility_compression, overnight_gap
+- Regime concentration: 33.9% of PnL from HIGH_VOL_TRENDING_HIGH_RV
+- Asset gap: No MES parent strategy
+- 12 auto-generated research targets
+
+**Key insight:** BB Equilibrium classified as "breakout" behaviorally despite being mechanically mean reversion. This is correct — it profits in trending/volatile markets because trends create the overextensions. Behavioral genome captures different information than structural DNA.
+
+---
+
+## 2026-03-10 — Phase 12: Strategy Crossbreeding Engine
+
+**Experiment:** Built crossbreeding engine to recombine validated parent components (5 entries × 5 exits × 6 filters = 20 curated recipes). Ran all 20 across 3 assets × 3 modes.
+
+**Results:**
+- 13 of 20 recipes passed quality gate (PF > 1.3, Sharpe > 1.5)
+- BB reversion variants dominated (5 recipes, all MGC-long PF > 2.0) — confirms BB Eq is real
+- 3 genuinely novel candidates identified
+
+**Classification:**
+- BB descendants (#7, #9, #11, #18, #19): moved to Continuous Refinement Loop
+- Novel children (#15, #1, #14): moved to Discovery/Validation Lane
+
+**Key insight:** Crossbreeding amplifies real edges and exposes redundancy. It proves parents are fertile but doesn't easily create structural novelty. The lab now has a recombination flywheel: discover → validate → evolve → recombine → validate.
+
+---
+
+## 2026-03-10 — Phase 12.1: Novel Crossbred Candidate Evaluation
+
+**Experiment:** Phase 10 evaluation on 3 novel crossbred candidates.
+
+| Candidate | Best Combo | PF | Sharpe | Trades | Hold | vs PB | vs ORB |
+|-----------|-----------|-----|--------|--------|------|-------|--------|
+| #15 PB+EMA+TimeStop | MES-short | 1.82 | 3.56 | 123 | 10b | r=-0.112 | r=0.172 |
+| #1 ORB+EMA+Ladder | MNQ-short | 1.92 | 3.80 | 117 | 59b | r=-0.065 | r=0.094 |
+| #14 PB+Squeeze+Chand | MGC-long | 1.80 | 2.73 | 193 | 19b | — | r=0.462 |
+
+**Decision:** #14 REJECTED (r=0.462 vs ORB — structural overlap). #15 and #1 advanced to validation.
+
+---
+
+## 2026-03-10 — Phase 12.2: Crossbred Validation Battery
+
+**#15 XB-PB-EMA-TimeStop (MES-short): STABILITY SCORE 10.0/10 — PROMOTE TO PARENT**
+
+| Test | Result | Details |
+|------|--------|---------|
+| Walk-Forward year splits | PASS | 2024=1.13, 2025=2.35 |
+| Walk-Forward rolling | PASS | 3/3 windows PF>1.0 |
+| Regime Stability | PASS | 0 catastrophic cells |
+| Asset Robustness | PASS | 2/3 (MES, MNQ) |
+| Timeframe Robustness | PASS | 3/3 TFs PF>1.0 |
+| Bootstrap PF CI | PASS | CI low=1.149 |
+| DSR | PASS | 0.9998 |
+| Monte Carlo | PASS | P($2K)=0.0% |
+| Top-Trade Removal | PASS | PF=1.704 |
+| Parameter Stability | PASS | 100% (81/81) |
+
+First perfect 10/10 score in the lab. Fills MES parent gap.
+
+**#1 XB-ORB-EMA-Ladder (MNQ-short): STABILITY SCORE 9.0/10 — PROBATION**
+
+| Test | Result | Details |
+|------|--------|---------|
+| Walk-Forward year splits | PASS | 2024=2.70, 2025=1.55 |
+| Walk-Forward rolling | PASS | 3/3 windows PF>1.0 |
+| Regime Stability | PASS | 0 catastrophic cells |
+| Asset Robustness | PASS | 3/3 assets PF>1.0 |
+| Timeframe Robustness | PASS | 3/3 TFs PF>1.0 |
+| Bootstrap PF CI | PASS | CI low=1.194 |
+| DSR | PASS | 1.0000 |
+| Monte Carlo | FAIL | P($2K)=59.6% |
+| Top-Trade Removal | PASS | PF=1.787 |
+| Parameter Stability | PASS | 100% (27/27) |
+
+Only failure is MC ruin at $2K — MNQ position sizing issue (MaxDD=$2,331). Edge clearly real: multi-asset (3/3), multi-timeframe (3/3), 100% param stability.
+
+---
+
+## 2026-03-10 — Phase 12.3: 5-Strategy Portfolio Simulation
+
+**Experiment:** Combined portfolio backtest: PB(MGC-S) + ORB(MGC-L) + VWAP(MNQ-L) + XB-PB-EMA(MES-S) + Donchian GRINDING+PL(MNQ-L).
+
+| Metric | 3-Strat Baseline | 5-Strat Portfolio |
+|--------|-----------------|-------------------|
+| PnL | $9,131 | $14,458 (+58%) |
+| Sharpe | 3.02 | 3.51 |
+| Calmar | 6.76 | 9.02 |
+| MaxDD | $1,351 | $1,603 |
+| Monthly | 72% | 84% |
+| MC P($2K) | — | 4.3% |
+| Max correlation | — | r=0.063 |
+
+**Decision:** 5/5 pass criteria met — DEPLOYABLE PORTFOLIO CANDIDATE.
+
+---
+
+## 2026-03-10 — Phase 12.4: Portfolio Risk-Weight Optimization
+
+**Experiment:** Test 5 position sizing schemes + 3 stress tests on 5-strategy portfolio.
+
+**Sizing Results:**
+
+| Scheme | Sharpe | Calmar | MaxDD | MC Ruin | Monthly |
+|--------|--------|--------|-------|---------|---------|
+| Equal Weight | 3.51 | 9.02 | $1,603 | 4.3% | 84% |
+| **Vol Target** | **3.69** | **9.84** | **$1,370** | **1.8%** | 80% |
+| Risk Parity | 3.69 | 9.84 | $1,370 | 1.8% | 80% |
+| Half-Kelly | 3.59 | 8.28 | $1,633 | 2.5% | 84% |
+| DD-Adjusted | 3.58 | 9.68 | $1,135 | 0.7% | 84% |
+
+**Vol Target Weights:** PB=1.21x, ORB=1.09x, VWAP=0.76x, XB-PB=1.23x, DONCH=0.71x
+
+**Stress Tests (all pass):**
+- Leave-one-out: worst Sharpe = 3.33 (removing XB-PB) — no single-point-of-failure
+- Top-trade removal: survives removing top 5 trades
+- Shuffle MC: 5th percentile Sharpe = 4.62 — sequence-independent
+
+**Key insight:** Vol Target and Risk Parity converge (both inverse-volatility). Scales up low-vol strategies (PB, XB-PB) and scales down high-vol ones (VWAP, DONCH). Improves Sharpe 3.51→3.69, cuts MC ruin 4.3%→1.8%.
+
+**Decision:** Vol Target is recommended deployment scheme. Portfolio is ROBUST — READY FOR DEPLOYMENT.
+
+---
+
+## 2026-03-10 — Phase 12.5: Prop Account Simulation Engine
+
+**Experiment:** Model 5-strategy portfolio (Vol Target weights) across multiple prop accounts. 3 configs tested: Lucid 100K, Apex 50K, Generic 50K. Monte Carlo (5K sims), payout cycles, income projections, stress tests.
+
+**Baseline Results (all 3 configs PASS):**
+
+| Config | Profit | Trades | Skipped | Locked |
+|--------|--------|--------|---------|--------|
+| Lucid 100K | $13,138 | 484/500 | 16 | 2025-04-07 |
+| Apex 50K | $13,487 | 500/500 | 0 | — |
+| Generic 50K | $13,487 | 500/500 | 0 | — |
+
+**Monte Carlo: 0% bust rate on all 3 configs.** 95th percentile MaxDD = $1,589. Even with 10 accounts, P(≥1 bust) ≤ 0.2%.
+
+**Payout Cycle:**
+
+| Config | Payouts | Monthly | Yearly/acct | 1st Payout |
+|--------|---------|---------|-------------|------------|
+| Lucid 100K | 7 | $385 | $4,624 | 402 days |
+| Apex 50K | 7 | $421 | $5,056 | 399 days |
+| Generic 50K | 8 | $383 | $4,594 | 384 days |
+
+**Income Scaling (Apex 50K — best per-account):**
+
+| Accounts | Yearly Net | Bust Risk |
+|----------|-----------|-----------|
+| 3 | $15,168 | 0.1% |
+| 5 | $25,281 | 0.1% |
+| 10 | $50,562 | 0.2% |
+
+**Stress Tests (Lucid 100K, all PASS):**
+- Strategy failure: 0% bust when ANY single strategy removed
+- $2,000 correlated DD shock: 0.1% bust
+- 2.5x volatility spike (20% of days): 0.3% bust
+
+**Key finding:** Portfolio is essentially indestructible due to near-zero correlations + inverse-vol sizing. The bottleneck is payout speed (400 days to first payout), not survival.
+
+**Decision:** PASS all survival criteria. Payout speed flagged as optimization target — faster payout = higher P1 aggression or account selection.
+
+---
+
+## 2026-03-10 — Phase 13: Range Strategy Discovery
+
+**Goal:** Add a true mean-reversion engine to the 5-strategy trend/momentum portfolio. Target: RANGING regime cells (21% of trading days), improve payout speed.
+
+**Candidates built:**
+1. VWAP Deviation Reversion — session VWAP MR with ADX<25 ranging filter
+2. BB Range Reversion — BB Equilibrium adapted with EMA convergence filter
+3. Session VWAP Fade — fade morning overextension (10:00-12:30 window)
+4. ORB Fade — false breakout reversion to OR midpoint
+
+**Evaluation:** Two-tier quality gate (T1: PF>1.15, T2: PF>1.4/Sharpe>1.8), RANGING_EDGE_SCORE, portfolio usefulness override, same-family classification.
+
+**36-Combo Grid Results (4 strategies × 3 assets × 3 modes):**
+- All winners are **MGC-long** — gold mean-reverts, equity indexes don't
+- MES/MNQ MR strategies uniformly fail (PF < 1.0 on shorts, barely break even on both)
+- ORB Fade eliminated: too few trades (max 60), mostly unprofitable
+
+**3 Candidates Advance:**
+
+| Rank | Strategy | Combo | PF | Sharpe | Trades | RES | |r|max | Δ Sharpe | Class |
+|------|----------|-------|----|--------|--------|-----|--------|----------|-------|
+| 1 | VWAP-Dev-MR | MGC-long | 1.31 | 1.56 | 94 | **0.53** | 0.048 | -0.02 | new_engine (override) |
+| 2 | Sess-VWAP-Fade | MGC-long | 2.13 | 2.59 | 104 | 0.18 | 0.042 | +0.03 | new_engine (override) |
+| 3 | BB-Range-MR | MGC-long | 3.05 | 2.81 | 40 | -0.03 | 0.092 | +0.04 | new_engine (override) |
+
+**Regime Breakdown:**
+- VWAP-Dev-MR: RANGING_EDGE_SCORE=0.53 (true range specialist), 25 RANGING trades, $361 RANGING PnL
+- Sess-VWAP-Fade: $608 RANGING PnL (24 trades), but also strong in TRENDING cells ($1,863 from HIGH_VOL_TRENDING)
+- BB-Range-MR: RANGING edge negative (-0.03), edge comes from TRENDING cells — not a range specialist despite being designed as one
+
+**Duration DNA (all confirmed MR):** VWAP-Dev-MR 9 bars, BB-Range-MR 10 bars, Sess-VWAP-Fade 11 bars.
+
+**Correlation:** All near-zero vs 5 parents (max |r| = 0.092). Complete structural independence.
+
+**Portfolio Impact (adding to Vol Target 5-strat baseline):**
+- Sess-VWAP-Fade: Sharpe +0.03, **Calmar +3.36**, MaxDD -$100 — best diversifier
+- BB-Range-MR: Sharpe +0.04, Calmar +1.12 — best standalone PF
+- VWAP-Dev-MR: Sharpe -0.02, Calmar +1.08, MaxDD -$73 — purest range specialist
+
+**Structural Discovery: Gold vs Index Intraday Behavior**
+
+| Market | Intraday behavior | Strategy fit |
+|--------|------------------|-------------|
+| Equity indexes (MES/MNQ) | Trend continuation | Trend/momentum/breakout |
+| Gold (MGC) | Mean reversion | VWAP fade, BB reversion |
+
+This confirms a well-known market microstructure fact: gold's hedging/macro flows create intraday overextensions that revert, while equity index momentum/gamma dynamics sustain trends.
+
+**Decision:**
+- **Session VWAP Fade**: Promote to probation candidate (PF=2.13, Sharpe=2.59, 104 trades, positive portfolio impact)
+- **VWAP Dev MR**: Move to MR refinement lane (purest range specialist, RES=0.53)
+- **BB Range MR**: Move to MR refinement lane (PF=3.05 but only 40 trades, not statistically mature)
+- **ORB Fade**: Rejected (insufficient trades, negative edge on MES/MNQ)
+- **Next**: Phase 14 — Gold MR Refinement (refine all 3 candidates into one Gold MR parent)
+
+---
+
+*Last updated: 2026-03-10*

@@ -1,0 +1,130 @@
+{
+  "phase": "Phase 13 \u2014 Range Strategy Discovery",
+  "candidates": {
+    "VWAP-Dev-MR": {
+      "best_combo": "MGC-long",
+      "pf": 1.31,
+      "sharpe": 1.56,
+      "trades": 94,
+      "pnl": 683.44,
+      "maxdd": 520.0,
+      "median_hold": 9,
+      "dna_check": "PASS",
+      "ranging_trades": 25,
+      "ranging_pnl": 361.0,
+      "ranging_edge_score": 0.528,
+      "trending_bleed_ratio": 0.472,
+      "correlations": {
+        "PB": -0.048,
+        "ORB": -0.008,
+        "VWAP": -0.031,
+        "XB-PB": -0.018,
+        "DONCH": 0.013
+      },
+      "portfolio_corr": -0.027,
+      "max_parent_corr": 0.048,
+      "portfolio_impact": {
+        "sharpe_6strat": 3.66,
+        "sharpe_delta": -0.02,
+        "calmar_6strat": 10.93,
+        "calmar_delta": 1.08,
+        "maxdd_6strat": 1297.06,
+        "maxdd_delta": -73.04,
+        "monthly_pct": 80.0,
+        "pnl_6strat": 14170.41
+      },
+      "portfolio_usefulness_score": 9.23,
+      "tier": "T1",
+      "classification": "new_engine (override)"
+    },
+    "Sess-VWAP-Fade": {
+      "best_combo": "MGC-long",
+      "pf": 2.13,
+      "sharpe": 2.59,
+      "trades": 104,
+      "pnl": 3282.04,
+      "maxdd": 817.48,
+      "median_hold": 11,
+      "dna_check": "PASS",
+      "ranging_trades": 24,
+      "ranging_pnl": 608.24,
+      "ranging_edge_score": 0.185,
+      "trending_bleed_ratio": 0.815,
+      "correlations": {
+        "PB": -0.01,
+        "ORB": -0.024,
+        "VWAP": -0.015,
+        "XB-PB": -0.042,
+        "DONCH": 0.019
+      },
+      "portfolio_corr": -0.019,
+      "max_parent_corr": 0.042,
+      "portfolio_impact": {
+        "sharpe_6strat": 3.72,
+        "sharpe_delta": 0.03,
+        "calmar_6strat": 13.2,
+        "calmar_delta": 3.36,
+        "maxdd_6strat": 1270.22,
+        "maxdd_delta": -99.87,
+        "monthly_pct": 76.0,
+        "pnl_6strat": 16769.01
+      },
+      "portfolio_usefulness_score": 8.23,
+      "tier": "T1",
+      "classification": "new_engine (override)"
+    },
+    "BB-Range-MR": {
+      "best_combo": "MGC-long",
+      "pf": 3.05,
+      "sharpe": 2.81,
+      "trades": 40,
+      "pnl": 1568.4,
+      "maxdd": 326.72,
+      "median_hold": 10,
+      "dna_check": "PASS",
+      "ranging_trades": 5,
+      "ranging_pnl": -178.2,
+      "ranging_edge_score": -0.028,
+      "trending_bleed_ratio": 1.114,
+      "correlations": {
+        "PB": -0.002,
+        "ORB": -0.018,
+        "VWAP": -0.006,
+        "XB-PB": -0.092,
+        "DONCH": 0.002
+      },
+      "portfolio_corr": -0.034,
+      "max_parent_corr": 0.092,
+      "portfolio_impact": {
+        "sharpe_6strat": 3.73,
+        "sharpe_delta": 0.04,
+        "calmar_6strat": 10.96,
+        "calmar_delta": 1.12,
+        "maxdd_6strat": 1373.34,
+        "maxdd_delta": 3.24,
+        "monthly_pct": 80.0,
+        "pnl_6strat": 15055.37
+      },
+      "portfolio_usefulness_score": 5.7,
+      "tier": "T1",
+      "classification": "new_engine (override)"
+    }
+  },
+  "ranking": [
+    {
+      "strategy": "VWAP-Dev-MR",
+      "score": 9.23,
+      "classification": "new_engine (override)"
+    },
+    {
+      "strategy": "Sess-VWAP-Fade",
+      "score": 8.23,
+      "classification": "new_engine (override)"
+    },
+    {
+      "strategy": "BB-Range-MR",
+      "score": 5.7,
+      "classification": "new_engine (override)"
+    }
+  ]
+}
