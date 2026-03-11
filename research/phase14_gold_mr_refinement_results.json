@@ -1,0 +1,326 @@
+{
+  "phase": "Phase 14 \u2014 Gold MR Refinement",
+  "asset": "MGC",
+  "mode": "long",
+  "trading_months": 24.1,
+  "candidates": {
+    "BB-Equilibrium": {
+      "strategy_name": "bb_equilibrium",
+      "optimal_params": {
+        "TREND_EMA_PERIOD": 50,
+        "BW_MAX_PCT": 70,
+        "BB_MULT": 2.0
+      },
+      "pf": 3.7728,
+      "sharpe": 3.6284,
+      "trades": 83,
+      "pnl": 5021.08,
+      "maxdd": 281.12,
+      "median_hold": 11,
+      "trades_per_month": 3.44,
+      "monthly_consistency": 0.56,
+      "prop_speed_score": 1.544,
+      "ranging_edge_score": -0.021,
+      "composite_score": 0.9272,
+      "param_stability_pct": 100.0,
+      "mr_dna_ok": true,
+      "ranging_trades": 16,
+      "ranging_pnl": -132.84,
+      "trending_bleed": 1.026,
+      "validation_score": 8.0,
+      "validation_failures": 2.5,
+      "validation_promotion": "CONDITIONAL",
+      "portfolio_impact": {
+        "sharpe_6strat": 3.9,
+        "sharpe_delta": 0.21,
+        "calmar_6strat": 12.59,
+        "calmar_delta": 2.75,
+        "maxdd_6strat": 1470.06,
+        "maxdd_delta": 99.96,
+        "monthly_pct": 76.0,
+        "pnl_6strat": 18508.05,
+        "vol_target_weight": 0.515
+      },
+      "parent_correlations": {
+        "PB": -0.023,
+        "ORB": -0.024,
+        "VWAP": -0.021,
+        "XB-PB": -0.097,
+        "DONCH": -0.012
+      },
+      "max_parent_corr": 0.097,
+      "fast_pass": {
+        "pass_probability": {
+          "1": 0.0,
+          "3": 0.1,
+          "5": 0.3
+        },
+        "bust_probability": {
+          "1": 0.0,
+          "3": 0.0,
+          "5": 0.0
+        },
+        "median_days_to_pass": 4.0,
+        "is_fast_pass_candidate": false
+      },
+      "production_score": 0.6706,
+      "production_label": "PROBATION",
+      "fast_pass_label": "\u2014"
+    },
+    "VWAP-Dev-MR": {
+      "strategy_name": "vwap_dev_mr",
+      "optimal_params": {
+        "DEVIATION_MULT": 2.5,
+        "ENTRY_CUTOFF": "14:30",
+        "ADX_THRESHOLD": 30
+      },
+      "pf": 1.5754,
+      "sharpe": 1.9151,
+      "trades": 79,
+      "pnl": 1153.04,
+      "maxdd": 369.48,
+      "median_hold": 12,
+      "trades_per_month": 3.27,
+      "monthly_consistency": 0.48,
+      "prop_speed_score": 1.4535,
+      "ranging_edge_score": 0.047,
+      "composite_score": 0.7521,
+      "param_stability_pct": 83.3,
+      "mr_dna_ok": true,
+      "ranging_trades": 20,
+      "ranging_pnl": 54.2,
+      "trending_bleed": 0.953,
+      "validation_score": 8.0,
+      "validation_failures": 2,
+      "validation_promotion": "CONDITIONAL",
+      "portfolio_impact": {
+        "sharpe_6strat": 3.72,
+        "sharpe_delta": 0.03,
+        "calmar_6strat": 11.67,
+        "calmar_delta": 1.82,
+        "maxdd_6strat": 1254.74,
+        "maxdd_delta": -115.36,
+        "monthly_pct": 80.0,
+        "pnl_6strat": 14640.01,
+        "vol_target_weight": 1.127
+      },
+      "parent_correlations": {
+        "PB": -0.08,
+        "ORB": -0.019,
+        "VWAP": -0.002,
+        "XB-PB": -0.076,
+        "DONCH": -0.004
+      },
+      "max_parent_corr": 0.08,
+      "fast_pass": {
+        "pass_probability": {
+          "1": 0.0,
+          "3": 0.0,
+          "5": 0.0
+        },
+        "bust_probability": {
+          "1": 0.0,
+          "3": 0.0,
+          "5": 0.0
+        },
+        "median_days_to_pass": 999,
+        "is_fast_pass_candidate": false
+      },
+      "production_score": 0.5723,
+      "production_label": "PROBATION",
+      "fast_pass_label": "\u2014"
+    },
+    "Sess-VWAP-Fade": {
+      "strategy_name": "session_vwap_fade",
+      "optimal_params": {
+        "FADE_MULT": 2.0,
+        "ENTRY_CUTOFF": "11:30",
+        "SESSION_EXTREME_CUSHION": 0.5
+      },
+      "pf": 2.8503,
+      "sharpe": 3.391,
+      "trades": 76,
+      "pnl": 3541.76,
+      "maxdd": 435.12,
+      "median_hold": 11,
+      "trades_per_month": 3.15,
+      "monthly_consistency": 0.48,
+      "prop_speed_score": 1.4037,
+      "ranging_edge_score": 0.091,
+      "composite_score": 0.7036,
+      "param_stability_pct": 100.0,
+      "mr_dna_ok": true,
+      "ranging_trades": 16,
+      "ranging_pnl": 404.16,
+      "trending_bleed": 0.886,
+      "validation_score": 0,
+      "validation_failures": 0,
+      "validation_promotion": "",
+      "portfolio_impact": {
+        "sharpe_6strat": 3.87,
+        "sharpe_delta": 0.19,
+        "calmar_6strat": 13.4,
+        "calmar_delta": 3.56,
+        "maxdd_6strat": 1270.74,
+        "maxdd_delta": -99.35,
+        "monthly_pct": 84.0,
+        "pnl_6strat": 17028.73,
+        "vol_target_weight": 0.625
+      },
+      "parent_correlations": {
+        "PB": -0.011,
+        "ORB": -0.027,
+        "VWAP": -0.021,
+        "XB-PB": -0.071,
+        "DONCH": 0.007
+      },
+      "max_parent_corr": 0.071,
+      "fast_pass": {
+        "pass_probability": {
+          "1": 0.0,
+          "3": 0.0,
+          "5": 0.2
+        },
+        "bust_probability": {
+          "1": 0.0,
+          "3": 0.0,
+          "5": 0.0
+        },
+        "median_days_to_pass": 4.0,
+        "is_fast_pass_candidate": false
+      },
+      "production_score": 0.2734,
+      "production_label": "REJECT",
+      "fast_pass_label": "\u2014"
+    },
+    "BB-Range-MR": {
+      "strategy_name": "bb_range_mr",
+      "optimal_params": {
+        "EMA_CONVERGENCE": 1.5,
+        "BW_MAX_PCT": 80,
+        "RSI_OVERSOLD": 35
+      },
+      "pf": 3.0058,
+      "sharpe": 2.7538,
+      "trades": 45,
+      "pnl": 1630.2,
+      "maxdd": 286.96,
+      "median_hold": 10,
+      "trades_per_month": 1.86,
+      "monthly_consistency": 0.44,
+      "prop_speed_score": 0.8785,
+      "ranging_edge_score": -0.036,
+      "composite_score": 0.6388,
+      "param_stability_pct": 75.0,
+      "mr_dna_ok": true,
+      "ranging_trades": 6,
+      "ranging_pnl": -196.44,
+      "trending_bleed": 1.121,
+      "validation_score": 0,
+      "validation_failures": 0,
+      "validation_promotion": "",
+      "portfolio_impact": {
+        "sharpe_6strat": 3.74,
+        "sharpe_delta": 0.05,
+        "calmar_6strat": 11.01,
+        "calmar_delta": 1.16,
+        "maxdd_6strat": 1373.34,
+        "maxdd_delta": 3.24,
+        "monthly_pct": 80.0,
+        "pnl_6strat": 15117.17,
+        "vol_target_weight": 0.653
+      },
+      "parent_correlations": {
+        "PB": -0.003,
+        "ORB": -0.018,
+        "VWAP": -0.007,
+        "XB-PB": -0.094,
+        "DONCH": 0.003
+      },
+      "max_parent_corr": 0.094,
+      "fast_pass": {
+        "pass_probability": {
+          "1": 0.0,
+          "3": 0.0,
+          "5": 0.0
+        },
+        "bust_probability": {
+          "1": 0.0,
+          "3": 0.0,
+          "5": 0.0
+        },
+        "median_days_to_pass": 999,
+        "is_fast_pass_candidate": false
+      },
+      "production_score": 0.1763,
+      "production_label": "REJECT",
+      "fast_pass_label": "\u2014"
+    }
+  },
+  "cross_correlation": {
+    "Sess-VWAP-Fade": {
+      "Sess-VWAP-Fade": 1.0,
+      "BB-Range-MR": -0.017,
+      "VWAP-Dev-MR": 0.729,
+      "BB-Equilibrium": 0.732
+    },
+    "BB-Range-MR": {
+      "Sess-VWAP-Fade": -0.017,
+      "BB-Range-MR": 1.0,
+      "VWAP-Dev-MR": 0.004,
+      "BB-Equilibrium": 0.549
+    },
+    "VWAP-Dev-MR": {
+      "Sess-VWAP-Fade": 0.729,
+      "BB-Range-MR": 0.004,
+      "VWAP-Dev-MR": 1.0,
+      "BB-Equilibrium": 0.465
+    },
+    "BB-Equilibrium": {
+      "Sess-VWAP-Fade": 0.732,
+      "BB-Range-MR": 0.549,
+      "VWAP-Dev-MR": 0.465,
+      "BB-Equilibrium": 1.0
+    }
+  },
+  "baseline_portfolio": {
+    "sharpe": 3.69,
+    "calmar": 9.84,
+    "maxdd": 1370.1,
+    "monthly_pct": 80.0
+  },
+  "ranking": [
+    {
+      "strategy": "BB-Equilibrium",
+      "production_score": 0.6706,
+      "production_label": "PROBATION",
+      "fast_pass_label": "\u2014"
+    },
+    {
+      "strategy": "VWAP-Dev-MR",
+      "production_score": 0.5723,
+      "production_label": "PROBATION",
+      "fast_pass_label": "\u2014"
+    },
+    {
+      "strategy": "Sess-VWAP-Fade",
+      "production_score": 0.2734,
+      "production_label": "REJECT",
+      "fast_pass_label": "\u2014"
+    },
+    {
+      "strategy": "BB-Range-MR",
+      "production_score": 0.1763,
+      "production_label": "REJECT",
+      "fast_pass_label": "\u2014"
+    }
+  ],
+  "promotion_summary": {
+    "promoted": [],
+    "probation": [
+      "BB-Equilibrium",
+      "VWAP-Dev-MR"
+    ],
+    "fast_pass_candidates": []
+  }
+}
