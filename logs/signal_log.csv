@@ -1,0 +1,7 @@
+date,strategy,signals_total,signals_kept,regime_blocked,timing_blocked,conviction_override
+2026-03-10,PB-MGC-Short,1,1,0,0,0
+2026-03-10,ORB-MGC-Long,1,1,0,0,1
+2026-03-10,VWAP-MNQ-Long,0,0,0,0,0
+2026-03-10,XB-PB-EMA-MES-Short,1,1,0,0,0
+2026-03-10,BB-EQ-MGC-Long,0,0,0,0,0
+2026-03-10,Donchian-MNQ-Long-GRINDING,0,0,0,0,0

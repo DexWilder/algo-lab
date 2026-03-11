@@ -1,0 +1,2 @@
+date,equity,daily_pnl,cumulative_pnl,trailing_dd,trades_raw,trades_controlled,active_strategies,regime,rv_regime,persistence,kill_switch,run_count
+2026-03-10,49749.78,-250.22000000000003,-250.22000000000003,250.22000000000116,3,3,6,HIGH_VOL_TRENDING,HIGH_RV,CHOPPY,OK,1

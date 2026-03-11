@@ -1,0 +1,15 @@
+{
+  "equity": 49749.78,
+  "cumulative_pnl": -250.22000000000003,
+  "equity_hwm": 50000.0,
+  "total_trades": 3,
+  "total_signals": 0,
+  "consecutive_losses": 1,
+  "last_processed_bar": {
+    "MES": "2026-03-10 19:55:00",
+    "MNQ": "2026-03-10 19:55:00",
+    "MGC": "2026-03-10 19:55:00"
+  },
+  "last_run": "2026-03-11 09:14:29",
+  "run_count": 1
+}
