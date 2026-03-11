@@ -12,14 +12,16 @@
 | ORB-009 | MGC | Long | 2.07 | 3.93 | 106 | trend_continuation | Phase 6 |
 | VWAP Trend | MNQ | Long | 1.67 | 2.62 | 195 | breakout/continuation | Phase 11 |
 | XB-PB-EMA-TimeStop | MES | Short | 1.82 | 3.56 | 123 | pullback_scalper | Phase 12 |
+| BB Equilibrium (Gold Snapback) | MGC | Long | 6.48 | 4.00 | 54 | mean_reversion | Phase 15 |
 
 **Key traits:**
 - PB: 3-bar median hold, HIGH_RV specialist, morning session, MGC
 - ORB: 28-bar median hold, TRENDING specialist, opening range breakout, MGC
 - VWAP Trend: 14-bar median hold, TRENDING specialist, pullback to VWAP, MNQ
 - XB-PB-EMA-TimeStop: 10-bar median hold, HIGH_VOL_TRENDING specialist, MES
-- All pairwise correlations near-zero (r < 0.2)
-- **4 parents across 3 assets (MES, MNQ, MGC) — full asset coverage achieved**
+- BB Equilibrium: 11-bar median hold, TRENDING gold specialist (snapback MR), MGC
+- All pairwise correlations near-zero (max |r| = 0.077)
+- **5 parents across 3 assets (MES, MNQ, MGC) — trend engines + MR engine**
 
 ---
 
@@ -28,9 +30,8 @@
 | Strategy | Asset | Mode | PF | Sharpe | Trades | Blocker | Path to Promotion |
 |----------|-------|------|----|--------|--------|---------|-------------------|
 | Donchian GRINDING+PL | MNQ | Long | 1.99 | 3.97 | 48 | Sample size | Wait for more data (Q3 2026) |
-| BB Equilibrium (Trend-Aware) | MGC | Long | 3.22 | 3.13 | 60 | Gold-only, WF marginal | Re-validate with more data |
 | XB-ORB-EMA-Ladder | MNQ | Short | 1.92 | 3.80 | 117 | MC ruin at $2K (MNQ sizing) | Position sizing work, re-validate |
-| Session VWAP Fade | MGC | Long | 2.13 | 2.59 | 104 | Gold-only, needs refinement | Phase 14 Gold MR refinement |
+| Session VWAP Fade | MGC | Long | 2.13 | 2.59 | 104 | Gold-only, needs refinement | Further refinement or wait for data |
 
 **Donchian notes:**
 - True trend-follower DNA (61-bar median hold)
@@ -49,12 +50,15 @@
 - RANGING_EDGE_SCORE = 0.18 (moderate range specialist)
 - Phase 13 discovery, Phase 14 refinement target
 
-**BB Equilibrium notes:**
-- Gold-specific mean reversion (PF < 0.65 on equity indexes)
-- Trend-Aware EMA(20) filter solves walk-forward: 2024 PF 0.88→1.00
-- 100% parameter stability, bootstrap/DSR/MC all pass
-- Stability score: 7.0/10 (3 failures: gold-only asset, thin sample)
-- Portfolio correlation: r=0.084 vs PB, r=0.175 vs ORB (excellent diversifier)
+**BB Equilibrium (Gold Snapback) notes:** (PROMOTED Phase 15)
+- Gold-specific "trend snapback" MR — profits when trending gold overextends and reverts to BB midline
+- Refined params: TREND_EMA_PERIOD=15 (from 50), ATR_TRAIL_MULT=1.5 (from 2.0), BW_MAX_PCT=70
+- Regime gate: avoid NORMAL_TRENDING_HIGH_RV (5 trades, PF=0.73)
+- Stability score: 9.5/10, walk-forward PASS (all quarters PF>1.0), 0.5 hard failures (gold-only)
+- 86% parameter stability (52/60 combos profitable)
+- Bootstrap CI low=1.46, DSR=1.0, P(ruin $2K)=0.6%
+- Portfolio impact: Sharpe +0.20, Calmar +1.81, max |r|=0.077
+- Key insight: EMA-50 was too slow for 2024 choppier trends; EMA-15 resolved walk-forward failure
 
 **XB-ORB-EMA-Ladder notes:**
 - Phase 12 crossbred child (ORB entry + EMA slope filter + Profit Ladder exit)
@@ -82,6 +86,8 @@
 | Session Reversion Gold | MGC | Fragile (97 trades, PnL from 4 trades) | Phase 11.7 |
 | XB-PB-Squeeze-Chand | MGC | r=0.462 vs ORB — structural overlap | Phase 12 |
 | ORB Fade | All | Too few trades (max 60), negative edge on MES/MNQ | Phase 13 |
+| VWAP Dev MR | MGC | Outperformed by BB Equilibrium (PF=1.31 vs 6.48), gold-only | Phase 14 |
+| BB Range MR | MGC | Only 40 trades, outperformed by BB Equilibrium | Phase 14 |
 
 ---
 
@@ -114,8 +120,6 @@ These are BB Equilibrium variants with different exit/filter combinations — hi
 |----------|----------|-----------|
 | orb_range_fade | PF=4.83 on 9 trades | Re-evaluate with more data |
 | vix_ema_trend | PF=1.48, DNA duplicate | Reassess if VIX DNA threshold relaxed |
-| VWAP Dev MR | MGC-long PF=1.31, RES=0.53 (purest range specialist) | Phase 14 refinement |
-| BB Range MR | MGC-long PF=3.05, only 40 trades | Phase 14 refinement |
 
 ---
 
@@ -132,14 +136,14 @@ These are BB Equilibrium variants with different exit/filter combinations — hi
 | XB-ORB-EMA-Ladder | trend_follower | 59b | — | — | MNQ |
 | Session VWAP Fade | mean_reversion | 11b | — | — | MGC |
 
-**Portfolio diversification score: ~7.5/10** (up from 6.2 — MES gap filled)
+**Portfolio diversification score: ~8.0/10** (up from 7.5 — MR engine validated)
 
 **Two-Engine Architecture:**
-- **Trend Engine Family** (indexes): PB, ORB, VWAP Trend, XB-PB-EMA, Donchian
-- **Mean Reversion Engine Family** (gold): Session VWAP Fade, BB Equilibrium, VWAP Dev MR, BB Range MR
+- **Trend Engine Family** (indexes): PB, ORB, VWAP Trend, XB-PB-EMA, Donchian (probation)
+- **Mean Reversion Engine Family** (gold): BB Equilibrium (**PARENT**), Session VWAP Fade (probation)
 
 **Missing engine types:** counter_trend, session_structure, volatility_compression, overnight_gap
 
 ---
 
-*Last updated: 2026-03-10 (Phase 12 — Crossbreeding engine, XB-PB-EMA-TimeStop promoted)*
+*Last updated: 2026-03-10 (Phase 15 — BB Equilibrium promoted, 5-parent portfolio with MR engine)*

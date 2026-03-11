@@ -8,8 +8,8 @@
 |-------|-------|
 | Strategies harvested | 91 (76 batch 1 + 15 batch 2) |
 | Strategies converted | 15 (12 original + 3 crossbred) |
-| Parent strategies | **4** (PB, ORB, VWAP Trend, XB-PB-EMA-TimeStop) |
-| Probation | **4** (Donchian GRINDING+PL, BB Equilibrium, XB-ORB-EMA-Ladder, Session VWAP Fade) |
+| Parent strategies | **5** (PB, ORB, VWAP Trend, XB-PB-EMA-TimeStop, BB Equilibrium) |
+| Probation | **3** (Donchian GRINDING+PL, XB-ORB-EMA-Ladder, Session VWAP Fade) |
 | Phase 12 crossbred | 20 recipes tested, 13 passed quality gate |
 | Rejected | 12 (+ XB-PB-Squeeze-Chand, ORB Fade) |
 | Pending validation | 2 (VIX Channel MES, Gap-Mom MGC) |
@@ -23,13 +23,13 @@
 | ORB-009 | MGC | Long | 2.07 | 3.93 | 1.000 SIG | deployment_ready |
 | VWAP Trend | MNQ | Long | 1.67 | 2.62 | 1.000 SIG | **PARENT** (Phase 11) |
 | XB-PB-EMA-TimeStop | MES | Short | 1.82 | 3.56 | 0.9998 SIG | **PARENT** (Phase 12) |
+| BB Equilibrium (Gold Snapback) | MGC | Long | 6.48 | 4.00 | — | **PARENT** (Phase 15) |
 
 **Probation:**
 
 | Strategy | Asset | Mode | PF | Sharpe | Status | Blocker |
 |----------|-------|------|----|--------|--------|---------|
 | Donchian GRINDING+PL | MNQ | Long | 1.99 | 3.97 | probation | 48 trades (sample size) |
-| BB Equilibrium (Trend-Aware) | MGC | Long | 3.22 | 3.13 | probation | Gold-only, WF marginal |
 | XB-ORB-EMA-Ladder | MNQ | Short | 1.92 | 3.80 | probation | MC ruin at $2K (MNQ sizing) |
 
 **Regime Gate:** Per-strategy regime profiles via multi-factor RegimeEngine (Phase 8). Replaces single ATR gate.
@@ -115,6 +115,21 @@
 | Max correlation | — | r=0.063 | r=0.063 |
 
 **Vol Target Deployment Weights:** PB=1.21x, ORB=1.09x, VWAP=0.76x, XB-PB=1.23x, DONCH=0.71x
+
+### Portfolio Metrics (Phase 15, 6-Strategy: PB + ORB + VWAP + XB-PB-EMA + Donchian + BB Equilibrium)
+
+| Metric | 5-Strat (Vol Target) | 6-Strat (+BB Eq) |
+|--------|---------------------|------------------|
+| Total PnL | $13,489 | $15,734 |
+| Sharpe | 3.69 | **3.89** |
+| Calmar | 9.84 | **11.65** |
+| MaxDD | $1,370 | **$1,351** |
+| Trades | 500 | 554 |
+| Monthly | 80% | 84% |
+| Max correlation | r=0.063 | r=0.077 |
+
+**BB Equilibrium (Gold Snapback) refined params:** EMA_PERIOD=15, ATR_TRAIL_MULT=1.5, BW_MAX_PCT=70, regime gate=avoid NORMAL_TRENDING_HIGH_RV.
+Stability score: 9.5/10. Walk-forward: PASS. Gold-only (asset robustness 0.5 penalty accepted).
 
 ### Sizing Research (Phase 12.4)
 
@@ -264,17 +279,14 @@
 
 ## Next Milestone
 
-**Phase 14: Gold MR Refinement — Build the 6th Parent**
-
-The lab now has a two-engine portfolio architecture: trend engines on indexes + MR engines on gold. Phase 13 discovered 3 MR candidates (all MGC-long). Phase 14 refines them into one Gold MR parent.
+**Phase 16: Strategy Controller — Deploy the 6-Strategy Portfolio**
 
 ### Immediate Priorities
 
-1. **Gold MR Refinement (Phase 14)**
-   - 3 candidates: Session VWAP Fade (PF=2.13, 104 trades), VWAP Dev MR (PF=1.31, RES=0.53), BB Range MR (PF=3.05, 40 trades)
-   - Refine: ATR stops, VWAP targets, time windows, volatility filters
-   - Goal: one consolidated Gold MR parent for the 6-strategy portfolio
-   - Victory: PF>1.5, Sharpe>2.0, 80+ trades, positive portfolio impact, near-zero correlation
+1. **Strategy Controller (Phase 16)**
+   - Build controller layer to deploy 6 parents with regime gating + vol target sizing
+   - Integrate refined BB Equilibrium params (EMA-15, Trail-1.5, regime gate)
+   - Goal: deployable portfolio stack with prop account compatibility
 
 2. **XB-ORB-EMA-Ladder: Resolve MC ruin failure**
    - 9.0/10 stability, only fails MC ruin at $2K (MNQ sizing issue, MaxDD=$2,331)
@@ -286,29 +298,29 @@ The lab now has a two-engine portfolio architecture: trend engines on indexes + 
 ### Two-Engine Architecture
 
 **Trend Engine Family (Indexes):**
-| Strategy | Asset | Mode | Engine |
-|----------|-------|------|--------|
-| PB-Trend | MGC | Short | pullback_scalper |
-| ORB-009 | MGC | Long | trend_continuation |
-| VWAP Trend | MNQ | Long | breakout/continuation |
-| XB-PB-EMA-TimeStop | MES | Short | pullback_scalper |
-| Donchian GRINDING+PL | MNQ | Long | trend_follower (probation) |
+| Strategy | Asset | Mode | Engine | Status |
+|----------|-------|------|--------|--------|
+| PB-Trend | MGC | Short | pullback_scalper | **PARENT** |
+| ORB-009 | MGC | Long | trend_continuation | **PARENT** |
+| VWAP Trend | MNQ | Long | breakout/continuation | **PARENT** |
+| XB-PB-EMA-TimeStop | MES | Short | pullback_scalper | **PARENT** |
+| Donchian GRINDING+PL | MNQ | Long | trend_follower | probation |
 
 **Mean Reversion Engine Family (Gold):**
 | Strategy | Asset | Mode | PF | Trades | Status |
 |----------|-------|------|----|--------|--------|
+| BB Equilibrium (Gold Snapback) | MGC | Long | 6.48 | 54 | **PARENT** (Phase 15) |
 | Session VWAP Fade | MGC | Long | 2.13 | 104 | probation |
-| VWAP Dev MR | MGC | Long | 1.31 | 94 | refinement lane |
-| BB Range MR | MGC | Long | 3.05 | 40 | refinement lane |
-| BB Equilibrium | MGC | Long | 3.22 | 60 | probation |
+| VWAP Dev MR | MGC | Long | 1.31 | 94 | rejected (Phase 14) |
+| BB Range MR | MGC | Long | 3.05 | 40 | rejected (Phase 14) |
 
 ### Portfolio Status
-- **4 Parents**: PB(MGC-S), ORB(MGC-L), VWAP-Trend(MNQ-L), XB-PB-EMA-TimeStop(MES-S)
-- **4 Probation**: Donchian(MNQ-L), BB Equilibrium(MGC-L), XB-ORB-EMA-Ladder(MNQ-S), Session VWAP Fade(MGC-L)
-- **12 Rejected**: see strategy_registry.md
-- **Portfolio Diversification Score**: ~7.5/10
+- **5 Parents**: PB(MGC-S), ORB(MGC-L), VWAP-Trend(MNQ-L), XB-PB-EMA-TimeStop(MES-S), BB Equilibrium(MGC-L)
+- **3 Probation**: Donchian(MNQ-L), XB-ORB-EMA-Ladder(MNQ-S), Session VWAP Fade(MGC-L)
+- **14 Rejected**: see strategy_registry.md
+- **Portfolio Diversification Score**: ~8.0/10 (up from 7.5 — MR engine added)
 - **Asset Coverage**: MES, MNQ, MGC — all covered
-- **Engine Coverage**: trend/momentum/pullback + mean_reversion (emerging)
+- **Engine Coverage**: trend/momentum/pullback + **mean_reversion (gold-specific, validated)**
 
 ## Completed Phases
 
@@ -339,6 +351,16 @@ The lab now has a two-engine portfolio architecture: trend engines on indexes + 
 | Phase 12.4 — Portfolio Risk-Weight Optimization | Complete | Vol Target best (Sharpe 3.69), all stress tests PASS |
 | Phase 12.5 — Prop Account Simulation Engine | Complete | 0% bust rate, 7 payouts, $5K/yr per account (Apex 50K) |
 | Phase 13 — Range Strategy Discovery | Complete | 3 MR candidates (all MGC-long), Sess VWAP Fade → probation |
+| Phase 14 — Gold MR Refinement | Complete | 4 candidates tested, BB Equilibrium best (PROBATION → refinement) |
+| Phase 15 — Gold Snapback Engine | Complete | BB Equilibrium PROMOTED to 5th parent (9.5/10, EMA-15, Trail-1.5) |
+
+## Milestone Tags
+
+| Tag | Date | Description |
+|-----|------|-------------|
+| `v0.15-phase15-gold-snapback-parent` | 2026-03-10 | BB Equilibrium promoted to 5th parent. 6-strategy portfolio: Sharpe 3.89, Calmar 11.65. |
+
+*See `docs/release_workflow.md` for milestone creation rules and naming format.*
 
 ---
-*Last updated: 2026-03-10 (Phase 13 — Range discovery complete, two-engine architecture confirmed)*
+*Last updated: 2026-03-10 (Phase 15 — BB Equilibrium promoted, 5-parent portfolio, milestone workflow established)*
