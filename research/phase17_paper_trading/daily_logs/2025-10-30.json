@@ -1,0 +1,19 @@
+{
+  "date": "2025-10-30",
+  "regime": {
+    "vol_regime": "NORMAL",
+    "trend_regime": "TRENDING",
+    "rv_regime": "LOW_RV",
+    "trend_persistence": "GRINDING"
+  },
+  "signals": [],
+  "trades": [],
+  "controller": {
+    "equity": 58926.39000000002,
+    "trailing_floor": 54966.13000000015,
+    "phase": "paper",
+    "daily_pnl": 0,
+    "cumulative_pnl": 8926.39000000002
+  },
+  "notes": ""
+}

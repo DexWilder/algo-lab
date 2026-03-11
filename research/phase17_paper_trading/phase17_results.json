@@ -1,0 +1,110 @@
+{
+  "summary": {
+    "total_pnl": 16377.909999999998,
+    "sharpe": 3.5604634846940866,
+    "calmar": 8.16165426647862,
+    "maxdd": 2006.6900000000023,
+    "maxdd_date": "2024-12-19 00:00:00",
+    "total_trades_baseline": 560,
+    "total_trades_controlled": 391,
+    "trade_retention_pct": 69.82142857142857,
+    "trading_days": 386,
+    "profitable_months": "21/25",
+    "monthly_pct": 84.0,
+    "active_strategy_days": {
+      "ORB-MGC-Long": 314,
+      "VWAP-MNQ-Long": 314,
+      "XB-PB-EMA-MES-Short": 238,
+      "BB-EQ-MGC-Long": 193,
+      "Donchian-MNQ-Long-GRINDING": 386,
+      "PB-MGC-Short": 128
+    },
+    "kill_switch_events": [
+      {
+        "date": "2024-12-12",
+        "reason": "Consecutive losing trading days: 8"
+      }
+    ],
+    "per_strategy_pnl": {
+      "PB-MGC-Short": 780.8399999999999,
+      "ORB-MGC-Long": 2767.120000000001,
+      "VWAP-MNQ-Long": 5299.38,
+      "XB-PB-EMA-MES-Short": 2539.6299999999997,
+      "BB-EQ-MGC-Long": 2714.7200000000003,
+      "Donchian-MNQ-Long-GRINDING": 2276.220000000001
+    },
+    "per_strategy_trades": {
+      "PB-MGC-Short": 9,
+      "ORB-MGC-Long": 62,
+      "VWAP-MNQ-Long": 163,
+      "XB-PB-EMA-MES-Short": 88,
+      "BB-EQ-MGC-Long": 22,
+      "Donchian-MNQ-Long-GRINDING": 47
+    },
+    "filter_stats": {
+      "PB-MGC-Short": {
+        "total": 28,
+        "kept": 9,
+        "regime_blocked": 18,
+        "timing_blocked": 1,
+        "conviction_override": 0,
+        "preferred_window": 9
+      },
+      "ORB-MGC-Long": {
+        "total": 106,
+        "kept": 62,
+        "regime_blocked": 11,
+        "timing_blocked": 33,
+        "conviction_override": 11,
+        "preferred_window": 51
+      },
+      "VWAP-MNQ-Long": {
+        "total": 195,
+        "kept": 163,
+        "regime_blocked": 22,
+        "timing_blocked": 10,
+        "conviction_override": 7,
+        "preferred_window": 156
+      },
+      "XB-PB-EMA-MES-Short": {
+        "total": 123,
+        "kept": 88,
+        "regime_blocked": 31,
+        "timing_blocked": 4,
+        "conviction_override": 11,
+        "preferred_window": 77
+      },
+      "BB-EQ-MGC-Long": {
+        "total": 60,
+        "kept": 22,
+        "regime_blocked": 37,
+        "timing_blocked": 1,
+        "conviction_override": 0,
+        "preferred_window": 22
+      },
+      "Donchian-MNQ-Long-GRINDING": {
+        "total": 48,
+        "kept": 47,
+        "regime_blocked": 0,
+        "timing_blocked": 1,
+        "conviction_override": 0,
+        "preferred_window": 47
+      }
+    }
+  },
+  "kill_switch_final": {
+    "active": false,
+    "reason": "Consecutive losing trading days: 8",
+    "triggered_at": "2024-12-12",
+    "daily_loss_limit": 800.0,
+    "trailing_dd_limit": 4000.0,
+    "consecutive_loss_limit": 8,
+    "correlated_loss_threshold": 500.0,
+    "daily_pnl": -245.23,
+    "equity_hwm": 66623.1400000002,
+    "current_equity": 66377.9100000002,
+    "consecutive_losses": 1,
+    "strategies_losing_today": []
+  },
+  "prop_result": null
+}

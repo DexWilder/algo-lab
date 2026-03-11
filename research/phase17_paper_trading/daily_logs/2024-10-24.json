@@ -1,0 +1,19 @@
+{
+  "date": "2024-10-24",
+  "regime": {
+    "vol_regime": "NORMAL",
+    "trend_regime": "RANGING",
+    "rv_regime": "LOW_RV",
+    "trend_persistence": "CHOPPY"
+  },
+  "signals": [],
+  "trades": [],
+  "controller": {
+    "equity": 50850.14,
+    "trailing_floor": 48485.54000000001,
+    "phase": "paper",
+    "daily_pnl": 0,
+    "cumulative_pnl": 850.1400000000012
+  },
+  "notes": ""
+}

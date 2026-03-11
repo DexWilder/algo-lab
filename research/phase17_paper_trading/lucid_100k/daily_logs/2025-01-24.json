@@ -1,0 +1,30 @@
+{
+  "date": "2025-01-24",
+  "regime": {
+    "vol_regime": "HIGH_VOL",
+    "trend_regime": "TRENDING",
+    "rv_regime": "NORMAL_RV",
+    "trend_persistence": "CHOPPY"
+  },
+  "signals": [],
+  "trades": [
+    {
+      "strategy": "VWAP-MNQ-Long",
+      "entry_time": "2025-01-24 10:05:00",
+      "entry_price": 0,
+      "exit_time": "2025-01-24 10:40:00",
+      "exit_price": 0,
+      "direction": "long",
+      "pnl": -73.74,
+      "exit_reason": "backtest"
+    }
+  ],
+  "controller": {
+    "equity": 50601.0,
+    "trailing_floor": 48485.54000000001,
+    "phase": "paper",
+    "daily_pnl": -73.74,
+    "cumulative_pnl": 601.0000000000009
+  },
+  "notes": ""
+}

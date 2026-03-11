@@ -1,0 +1,30 @@
+{
+  "date": "2026-01-16",
+  "regime": {
+    "vol_regime": "HIGH_VOL",
+    "trend_regime": "RANGING",
+    "rv_regime": "LOW_RV",
+    "trend_persistence": "CHOPPY"
+  },
+  "signals": [],
+  "trades": [
+    {
+      "strategy": "BB-EQ-MGC-Long",
+      "entry_time": "2026-01-16 10:45:00",
+      "entry_price": 0,
+      "exit_time": "2026-01-16 11:25:00",
+      "exit_price": 0,
+      "direction": "long",
+      "pnl": 376.76,
+      "exit_reason": "backtest"
+    }
+  ],
+  "controller": {
+    "equity": 61774.41000000003,
+    "trailing_floor": 57774.41000000003,
+    "phase": "paper",
+    "daily_pnl": 376.76,
+    "cumulative_pnl": 11774.41000000003
+  },
+  "notes": ""
+}

@@ -1,0 +1,19 @@
+{
+  "date": "2024-05-29",
+  "regime": {
+    "vol_regime": "HIGH_VOL",
+    "trend_regime": "RANGING",
+    "rv_regime": "NORMAL_RV",
+    "trend_persistence": "CHOPPY"
+  },
+  "signals": [],
+  "trades": [],
+  "controller": {
+    "equity": 50232.09,
+    "trailing_floor": 46328.280000000006,
+    "phase": "paper",
+    "daily_pnl": 0,
+    "cumulative_pnl": 232.08999999999995
+  },
+  "notes": ""
+}

@@ -1,0 +1,19 @@
+{
+  "date": "2026-01-30",
+  "regime": {
+    "vol_regime": "HIGH_VOL",
+    "trend_regime": "RANGING",
+    "rv_regime": "NORMAL_RV",
+    "trend_persistence": "CHOPPY"
+  },
+  "signals": [],
+  "trades": [],
+  "controller": {
+    "equity": 63757.72000000003,
+    "trailing_floor": 59757.7200000002,
+    "phase": "paper",
+    "daily_pnl": 0,
+    "cumulative_pnl": 13757.720000000032
+  },
+  "notes": ""
+}

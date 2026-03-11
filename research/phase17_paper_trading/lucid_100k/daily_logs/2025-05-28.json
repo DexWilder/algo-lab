@@ -1,0 +1,40 @@
+{
+  "date": "2025-05-28",
+  "regime": {
+    "vol_regime": "HIGH_VOL",
+    "trend_regime": "TRENDING",
+    "rv_regime": "NORMAL_RV",
+    "trend_persistence": "CHOPPY"
+  },
+  "signals": [],
+  "trades": [
+    {
+      "strategy": "PB-MGC-Short",
+      "entry_time": "2025-05-28 10:10:00",
+      "entry_price": 0,
+      "exit_time": "2025-05-28 11:05:00",
+      "exit_price": 0,
+      "direction": "short",
+      "pnl": 82.76,
+      "exit_reason": "backtest"
+    },
+    {
+      "strategy": "VWAP-MNQ-Long",
+      "entry_time": "2025-05-28 14:20:00",
+      "entry_price": 0,
+      "exit_time": "2025-05-28 14:55:00",
+      "exit_price": 0,
+      "direction": "long",
+      "pnl": -88.74,
+      "exit_reason": "backtest"
+    }
+  ],
+  "controller": {
+    "equity": 56524.75000000001,
+    "trailing_floor": 52610.970000000096,
+    "phase": "paper",
+    "daily_pnl": -5.97999999999999,
+    "cumulative_pnl": 6524.750000000007
+  },
+  "notes": ""
+}

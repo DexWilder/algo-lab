@@ -1,0 +1,30 @@
+{
+  "date": "2024-12-31",
+  "regime": {
+    "vol_regime": "HIGH_VOL",
+    "trend_regime": "TRENDING",
+    "rv_regime": "HIGH_RV",
+    "trend_persistence": "CHOPPY"
+  },
+  "signals": [],
+  "trades": [
+    {
+      "strategy": "XB-PB-EMA-MES-Short",
+      "entry_time": "2024-12-31 09:55:00",
+      "entry_price": 0,
+      "exit_time": "2024-12-31 10:05:00",
+      "exit_price": 0,
+      "direction": "short",
+      "pnl": -31.24,
+      "exit_reason": "backtest"
+    }
+  ],
+  "controller": {
+    "equity": 50560.380000000005,
+    "trailing_floor": 48485.54000000001,
+    "phase": "paper",
+    "daily_pnl": -31.24,
+    "cumulative_pnl": 560.380000000001
+  },
+  "notes": ""
+}

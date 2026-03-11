@@ -1,0 +1,40 @@
+{
+  "date": "2024-07-01",
+  "regime": {
+    "vol_regime": "NORMAL",
+    "trend_regime": "TRENDING",
+    "rv_regime": "LOW_RV",
+    "trend_persistence": "CHOPPY"
+  },
+  "signals": [],
+  "trades": [
+    {
+      "strategy": "VWAP-MNQ-Long",
+      "entry_time": "2024-07-01 11:45:00",
+      "entry_price": 0,
+      "exit_time": "2024-07-01 14:35:00",
+      "exit_price": 0,
+      "direction": "long",
+      "pnl": 164.76,
+      "exit_reason": "backtest"
+    },
+    {
+      "strategy": "Donchian-MNQ-Long-GRINDING",
+      "entry_time": "2024-07-01 12:10:00",
+      "entry_price": 0,
+      "exit_time": "2024-07-01 15:35:00",
+      "exit_price": 0,
+      "direction": "long",
+      "pnl": 40.76,
+      "exit_reason": "backtest"
+    }
+  ],
+  "controller": {
+    "equity": 50600.77,
+    "trailing_floor": 46830.67000000001,
+    "phase": "paper",
+    "daily_pnl": 205.51999999999998,
+    "cumulative_pnl": 600.7699999999998
+  },
+  "notes": ""
+}

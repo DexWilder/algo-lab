@@ -1,0 +1,40 @@
+{
+  "date": "2025-02-24",
+  "regime": {
+    "vol_regime": "NORMAL",
+    "trend_regime": "TRENDING",
+    "rv_regime": "NORMAL_RV",
+    "trend_persistence": "CHOPPY"
+  },
+  "signals": [],
+  "trades": [
+    {
+      "strategy": "VWAP-MNQ-Long",
+      "entry_time": "2025-02-24 12:55:00",
+      "entry_price": 0,
+      "exit_time": "2025-02-24 14:15:00",
+      "exit_price": 0,
+      "direction": "long",
+      "pnl": -25.74,
+      "exit_reason": "backtest"
+    },
+    {
+      "strategy": "XB-PB-EMA-MES-Short",
+      "entry_time": "2025-02-24 11:40:00",
+      "entry_price": 0,
+      "exit_time": "2025-02-24 11:45:00",
+      "exit_price": 0,
+      "direction": "short",
+      "pnl": -47.49,
+      "exit_reason": "backtest"
+    }
+  ],
+  "controller": {
+    "equity": 51457.61,
+    "trailing_floor": 48485.54000000001,
+    "phase": "paper",
+    "daily_pnl": -73.23,
+    "cumulative_pnl": 1457.6100000000008
+  },
+  "notes": ""
+}

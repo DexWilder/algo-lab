@@ -1,0 +1,40 @@
+{
+  "date": "2024-07-25",
+  "regime": {
+    "vol_regime": "HIGH_VOL",
+    "trend_regime": "TRENDING",
+    "rv_regime": "HIGH_RV",
+    "trend_persistence": "CHOPPY"
+  },
+  "signals": [],
+  "trades": [
+    {
+      "strategy": "PB-MGC-Short",
+      "entry_time": "2024-07-25 09:05:00",
+      "entry_price": 0,
+      "exit_time": "2024-07-25 09:20:00",
+      "exit_price": 0,
+      "direction": "short",
+      "pnl": -37.24,
+      "exit_reason": "backtest"
+    },
+    {
+      "strategy": "XB-PB-EMA-MES-Short",
+      "entry_time": "2024-07-25 10:40:00",
+      "entry_price": 0,
+      "exit_time": "2024-07-25 10:55:00",
+      "exit_price": 0,
+      "direction": "short",
+      "pnl": -77.49,
+      "exit_reason": "backtest"
+    }
+  ],
+  "controller": {
+    "equity": 51881.95,
+    "trailing_floor": 48246.630000000005,
+    "phase": "paper",
+    "daily_pnl": -114.72999999999999,
+    "cumulative_pnl": 1881.9500000000007
+  },
+  "notes": ""
+}

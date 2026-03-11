@@ -1,0 +1,40 @@
+{
+  "date": "2024-05-17",
+  "regime": {
+    "vol_regime": "HIGH_VOL",
+    "trend_regime": "TRENDING",
+    "rv_regime": "LOW_RV",
+    "trend_persistence": "CHOPPY"
+  },
+  "signals": [],
+  "trades": [
+    {
+      "strategy": "ORB-MGC-Long",
+      "entry_time": "2024-05-17 10:55:00",
+      "entry_price": 0,
+      "exit_time": "2024-05-17 15:20:00",
+      "exit_price": 0,
+      "direction": "long",
+      "pnl": 0.76,
+      "exit_reason": "backtest"
+    },
+    {
+      "strategy": "VWAP-MNQ-Long",
+      "entry_time": "2024-05-17 11:10:00",
+      "entry_price": 0,
+      "exit_time": "2024-05-17 11:50:00",
+      "exit_price": 0,
+      "direction": "long",
+      "pnl": -63.24,
+      "exit_reason": "backtest"
+    }
+  ],
+  "controller": {
+    "equity": 50051.73,
+    "trailing_floor": 46328.280000000006,
+    "phase": "paper",
+    "daily_pnl": -62.480000000000004,
+    "cumulative_pnl": 51.72999999999993
+  },
+  "notes": ""
+}

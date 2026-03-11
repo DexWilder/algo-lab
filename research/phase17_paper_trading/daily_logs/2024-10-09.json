@@ -1,0 +1,30 @@
+{
+  "date": "2024-10-09",
+  "regime": {
+    "vol_regime": "NORMAL",
+    "trend_regime": "TRENDING",
+    "rv_regime": "LOW_RV",
+    "trend_persistence": "CHOPPY"
+  },
+  "signals": [],
+  "trades": [
+    {
+      "strategy": "Donchian-MNQ-Long-GRINDING",
+      "entry_time": "2024-10-09 10:20:00",
+      "entry_price": 0,
+      "exit_time": "2024-10-09 15:35:00",
+      "exit_price": 0,
+      "direction": "long",
+      "pnl": 280.26,
+      "exit_reason": "backtest"
+    }
+  ],
+  "controller": {
+    "equity": 50958.6,
+    "trailing_floor": 48485.54000000001,
+    "phase": "paper",
+    "daily_pnl": 280.26,
+    "cumulative_pnl": 958.6000000000013
+  },
+  "notes": ""
+}

@@ -1,0 +1,19 @@
+{
+  "date": "2025-09-23",
+  "regime": {
+    "vol_regime": "LOW_VOL",
+    "trend_regime": "TRENDING",
+    "rv_regime": "LOW_RV",
+    "trend_persistence": "GRINDING"
+  },
+  "signals": [],
+  "trades": [],
+  "controller": {
+    "equity": 58716.70000000001,
+    "trailing_floor": 54716.70000000014,
+    "phase": "paper",
+    "daily_pnl": 0,
+    "cumulative_pnl": 8716.700000000015
+  },
+  "notes": ""
+}

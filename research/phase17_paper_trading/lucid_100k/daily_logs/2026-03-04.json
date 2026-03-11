@@ -1,0 +1,30 @@
+{
+  "date": "2026-03-04",
+  "regime": {
+    "vol_regime": "HIGH_VOL",
+    "trend_regime": "RANGING",
+    "rv_regime": "NORMAL_RV",
+    "trend_persistence": "CHOPPY"
+  },
+  "signals": [],
+  "trades": [
+    {
+      "strategy": "PB-MGC-Short",
+      "entry_time": "2026-03-04 09:50:00",
+      "entry_price": 0,
+      "exit_time": "2026-03-04 13:15:00",
+      "exit_price": 0,
+      "direction": "short",
+      "pnl": 286.76,
+      "exit_reason": "backtest"
+    }
+  ],
+  "controller": {
+    "equity": 66356.38000000003,
+    "trailing_floor": 62356.380000000034,
+    "phase": "paper",
+    "daily_pnl": 286.76,
+    "cumulative_pnl": 16356.380000000036
+  },
+  "notes": ""
+}

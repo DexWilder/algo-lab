@@ -1,0 +1,50 @@
+{
+  "date": "2025-09-02",
+  "regime": {
+    "vol_regime": "NORMAL",
+    "trend_regime": "RANGING",
+    "rv_regime": "LOW_RV",
+    "trend_persistence": "CHOPPY"
+  },
+  "signals": [],
+  "trades": [
+    {
+      "strategy": "ORB-MGC-Long",
+      "entry_time": "2025-09-02 10:10:00",
+      "entry_price": 0,
+      "exit_time": "2025-09-02 12:15:00",
+      "exit_price": 0,
+      "direction": "long",
+      "pnl": 313.76,
+      "exit_reason": "backtest"
+    },
+    {
+      "strategy": "Donchian-MNQ-Long-GRINDING",
+      "entry_time": "2025-09-01 09:55:00",
+      "entry_price": 0,
+      "exit_time": "2025-09-02 00:05:00",
+      "exit_price": 0,
+      "direction": "long",
+      "pnl": -100.74,
+      "exit_reason": "backtest"
+    },
+    {
+      "strategy": "Donchian-MNQ-Long-GRINDING",
+      "entry_time": "2025-09-02 13:35:00",
+      "entry_price": 0,
+      "exit_time": "2025-09-02 15:35:00",
+      "exit_price": 0,
+      "direction": "long",
+      "pnl": 83.76,
+      "exit_reason": "backtest"
+    }
+  ],
+  "controller": {
+    "equity": 58118.06000000001,
+    "trailing_floor": 54118.06000000001,
+    "phase": "paper",
+    "daily_pnl": 296.78,
+    "cumulative_pnl": 8118.060000000013
+  },
+  "notes": ""
+}

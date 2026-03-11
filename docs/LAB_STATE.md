@@ -257,6 +257,7 @@ Stability score: 9.5/10. Walk-forward: PASS. Gold-only (asset robustness 0.5 pen
 - [x] Prop account simulation engine (multi-account, payout cycles, income projections, stress tests)
 - [x] Range strategy discovery pipeline (two-tier gate, RANGING_EDGE_SCORE, portfolio usefulness override)
 - [x] Strategy Controller (regime gate + soft timing + portfolio coordination)
+- [x] Paper Trading Engine (full 6-strategy pipeline + kill switch + daily state tracking)
 - [ ] HMM regime detection
 - [ ] Alternative data filters (COT, GVZ)
 - [ ] Execution infrastructure (Tradovate/Rithmic API)
@@ -302,14 +303,14 @@ Stability score: 9.5/10. Walk-forward: PASS. Gold-only (asset robustness 0.5 pen
 
 ## Next Milestone
 
-**Phase 16.1: Controller Tuning — Reduce Path-Specific MaxDD**
+**Phase 18: Forward Paper Trading / Live Broker Integration**
 
 ### Immediate Priorities
 
-1. **Phase 16.1 — Controller Tuning**
-   - Investigate Dec 2024 drawdown cluster ($2,007 MaxDD)
-   - Tune PB and BB Equilibrium controller aggressiveness (too much filtering)
-   - Goal: preserve Sharpe 4.0+ and monthly 84%+ while reducing realized MaxDD
+1. **Forward Paper Trading**
+   - Run paper trading engine on new data as it arrives
+   - Validate signals match backtest expectations in real time
+   - Goal: 2+ weeks clean forward run before live deployment
 
 2. **XB-ORB-EMA-Ladder: Resolve MC ruin failure**
    - 9.0/10 stability, only fails MC ruin at $2K (MNQ sizing issue, MaxDD=$2,331)
@@ -377,6 +378,8 @@ Stability score: 9.5/10. Walk-forward: PASS. Gold-only (asset robustness 0.5 pen
 | Phase 14 — Gold MR Refinement | Complete | 4 candidates tested, BB Equilibrium best (PROBATION → refinement) |
 | Phase 15 — Gold Snapback Engine | Complete | BB Equilibrium PROMOTED to 5th parent (9.5/10, EMA-15, Trail-1.5) |
 | Phase 16 — Strategy Controller | Complete | Sharpe 3.59→4.04, MC ruin 4.6%→1.6%, 4/5 verdict PASS |
+| Phase 16.1 — Controller Tuning | Complete | Original config confirmed optimal. Loosening degrades all metrics. |
+| Phase 17 — Paper Trading Architecture | Complete | 7/8 validation PASS, Lucid 100K PASSED (locked 2025-04-07) |
 
 ## Milestone Tags
 
@@ -384,8 +387,9 @@ Stability score: 9.5/10. Walk-forward: PASS. Gold-only (asset robustness 0.5 pen
 |-----|------|-------------|
 | `v0.15-phase15-gold-snapback-parent` | 2026-03-10 | BB Equilibrium promoted to 5th parent. 6-strategy portfolio: Sharpe 3.89, Calmar 11.65. |
 | `v0.16-phase16-strategy-controller` | 2026-03-11 | Strategy Controller: Sharpe 4.04, MC ruin 1.6%, 84% monthly. Controller 4/5 PASS. |
+| `v0.17-phase17-paper-trading-engine` | 2026-03-11 | Paper Trading Engine: 7/8 validation, Lucid 100K PASSED, kill switch validated. |
 
 *See `docs/release_workflow.md` for milestone creation rules and naming format.*
 
 ---
-*Last updated: 2026-03-11 (Phase 16 — Strategy Controller prototype, controller-managed portfolio Sharpe 4.04)*
+*Last updated: 2026-03-11 (Phase 17 — Paper Trading Engine validated, Lucid 100K PASSED)*

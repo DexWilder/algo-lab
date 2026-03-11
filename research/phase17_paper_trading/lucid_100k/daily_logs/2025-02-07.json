@@ -1,0 +1,19 @@
+{
+  "date": "2025-02-07",
+  "regime": {
+    "vol_regime": "HIGH_VOL",
+    "trend_regime": "RANGING",
+    "rv_regime": "HIGH_RV",
+    "trend_persistence": "CHOPPY"
+  },
+  "signals": [],
+  "trades": [],
+  "controller": {
+    "equity": 51039.54,
+    "trailing_floor": 48485.54000000001,
+    "phase": "paper",
+    "daily_pnl": 0,
+    "cumulative_pnl": 1039.5400000000009
+  },
+  "notes": ""
+}

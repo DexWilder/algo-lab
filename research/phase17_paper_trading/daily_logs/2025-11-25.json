@@ -1,0 +1,30 @@
+{
+  "date": "2025-11-25",
+  "regime": {
+    "vol_regime": "NORMAL",
+    "trend_regime": "TRENDING",
+    "rv_regime": "HIGH_RV",
+    "trend_persistence": "CHOPPY"
+  },
+  "signals": [],
+  "trades": [
+    {
+      "strategy": "ORB-MGC-Long",
+      "entry_time": "2025-11-25 12:05:00",
+      "entry_price": 0,
+      "exit_time": "2025-11-25 15:20:00",
+      "exit_price": 0,
+      "direction": "long",
+      "pnl": -108.24,
+      "exit_reason": "backtest"
+    }
+  ],
+  "controller": {
+    "equity": 59616.58000000002,
+    "trailing_floor": 55724.82000000016,
+    "phase": "paper",
+    "daily_pnl": -108.24,
+    "cumulative_pnl": 9616.580000000024
+  },
+  "notes": ""
+}

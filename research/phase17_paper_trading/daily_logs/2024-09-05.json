@@ -1,0 +1,50 @@
+{
+  "date": "2024-09-05",
+  "regime": {
+    "vol_regime": "HIGH_VOL",
+    "trend_regime": "TRENDING",
+    "rv_regime": "HIGH_RV",
+    "trend_persistence": "CHOPPY"
+  },
+  "signals": [],
+  "trades": [
+    {
+      "strategy": "ORB-MGC-Long",
+      "entry_time": "2024-09-05 10:20:00",
+      "entry_price": 0,
+      "exit_time": "2024-09-05 10:45:00",
+      "exit_price": 0,
+      "direction": "long",
+      "pnl": -82.24,
+      "exit_reason": "backtest"
+    },
+    {
+      "strategy": "VWAP-MNQ-Long",
+      "entry_time": "2024-09-05 10:50:00",
+      "entry_price": 0,
+      "exit_time": "2024-09-05 11:25:00",
+      "exit_price": 0,
+      "direction": "long",
+      "pnl": -184.24,
+      "exit_reason": "backtest"
+    },
+    {
+      "strategy": "XB-PB-EMA-MES-Short",
+      "entry_time": "2024-09-05 09:50:00",
+      "entry_price": 0,
+      "exit_time": "2024-09-05 10:05:00",
+      "exit_price": 0,
+      "direction": "short",
+      "pnl": -91.24,
+      "exit_reason": "backtest"
+    }
+  ],
+  "controller": {
+    "equity": 51178.44,
+    "trailing_floor": 48485.54000000001,
+    "phase": "paper",
+    "daily_pnl": -357.72,
+    "cumulative_pnl": 1178.4400000000014
+  },
+  "notes": ""
+}

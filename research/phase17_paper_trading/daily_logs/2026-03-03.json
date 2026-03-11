@@ -1,0 +1,40 @@
+{
+  "date": "2026-03-03",
+  "regime": {
+    "vol_regime": "HIGH_VOL",
+    "trend_regime": "TRENDING",
+    "rv_regime": "NORMAL_RV",
+    "trend_persistence": "CHOPPY"
+  },
+  "signals": [],
+  "trades": [
+    {
+      "strategy": "XB-PB-EMA-MES-Short",
+      "entry_time": "2026-03-03 10:45:00",
+      "entry_price": 0,
+      "exit_time": "2026-03-03 11:05:00",
+      "exit_price": 0,
+      "direction": "short",
+      "pnl": -114.99,
+      "exit_reason": "backtest"
+    },
+    {
+      "strategy": "BB-EQ-MGC-Long",
+      "entry_time": "2026-03-03 10:05:00",
+      "entry_price": 0,
+      "exit_time": "2026-03-03 11:25:00",
+      "exit_price": 0,
+      "direction": "long",
+      "pnl": 892.76,
+      "exit_reason": "backtest"
+    }
+  ],
+  "controller": {
+    "equity": 66069.62000000004,
+    "trailing_floor": 62069.62000000004,
+    "phase": "paper",
+    "daily_pnl": 777.77,
+    "cumulative_pnl": 16069.620000000035
+  },
+  "notes": ""
+}

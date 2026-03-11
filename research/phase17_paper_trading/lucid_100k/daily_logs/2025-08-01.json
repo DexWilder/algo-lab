@@ -1,0 +1,30 @@
+{
+  "date": "2025-08-01",
+  "regime": {
+    "vol_regime": "HIGH_VOL",
+    "trend_regime": "TRENDING",
+    "rv_regime": "NORMAL_RV",
+    "trend_persistence": "CHOPPY"
+  },
+  "signals": [],
+  "trades": [
+    {
+      "strategy": "XB-PB-EMA-MES-Short",
+      "entry_time": "2025-08-01 10:40:00",
+      "entry_price": 0,
+      "exit_time": "2025-08-01 11:45:00",
+      "exit_price": 0,
+      "direction": "short",
+      "pnl": -32.49,
+      "exit_reason": "backtest"
+    }
+  ],
+  "controller": {
+    "equity": 57326.720000000016,
+    "trailing_floor": 53359.21000000012,
+    "phase": "paper",
+    "daily_pnl": -32.49,
+    "cumulative_pnl": 7326.720000000012
+  },
+  "notes": ""
+}

@@ -1,0 +1,40 @@
+{
+  "date": "2025-05-14",
+  "regime": {
+    "vol_regime": "NORMAL",
+    "trend_regime": "TRENDING",
+    "rv_regime": "NORMAL_RV",
+    "trend_persistence": "CHOPPY"
+  },
+  "signals": [],
+  "trades": [
+    {
+      "strategy": "VWAP-MNQ-Long",
+      "entry_time": "2025-05-14 10:30:00",
+      "entry_price": 0,
+      "exit_time": "2025-05-14 12:45:00",
+      "exit_price": 0,
+      "direction": "long",
+      "pnl": 50.26,
+      "exit_reason": "backtest"
+    },
+    {
+      "strategy": "Donchian-MNQ-Long-GRINDING",
+      "entry_time": "2025-05-14 09:35:00",
+      "entry_price": 0,
+      "exit_time": "2025-05-14 15:35:00",
+      "exit_price": 0,
+      "direction": "long",
+      "pnl": -83.24,
+      "exit_reason": "backtest"
+    }
+  ],
+  "controller": {
+    "equity": 55560.87,
+    "trailing_floor": 51593.8500000001,
+    "phase": "paper",
+    "daily_pnl": -32.98,
+    "cumulative_pnl": 5560.870000000004
+  },
+  "notes": ""
+}

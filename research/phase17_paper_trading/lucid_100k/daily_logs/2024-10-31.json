@@ -1,0 +1,40 @@
+{
+  "date": "2024-10-31",
+  "regime": {
+    "vol_regime": "NORMAL",
+    "trend_regime": "TRENDING",
+    "rv_regime": "LOW_RV",
+    "trend_persistence": "CHOPPY"
+  },
+  "signals": [],
+  "trades": [
+    {
+      "strategy": "XB-PB-EMA-MES-Short",
+      "entry_time": "2024-10-31 10:25:00",
+      "entry_price": 0,
+      "exit_time": "2024-10-31 11:25:00",
+      "exit_price": 0,
+      "direction": "short",
+      "pnl": 83.76,
+      "exit_reason": "backtest"
+    },
+    {
+      "strategy": "BB-EQ-MGC-Long",
+      "entry_time": "2024-10-31 10:10:00",
+      "entry_price": 0,
+      "exit_time": "2024-10-31 10:35:00",
+      "exit_price": 0,
+      "direction": "long",
+      "pnl": -75.24,
+      "exit_reason": "backtest"
+    }
+  ],
+  "controller": {
+    "equity": 50858.66,
+    "trailing_floor": 48485.54000000001,
+    "phase": "paper",
+    "daily_pnl": 8.52000000000001,
+    "cumulative_pnl": 858.6600000000012
+  },
+  "notes": ""
+}

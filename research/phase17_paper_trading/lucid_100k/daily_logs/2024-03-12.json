@@ -1,0 +1,30 @@
+{
+  "date": "2024-03-12",
+  "regime": {
+    "vol_regime": "NORMAL",
+    "trend_regime": "TRENDING",
+    "rv_regime": "NORMAL_RV",
+    "trend_persistence": "CHOPPY"
+  },
+  "signals": [],
+  "trades": [
+    {
+      "strategy": "BB-EQ-MGC-Long",
+      "entry_time": "2024-03-12 14:05:00",
+      "entry_price": 0,
+      "exit_time": "2024-03-12 14:55:00",
+      "exit_price": 0,
+      "direction": "long",
+      "pnl": -26.24,
+      "exit_reason": "backtest"
+    }
+  ],
+  "controller": {
+    "equity": 50302.04,
+    "trailing_floor": 46328.280000000006,
+    "phase": "paper",
+    "daily_pnl": -26.24,
+    "cumulative_pnl": 302.03999999999996
+  },
+  "notes": ""
+}

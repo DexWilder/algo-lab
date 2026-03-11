@@ -1,0 +1,30 @@
+{
+  "date": "2025-11-11",
+  "regime": {
+    "vol_regime": "NORMAL",
+    "trend_regime": "TRENDING",
+    "rv_regime": "NORMAL_RV",
+    "trend_persistence": "GRINDING"
+  },
+  "signals": [],
+  "trades": [
+    {
+      "strategy": "BB-EQ-MGC-Long",
+      "entry_time": "2025-11-11 10:35:00",
+      "entry_price": 0,
+      "exit_time": "2025-11-11 12:35:00",
+      "exit_price": 0,
+      "direction": "long",
+      "pnl": 76.76,
+      "exit_reason": "backtest"
+    }
+  ],
+  "controller": {
+    "equity": 59240.21000000002,
+    "trailing_floor": 55240.21000000002,
+    "phase": "paper",
+    "daily_pnl": 76.76,
+    "cumulative_pnl": 9240.210000000021
+  },
+  "notes": ""
+}
