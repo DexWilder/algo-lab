@@ -69,7 +69,22 @@ def color_pnl(val):
 st.sidebar.title("Controls")
 if st.sidebar.button("Refresh"):
     st.rerun()
-st.sidebar.caption(f"Last update: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+st.sidebar.caption(f"Dashboard refreshed: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+
+# Show data update state if available
+_data_state_path = ROOT / "state" / "data_update_state.json"
+if _data_state_path.exists():
+    try:
+        with open(_data_state_path) as _f:
+            _ds = json.load(_f)
+        st.sidebar.markdown("**Last Data Update**")
+        st.sidebar.caption(_ds.get("last_update", "unknown"))
+        for _sym, _info in _ds.get("symbols", {}).items():
+            _bars = _info.get("new_bars", 0)
+            _status = _info.get("status", "?")
+            st.sidebar.caption(f"  {_sym}: {_status} (+{_bars} bars)")
+    except Exception:
+        pass
 
 # ---------------------------------------------------------------------------
 # Load data
@@ -81,10 +96,79 @@ signal_df = read_csv_safe(SIGNAL_LOG)
 account = read_json_safe(ACCOUNT_STATE)
 
 # ---------------------------------------------------------------------------
-# Title
+# Health status + Title
 # ---------------------------------------------------------------------------
 
+def compute_health_status() -> tuple[str, str]:
+    """Determine system health: HEALTHY, WARNING, or CRITICAL."""
+    if account is None and daily_df is None:
+        return "UNKNOWN", "No data available yet"
+
+    reasons = []
+
+    # Check kill switch
+    if daily_df is not None and "kill_switch" in daily_df.columns:
+        ks = daily_df["kill_switch"].iloc[-1]
+        if isinstance(ks, str) and ks != "OK":
+            return "CRITICAL", f"Kill switch: {ks}"
+
+    # Check trailing DD
+    dd = 0
+    if daily_df is not None and "trailing_dd" in daily_df.columns:
+        dd = float(daily_df["trailing_dd"].iloc[-1])
+    elif account is not None:
+        dd = account.get("equity_hwm", 0) - account.get("equity", 0)
+    if dd > 2000:
+        return "CRITICAL", f"Trailing DD: ${dd:,.0f}"
+    if dd > 1000:
+        reasons.append(f"Trailing DD: ${dd:,.0f}")
+
+    # Check data freshness
+    if account is not None:
+        last_run = account.get("last_run")
+        if last_run:
+            last_dt = datetime.strptime(last_run, "%Y-%m-%d %H:%M:%S")
+            days_stale = (datetime.now() - last_dt).days
+            if days_stale > 2:
+                return "CRITICAL", f"Data stale: last run {days_stale} days ago"
+
+    # Check consecutive losses
+    if account is not None:
+        consec = account.get("consecutive_losses", 0)
+        if consec >= 4:
+            reasons.append(f"Consecutive losses: {consec}")
+
+    # Check zero trades
+    if daily_df is not None and "trades_controlled" in daily_df.columns:
+        if int(daily_df["trades_controlled"].iloc[-1]) == 0:
+            reasons.append("0 trades on latest day")
+
+    if reasons:
+        return "WARNING", "; ".join(reasons)
+    return "HEALTHY", "All systems normal"
+
+
+health_status, health_detail = compute_health_status()
+
 st.title("Forward Paper Trading Monitor")
+
+# Health banner
+if health_status == "HEALTHY":
+    st.success(f"HEALTHY — {health_detail}")
+elif health_status == "WARNING":
+    st.warning(f"WARNING — {health_detail}")
+elif health_status == "CRITICAL":
+    st.error(f"CRITICAL — {health_detail}")
+else:
+    st.info(f"Status unknown — {health_detail}")
+
+# Last processed info
+if account is not None:
+    bars = account.get("last_processed_bar", {})
+    last_run = account.get("last_run", "never")
+    run_count = account.get("run_count", 0)
+    bar_summary = " | ".join(f"{a}: {t[-16:]}" for a, t in bars.items()) if bars else "none"
+    st.caption(f"Run #{run_count} | Last run: {last_run} | Last bars: {bar_summary}")
 
 # ---------------------------------------------------------------------------
 # Top row — Key metrics

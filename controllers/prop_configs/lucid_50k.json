@@ -1,0 +1,37 @@
+{
+  "name": "Lucid 50K Straight-to-Funded",
+  "account_size": 50000,
+  "trailing_drawdown": 2500,
+  "trailing_type": "eod",
+  "daily_loss_limit": null,
+  "max_contracts": 5,
+  "consistency_rule": null,
+  "lock_profit": 1800,
+  "lock_behavior": "trailing_stops_at_lock",
+  "phases": {
+    "P1": {
+      "label": "Lock Fast",
+      "profit_range": [0, 1800],
+      "max_contracts": 2,
+      "max_trades_per_day": 2,
+      "max_daily_loss": 400,
+      "max_intraday_dd": 600,
+      "green_lock": 400
+    },
+    "P2": {
+      "label": "Payout Fast",
+      "profit_range": [1800, null],
+      "max_contracts": 3,
+      "max_trades_per_day": 4,
+      "max_daily_loss": 800,
+      "max_intraday_dd": 1200,
+      "profit_lock": 800
+    }
+  },
+  "startup_fee": 0,
+  "monthly_fee": 0,
+  "payout_split": 0.90,
+  "min_payout": 500,
+  "payout_frequency_days": 14,
+  "notes": "Lucid 50K straight-to-funded. EOD trailing DD, locks at +$1,800."
+}

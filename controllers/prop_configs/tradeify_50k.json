@@ -1,0 +1,17 @@
+{
+  "name": "Tradeify 50K",
+  "account_size": 50000,
+  "trailing_drawdown": 2000,
+  "trailing_type": "eod",
+  "daily_loss_limit": 1000,
+  "max_contracts": 5,
+  "consistency_rule": 0.40,
+  "profit_target": 2500,
+  "lock_profit": null,
+  "startup_fee": 99,
+  "monthly_fee": 0,
+  "payout_split": 0.80,
+  "min_payout": 250,
+  "payout_frequency_days": 7,
+  "notes": "Tradeify 50K. $2.5K target, $2K trailing DD, 40% consistency rule, 80/20 split."
+}

@@ -1,0 +1,17 @@
+{
+  "name": "Apex 100K Eval",
+  "account_size": 100000,
+  "trailing_drawdown": 3000,
+  "trailing_type": "eod",
+  "daily_loss_limit": null,
+  "max_contracts": 10,
+  "consistency_rule": 0.30,
+  "profit_target": 6000,
+  "lock_profit": null,
+  "startup_fee": 207,
+  "monthly_fee": 0,
+  "payout_split": 1.00,
+  "min_payout": 500,
+  "payout_frequency_days": 14,
+  "notes": "Apex 100K eval. $6K profit target, $3K trailing DD, 30% consistency rule."
+}

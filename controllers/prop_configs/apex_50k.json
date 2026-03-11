@@ -9,5 +9,10 @@
   "profit_target": 3000,
   "lock_profit": null,
   "phases": null,
+  "startup_fee": 147,
+  "monthly_fee": 0,
+  "payout_split": 1.00,
+  "min_payout": 500,
+  "payout_frequency_days": 14,
   "notes": "Apex 50K eval. $3K profit target, $2.5K trailing DD, 30% consistency rule."
 }
