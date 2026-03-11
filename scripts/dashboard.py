@@ -187,11 +187,14 @@ if trade_df is not None and "strategy" in trade_df.columns and "pnl" in trade_df
         trades="count",
         wins=lambda x: (x > 0).sum(),
         total_pnl="sum",
+        avg_pnl="mean",
     ).reset_index()
     strat_stats["win_rate"] = (strat_stats["wins"] / strat_stats["trades"] * 100).round(1)
     strat_stats["total_pnl"] = strat_stats["total_pnl"].round(2)
-    strat_stats = strat_stats[["strategy", "trades", "win_rate", "total_pnl"]]
-    strat_stats.columns = ["Strategy", "Trades", "Win Rate (%)", "Total PnL ($)"]
+    strat_stats["avg_pnl"] = strat_stats["avg_pnl"].round(2)
+    strat_stats["share"] = (strat_stats["trades"] / strat_stats["trades"].sum() * 100).round(1)
+    strat_stats = strat_stats[["strategy", "trades", "share", "win_rate", "avg_pnl", "total_pnl"]]
+    strat_stats.columns = ["Strategy", "Trades", "Share (%)", "Win Rate (%)", "Avg PnL ($)", "Total PnL ($)"]
     col_b.dataframe(strat_stats, use_container_width=True, hide_index=True)
 else:
     st.info("No trade data yet.")
@@ -214,7 +217,7 @@ if daily_df is not None and "regime" in daily_df.columns:
     if "persistence" in daily_df.columns:
         col_r1.markdown(f"**Persistence:** `{daily_df['persistence'].iloc[-1]}`")
 
-    # Regime distribution
+    # Regime distribution — donut chart + percentage table
     regime_counts = daily_df["regime"].value_counts().reset_index()
     regime_counts.columns = ["regime", "days"]
     fig3 = px.pie(
@@ -226,6 +229,12 @@ if daily_df is not None and "regime" in daily_df.columns:
     )
     fig3.update_layout(height=350, margin=dict(l=20, r=20, t=20, b=20))
     col_r2.plotly_chart(fig3, use_container_width=True)
+
+    # Regime percentage table
+    total_days = regime_counts["days"].sum()
+    regime_counts["pct"] = (regime_counts["days"] / total_days * 100).round(1)
+    regime_counts.columns = ["Regime", "Days", "Share (%)"]
+    col_r1.dataframe(regime_counts, use_container_width=True, hide_index=True)
 else:
     st.info("No regime data yet.")
 
