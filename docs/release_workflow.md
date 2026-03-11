@@ -52,7 +52,7 @@ Create a milestone tag whenever one of these happens:
 Use the milestone script:
 
 ```bash
-./scripts/create_milestone.sh "v0.15-phase15-gold-snapback-parent" "BB Equilibrium promoted to 6th parent"
+./scripts/create_milestone.sh "v0.15-phase15-gold-snapback-parent" "BB Equilibrium promoted to 5th parent"
 ```
 
 The script will:
@@ -64,7 +64,7 @@ The script will:
 ### Manual alternative
 
 ```bash
-git tag -a v0.15-phase15-gold-snapback-parent -m "BB Equilibrium promoted to 6th parent"
+git tag -a v0.15-phase15-gold-snapback-parent -m "BB Equilibrium promoted to 5th parent"
 git push origin v0.15-phase15-gold-snapback-parent
 ```
 
@@ -76,7 +76,7 @@ For major milestones (parent promotions, portfolio restructuring), consider crea
 
 ```bash
 gh release create v0.15-phase15-gold-snapback-parent \
-  --title "Phase 15: Gold Snapback — 6th Parent Promoted" \
+  --title "Phase 15: Gold Snapback — 5th Parent Promoted" \
   --notes "BB Equilibrium refined (EMA-15, Trail-1.5, regime gate). 6-strategy portfolio: Sharpe 3.89, Calmar 11.65."
 ```
 
@@ -108,7 +108,7 @@ Good candidates for zip backups:
 
 | Tag | Date | Description |
 |-----|------|-------------|
-| `v0.15-phase15-gold-snapback-parent` | 2026-03-10 | BB Equilibrium promoted to 6th parent. 6-strategy portfolio: Sharpe 3.89, Calmar 11.65. |
+| `v0.15-phase15-gold-snapback-parent` | 2026-03-10 | BB Equilibrium promoted to 5th parent. 6-strategy portfolio: Sharpe 3.89, Calmar 11.65. |
 
 *Update this table when new milestones are created.*
 
