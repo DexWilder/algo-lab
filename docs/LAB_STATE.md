@@ -128,6 +128,28 @@
 | Monthly | 80% | 84% |
 | Max correlation | r=0.063 | r=0.077 |
 
+### Portfolio Metrics (Phase 16, Strategy Controller: Baseline vs Controller-Managed)
+
+| Metric | Baseline (Always-On) | Controller-Managed | Change |
+|--------|---------------------|-------------------|--------|
+| Total PnL | $17,487 | $16,378 | -6.3% |
+| Sharpe | 3.59 | **4.04** | **+0.45** |
+| Calmar | 10.33 | 8.16 | -2.17 |
+| MaxDD | $1,693 | $2,007 | +$313 |
+| Trades | 560 | **391** | **-30%** |
+| Monthly | 80% | **84%** | **+4%** |
+| Losing months | 5 | **4** | -1 |
+| MC Median MaxDD | $1,171 | **$1,011** | **-14%** |
+| MC P(ruin $2K) | 4.6% | **1.6%** | **-65%** |
+
+**Controller verdict: 4/5 PASS — CONTROLLER IMPROVES PORTFOLIO**
+
+Controller filters: regime gate (blocks avoid_regimes), soft timing (preferred window + conviction override), portfolio coordination (max 4 simultaneous, max 2 per asset, cluster prevention).
+
+Trade filtering: 70% of trades kept. PB 28→9, ORB 106→62, VWAP 195→163, XB-PB 123→88, BB-EQ 60→22, Donchian 48→47.
+
+**Phase 16.1 tuning targets:** Dec 2024 MaxDD cluster, PB/BB Equilibrium filter aggressiveness.
+
 **BB Equilibrium (Gold Snapback) refined params:** EMA_PERIOD=15, ATR_TRAIL_MULT=1.5, BW_MAX_PCT=70, regime gate=avoid NORMAL_TRENDING_HIGH_RV.
 Stability score: 9.5/10. Walk-forward: PASS. Gold-only (asset robustness 0.5 penalty accepted).
 
@@ -234,6 +256,7 @@ Stability score: 9.5/10. Walk-forward: PASS. Gold-only (asset robustness 0.5 pen
 - [x] Portfolio stress testing (leave-one-out, top-trade removal, shuffle Monte Carlo)
 - [x] Prop account simulation engine (multi-account, payout cycles, income projections, stress tests)
 - [x] Range strategy discovery pipeline (two-tier gate, RANGING_EDGE_SCORE, portfolio usefulness override)
+- [x] Strategy Controller (regime gate + soft timing + portfolio coordination)
 - [ ] HMM regime detection
 - [ ] Alternative data filters (COT, GVZ)
 - [ ] Execution infrastructure (Tradovate/Rithmic API)
@@ -279,14 +302,14 @@ Stability score: 9.5/10. Walk-forward: PASS. Gold-only (asset robustness 0.5 pen
 
 ## Next Milestone
 
-**Phase 16: Strategy Controller — Deploy the 6-Strategy Portfolio**
+**Phase 16.1: Controller Tuning — Reduce Path-Specific MaxDD**
 
 ### Immediate Priorities
 
-1. **Strategy Controller (Phase 16)**
-   - Build controller layer to deploy 6 parents with regime gating + vol target sizing
-   - Integrate refined BB Equilibrium params (EMA-15, Trail-1.5, regime gate)
-   - Goal: deployable portfolio stack with prop account compatibility
+1. **Phase 16.1 — Controller Tuning**
+   - Investigate Dec 2024 drawdown cluster ($2,007 MaxDD)
+   - Tune PB and BB Equilibrium controller aggressiveness (too much filtering)
+   - Goal: preserve Sharpe 4.0+ and monthly 84%+ while reducing realized MaxDD
 
 2. **XB-ORB-EMA-Ladder: Resolve MC ruin failure**
    - 9.0/10 stability, only fails MC ruin at $2K (MNQ sizing issue, MaxDD=$2,331)
@@ -353,14 +376,16 @@ Stability score: 9.5/10. Walk-forward: PASS. Gold-only (asset robustness 0.5 pen
 | Phase 13 — Range Strategy Discovery | Complete | 3 MR candidates (all MGC-long), Sess VWAP Fade → probation |
 | Phase 14 — Gold MR Refinement | Complete | 4 candidates tested, BB Equilibrium best (PROBATION → refinement) |
 | Phase 15 — Gold Snapback Engine | Complete | BB Equilibrium PROMOTED to 5th parent (9.5/10, EMA-15, Trail-1.5) |
+| Phase 16 — Strategy Controller | Complete | Sharpe 3.59→4.04, MC ruin 4.6%→1.6%, 4/5 verdict PASS |
 
 ## Milestone Tags
 
 | Tag | Date | Description |
 |-----|------|-------------|
 | `v0.15-phase15-gold-snapback-parent` | 2026-03-10 | BB Equilibrium promoted to 5th parent. 6-strategy portfolio: Sharpe 3.89, Calmar 11.65. |
+| `v0.16-phase16-strategy-controller` | 2026-03-11 | Strategy Controller: Sharpe 4.04, MC ruin 1.6%, 84% monthly. Controller 4/5 PASS. |
 
 *See `docs/release_workflow.md` for milestone creation rules and naming format.*
 
 ---
-*Last updated: 2026-03-10 (Phase 15 — BB Equilibrium promoted, 5-parent portfolio, milestone workflow established)*
+*Last updated: 2026-03-11 (Phase 16 — Strategy Controller prototype, controller-managed portfolio Sharpe 4.04)*

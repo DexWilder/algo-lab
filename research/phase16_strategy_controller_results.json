@@ -1,0 +1,167 @@
+{
+  "baseline": {
+    "total_pnl": 17486.85,
+    "sharpe": 3.589128901913223,
+    "calmar": 10.32744915074056,
+    "maxdd": 1693.2400000000052,
+    "trades": 560,
+    "profitable_months": "20/25",
+    "monthly_pct": 80.0,
+    "trading_days": 386
+  },
+  "controlled": {
+    "total_pnl": 16377.909999999996,
+    "sharpe": 4.038179719738742,
+    "calmar": 8.161654266478617,
+    "maxdd": 2006.6900000000023,
+    "trades": 391,
+    "profitable_months": "21/25",
+    "monthly_pct": 84.0,
+    "trading_days": 304
+  },
+  "filter_stats": {
+    "PB-MGC-Short": {
+      "total": 28,
+      "kept": 9,
+      "regime_blocked": 18,
+      "timing_blocked": 1,
+      "conviction_override": 0,
+      "preferred_window": 9
+    },
+    "ORB-MGC-Long": {
+      "total": 106,
+      "kept": 62,
+      "regime_blocked": 11,
+      "timing_blocked": 33,
+      "conviction_override": 11,
+      "preferred_window": 51
+    },
+    "VWAP-MNQ-Long": {
+      "total": 195,
+      "kept": 163,
+      "regime_blocked": 22,
+      "timing_blocked": 10,
+      "conviction_override": 7,
+      "preferred_window": 156
+    },
+    "XB-PB-EMA-MES-Short": {
+      "total": 123,
+      "kept": 88,
+      "regime_blocked": 31,
+      "timing_blocked": 4,
+      "conviction_override": 11,
+      "preferred_window": 77
+    },
+    "BB-EQ-MGC-Long": {
+      "total": 60,
+      "kept": 22,
+      "regime_blocked": 37,
+      "timing_blocked": 1,
+      "conviction_override": 0,
+      "preferred_window": 22
+    },
+    "Donchian-MNQ-Long-GRINDING": {
+      "total": 48,
+      "kept": 47,
+      "regime_blocked": 0,
+      "timing_blocked": 1,
+      "conviction_override": 0,
+      "preferred_window": 47
+    }
+  },
+  "portfolio_stats": {
+    "PB-MGC-Short": {
+      "pre_coordination": 9,
+      "post_coordination": 9,
+      "coordination_filtered": 0
+    },
+    "ORB-MGC-Long": {
+      "pre_coordination": 62,
+      "post_coordination": 62,
+      "coordination_filtered": 0
+    },
+    "VWAP-MNQ-Long": {
+      "pre_coordination": 163,
+      "post_coordination": 163,
+      "coordination_filtered": 0
+    },
+    "XB-PB-EMA-MES-Short": {
+      "pre_coordination": 88,
+      "post_coordination": 88,
+      "coordination_filtered": 0
+    },
+    "BB-EQ-MGC-Long": {
+      "pre_coordination": 22,
+      "post_coordination": 22,
+      "coordination_filtered": 0
+    },
+    "Donchian-MNQ-Long-GRINDING": {
+      "pre_coordination": 47,
+      "post_coordination": 47,
+      "coordination_filtered": 0
+    }
+  },
+  "per_strategy_pnl": {
+    "PB-MGC-Short": {
+      "baseline_pnl": 676.2800000000001,
+      "controlled_pnl": 780.8399999999999,
+      "baseline_trades": 28,
+      "controlled_trades": 9
+    },
+    "ORB-MGC-Long": {
+      "baseline_pnl": 2678.5599999999995,
+      "controlled_pnl": 2767.120000000001,
+      "baseline_trades": 106,
+      "controlled_trades": 62
+    },
+    "VWAP-MNQ-Long": {
+      "baseline_pnl": 5776.199999999999,
+      "controlled_pnl": 5299.38,
+      "baseline_trades": 195,
+      "controlled_trades": 163
+    },
+    "XB-PB-EMA-MES-Short": {
+      "baseline_pnl": 3058.7300000000005,
+      "controlled_pnl": 2539.6299999999997,
+      "baseline_trades": 123,
+      "controlled_trades": 88
+    },
+    "BB-EQ-MGC-Long": {
+      "baseline_pnl": 3028.6000000000004,
+      "controlled_pnl": 2714.7200000000003,
+      "baseline_trades": 60,
+      "controlled_trades": 22
+    },
+    "Donchian-MNQ-Long-GRINDING": {
+      "baseline_pnl": 2268.4800000000014,
+      "controlled_pnl": 2276.220000000001,
+      "baseline_trades": 48,
+      "controlled_trades": 47
+    }
+  },
+  "time_distribution": {
+    "baseline": {
+      "4": 1,
+      "8": 2,
+      "9": 66,
+      "10": 238,
+      "11": 107,
+      "12": 56,
+      "13": 55,
+      "14": 30,
+      "15": 2,
+      "16": 1,
+      "18": 1,
+      "23": 1
+    },
+    "controlled": {
+      "9": 48,
+      "10": 199,
+      "11": 78,
+      "12": 36,
+      "13": 20,
+      "14": 10
+    }
+  },
+  "verdict_score": 4
+}
