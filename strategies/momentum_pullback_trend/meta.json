@@ -1,0 +1,29 @@
+{
+  "strategy_id": "momentum_pullback_trend",
+  "name": "Momentum Pullback Trend — HTF Trend + Pullback Entries",
+  "version": "1.0",
+  "origin": "Hand-built for bond futures (ZN/ZB), asset-agnostic design",
+  "status": "candidate",
+  "primary_asset": "ZN",
+  "secondary_assets": ["ZB", "MNQ", "MES", "MGC"],
+  "recommended_modes": {
+    "ZN": "both",
+    "ZB": "both"
+  },
+  "timeframe": "5m",
+  "family": "trend",
+  "parameters": {
+    "trend_ema": 200,
+    "pullback_ema": 50,
+    "rsi_len": 20,
+    "rsi_bull_thresh": 55,
+    "rsi_bear_thresh": 45,
+    "atr_len": 20,
+    "sl_atr_mult": 2.0,
+    "tp_atr_mult": 3.0,
+    "trail_activation_r": 1.5,
+    "trail_atr_mult": 1.0,
+    "min_bars_between": 10
+  },
+  "notes": "Bonds trend slowly but persistently. Longer lookbacks and wider ATR multiples vs equity-index pullback strategies. No session filter — bonds trade nearly 24h."
+}
