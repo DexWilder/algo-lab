@@ -182,9 +182,9 @@ if daily_df is not None:
     c3.metric("Today's PnL", f"${latest.get('daily_pnl', 0):,.2f}")
     c4.metric("Trailing DD", f"${latest.get('trailing_dd', 0):,.2f}")
 
-    kill = latest.get("kill_switch", False)
-    kill_label = "TRIGGERED" if kill else "OK"
-    c5.metric("Kill Switch", kill_label)
+    kill = latest.get("kill_switch", "OK")
+    kill_ok = kill == "OK" or kill is False
+    c5.metric("Kill Switch", "OK" if kill_ok else "TRIGGERED")
 elif account is not None:
     c1, c2, c3, c4, c5 = st.columns(5)
     c1.metric("Current Equity", f"${account.get('equity', 0):,.2f}")
@@ -358,7 +358,8 @@ else:
 st.header("Kill Switch")
 
 if daily_df is not None and "kill_switch" in daily_df.columns:
-    kill_active = bool(daily_df["kill_switch"].iloc[-1])
+    kill_val = daily_df["kill_switch"].iloc[-1]
+    kill_active = kill_val != "OK" and kill_val is not False
     if kill_active:
         st.error("KILL SWITCH TRIGGERED — trading halted.")
     else:
