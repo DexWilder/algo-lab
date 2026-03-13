@@ -65,6 +65,21 @@ ASSET_CONFIG = {
     "MES": {"point_value": 5.0, "tick_size": 0.25},
     "MNQ": {"point_value": 2.0, "tick_size": 0.25},
     "MGC": {"point_value": 10.0, "tick_size": 0.10},
+    "M2K": {"point_value": 5.0, "tick_size": 0.10},
+    "MCL": {"point_value": 100.0, "tick_size": 0.01},
+    "ZN":  {"point_value": 1000.0, "tick_size": 0.015625},
+    "ZB":  {"point_value": 1000.0, "tick_size": 0.03125},
+}
+
+# Asset families for robustness testing — test against similar markets
+ASSET_FAMILIES = {
+    "MES": ["MNQ", "MGC"],
+    "MNQ": ["MES", "MGC"],
+    "MGC": ["MES", "MNQ"],
+    "M2K": ["MES", "MNQ"],   # other equity indices
+    "MCL": ["MGC", "MES"],   # commodity + index
+    "ZN":  ["ZB", "MES"],    # other bond + index
+    "ZB":  ["ZN", "MES"],    # other bond + index
 }
 
 # Parameter grids per strategy
@@ -149,14 +164,17 @@ def resample_bars(df_1m, freq_minutes):
     return resampled
 
 
-def generate_signals(mod, df, asset=None):
-    """Run generate_signals with optional asset kwarg."""
+def generate_signals(mod, df, asset=None, mode=None):
+    """Run generate_signals with optional asset/mode kwargs."""
     if hasattr(mod, "TICK_SIZE") and asset:
         mod.TICK_SIZE = ASSET_CONFIG.get(asset, {}).get("tick_size", 0.25)
     sig = inspect.signature(mod.generate_signals)
+    kwargs = {}
     if "asset" in sig.parameters and asset:
-        return mod.generate_signals(df, asset=asset)
-    return mod.generate_signals(df)
+        kwargs["asset"] = asset
+    if "mode" in sig.parameters and mode:
+        kwargs["mode"] = mode
+    return mod.generate_signals(df, **kwargs)
 
 
 def run_strategy(strategy_name, df, asset, mode, point_value,
@@ -177,7 +195,7 @@ def run_strategy(strategy_name, df, asset, mode, point_value,
         rungs = ladder_rungs or LADDER_RUNGS["default"]
         signals_df = apply_profit_ladder(data, params={"rungs": rungs})
     else:
-        signals_df = generate_signals(mod, df, asset=asset)
+        signals_df = generate_signals(mod, df, asset=asset, mode=mode)
 
     result = run_backtest(
         df, signals_df,
@@ -489,12 +507,12 @@ def test_regime_stability(strategy_name, asset, mode, point_value,
 # ── Test 3: Asset Robustness ─────────────────────────────────────────────
 
 def test_asset_robustness(strategy_name, mode, point_value_primary,
-                          exit_variant=None, grinding=False):
-    """Run on MNQ, MES, MGC — at least 2 of 3 profitable."""
+                          exit_variant=None, grinding=False, primary_asset=None):
+    """Run on related assets — at least 2 of 3 profitable."""
     print("\n  3. ASSET ROBUSTNESS")
     print("  " + "-" * 60)
 
-    assets = ["MNQ", "MES", "MGC"]
+    assets = ASSET_FAMILIES.get(primary_asset, ["MNQ", "MES", "MGC"])
     asset_results = {}
     profitable_count = 0
 
@@ -768,7 +786,7 @@ def test_parameter_stability(strategy_name, asset, mode, point_value,
                     mod2.TICK_SIZE = acfg["tick_size"]
                     for pname, pval in zip(param_names, combo):
                         setattr(mod2, pname, pval)
-                    original_signals = mod2.generate_signals(df.copy())
+                    original_signals = generate_signals(mod2, df.copy(), asset=asset, mode=mode)
 
                     # Rebuild entry data with new params
                     from research.exit_evolution import ATR_STOP_MULT as EE_STOP_MULT
@@ -843,7 +861,7 @@ def test_parameter_stability(strategy_name, asset, mode, point_value,
                         params={"rungs": rungs, "atr_trail_mult": trail_mult}
                     )
                 else:
-                    signals_df = mod.generate_signals(df.copy())
+                    signals_df = generate_signals(mod, df.copy(), asset=asset, mode=mode)
 
                 result = run_backtest(
                     df, signals_df,
@@ -1103,7 +1121,8 @@ def main():
         strategy, asset, mode, point_value, exit_variant, grinding)
 
     results["asset_robustness"] = test_asset_robustness(
-        strategy, mode, point_value, exit_variant, grinding)
+        strategy, mode, point_value, exit_variant, grinding,
+        primary_asset=asset)
 
     results["timeframe_robustness"] = test_timeframe_robustness(
         strategy, asset, mode, point_value, exit_variant, grinding)
