@@ -779,6 +779,7 @@ def main():
     parser.add_argument("--asset", type=str, choices=list(EXPANSION_ASSETS.keys()),
                         help="Test single expansion asset")
     parser.add_argument("--save", action="store_true", help="Save results to JSON")
+    parser.add_argument("--yes", "-y", action="store_true", help="Skip cost confirmation prompt")
     parser.add_argument("--start", type=str, default=DEFAULT_START, help=f"Start date (default: {DEFAULT_START})")
     parser.add_argument("--end", type=str, default=DEFAULT_END, help=f"End date (default: {DEFAULT_END})")
     args = parser.parse_args()
@@ -828,7 +829,7 @@ def main():
 
             print(f"    Total fetch cost: ${total_cost:.4f}")
 
-            if total_cost > 5.0:
+            if total_cost > 5.0 and not args.yes:
                 resp = input(f"\n    Cost exceeds $5. Continue? [y/N] ")
                 if resp.lower() != "y":
                     print("    Aborted.")

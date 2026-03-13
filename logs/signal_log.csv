@@ -5,3 +5,15 @@ date,strategy,signals_total,signals_kept,regime_blocked,timing_blocked,convictio
 2026-03-10,XB-PB-EMA-MES-Short,1,1,0,0,0
 2026-03-10,BB-EQ-MGC-Long,0,0,0,0,0
 2026-03-10,Donchian-MNQ-Long-GRINDING,0,0,0,0,0
+2026-03-11,PB-MGC-Short,2,2,0,0,0
+2026-03-11,ORB-MGC-Long,1,1,0,0,1
+2026-03-11,VWAP-MNQ-Long,1,0,1,0,0
+2026-03-11,XB-PB-EMA-MES-Short,2,2,0,0,0
+2026-03-11,BB-EQ-MGC-Long,0,0,0,0,0
+2026-03-11,Donchian-MNQ-Long-GRINDING,0,0,0,0,0
+2026-03-12,PB-MGC-Short,0,0,0,0,0
+2026-03-12,ORB-MGC-Long,0,0,0,0,0
+2026-03-12,VWAP-MNQ-Long,0,0,0,0,0
+2026-03-12,XB-PB-EMA-MES-Short,1,1,0,0,0
+2026-03-12,BB-EQ-MGC-Long,0,0,0,0,0
+2026-03-12,Donchian-MNQ-Long-GRINDING,0,0,0,0,0

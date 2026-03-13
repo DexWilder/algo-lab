@@ -3,13 +3,13 @@
   "symbol": "MNQ",
   "timeframe": "5m",
   "start_date": "2024-02-29 19:00:00",
-  "end_date": "2026-03-10 19:55:00",
-  "bar_count": 142203,
+  "end_date": "2026-03-12 19:55:00",
+  "bar_count": 142755,
   "trading_days": 630,
   "source": "databento",
   "source_dataset": "GLBX.MDP3",
   "source_schema": "ohlcv-1m",
   "has_volume": true,
   "volume_mean": 5238.5,
-  "processed_date": "2026-03-11 09:13:23"
+  "processed_date": "2026-03-13 06:17:19"
 }
