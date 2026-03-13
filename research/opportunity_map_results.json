@@ -1,0 +1,474 @@
+{
+  "scan_date": "2026-03-13",
+  "asset_gaps": {
+    "portfolio_assets": [
+      "MES",
+      "MGC",
+      "MNQ"
+    ],
+    "missing_assets": [
+      {
+        "asset": "ES",
+        "data_available": true,
+        "point_value": 50.0
+      },
+      {
+        "asset": "M2K",
+        "data_available": true,
+        "point_value": 5.0
+      },
+      {
+        "asset": "MCL",
+        "data_available": true,
+        "point_value": 100.0
+      },
+      {
+        "asset": "MYM",
+        "data_available": true,
+        "point_value": 0.5
+      },
+      {
+        "asset": "ZB",
+        "data_available": true,
+        "point_value": 1000.0
+      },
+      {
+        "asset": "ZN",
+        "data_available": true,
+        "point_value": 1000.0
+      }
+    ],
+    "concentration": {
+      "MNQ": {
+        "pnl": 7950.44,
+        "pnl_share": 0.462,
+        "trades": 244,
+        "concentrated": "True"
+      },
+      "MES": {
+        "pnl": 2900.01,
+        "pnl_share": 0.169,
+        "trades": 126,
+        "concentrated": "False"
+      },
+      "MGC": {
+        "pnl": 6352.72,
+        "pnl_share": 0.369,
+        "trades": 197,
+        "concentrated": "False"
+      }
+    }
+  },
+  "session_gaps": {
+    "gaps": [
+      {
+        "session": "pre_market",
+        "label": "Pre-Market (8:00-9:00)",
+        "reason": "zero or near-zero trades",
+        "opportunity": "Gap fill strategies, overnight position management"
+      },
+      {
+        "session": "close",
+        "label": "Close (15:00-16:00)",
+        "reason": "zero or near-zero trades",
+        "opportunity": "Close reversion, end-of-day mean reversion, MOC strategies"
+      },
+      {
+        "session": "overnight",
+        "label": "Overnight (18:00-8:00)",
+        "reason": "zero or near-zero trades",
+        "opportunity": "Overnight range strategies, globex session edges"
+      }
+    ],
+    "hour_distribution": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 1,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 2,
+      "9": 69,
+      "10": 240,
+      "11": 108,
+      "12": 56,
+      "13": 55,
+      "14": 31,
+      "15": 2,
+      "16": 1,
+      "17": 0,
+      "18": 1,
+      "19": 0,
+      "20": 0,
+      "21": 0,
+      "22": 0,
+      "23": 1
+    }
+  },
+  "regime_gaps": {
+    "gap_count": 10,
+    "covered_count": 8,
+    "gaps": [
+      {
+        "cell": "HIGH_VOL_RANGING_LOW_RV",
+        "trades": 4,
+        "pnl": -66.96,
+        "strategies": [
+          "Donchian-MNQ-Long-GRINDING",
+          "VWAP-MNQ-Long",
+          "XB-PB-EMA-MES-Short"
+        ],
+        "days": 0,
+        "status": "NEGATIVE_EDGE",
+        "priority": "MEDIUM",
+        "suggestion": "Avoid or find dedicated strategy for this regime"
+      },
+      {
+        "cell": "LOW_VOL_RANGING_HIGH_RV",
+        "trades": 4,
+        "pnl": -19.46,
+        "strategies": [
+          "ORB-MGC-Long",
+          "VWAP-MNQ-Long"
+        ],
+        "days": 0,
+        "status": "NEGATIVE_EDGE",
+        "priority": "MEDIUM",
+        "suggestion": "Avoid or find dedicated strategy for this regime"
+      },
+      {
+        "cell": "LOW_VOL_RANGING_LOW_RV",
+        "trades": 3,
+        "pnl": -0.22,
+        "strategies": [
+          "BB-EQ-MGC-Long",
+          "PB-MGC-Short",
+          "XB-PB-EMA-MES-Short"
+        ],
+        "days": 0,
+        "status": "NEGATIVE_EDGE",
+        "priority": "MEDIUM",
+        "suggestion": "Avoid or find dedicated strategy for this regime"
+      },
+      {
+        "cell": "LOW_VOL_RANGING_NORMAL_RV",
+        "trades": 5,
+        "pnl": -119.95,
+        "strategies": [
+          "BB-EQ-MGC-Long",
+          "PB-MGC-Short",
+          "VWAP-MNQ-Long",
+          "XB-PB-EMA-MES-Short"
+        ],
+        "days": 0,
+        "status": "NEGATIVE_EDGE",
+        "priority": "MEDIUM",
+        "suggestion": "Avoid or find dedicated strategy for this regime"
+      },
+      {
+        "cell": "NORMAL_RANGING_HIGH_RV",
+        "trades": 20,
+        "pnl": -300.55,
+        "strategies": [
+          "BB-EQ-MGC-Long",
+          "ORB-MGC-Long",
+          "PB-MGC-Short",
+          "VWAP-MNQ-Long",
+          "XB-PB-EMA-MES-Short"
+        ],
+        "days": 0,
+        "status": "NEGATIVE_EDGE",
+        "priority": "MEDIUM",
+        "suggestion": "Avoid or find dedicated strategy for this regime"
+      },
+      {
+        "cell": "HIGH_VOL_RANGING_HIGH_RV",
+        "trades": 10,
+        "pnl": 120.1,
+        "strategies": [
+          "ORB-MGC-Long",
+          "VWAP-MNQ-Long",
+          "XB-PB-EMA-MES-Short"
+        ],
+        "days": 0,
+        "status": "THIN",
+        "priority": "LOW",
+        "suggestion": "Needs more coverage \u2014 consider regime-specialist strategy"
+      },
+      {
+        "cell": "HIGH_VOL_RANGING_NORMAL_RV",
+        "trades": 12,
+        "pnl": 47.87,
+        "strategies": [
+          "VWAP-MNQ-Long",
+          "XB-PB-EMA-MES-Short"
+        ],
+        "days": 0,
+        "status": "THIN",
+        "priority": "LOW",
+        "suggestion": "Needs more coverage \u2014 consider regime-specialist strategy"
+      },
+      {
+        "cell": "LOW_VOL_TRENDING_HIGH_RV",
+        "trades": 11,
+        "pnl": 694.36,
+        "strategies": [
+          "BB-EQ-MGC-Long",
+          "Donchian-MNQ-Long-GRINDING",
+          "ORB-MGC-Long",
+          "PB-MGC-Short",
+          "VWAP-MNQ-Long"
+        ],
+        "days": 0,
+        "status": "THIN",
+        "priority": "LOW",
+        "suggestion": "Needs more coverage \u2014 consider regime-specialist strategy"
+      },
+      {
+        "cell": "NORMAL_RANGING_LOW_RV",
+        "trades": 11,
+        "pnl": 88.11,
+        "strategies": [
+          "BB-EQ-MGC-Long",
+          "Donchian-MNQ-Long-GRINDING",
+          "ORB-MGC-Long",
+          "PB-MGC-Short",
+          "VWAP-MNQ-Long",
+          "XB-PB-EMA-MES-Short"
+        ],
+        "days": 0,
+        "status": "THIN",
+        "priority": "LOW",
+        "suggestion": "Needs more coverage \u2014 consider regime-specialist strategy"
+      },
+      {
+        "cell": "NORMAL_RANGING_NORMAL_RV",
+        "trades": 14,
+        "pnl": 254.14,
+        "strategies": [
+          "BB-EQ-MGC-Long",
+          "ORB-MGC-Long",
+          "PB-MGC-Short",
+          "VWAP-MNQ-Long",
+          "XB-PB-EMA-MES-Short"
+        ],
+        "days": 0,
+        "status": "THIN",
+        "priority": "LOW",
+        "suggestion": "Needs more coverage \u2014 consider regime-specialist strategy"
+      }
+    ]
+  },
+  "family_gaps": {
+    "pullback": {
+      "description": "Trend pullback entries on retracements",
+      "status": "COVERED",
+      "priority": "LOW",
+      "represented_strategies": [
+        {
+          "strategy": "PB-MGC-Short",
+          "subtype": "trend_pullback"
+        },
+        {
+          "strategy": "XB-PB-EMA-MES-Short",
+          "subtype": "ema_pullback"
+        }
+      ],
+      "covered_subtypes": [
+        "ema_pullback",
+        "trend_pullback"
+      ],
+      "missing_subtypes": [
+        "fib_pullback"
+      ]
+    },
+    "breakout": {
+      "description": "Range/level breakout entries",
+      "status": "THIN",
+      "priority": "MEDIUM",
+      "represented_strategies": [
+        {
+          "strategy": "ORB-MGC-Long",
+          "subtype": "opening_range_breakout"
+        }
+      ],
+      "covered_subtypes": [
+        "opening_range_breakout"
+      ],
+      "missing_subtypes": [
+        "donchian_breakout",
+        "compression_breakout",
+        "range_expansion"
+      ]
+    },
+    "mean_reversion": {
+      "description": "Fade overextension back to mean",
+      "status": "THIN",
+      "priority": "MEDIUM",
+      "represented_strategies": [
+        {
+          "strategy": "BB-EQ-MGC-Long",
+          "subtype": "bb_equilibrium"
+        }
+      ],
+      "covered_subtypes": [
+        "bb_equilibrium"
+      ],
+      "missing_subtypes": [
+        "vwap_mean_reversion",
+        "exhaustion_reversal",
+        "range_fade"
+      ]
+    },
+    "trend": {
+      "description": "Trend continuation / momentum",
+      "status": "COVERED",
+      "priority": "LOW",
+      "represented_strategies": [
+        {
+          "strategy": "VWAP-MNQ-Long",
+          "subtype": "vwap_trend_continuation"
+        },
+        {
+          "strategy": "Donchian-MNQ-Long-GRINDING",
+          "subtype": "donchian_breakout"
+        }
+      ],
+      "covered_subtypes": [
+        "donchian_breakout",
+        "vwap_trend_continuation"
+      ],
+      "missing_subtypes": [
+        "momentum_continuation",
+        "ema_crossover"
+      ]
+    },
+    "volatility_expansion": {
+      "description": "Entries on vol expansion after compression",
+      "status": "MISSING",
+      "priority": "HIGH",
+      "represented_strategies": [],
+      "covered_subtypes": [],
+      "missing_subtypes": [
+        "atr_expansion",
+        "bb_squeeze_breakout",
+        "keltner_breakout",
+        "compression_breakout"
+      ]
+    },
+    "time_based": {
+      "description": "Session/time-of-day specific edges",
+      "status": "MISSING",
+      "priority": "HIGH",
+      "represented_strategies": [],
+      "covered_subtypes": [],
+      "missing_subtypes": [
+        "overnight",
+        "afternoon_breakout",
+        "close_reversion",
+        "power_hour",
+        "london_open"
+      ]
+    },
+    "event_driven": {
+      "description": "Reactions to macro events / news",
+      "status": "MISSING",
+      "priority": "HIGH",
+      "represented_strategies": [],
+      "covered_subtypes": [],
+      "missing_subtypes": [
+        "news_reaction",
+        "macro_release",
+        "gap_fill"
+      ]
+    }
+  },
+  "research_priorities": [
+    {
+      "priority": "HIGH",
+      "category": "asset_concentration",
+      "target": "MNQ concentration (46% of PnL)",
+      "suggestion": "Diversify away from MNQ \u2014 add edges on other assets"
+    },
+    {
+      "priority": "HIGH",
+      "category": "session",
+      "target": "Close (15:00-16:00) \u2014 zero or near-zero trades",
+      "suggestion": "Close reversion, end-of-day mean reversion, MOC strategies"
+    },
+    {
+      "priority": "HIGH",
+      "category": "family",
+      "target": "volatility_expansion family \u2014 not represented",
+      "suggestion": "Build volatility_expansion strategies: atr_expansion, bb_squeeze_breakout, keltner_breakout"
+    },
+    {
+      "priority": "HIGH",
+      "category": "family",
+      "target": "time_based family \u2014 not represented",
+      "suggestion": "Build time_based strategies: overnight, afternoon_breakout, close_reversion"
+    },
+    {
+      "priority": "MEDIUM",
+      "category": "asset",
+      "target": "M2K \u2014 no portfolio coverage",
+      "suggestion": "Russell: breakout, vol expansion, momentum burst strategies (probation: ORB Enhanced)"
+    },
+    {
+      "priority": "MEDIUM",
+      "category": "asset",
+      "target": "MCL \u2014 no portfolio coverage",
+      "suggestion": "Crude oil: mean reversion, exhaustion reversal, ATR expansion fade (probation: VWAP MR)"
+    },
+    {
+      "priority": "MEDIUM",
+      "category": "asset",
+      "target": "MYM \u2014 no portfolio coverage",
+      "suggestion": "Dow: similar to S&P but slower \u2014 pullback and trend strategies"
+    },
+    {
+      "priority": "MEDIUM",
+      "category": "asset",
+      "target": "ZB \u2014 no portfolio coverage",
+      "suggestion": "30Y bonds: longer timeframe trends, range compression breakout"
+    },
+    {
+      "priority": "MEDIUM",
+      "category": "asset",
+      "target": "ZN \u2014 no portfolio coverage",
+      "suggestion": "10Y bonds: slow trend following, yield momentum, macro trend continuation"
+    },
+    {
+      "priority": "MEDIUM",
+      "category": "session",
+      "target": "Pre-Market (8:00-9:00) \u2014 zero or near-zero trades",
+      "suggestion": "Gap fill strategies, overnight position management"
+    },
+    {
+      "priority": "MEDIUM",
+      "category": "session",
+      "target": "Overnight (18:00-8:00) \u2014 zero or near-zero trades",
+      "suggestion": "Overnight range strategies, globex session edges"
+    },
+    {
+      "priority": "MEDIUM",
+      "category": "family",
+      "target": "event_driven family \u2014 not represented",
+      "suggestion": "Build event_driven strategies: news_reaction, macro_release, gap_fill"
+    },
+    {
+      "priority": "LOW",
+      "category": "family",
+      "target": "breakout family \u2014 thin coverage",
+      "suggestion": "Add subtypes: donchian_breakout, compression_breakout"
+    },
+    {
+      "priority": "LOW",
+      "category": "family",
+      "target": "mean_reversion family \u2014 thin coverage",
+      "suggestion": "Add subtypes: vwap_mean_reversion, exhaustion_reversal"
+    }
+  ]
+}
