@@ -83,6 +83,22 @@ EXPANSION_ASSETS = {
         "db_symbol": "ES.c.0",
         "name": "E-mini S&P 500",
     },
+    "ZN": {
+        "point_value": 1000.0,
+        "tick_size": 0.015625,
+        "commission_per_side": 0.85,
+        "slippage_ticks": 1,
+        "db_symbol": "ZN.c.0",
+        "name": "10-Year Treasury Note",
+    },
+    "ZB": {
+        "point_value": 1000.0,
+        "tick_size": 0.03125,
+        "commission_per_side": 0.85,
+        "slippage_ticks": 1,
+        "db_symbol": "ZB.c.0",
+        "name": "30-Year Treasury Bond",
+    },
 }
 
 # Existing core assets (for portfolio baseline)
