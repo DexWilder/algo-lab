@@ -222,18 +222,26 @@
         "low_sample": false
       },
       "10m": {
-        "trades": 0,
-        "pf": 0,
-        "skipped": true
+        "trades": 65,
+        "pf": 1.1288,
+        "sharpe": 0.7951,
+        "pnl": 152.0,
+        "maxdd": 378.0,
+        "wr": 50.8,
+        "low_sample": false
       },
       "15m": {
-        "trades": 0,
-        "pf": 0,
-        "skipped": true
+        "trades": 37,
+        "pf": 1.0884,
+        "sharpe": 0.612,
+        "pnl": 70.0,
+        "maxdd": 280.0,
+        "wr": 51.4,
+        "low_sample": false
       }
     },
-    "profitable_count": 1,
-    "passes": false
+    "profitable_count": 3,
+    "passes": true
   },
   "monte_carlo_bootstrap": {
     "bootstrap": {
@@ -292,12 +300,31 @@
     "top_trade_pass": true
   },
   "parameter_stability": {
-    "passes": false,
-    "pct_profitable": 0,
-    "total_combinations": 0
+    "total_combinations": 81,
+    "profitable": 57,
+    "pct_profitable": 70.4,
+    "passes": true,
+    "best": {
+      "pf": 2.625,
+      "params": {
+        "VWAP_OUTER_SIGMA": 2.4,
+        "RSI_OVERSOLD": 25,
+        "RSI_OVERBOUGHT": 75,
+        "ATR_STOP_MULT": 1.5
+      }
+    },
+    "worst": {
+      "pf": 0.8415,
+      "params": {
+        "VWAP_OUTER_SIGMA": 1.6,
+        "RSI_OVERSOLD": 25,
+        "RSI_OVERBOUGHT": 65,
+        "ATR_STOP_MULT": 1.8
+      }
+    }
   },
-  "stability_score": 5.0,
-  "hard_failures": 5,
+  "stability_score": 6.5,
+  "hard_failures": 3,
   "promotion": "CONDITIONAL - REVIEW NEEDED",
   "deployment_summary": {
     "strategy": "vwap_mean_reversion",
@@ -306,7 +333,7 @@
     "strongest_asset": "MES (PF=0.82, 125 trades)",
     "weakest_asset": "MGC (PF=0.55, 79 trades)",
     "strongest_timeframe": "5m (PF=1.34)",
-    "weakest_timeframe": "5m (PF=1.34)",
+    "weakest_timeframe": "15m (PF=1.09)",
     "best_regimes": [
       "HIGH_VOL_TRENDING_NORMAL_RV",
       "LOW_VOL_TRENDING_LOW_RV",

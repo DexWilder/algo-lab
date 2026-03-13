@@ -216,18 +216,26 @@
         "low_sample": false
       },
       "10m": {
-        "trades": 0,
-        "pf": 0,
-        "skipped": true
+        "trades": 47,
+        "pf": 1.8343,
+        "sharpe": 3.7119,
+        "pnl": 752.5,
+        "maxdd": 223.0,
+        "wr": 55.3,
+        "low_sample": false
       },
       "15m": {
-        "trades": 0,
-        "pf": 0,
-        "skipped": true
+        "trades": 26,
+        "pf": 3.0568,
+        "sharpe": 5.4649,
+        "pnl": 616.0,
+        "maxdd": 86.0,
+        "wr": 65.4,
+        "low_sample": false
       }
     },
-    "profitable_count": 1,
-    "passes": false
+    "profitable_count": 3,
+    "passes": true
   },
   "monte_carlo_bootstrap": {
     "bootstrap": {
@@ -286,12 +294,31 @@
     "top_trade_pass": true
   },
   "parameter_stability": {
-    "passes": false,
-    "pct_profitable": 0,
-    "total_combinations": 0
+    "total_combinations": 81,
+    "profitable": 81,
+    "pct_profitable": 100.0,
+    "passes": true,
+    "best": {
+      "pf": 2.6938,
+      "params": {
+        "OR_BARS": 5,
+        "ATR_STOP_MULT": 1.8,
+        "RANGE_MAX_MULT": 1.6,
+        "VOL_CONFIRM_MULT": 1.4
+      }
+    },
+    "worst": {
+      "pf": 1.0266,
+      "params": {
+        "OR_BARS": 5,
+        "ATR_STOP_MULT": 1.2,
+        "RANGE_MAX_MULT": 2.0,
+        "VOL_CONFIRM_MULT": 1.0
+      }
+    }
   },
-  "stability_score": 6.0,
-  "hard_failures": 4,
+  "stability_score": 8.0,
+  "hard_failures": 2,
   "promotion": "CONDITIONAL - REVIEW NEEDED",
   "deployment_summary": {
     "strategy": "orb_enhanced",
@@ -299,7 +326,7 @@
     "primary_mode": "short",
     "strongest_asset": "MES (PF=1.22, 152 trades)",
     "weakest_asset": "MNQ (PF=1.04, 92 trades)",
-    "strongest_timeframe": "5m (PF=1.49)",
+    "strongest_timeframe": "15m (PF=3.06)",
     "weakest_timeframe": "5m (PF=1.49)",
     "best_regimes": [
       "HIGH_VOL_TRENDING_HIGH_RV",

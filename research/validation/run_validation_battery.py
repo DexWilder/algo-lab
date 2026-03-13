@@ -112,6 +112,18 @@ PARAM_GRIDS = {
         "TARGET_MULT": [3.0, 4.0, 5.0],
         "TRAIL_MULT": [2.0, 2.5, 3.0],
     },
+    "orb_enhanced": {
+        "OR_BARS": [5, 6, 7],
+        "ATR_STOP_MULT": [1.2, 1.5, 1.8],
+        "RANGE_MAX_MULT": [1.6, 2.0, 2.4],
+        "VOL_CONFIRM_MULT": [1.0, 1.2, 1.4],
+    },
+    "vwap_mean_reversion": {
+        "VWAP_OUTER_SIGMA": [1.6, 2.0, 2.4],
+        "RSI_OVERSOLD": [25, 30, 35],
+        "RSI_OVERBOUGHT": [65, 70, 75],
+        "ATR_STOP_MULT": [1.2, 1.5, 1.8],
+    },
 }
 
 # Profit Ladder rung variants for Donchian
