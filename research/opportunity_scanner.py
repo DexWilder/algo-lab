@@ -65,6 +65,18 @@ PROBATION_CANDIDATES = {
         "mode": "short",
         "promotion_threshold": 50,
     },
+    "CloseVWAP-M2K-Short": {
+        "name": "close_vwap_reversion",
+        "asset": "M2K",
+        "mode": "short",
+        "promotion_threshold": 60,
+    },
+    "CloseVWAP-MNQ-Long": {
+        "name": "close_vwap_reversion",
+        "asset": "MNQ",
+        "mode": "long",
+        "promotion_threshold": 60,
+    },
 }
 
 # Strategy type taxonomy for gap analysis
@@ -76,6 +88,8 @@ STRATEGY_TYPES = {
     "BB-EQ-MGC-Long":            {"family": "mean_reversion", "session": "full_day", "direction": "long"},
     "Donchian-MNQ-Long-GRINDING": {"family": "trend", "session": "morning", "direction": "long"},
     "MomIgn-M2K-Short":           {"family": "momentum", "session": "midday_afternoon", "direction": "short"},
+    "CloseVWAP-M2K-Short":        {"family": "mean_reversion", "session": "close", "direction": "short"},
+    "CloseVWAP-MNQ-Long":         {"family": "mean_reversion", "session": "close", "direction": "long"},
 }
 
 DESIRED_TYPES = {"overnight", "afternoon", "volatility_expansion", "range_fade", "event_driven"}

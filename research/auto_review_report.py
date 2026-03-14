@@ -74,6 +74,8 @@ ASSET_CONFIG = {
 PROBATION_TRACKER = {
     "Donchian-MNQ-Long-GRINDING": {"min_trades": 150, "note": "Probation (sample-size driven)"},
     "MomIgn-M2K-Short": {"min_trades": 50, "note": "Probation — tail engine, 9.0/10 validation, 100% param stability"},
+    "CloseVWAP-M2K-Short": {"min_trades": 60, "note": "Probation — close session stabilizer, 8.0/10, 100% param stability"},
+    "CloseVWAP-MNQ-Long": {"min_trades": 60, "note": "Probation — close session stabilizer, 8.0/10, 98% param stability"},
 }
 
 
