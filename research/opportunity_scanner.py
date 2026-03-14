@@ -59,6 +59,12 @@ PROBATION_CANDIDATES = {
         "mode": "long",
         "promotion_threshold": 150,
     },
+    "MomIgn-M2K-Short": {
+        "name": "momentum_ignition",
+        "asset": "M2K",
+        "mode": "short",
+        "promotion_threshold": 50,
+    },
 }
 
 # Strategy type taxonomy for gap analysis
@@ -69,6 +75,7 @@ STRATEGY_TYPES = {
     "XB-PB-EMA-MES-Short":       {"family": "pullback", "session": "morning", "direction": "short"},
     "BB-EQ-MGC-Long":            {"family": "mean_reversion", "session": "full_day", "direction": "long"},
     "Donchian-MNQ-Long-GRINDING": {"family": "trend", "session": "morning", "direction": "long"},
+    "MomIgn-M2K-Short":           {"family": "momentum", "session": "midday_afternoon", "direction": "short"},
 }
 
 DESIRED_TYPES = {"overnight", "afternoon", "volatility_expansion", "range_fade", "event_driven"}

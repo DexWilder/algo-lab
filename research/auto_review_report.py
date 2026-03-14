@@ -73,6 +73,7 @@ ASSET_CONFIG = {
 # Probation strategies and their promotion thresholds
 PROBATION_TRACKER = {
     "Donchian-MNQ-Long-GRINDING": {"min_trades": 150, "note": "Probation (sample-size driven)"},
+    "MomIgn-M2K-Short": {"min_trades": 50, "note": "Probation — tail engine, 9.0/10 validation, 100% param stability"},
 }
 
 
