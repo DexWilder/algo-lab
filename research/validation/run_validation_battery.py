@@ -124,6 +124,12 @@ PARAM_GRIDS = {
         "RSI_OVERBOUGHT": [65, 70, 75],
         "ATR_STOP_MULT": [1.2, 1.5, 1.8],
     },
+    "momentum_ignition": {
+        "VOL_SURGE_MULT": [1.5, 2.0, 2.5],
+        "RSI_LONG_THRESH": [55, 60, 65],
+        "ATR_STOP_MULT": [1.2, 1.5, 1.8],
+        "ATR_TARGET_MULT": [3.0, 4.0, 5.0],
+    },
 }
 
 # Profit Ladder rung variants for Donchian
