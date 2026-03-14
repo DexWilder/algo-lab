@@ -1,0 +1,301 @@
+{
+  "baseline": {
+    "trades": 36,
+    "pf": 2.3422,
+    "sharpe": 3.9816,
+    "pnl": 480.5,
+    "maxdd": 174.0,
+    "wr": 50.0
+  },
+  "walk_forward": {
+    "year_splits": {
+      "2024": {
+        "trades": 12,
+        "pf": 2.9008,
+        "sharpe": 4.62,
+        "pnl": 230.0,
+        "maxdd": 75.5,
+        "wr": 41.7,
+        "low_sample": true
+      },
+      "2025": {
+        "trades": 20,
+        "pf": 3.9184,
+        "sharpe": 6.4348,
+        "pnl": 357.5,
+        "maxdd": 95.0,
+        "wr": 55.0,
+        "low_sample": false
+      },
+      "2026": {
+        "trades": 4,
+        "pf": 0.0655,
+        "sharpe": -8.6618,
+        "pnl": -107.0,
+        "maxdd": 99.0,
+        "wr": 50.0,
+        "low_sample": true
+      }
+    },
+    "year_splits_pass": true,
+    "rolling_windows": {
+      "W1": {
+        "trades": 5,
+        "pf": 6.5909,
+        "sharpe": 12.1603,
+        "pnl": 61.5,
+        "maxdd": 11.0,
+        "wr": 80.0,
+        "low_sample": true
+      },
+      "W2": {
+        "trades": 10,
+        "pf": 18.7209,
+        "sharpe": 11.4815,
+        "pnl": 381.0,
+        "maxdd": 11.5,
+        "wr": 80.0,
+        "low_sample": true
+      },
+      "W3": {
+        "trades": 12,
+        "pf": 0.4549,
+        "sharpe": -5.3049,
+        "pnl": -63.5,
+        "maxdd": 76.5,
+        "wr": 33.3,
+        "low_sample": true
+      }
+    },
+    "rolling_pass_count": 2,
+    "rolling_total": 3,
+    "rolling_pass": false
+  },
+  "regime_stability": {
+    "grid": {
+      "HIGH_VOL_RANGING_NORMAL_RV": {
+        "trades": 1,
+        "pf": 100.0,
+        "pnl": 55.0,
+        "low_sample": true
+      },
+      "HIGH_VOL_TRENDING_HIGH_RV": {
+        "trades": 9,
+        "pf": 2.4853,
+        "pnl": 252.5,
+        "low_sample": true
+      },
+      "HIGH_VOL_TRENDING_LOW_RV": {
+        "trades": 2,
+        "pf": 2.5455,
+        "pnl": 17.0,
+        "low_sample": true
+      },
+      "LOW_VOL_TRENDING_HIGH_RV": {
+        "trades": 2,
+        "pf": 0.8537,
+        "pnl": -3.0,
+        "low_sample": true
+      },
+      "LOW_VOL_TRENDING_LOW_RV": {
+        "trades": 4,
+        "pf": 0.0,
+        "pnl": -61.0,
+        "low_sample": true
+      },
+      "LOW_VOL_TRENDING_NORMAL_RV": {
+        "trades": 6,
+        "pf": 0.8615,
+        "pnl": -4.5,
+        "low_sample": true
+      },
+      "NORMAL_RANGING_NORMAL_RV": {
+        "trades": 4,
+        "pf": 26.8,
+        "pnl": 193.5,
+        "low_sample": true
+      },
+      "NORMAL_TRENDING_LOW_RV": {
+        "trades": 4,
+        "pf": 10.4,
+        "pnl": 47.0,
+        "low_sample": true
+      },
+      "NORMAL_TRENDING_NORMAL_RV": {
+        "trades": 4,
+        "pf": 0.6832,
+        "pnl": -16.0,
+        "low_sample": true
+      }
+    },
+    "catastrophic_cells": [],
+    "grinding_breakdown": {
+      "CHOPPY": {
+        "trades": 33,
+        "pf": 2.573,
+        "pnl": 495.5
+      },
+      "GRINDING": {
+        "trades": 3,
+        "pf": 0.6512,
+        "pnl": -15.0
+      }
+    },
+    "caution_low_sample": false,
+    "passes": true
+  },
+  "asset_robustness": {
+    "assets": {
+      "MES": {
+        "trades": 44,
+        "pf": 1.4475,
+        "sharpe": 1.6227,
+        "pnl": 405.44,
+        "maxdd": 274.87,
+        "wr": 38.6,
+        "low_sample": false
+      },
+      "MNQ": {
+        "trades": 30,
+        "pf": 1.825,
+        "sharpe": 2.7705,
+        "pnl": 847.8,
+        "maxdd": 349.42,
+        "wr": 50.0,
+        "low_sample": false
+      }
+    },
+    "profitable_count": 2,
+    "passes": true
+  },
+  "timeframe_robustness": {
+    "timeframes": {
+      "5m": {
+        "trades": 36,
+        "pf": 2.3422,
+        "sharpe": 3.9816,
+        "pnl": 480.5,
+        "maxdd": 174.0,
+        "wr": 50.0,
+        "low_sample": false
+      },
+      "10m": {
+        "trades": 31,
+        "pf": 1.3128,
+        "sharpe": 1.4251,
+        "pnl": 117.0,
+        "maxdd": 121.0,
+        "wr": 38.7,
+        "low_sample": false
+      },
+      "15m": {
+        "trades": 39,
+        "pf": 1.5382,
+        "sharpe": 2.0776,
+        "pnl": 190.0,
+        "maxdd": 94.5,
+        "wr": 48.7,
+        "low_sample": false
+      }
+    },
+    "profitable_count": 3,
+    "passes": true
+  },
+  "monte_carlo_bootstrap": {
+    "bootstrap": {
+      "pf": {
+        "mean": 2.6336,
+        "median": 2.3166,
+        "ci_low": 0.817,
+        "ci_high": 6.2353,
+        "point_estimate": 2.3422
+      },
+      "sharpe": {
+        "mean": 3.922,
+        "median": 4.0425,
+        "ci_low": -1.1067,
+        "ci_high": 8.1285,
+        "point_estimate": 4.0381
+      },
+      "max_dd": {
+        "mean": 142.0755,
+        "median": 129.0,
+        "ci_low": 43.9875,
+        "ci_high": 326.0,
+        "point_estimate": 174.0
+      },
+      "n_trades": 36,
+      "passes": false
+    },
+    "dsr": {
+      "dsr": 1.0,
+      "observed_sharpe": 3.9816,
+      "expected_max_sharpe": 2.5219,
+      "passes": true
+    },
+    "monte_carlo": {
+      "n_simulations": 10000,
+      "ruin_probability": {
+        "$1,000": 0.0,
+        "$2,000": 0.0,
+        "$3,000": 0.0,
+        "$4,000": 0.0,
+        "$5,000": 0.0
+      },
+      "median_maxdd": 136.0,
+      "p95_maxdd": 206.0,
+      "passes": true
+    },
+    "top_trade": {
+      "top_trade_pnl": 168.5,
+      "top_trade_pct": 35.1,
+      "pf_without_top": 1.8715,
+      "passes": true
+    },
+    "bootstrap_pass": false,
+    "dsr_pass": true,
+    "mc_pass": true,
+    "top_trade_pass": true
+  },
+  "parameter_stability": {
+    "total_combinations": 45,
+    "profitable": 45,
+    "pct_profitable": 100.0,
+    "passes": true,
+    "best": {
+      "pf": 2.9946,
+      "params": {
+        "VWAP_DEV_MULT": 2.0,
+        "RSI_OVERSOLD": 25,
+        "ATR_STOP_MULT": 1.2
+      }
+    },
+    "worst": {
+      "pf": 2.0927,
+      "params": {
+        "VWAP_DEV_MULT": 2.4,
+        "RSI_OVERSOLD": 25,
+        "ATR_STOP_MULT": 1.8
+      }
+    }
+  },
+  "stability_score": 8.0,
+  "hard_failures": 2,
+  "promotion": "CONDITIONAL - REVIEW NEEDED",
+  "deployment_summary": {
+    "strategy": "close_vwap_reversion",
+    "primary_asset": "M2K",
+    "primary_mode": "short",
+    "strongest_asset": "MNQ (PF=1.82, 30 trades)",
+    "weakest_asset": "MES (PF=1.45, 44 trades)",
+    "strongest_timeframe": "5m (PF=2.34)",
+    "weakest_timeframe": "10m (PF=1.31)",
+    "best_regimes": [
+      "HIGH_VOL_TRENDING_HIGH_RV"
+    ],
+    "avoid_regimes": [
+      "LOW_VOL_TRENDING_NORMAL_RV"
+    ],
+    "recommended_profile": "M2K 5m short, regime-gated"
+  }
+}

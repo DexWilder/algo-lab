@@ -130,6 +130,11 @@ PARAM_GRIDS = {
         "ATR_STOP_MULT": [1.2, 1.5, 1.8],
         "ATR_TARGET_MULT": [3.0, 4.0, 5.0],
     },
+    "close_vwap_reversion": {
+        "VWAP_DEV_MULT": [1.6, 1.8, 2.0, 2.2, 2.4],
+        "RSI_OVERSOLD": [25, 30, 35],
+        "ATR_STOP_MULT": [1.2, 1.5, 1.8],
+    },
 }
 
 # Profit Ladder rung variants for Donchian
