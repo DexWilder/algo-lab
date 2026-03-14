@@ -71,12 +71,7 @@ PROBATION_CANDIDATES = {
         "mode": "short",
         "promotion_threshold": 60,
     },
-    "CloseVWAP-MNQ-Long": {
-        "name": "close_vwap_reversion",
-        "asset": "MNQ",
-        "mode": "long",
-        "promotion_threshold": 60,
-    },
+    # CloseVWAP-MNQ-Long REJECTED — 3.5/10 on 6.7yr extended data (PF=0.85, edge illusory)
 }
 
 # Strategy type taxonomy for gap analysis

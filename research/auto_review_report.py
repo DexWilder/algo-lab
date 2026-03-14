@@ -73,9 +73,9 @@ ASSET_CONFIG = {
 # Probation strategies and their promotion thresholds
 PROBATION_TRACKER = {
     "Donchian-MNQ-Long-GRINDING": {"min_trades": 150, "note": "Probation (sample-size driven)"},
-    "MomIgn-M2K-Short": {"min_trades": 50, "note": "Probation — tail engine, 9.0/10 validation, 100% param stability"},
-    "CloseVWAP-M2K-Short": {"min_trades": 60, "note": "Probation — close session stabilizer, 8.0/10, 100% param stability"},
-    "CloseVWAP-MNQ-Long": {"min_trades": 60, "note": "Probation — close session stabilizer, 8.0/10, 98% param stability"},
+    "MomIgn-M2K-Short": {"min_trades": 50, "note": "Probation — tail engine, 6.0/10 extended (was 9.0/10 on 2yr), 96% param stability, M2K-specific edge"},
+    "CloseVWAP-M2K-Short": {"min_trades": 60, "note": "Probation — close stabilizer, 6.0/10 extended (was 8.0/10 on 2yr), 100% param stability, M2K-specific edge"},
+    # CloseVWAP-MNQ-Long REJECTED — 3.5/10 on extended data (PF=0.85, 20% param stability, edge illusory)
 }
 
 
