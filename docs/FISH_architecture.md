@@ -33,10 +33,15 @@ FISH (Fisher Intelligence Systems Holdings)
 ```
 
 ### FQL Research Lab
-- Strategy discovery
-- Backtesting
-- Validation battery
-- Research tools (opportunity scanner, genome map, contribution analysis)
+- Strategy discovery and harvesting
+- Backtesting and validation battery
+- Walk-forward matrix (3-dimension robustness)
+- Exposure clustering and genome mapping
+- Strategy contribution analysis (marginal Sharpe)
+- Kill criteria framework (4 automated triggers)
+- Half-life monitoring (edge decay tracking)
+- Health check system (60 automated failure-point checks)
+- Strategy registry (57 strategies, institutional memory)
 
 ### Strategy Library
 - Validated strategy implementations
@@ -145,41 +150,60 @@ idea in → systematic generation → validation battery → ranking → portfol
 - Automated gap-to-candidate pipeline
 
 ### Phase 5.5 — Strategy Harvest / Strategy Memory
-**Status: ACTIVE (v0.18)**
+**Status: COMPLETE**
 Continuous expansion of the strategy knowledge base while optimizing the current portfolio.
 
-**Strategy Registry** (`research/data/strategy_registry.json`):
+**Strategy Registry** (`research/data/strategy_registry.json`, schema v1.1):
 - Institutional memory of ALL strategy ideas — core, probation, rejected, ideas
-- 47 strategies tracked (5 core, 6 probation, 2 testing, 20 ideas, 14 rejected)
+- 57 strategies tracked (5 core, 9 probation, 23 ideas, 20 rejected)
+- Kill flags: dilution, redundancy, decay, regime_failure
 - Every idea preserved with metadata: family, asset, session, source, rule summary, validation scores
-- Feeds crossbreeding engine and Strategy Factory
 
-**Harvest Scheduler** (`research/harvest_scheduler.py`):
-- Gap analysis: identifies missing families, assets, sessions, direction imbalance
-- Validation queue: prioritizes candidates by gap-fill score
-- Research statistics: conversion funnel, source tracking
+**Research Modules:**
+| Module | Purpose |
+|---|---|
+| `batch_harvest_validation.py` | Multi-asset backtest with research gate (PF≥1.25, Sharpe≥1.4) |
+| `walk_forward_matrix.py` | 3-dimension robustness (rolling windows, cross-asset, param sensitivity) |
+| `strategy_genome_map.py` | Exposure clustering, diversity scoring (8 edge types) |
+| `strategy_contribution_analysis.py` | Marginal Sharpe per strategy, correlation matrix |
+| `strategy_kill_criteria.py` | 4-trigger kill framework (dilution, redundancy, decay, regime failure) |
+| `strategy_half_life_monitor.py` | Rolling Sharpe/win rate/expectancy decay tracking |
+| `fql_health_check.py` | 60 automated checks across 5 categories |
+| `data_integrity_check.py` | Data quality validation (OHLC, duplicates, spikes, coverage) |
+| `auto_report.py` | Daily/weekly research summaries |
+| `harvest_scheduler.py` | Gap analysis, validation queue, research stats |
 
-**Weekly Harvest Rhythm:**
-- Monday: Gap analysis + candidate surfacing
-- Tuesday: Validation runs (batch)
-- Wednesday: Results review + registry update
-- Thursday: New idea harvesting (TradingView, papers, forums)
-- Friday: Portfolio impact assessment
+**Exposure Taxonomy (8 types):**
+trend_persistence, mean_reversion, volatility_expansion, liquidity_sweep, gap_continuation, inventory_reversion, opening_range, session_structure
 
-**Continuous Research Engine:**
-- Walk-Forward Matrix (`research/walk_forward_matrix.py`): institutional-grade 3-dimension robustness testing
-- Batch Harvest Validation (`research/batch_harvest_validation.py`): automated multi-asset backtesting
-- Data Integrity Check (`research/data_integrity_check.py`): data quality validation
-- Auto-Report Generator (`research/auto_report.py`): daily/weekly research summaries
-- Roadmap Queue (`research/data/roadmap_queue.json`): machine-readable task list
+### Phase 5.6 — Autonomous Research Engine
+**Status: ARCHITECTURE DEFINED, PARTIALLY BUILT**
 
-**Harvest Sources:**
-- Internal research and forward testing insights
-- TradingView public strategies
-- ICT concepts translated to mechanical rules
-- Academic and quant research papers
-- Session-specific and asset-specific microstructure patterns
-- User-mentioned ideas and community concepts
+Goal: Create a continuously operating quant lab with four parallel loops.
+
+**Loop 1 — Discovery (Strategy Creation)**
+Sources: TradingView, SSRN, strategy mutation, crossbreeding, genome gap targeting.
+Schedule: Weekly harvests, continuous gap-driven generation.
+Status: Harvest scheduler built, candidate generator needed.
+
+**Loop 2 — Validation (Research Engine)**
+Pipeline: backtest → parameter stability → walk-forward matrix → asset robustness → portfolio compatibility.
+Status: BUILT. All validation modules operational.
+
+**Loop 3 — Portfolio Evolution**
+Tools: contribution analysis, exposure clustering, kill criteria, half-life monitor.
+Actions: promote, demote, archive, prioritize research for missing edges.
+Status: BUILT. First kill review completed — Donchian dilutive, GapMom-MNQ dead.
+
+**Loop 4 — Health & Data (Safety System)**
+Checks: data integrity, registry validation, scheduler health, automation monitoring.
+Principle: No silent failures.
+Status: BUILT. 60 automated checks, 52 PASS / 7 WARN / 1 FAIL.
+
+**What's needed to make it fully autonomous:**
+- Candidate Generator (automated gap-to-strategy pipeline)
+- Scheduler wiring (cron-based loop execution)
+- Dynamic Portfolio Allocation (regime-driven capital sizing)
 
 ### Phase 6 — Forward Testing
 **Status: ACTIVE (v0.17)**
