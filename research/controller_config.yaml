@@ -1,0 +1,114 @@
+# FQL Portfolio Regime Controller — Configuration
+# All weights, thresholds, and transition rules in one place.
+# Interpretable over black-box: every number has a clear meaning.
+
+# ── Activation Scoring Weights ─────────────────────────────────────────────
+# Sum to 1.0. Each sub-score is normalized to [0.0, 1.0].
+scoring_weights:
+  regime_fit: 0.20
+  half_life: 0.20
+  contribution: 0.15
+  redundancy: 0.10
+  health: 0.10
+  kill_criteria: 0.10
+  time_of_day: 0.05
+  asset_fit: 0.05
+  recent_stability: 0.05
+
+# ── Activation Score → Action Mapping ──────────────────────────────────────
+# Composite score thresholds for recommended action buckets.
+action_thresholds:
+  FULL_ON: 0.70           # Strong across all dimensions
+  REDUCED_ON: 0.55        # Good but with reservations
+  PROBATION: 0.40         # Meaningful weakness but not dead
+  OFF: 0.30               # Below viability for active trading
+  DISABLE: 0.20           # Serious issues — needs resolution
+  ARCHIVE_REVIEW: 0.0     # Below minimum viability
+
+# ── Regime Fit Scoring ─────────────────────────────────────────────────────
+regime_fit:
+  preferred_match_score: 1.0   # Strategy in its preferred regime
+  allowed_match_score: 0.6     # In allowed but not preferred
+  neutral_score: 0.4           # No strong match or mismatch
+  avoid_score: 0.0             # In avoided regime
+
+# ── Half-Life Scoring ──────────────────────────────────────────────────────
+half_life:
+  # Map half-life status to sub-score
+  HEALTHY: 1.0
+  MONITOR: 0.6
+  DECAYING: 0.3
+  ARCHIVE_CANDIDATE: 0.0
+
+# ── Contribution Scoring ───────────────────────────────────────────────────
+contribution:
+  strong_positive_threshold: 0.05    # marginal Sharpe > this = strong positive
+  weak_positive_threshold: 0.0       # marginal Sharpe > 0 = weak positive
+  dilutive_threshold: -0.05          # below this = dilutive
+
+# ── Redundancy Scoring ─────────────────────────────────────────────────────
+redundancy:
+  high_correlation_threshold: 0.50   # |corr| above this = high redundancy
+  moderate_correlation_threshold: 0.35
+  same_cluster_penalty: 0.3          # Penalty when in same exposure cluster
+
+# ── Kill Criteria Scoring ──────────────────────────────────────────────────
+kill_criteria:
+  no_flags_score: 1.0
+  soft_flag_score: 0.4          # Single flag (e.g., dilution OR redundancy)
+  hard_flag_score: 0.0          # Multiple flags or severe (decay + dilution)
+
+# ── Recent Stability ──────────────────────────────────────────────────────
+recent_stability:
+  window_days: 126              # 6-month recent window
+  sharpe_collapse_threshold: 0.0  # Recent Sharpe below this = collapse
+  sharpe_volatile_threshold: 0.5  # Below this but above collapse = volatile
+
+# ── State Machine Transition Rules ─────────────────────────────────────────
+# Conditions that trigger state transitions (evaluated in order).
+transitions:
+  # Hard kills — immediate transitions
+  - from: ["ACTIVE", "ACTIVE_REDUCED", "PAPER", "PROBATION"]
+    to: DISABLED
+    conditions:
+      - kill_hard: true
+
+  # Decay → probation
+  - from: ["ACTIVE", "ACTIVE_REDUCED"]
+    to: PROBATION
+    conditions:
+      - half_life_status: ["DECAYING", "ARCHIVE_CANDIDATE"]
+      - activation_score_below: 0.45
+
+  # Dilution → reduced
+  - from: ["ACTIVE"]
+    to: ACTIVE_REDUCED
+    conditions:
+      - contribution_negative: true
+      - half_life_status: ["HEALTHY", "MONITOR"]
+
+  # Recovery from probation
+  - from: ["PROBATION"]
+    to: ACTIVE
+    conditions:
+      - activation_score_above: 0.65
+      - half_life_status: ["HEALTHY"]
+      - kill_flags: 0
+
+  # Archive
+  - from: ["DISABLED", "PROBATION"]
+    to: ARCHIVED
+    conditions:
+      - disabled_days_above: 30
+      - activation_score_below: 0.25
+
+  # Resurrection
+  - from: ["ARCHIVED"]
+    to: RESURRECTION_CANDIDATE
+    conditions:
+      - half_life_status: ["HEALTHY", "MONITOR"]
+      - recent_sharpe_above: 1.0
+
+# ── Strategy-Specific Overrides ────────────────────────────────────────────
+# Optional per-strategy weight adjustments or forced states.
+overrides: {}

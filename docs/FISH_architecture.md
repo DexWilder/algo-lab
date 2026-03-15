@@ -52,12 +52,19 @@ FISH (Fisher Intelligence Systems Holdings)
 - Correlation analysis
 - Risk modeling
 - Prop account simulation
+- Strategy contribution analysis (marginal Sharpe per strategy)
+- Portfolio Regime Controller (activation scoring, state machine)
 
 ### Strategy Controller
+- **Trade-Level Controller** (`engine/strategy_controller.py`): Regime gate, soft timing, portfolio coordination
+- **Portfolio Regime Controller** (`research/portfolio_regime_controller.py`): Adaptive portfolio decision engine
+  - Activation scoring model (9 weighted dimensions)
+  - Strategy State Machine (8 states, explicit transitions)
+  - Daily portfolio decision reports (JSON + Markdown)
+  - Reason codes for every decision
 - Regime detection (4-factor: ATR vol, trend EMA, realized vol, GRINDING persistence)
 - Session logic (preferred/allowed windows)
 - Strategy activation/deactivation
-- Dynamic risk adjustments
 
 ### Execution System
 - Broker connectivity (future)
@@ -92,17 +99,21 @@ FISH (Fisher Intelligence Systems Holdings)
 - Current: 6 core + 5 probation
 
 ### Phase 3 — Portfolio Engine
-- Correlation matrix
-- Contribution analysis
-- Portfolio diversification scoring
-- Prop account simulation
-- Drawdown modeling
+**Status: v1 COMPLETE**
+- Correlation matrix (contribution analysis)
+- Contribution analysis (marginal Sharpe per strategy)
+- Portfolio diversification scoring (genome map, exposure clustering)
+- Strategy contribution analysis
+- Portfolio Regime Controller (activation scoring, state machine, daily reports)
 
 ### Phase 4 — Strategy Controller
-**Status: v1 COMPLETE (v0.16)**
-- Volatility regime gating
-- Trend strength evaluation
-- Time-of-day session logic
+**Status: v2 COMPLETE (v0.18)**
+- Trade-level controller: regime gating, soft timing, portfolio coordination (v0.16)
+- Portfolio Regime Controller: 9-dimension activation scoring model
+- Strategy State Machine: 8 formal states, explicit transition rules
+- Daily portfolio decision reports (JSON + Markdown)
+- Reason codes for all controller decisions
+- Registry schema v2.0 with controller state, history, scores
 - Market structure awareness
 - Regime gate optimization identified (+23.6% PnL recovery, queued for deploy)
 

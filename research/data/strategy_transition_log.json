@@ -1,0 +1,12 @@
+[
+  {
+    "strategy_id": "Donchian-MNQ-Long-GRINDING",
+    "timestamp": "2026-03-15T16:36:05.269642",
+    "from_state": "PROBATION",
+    "to_state": "ACTIVE",
+    "reason_codes": [
+      "HALF_LIFE_STRENGTHENING"
+    ],
+    "trigger": "Recovery: score=0.69, HL=HEALTHY"
+  }
+]

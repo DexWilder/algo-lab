@@ -1,5 +1,5 @@
 {
-  "_schema_version": "1.1",
+  "_schema_version": "2.0",
   "_generated": "2026-03-15",
   "_description": "FQL Strategy Registry \u2014 institutional memory of all strategy ideas, tested candidates, and deployed strategies",
   "_purpose": "Preserves research knowledge, enables crossbreeding, feeds Strategy Factory",
@@ -24,7 +24,23 @@
       "notes": "Highest trade count (41.7%). Layer 1 backbone. Regime gate: avoid HIGH_VOL (+$1,166 recovery queued)",
       "kill_flag": null,
       "kill_details": null,
-      "last_review_date": "2026-03-15"
+      "last_review_date": "2026-03-15",
+      "controller_state": "ACTIVE",
+      "controller_action": "REDUCED_ON",
+      "activation_score": 0.69,
+      "controller_reason_codes": [
+        "REGIME_MATCH_LOW",
+        "HALF_LIFE_STRENGTHENING",
+        "PORTFOLIO_NEUTRAL",
+        "LOW_REDUNDANCY",
+        "HEALTH_FAIL",
+        "KILL_NONE",
+        "TIME_WINDOW_MATCH",
+        "ASSET_FIT_GOOD",
+        "RECENT_STABLE"
+      ],
+      "last_controller_date": "2026-03-15",
+      "review_priority": "LOW"
     },
     {
       "strategy_id": "XB-PB-EMA-MES-Short",
@@ -46,7 +62,23 @@
       "notes": "Only MES strategy. Regime gate: avoid LOW_RV (+$246 recovery queued)",
       "kill_flag": null,
       "kill_details": null,
-      "last_review_date": "2026-03-15"
+      "last_review_date": "2026-03-15",
+      "controller_state": "ACTIVE",
+      "controller_action": "FULL_ON",
+      "activation_score": 0.81,
+      "controller_reason_codes": [
+        "REGIME_MATCH_HIGH",
+        "HALF_LIFE_STRENGTHENING",
+        "PORTFOLIO_NEUTRAL",
+        "LOW_REDUNDANCY",
+        "HEALTH_FAIL",
+        "KILL_NONE",
+        "TIME_WINDOW_MATCH",
+        "ASSET_FIT_GOOD",
+        "RECENT_STABLE"
+      ],
+      "last_controller_date": "2026-03-15",
+      "review_priority": "LOW"
     },
     {
       "strategy_id": "ORB-MGC-Long",
@@ -68,7 +100,23 @@
       "notes": "Morning session (10:00-12:00 ET). Regime gate: avoid LOW_VOL (+$777 recovery queued)",
       "kill_flag": null,
       "kill_details": null,
-      "last_review_date": "2026-03-15"
+      "last_review_date": "2026-03-15",
+      "controller_state": "ACTIVE",
+      "controller_action": "FULL_ON",
+      "activation_score": 0.81,
+      "controller_reason_codes": [
+        "REGIME_MATCH_HIGH",
+        "HALF_LIFE_STRENGTHENING",
+        "PORTFOLIO_NEUTRAL",
+        "LOW_REDUNDANCY",
+        "HEALTH_FAIL",
+        "KILL_NONE",
+        "TIME_WINDOW_MATCH",
+        "ASSET_FIT_GOOD",
+        "RECENT_STABLE"
+      ],
+      "last_controller_date": "2026-03-15",
+      "review_priority": "LOW"
     },
     {
       "strategy_id": "Donchian-MNQ-Long-GRINDING",
@@ -87,7 +135,32 @@
       "trades_6yr": 47,
       "pnl_share": 13.9,
       "profit_factor": 1.6,
-      "notes": "True trend-follower (60-bar hold). GRINDING-only filter. Regime gate: avoid HIGH_RV (+$2,199 recovery queued). Needs 150 trades for promotion."
+      "notes": "True trend-follower (60-bar hold). GRINDING-only filter. Regime gate: avoid HIGH_RV (+$2,199 recovery queued). Needs 150 trades for promotion.",
+      "controller_state": "ACTIVE",
+      "controller_action": "REDUCED_ON",
+      "activation_score": 0.69,
+      "controller_reason_codes": [
+        "REGIME_MATCH_LOW",
+        "HALF_LIFE_STRENGTHENING",
+        "PORTFOLIO_NEUTRAL",
+        "LOW_REDUNDANCY",
+        "HEALTH_FAIL",
+        "KILL_NONE",
+        "TIME_WINDOW_MATCH",
+        "ASSET_FIT_GOOD",
+        "RECENT_STABLE"
+      ],
+      "last_controller_date": "2026-03-15",
+      "review_priority": "HIGH",
+      "state_history": [
+        {
+          "date": "2026-03-15",
+          "from": "PROBATION",
+          "to": "ACTIVE",
+          "trigger": "Recovery: score=0.69, HL=HEALTHY"
+        }
+      ],
+      "state_entered_date": "2026-03-15"
     },
     {
       "strategy_id": "BB-EQ-MGC-Long",
@@ -109,7 +182,23 @@
       "notes": "3x efficiency (5.6% trades, 16.6% PnL). Layer 3 tail engine. Regime gate: avoid HIGH_RV (+$350 recovery queued)",
       "kill_flag": null,
       "kill_details": null,
-      "last_review_date": "2026-03-15"
+      "last_review_date": "2026-03-15",
+      "controller_state": "ACTIVE",
+      "controller_action": "FULL_ON",
+      "activation_score": 0.81,
+      "controller_reason_codes": [
+        "REGIME_MATCH_HIGH",
+        "HALF_LIFE_STRENGTHENING",
+        "PORTFOLIO_NEUTRAL",
+        "LOW_REDUNDANCY",
+        "HEALTH_FAIL",
+        "KILL_NONE",
+        "TIME_WINDOW_MATCH",
+        "ASSET_FIT_GOOD",
+        "RECENT_STABLE"
+      ],
+      "last_controller_date": "2026-03-15",
+      "review_priority": "LOW"
     },
     {
       "strategy_id": "PB-MGC-Short",
@@ -131,7 +220,23 @@
       "notes": "Deepest filter stack (6 layers). Very rare trades. Requires HIGH_RV + TRENDING.",
       "kill_flag": null,
       "kill_details": null,
-      "last_review_date": "2026-03-15"
+      "last_review_date": "2026-03-15",
+      "controller_state": "ACTIVE",
+      "controller_action": "FULL_ON",
+      "activation_score": 0.81,
+      "controller_reason_codes": [
+        "REGIME_MATCH_HIGH",
+        "HALF_LIFE_STRENGTHENING",
+        "PORTFOLIO_NEUTRAL",
+        "LOW_REDUNDANCY",
+        "HEALTH_FAIL",
+        "KILL_NONE",
+        "TIME_WINDOW_MATCH",
+        "ASSET_FIT_GOOD",
+        "RECENT_STABLE"
+      ],
+      "last_controller_date": "2026-03-15",
+      "review_priority": "LOW"
     },
     {
       "strategy_id": "MomIgn-M2K-Short",
@@ -911,7 +1016,23 @@
       "notes": "PROMOTED to probation 2026-03-15. WF 10/10 PERFECT. MNQ-long: PF=1.28, Sharpe=1.40, 609 trades. 83% window survival, cross-asset edge on MES+MYM, 100% param stability. Academic source: Zarattini/Aziz/Barbon 2024.",
       "kill_flag": "redundancy",
       "kill_details": "Correlated with Donchian-MNQ-Long (corr=0.374, same MNQ/long/breakout). NoiseBoundary is stronger \u2014 keep this, archive Donchian.",
-      "last_review_date": "2026-03-15"
+      "last_review_date": "2026-03-15",
+      "controller_state": "PROBATION",
+      "controller_action": "REDUCED_ON",
+      "activation_score": 0.67,
+      "controller_reason_codes": [
+        "REGIME_MATCH_MODERATE",
+        "HALF_LIFE_STRENGTHENING",
+        "PORTFOLIO_NEUTRAL",
+        "LOW_REDUNDANCY",
+        "HEALTH_FAIL",
+        "KILL_TRIGGER_SOFT",
+        "TIME_WINDOW_MATCH",
+        "ASSET_FIT_GOOD",
+        "RECENT_STABLE"
+      ],
+      "last_controller_date": "2026-03-15",
+      "review_priority": "LOW"
     },
     {
       "strategy_id": "VWAPPullback-MES-Long",

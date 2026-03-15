@@ -1,0 +1,439 @@
+{
+  "report_date": "2026-03-15 16:21",
+  "regime_snapshot": {
+    "MES": {
+      "vol_regime": "HIGH_VOL",
+      "trend_regime": "TRENDING",
+      "rv_regime": "HIGH_RV",
+      "trend_persistence": "CHOPPY"
+    },
+    "MNQ": {
+      "vol_regime": "HIGH_VOL",
+      "trend_regime": "TRENDING",
+      "rv_regime": "HIGH_RV",
+      "trend_persistence": "CHOPPY"
+    },
+    "MGC": {
+      "vol_regime": "NORMAL",
+      "trend_regime": "TRENDING",
+      "rv_regime": "HIGH_RV",
+      "trend_persistence": "CHOPPY"
+    },
+    "M2K": {
+      "vol_regime": "HIGH_VOL",
+      "trend_regime": "TRENDING",
+      "rv_regime": "HIGH_RV",
+      "trend_persistence": "CHOPPY"
+    },
+    "MCL": {
+      "vol_regime": "HIGH_VOL",
+      "trend_regime": "TRENDING",
+      "rv_regime": "HIGH_RV",
+      "trend_persistence": "CHOPPY"
+    }
+  },
+  "activation_matrix": [
+    {
+      "strategy_id": "VWAP-MNQ-Long",
+      "asset": "MNQ",
+      "family": "trend",
+      "primary_exposure": "trend_persistence",
+      "current_state": "ACTIVE",
+      "new_state": "ACTIVE",
+      "state_changed": false,
+      "activation_score": 0.655,
+      "sub_scores": {
+        "regime_fit": 0.4,
+        "half_life": 1.0,
+        "contribution": 0.7,
+        "redundancy": 0.2,
+        "health": 0.0,
+        "kill_criteria": 1.0,
+        "time_of_day": 1.0,
+        "asset_fit": 1.0,
+        "recent_stability": 1.0
+      },
+      "recommended_action": "REDUCED_ON",
+      "reason_codes": [
+        "REGIME_MATCH_LOW",
+        "HALF_LIFE_STRENGTHENING",
+        "PORTFOLIO_ADDS_VALUE",
+        "REDUNDANT_CLUSTER",
+        "HEALTH_FAIL",
+        "KILL_NONE",
+        "TIME_WINDOW_MATCH",
+        "ASSET_FIT_GOOD",
+        "RECENT_STABLE"
+      ],
+      "transition_trigger": "No transition \u2014 current state appropriate",
+      "confidence": 1.0,
+      "warnings": [],
+      "review_priority": "LOW"
+    },
+    {
+      "strategy_id": "XB-PB-EMA-MES-Short",
+      "asset": "MES",
+      "family": "pullback",
+      "primary_exposure": "trend_persistence",
+      "current_state": "ACTIVE",
+      "new_state": "ACTIVE",
+      "state_changed": false,
+      "activation_score": 0.87,
+      "sub_scores": {
+        "regime_fit": 1.0,
+        "half_life": 1.0,
+        "contribution": 1.0,
+        "redundancy": 0.7,
+        "health": 0.0,
+        "kill_criteria": 1.0,
+        "time_of_day": 1.0,
+        "asset_fit": 1.0,
+        "recent_stability": 1.0
+      },
+      "recommended_action": "FULL_ON",
+      "reason_codes": [
+        "REGIME_MATCH_HIGH",
+        "HALF_LIFE_STRENGTHENING",
+        "PORTFOLIO_ADDS_VALUE",
+        "LOW_REDUNDANCY",
+        "HEALTH_FAIL",
+        "KILL_NONE",
+        "TIME_WINDOW_MATCH",
+        "ASSET_FIT_GOOD",
+        "RECENT_STABLE"
+      ],
+      "transition_trigger": "No transition \u2014 current state appropriate",
+      "confidence": 1.0,
+      "warnings": [],
+      "review_priority": "LOW"
+    },
+    {
+      "strategy_id": "ORB-MGC-Long",
+      "asset": "MGC",
+      "family": "breakout",
+      "primary_exposure": "opening_range",
+      "current_state": "ACTIVE",
+      "new_state": "ACTIVE",
+      "state_changed": false,
+      "activation_score": 0.825,
+      "sub_scores": {
+        "regime_fit": 1.0,
+        "half_life": 1.0,
+        "contribution": 0.7,
+        "redundancy": 0.7,
+        "health": 0.0,
+        "kill_criteria": 1.0,
+        "time_of_day": 1.0,
+        "asset_fit": 1.0,
+        "recent_stability": 1.0
+      },
+      "recommended_action": "FULL_ON",
+      "reason_codes": [
+        "REGIME_MATCH_HIGH",
+        "HALF_LIFE_STRENGTHENING",
+        "PORTFOLIO_ADDS_VALUE",
+        "LOW_REDUNDANCY",
+        "HEALTH_FAIL",
+        "KILL_NONE",
+        "TIME_WINDOW_MATCH",
+        "ASSET_FIT_GOOD",
+        "RECENT_STABLE"
+      ],
+      "transition_trigger": "No transition \u2014 current state appropriate",
+      "confidence": 1.0,
+      "warnings": [],
+      "review_priority": "LOW"
+    },
+    {
+      "strategy_id": "BB-EQ-MGC-Long",
+      "asset": "MGC",
+      "family": "mean_reversion",
+      "primary_exposure": "mean_reversion",
+      "current_state": "ACTIVE",
+      "new_state": "ACTIVE",
+      "state_changed": false,
+      "activation_score": 0.825,
+      "sub_scores": {
+        "regime_fit": 1.0,
+        "half_life": 1.0,
+        "contribution": 0.7,
+        "redundancy": 0.7,
+        "health": 0.0,
+        "kill_criteria": 1.0,
+        "time_of_day": 1.0,
+        "asset_fit": 1.0,
+        "recent_stability": 1.0
+      },
+      "recommended_action": "FULL_ON",
+      "reason_codes": [
+        "REGIME_MATCH_HIGH",
+        "HALF_LIFE_STRENGTHENING",
+        "PORTFOLIO_ADDS_VALUE",
+        "LOW_REDUNDANCY",
+        "HEALTH_FAIL",
+        "KILL_NONE",
+        "TIME_WINDOW_MATCH",
+        "ASSET_FIT_GOOD",
+        "RECENT_STABLE"
+      ],
+      "transition_trigger": "No transition \u2014 current state appropriate",
+      "confidence": 1.0,
+      "warnings": [],
+      "review_priority": "LOW"
+    },
+    {
+      "strategy_id": "PB-MGC-Short",
+      "asset": "MGC",
+      "family": "pullback",
+      "primary_exposure": "trend_persistence",
+      "current_state": "ACTIVE",
+      "new_state": "ACTIVE",
+      "state_changed": false,
+      "activation_score": 0.825,
+      "sub_scores": {
+        "regime_fit": 1.0,
+        "half_life": 1.0,
+        "contribution": 0.7,
+        "redundancy": 0.7,
+        "health": 0.0,
+        "kill_criteria": 1.0,
+        "time_of_day": 1.0,
+        "asset_fit": 1.0,
+        "recent_stability": 1.0
+      },
+      "recommended_action": "FULL_ON",
+      "reason_codes": [
+        "REGIME_MATCH_HIGH",
+        "HALF_LIFE_STRENGTHENING",
+        "PORTFOLIO_ADDS_VALUE",
+        "LOW_REDUNDANCY",
+        "HEALTH_FAIL",
+        "KILL_NONE",
+        "TIME_WINDOW_MATCH",
+        "ASSET_FIT_GOOD",
+        "RECENT_STABLE"
+      ],
+      "transition_trigger": "No transition \u2014 current state appropriate",
+      "confidence": 1.0,
+      "warnings": [],
+      "review_priority": "LOW"
+    },
+    {
+      "strategy_id": "Donchian-MNQ-Long-GRINDING",
+      "asset": "MNQ",
+      "family": "breakout",
+      "primary_exposure": "trend_persistence",
+      "current_state": "PROBATION",
+      "new_state": "ACTIVE",
+      "state_changed": true,
+      "activation_score": 0.66,
+      "sub_scores": {
+        "regime_fit": 0.4,
+        "half_life": 1.0,
+        "contribution": 0.4,
+        "redundancy": 0.7,
+        "health": 0.0,
+        "kill_criteria": 1.0,
+        "time_of_day": 1.0,
+        "asset_fit": 1.0,
+        "recent_stability": 1.0
+      },
+      "recommended_action": "REDUCED_ON",
+      "reason_codes": [
+        "REGIME_MATCH_LOW",
+        "HALF_LIFE_STRENGTHENING",
+        "PORTFOLIO_NEUTRAL",
+        "LOW_REDUNDANCY",
+        "HEALTH_FAIL",
+        "KILL_NONE",
+        "TIME_WINDOW_MATCH",
+        "ASSET_FIT_GOOD",
+        "RECENT_STABLE"
+      ],
+      "transition_trigger": "Recovery: score=0.66, HL=HEALTHY",
+      "confidence": 1.0,
+      "warnings": [],
+      "review_priority": "HIGH"
+    },
+    {
+      "strategy_id": "NoiseBoundary-MNQ-Long",
+      "asset": "MNQ",
+      "family": "breakout",
+      "primary_exposure": "volatility_expansion",
+      "current_state": "PROBATION",
+      "new_state": "PROBATION",
+      "state_changed": false,
+      "activation_score": 0.68,
+      "sub_scores": {
+        "regime_fit": 0.6,
+        "half_life": 1.0,
+        "contribution": 1.0,
+        "redundancy": 0.2,
+        "health": 0.0,
+        "kill_criteria": 0.4,
+        "time_of_day": 1.0,
+        "asset_fit": 1.0,
+        "recent_stability": 1.0
+      },
+      "recommended_action": "REDUCED_ON",
+      "reason_codes": [
+        "REGIME_MATCH_MODERATE",
+        "HALF_LIFE_STRENGTHENING",
+        "PORTFOLIO_ADDS_VALUE",
+        "REDUNDANT_CLUSTER",
+        "HEALTH_FAIL",
+        "KILL_TRIGGER_SOFT",
+        "TIME_WINDOW_MATCH",
+        "ASSET_FIT_GOOD",
+        "RECENT_STABLE"
+      ],
+      "transition_trigger": "No transition \u2014 current state appropriate",
+      "confidence": 1.0,
+      "warnings": [
+        "Kill flags: redundancy"
+      ],
+      "review_priority": "LOW"
+    },
+    {
+      "strategy_id": "RangeExpansion-MCL-Short",
+      "asset": "MCL",
+      "family": "vol_expansion",
+      "primary_exposure": "volatility_expansion",
+      "current_state": "VALIDATED",
+      "new_state": "VALIDATED",
+      "state_changed": false,
+      "activation_score": 0.62,
+      "sub_scores": {
+        "regime_fit": 1.0,
+        "half_life": 0.0,
+        "contribution": 1.0,
+        "redundancy": 0.7,
+        "health": 0.0,
+        "kill_criteria": 1.0,
+        "time_of_day": 1.0,
+        "asset_fit": 1.0,
+        "recent_stability": 0.0
+      },
+      "recommended_action": "REDUCED_ON",
+      "reason_codes": [
+        "REGIME_MATCH_HIGH",
+        "HALF_LIFE_DEAD",
+        "PORTFOLIO_ADDS_VALUE",
+        "LOW_REDUNDANCY",
+        "HEALTH_FAIL",
+        "KILL_NONE",
+        "TIME_WINDOW_MATCH",
+        "ASSET_FIT_GOOD",
+        "RECENT_COLLAPSE"
+      ],
+      "transition_trigger": "No transition \u2014 current state appropriate",
+      "confidence": 1.0,
+      "warnings": [
+        "Edge decaying: HL status=ARCHIVE_CANDIDATE"
+      ],
+      "review_priority": "LOW"
+    },
+    {
+      "strategy_id": "GapMom-MGC-Long",
+      "asset": "MGC",
+      "family": "breakout",
+      "primary_exposure": "gap_continuation",
+      "current_state": "VALIDATED",
+      "new_state": "VALIDATED",
+      "state_changed": false,
+      "activation_score": 0.87,
+      "sub_scores": {
+        "regime_fit": 1.0,
+        "half_life": 1.0,
+        "contribution": 1.0,
+        "redundancy": 0.7,
+        "health": 0.0,
+        "kill_criteria": 1.0,
+        "time_of_day": 1.0,
+        "asset_fit": 1.0,
+        "recent_stability": 1.0
+      },
+      "recommended_action": "FULL_ON",
+      "reason_codes": [
+        "REGIME_MATCH_HIGH",
+        "HALF_LIFE_STRENGTHENING",
+        "PORTFOLIO_ADDS_VALUE",
+        "LOW_REDUNDANCY",
+        "HEALTH_FAIL",
+        "KILL_NONE",
+        "TIME_WINDOW_MATCH",
+        "ASSET_FIT_GOOD",
+        "RECENT_STABLE"
+      ],
+      "transition_trigger": "No transition \u2014 current state appropriate",
+      "confidence": 1.0,
+      "warnings": [],
+      "review_priority": "LOW"
+    },
+    {
+      "strategy_id": "GapMom-MNQ-Long",
+      "asset": "MNQ",
+      "family": "breakout",
+      "primary_exposure": "gap_continuation",
+      "current_state": "VALIDATED",
+      "new_state": "VALIDATED",
+      "state_changed": false,
+      "activation_score": 0.545,
+      "sub_scores": {
+        "regime_fit": 0.6,
+        "half_life": 0.0,
+        "contribution": 0.7,
+        "redundancy": 0.7,
+        "health": 0.0,
+        "kill_criteria": 1.0,
+        "time_of_day": 1.0,
+        "asset_fit": 1.0,
+        "recent_stability": 1.0
+      },
+      "recommended_action": "PROBATION",
+      "reason_codes": [
+        "REGIME_MATCH_MODERATE",
+        "HALF_LIFE_DEAD",
+        "PORTFOLIO_ADDS_VALUE",
+        "LOW_REDUNDANCY",
+        "HEALTH_FAIL",
+        "KILL_NONE",
+        "TIME_WINDOW_MATCH",
+        "ASSET_FIT_GOOD",
+        "RECENT_STABLE"
+      ],
+      "transition_trigger": "No transition \u2014 current state appropriate",
+      "confidence": 1.0,
+      "warnings": [
+        "Edge decaying: HL status=ARCHIVE_CANDIDATE"
+      ],
+      "review_priority": "MEDIUM"
+    }
+  ],
+  "state_transitions": [
+    {
+      "strategy_id": "Donchian-MNQ-Long-GRINDING",
+      "timestamp": "2026-03-15T16:32:05.966103",
+      "from_state": "PROBATION",
+      "to_state": "ACTIVE",
+      "reason_codes": [
+        "HALF_LIFE_STRENGTHENING"
+      ],
+      "trigger": "Recovery: score=0.66, HL=HEALTHY"
+    }
+  ],
+  "portfolio_summary": {
+    "total_strategies": 10,
+    "active": 9,
+    "probation": 1,
+    "disabled_or_off": 0,
+    "state_changes": 1,
+    "health_status": "FAIL",
+    "avg_activation_score": 0.7375
+  },
+  "health_signals": {
+    "overall": "FAIL",
+    "fail_count": 1,
+    "warn_count": 7
+  }
+}
