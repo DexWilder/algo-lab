@@ -1,0 +1,59 @@
+======================================================================
+  FQL DAILY RESEARCH REPORT
+  Date: 2026-03-15 09:51
+======================================================================
+
+  REGISTRY STATUS (57 total)
+  --------------------------------------------------
+    core          5
+    probation     6
+    testing       3
+    idea          27
+    rejected      16
+
+  ROADMAP QUEUE (12 tasks)
+  --------------------------------------------------
+    in_progress      1
+    completed        2
+    queued           7
+    monitoring       2
+
+  RECENTLY COMPLETED:
+    [WF-001] Walk-Forward Matrix: RangeExpansion MCL-Short
+           → 10/10 matrix score, PROMOTE recommendation. 75% window survival, 100% 
+    [WF-002] Walk-Forward Matrix: GapMom MGC-Long
+           → 6.7/10 matrix score, PROMOTE. 50% window survival but 100% param stabi
+
+  IN PROGRESS:
+    [WF-003] Walk-Forward Matrix: GapMom MNQ-Long
+
+  NEXT UP (top 5):
+    [P1] Data Integrity Check Module
+    [P2] Deploy regime gate optimizations (+23.6% PnL recovery)
+    [P2] Build Pre-FOMC Drift strategy (event-driven gap)
+    [P2] Build IBS Mean Reversion M2K (Russell daily MR)
+    [P2] Auto-Report Generator (daily/weekly)
+
+  LATEST HARVEST VALIDATION
+  --------------------------------------------------
+    Generated: 2026-03-15 08:03
+    Passed gate: 3
+    Failed: 61
+    Winners:
+      + GapMom MNQ-long
+      + GapMom MGC-long
+      + RangeExpansion MCL-short
+
+  WALK-FORWARD MATRIX RESULTS
+  --------------------------------------------------
+    gap_mom MGC-long:  Score=6.7/10  → PROMOTE
+    gap_mom MNQ-long:  Score=6.7/10  → PROMOTE
+    noise_boundary MNQ-long:  Score=10.0/10  → PROMOTE
+    range_expansion MCL-short:  Score=10.0/10  → PROMOTE
+
+  OPEN PORTFOLIO GAPS
+  --------------------------------------------------
+    Missing families: event_driven
+    Missing combos: MNQ-short, MES-long, M2K-long, MCL-long
+
+======================================================================
