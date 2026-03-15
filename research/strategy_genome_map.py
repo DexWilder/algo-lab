@@ -38,6 +38,11 @@ STRATEGIES = [
         "status": "parent",
         "exit_type": "bracket + BE + trail",
         "notes": "Gold short specialist, fast entries in volatile trends",
+        "primary_exposure": "trend_persistence",
+        "secondary_exposure": None,
+        "volatility_dependency": "high",
+        "trend_dependency": "trending",
+        "regime_dependency": "high",
     },
     {
         "id": "ORB-MGC-Long",
@@ -55,6 +60,11 @@ STRATEGIES = [
         "status": "parent",
         "exit_type": "bracket + BE + trail",
         "notes": "Gold long breakout, captures opening range expansion",
+        "primary_exposure": "opening_range",
+        "secondary_exposure": "trend_persistence",
+        "volatility_dependency": "neutral",
+        "trend_dependency": "trending",
+        "regime_dependency": "moderate",
     },
     {
         "id": "VWAP-MNQ-Long",
@@ -73,6 +83,11 @@ STRATEGIES = [
         "status": "parent",
         "exit_type": "ATR trail",
         "notes": "100% param stability, best risk-adjusted validated strategy",
+        "primary_exposure": "trend_persistence",
+        "secondary_exposure": None,
+        "volatility_dependency": "low",
+        "trend_dependency": "trending",
+        "regime_dependency": "moderate",
     },
     {
         "id": "XB-PB-EMA-MES-Short",
@@ -91,6 +106,11 @@ STRATEGIES = [
         "status": "parent",
         "exit_type": "time stop + bracket",
         "notes": "Crossbred from PB parent, broad regime coverage, S&P short specialist",
+        "primary_exposure": "trend_persistence",
+        "secondary_exposure": None,
+        "volatility_dependency": "neutral",
+        "trend_dependency": "neutral",
+        "regime_dependency": "low",
     },
     {
         "id": "BB-EQ-MGC-Long",
@@ -109,6 +129,11 @@ STRATEGIES = [
         "status": "parent",
         "exit_type": "bracket + trail",
         "notes": "Gold snapback — profits in TRENDING not RANGING (counterintuitive)",
+        "primary_exposure": "mean_reversion",
+        "secondary_exposure": "trend_persistence",
+        "volatility_dependency": "neutral",
+        "trend_dependency": "trending",
+        "regime_dependency": "moderate",
     },
     {
         "id": "Donchian-MNQ-Long",
@@ -126,6 +151,11 @@ STRATEGIES = [
         "status": "probation",
         "exit_type": "Profit Ladder (ratcheting R-stops)",
         "notes": "True trend-follower DNA (60b hold). GRINDING-only filter. Sample size limits validation.",
+        "primary_exposure": "trend_persistence",
+        "secondary_exposure": None,
+        "volatility_dependency": "low",
+        "trend_dependency": "trending",
+        "regime_dependency": "high",
     },
     # ── Probation strategies (Track 2) ─────────────────────────────────────
     {
@@ -147,6 +177,11 @@ STRATEGIES = [
         "param_stability": 96,
         "session": "midday",
         "notes": "M2K-specific momentum burst. 6.0/10 on extended data. Tail engine profile.",
+        "primary_exposure": "volatility_expansion",
+        "secondary_exposure": "trend_persistence",
+        "volatility_dependency": "high",
+        "trend_dependency": "trending",
+        "regime_dependency": "moderate",
     },
     {
         "id": "CloseVWAP-M2K-Short",
@@ -168,6 +203,11 @@ STRATEGIES = [
         "param_stability": 100,
         "session": "close",
         "notes": "Close session stabilizer (15:00-15:55). 100% param stability on 6.7yr. M2K-specific.",
+        "primary_exposure": "session_structure",
+        "secondary_exposure": "mean_reversion",
+        "volatility_dependency": "neutral",
+        "trend_dependency": "neutral",
+        "regime_dependency": "low",
     },
     {
         "id": "TTMSqueeze-M2K-Short",
@@ -189,6 +229,11 @@ STRATEGIES = [
         "param_stability": 86,
         "session": "all_day",
         "notes": "First vol expansion strategy. Fires from compression. 86% param stability. M2K-specific.",
+        "primary_exposure": "volatility_expansion",
+        "secondary_exposure": None,
+        "volatility_dependency": "low",
+        "trend_dependency": "neutral",
+        "regime_dependency": "moderate",
     },
     {
         "id": "ORBEnh-M2K-Short",
@@ -209,6 +254,11 @@ STRATEGIES = [
         "param_stability": 100,
         "session": "morning",
         "notes": "ORB on Russell. 8.0/10, 100% param stability. Needs 150+ trades.",
+        "primary_exposure": "opening_range",
+        "secondary_exposure": "trend_persistence",
+        "volatility_dependency": "neutral",
+        "trend_dependency": "trending",
+        "regime_dependency": "moderate",
     },
     {
         "id": "VWAPMR-MCL-Short",
@@ -229,8 +279,28 @@ STRATEGIES = [
         "param_stability": 70,
         "session": "morning",
         "notes": "Crude oil mean reversion. 6.5/10, 70% param stability.",
+        "primary_exposure": "mean_reversion",
+        "secondary_exposure": "session_structure",
+        "volatility_dependency": "neutral",
+        "trend_dependency": "ranging",
+        "regime_dependency": "moderate",
     },
 ]
+
+# ── Exposure Taxonomy ────────────────────────────────────────────────────────
+# Each strategy maps to underlying exposure types to detect false diversification.
+# Two strategies with different names can express the same edge.
+
+EXPOSURE_TYPES = {
+    "trend_persistence": "Profits when trends continue (momentum, breakouts, VWAP trend)",
+    "mean_reversion": "Profits when price reverts to fair value (BB snapback, VWAP fade)",
+    "volatility_expansion": "Profits from compression → expansion (squeeze, range expansion)",
+    "liquidity_sweep": "Profits from stop hunts / false breakouts (ICT, sweep patterns)",
+    "gap_continuation": "Profits when opening gaps follow through (gap momentum)",
+    "inventory_reversion": "Profits from dealer/inventory imbalance (FOMC, EIA events)",
+    "opening_range": "Profits from first-period range definition (ORB variants)",
+    "session_structure": "Profits from intraday structural patterns (close momentum, VWAP close)",
+}
 
 # ── Session definitions ───────────────────────────────────────────────────
 SESSION_WINDOWS = {
@@ -373,9 +443,46 @@ def build_genome_data() -> dict:
             "mitigant": "Different holding periods (28b vs 60b) and assets (MGC vs MNQ)",
         })
 
+    # Exposure concentration analysis
+    total_strats = len(STRATEGIES)
+    exposure_groups = {}
+    for s in STRATEGIES:
+        prim = s.get("primary_exposure", "unknown")
+        exposure_groups.setdefault(prim, []).append(s["id"])
+
+    # Detect concentration risk: >40% of strategies sharing same primary exposure
+    concentration_warnings = []
+    for exp, strats in exposure_groups.items():
+        pct = len(strats) / total_strats * 100
+        if pct > 40:
+            concentration_warnings.append({
+                "exposure": exp,
+                "strategies": strats,
+                "pct": round(pct, 1),
+                "risk": "HIGH — over 40% of portfolio shares this edge. Drawdown clustering likely.",
+            })
+        elif pct > 25:
+            concentration_warnings.append({
+                "exposure": exp,
+                "strategies": strats,
+                "pct": round(pct, 1),
+                "risk": "MODERATE — over 25% shares this edge. Monitor for correlated losses.",
+            })
+
+    # Volatility dependency balance
+    vol_deps = {}
+    for s in STRATEGIES:
+        vd = s.get("volatility_dependency", "neutral")
+        vol_deps.setdefault(vd, []).append(s["id"])
+
+    # Trend dependency balance
+    trend_deps = {}
+    for s in STRATEGIES:
+        td = s.get("trend_dependency", "neutral")
+        trend_deps.setdefault(td, []).append(s["id"])
+
     # Diversity score
     unique_entries = len(set(s["entry_type"] for s in STRATEGIES))
-    total_strats = len(STRATEGIES)
     unique_hold_classes = len(set(s["hold_class"] for s in STRATEGIES))
     unique_assets = len(set(s["asset"] for s in STRATEGIES))
     total_cells = len(ALL_REGIME_CELLS)
@@ -406,6 +513,11 @@ def build_genome_data() -> dict:
         "regime_coverage": {
             "covered": covered, "total": total_cells,
             "grade": _grade(covered / total_cells)
+        },
+        "exposure_diversity": {
+            "unique": len(exposure_groups),
+            "total": len(EXPOSURE_TYPES),
+            "grade": _grade(len(exposure_groups) / len(EXPOSURE_TYPES))
         },
     }
 
@@ -442,6 +554,12 @@ def build_genome_data() -> dict:
             "side_imbalance": f"{len(long_strats)} long vs {len(short_strats)} short",
         },
         "overlaps": overlaps,
+        "exposure_analysis": {
+            "exposure_groups": exposure_groups,
+            "concentration_warnings": concentration_warnings,
+            "volatility_dependency": vol_deps,
+            "trend_dependency": trend_deps,
+        },
         "diversity": diversity,
     }
 
@@ -566,6 +684,41 @@ def print_report(data: dict) -> None:
     else:
         print("  No significant overlaps detected.")
 
+    # Exposure Concentration
+    print()
+    print("  EXPOSURE CONCENTRATION")
+    print(f"  {THIN}")
+    exp = data.get("exposure_analysis", {})
+    for etype, strats in exp.get("exposure_groups", {}).items():
+        pct = len(strats) / len(data["strategies"]) * 100
+        marker = " ⚠" if pct > 25 else ""
+        print(f"  {etype + ':':26s} {len(strats)} strategies ({pct:.0f}%){marker}")
+        for sid in strats:
+            print(f"    - {sid}")
+
+    warnings = exp.get("concentration_warnings", [])
+    if warnings:
+        print()
+        print("  CONCENTRATION WARNINGS")
+        for w in warnings:
+            print(f"  {w['exposure']}: {w['pct']}% — {w['risk']}")
+    else:
+        print()
+        print("  No concentration warnings.")
+
+    # Dependency Balance
+    print()
+    print("  DEPENDENCY BALANCE")
+    print(f"  {THIN}")
+    vol_deps = exp.get("volatility_dependency", {})
+    for dep in ["high", "low", "neutral"]:
+        strats = vol_deps.get(dep, [])
+        print(f"  Vol {dep + ':':12s} {len(strats)} ({', '.join(_short_id(s) for s in strats) if strats else 'none'})")
+    trend_deps = exp.get("trend_dependency", {})
+    for dep in ["trending", "ranging", "neutral"]:
+        strats = trend_deps.get(dep, [])
+        print(f"  Trend {dep + ':':12s} {len(strats)} ({', '.join(_short_id(s) for s in strats) if strats else 'none'})")
+
     # Diversity Score
     print()
     print("  DIVERSITY SCORE")
@@ -579,6 +732,8 @@ def print_report(data: dict) -> None:
     print(f"  Asset coverage:       {a['unique']}/{a['total']} assets           ({a['grade']})")
     r = div["regime_coverage"]
     print(f"  Regime coverage:      {r['covered']}/{r['total']} cells           ({r['grade']})")
+    x = div["exposure_diversity"]
+    print(f"  Exposure diversity:   {x['unique']}/{x['total']} edge types      ({x['grade']})")
     print(f"  Overall:              {div['overall']}")
 
     print()
