@@ -76,6 +76,10 @@ PROBATION_TRACKER = {
     "MomIgn-M2K-Short": {"min_trades": 50, "note": "Probation — tail engine, 6.0/10 extended (was 9.0/10 on 2yr), 96% param stability, M2K-specific edge"},
     "CloseVWAP-M2K-Short": {"min_trades": 60, "note": "Probation — close stabilizer, 6.0/10 extended (was 8.0/10 on 2yr), 100% param stability, M2K-specific edge"},
     "TTMSqueeze-M2K-Short": {"min_trades": 100, "note": "Probation — vol expansion tail engine, 5.5/10 extended, 86% param stability, M2K-specific"},
+    "RangeExpansion-MCL-Short": {"min_trades": 100, "note": "Promoted 2026-03-15 — WF 10/10, PF=1.46, Sharpe=2.39, 214 trades, 100% param stability. First MCL strategy."},
+    "NoiseBoundary-MNQ-Long": {"min_trades": 150, "note": "Promoted 2026-03-15 — WF 10/10, PF=1.28, Sharpe=1.40, 609 trades, 100% param stability. Academic: Zarattini 2024."},
+    "GapMom-MGC-Long": {"min_trades": 80, "note": "Promoted 2026-03-15 — WF 6.7/10, PF=1.72, 83% window survival. MGC-long best combo."},
+    "GapMom-MNQ-Long": {"min_trades": 80, "note": "Promoted 2026-03-15 — WF 6.7/10, PF=1.31, 83% window survival. Secondary combo."},
     # CloseVWAP-MNQ-Long REJECTED — 3.5/10 on extended data (PF=0.85, 20% param stability, edge illusory)
     # TTMSqueeze-MNQ-Short REJECTED — 2.0/10 on extended data
     # TTMSqueeze-MGC-Long REJECTED — 3.5/10 on extended data
