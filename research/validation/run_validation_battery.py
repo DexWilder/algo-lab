@@ -135,6 +135,18 @@ PARAM_GRIDS = {
         "RSI_OVERSOLD": [25, 30, 35],
         "ATR_STOP_MULT": [1.2, 1.5, 1.8],
     },
+    "orb_009": {
+        "VOL_MULT": [1.2, 1.5, 1.8],
+        "TP_MULT": [1.5, 2.0, 2.5],
+        "BE_PCT": [0.4, 0.5, 0.6],
+        "CANDLE_STRENGTH": [0.25, 0.30, 0.35],
+    },
+    "pb_trend": {
+        "SL_ATR": [1.2, 1.5, 1.8],
+        "TP_ATR": [1.8, 2.1, 2.5],
+        "ADX_MIN": [12.0, 14.0, 16.0],
+        "VOL_MULT": [0.8, 1.0, 1.2],
+    },
 }
 
 # Profit Ladder rung variants for Donchian
