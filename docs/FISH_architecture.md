@@ -144,6 +144,36 @@ idea in → systematic generation → validation battery → ranking → portfol
 - Portfolio fit scorer (beyond individual strategy validation)
 - Automated gap-to-candidate pipeline
 
+### Phase 5.5 — Strategy Harvest / Strategy Memory
+**Status: ACTIVE (v0.18)**
+Continuous expansion of the strategy knowledge base while optimizing the current portfolio.
+
+**Strategy Registry** (`research/data/strategy_registry.json`):
+- Institutional memory of ALL strategy ideas — core, probation, rejected, ideas
+- 47 strategies tracked (5 core, 6 probation, 30 ideas, 6 rejected)
+- Every idea preserved with metadata: family, asset, session, source, rule summary, validation scores
+- Feeds crossbreeding engine and Strategy Factory
+
+**Harvest Scheduler** (`research/harvest_scheduler.py`):
+- Gap analysis: identifies missing families, assets, sessions, direction imbalance
+- Validation queue: prioritizes candidates by gap-fill score
+- Research statistics: conversion funnel, source tracking
+
+**Weekly Harvest Rhythm:**
+- Monday: Gap analysis + candidate surfacing
+- Tuesday: Validation runs (batch)
+- Wednesday: Results review + registry update
+- Thursday: New idea harvesting (TradingView, papers, forums)
+- Friday: Portfolio impact assessment
+
+**Harvest Sources:**
+- Internal research and forward testing insights
+- TradingView public strategies
+- ICT concepts translated to mechanical rules
+- Academic and quant research papers
+- Session-specific and asset-specific microstructure patterns
+- User-mentioned ideas and community concepts
+
 ### Phase 6 — Forward Testing
 **Status: ACTIVE (v0.17)**
 - Live market data -> forward runner -> simulated trades -> trade logs
