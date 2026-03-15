@@ -127,7 +127,135 @@ STRATEGIES = [
         "exit_type": "Profit Ladder (ratcheting R-stops)",
         "notes": "True trend-follower DNA (60b hold). GRINDING-only filter. Sample size limits validation.",
     },
+    # ── Probation strategies (Track 2) ─────────────────────────────────────
+    {
+        "id": "MomIgn-M2K-Short",
+        "name": "momentum_ignition",
+        "family": "momentum",
+        "entry_type": "momentum_burst",
+        "entry_desc": "VWAP cross + 2x volume surge + RSI confirm + EMA slope",
+        "asset": "M2K",
+        "side": "short",
+        "hold_bars": 12,
+        "hold_class": "swing",
+        "regime_niche": ["TRENDING"],
+        "regime_preferred": ["NORMAL_TRENDING_LOW_RV", "LOW_VOL_TRENDING_LOW_RV"],
+        "portfolio_role": "tail_engine",
+        "status": "probation",
+        "exit_type": "Profit Ladder (4R target)",
+        "validation_score": 6.0,
+        "param_stability": 96,
+        "session": "midday",
+        "notes": "M2K-specific momentum burst. 6.0/10 on extended data. Tail engine profile.",
+    },
+    {
+        "id": "CloseVWAP-M2K-Short",
+        "name": "close_vwap_reversion",
+        "family": "mean_reversion",
+        "entry_type": "mean_reversion",
+        "entry_desc": "Session VWAP deviation band fade (2 sigma + RSI)",
+        "asset": "M2K",
+        "side": "short",
+        "hold_bars": 6,
+        "hold_class": "scalp",
+        "regime_niche": ["BROAD"],
+        "regime_preferred": ["NORMAL_TRENDING_LOW_RV", "LOW_VOL_TRENDING_LOW_RV",
+                             "NORMAL_RANGING_LOW_RV"],
+        "portfolio_role": "stabilizer",
+        "status": "probation",
+        "exit_type": "Target=VWAP + time exit 15:55",
+        "validation_score": 6.0,
+        "param_stability": 100,
+        "session": "close",
+        "notes": "Close session stabilizer (15:00-15:55). 100% param stability on 6.7yr. M2K-specific.",
+    },
+    {
+        "id": "TTMSqueeze-M2K-Short",
+        "name": "ttm_squeeze",
+        "family": "vol_expansion",
+        "entry_type": "volatility_expansion",
+        "entry_desc": "BB inside KC squeeze → first expansion bar + momentum direction",
+        "asset": "M2K",
+        "side": "short",
+        "hold_bars": 15,
+        "hold_class": "swing",
+        "regime_niche": ["LOW_VOL"],
+        "regime_preferred": ["LOW_VOL_RANGING_LOW_RV", "LOW_VOL_RANGING_HIGH_RV",
+                             "NORMAL_RANGING_LOW_RV"],
+        "portfolio_role": "tail_engine",
+        "status": "probation",
+        "exit_type": "Profit Ladder (4R target) + time exit",
+        "validation_score": 5.5,
+        "param_stability": 86,
+        "session": "all_day",
+        "notes": "First vol expansion strategy. Fires from compression. 86% param stability. M2K-specific.",
+    },
+    {
+        "id": "ORBEnh-M2K-Short",
+        "name": "orb_enhanced",
+        "family": "breakout",
+        "entry_type": "breakout",
+        "entry_desc": "Enhanced ORB with volume + range filters",
+        "asset": "M2K",
+        "side": "short",
+        "hold_bars": 20,
+        "hold_class": "swing",
+        "regime_niche": ["TRENDING"],
+        "regime_preferred": ["NORMAL_TRENDING_LOW_RV", "NORMAL_TRENDING_HIGH_RV"],
+        "portfolio_role": "probation",
+        "status": "probation",
+        "exit_type": "bracket + trail",
+        "validation_score": 8.0,
+        "param_stability": 100,
+        "session": "morning",
+        "notes": "ORB on Russell. 8.0/10, 100% param stability. Needs 150+ trades.",
+    },
+    {
+        "id": "VWAPMR-MCL-Short",
+        "name": "vwap_mean_reversion",
+        "family": "mean_reversion",
+        "entry_type": "mean_reversion",
+        "entry_desc": "VWAP deviation band fade on crude oil",
+        "asset": "MCL",
+        "side": "short",
+        "hold_bars": 8,
+        "hold_class": "scalp",
+        "regime_niche": ["RANGING"],
+        "regime_preferred": ["NORMAL_RANGING_LOW_RV", "LOW_VOL_RANGING_LOW_RV"],
+        "portfolio_role": "probation",
+        "status": "probation",
+        "exit_type": "Target=VWAP + bracket",
+        "validation_score": 6.5,
+        "param_stability": 70,
+        "session": "morning",
+        "notes": "Crude oil mean reversion. 6.5/10, 70% param stability.",
+    },
 ]
+
+# ── Session definitions ───────────────────────────────────────────────────
+SESSION_WINDOWS = {
+    "pre_market": ("08:00", "09:30"),
+    "morning": ("09:30", "12:00"),
+    "midday": ("12:00", "14:00"),
+    "afternoon": ("14:00", "15:00"),
+    "close": ("15:00", "16:00"),
+}
+
+# Add session to core strategies that don't have it
+for s in STRATEGIES:
+    if "session" not in s:
+        if s["id"] in ["PB-MGC-Short", "ORB-MGC-Long"]:
+            s["session"] = "morning"
+        elif s["id"] in ["VWAP-MNQ-Long"]:
+            s["session"] = "midday"
+        elif s["id"] in ["XB-PB-EMA-MES-Short"]:
+            s["session"] = "morning"
+        elif s["id"] in ["BB-EQ-MGC-Long"]:
+            s["session"] = "all_day"
+        elif s["id"] in ["Donchian-MNQ-Long"]:
+            s["session"] = "morning"
+        else:
+            s["session"] = "all_day"
 
 # ── Regime grid definition ──────────────────────────────────────────────────
 
