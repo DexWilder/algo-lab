@@ -102,11 +102,47 @@ FISH (Fisher Intelligence Systems Holdings)
 - Regime gate optimization identified (+23.6% PnL recovery, queued for deploy)
 
 ### Phase 5 — Strategy Factory / Evolution Engine
-- Candidate generator
-- Parent mutation engine
-- Strategy crossbreeding engine (v1 complete: XB-PB-EMA)
-- Portfolio fit scoring
-- Evolution loop
+**Goal**: Build a system that continuously generates, validates, and ranks new strategy candidates.
+
+**Evolution stages:**
+1. **Stage 1 — Guided Factory** (current): Human + Claude propose ideas, system validates automatically
+2. **Stage 2 — Semi-Automatic Factory**: System proposes variants from gaps, parents, parameter families
+3. **Stage 3 — Evolution Engine**: System continuously tests replacements, ranks incumbents, flags decay
+
+**Core modules:**
+1. **Candidate Generator** — produces new strategy variants constrained by:
+   - Strategy family gaps (opportunity map)
+   - Asset gaps (M2K/MCL underrepresented)
+   - Session gaps (close, overnight)
+   - Regime gaps (cells with no edge)
+   - Validated parent strategies as building blocks
+2. **Parent Mutation Engine** — systematic parameter/filter variations of proven parents
+3. **Strategy Crossbreeding Engine** (v1 complete: XB-PB-EMA) — combine entry/exit/filter from different parents
+4. **Portfolio Fit Scorer** — evaluates candidates by: PF, Sharpe, drawdown, correlation, family gap filled, session gap filled, asset diversification
+5. **Evolution Loop** — monitor live strategies, detect decay, search for replacements, suggest improved variants
+
+**Input sources:**
+- Strategy family templates (trend, MR, vol expansion, event/structural)
+- ICT concepts translated to mechanical rules
+- TradingView scripts / community ideas
+- Parent strategy mutations
+- Portfolio gap-driven generation
+
+**Pipeline:**
+```
+idea in → systematic generation → validation battery → ranking → portfolio fit check → probation → promotion or rejection
+```
+
+**What already exists:**
+- Validation battery, DNA clustering, opportunity map, edge decay monitor
+- Auto-review report, probation board, extended-history checks
+- Crossbreeding engine (Phase 12)
+- Strategy genome map
+
+**What's needed:**
+- Candidate generator with template system
+- Portfolio fit scorer (beyond individual strategy validation)
+- Automated gap-to-candidate pipeline
 
 ### Phase 6 — Forward Testing
 **Status: ACTIVE (v0.17)**
