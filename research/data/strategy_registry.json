@@ -1,5 +1,5 @@
 {
-  "_schema_version": "1.0",
+  "_schema_version": "1.1",
   "_generated": "2026-03-15",
   "_description": "FQL Strategy Registry \u2014 institutional memory of all strategy ideas, tested candidates, and deployed strategies",
   "_purpose": "Preserves research knowledge, enables crossbreeding, feeds Strategy Factory",
@@ -21,7 +21,10 @@
       "trades_6yr": 163,
       "pnl_share": 32.4,
       "profit_factor": 1.26,
-      "notes": "Highest trade count (41.7%). Layer 1 backbone. Regime gate: avoid HIGH_VOL (+$1,166 recovery queued)"
+      "notes": "Highest trade count (41.7%). Layer 1 backbone. Regime gate: avoid HIGH_VOL (+$1,166 recovery queued)",
+      "kill_flag": null,
+      "kill_details": null,
+      "last_review_date": "2026-03-15"
     },
     {
       "strategy_id": "XB-PB-EMA-MES-Short",
@@ -40,7 +43,10 @@
       "trades_6yr": 88,
       "pnl_share": 15.5,
       "profit_factor": 1.31,
-      "notes": "Only MES strategy. Regime gate: avoid LOW_RV (+$246 recovery queued)"
+      "notes": "Only MES strategy. Regime gate: avoid LOW_RV (+$246 recovery queued)",
+      "kill_flag": null,
+      "kill_details": null,
+      "last_review_date": "2026-03-15"
     },
     {
       "strategy_id": "ORB-MGC-Long",
@@ -59,7 +65,10 @@
       "trades_6yr": 62,
       "pnl_share": 16.9,
       "profit_factor": 1.99,
-      "notes": "Morning session (10:00-12:00 ET). Regime gate: avoid LOW_VOL (+$777 recovery queued)"
+      "notes": "Morning session (10:00-12:00 ET). Regime gate: avoid LOW_VOL (+$777 recovery queued)",
+      "kill_flag": null,
+      "kill_details": null,
+      "last_review_date": "2026-03-15"
     },
     {
       "strategy_id": "Donchian-MNQ-Long-GRINDING",
@@ -97,7 +106,10 @@
       "trades_6yr": 22,
       "pnl_share": 16.6,
       "profit_factor": 1.68,
-      "notes": "3x efficiency (5.6% trades, 16.6% PnL). Layer 3 tail engine. Regime gate: avoid HIGH_RV (+$350 recovery queued)"
+      "notes": "3x efficiency (5.6% trades, 16.6% PnL). Layer 3 tail engine. Regime gate: avoid HIGH_RV (+$350 recovery queued)",
+      "kill_flag": null,
+      "kill_details": null,
+      "last_review_date": "2026-03-15"
     },
     {
       "strategy_id": "PB-MGC-Short",
@@ -116,7 +128,10 @@
       "trades_6yr": 9,
       "pnl_share": 4.8,
       "profit_factor": 2.36,
-      "notes": "Deepest filter stack (6 layers). Very rare trades. Requires HIGH_RV + TRENDING."
+      "notes": "Deepest filter stack (6 layers). Very rare trades. Requires HIGH_RV + TRENDING.",
+      "kill_flag": null,
+      "kill_details": null,
+      "last_review_date": "2026-03-15"
     },
     {
       "strategy_id": "MomIgn-M2K-Short",
@@ -890,7 +905,10 @@
       "portfolio_role": "core",
       "trades_6yr": 609,
       "profit_factor": 1.28,
-      "notes": "PROMOTED to probation 2026-03-15. WF 10/10 PERFECT. MNQ-long: PF=1.28, Sharpe=1.40, 609 trades. 83% window survival, cross-asset edge on MES+MYM, 100% param stability. Academic source: Zarattini/Aziz/Barbon 2024."
+      "notes": "PROMOTED to probation 2026-03-15. WF 10/10 PERFECT. MNQ-long: PF=1.28, Sharpe=1.40, 609 trades. 83% window survival, cross-asset edge on MES+MYM, 100% param stability. Academic source: Zarattini/Aziz/Barbon 2024.",
+      "kill_flag": "redundancy",
+      "kill_details": "Correlated with Donchian-MNQ-Long (corr=0.374, same MNQ/long/breakout). NoiseBoundary is stronger \u2014 keep this, archive Donchian.",
+      "last_review_date": "2026-03-15"
     },
     {
       "strategy_id": "VWAPPullback-MES-Long",
