@@ -1,0 +1,140 @@
+{
+  "_generated": "2026-03-15 08:08",
+  "strategy": "range_expansion",
+  "asset": "MCL",
+  "mode": "short",
+  "walk_forward_windows": [
+    {
+      "train_period": "2021-2022",
+      "test_period": "2023-2023",
+      "train": {
+        "trades": 76,
+        "pnl": 1515.0,
+        "profit_factor": 1.669,
+        "sharpe": 3.3,
+        "max_drawdown": 362.0,
+        "win_rate": 0.5263
+      },
+      "test": {
+        "trades": 43,
+        "pnl": 880.0,
+        "profit_factor": 1.861,
+        "sharpe": 4.48,
+        "max_drawdown": 277.0,
+        "win_rate": 0.6512
+      }
+    },
+    {
+      "train_period": "2022-2023",
+      "test_period": "2024-2024",
+      "train": {
+        "trades": 84,
+        "pnl": 2395.0,
+        "profit_factor": 2.032,
+        "sharpe": 4.76,
+        "max_drawdown": 362.0,
+        "win_rate": 0.619
+      },
+      "test": {
+        "trades": 31,
+        "pnl": 11.0,
+        "profit_factor": 1.015,
+        "sharpe": 0.1,
+        "max_drawdown": 180.0,
+        "win_rate": 0.4839
+      }
+    },
+    {
+      "train_period": "2023-2024",
+      "test_period": "2025-2025",
+      "train": {
+        "trades": 74,
+        "pnl": 891.0,
+        "profit_factor": 1.514,
+        "sharpe": 2.89,
+        "max_drawdown": 277.0,
+        "win_rate": 0.5811
+      },
+      "test": {
+        "trades": 53,
+        "pnl": -121.0,
+        "profit_factor": 0.902,
+        "sharpe": -0.69,
+        "max_drawdown": 421.0,
+        "win_rate": 0.434
+      }
+    },
+    {
+      "train_period": "2024-2025",
+      "test_period": "2026-2026",
+      "train": {
+        "trades": 84,
+        "pnl": -110.0,
+        "profit_factor": 0.944,
+        "sharpe": -0.39,
+        "max_drawdown": 421.0,
+        "win_rate": 0.4524
+      },
+      "test": {
+        "trades": 11,
+        "pnl": 226.0,
+        "profit_factor": 1.81,
+        "sharpe": 2.95,
+        "max_drawdown": 242.0,
+        "win_rate": 0.4545
+      }
+    }
+  ],
+  "cross_asset": {},
+  "parameter_sensitivity": {
+    "stability": 1.0,
+    "total_variations": 24,
+    "profitable_variations": 24,
+    "params_tested": [
+      "ATR_PERIOD",
+      "COOLDOWN_BARS",
+      "DAILY_RANGE_LOOKBACK",
+      "EXPANSION_ATR_MULT",
+      "LADDER_1R_LOCK",
+      "LADDER_2R_LOCK",
+      "LADDER_3R_LOCK",
+      "NARROW_RANGE_MULT",
+      "TARGET_ATR_MULT",
+      "TICK_SIZE",
+      "VOL_MA_LEN",
+      "VOL_MULT"
+    ]
+  },
+  "scorecard": {
+    "walk_forward": {
+      "windows_tested": 4,
+      "profitable_windows": 3,
+      "survival_rate": 0.75,
+      "worst_pf": 0.902,
+      "best_pf": 1.861,
+      "median_pf": 1.413,
+      "mean_pf": 1.397,
+      "passes": true
+    },
+    "cross_asset": {
+      "assets_tested": 0,
+      "passes": true,
+      "note": "no_cross_assets_available"
+    },
+    "param_stability": {
+      "stability_pct": 100.0,
+      "variations_tested": 24,
+      "profitable_variations": 24,
+      "passes": true
+    },
+    "overall": {
+      "dimensions_passed": 3,
+      "dimensions_total": 3,
+      "walk_forward_pass": true,
+      "cross_asset_pass": true,
+      "param_stability_pass": true,
+      "matrix_score": 10.0,
+      "recommendation": "PROMOTE"
+    }
+  }
+}

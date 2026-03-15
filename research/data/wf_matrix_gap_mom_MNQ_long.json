@@ -1,0 +1,193 @@
+{
+  "_generated": "2026-03-15 08:13",
+  "strategy": "gap_mom",
+  "asset": "MNQ",
+  "mode": "long",
+  "walk_forward_windows": [
+    {
+      "train_period": "2019-2020",
+      "test_period": "2021-2021",
+      "train": {
+        "trades": 27,
+        "pnl": -116.48,
+        "profit_factor": 0.884,
+        "sharpe": -0.68,
+        "max_drawdown": 632.04,
+        "win_rate": 0.2963
+      },
+      "test": {
+        "trades": 20,
+        "pnl": 1466.2,
+        "profit_factor": 2.709,
+        "sharpe": 5.63,
+        "max_drawdown": 326.48,
+        "win_rate": 0.45
+      }
+    },
+    {
+      "train_period": "2020-2021",
+      "test_period": "2022-2022",
+      "train": {
+        "trades": 36,
+        "pnl": 1053.36,
+        "profit_factor": 1.641,
+        "sharpe": 2.72,
+        "max_drawdown": 625.64,
+        "win_rate": 0.3333
+      },
+      "test": {
+        "trades": 16,
+        "pnl": 1821.66,
+        "profit_factor": 3.102,
+        "sharpe": 6.76,
+        "max_drawdown": 331.22,
+        "win_rate": 0.4375
+      }
+    },
+    {
+      "train_period": "2021-2022",
+      "test_period": "2023-2023",
+      "train": {
+        "trades": 35,
+        "pnl": 3331.1,
+        "profit_factor": 2.981,
+        "sharpe": 6.42,
+        "max_drawdown": 331.22,
+        "win_rate": 0.4571
+      },
+      "test": {
+        "trades": 19,
+        "pnl": 799.94,
+        "profit_factor": 1.591,
+        "sharpe": 2.88,
+        "max_drawdown": 524.94,
+        "win_rate": 0.3158
+      }
+    },
+    {
+      "train_period": "2022-2023",
+      "test_period": "2024-2024",
+      "train": {
+        "trades": 32,
+        "pnl": 2045.82,
+        "profit_factor": 2.034,
+        "sharpe": 4.29,
+        "max_drawdown": 524.94,
+        "win_rate": 0.3438
+      },
+      "test": {
+        "trades": 13,
+        "pnl": 9.88,
+        "profit_factor": 1.009,
+        "sharpe": 0.06,
+        "max_drawdown": 512.94,
+        "win_rate": 0.3077
+      }
+    },
+    {
+      "train_period": "2023-2024",
+      "test_period": "2025-2025",
+      "train": {
+        "trades": 31,
+        "pnl": 876.06,
+        "profit_factor": 1.374,
+        "sharpe": 2.03,
+        "max_drawdown": 678.92,
+        "win_rate": 0.3226
+      },
+      "test": {
+        "trades": 14,
+        "pnl": -546.86,
+        "profit_factor": 0.541,
+        "sharpe": -3.39,
+        "max_drawdown": 717.44,
+        "win_rate": 0.2143
+      }
+    },
+    {
+      "train_period": "2024-2025",
+      "test_period": "2026-2026",
+      "train": {
+        "trades": 27,
+        "pnl": -802.98,
+        "profit_factor": 0.68,
+        "sharpe": -2.45,
+        "max_drawdown": 1519.12,
+        "win_rate": 0.2593
+      },
+      "test": {
+        "trades": 6,
+        "pnl": 191.06,
+        "profit_factor": 1.463,
+        "sharpe": 1.81,
+        "max_drawdown": 412.46,
+        "win_rate": 0.3333
+      }
+    }
+  ],
+  "cross_asset": {
+    "MES": {
+      "trades": 107,
+      "pnl": 668.57,
+      "profit_factor": 1.189,
+      "sharpe": 1.0,
+      "max_drawdown": 1166.0,
+      "win_rate": 0.2991
+    },
+    "MYM": {
+      "trades": 23,
+      "pnl": -68.0,
+      "profit_factor": 0.907,
+      "sharpe": -0.6,
+      "max_drawdown": 180.5,
+      "win_rate": 0.2174
+    }
+  },
+  "parameter_sensitivity": {
+    "stability": 1.0,
+    "total_variations": 8,
+    "profitable_variations": 8,
+    "params_tested": [
+      "ATR_PERIOD",
+      "SIGNAL_SMA",
+      "SL_ATR",
+      "TICK_SIZE"
+    ]
+  },
+  "scorecard": {
+    "walk_forward": {
+      "windows_tested": 6,
+      "profitable_windows": 5,
+      "survival_rate": 0.8333,
+      "worst_pf": 0.541,
+      "best_pf": 3.102,
+      "median_pf": 1.527,
+      "mean_pf": 1.736,
+      "passes": false
+    },
+    "cross_asset": {
+      "assets_tested": 2,
+      "profitable_assets": 1,
+      "results": {
+        "MES": 1.189,
+        "MYM": 0.907
+      },
+      "passes": true
+    },
+    "param_stability": {
+      "stability_pct": 100.0,
+      "variations_tested": 8,
+      "profitable_variations": 8,
+      "passes": true
+    },
+    "overall": {
+      "dimensions_passed": 2,
+      "dimensions_total": 3,
+      "walk_forward_pass": false,
+      "cross_asset_pass": true,
+      "param_stability_pass": true,
+      "matrix_score": 6.7,
+      "recommendation": "PROMOTE"
+    }
+  }
+}

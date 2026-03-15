@@ -1,7 +1,7 @@
 {
   "_schema_version": "1.0",
   "_generated": "2026-03-15",
-  "_description": "FQL Strategy Registry — institutional memory of all strategy ideas, tested candidates, and deployed strategies",
+  "_description": "FQL Strategy Registry \u2014 institutional memory of all strategy ideas, tested candidates, and deployed strategies",
   "_purpose": "Preserves research knowledge, enables crossbreeding, feeds Strategy Factory",
   "strategies": [
     {
@@ -77,7 +77,7 @@
       "portfolio_role": "core",
       "trades_6yr": 47,
       "pnl_share": 13.9,
-      "profit_factor": 1.60,
+      "profit_factor": 1.6,
       "notes": "True trend-follower (60-bar hold). GRINDING-only filter. Regime gate: avoid HIGH_RV (+$2,199 recovery queued). Needs 150 trades for promotion."
     },
     {
@@ -162,7 +162,7 @@
       "session": "all_day",
       "direction": "short",
       "source": "phase_harvest_ttm",
-      "rule_summary": "BB(20,2.0) inside KC(20,1.5x ATR) for 12+ bars → first expansion bar + momentum direction. Profit ladder exit.",
+      "rule_summary": "BB(20,2.0) inside KC(20,1.5x ATR) for 12+ bars \u2192 first expansion bar + momentum direction. Profit ladder exit.",
       "status": "probation",
       "validation_score": 5.5,
       "parameter_stability": 86,
@@ -224,7 +224,7 @@
       "portfolio_role": null,
       "trades_6yr": 142,
       "profit_factor": 0.85,
-      "notes": "REJECTED — edge illusory on 6.7yr data. Was 8.0/10 on 2yr. PF collapsed from 1.80 to 0.85. Do not resurrect."
+      "notes": "REJECTED \u2014 edge illusory on 6.7yr data. Was 8.0/10 on 2yr. PF collapsed from 1.80 to 0.85. Do not resurrect."
     },
     {
       "strategy_id": "TTMSqueeze-MNQ-Short",
@@ -242,7 +242,7 @@
       "portfolio_role": null,
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "REJECTED — framework doesn't work on MNQ. No viable edge found."
+      "notes": "REJECTED \u2014 framework doesn't work on MNQ. No viable edge found."
     },
     {
       "strategy_id": "TTMSqueeze-MGC-Long",
@@ -260,7 +260,7 @@
       "portfolio_role": null,
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "REJECTED — framework doesn't work on MGC long side."
+      "notes": "REJECTED \u2014 framework doesn't work on MGC long side."
     },
     {
       "strategy_id": "ICT-010-Sweep",
@@ -270,7 +270,7 @@
       "session": "all_day",
       "direction": "both",
       "source": "ict_concept_translation",
-      "rule_summary": "Session sweep detection → bias determination → pullback entry. State machine pattern.",
+      "rule_summary": "Session sweep detection \u2192 bias determination \u2192 pullback entry. State machine pattern.",
       "status": "rejected",
       "validation_score": null,
       "parameter_stability": null,
@@ -278,7 +278,7 @@
       "portfolio_role": null,
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "REJECTED — PF < 1.0 on ALL assets/modes. Sweep detection too noisy on 5m bars. Fixed stops don't scale. Salvageable: state machine pattern, sweep detection as filter component."
+      "notes": "REJECTED \u2014 PF < 1.0 on ALL assets/modes. Sweep detection too noisy on 5m bars. Fixed stops don't scale. Salvageable: state machine pattern, sweep detection as filter component."
     },
     {
       "strategy_id": "ICT-011-LiqSweep",
@@ -288,7 +288,7 @@
       "session": "all_day",
       "direction": "both",
       "source": "ict_concept_translation",
-      "rule_summary": "Liquidity sweeper — same sweep framework as ICT-010",
+      "rule_summary": "Liquidity sweeper \u2014 same sweep framework as ICT-010",
       "status": "rejected",
       "validation_score": null,
       "parameter_stability": null,
@@ -296,7 +296,7 @@
       "portfolio_role": null,
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "REJECTED — same sweep detection issues as ICT-010."
+      "notes": "REJECTED \u2014 same sweep detection issues as ICT-010."
     },
     {
       "strategy_id": "ATRComp-Multi",
@@ -306,7 +306,7 @@
       "session": "all_day",
       "direction": "both",
       "source": "phase_harvest_vol",
-      "rule_summary": "ATR(fast)/ATR(slow) < threshold (dead zone) → breakout with ATR expansion confirmation",
+      "rule_summary": "ATR(fast)/ATR(slow) < threshold (dead zone) \u2192 breakout with ATR expansion confirmation",
       "status": "rejected",
       "validation_score": null,
       "parameter_stability": null,
@@ -314,7 +314,7 @@
       "portfolio_role": null,
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "REJECTED — tested at thresholds 0.45-0.75. No viable edge on any asset. PF degrades as threshold tightens. Sensitivity analysis confirmed structural lack of edge."
+      "notes": "REJECTED \u2014 tested at thresholds 0.45-0.75. No viable edge on any asset. PF degrades as threshold tightens. Sensitivity analysis confirmed structural lack of edge."
     },
     {
       "strategy_id": "IBS-MR-M2K",
@@ -332,7 +332,7 @@
       "portfolio_role": "workhorse",
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "78% documented win rate on broad indices. Russell thin liquidity amplifies overshoots. DAILY timeframe — different from 5m intraday. Tier 1 candidate."
+      "notes": "78% documented win rate on broad indices. Russell thin liquidity amplifies overshoots. DAILY timeframe \u2014 different from 5m intraday. Tier 1 candidate."
     },
     {
       "strategy_id": "ORB-VIX-Filter",
@@ -360,7 +360,7 @@
       "session": "all_day",
       "direction": "both",
       "source": "toby_crabel_book",
-      "rule_summary": "Narrowest 5m bar in last 7 → bracket order above/below high/low → first triggered = entry. 2x ATR stop, EOD exit.",
+      "rule_summary": "Narrowest 5m bar in last 7 \u2192 bracket order above/below high/low \u2192 first triggered = entry. 2x ATR stop, EOD exit.",
       "status": "idea",
       "validation_score": null,
       "parameter_stability": null,
@@ -378,7 +378,7 @@
       "session": "morning",
       "direction": "both",
       "source": "russell_microstructure_research",
-      "rule_summary": "Overnight gap > threshold → fade toward fill. 76% of RTY gaps fill during RTH. Overnight midpoint predicts direction (76%).",
+      "rule_summary": "Overnight gap > threshold \u2192 fade toward fill. 76% of RTY gaps fill during RTH. Overnight midpoint predicts direction (76%).",
       "status": "idea",
       "validation_score": null,
       "parameter_stability": null,
@@ -414,7 +414,7 @@
       "session": "all_day",
       "direction": "both",
       "source": "tradingview_community",
-      "rule_summary": "BBW percentile < 5% → wait for BBWP to cross above 13-bar SMA → enter momentum direction. Trail with ATR, take profit when BBWP > 80%.",
+      "rule_summary": "BBW percentile < 5% \u2192 wait for BBWP to cross above 13-bar SMA \u2192 enter momentum direction. Trail with ATR, take profit when BBWP > 80%.",
       "status": "idea",
       "validation_score": null,
       "parameter_stability": null,
@@ -422,7 +422,7 @@
       "portfolio_role": "tail_engine",
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "Most selective squeeze filter — fires very rarely, largest asymmetric payoffs. Tier 2 candidate."
+      "notes": "Most selective squeeze filter \u2014 fires very rarely, largest asymmetric payoffs. Tier 2 candidate."
     },
     {
       "strategy_id": "DualThrust",
@@ -432,7 +432,7 @@
       "session": "all_day",
       "direction": "both",
       "source": "cta_research",
-      "rule_summary": "Range = MAX(HH-LC, HC-LL) over N days → Long = Open + K1*Range, Short = Open - K2*Range",
+      "rule_summary": "Range = MAX(HH-LC, HC-LL) over N days \u2192 Long = Open + K1*Range, Short = Open - K2*Range",
       "status": "idea",
       "validation_score": null,
       "parameter_stability": null,
@@ -450,7 +450,7 @@
       "session": "all_day",
       "direction": "long",
       "source": "minervini_book",
-      "rule_summary": "Multi-contraction pattern (each pullback smaller than previous) → breakout on expansion",
+      "rule_summary": "Multi-contraction pattern (each pullback smaller than previous) \u2192 breakout on expansion",
       "status": "idea",
       "validation_score": null,
       "parameter_stability": null,
@@ -468,7 +468,7 @@
       "session": "custom",
       "direction": "both",
       "source": "internal_research",
-      "rule_summary": "Not a strategy — controller enhancement. Pause strategies during event windows, widen stops, reduce size.",
+      "rule_summary": "Not a strategy \u2014 controller enhancement. Pause strategies during event windows, widen stops, reduce size.",
       "status": "idea",
       "validation_score": null,
       "parameter_stability": null,
@@ -504,7 +504,7 @@
       "session": "all_day",
       "direction": "both",
       "source": "user_mentioned",
-      "rule_summary": "Detect tight consolidation range → breakout with volume confirmation → enter in breakout direction",
+      "rule_summary": "Detect tight consolidation range \u2192 breakout with volume confirmation \u2192 enter in breakout direction",
       "status": "idea",
       "validation_score": null,
       "parameter_stability": null,
@@ -522,7 +522,7 @@
       "session": "all_day",
       "direction": "both",
       "source": "user_mentioned",
-      "rule_summary": "Detect liquidity pools (swing highs/lows) → wait for stop-run sweep → enter reversal",
+      "rule_summary": "Detect liquidity pools (swing highs/lows) \u2192 wait for stop-run sweep \u2192 enter reversal",
       "status": "idea",
       "validation_score": null,
       "parameter_stability": null,
@@ -540,7 +540,7 @@
       "session": "all_day",
       "direction": "both",
       "source": "user_mentioned",
-      "rule_summary": "ICT liquidity sweep — improved version with better sweep detection and entry timing",
+      "rule_summary": "ICT liquidity sweep \u2014 improved version with better sweep detection and entry timing",
       "status": "idea",
       "validation_score": null,
       "parameter_stability": null,
@@ -558,15 +558,15 @@
       "session": "all_day",
       "direction": "both",
       "source": "tradingview_harvest_batch1",
-      "rule_summary": "Rolling VWAP mean reversion — fade extreme deviations from rolling VWAP",
-      "status": "idea",
+      "rule_summary": "Rolling VWAP mean reversion \u2014 fade extreme deviations from rolling VWAP",
+      "status": "rejected",
       "validation_score": null,
       "parameter_stability": null,
       "extended_history_status": "not_tested",
       "portfolio_role": null,
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "Batch 1 harvest. Code exists in strategies/rvwap_mr/. Needs validation run."
+      "notes": "REJECTED \u2014 failed on all 10 combos. Best PF=1.17 MNQ-long."
     },
     {
       "strategy_id": "VIXChannel-MES",
@@ -577,14 +577,14 @@
       "direction": "both",
       "source": "tradingview_harvest_batch2",
       "rule_summary": "VIX-derived implied move channel. Session-based, 1 trade/day. NY VIX Channel Trend (exlux).",
-      "status": "idea",
+      "status": "rejected",
       "validation_score": null,
       "parameter_stability": null,
       "extended_history_status": "not_tested",
       "portfolio_role": null,
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "Batch 2 harvest top candidate. Code exists in strategies/vix_channel/. Needs VIX data + validation."
+      "notes": "REJECTED \u2014 failed on all 6 combos. Realized vol proxy insufficient."
     },
     {
       "strategy_id": "ORION-VolBreakout",
@@ -594,15 +594,15 @@
       "session": "all_day",
       "direction": "both",
       "source": "tradingview_harvest_batch2",
-      "rule_summary": "Compression → expansion with EMA 150 trend filter. Hybrid volatility breakout.",
-      "status": "idea",
+      "rule_summary": "Compression \u2192 expansion with EMA 150 trend filter. Hybrid volatility breakout.",
+      "status": "rejected",
       "validation_score": null,
       "parameter_stability": null,
       "extended_history_status": "not_tested",
       "portfolio_role": null,
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "Batch 2 harvest. Code exists in strategies/orion_vol/. MES-specific could fill MES-long gap."
+      "notes": "REJECTED \u2014 failed on all 6 combos. Best PF=1.04."
     },
     {
       "strategy_id": "BBKC-Squeeze-Classic",
@@ -613,14 +613,14 @@
       "direction": "both",
       "source": "tradingview_lazybear",
       "rule_summary": "Classic BB/KC squeeze with SAR trailing filter. LazyBear implementation.",
-      "status": "idea",
+      "status": "rejected",
       "validation_score": null,
       "parameter_stability": null,
       "extended_history_status": "not_tested",
       "portfolio_role": null,
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "Batch 2 harvest. Code exists in strategies/bbkc_squeeze/. Similar family to TTM Squeeze — check correlation before deploying both."
+      "notes": "REJECTED \u2014 failed on all 10 combos. Best PF=1.02."
     },
     {
       "strategy_id": "RSI2-Bounce-M2K",
@@ -630,7 +630,7 @@
       "session": "all_day",
       "direction": "long",
       "source": "russell_microstructure_research",
-      "rule_summary": "RSI(2) < 10 on 5m bars → buy next bar. Russell thin book creates overshoots that snap back.",
+      "rule_summary": "RSI(2) < 10 on 5m bars \u2192 buy next bar. Russell thin book creates overshoots that snap back.",
       "status": "idea",
       "validation_score": null,
       "parameter_stability": null,
@@ -648,7 +648,7 @@
       "session": "all_day",
       "direction": "both",
       "source": "quant_research",
-      "rule_summary": "Historical volatility percentile < 10th → wait for expansion above 25th → enter momentum direction",
+      "rule_summary": "Historical volatility percentile < 10th \u2192 wait for expansion above 25th \u2192 enter momentum direction",
       "status": "idea",
       "validation_score": null,
       "parameter_stability": null,
@@ -656,7 +656,7 @@
       "portfolio_role": "tail_engine",
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "Alternative vol expansion trigger. Different from BB/KC squeeze — uses realized vol percentile instead."
+      "notes": "Alternative vol expansion trigger. Different from BB/KC squeeze \u2014 uses realized vol percentile instead."
     },
     {
       "strategy_id": "ExtremeDonchian-Tail",
@@ -674,7 +674,7 @@
       "portfolio_role": "tail_engine",
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "Extension of Donchian-MNQ concept. May overlap — check correlation. Different assets could work."
+      "notes": "Extension of Donchian-MNQ concept. May overlap \u2014 check correlation. Different assets could work."
     },
     {
       "strategy_id": "IB-Breakout-Gold",
@@ -692,7 +692,7 @@
       "portfolio_role": "tail_engine",
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "Similar to ORB but uses market profile IB concept. Could overlap with ORB-MGC-Long — check."
+      "notes": "Similar to ORB but uses market profile IB concept. Could overlap with ORB-MGC-Long \u2014 check."
     },
     {
       "strategy_id": "SessionVWAPFade",
@@ -703,14 +703,14 @@
       "direction": "both",
       "source": "tradingview_harvest_batch1",
       "rule_summary": "Fade session VWAP extreme deviations during afternoon session",
-      "status": "idea",
+      "status": "rejected",
       "validation_score": null,
       "parameter_stability": null,
       "extended_history_status": "not_tested",
       "portfolio_role": null,
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "Code exists in strategies/session_vwap_fade/. Afternoon session could fill underweight gap."
+      "notes": "REJECTED \u2014 failed research gate on all 10 asset/direction combos. Best PF=1.08."
     },
     {
       "strategy_id": "SessionRevGold",
@@ -721,14 +721,14 @@
       "direction": "both",
       "source": "tradingview_harvest_batch1",
       "rule_summary": "Gold session-based mean reversion targeting afternoon session",
-      "status": "idea",
+      "status": "rejected",
       "validation_score": null,
       "parameter_stability": null,
       "extended_history_status": "not_tested",
       "portfolio_role": null,
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "Code exists in strategies/session_reversion_gold/. Gold MR in afternoon — would diversify session coverage."
+      "notes": "REJECTED \u2014 failed on MGC both directions."
     },
     {
       "strategy_id": "CloseLiqSweep",
@@ -739,14 +739,14 @@
       "direction": "both",
       "source": "tradingview_harvest_batch1",
       "rule_summary": "Close session liquidity sweep with reversal entry",
-      "status": "idea",
+      "status": "rejected",
       "validation_score": null,
       "parameter_stability": null,
       "extended_history_status": "not_tested",
       "portfolio_role": null,
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "Code exists in strategies/close_liquidity_sweep/. Close session ICT concept."
+      "notes": "REJECTED \u2014 failed on all 6 combos. Best PF=1.07."
     },
     {
       "strategy_id": "CloseMomentum",
@@ -757,14 +757,14 @@
       "direction": "both",
       "source": "tradingview_harvest_batch1",
       "rule_summary": "Close session momentum continuation play",
-      "status": "idea",
+      "status": "rejected",
       "validation_score": null,
       "parameter_stability": null,
       "extended_history_status": "not_tested",
       "portfolio_role": null,
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "Code exists in strategies/close_momentum/. Close session momentum — fills close session gap."
+      "notes": "REJECTED \u2014 zero trades on all 8 combos. Strategy logic incompatible with data."
     },
     {
       "strategy_id": "GapMom",
@@ -774,15 +774,15 @@
       "session": "morning",
       "direction": "both",
       "source": "tradingview_harvest_batch1",
-      "rule_summary": "Gap momentum system — trade in direction of opening gap with momentum confirmation",
-      "status": "idea",
+      "rule_summary": "Gap momentum system \u2014 trade in direction of opening gap with momentum confirmation",
+      "status": "testing",
       "validation_score": null,
       "parameter_stability": null,
       "extended_history_status": "not_tested",
       "portfolio_role": null,
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "Code exists in strategies/gap_mom/. Morning gap play."
+      "notes": "Passed research gate. MGC-long: PF=1.72, WF 6.7/10 PROMOTE. MNQ-long: PF=1.31, WF 6.7/10 PROMOTE (83% window survival)."
     },
     {
       "strategy_id": "RangeExpansion",
@@ -792,15 +792,15 @@
       "session": "all_day",
       "direction": "both",
       "source": "tradingview_harvest_batch1",
-      "rule_summary": "Range expansion detection → momentum entry",
-      "status": "idea",
+      "rule_summary": "Range expansion detection \u2192 momentum entry",
+      "status": "testing",
       "validation_score": null,
       "parameter_stability": null,
       "extended_history_status": "not_tested",
       "portfolio_role": null,
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "Code exists in strategies/range_expansion/. Vol expansion family."
+      "notes": "Passed research gate. MCL-short: PF=1.46, Sharpe=2.39, 214 trades. WF 10/10 PROMOTE (75% survival, 100% param stability)."
     },
     {
       "strategy_id": "NG-MeanRev",
@@ -810,7 +810,7 @@
       "session": "all_day",
       "direction": "both",
       "source": "asset_expansion",
-      "rule_summary": "Natural gas mean reversion — NG has strong seasonal and inventory-driven mean reversion patterns",
+      "rule_summary": "Natural gas mean reversion \u2014 NG has strong seasonal and inventory-driven mean reversion patterns",
       "status": "idea",
       "validation_score": null,
       "parameter_stability": null,
@@ -828,7 +828,7 @@
       "session": "all_day",
       "direction": "both",
       "source": "asset_expansion",
-      "rule_summary": "Dow micro-futures trend following — MYM has slower, more deliberate trends than MNQ",
+      "rule_summary": "Dow micro-futures trend following \u2014 MYM has slower, more deliberate trends than MNQ",
       "status": "idea",
       "validation_score": null,
       "parameter_stability": null,
@@ -836,7 +836,7 @@
       "portfolio_role": null,
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "Asset expansion candidate. MYM data already available. Similar to MNQ but slower — may find distinct edge."
+      "notes": "Asset expansion candidate. MYM data already available. Similar to MNQ but slower \u2014 may find distinct edge."
     },
     {
       "strategy_id": "MCL-Breakout",
@@ -846,7 +846,7 @@
       "session": "morning",
       "direction": "both",
       "source": "asset_expansion",
-      "rule_summary": "Crude oil micro-futures ORB/breakout strategy — oil has strong inventory-driven breakout patterns",
+      "rule_summary": "Crude oil micro-futures ORB/breakout strategy \u2014 oil has strong inventory-driven breakout patterns",
       "status": "idea",
       "validation_score": null,
       "parameter_stability": null,

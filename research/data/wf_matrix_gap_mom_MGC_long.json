@@ -1,0 +1,172 @@
+{
+  "_generated": "2026-03-15 08:07",
+  "strategy": "gap_mom",
+  "asset": "MGC",
+  "mode": "long",
+  "walk_forward_windows": [
+    {
+      "train_period": "2019-2020",
+      "test_period": "2021-2021",
+      "train": {
+        "trades": 18,
+        "pnl": 423.68,
+        "profit_factor": 1.535,
+        "sharpe": 2.62,
+        "max_drawdown": 440.16,
+        "win_rate": 0.5
+      },
+      "test": {
+        "trades": 13,
+        "pnl": -14.12,
+        "profit_factor": 0.974,
+        "sharpe": -0.17,
+        "max_drawdown": 268.72,
+        "win_rate": 0.3846
+      }
+    },
+    {
+      "train_period": "2020-2021",
+      "test_period": "2022-2022",
+      "train": {
+        "trades": 26,
+        "pnl": 354.76,
+        "profit_factor": 1.355,
+        "sharpe": 1.84,
+        "max_drawdown": 268.72,
+        "win_rate": 0.4615
+      },
+      "test": {
+        "trades": 12,
+        "pnl": 621.12,
+        "profit_factor": 3.463,
+        "sharpe": 6.62,
+        "max_drawdown": 156.96,
+        "win_rate": 0.5833
+      }
+    },
+    {
+      "train_period": "2021-2022",
+      "test_period": "2023-2023",
+      "train": {
+        "trades": 24,
+        "pnl": 342.24,
+        "profit_factor": 1.414,
+        "sharpe": 2.04,
+        "max_drawdown": 332.64,
+        "win_rate": 0.4167
+      },
+      "test": {
+        "trades": 13,
+        "pnl": -679.12,
+        "profit_factor": 0.391,
+        "sharpe": -4.74,
+        "max_drawdown": 703.4,
+        "win_rate": 0.2308
+      }
+    },
+    {
+      "train_period": "2022-2023",
+      "test_period": "2024-2024",
+      "train": {
+        "trades": 23,
+        "pnl": 47.48,
+        "profit_factor": 1.038,
+        "sharpe": 0.2,
+        "max_drawdown": 703.4,
+        "win_rate": 0.4348
+      },
+      "test": {
+        "trades": 14,
+        "pnl": -161.36,
+        "profit_factor": 0.768,
+        "sharpe": -1.78,
+        "max_drawdown": 329.2,
+        "win_rate": 0.3571
+      }
+    },
+    {
+      "train_period": "2023-2024",
+      "test_period": "2025-2025",
+      "train": {
+        "trades": 26,
+        "pnl": -780.24,
+        "profit_factor": 0.554,
+        "sharpe": -3.32,
+        "max_drawdown": 913.12,
+        "win_rate": 0.3077
+      },
+      "test": {
+        "trades": 8,
+        "pnl": 2509.08,
+        "profit_factor": 6.209,
+        "sharpe": 5.98,
+        "max_drawdown": 323.48,
+        "win_rate": 0.625
+      }
+    },
+    {
+      "train_period": "2024-2025",
+      "test_period": "2026-2026",
+      "train": {
+        "trades": 23,
+        "pnl": 2430.48,
+        "profit_factor": 3.067,
+        "sharpe": 3.35,
+        "max_drawdown": 404.68,
+        "win_rate": 0.4783
+      },
+      "test": {
+        "trades": 2,
+        "pnl": 366.52,
+        "profit_factor": 99.0,
+        "sharpe": 4114.18,
+        "max_drawdown": 0.0,
+        "win_rate": 1.0
+      }
+    }
+  ],
+  "cross_asset": {},
+  "parameter_sensitivity": {
+    "stability": 1.0,
+    "total_variations": 8,
+    "profitable_variations": 8,
+    "params_tested": [
+      "ATR_PERIOD",
+      "SIGNAL_SMA",
+      "SL_ATR",
+      "TICK_SIZE"
+    ]
+  },
+  "scorecard": {
+    "walk_forward": {
+      "windows_tested": 6,
+      "profitable_windows": 3,
+      "survival_rate": 0.5,
+      "worst_pf": 0.391,
+      "best_pf": 99.0,
+      "median_pf": 2.219,
+      "mean_pf": 18.468,
+      "passes": false
+    },
+    "cross_asset": {
+      "assets_tested": 0,
+      "passes": true,
+      "note": "no_cross_assets_available"
+    },
+    "param_stability": {
+      "stability_pct": 100.0,
+      "variations_tested": 8,
+      "profitable_variations": 8,
+      "passes": true
+    },
+    "overall": {
+      "dimensions_passed": 2,
+      "dimensions_total": 3,
+      "walk_forward_pass": false,
+      "cross_asset_pass": true,
+      "param_stability_pass": true,
+      "matrix_score": 6.7,
+      "recommendation": "PROMOTE"
+    }
+  }
+}

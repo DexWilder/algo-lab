@@ -150,7 +150,7 @@ Continuous expansion of the strategy knowledge base while optimizing the current
 
 **Strategy Registry** (`research/data/strategy_registry.json`):
 - Institutional memory of ALL strategy ideas — core, probation, rejected, ideas
-- 47 strategies tracked (5 core, 6 probation, 30 ideas, 6 rejected)
+- 47 strategies tracked (5 core, 6 probation, 2 testing, 20 ideas, 14 rejected)
 - Every idea preserved with metadata: family, asset, session, source, rule summary, validation scores
 - Feeds crossbreeding engine and Strategy Factory
 
@@ -165,6 +165,13 @@ Continuous expansion of the strategy knowledge base while optimizing the current
 - Wednesday: Results review + registry update
 - Thursday: New idea harvesting (TradingView, papers, forums)
 - Friday: Portfolio impact assessment
+
+**Continuous Research Engine:**
+- Walk-Forward Matrix (`research/walk_forward_matrix.py`): institutional-grade 3-dimension robustness testing
+- Batch Harvest Validation (`research/batch_harvest_validation.py`): automated multi-asset backtesting
+- Data Integrity Check (`research/data_integrity_check.py`): data quality validation
+- Auto-Report Generator (`research/auto_report.py`): daily/weekly research summaries
+- Roadmap Queue (`research/data/roadmap_queue.json`): machine-readable task list
 
 **Harvest Sources:**
 - Internal research and forward testing insights
