@@ -135,6 +135,12 @@ PARAM_GRIDS = {
         "RSI_OVERSOLD": [25, 30, 35],
         "ATR_STOP_MULT": [1.2, 1.5, 1.8],
     },
+    "ttm_squeeze": {
+        "BB_MULT": [1.5, 2.0, 2.5],
+        "KC_ATR_MULT": [1.2, 1.5, 1.8],
+        "MIN_SQUEEZE_BARS": [6, 8, 10],
+        "ATR_STOP_MULT": [1.5, 2.0, 2.5],
+    },
     "orb_009": {
         "VOL_MULT": [1.2, 1.5, 1.8],
         "TP_MULT": [1.5, 2.0, 2.5],
