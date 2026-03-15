@@ -71,7 +71,15 @@ PROBATION_CANDIDATES = {
         "mode": "short",
         "promotion_threshold": 60,
     },
+    "TTMSqueeze-M2K-Short": {
+        "name": "ttm_squeeze",
+        "asset": "M2K",
+        "mode": "short",
+        "promotion_threshold": 100,
+    },
     # CloseVWAP-MNQ-Long REJECTED — 3.5/10 on 6.7yr extended data (PF=0.85, edge illusory)
+    # TTMSqueeze-MNQ-Short REJECTED — 2.0/10 on extended data
+    # TTMSqueeze-MGC-Long REJECTED — 3.5/10 on extended data
 }
 
 # Strategy type taxonomy for gap analysis
