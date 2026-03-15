@@ -815,7 +815,10 @@
       "portfolio_role": "core",
       "trades_6yr": 214,
       "profit_factor": 1.46,
-      "notes": "PROMOTED to probation 2026-03-15. MCL-short: PF=1.46, Sharpe=2.39, 214 trades. WF 10/10 PERFECT. 75% window survival, 100% param stability. First MCL strategy."
+      "notes": "PROMOTED to probation 2026-03-15. MCL-short: PF=1.46, Sharpe=2.39, 214 trades. WF 10/10 PERFECT. 75% window survival, 100% param stability. First MCL strategy.",
+      "kill_flag": "decay",
+      "kill_details": "Half-life monitor: decay=0.65 ARCHIVE_CANDIDATE. Sharpe 2.39->0.46 (1yr)->-0.13 (6mo). Edge rapidly decaying despite WF 10/10.",
+      "last_review_date": "2026-03-15"
     },
     {
       "strategy_id": "NG-MeanRev",

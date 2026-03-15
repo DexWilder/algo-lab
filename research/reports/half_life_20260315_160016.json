@@ -1,0 +1,403 @@
+{
+  "report_date": "2026-03-15",
+  "strategies": [
+    {
+      "strategy_id": "VWAP-MNQ-Long",
+      "rolling_metrics": {
+        "full": {
+          "sharpe": 1.1903,
+          "win_rate": 0.3911,
+          "expectancy": 10.6,
+          "trades": 606
+        },
+        "3y": {
+          "sharpe": 2.0247,
+          "win_rate": 0.3967,
+          "expectancy": 20.31,
+          "trades": 300
+        },
+        "2y": {
+          "sharpe": 2.5638,
+          "win_rate": 0.4133,
+          "expectancy": 28.99,
+          "trades": 196
+        },
+        "1y": {
+          "sharpe": 3.6621,
+          "win_rate": 0.4848,
+          "expectancy": 49.98,
+          "trades": 99
+        },
+        "6m": {
+          "sharpe": 2.0378,
+          "win_rate": 0.4151,
+          "expectancy": 21.44,
+          "trades": 53
+        }
+      },
+      "decay_score": 0.0,
+      "status": "HEALTHY",
+      "half_life": "Strengthening",
+      "sharpe_trend": "IMPROVING"
+    },
+    {
+      "strategy_id": "XB-PB-EMA-MES-Short",
+      "rolling_metrics": {
+        "full": {
+          "sharpe": 1.4007,
+          "win_rate": 0.4317,
+          "expectancy": 8.48,
+          "trades": 454
+        },
+        "3y": {
+          "sharpe": 1.829,
+          "win_rate": 0.4372,
+          "expectancy": 11.16,
+          "trades": 183
+        },
+        "2y": {
+          "sharpe": 3.3355,
+          "win_rate": 0.5122,
+          "expectancy": 23.58,
+          "trades": 123
+        },
+        "1y": {
+          "sharpe": 3.8451,
+          "win_rate": 0.5082,
+          "expectancy": 31.55,
+          "trades": 61
+        },
+        "6m": {
+          "sharpe": 3.2608,
+          "win_rate": 0.4865,
+          "expectancy": 26.19,
+          "trades": 37
+        }
+      },
+      "decay_score": 0.0,
+      "status": "HEALTHY",
+      "half_life": "Strengthening",
+      "sharpe_trend": "IMPROVING"
+    },
+    {
+      "strategy_id": "ORB-MGC-Long",
+      "rolling_metrics": {
+        "full": {
+          "sharpe": 0.7458,
+          "win_rate": 0.4294,
+          "expectancy": 4.04,
+          "trades": 354
+        },
+        "3y": {
+          "sharpe": 2.6183,
+          "win_rate": 0.4933,
+          "expectancy": 18.18,
+          "trades": 150
+        },
+        "2y": {
+          "sharpe": 3.3721,
+          "win_rate": 0.5149,
+          "expectancy": 26.69,
+          "trades": 101
+        },
+        "1y": {
+          "sharpe": 6.019,
+          "win_rate": 0.6364,
+          "expectancy": 58.72,
+          "trades": 55
+        },
+        "6m": {
+          "sharpe": 5.2668,
+          "win_rate": 0.5862,
+          "expectancy": 61.21,
+          "trades": 29
+        }
+      },
+      "decay_score": 0.0,
+      "status": "HEALTHY",
+      "half_life": "Strengthening",
+      "sharpe_trend": "IMPROVING"
+    },
+    {
+      "strategy_id": "BB-EQ-MGC-Long",
+      "rolling_metrics": {
+        "full": {
+          "sharpe": 1.447,
+          "win_rate": 0.4204,
+          "expectancy": 15.52,
+          "trades": 157
+        },
+        "3y": {
+          "sharpe": 2.6678,
+          "win_rate": 0.4458,
+          "expectancy": 36.81,
+          "trades": 83
+        },
+        "2y": {
+          "sharpe": 3.1304,
+          "win_rate": 0.4667,
+          "expectancy": 50.48,
+          "trades": 60
+        },
+        "1y": {
+          "sharpe": 5.3402,
+          "win_rate": 0.6,
+          "expectancy": 128.36,
+          "trades": 25
+        },
+        "6m": {
+          "sharpe": 6.5938,
+          "win_rate": 0.7059,
+          "expectancy": 187.76,
+          "trades": 17
+        }
+      },
+      "decay_score": 0.0,
+      "status": "HEALTHY",
+      "half_life": "Strengthening",
+      "sharpe_trend": "IMPROVING"
+    },
+    {
+      "strategy_id": "PB-MGC-Short",
+      "rolling_metrics": {
+        "full": {
+          "sharpe": 0.7208,
+          "win_rate": 0.4476,
+          "expectancy": 3.23,
+          "trades": 105
+        },
+        "3y": {
+          "sharpe": 1.3425,
+          "win_rate": 0.4583,
+          "expectancy": 7.55,
+          "trades": 48
+        },
+        "2y": {
+          "sharpe": 2.7531,
+          "win_rate": 0.5333,
+          "expectancy": 18.46,
+          "trades": 30
+        },
+        "1y": {
+          "sharpe": 4.5956,
+          "win_rate": 0.5714,
+          "expectancy": 38.33,
+          "trades": 14
+        },
+        "6m": {
+          "sharpe": 4.9559,
+          "win_rate": 0.6,
+          "expectancy": 66.76,
+          "trades": 5
+        }
+      },
+      "decay_score": 0.0,
+      "status": "HEALTHY",
+      "half_life": "Strengthening",
+      "sharpe_trend": "IMPROVING"
+    },
+    {
+      "strategy_id": "Donchian-MNQ-Long",
+      "rolling_metrics": {
+        "full": {
+          "sharpe": 1.0671,
+          "win_rate": 0.5242,
+          "expectancy": 17.02,
+          "trades": 1219
+        },
+        "3y": {
+          "sharpe": 1.3277,
+          "win_rate": 0.5165,
+          "expectancy": 23.85,
+          "trades": 544
+        },
+        "2y": {
+          "sharpe": 1.4089,
+          "win_rate": 0.5324,
+          "expectancy": 28.55,
+          "trades": 355
+        },
+        "1y": {
+          "sharpe": 1.561,
+          "win_rate": 0.5556,
+          "expectancy": 39.28,
+          "trades": 180
+        },
+        "6m": {
+          "sharpe": 1.724,
+          "win_rate": 0.5647,
+          "expectancy": 31.78,
+          "trades": 85
+        }
+      },
+      "decay_score": 0.0,
+      "status": "HEALTHY",
+      "half_life": "Strengthening",
+      "sharpe_trend": "IMPROVING"
+    },
+    {
+      "strategy_id": "NoiseBoundary-MNQ-Long",
+      "rolling_metrics": {
+        "full": {
+          "sharpe": 1.4,
+          "win_rate": 0.4122,
+          "expectancy": 14.52,
+          "trades": 609
+        },
+        "3y": {
+          "sharpe": 2.2811,
+          "win_rate": 0.4179,
+          "expectancy": 25.2,
+          "trades": 268
+        },
+        "2y": {
+          "sharpe": 2.7977,
+          "win_rate": 0.4678,
+          "expectancy": 33.65,
+          "trades": 171
+        },
+        "1y": {
+          "sharpe": 2.2131,
+          "win_rate": 0.4483,
+          "expectancy": 29.45,
+          "trades": 87
+        },
+        "6m": {
+          "sharpe": 2.8787,
+          "win_rate": 0.5116,
+          "expectancy": 40.26,
+          "trades": 43
+        }
+      },
+      "decay_score": 0.0,
+      "status": "HEALTHY",
+      "half_life": "Strengthening",
+      "sharpe_trend": "IMPROVING"
+    },
+    {
+      "strategy_id": "RangeExpansion-MCL-Short",
+      "rolling_metrics": {
+        "full": {
+          "sharpe": 2.3938,
+          "win_rate": 0.5187,
+          "expectancy": 11.73,
+          "trades": 214
+        },
+        "3y": {
+          "sharpe": 1.3194,
+          "win_rate": 0.5,
+          "expectancy": 5.49,
+          "trades": 130
+        },
+        "2y": {
+          "sharpe": 0.3044,
+          "win_rate": 0.4505,
+          "expectancy": 1.2,
+          "trades": 91
+        },
+        "1y": {
+          "sharpe": 0.4609,
+          "win_rate": 0.434,
+          "expectancy": 2.04,
+          "trades": 53
+        },
+        "6m": {
+          "sharpe": -0.1336,
+          "win_rate": 0.3478,
+          "expectancy": -0.7,
+          "trades": 23
+        }
+      },
+      "decay_score": 0.6511,
+      "status": "ARCHIVE_CANDIDATE",
+      "half_life": "<1 year",
+      "sharpe_trend": "DECLINING"
+    },
+    {
+      "strategy_id": "GapMom-MGC-Long",
+      "rolling_metrics": {
+        "full": {
+          "sharpe": 1.8923,
+          "win_rate": 0.4459,
+          "expectancy": 36.14,
+          "trades": 74
+        },
+        "3y": {
+          "sharpe": 2.0626,
+          "win_rate": 0.4118,
+          "expectancy": 55.7,
+          "trades": 34
+        },
+        "2y": {
+          "sharpe": 3.0444,
+          "win_rate": 0.4783,
+          "expectancy": 96.98,
+          "trades": 23
+        },
+        "1y": {
+          "sharpe": 4.5553,
+          "win_rate": 0.5833,
+          "expectancy": 197.43,
+          "trades": 12
+        },
+        "6m": {
+          "sharpe": 4.9453,
+          "win_rate": 0.6667,
+          "expectancy": 56.43,
+          "trades": 6
+        }
+      },
+      "decay_score": 0.0,
+      "status": "HEALTHY",
+      "half_life": "Strengthening",
+      "sharpe_trend": "IMPROVING"
+    },
+    {
+      "strategy_id": "GapMom-MNQ-Long",
+      "rolling_metrics": {
+        "full": {
+          "sharpe": 1.5571,
+          "win_rate": 0.3178,
+          "expectancy": 18.88,
+          "trades": 107
+        },
+        "3y": {
+          "sharpe": -1.2199,
+          "win_rate": 0.2558,
+          "expectancy": -14.89,
+          "trades": 43
+        },
+        "2y": {
+          "sharpe": -3.1113,
+          "win_rate": 0.2414,
+          "expectancy": -36.79,
+          "trades": 29
+        },
+        "1y": {
+          "sharpe": -4.5337,
+          "win_rate": 0.2,
+          "expectancy": -50.51,
+          "trades": 15
+        },
+        "6m": {
+          "sharpe": -62.2816,
+          "win_rate": 0.0,
+          "expectancy": -95.18,
+          "trades": 9
+        }
+      },
+      "decay_score": 1.0,
+      "status": "ARCHIVE_CANDIDATE",
+      "half_life": "<1 year",
+      "sharpe_trend": "DECLINING"
+    }
+  ],
+  "summary": {
+    "status_counts": {
+      "HEALTHY": 8,
+      "ARCHIVE_CANDIDATE": 2
+    },
+    "avg_decay_score": 0.1651,
+    "portfolio_half_life": "~6 years"
+  }
+}
