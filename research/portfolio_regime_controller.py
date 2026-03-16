@@ -500,9 +500,11 @@ def run_controller(skip_heavy: bool = False) -> dict:
             "activation_score": score_result["activation_score"],
             "sub_scores": score_result["sub_scores"],
             "recommended_action": score_result["recommended_action"],
+            "situation": score_result.get("situation", "HEALTHY"),
             "reason_codes": score_result["reason_codes"],
             "transition_trigger": transition["trigger"],
             "confidence": score_result["confidence"],
+            "uncertainty": score_result.get("uncertainty", False),
             "warnings": _build_warnings(signals, score_result, genome),
             "review_priority": _compute_review_priority(score_result, transition),
             # Raw signals for registry persistence
@@ -736,9 +738,9 @@ def print_report(results: dict):
     print()
     print("  ACTIVATION MATRIX")
     print(f"  {THIN}")
-    header = f"  {'Strategy':<30s} {'Score':>6s} {'Action':<16s} {'State':<10s} {'Priority':<8s}"
+    header = f"  {'Strategy':<28s} {'Score':>6s} {'Action':<14s} {'State':<10s} {'Situation':<16s} {'Pri':<4s}"
     print(header)
-    print(f"  {'-' * 72}")
+    print(f"  {'-' * 80}")
 
     # Sort by activation score descending
     sorted_matrix = sorted(
@@ -749,12 +751,14 @@ def print_report(results: dict):
 
     for e in sorted_matrix:
         sid = e["strategy_id"]
-        if len(sid) > 29:
-            sid = sid[:26] + "..."
+        if len(sid) > 27:
+            sid = sid[:24] + "..."
         score = f"{e['activation_score']:.3f}"
         action = e["recommended_action"]
         state = e["new_state"]
+        situation = e.get("situation", "HEALTHY")
         priority = e["review_priority"]
+        uncertain = "*" if e.get("uncertainty") else " "
 
         # Color indicators
         if action == "FULL_ON":
@@ -766,7 +770,52 @@ def print_report(results: dict):
         else:
             indicator = "[-]"
 
-        print(f"  {sid:<30s} {score:>6s} {indicator} {action:<12s} {state:<10s} {priority:<8s}")
+        print(f"  {sid:<28s} {score:>6s}{uncertain}{indicator} {action:<12s} {state:<10s} {situation:<16s} {priority:<4s}")
+
+    # ── Uncertainty note ──
+    uncertain_entries = [e for e in sorted_matrix if e.get("uncertainty")]
+    if uncertain_entries:
+        print()
+        print(f"  * = borderline score (within 0.05 of action threshold)")
+        for e in uncertain_entries:
+            print(f"    {e['strategy_id']}: {e['activation_score']:.3f} near threshold")
+
+    # ── Crowding Diagnostics ──
+    print()
+    print("  CROWDING DIAGNOSTICS")
+    print(f"  {THIN}")
+
+    # Genome cluster concentration (active strategies only)
+    cluster_counts = {}
+    session_counts = {}
+    asset_counts = {}
+    family_counts = {}
+    for e in sorted_matrix:
+        if e["recommended_action"] in ("FULL_ON", "REDUCED_ON"):
+            exp = e.get("primary_exposure", "unknown")
+            cluster_counts.setdefault(exp, []).append(e["strategy_id"])
+            asset_counts.setdefault(e["asset"], []).append(e["strategy_id"])
+            fam = e.get("family", "unknown")
+            family_counts.setdefault(fam, []).append(e["strategy_id"])
+            # Session from genome
+            genome = _get_genome_data(e["strategy_id"])
+            sess = genome.get("session", "all_day") if genome else "all_day"
+            session_counts.setdefault(sess, []).append(e["strategy_id"])
+
+    for label, counts, warn_at in [
+        ("Exposure", cluster_counts, 3),
+        ("Asset", asset_counts, 3),
+        ("Family", family_counts, 3),
+        ("Session", session_counts, 4),
+    ]:
+        crowded = {k: v for k, v in counts.items() if len(v) >= warn_at}
+        if crowded:
+            for k, strats in crowded.items():
+                print(f"  ! {label} [{k}]: {len(strats)} active — {', '.join(strats)}")
+        else:
+            max_k = max(counts, key=lambda k: len(counts[k])) if counts else "none"
+            max_n = len(counts.get(max_k, [])) if counts else 0
+            print(f"  {label}: OK (max {max_n} in {max_k})")
 
     # ── Warnings ──
     all_warnings = []

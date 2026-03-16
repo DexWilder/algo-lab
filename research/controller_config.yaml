@@ -21,7 +21,7 @@ action_thresholds:
   FULL_ON: 0.70           # Strong across all dimensions
   REDUCED_ON: 0.55        # Good but with reservations
   PROBATION: 0.40         # Meaningful weakness but not dead
-  OFF: 0.30               # Below viability for active trading
+  "OFF": 0.30             # Below viability for active trading
   DISABLE: 0.20           # Serious issues — needs resolution
   ARCHIVE_REVIEW: 0.0     # Below minimum viability
 
@@ -39,6 +39,13 @@ half_life:
   MONITOR: 0.6
   DECAYING: 0.3
   ARCHIVE_CANDIDATE: 0.0
+
+# ── Decay Enforcement (1.1) ───────────────────────────────────────────────
+# Hard caps on activation score to prevent decaying edges from scoring
+# above their appropriate action tier, regardless of other dimensions.
+decay_enforcement:
+  archive_candidate_cap: 0.42   # Forces PROBATION or below
+  decaying_cap: 0.52            # Forces REDUCED_ON or below
 
 # ── Contribution Scoring ───────────────────────────────────────────────────
 contribution:

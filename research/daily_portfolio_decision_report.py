@@ -112,7 +112,9 @@ def build_report_data(controller_results: dict) -> dict:
             "activation_score": e["activation_score"],
             "recommended_action": e["recommended_action"],
             "state": e["new_state"],
+            "situation": e.get("situation", "HEALTHY"),
             "confidence": e["confidence"],
+            "uncertainty": e.get("uncertainty", False),
             "review_priority": e["review_priority"],
         }
         for e in sorted(matrix, key=lambda x: x["activation_score"], reverse=True)
@@ -406,12 +408,13 @@ def generate_markdown(report: dict) -> str:
     # 3. Activation Matrix
     lines.append("## 3. Activation Matrix")
     lines.append("")
-    lines.append("| Strategy | Asset | Score | Action | State | Priority |")
-    lines.append("|---|---|---|---|---|---|")
+    lines.append("| Strategy | Asset | Score | Action | State | Situation | Priority |")
+    lines.append("|---|---|---|---|---|---|---|")
     for e in sections["activation_matrix"]:
+        uncertain = " *" if e.get("uncertainty") else ""
         lines.append(
-            f"| {e['strategy_id']} | {e['asset']} | {e['activation_score']:.3f} "
-            f"| {e['recommended_action']} | {e['state']} | {e['review_priority']} |"
+            f"| {e['strategy_id']} | {e['asset']} | {e['activation_score']:.3f}{uncertain} "
+            f"| {e['recommended_action']} | {e['state']} | {e.get('situation', 'HEALTHY')} | {e['review_priority']} |"
         )
     lines.append("")
 
@@ -538,13 +541,15 @@ def print_terminal_report(report: dict):
     print()
     print("  3. ACTIVATION MATRIX")
     print(f"  {'-' * 55}")
-    print(f"  {'Strategy':<30s} {'Score':>6s} {'Action':<15s}")
-    print(f"  {'-' * 53}")
+    print(f"  {'Strategy':<28s} {'Score':>6s} {'Action':<14s} {'Situation':<16s}")
+    print(f"  {'-' * 66}")
     for e in sections["activation_matrix"]:
         sid = e["strategy_id"]
-        if len(sid) > 29:
-            sid = sid[:26] + "..."
-        print(f"  {sid:<30s} {e['activation_score']:.3f}  {e['recommended_action']:<15s}")
+        if len(sid) > 27:
+            sid = sid[:24] + "..."
+        uncertain = "*" if e.get("uncertainty") else " "
+        situation = e.get("situation", "HEALTHY")
+        print(f"  {sid:<28s} {e['activation_score']:.3f}{uncertain} {e['recommended_action']:<14s} {situation:<16s}")
 
     # 4-5. Probation + Archive (compact)
     if sections["probation_list"] or sections["archive_candidates"]:

@@ -216,6 +216,33 @@ Status: BUILT. 60 automated checks, 52 PASS / 7 WARN / 1 FAIL.
 - Scheduler wiring (cron-based loop execution)
 - Dynamic Portfolio Allocation (regime-driven capital sizing)
 
+### Phase 5.7 — Advanced Monitoring Modules
+**Status: ROADMAP (not yet built)**
+
+Three modules that move FQL from reactive diagnostics to proactive portfolio intelligence:
+
+**Module 1 — Live Drift Monitor**
+- Compare forward-test performance windows against backtest reference distributions
+- Metrics tracked: rolling Sharpe, win rate, avg win/loss, max drawdown
+- Alert tiers: NORMAL (within 1σ), DRIFT (>1σ deviation for 2+ weeks), ALARM (>2σ or structural break)
+- Integration: feeds `half_life_status` and `recent_sharpe` signals to Portfolio Regime Controller
+- Schedule: daily (after forward day completes)
+
+**Module 2 — Execution Quality Monitor**
+- Track slippage, fill rates, and execution timing across strategies
+- Compare expected entry/exit prices (signal prices) vs actual fill prices
+- Metrics: slippage per trade (ticks), slippage as % of edge, fill rejection rate
+- Alert if slippage erodes >20% of expected edge for any strategy
+- Integration: feeds `health_status` signal to Portfolio Regime Controller
+- Schedule: daily
+
+**Module 3 — Counterfactual Engine**
+- Answer "what if we had followed the controller's recommendations?"
+- Replay historical controller decisions against actual market outcomes
+- Track: counterfactual PnL, strategies that would have been activated/deactivated, opportunity cost of delays
+- Use cases: controller parameter tuning, threshold validation, confidence calibration
+- Schedule: weekly (Saturday batch)
+
 ### Phase 6 — Forward Testing
 **Status: ACTIVE (v0.17)**
 - Live market data -> forward runner -> simulated trades -> trade logs

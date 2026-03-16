@@ -97,10 +97,25 @@ class ActivationScorer:
         )
         activation_score = round(min(1.0, max(0.0, activation_score)), 4)
 
+        # ── 1.1: Decay enforcement — cap score for confirmed decay ───
+        # A dead/decaying edge should never score above PROBATION threshold
+        # regardless of how well other dimensions look.
+        hl_status = signals.get("half_life_status", "HEALTHY")
+        decay_cap = self.config.get("decay_enforcement", {})
+        if hl_status == "ARCHIVE_CANDIDATE":
+            cap = decay_cap.get("archive_candidate_cap", 0.42)
+            activation_score = min(activation_score, cap)
+        elif hl_status == "DECAYING":
+            cap = decay_cap.get("decaying_cap", 0.52)
+            activation_score = min(activation_score, cap)
+
+        # ── 1.3: Classify situation — bad fit vs bad edge ────────────
+        situation = self._classify_situation(signals, sub_scores)
+
         # Map to action
         recommended_action = self._map_to_action(activation_score)
 
-        # Confidence based on data completeness
+        # ── 1.4: Confidence / uncertainty ────────────────────────────
         data_fields = [
             "regime_fit_level", "half_life_status", "marginal_sharpe",
             "max_correlation", "health_status", "kill_flags",
@@ -108,12 +123,23 @@ class ActivationScorer:
         present = sum(1 for f in data_fields if f in signals and signals[f] is not None)
         confidence = round(present / len(data_fields), 2)
 
+        # Uncertainty flag: borderline transitions
+        thresholds = self.config["action_thresholds"]
+        uncertainty = False
+        for boundary in [thresholds["FULL_ON"], thresholds["REDUCED_ON"],
+                         thresholds["PROBATION"], thresholds["OFF"]]:
+            if abs(activation_score - boundary) < 0.05:
+                uncertainty = True
+                break
+
         return {
             "activation_score": activation_score,
             "sub_scores": sub_scores,
             "reason_codes": reason_codes,
             "recommended_action": recommended_action,
+            "situation": situation,
             "confidence": confidence,
+            "uncertainty": uncertainty,
         }
 
     # ── Individual Dimension Scorers ─────────────────────────────────────
@@ -261,6 +287,43 @@ class ActivationScorer:
             return 0.4, [ReasonCode.RECENT_VOLATILE]
         else:
             return 1.0, [ReasonCode.RECENT_STABLE]
+
+    # ── Situation Classification (1.3) ──────────────────────────────────
+
+    def _classify_situation(self, signals: dict, sub_scores: dict) -> str:
+        """Classify why a strategy is underperforming.
+
+        Returns one of:
+            REGIME_MISMATCH   — Valid edge, wrong market environment
+            REDUNDANT         — Valid edge, overlaps with stronger sibling
+            EDGE_DECAY        — Edge deteriorating across time windows
+            STRUCTURAL_FAIL   — Strategy fundamentally broken
+            HEALTHY           — No issues detected
+        """
+        hl = signals.get("half_life_status", "HEALTHY")
+        regime = sub_scores.get("regime_fit", 1.0)
+        redundancy = sub_scores.get("redundancy", 1.0)
+        contribution = sub_scores.get("contribution", 0.5)
+        recent = sub_scores.get("recent_stability", 1.0)
+        kill_flags = signals.get("kill_flags", [])
+
+        # Case D: Structural failure — dead edge + multiple kill flags
+        if hl == "ARCHIVE_CANDIDATE" and len(kill_flags) >= 1:
+            return "STRUCTURAL_FAIL"
+
+        # Case C: Edge decay — deteriorating but not dead
+        if hl in ("DECAYING", "ARCHIVE_CANDIDATE"):
+            return "EDGE_DECAY"
+
+        # Case A: Valid edge, wrong regime
+        if regime <= 0.2 and hl in ("HEALTHY", "MONITOR"):
+            return "REGIME_MISMATCH"
+
+        # Case B: Valid edge, redundant
+        if redundancy <= 0.3 and hl in ("HEALTHY", "MONITOR"):
+            return "REDUNDANT"
+
+        return "HEALTHY"
 
     # ── Action Mapping ───────────────────────────────────────────────────
 
