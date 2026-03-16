@@ -217,16 +217,20 @@ Status: BUILT. 60 automated checks, 52 PASS / 7 WARN / 1 FAIL.
 - Dynamic Portfolio Allocation (regime-driven capital sizing)
 
 ### Phase 5.7 — Advanced Monitoring Modules
-**Status: ROADMAP (not yet built)**
+**Status: Module 1 BUILT, Modules 2-3 ROADMAP**
 
 Three modules that move FQL from reactive diagnostics to proactive portfolio intelligence:
 
-**Module 1 — Live Drift Monitor**
-- Compare forward-test performance windows against backtest reference distributions
-- Metrics tracked: rolling Sharpe, win rate, avg win/loss, max drawdown
-- Alert tiers: NORMAL (within 1σ), DRIFT (>1σ deviation for 2+ weeks), ALARM (>2σ or structural break)
-- Integration: feeds `half_life_status` and `recent_sharpe` signals to Portfolio Regime Controller
-- Schedule: daily (after forward day completes)
+**Module 1 — Live Drift Monitor** (`research/live_drift_monitor.py`, `research/drift_alerts.py`)
+**Status: BUILT**
+- Compares forward-test metrics against backtest reference baselines
+- 6 drift dimensions: win rate, expectancy, trade frequency, Sharpe, regime-specific, session
+- Alert tiers: NORMAL, DRIFT (sustained deviation), ALARM (structural break)
+- Per-strategy drift detection with controller-facing signals
+- Regime-bucketed performance tracking (HIGH_VOL, NORMAL, LOW_VOL)
+- Persistent drift log (`research/data/live_drift_log.json`)
+- Integration: feeds drift alerts to Portfolio Regime Controller
+- Schedule: daily (included in `fql_research_scheduler.py --daily`)
 
 **Module 2 — Execution Quality Monitor**
 - Track slippage, fill rates, and execution timing across strategies

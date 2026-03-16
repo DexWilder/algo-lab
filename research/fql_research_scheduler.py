@@ -74,6 +74,14 @@ JOBS = {
         "subprocess": True,
         "subprocess_args": ["--from-cache", "--save"],
     },
+    "daily_drift_monitor": {
+        "cadence": "daily",
+        "description": "Detect forward/live behavior drift vs backtest baseline",
+        "module": "research.live_drift_monitor",
+        "function": "run_drift_monitor",
+        "priority": 6,
+        "post_hook": "_daily_drift_post",
+    },
 
     # ── Twice Weekly ──────────────────────────────────────────────────
     "biweekly_candidate_scan": {
@@ -173,17 +181,26 @@ JOBS = {
 def _daily_controller_post(run_result):
     """After controller run: save matrix, apply to registry, print report."""
     from research.portfolio_regime_controller import (
-        run_controller, save_activation_matrix, apply_to_registry, print_report,
+        save_activation_matrix, apply_to_registry, print_report,
     )
-    results = run_result  # run_controller() return value
+    results = run_result
     if results:
         save_activation_matrix(results)
         apply_to_registry(results)
         print_report(results)
 
 
+def _daily_drift_post(run_result):
+    """After drift monitor: save log and print report."""
+    from research.live_drift_monitor import save_drift_log, print_drift_report
+    if run_result:
+        save_drift_log(run_result)
+        print_drift_report(run_result)
+
+
 POST_HOOKS = {
     "_daily_controller_post": _daily_controller_post,
+    "_daily_drift_post": _daily_drift_post,
 }
 
 
