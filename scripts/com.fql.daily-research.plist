@@ -72,6 +72,8 @@
         <string>/usr/local/bin:/usr/bin:/bin</string>
         <key>HOME</key>
         <string>/Users/chasefisher</string>
+        <key>PYTHONUNBUFFERED</key>
+        <string>1</string>
     </dict>
 </dict>
 </plist>
