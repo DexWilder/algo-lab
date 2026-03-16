@@ -1,0 +1,114 @@
+{
+  "run_date": "2026-03-16T09:36:37.134583",
+  "strategy": "fx_daily_trend",
+  "results": [
+    {
+      "asset": "6J",
+      "mode": "both",
+      "trades": 23,
+      "pnl": 4461.25,
+      "pf": 1.457,
+      "sharpe": 2.16,
+      "wr": 52.2,
+      "maxdd": 7380.0,
+      "avg_hold_days": 13.0,
+      "classification": "PROMISING_NATIVE"
+    },
+    {
+      "asset": "6J",
+      "mode": "long",
+      "trades": 9,
+      "pnl": 1083.75,
+      "pf": 1.411,
+      "sharpe": 2.04,
+      "wr": 55.6,
+      "maxdd": 3700.0,
+      "avg_hold_days": 12.3,
+      "classification": "NO_EDGE"
+    },
+    {
+      "asset": "6J",
+      "mode": "short",
+      "trades": 14,
+      "pnl": 3377.5,
+      "pf": 1.474,
+      "sharpe": 2.25,
+      "wr": 50.0,
+      "maxdd": 6465.0,
+      "avg_hold_days": 13.5,
+      "classification": "NEEDS_REFINEMENT"
+    },
+    {
+      "asset": "6E",
+      "mode": "both",
+      "trades": 32,
+      "pnl": -12998.75,
+      "pf": 0.384,
+      "sharpe": -6.14,
+      "wr": 18.8,
+      "maxdd": 14106.25,
+      "avg_hold_days": 10.3,
+      "classification": "NO_EDGE"
+    },
+    {
+      "asset": "6E",
+      "mode": "long",
+      "trades": 16,
+      "pnl": -5477.5,
+      "pf": 0.545,
+      "sharpe": -3.98,
+      "wr": 25.0,
+      "maxdd": 7307.5,
+      "avg_hold_days": 12.3,
+      "classification": "NO_EDGE"
+    },
+    {
+      "asset": "6E",
+      "mode": "short",
+      "trades": 17,
+      "pnl": -6086.25,
+      "pf": 0.331,
+      "sharpe": -7.52,
+      "wr": 17.6,
+      "maxdd": 7456.25,
+      "avg_hold_days": 7.8,
+      "classification": "NO_EDGE"
+    },
+    {
+      "asset": "6B",
+      "mode": "both",
+      "trades": 30,
+      "pnl": -3050.0,
+      "pf": 0.693,
+      "sharpe": -2.28,
+      "wr": 33.3,
+      "maxdd": 5692.5,
+      "avg_hold_days": 10.3,
+      "classification": "NO_EDGE"
+    },
+    {
+      "asset": "6B",
+      "mode": "long",
+      "trades": 14,
+      "pnl": 983.75,
+      "pf": 1.243,
+      "sharpe": 1.29,
+      "wr": 50.0,
+      "maxdd": 3717.5,
+      "avg_hold_days": 12.9,
+      "classification": "NEEDS_REFINEMENT"
+    },
+    {
+      "asset": "6B",
+      "mode": "short",
+      "trades": 17,
+      "pnl": -4655.0,
+      "pf": 0.286,
+      "sharpe": -8.53,
+      "wr": 17.6,
+      "maxdd": 4655.0,
+      "avg_hold_days": 7.8,
+      "classification": "NO_EDGE"
+    }
+  ]
+}
