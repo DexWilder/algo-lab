@@ -1431,15 +1431,21 @@
       "direction": "short",
       "source": "native_prototype",
       "rule_summary": "Asian range breakout at London open (03:00 ET). Short only. ATR filter + volume confirmation + trailing stop.",
-      "status": "testing",
-      "validation_score": null,
-      "profit_factor": 1.21,
-      "notes": "Native FX prototype. PF 1.21 / Sharpe 1.11. London session = primary edge. Walk-forward 1.08/1.35.",
+      "status": "probation",
+      "validation_score": 5.0,
+      "profit_factor": 1.2,
+      "notes": "CONDITIONAL_PASS (5/8). Walk-forward most stable of expansion (1.08/1.35). 125 trades, PF 1.20, Sharpe 1.09. Short bias (short PF 1.21, long PF 1.00). Regime-stable (0 catastrophic cells, trades all regimes). Param stability 75% (ATR=30 variants PF 1.46-1.54). Asset-specific to 6J (6E PF 1.00, 6B PF 0.66). Complementary to MomPB-6J: different session (London vs US), different direction (short bias vs long only), different entry (range breakout vs pullback). Restrictions: London session, MICRO tier, both directions, review after 50+ forward trades.",
       "last_review_date": "2026-03-16",
-      "controller_state": "PAPER",
+      "controller_state": "PROBATION",
       "controller_action": "PROBATION",
       "review_priority": "HIGH",
-      "state_history": []
+      "state_history": [],
+      "deployment_restrictions": {
+        "session": "london_0300_0800_ET",
+        "direction": "both_short_bias",
+        "max_allocation_tier": "MICRO",
+        "promotion_threshold": "50_additional_forward_trades"
+      }
     },
     {
       "strategy_id": "FXBreak-6E-Watchlist",
