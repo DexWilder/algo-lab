@@ -1,0 +1,27 @@
+{
+  "timestamp": "2026-03-16T08:06:24.989659",
+  "overall": "HEALTHY",
+  "safe_mode": false,
+  "checks": {
+    "data_freshness": {
+      "status": "OK",
+      "detail": "All data files recent"
+    },
+    "scheduler_health": {
+      "status": "WARN",
+      "detail": "1 error(s): daily_decision_report"
+    },
+    "state_integrity": {
+      "status": "OK",
+      "detail": "All state files valid"
+    },
+    "process_health": {
+      "status": "OK",
+      "detail": "No active lockfile"
+    },
+    "drift_alerts": {
+      "status": "OK",
+      "detail": "No ALARM-level drift"
+    }
+  }
+}
