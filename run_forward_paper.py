@@ -38,14 +38,14 @@ LOGS_DIR.mkdir(parents=True, exist_ok=True)
 
 ACCOUNT_STATE_PATH = STATE_DIR / "account_state.json"
 
-try:
-    from backtests.run_baseline import ASSET_CONFIG
-except ImportError:
-    ASSET_CONFIG = {
-        "MES": {"point_value": 5.0, "tick_size": 0.25, "commission_per_side": 0.62, "slippage_ticks": 1},
-        "MNQ": {"point_value": 2.0, "tick_size": 0.25, "commission_per_side": 0.62, "slippage_ticks": 1},
-        "MGC": {"point_value": 10.0, "tick_size": 0.10, "commission_per_side": 0.62, "slippage_ticks": 1},
-    }
+from engine.asset_config import get_execution_params, ASSETS
+
+# Build ASSET_CONFIG from canonical asset_config for all assets with data
+ASSET_CONFIG = {}
+for sym in ASSETS:
+    data_path = ROOT / "data" / "processed" / f"{sym}_5m.csv"
+    if data_path.exists():
+        ASSET_CONFIG[sym] = get_execution_params(sym)
 
 STARTING_EQUITY = 50_000.0
 
@@ -137,9 +137,13 @@ def run_strategy_on_new_bars(
     else:
         signals = mod.generate_signals(full_df)
 
+    # Handle daily-bar strategies that resample internally
+    # (signals has fewer rows than full_df)
+    bt_df = signals if len(signals) < len(full_df) else full_df
+
     # Run backtest on full dataset
     result = run_backtest(
-        full_df, signals,
+        bt_df, signals,
         mode=strat_config["mode"],
         point_value=config["point_value"],
         symbol=asset,
@@ -218,7 +222,9 @@ def main():
     # ── Load data & check for new bars ───────────────────────────────────
     print(f"\n  Checking for new data...")
     engine = RegimeEngine()
-    portfolio_config = build_portfolio_config()
+    # Include probation strategies in forward paper trading
+    # (they need forward evidence for promotion review)
+    portfolio_config = build_portfolio_config(include_probation=True)
     controller = StrategyController(portfolio_config)
     strat_configs = portfolio_config["strategies"]
 
@@ -226,7 +232,20 @@ def main():
     regime_cache = {}
     new_bar_counts = {}
 
-    for asset in ["MES", "MNQ", "MGC"]:
+    # Determine which assets are needed by active strategies
+    needed_assets = set()
+    for strat in strat_configs.values():
+        needed_assets.add(strat["asset"])
+
+    for asset in sorted(needed_assets):
+        if asset not in ASSET_CONFIG:
+            print(f"    {asset}: SKIP (no data or asset config)")
+            continue
+        csv_path = PROCESSED_DIR / f"{asset}_5m.csv"
+        if not csv_path.exists():
+            print(f"    {asset}: SKIP (no data file)")
+            continue
+
         last = state["last_processed_bar"].get(asset, "")
         full_df, new_bars = get_new_bars(asset, last)
         data_cache[asset] = (full_df, new_bars)
@@ -308,16 +327,47 @@ def main():
     trade_log_rows = []
     signal_log_rows = []
 
+    # Load allocation matrix for tier info
+    alloc_matrix_path = ROOT / "research" / "data" / "allocation_matrix.json"
+    alloc_tiers = {}
+    if alloc_matrix_path.exists():
+        try:
+            alloc_data = json.load(open(alloc_matrix_path))
+            for sid, a in alloc_data.get("strategies", {}).items():
+                alloc_tiers[sid] = a.get("final_tier", "BASE")
+        except Exception:
+            pass
+
+    # Load registry for probation status
+    reg_path = ROOT / "research" / "data" / "strategy_registry.json"
+    strategy_status = {}
+    if reg_path.exists():
+        try:
+            reg = json.load(open(reg_path))
+            for s in reg.get("strategies", []):
+                strategy_status[s["strategy_id"]] = s.get("status", "unknown")
+        except Exception:
+            pass
+
     for strat_key, trades in controlled_trades.items():
         if trades.empty:
             continue
         strat_pnl = trades["pnl"].sum()
         daily_pnl += strat_pnl
 
+        strat_cfg = strat_configs.get(strat_key, {})
+        status = strategy_status.get(strat_key, "core")
+        tier = alloc_tiers.get(strat_key, "BASE")
+        horizon = "daily" if strat_cfg.get("name") in ("fx_daily_trend", "rate_daily_momentum") else "intraday"
+
         for _, row in trades.iterrows():
             trade_log_rows.append({
                 "date": today_str,
                 "strategy": strat_key,
+                "asset": strat_cfg.get("asset", ""),
+                "status": status,
+                "tier": tier,
+                "horizon": horizon,
                 "entry_time": str(row.get("entry_time", "")),
                 "exit_time": str(row.get("exit_time", "")),
                 "side": row.get("side", ""),
@@ -350,7 +400,7 @@ def main():
         state["consecutive_losses"] = 0
 
     # Update last processed bar per asset
-    for asset in ["MES", "MNQ", "MGC"]:
+    for asset in data_cache:
         full_df, new_bars = data_cache[asset]
         if not new_bars.empty:
             state["last_processed_bar"][asset] = str(new_bars["datetime"].iloc[-1])
@@ -437,7 +487,7 @@ def main():
   Kill Switch:         {kill_switch_status}
 
   Last processed bars:""")
-    for asset in ["MES", "MNQ", "MGC"]:
+    for asset in sorted(data_cache.keys()):
         bar = state["last_processed_bar"].get(asset, "none")
         print(f"    {asset}: {bar}")
 

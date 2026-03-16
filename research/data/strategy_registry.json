@@ -1420,6 +1420,24 @@
         "direction": "long_only",
         "max_allocation_tier": "REDUCED",
         "promotion_threshold": "30_additional_forward_trades"
+      },
+      "execution_config": {
+        "avoid_regimes": [],
+        "preferred_regimes": [
+          "TRENDING"
+        ],
+        "preferred_window": [
+          "08:00",
+          "17:00"
+        ],
+        "allowed_window": [
+          "08:00",
+          "17:00"
+        ],
+        "conviction_threshold_outside": 2,
+        "grinding_filter": false,
+        "exit_variant": null,
+        "priority": 3
       }
     },
     {
@@ -1445,6 +1463,22 @@
         "direction": "both_short_bias",
         "max_allocation_tier": "MICRO",
         "promotion_threshold": "50_additional_forward_trades"
+      },
+      "execution_config": {
+        "avoid_regimes": [],
+        "preferred_regimes": [],
+        "preferred_window": [
+          "03:00",
+          "08:00"
+        ],
+        "allowed_window": [
+          "03:00",
+          "08:00"
+        ],
+        "conviction_threshold_outside": 1,
+        "grinding_filter": false,
+        "exit_variant": null,
+        "priority": 2
       }
     },
     {
@@ -1528,7 +1562,27 @@
         "max_allocation_tier": "REDUCED",
         "promotion_threshold": "15_additional_forward_trades"
       },
-      "state_history": []
+      "state_history": [],
+      "execution_config": {
+        "avoid_regimes": [
+          "RANGING"
+        ],
+        "preferred_regimes": [
+          "TRENDING"
+        ],
+        "preferred_window": [
+          "08:30",
+          "15:00"
+        ],
+        "allowed_window": [
+          "08:30",
+          "15:00"
+        ],
+        "conviction_threshold_outside": 1,
+        "grinding_filter": false,
+        "exit_variant": null,
+        "priority": 3
+      }
     }
   ]
 }

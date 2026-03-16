@@ -192,7 +192,7 @@ def _build_strategy_exec_config(strategy: dict) -> dict:
         ),
         "priority": exec_cfg.get(
             "priority",
-            int(strategy.get("activation_score", 0.5) * 10)
+            int((strategy.get("activation_score") or 0.5) * 10)
         ),
     }
 
