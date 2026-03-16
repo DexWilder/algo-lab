@@ -4,6 +4,33 @@
 
 ---
 
+## 2026-03-16
+
+### Portfolio Regime Allocation
+- Built allocation engine: 6-tier sizing (OFF/MICRO/REDUCED/BASE/BOOST/MAX_ALLOWED)
+- 5-stage pipeline: base tier, contribution/CF adjustments, crowding dampening, session-specific, validation
+- Session-specific allocation tiers (morning/midday/afternoon)
+- 13 allocation reason codes for full decision explainability
+- Integrated into controller as Phase 4 (post-scoring)
+- Added Section 10 to daily report (markdown + terminal)
+- Output: research/data/allocation_matrix.json
+
+### Controller Unification
+- Created engine/strategy_universe.py: canonical strategy adapter
+- Registry (strategy_registry.json) is now single source of truth
+- Execution path reads from registry via build_portfolio_config()
+- Removed circular import (PORTFOLIO_CONFIG in regime controller)
+- Added execution_config to registry schema for 6 core strategies
+- Freshness checks and safe fallback to hardcoded config
+
+### State Integrity Hardening
+- Created test suite: 127 tests (activation scoring, state machine, regime engine, allocation, atomic writes, strategy universe)
+- Atomic writes for 8 critical JSON state files
+- Registry backup rotation (keep 5 versions)
+- research/utils/atomic_io.py utility module
+
+---
+
 ## 2026-03-15
 
 ### Architecture Documentation

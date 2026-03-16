@@ -637,6 +637,84 @@ def run_controller(skip_heavy: bool = False) -> dict:
         ),
     }
 
+    # ── Phase 4: Allocation tiers ───────────────────────────────────
+    print("\nComputing allocation tiers...")
+    from research.portfolio_regime_allocation import AllocationEngine, save_allocation_matrix
+
+    alloc_engine = AllocationEngine(config)
+
+    # Build contribution signals from activation matrix data
+    contrib_signals = {}
+    for e in activation_matrix:
+        sid = e["strategy_id"]
+        signals = e.get("_signals", {})
+        contrib_signals[sid] = {
+            "verdict": signals.get("contribution_verdict", "NEUTRAL"),
+            "marginal_sharpe": e.get("sub_scores", {}).get("contribution", 0.5),
+        }
+
+    # Build session drift signals from activation matrix data
+    drift_signals = {}
+    for e in activation_matrix:
+        sid = e["strategy_id"]
+        signals = e.get("_signals", {})
+        genome = _get_genome_data(sid)
+        drift_signals[sid] = {
+            "restricted_sessions": e.get("session_restrictions", []),
+            "session_details": {},
+            "primary_session": genome.get("session", "all_day") if genome else "all_day",
+        }
+        # Map worst severity to session details
+        severity = signals.get("session_drift_severity", "NORMAL")
+        for sess in ["morning", "midday", "afternoon"]:
+            if sess in e.get("session_restrictions", []):
+                drift_signals[sid]["session_details"][sess] = {"severity": "ALARM"}
+            else:
+                drift_signals[sid]["session_details"][sess] = {"severity": "NORMAL"}
+
+    # Load counterfactual data (cached, no re-computation)
+    cf_data = {}
+    cf_log_path = ROOT / "research" / "data" / "counterfactual_log.json"
+    if cf_log_path.exists():
+        try:
+            cf_log = json.load(open(cf_log_path))
+            if cf_log:
+                latest = cf_log[-1]
+                for sid, cf_entry in latest.get("strategies", {}).items():
+                    cf_data[sid] = cf_entry
+        except Exception:
+            pass
+
+    # Build crowding signals from activation matrix
+    crowding = {}
+    for e in activation_matrix:
+        crowding[e["strategy_id"]] = {
+            "primary_exposure": e.get("primary_exposure", "unknown"),
+            "max_correlation": e.get("sub_scores", {}).get("redundancy", 1.0),
+        }
+
+    allocations = alloc_engine.compute_allocations(
+        activation_matrix=activation_matrix,
+        contribution_signals=contrib_signals,
+        counterfactual=cf_data,
+        session_drift_signals=drift_signals,
+        crowding_signals=crowding,
+    )
+
+    # Attach allocation to activation matrix entries
+    for e in activation_matrix:
+        sid = e["strategy_id"]
+        if sid in allocations:
+            e["allocation"] = allocations[sid]
+
+    # Save allocation matrix
+    alloc_output = save_allocation_matrix(allocations, report_date)
+
+    # Print allocation summary
+    dist = alloc_output["summary"]["tier_distribution"]
+    tier_str = "  ".join(f"{k}: {v}" for k, v in sorted(dist.items()))
+    print(f"  Allocation tiers: {tier_str}")
+
     return {
         "report_date": report_date,
         "regime_snapshot": regime_states,
@@ -644,6 +722,7 @@ def run_controller(skip_heavy: bool = False) -> dict:
         "state_transitions": state_transitions,
         "portfolio_summary": portfolio_summary,
         "health_signals": health_signals,
+        "allocation_summary": alloc_output["summary"],
     }
 
 

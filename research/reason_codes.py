@@ -69,6 +69,21 @@ class ReasonCode:
     PROBATION_ENTRY = "PROBATION_ENTRY"
     ARCHIVE_CANDIDATE = "ARCHIVE_CANDIDATE"
 
+    # ── Allocation Tiers ────────────────────────────────────────────────
+    ALLOC_BASE_FROM_ACTION = "ALLOC_BASE_FROM_ACTION"
+    ALLOC_CONTRIB_BOOST = "ALLOC_CONTRIB_BOOST"
+    ALLOC_CONTRIB_DILUTIVE_CAP = "ALLOC_CONTRIB_DILUTIVE_CAP"
+    ALLOC_CF_BOOST = "ALLOC_CF_BOOST"
+    ALLOC_CF_CAP = "ALLOC_CF_CAP"
+    ALLOC_CF_REMOVE_CAP = "ALLOC_CF_REMOVE_CAP"
+    ALLOC_CROWDING_CAP = "ALLOC_CROWDING_CAP"
+    ALLOC_CROWDING_WEAKER = "ALLOC_CROWDING_WEAKER"
+    ALLOC_SESSION_BLOCK = "ALLOC_SESSION_BLOCK"
+    ALLOC_SESSION_REDUCE = "ALLOC_SESSION_REDUCE"
+    ALLOC_PRIMARY_SESSION_BLOCKED = "ALLOC_PRIMARY_SESSION_BLOCKED"
+    ALLOC_HARD_RESTRICTED = "ALLOC_HARD_RESTRICTED"
+    ALLOC_MAX_BOOST_CAP = "ALLOC_MAX_BOOST_CAP"
+
 
 REASON_DESCRIPTIONS = {
     ReasonCode.REGIME_MATCH_HIGH: "Current regime strongly matches strategy specialization",
@@ -106,4 +121,17 @@ REASON_DESCRIPTIONS = {
     ReasonCode.RESURRECTION_SIGNAL: "Archived strategy showing renewed strength",
     ReasonCode.PROBATION_ENTRY: "Strategy entering probation for review",
     ReasonCode.ARCHIVE_CANDIDATE: "Strategy flagged for potential archival",
+    ReasonCode.ALLOC_BASE_FROM_ACTION: "Base allocation tier derived from controller action",
+    ReasonCode.ALLOC_CONTRIB_BOOST: "Tier boosted due to strong portfolio contribution",
+    ReasonCode.ALLOC_CONTRIB_DILUTIVE_CAP: "Tier capped due to dilutive contribution",
+    ReasonCode.ALLOC_CF_BOOST: "Tier boosted by positive counterfactual score",
+    ReasonCode.ALLOC_CF_CAP: "Tier reduced by negative counterfactual score",
+    ReasonCode.ALLOC_CF_REMOVE_CAP: "Tier capped at MICRO due to counterfactual REMOVE recommendation",
+    ReasonCode.ALLOC_CROWDING_CAP: "Tier capped due to exposure cluster crowding",
+    ReasonCode.ALLOC_CROWDING_WEAKER: "Tier reduced as weaker strategy in crowded cluster",
+    ReasonCode.ALLOC_SESSION_BLOCK: "Session forced to OFF due to ALARM-level drift",
+    ReasonCode.ALLOC_SESSION_REDUCE: "Session tier reduced due to DRIFT-level degradation",
+    ReasonCode.ALLOC_PRIMARY_SESSION_BLOCKED: "Global tier capped because primary session is blocked",
+    ReasonCode.ALLOC_HARD_RESTRICTED: "Strategy is OFF due to hard restriction (DISABLED/ARCHIVED)",
+    ReasonCode.ALLOC_MAX_BOOST_CAP: "Tier boost capped at maximum allowed above base",
 }

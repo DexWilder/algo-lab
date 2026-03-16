@@ -132,3 +132,33 @@ transitions:
 # ── Strategy-Specific Overrides ────────────────────────────────────────────
 # Optional per-strategy weight adjustments or forced states.
 overrides: {}
+
+# ── Allocation Tiers ─────────────────────────────────────────────────────────
+# Post-controller sizing tiers. Applied AFTER activation scoring and state
+# machine decisions. These are relative sizing tiers, not hard contract sizes.
+allocation:
+  # Maximum boost above base tier (prevents runaway boosting)
+  max_boost_above_base: 2
+
+  # Contribution adjustments
+  contribution:
+    boost_marginal_sharpe: 0.10    # marginal Sharpe > this -> eligible for tier_up
+    dilutive_cap_tier: REDUCED     # DILUTIVE verdict -> cap at this
+
+  # Counterfactual adjustments
+  counterfactual:
+    boost_threshold: 0.30          # CF score >= this -> eligible for tier_up
+    cap_threshold: -0.15           # CF score < this -> tier_down
+    remove_cap_tier: MICRO         # CF recommendation=REMOVE -> cap at this
+
+  # Crowding dampening
+  crowding:
+    exposure_crowd_threshold: 3    # N active in same exposure -> apply cap
+    exposure_crowd_cap: BASE       # Cap tier when crowded
+    correlation_threshold: 0.50    # Pairwise |corr| above this -> weaker gets tier_down
+
+  # Session-specific rules
+  sessions:
+    alarm_action: "OFF"            # ALARM in session -> force this tier
+    drift_steps_down: 1            # DRIFT in session -> tier_down by this many
+    primary_session_blocked_cap: MICRO  # If strategy's primary session is blocked
