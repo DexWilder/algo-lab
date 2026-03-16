@@ -1,0 +1,199 @@
+{
+  "strategy": "fx_session_breakout",
+  "run_date": "2026-03-16T10:08:05.803909",
+  "session_filter": null,
+  "asset_results": {
+    "6J": {
+      "asset": "6J",
+      "bars": 69480,
+      "modes": {
+        "both": {
+          "trades": 125,
+          "pnl": 1762.5,
+          "pf": 1.204,
+          "sharpe": 1.09,
+          "maxdd": 1552.5,
+          "wr": 54.4,
+          "avg_pnl": 14.1,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 76,
+          "pnl": -15.0,
+          "pf": 0.998,
+          "sharpe": -0.01,
+          "maxdd": 1436.25,
+          "wr": 47.4,
+          "avg_pnl": -0.2,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 59,
+          "pnl": 777.5,
+          "pf": 1.208,
+          "sharpe": 1.11,
+          "maxdd": 1345.0,
+          "wr": 61.0,
+          "avg_pnl": 13.18,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 64,
+          "pnl": 396.25,
+          "pf": 1.083,
+          "sharpe": 0.45,
+          "maxdd": 1545.0,
+          "wr": 51.6,
+          "avg_pnl": 6.19
+        },
+        "H2": {
+          "trades": 61,
+          "pnl": 1366.25,
+          "pf": 1.35,
+          "sharpe": 1.88,
+          "maxdd": 1552.5,
+          "wr": 57.4,
+          "avg_pnl": 22.4
+        }
+      },
+      "classification": "ADVANCE",
+      "classification_reasons": [
+        "PF 1.20 > 1.2 with 125 trades",
+        "Walk-forward stable: H1=1.08, H2=1.35"
+      ]
+    },
+    "6E": {
+      "asset": "6E",
+      "bars": 77173,
+      "modes": {
+        "both": {
+          "trades": 136,
+          "pnl": -8.75,
+          "pf": 0.999,
+          "sharpe": -0.0,
+          "maxdd": 3163.75,
+          "wr": 60.3,
+          "avg_pnl": -0.06,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 81,
+          "pnl": 647.5,
+          "pf": 1.069,
+          "sharpe": 0.43,
+          "maxdd": 3205.0,
+          "wr": 58.0,
+          "avg_pnl": 7.99,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 70,
+          "pnl": 618.75,
+          "pf": 1.084,
+          "sharpe": 0.51,
+          "maxdd": 1338.75,
+          "wr": 62.9,
+          "avg_pnl": 8.84,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 91,
+          "pnl": -896.25,
+          "pf": 0.912,
+          "sharpe": -0.55,
+          "maxdd": 3163.75,
+          "wr": 60.4,
+          "avg_pnl": -9.85
+        },
+        "H2": {
+          "trades": 45,
+          "pnl": 887.5,
+          "pf": 1.171,
+          "sharpe": 1.08,
+          "maxdd": 2076.25,
+          "wr": 60.0,
+          "avg_pnl": 19.72
+        }
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Sufficient trades (136) but PF 1.00 < 1.1"
+      ]
+    },
+    "6B": {
+      "asset": "6B",
+      "bars": 59544,
+      "modes": {
+        "both": {
+          "trades": 188,
+          "pnl": -6776.25,
+          "pf": 0.661,
+          "sharpe": -2.75,
+          "maxdd": 7073.75,
+          "wr": 48.9,
+          "avg_pnl": -36.04,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 103,
+          "pnl": -5426.25,
+          "pf": 0.552,
+          "sharpe": -4.14,
+          "maxdd": 6302.5,
+          "wr": 46.6,
+          "avg_pnl": -52.68,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 118,
+          "pnl": -1576.25,
+          "pf": 0.851,
+          "sharpe": -1.0,
+          "maxdd": 2615.0,
+          "wr": 52.5,
+          "avg_pnl": -13.36,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 96,
+          "pnl": -2452.5,
+          "pf": 0.743,
+          "sharpe": -2.13,
+          "maxdd": 3480.0,
+          "wr": 50.0,
+          "avg_pnl": -25.55
+        },
+        "H2": {
+          "trades": 92,
+          "pnl": -4323.75,
+          "pf": 0.587,
+          "sharpe": -3.3,
+          "maxdd": 5075.0,
+          "wr": 47.8,
+          "avg_pnl": -47.0
+        }
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Sufficient trades (188) but PF 0.66 < 1.1"
+      ]
+    }
+  },
+  "best_result": {
+    "asset": "6J",
+    "classification": "ADVANCE",
+    "pf": 1.204,
+    "trades": 125
+  },
+  "overall_classification": "ADVANCE",
+  "overall_reasons": [
+    "PF 1.20 > 1.2 with 125 trades",
+    "Walk-forward stable: H1=1.08, H2=1.35"
+  ]
+}

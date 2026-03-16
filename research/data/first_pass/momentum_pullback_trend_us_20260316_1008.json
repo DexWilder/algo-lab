@@ -1,0 +1,257 @@
+{
+  "strategy": "momentum_pullback_trend",
+  "run_date": "2026-03-16T10:08:17.237451",
+  "session_filter": "us",
+  "asset_results": {
+    "6J": {
+      "asset": "6J",
+      "bars": 27565,
+      "modes": {
+        "both": {
+          "trades": 77,
+          "pnl": 838.75,
+          "pf": 1.097,
+          "sharpe": 0.61,
+          "maxdd": 1737.5,
+          "wr": 54.5,
+          "avg_pnl": 10.89,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 43,
+          "pnl": 2780.0,
+          "pf": 1.578,
+          "sharpe": 2.92,
+          "maxdd": 1432.5,
+          "wr": 65.1,
+          "avg_pnl": 64.65,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 45,
+          "pnl": -1168.75,
+          "pf": 0.779,
+          "sharpe": -1.78,
+          "maxdd": 2010.0,
+          "wr": 46.7,
+          "avg_pnl": -25.97,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 42,
+          "pnl": -448.75,
+          "pf": 0.909,
+          "sharpe": -0.63,
+          "maxdd": 1711.25,
+          "wr": 50.0,
+          "avg_pnl": -10.68
+        },
+        "H2": {
+          "trades": 35,
+          "pnl": 1287.5,
+          "pf": 1.346,
+          "sharpe": 1.95,
+          "maxdd": 1737.5,
+          "wr": 60.0,
+          "avg_pnl": 36.79
+        }
+      },
+      "classification": "SALVAGE",
+      "classification_reasons": [
+        "Overall PF 1.10, but directional split shows PF > 1.2"
+      ]
+    },
+    "6E": {
+      "asset": "6E",
+      "bars": 32666,
+      "modes": {
+        "both": {
+          "trades": 92,
+          "pnl": 2363.75,
+          "pf": 1.158,
+          "sharpe": 0.84,
+          "maxdd": 5263.75,
+          "wr": 58.7,
+          "avg_pnl": 25.69,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 48,
+          "pnl": 4923.75,
+          "pf": 1.724,
+          "sharpe": 2.9,
+          "maxdd": 2077.5,
+          "wr": 64.6,
+          "avg_pnl": 102.58,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 56,
+          "pnl": -721.25,
+          "pf": 0.918,
+          "sharpe": -0.56,
+          "maxdd": 3307.5,
+          "wr": 58.9,
+          "avg_pnl": -12.88,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 49,
+          "pnl": -1866.25,
+          "pf": 0.765,
+          "sharpe": -1.69,
+          "maxdd": 4227.5,
+          "wr": 57.1,
+          "avg_pnl": -38.09
+        },
+        "H2": {
+          "trades": 44,
+          "pnl": 4377.5,
+          "pf": 1.624,
+          "sharpe": 2.71,
+          "maxdd": 2322.5,
+          "wr": 61.4,
+          "avg_pnl": 99.49
+        }
+      },
+      "classification": "SALVAGE",
+      "classification_reasons": [
+        "Overall PF 1.16, but directional split shows PF > 1.2"
+      ]
+    },
+    "ZN": {
+      "asset": "ZN",
+      "bars": 46749,
+      "modes": {
+        "both": {
+          "trades": 218,
+          "pnl": -4638.65,
+          "pf": 0.801,
+          "sharpe": -1.4,
+          "maxdd": 4862.4,
+          "wr": 56.9,
+          "avg_pnl": -21.28,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 133,
+          "pnl": -4848.01,
+          "pf": 0.694,
+          "sharpe": -2.25,
+          "maxdd": 4854.31,
+          "wr": 54.1,
+          "avg_pnl": -36.45,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 120,
+          "pnl": -2581.23,
+          "pf": 0.811,
+          "sharpe": -1.26,
+          "maxdd": 3028.73,
+          "wr": 55.8,
+          "avg_pnl": -21.51,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 117,
+          "pnl": -3761.21,
+          "pf": 0.737,
+          "sharpe": -1.96,
+          "maxdd": 4352.47,
+          "wr": 57.3,
+          "avg_pnl": -32.15
+        },
+        "H2": {
+          "trades": 101,
+          "pnl": -877.44,
+          "pf": 0.902,
+          "sharpe": -0.63,
+          "maxdd": 3109.33,
+          "wr": 56.4,
+          "avg_pnl": -8.69
+        }
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Sufficient trades (218) but PF 0.80 < 1.1"
+      ]
+    },
+    "ZB": {
+      "asset": "ZB",
+      "bars": 44947,
+      "modes": {
+        "both": {
+          "trades": 190,
+          "pnl": -8662.5,
+          "pf": 0.786,
+          "sharpe": -1.63,
+          "maxdd": 9522.5,
+          "wr": 56.8,
+          "avg_pnl": -45.59,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 108,
+          "pnl": -8582.5,
+          "pf": 0.627,
+          "sharpe": -3.11,
+          "maxdd": 9108.75,
+          "wr": 53.7,
+          "avg_pnl": -79.47,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 101,
+          "pnl": -4377.5,
+          "pf": 0.814,
+          "sharpe": -1.36,
+          "maxdd": 6256.25,
+          "wr": 57.4,
+          "avg_pnl": -43.34,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 89,
+          "pnl": -4347.5,
+          "pf": 0.794,
+          "sharpe": -1.54,
+          "maxdd": 5155.0,
+          "wr": 55.1,
+          "avg_pnl": -48.85
+        },
+        "H2": {
+          "trades": 102,
+          "pnl": -4098.75,
+          "pf": 0.79,
+          "sharpe": -1.63,
+          "maxdd": 5453.75,
+          "wr": 58.8,
+          "avg_pnl": -40.18
+        }
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Sufficient trades (190) but PF 0.79 < 1.1"
+      ]
+    }
+  },
+  "best_result": {
+    "asset": "6E",
+    "classification": "SALVAGE",
+    "pf": 1.158,
+    "trades": 92
+  },
+  "overall_classification": "SALVAGE",
+  "overall_reasons": [
+    "Overall PF 1.16, but directional split shows PF > 1.2"
+  ]
+}
