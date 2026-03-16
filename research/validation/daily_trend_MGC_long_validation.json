@@ -1,0 +1,28 @@
+{
+  "strategy": "DailyTrend-MGC-Long",
+  "verdict": "PASS",
+  "score": 7,
+  "failures": 1,
+  "tests": {
+    "Walk-Forward H1": true,
+    "Walk-Forward H2": true,
+    "Regime Stability": true,
+    "Asset Robustness": true,
+    "Bootstrap CI": "True",
+    "Top-Trade Removal": "True",
+    "Monte Carlo Ruin": false,
+    "Parameter Stability": true
+  },
+  "baseline": {
+    "trades": 44,
+    "pnl": 20425.44,
+    "pf": 3.651,
+    "sharpe": 5.13,
+    "maxdd": 1812.24,
+    "wr": 40.9
+  },
+  "bootstrap_ci_lower": 1.375,
+  "top_trade_pf": 2.851,
+  "p_ruin_2k": 1.0,
+  "param_stability_pct": 100.0
+}
