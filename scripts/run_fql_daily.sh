@@ -1,71 +1,94 @@
 #!/bin/bash
-# FQL Daily Research Scheduler — runs after market close
+# FQL Daily Research Scheduler - runs after market close
 # Triggered by launchd: com.fql.daily-research
 #
 # Schedule: weekdays at 17:30 ET (after market close)
-# Logs: research/logs/
+# Logs: research/logs/daily_run_YYYYMMDD_HHMM.log  (detailed per-run)
+#        research/logs/launchd_stdout.log            (launchd capture)
 # Alert: exits nonzero if any job fails
 
-set -euo pipefail
+# ---- Explicit environment (launchd provides minimal env) ----
+export PATH="/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PYTHONUNBUFFERED=1
 
 ALGO_LAB="/Users/chasefisher/projects/Algo Trading/algo-lab"
 LOG_DIR="$ALGO_LAB/research/logs"
-TIMESTAMP=$(date +"%Y%m%d_%H%M")
+LOCKFILE="$LOG_DIR/.fql_daily.lock"
+TIMESTAMP="$(date +%Y%m%d_%H%M)"
 LOG_FILE="$LOG_DIR/daily_run_${TIMESTAMP}.log"
 
 mkdir -p "$LOG_DIR"
 
-echo "=== FQL Daily Research Run — $(date) ===" | tee "$LOG_FILE"
+# Helper: write to both per-run log and stdout (launchd captures stdout)
+log() {
+    echo "$*" >> "$LOG_FILE"
+    echo "$*"
+}
 
+# ---- Run-lock protection (prevent duplicate runs) ----
+if [ -f "$LOCKFILE" ]; then
+    LOCK_PID="$(cat "$LOCKFILE" 2>/dev/null || true)"
+    if [ -n "$LOCK_PID" ] && kill -0 "$LOCK_PID" 2>/dev/null; then
+        log "$(date) - SKIPPED: FQL daily pipeline already running (PID $LOCK_PID)"
+        exit 0
+    else
+        log "$(date) - Removing stale lockfile (PID $LOCK_PID no longer running)"
+        rm -f "$LOCKFILE"
+    fi
+fi
+
+# Write our PID and ensure cleanup on exit
+echo $$ > "$LOCKFILE"
+cleanup() { rm -f "$LOCKFILE"; }
+trap cleanup EXIT
+
+# ---- Begin pipeline ----
 cd "$ALGO_LAB"
 
-# Run the daily pipeline
-python3 research/fql_research_scheduler.py --daily 2>&1 | tee -a "$LOG_FILE"
-PIPELINE_EXIT=${PIPESTATUS[0]}
+log "=== FQL Daily Research Run - $(date) ==="
+log "PID: $$ | Repo: $ALGO_LAB"
+log "Python: $(which python3) ($(python3 --version 2>&1))"
+log ""
 
-# Run drift monitor
-echo "" | tee -a "$LOG_FILE"
-echo "=== Drift Monitor ===" | tee -a "$LOG_FILE"
-python3 research/live_drift_monitor.py --save 2>&1 | tee -a "$LOG_FILE"
-DRIFT_EXIT=${PIPESTATUS[0]}
+# Run the daily pipeline (includes health, half-life, contribution,
+# activation matrix, decision report, and drift monitor)
+log "--- Starting daily pipeline ---"
+python3 research/fql_research_scheduler.py --daily >> "$LOG_FILE" 2>&1
+PIPELINE_EXIT=$?
+log "--- Daily pipeline exited with code $PIPELINE_EXIT ---"
 
-# Check for failures
+# ---- Check for failures ----
 FAILED=0
-if [ $PIPELINE_EXIT -ne 0 ]; then
-    echo "ALERT: Daily pipeline exited with code $PIPELINE_EXIT" | tee -a "$LOG_FILE"
-    FAILED=1
-fi
-if [ $DRIFT_EXIT -ne 0 ]; then
-    echo "ALERT: Drift monitor exited with code $DRIFT_EXIT" | tee -a "$LOG_FILE"
+if [ "$PIPELINE_EXIT" -ne 0 ]; then
+    log "ALERT: Daily pipeline exited with code $PIPELINE_EXIT"
     FAILED=1
 fi
 
-# Check scheduler log for ERROR jobs
-ERROR_COUNT=$(python3 -c "
-import json
-from pathlib import Path
-log_path = Path('$ALGO_LAB/research/data/scheduler_log.json')
-if log_path.exists():
-    log = json.load(open(log_path))
-    today = '$(date +%Y-%m-%d)'
-    errors = [e for e in log if e.get('started', '').startswith(today) and e.get('status') == 'ERROR']
-    print(len(errors))
-else:
-    print(0)
-" 2>/dev/null || echo 0)
+# Check scheduler log for ERROR jobs today
+ERROR_COUNT="$(python3 -c "
+import json, pathlib, sys
+log_path = pathlib.Path('$ALGO_LAB/research/data/scheduler_log.json')
+if not log_path.exists():
+    print(0); sys.exit()
+log = json.loads(log_path.read_text())
+today = '$(date +%Y-%m-%d)'
+errors = [e for e in log if e.get('started', '').startswith(today) and e.get('status') == 'ERROR']
+print(len(errors))
+" 2>/dev/null || echo 0)"
 
 if [ "$ERROR_COUNT" -gt 0 ]; then
-    echo "ALERT: $ERROR_COUNT job(s) failed today — check scheduler log" | tee -a "$LOG_FILE"
+    log "ALERT: $ERROR_COUNT job(s) failed today - check scheduler log"
     FAILED=1
 fi
 
-# Clean old logs (keep 30 days)
+# Clean old per-run logs (keep 30 days)
 find "$LOG_DIR" -name "daily_run_*.log" -mtime +30 -delete 2>/dev/null || true
 
-echo "" | tee -a "$LOG_FILE"
-if [ $FAILED -eq 0 ]; then
-    echo "=== All jobs completed successfully — $(date) ===" | tee -a "$LOG_FILE"
+# ---- Final status ----
+log ""
+if [ "$FAILED" -eq 0 ]; then
+    log "=== All jobs completed successfully - $(date) ==="
 else
-    echo "=== COMPLETED WITH ERRORS — $(date) ===" | tee -a "$LOG_FILE"
+    log "=== COMPLETED WITH ERRORS - $(date) ==="
     exit 1
 fi

@@ -7,9 +7,8 @@
 
     <key>ProgramArguments</key>
     <array>
-        <string>/usr/local/bin/python3</string>
-        <string>/Users/chasefisher/projects/Algo Trading/algo-lab/research/fql_research_scheduler.py</string>
-        <string>--daily</string>
+        <string>/bin/bash</string>
+        <string>/Users/chasefisher/projects/Algo Trading/algo-lab/scripts/run_fql_daily.sh</string>
     </array>
 
     <!-- Weekdays at 17:30 (after market close) -->
@@ -69,7 +68,7 @@
     <key>EnvironmentVariables</key>
     <dict>
         <key>PATH</key>
-        <string>/usr/local/bin:/usr/bin:/bin</string>
+        <string>/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
         <key>HOME</key>
         <string>/Users/chasefisher</string>
         <key>PYTHONUNBUFFERED</key>

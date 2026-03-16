@@ -202,5 +202,789 @@
         }
       ]
     }
+  },
+  {
+    "date": "2026-03-15 21:25",
+    "overall_status": "NORMAL",
+    "forward_days": 304,
+    "forward_trades": 391,
+    "alerts_count": 8,
+    "portfolio_status": "NORMAL",
+    "session_drift": {
+      "portfolio_sessions": {
+        "morning": {
+          "trades": 247,
+          "trade_share": 0.632,
+          "win_rate": 0.494,
+          "avg_pnl": 53.23,
+          "total_pnl": 13147.47,
+          "profit_factor": 2.29,
+          "severity": "NORMAL"
+        },
+        "midday": {
+          "trades": 114,
+          "trade_share": 0.292,
+          "win_rate": 0.518,
+          "avg_pnl": 22.65,
+          "total_pnl": 2582.39,
+          "profit_factor": 1.68,
+          "severity": "NORMAL"
+        },
+        "afternoon": {
+          "trades": 30,
+          "trade_share": 0.077,
+          "win_rate": 0.467,
+          "avg_pnl": 21.6,
+          "total_pnl": 648.05,
+          "profit_factor": 1.91,
+          "severity": "NORMAL"
+        }
+      },
+      "strategy_sessions": {
+        "VWAP-MNQ-Long": {
+          "morning": {
+            "trades": 92,
+            "win_rate": 0.435,
+            "wr_delta": 0.018,
+            "avg_pnl": 50.71,
+            "pnl_ratio": 1.56,
+            "severity": "NORMAL"
+          },
+          "midday": {
+            "trades": 64,
+            "win_rate": 0.422,
+            "wr_delta": 0.005,
+            "avg_pnl": 14.38,
+            "pnl_ratio": 0.44,
+            "severity": "DRIFT"
+          },
+          "afternoon": {
+            "trades": 7,
+            "win_rate": 0.143,
+            "wr_delta": -0.274,
+            "avg_pnl": -40.88,
+            "pnl_ratio": -1.26,
+            "severity": "ALARM"
+          }
+        },
+        "XB-PB-EMA-MES-Short": {
+          "morning": {
+            "trades": 63,
+            "win_rate": 0.476,
+            "wr_delta": -0.081,
+            "avg_pnl": 16.76,
+            "pnl_ratio": 0.58,
+            "severity": "NORMAL"
+          },
+          "midday": {
+            "trades": 19,
+            "win_rate": 0.737,
+            "wr_delta": 0.18,
+            "avg_pnl": 62.9,
+            "pnl_ratio": 2.18,
+            "severity": "DRIFT"
+          },
+          "afternoon": {
+            "trades": 6,
+            "win_rate": 0.833,
+            "wr_delta": 0.276,
+            "avg_pnl": 48.13,
+            "pnl_ratio": 1.67,
+            "severity": "DRIFT"
+          }
+        },
+        "ORB-MGC-Long": {
+          "morning": {
+            "trades": 36,
+            "win_rate": 0.556,
+            "wr_delta": -0.009,
+            "avg_pnl": 56.4,
+            "pnl_ratio": 1.26,
+            "severity": "NORMAL"
+          },
+          "midday": {
+            "trades": 19,
+            "win_rate": 0.579,
+            "wr_delta": 0.014,
+            "avg_pnl": 3.55,
+            "pnl_ratio": 0.08,
+            "severity": "ALARM"
+          },
+          "afternoon": {
+            "trades": 7,
+            "win_rate": 0.571,
+            "wr_delta": 0.006,
+            "avg_pnl": 95.62,
+            "pnl_ratio": 2.14,
+            "severity": "NORMAL"
+          }
+        },
+        "Donchian-MNQ-Long-GRINDING": {
+          "morning": {
+            "trades": 35,
+            "win_rate": 0.543,
+            "wr_delta": -0.01,
+            "avg_pnl": 50.22,
+            "pnl_ratio": 1.04,
+            "severity": "NORMAL"
+          },
+          "midday": {
+            "trades": 7,
+            "win_rate": 0.571,
+            "wr_delta": 0.018,
+            "avg_pnl": 58.33,
+            "pnl_ratio": 1.2,
+            "severity": "NORMAL"
+          },
+          "afternoon": {
+            "trades": 5,
+            "win_rate": 0.6,
+            "wr_delta": 0.047,
+            "avg_pnl": 22.06,
+            "pnl_ratio": 0.46,
+            "severity": "NORMAL"
+          }
+        },
+        "BB-EQ-MGC-Long": {
+          "morning": {
+            "trades": 12,
+            "win_rate": 0.583,
+            "wr_delta": 0.083,
+            "avg_pnl": 238.18,
+            "pnl_ratio": 1.93,
+            "severity": "NORMAL"
+          },
+          "midday": {
+            "trades": 5,
+            "win_rate": 0.6,
+            "wr_delta": 0.1,
+            "avg_pnl": -1.84,
+            "pnl_ratio": -0.01,
+            "severity": "DRIFT"
+          },
+          "afternoon": {
+            "trades": 5,
+            "win_rate": 0.2,
+            "wr_delta": -0.3,
+            "avg_pnl": -26.84,
+            "pnl_ratio": -0.22,
+            "severity": "ALARM"
+          }
+        },
+        "PB-MGC-Short": {
+          "morning": {
+            "trades": 9,
+            "win_rate": 0.667,
+            "wr_delta": -0.0,
+            "avg_pnl": 86.76,
+            "pnl_ratio": 1.0,
+            "severity": "NORMAL"
+          },
+          "midday": {
+            "trades": 0,
+            "severity": "INSUFFICIENT_DATA"
+          },
+          "afternoon": {
+            "trades": 0,
+            "severity": "INSUFFICIENT_DATA"
+          }
+        }
+      },
+      "concentration_warnings": [
+        {
+          "session": "morning",
+          "share": 0.632,
+          "message": "morning has 63% of all trades \u2014 concentration risk"
+        }
+      ]
+    }
+  },
+  {
+    "date": "2026-03-15 21:42",
+    "overall_status": "NORMAL",
+    "forward_days": 304,
+    "forward_trades": 391,
+    "alerts_count": 8,
+    "portfolio_status": "NORMAL",
+    "session_drift": {
+      "portfolio_sessions": {
+        "morning": {
+          "trades": 247,
+          "trade_share": 0.632,
+          "win_rate": 0.494,
+          "avg_pnl": 53.23,
+          "total_pnl": 13147.47,
+          "profit_factor": 2.29,
+          "severity": "NORMAL"
+        },
+        "midday": {
+          "trades": 114,
+          "trade_share": 0.292,
+          "win_rate": 0.518,
+          "avg_pnl": 22.65,
+          "total_pnl": 2582.39,
+          "profit_factor": 1.68,
+          "severity": "NORMAL"
+        },
+        "afternoon": {
+          "trades": 30,
+          "trade_share": 0.077,
+          "win_rate": 0.467,
+          "avg_pnl": 21.6,
+          "total_pnl": 648.05,
+          "profit_factor": 1.91,
+          "severity": "NORMAL"
+        }
+      },
+      "strategy_sessions": {
+        "VWAP-MNQ-Long": {
+          "morning": {
+            "trades": 92,
+            "win_rate": 0.435,
+            "wr_delta": 0.018,
+            "avg_pnl": 50.71,
+            "pnl_ratio": 1.56,
+            "severity": "NORMAL"
+          },
+          "midday": {
+            "trades": 64,
+            "win_rate": 0.422,
+            "wr_delta": 0.005,
+            "avg_pnl": 14.38,
+            "pnl_ratio": 0.44,
+            "severity": "DRIFT"
+          },
+          "afternoon": {
+            "trades": 7,
+            "win_rate": 0.143,
+            "wr_delta": -0.274,
+            "avg_pnl": -40.88,
+            "pnl_ratio": -1.26,
+            "severity": "ALARM"
+          }
+        },
+        "XB-PB-EMA-MES-Short": {
+          "morning": {
+            "trades": 63,
+            "win_rate": 0.476,
+            "wr_delta": -0.081,
+            "avg_pnl": 16.76,
+            "pnl_ratio": 0.58,
+            "severity": "NORMAL"
+          },
+          "midday": {
+            "trades": 19,
+            "win_rate": 0.737,
+            "wr_delta": 0.18,
+            "avg_pnl": 62.9,
+            "pnl_ratio": 2.18,
+            "severity": "DRIFT"
+          },
+          "afternoon": {
+            "trades": 6,
+            "win_rate": 0.833,
+            "wr_delta": 0.276,
+            "avg_pnl": 48.13,
+            "pnl_ratio": 1.67,
+            "severity": "DRIFT"
+          }
+        },
+        "ORB-MGC-Long": {
+          "morning": {
+            "trades": 36,
+            "win_rate": 0.556,
+            "wr_delta": -0.009,
+            "avg_pnl": 56.4,
+            "pnl_ratio": 1.26,
+            "severity": "NORMAL"
+          },
+          "midday": {
+            "trades": 19,
+            "win_rate": 0.579,
+            "wr_delta": 0.014,
+            "avg_pnl": 3.55,
+            "pnl_ratio": 0.08,
+            "severity": "ALARM"
+          },
+          "afternoon": {
+            "trades": 7,
+            "win_rate": 0.571,
+            "wr_delta": 0.006,
+            "avg_pnl": 95.62,
+            "pnl_ratio": 2.14,
+            "severity": "NORMAL"
+          }
+        },
+        "Donchian-MNQ-Long-GRINDING": {
+          "morning": {
+            "trades": 35,
+            "win_rate": 0.543,
+            "wr_delta": -0.01,
+            "avg_pnl": 50.22,
+            "pnl_ratio": 1.04,
+            "severity": "NORMAL"
+          },
+          "midday": {
+            "trades": 7,
+            "win_rate": 0.571,
+            "wr_delta": 0.018,
+            "avg_pnl": 58.33,
+            "pnl_ratio": 1.2,
+            "severity": "NORMAL"
+          },
+          "afternoon": {
+            "trades": 5,
+            "win_rate": 0.6,
+            "wr_delta": 0.047,
+            "avg_pnl": 22.06,
+            "pnl_ratio": 0.46,
+            "severity": "NORMAL"
+          }
+        },
+        "BB-EQ-MGC-Long": {
+          "morning": {
+            "trades": 12,
+            "win_rate": 0.583,
+            "wr_delta": 0.083,
+            "avg_pnl": 238.18,
+            "pnl_ratio": 1.93,
+            "severity": "NORMAL"
+          },
+          "midday": {
+            "trades": 5,
+            "win_rate": 0.6,
+            "wr_delta": 0.1,
+            "avg_pnl": -1.84,
+            "pnl_ratio": -0.01,
+            "severity": "DRIFT"
+          },
+          "afternoon": {
+            "trades": 5,
+            "win_rate": 0.2,
+            "wr_delta": -0.3,
+            "avg_pnl": -26.84,
+            "pnl_ratio": -0.22,
+            "severity": "ALARM"
+          }
+        },
+        "PB-MGC-Short": {
+          "morning": {
+            "trades": 9,
+            "win_rate": 0.667,
+            "wr_delta": -0.0,
+            "avg_pnl": 86.76,
+            "pnl_ratio": 1.0,
+            "severity": "NORMAL"
+          },
+          "midday": {
+            "trades": 0,
+            "severity": "INSUFFICIENT_DATA"
+          },
+          "afternoon": {
+            "trades": 0,
+            "severity": "INSUFFICIENT_DATA"
+          }
+        }
+      },
+      "concentration_warnings": [
+        {
+          "session": "morning",
+          "share": 0.632,
+          "message": "morning has 63% of all trades \u2014 concentration risk"
+        }
+      ]
+    }
+  },
+  {
+    "date": "2026-03-15 22:10",
+    "overall_status": "NORMAL",
+    "forward_days": 304,
+    "forward_trades": 391,
+    "alerts_count": 8,
+    "portfolio_status": "NORMAL",
+    "session_drift": {
+      "portfolio_sessions": {
+        "morning": {
+          "trades": 247,
+          "trade_share": 0.632,
+          "win_rate": 0.494,
+          "avg_pnl": 53.23,
+          "total_pnl": 13147.47,
+          "profit_factor": 2.29,
+          "severity": "NORMAL"
+        },
+        "midday": {
+          "trades": 114,
+          "trade_share": 0.292,
+          "win_rate": 0.518,
+          "avg_pnl": 22.65,
+          "total_pnl": 2582.39,
+          "profit_factor": 1.68,
+          "severity": "NORMAL"
+        },
+        "afternoon": {
+          "trades": 30,
+          "trade_share": 0.077,
+          "win_rate": 0.467,
+          "avg_pnl": 21.6,
+          "total_pnl": 648.05,
+          "profit_factor": 1.91,
+          "severity": "NORMAL"
+        }
+      },
+      "strategy_sessions": {
+        "VWAP-MNQ-Long": {
+          "morning": {
+            "trades": 92,
+            "win_rate": 0.435,
+            "wr_delta": 0.018,
+            "avg_pnl": 50.71,
+            "pnl_ratio": 1.56,
+            "severity": "NORMAL"
+          },
+          "midday": {
+            "trades": 64,
+            "win_rate": 0.422,
+            "wr_delta": 0.005,
+            "avg_pnl": 14.38,
+            "pnl_ratio": 0.44,
+            "severity": "DRIFT"
+          },
+          "afternoon": {
+            "trades": 7,
+            "win_rate": 0.143,
+            "wr_delta": -0.274,
+            "avg_pnl": -40.88,
+            "pnl_ratio": -1.26,
+            "severity": "ALARM"
+          }
+        },
+        "XB-PB-EMA-MES-Short": {
+          "morning": {
+            "trades": 63,
+            "win_rate": 0.476,
+            "wr_delta": -0.081,
+            "avg_pnl": 16.76,
+            "pnl_ratio": 0.58,
+            "severity": "NORMAL"
+          },
+          "midday": {
+            "trades": 19,
+            "win_rate": 0.737,
+            "wr_delta": 0.18,
+            "avg_pnl": 62.9,
+            "pnl_ratio": 2.18,
+            "severity": "DRIFT"
+          },
+          "afternoon": {
+            "trades": 6,
+            "win_rate": 0.833,
+            "wr_delta": 0.276,
+            "avg_pnl": 48.13,
+            "pnl_ratio": 1.67,
+            "severity": "DRIFT"
+          }
+        },
+        "ORB-MGC-Long": {
+          "morning": {
+            "trades": 36,
+            "win_rate": 0.556,
+            "wr_delta": -0.009,
+            "avg_pnl": 56.4,
+            "pnl_ratio": 1.26,
+            "severity": "NORMAL"
+          },
+          "midday": {
+            "trades": 19,
+            "win_rate": 0.579,
+            "wr_delta": 0.014,
+            "avg_pnl": 3.55,
+            "pnl_ratio": 0.08,
+            "severity": "ALARM"
+          },
+          "afternoon": {
+            "trades": 7,
+            "win_rate": 0.571,
+            "wr_delta": 0.006,
+            "avg_pnl": 95.62,
+            "pnl_ratio": 2.14,
+            "severity": "NORMAL"
+          }
+        },
+        "Donchian-MNQ-Long-GRINDING": {
+          "morning": {
+            "trades": 35,
+            "win_rate": 0.543,
+            "wr_delta": -0.01,
+            "avg_pnl": 50.22,
+            "pnl_ratio": 1.04,
+            "severity": "NORMAL"
+          },
+          "midday": {
+            "trades": 7,
+            "win_rate": 0.571,
+            "wr_delta": 0.018,
+            "avg_pnl": 58.33,
+            "pnl_ratio": 1.2,
+            "severity": "NORMAL"
+          },
+          "afternoon": {
+            "trades": 5,
+            "win_rate": 0.6,
+            "wr_delta": 0.047,
+            "avg_pnl": 22.06,
+            "pnl_ratio": 0.46,
+            "severity": "NORMAL"
+          }
+        },
+        "BB-EQ-MGC-Long": {
+          "morning": {
+            "trades": 12,
+            "win_rate": 0.583,
+            "wr_delta": 0.083,
+            "avg_pnl": 238.18,
+            "pnl_ratio": 1.93,
+            "severity": "NORMAL"
+          },
+          "midday": {
+            "trades": 5,
+            "win_rate": 0.6,
+            "wr_delta": 0.1,
+            "avg_pnl": -1.84,
+            "pnl_ratio": -0.01,
+            "severity": "DRIFT"
+          },
+          "afternoon": {
+            "trades": 5,
+            "win_rate": 0.2,
+            "wr_delta": -0.3,
+            "avg_pnl": -26.84,
+            "pnl_ratio": -0.22,
+            "severity": "ALARM"
+          }
+        },
+        "PB-MGC-Short": {
+          "morning": {
+            "trades": 9,
+            "win_rate": 0.667,
+            "wr_delta": -0.0,
+            "avg_pnl": 86.76,
+            "pnl_ratio": 1.0,
+            "severity": "NORMAL"
+          },
+          "midday": {
+            "trades": 0,
+            "severity": "INSUFFICIENT_DATA"
+          },
+          "afternoon": {
+            "trades": 0,
+            "severity": "INSUFFICIENT_DATA"
+          }
+        }
+      },
+      "concentration_warnings": [
+        {
+          "session": "morning",
+          "share": 0.632,
+          "message": "morning has 63% of all trades \u2014 concentration risk"
+        }
+      ]
+    }
+  },
+  {
+    "date": "2026-03-15 22:40",
+    "overall_status": "NORMAL",
+    "forward_days": 304,
+    "forward_trades": 391,
+    "alerts_count": 8,
+    "portfolio_status": "NORMAL",
+    "session_drift": {
+      "portfolio_sessions": {
+        "morning": {
+          "trades": 247,
+          "trade_share": 0.632,
+          "win_rate": 0.494,
+          "avg_pnl": 53.23,
+          "total_pnl": 13147.47,
+          "profit_factor": 2.29,
+          "severity": "NORMAL"
+        },
+        "midday": {
+          "trades": 114,
+          "trade_share": 0.292,
+          "win_rate": 0.518,
+          "avg_pnl": 22.65,
+          "total_pnl": 2582.39,
+          "profit_factor": 1.68,
+          "severity": "NORMAL"
+        },
+        "afternoon": {
+          "trades": 30,
+          "trade_share": 0.077,
+          "win_rate": 0.467,
+          "avg_pnl": 21.6,
+          "total_pnl": 648.05,
+          "profit_factor": 1.91,
+          "severity": "NORMAL"
+        }
+      },
+      "strategy_sessions": {
+        "VWAP-MNQ-Long": {
+          "morning": {
+            "trades": 92,
+            "win_rate": 0.435,
+            "wr_delta": 0.018,
+            "avg_pnl": 50.71,
+            "pnl_ratio": 1.56,
+            "severity": "NORMAL"
+          },
+          "midday": {
+            "trades": 64,
+            "win_rate": 0.422,
+            "wr_delta": 0.005,
+            "avg_pnl": 14.38,
+            "pnl_ratio": 0.44,
+            "severity": "DRIFT"
+          },
+          "afternoon": {
+            "trades": 7,
+            "win_rate": 0.143,
+            "wr_delta": -0.274,
+            "avg_pnl": -40.88,
+            "pnl_ratio": -1.26,
+            "severity": "ALARM"
+          }
+        },
+        "XB-PB-EMA-MES-Short": {
+          "morning": {
+            "trades": 63,
+            "win_rate": 0.476,
+            "wr_delta": -0.081,
+            "avg_pnl": 16.76,
+            "pnl_ratio": 0.58,
+            "severity": "NORMAL"
+          },
+          "midday": {
+            "trades": 19,
+            "win_rate": 0.737,
+            "wr_delta": 0.18,
+            "avg_pnl": 62.9,
+            "pnl_ratio": 2.18,
+            "severity": "DRIFT"
+          },
+          "afternoon": {
+            "trades": 6,
+            "win_rate": 0.833,
+            "wr_delta": 0.276,
+            "avg_pnl": 48.13,
+            "pnl_ratio": 1.67,
+            "severity": "DRIFT"
+          }
+        },
+        "ORB-MGC-Long": {
+          "morning": {
+            "trades": 36,
+            "win_rate": 0.556,
+            "wr_delta": -0.009,
+            "avg_pnl": 56.4,
+            "pnl_ratio": 1.26,
+            "severity": "NORMAL"
+          },
+          "midday": {
+            "trades": 19,
+            "win_rate": 0.579,
+            "wr_delta": 0.014,
+            "avg_pnl": 3.55,
+            "pnl_ratio": 0.08,
+            "severity": "ALARM"
+          },
+          "afternoon": {
+            "trades": 7,
+            "win_rate": 0.571,
+            "wr_delta": 0.006,
+            "avg_pnl": 95.62,
+            "pnl_ratio": 2.14,
+            "severity": "NORMAL"
+          }
+        },
+        "Donchian-MNQ-Long-GRINDING": {
+          "morning": {
+            "trades": 35,
+            "win_rate": 0.543,
+            "wr_delta": -0.01,
+            "avg_pnl": 50.22,
+            "pnl_ratio": 1.04,
+            "severity": "NORMAL"
+          },
+          "midday": {
+            "trades": 7,
+            "win_rate": 0.571,
+            "wr_delta": 0.018,
+            "avg_pnl": 58.33,
+            "pnl_ratio": 1.2,
+            "severity": "NORMAL"
+          },
+          "afternoon": {
+            "trades": 5,
+            "win_rate": 0.6,
+            "wr_delta": 0.047,
+            "avg_pnl": 22.06,
+            "pnl_ratio": 0.46,
+            "severity": "NORMAL"
+          }
+        },
+        "BB-EQ-MGC-Long": {
+          "morning": {
+            "trades": 12,
+            "win_rate": 0.583,
+            "wr_delta": 0.083,
+            "avg_pnl": 238.18,
+            "pnl_ratio": 1.93,
+            "severity": "NORMAL"
+          },
+          "midday": {
+            "trades": 5,
+            "win_rate": 0.6,
+            "wr_delta": 0.1,
+            "avg_pnl": -1.84,
+            "pnl_ratio": -0.01,
+            "severity": "DRIFT"
+          },
+          "afternoon": {
+            "trades": 5,
+            "win_rate": 0.2,
+            "wr_delta": -0.3,
+            "avg_pnl": -26.84,
+            "pnl_ratio": -0.22,
+            "severity": "ALARM"
+          }
+        },
+        "PB-MGC-Short": {
+          "morning": {
+            "trades": 9,
+            "win_rate": 0.667,
+            "wr_delta": -0.0,
+            "avg_pnl": 86.76,
+            "pnl_ratio": 1.0,
+            "severity": "NORMAL"
+          },
+          "midday": {
+            "trades": 0,
+            "severity": "INSUFFICIENT_DATA"
+          },
+          "afternoon": {
+            "trades": 0,
+            "severity": "INSUFFICIENT_DATA"
+          }
+        }
+      },
+      "concentration_warnings": [
+        {
+          "session": "morning",
+          "share": 0.632,
+          "message": "morning has 63% of all trades \u2014 concentration risk"
+        }
+      ]
+    }
   }
 ]

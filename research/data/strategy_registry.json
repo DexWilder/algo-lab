@@ -27,7 +27,7 @@
       "last_review_date": "2026-03-15",
       "controller_state": "ACTIVE",
       "controller_action": "REDUCED_ON",
-      "activation_score": 0.63,
+      "activation_score": 0.59,
       "controller_reason_codes": [
         "REGIME_MATCH_LOW",
         "HALF_LIFE_STRENGTHENING",
@@ -35,6 +35,8 @@
         "REDUNDANT_CLUSTER",
         "HEALTH_FAIL",
         "KILL_NONE",
+        "SESSION_DRIFT_BROKEN",
+        "SESSION_CONCENTRATION",
         "TIME_WINDOW_PARTIAL",
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
@@ -72,7 +74,7 @@
       "last_review_date": "2026-03-15",
       "controller_state": "ACTIVE",
       "controller_action": "FULL_ON",
-      "activation_score": 0.845,
+      "activation_score": 0.8175,
       "controller_reason_codes": [
         "REGIME_MATCH_HIGH",
         "HALF_LIFE_STRENGTHENING",
@@ -80,6 +82,8 @@
         "LOW_REDUNDANCY",
         "HEALTH_FAIL",
         "KILL_NONE",
+        "SESSION_DRIFT_DEGRADED",
+        "SESSION_CONCENTRATION",
         "TIME_WINDOW_PARTIAL",
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
@@ -117,7 +121,7 @@
       "last_review_date": "2026-03-15",
       "controller_state": "ACTIVE",
       "controller_action": "FULL_ON",
-      "activation_score": 0.8,
+      "activation_score": 0.76,
       "controller_reason_codes": [
         "REGIME_MATCH_HIGH",
         "HALF_LIFE_STRENGTHENING",
@@ -125,6 +129,8 @@
         "LOW_REDUNDANCY",
         "HEALTH_FAIL",
         "KILL_NONE",
+        "SESSION_DRIFT_BROKEN",
+        "SESSION_CONCENTRATION",
         "TIME_WINDOW_PARTIAL",
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
@@ -159,7 +165,7 @@
       "notes": "True trend-follower (60-bar hold). GRINDING-only filter. Regime gate: avoid HIGH_RV (+$2,199 recovery queued). Needs 150 trades for promotion.",
       "controller_state": "ACTIVE",
       "controller_action": "REDUCED_ON",
-      "activation_score": 0.635,
+      "activation_score": 0.6375,
       "controller_reason_codes": [
         "REGIME_MATCH_LOW",
         "HALF_LIFE_STRENGTHENING",
@@ -167,6 +173,8 @@
         "LOW_REDUNDANCY",
         "HEALTH_FAIL",
         "KILL_NONE",
+        "SESSION_DRIFT_NORMAL",
+        "SESSION_CONCENTRATION",
         "TIME_WINDOW_PARTIAL",
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
@@ -212,7 +220,7 @@
       "last_review_date": "2026-03-15",
       "controller_state": "ACTIVE",
       "controller_action": "FULL_ON",
-      "activation_score": 0.825,
+      "activation_score": 0.775,
       "controller_reason_codes": [
         "REGIME_MATCH_HIGH",
         "HALF_LIFE_STRENGTHENING",
@@ -220,6 +228,8 @@
         "LOW_REDUNDANCY",
         "HEALTH_FAIL",
         "KILL_NONE",
+        "SESSION_DRIFT_BROKEN",
+        "SESSION_CONCENTRATION",
         "TIME_WINDOW_MATCH",
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
@@ -257,7 +267,7 @@
       "last_review_date": "2026-03-15",
       "controller_state": "ACTIVE",
       "controller_action": "FULL_ON",
-      "activation_score": 0.8,
+      "activation_score": 0.8025,
       "controller_reason_codes": [
         "REGIME_MATCH_HIGH",
         "HALF_LIFE_STRENGTHENING",
@@ -265,6 +275,8 @@
         "LOW_REDUNDANCY",
         "HEALTH_FAIL",
         "KILL_NONE",
+        "SESSION_DRIFT_NORMAL",
+        "SESSION_CONCENTRATION",
         "TIME_WINDOW_PARTIAL",
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
@@ -1060,7 +1072,7 @@
       "last_review_date": "2026-03-15",
       "controller_state": "PROBATION",
       "controller_action": "REDUCED_ON",
-      "activation_score": 0.68,
+      "activation_score": 0.665,
       "controller_reason_codes": [
         "REGIME_MATCH_MODERATE",
         "HALF_LIFE_STRENGTHENING",
@@ -1068,6 +1080,7 @@
         "REDUNDANT_CLUSTER",
         "HEALTH_FAIL",
         "KILL_TRIGGER_SOFT",
+        "SESSION_DRIFT_NORMAL",
         "TIME_WINDOW_MATCH",
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
