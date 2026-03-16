@@ -1,0 +1,124 @@
+# FQL Strategic Harvest Configuration
+# Controls automated and semi-automated strategy idea sourcing.
+# ALL lanes are DISABLED by default. Enable one at a time.
+
+# ── Global Settings ──────────────────────────────────────────────────────────
+harvest:
+  enabled: false                    # Master kill switch — must be true for ANY lane to run
+  max_ideas_per_run: 5              # Cap on new ideas logged per harvest run
+  dedupe_check: true                # Check registry for duplicate/similar ideas before logging
+  auto_log_to_registry: false       # If true, auto-add to registry as status=idea. If false, stage only.
+  manifest_path: "research/data/harvest_manifest.json"
+  genome_map_path: "research/data/strategy_genome_map.json"
+
+# ── Harvest Mode ─────────────────────────────────────────────────────────────
+# tactical: fill specific gaps identified by genome map (targeted, low volume)
+# strategic: broad discovery sweep across all sources (high volume, periodic)
+mode: tactical
+
+# ── Gap-Aware Targeting ──────────────────────────────────────────────────────
+# These priorities are derived from the Strategy Genome Map analysis.
+# Updated periodically based on genome classifier output.
+targeting:
+  # Genome map gaps to prioritize (highest priority first)
+  priority_gaps:
+    - dimension: "horizon"
+      target: "daily"
+      note: "Only 1 active daily-bar strategy. Multi-horizon is thin."
+      priority: HIGH
+
+    - dimension: "asset_class"
+      target: "energy"
+      note: "0 viable energy strategies. MCL decaying."
+      priority: HIGH
+
+    - dimension: "asset_class"
+      target: "rate"
+      note: "0 active rate strategies after 4 failed attempts."
+      priority: MEDIUM
+
+    - dimension: "session"
+      target: "afternoon"
+      note: "Afternoon/close session underrepresented."
+      priority: MEDIUM
+
+    - dimension: "regime_tendency"
+      target: "ranging"
+      note: "Portfolio is trending-dependent. Need ranging-market strategies."
+      priority: MEDIUM
+
+    - dimension: "direction"
+      target: "short"
+      note: "Only 3 short-only strategies. Structural long bias."
+      priority: LOW
+
+  # Genome map overcrowded areas to AVOID
+  avoid:
+    - "mean_reversion x equity_index"    # 5 tested, all failed
+    - "breakout x morning"               # 13 strategies, saturated
+    - "ict x any"                        # ICT family failed twice
+
+# ── Source Lanes ─────────────────────────────────────────────────────────────
+# Each lane is independently enable/disable. Only one should be active at a time
+# during initial rollout.
+
+source_lanes:
+  openclaw_tactical:
+    enabled: false
+    description: "OpenClaw targeted prompts based on genome map gaps"
+    type: tactical
+    intake_path: "~/openclaw-intake/inbox/"
+    cadence: "weekly"
+    max_per_run: 3
+    targeting_mode: "gap_aware"       # Uses priority_gaps above
+    notes: "Send gap-specific prompts to OpenClaw. Review results manually."
+
+  openclaw_strategic:
+    enabled: false
+    description: "OpenClaw broad discovery sweep"
+    type: strategic
+    intake_path: "~/openclaw-intake/inbox/"
+    cadence: "monthly"
+    max_per_run: 10
+    targeting_mode: "broad"           # No gap filtering — discover anything
+    notes: "Quarterly broad sweep. Higher volume, lower targeting."
+
+  tradingview_scan:
+    enabled: false
+    description: "TradingView public script scan for futures strategies"
+    type: strategic
+    cadence: "monthly"
+    max_per_run: 10
+    targeting_mode: "gap_aware"
+    filters:
+      - "futures"
+      - "intraday OR daily"
+      - "NOT crypto"
+    notes: "Manual TradingView search guided by gap priorities."
+
+  academic_review:
+    enabled: false
+    description: "Academic paper / quant blog review for new ideas"
+    type: strategic
+    cadence: "quarterly"
+    max_per_run: 5
+    targeting_mode: "broad"
+    sources:
+      - "SSRN"
+      - "Quantpedia"
+      - "QuantifiedStrategies"
+      - "AlphaArchitect"
+    notes: "Quarterly literature review. Focus on documented edges with futures applicability."
+
+  legacy_revival:
+    enabled: false
+    description: "Re-examine rejected strategies for salvage under new conditions"
+    type: tactical
+    cadence: "quarterly"
+    max_per_run: 3
+    targeting_mode: "rejection_review"
+    filters:
+      - "rejection_reason: IMPLEMENTATION_BUG"
+      - "rejection_reason: SAMPLE_INSUFFICIENT"
+      - "rejection_reason: WALK_FORWARD_UNSTABLE"
+    notes: "Only revisit strategies with fixable rejection reasons, not structural losses."
