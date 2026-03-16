@@ -1,0 +1,306 @@
+{
+  "run_date": "2026-03-16T09:05:41.919290",
+  "description": "Cross-asset transfer test: existing families on FX (6E/6J/6B) 5m",
+  "results": [
+    {
+      "asset": "6E",
+      "strategy": "momentum_pullback_trend",
+      "mode": "both",
+      "trades": 158,
+      "pnl": -2545.0,
+      "pf": 0.859,
+      "sharpe": -1.07,
+      "classification": "ASSET_MISMATCH"
+    },
+    {
+      "asset": "6E",
+      "strategy": "donchian_trend_breakout",
+      "mode": "both",
+      "trades": 189,
+      "pnl": -9285.0,
+      "pf": 0.506,
+      "sharpe": -3.61,
+      "classification": "ASSET_MISMATCH"
+    },
+    {
+      "asset": "6E",
+      "strategy": "vwap_trend",
+      "mode": "both",
+      "trades": 175,
+      "pnl": -5218.75,
+      "pf": 0.629,
+      "sharpe": -2.55,
+      "classification": "ASSET_MISMATCH"
+    },
+    {
+      "asset": "6E",
+      "strategy": "donchian_trend",
+      "mode": "both",
+      "trades": 505,
+      "pnl": -11050.0,
+      "pf": 0.811,
+      "sharpe": -1.29,
+      "classification": "ASSET_MISMATCH"
+    },
+    {
+      "asset": "6E",
+      "strategy": "ema_trend_rider",
+      "mode": "both",
+      "trades": 432,
+      "pnl": -14655.0,
+      "pf": 0.591,
+      "sharpe": -3.32,
+      "classification": "ASSET_MISMATCH"
+    },
+    {
+      "asset": "6E",
+      "strategy": "momentum_ignition",
+      "mode": "both",
+      "trades": 33,
+      "pnl": -557.5,
+      "pf": 0.816,
+      "sharpe": -1.16,
+      "classification": "ASSET_MISMATCH"
+    },
+    {
+      "asset": "6E",
+      "strategy": "pb_trend",
+      "mode": "both",
+      "trades": 0,
+      "pnl": 0.0,
+      "pf": 0,
+      "sharpe": 0,
+      "classification": "NO_SIGNALS"
+    },
+    {
+      "asset": "6E",
+      "strategy": "xb_pb_ema_timestop",
+      "mode": "both",
+      "trades": 338,
+      "pnl": -4338.75,
+      "pf": 0.806,
+      "sharpe": -1.28,
+      "classification": "ASSET_MISMATCH"
+    },
+    {
+      "asset": "6E",
+      "strategy": "bbkc_squeeze",
+      "mode": "both",
+      "trades": 518,
+      "pnl": -10363.75,
+      "pf": 0.569,
+      "sharpe": -4.23,
+      "classification": "ASSET_MISMATCH"
+    },
+    {
+      "asset": "6E",
+      "strategy": "ttm_squeeze",
+      "mode": "both",
+      "trades": 18,
+      "pnl": -526.25,
+      "pf": 0.706,
+      "sharpe": -2.11,
+      "classification": "ASSET_MISMATCH"
+    },
+    {
+      "asset": "6J",
+      "strategy": "momentum_pullback_trend",
+      "mode": "both",
+      "trades": 146,
+      "pnl": -351.81,
+      "pf": 0.034,
+      "sharpe": -18.23,
+      "classification": "ASSET_MISMATCH"
+    },
+    {
+      "asset": "6J",
+      "strategy": "donchian_trend_breakout",
+      "mode": "both",
+      "trades": 150,
+      "pnl": -405.06,
+      "pf": 0.053,
+      "sharpe": -23.34,
+      "classification": "ASSET_MISMATCH"
+    },
+    {
+      "asset": "6J",
+      "strategy": "vwap_trend",
+      "mode": "both",
+      "trades": 164,
+      "pnl": -424.75,
+      "pf": 0.052,
+      "sharpe": -19.09,
+      "classification": "ASSET_MISMATCH"
+    },
+    {
+      "asset": "6J",
+      "strategy": "donchian_trend",
+      "mode": "both",
+      "trades": 436,
+      "pnl": -1100.44,
+      "pf": 0.098,
+      "sharpe": -14.92,
+      "classification": "ASSET_MISMATCH"
+    },
+    {
+      "asset": "6J",
+      "strategy": "ema_trend_rider",
+      "mode": "both",
+      "trades": 359,
+      "pnl": -970.87,
+      "pf": 0.015,
+      "sharpe": -23.66,
+      "classification": "ASSET_MISMATCH"
+    },
+    {
+      "asset": "6J",
+      "strategy": "momentum_ignition",
+      "mode": "both",
+      "trades": 15,
+      "pnl": -30.25,
+      "pf": 0.082,
+      "sharpe": -18.0,
+      "classification": "ASSET_MISMATCH"
+    },
+    {
+      "asset": "6J",
+      "strategy": "pb_trend",
+      "mode": "both",
+      "trades": 0,
+      "pnl": 0.0,
+      "pf": 0,
+      "sharpe": 0,
+      "classification": "NO_SIGNALS"
+    },
+    {
+      "asset": "6J",
+      "strategy": "xb_pb_ema_timestop",
+      "mode": "both",
+      "trades": 294,
+      "pnl": -714.94,
+      "pf": 0.026,
+      "sharpe": -27.41,
+      "classification": "ASSET_MISMATCH"
+    },
+    {
+      "asset": "6J",
+      "strategy": "bbkc_squeeze",
+      "mode": "both",
+      "trades": 457,
+      "pnl": -1189.44,
+      "pf": 0.005,
+      "sharpe": -28.79,
+      "classification": "ASSET_MISMATCH"
+    },
+    {
+      "asset": "6J",
+      "strategy": "ttm_squeeze",
+      "mode": "both",
+      "trades": 23,
+      "pnl": -55.44,
+      "pf": 0.0,
+      "sharpe": -49.19,
+      "classification": "ASSET_MISMATCH"
+    },
+    {
+      "asset": "6B",
+      "strategy": "momentum_pullback_trend",
+      "mode": "both",
+      "trades": 170,
+      "pnl": -2681.25,
+      "pf": 0.728,
+      "sharpe": -2.38,
+      "classification": "ASSET_MISMATCH"
+    },
+    {
+      "asset": "6B",
+      "strategy": "donchian_trend_breakout",
+      "mode": "both",
+      "trades": 145,
+      "pnl": -387.5,
+      "pf": 0.951,
+      "sharpe": -0.28,
+      "classification": "ASSET_MISMATCH"
+    },
+    {
+      "asset": "6B",
+      "strategy": "vwap_trend",
+      "mode": "both",
+      "trades": 146,
+      "pnl": -1977.5,
+      "pf": 0.752,
+      "sharpe": -1.81,
+      "classification": "ASSET_MISMATCH"
+    },
+    {
+      "asset": "6B",
+      "strategy": "donchian_trend",
+      "mode": "both",
+      "trades": 400,
+      "pnl": -6618.75,
+      "pf": 0.794,
+      "sharpe": -1.34,
+      "classification": "ASSET_MISMATCH"
+    },
+    {
+      "asset": "6B",
+      "strategy": "ema_trend_rider",
+      "mode": "both",
+      "trades": 309,
+      "pnl": -4266.25,
+      "pf": 0.737,
+      "sharpe": -1.89,
+      "classification": "ASSET_MISMATCH"
+    },
+    {
+      "asset": "6B",
+      "strategy": "momentum_ignition",
+      "mode": "both",
+      "trades": 18,
+      "pnl": 86.25,
+      "pf": 1.113,
+      "sharpe": 0.61,
+      "classification": "ASSET_MISMATCH"
+    },
+    {
+      "asset": "6B",
+      "strategy": "pb_trend",
+      "mode": "both",
+      "trades": 0,
+      "pnl": 0.0,
+      "pf": 0,
+      "sharpe": 0,
+      "classification": "NO_SIGNALS"
+    },
+    {
+      "asset": "6B",
+      "strategy": "xb_pb_ema_timestop",
+      "mode": "both",
+      "trades": 265,
+      "pnl": -2593.75,
+      "pf": 0.805,
+      "sharpe": -1.2,
+      "classification": "ASSET_MISMATCH"
+    },
+    {
+      "asset": "6B",
+      "strategy": "bbkc_squeeze",
+      "mode": "both",
+      "trades": 465,
+      "pnl": -9675.0,
+      "pf": 0.326,
+      "sharpe": -9.53,
+      "classification": "ASSET_MISMATCH"
+    },
+    {
+      "asset": "6B",
+      "strategy": "ttm_squeeze",
+      "mode": "both",
+      "trades": 16,
+      "pnl": -371.25,
+      "pf": 0.614,
+      "sharpe": -3.29,
+      "classification": "ASSET_MISMATCH"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "dataset_id": "6E_5m",
+  "symbol": "6E",
+  "timeframe": "5m",
+  "start_date": "2024-02-29 19:00:00",
+  "end_date": "2026-03-15 19:55:00",
+  "bar_count": 77173,
+  "trading_days": 636,
+  "source": "databento",
+  "source_dataset": "GLBX.MDP3",
+  "source_schema": "ohlcv-1m",
+  "has_volume": true,
+  "volume_mean": 364.7,
+  "processed_date": "2026-03-16 09:00:29"
+}

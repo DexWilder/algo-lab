@@ -38,9 +38,20 @@ SCHEMA = "ohlcv-1m"
 STYPE = "continuous"
 
 SYMBOLS = {
+    # Equity Index Micros
     "MES": "MES.c.0",
     "MNQ": "MNQ.c.0",
     "MGC": "MGC.c.0",
+    "M2K": "M2K.c.0",
+    "MCL": "MCL.c.0",
+    # Rates
+    "ZN": "ZN.c.0",
+    "ZB": "ZB.c.0",
+    "ZF": "ZF.c.0",
+    # FX
+    "6E": "6E.c.0",
+    "6J": "6J.c.0",
+    "6B": "6B.c.0",
 }
 
 DEFAULT_START = "2024-03-01"
@@ -160,7 +171,7 @@ def process_symbol(client: db.Historical, symbol_key: str, start: str, end: str)
 def main():
     parser = argparse.ArgumentParser(description="Download CME futures data from Databento")
     group = parser.add_mutually_exclusive_group(required=True)
-    group.add_argument("--all", action="store_true", help="Download all symbols (MES, MNQ, MGC)")
+    group.add_argument("--all", action="store_true", help="Download all symbols")
     group.add_argument("--symbol", type=str, choices=list(SYMBOLS.keys()), help="Download single symbol")
     parser.add_argument("--start", type=str, default=DEFAULT_START, help=f"Start date (default: {DEFAULT_START})")
     parser.add_argument("--end", type=str, default=DEFAULT_END, help=f"End date (default: {DEFAULT_END})")

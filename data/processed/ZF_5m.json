@@ -1,0 +1,15 @@
+{
+  "dataset_id": "ZF_5m",
+  "symbol": "ZF",
+  "timeframe": "5m",
+  "start_date": "2024-02-29 19:45:00",
+  "end_date": "2026-03-13 15:05:00",
+  "bar_count": 97765,
+  "trading_days": 590,
+  "source": "databento",
+  "source_dataset": "GLBX.MDP3",
+  "source_schema": "ohlcv-1m",
+  "has_volume": true,
+  "volume_mean": 3916.2,
+  "processed_date": "2026-03-16 09:02:49"
+}
