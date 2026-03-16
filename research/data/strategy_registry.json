@@ -1498,6 +1498,31 @@
         "report_file": "research/data/first_pass/momentum_pullback_trend_us_20260316_1008.json"
       },
       "state_history": []
+    },
+    {
+      "strategy_id": "DailyTrend-MGC-Long",
+      "strategy_name": "fx_daily_trend",
+      "family": "trend",
+      "asset": "MGC",
+      "session": "daily_close",
+      "direction": "long",
+      "source": "batch_first_pass_discovery",
+      "rule_summary": "50-day EMA trend direction + 20-day Donchian breakout. Daily bars resampled from 5m. ATR trailing stop. Long only.",
+      "status": "probation",
+      "validation_score": 7.0,
+      "profit_factor": 3.65,
+      "notes": "PASS (7/8). First multi-horizon strategy. First PASS-level expansion result. PF 3.65, Sharpe 5.13, 44 trades. Bootstrap CI lower bound 1.38 (above 1.0). Parameter stability 100% (PF 2.63-3.96 across all combos). Top-trade removal PF 2.85. Walk-forward H1=1.14, H2=5.62. Only failure: MC ruin at 2K (sample size, not strategy defect). Restrictions: long only, daily bars, REDUCED tier, review after 15+ forward trades.",
+      "last_review_date": "2026-03-16",
+      "controller_state": "PROBATION",
+      "controller_action": "PROBATION",
+      "review_priority": "HIGH",
+      "deployment_restrictions": {
+        "direction": "long_only",
+        "timeframe": "daily_bars",
+        "max_allocation_tier": "REDUCED",
+        "promotion_threshold": "15_additional_forward_trades"
+      },
+      "state_history": []
     }
   ]
 }

@@ -1,0 +1,20 @@
+{
+  "strategy": "FXBreak-6J-Both",
+  "verdict": "CONDITIONAL_PASS",
+  "score": 5,
+  "failures": 3,
+  "tests": {
+    "Walk-Forward H1": true,
+    "Walk-Forward H2": true,
+    "Regime Stability": true,
+    "Asset Robustness": false,
+    "Bootstrap CI": "False",
+    "Top-Trade Removal": "True",
+    "Monte Carlo Ruin": false,
+    "Parameter Stability": true
+  },
+  "bootstrap_ci_lower": 0.748,
+  "top_trade_pf": 1.087,
+  "p_ruin_2k": 0.9859,
+  "param_stability_pct": 75.0
+}
