@@ -659,18 +659,28 @@ def run_controller(skip_heavy: bool = False) -> dict:
         sid = e["strategy_id"]
         signals = e.get("_signals", {})
         genome = _get_genome_data(sid)
+        raw_restrictions = e.get("session_restrictions", [])
+
+        # Parse restriction dicts into session details
+        session_details = {s: {"severity": "NORMAL"} for s in ["morning", "midday", "afternoon"]}
+        blocked_sessions = []
+        for r in raw_restrictions:
+            if isinstance(r, dict):
+                sess = r.get("session", "")
+                sev = r.get("severity", "NORMAL")
+                if sess in session_details:
+                    session_details[sess] = {"severity": sev}
+                    if sev == "ALARM":
+                        blocked_sessions.append(sess)
+            elif isinstance(r, str) and r in session_details:
+                session_details[r] = {"severity": "ALARM"}
+                blocked_sessions.append(r)
+
         drift_signals[sid] = {
-            "restricted_sessions": e.get("session_restrictions", []),
-            "session_details": {},
+            "restricted_sessions": blocked_sessions,
+            "session_details": session_details,
             "primary_session": genome.get("session", "all_day") if genome else "all_day",
         }
-        # Map worst severity to session details
-        severity = signals.get("session_drift_severity", "NORMAL")
-        for sess in ["morning", "midday", "afternoon"]:
-            if sess in e.get("session_restrictions", []):
-                drift_signals[sid]["session_details"][sess] = {"severity": "ALARM"}
-            else:
-                drift_signals[sid]["session_details"][sess] = {"severity": "NORMAL"}
 
     # Load counterfactual data (cached, no re-computation)
     cf_data = {}
