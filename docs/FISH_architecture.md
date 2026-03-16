@@ -232,13 +232,15 @@ Three modules that move FQL from reactive diagnostics to proactive portfolio int
 - Integration: feeds drift alerts to Portfolio Regime Controller
 - Schedule: daily (included in `fql_research_scheduler.py --daily`)
 
-**Module 2 — Execution Quality Monitor**
-- Track slippage, fill rates, and execution timing across strategies
-- Compare expected entry/exit prices (signal prices) vs actual fill prices
-- Metrics: slippage per trade (ticks), slippage as % of edge, fill rejection rate
-- Alert if slippage erodes >20% of expected edge for any strategy
+**Module 2 — Execution Quality Monitor** (`execution/execution_quality_monitor.py`)
+**Status: BUILT (paper trading phase)**
+- Signal retention analysis: generated vs taken vs blocked, with blocking reasons
+- Modeled slippage impact: cost per trade, slippage as % of edge per strategy
+- Controller blocking patterns by regime (HIGH_VOL, NORMAL, LOW_VOL)
+- Opportunity cost estimation from blocked signals
+- Extension points for live execution: actual fill comparison, latency, partial fills
 - Integration: feeds `health_status` signal to Portfolio Regime Controller
-- Schedule: daily
+- Schedule: on-demand (integrated into weekly cadence when live)
 
 **Module 3 — Counterfactual Engine**
 - Answer "what if we had followed the controller's recommendations?"
