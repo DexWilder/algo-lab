@@ -203,8 +203,11 @@ def run_first_pass(strategy_name, assets, session_filter=None):
         for mode in ["both", "long", "short"]:
             try:
                 signals = mod.generate_signals(df.copy(), mode=mode)
+                # Handle daily-resampling strategies: if signals has fewer
+                # rows than input data, use signals as both df and signals
+                bt_df = signals if len(signals) < len(df) else df
                 r = run_backtest(
-                    df, signals, mode=mode,
+                    bt_df, signals, mode=mode,
                     point_value=cfg["point_value"],
                     tick_size=cfg["tick_size"],
                     commission_per_side=cfg["commission_per_side"],
@@ -224,9 +227,11 @@ def run_first_pass(strategy_name, assets, session_filter=None):
         for label, sub in [("H1", df.iloc[:mid]), ("H2", df.iloc[mid:])]:
             try:
                 mod = load_strategy(strategy_name, cfg["tick_size"])
-                signals = mod.generate_signals(sub.copy().reset_index(drop=True), mode="both")
+                sub_reset = sub.copy().reset_index(drop=True)
+                signals = mod.generate_signals(sub_reset, mode="both")
+                bt_df = signals if len(signals) < len(sub_reset) else sub_reset
                 r = run_backtest(
-                    sub.reset_index(drop=True), signals, mode="both",
+                    bt_df, signals, mode="both",
                     point_value=cfg["point_value"],
                     tick_size=cfg["tick_size"],
                     commission_per_side=cfg["commission_per_side"],

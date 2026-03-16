@@ -1,0 +1,128 @@
+{
+  "strategy": "fx_daily_trend",
+  "run_date": "2026-03-16T10:55:09.465984",
+  "session_filter": null,
+  "asset_results": {
+    "MES": {
+      "asset": "MES",
+      "bars": 469954,
+      "modes": {
+        "both": {
+          "error": "Length of values (2087) does not match length of index (469954)",
+          "trades": 0,
+          "pf": 0
+        },
+        "long": {
+          "error": "Length of values (2087) does not match length of index (469954)",
+          "trades": 0,
+          "pf": 0
+        },
+        "short": {
+          "error": "Length of values (2087) does not match length of index (469954)",
+          "trades": 0,
+          "pf": 0
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "error": "Length of values (1045) does not match length of index (234977)",
+          "pf": 0,
+          "trades": 0
+        },
+        "H2": {
+          "error": "Length of values (1043) does not match length of index (234977)",
+          "pf": 0,
+          "trades": 0
+        }
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Negative edge: PF 0.00"
+      ]
+    },
+    "MNQ": {
+      "asset": "MNQ",
+      "bars": 469831,
+      "modes": {
+        "both": {
+          "error": "Length of values (2087) does not match length of index (469831)",
+          "trades": 0,
+          "pf": 0
+        },
+        "long": {
+          "error": "Length of values (2087) does not match length of index (469831)",
+          "trades": 0,
+          "pf": 0
+        },
+        "short": {
+          "error": "Length of values (2087) does not match length of index (469831)",
+          "trades": 0,
+          "pf": 0
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "error": "Length of values (1045) does not match length of index (234915)",
+          "pf": 0,
+          "trades": 0
+        },
+        "H2": {
+          "error": "Length of values (1043) does not match length of index (234916)",
+          "pf": 0,
+          "trades": 0
+        }
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Negative edge: PF 0.00"
+      ]
+    },
+    "MGC": {
+      "asset": "MGC",
+      "bars": 246824,
+      "modes": {
+        "both": {
+          "error": "Length of values (1881) does not match length of index (246824)",
+          "trades": 0,
+          "pf": 0
+        },
+        "long": {
+          "error": "Length of values (1881) does not match length of index (246824)",
+          "trades": 0,
+          "pf": 0
+        },
+        "short": {
+          "error": "Length of values (1881) does not match length of index (246824)",
+          "trades": 0,
+          "pf": 0
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "error": "Length of values (927) does not match length of index (123412)",
+          "pf": 0,
+          "trades": 0
+        },
+        "H2": {
+          "error": "Length of values (955) does not match length of index (123412)",
+          "pf": 0,
+          "trades": 0
+        }
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Negative edge: PF 0.00"
+      ]
+    }
+  },
+  "best_result": {
+    "asset": "MES",
+    "classification": "REJECT",
+    "pf": 0,
+    "trades": 0
+  },
+  "overall_classification": "REJECT",
+  "overall_reasons": [
+    "Negative edge: PF 0.00"
+  ]
+}
