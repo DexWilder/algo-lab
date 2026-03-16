@@ -172,7 +172,7 @@ ASSETS = {
     "6J": {
         "name": "Japanese Yen",
         "asset_class": "fx",
-        "point_value": 125000.0,
+        "point_value": 12500000.0,
         "tick_size": 0.0000005,
         "commission_per_side": 1.25,
         "slippage_ticks": 1,
