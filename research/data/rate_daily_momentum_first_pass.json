@@ -1,0 +1,114 @@
+{
+  "run_date": "2026-03-16T10:02:07.181319",
+  "strategy": "rate_daily_momentum",
+  "results": [
+    {
+      "asset": "ZN",
+      "mode": "both",
+      "trades": 16,
+      "pnl": -71.25,
+      "pf": 0.981,
+      "sharpe": -0.12,
+      "wr": 31.2,
+      "maxdd": 2553.75,
+      "avg_hold_days": 6.7,
+      "classification": "NO_EDGE"
+    },
+    {
+      "asset": "ZN",
+      "mode": "long",
+      "trades": 11,
+      "pnl": -996.25,
+      "pf": 0.668,
+      "sharpe": -2.43,
+      "wr": 27.3,
+      "maxdd": 2236.25,
+      "avg_hold_days": 5.7,
+      "classification": "NO_EDGE"
+    },
+    {
+      "asset": "ZN",
+      "mode": "short",
+      "trades": 5,
+      "pnl": 925.0,
+      "pf": 2.196,
+      "sharpe": 4.59,
+      "wr": 40.0,
+      "maxdd": 1036.25,
+      "avg_hold_days": 8.8,
+      "classification": "NO_EDGE"
+    },
+    {
+      "asset": "ZB",
+      "mode": "both",
+      "trades": 17,
+      "pnl": -8355.0,
+      "pf": 0.411,
+      "sharpe": -5.48,
+      "wr": 29.4,
+      "maxdd": 11025.0,
+      "avg_hold_days": 8.1,
+      "classification": "NO_EDGE"
+    },
+    {
+      "asset": "ZB",
+      "mode": "long",
+      "trades": 9,
+      "pnl": -3647.5,
+      "pf": 0.567,
+      "sharpe": -3.48,
+      "wr": 33.3,
+      "maxdd": 6293.75,
+      "avg_hold_days": 8.9,
+      "classification": "NO_EDGE"
+    },
+    {
+      "asset": "ZB",
+      "mode": "short",
+      "trades": 9,
+      "pnl": -8710.0,
+      "pf": 0.108,
+      "sharpe": -11.1,
+      "wr": 22.2,
+      "maxdd": 10551.25,
+      "avg_hold_days": 6.6,
+      "classification": "NO_EDGE"
+    },
+    {
+      "asset": "ZF",
+      "mode": "both",
+      "trades": 17,
+      "pnl": 2480.94,
+      "pf": 2.52,
+      "sharpe": 6.16,
+      "wr": 64.7,
+      "maxdd": 1421.25,
+      "avg_hold_days": 5.8,
+      "classification": "PROMISING_NATIVE"
+    },
+    {
+      "asset": "ZF",
+      "mode": "long",
+      "trades": 10,
+      "pnl": 1256.25,
+      "pf": 2.092,
+      "sharpe": 4.73,
+      "wr": 60.0,
+      "maxdd": 1306.88,
+      "avg_hold_days": 5.9,
+      "classification": "NEEDS_REFINEMENT"
+    },
+    {
+      "asset": "ZF",
+      "mode": "short",
+      "trades": 7,
+      "pnl": 1224.69,
+      "pf": 3.543,
+      "sharpe": 8.4,
+      "wr": 71.4,
+      "maxdd": 520.62,
+      "avg_hold_days": 5.6,
+      "classification": "NO_EDGE"
+    }
+  ]
+}
