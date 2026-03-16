@@ -1,0 +1,77 @@
+{
+  "strategy": "rsi2_bounce_m2k",
+  "run_date": "2026-03-16T10:23:26.193154",
+  "session_filter": null,
+  "asset_results": {
+    "M2K": {
+      "asset": "M2K",
+      "bars": 465399,
+      "modes": {
+        "both": {
+          "trades": 1374,
+          "pnl": -3432.26,
+          "pf": 0.758,
+          "sharpe": -1.99,
+          "maxdd": 3475.56,
+          "wr": 63.8,
+          "avg_pnl": -2.5,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 1374,
+          "pnl": -3432.26,
+          "pf": 0.758,
+          "sharpe": -1.99,
+          "maxdd": 3475.56,
+          "wr": 63.8,
+          "avg_pnl": -2.5,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 0,
+          "pnl": 0,
+          "pf": 0,
+          "sharpe": 0,
+          "maxdd": 0,
+          "wr": 0,
+          "avg_pnl": 0,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 725,
+          "pnl": -1294.0,
+          "pf": 0.825,
+          "sharpe": -1.39,
+          "maxdd": 1342.86,
+          "wr": 66.1,
+          "avg_pnl": -1.78
+        },
+        "H2": {
+          "trades": 649,
+          "pnl": -2138.26,
+          "pf": 0.684,
+          "sharpe": -2.71,
+          "maxdd": 2178.06,
+          "wr": 61.2,
+          "avg_pnl": -3.29
+        }
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Sufficient trades (1374) but PF 0.76 < 1.1"
+      ]
+    }
+  },
+  "best_result": {
+    "asset": "M2K",
+    "classification": "REJECT",
+    "pf": 0.758,
+    "trades": 1374
+  },
+  "overall_classification": "REJECT",
+  "overall_reasons": [
+    "Sufficient trades (1374) but PF 0.76 < 1.1"
+  ]
+}
