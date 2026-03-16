@@ -2,7 +2,6 @@
   "inventory_date": "2026-03-16",
   "source": "~/Desktop/Trading + sibling repos",
   "description": "Legacy trading folder inventory for FQL factory intake",
-
   "items": [
     {
       "id": "LEGACY-001",
@@ -11,13 +10,13 @@
       "asset": "MGC",
       "timeframe": "3m-5m intraday",
       "family": "session_breakout",
-      "code_completeness": "COMPLETE — full Pine strategy with backtesting",
+      "code_completeness": "COMPLETE \u2014 full Pine strategy with backtesting",
       "testable_as_is": false,
       "needs": "Pine-to-Python conversion",
       "logic_summary": "3-8 AM EST consolidation zone. Trade breakout/retest at 8-10:30 AM. Includes ALGO number (round number) rejection entry.",
-      "overlap_with_fql": "HIGH — very similar to FQL session breakout concept on MGC. The 3-8 AM zone is analogous to Asian range. May overlap with ORB-MGC-Long.",
-      "diversification_value": "LOW — MGC intraday breakout already well-covered",
-      "conversion_effort": "MEDIUM — Pine to Python, session zone logic needs translation",
+      "overlap_with_fql": "HIGH \u2014 very similar to FQL session breakout concept on MGC. The 3-8 AM zone is analogous to Asian range. May overlap with ORB-MGC-Long.",
+      "diversification_value": "LOW \u2014 MGC intraday breakout already well-covered",
+      "conversion_effort": "MEDIUM \u2014 Pine to Python, session zone logic needs translation",
       "priority": "LOW"
     },
     {
@@ -27,11 +26,11 @@
       "asset": "MGC",
       "timeframe": "intraday",
       "family": "session_breakout",
-      "code_completeness": "COMPLETE — v5 with prop firm guardrails",
+      "code_completeness": "COMPLETE \u2014 v5 with prop firm guardrails",
       "testable_as_is": false,
       "needs": "Pine-to-Python conversion, prop rules are controller-layer not strategy-layer",
       "logic_summary": "Same zone breakout as v4 but with prop firm trailing DD sim, green-day lock, halt counters. 7-11:30 AM trade window.",
-      "overlap_with_fql": "HIGH — same as LEGACY-001 plus prop logic that FQL handles in controller layer",
+      "overlap_with_fql": "HIGH \u2014 same as LEGACY-001 plus prop logic that FQL handles in controller layer",
       "diversification_value": "LOW",
       "conversion_effort": "MEDIUM",
       "priority": "LOW"
@@ -43,11 +42,11 @@
       "asset": "any",
       "timeframe": "intraday",
       "family": "indicator_only",
-      "code_completeness": "COMPLETE — Pine indicator, not a strategy",
+      "code_completeness": "COMPLETE \u2014 Pine indicator, not a strategy",
       "testable_as_is": false,
-      "needs": "Not a strategy — session level visualization only",
+      "needs": "Not a strategy \u2014 session level visualization only",
       "logic_summary": "Draws 3-8 AM session zone highs/lows and round number levels",
-      "overlap_with_fql": "N/A — indicator, not strategy",
+      "overlap_with_fql": "N/A \u2014 indicator, not strategy",
       "diversification_value": "NONE",
       "conversion_effort": "N/A",
       "priority": "SKIP"
@@ -59,11 +58,11 @@
       "asset": "MGC",
       "timeframe": "intraday",
       "family": "infrastructure",
-      "code_completeness": "COMPLETE — Python backtest engine with optimizer",
+      "code_completeness": "COMPLETE \u2014 Python backtest engine with optimizer",
       "testable_as_is": false,
       "needs": "Already superseded by FQL engine/backtest.py",
       "logic_summary": "Legacy backtest engine with Monte Carlo, optimizer, prop sim. FQL has equivalent or better.",
-      "overlap_with_fql": "FULL — FQL backtest engine already covers this",
+      "overlap_with_fql": "FULL \u2014 FQL backtest engine already covers this",
       "diversification_value": "NONE",
       "conversion_effort": "N/A",
       "priority": "SKIP"
@@ -75,13 +74,13 @@
       "asset": "MGC/Gold",
       "timeframe": "intraday",
       "family": "session_breakout + ICT/FVG",
-      "code_completeness": "NONE — video recordings, transcripts, PDF playbook only",
+      "code_completeness": "NONE \u2014 video recordings, transcripts, PDF playbook only",
       "testable_as_is": false,
       "needs": "Manual extraction of rules from video/PDF, then spec, then code",
       "logic_summary": "Gold scalp strategy, NY session breakout, Bank Heist (FVG-based), SPX trade. ICT-style entry with session zones.",
-      "overlap_with_fql": "MODERATE — gold session breakout partially covered. FVG/ICT approach previously failed in FQL (ICT-010).",
-      "diversification_value": "LOW — gold intraday already well-covered",
-      "conversion_effort": "HIGH — extract rules from video, no code exists",
+      "overlap_with_fql": "MODERATE \u2014 gold session breakout partially covered. FVG/ICT approach previously failed in FQL (ICT-010).",
+      "diversification_value": "LOW \u2014 gold intraday already well-covered",
+      "conversion_effort": "HIGH \u2014 extract rules from video, no code exists",
       "priority": "LOW"
     },
     {
@@ -91,14 +90,14 @@
       "asset": "unknown (likely forex/equities)",
       "timeframe": "unknown",
       "family": "unknown",
-      "code_completeness": "NONE — Excel journal templates only",
+      "code_completeness": "NONE \u2014 Excel journal templates only",
       "testable_as_is": false,
       "needs": "Open and extract rules from Excel. Likely trade journals, not strategy code.",
       "logic_summary": "Strategy templates and journals. Need to open to determine if rules are documented.",
       "overlap_with_fql": "UNKNOWN",
       "diversification_value": "UNKNOWN",
-      "conversion_effort": "HIGH — extract from Excel, no code",
-      "priority": "REVIEW — open Excel files to determine if strategy rules exist"
+      "conversion_effort": "HIGH \u2014 extract from Excel, no code",
+      "priority": "REVIEW \u2014 open Excel files to determine if strategy rules exist"
     },
     {
       "id": "LEGACY-007",
@@ -107,14 +106,15 @@
       "asset": "FX pairs",
       "timeframe": "4-hour / swing",
       "family": "swing_trend",
-      "code_completeness": "NONE — Excel journal with backtest records",
+      "code_completeness": "NONE \u2014 Excel journal with backtest records",
       "testable_as_is": false,
       "needs": "Extract rules from Excel journal, convert to spec",
       "logic_summary": "Higher-timeframe swing strategy on FX. 4-hour bars. May contain backtested rules for forex pairs.",
-      "overlap_with_fql": "LOW — FQL has no 4-hour FX swing strategies",
-      "diversification_value": "MEDIUM — new timeframe (4hr) + FX swing = different from everything in FQL",
-      "conversion_effort": "HIGH — extract from Excel",
-      "priority": "MEDIUM — worth reviewing because 4hr FX swing is a genuinely new lane"
+      "overlap_with_fql": "LOW \u2014 FQL has no 4-hour FX swing strategies",
+      "diversification_value": "MEDIUM \u2014 new timeframe (4hr) + FX swing = different from everything in FQL",
+      "conversion_effort": "HIGH \u2014 extract from Excel",
+      "priority": "CLOSED",
+      "notes": "Inspected: Excel is empty template with headers only. No filled trades or extractable rules."
     },
     {
       "id": "LEGACY-008",
@@ -123,11 +123,11 @@
       "asset": "equities/broad",
       "timeframe": "swing/daily",
       "family": "swing_education",
-      "code_completeness": "NONE — educational PDF only",
+      "code_completeness": "NONE \u2014 educational PDF only",
       "testable_as_is": false,
       "needs": "Read for strategy ideas, not directly convertible",
       "logic_summary": "Short-term swing trading lessons. Educational, not a specific coded strategy.",
-      "overlap_with_fql": "N/A — education material",
+      "overlap_with_fql": "N/A \u2014 education material",
       "diversification_value": "LOW",
       "conversion_effort": "HIGH",
       "priority": "LOW"
@@ -139,43 +139,43 @@
       "asset": "multi (options, equities)",
       "timeframe": "N/A",
       "family": "infrastructure",
-      "code_completeness": "COMPLETE — Python Streamlit app with analytics",
+      "code_completeness": "COMPLETE \u2014 Python Streamlit app with analytics",
       "testable_as_is": false,
-      "needs": "Not a strategy — trade journaling/analytics tool",
+      "needs": "Not a strategy \u2014 trade journaling/analytics tool",
       "logic_summary": "Webull order import, trade matching, analytics, AI coach. Journal tool, not strategy.",
-      "overlap_with_fql": "N/A — infrastructure tool",
+      "overlap_with_fql": "N/A \u2014 infrastructure tool",
       "diversification_value": "NONE",
       "conversion_effort": "N/A",
-      "priority": "SKIP — but useful as a data source for historical trade analysis"
+      "priority": "SKIP \u2014 but useful as a data source for historical trade analysis"
     },
     {
       "id": "LEGACY-010",
-      "name": "New Age / Clay — Off the Open (Video)",
+      "name": "New Age / Clay \u2014 Off the Open (Video)",
       "location": "~/Desktop/Trading/New Age/Clay/",
       "asset": "equities (NFLX, PLTR, MSFT, HOOD, COIN)",
       "timeframe": "3-minute intraday",
       "family": "breakout + flag_pattern",
-      "code_completeness": "NONE — video recordings only",
+      "code_completeness": "NONE \u2014 video recordings only",
       "testable_as_is": false,
       "needs": "Extract rules from video, different market (equities not futures)",
       "logic_summary": "Off-the-open breakout setups, 3-minute flag patterns, earnings plays. Equity-specific.",
-      "overlap_with_fql": "LOW — equity single-stock, not futures",
-      "diversification_value": "LOW — equity single-stock is outside FQL scope",
+      "overlap_with_fql": "LOW \u2014 equity single-stock, not futures",
+      "diversification_value": "LOW \u2014 equity single-stock is outside FQL scope",
       "conversion_effort": "HIGH",
-      "priority": "SKIP — equity single-stock strategies are outside FQL futures scope"
+      "priority": "SKIP \u2014 equity single-stock strategies are outside FQL futures scope"
     },
     {
       "id": "LEGACY-011",
-      "name": "Elly D — Automate Your Trading (Video)",
+      "name": "Elly D \u2014 Automate Your Trading (Video)",
       "location": "~/Desktop/Trading/New Age/Elly D/Automate your trading/",
       "asset": "equities",
       "timeframe": "unknown",
       "family": "automation_education",
-      "code_completeness": "NONE — video/transcript only",
+      "code_completeness": "NONE \u2014 video/transcript only",
       "testable_as_is": false,
       "needs": "Review for automation ideas",
       "logic_summary": "Trading automation education. May contain ideas for systematic execution.",
-      "overlap_with_fql": "N/A — educational",
+      "overlap_with_fql": "N/A \u2014 educational",
       "diversification_value": "NONE",
       "conversion_effort": "HIGH",
       "priority": "SKIP"
@@ -187,17 +187,17 @@
       "asset": "options (SPY, QQQ likely)",
       "timeframe": "swing/daily",
       "family": "options_swing",
-      "code_completeness": "UNKNOWN — data folder only visible, may have code",
+      "code_completeness": "UNKNOWN \u2014 data folder only visible, may have code",
       "testable_as_is": false,
-      "needs": "Deeper inspection — may be empty or early-stage",
+      "needs": "Deeper inspection \u2014 may be empty or early-stage",
       "logic_summary": "Options swing bot. Separate repo from FQL. May contain swing logic adaptable to futures.",
-      "overlap_with_fql": "LOW — options are different instrument class",
-      "diversification_value": "MEDIUM — if it contains swing entry logic, that's a new horizon",
+      "overlap_with_fql": "LOW \u2014 options are different instrument class",
+      "diversification_value": "MEDIUM \u2014 if it contains swing entry logic, that's a new horizon",
       "conversion_effort": "MEDIUM-HIGH",
-      "priority": "REVIEW — check if code exists inside"
+      "priority": "CLOSED",
+      "notes": "Inspected: only empty log files, no Python code. Abandoned project."
     }
   ],
-
   "summary": {
     "total_items": 12,
     "complete_code": 3,
@@ -207,6 +207,9 @@
     "high_priority": 0,
     "medium_priority": 2,
     "low_priority": 5,
-    "skip": 5
-  }
+    "skip": 5,
+    "legacy_lane_status": "COMPLETE_AND_DEPRIORITIZED",
+    "extractable_strategies": 0
+  },
+  "inspection_date": "2026-03-16"
 }
