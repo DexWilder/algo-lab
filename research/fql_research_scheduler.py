@@ -141,6 +141,15 @@ JOBS = {
         "function": "generate_weekly_report",
         "priority": 23,
     },
+    "weekly_integrity_monitor": {
+        "cadence": "weekly",
+        "description": "System integrity self-diagnostic across all subsystems",
+        "module": "research.system_integrity_monitor",
+        "function": None,
+        "priority": 24,
+        "subprocess": True,
+        "subprocess_args": ["--save"],
+    },
 
     # ── Monthly ───────────────────────────────────────────────────────
     "monthly_genome_cluster": {
