@@ -1,0 +1,292 @@
+=== FQL Daily Research Run - Sun Mar 15 21:53:09 PDT 2026 ===
+PID: 24786 | Repo: /Users/chasefisher/projects/Algo Trading/algo-lab
+Python: /usr/local/bin/python3 (Python 3.14.3)
+
+--- Starting daily pipeline ---
+
+FQL Research Scheduler — DAILY jobs
+  6 jobs queued
+==================================================
+  Running daily_health_check...
+  [    SUCCESS] daily_health_check
+  Running daily_half_life...
+  Analyzing VWAP-MNQ-Long...
+  Analyzing XB-PB-EMA-MES-Short...
+  Analyzing ORB-MGC-Long...
+Sun Mar 15 21:53:58 PDT 2026 - SKIPPED: FQL daily pipeline already running (PID 24786)
+  Analyzing BB-EQ-MGC-Long...
+  Analyzing PB-MGC-Short...
+  Analyzing Donchian-MNQ-Long...
+  Analyzing NoiseBoundary-MNQ-Long...
+  Analyzing RangeExpansion-MCL-Short...
+  Analyzing GapMom-MGC-Long...
+  Analyzing GapMom-MNQ-Long...
+  [    SUCCESS] daily_half_life
+  Running daily_contribution...
+  [    SUCCESS] daily_contribution
+  Running daily_activation_matrix...
+
+FQL Portfolio Regime Controller — 2026-03-15 21:59
+============================================================
+
+[1/6] Gathering regime signals...
+[2/6] Running half-life analysis...
+[3/6] Gathering kill criteria from registry...
+[4/6] Running health checks...
+[5/7] Running contribution analysis (backtests)...
+  Building daily PnL matrix for contribution analysis...
+[6/7] Computing redundancy signals...
+[7/7] Loading session drift signals...
+  Session drift loaded for 6 strategies
+
+Scoring strategies...
+Activation matrix saved: /Users/chasefisher/projects/Algo Trading/algo-lab/research/data/portfolio_activation_matrix.json
+
+Registry updated: /Users/chasefisher/projects/Algo Trading/algo-lab/research/data/strategy_registry.json
+
+===========================================================================
+  FQL PORTFOLIO REGIME CONTROLLER
+  2026-03-15 21:59
+===========================================================================
+
+  CURRENT REGIME SNAPSHOT
+  -------------------------------------------------------
+  M2K    HIGH_VOL   TRENDING   HIGH_RV      CHOPPY
+  MCL    HIGH_VOL   TRENDING   HIGH_RV      CHOPPY
+  MES    HIGH_VOL   TRENDING   HIGH_RV      CHOPPY
+  MGC    NORMAL     TRENDING   HIGH_RV      CHOPPY
+  MNQ    HIGH_VOL   TRENDING   HIGH_RV      CHOPPY
+
+  PORTFOLIO SUMMARY
+  -------------------------------------------------------
+  Total strategies:       10
+  Active (FULL+REDUCED):  8
+  Probation:              2
+  Disabled/Off:           0
+  State changes today:    0
+  Avg activation score:   0.673
+  Health status:          FAIL
+
+  ACTIVATION MATRIX
+  -------------------------------------------------------
+  Strategy                      Score Action         State      Situation        Pri 
+  --------------------------------------------------------------------------------
+  GapMom-MGC-Long               0.840 [+] FULL_ON      VALIDATED  HEALTHY          LOW 
+  XB-PB-EMA-MES-Short           0.818 [+] FULL_ON      ACTIVE     HEALTHY          LOW 
+  PB-MGC-Short                  0.802 [+] FULL_ON      ACTIVE     HEALTHY          LOW 
+  BB-EQ-MGC-Long                0.775 [+] FULL_ON      ACTIVE     HEALTHY          LOW 
+  ORB-MGC-Long                  0.760 [+] FULL_ON      ACTIVE     HEALTHY          LOW 
+  NoiseBoundary-MNQ-Long        0.665*[~] REDUCED_ON   PROBATION  REDUNDANT        LOW 
+  Donchian-MNQ-Long-GRINDING    0.637 [~] REDUCED_ON   ACTIVE     HEALTHY          LOW 
+  VWAP-MNQ-Long                 0.590*[~] REDUCED_ON   ACTIVE     REDUNDANT        LOW 
+  RangeExpansion-MCL-Short      0.420*[?] PROBATION    VALIDATED  EDGE_DECAY       MEDIUM
+  GapMom-MNQ-Long               0.420*[?] PROBATION    VALIDATED  EDGE_DECAY       MEDIUM
+
+  * = borderline score (within 0.05 of action threshold)
+    NoiseBoundary-MNQ-Long: 0.665 near threshold
+    VWAP-MNQ-Long: 0.590 near threshold
+    RangeExpansion-MCL-Short: 0.420 near threshold
+    GapMom-MNQ-Long: 0.420 near threshold
+
+  CROWDING DIAGNOSTICS
+  -------------------------------------------------------
+  ! Exposure [trend_persistence]: 4 active — XB-PB-EMA-MES-Short, PB-MGC-Short, Donchian-MNQ-Long-GRINDING, VWAP-MNQ-Long
+  ! Asset [MGC]: 4 active — GapMom-MGC-Long, PB-MGC-Short, BB-EQ-MGC-Long, ORB-MGC-Long
+  ! Asset [MNQ]: 3 active — NoiseBoundary-MNQ-Long, Donchian-MNQ-Long-GRINDING, VWAP-MNQ-Long
+  ! Family [breakout]: 4 active — GapMom-MGC-Long, ORB-MGC-Long, NoiseBoundary-MNQ-Long, Donchian-MNQ-Long-GRINDING
+  ! Session [morning]: 5 active — GapMom-MGC-Long, XB-PB-EMA-MES-Short, PB-MGC-Short, ORB-MGC-Long, Donchian-MNQ-Long-GRINDING
+
+  SESSION RESTRICTIONS
+  -------------------------------------------------------
+  ! XB-PB-EMA-MES-Short: [REDUCE] midday — Degraded in midday (WR delta +18.0%)
+  ! XB-PB-EMA-MES-Short: [REDUCE] afternoon — Degraded in afternoon (WR delta +27.6%)
+  ! BB-EQ-MGC-Long: [REDUCE] midday — Degraded in midday (WR delta +10.0%)
+  ! BB-EQ-MGC-Long: [BLOCK] afternoon — Edge broken in afternoon (WR delta -30.0%, PnL ratio -0.22)
+  ! ORB-MGC-Long: [BLOCK] midday — Edge broken in midday (WR delta +1.4%, PnL ratio 0.08)
+  ! VWAP-MNQ-Long: [REDUCE] midday — Degraded in midday (WR delta +0.5%)
+  ! VWAP-MNQ-Long: [BLOCK] afternoon — Edge broken in afternoon (WR delta -27.4%, PnL ratio -1.26)
+
+  WARNINGS
+  -------------------------------------------------------
+  ! VWAP-MNQ-Long: Session drift ALARM — edge broken in one or more sessions
+  ! VWAP-MNQ-Long: Morning session concentration >60% — diversification risk
+  ! XB-PB-EMA-MES-Short: Session drift detected — degraded in one or more sessions
+  ! XB-PB-EMA-MES-Short: Morning session concentration >60% — diversification risk
+  ! ORB-MGC-Long: Session drift ALARM — edge broken in one or more sessions
+  ! ORB-MGC-Long: Morning session concentration >60% — diversification risk
+  ! BB-EQ-MGC-Long: Session drift ALARM — edge broken in one or more sessions
+  ! BB-EQ-MGC-Long: Morning session concentration >60% — diversification risk
+  ! PB-MGC-Short: Morning session concentration >60% — diversification risk
+  ! Donchian-MNQ-Long-GRINDING: Morning session concentration >60% — diversification risk
+  ! NoiseBoundary-MNQ-Long: Kill flags: redundancy
+  ! RangeExpansion-MCL-Short: Edge decaying: HL status=ARCHIVE_CANDIDATE
+  ! GapMom-MNQ-Long: Edge decaying: HL status=ARCHIVE_CANDIDATE
+
+  SUB-SCORE BREAKDOWN
+  -------------------------------------------------------
+  Strategy               regime_ half_li contrib redunda  health kill_cr session time_of asset_f recent_
+  ------------------------------------------------------------------------------------------------
+  GapMom-MGC-Long           1.00    1.00    1.00    0.70    0.00    1.00    0.70    0.50    1.00    1.00
+  XB-PB-EMA-MES-Short       1.00    1.00    1.00    0.70    0.00    1.00    0.25    0.50    1.00    1.00
+  PB-MGC-Short              1.00    1.00    0.70    0.70    0.00    1.00    0.85    0.50    1.00    1.00
+  BB-EQ-MGC-Long            1.00    1.00    0.70    0.70    0.00    1.00    0.00    1.00    1.00    1.00
+  ORB-MGC-Long              1.00    1.00    0.70    0.70    0.00    1.00    0.00    0.50    1.00    1.00
+  NoiseBoundary-MNQ-...     0.60    1.00    1.00    0.20    0.00    0.40    0.70    1.00    1.00    1.00
+  Donchian-MNQ-Long-...     0.40    1.00    0.40    0.70    0.00    1.00    0.85    0.50    1.00    1.00
+  VWAP-MNQ-Long             0.40    1.00    0.70    0.20    0.00    1.00    0.00    0.50    1.00    1.00
+  RangeExpansion-MCL...     1.00    0.00    1.00    0.70    0.00    1.00    0.70    1.00    1.00    0.00
+  GapMom-MNQ-Long           0.60    0.00    0.70    0.70    0.00    1.00    0.70    0.50    1.00    1.00
+
+  REASON CODES (per strategy)
+  -------------------------------------------------------
+  GapMom-MGC-Long
+    REGIME_MATCH_HIGH: Current regime strongly matches strategy specialization
+    HALF_LIFE_STRENGTHENING: Edge metrics improving in recent windows
+    PORTFOLIO_ADDS_VALUE: Strategy improves portfolio Sharpe/Calmar
+    HEALTH_FAIL: Health check failures — data or config issue
+    TIME_WINDOW_PARTIAL: Current session in allowed but not preferred window
+  XB-PB-EMA-MES-Short
+    REGIME_MATCH_HIGH: Current regime strongly matches strategy specialization
+    HALF_LIFE_STRENGTHENING: Edge metrics improving in recent windows
+    PORTFOLIO_ADDS_VALUE: Strategy improves portfolio Sharpe/Calmar
+    HEALTH_FAIL: Health check failures — data or config issue
+    SESSION_DRIFT_DEGRADED: Session-specific edge degradation — deployment restricted
+    SESSION_CONCENTRATION: Portfolio trade volume concentrated in one session window
+    TIME_WINDOW_PARTIAL: Current session in allowed but not preferred window
+  PB-MGC-Short
+    REGIME_MATCH_HIGH: Current regime strongly matches strategy specialization
+    HALF_LIFE_STRENGTHENING: Edge metrics improving in recent windows
+    PORTFOLIO_ADDS_VALUE: Strategy improves portfolio Sharpe/Calmar
+    HEALTH_FAIL: Health check failures — data or config issue
+    SESSION_CONCENTRATION: Portfolio trade volume concentrated in one session window
+    TIME_WINDOW_PARTIAL: Current session in allowed but not preferred window
+  BB-EQ-MGC-Long
+    REGIME_MATCH_HIGH: Current regime strongly matches strategy specialization
+    HALF_LIFE_STRENGTHENING: Edge metrics improving in recent windows
+    PORTFOLIO_ADDS_VALUE: Strategy improves portfolio Sharpe/Calmar
+    HEALTH_FAIL: Health check failures — data or config issue
+    SESSION_DRIFT_BROKEN: Session edge structurally broken — block deployment in affected session
+    SESSION_CONCENTRATION: Portfolio trade volume concentrated in one session window
+  ORB-MGC-Long
+    REGIME_MATCH_HIGH: Current regime strongly matches strategy specialization
+    HALF_LIFE_STRENGTHENING: Edge metrics improving in recent windows
+    PORTFOLIO_ADDS_VALUE: Strategy improves portfolio Sharpe/Calmar
+    HEALTH_FAIL: Health check failures — data or config issue
+    SESSION_DRIFT_BROKEN: Session edge structurally broken — block deployment in affected session
+    SESSION_CONCENTRATION: Portfolio trade volume concentrated in one session window
+    TIME_WINDOW_PARTIAL: Current session in allowed but not preferred window
+  NoiseBoundary-MNQ-Long
+    REGIME_MATCH_MODERATE: Current regime partially matches strategy niche
+    HALF_LIFE_STRENGTHENING: Edge metrics improving in recent windows
+    PORTFOLIO_ADDS_VALUE: Strategy improves portfolio Sharpe/Calmar
+    REDUNDANT_CLUSTER: High overlap with another active strategy in same cluster
+    HEALTH_FAIL: Health check failures — data or config issue
+    KILL_TRIGGER_SOFT: Soft kill warning — one criterion flagged
+  Donchian-MNQ-Long-GRINDING
+    REGIME_MATCH_LOW: Current regime weakly aligns with strategy
+    HALF_LIFE_STRENGTHENING: Edge metrics improving in recent windows
+    PORTFOLIO_NEUTRAL: Marginal contribution near zero
+    HEALTH_FAIL: Health check failures — data or config issue
+    SESSION_CONCENTRATION: Portfolio trade volume concentrated in one session window
+    TIME_WINDOW_PARTIAL: Current session in allowed but not preferred window
+  VWAP-MNQ-Long
+    REGIME_MATCH_LOW: Current regime weakly aligns with strategy
+    HALF_LIFE_STRENGTHENING: Edge metrics improving in recent windows
+    PORTFOLIO_ADDS_VALUE: Strategy improves portfolio Sharpe/Calmar
+    REDUNDANT_CLUSTER: High overlap with another active strategy in same cluster
+    HEALTH_FAIL: Health check failures — data or config issue
+    SESSION_DRIFT_BROKEN: Session edge structurally broken — block deployment in affected session
+    SESSION_CONCENTRATION: Portfolio trade volume concentrated in one session window
+    TIME_WINDOW_PARTIAL: Current session in allowed but not preferred window
+  RangeExpansion-MCL-Short
+    REGIME_MATCH_HIGH: Current regime strongly matches strategy specialization
+    HALF_LIFE_DEAD: Edge has collapsed — no viable signal remaining
+    PORTFOLIO_ADDS_VALUE: Strategy improves portfolio Sharpe/Calmar
+    HEALTH_FAIL: Health check failures — data or config issue
+    RECENT_COLLAPSE: Short-window performance severely deteriorated
+  GapMom-MNQ-Long
+    REGIME_MATCH_MODERATE: Current regime partially matches strategy niche
+    HALF_LIFE_DEAD: Edge has collapsed — no viable signal remaining
+    PORTFOLIO_ADDS_VALUE: Strategy improves portfolio Sharpe/Calmar
+    HEALTH_FAIL: Health check failures — data or config issue
+    TIME_WINDOW_PARTIAL: Current session in allowed but not preferred window
+
+===========================================================================
+  [    SUCCESS] daily_activation_matrix
+  Running daily_decision_report...
+  [    SUCCESS] daily_decision_report
+  Running daily_drift_monitor...
+
+===========================================================================
+  FQL LIVE DRIFT MONITOR
+  2026-03-15 22:10
+  Overall: NORMAL
+===========================================================================
+
+  Forward period: 304 days, 391 trades
+
+  PORTFOLIO DRIFT
+  -------------------------------------------------------
+  Metric                   Baseline       Live      Delta   Status
+  --------------------------------------------------------------
+    win_rate                  0.499      0.499     -0.000   NORMAL
+    trade_frequency            1.10       1.29     +1.170   NORMAL
+    expectancy               $41.89     $41.89     +1.000   NORMAL
+    profit_factor             2.110      2.110              NORMAL
+    sharpe                    4.040      3.560              NORMAL
+
+  PAYOFF STRUCTURE
+  -------------------------------------------------------
+  Avg winner:  baseline $159.38  |  live $159.38
+  Avg loser:   baseline $-75.01  |  live $-75.01
+
+  STRATEGY DRIFT
+  -------------------------------------------------------
+  Strategy                     Trades     WR Δ  PnL ratio   Status
+  --------------------------------------------------------------
+    VWAP-MNQ-Long                 163   +0.000      1.00x   NORMAL
+    XB-PB-EMA-MES-Short            88   -0.000      1.00x   NORMAL
+    ORB-MGC-Long                   62   -0.000      1.00x   NORMAL
+    Donchian-MNQ-Long-GRINDING     47   +0.000      1.00x   NORMAL
+    BB-EQ-MGC-Long                 22   +0.000      1.00x   NORMAL
+    PB-MGC-Short                    9   -0.000      1.00x   NORMAL
+
+  REGIME-SPECIFIC PERFORMANCE
+  -------------------------------------------------------
+  HIGH_VOL        174d  avg $   42.24/day  total $ 7350.33  pos_rate 43%
+  LOW_VOL         84d  avg $   47.71/day  total $ 4007.58  pos_rate 46%
+  NORMAL          128d  avg $   39.22/day  total $ 5020.00  pos_rate 37%
+
+  SESSION / TIME-OF-DAY DRIFT
+  -------------------------------------------------------
+  Session      Trades   Share      WR    Avg PnL      PF   Status
+  -----------------------------------------------------------
+    morning       247    63%  49.4% $   53.23   2.29   NORMAL
+    midday        114    29%  51.8% $   22.65   1.68   NORMAL
+    afternoon      30     8%  46.7% $   21.60   1.91   NORMAL
+
+  Strategy session drift flags:
+  ! VWAP-MNQ-Long [midday]: WR 42% (delta +0.5%), avg $14.38, 64 trades — DRIFT
+  !!VWAP-MNQ-Long [afternoon]: WR 14% (delta -27.4%), avg $-40.88, 7 trades — ALARM
+  ! XB-PB-EMA-MES-Short [midday]: WR 74% (delta +18.0%), avg $62.90, 19 trades — DRIFT
+  ! XB-PB-EMA-MES-Short [afternoon]: WR 83% (delta +27.6%), avg $48.13, 6 trades — DRIFT
+  !!ORB-MGC-Long [midday]: WR 58% (delta +1.4%), avg $3.55, 19 trades — ALARM
+  ! BB-EQ-MGC-Long [midday]: WR 60% (delta +10.0%), avg $-1.84, 5 trades — DRIFT
+  !!BB-EQ-MGC-Long [afternoon]: WR 20% (delta -30.0%), avg $-26.84, 5 trades — ALARM
+  ! morning has 63% of all trades — concentration risk
+
+  DRIFT ALERTS
+  -------------------------------------------------------
+  ! [DRIFT] VWAP-MNQ-Long: midday session drifting from baseline
+  !![ALARM] VWAP-MNQ-Long: afternoon edge degrading (WR delta -27.4%)
+  ! [DRIFT] XB-PB-EMA-MES-Short: midday session drifting from baseline
+  ! [DRIFT] XB-PB-EMA-MES-Short: afternoon session drifting from baseline
+  !![ALARM] ORB-MGC-Long: midday edge degrading (WR delta +1.4%)
+  ! [DRIFT] BB-EQ-MGC-Long: midday session drifting from baseline
+  !![ALARM] BB-EQ-MGC-Long: afternoon edge degrading (WR delta -30.0%)
+  ! [DRIFT] morning has 63% of all trades — concentration risk
+
+===========================================================================
+  [    SUCCESS] daily_drift_monitor
+
+Done: 6 success, 0 errors, 0 skipped
