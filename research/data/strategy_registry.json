@@ -1370,6 +1370,51 @@
       "trades_6yr": null,
       "profit_factor": null,
       "notes": "Quantpedia + QuantifiedStrategies. SPY avg +0.2% per OPEX week. 12 trades/yr. Effect has weakened last 3 years. Fills event-driven gap. Low priority due to weakening edge."
+    },
+    {
+      "strategy_id": "MomPB-6J-Long-US",
+      "strategy_name": "momentum_pullback_trend",
+      "family": "trend",
+      "asset": "6J",
+      "session": "us_only",
+      "direction": "long",
+      "source": "cross_asset_transfer",
+      "rule_summary": "EMA200 trend + EMA50 pullback bounce + RSI confirmation. US session only (08-17 ET). Asia/Europe filtered out.",
+      "status": "testing",
+      "validation_score": null,
+      "parameter_stability": null,
+      "extended_history_status": "pending",
+      "portfolio_role": "diversifier",
+      "trades_6yr": null,
+      "pnl_share": null,
+      "profit_factor": 1.58,
+      "notes": "First non-equity candidate. PF 1.58 / Sharpe 2.92 US-session. Walk-forward 1.16/1.30. Asia/Europe = noise.",
+      "kill_flag": null,
+      "kill_details": null,
+      "last_review_date": "2026-03-16",
+      "controller_state": "PAPER",
+      "controller_action": "PROBATION",
+      "activation_score": null,
+      "controller_reason_codes": [],
+      "last_controller_date": "2026-03-16",
+      "review_priority": "HIGH",
+      "prior_state": null,
+      "half_life_status": null,
+      "contribution_status": null,
+      "health_status": null,
+      "genome_cluster": null,
+      "resurrection_flag": false,
+      "state_history": [],
+      "session_filter": {
+        "include": [
+          "us_morning",
+          "us_afternoon"
+        ],
+        "exclude": [
+          "asia",
+          "europe"
+        ]
+      }
     }
   ]
 }
