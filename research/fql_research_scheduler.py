@@ -92,6 +92,15 @@ JOBS = {
         "priority": 10,
         "status": "PLACEHOLDER",
     },
+    "biweekly_batch_first_pass": {
+        "cadence": "twice_weekly",
+        "description": "Batch first-pass evaluation on untested strategies",
+        "module": "research.batch_first_pass",
+        "function": None,
+        "priority": 11,
+        "subprocess": False,
+        "custom_runner": "_run_batch_first_pass",
+    },
     "biweekly_baseline_backtest": {
         "cadence": "twice_weekly",
         "description": "Run baseline backtests on new candidates, reject junk",
@@ -198,9 +207,105 @@ def _daily_drift_post(run_result):
         print_drift_report(run_result)
 
 
+def _run_batch_first_pass(run_result=None):
+    """Run batch_first_pass on strategies with status=testing that haven't been batch-evaluated."""
+    import json as _json
+    from research.batch_first_pass import run_first_pass, OUTPUT_DIR
+
+    reg_path = ROOT / "research" / "data" / "strategy_registry.json"
+    registry = _json.load(open(reg_path))
+
+    # Find existing first-pass reports to avoid re-testing
+    existing_reports = set()
+    if OUTPUT_DIR.exists():
+        for f in OUTPUT_DIR.glob("*.json"):
+            try:
+                data = _json.load(open(f))
+                existing_reports.add(data.get("strategy", ""))
+            except Exception:
+                pass
+
+    # Find strategies with status=testing that have a strategy.py file
+    candidates = []
+    for s in registry.get("strategies", []):
+        if s.get("status") != "testing":
+            continue
+        strat_name = s.get("strategy_name", "")
+        if not strat_name:
+            continue
+        strat_path = ROOT / "strategies" / strat_name / "strategy.py"
+        if not strat_path.exists():
+            continue
+        # Skip if already batch-evaluated
+        if strat_name in existing_reports:
+            continue
+        # Skip if already has batch_first_pass data in registry
+        if s.get("batch_first_pass"):
+            continue
+        candidates.append(s)
+
+    if not candidates:
+        print("  No untested strategies found for batch first-pass")
+        return {"tested": 0}
+
+    print(f"  Found {len(candidates)} untested strategies")
+
+    # Determine compatible assets for each strategy
+    all_data_assets = [sym for sym in ["MES", "MNQ", "MGC", "M2K", "MCL",
+                                        "ZN", "ZB", "ZF", "6E", "6J", "6B"]
+                       if (ROOT / "data" / "processed" / f"{sym}_5m.csv").exists()]
+
+    tested = 0
+    for s in candidates[:5]:  # Cap at 5 per run to control runtime
+        strat_name = s["strategy_name"]
+        asset = s.get("asset", "")
+        session = None
+
+        # Determine which assets to test
+        if asset and asset in all_data_assets:
+            test_assets = [asset]
+            # Add family assets if available
+            from engine.asset_config import get_asset_family
+            family = get_asset_family(asset)
+            test_assets.extend([a for a in family if a in all_data_assets])
+            test_assets = list(dict.fromkeys(test_assets))  # dedupe preserving order
+        else:
+            test_assets = all_data_assets
+
+        # Check for session restriction
+        if s.get("session", "").startswith("us"):
+            session = "us"
+
+        print(f"  Testing {strat_name} on {','.join(test_assets)}"
+              f"{' [' + session + ']' if session else ''}")
+
+        try:
+            report = run_first_pass(strat_name, test_assets, session)
+
+            # Save report
+            from research.utils.atomic_io import atomic_write_json
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M")
+            session_tag = f"_{session}" if session else ""
+            out_path = OUTPUT_DIR / f"{strat_name}{session_tag}_{timestamp}.json"
+            atomic_write_json(out_path, report)
+
+            best = report.get("best_result", {})
+            cls = report.get("overall_classification", "REJECT")
+            print(f"    -> {cls}: best={best.get('asset','?')} PF={best.get('pf',0):.2f}")
+            tested += 1
+        except Exception as e:
+            print(f"    -> ERROR: {e}")
+
+    return {"tested": tested}
+
+
 POST_HOOKS = {
     "_daily_controller_post": _daily_controller_post,
     "_daily_drift_post": _daily_drift_post,
+}
+
+CUSTOM_RUNNERS = {
+    "_run_batch_first_pass": _run_batch_first_pass,
 }
 
 
@@ -237,6 +342,15 @@ def run_job(job_name: str, job_def: dict) -> dict:
 
     try:
         print(f"  Running {job_name}...")
+
+        # Custom runner (for complex multi-step jobs)
+        custom_runner = job_def.get("custom_runner")
+        if custom_runner and custom_runner in CUSTOM_RUNNERS:
+            run_result = CUSTOM_RUNNERS[custom_runner]()
+            result["status"] = "SUCCESS"
+            result["finished"] = datetime.now().isoformat()
+            result["duration_sec"] = (datetime.now() - start).total_seconds()
+            return result
 
         if use_subprocess:
             # Run as subprocess to avoid argparse conflicts

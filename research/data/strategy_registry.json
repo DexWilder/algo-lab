@@ -1470,6 +1470,34 @@
       "controller_state": "ARCHIVED",
       "review_priority": "LOW",
       "state_history": []
+    },
+    {
+      "strategy_id": "MomPB-6E-Long-US",
+      "strategy_name": "momentum_pullback_trend",
+      "family": "trend",
+      "asset": "6E",
+      "session": "us_only",
+      "direction": "long",
+      "source": "batch_first_pass_discovery",
+      "rule_summary": "EMA200 trend + EMA50 pullback bounce + RSI confirmation. US session only. Surfaced by batch_first_pass cross-asset scan.",
+      "status": "testing",
+      "validation_score": null,
+      "profit_factor": 1.72,
+      "notes": "Batch discovery: PF 1.72, Sharpe 2.90, 48 trades, US session. Previously missed because 6E was only tested without session filter. Needs validation battery.",
+      "last_review_date": "2026-03-16",
+      "controller_state": "VALIDATED",
+      "controller_action": "OFF",
+      "review_priority": "HIGH",
+      "batch_first_pass": {
+        "run_date": "2026-03-16",
+        "classification": "SALVAGE",
+        "best_mode": "long",
+        "best_pf": 1.72,
+        "best_sharpe": 2.9,
+        "best_trades": 48,
+        "report_file": "research/data/first_pass/momentum_pullback_trend_us_20260316_1008.json"
+      },
+      "state_history": []
     }
   ]
 }
