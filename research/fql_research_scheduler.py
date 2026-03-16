@@ -71,8 +71,8 @@ JOBS = {
         "module": "research.daily_portfolio_decision_report",
         "function": None,
         "priority": 5,
-        "subprocess": True,  # Uses argparse — run as subprocess
-        "subprocess_args": ["--save"],
+        "subprocess": True,
+        "subprocess_args": ["--from-cache", "--save"],
     },
 
     # ── Twice Weekly ──────────────────────────────────────────────────
@@ -225,8 +225,9 @@ def run_job(job_name: str, job_def: dict) -> dict:
             # Run as subprocess to avoid argparse conflicts
             cmd = [sys.executable, "-m", module_name]
             cmd.extend(job_def.get("subprocess_args", []))
+            timeout = job_def.get("subprocess_timeout", 1800)  # 30 min default
             proc = subprocess.run(
-                cmd, cwd=str(ROOT), capture_output=True, text=True, timeout=600,
+                cmd, cwd=str(ROOT), capture_output=True, text=True, timeout=timeout,
             )
             if proc.returncode != 0:
                 raise RuntimeError(f"Exit code {proc.returncode}: {proc.stderr[-500:]}")

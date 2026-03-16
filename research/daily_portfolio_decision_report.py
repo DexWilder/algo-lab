@@ -596,6 +596,26 @@ def print_terminal_report(report: dict):
 
 # ── Main ─────────────────────────────────────────────────────────────────────
 
+ACTIVATION_MATRIX_PATH = ROOT / "research" / "data" / "portfolio_activation_matrix.json"
+
+
+def load_cached_controller_results() -> dict | None:
+    """Load cached activation matrix if it exists and is from today."""
+    if not ACTIVATION_MATRIX_PATH.exists():
+        return None
+    try:
+        with open(ACTIVATION_MATRIX_PATH) as f:
+            data = json.load(f)
+        # Check if from today
+        report_date = data.get("report_date", "")
+        today = datetime.now().strftime("%Y-%m-%d")
+        if report_date.startswith(today):
+            return data
+    except (json.JSONDecodeError, KeyError):
+        pass
+    return None
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="FQL Daily Portfolio Decision Report"
@@ -606,10 +626,21 @@ def main():
                         help="Save JSON + Markdown reports")
     parser.add_argument("--fast", action="store_true",
                         help="Skip heavy backtests")
+    parser.add_argument("--from-cache", action="store_true",
+                        help="Use cached activation matrix (skip controller re-run)")
     args = parser.parse_args()
 
-    # Run controller
-    controller_results = run_controller(skip_heavy=args.fast)
+    # Try cached results first (avoids re-running 20+ min of backtests)
+    controller_results = None
+    if args.from_cache:
+        controller_results = load_cached_controller_results()
+        if controller_results:
+            print("Using cached activation matrix from today.")
+        else:
+            print("No cached results from today — running controller.")
+
+    if controller_results is None:
+        controller_results = run_controller(skip_heavy=args.fast)
 
     # Build report
     report = build_report_data(controller_results)
