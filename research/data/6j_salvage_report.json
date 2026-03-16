@@ -1,0 +1,65 @@
+{
+  "report_date": "2026-03-16",
+  "asset": "6J",
+  "description": "Controlled salvage analysis of 3 transfer candidates on Japanese Yen futures",
+  "strategies": {
+    "momentum_pullback_trend": {
+      "classification": "REAL_FOOTHOLD",
+      "overall": {"trades": 146, "pnl": 954, "pf": 1.09, "wr": 60, "avg_pnl": 7},
+      "mode_split": {
+        "long": {"trades": 146, "pnl": 954, "pf": 1.09},
+        "short": {"trades": 0, "pnl": 0, "pf": 0}
+      },
+      "walk_forward": {
+        "first_half": {"trades": 66, "pnl": 510, "pf": 1.09},
+        "second_half": {"trades": 79, "pnl": 540, "pf": 1.10}
+      },
+      "session_analysis": {
+        "asia_europe": {"trades": 112, "pnl": -630},
+        "us_morning": {"trades": 20, "pnl": 988},
+        "us_afternoon": {"trades": 14, "pnl": 596}
+      },
+      "notes": "Long-only, consistent walk-forward, US session profitable. Restrict to US session for promotion candidate.",
+      "recommendation": "VALIDATE — run full validation battery with US-session restriction"
+    },
+    "xb_pb_ema_timestop": {
+      "classification": "FRAGILE_EDGE",
+      "overall": {"trades": 294, "pnl": 1271, "pf": 1.09, "wr": 40, "avg_pnl": 4},
+      "mode_split": {
+        "long": {"trades": 127, "pnl": 551, "pf": 1.08},
+        "short": {"trades": 167, "pnl": 720, "pf": 1.10}
+      },
+      "walk_forward": {
+        "first_half": {"trades": 145, "pnl": -981, "pf": 0.88},
+        "second_half": {"trades": 151, "pnl": 2323, "pf": 1.36}
+      },
+      "session_analysis": {
+        "asia_europe": {"trades": 3, "pnl": -64},
+        "us_morning": {"trades": 225, "pnl": 356},
+        "us_afternoon": {"trades": 66, "pnl": 979}
+      },
+      "notes": "Walk-forward unstable (losing first half, winning second). Possible regime shift or recency bias.",
+      "recommendation": "MONITOR — do not promote, revisit after more data"
+    },
+    "ttm_squeeze": {
+      "classification": "NOISE",
+      "overall": {"trades": 23, "pnl": 149, "pf": 1.21, "wr": 48, "avg_pnl": 6},
+      "mode_split": {
+        "long": {"trades": 12, "pnl": 195, "pf": 1.73},
+        "short": {"trades": 11, "pnl": -46, "pf": 0.89}
+      },
+      "walk_forward": {
+        "first_half": {"trades": 11, "pnl": -121, "pf": 0.68},
+        "second_half": {"trades": 12, "pnl": 270, "pf": 1.84}
+      },
+      "notes": "23 trades total — insufficient for any statistical conclusion. Walk-forward contradictory.",
+      "recommendation": "ARCHIVE — insufficient evidence"
+    }
+  },
+  "summary": {
+    "real_foothold": 1,
+    "fragile_edge": 1,
+    "noise": 1,
+    "next_step": "Run momentum_pullback_trend through validation battery with US-session restriction on 6J"
+  }
+}

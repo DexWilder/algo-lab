@@ -1,0 +1,141 @@
+{
+  "created": "2026-03-16",
+  "description": "Native strategy family research map for rates and FX expansion",
+  "context": "Cross-asset transfer test showed 0/50 direct transfers from equity families. These asset classes require purpose-built strategy logic.",
+
+  "rates_native": {
+    "target_assets": ["ZN", "ZF", "ZB"],
+    "families": [
+      {
+        "id": "RATE-MR-001",
+        "name": "Intraday Rate Mean Reversion",
+        "concept": "Rates are strongly mean-reverting intraday. Fade extreme moves from session VWAP or rolling mean, exit at reversion to mean.",
+        "indicators": ["VWAP deviation", "Z-score from rolling mean", "ATR-normalized distance"],
+        "session": "US RTH (08:20-15:00 ET) or 23-hour",
+        "expected_holding": "30min - 4 hours",
+        "priority": "HIGH",
+        "rationale": "Rates intraday microstructure favors mean reversion due to dealer inventory management and hedging flows"
+      },
+      {
+        "id": "RATE-TREND-001",
+        "name": "Daily-Bar Rate Momentum",
+        "concept": "Rates trend strongly on daily+ timeframes driven by macro expectations. Use daily bars with trend-following logic (EMA crossover, breakout).",
+        "indicators": ["20/50/200-day EMA", "Donchian channels on daily", "ADX trend strength"],
+        "session": "Daily close",
+        "expected_holding": "2-20 days",
+        "priority": "HIGH",
+        "rationale": "Rate trends driven by Fed policy expectations, inflation data. Multi-day holding captures macro trends that intraday misses entirely."
+      },
+      {
+        "id": "RATE-CURVE-001",
+        "name": "Yield Curve Spread Trade",
+        "concept": "Trade ZN vs ZB (or ZF vs ZN) spread based on curve steepening/flattening signals.",
+        "indicators": ["ZN-ZB spread", "Spread momentum", "Spread mean reversion from historical range"],
+        "session": "Daily or intraday",
+        "expected_holding": "1-10 days",
+        "priority": "MEDIUM",
+        "rationale": "Yield curve slope is a fundamental macro signal. Spread trades are market-neutral (low beta to rates level)."
+      },
+      {
+        "id": "RATE-EVENT-001",
+        "name": "Macro Event Response",
+        "concept": "Trade systematic patterns around FOMC, CPI, NFP, PPI releases. Rates have well-documented pre/post event behavior.",
+        "indicators": ["Economic calendar", "Historical event reaction database", "Pre-event range compression"],
+        "session": "Event-specific windows",
+        "expected_holding": "Minutes to hours",
+        "priority": "MEDIUM",
+        "rationale": "Rates are the most macro-sensitive asset class. Event patterns are structural and well-documented in academic literature."
+      },
+      {
+        "id": "RATE-SESSION-001",
+        "name": "Session Transition Fade",
+        "concept": "Fade the opening move at London or NY open. Rates often overshoot at session transitions as new participants enter.",
+        "indicators": ["Session open range", "Pre-session range", "Volume spike at transition"],
+        "session": "London open (03:00 ET), NY open (08:00 ET)",
+        "expected_holding": "30min - 2 hours",
+        "priority": "MEDIUM",
+        "rationale": "23-hour market means session transitions create temporary dislocations that mean-revert."
+      }
+    ]
+  },
+
+  "fx_native": {
+    "target_assets": ["6E", "6J", "6B"],
+    "families": [
+      {
+        "id": "FX-SESS-001",
+        "name": "London/NY Session Breakout",
+        "concept": "FX volatility clusters around London (03:00-04:00 ET) and NY (08:00-09:00 ET) opens. Trade breakouts from pre-session consolidation ranges.",
+        "indicators": ["Asian session range", "London open range", "Volume surge at session open"],
+        "session": "London open, NY open",
+        "expected_holding": "1-6 hours",
+        "priority": "HIGH",
+        "rationale": "FX session breakout is one of the most well-documented intraday FX edges. London open accounts for majority of daily range."
+      },
+      {
+        "id": "FX-TREND-001",
+        "name": "Daily-Bar FX Trend Following",
+        "concept": "FX pairs trend well on daily timeframe. Simple trend-following (EMA, Donchian) on daily bars.",
+        "indicators": ["50/200-day EMA", "Donchian breakout", "ADX filter"],
+        "session": "Daily close",
+        "expected_holding": "5-30 days",
+        "priority": "HIGH",
+        "rationale": "FX daily trend following has decades of academic evidence (carry + momentum factors). Different alpha source from intraday."
+      },
+      {
+        "id": "FX-CARRY-001",
+        "name": "Carry-Biased Direction",
+        "concept": "Use interest rate differential as directional bias filter. Go long high-yielding currencies, short low-yielding when trend confirms.",
+        "indicators": ["Interest rate differential proxy", "Trend confirmation", "Risk-on/risk-off regime"],
+        "session": "Daily",
+        "expected_holding": "5-30 days",
+        "priority": "MEDIUM",
+        "rationale": "Carry trade is a well-known risk premium in FX. Using it as a filter rather than standalone reduces drawdown."
+      },
+      {
+        "id": "FX-CROSS-001",
+        "name": "Cross-Pair Momentum",
+        "concept": "If EUR/USD and GBP/USD both trending up, the shared USD weakness signal is stronger. Use cross-pair confirmation for higher-conviction entries.",
+        "indicators": ["Multi-pair trend alignment", "USD index proxy", "Correlation regime"],
+        "session": "Daily or intraday",
+        "expected_holding": "1-10 days",
+        "priority": "MEDIUM",
+        "rationale": "Cross-pair analysis provides independent confirmation that reduces false signals."
+      },
+      {
+        "id": "FX-MR-001",
+        "name": "Intraday FX Mean Reversion",
+        "concept": "Fade extreme deviations from session VWAP in quiet periods (late US, early Asian session).",
+        "indicators": ["Session VWAP", "Bollinger Bands", "Volume decay filter"],
+        "session": "Low-volatility periods",
+        "expected_holding": "30min - 3 hours",
+        "priority": "LOW",
+        "rationale": "FX mean reversion works in specific low-vol windows. Lower priority than session breakout."
+      }
+    ]
+  },
+
+  "recommended_first_3_prototypes": [
+    {
+      "rank": 1,
+      "id": "FX-SESS-001",
+      "name": "London/NY Session Breakout",
+      "target_assets": ["6E", "6B", "6J"],
+      "reason": "Most documented FX intraday edge. Infrastructure already supports ORB-style logic — adapt session times and range definitions."
+    },
+    {
+      "rank": 2,
+      "id": "RATE-MR-001",
+      "name": "Intraday Rate Mean Reversion",
+      "target_assets": ["ZN", "ZB", "ZF"],
+      "reason": "Rates are structurally mean-reverting intraday. VWAP deviation logic exists in FQL — adapt for rates session/vol characteristics."
+    },
+    {
+      "rank": 3,
+      "id": "FX-TREND-001",
+      "name": "Daily-Bar FX Trend Following",
+      "target_assets": ["6E", "6J", "6B"],
+      "reason": "Opens multi-horizon lane (daily bars). Decades of academic evidence. Genuinely uncorrelated to intraday equity strategies."
+    }
+  ]
+}
