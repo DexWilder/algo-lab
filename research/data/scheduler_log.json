@@ -1,0 +1,44 @@
+[
+  {
+    "job": "daily_health_check",
+    "cadence": "daily",
+    "started": "2026-03-15T19:22:04.364024",
+    "status": "SUCCESS",
+    "finished": "2026-03-15T19:22:06.611697",
+    "duration_sec": 2.247678
+  },
+  {
+    "job": "daily_half_life",
+    "cadence": "daily",
+    "started": "2026-03-15T19:22:06.611720",
+    "status": "SUCCESS",
+    "finished": "2026-03-15T19:25:34.375649",
+    "duration_sec": 207.763937
+  },
+  {
+    "job": "daily_contribution",
+    "cadence": "daily",
+    "started": "2026-03-15T19:25:34.375676",
+    "status": "SUCCESS",
+    "finished": "2026-03-15T19:28:19.516441",
+    "duration_sec": 165.140801
+  },
+  {
+    "job": "daily_activation_matrix",
+    "cadence": "daily",
+    "started": "2026-03-15T19:28:19.516515",
+    "status": "SUCCESS",
+    "finished": "2026-03-15T19:38:49.042204",
+    "duration_sec": 629.525693
+  },
+  {
+    "job": "daily_decision_report",
+    "cadence": "daily",
+    "started": "2026-03-15T19:38:49.042218",
+    "status": "ERROR",
+    "message": "Command '['/usr/local/opt/python@3.14/bin/python3.14', '-m', 'research.daily_portfolio_decision_report', '--save']' timed out after 600 seconds",
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/chasefisher/Desktop/Algo Trading/algo-lab/research/fql_research_scheduler.py\", line 228, in run_job\n    proc = subprocess.run(\n        cmd, cwd=str(ROOT), capture_output=True, text=True, timeout=600,\n    )\n  File \"/usr/local/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py\", line 556, in run\n    stdout, stderr = process.communicate(input, timeout=timeout)\n                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py\", line 1220, in communicate\n    stdout, stderr = self._communicate(input, endtime, timeout)\n                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py\", line 2153, in _communicate\n    self._check_timeout(endtime, orig_timeout, stdout, stderr)\n    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py\", line 1267, in _check_timeout\n    raise TimeoutExpired(\n    ...<2 lines>...\n            stderr=b''.join(stderr_seq) if stderr_seq else None)\nsubprocess.TimeoutExpired: Command '['/usr/local/opt/python@3.14/bin/python3.14', '-m', 'research.daily_portfolio_decision_report', '--save']' timed out after 600 seconds\n",
+    "finished": "2026-03-15T19:48:49.112842",
+    "duration_sec": 600.070665
+  }
+]

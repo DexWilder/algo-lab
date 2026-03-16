@@ -7,14 +7,14 @@
 
     <key>ProgramArguments</key>
     <array>
-        <string>/bin/bash</string>
-        <string>/Users/chasefisher/Desktop/Algo Trading/algo-lab/scripts/run_fql_daily.sh</string>
+        <string>/usr/local/bin/python3</string>
+        <string>/Users/chasefisher/Desktop/Algo Trading/algo-lab/research/fql_research_scheduler.py</string>
+        <string>--daily</string>
     </array>
 
     <!-- Weekdays at 17:30 (after market close) -->
     <key>StartCalendarInterval</key>
     <array>
-        <!-- Monday -->
         <dict>
             <key>Weekday</key>
             <integer>1</integer>
@@ -23,7 +23,6 @@
             <key>Minute</key>
             <integer>30</integer>
         </dict>
-        <!-- Tuesday -->
         <dict>
             <key>Weekday</key>
             <integer>2</integer>
@@ -32,7 +31,6 @@
             <key>Minute</key>
             <integer>30</integer>
         </dict>
-        <!-- Wednesday -->
         <dict>
             <key>Weekday</key>
             <integer>3</integer>
@@ -41,7 +39,6 @@
             <key>Minute</key>
             <integer>30</integer>
         </dict>
-        <!-- Thursday -->
         <dict>
             <key>Weekday</key>
             <integer>4</integer>
@@ -50,7 +47,6 @@
             <key>Minute</key>
             <integer>30</integer>
         </dict>
-        <!-- Friday -->
         <dict>
             <key>Weekday</key>
             <integer>5</integer>
@@ -69,5 +65,13 @@
 
     <key>WorkingDirectory</key>
     <string>/Users/chasefisher/Desktop/Algo Trading/algo-lab</string>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/usr/local/bin:/usr/bin:/bin</string>
+        <key>HOME</key>
+        <string>/Users/chasefisher</string>
+    </dict>
 </dict>
 </plist>

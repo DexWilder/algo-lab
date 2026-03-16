@@ -1,0 +1,280 @@
+{
+  "report_date": "2026-03-15 19:28",
+  "sections": {
+    "health_summary": {
+      "headline_metrics": {
+        "total_strategies_evaluated": 10,
+        "active_count": 8,
+        "probation_count": 2,
+        "disabled_count": 0,
+        "avg_activation_score": 0.69,
+        "health_status": "FAIL"
+      },
+      "warnings": [
+        "Kill flags: redundancy",
+        "Edge decaying: HL status=ARCHIVE_CANDIDATE",
+        "Edge decaying: HL status=ARCHIVE_CANDIDATE"
+      ],
+      "flagged_decay": [
+        "RangeExpansion-MCL-Short",
+        "GapMom-MNQ-Long"
+      ],
+      "flagged_archive": []
+    },
+    "state_changes": {
+      "promotions": [],
+      "demotions": [],
+      "total_changes": 0
+    },
+    "activation_matrix": [
+      {
+        "strategy_id": "XB-PB-EMA-MES-Short",
+        "asset": "MES",
+        "family": "pullback",
+        "exposure": "trend_persistence",
+        "activation_score": 0.845,
+        "recommended_action": "FULL_ON",
+        "state": "ACTIVE",
+        "situation": "HEALTHY",
+        "confidence": 1.0,
+        "uncertainty": false,
+        "review_priority": "LOW"
+      },
+      {
+        "strategy_id": "GapMom-MGC-Long",
+        "asset": "MGC",
+        "family": "breakout",
+        "exposure": "gap_continuation",
+        "activation_score": 0.845,
+        "recommended_action": "FULL_ON",
+        "state": "VALIDATED",
+        "situation": "HEALTHY",
+        "confidence": 1.0,
+        "uncertainty": false,
+        "review_priority": "LOW"
+      },
+      {
+        "strategy_id": "BB-EQ-MGC-Long",
+        "asset": "MGC",
+        "family": "mean_reversion",
+        "exposure": "mean_reversion",
+        "activation_score": 0.825,
+        "recommended_action": "FULL_ON",
+        "state": "ACTIVE",
+        "situation": "HEALTHY",
+        "confidence": 1.0,
+        "uncertainty": false,
+        "review_priority": "LOW"
+      },
+      {
+        "strategy_id": "ORB-MGC-Long",
+        "asset": "MGC",
+        "family": "breakout",
+        "exposure": "opening_range",
+        "activation_score": 0.8,
+        "recommended_action": "FULL_ON",
+        "state": "ACTIVE",
+        "situation": "HEALTHY",
+        "confidence": 1.0,
+        "uncertainty": false,
+        "review_priority": "LOW"
+      },
+      {
+        "strategy_id": "PB-MGC-Short",
+        "asset": "MGC",
+        "family": "pullback",
+        "exposure": "trend_persistence",
+        "activation_score": 0.8,
+        "recommended_action": "FULL_ON",
+        "state": "ACTIVE",
+        "situation": "HEALTHY",
+        "confidence": 1.0,
+        "uncertainty": false,
+        "review_priority": "LOW"
+      },
+      {
+        "strategy_id": "NoiseBoundary-MNQ-Long",
+        "asset": "MNQ",
+        "family": "breakout",
+        "exposure": "volatility_expansion",
+        "activation_score": 0.68,
+        "recommended_action": "REDUCED_ON",
+        "state": "PROBATION",
+        "situation": "REDUNDANT",
+        "confidence": 1.0,
+        "uncertainty": true,
+        "review_priority": "LOW"
+      },
+      {
+        "strategy_id": "Donchian-MNQ-Long-GRINDING",
+        "asset": "MNQ",
+        "family": "breakout",
+        "exposure": "trend_persistence",
+        "activation_score": 0.635,
+        "recommended_action": "REDUCED_ON",
+        "state": "ACTIVE",
+        "situation": "HEALTHY",
+        "confidence": 1.0,
+        "uncertainty": false,
+        "review_priority": "LOW"
+      },
+      {
+        "strategy_id": "VWAP-MNQ-Long",
+        "asset": "MNQ",
+        "family": "trend",
+        "exposure": "trend_persistence",
+        "activation_score": 0.63,
+        "recommended_action": "REDUCED_ON",
+        "state": "ACTIVE",
+        "situation": "REDUNDANT",
+        "confidence": 1.0,
+        "uncertainty": false,
+        "review_priority": "LOW"
+      },
+      {
+        "strategy_id": "RangeExpansion-MCL-Short",
+        "asset": "MCL",
+        "family": "vol_expansion",
+        "exposure": "volatility_expansion",
+        "activation_score": 0.42,
+        "recommended_action": "PROBATION",
+        "state": "VALIDATED",
+        "situation": "EDGE_DECAY",
+        "confidence": 1.0,
+        "uncertainty": true,
+        "review_priority": "MEDIUM"
+      },
+      {
+        "strategy_id": "GapMom-MNQ-Long",
+        "asset": "MNQ",
+        "family": "breakout",
+        "exposure": "gap_continuation",
+        "activation_score": 0.42,
+        "recommended_action": "PROBATION",
+        "state": "VALIDATED",
+        "situation": "EDGE_DECAY",
+        "confidence": 1.0,
+        "uncertainty": true,
+        "review_priority": "MEDIUM"
+      }
+    ],
+    "probation_list": [
+      {
+        "strategy_id": "NoiseBoundary-MNQ-Long",
+        "activation_score": 0.68,
+        "reasons": [
+          "Kill flag triggered",
+          "Redundant with active strategy"
+        ]
+      },
+      {
+        "strategy_id": "RangeExpansion-MCL-Short",
+        "activation_score": 0.42,
+        "reasons": [
+          "Activation score below threshold"
+        ]
+      },
+      {
+        "strategy_id": "GapMom-MNQ-Long",
+        "activation_score": 0.42,
+        "reasons": [
+          "Activation score below threshold"
+        ]
+      }
+    ],
+    "archive_candidates": [],
+    "resurrection_candidates": [],
+    "redundancy_warnings": [
+      {
+        "type": "exposure_concentration",
+        "exposure": "trend_persistence",
+        "strategies": [
+          "VWAP-MNQ-Long",
+          "XB-PB-EMA-MES-Short",
+          "PB-MGC-Short",
+          "Donchian-MNQ-Long-GRINDING"
+        ],
+        "message": "trend_persistence: 4 active strategies share this edge \u2014 crowding risk"
+      },
+      {
+        "type": "family_concentration",
+        "family": "breakout",
+        "strategies": [
+          "ORB-MGC-Long",
+          "Donchian-MNQ-Long-GRINDING",
+          "NoiseBoundary-MNQ-Long",
+          "GapMom-MGC-Long"
+        ],
+        "message": "breakout: 4 active strategies \u2014 family overstacked"
+      },
+      {
+        "type": "session_concentration",
+        "session": "morning",
+        "strategies": [
+          "PB-MGC-Short",
+          "ORB-MGC-Long",
+          "XB-PB-EMA-MES-Short",
+          "GapMom-MGC-Long"
+        ],
+        "message": "morning: 4 strategies concentrated in same session window"
+      },
+      {
+        "type": "high_correlation",
+        "strategy": "VWAP-MNQ-Long",
+        "message": "VWAP-MNQ-Long: flagged as redundant with another active strategy"
+      },
+      {
+        "type": "high_correlation",
+        "strategy": "NoiseBoundary-MNQ-Long",
+        "message": "NoiseBoundary-MNQ-Long: flagged as redundant with another active strategy"
+      }
+    ],
+    "gap_summary": {
+      "uncovered_exposures": [
+        "inventory_reversion",
+        "liquidity_sweep",
+        "session_structure"
+      ],
+      "uncovered_assets": [
+        "M2K",
+        "MCL"
+      ],
+      "uncovered_sessions": [
+        "afternoon",
+        "close"
+      ],
+      "uncovered_families": [
+        "event_driven",
+        "vol_expansion"
+      ],
+      "regime_gaps": []
+    },
+    "research_suggestions": [
+      {
+        "priority": "HIGH",
+        "target": "Liquidity sweep / stop hunt strategies",
+        "reason": "No coverage of this edge type \u2014 potential uncorrelated returns"
+      },
+      {
+        "priority": "HIGH",
+        "target": "Event-driven / inventory strategies (EIA, FOMC)",
+        "reason": "No event-driven exposure \u2014 missing structural edge category"
+      },
+      {
+        "priority": "MEDIUM",
+        "target": "M2K-long or M2K-short strategies",
+        "reason": "No active strategies on M2K \u2014 asset gap"
+      },
+      {
+        "priority": "MEDIUM",
+        "target": "MCL-long or MCL-short strategies",
+        "reason": "No active strategies on MCL \u2014 asset gap"
+      },
+      {
+        "priority": "MEDIUM",
+        "target": "Probation strategy replacements",
+        "reason": "3 strategies on probation \u2014 search for stronger alternatives"
+      }
+    ]
+  }
+}

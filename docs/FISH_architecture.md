@@ -217,7 +217,7 @@ Status: BUILT. 60 automated checks, 52 PASS / 7 WARN / 1 FAIL.
 - Dynamic Portfolio Allocation (regime-driven capital sizing)
 
 ### Phase 5.7 — Advanced Monitoring Modules
-**Status: Module 1 BUILT, Modules 2-3 ROADMAP**
+**Status: ALL 3 MODULES BUILT**
 
 Three modules that move FQL from reactive diagnostics to proactive portfolio intelligence:
 
@@ -242,11 +242,12 @@ Three modules that move FQL from reactive diagnostics to proactive portfolio int
 - Integration: feeds `health_status` signal to Portfolio Regime Controller
 - Schedule: on-demand (integrated into weekly cadence when live)
 
-**Module 3 — Counterfactual Engine**
-- Answer "what if we had followed the controller's recommendations?"
-- Replay historical controller decisions against actual market outcomes
-- Track: counterfactual PnL, strategies that would have been activated/deactivated, opportunity cost of delays
-- Use cases: controller parameter tuning, threshold validation, confidence calibration
+**Module 3 — Counterfactual / Opportunity-Cost Engine** (`research/counterfactual_engine.py`)
+**Status: BUILT**
+- Portfolio-level opportunity-cost analysis: "Did this strategy improve the portfolio?"
+- 6 analysis dimensions: marginal Sharpe, marginal drawdown, overlap cost, slot efficiency, displaced opportunity, blocked-signal cost
+- Composite counterfactual score [-1, 1] per strategy with recommendations (KEEP_FULL, KEEP_REDUCED, REVIEW, REMOVE)
+- Persistent log (`research/data/counterfactual_log.json`)
 - Schedule: weekly (Saturday batch)
 
 ### Phase 6 — Forward Testing
