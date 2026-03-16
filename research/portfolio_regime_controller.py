@@ -46,20 +46,33 @@ REPORTS_DIR = ROOT / "research" / "reports"
 
 from research.strategy_genome_map import STRATEGIES as GENOME_STRATEGIES, EXPOSURE_TYPES
 
-# ── Strategy universe (same as half-life + kill criteria) ────────────────────
+# ── Strategy universe — derived from canonical registry ───────────────────────
+# Falls back to hardcoded list if registry is unavailable.
 
-EVAL_STRATEGIES = [
-    ("VWAP-MNQ-Long", "vwap_trend", "MNQ", "long"),
-    ("XB-PB-EMA-MES-Short", "xb_pb_ema_timestop", "MES", "short"),
-    ("ORB-MGC-Long", "orb_009", "MGC", "long"),
-    ("BB-EQ-MGC-Long", "bb_equilibrium", "MGC", "long"),
-    ("PB-MGC-Short", "pb_trend", "MGC", "short"),
-    ("Donchian-MNQ-Long-GRINDING", "donchian_trend", "MNQ", "long"),
-    ("NoiseBoundary-MNQ-Long", "noise_boundary", "MNQ", "long"),
-    ("RangeExpansion-MCL-Short", "range_expansion", "MCL", "short"),
-    ("GapMom-MGC-Long", "gap_mom", "MGC", "long"),
-    ("GapMom-MNQ-Long", "gap_mom", "MNQ", "long"),
-]
+def _load_eval_strategies():
+    """Load eval strategies from registry, with hardcoded fallback."""
+    try:
+        from engine.strategy_universe import get_eval_strategies
+        strategies = get_eval_strategies()
+        if strategies:
+            return strategies
+    except Exception:
+        pass
+    # Fallback: hardcoded list
+    return [
+        ("VWAP-MNQ-Long", "vwap_trend", "MNQ", "long"),
+        ("XB-PB-EMA-MES-Short", "xb_pb_ema_timestop", "MES", "short"),
+        ("ORB-MGC-Long", "orb_009", "MGC", "long"),
+        ("BB-EQ-MGC-Long", "bb_equilibrium", "MGC", "long"),
+        ("PB-MGC-Short", "pb_trend", "MGC", "short"),
+        ("Donchian-MNQ-Long-GRINDING", "donchian_trend", "MNQ", "long"),
+        ("NoiseBoundary-MNQ-Long", "noise_boundary", "MNQ", "long"),
+        ("RangeExpansion-MCL-Short", "range_expansion", "MCL", "short"),
+        ("GapMom-MGC-Long", "gap_mom", "MGC", "long"),
+        ("GapMom-MNQ-Long", "gap_mom", "MNQ", "long"),
+    ]
+
+EVAL_STRATEGIES = _load_eval_strategies()
 
 
 # ── Data Loaders ─────────────────────────────────────────────────────────────
@@ -410,14 +423,14 @@ def assess_regime_fit(strategy_id: str, regime_states: dict) -> str:
             return "allowed"
 
     # Check if current regime is avoided
-    # Use strategy controller config for avoid_regimes if available
-    from engine.strategy_controller import PORTFOLIO_CONFIG
-    strat_config = PORTFOLIO_CONFIG.get("strategies", {}).get(strategy_id, {})
-    if not strat_config:
+    # Use canonical strategy universe for avoid_regimes
+    from engine.strategy_universe import get_avoid_regimes
+    avoid_regimes_list = get_avoid_regimes(strategy_id)
+    if not avoid_regimes_list:
         # Try base ID without -GRINDING suffix
         base_id = strategy_id.rsplit("-", 1)[0] if strategy_id.endswith("-GRINDING") else strategy_id
-        strat_config = PORTFOLIO_CONFIG.get("strategies", {}).get(base_id, {})
-    avoid_regimes = set(strat_config.get("avoid_regimes", []))
+        avoid_regimes_list = get_avoid_regimes(base_id)
+    avoid_regimes = set(avoid_regimes_list)
     if avoid_regimes & current:
         return "avoid"
 

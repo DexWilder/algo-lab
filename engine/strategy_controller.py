@@ -18,7 +18,11 @@ import numpy as np
 import pandas as pd
 
 
-# ── Portfolio Configuration ──────────────────────────────────────────────────
+# ── Portfolio Configuration (LEGACY FALLBACK) ────────────────────────────────
+# DEPRECATED: Use engine.strategy_universe.build_portfolio_config() instead.
+# This hardcoded config is retained as a safety fallback if the strategy
+# registry is unavailable or corrupted. The canonical source of truth is
+# research/data/strategy_registry.json.
 
 PORTFOLIO_CONFIG = {
     # ── Global portfolio limits ──────────────────────────────────────────

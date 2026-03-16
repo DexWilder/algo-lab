@@ -27,7 +27,8 @@ sys.path.insert(0, str(ROOT))
 
 from engine.backtest import run_backtest
 from engine.regime_engine import RegimeEngine
-from engine.strategy_controller import StrategyController, PORTFOLIO_CONFIG
+from engine.strategy_controller import StrategyController
+from engine.strategy_universe import build_portfolio_config
 
 PROCESSED_DIR = ROOT / "data" / "processed"
 STATE_DIR = ROOT / "state"
@@ -73,10 +74,10 @@ def load_account_state() -> dict:
 
 
 def save_account_state(state: dict):
+    from research.utils.atomic_io import atomic_write_json
     state["last_run"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     state["run_count"] = state.get("run_count", 0) + 1
-    with open(ACCOUNT_STATE_PATH, "w") as f:
-        json.dump(state, f, indent=2)
+    atomic_write_json(ACCOUNT_STATE_PATH, state)
 
 
 def load_strategy(name: str):
@@ -217,8 +218,9 @@ def main():
     # ── Load data & check for new bars ───────────────────────────────────
     print(f"\n  Checking for new data...")
     engine = RegimeEngine()
-    controller = StrategyController(PORTFOLIO_CONFIG)
-    strat_configs = PORTFOLIO_CONFIG["strategies"]
+    portfolio_config = build_portfolio_config()
+    controller = StrategyController(portfolio_config)
+    strat_configs = portfolio_config["strategies"]
 
     data_cache = {}
     regime_cache = {}

@@ -29,7 +29,8 @@ sys.path.insert(0, str(ROOT))
 
 from engine.backtest import run_backtest
 from engine.regime_engine import RegimeEngine
-from engine.strategy_controller import StrategyController, PORTFOLIO_CONFIG
+from engine.strategy_controller import StrategyController
+from engine.strategy_universe import build_portfolio_config
 from controllers.prop_controller import load_prop_config, PropController
 from execution.signal_logger import (
     PaperTradeLogger, SignalEvent, TradeEvent, ControllerState,
@@ -215,7 +216,7 @@ class PaperTradingEngine:
         starting_equity: float = 50_000.0,
         output_dir: Path = None,
     ):
-        self.config = portfolio_config or PORTFOLIO_CONFIG
+        self.config = portfolio_config or build_portfolio_config()
         self.starting_equity = starting_equity
         self.output_dir = output_dir or OUTPUT_DIR
         self.output_dir.mkdir(parents=True, exist_ok=True)

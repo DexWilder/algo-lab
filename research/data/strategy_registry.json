@@ -49,7 +49,29 @@
       "health_status": "FAIL",
       "genome_cluster": "trend_persistence",
       "resurrection_flag": false,
-      "state_history": []
+      "state_history": [],
+      "execution_config": {
+        "avoid_regimes": [
+          "RANGING"
+        ],
+        "preferred_regimes": [
+          "TRENDING",
+          "LOW_VOL",
+          "NORMAL_RV"
+        ],
+        "preferred_window": [
+          "10:00",
+          "13:00"
+        ],
+        "allowed_window": [
+          "10:00",
+          "14:30"
+        ],
+        "conviction_threshold_outside": 2,
+        "grinding_filter": false,
+        "exit_variant": null,
+        "priority": 6
+      }
     },
     {
       "strategy_id": "XB-PB-EMA-MES-Short",
@@ -96,7 +118,30 @@
       "health_status": "FAIL",
       "genome_cluster": "trend_persistence",
       "resurrection_flag": false,
-      "state_history": []
+      "state_history": [],
+      "execution_config": {
+        "avoid_regimes": [
+          "LOW_VOL",
+          "RANGING"
+        ],
+        "preferred_regimes": [
+          "TRENDING",
+          "HIGH_VOL",
+          "HIGH_RV"
+        ],
+        "preferred_window": [
+          "09:30",
+          "12:00"
+        ],
+        "allowed_window": [
+          "09:30",
+          "15:00"
+        ],
+        "conviction_threshold_outside": 3,
+        "grinding_filter": false,
+        "exit_variant": null,
+        "priority": 4
+      }
     },
     {
       "strategy_id": "ORB-MGC-Long",
@@ -143,7 +188,29 @@
       "health_status": "FAIL",
       "genome_cluster": "opening_range",
       "resurrection_flag": false,
-      "state_history": []
+      "state_history": [],
+      "execution_config": {
+        "avoid_regimes": [
+          "RANGING"
+        ],
+        "preferred_regimes": [
+          "HIGH_VOL",
+          "TRENDING",
+          "HIGH_RV"
+        ],
+        "preferred_window": [
+          "10:00",
+          "12:00"
+        ],
+        "allowed_window": [
+          "10:00",
+          "15:00"
+        ],
+        "conviction_threshold_outside": 2,
+        "grinding_filter": false,
+        "exit_variant": null,
+        "priority": 5
+      }
     },
     {
       "strategy_id": "Donchian-MNQ-Long-GRINDING",
@@ -195,7 +262,26 @@
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
       "genome_cluster": "trend_persistence",
-      "resurrection_flag": false
+      "resurrection_flag": false,
+      "execution_config": {
+        "avoid_regimes": [],
+        "preferred_regimes": [
+          "TRENDING",
+          "HIGH_VOL"
+        ],
+        "preferred_window": [
+          "09:30",
+          "14:00"
+        ],
+        "allowed_window": [
+          "09:30",
+          "14:00"
+        ],
+        "conviction_threshold_outside": 4,
+        "grinding_filter": true,
+        "exit_variant": "profit_ladder",
+        "priority": 3
+      }
     },
     {
       "strategy_id": "BB-EQ-MGC-Long",
@@ -242,7 +328,30 @@
       "health_status": "FAIL",
       "genome_cluster": "mean_reversion",
       "resurrection_flag": false,
-      "state_history": []
+      "state_history": [],
+      "execution_config": {
+        "avoid_regimes": [
+          "RANGING",
+          "LOW_RV"
+        ],
+        "preferred_regimes": [
+          "TRENDING",
+          "HIGH_RV",
+          "NORMAL_RV"
+        ],
+        "preferred_window": [
+          "09:45",
+          "14:45"
+        ],
+        "allowed_window": [
+          "09:45",
+          "14:45"
+        ],
+        "conviction_threshold_outside": 3,
+        "grinding_filter": false,
+        "exit_variant": null,
+        "priority": 4
+      }
     },
     {
       "strategy_id": "PB-MGC-Short",
@@ -289,7 +398,30 @@
       "health_status": "FAIL",
       "genome_cluster": "trend_persistence",
       "resurrection_flag": false,
-      "state_history": []
+      "state_history": [],
+      "execution_config": {
+        "avoid_regimes": [
+          "LOW_VOL",
+          "NORMAL_RV",
+          "LOW_RV"
+        ],
+        "preferred_regimes": [
+          "TRENDING",
+          "HIGH_RV"
+        ],
+        "preferred_window": [
+          "08:30",
+          "12:00"
+        ],
+        "allowed_window": [
+          "08:30",
+          "15:15"
+        ],
+        "conviction_threshold_outside": 3,
+        "grinding_filter": false,
+        "exit_variant": null,
+        "priority": 5
+      }
     },
     {
       "strategy_id": "MomIgn-M2K-Short",
