@@ -1415,6 +1415,55 @@
           "europe"
         ]
       }
+    },
+    {
+      "strategy_id": "FXBreak-6J-Short-London",
+      "strategy_name": "fx_session_breakout",
+      "family": "breakout",
+      "asset": "6J",
+      "session": "london_open",
+      "direction": "short",
+      "source": "native_prototype",
+      "rule_summary": "Asian range breakout at London open (03:00 ET). Short only. ATR filter + volume confirmation + trailing stop.",
+      "status": "testing",
+      "validation_score": null,
+      "profit_factor": 1.21,
+      "notes": "Native FX prototype. PF 1.21 / Sharpe 1.11. London session = primary edge. Walk-forward 1.08/1.35.",
+      "last_review_date": "2026-03-16",
+      "controller_state": "PAPER",
+      "controller_action": "PROBATION",
+      "review_priority": "HIGH",
+      "state_history": []
+    },
+    {
+      "strategy_id": "FXBreak-6E-Watchlist",
+      "strategy_name": "fx_session_breakout",
+      "family": "breakout",
+      "asset": "6E",
+      "session": "london_ny",
+      "direction": "both",
+      "source": "native_prototype",
+      "rule_summary": "6E session breakout needs refinement. PF 1.07/1.08 directional splits. Walk-forward H2 improving.",
+      "status": "idea",
+      "last_review_date": "2026-03-16",
+      "controller_state": "VALIDATED",
+      "review_priority": "MEDIUM",
+      "state_history": []
+    },
+    {
+      "strategy_id": "FXBreak-6B-NoPriority",
+      "strategy_name": "fx_session_breakout",
+      "family": "breakout",
+      "asset": "6B",
+      "session": "london_ny",
+      "direction": "both",
+      "source": "native_prototype",
+      "rule_summary": "6B session breakout: NO_EDGE. PF 0.55-0.85. Pound requires different native logic.",
+      "status": "rejected",
+      "last_review_date": "2026-03-16",
+      "controller_state": "ARCHIVED",
+      "review_priority": "LOW",
+      "state_history": []
     }
   ]
 }

@@ -1,0 +1,105 @@
+{
+  "run_date": "2026-03-16T09:32:49.485697",
+  "strategy": "rate_intraday_mr",
+  "results": [
+    {
+      "asset": "ZN",
+      "mode": "both",
+      "trades": 423,
+      "pnl": -13026.25,
+      "pf": 0.49,
+      "sharpe": -4.79,
+      "wr": 41.8,
+      "maxdd": 13081.25,
+      "classification": "NO_EDGE"
+    },
+    {
+      "asset": "ZN",
+      "mode": "long",
+      "trades": 188,
+      "pnl": -4454.38,
+      "pf": 0.577,
+      "sharpe": -3.41,
+      "wr": 47.9,
+      "maxdd": 4454.38,
+      "classification": "NO_EDGE"
+    },
+    {
+      "asset": "ZN",
+      "mode": "short",
+      "trades": 241,
+      "pnl": -8899.38,
+      "pf": 0.425,
+      "sharpe": -5.72,
+      "wr": 36.9,
+      "maxdd": 9094.38,
+      "classification": "NO_EDGE"
+    },
+    {
+      "asset": "ZB",
+      "mode": "both",
+      "trades": 423,
+      "pnl": -26995.0,
+      "pf": 0.483,
+      "sharpe": -5.09,
+      "wr": 40.9,
+      "maxdd": 26995.0,
+      "classification": "NO_EDGE"
+    },
+    {
+      "asset": "ZB",
+      "mode": "long",
+      "trades": 187,
+      "pnl": -8998.75,
+      "pf": 0.576,
+      "sharpe": -3.62,
+      "wr": 43.9,
+      "maxdd": 8998.75,
+      "classification": "NO_EDGE"
+    },
+    {
+      "asset": "ZB",
+      "mode": "short",
+      "trades": 242,
+      "pnl": -18136.25,
+      "pf": 0.426,
+      "sharpe": -5.66,
+      "wr": 38.8,
+      "maxdd": 18136.25,
+      "classification": "NO_EDGE"
+    },
+    {
+      "asset": "ZF",
+      "mode": "both",
+      "trades": 369,
+      "pnl": -6000.62,
+      "pf": 0.585,
+      "sharpe": -3.57,
+      "wr": 43.6,
+      "maxdd": 6791.25,
+      "classification": "NO_EDGE"
+    },
+    {
+      "asset": "ZF",
+      "mode": "long",
+      "trades": 174,
+      "pnl": -2497.5,
+      "pf": 0.645,
+      "sharpe": -2.6,
+      "wr": 42.5,
+      "maxdd": 3144.38,
+      "classification": "NO_EDGE"
+    },
+    {
+      "asset": "ZF",
+      "mode": "short",
+      "trades": 198,
+      "pnl": -3620.0,
+      "pf": 0.525,
+      "sharpe": -4.41,
+      "wr": 44.4,
+      "maxdd": 3725.0,
+      "classification": "NO_EDGE"
+    }
+  ]
+}
