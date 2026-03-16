@@ -1,0 +1,206 @@
+{
+  "run_date": "2026-03-16T08:45:32.776789",
+  "description": "Cross-asset transfer test: existing families on ZN/ZB 5m",
+  "results": [
+    {
+      "asset": "ZN",
+      "strategy": "momentum_pullback_trend",
+      "mode": "both",
+      "trades": 432,
+      "pnl": -12611.25,
+      "pf": 0.631,
+      "sharpe": -3.28,
+      "classification": "ASSET_MISMATCH"
+    },
+    {
+      "asset": "ZN",
+      "strategy": "donchian_trend_breakout",
+      "mode": "both",
+      "trades": 200,
+      "pnl": -8343.75,
+      "pf": 0.406,
+      "sharpe": -5.91,
+      "classification": "ASSET_MISMATCH"
+    },
+    {
+      "asset": "ZN",
+      "strategy": "vwap_trend",
+      "mode": "both",
+      "trades": 255,
+      "pnl": -8856.25,
+      "pf": 0.502,
+      "sharpe": -4.43,
+      "classification": "ASSET_MISMATCH"
+    },
+    {
+      "asset": "ZN",
+      "strategy": "donchian_trend",
+      "mode": "both",
+      "trades": 463,
+      "pnl": -17532.5,
+      "pf": 0.568,
+      "sharpe": -3.32,
+      "classification": "ASSET_MISMATCH"
+    },
+    {
+      "asset": "ZN",
+      "strategy": "ema_trend_rider",
+      "mode": "both",
+      "trades": 546,
+      "pnl": -17427.5,
+      "pf": 0.513,
+      "sharpe": -4.02,
+      "classification": "ASSET_MISMATCH"
+    },
+    {
+      "asset": "ZN",
+      "strategy": "momentum_ignition",
+      "mode": "both",
+      "trades": 19,
+      "pnl": -297.5,
+      "pf": 0.749,
+      "sharpe": -1.86,
+      "classification": "ASSET_MISMATCH"
+    },
+    {
+      "asset": "ZN",
+      "strategy": "pb_trend",
+      "mode": "both",
+      "trades": 0,
+      "pnl": 0.0,
+      "pf": 0,
+      "sharpe": 0,
+      "classification": "NO_SIGNALS"
+    },
+    {
+      "asset": "ZN",
+      "strategy": "xb_pb_ema_timestop",
+      "mode": "both",
+      "trades": 388,
+      "pnl": -8329.38,
+      "pf": 0.621,
+      "sharpe": -2.71,
+      "classification": "ASSET_MISMATCH"
+    },
+    {
+      "asset": "ZN",
+      "strategy": "bbkc_squeeze",
+      "mode": "both",
+      "trades": 924,
+      "pnl": -32872.5,
+      "pf": 0.223,
+      "sharpe": -13.04,
+      "classification": "ASSET_MISMATCH"
+    },
+    {
+      "asset": "ZN",
+      "strategy": "ttm_squeeze",
+      "mode": "both",
+      "trades": 100,
+      "pnl": -2843.75,
+      "pf": 0.432,
+      "sharpe": -5.59,
+      "classification": "ASSET_MISMATCH"
+    },
+    {
+      "asset": "ZB",
+      "strategy": "momentum_pullback_trend",
+      "mode": "both",
+      "trades": 366,
+      "pnl": -22165.0,
+      "pf": 0.598,
+      "sharpe": -3.8,
+      "classification": "ASSET_MISMATCH"
+    },
+    {
+      "asset": "ZB",
+      "strategy": "donchian_trend_breakout",
+      "mode": "both",
+      "trades": 213,
+      "pnl": -17563.75,
+      "pf": 0.376,
+      "sharpe": -6.2,
+      "classification": "ASSET_MISMATCH"
+    },
+    {
+      "asset": "ZB",
+      "strategy": "vwap_trend",
+      "mode": "both",
+      "trades": 240,
+      "pnl": -13131.25,
+      "pf": 0.549,
+      "sharpe": -3.41,
+      "classification": "ASSET_MISMATCH"
+    },
+    {
+      "asset": "ZB",
+      "strategy": "donchian_trend",
+      "mode": "both",
+      "trades": 481,
+      "pnl": -31327.5,
+      "pf": 0.604,
+      "sharpe": -3.22,
+      "classification": "ASSET_MISMATCH"
+    },
+    {
+      "asset": "ZB",
+      "strategy": "ema_trend_rider",
+      "mode": "both",
+      "trades": 520,
+      "pnl": -30925.0,
+      "pf": 0.51,
+      "sharpe": -4.24,
+      "classification": "ASSET_MISMATCH"
+    },
+    {
+      "asset": "ZB",
+      "strategy": "momentum_ignition",
+      "mode": "both",
+      "trades": 24,
+      "pnl": -1778.75,
+      "pf": 0.579,
+      "sharpe": -3.17,
+      "classification": "ASSET_MISMATCH"
+    },
+    {
+      "asset": "ZB",
+      "strategy": "pb_trend",
+      "mode": "both",
+      "trades": 0,
+      "pnl": 0.0,
+      "pf": 0,
+      "sharpe": 0,
+      "classification": "NO_SIGNALS"
+    },
+    {
+      "asset": "ZB",
+      "strategy": "xb_pb_ema_timestop",
+      "mode": "both",
+      "trades": 357,
+      "pnl": -17580.0,
+      "pf": 0.561,
+      "sharpe": -3.46,
+      "classification": "ASSET_MISMATCH"
+    },
+    {
+      "asset": "ZB",
+      "strategy": "bbkc_squeeze",
+      "mode": "both",
+      "trades": 968,
+      "pnl": -68295.0,
+      "pf": 0.235,
+      "sharpe": -12.48,
+      "classification": "ASSET_MISMATCH"
+    },
+    {
+      "asset": "ZB",
+      "strategy": "ttm_squeeze",
+      "mode": "both",
+      "trades": 71,
+      "pnl": -5427.5,
+      "pf": 0.322,
+      "sharpe": -7.32,
+      "classification": "ASSET_MISMATCH"
+    }
+  ]
+}
