@@ -6,6 +6,12 @@
 
 ## 2026-03-16
 
+### Strategic Pivot: Expand Opportunity Set
+- Full-stack assessment concluded infrastructure is ahead of opportunity set
+- 6 strategies on 3 correlated assets = ~2-3 independent bets (bottleneck)
+- Revised roadmap: Safety → Asset Expansion → Multi-Horizon → Evolution → Factor Decomposition
+- FQL mission shifts from "build smart system" to "diversified strategy factory"
+
 ### Portfolio Regime Allocation
 - Built allocation engine: 6-tier sizing (OFF/MICRO/REDUCED/BASE/BOOST/MAX_ALLOWED)
 - 5-stage pipeline: base tier, contribution/CF adjustments, crowding dampening, session-specific, validation
