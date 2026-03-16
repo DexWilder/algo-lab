@@ -95,6 +95,7 @@ def generate_signals(df, asset=None, mode="both"):
     event_armed = False
     bars_since_announce = 0
     event_date = None
+    traded_today = False
 
     for i in range(n):
         h = hour[i]
@@ -116,14 +117,15 @@ def generate_signals(df, asset=None, mode="both"):
             ref_price = np.nan
             event_armed = False
             bars_since_announce = 0
+            traded_today = False
 
         # ---- Capture reference price (10:25 bar on Wednesdays) ----
         if bar_dow == EVENT_DAY and h == PRE_REF_HOUR and m == PRE_REF_MIN:
             ref_price = bar_close
 
-        # ---- Arm event window after announcement ----
+        # ---- Arm event window after announcement (one trade per Wednesday) ----
         if bar_dow == EVENT_DAY and time_val >= ANNOUNCE_HOUR * 100 + ANNOUNCE_MIN:
-            if not np.isnan(ref_price) and not event_armed and position == 0:
+            if not np.isnan(ref_price) and not event_armed and position == 0 and not traded_today:
                 event_armed = True
                 bars_since_announce = 0
 
@@ -174,6 +176,7 @@ def generate_signals(df, asset=None, mode="both"):
                     position = 1
                     bars_held = 0
                     event_armed = False
+                    traded_today = True
                 elif move < 0 and allow_short:
                     entry_price = bar_close
                     stop_price = bar_close + bar_atr * SL_ATR_MULT
@@ -184,6 +187,7 @@ def generate_signals(df, asset=None, mode="both"):
                     position = -1
                     bars_held = 0
                     event_armed = False
+                    traded_today = True
 
     df["signal"] = signals
     df["exit_signal"] = exit_sigs

@@ -159,8 +159,9 @@ def generate_signals(df, asset=None, mode="both"):
             if bars_held >= MAX_HOLD_BARS:
                 exit_sigs[i] = position; position = 0; bars_since_trade = 0; continue
 
-        # ---- NR7 Detection ----
+        # ---- NR7 Detection (arm for NEXT bar) ----
         # Check if current bar is the narrowest of last NR_LOOKBACK bars
+        # If so, arm for breakout entry on the following bar
         if i >= NR_LOOKBACK and not nr7_armed and position == 0:
             recent_ranges = bar_range[i - NR_LOOKBACK + 1:i + 1]
             if br == recent_ranges.min() and br > 0:
@@ -169,11 +170,13 @@ def generate_signals(df, asset=None, mode="both"):
                     nr7_armed = True
                     nr7_high = bar_high
                     nr7_low = bar_low
+                    # Do NOT enter on this bar — wait for next bar
+                    continue
 
-        # ---- Entry (flat, NR7 armed, next bar) ----
+        # ---- Entry (flat, NR7 armed from previous bar) ----
         if position == 0 and nr7_armed:
             bars_since_trade += 1
-            nr7_armed = False  # Consume the signal (one-bar window)
+            nr7_armed = False  # Consume the signal
 
             if bars_since_trade < MIN_BARS_BETWEEN:
                 continue

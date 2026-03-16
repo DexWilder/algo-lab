@@ -1,0 +1,77 @@
+{
+  "strategy": "eia_reaction",
+  "run_date": "2026-03-16T10:37:40.844217",
+  "session_filter": null,
+  "asset_results": {
+    "MCL": {
+      "asset": "MCL",
+      "bars": 326546,
+      "modes": {
+        "both": {
+          "trades": 201,
+          "pnl": -246.24,
+          "pf": 0.929,
+          "sharpe": -0.5,
+          "maxdd": 618.08,
+          "wr": 42.3,
+          "avg_pnl": -1.23,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 105,
+          "pnl": -62.2,
+          "pf": 0.965,
+          "sharpe": -0.24,
+          "maxdd": 501.72,
+          "wr": 42.9,
+          "avg_pnl": -0.59,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 106,
+          "pnl": -129.44,
+          "pf": 0.93,
+          "sharpe": -0.49,
+          "maxdd": 274.72,
+          "wr": 42.5,
+          "avg_pnl": -1.22,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 103,
+          "pnl": 89.28,
+          "pf": 1.044,
+          "sharpe": 0.3,
+          "maxdd": 305.6,
+          "wr": 43.7,
+          "avg_pnl": 0.87
+        },
+        "H2": {
+          "trades": 98,
+          "pnl": -335.52,
+          "pf": 0.768,
+          "sharpe": -1.79,
+          "maxdd": 540.88,
+          "wr": 40.8,
+          "avg_pnl": -3.42
+        }
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Sufficient trades (201) but PF 0.93 < 1.1"
+      ]
+    }
+  },
+  "best_result": {
+    "asset": "MCL",
+    "classification": "REJECT",
+    "pf": 0.929,
+    "trades": 201
+  },
+  "overall_classification": "REJECT",
+  "overall_reasons": [
+    "Sufficient trades (201) but PF 0.93 < 1.1"
+  ]
+}
