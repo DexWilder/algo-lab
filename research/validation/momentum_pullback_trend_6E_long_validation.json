@@ -1,0 +1,23 @@
+{
+  "strategy": "MomPB-6E-Long-US",
+  "verdict": "FAIL",
+  "score": 4,
+  "failures": 4,
+  "tests": {
+    "Walk-Forward H1": false,
+    "Walk-Forward H2": true,
+    "Regime Stability": false,
+    "Bootstrap CI": "False",
+    "Top-Trade Removal": "True",
+    "Monte Carlo Ruin": false,
+    "Parameter Stability": true,
+    "Cross-Asset (6J)": true
+  },
+  "baseline": {
+    "trades": 20,
+    "pf": 1.66
+  },
+  "bootstrap_ci_lower": 0.759,
+  "p_ruin_2k": 1.0,
+  "param_stability_pct": 100.0
+}
