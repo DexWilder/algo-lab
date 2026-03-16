@@ -372,6 +372,138 @@ def compute_regime_drift(trades: pd.DataFrame, daily_states: list) -> dict:
     return results
 
 
+# ── Session / Time-of-Day Drift ──────────────────────────────────────────────
+
+SESSION_BUCKETS = {
+    "morning":   (9, 11),    # 09:00–10:59
+    "midday":    (11, 13),   # 11:00–12:59
+    "afternoon": (13, 16),   # 13:00–15:59
+}
+
+
+def _get_session(entry_time: str) -> str:
+    """Map entry_time string to session bucket."""
+    try:
+        hour = int(entry_time.split(" ")[1].split(":")[0])
+    except (IndexError, ValueError):
+        return "unknown"
+    for session, (start, end) in SESSION_BUCKETS.items():
+        if start <= hour < end:
+            return session
+    return "other"
+
+
+def compute_session_drift(trades: pd.DataFrame) -> dict:
+    """Compute per-session and per-strategy-per-session drift.
+
+    Detects cases like:
+        - strategy globally healthy but morning edge weakening
+        - portfolio drift concentrated in one session window
+    """
+    if trades.empty or "entry_time" not in trades.columns:
+        return {"status": "NO_DATA"}
+
+    trades = trades.copy()
+    trades["session"] = trades["entry_time"].apply(_get_session)
+
+    # ── Portfolio-level session breakdown ─────────────────────────────
+    portfolio_sessions = {}
+    for session in SESSION_BUCKETS:
+        sess_trades = trades[trades["session"] == session]
+        n = len(sess_trades)
+        if n == 0:
+            portfolio_sessions[session] = {"trades": 0, "severity": "NORMAL"}
+            continue
+
+        wins = len(sess_trades[sess_trades["pnl"] > 0])
+        wr = wins / n
+        avg_pnl = sess_trades["pnl"].mean()
+        total_pnl = sess_trades["pnl"].sum()
+
+        # Profit factor
+        gross_profit = sess_trades[sess_trades["pnl"] > 0]["pnl"].sum()
+        gross_loss = abs(sess_trades[sess_trades["pnl"] <= 0]["pnl"].sum())
+        pf = gross_profit / gross_loss if gross_loss > 0 else float("inf")
+
+        portfolio_sessions[session] = {
+            "trades": n,
+            "trade_share": round(n / len(trades), 3),
+            "win_rate": round(wr, 3),
+            "avg_pnl": round(avg_pnl, 2),
+            "total_pnl": round(total_pnl, 2),
+            "profit_factor": round(pf, 2),
+            "severity": "ALARM" if pf < 1.0 and n >= 10 else
+                        "DRIFT" if wr < 0.35 and n >= 10 else "NORMAL",
+        }
+
+    # ── Per-strategy session breakdown ────────────────────────────────
+    strategy_sessions = {}
+    for strat_name in BASELINE["strategies"]:
+        strat_trades = trades[trades["strategy"] == strat_name]
+        if strat_trades.empty:
+            continue
+
+        strat_result = {}
+        for session in SESSION_BUCKETS:
+            sess_trades = strat_trades[strat_trades["session"] == session]
+            n = len(sess_trades)
+            if n < 3:
+                strat_result[session] = {"trades": n, "severity": "INSUFFICIENT_DATA"}
+                continue
+
+            wins = len(sess_trades[sess_trades["pnl"] > 0])
+            wr = wins / n
+            avg_pnl = sess_trades["pnl"].mean()
+
+            # Compare against strategy's overall baseline
+            baseline = BASELINE["strategies"][strat_name]
+            wr_delta = wr - baseline["win_rate"]
+            pnl_ratio = avg_pnl / baseline["avg_pnl"] if baseline["avg_pnl"] != 0 else 0
+
+            severity = "NORMAL"
+            if n >= 10:
+                if abs(wr_delta) >= 0.20 or pnl_ratio <= 0.20:
+                    severity = "ALARM"
+                elif abs(wr_delta) >= 0.12 or pnl_ratio <= 0.50:
+                    severity = "DRIFT"
+            elif n >= 5:
+                # Small sample — only flag extreme deviations
+                if abs(wr_delta) >= 0.25 and pnl_ratio <= 0.0:
+                    severity = "ALARM"
+                elif abs(wr_delta) >= 0.20 or pnl_ratio <= 0.10:
+                    severity = "DRIFT"
+
+            strat_result[session] = {
+                "trades": n,
+                "win_rate": round(wr, 3),
+                "wr_delta": round(wr_delta, 3),
+                "avg_pnl": round(avg_pnl, 2),
+                "pnl_ratio": round(pnl_ratio, 2),
+                "severity": severity,
+            }
+
+        strategy_sessions[strat_name] = strat_result
+
+    # ── Session concentration check ──────────────────────────────────
+    # Flag if one session is dominating trade volume
+    total = len(trades)
+    concentration_warnings = []
+    for session, data in portfolio_sessions.items():
+        share = data.get("trade_share", 0)
+        if share > 0.60 and total >= 20:
+            concentration_warnings.append({
+                "session": session,
+                "share": share,
+                "message": f"{session} has {share:.0%} of all trades — concentration risk",
+            })
+
+    return {
+        "portfolio_sessions": portfolio_sessions,
+        "strategy_sessions": strategy_sessions,
+        "concentration_warnings": concentration_warnings,
+    }
+
+
 # ── Classification Helpers ───────────────────────────────────────────────────
 
 def _classify_drift_abs(delta: float, drift_thresh: float, alarm_thresh: float) -> str:
@@ -424,6 +556,7 @@ def run_drift_monitor() -> dict:
     portfolio_drift = compute_portfolio_drift(trades, equity, daily_states)
     strategy_drift = compute_strategy_drift(trades)
     regime_drift = compute_regime_drift(trades, daily_states)
+    session_drift = compute_session_drift(trades)
 
     # Build alerts
     alerts = []
@@ -457,6 +590,35 @@ def run_drift_monitor() -> dict:
                 "message": f"{strat}: drifting from baseline metrics",
             })
 
+    # Session-level alerts
+    for session, data in session_drift.get("portfolio_sessions", {}).items():
+        if data.get("severity") == "ALARM":
+            alerts.append({
+                "level": "ALARM",
+                "scope": f"SESSION:{session}",
+                "message": f"{session} session: portfolio losing money (PF={data.get('profit_factor', 0):.2f})",
+            })
+    for strat, sessions in session_drift.get("strategy_sessions", {}).items():
+        for session, data in sessions.items():
+            if data.get("severity") == "ALARM":
+                alerts.append({
+                    "level": "ALARM",
+                    "scope": f"{strat}:{session}",
+                    "message": f"{strat}: {session} edge degrading (WR delta {data.get('wr_delta', 0):+.1%})",
+                })
+            elif data.get("severity") == "DRIFT":
+                alerts.append({
+                    "level": "DRIFT",
+                    "scope": f"{strat}:{session}",
+                    "message": f"{strat}: {session} session drifting from baseline",
+                })
+    for warn in session_drift.get("concentration_warnings", []):
+        alerts.append({
+            "level": "DRIFT",
+            "scope": f"SESSION:{warn['session']}",
+            "message": warn["message"],
+        })
+
     results = {
         "report_date": report_date,
         "forward_period": {
@@ -466,6 +628,7 @@ def run_drift_monitor() -> dict:
         "portfolio_drift": portfolio_drift,
         "strategy_drift": strategy_drift,
         "regime_drift": regime_drift,
+        "session_drift": session_drift,
         "alerts": alerts,
         "overall_status": portfolio_drift.get("status", "NO_DATA"),
     }
@@ -569,6 +732,48 @@ def print_drift_report(results: dict):
             if isinstance(data, dict) and "days" in data:
                 print(f"  {regime:<15s} {data['days']}d  avg ${data['avg_daily_pnl']:>8.2f}/day  "
                       f"total ${data['total_pnl']:>8.2f}  pos_rate {data['positive_rate']:.0%}")
+
+    # ── Session Drift ──
+    session_drift = results.get("session_drift", {})
+    if session_drift and session_drift.get("status") != "NO_DATA":
+        port_sess = session_drift.get("portfolio_sessions", {})
+        if port_sess:
+            print(f"\n  SESSION / TIME-OF-DAY DRIFT")
+            print(f"  {THIN}")
+            print(f"  {'Session':<12s} {'Trades':>6s} {'Share':>7s} {'WR':>7s} {'Avg PnL':>10s} {'PF':>7s} {'Status':>8s}")
+            print(f"  {'-' * 59}")
+            for session in ["morning", "midday", "afternoon"]:
+                data = port_sess.get(session, {})
+                n = data.get("trades", 0)
+                if n == 0:
+                    print(f"  {session:<12s} {'0':>6s}")
+                    continue
+                sev = data.get("severity", "NORMAL")
+                ind = {"NORMAL": "  ", "DRIFT": "! ", "ALARM": "!!"}
+                print(f"  {ind.get(sev, '  ')}{session:<10s} {n:>6d} {data.get('trade_share', 0):>6.0%} "
+                      f"{data.get('win_rate', 0):>6.1%} ${data.get('avg_pnl', 0):>8.2f} "
+                      f"{data.get('profit_factor', 0):>6.2f} {sev:>8s}")
+
+        # Per-strategy session breakdown (only show non-NORMAL)
+        strat_sess = session_drift.get("strategy_sessions", {})
+        flagged = []
+        for strat, sessions in strat_sess.items():
+            for session, data in sessions.items():
+                if data.get("severity") in ("DRIFT", "ALARM"):
+                    flagged.append((strat, session, data))
+
+        if flagged:
+            print(f"\n  Strategy session drift flags:")
+            for strat, session, data in flagged:
+                sev = data["severity"]
+                ind = "!!" if sev == "ALARM" else "! "
+                print(f"  {ind}{strat} [{session}]: WR {data.get('win_rate', 0):.0%} "
+                      f"(delta {data.get('wr_delta', 0):+.1%}), "
+                      f"avg ${data.get('avg_pnl', 0):.2f}, {data.get('trades', 0)} trades — {sev}")
+
+        # Concentration warnings
+        for warn in session_drift.get("concentration_warnings", []):
+            print(f"  ! {warn['message']}")
 
     # ── Alerts ──
     alerts = results.get("alerts", [])
