@@ -1,0 +1,62 @@
+{
+  "baseline": {
+    "trades": 43,
+    "pnl": 2780.0,
+    "pf": 1.578,
+    "sharpe": 2.92,
+    "maxdd": 1432.5,
+    "wr": 65.1
+  },
+  "walk_forward": {
+    "splits": [
+      {
+        "trades": 24,
+        "pnl": 1515.0,
+        "pf": 1.763,
+        "sharpe": 3.59,
+        "maxdd": 496.25,
+        "wr": 62.5
+      },
+      {
+        "trades": 19,
+        "pnl": 1265.0,
+        "pf": 1.448,
+        "sharpe": 2.42,
+        "maxdd": 1432.5,
+        "wr": 68.4
+      }
+    ],
+    "pass": true
+  },
+  "regime_stability": {
+    "pass": true
+  },
+  "asset_robustness": {
+    "pass": true,
+    "passing": 1
+  },
+  "bootstrap": {
+    "ci_lower": 0.748,
+    "pass": "False",
+    "top_trade_pf": 1.431,
+    "top_trade_pass": "True",
+    "p_ruin_2k": 1.0,
+    "ruin_pass": false
+  },
+  "parameter_stability": {
+    "profitable_pct": 80.0,
+    "pass": true
+  },
+  "verdict": "CONDITIONAL_PASS",
+  "score": 5,
+  "failures": 2,
+  "tests": {
+    "Walk-Forward": true,
+    "Regime Stability": true,
+    "Asset Robustness": true,
+    "Bootstrap CI": "False",
+    "Top-Trade Removal": "True",
+    "Monte Carlo Ruin": false,
+    "Parameter Stability": true
+  }
+}
