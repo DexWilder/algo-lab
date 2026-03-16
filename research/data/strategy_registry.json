@@ -1583,6 +1583,21 @@
         "exit_variant": null,
         "priority": 3
       }
+    },
+    {
+      "strategy_id": "FVG-Inversion-Signal",
+      "strategy_name": null,
+      "family": "ict",
+      "asset": "MNQ",
+      "session": "us_rth",
+      "direction": "both",
+      "source": "youtube_transcript_mech_model",
+      "rule_summary": "When a 5m bullish FVG gets body closed below (inverted), short. When bearish FVG gets body closed above, long. Higher-TF trend filter (4H EMA). Target 1:1 R:R or next session liquidity. Extracted from full ICT mech model \u2014 only the mechanical inversion component.",
+      "status": "idea",
+      "notes": "Compact hypothesis extracted from discretionary ICT model. Full model too discretionary for FQL. ICT family previously failed (ICT-010, ICT-011). This is a one-shot factory test to formally close or validate the ICT family. LOW PRIORITY \u2014 defer until higher-value candidates are processed.",
+      "last_review_date": "2026-03-16",
+      "review_priority": "LOW",
+      "state_history": []
     }
   ]
 }
