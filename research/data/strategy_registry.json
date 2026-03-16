@@ -27,7 +27,7 @@
       "last_review_date": "2026-03-15",
       "controller_state": "ACTIVE",
       "controller_action": "REDUCED_ON",
-      "activation_score": 0.69,
+      "activation_score": 0.665,
       "controller_reason_codes": [
         "REGIME_MATCH_LOW",
         "HALF_LIFE_STRENGTHENING",
@@ -35,12 +35,19 @@
         "LOW_REDUNDANCY",
         "HEALTH_FAIL",
         "KILL_NONE",
-        "TIME_WINDOW_MATCH",
+        "TIME_WINDOW_PARTIAL",
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
       "last_controller_date": "2026-03-15",
-      "review_priority": "LOW"
+      "review_priority": "LOW",
+      "prior_state": "ACTIVE",
+      "half_life_status": "HEALTHY",
+      "contribution_status": "NEUTRAL",
+      "health_status": "FAIL",
+      "genome_cluster": "trend_persistence",
+      "resurrection_flag": false,
+      "state_history": []
     },
     {
       "strategy_id": "XB-PB-EMA-MES-Short",
@@ -65,7 +72,7 @@
       "last_review_date": "2026-03-15",
       "controller_state": "ACTIVE",
       "controller_action": "FULL_ON",
-      "activation_score": 0.81,
+      "activation_score": 0.785,
       "controller_reason_codes": [
         "REGIME_MATCH_HIGH",
         "HALF_LIFE_STRENGTHENING",
@@ -73,12 +80,19 @@
         "LOW_REDUNDANCY",
         "HEALTH_FAIL",
         "KILL_NONE",
-        "TIME_WINDOW_MATCH",
+        "TIME_WINDOW_PARTIAL",
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
       "last_controller_date": "2026-03-15",
-      "review_priority": "LOW"
+      "review_priority": "LOW",
+      "prior_state": "ACTIVE",
+      "half_life_status": "HEALTHY",
+      "contribution_status": "NEUTRAL",
+      "health_status": "FAIL",
+      "genome_cluster": "trend_persistence",
+      "resurrection_flag": false,
+      "state_history": []
     },
     {
       "strategy_id": "ORB-MGC-Long",
@@ -103,7 +117,7 @@
       "last_review_date": "2026-03-15",
       "controller_state": "ACTIVE",
       "controller_action": "FULL_ON",
-      "activation_score": 0.81,
+      "activation_score": 0.785,
       "controller_reason_codes": [
         "REGIME_MATCH_HIGH",
         "HALF_LIFE_STRENGTHENING",
@@ -111,12 +125,19 @@
         "LOW_REDUNDANCY",
         "HEALTH_FAIL",
         "KILL_NONE",
-        "TIME_WINDOW_MATCH",
+        "TIME_WINDOW_PARTIAL",
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
       "last_controller_date": "2026-03-15",
-      "review_priority": "LOW"
+      "review_priority": "LOW",
+      "prior_state": "ACTIVE",
+      "half_life_status": "HEALTHY",
+      "contribution_status": "NEUTRAL",
+      "health_status": "FAIL",
+      "genome_cluster": "opening_range",
+      "resurrection_flag": false,
+      "state_history": []
     },
     {
       "strategy_id": "Donchian-MNQ-Long-GRINDING",
@@ -138,7 +159,7 @@
       "notes": "True trend-follower (60-bar hold). GRINDING-only filter. Regime gate: avoid HIGH_RV (+$2,199 recovery queued). Needs 150 trades for promotion.",
       "controller_state": "ACTIVE",
       "controller_action": "REDUCED_ON",
-      "activation_score": 0.69,
+      "activation_score": 0.665,
       "controller_reason_codes": [
         "REGIME_MATCH_LOW",
         "HALF_LIFE_STRENGTHENING",
@@ -146,12 +167,12 @@
         "LOW_REDUNDANCY",
         "HEALTH_FAIL",
         "KILL_NONE",
-        "TIME_WINDOW_MATCH",
+        "TIME_WINDOW_PARTIAL",
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
       "last_controller_date": "2026-03-15",
-      "review_priority": "HIGH",
+      "review_priority": "LOW",
       "state_history": [
         {
           "date": "2026-03-15",
@@ -160,7 +181,13 @@
           "trigger": "Recovery: score=0.69, HL=HEALTHY"
         }
       ],
-      "state_entered_date": "2026-03-15"
+      "state_entered_date": "2026-03-15",
+      "prior_state": "ACTIVE",
+      "half_life_status": "HEALTHY",
+      "contribution_status": "NEUTRAL",
+      "health_status": "FAIL",
+      "genome_cluster": "trend_persistence",
+      "resurrection_flag": false
     },
     {
       "strategy_id": "BB-EQ-MGC-Long",
@@ -198,7 +225,14 @@
         "RECENT_STABLE"
       ],
       "last_controller_date": "2026-03-15",
-      "review_priority": "LOW"
+      "review_priority": "LOW",
+      "prior_state": "ACTIVE",
+      "half_life_status": "HEALTHY",
+      "contribution_status": "NEUTRAL",
+      "health_status": "FAIL",
+      "genome_cluster": "mean_reversion",
+      "resurrection_flag": false,
+      "state_history": []
     },
     {
       "strategy_id": "PB-MGC-Short",
@@ -223,7 +257,7 @@
       "last_review_date": "2026-03-15",
       "controller_state": "ACTIVE",
       "controller_action": "FULL_ON",
-      "activation_score": 0.81,
+      "activation_score": 0.785,
       "controller_reason_codes": [
         "REGIME_MATCH_HIGH",
         "HALF_LIFE_STRENGTHENING",
@@ -231,12 +265,19 @@
         "LOW_REDUNDANCY",
         "HEALTH_FAIL",
         "KILL_NONE",
-        "TIME_WINDOW_MATCH",
+        "TIME_WINDOW_PARTIAL",
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
       "last_controller_date": "2026-03-15",
-      "review_priority": "LOW"
+      "review_priority": "LOW",
+      "prior_state": "ACTIVE",
+      "half_life_status": "HEALTHY",
+      "contribution_status": "NEUTRAL",
+      "health_status": "FAIL",
+      "genome_cluster": "trend_persistence",
+      "resurrection_flag": false,
+      "state_history": []
     },
     {
       "strategy_id": "MomIgn-M2K-Short",
@@ -1032,7 +1073,14 @@
         "RECENT_STABLE"
       ],
       "last_controller_date": "2026-03-15",
-      "review_priority": "LOW"
+      "review_priority": "LOW",
+      "prior_state": "PROBATION",
+      "half_life_status": "HEALTHY",
+      "contribution_status": "NEUTRAL",
+      "health_status": "FAIL",
+      "genome_cluster": "volatility_expansion",
+      "resurrection_flag": false,
+      "state_history": []
     },
     {
       "strategy_id": "VWAPPullback-MES-Long",

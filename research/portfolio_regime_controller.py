@@ -505,6 +505,13 @@ def run_controller(skip_heavy: bool = False) -> dict:
             "confidence": score_result["confidence"],
             "warnings": _build_warnings(signals, score_result, genome),
             "review_priority": _compute_review_priority(score_result, transition),
+            # Raw signals for registry persistence
+            "_signals": {
+                "half_life_status": signals["half_life_status"],
+                "contribution_verdict": signals["contribution_verdict"],
+                "health_status": signals["health_status"],
+                "genome_cluster": genome.get("primary_exposure", "unknown") if genome else "unknown",
+            },
         }
         activation_matrix.append(entry)
 
@@ -604,12 +611,31 @@ def apply_to_registry(results: dict):
         sid = entry["strategy_id"]
         for reg_strat in registry.get("strategies", []):
             if reg_strat.get("strategy_id") == sid:
+                # Core controller fields
+                prior_state = reg_strat.get("controller_state")
                 reg_strat["controller_state"] = entry["new_state"]
+                reg_strat["prior_state"] = prior_state or entry["current_state"]
                 reg_strat["controller_action"] = entry["recommended_action"]
                 reg_strat["activation_score"] = entry["activation_score"]
                 reg_strat["controller_reason_codes"] = entry["reason_codes"]
                 reg_strat["last_controller_date"] = today
                 reg_strat["review_priority"] = entry["review_priority"]
+
+                # Diagnostic status fields (from raw signals)
+                raw = entry.get("_signals", {})
+                reg_strat["half_life_status"] = raw.get("half_life_status")
+                reg_strat["contribution_status"] = raw.get("contribution_verdict")
+                reg_strat["health_status"] = raw.get("health_status")
+                reg_strat["genome_cluster"] = raw.get("genome_cluster")
+
+                # Resurrection flag
+                reg_strat["resurrection_flag"] = (
+                    entry["new_state"] == "RESURRECTION_CANDIDATE"
+                )
+
+                # Ensure state_history exists (empty if no transitions yet)
+                if "state_history" not in reg_strat:
+                    reg_strat["state_history"] = []
 
                 # Update state history
                 if entry["state_changed"]:
