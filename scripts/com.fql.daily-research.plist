@@ -8,7 +8,7 @@
     <key>ProgramArguments</key>
     <array>
         <string>/usr/local/bin/python3</string>
-        <string>/Users/chasefisher/Desktop/Algo Trading/algo-lab/research/fql_research_scheduler.py</string>
+        <string>/Users/chasefisher/projects/Algo Trading/algo-lab/research/fql_research_scheduler.py</string>
         <string>--daily</string>
     </array>
 
@@ -58,13 +58,13 @@
     </array>
 
     <key>StandardOutPath</key>
-    <string>/Users/chasefisher/Desktop/Algo Trading/algo-lab/research/logs/launchd_stdout.log</string>
+    <string>/Users/chasefisher/projects/Algo Trading/algo-lab/research/logs/launchd_stdout.log</string>
 
     <key>StandardErrorPath</key>
-    <string>/Users/chasefisher/Desktop/Algo Trading/algo-lab/research/logs/launchd_stderr.log</string>
+    <string>/Users/chasefisher/projects/Algo Trading/algo-lab/research/logs/launchd_stderr.log</string>
 
     <key>WorkingDirectory</key>
-    <string>/Users/chasefisher/Desktop/Algo Trading/algo-lab</string>
+    <string>/Users/chasefisher/projects/Algo Trading/algo-lab</string>
 
     <key>EnvironmentVariables</key>
     <dict>

@@ -8,7 +8,7 @@
 
 set -euo pipefail
 
-ALGO_LAB="/Users/chasefisher/Desktop/Algo Trading/algo-lab"
+ALGO_LAB="/Users/chasefisher/projects/Algo Trading/algo-lab"
 LOG_DIR="$ALGO_LAB/research/logs"
 TIMESTAMP=$(date +"%Y%m%d_%H%M")
 LOG_FILE="$LOG_DIR/daily_run_${TIMESTAMP}.log"

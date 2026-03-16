@@ -3,7 +3,7 @@
 ## Morning Startup (6:25 AM ET)
 
 ```bash
-cd "/Users/chasefisher/Desktop/Algo Trading/algo-lab"
+cd "/Users/chasefisher/projects/Algo Trading/algo-lab"
 ./scripts/start_forward_day.sh
 ```
 
