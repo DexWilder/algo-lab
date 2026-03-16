@@ -1,6 +1,6 @@
 {
-  "_schema_version": "2.0",
-  "_generated": "2026-03-15",
+  "_schema_version": "3.0",
+  "_generated": "2026-03-16",
   "_description": "FQL Strategy Registry \u2014 institutional memory of all strategy ideas, tested candidates, and deployed strategies",
   "_purpose": "Preserves research knowledge, enables crossbreeding, feeds Strategy Factory",
   "strategies": [
@@ -71,7 +71,15 @@
         "grinding_filter": false,
         "exit_variant": null,
         "priority": 6
-      }
+      },
+      "source_category": "internal",
+      "validation_result": {
+        "report_file": "research/validation/vwap_trend_MNQ_long_validation.json",
+        "verdict": "",
+        "score": 0,
+        "failures": 0
+      },
+      "lifecycle_stage": "deployed"
     },
     {
       "strategy_id": "XB-PB-EMA-MES-Short",
@@ -141,7 +149,15 @@
         "grinding_filter": false,
         "exit_variant": null,
         "priority": 4
-      }
+      },
+      "source_category": "internal",
+      "validation_result": {
+        "report_file": "research/validation/xb_pb_ema_timestop_MES_short_validation.json",
+        "verdict": "",
+        "score": 0,
+        "failures": 0
+      },
+      "lifecycle_stage": "deployed"
     },
     {
       "strategy_id": "ORB-MGC-Long",
@@ -210,7 +226,15 @@
         "grinding_filter": false,
         "exit_variant": null,
         "priority": 5
-      }
+      },
+      "source_category": "internal",
+      "validation_result": {
+        "report_file": "research/validation/orb_009_MGC_long_validation.json",
+        "verdict": "",
+        "score": 0,
+        "failures": 0
+      },
+      "lifecycle_stage": "deployed"
     },
     {
       "strategy_id": "Donchian-MNQ-Long-GRINDING",
@@ -281,7 +305,16 @@
         "grinding_filter": true,
         "exit_variant": "profit_ladder",
         "priority": 3
-      }
+      },
+      "last_review_date": "2026-03-16",
+      "source_category": "internal",
+      "validation_result": {
+        "report_file": "research/validation/donchian_trend_MNQ_long_validation.json",
+        "verdict": "",
+        "score": 0,
+        "failures": 0
+      },
+      "lifecycle_stage": "forward_validation"
     },
     {
       "strategy_id": "BB-EQ-MGC-Long",
@@ -351,7 +384,15 @@
         "grinding_filter": false,
         "exit_variant": null,
         "priority": 4
-      }
+      },
+      "source_category": "internal",
+      "validation_result": {
+        "report_file": "research/validation/bb_equilibrium_MGC_long_validation.json",
+        "verdict": "",
+        "score": 0,
+        "failures": 0
+      },
+      "lifecycle_stage": "deployed"
     },
     {
       "strategy_id": "PB-MGC-Short",
@@ -421,7 +462,15 @@
         "grinding_filter": false,
         "exit_variant": null,
         "priority": 5
-      }
+      },
+      "source_category": "internal",
+      "validation_result": {
+        "report_file": "research/validation/pb_trend_MGC_short_validation.json",
+        "verdict": "",
+        "score": 0,
+        "failures": 0
+      },
+      "lifecycle_stage": "deployed"
     },
     {
       "strategy_id": "MomIgn-M2K-Short",
@@ -439,7 +488,17 @@
       "portfolio_role": "tail_engine",
       "trades_6yr": 90,
       "profit_factor": 1.24,
-      "notes": "Was 9.0/10 on 2yr, collapsed to 6.0/10 on 6.7yr. Edge narrower than expected. Needs 50 trades for promotion."
+      "notes": "Was 9.0/10 on 2yr, collapsed to 6.0/10 on 6.7yr. Edge narrower than expected. Needs 50 trades for promotion.",
+      "last_review_date": "2026-03-16",
+      "source_category": "internal",
+      "validation_result": {
+        "report_file": "research/validation/momentum_ignition_M2K_short_validation.json",
+        "verdict": "",
+        "score": 0,
+        "failures": 0
+      },
+      "lifecycle_stage": "forward_validation",
+      "state_history": []
     },
     {
       "strategy_id": "CloseVWAP-M2K-Short",
@@ -457,7 +516,17 @@
       "portfolio_role": "stabilizer",
       "trades_6yr": 146,
       "profit_factor": 1.42,
-      "notes": "Close stabilizer. 100% param stability on 6.7yr. M2K-specific. Needs 60 trades for promotion."
+      "notes": "Close stabilizer. 100% param stability on 6.7yr. M2K-specific. Needs 60 trades for promotion.",
+      "last_review_date": "2026-03-16",
+      "source_category": "internal",
+      "validation_result": {
+        "report_file": "research/validation/close_vwap_reversion_M2K_short_validation.json",
+        "verdict": "",
+        "score": 0,
+        "failures": 0
+      },
+      "lifecycle_stage": "forward_validation",
+      "state_history": []
     },
     {
       "strategy_id": "TTMSqueeze-M2K-Short",
@@ -475,7 +544,17 @@
       "portfolio_role": "tail_engine",
       "trades_6yr": 48,
       "profit_factor": 1.97,
-      "notes": "First vol expansion strategy. Longer squeeze (12 bars) = better tail profile. M2K-specific. Needs 100 trades for promotion."
+      "notes": "First vol expansion strategy. Longer squeeze (12 bars) = better tail profile. M2K-specific. Needs 100 trades for promotion.",
+      "last_review_date": "2026-03-16",
+      "source_category": "internal",
+      "validation_result": {
+        "report_file": "research/validation/ttm_squeeze_MGC_long_validation.json",
+        "verdict": "",
+        "score": 0,
+        "failures": 0
+      },
+      "lifecycle_stage": "forward_validation",
+      "state_history": []
     },
     {
       "strategy_id": "ORBEnh-M2K-Short",
@@ -493,7 +572,17 @@
       "portfolio_role": "core",
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "8.0/10 on 2yr data. 100% param stability. Needs extended-history validation and 150+ trade accumulation."
+      "notes": "8.0/10 on 2yr data. 100% param stability. Needs extended-history validation and 150+ trade accumulation.",
+      "last_review_date": "2026-03-16",
+      "source_category": "internal",
+      "validation_result": {
+        "report_file": "research/validation/orb_enhanced_M2K_short_validation.json",
+        "verdict": "",
+        "score": 0,
+        "failures": 0
+      },
+      "lifecycle_stage": "forward_validation",
+      "state_history": []
     },
     {
       "strategy_id": "VWAPMR-MCL-Short",
@@ -511,7 +600,17 @@
       "portfolio_role": "diversifier",
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "6.5/10 on 2yr. 70% param stability (weakest of probation). Needs extended validation and 150+ trades."
+      "notes": "6.5/10 on 2yr. 70% param stability (weakest of probation). Needs extended validation and 150+ trades.",
+      "last_review_date": "2026-03-16",
+      "source_category": "internal",
+      "validation_result": {
+        "report_file": "research/validation/vwap_mean_reversion_MCL_short_validation.json",
+        "verdict": "",
+        "score": 0,
+        "failures": 0
+      },
+      "lifecycle_stage": "forward_validation",
+      "state_history": []
     },
     {
       "strategy_id": "CloseVWAP-MNQ-Long",
@@ -529,7 +628,19 @@
       "portfolio_role": null,
       "trades_6yr": 142,
       "profit_factor": 0.85,
-      "notes": "REJECTED \u2014 edge illusory on 6.7yr data. Was 8.0/10 on 2yr. PF collapsed from 1.80 to 0.85. Do not resurrect."
+      "notes": "REJECTED \u2014 edge illusory on 6.7yr data. Was 8.0/10 on 2yr. PF collapsed from 1.80 to 0.85. Do not resurrect.",
+      "last_review_date": "2026-03-16",
+      "source_category": "internal",
+      "validation_result": {
+        "report_file": "research/validation/close_vwap_reversion_M2K_short_validation.json",
+        "verdict": "",
+        "score": 0,
+        "failures": 0
+      },
+      "lifecycle_stage": "archived",
+      "state_history": [],
+      "rejection_reason": "WALK_FORWARD_UNSTABLE",
+      "rejection_description": "Backtest profitable but walk-forward collapses"
     },
     {
       "strategy_id": "TTMSqueeze-MNQ-Short",
@@ -547,7 +658,19 @@
       "portfolio_role": null,
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "REJECTED \u2014 framework doesn't work on MNQ. No viable edge found."
+      "notes": "REJECTED \u2014 framework doesn't work on MNQ. No viable edge found.",
+      "last_review_date": "2026-03-16",
+      "source_category": "internal",
+      "validation_result": {
+        "report_file": "research/validation/ttm_squeeze_MGC_long_validation.json",
+        "verdict": "",
+        "score": 0,
+        "failures": 0
+      },
+      "lifecycle_stage": "archived",
+      "state_history": [],
+      "rejection_reason": "STRUCTURAL_LOSS",
+      "rejection_description": "Strategy loses money across all modes and parameter variants"
     },
     {
       "strategy_id": "TTMSqueeze-MGC-Long",
@@ -565,7 +688,19 @@
       "portfolio_role": null,
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "REJECTED \u2014 framework doesn't work on MGC long side."
+      "notes": "REJECTED \u2014 framework doesn't work on MGC long side.",
+      "last_review_date": "2026-03-16",
+      "source_category": "internal",
+      "validation_result": {
+        "report_file": "research/validation/ttm_squeeze_MGC_long_validation.json",
+        "verdict": "",
+        "score": 0,
+        "failures": 0
+      },
+      "lifecycle_stage": "archived",
+      "state_history": [],
+      "rejection_reason": "STRUCTURAL_LOSS",
+      "rejection_description": "Strategy loses money across all modes and parameter variants"
     },
     {
       "strategy_id": "ICT-010-Sweep",
@@ -583,7 +718,13 @@
       "portfolio_role": null,
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "REJECTED \u2014 PF < 1.0 on ALL assets/modes. Sweep detection too noisy on 5m bars. Fixed stops don't scale. Salvageable: state machine pattern, sweep detection as filter component."
+      "notes": "REJECTED \u2014 PF < 1.0 on ALL assets/modes. Sweep detection too noisy on 5m bars. Fixed stops don't scale. Salvageable: state machine pattern, sweep detection as filter component.",
+      "last_review_date": "2026-03-16",
+      "source_category": "ict",
+      "lifecycle_stage": "archived",
+      "state_history": [],
+      "rejection_reason": "ICT_FAMILY_FAILED",
+      "rejection_description": "ICT-derived concepts have not produced systematic edge in FQL"
     },
     {
       "strategy_id": "ICT-011-LiqSweep",
@@ -601,7 +742,13 @@
       "portfolio_role": null,
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "REJECTED \u2014 same sweep detection issues as ICT-010."
+      "notes": "REJECTED \u2014 same sweep detection issues as ICT-010.",
+      "last_review_date": "2026-03-16",
+      "source_category": "ict",
+      "lifecycle_stage": "archived",
+      "state_history": [],
+      "rejection_reason": "ICT_FAMILY_FAILED",
+      "rejection_description": "ICT-derived concepts have not produced systematic edge in FQL"
     },
     {
       "strategy_id": "ATRComp-Multi",
@@ -619,7 +766,13 @@
       "portfolio_role": null,
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "REJECTED \u2014 tested at thresholds 0.45-0.75. No viable edge on any asset. PF degrades as threshold tightens. Sensitivity analysis confirmed structural lack of edge."
+      "notes": "REJECTED \u2014 tested at thresholds 0.45-0.75. No viable edge on any asset. PF degrades as threshold tightens. Sensitivity analysis confirmed structural lack of edge.",
+      "last_review_date": "2026-03-16",
+      "source_category": "internal",
+      "lifecycle_stage": "archived",
+      "state_history": [],
+      "rejection_reason": "STRUCTURAL_LOSS",
+      "rejection_description": "Strategy loses money across all modes and parameter variants"
     },
     {
       "strategy_id": "IBS-MR-M2K",
@@ -637,7 +790,11 @@
       "portfolio_role": "workhorse",
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "78% documented win rate on broad indices. Russell thin liquidity amplifies overshoots. DAILY timeframe \u2014 different from 5m intraday. Tier 1 candidate."
+      "notes": "78% documented win rate on broad indices. Russell thin liquidity amplifies overshoots. DAILY timeframe \u2014 different from 5m intraday. Tier 1 candidate.",
+      "last_review_date": "2026-03-16",
+      "source_category": "academic",
+      "lifecycle_stage": "discovery",
+      "state_history": []
     },
     {
       "strategy_id": "ORB-VIX-Filter",
@@ -655,7 +812,11 @@
       "portfolio_role": null,
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "Enhancement, not standalone strategy. Needs VIX data feed. Tier 1 candidate."
+      "notes": "Enhancement, not standalone strategy. Needs VIX data feed. Tier 1 candidate.",
+      "last_review_date": "2026-03-16",
+      "source_category": "academic",
+      "lifecycle_stage": "discovery",
+      "state_history": []
     },
     {
       "strategy_id": "NR7-Breakout",
@@ -673,7 +834,11 @@
       "portfolio_role": "tail_engine",
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "Classic Crabel contraction signal. Pairs well with squeeze strategies. Tier 2 candidate."
+      "notes": "Classic Crabel contraction signal. Pairs well with squeeze strategies. Tier 2 candidate.",
+      "last_review_date": "2026-03-16",
+      "source_category": "academic",
+      "lifecycle_stage": "discovery",
+      "state_history": []
     },
     {
       "strategy_id": "GapFill-M2K",
@@ -691,7 +856,11 @@
       "portfolio_role": "workhorse",
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "1 trade/day max. Structural edge from institutional rebalancing. Tier 2 candidate."
+      "notes": "1 trade/day max. Structural edge from institutional rebalancing. Tier 2 candidate.",
+      "last_review_date": "2026-03-16",
+      "source_category": "academic",
+      "lifecycle_stage": "discovery",
+      "state_history": []
     },
     {
       "strategy_id": "PreFOMC-Drift",
@@ -709,7 +878,13 @@
       "portfolio_role": "tail_engine",
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "REJECTED \u2014 MES PF=0.72 (negative), MNQ PF=1.19 with only 53 trades. Edge has weakened as literature warned (post-2016). Not viable for intraday simulation (overnight hold not supported)."
+      "notes": "REJECTED \u2014 MES PF=0.72 (negative), MNQ PF=1.19 with only 53 trades. Edge has weakened as literature warned (post-2016). Not viable for intraday simulation (overnight hold not supported).",
+      "last_review_date": "2026-03-16",
+      "source_category": "academic",
+      "lifecycle_stage": "archived",
+      "state_history": [],
+      "rejection_reason": "SAMPLE_INSUFFICIENT",
+      "rejection_description": "Too few trades to determine edge (< 20)"
     },
     {
       "strategy_id": "BBW-Percentile",
@@ -727,7 +902,11 @@
       "portfolio_role": "tail_engine",
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "Most selective squeeze filter \u2014 fires very rarely, largest asymmetric payoffs. Tier 2 candidate."
+      "notes": "Most selective squeeze filter \u2014 fires very rarely, largest asymmetric payoffs. Tier 2 candidate.",
+      "last_review_date": "2026-03-16",
+      "source_category": "tradingview",
+      "lifecycle_stage": "discovery",
+      "state_history": []
     },
     {
       "strategy_id": "DualThrust",
@@ -745,7 +924,11 @@
       "portfolio_role": null,
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "Widely used by CTAs. Fires too frequently for intraday. Better as daily overlay. Tier 3."
+      "notes": "Widely used by CTAs. Fires too frequently for intraday. Better as daily overlay. Tier 3.",
+      "last_review_date": "2026-03-16",
+      "source_category": "academic",
+      "lifecycle_stage": "discovery",
+      "state_history": []
     },
     {
       "strategy_id": "VCP-Intraday",
@@ -763,7 +946,11 @@
       "portfolio_role": null,
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "Complex pattern detection. Gold forms cleaner VCPs than equity indices. Rare on 5m. Tier 3."
+      "notes": "Complex pattern detection. Gold forms cleaner VCPs than equity indices. Rare on 5m. Tier 3.",
+      "last_review_date": "2026-03-16",
+      "source_category": "academic",
+      "lifecycle_stage": "discovery",
+      "state_history": []
     },
     {
       "strategy_id": "EventDay-MetaLayer",
@@ -781,7 +968,11 @@
       "portfolio_role": null,
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "Implement as strategy_controller enhancement after freeze lifts. Tier 3."
+      "notes": "Implement as strategy_controller enhancement after freeze lifts. Tier 3.",
+      "last_review_date": "2026-03-16",
+      "source_category": "internal",
+      "lifecycle_stage": "discovery",
+      "state_history": []
     },
     {
       "strategy_id": "Russell-Reconstitution",
@@ -799,7 +990,11 @@
       "portfolio_role": null,
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "1-2 trades/year. Consistent since 1988. Now semi-annual (Dec added). Very low priority. Tier 3."
+      "notes": "1-2 trades/year. Consistent since 1988. Now semi-annual (Dec added). Very low priority. Tier 3.",
+      "last_review_date": "2026-03-16",
+      "source_category": "academic",
+      "lifecycle_stage": "discovery",
+      "state_history": []
     },
     {
       "strategy_id": "ConsolidationBreakout",
@@ -817,7 +1012,11 @@
       "portfolio_role": null,
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "User-mentioned. Similar to NR7/TTM Squeeze concept. Needs strict rule definition before testing."
+      "notes": "User-mentioned. Similar to NR7/TTM Squeeze concept. Needs strict rule definition before testing.",
+      "last_review_date": "2026-03-16",
+      "source_category": "user",
+      "lifecycle_stage": "discovery",
+      "state_history": []
     },
     {
       "strategy_id": "LiqGrab-StopRun",
@@ -835,7 +1034,11 @@
       "portfolio_role": null,
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "User-mentioned. ICT-style but different from failed ICT-010/011. Key difference: focus on the reversal after sweep, not the sweep itself. Needs mechanical rule translation."
+      "notes": "User-mentioned. ICT-style but different from failed ICT-010/011. Key difference: focus on the reversal after sweep, not the sweep itself. Needs mechanical rule translation.",
+      "last_review_date": "2026-03-16",
+      "source_category": "user",
+      "lifecycle_stage": "discovery",
+      "state_history": []
     },
     {
       "strategy_id": "ICT-LiqSweep-V2",
@@ -853,7 +1056,11 @@
       "portfolio_role": null,
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "User-mentioned. Must fix ICT-010/011 flaws: use ATR-scaled stops (not fixed), improve sweep detection (require volume confirmation), add regime filter. Salvage state machine from ICT-010."
+      "notes": "User-mentioned. Must fix ICT-010/011 flaws: use ATR-scaled stops (not fixed), improve sweep detection (require volume confirmation), add regime filter. Salvage state machine from ICT-010.",
+      "last_review_date": "2026-03-16",
+      "source_category": "user",
+      "lifecycle_stage": "discovery",
+      "state_history": []
     },
     {
       "strategy_id": "RVWAP-MR",
@@ -871,7 +1078,13 @@
       "portfolio_role": null,
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "REJECTED \u2014 failed on all 10 combos. Best PF=1.17 MNQ-long."
+      "notes": "REJECTED \u2014 failed on all 10 combos. Best PF=1.17 MNQ-long.",
+      "last_review_date": "2026-03-16",
+      "source_category": "tradingview",
+      "lifecycle_stage": "archived",
+      "state_history": [],
+      "rejection_reason": "STRUCTURAL_LOSS",
+      "rejection_description": "Strategy loses money across all modes and parameter variants"
     },
     {
       "strategy_id": "VIXChannel-MES",
@@ -889,7 +1102,13 @@
       "portfolio_role": null,
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "REJECTED \u2014 failed on all 6 combos. Realized vol proxy insufficient."
+      "notes": "REJECTED \u2014 failed on all 6 combos. Realized vol proxy insufficient.",
+      "last_review_date": "2026-03-16",
+      "source_category": "tradingview",
+      "rejection_reason": "SAMPLE_INSUFFICIENT",
+      "rejection_description": "Too few trades to determine edge (< 20)",
+      "lifecycle_stage": "archived",
+      "state_history": []
     },
     {
       "strategy_id": "ORION-VolBreakout",
@@ -907,7 +1126,13 @@
       "portfolio_role": null,
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "REJECTED \u2014 failed on all 6 combos. Best PF=1.04."
+      "notes": "REJECTED \u2014 failed on all 6 combos. Best PF=1.04.",
+      "last_review_date": "2026-03-16",
+      "source_category": "tradingview",
+      "lifecycle_stage": "archived",
+      "state_history": [],
+      "rejection_reason": "INSUFFICIENT_EDGE",
+      "rejection_description": "PF 0.9-1.1 \u2014 near breakeven, not enough to overcome costs"
     },
     {
       "strategy_id": "BBKC-Squeeze-Classic",
@@ -925,7 +1150,13 @@
       "portfolio_role": null,
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "REJECTED \u2014 failed on all 10 combos. Best PF=1.02."
+      "notes": "REJECTED \u2014 failed on all 10 combos. Best PF=1.02.",
+      "last_review_date": "2026-03-16",
+      "source_category": "tradingview",
+      "lifecycle_stage": "archived",
+      "state_history": [],
+      "rejection_reason": "INSUFFICIENT_EDGE",
+      "rejection_description": "PF 0.9-1.1 \u2014 near breakeven, not enough to overcome costs"
     },
     {
       "strategy_id": "RSI2-Bounce-M2K",
@@ -943,7 +1174,11 @@
       "portfolio_role": null,
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "M2K-specific microstructure edge. Russell 2000 has documented RSI(2) oversold bounce. Quick to test."
+      "notes": "M2K-specific microstructure edge. Russell 2000 has documented RSI(2) oversold bounce. Quick to test.",
+      "last_review_date": "2026-03-16",
+      "source_category": "academic",
+      "lifecycle_stage": "discovery",
+      "state_history": []
     },
     {
       "strategy_id": "HVPercentile-Expansion",
@@ -961,7 +1196,11 @@
       "portfolio_role": "tail_engine",
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "Alternative vol expansion trigger. Different from BB/KC squeeze \u2014 uses realized vol percentile instead."
+      "notes": "Alternative vol expansion trigger. Different from BB/KC squeeze \u2014 uses realized vol percentile instead.",
+      "last_review_date": "2026-03-16",
+      "source_category": "academic",
+      "lifecycle_stage": "discovery",
+      "state_history": []
     },
     {
       "strategy_id": "ExtremeDonchian-Tail",
@@ -979,7 +1218,11 @@
       "portfolio_role": "tail_engine",
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "Extension of Donchian-MNQ concept. May overlap \u2014 check correlation. Different assets could work."
+      "notes": "Extension of Donchian-MNQ concept. May overlap \u2014 check correlation. Different assets could work.",
+      "last_review_date": "2026-03-16",
+      "source_category": "internal",
+      "lifecycle_stage": "discovery",
+      "state_history": []
     },
     {
       "strategy_id": "IB-Breakout-Gold",
@@ -997,7 +1240,11 @@
       "portfolio_role": "tail_engine",
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "Similar to ORB but uses market profile IB concept. Could overlap with ORB-MGC-Long \u2014 check."
+      "notes": "Similar to ORB but uses market profile IB concept. Could overlap with ORB-MGC-Long \u2014 check.",
+      "last_review_date": "2026-03-16",
+      "source_category": "internal",
+      "lifecycle_stage": "discovery",
+      "state_history": []
     },
     {
       "strategy_id": "SessionVWAPFade",
@@ -1015,7 +1262,13 @@
       "portfolio_role": null,
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "REJECTED \u2014 failed research gate on all 10 asset/direction combos. Best PF=1.08."
+      "notes": "REJECTED \u2014 failed research gate on all 10 asset/direction combos. Best PF=1.08.",
+      "last_review_date": "2026-03-16",
+      "source_category": "tradingview",
+      "lifecycle_stage": "archived",
+      "state_history": [],
+      "rejection_reason": "STRUCTURAL_LOSS",
+      "rejection_description": "Strategy loses money across all modes and parameter variants"
     },
     {
       "strategy_id": "SessionRevGold",
@@ -1033,7 +1286,13 @@
       "portfolio_role": null,
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "REJECTED \u2014 failed on MGC both directions."
+      "notes": "REJECTED \u2014 failed on MGC both directions.",
+      "last_review_date": "2026-03-16",
+      "source_category": "tradingview",
+      "lifecycle_stage": "archived",
+      "state_history": [],
+      "rejection_reason": "STRUCTURAL_LOSS",
+      "rejection_description": "Strategy loses money across all modes and parameter variants"
     },
     {
       "strategy_id": "CloseLiqSweep",
@@ -1051,7 +1310,13 @@
       "portfolio_role": null,
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "REJECTED \u2014 failed on all 6 combos. Best PF=1.07."
+      "notes": "REJECTED \u2014 failed on all 6 combos. Best PF=1.07.",
+      "last_review_date": "2026-03-16",
+      "source_category": "tradingview",
+      "lifecycle_stage": "archived",
+      "state_history": [],
+      "rejection_reason": "INSUFFICIENT_EDGE",
+      "rejection_description": "PF 0.9-1.1 \u2014 near breakeven, not enough to overcome costs"
     },
     {
       "strategy_id": "CloseMomentum",
@@ -1069,7 +1334,13 @@
       "portfolio_role": null,
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "REJECTED \u2014 zero trades on all 8 combos. Strategy logic incompatible with data."
+      "notes": "REJECTED \u2014 zero trades on all 8 combos. Strategy logic incompatible with data.",
+      "last_review_date": "2026-03-16",
+      "source_category": "tradingview",
+      "lifecycle_stage": "archived",
+      "state_history": [],
+      "rejection_reason": "IMPLEMENTATION_BUG",
+      "rejection_description": "Code bug found \u2014 hypothesis not tested, may revisit"
     },
     {
       "strategy_id": "GapMom",
@@ -1087,7 +1358,11 @@
       "portfolio_role": "enhancer",
       "trades_6yr": null,
       "profit_factor": 1.72,
-      "notes": "PROMOTED to probation 2026-03-15. MGC-long: PF=1.72, WF 6.7/10. MNQ-long: PF=1.31, WF 6.7/10 (83% window survival). Best combo: MGC-long."
+      "notes": "PROMOTED to probation 2026-03-15. MGC-long: PF=1.72, WF 6.7/10. MNQ-long: PF=1.31, WF 6.7/10 (83% window survival). Best combo: MGC-long.",
+      "last_review_date": "2026-03-16",
+      "source_category": "tradingview",
+      "lifecycle_stage": "forward_validation",
+      "state_history": []
     },
     {
       "strategy_id": "RangeExpansion",
@@ -1108,7 +1383,10 @@
       "notes": "PROMOTED to probation 2026-03-15. MCL-short: PF=1.46, Sharpe=2.39, 214 trades. WF 10/10 PERFECT. 75% window survival, 100% param stability. First MCL strategy.",
       "kill_flag": "decay",
       "kill_details": "Half-life monitor: decay=0.65 ARCHIVE_CANDIDATE. Sharpe 2.39->0.46 (1yr)->-0.13 (6mo). Edge rapidly decaying despite WF 10/10.",
-      "last_review_date": "2026-03-15"
+      "last_review_date": "2026-03-15",
+      "source_category": "tradingview",
+      "lifecycle_stage": "forward_validation",
+      "state_history": []
     },
     {
       "strategy_id": "NG-MeanRev",
@@ -1126,7 +1404,11 @@
       "portfolio_role": null,
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "Asset expansion candidate. NG has different microstructure from oil. Needs data acquisition first."
+      "notes": "Asset expansion candidate. NG has different microstructure from oil. Needs data acquisition first.",
+      "last_review_date": "2026-03-16",
+      "source_category": "expansion",
+      "lifecycle_stage": "discovery",
+      "state_history": []
     },
     {
       "strategy_id": "YM-Trend",
@@ -1144,7 +1426,11 @@
       "portfolio_role": null,
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "Asset expansion candidate. MYM data already available. Similar to MNQ but slower \u2014 may find distinct edge."
+      "notes": "Asset expansion candidate. MYM data already available. Similar to MNQ but slower \u2014 may find distinct edge.",
+      "last_review_date": "2026-03-16",
+      "source_category": "expansion",
+      "lifecycle_stage": "discovery",
+      "state_history": []
     },
     {
       "strategy_id": "MCL-Breakout",
@@ -1162,7 +1448,11 @@
       "portfolio_role": null,
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "Asset expansion candidate. MCL data available. Oil has different liquidity profile from equity/gold."
+      "notes": "Asset expansion candidate. MCL data available. Oil has different liquidity profile from equity/gold.",
+      "last_review_date": "2026-03-16",
+      "source_category": "expansion",
+      "lifecycle_stage": "discovery",
+      "state_history": []
     },
     {
       "strategy_id": "IMC-Afternoon",
@@ -1180,7 +1470,13 @@
       "portfolio_role": "workhorse",
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "REJECTED \u2014 no viable edge on any asset/direction. Best: M2K-both PF=1.05. ATR proxy insufficient for VIX filter. Academic edge does not translate to 5m micro-futures without real VIX data."
+      "notes": "REJECTED \u2014 no viable edge on any asset/direction. Best: M2K-both PF=1.05. ATR proxy insufficient for VIX filter. Academic edge does not translate to 5m micro-futures without real VIX data.",
+      "last_review_date": "2026-03-16",
+      "source_category": "academic",
+      "lifecycle_stage": "archived",
+      "state_history": [],
+      "rejection_reason": "STRUCTURAL_LOSS",
+      "rejection_description": "Strategy loses money across all modes and parameter variants"
     },
     {
       "strategy_id": "NoiseBoundary-MNQ-Long",
@@ -1225,7 +1521,9 @@
       "health_status": "FAIL",
       "genome_cluster": "volatility_expansion",
       "resurrection_flag": false,
-      "state_history": []
+      "state_history": [],
+      "source_category": "academic",
+      "lifecycle_stage": "forward_validation"
     },
     {
       "strategy_id": "VWAPPullback-MES-Long",
@@ -1243,7 +1541,11 @@
       "portfolio_role": "core",
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "VWAP pullback is documented as highest-probability trade on ES. Multiple practitioner sources. ~100-150 trades/yr. Fills MES-long gap."
+      "notes": "VWAP pullback is documented as highest-probability trade on ES. Multiple practitioner sources. ~100-150 trades/yr. Fills MES-long gap.",
+      "last_review_date": "2026-03-16",
+      "source_category": "practitioner",
+      "lifecycle_stage": "discovery",
+      "state_history": []
     },
     {
       "strategy_id": "RussellORB-M2K-Long",
@@ -1261,7 +1563,13 @@
       "portfolio_role": null,
       "trades_6yr": 234,
       "profit_factor": 0.75,
-      "notes": "REJECTED 2026-03-15. M2K-long PF=0.75, Sharpe=-1.55, WR=26.1%. Negative edge. No viable combo across 5 assets. Simple ORB crowded out on equity indexes."
+      "notes": "REJECTED 2026-03-15. M2K-long PF=0.75, Sharpe=-1.55, WR=26.1%. Negative edge. No viable combo across 5 assets. Simple ORB crowded out on equity indexes.",
+      "last_review_date": "2026-03-16",
+      "source_category": "academic",
+      "lifecycle_stage": "archived",
+      "state_history": [],
+      "rejection_reason": "STRUCTURAL_LOSS",
+      "rejection_description": "Strategy loses money across all modes and parameter variants"
     },
     {
       "strategy_id": "KeltnerBreakout-M2K-Long",
@@ -1279,7 +1587,13 @@
       "portfolio_role": null,
       "trades_6yr": 1129,
       "profit_factor": 1.02,
-      "notes": "REJECTED 2026-03-15. M2K-long PF=1.02, Sharpe=0.10, WR=38.5%. Near-zero edge despite 1129 trades. No viable cross-asset combo. 77% WR claim not replicable on 5m futures."
+      "notes": "REJECTED 2026-03-15. M2K-long PF=1.02, Sharpe=0.10, WR=38.5%. Near-zero edge despite 1129 trades. No viable cross-asset combo. 77% WR claim not replicable on 5m futures.",
+      "last_review_date": "2026-03-16",
+      "source_category": "academic",
+      "lifecycle_stage": "archived",
+      "state_history": [],
+      "rejection_reason": "INSUFFICIENT_EDGE",
+      "rejection_description": "PF 0.9-1.1 \u2014 near breakeven, not enough to overcome costs"
     },
     {
       "strategy_id": "SPY-IWM-Spread",
@@ -1297,7 +1611,11 @@
       "portfolio_role": "diversifier",
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "QuantStart confirmed cointegration on 1m bars 2007-2014. Structural mean reversion between large/small cap. ~40-60 trades/yr. Fills M2K-long gap. Needs both MES and M2K data simultaneously."
+      "notes": "QuantStart confirmed cointegration on 1m bars 2007-2014. Structural mean reversion between large/small cap. ~40-60 trades/yr. Fills M2K-long gap. Needs both MES and M2K data simultaneously.",
+      "last_review_date": "2026-03-16",
+      "source_category": "academic",
+      "lifecycle_stage": "discovery",
+      "state_history": []
     },
     {
       "strategy_id": "CL-VWAP-Bounce-Long",
@@ -1315,7 +1633,13 @@
       "portfolio_role": null,
       "trades_6yr": 664,
       "profit_factor": 1.08,
-      "notes": "REJECTED 2026-03-15. MCL-long PF=1.08, Sharpe=0.51, WR=48.3%. Marginal edge below gate. No viable cross-asset combo. VWAP bounce on CL needs tighter discretionary filtering."
+      "notes": "REJECTED 2026-03-15. MCL-long PF=1.08, Sharpe=0.51, WR=48.3%. Marginal edge below gate. No viable cross-asset combo. VWAP bounce on CL needs tighter discretionary filtering.",
+      "last_review_date": "2026-03-16",
+      "source_category": "practitioner",
+      "lifecycle_stage": "archived",
+      "state_history": [],
+      "rejection_reason": "INSUFFICIENT_EDGE",
+      "rejection_description": "PF 0.9-1.1 \u2014 near breakeven, not enough to overcome costs"
     },
     {
       "strategy_id": "CL-ORB-Long",
@@ -1333,7 +1657,13 @@
       "portfolio_role": null,
       "trades_6yr": 102,
       "profit_factor": 0.96,
-      "notes": "REJECTED 2026-03-15. MCL-long PF=0.96, Sharpe=-0.23, WR=45.1%. Negative edge. No viable cross-asset combo. Academic ORB edge on crude may be timeframe/period specific."
+      "notes": "REJECTED 2026-03-15. MCL-long PF=0.96, Sharpe=-0.23, WR=45.1%. Negative edge. No viable cross-asset combo. Academic ORB edge on crude may be timeframe/period specific.",
+      "last_review_date": "2026-03-16",
+      "source_category": "academic",
+      "lifecycle_stage": "archived",
+      "state_history": [],
+      "rejection_reason": "INSUFFICIENT_EDGE",
+      "rejection_description": "PF 0.9-1.1 \u2014 near breakeven, not enough to overcome costs"
     },
     {
       "strategy_id": "EIA-Inventory-Surprise",
@@ -1351,7 +1681,11 @@
       "portfolio_role": "tail_engine",
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "Wednesday 10:30 ET is highest-volatility recurring event for crude. ~20-25 trades/yr (only outsized surprises). Fills event-driven gap + MCL coverage."
+      "notes": "Wednesday 10:30 ET is highest-volatility recurring event for crude. ~20-25 trades/yr (only outsized surprises). Fills event-driven gap + MCL coverage.",
+      "last_review_date": "2026-03-16",
+      "source_category": "practitioner",
+      "lifecycle_stage": "discovery",
+      "state_history": []
     },
     {
       "strategy_id": "OPEX-Week-Long",
@@ -1369,7 +1703,11 @@
       "portfolio_role": "tail_engine",
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "Quantpedia + QuantifiedStrategies. SPY avg +0.2% per OPEX week. 12 trades/yr. Effect has weakened last 3 years. Fills event-driven gap. Low priority due to weakening edge."
+      "notes": "Quantpedia + QuantifiedStrategies. SPY avg +0.2% per OPEX week. 12 trades/yr. Effect has weakened last 3 years. Fills event-driven gap. Low priority due to weakening edge.",
+      "last_review_date": "2026-03-16",
+      "source_category": "academic",
+      "lifecycle_stage": "discovery",
+      "state_history": []
     },
     {
       "strategy_id": "MomPB-6J-Long-US",
@@ -1438,7 +1776,22 @@
         "grinding_filter": false,
         "exit_variant": null,
         "priority": 3
-      }
+      },
+      "source_category": "expansion",
+      "batch_first_pass": {
+        "report_file": "research/data/first_pass/momentum_pullback_trend_us_20260316_1008.json",
+        "run_date": "2026-03-16T10:08:17.237451",
+        "classification": "SALVAGE",
+        "best_asset": "6E",
+        "best_pf": 1.158
+      },
+      "validation_result": {
+        "report_file": "research/validation/momentum_pullback_trend_6J_long_validation.json",
+        "verdict": "CONDITIONAL_PASS",
+        "score": 5,
+        "failures": 2
+      },
+      "lifecycle_stage": "forward_validation"
     },
     {
       "strategy_id": "FXBreak-6J-Short-London",
@@ -1479,7 +1832,22 @@
         "grinding_filter": false,
         "exit_variant": null,
         "priority": 2
-      }
+      },
+      "source_category": "expansion",
+      "batch_first_pass": {
+        "report_file": "research/data/first_pass/fx_session_breakout_20260316_1008.json",
+        "run_date": "2026-03-16T10:08:05.803909",
+        "classification": "ADVANCE",
+        "best_asset": "6J",
+        "best_pf": 1.204
+      },
+      "validation_result": {
+        "report_file": "research/validation/fx_session_breakout_6J_both_validation.json",
+        "verdict": "CONDITIONAL_PASS",
+        "score": 5,
+        "failures": 3
+      },
+      "lifecycle_stage": "forward_validation"
     },
     {
       "strategy_id": "FXBreak-6E-Watchlist",
@@ -1494,7 +1862,22 @@
       "last_review_date": "2026-03-16",
       "controller_state": "VALIDATED",
       "review_priority": "MEDIUM",
-      "state_history": []
+      "state_history": [],
+      "source_category": "expansion",
+      "batch_first_pass": {
+        "report_file": "research/data/first_pass/fx_session_breakout_20260316_1008.json",
+        "run_date": "2026-03-16T10:08:05.803909",
+        "classification": "ADVANCE",
+        "best_asset": "6J",
+        "best_pf": 1.204
+      },
+      "validation_result": {
+        "report_file": "research/validation/fx_session_breakout_6J_both_validation.json",
+        "verdict": "CONDITIONAL_PASS",
+        "score": 5,
+        "failures": 3
+      },
+      "lifecycle_stage": "discovery"
     },
     {
       "strategy_id": "FXBreak-6B-NoPriority",
@@ -1509,7 +1892,24 @@
       "last_review_date": "2026-03-16",
       "controller_state": "ARCHIVED",
       "review_priority": "LOW",
-      "state_history": []
+      "state_history": [],
+      "source_category": "expansion",
+      "batch_first_pass": {
+        "report_file": "research/data/first_pass/fx_session_breakout_20260316_1008.json",
+        "run_date": "2026-03-16T10:08:05.803909",
+        "classification": "ADVANCE",
+        "best_asset": "6J",
+        "best_pf": 1.204
+      },
+      "validation_result": {
+        "report_file": "research/validation/fx_session_breakout_6J_both_validation.json",
+        "verdict": "CONDITIONAL_PASS",
+        "score": 5,
+        "failures": 3
+      },
+      "lifecycle_stage": "archived",
+      "rejection_reason": "ASSET_MISMATCH",
+      "rejection_description": "Strategy logic does not transfer to this asset class"
     },
     {
       "strategy_id": "MomPB-6E-Long-US",
@@ -1537,7 +1937,15 @@
         "best_trades": 48,
         "report_file": "research/data/first_pass/momentum_pullback_trend_us_20260316_1008.json"
       },
-      "state_history": []
+      "state_history": [],
+      "source_category": "factory",
+      "validation_result": {
+        "report_file": "research/validation/momentum_pullback_trend_6J_long_validation.json",
+        "verdict": "CONDITIONAL_PASS",
+        "score": 5,
+        "failures": 2
+      },
+      "lifecycle_stage": "first_pass"
     },
     {
       "strategy_id": "DailyTrend-MGC-Long",
@@ -1582,7 +1990,16 @@
         "grinding_filter": false,
         "exit_variant": null,
         "priority": 3
-      }
+      },
+      "source_category": "factory",
+      "batch_first_pass": {
+        "report_file": "research/data/first_pass/fx_daily_trend_20260316_1055.json",
+        "run_date": "2026-03-16T10:55:09.465984",
+        "classification": "REJECT",
+        "best_asset": "MES",
+        "best_pf": 0
+      },
+      "lifecycle_stage": "forward_validation"
     },
     {
       "strategy_id": "FVG-Inversion-Signal",
@@ -1597,7 +2014,9 @@
       "notes": "Compact hypothesis extracted from discretionary ICT model. Full model too discretionary for FQL. ICT family previously failed (ICT-010, ICT-011). This is a one-shot factory test to formally close or validate the ICT family. LOW PRIORITY \u2014 defer until higher-value candidates are processed.",
       "last_review_date": "2026-03-16",
       "review_priority": "LOW",
-      "state_history": []
+      "state_history": [],
+      "source_category": "ict",
+      "lifecycle_stage": "discovery"
     },
     {
       "strategy_id": "DualThrust-ZB-Short-Monitor",
@@ -1612,7 +2031,29 @@
       "notes": "MONITOR ONLY. Too few trades (31) for any conclusion. First positive rates signal found. Revisit when more data accumulates.",
       "last_review_date": "2026-03-16",
       "review_priority": "LOW",
-      "state_history": []
+      "state_history": [],
+      "source_category": "factory",
+      "batch_first_pass": {
+        "report_file": "research/data/first_pass/dual_thrust_daily_20260316_1139.json",
+        "run_date": "2026-03-16T11:39:00.102262",
+        "classification": "SALVAGE",
+        "best_asset": "MGC",
+        "best_pf": 1.572
+      },
+      "lifecycle_stage": "discovery"
     }
-  ]
+  ],
+  "_rejection_taxonomy": {
+    "STRUCTURAL_LOSS": "Strategy loses money across all modes and parameter variants",
+    "INSUFFICIENT_EDGE": "PF 0.9-1.1 \u2014 near breakeven, not enough to overcome costs",
+    "WALK_FORWARD_UNSTABLE": "Backtest profitable but walk-forward collapses",
+    "REGIME_VULNERABLE": "Catastrophic loss in specific regime cells",
+    "ASSET_MISMATCH": "Strategy logic does not transfer to this asset class",
+    "PARAMETER_FRAGILE": "Edge depends on narrow parameter range \u2014 likely overfit",
+    "SAMPLE_INSUFFICIENT": "Too few trades to determine edge (< 20)",
+    "DUPLICATE_COVERAGE": "Overlaps with existing validated strategy on same edge",
+    "IMPLEMENTATION_BUG": "Code bug found \u2014 hypothesis not tested, may revisit",
+    "ICT_FAMILY_FAILED": "ICT-derived concepts have not produced systematic edge in FQL",
+    "CLASSIC_TA_DECAY": "Well-known pattern (RSI, NR7, gap fill) shows no edge on futures 5m bars"
+  }
 }
