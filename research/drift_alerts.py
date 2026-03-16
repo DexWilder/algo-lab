@@ -130,6 +130,45 @@ def evaluate_drift_alerts(drift_results: dict = None) -> dict:
             })
             controller_signals.setdefault(strat, {})["no_trades"] = True
 
+    # ── Session-specific alerts ─────────────────────────────────────
+    session_drift = drift_results.get("session_drift", {})
+    strategy_sessions = session_drift.get("strategy_sessions", {})
+
+    for strat, sessions in strategy_sessions.items():
+        session_restrictions = []
+        for session_name, data in sessions.items():
+            sev = data.get("severity", "NORMAL")
+            if sev == "ALARM":
+                session_restrictions.append({
+                    "session": session_name,
+                    "action": "BLOCK",
+                    "severity": "ALARM",
+                    "reason": f"Edge broken (WR delta {data.get('wr_delta', 0):+.1%}, PnL ratio {data.get('pnl_ratio', 0):.2f})",
+                })
+                alerts.append({
+                    "level": "ALARM",
+                    "scope": f"{strat}/{session_name}",
+                    "message": f"{strat}: {session_name} edge broken — recommend BLOCK in {session_name}",
+                })
+            elif sev == "DRIFT":
+                session_restrictions.append({
+                    "session": session_name,
+                    "action": "REDUCE",
+                    "severity": "DRIFT",
+                    "reason": f"Degraded (WR delta {data.get('wr_delta', 0):+.1%})",
+                })
+
+        if session_restrictions:
+            controller_signals.setdefault(strat, {})["session_restrictions"] = session_restrictions
+
+    # Session concentration warnings
+    for warning in session_drift.get("concentration_warnings", []):
+        alerts.append({
+            "level": "DRIFT",
+            "scope": "PORTFOLIO",
+            "message": f"Session concentration: {warning['message']}",
+        })
+
     return {
         "overall_status": overall,
         "controller_signals": controller_signals,

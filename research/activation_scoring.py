@@ -1,18 +1,19 @@
 """FQL Activation Scoring Model — Per-strategy composite score.
 
-Combines 9 weighted sub-scores into a single activation score [0, 1].
+Combines 10 weighted sub-scores into a single activation score [0, 1].
 Each sub-score is normalized to [0, 1] and explicitly interpretable.
 
 Sub-scores:
-    1. Regime Fit (0.20)      — current regime vs strategy specialization
-    2. Half-Life (0.20)       — edge trend (strengthening/stable/decaying)
-    3. Contribution (0.15)    — portfolio Sharpe improvement or dilution
-    4. Redundancy (0.10)      — overlap with other active strategies
-    5. Health (0.10)          — automated integrity checks
-    6. Kill Criteria (0.10)   — triggered warnings or kills
-    7. Time-of-Day (0.05)     — session alignment
-    8. Asset Fit (0.05)       — asset conditions match
-    9. Recent Stability (0.05)— short-window robustness
+    1. Regime Fit (0.20)       — current regime vs strategy specialization
+    2. Half-Life (0.20)        — edge trend (strengthening/stable/decaying)
+    3. Contribution (0.15)     — portfolio Sharpe improvement or dilution
+    4. Redundancy (0.10)       — overlap with other active strategies
+    5. Health (0.10)           — automated integrity checks
+    6. Kill Criteria (0.10)    — triggered warnings or kills
+    7. Session Drift (0.05)    — forward-test session-level edge validation
+    8. Time-of-Day (0.03)      — static session alignment
+    9. Asset Fit (0.04)        — asset conditions match
+   10. Recent Stability (0.03) — short-window robustness
 
 Usage:
     from research.activation_scoring import ActivationScorer
@@ -79,6 +80,9 @@ class ActivationScorer:
         reason_codes.extend(rc)
 
         sub_scores["kill_criteria"], rc = self._score_kill_criteria(signals)
+        reason_codes.extend(rc)
+
+        sub_scores["session_drift"], rc = self._score_session_drift(signals)
         reason_codes.extend(rc)
 
         sub_scores["time_of_day"], rc = self._score_time_of_day(signals)
@@ -257,6 +261,40 @@ class ActivationScorer:
             return cfg["soft_flag_score"], [ReasonCode.KILL_TRIGGER_SOFT]
         else:
             return cfg["hard_flag_score"], [ReasonCode.KILL_TRIGGER_HARD]
+
+    def _score_session_drift(self, signals: dict) -> tuple[float, list]:
+        """Score session-level drift from forward testing.
+
+        Inputs (from signals dict):
+            session_drift_severity: worst session severity (NORMAL/DRIFT/ALARM/NO_DATA)
+            session_concentration: bool — one session dominates >60% of trades
+        """
+        cfg = self.config.get("session_drift", {})
+        severity = signals.get("session_drift_severity", "NO_DATA")
+
+        score_map = {
+            "NORMAL": cfg.get("normal_score", 1.0),
+            "DRIFT": cfg.get("drift_score", 0.4),
+            "ALARM": cfg.get("alarm_score", 0.0),
+            "NO_DATA": cfg.get("no_data_score", 0.70),
+        }
+        score = score_map.get(severity, cfg.get("no_data_score", 0.70))
+
+        codes = []
+        if severity == "ALARM":
+            codes.append(ReasonCode.SESSION_DRIFT_BROKEN)
+        elif severity == "DRIFT":
+            codes.append(ReasonCode.SESSION_DRIFT_DEGRADED)
+        else:
+            codes.append(ReasonCode.SESSION_DRIFT_NORMAL)
+
+        # Concentration penalty
+        if signals.get("session_concentration", False):
+            penalty = cfg.get("concentration_penalty", 0.15)
+            score = max(0.0, score - penalty)
+            codes.append(ReasonCode.SESSION_CONCENTRATION)
+
+        return round(score, 2), codes
 
     def _score_time_of_day(self, signals: dict) -> tuple[float, list]:
         """Score time-of-day fit."""

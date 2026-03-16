@@ -58,6 +58,12 @@ class ReasonCode:
     RECENT_VOLATILE = "RECENT_VOLATILE"
     RECENT_COLLAPSE = "RECENT_COLLAPSE"
 
+    # ── Session Drift ────────────────────────────────────────────────────
+    SESSION_DRIFT_NORMAL = "SESSION_DRIFT_NORMAL"
+    SESSION_DRIFT_DEGRADED = "SESSION_DRIFT_DEGRADED"
+    SESSION_DRIFT_BROKEN = "SESSION_DRIFT_BROKEN"
+    SESSION_CONCENTRATION = "SESSION_CONCENTRATION"
+
     # ── Lifecycle / Resurrection ──────────────────────────────────────────
     RESURRECTION_SIGNAL = "RESURRECTION_SIGNAL"
     PROBATION_ENTRY = "PROBATION_ENTRY"
@@ -93,6 +99,10 @@ REASON_DESCRIPTIONS = {
     ReasonCode.RECENT_STABLE: "Short-window performance consistent with expectations",
     ReasonCode.RECENT_VOLATILE: "Short-window performance noisy but not collapsed",
     ReasonCode.RECENT_COLLAPSE: "Short-window performance severely deteriorated",
+    ReasonCode.SESSION_DRIFT_NORMAL: "No session-specific degradation detected",
+    ReasonCode.SESSION_DRIFT_DEGRADED: "Session-specific edge degradation — deployment restricted",
+    ReasonCode.SESSION_DRIFT_BROKEN: "Session edge structurally broken — block deployment in affected session",
+    ReasonCode.SESSION_CONCENTRATION: "Portfolio trade volume concentrated in one session window",
     ReasonCode.RESURRECTION_SIGNAL: "Archived strategy showing renewed strength",
     ReasonCode.PROBATION_ENTRY: "Strategy entering probation for review",
     ReasonCode.ARCHIVE_CANDIDATE: "Strategy flagged for potential archival",

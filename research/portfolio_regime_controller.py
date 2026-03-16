@@ -292,6 +292,80 @@ def gather_redundancy_signals() -> dict:
     return results
 
 
+# ── Session Drift Signal Gathering ────────────────────────────────────────────
+
+DRIFT_LOG_PATH = ROOT / "research" / "data" / "live_drift_log.json"
+
+
+def gather_session_drift_signals() -> dict:
+    """Load latest session drift data from drift monitor log.
+
+    Returns per-strategy session drift signals:
+        {strategy_id: {
+            worst_severity: "NORMAL"/"DRIFT"/"ALARM",
+            session_concentration: bool,
+            restricted_sessions: [{session, severity, reason}],
+        }}
+    """
+    if not DRIFT_LOG_PATH.exists():
+        return {}
+
+    try:
+        with open(DRIFT_LOG_PATH) as f:
+            log = json.load(f)
+    except (json.JSONDecodeError, FileNotFoundError):
+        return {}
+
+    if not log:
+        return {}
+
+    latest = log[-1]
+    session_drift = latest.get("session_drift", {})
+    if not session_drift or session_drift.get("status") == "NO_DATA":
+        return {}
+
+    strategy_sessions = session_drift.get("strategy_sessions", {})
+    concentration_warnings = session_drift.get("concentration_warnings", [])
+
+    # Determine which sessions have concentration issues
+    concentrated_sessions = {w["session"] for w in concentration_warnings}
+
+    results = {}
+    for strat_name, sessions in strategy_sessions.items():
+        worst_severity = "NORMAL"
+        restricted = []
+
+        for session_name, data in sessions.items():
+            sev = data.get("severity", "NORMAL")
+            if sev == "INSUFFICIENT_DATA":
+                continue
+
+            if sev == "ALARM":
+                worst_severity = "ALARM"
+                restricted.append({
+                    "session": session_name,
+                    "severity": "ALARM",
+                    "action": "BLOCK",
+                    "reason": f"Edge broken in {session_name} (WR delta {data.get('wr_delta', 0):+.1%}, PnL ratio {data.get('pnl_ratio', 0):.2f})",
+                })
+            elif sev == "DRIFT" and worst_severity != "ALARM":
+                worst_severity = "DRIFT"
+                restricted.append({
+                    "session": session_name,
+                    "severity": "DRIFT",
+                    "action": "REDUCE",
+                    "reason": f"Degraded in {session_name} (WR delta {data.get('wr_delta', 0):+.1%})",
+                })
+
+        results[strat_name] = {
+            "worst_severity": worst_severity,
+            "session_concentration": bool(concentrated_sessions),
+            "restricted_sessions": restricted,
+        }
+
+    return results
+
+
 # ── Regime Fit Assessment ────────────────────────────────────────────────────
 
 def assess_regime_fit(strategy_id: str, regime_states: dict) -> str:
@@ -415,16 +489,23 @@ def run_controller(skip_heavy: bool = False) -> dict:
     health_signals = gather_health_signals()
 
     if not skip_heavy:
-        print("[5/6] Running contribution analysis (backtests)...")
+        print("[5/7] Running contribution analysis (backtests)...")
         contribution_signals = gather_contribution_signals()
 
-        print("[6/6] Computing redundancy signals...")
+        print("[6/7] Computing redundancy signals...")
         redundancy_signals = gather_redundancy_signals()
     else:
-        print("[5/6] Skipping contribution analysis (--fast mode)...")
+        print("[5/7] Skipping contribution analysis (--fast mode)...")
         contribution_signals = {}
-        print("[6/6] Skipping redundancy analysis (--fast mode)...")
+        print("[6/7] Skipping redundancy analysis (--fast mode)...")
         redundancy_signals = {}
+
+    print("[7/7] Loading session drift signals...")
+    session_drift_signals = gather_session_drift_signals()
+    if session_drift_signals:
+        print(f"  Session drift loaded for {len(session_drift_signals)} strategies")
+    else:
+        print("  No session drift data available yet — defaults to NO_DATA")
 
     # ── Phase 2: Score each strategy ─────────────────────────────────
     print("\nScoring strategies...")
@@ -450,6 +531,9 @@ def run_controller(skip_heavy: bool = False) -> dict:
         redund = redundancy_signals.get(strategy_id, {})
         kills = kill_signals.get(strategy_id, [])
 
+        # Session drift signals
+        sd = session_drift_signals.get(strategy_id, {})
+
         signals = {
             "regime_fit_level": assess_regime_fit(strategy_id, regime_states),
             "half_life_status": hl.get("status", "HEALTHY"),
@@ -462,6 +546,8 @@ def run_controller(skip_heavy: bool = False) -> dict:
             "same_exposure_cluster": redund.get("same_exposure_cluster", False),
             "health_status": health_signals.get("overall", "PASS"),
             "kill_flags": kills,
+            "session_drift_severity": sd.get("worst_severity", "NO_DATA"),
+            "session_concentration": sd.get("session_concentration", False),
             "time_fit": assess_time_fit(strategy_id),
             "asset_fit": "good",  # Default — future: check asset-specific conditions
         }
@@ -507,12 +593,15 @@ def run_controller(skip_heavy: bool = False) -> dict:
             "uncertainty": score_result.get("uncertainty", False),
             "warnings": _build_warnings(signals, score_result, genome),
             "review_priority": _compute_review_priority(score_result, transition),
+            # Session restrictions (deployment-level instructions)
+            "session_restrictions": sd.get("restricted_sessions", []),
             # Raw signals for registry persistence
             "_signals": {
                 "half_life_status": signals["half_life_status"],
                 "contribution_verdict": signals["contribution_verdict"],
                 "health_status": signals["health_status"],
                 "genome_cluster": genome.get("primary_exposure", "unknown") if genome else "unknown",
+                "session_drift_severity": signals["session_drift_severity"],
             },
         }
         activation_matrix.append(entry)
@@ -583,6 +672,14 @@ def _build_warnings(signals: dict, score_result: dict, genome: dict | None) -> l
 
     if signals.get("max_correlation", 0) > 0.50:
         warnings.append(f"High redundancy: max_corr={signals['max_correlation']:.3f}")
+
+    if signals.get("session_drift_severity") == "ALARM":
+        warnings.append("Session drift ALARM — edge broken in one or more sessions")
+    elif signals.get("session_drift_severity") == "DRIFT":
+        warnings.append("Session drift detected — degraded in one or more sessions")
+
+    if signals.get("session_concentration"):
+        warnings.append("Morning session concentration >60% — diversification risk")
 
     return warnings
 
@@ -817,6 +914,24 @@ def print_report(results: dict):
             max_n = len(counts.get(max_k, [])) if counts else 0
             print(f"  {label}: OK (max {max_n} in {max_k})")
 
+    # ── Session Restrictions ──
+    has_restrictions = any(e.get("session_restrictions") for e in sorted_matrix)
+    if has_restrictions:
+        print()
+        print("  SESSION RESTRICTIONS")
+        print(f"  {THIN}")
+        for e in sorted_matrix:
+            restrictions = e.get("session_restrictions", [])
+            if restrictions:
+                for r in restrictions:
+                    action_tag = "BLOCK" if r["severity"] == "ALARM" else "REDUCE"
+                    print(f"  ! {e['strategy_id']}: [{action_tag}] {r['session']} — {r['reason']}")
+    else:
+        print()
+        print("  SESSION RESTRICTIONS")
+        print(f"  {THIN}")
+        print("  No session-specific restrictions active")
+
     # ── Warnings ──
     all_warnings = []
     for e in results["activation_matrix"]:
@@ -835,10 +950,10 @@ def print_report(results: dict):
     print("  SUB-SCORE BREAKDOWN")
     print(f"  {THIN}")
     dims = ["regime_fit", "half_life", "contribution", "redundancy",
-            "health", "kill_criteria", "time_of_day", "asset_fit", "recent_stability"]
+            "health", "kill_criteria", "session_drift", "time_of_day", "asset_fit", "recent_stability"]
     header2 = f"  {'Strategy':<22s} " + " ".join(f"{d[:7]:>7s}" for d in dims)
     print(header2)
-    print(f"  {'-' * 88}")
+    print(f"  {'-' * 96}")
 
     for e in sorted_matrix:
         sid = e["strategy_id"]
@@ -858,7 +973,8 @@ def print_report(results: dict):
             important = [c for c in codes if not c.endswith("_PASS") and not c.endswith("_MATCH")
                          and c not in (ReasonCode.KILL_NONE, ReasonCode.LOW_REDUNDANCY,
                                        ReasonCode.TIME_WINDOW_MATCH, ReasonCode.ASSET_FIT_GOOD,
-                                       ReasonCode.RECENT_STABLE, ReasonCode.HEALTH_PASS)]
+                                       ReasonCode.RECENT_STABLE, ReasonCode.HEALTH_PASS,
+                                       ReasonCode.SESSION_DRIFT_NORMAL)]
             if important:
                 print(f"  {e['strategy_id']}")
                 for code in important:

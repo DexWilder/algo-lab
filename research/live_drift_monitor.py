@@ -810,6 +810,7 @@ def save_drift_log(results: dict):
         "forward_trades": results["forward_period"]["trades"],
         "alerts_count": len(results.get("alerts", [])),
         "portfolio_status": results["portfolio_drift"].get("status", "NO_DATA"),
+        "session_drift": results.get("session_drift", {}),
     })
 
     # Keep last 365 entries

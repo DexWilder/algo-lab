@@ -11,9 +11,10 @@ scoring_weights:
   redundancy: 0.10
   health: 0.10
   kill_criteria: 0.10
-  time_of_day: 0.05
-  asset_fit: 0.05
-  recent_stability: 0.05
+  session_drift: 0.05       # Forward-test session-level edge validation
+  time_of_day: 0.03         # Static session alignment (reduced — session_drift is dynamic version)
+  asset_fit: 0.04
+  recent_stability: 0.03
 
 # ── Activation Score → Action Mapping ──────────────────────────────────────
 # Composite score thresholds for recommended action buckets.
@@ -64,6 +65,18 @@ kill_criteria:
   no_flags_score: 1.0
   soft_flag_score: 0.4          # Single flag (e.g., dilution OR redundancy)
   hard_flag_score: 0.0          # Multiple flags or severe (decay + dilution)
+
+# ── Session Drift ─────────────────────────────────────────────────────────
+# Scores based on forward-test session-level drift data.
+# A strategy can be globally healthy but degraded in specific sessions.
+session_drift:
+  # Score map: worst session severity → sub-score
+  no_data_score: 0.70         # No drift data yet — assume OK but not perfect
+  normal_score: 1.0           # All sessions healthy
+  drift_score: 0.4            # At least one session shows DRIFT
+  alarm_score: 0.0            # At least one session shows ALARM (broken edge)
+  # Session concentration: penalty if >60% of trades in one session
+  concentration_penalty: 0.15
 
 # ── Recent Stability ──────────────────────────────────────────────────────
 recent_stability:
