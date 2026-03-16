@@ -17,7 +17,9 @@ Usage:
 """
 
 import argparse
+import importlib
 import json
+import subprocess
 import sys
 import traceback
 from datetime import datetime
@@ -44,7 +46,7 @@ JOBS = {
         "cadence": "daily",
         "description": "Update half-life decay scores for all strategies",
         "module": "research.strategy_half_life_monitor",
-        "function": "main",
+        "function": "run_half_life_analysis",
         "priority": 2,
     },
     "daily_contribution": {
@@ -53,27 +55,31 @@ JOBS = {
         "module": "research.strategy_contribution_analysis",
         "function": "main",
         "priority": 3,
+        "subprocess": True,  # Uses argparse — run as subprocess
     },
     "daily_activation_matrix": {
         "cadence": "daily",
-        "description": "Run Portfolio Regime Controller and update activation scores",
+        "description": "Run Portfolio Regime Controller, save activation matrix, apply to registry",
         "module": "research.portfolio_regime_controller",
-        "function": "main",
+        "function": "run_controller",
         "priority": 4,
+        "post_hook": "_daily_controller_post",
     },
     "daily_decision_report": {
         "cadence": "daily",
         "description": "Generate daily portfolio decision report (JSON + Markdown)",
         "module": "research.daily_portfolio_decision_report",
-        "function": "main",
+        "function": None,
         "priority": 5,
+        "subprocess": True,  # Uses argparse — run as subprocess
+        "subprocess_args": ["--save"],
     },
 
     # ── Twice Weekly ──────────────────────────────────────────────────
     "biweekly_candidate_scan": {
         "cadence": "twice_weekly",
         "description": "Scan for new strategy candidates from sources",
-        "module": None,  # Not yet built — placeholder
+        "module": None,
         "function": None,
         "priority": 10,
         "status": "PLACEHOLDER",
@@ -82,8 +88,9 @@ JOBS = {
         "cadence": "twice_weekly",
         "description": "Run baseline backtests on new candidates, reject junk",
         "module": "research.batch_harvest_validation",
-        "function": "main",
+        "function": None,
         "priority": 11,
+        "subprocess": True,
     },
 
     # ── Weekly ────────────────────────────────────────────────────────
@@ -91,20 +98,21 @@ JOBS = {
         "cadence": "weekly",
         "description": "Walk-forward matrix on validated candidates",
         "module": "research.walk_forward_matrix",
-        "function": "main",
+        "function": None,
         "priority": 20,
+        "subprocess": True,
     },
     "weekly_kill_criteria": {
         "cadence": "weekly",
         "description": "Evaluate kill criteria for all active strategies",
         "module": "research.strategy_kill_criteria",
-        "function": "main",
+        "function": "run_kill_review",
         "priority": 21,
     },
     "weekly_registry_update": {
         "cadence": "weekly",
         "description": "Update registry with latest scores, statuses, flags",
-        "module": None,  # Handled by controller --apply
+        "module": None,
         "function": None,
         "priority": 22,
         "status": "MANUAL",
@@ -113,7 +121,7 @@ JOBS = {
         "cadence": "weekly",
         "description": "Generate weekly research summary",
         "module": "research.auto_report",
-        "function": "main",
+        "function": "generate_weekly_report",
         "priority": 23,
     },
 
@@ -122,21 +130,22 @@ JOBS = {
         "cadence": "monthly",
         "description": "Update genome clustering and diversity scores",
         "module": "research.strategy_genome_map",
-        "function": "main",
+        "function": "build_genome_data",
         "priority": 30,
     },
     "monthly_full_contribution": {
         "cadence": "monthly",
         "description": "Full portfolio contribution analysis with all strategies",
         "module": "research.strategy_contribution_analysis",
-        "function": "main",
+        "function": None,
         "priority": 31,
+        "subprocess": True,
     },
     "monthly_half_life_review": {
         "cadence": "monthly",
         "description": "Comprehensive half-life review across all windows",
         "module": "research.strategy_half_life_monitor",
-        "function": "main",
+        "function": "run_half_life_analysis",
         "priority": 32,
     },
 
@@ -145,13 +154,13 @@ JOBS = {
         "cadence": "quarterly",
         "description": "Identify research gaps and missing regime/asset/session coverage",
         "module": "research.harvest_scheduler",
-        "function": "main",
+        "function": "gap_analysis",
         "priority": 40,
     },
     "quarterly_research_targeting": {
         "cadence": "quarterly",
         "description": "Update harvest priorities based on portfolio gaps",
-        "module": None,  # Gap-driven — uses genome map + decision report gaps
+        "module": None,
         "function": None,
         "priority": 41,
         "status": "PLACEHOLDER",
@@ -159,10 +168,34 @@ JOBS = {
 }
 
 
+# ── Post-Hooks ───────────────────────────────────────────────────────────────
+
+def _daily_controller_post(run_result):
+    """After controller run: save matrix, apply to registry, print report."""
+    from research.portfolio_regime_controller import (
+        run_controller, save_activation_matrix, apply_to_registry, print_report,
+    )
+    results = run_result  # run_controller() return value
+    if results:
+        save_activation_matrix(results)
+        apply_to_registry(results)
+        print_report(results)
+
+
+POST_HOOKS = {
+    "_daily_controller_post": _daily_controller_post,
+}
+
+
 # ── Job Runner ───────────────────────────────────────────────────────────────
 
 def run_job(job_name: str, job_def: dict) -> dict:
-    """Execute a single job and return result metadata."""
+    """Execute a single job and return result metadata.
+
+    Supports two execution modes:
+    - Direct import: call function from module (default)
+    - Subprocess: run module as `python3 -m module` (for modules with argparse)
+    """
     start = datetime.now()
     result = {
         "job": job_name,
@@ -178,19 +211,41 @@ def run_job(job_name: str, job_def: dict) -> dict:
 
     module_name = job_def.get("module")
     func_name = job_def.get("function")
+    use_subprocess = job_def.get("subprocess", False)
 
-    if not module_name or not func_name:
+    if not module_name:
         result["status"] = "ERROR"
-        result["message"] = "Missing module or function definition"
+        result["message"] = "Missing module definition"
         return result
 
     try:
         print(f"  Running {job_name}...")
-        import importlib
-        mod = importlib.import_module(module_name)
-        func = getattr(mod, func_name)
-        func()
-        result["status"] = "SUCCESS"
+
+        if use_subprocess:
+            # Run as subprocess to avoid argparse conflicts
+            cmd = [sys.executable, "-m", module_name]
+            cmd.extend(job_def.get("subprocess_args", []))
+            proc = subprocess.run(
+                cmd, cwd=str(ROOT), capture_output=True, text=True, timeout=600,
+            )
+            if proc.returncode != 0:
+                raise RuntimeError(f"Exit code {proc.returncode}: {proc.stderr[-500:]}")
+            result["status"] = "SUCCESS"
+        else:
+            if not func_name:
+                result["status"] = "ERROR"
+                result["message"] = "Missing function definition (not subprocess mode)"
+                return result
+            mod = importlib.import_module(module_name)
+            func = getattr(mod, func_name)
+            run_result = func()
+            result["status"] = "SUCCESS"
+
+            # Execute post-hook if defined
+            hook_name = job_def.get("post_hook")
+            if hook_name and hook_name in POST_HOOKS:
+                POST_HOOKS[hook_name](run_result)
+
     except Exception as e:
         result["status"] = "ERROR"
         result["message"] = str(e)
