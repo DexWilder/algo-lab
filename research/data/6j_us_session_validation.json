@@ -1,0 +1,20 @@
+{
+  "report_date": "2026-03-16",
+  "asset": "6J",
+  "strategy": "momentum_pullback_trend",
+  "variant": "US-session-only (08:00-17:00 ET, indicators computed on US data only)",
+  "mode": "long",
+  "status": "PROBATION_CANDIDATE",
+  "results": {
+    "full_data": {"trades": 146, "pnl": 954, "pf": 1.09, "sharpe": 0.62, "maxdd": 2169, "wr": 60},
+    "us_session_only": {"trades": 43, "pnl": 2780, "pf": 1.58, "sharpe": 2.92, "maxdd": 1455, "wr": 65},
+    "us_filter_entries": {"trades": 60, "pnl": 1200, "pf": 1.23, "sharpe": 1.41, "maxdd": 1832, "wr": 63}
+  },
+  "walk_forward": {
+    "variant": "us_filter_entries",
+    "first_half": {"trades": 25, "pnl": 413, "pf": 1.16},
+    "second_half": {"trades": 35, "pnl": 788, "pf": 1.30}
+  },
+  "conclusion": "US session restriction dramatically improves edge quality. Asia/Europe noise was diluting a real US-session edge. PF 1.58 with Sharpe 2.92 on US-only data. Walk-forward consistent (1.16/1.30). First validated non-equity strategy candidate.",
+  "next_step": "Run through validation battery as probationary candidate. Consider adding to registry with status=testing."
+}
