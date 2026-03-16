@@ -319,8 +319,8 @@ def _append_log(results: list):
         log = log[-500:]
 
     SCHEDULER_LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
-    with open(SCHEDULER_LOG_PATH, "w") as f:
-        json.dump(log, f, indent=2)
+    from research.utils.atomic_io import atomic_write_json
+    atomic_write_json(SCHEDULER_LOG_PATH, log)
 
 
 # ── Status & Listing ─────────────────────────────────────────────────────────

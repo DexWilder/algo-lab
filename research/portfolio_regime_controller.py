@@ -33,6 +33,7 @@ from research.strategy_state_machine import (
     VALID_STATES,
 )
 from research.activation_scoring import ActivationScorer, load_config
+from research.utils.atomic_io import atomic_write_json, backup_rotate
 
 # ── Paths ────────────────────────────────────────────────────────────────────
 
@@ -762,8 +763,8 @@ def apply_to_registry(results: dict):
     registry["_schema_version"] = "2.0"
     registry["_generated"] = today
 
-    with open(REGISTRY_PATH, "w") as f:
-        json.dump(registry, f, indent=2)
+    backup_rotate(REGISTRY_PATH, keep=5)
+    atomic_write_json(REGISTRY_PATH, registry)
 
     print(f"\nRegistry updated: {REGISTRY_PATH}")
 
@@ -771,15 +772,13 @@ def apply_to_registry(results: dict):
     if results["state_transitions"]:
         log = load_transition_log()
         log.extend(results["state_transitions"])
-        with open(TRANSITION_LOG_PATH, "w") as f:
-            json.dump(log, f, indent=2)
+        atomic_write_json(TRANSITION_LOG_PATH, log)
         print(f"Transition log updated: {TRANSITION_LOG_PATH}")
 
 
 def save_activation_matrix(results: dict):
     """Save activation matrix to JSON."""
-    with open(ACTIVATION_MATRIX_PATH, "w") as f:
-        json.dump(results, f, indent=2, default=str)
+    atomic_write_json(ACTIVATION_MATRIX_PATH, results)
     print(f"Activation matrix saved: {ACTIVATION_MATRIX_PATH}")
 
 

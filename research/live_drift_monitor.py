@@ -818,8 +818,8 @@ def save_drift_log(results: dict):
         log = log[-365:]
 
     DRIFT_LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
-    with open(DRIFT_LOG_PATH, "w") as f:
-        json.dump(log, f, indent=2)
+    from research.utils.atomic_io import atomic_write_json
+    atomic_write_json(DRIFT_LOG_PATH, log)
 
 
 # ── Main ─────────────────────────────────────────────────────────────────────

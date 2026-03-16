@@ -503,8 +503,9 @@ def apply_to_registry(flags: list[dict]):
             entry["kill_flag"] = None
             entry["last_review_date"] = today
 
-    with open(REGISTRY_PATH, "w") as f:
-        json.dump(registry, f, indent=2)
+    from research.utils.atomic_io import atomic_write_json, backup_rotate
+    backup_rotate(REGISTRY_PATH, keep=5)
+    atomic_write_json(REGISTRY_PATH, registry)
 
     print(f"  Registry updated: {len(flag_lookup)} flags applied, {REGISTRY_PATH}")
 

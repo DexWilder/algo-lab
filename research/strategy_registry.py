@@ -19,6 +19,8 @@ import sys
 from pathlib import Path
 from collections import Counter
 
+from research.utils.atomic_io import atomic_write_json, backup_rotate
+
 ROOT = Path(__file__).resolve().parent.parent
 REGISTRY_PATH = ROOT / "research" / "data" / "strategy_registry.json"
 
@@ -40,8 +42,8 @@ def add_strategy(entry: dict):
         return False
 
     data["strategies"].append(entry)
-    with open(REGISTRY_PATH, "w") as f:
-        json.dump(data, f, indent=2)
+    backup_rotate(REGISTRY_PATH, keep=5)
+    atomic_write_json(REGISTRY_PATH, data)
     print(f"  ADDED: {entry['strategy_id']} ({entry['status']})")
     return True
 
@@ -57,8 +59,8 @@ def update_status(strategy_id: str, new_status: str, notes_append: str = None):
             s["status"] = new_status
             if notes_append:
                 s["notes"] = (s.get("notes") or "") + " " + notes_append
-            with open(REGISTRY_PATH, "w") as f:
-                json.dump(data, f, indent=2)
+            backup_rotate(REGISTRY_PATH, keep=5)
+            atomic_write_json(REGISTRY_PATH, data)
             print(f"  UPDATED: {strategy_id} — {old} → {new_status}")
             return True
 
