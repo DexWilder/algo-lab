@@ -7,7 +7,9 @@
 
 ## System Overview
 
-Fisher Quant Lab (FQL) is the research and trading division of Fisher Intelligence Systems Holdings (FISH). It is a systematic futures trading platform operating on micro contracts (MES, MNQ, MGC, MCL, M2K).
+Fisher Quant Lab (FQL) is the research and trading division of Fisher Intelligence Systems Holdings (FISH). It is a systematic futures trading platform operating on micro contracts (MES, MNQ, MGC, MCL, M2K) and expanding into FX (6E, 6J, 6B) and rates (ZN, ZB, ZF).
+
+For the long-term mission and business vision, see `docs/FISH_VISION.md`.
 
 The system is organized into seven layers, each with strict separation of concerns.
 

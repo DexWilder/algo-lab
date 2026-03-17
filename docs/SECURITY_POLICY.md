@@ -1,6 +1,6 @@
-# FQL Security & Sharing Policy
+# FISH Security, Sharing & Continuity Policy
 
-*Rules for handling FQL intellectual property and credentials.*
+*Rules for handling FISH/FQL intellectual property, credentials, and long-term continuity.*
 *Last updated: 2026-03-16*
 
 ---
@@ -85,3 +85,35 @@ If a credential is accidentally exposed:
 2. Update `.env` locally
 3. Check git history — if committed, use `git filter-branch` or BFG to purge
 4. Verify the exposed key is revoked
+
+---
+
+## Continuity
+
+FISH is designed to outlast any single tool, platform, or AI assistant.
+
+**The repo is the source of truth.** Not ChatGPT, not Claude, not any
+cloud service. If every AI tool disappeared tomorrow, the following
+documents contain everything needed to understand, operate, and evolve
+FISH/FQL:
+
+| Document | What it preserves |
+|----------|-------------------|
+| `FISH_VISION.md` | Mission, phases, beliefs, who it serves |
+| `FQL_ARCHITECTURE.md` | Complete technical system reference |
+| `FISHER_QUANT_OPERATING_PRINCIPLES.md` | Operating philosophy |
+| `OPERATING_RHYTHM.md` | Weekly cadence |
+| `PROMOTION_PLAYBOOK.md` | How decisions are made |
+| `CHANGELOG.md` | What changed and when |
+| `FISH_BUSINESS_EVOLUTION_NOTES.md` | Future business options |
+| This document | Security and continuity rules |
+
+**For family continuity:** If the founder is unavailable, the system's
+logic, operating procedures, and decision history are documented in the
+repo well enough for someone with Python/trading knowledge to maintain
+operations. The weekly scorecard and integrity monitor surface problems
+automatically.
+
+**AI tools are convenience layers, not dependencies.** Use them for
+reasoning, code review, and documentation. Never rely on them as the
+only record of a decision, strategy, or architectural choice.
