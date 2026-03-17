@@ -2924,6 +2924,122 @@
         "tv_event_priority_6"
       ],
       "state_history": []
+    },
+    {
+      "strategy_id": "TV-Larry-Oops-Gap-Reversal",
+      "strategy_name": null,
+      "family": "structural",
+      "asset": "MES",
+      "session": "morning",
+      "direction": "both",
+      "source": "tradingview_scan",
+      "rule_summary": "Larry Williams Oops pattern: fade overnight gaps that reverse back into prior day range. Structural session-open mean reversion. Source: TradingView.",
+      "status": "idea",
+      "notes": "ACCEPTED. TV STRUCTURAL priority #1. Classic gap-reversal pattern (Larry Williams). Different from GapFill-M2K (rejected) because Oops uses prior-day range reclaim as trigger, not just gap-fill target. Tests whether structured gap fades work better than simple gap fills.",
+      "last_review_date": "2026-03-17",
+      "review_priority": "HIGH",
+      "lifecycle_stage": "discovery",
+      "source_category": "tradingview",
+      "tags": [
+        "STRUCTURAL",
+        "gap_reversal",
+        "session_open",
+        "tv_structural_priority_1"
+      ],
+      "state_history": []
+    },
+    {
+      "strategy_id": "TV-Session-Gap-Fill",
+      "strategy_name": null,
+      "family": "structural",
+      "asset": "MES",
+      "session": "morning",
+      "direction": "both",
+      "source": "tradingview_scan",
+      "rule_summary": "Session gap fill with volume confirmation and time-decay exit. Fade gaps that show early fill momentum. Source: TradingView.",
+      "status": "idea",
+      "notes": "ACCEPTED. TV STRUCTURAL priority #2. More refined gap fill than GapFill-M2K (rejected PF 0.68). Adds volume confirmation and time-decay logic. May overcome the raw gap-fill failure.",
+      "last_review_date": "2026-03-17",
+      "review_priority": "MEDIUM",
+      "lifecycle_stage": "discovery",
+      "source_category": "tradingview",
+      "tags": [
+        "STRUCTURAL",
+        "gap_fill",
+        "session_open",
+        "tv_structural_priority_2"
+      ],
+      "state_history": []
+    },
+    {
+      "strategy_id": "TV-EOD-Sentiment-Flip",
+      "strategy_name": null,
+      "family": "structural",
+      "asset": "MES",
+      "session": "close",
+      "direction": "both",
+      "source": "tradingview_scan",
+      "rule_summary": "End-of-day sentiment flip: trade reversals in the final hour when intraday trend exhausts. Afternoon/close session structural edge. Source: TradingView.",
+      "status": "idea",
+      "notes": "ACCEPTED. TV STRUCTURAL priority #3. Fills the afternoon/close session gap identified by genome map. Close-session strategies are underrepresented in portfolio.",
+      "last_review_date": "2026-03-17",
+      "review_priority": "MEDIUM",
+      "lifecycle_stage": "discovery",
+      "source_category": "tradingview",
+      "tags": [
+        "STRUCTURAL",
+        "close_session",
+        "afternoon",
+        "sentiment_reversal",
+        "tv_structural_priority_3"
+      ],
+      "state_history": []
+    },
+    {
+      "strategy_id": "TV-Overnight-Gap-Analysis",
+      "strategy_name": null,
+      "family": "structural",
+      "asset": "MES",
+      "session": "overnight",
+      "direction": "both",
+      "source": "tradingview_scan",
+      "rule_summary": "Overnight gap analysis framework: classify gap types and trade based on gap character (full gap, partial gap, gap-and-go). Source: TradingView.",
+      "status": "idea",
+      "notes": "ACCEPTED. TV STRUCTURAL priority #4. More sophisticated gap framework than simple overnight drift (MONITOR PF 1.09). Classifies gaps by type before trading. May extract the profitable subset from the weak overall overnight premium.",
+      "last_review_date": "2026-03-17",
+      "review_priority": "LOW",
+      "lifecycle_stage": "discovery",
+      "source_category": "tradingview",
+      "tags": [
+        "STRUCTURAL",
+        "overnight",
+        "gap_classification",
+        "tv_structural_priority_4"
+      ],
+      "state_history": []
+    },
+    {
+      "strategy_id": "TV-Gap-Filling-Strategy",
+      "strategy_name": null,
+      "family": "structural",
+      "asset": "MES",
+      "session": "morning",
+      "direction": "both",
+      "source": "tradingview_scan",
+      "rule_summary": "Generic gap filling strategy. Source: TradingView.",
+      "status": "idea",
+      "notes": "ACCEPTED but BLOCKED. TV STRUCTURAL priority #5. Blocked: strategy ambiguity \u2014 too generic as described, needs consolidation into a single testable playbook. May overlap with TV-Session-Gap-Fill.",
+      "last_review_date": "2026-03-17",
+      "review_priority": "LOW",
+      "lifecycle_stage": "discovery",
+      "source_category": "tradingview",
+      "tags": [
+        "STRUCTURAL",
+        "blocked_by_strategy_ambiguity",
+        "needs_single_playbook",
+        "tv_structural_priority_5"
+      ],
+      "state_history": []
     }
   ],
   "_rejection_taxonomy": {

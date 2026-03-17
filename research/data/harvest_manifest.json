@@ -121,13 +121,21 @@
       "status": "rejected",
       "review_date": "2026-03-17",
       "review_notes": "REJECTED: too generic, no specific event logic, just marks levels."
+    },
+    {
+      "filename": "tv_structural_london_breakout_classic.md",
+      "title": "London Breakout Classic",
+      "lane": "tradingview_scan",
+      "status": "rejected",
+      "review_date": "2026-03-17",
+      "review_notes": "REJECTED: London session breakout already well-covered by FXBreak-6J (probation). Generic version adds no new factor diversification."
     }
   ],
   "last_scan": "2026-03-17T06:14:09.340890",
   "stats": {
     "total": 10,
     "staged": 10,
-    "logged": 15,
-    "rejected": 2
+    "logged": 20,
+    "rejected": 3
   }
 }
