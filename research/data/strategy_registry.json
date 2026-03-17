@@ -2642,16 +2642,16 @@
       "source": "openclaw_strategic_harvest",
       "rule_summary": "Equity index overnight drift: buy at close, sell at next open. Captures the well-documented overnight equity premium. ~250 events/year.",
       "status": "idea",
-      "notes": "ACCEPTED. STRUCTURAL conversion priority #1. Pure structural edge \u2014 overnight premium is a different return source from intraday momentum/breakout. High trade count. Testable now with existing MES/MNQ data.",
+      "notes": "MONITOR. Overnight premium exists (MNQ PF 1.09, 1641 trades) but too weak/inconsistent for probation. Bear market vulnerability: 2022 PF 0.82 (-$4.9K), 2026 YTD PF 0.60 (-$3.1K). MaxDD $7,210 \u2014 larger than any current probation strategy. Do not optimize further. Revisit only if a regime filter can be added without making it disguised momentum.",
       "last_review_date": "2026-03-17",
-      "review_priority": "HIGH",
+      "review_priority": "LOW",
       "lifecycle_stage": "discovery",
       "source_category": "academic",
       "tags": [
         "STRUCTURAL",
         "overnight_premium",
-        "equity_index",
-        "structural_conversion_priority_1"
+        "MONITOR",
+        "bear_market_vulnerable"
       ],
       "state_history": []
     },
