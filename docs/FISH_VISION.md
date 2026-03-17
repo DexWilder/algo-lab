@@ -5,30 +5,116 @@
 
 ---
 
-## Mission
+## Core Mission
 
-Build a self-improving systematic trading platform capable of compounding
-wealth generationally for the Fisher family.
+Build FISH/FQL into a safe, secure, ever-learning wealth-generation platform
+for family first and potentially others later.
 
-FISH is not a hobby project. It is a long-term family enterprise designed to:
-- Generate consistent risk-adjusted returns that outpace the S&P, hedge funds, and PE
-- Compound capital across decades, not quarters
-- Operate with institutional discipline at personal scale
-- Eventually support family members beyond the founder
+The platform should aim to:
+- Compound capital at attractive risk-adjusted returns
+- Control downside and survivability better than mainstream alternatives
+- Remain simple and understandable for the end user
+- Evolve continuously as markets, technology, and data change
+- Preserve knowledge so future family members can operate and improve it
 
 ---
 
-## Why FISH Exists
+## Long-Term Thesis
 
-Traditional wealth-building paths (index funds, real estate, employment income)
-compound slowly and depend on factors outside your control.
+The end goal is not just a trading system.
 
-FISH exists because systematic trading, done correctly, offers:
-1. **Uncapped upside** with controlled downside
-2. **Compounding at higher rates** than passive investing
-3. **Full autonomy** — no investors, no employer, no redemption pressure
-4. **Scalability** — the same system works at $50K and $5M
-5. **Generational transfer** — a system, not a person, holds the edge
+The end goal is an intergenerational capital platform that combines:
+- A real underlying return engine
+- Continuous research and adaptation
+- Transparent reporting
+- Education
+- Strong governance and security
+- Eventual optional business evolution into offerings such as a fund,
+  membership, advisory layer, or family-office-like structure
+
+---
+
+## Non-Negotiable Truth
+
+None of the larger vision matters unless the platform proves it can:
+- Generate returns with controlled downside
+- Survive changing market conditions
+- Outperform realistic alternatives over time on a risk-adjusted basis
+- Produce honest, reviewable evidence through backtest, forward test,
+  and live operational discipline
+
+---
+
+## Order of Operations
+
+This vision must be pursued in the correct order.
+
+### Phase 1: Prove the Engine (Current)
+
+Focus on:
+- Strategy discovery
+- Validation battery
+- Forward testing
+- Probation and promotion process
+- Portfolio construction
+- Drawdown control
+- Survivability
+
+### Phase 2: Prove the Operating System
+
+Focus on:
+- Registry and strategy memory
+- Integrity monitoring
+- Weekly scorecards
+- Promotion and downgrade governance
+- Contribution analysis
+- Secure automation
+- Reproducible reporting
+
+### Phase 3: Prove Internal Use
+
+Use personal/family capital carefully only after enough evidence exists.
+
+Goals:
+- Show real proof of concept
+- Prove operational stability
+- Confirm that the platform behaves as expected under real conditions
+
+### Phase 4: Build Transparency Layer
+
+Only after evidence exists.
+
+Potential outputs:
+- Daily dashboard
+- Weekly reports
+- Compounding illustrations
+- Withdrawal/sustainability tools
+- Educational content
+
+### Phase 5: Explore External Structure
+
+Only after the engine and governance are proven.
+
+Possible directions:
+- Private fund structure
+- Membership or research layer
+- Family-office style service model
+- Education/financial planning adjuncts
+
+This phase requires legal, compliance, tax, entity, and security planning.
+
+---
+
+## Platform Design Principles
+
+1. **Family first** — the platform should first be good enough to trust for family capital
+2. **Evidence before expansion** — no business scaling ahead of proof
+3. **Simplicity for users** — complexity belongs in the engine, not the interface
+4. **Controlled downside** — survivability matters more than flashy return claims
+5. **Continuous learning** — the platform must stay adaptive and non-stale
+6. **Transparency** — decisions, evidence, and performance should be reviewable
+7. **Security and continuity** — the system must protect IP, capital, credentials, and knowledge transfer
+8. **Intergenerational durability** — future family members should be able to understand and continue it
 
 ---
 
@@ -60,58 +146,78 @@ Before FISH scales beyond current operations:
 
 ---
 
-## Strategic Phases
+## Step-by-Step Execution Framework
 
-### Phase 1: Prove (Current)
-- Operate-and-observe mode
-- Accumulate forward evidence on probation strategies
-- Run the weekly operating rhythm
-- Maintain the factory pipeline at steady state
+### Current Stage
 
-### Phase 2: Expand
-- Backfill data depth ($18.89 for all expansion assets)
-- Attempt rates strategies with deeper data
-- Activate tactical harvesting (openclaw_tactical lane)
-- Push toward 10+ independent bets
+Operate-and-observe mode.
 
-### Phase 3: Scale Capital
-- Transition from prop firms to self-funded accounts
-- Implement Kelly-based position sizing
-- Deploy full allocation engine with real money
-- Build broker connectivity (Tradovate adapter)
+Current objective:
+- Run the machine
+- Gather forward evidence
+- Review on cadence
+- Avoid unnecessary new build sprawl
 
-### Phase 4: Compound
-- Evolution engine generates and tests candidates automatically
-- Factor decomposition prevents hidden concentration
-- Portfolio Sharpe targets >2.5 sustained
-- Capital grows through reinvestment, not deposits
+### Ongoing Weekly Execution
+- Market days: run forward day
+- Friday: weekly scorecard + contribution review
+- Checkpoints: Week 2, 4, 8, 12 using probation journal and playbook
+- Factory: controlled background throughput only
 
-### Phase 5: Generalize
-- Dashboard for family portfolio visibility
-- Automated weekly email reports
-- Documentation sufficient for family continuity
-- Consider: education content, fund structure, or advisory role
+### Near-Term Roadmap
+1. Accumulate forward evidence on probation strategies
+2. Maintain factory throughput without opening random lanes
+3. Use genome map and registry memory to guide future research
+4. Only activate broader harvesting in a controlled, gap-aware way
+
+### Mid-Term Roadmap
+1. Widen validated non-equity and multi-horizon portfolio
+2. Increase independent bets
+3. Deepen rates/energy/afternoon/ranging-market coverage where justified
+4. Expand strategy memory and automated discovery carefully
+
+### Long-Term Roadmap
+1. Prove internal capital deployment
+2. Build transparent reporting layer
+3. Determine entity/tax/compliance structure
+4. Evaluate external offering model only after sustained proof
 
 ---
 
-## Core Beliefs
+## Dashboard and Family-Use Planning
 
-**Evidence before expansion.** No strategy trades real money without
-forward validation. No asset class is added without research evidence.
+A future FISH dashboard or reporting layer should help people understand
+both growth and income, not just returns.
 
-**Controlled downside is non-negotiable.** Kill switches, drawdown limits,
-and position sizing exist to ensure survival. Growth is secondary to not dying.
+### Potential Modules
+- **Growth projection** based on starting capital, contribution rate, and assumed return ranges
+- **Income projection** showing potential annual and monthly withdrawals
+- **Safe withdrawal view** illustrating whether the account is compounding strongly, growing slowly, or at risk of flattening/shrinking
+- **Compounding illustrations** over 10, 20, and 30 years
+- **Withdrawal sustainability planning** for family use
+- **Educational content** around compounding, downside control, and long-term planning
 
-**The system improves itself.** The factory pipeline, validation battery,
-and monitoring infrastructure are designed so FQL gets smarter over time
-without depending on any single person's daily attention.
+### Suggested Framing
+- **Growth mode** — withdrawals low enough that principal still compounds strongly
+- **Balanced mode** — meaningful income while principal still grows more slowly
+- **Income-heavy mode** — withdrawals may reduce long-term compounding and increase fragility in weaker periods
 
-**Diversification is the primary alpha source.** More uncorrelated bets
-at moderate edge beats fewer bets at high edge. Portfolio construction
-matters more than individual strategy optimization.
+This layer should be used first for internal family planning and education,
+and only later for any external dashboard, email reporting, or marketing
+context after the engine has sufficient proof.
 
-**Transparency with yourself.** Every decision is logged. Every rejection
-has a reason. Every promotion has evidence. No self-deception.
+---
+
+## Strategic Benchmark
+
+The long-term goal is to build a platform that can compete favorably,
+on a risk-adjusted basis, against:
+- Buy-and-hold broad equity indices
+- Hedge funds
+- Private equity
+- Mainstream passive vehicles
+
+But this should only be claimed after real evidence, not assumed in advance.
 
 ---
 
@@ -128,18 +234,43 @@ is proven and the family's interests are protected.
 
 ---
 
-## Connection to Other Documents
+## Permanent Document Set
+
+These should live in the repo as the long-term source of truth:
 
 | Document | Role |
 |----------|------|
-| `FISHER_QUANT_OPERATING_PRINCIPLES.md` | How the platform operates day-to-day |
-| `FQL_ARCHITECTURE.md` | Technical system reference |
-| `STRATEGY_DISCOVERY_PIPELINE.md` | How ideas become strategies |
-| `OPERATING_RHYTHM.md` | Weekly cadence |
-| `PROMOTION_PLAYBOOK.md` | How strategies get promoted |
-| `SECURITY_POLICY.md` | IP and credential protection |
-| `FISH_BUSINESS_EVOLUTION_NOTES.md` | Future business options |
-| `CHANGELOG.md` | What changed and when |
+| `FISH_VISION.md` | Long-term mission, thesis, and end state |
+| `FQL_ARCHITECTURE.md` | System structure, layers, modules, operating flow |
+| `FISHER_QUANT_OPERATING_PRINCIPLES.md` | Rules of behavior, evidence standards, discipline, risk philosophy |
+| `STRATEGY_DISCOVERY_PIPELINE.md` | Harvest → spec → batch first pass → validation → probation → promotion |
+| `SYSTEM_INTEGRITY_MONITOR.md` | Diagnostics, health checks, automation oversight |
+| `PROMOTION_PLAYBOOK.md` | Review and decision rules |
+| `PROMOTION_CHECKLIST.md` | Exact operational promotion steps |
+| `CHANGELOG.md` | Historical record of what changed and why |
+| `SECURITY_POLICY.md` | Secrets handling, IP protection, sharing rules, continuity |
+| `FISH_BUSINESS_EVOLUTION_NOTES.md` | Dashboard, reporting, education, fund/membership/entity paths |
+
+---
+
+## Security and IP Guidance
+
+- Keep secrets local only
+- Avoid pasting credentials, tokens, or sensitive infrastructure into chat tools
+- Share the minimum necessary excerpts with AI tools
+- Keep the authoritative repo private and local-first
+- Preserve documentation so no single assistant is a point of failure
+
+---
+
+## Final Principle
+
+Treat this document as the north star, not as permission to skip proof.
+
+The vision is large, but every future step should still pass the same test:
+
+**Does this improve the platform's ability to generate durable, controlled,
+evidence-backed wealth over time?**
 
 ---
 
