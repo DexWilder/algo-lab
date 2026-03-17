@@ -5,52 +5,66 @@
       "title": "2-Year Notes Momentum: Extracting Term Structure Anomalies from FOMC Cycles",
       "lane": "openclaw_tactical",
       "content_hash": "c92adf2f2ef1",
-      "status": "staged",
+      "status": "accepted",
       "scanned_date": "2026-03-17T05:57:30.304973",
-      "targeting_gap": null
+      "targeting_gap": null,
+      "registry_id": "Treasury-2Y-FOMC-Momentum",
+      "review_date": "2026-03-17",
+      "review_notes": "Fills EVENT+CARRY gaps. Blocked by data depth and monthly horizon."
     },
     {
       "filename": "02_fx_carry_trade.md",
       "title": "FX Carry Trade",
       "lane": "openclaw_tactical",
       "content_hash": "3a92a77db433",
-      "status": "staged",
+      "status": "accepted",
       "scanned_date": "2026-03-17T05:57:30.304996",
-      "targeting_gap": null
+      "targeting_gap": null,
+      "registry_id": "FX-Carry-Trade",
+      "review_date": "2026-03-17",
+      "review_notes": "Pure CARRY. Blocked by data. Consider as bias filter first."
     },
     {
       "filename": "03_fx_currency_momentum.md",
       "title": "Currency Momentum Factor",
       "lane": "openclaw_tactical",
       "content_hash": "38bf5d6847c9",
-      "status": "staged",
+      "status": "rejected",
       "scanned_date": "2026-03-17T05:57:30.305003",
-      "targeting_gap": null
+      "targeting_gap": null,
+      "review_date": "2026-03-17",
+      "review_notes": "REJECTED: FX momentum = more MOMENTUM factor concentration (already 54%). AVOID list applies. Only 3 FX pairs insufficient for cross-sectional ranking."
     },
     {
       "filename": "04_fx_ppp_value.md",
       "title": "Currency Value Factor - PPP Strategy",
       "lane": "openclaw_tactical",
       "content_hash": "1fda181a8c43",
-      "status": "staged",
+      "status": "accepted",
       "scanned_date": "2026-03-17T05:57:30.305009",
-      "targeting_gap": null
+      "targeting_gap": null,
+      "registry_id": "FX-PPP-Value",
+      "review_date": "2026-03-17",
+      "review_notes": "Value factor. Heavily blocked by data needs. Low priority."
     },
     {
       "filename": "05_cross_currency_yield_curve_flattening.md",
       "title": "Cross-Currency Yield-Curve Flattening Trade",
       "lane": "openclaw_tactical",
       "content_hash": "b8168bde53f9",
-      "status": "staged",
+      "status": "accepted",
       "scanned_date": "2026-03-17T05:57:30.305014",
-      "targeting_gap": null
+      "targeting_gap": null,
+      "registry_id": "CrossCurrency-YieldCurve-Flattening",
+      "review_date": "2026-03-17",
+      "review_notes": "Sophisticated CARRY. Heavily blocked by data. Low priority vs plain carry."
     }
   ],
   "last_scan": "2026-03-17T05:57:30.305017",
   "stats": {
     "total": 5,
     "staged": 5,
-    "logged": 0,
-    "rejected": 0
+    "logged": 4,
+    "rejected": 1
   }
 }

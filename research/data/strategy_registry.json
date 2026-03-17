@@ -2275,6 +2275,98 @@
         "best_pf": 1.572
       },
       "lifecycle_stage": "discovery"
+    },
+    {
+      "strategy_id": "Treasury-2Y-FOMC-Momentum",
+      "strategy_name": null,
+      "family": "macro_momentum",
+      "asset": "ZF",
+      "session": "monthly",
+      "direction": "both",
+      "source": "openclaw_tactical_harvest",
+      "rule_summary": "Monthly ROC + SMA trend rules on 2Y Treasury futures capturing FOMC tightening/easing cycle persistence. Proxy: ZF (5Y). Source: Quantpedia/Dujava.",
+      "status": "idea",
+      "notes": "ACCEPTED via harvest review. Fills EVENT + CARRY factor gaps. Blocked by: no TU data (using ZF proxy), monthly horizon needs infrastructure, insufficient history for validation. Revisit after rates data backfill.",
+      "last_review_date": "2026-03-17",
+      "review_priority": "MEDIUM",
+      "lifecycle_stage": "discovery",
+      "source_category": "academic",
+      "tags": [
+        "EVENT",
+        "CARRY",
+        "blocked_by_data",
+        "needs_monthly_horizon_support"
+      ],
+      "state_history": []
+    },
+    {
+      "strategy_id": "FX-Carry-Trade",
+      "strategy_name": null,
+      "family": "carry",
+      "asset": "6E",
+      "session": "monthly",
+      "direction": "both",
+      "source": "openclaw_tactical_harvest",
+      "rule_summary": "Rank currencies by interest rate, long highest-yield, short lowest-yield. Monthly rebalance. Classic carry with crash-risk filters needed. Source: Quantpedia.",
+      "status": "idea",
+      "notes": "ACCEPTED via harvest review. Pure CARRY factor fill. Blocked by: only 3 FX pairs, no rate data feed, monthly horizon, crash risk unfiltered. Best near-term use: directional bias filter for existing 6J/6E strategies rather than standalone.",
+      "last_review_date": "2026-03-17",
+      "review_priority": "MEDIUM",
+      "lifecycle_stage": "discovery",
+      "source_category": "academic",
+      "tags": [
+        "CARRY",
+        "blocked_by_data",
+        "consider_as_filter_first"
+      ],
+      "state_history": []
+    },
+    {
+      "strategy_id": "CrossCurrency-YieldCurve-Flattening",
+      "strategy_name": null,
+      "family": "carry",
+      "asset": "multi",
+      "session": "monthly",
+      "direction": "both",
+      "source": "openclaw_tactical_harvest",
+      "rule_summary": "Rank currencies by yield-curve slope, trade cross-currency flattening. 200-year evidence, Sharpe ~2x carry. Source: Quantpedia/Chen.",
+      "status": "idea",
+      "notes": "ACCEPTED, LOW priority. More sophisticated CARRY than simple rate differential but heavily blocked: needs curve data for multiple countries, cross-currency ranking needs 6-10 pairs, complex implementation. Revisit after plain carry is tested.",
+      "last_review_date": "2026-03-17",
+      "review_priority": "LOW",
+      "lifecycle_stage": "discovery",
+      "source_category": "academic",
+      "tags": [
+        "CARRY",
+        "blocked_by_data",
+        "needs_curve_data",
+        "complex_implementation"
+      ],
+      "state_history": []
+    },
+    {
+      "strategy_id": "FX-PPP-Value",
+      "strategy_name": null,
+      "family": "value",
+      "asset": "multi",
+      "session": "quarterly",
+      "direction": "both",
+      "source": "openclaw_tactical_harvest",
+      "rule_summary": "Rank currencies by PPP valuation vs USD. Long undervalued, short overvalued. Quarterly. Source: Quantpedia.",
+      "status": "idea",
+      "notes": "ACCEPTED, LOW priority. Value factor (not momentum). Blocked by: needs OECD PPP + CPI data, quarterly horizon, only 3 FX pairs. Less actionable than carry or event-driven.",
+      "last_review_date": "2026-03-17",
+      "review_priority": "LOW",
+      "lifecycle_stage": "discovery",
+      "source_category": "academic",
+      "tags": [
+        "CARRY",
+        "VALUE",
+        "blocked_by_data",
+        "needs_macro_feed",
+        "quarterly_horizon"
+      ],
+      "state_history": []
     }
   ],
   "_rejection_taxonomy": {
