@@ -2486,6 +2486,123 @@
         "conversion_priority_5"
       ],
       "state_history": []
+    },
+    {
+      "strategy_id": "PreFOMC-Drift-Equity",
+      "strategy_name": null,
+      "family": "event_driven",
+      "asset": "MES",
+      "session": "daily",
+      "direction": "long",
+      "source": "openclaw_strategic_harvest",
+      "rule_summary": "Pre-FOMC announcement drift: equity indices tend to drift higher in the 24 hours before FOMC announcements. Long MES/MNQ day before FOMC, exit after announcement. ~8 events/year.",
+      "status": "idea",
+      "notes": "ACCEPTED. EVENT conversion priority #1. Pure EVENT factor \u2014 calendar-driven, zero correlation to momentum. Well-documented in academic literature. Low trade count (~8/yr) but structural edge. Note: FQL has a rejected PreFOMC-Drift (PF=0.72 on MES) \u2014 this version may need different entry timing or regime filter.",
+      "last_review_date": "2026-03-17",
+      "review_priority": "HIGH",
+      "lifecycle_stage": "discovery",
+      "source_category": "academic",
+      "tags": [
+        "EVENT",
+        "calendar_driven",
+        "equity_index",
+        "event_conversion_priority_1"
+      ],
+      "state_history": []
+    },
+    {
+      "strategy_id": "Treasury-CPI-Day-Long",
+      "strategy_name": null,
+      "family": "event_driven",
+      "asset": "ZN",
+      "session": "daily",
+      "direction": "long",
+      "source": "openclaw_strategic_harvest",
+      "rule_summary": "Treasury futures tend to rally on inflation announcement days (CPI/PPI). Long ZN/ZF on CPI release day. ~12 events/year.",
+      "status": "idea",
+      "notes": "ACCEPTED. EVENT conversion priority #2. Rates-native EVENT factor. Different from equity pre-FOMC \u2014 rates react to inflation data, not Fed decision anticipation. Needs rates data backfill for proper validation.",
+      "last_review_date": "2026-03-17",
+      "review_priority": "HIGH",
+      "lifecycle_stage": "discovery",
+      "source_category": "academic",
+      "tags": [
+        "EVENT",
+        "calendar_driven",
+        "rates_native",
+        "event_conversion_priority_2"
+      ],
+      "state_history": []
+    },
+    {
+      "strategy_id": "OPEX-Week-Effect",
+      "strategy_name": null,
+      "family": "event_driven",
+      "asset": "MES",
+      "session": "weekly",
+      "direction": "long",
+      "source": "openclaw_strategic_harvest",
+      "rule_summary": "Equity indices tend to rise during monthly options expiration week. Long MES/MNQ Monday of OPEX week, exit Friday. ~12 events/year. Source: Quantpedia/QuantifiedStrategies.",
+      "status": "idea",
+      "notes": "ACCEPTED. EVENT conversion priority #3. Calendar-driven weekly hold. Different mechanism from FOMC (dealer hedging/gamma exposure vs Fed anticipation). 12 trades/year \u2014 needs multi-year data for validation.",
+      "last_review_date": "2026-03-17",
+      "review_priority": "MEDIUM",
+      "lifecycle_stage": "discovery",
+      "source_category": "academic",
+      "tags": [
+        "EVENT",
+        "calendar_driven",
+        "equity_index",
+        "weekly_hold",
+        "event_conversion_priority_3"
+      ],
+      "state_history": []
+    },
+    {
+      "strategy_id": "CPI-Reaction-Bias-Equity",
+      "strategy_name": null,
+      "family": "event_driven",
+      "asset": "MES",
+      "session": "intraday",
+      "direction": "both",
+      "source": "openclaw_strategic_harvest",
+      "rule_summary": "Equity index directional bias after CPI release based on surprise direction. Trade the post-announcement momentum. ~12 events/year.",
+      "status": "idea",
+      "notes": "ACCEPTED but BLOCKED. EVENT conversion priority #4. Blocked by: only ~24 events in current data (2yr), needs regime check to distinguish inflationary vs disinflationary market reactions. Revisit after data backfill.",
+      "last_review_date": "2026-03-17",
+      "review_priority": "LOW",
+      "lifecycle_stage": "discovery",
+      "source_category": "academic",
+      "tags": [
+        "EVENT",
+        "blocked_by_sample_size",
+        "needs_regime_check",
+        "event_conversion_priority_4"
+      ],
+      "state_history": []
+    },
+    {
+      "strategy_id": "EIA-30s-Box-Breakout-MCL",
+      "strategy_name": null,
+      "family": "event_driven",
+      "asset": "MCL",
+      "session": "intraday",
+      "direction": "both",
+      "source": "openclaw_strategic_harvest",
+      "rule_summary": "Trade the 30-second price box formed immediately after EIA inventory release on crude oil. Breakout of the initial reaction range. ~48 events/year.",
+      "status": "idea",
+      "notes": "ACCEPTED but BLOCKED. EVENT conversion priority #5. Blocked by: needs sub-minute execution model (30-second box on 5m bars is too coarse), needs high-resolution data or tick-level timing. Note: simpler EIA reaction (note EIA-Reaction) already tested and rejected at PF 0.93 on 5m bars.",
+      "last_review_date": "2026-03-17",
+      "review_priority": "LOW",
+      "lifecycle_stage": "discovery",
+      "source_category": "practitioner",
+      "tags": [
+        "EVENT",
+        "energy",
+        "blocked_by_execution",
+        "needs_high_resolution_execution_model",
+        "event_conversion_priority_5"
+      ],
+      "state_history": []
     }
   ],
   "_rejection_taxonomy": {
