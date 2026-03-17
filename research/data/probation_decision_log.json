@@ -1,0 +1,5 @@
+{
+  "_description": "FQL Probation Decision Log — records every review decision with evidence and rationale",
+  "_usage": "python3 research/probation_journal.py --review DailyTrend-MGC-Long --checkpoint week_2",
+  "entries": []
+}
