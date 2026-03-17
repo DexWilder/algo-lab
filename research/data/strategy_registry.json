@@ -2540,7 +2540,7 @@
     },
     {
       "strategy_id": "Treasury-CPI-Day-Long",
-      "strategy_name": null,
+      "strategy_name": "treasury_cpi_day",
       "family": "event_driven",
       "asset": "ZN",
       "session": "daily",
@@ -2548,16 +2548,17 @@
       "source": "openclaw_strategic_harvest",
       "rule_summary": "Treasury futures tend to rally on inflation announcement days (CPI/PPI). Long ZN/ZF on CPI release day. ~12 events/year.",
       "status": "idea",
-      "notes": "ACCEPTED. EVENT conversion priority #2. Rates-native EVENT factor. Different from equity pre-FOMC \u2014 rates react to inflation data, not Fed decision anticipation. Needs rates data backfill for proper validation.",
+      "notes": "MONITOR. Original long-bias hypothesis REJECTED for current sample. CPI-day rates effect appears real but directionally REGIME-DEPENDENT. ZB short PF 2.81 (19 trades, 63% WR) is the standout \u2014 hawkish regime causes bond selloffs on CPI. ZN short PF 1.34 moderate. ZF long PF 1.24 weak. Not ready for probation. Needs rates data backfill ($12.59) to test across tightening + easing regimes and determine whether this is a regime-switchable strategy or period-specific artifact. Do not iterate further without backfill.",
       "last_review_date": "2026-03-17",
-      "review_priority": "HIGH",
+      "review_priority": "LOW",
       "lifecycle_stage": "discovery",
       "source_category": "academic",
       "tags": [
         "EVENT",
-        "calendar_driven",
         "rates_native",
-        "event_conversion_priority_2"
+        "MONITOR",
+        "regime_dependent",
+        "needs_data_backfill"
       ],
       "state_history": []
     },
