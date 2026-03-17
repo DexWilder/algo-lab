@@ -2603,6 +2603,124 @@
         "event_conversion_priority_5"
       ],
       "state_history": []
+    },
+    {
+      "strategy_id": "Equity-Overnight-Drift",
+      "strategy_name": null,
+      "family": "structural",
+      "asset": "MES",
+      "session": "overnight",
+      "direction": "long",
+      "source": "openclaw_strategic_harvest",
+      "rule_summary": "Equity index overnight drift: buy at close, sell at next open. Captures the well-documented overnight equity premium. ~250 events/year.",
+      "status": "idea",
+      "notes": "ACCEPTED. STRUCTURAL conversion priority #1. Pure structural edge \u2014 overnight premium is a different return source from intraday momentum/breakout. High trade count. Testable now with existing MES/MNQ data.",
+      "last_review_date": "2026-03-17",
+      "review_priority": "HIGH",
+      "lifecycle_stage": "discovery",
+      "source_category": "academic",
+      "tags": [
+        "STRUCTURAL",
+        "overnight_premium",
+        "equity_index",
+        "structural_conversion_priority_1"
+      ],
+      "state_history": []
+    },
+    {
+      "strategy_id": "Equity-Closing-Auction-Flow",
+      "strategy_name": null,
+      "family": "structural",
+      "asset": "MES",
+      "session": "close",
+      "direction": "both",
+      "source": "openclaw_strategic_harvest",
+      "rule_summary": "Trade equity index futures based on closing auction order imbalance flow. Institutional rebalancing creates predictable close dynamics.",
+      "status": "idea",
+      "notes": "ACCEPTED but BLOCKED. STRUCTURAL priority #2. Blocked by: needs auction imbalance data feed (not available in standard OHLCV). Would need Level 2 or MOC imbalance data.",
+      "last_review_date": "2026-03-17",
+      "review_priority": "LOW",
+      "lifecycle_stage": "discovery",
+      "source_category": "academic",
+      "tags": [
+        "STRUCTURAL",
+        "blocked_by_data",
+        "needs_auction_imbalance_data",
+        "structural_conversion_priority_2"
+      ],
+      "state_history": []
+    },
+    {
+      "strategy_id": "Treasury-Roll-Microstructure",
+      "strategy_name": null,
+      "family": "structural",
+      "asset": "ZN",
+      "session": "daily",
+      "direction": "both",
+      "source": "openclaw_strategic_harvest",
+      "rule_summary": "Trade Treasury futures around quarterly roll dates exploiting spread compression/expansion patterns during contract transition.",
+      "status": "idea",
+      "notes": "ACCEPTED but BLOCKED. STRUCTURAL priority #3. Rates-native structural edge \u2014 roll microstructure is genuinely different from directional trading. Blocked by: needs spread-level data between front and back month, and roll date calendar.",
+      "last_review_date": "2026-03-17",
+      "review_priority": "LOW",
+      "lifecycle_stage": "discovery",
+      "source_category": "academic",
+      "tags": [
+        "STRUCTURAL",
+        "rates_native",
+        "blocked_by_execution",
+        "needs_spread_level_data",
+        "structural_conversion_priority_3"
+      ],
+      "state_history": []
+    },
+    {
+      "strategy_id": "WTI-CMA-Roll-Structure",
+      "strategy_name": null,
+      "family": "structural",
+      "asset": "MCL",
+      "session": "daily",
+      "direction": "both",
+      "source": "openclaw_strategic_harvest",
+      "rule_summary": "Trade crude oil calendar spread structure (contango/backwardation) around roll periods. Exploits WTI term structure dynamics.",
+      "status": "idea",
+      "notes": "ACCEPTED but BLOCKED. STRUCTURAL priority #4. Energy-native structural edge. Blocked by: needs multi-contract roll expression (front vs back month spread), not available from single continuous contract.",
+      "last_review_date": "2026-03-17",
+      "review_priority": "LOW",
+      "lifecycle_stage": "discovery",
+      "source_category": "practitioner",
+      "tags": [
+        "STRUCTURAL",
+        "energy",
+        "blocked_by_instrument_definition",
+        "needs_roll_expression",
+        "structural_conversion_priority_4"
+      ],
+      "state_history": []
+    },
+    {
+      "strategy_id": "Gold-Overnight-Drift",
+      "strategy_name": null,
+      "family": "structural",
+      "asset": "MGC",
+      "session": "overnight",
+      "direction": "long",
+      "source": "openclaw_strategic_harvest",
+      "rule_summary": "Gold overnight drift: buy at US close, sell at next US open. Similar to equity overnight premium but on gold \u2014 captures Asian/European session flow into gold.",
+      "status": "idea",
+      "notes": "ACCEPTED but BLOCKED. STRUCTURAL priority #5. Blocked by: source likely references spot gold or ETF \u2014 needs validation that the effect exists on MGC futures specifically. May not transfer cleanly from spot to futures due to roll and carry.",
+      "last_review_date": "2026-03-17",
+      "review_priority": "LOW",
+      "lifecycle_stage": "discovery",
+      "source_category": "academic",
+      "tags": [
+        "STRUCTURAL",
+        "metals",
+        "blocked_by_source_translation",
+        "needs_futures_native_validation",
+        "structural_conversion_priority_5"
+      ],
+      "state_history": []
     }
   ],
   "_rejection_taxonomy": {
