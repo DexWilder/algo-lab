@@ -1,0 +1,24 @@
+{
+  "test_date": "2026-03-17",
+  "strategy": "nfp_level_breakout",
+  "salvage_type": "direction_restriction",
+  "pre_declared_fix": "long-only (remove catastrophic short side PF 0.38)",
+  "result": "ADVANCE",
+  "baseline_long_only": {
+    "asset": "MNQ",
+    "trades": 65,
+    "pnl": 13229,
+    "pf": 1.66,
+    "sharpe": 3.25,
+    "wr": 42,
+    "maxdd": 4431
+  },
+  "walk_forward": {
+    "H1": {"trades": 31, "pf": 1.50, "pnl": 4270},
+    "H2": {"trades": 33, "pf": 1.61, "pnl": 7036}
+  },
+  "top_trade_removal": {"remove_1": 1.54, "remove_2": 1.44, "remove_3": 1.33},
+  "nfp_specificity": {"avg_nfp_pnl": 204, "avg_overnight_pnl": 7.6, "ratio": 26.8, "verdict": "NFP-specific"},
+  "cross_asset": {"MES": {"trades": 65, "pf": 1.48, "pnl": 5589}},
+  "classification": "ADVANCE"
+}
