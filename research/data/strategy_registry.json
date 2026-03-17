@@ -2489,26 +2489,54 @@
     },
     {
       "strategy_id": "PreFOMC-Drift-Equity",
-      "strategy_name": null,
+      "strategy_name": "pre_fomc_drift_v2",
       "family": "event_driven",
-      "asset": "MES",
-      "session": "daily",
+      "asset": "MNQ",
+      "session": "overnight_fomc",
       "direction": "long",
       "source": "openclaw_strategic_harvest",
       "rule_summary": "Pre-FOMC announcement drift: equity indices tend to drift higher in the 24 hours before FOMC announcements. Long MES/MNQ day before FOMC, exit after announcement. ~8 events/year.",
-      "status": "idea",
-      "notes": "ACCEPTED. EVENT conversion priority #1. Pure EVENT factor \u2014 calendar-driven, zero correlation to momentum. Well-documented in academic literature. Low trade count (~8/yr) but structural edge. Note: FQL has a rejected PreFOMC-Drift (PF=0.72 on MES) \u2014 this version may need different entry timing or regime filter.",
+      "status": "probation",
+      "notes": "PASS (7/8). First EVENT factor strategy. PF 1.73, 96 trades, Sharpe 3.85. Momentum correlation: -0.004 (ZERO \u2014 proven independent). Walk-forward: H1=2.03, H2=1.46. Top-trade removal: PF 1.49/1.27/1.15. MC ruin 4.2%. MES cross-validates PF 1.27. 2023 bad year explained: Fed pause reduced anticipation drift. Restrictions: MNQ primary, MICRO tier, 8 trades/yr, review after 8+ forward trades.",
       "last_review_date": "2026-03-17",
       "review_priority": "HIGH",
-      "lifecycle_stage": "discovery",
+      "lifecycle_stage": "forward_validation",
       "source_category": "academic",
       "tags": [
         "EVENT",
         "calendar_driven",
-        "equity_index",
-        "event_conversion_priority_1"
+        "fomc",
+        "zero_momentum_correlation"
       ],
-      "state_history": []
+      "state_history": [],
+      "controller_state": "PROBATION",
+      "controller_action": "PROBATION",
+      "validation_score": 7.0,
+      "profit_factor": 1.73,
+      "deployment_restrictions": {
+        "asset_primary": "MNQ",
+        "asset_secondary": "MES",
+        "direction": "long_only",
+        "max_allocation_tier": "MICRO",
+        "promotion_threshold": "8_additional_forward_trades",
+        "special_handling": "event_calendar_FOMC_dates_hardcoded"
+      },
+      "execution_config": {
+        "avoid_regimes": [],
+        "preferred_regimes": [],
+        "preferred_window": [
+          "15:55",
+          "16:00"
+        ],
+        "allowed_window": [
+          "15:55",
+          "16:00"
+        ],
+        "conviction_threshold_outside": 0,
+        "grinding_filter": false,
+        "exit_variant": null,
+        "priority": 2
+      }
     },
     {
       "strategy_id": "Treasury-CPI-Day-Long",
