@@ -124,17 +124,32 @@ source_lanes:
     notes: "Strategic discovery biased toward factor gaps. Manual review required. Reject momentum variants on sight."
 
   tradingview_scan:
-    enabled: false
-    description: "TradingView public script scan for futures strategies"
+    enabled: true
+    description: "TradingView public script scan — factor-aware, futures-focused"
     type: strategic
-    cadence: "monthly"
-    max_per_run: 10
+    cadence: "biweekly"
+    max_per_run: 8
     targeting_mode: "gap_aware"
+    factor_targets:
+      - "EVENT"
+      - "CARRY"
+      - "STRUCTURAL"
+      - "VOLATILITY"
     filters:
       - "futures"
       - "intraday OR daily"
       - "NOT crypto"
-    notes: "Manual TradingView search guided by gap priorities."
+      - "NOT forex spot (futures only)"
+    search_terms:
+      - "FOMC trading strategy futures"
+      - "session breakout futures"
+      - "mean reversion afternoon futures"
+      - "volatility squeeze daily futures"
+      - "carry trade futures"
+      - "overnight drift futures"
+      - "CPI NFP reaction futures"
+      - "closing range futures strategy"
+    notes: "Biweekly manual TradingView search. Use search_terms as starting prompts. Factor-aware review before staging. Reject momentum clones and equity-morning-breakout variants on sight."
 
   academic_review:
     enabled: false
