@@ -94,14 +94,23 @@ source_lanes:
     notes: "Factor-aware tactical harvesting. Review every note manually before accepting. Reject any momentum variants immediately."
 
   openclaw_strategic:
-    enabled: false
-    description: "OpenClaw broad discovery sweep"
+    enabled: true
+    description: "OpenClaw factor-aware strategic discovery"
     type: strategic
     intake_path: "~/openclaw-intake/inbox/"
-    cadence: "monthly"
+    cadence: "weekly"
     max_per_run: 10
-    targeting_mode: "broad"           # No gap filtering — discover anything
-    notes: "Quarterly broad sweep. Higher volume, lower targeting."
+    targeting_mode: "gap_aware"       # Factor-aware, not truly broad
+    factor_targets:
+      - "EVENT"
+      - "CARRY"
+      - "STRUCTURAL"
+    secondary_targets:
+      - "afternoon_close_session"
+      - "daily_bar_non_momentum"
+      - "energy_native"
+      - "rate_native"
+    notes: "Strategic discovery biased toward factor gaps. Manual review required. Reject momentum variants on sight."
 
   tradingview_scan:
     enabled: false

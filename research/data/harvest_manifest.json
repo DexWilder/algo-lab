@@ -58,12 +58,57 @@
       "registry_id": "CrossCurrency-YieldCurve-Flattening",
       "review_date": "2026-03-17",
       "review_notes": "Sophisticated CARRY. Heavily blocked by data. Low priority vs plain carry."
+    },
+    {
+      "filename": "06_treasury_curve_drift_mean_reversion.md",
+      "title": "Treasury Curve DRIFT Mean-Reversion Basket",
+      "lane": "openclaw_tactical",
+      "content_hash": "84a9b283cdad",
+      "status": "staged",
+      "scanned_date": "2026-03-17T06:14:09.339510",
+      "targeting_gap": null
+    },
+    {
+      "filename": "07_treasury_12m_time_series_momentum.md",
+      "title": "Treasury Futures 12-Month Time-Series Momentum Sleeve",
+      "lane": "openclaw_tactical",
+      "content_hash": "b37a4e7584d6",
+      "status": "staged",
+      "scanned_date": "2026-03-17T06:14:09.339534",
+      "targeting_gap": null
+    },
+    {
+      "filename": "08_fx_asian_session_breakout.md",
+      "title": "FX Futures Asian-Session Range Breakout into London Open",
+      "lane": "openclaw_tactical",
+      "content_hash": "e19cf9283a6c",
+      "status": "staged",
+      "scanned_date": "2026-03-17T06:14:09.339542",
+      "targeting_gap": null
+    },
+    {
+      "filename": "09_fx_opening_range_breakout.md",
+      "title": "FX Futures Opening Range Breakout (ORB)",
+      "lane": "openclaw_tactical",
+      "content_hash": "8eab94da28cc",
+      "status": "staged",
+      "scanned_date": "2026-03-17T06:14:09.339548",
+      "targeting_gap": null
+    },
+    {
+      "filename": "10_fx_daily_donchian_breakout.md",
+      "title": "FX Futures Daily Donchian Breakout Trend System",
+      "lane": "openclaw_tactical",
+      "content_hash": "f4a13e9a993b",
+      "status": "staged",
+      "scanned_date": "2026-03-17T06:14:09.339553",
+      "targeting_gap": null
     }
   ],
-  "last_scan": "2026-03-17T05:57:30.305017",
+  "last_scan": "2026-03-17T06:14:09.340890",
   "stats": {
-    "total": 5,
-    "staged": 5,
+    "total": 10,
+    "staged": 10,
     "logged": 4,
     "rejected": 1
   }
