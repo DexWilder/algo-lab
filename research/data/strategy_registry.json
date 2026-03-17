@@ -2749,6 +2749,145 @@
         "structural_conversion_priority_5"
       ],
       "state_history": []
+    },
+    {
+      "strategy_id": "TV-FOMC-Rate-Decision-Cycles",
+      "strategy_name": null,
+      "family": "event_driven",
+      "asset": "MNQ",
+      "session": "daily",
+      "direction": "both",
+      "source": "tradingview_scan",
+      "rule_summary": "Trade FOMC rate decision cycles based on rate change direction patterns. Source: TradingView public script.",
+      "status": "idea",
+      "notes": "ACCEPTED. TV EVENT batch priority #1. Complements PreFOMC-Drift with a different FOMC angle (decision cycle vs pre-announcement drift).",
+      "last_review_date": "2026-03-17",
+      "review_priority": "HIGH",
+      "lifecycle_stage": "discovery",
+      "source_category": "tradingview",
+      "tags": [
+        "EVENT",
+        "calendar_driven",
+        "fomc",
+        "tv_event_priority_1"
+      ],
+      "state_history": []
+    },
+    {
+      "strategy_id": "TV-NFP-High-Low-Levels",
+      "strategy_name": null,
+      "family": "event_driven",
+      "asset": "MES",
+      "session": "intraday",
+      "direction": "both",
+      "source": "tradingview_scan",
+      "rule_summary": "Trade off NFP release high/low levels as support/resistance. First Friday monthly. Source: TradingView public script.",
+      "status": "idea",
+      "notes": "ACCEPTED. TV EVENT batch priority #2. NFP is a different event from FOMC \u2014 employment data vs rate decision. ~12 events/year.",
+      "last_review_date": "2026-03-17",
+      "review_priority": "HIGH",
+      "lifecycle_stage": "discovery",
+      "source_category": "tradingview",
+      "tags": [
+        "EVENT",
+        "calendar_driven",
+        "nfp",
+        "tv_event_priority_2"
+      ],
+      "state_history": []
+    },
+    {
+      "strategy_id": "TV-OPEX-Vanna-Charm-Windows",
+      "strategy_name": null,
+      "family": "event_driven",
+      "asset": "MES",
+      "session": "daily",
+      "direction": "long",
+      "source": "tradingview_scan",
+      "rule_summary": "Trade options expiration vanna/charm flow windows. Dealer hedging creates predictable directional pressure around OPEX. Source: TradingView public script.",
+      "status": "idea",
+      "notes": "ACCEPTED. TV EVENT batch priority #3. Different mechanism from simple OPEX week effect \u2014 uses options greeks flow as the signal. More sophisticated EVENT concept.",
+      "last_review_date": "2026-03-17",
+      "review_priority": "MEDIUM",
+      "lifecycle_stage": "discovery",
+      "source_category": "tradingview",
+      "tags": [
+        "EVENT",
+        "calendar_driven",
+        "opex",
+        "options_flow",
+        "tv_event_priority_3"
+      ],
+      "state_history": []
+    },
+    {
+      "strategy_id": "TV-CPI-15m-Expansion",
+      "strategy_name": null,
+      "family": "event_driven",
+      "asset": "MES",
+      "session": "intraday",
+      "direction": "both",
+      "source": "tradingview_scan",
+      "rule_summary": "Trade the 15-minute expansion move after CPI release. Follow the initial directional move. ~12 events/year. Source: TradingView public script.",
+      "status": "idea",
+      "notes": "ACCEPTED. TV EVENT batch priority #4. Post-CPI momentum on 15m timeframe. Different from blocked CPI-Reaction-Bias (which needed regime check) \u2014 this is simpler expansion logic.",
+      "last_review_date": "2026-03-17",
+      "review_priority": "MEDIUM",
+      "lifecycle_stage": "discovery",
+      "source_category": "tradingview",
+      "tags": [
+        "EVENT",
+        "calendar_driven",
+        "cpi",
+        "tv_event_priority_4"
+      ],
+      "state_history": []
+    },
+    {
+      "strategy_id": "TV-NFP-Price-Zones",
+      "strategy_name": null,
+      "family": "event_driven",
+      "asset": "MES",
+      "session": "intraday",
+      "direction": "both",
+      "source": "tradingview_scan",
+      "rule_summary": "Trade NFP using pre-defined price zones around the release. Source: TradingView public script.",
+      "status": "idea",
+      "notes": "ACCEPTED but BLOCKED. TV EVENT batch priority #5. Blocked: strategy ambiguity \u2014 multiple possible zone-based playbooks, needs consolidation into a single testable ruleset before conversion.",
+      "last_review_date": "2026-03-17",
+      "review_priority": "LOW",
+      "lifecycle_stage": "discovery",
+      "source_category": "tradingview",
+      "tags": [
+        "EVENT",
+        "blocked_by_strategy_ambiguity",
+        "needs_single_playbook",
+        "tv_event_priority_5"
+      ],
+      "state_history": []
+    },
+    {
+      "strategy_id": "TV-FOMC-Sweep-Reaction",
+      "strategy_name": null,
+      "family": "event_driven",
+      "asset": "MNQ",
+      "session": "intraday",
+      "direction": "both",
+      "source": "tradingview_scan",
+      "rule_summary": "Trade FOMC announcement liquidity sweep and reaction. Post-announcement fade of initial move. Source: TradingView public script.",
+      "status": "idea",
+      "notes": "ACCEPTED but BLOCKED. TV EVENT batch priority #6. Blocked: too discretionary as described \u2014 needs mechanical definition of sweep detection and reaction entry. Concept is interesting (post-announcement fade vs pre-announcement drift).",
+      "last_review_date": "2026-03-17",
+      "review_priority": "LOW",
+      "lifecycle_stage": "discovery",
+      "source_category": "tradingview",
+      "tags": [
+        "EVENT",
+        "blocked_by_discretion",
+        "needs_mechanical_definition",
+        "tv_event_priority_6"
+      ],
+      "state_history": []
     }
   ],
   "_rejection_taxonomy": {

@@ -113,13 +113,21 @@
       "targeting_gap": null,
       "registry_id": "FX-Daily-Donchian-Breakout",
       "review_date": "2026-03-17"
+    },
+    {
+      "filename": "tv_event_event_high_mid_low.md",
+      "title": "Event High Mid Low",
+      "lane": "tradingview_scan",
+      "status": "rejected",
+      "review_date": "2026-03-17",
+      "review_notes": "REJECTED: too generic, no specific event logic, just marks levels."
     }
   ],
   "last_scan": "2026-03-17T06:14:09.340890",
   "stats": {
     "total": 10,
     "staged": 10,
-    "logged": 9,
-    "rejected": 1
+    "logged": 15,
+    "rejected": 2
   }
 }
