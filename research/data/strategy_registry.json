@@ -2367,6 +2367,125 @@
         "quarterly_horizon"
       ],
       "state_history": []
+    },
+    {
+      "strategy_id": "Treasury-12M-TSM",
+      "strategy_name": null,
+      "family": "macro_momentum",
+      "asset": "ZN",
+      "session": "monthly",
+      "direction": "both",
+      "source": "openclaw_tactical_harvest",
+      "rule_summary": "12-month time-series momentum on Treasury futures. Long when 12m return positive, short when negative. Monthly rebalance. Source: OpenClaw note 07.",
+      "status": "idea",
+      "notes": "ACCEPTED. Conversion priority #1. Rates-native macro momentum on daily/monthly bars. Passes momentum high-bar: new asset class without momentum coverage + new horizon. Needs rates data backfill for proper validation.",
+      "last_review_date": "2026-03-17",
+      "review_priority": "HIGH",
+      "lifecycle_stage": "discovery",
+      "source_category": "academic",
+      "tags": [
+        "EVENT",
+        "CARRY",
+        "rates_native",
+        "daily_bar",
+        "conversion_priority_1"
+      ],
+      "state_history": []
+    },
+    {
+      "strategy_id": "FX-Daily-Donchian-Breakout",
+      "strategy_name": null,
+      "family": "breakout",
+      "asset": "6J",
+      "session": "daily_close",
+      "direction": "both",
+      "source": "openclaw_tactical_harvest",
+      "rule_summary": "Daily Donchian breakout trend system on FX futures. Source: OpenClaw note 10.",
+      "status": "idea",
+      "notes": "ACCEPTED. Conversion priority #2. FX daily-bar breakout. Passes momentum high-bar: daily horizon on FX (existing FX strategies are intraday). Similar to fx_daily_trend but different entry (Donchian vs EMA+Donchian).",
+      "last_review_date": "2026-03-17",
+      "review_priority": "MEDIUM",
+      "lifecycle_stage": "discovery",
+      "source_category": "academic",
+      "tags": [
+        "MOMENTUM",
+        "high_bar_pass",
+        "daily_bar",
+        "fx_native",
+        "conversion_priority_2"
+      ],
+      "state_history": []
+    },
+    {
+      "strategy_id": "FX-Asian-Session-Breakout",
+      "strategy_name": null,
+      "family": "breakout",
+      "asset": "6J",
+      "session": "london_open",
+      "direction": "both",
+      "source": "openclaw_tactical_harvest",
+      "rule_summary": "Asian session range breakout into London open on FX futures. Source: OpenClaw note 08.",
+      "status": "idea",
+      "notes": "ACCEPTED. Conversion priority #3. STRUCTURAL factor \u2014 session-transition edge. Similar to FXBreak-6J but different framing (Asian range vs Tokyo-specific). May overlap with existing session breakout.",
+      "last_review_date": "2026-03-17",
+      "review_priority": "MEDIUM",
+      "lifecycle_stage": "discovery",
+      "source_category": "academic",
+      "tags": [
+        "STRUCTURAL",
+        "session_transition",
+        "fx_native",
+        "conversion_priority_3"
+      ],
+      "state_history": []
+    },
+    {
+      "strategy_id": "FX-ORB",
+      "strategy_name": null,
+      "family": "breakout",
+      "asset": "6J",
+      "session": "morning",
+      "direction": "both",
+      "source": "openclaw_tactical_harvest",
+      "rule_summary": "FX futures opening range breakout. Source: OpenClaw note 09.",
+      "status": "idea",
+      "notes": "ACCEPTED. Conversion priority #4. STRUCTURAL \u2014 ORB adapted to FX session structure. Lower priority because FQL already has ORB family and FX session breakout. Value depends on how different FX ORB is from existing.",
+      "last_review_date": "2026-03-17",
+      "review_priority": "LOW",
+      "lifecycle_stage": "discovery",
+      "source_category": "academic",
+      "tags": [
+        "STRUCTURAL",
+        "session_transition",
+        "fx_native",
+        "conversion_priority_4"
+      ],
+      "state_history": []
+    },
+    {
+      "strategy_id": "Treasury-Curve-Drift-MR",
+      "strategy_name": null,
+      "family": "relative_value",
+      "asset": "ZN",
+      "session": "daily",
+      "direction": "both",
+      "source": "openclaw_tactical_harvest",
+      "rule_summary": "Treasury curve drift mean-reversion basket. Trade ZN vs ZB (or ZF vs ZN) spread based on curve steepening/flattening signals. Source: OpenClaw note 06.",
+      "status": "idea",
+      "notes": "ACCEPTED but BLOCKED. Conversion priority #5. Rates-native relative value \u2014 genuinely different factor (not momentum). Blocked by: needs curve hedge implementation, spread trading infrastructure, and deeper rates data.",
+      "last_review_date": "2026-03-17",
+      "review_priority": "LOW",
+      "lifecycle_stage": "discovery",
+      "source_category": "academic",
+      "tags": [
+        "CARRY",
+        "rates_native",
+        "relative_value",
+        "blocked_by_engineering",
+        "needs_curve_hedge_support",
+        "conversion_priority_5"
+      ],
+      "state_history": []
     }
   ],
   "_rejection_taxonomy": {
