@@ -1,0 +1,19 @@
+{
+  "strategy": "PreFOMC-Drift-v2-MNQ",
+  "verdict": "PASS",
+  "score": 7,
+  "failures": 1,
+  "tests": {
+    "Walk-Forward H1": true,
+    "Walk-Forward H2": true,
+    "Regime Stability": true,
+    "Momentum Independence": true,
+    "Asset Robustness (MES)": true,
+    "Bootstrap CI": "False",
+    "Top-1 Trade Removal": true,
+    "Monte Carlo Ruin": true
+  },
+  "bootstrap_ci_lower": 0.878,
+  "p_ruin_2k": 0.0417,
+  "momentum_correlation": -0.004
+}
