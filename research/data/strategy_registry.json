@@ -3040,6 +3040,123 @@
         "tv_structural_priority_5"
       ],
       "state_history": []
+    },
+    {
+      "strategy_id": "TV-Gold-Bandwidth-Squeeze",
+      "strategy_name": null,
+      "family": "vol_expansion",
+      "asset": "MGC",
+      "session": "intraday",
+      "direction": "both",
+      "source": "tradingview_scan",
+      "rule_summary": "Gold Bollinger Bandwidth squeeze breakout. Detect compression on MGC, trade the expansion. Source: TradingView.",
+      "status": "idea",
+      "notes": "ACCEPTED. VOLATILITY priority #1. Only actionable VOLATILITY idea. Gold-specific squeeze \u2014 different from existing equity squeeze strategies (TTMSqueeze, BBKCSqueeze). Fills the VOLATILITY factor gap on a proven asset.",
+      "last_review_date": "2026-03-17",
+      "review_priority": "HIGH",
+      "lifecycle_stage": "discovery",
+      "source_category": "tradingview",
+      "tags": [
+        "VOLATILITY",
+        "vol_squeeze",
+        "gold",
+        "tv_vol_priority_1"
+      ],
+      "state_history": []
+    },
+    {
+      "strategy_id": "TV-VIX-Term-Structure-Hedge",
+      "strategy_name": null,
+      "family": "vol_expansion",
+      "asset": "MES",
+      "session": "daily",
+      "direction": "both",
+      "source": "tradingview_scan",
+      "rule_summary": "VIX term structure (contango/backwardation) as regime signal for equity hedging and directional positioning. Source: TradingView.",
+      "status": "idea",
+      "notes": "ACCEPTED but BLOCKED. VOLATILITY priority #2. Blocked: tail risk strategy needs hedge and roll controls before deployment. VIX term structure is a powerful regime signal but needs careful risk management.",
+      "last_review_date": "2026-03-17",
+      "review_priority": "MEDIUM",
+      "lifecycle_stage": "discovery",
+      "source_category": "tradingview",
+      "tags": [
+        "VOLATILITY",
+        "blocked_by_tail_risk",
+        "needs_hedge_and_roll_controls",
+        "tv_vol_priority_2"
+      ],
+      "state_history": []
+    },
+    {
+      "strategy_id": "TV-VVIX-VIX-Divergence-Regime",
+      "strategy_name": null,
+      "family": "vol_expansion",
+      "asset": "MES",
+      "session": "daily",
+      "direction": "both",
+      "source": "tradingview_scan",
+      "rule_summary": "VVIX/VIX divergence as regime signal. When vol-of-vol diverges from VIX, trade the regime shift. Source: TradingView.",
+      "status": "idea",
+      "notes": "ACCEPTED but BLOCKED. VOLATILITY priority #3. Blocked: strategy ambiguity \u2014 needs mechanical thresholds for divergence detection and entry/exit rules.",
+      "last_review_date": "2026-03-17",
+      "review_priority": "LOW",
+      "lifecycle_stage": "discovery",
+      "source_category": "tradingview",
+      "tags": [
+        "VOLATILITY",
+        "blocked_by_strategy_ambiguity",
+        "needs_mechanical_thresholds",
+        "tv_vol_priority_3"
+      ],
+      "state_history": []
+    },
+    {
+      "strategy_id": "TV-Crude-OVX-Regime-Shift",
+      "strategy_name": null,
+      "family": "vol_expansion",
+      "asset": "MCL",
+      "session": "daily",
+      "direction": "both",
+      "source": "tradingview_scan",
+      "rule_summary": "Crude oil OVX (oil VIX) regime shift trading. Use OVX levels to trade MCL directionally or as vol expansion signal. Source: TradingView.",
+      "status": "idea",
+      "notes": "ACCEPTED but BLOCKED. VOLATILITY priority #4. Energy-native vol idea. Blocked: needs OVX proxy data and finished playbook with testable rules.",
+      "last_review_date": "2026-03-17",
+      "review_priority": "LOW",
+      "lifecycle_stage": "discovery",
+      "source_category": "tradingview",
+      "tags": [
+        "VOLATILITY",
+        "energy",
+        "blocked_by_proxy_data",
+        "needs_finished_playbook",
+        "tv_vol_priority_4"
+      ],
+      "state_history": []
+    },
+    {
+      "strategy_id": "TV-Treasury-Macro-Vol-Targeting",
+      "strategy_name": null,
+      "family": "vol_expansion",
+      "asset": "ZN",
+      "session": "daily",
+      "direction": "both",
+      "source": "tradingview_scan",
+      "rule_summary": "Treasury futures vol-targeting: scale position size inversely to realized volatility. Macro vol regime overlay for rates. Source: TradingView.",
+      "status": "idea",
+      "notes": "ACCEPTED but BLOCKED. VOLATILITY priority #5. Rates-native vol targeting \u2014 more of a sizing overlay than standalone strategy. Blocked: needs model infrastructure for dynamic position sizing based on vol regime.",
+      "last_review_date": "2026-03-17",
+      "review_priority": "LOW",
+      "lifecycle_stage": "discovery",
+      "source_category": "tradingview",
+      "tags": [
+        "VOLATILITY",
+        "rates_native",
+        "blocked_by_engineering",
+        "needs_model_infrastructure",
+        "tv_vol_priority_5"
+      ],
+      "state_history": []
     }
   ],
   "_rejection_taxonomy": {
