@@ -1,0 +1,136 @@
+{
+  "generated": "2026-03-17",
+  "total_blocked": 13,
+
+  "by_blocker_type": {
+    "blocked_by_data": {
+      "count": 5,
+      "ideas": [
+        "Treasury-2Y-FOMC-Momentum",
+        "FX-Carry-Trade",
+        "CrossCurrency-YieldCurve-Flattening",
+        "FX-PPP-Value",
+        "Equity-Closing-Auction-Flow"
+      ],
+      "shared_unlocks": {
+        "rates_data_backfill": {
+          "cost": "$12.59",
+          "unlocks": ["Treasury-2Y-FOMC-Momentum", "Treasury-CPI-Day-Long (queue, not blocked but benefits)"],
+          "effort": "LOW — run databento_loader.py for ZN/ZF/ZB backfill to 2019",
+          "worth_it": "YES — highest ROI data spend. Unlocks rates EVENT + CARRY ideas. Two high-value candidates share this blocker.",
+          "timing": "After Week 8 probation review"
+        },
+        "fx_rate_data_feed": {
+          "cost": "FREE — simple hardcoded rate lookup table updated quarterly",
+          "unlocks": ["FX-Carry-Trade (as directional bias filter)"],
+          "effort": "LOW — 30 min to build rate table + filter logic",
+          "worth_it": "YES — carry filter already proven useful on 6J (PF improvement). No external feed needed.",
+          "timing": "After probation review, when carry filter is implemented"
+        },
+        "macro_data_feeds": {
+          "cost": "UNKNOWN — OECD PPP, CPI feeds, yield curve data",
+          "unlocks": ["CrossCurrency-YieldCurve-Flattening", "FX-PPP-Value"],
+          "effort": "HIGH — new data source integration, ongoing maintenance",
+          "worth_it": "NO (not yet) — these are sophisticated macro strategies that need proven simpler versions first",
+          "timing": "Phase 3+ (after basic carry and rates strategies are proven)"
+        },
+        "auction_imbalance_data": {
+          "cost": "UNKNOWN — Level 2 or MOC imbalance feed",
+          "unlocks": ["Equity-Closing-Auction-Flow"],
+          "effort": "HIGH — new data source, different data type from OHLCV",
+          "worth_it": "NO (not yet) — single strategy unlocked, exotic data requirement",
+          "timing": "Defer indefinitely unless closing-auction research becomes a priority"
+        }
+      }
+    },
+
+    "blocked_by_execution": {
+      "count": 3,
+      "ideas": [
+        "EIA-30s-Box-Breakout-MCL",
+        "Treasury-Roll-Microstructure",
+        "WTI-CMA-Roll-Structure"
+      ],
+      "shared_unlocks": {
+        "high_resolution_execution": {
+          "cost": "Tick data + sub-minute backtest engine",
+          "unlocks": ["EIA-30s-Box-Breakout-MCL"],
+          "effort": "HIGH — new data granularity, engine changes",
+          "worth_it": "NO — simpler EIA reaction already tested and rejected (PF 0.93). Sub-minute version unlikely to change the outcome materially.",
+          "timing": "Defer"
+        },
+        "spread_trading_infrastructure": {
+          "cost": "Multi-contract data + spread backtest support",
+          "unlocks": ["Treasury-Roll-Microstructure", "WTI-CMA-Roll-Structure"],
+          "effort": "HIGH — needs front/back month separate data, roll calendar, spread P&L logic",
+          "worth_it": "MAYBE later — spread trading is genuinely different from outright, but infrastructure cost is high for 2 ideas",
+          "timing": "Phase 3+ if rates/energy outright strategies are proven first"
+        }
+      }
+    },
+
+    "blocked_by_engineering": {
+      "count": 1,
+      "ideas": ["Treasury-Curve-Drift-MR"],
+      "shared_unlocks": {
+        "curve_hedge_support": {
+          "cost": "ZN vs ZB (or ZF vs ZN) spread logic",
+          "unlocks": ["Treasury-Curve-Drift-MR"],
+          "effort": "MEDIUM — similar to spread trading but simpler (two known instruments)",
+          "worth_it": "MAYBE — genuinely different factor (relative value), but only 1 idea unlocked. Better to wait until spread infrastructure exists.",
+          "timing": "After spread trading infrastructure if built"
+        }
+      }
+    },
+
+    "blocked_by_ambiguity_discretion": {
+      "count": 3,
+      "ideas": [
+        "TV-NFP-Price-Zones",
+        "TV-FOMC-Sweep-Reaction",
+        "Gold-Overnight-Drift"
+      ],
+      "shared_unlocks": {
+        "mechanical_definition_work": {
+          "cost": "FREE — just needs clearer rule extraction",
+          "unlocks": ["TV-NFP-Price-Zones", "TV-FOMC-Sweep-Reaction"],
+          "effort": "LOW-MEDIUM — read the source material more carefully, define mechanical rules",
+          "worth_it": "MAYBE — NFP-Price-Zones may overlap with NFP-Level-Breakout (already in probation). FOMC-Sweep is interesting but ICT-adjacent.",
+          "timing": "Only if the specific EVENT sub-family needs more candidates"
+        },
+        "futures_native_validation": {
+          "cost": "FREE — just needs testing on MGC futures data",
+          "unlocks": ["Gold-Overnight-Drift"],
+          "effort": "LOW — already tested Equity-Overnight-Drift, could adapt for gold",
+          "worth_it": "MAYBE — equity overnight was MONITOR (PF 1.09). Gold overnight might be different but likely same structural weakness.",
+          "timing": "Low priority unless gold overnight shows different characteristics than equity"
+        }
+      }
+    }
+  },
+
+  "priority_summary": {
+    "highest_roi_unlock": {
+      "action": "Rates data backfill (ZN/ZF/ZB to 2019)",
+      "cost": "$12.59",
+      "unlocks_count": 2,
+      "unlocks": ["Treasury-2Y-FOMC-Momentum", "Treasury-CPI-Day-Long (improves validation)"],
+      "timing": "After Week 8 probation review",
+      "why_highest": "Cheapest spend, unlocks 2 high-value EVENT+CARRY ideas on the #1 missing asset class (rates)"
+    },
+    "second_roi_unlock": {
+      "action": "Simple carry rate lookup table",
+      "cost": "FREE (30 min build)",
+      "unlocks_count": 1,
+      "unlocks": ["FX-Carry-Trade as bias filter"],
+      "timing": "At probation promotion (carry filter already proven useful)",
+      "why_second": "Zero cost, already proven to improve PF on 6J strategies"
+    },
+    "defer": [
+      "Macro data feeds (OECD PPP, CPI) — too complex for current phase",
+      "Auction imbalance data — exotic, single strategy",
+      "Tick data / sub-minute engine — EIA already failed on 5m",
+      "Spread trading infrastructure — high effort, 2 ideas only"
+    ]
+  }
+}
