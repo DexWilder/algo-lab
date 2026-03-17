@@ -47,6 +47,21 @@ targeting:
       note: "Portfolio is trending-dependent. Need ranging-market strategies."
       priority: MEDIUM
 
+    - dimension: "factor"
+      target: "EVENT"
+      note: "0 primary EVENT strategies. Calendar-driven returns are uncorrelated to momentum."
+      priority: HIGH
+
+    - dimension: "factor"
+      target: "CARRY"
+      note: "0 primary CARRY strategies. Macro directional bias is only implicit, never explicit."
+      priority: MEDIUM
+
+    - dimension: "factor"
+      target: "STRUCTURAL"
+      note: "Only 1 primary STRUCTURAL strategy (FXBreak-6J). Session-transition edges underrepresented."
+      priority: MEDIUM
+
     - dimension: "direction"
       target: "short"
       note: "Only 3 short-only strategies. Structural long bias."
@@ -57,6 +72,7 @@ targeting:
     - "mean_reversion x equity_index"    # 5 tested, all failed
     - "breakout x morning"               # 13 strategies, saturated
     - "ict x any"                        # ICT family failed twice
+    - "momentum x any (new)"             # 54% factor concentration — STOP adding momentum variants
 
 # ── Source Lanes ─────────────────────────────────────────────────────────────
 # Each lane is independently enable/disable. Only one should be active at a time

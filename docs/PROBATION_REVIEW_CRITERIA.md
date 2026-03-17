@@ -91,6 +91,13 @@
 | Backtest PF | 1.20 |
 | Allocation tier | MICRO |
 | Promotion threshold | 50 forward trades |
+| **Factor role** | **Only STRUCTURAL primary in portfolio. Provides genuine factor diversification beyond momentum.** |
+
+**Strategic importance:** Factor decomposition shows the portfolio is 54% MOMENTUM.
+FXBreak-6J is the ONLY probation strategy that adds a different primary factor
+(STRUCTURAL — session-transition edge). This makes it strategically more valuable
+than its PF alone suggests. Even at borderline metrics, it deserves extra weight
+in promotion decisions because of the factor diversification it provides.
 
 **Promote to ACTIVE if:**
 - 50+ forward trades accumulated
