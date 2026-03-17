@@ -2775,26 +2775,62 @@
     },
     {
       "strategy_id": "TV-NFP-High-Low-Levels",
-      "strategy_name": null,
+      "strategy_name": "nfp_level_breakout",
       "family": "event_driven",
-      "asset": "MES",
-      "session": "intraday",
-      "direction": "both",
+      "asset": "MNQ",
+      "session": "multi_day_nfp",
+      "direction": "long",
       "source": "tradingview_scan",
       "rule_summary": "Trade off NFP release high/low levels as support/resistance. First Friday monthly. Source: TradingView public script.",
-      "status": "idea",
-      "notes": "ACCEPTED. TV EVENT batch priority #2. NFP is a different event from FOMC \u2014 employment data vs rate decision. ~12 events/year.",
+      "status": "probation",
+      "notes": "CONDITIONAL_PASS (7/9). Second EVENT strategy. First successful salvage. PF 1.66, Sharpe 3.25, 65 trades, WR 42%. Long-only (short side PF 0.38 removed via salvage). NFP-specific: 27x avg PnL vs generic equity long. Momentum corr 0.065 (independent). Walk-forward: H1=1.50, H2=1.61. Top-trade robust: PF 1.54/1.44/1.33. MES cross-validates PF 1.48. WATCH ITEMS: T3 weakening (PF 1.09), MaxDD ,431 (multi-day hold structural), Bootstrap CI 0.93 (below 1.0). Restrictions: MNQ primary, long only, MICRO tier, review after 8+ forward trades.",
       "last_review_date": "2026-03-17",
       "review_priority": "HIGH",
-      "lifecycle_stage": "discovery",
+      "lifecycle_stage": "forward_validation",
       "source_category": "tradingview",
       "tags": [
         "EVENT",
         "calendar_driven",
         "nfp",
-        "tv_event_priority_2"
+        "salvage_success",
+        "long_only",
+        "zero_momentum_correlation"
       ],
-      "state_history": []
+      "state_history": [],
+      "controller_state": "PROBATION",
+      "controller_action": "PROBATION",
+      "validation_score": 7.0,
+      "profit_factor": 1.66,
+      "deployment_restrictions": {
+        "asset_primary": "MNQ",
+        "asset_secondary": "MES",
+        "direction": "long_only",
+        "max_allocation_tier": "MICRO",
+        "promotion_threshold": "8_additional_forward_trades",
+        "special_handling": "nfp_calendar_first_friday_monthly",
+        "salvage_applied": "long_only_restriction"
+      },
+      "execution_config": {
+        "avoid_regimes": [],
+        "preferred_regimes": [],
+        "preferred_window": [
+          "15:55",
+          "16:00"
+        ],
+        "allowed_window": [
+          "15:55",
+          "16:00"
+        ],
+        "conviction_threshold_outside": 0,
+        "grinding_filter": false,
+        "exit_variant": null,
+        "priority": 2
+      },
+      "watch_items": [
+        "T3 walk-forward weakening (PF 1.09 vs T1=2.61, T2=2.19)",
+        "Multi-day hold MaxDD ,431 (structural for hold period)",
+        "Bootstrap CI 0.93 (below 1.0, needs more trades to tighten)"
+      ]
     },
     {
       "strategy_id": "TV-OPEX-Vanna-Charm-Windows",
