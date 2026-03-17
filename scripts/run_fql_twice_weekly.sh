@@ -1,0 +1,52 @@
+#!/bin/bash
+# FQL Twice-Weekly Research Jobs
+# Triggered by launchd: com.fql.twice-weekly-research
+# Schedule: Tuesday and Thursday at 18:00 ET (after daily pipeline)
+
+export PATH="/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PYTHONUNBUFFERED=1
+
+ALGO_LAB="/Users/chasefisher/projects/Algo Trading/algo-lab"
+LOG_DIR="$ALGO_LAB/research/logs"
+LOCKFILE="$LOG_DIR/.fql_twice_weekly.lock"
+TIMESTAMP="$(date +%Y%m%d_%H%M)"
+LOG_FILE="$LOG_DIR/twice_weekly_run_${TIMESTAMP}.log"
+
+mkdir -p "$LOG_DIR"
+
+log() {
+    echo "$*" >> "$LOG_FILE"
+    echo "$*"
+}
+
+# Run-lock protection
+if [ -f "$LOCKFILE" ]; then
+    LOCK_PID="$(cat "$LOCKFILE" 2>/dev/null || true)"
+    if [ -n "$LOCK_PID" ] && kill -0 "$LOCK_PID" 2>/dev/null; then
+        log "$(date) - SKIPPED: twice-weekly pipeline already running (PID $LOCK_PID)"
+        exit 0
+    else
+        rm -f "$LOCKFILE"
+    fi
+fi
+
+echo $$ > "$LOCKFILE"
+cleanup() { rm -f "$LOCKFILE"; }
+trap cleanup EXIT
+
+cd "$ALGO_LAB"
+
+log "=== FQL Twice-Weekly Research Run - $(date) ==="
+log "PID: $$ | Repo: $ALGO_LAB"
+log ""
+
+python3 research/fql_research_scheduler.py --twice_weekly >> "$LOG_FILE" 2>&1
+EXIT_CODE=$?
+
+log ""
+if [ "$EXIT_CODE" -eq 0 ]; then
+    log "=== Twice-weekly jobs completed successfully - $(date) ==="
+else
+    log "=== COMPLETED WITH ERRORS (exit $EXIT_CODE) - $(date) ==="
+    exit 1
+fi

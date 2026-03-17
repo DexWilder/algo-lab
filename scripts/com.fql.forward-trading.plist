@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.fql.forward-trading</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/chasefisher/projects/Algo Trading/algo-lab/scripts/run_fql_forward.sh</string>
+    </array>
+
+    <!--
+        DISABLED BY DEFAULT.
+        DO NOT load this agent until you have:
+        1. Set FORWARD_ENABLED="true" in run_fql_forward.sh
+        2. Verified Databento API key is working
+        3. Confirmed you accept the daily data cost (~$0.10-0.50/day)
+        4. Run start_forward_day.sh manually at least 3 times successfully
+
+        To load: launchctl load ~/Library/LaunchAgents/com.fql.forward-trading.plist
+        To unload: launchctl unload ~/Library/LaunchAgents/com.fql.forward-trading.plist
+    -->
+
+    <!-- Weekdays at 06:25 ET (before 06:30 pre-market) -->
+    <key>StartCalendarInterval</key>
+    <array>
+        <dict>
+            <key>Weekday</key>
+            <integer>1</integer>
+            <key>Hour</key>
+            <integer>6</integer>
+            <key>Minute</key>
+            <integer>25</integer>
+        </dict>
+        <dict>
+            <key>Weekday</key>
+            <integer>2</integer>
+            <key>Hour</key>
+            <integer>6</integer>
+            <key>Minute</key>
+            <integer>25</integer>
+        </dict>
+        <dict>
+            <key>Weekday</key>
+            <integer>3</integer>
+            <key>Hour</key>
+            <integer>6</integer>
+            <key>Minute</key>
+            <integer>25</integer>
+        </dict>
+        <dict>
+            <key>Weekday</key>
+            <integer>4</integer>
+            <key>Hour</key>
+            <integer>6</integer>
+            <key>Minute</key>
+            <integer>25</integer>
+        </dict>
+        <dict>
+            <key>Weekday</key>
+            <integer>5</integer>
+            <key>Hour</key>
+            <integer>6</integer>
+            <key>Minute</key>
+            <integer>25</integer>
+        </dict>
+    </array>
+
+    <key>StandardOutPath</key>
+    <string>/Users/chasefisher/projects/Algo Trading/algo-lab/research/logs/launchd_forward_stdout.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/Users/chasefisher/projects/Algo Trading/algo-lab/research/logs/launchd_forward_stderr.log</string>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/chasefisher/projects/Algo Trading/algo-lab</string>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+        <key>HOME</key>
+        <string>/Users/chasefisher</string>
+        <key>PYTHONUNBUFFERED</key>
+        <string>1</string>
+    </dict>
+</dict>
+</plist>

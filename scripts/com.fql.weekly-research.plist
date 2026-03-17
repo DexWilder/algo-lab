@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.fql.weekly-research</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/chasefisher/projects/Algo Trading/algo-lab/scripts/run_fql_weekly.sh</string>
+    </array>
+
+    <!-- Friday at 18:30 ET (after daily 17:30 pipeline) -->
+    <key>StartCalendarInterval</key>
+    <array>
+        <dict>
+            <key>Weekday</key>
+            <integer>5</integer>
+            <key>Hour</key>
+            <integer>18</integer>
+            <key>Minute</key>
+            <integer>30</integer>
+        </dict>
+    </array>
+
+    <key>StandardOutPath</key>
+    <string>/Users/chasefisher/projects/Algo Trading/algo-lab/research/logs/launchd_weekly_stdout.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/Users/chasefisher/projects/Algo Trading/algo-lab/research/logs/launchd_weekly_stderr.log</string>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/chasefisher/projects/Algo Trading/algo-lab</string>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+        <key>HOME</key>
+        <string>/Users/chasefisher</string>
+        <key>PYTHONUNBUFFERED</key>
+        <string>1</string>
+    </dict>
+</dict>
+</plist>
