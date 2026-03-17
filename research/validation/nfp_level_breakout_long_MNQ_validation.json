@@ -1,0 +1,28 @@
+{
+  "strategy": "NFP-Level-Breakout-Long-MNQ",
+  "verdict": "CONDITIONAL_PASS",
+  "score": 7,
+  "failures": 2,
+  "tests": {
+    "Walk-Forward H1": true,
+    "Walk-Forward H2": true,
+    "Regime Stability": true,
+    "NFP-Specificity": "True",
+    "Momentum Independence": "True",
+    "Asset Robustness (MES)": true,
+    "Bootstrap CI": "False",
+    "Top-1 Trade Removal": true,
+    "Monte Carlo Ruin": false
+  },
+  "baseline": {
+    "trades": 65,
+    "pf": 1.66,
+    "sharpe": 3.25,
+    "pnl": 13229,
+    "maxdd": 4431
+  },
+  "bootstrap_ci_lower": 0.929,
+  "p_ruin_2k": 0.9992,
+  "momentum_correlation": 0.065,
+  "nfp_specificity_ratio": 26.8
+}
