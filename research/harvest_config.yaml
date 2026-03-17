@@ -4,7 +4,7 @@
 
 # ── Global Settings ──────────────────────────────────────────────────────────
 harvest:
-  enabled: false                    # Master kill switch — must be true for ANY lane to run
+  enabled: true                     # Master switch ON — tactical lane active
   max_ideas_per_run: 5              # Cap on new ideas logged per harvest run
   dedupe_check: true                # Check registry for duplicate/similar ideas before logging
   auto_log_to_registry: false       # If true, auto-add to registry as status=idea. If false, stage only.
@@ -12,7 +12,7 @@ harvest:
   genome_map_path: "research/data/strategy_genome_map.json"
 
 # ── Harvest Mode ─────────────────────────────────────────────────────────────
-# tactical: fill specific gaps identified by genome map (targeted, low volume)
+# tactical: fill specific gaps identified by genome map + factor decomposition
 # strategic: broad discovery sweep across all sources (high volume, periodic)
 mode: tactical
 
@@ -80,14 +80,18 @@ targeting:
 
 source_lanes:
   openclaw_tactical:
-    enabled: false
-    description: "OpenClaw targeted prompts based on genome map gaps"
+    enabled: true
+    description: "OpenClaw targeted prompts for factor gaps (EVENT, CARRY, STRUCTURAL)"
     type: tactical
     intake_path: "~/openclaw-intake/inbox/"
     cadence: "weekly"
-    max_per_run: 3
-    targeting_mode: "gap_aware"       # Uses priority_gaps above
-    notes: "Send gap-specific prompts to OpenClaw. Review results manually."
+    max_per_run: 5
+    targeting_mode: "gap_aware"       # Uses priority_gaps + factor gaps above
+    factor_targets:
+      - "EVENT"                       # Highest priority factor gap
+      - "CARRY"                       # Second priority
+      - "STRUCTURAL"                  # Third priority (already have 1, want more)
+    notes: "Factor-aware tactical harvesting. Review every note manually before accepting. Reject any momentum variants immediately."
 
   openclaw_strategic:
     enabled: false
