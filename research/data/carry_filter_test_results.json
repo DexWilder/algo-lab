@@ -1,0 +1,20 @@
+{
+  "test_date": "2026-03-17",
+  "description": "Carry bias filter test on 6J strategies using 60-day return as proxy",
+  "proxy": "60-day rolling return of 6J price. Negative = USD carry favorable (short 6J). Positive = yen strengthening (long 6J).",
+  "classification": "USEFUL_FILTER",
+  "results": {
+    "MomPB-6J-Long-US": {
+      "baseline": {"trades": 43, "pnl": 2780, "pf": 1.58, "sharpe": 2.92},
+      "carry_aligned": {"trades": 20, "pnl": 1731, "pf": 1.67, "sharpe": 3.25},
+      "improvement": {"pf_delta": 0.09, "sharpe_delta": 0.33, "trade_reduction": "53%"}
+    },
+    "FXBreak-6J-Short-London": {
+      "baseline": {"trades": 125, "pnl": 1762, "pf": 1.20, "sharpe": 1.09},
+      "carry_aligned": {"trades": 50, "pnl": 1012, "pf": 1.36, "sharpe": 2.03},
+      "improvement": {"pf_delta": 0.16, "sharpe_delta": 0.94, "trade_reduction": "60%"}
+    }
+  },
+  "conclusion": "Carry filter improves both PF and Sharpe on both strategies. Removes low-quality trades fighting macro carry direction. Does not need external rate data.",
+  "implementation_note": "Consider as controller-level filter for 6J strategies. Do not implement as standalone strategy."
+}
