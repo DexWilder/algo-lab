@@ -299,6 +299,10 @@ def main():
 
     for strat_key, strat in strat_configs.items():
         asset = strat["asset"]
+        if asset not in data_cache:
+            print(f"    {strat_key}: SKIP (no data for asset '{asset}')")
+            all_new_trades[strat_key] = pd.DataFrame()
+            continue
         full_df, new_bars = data_cache[asset]
         regime_daily = regime_cache[asset]
 
