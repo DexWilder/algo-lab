@@ -72,7 +72,18 @@ targeting:
     - "mean_reversion x equity_index"    # 5 tested, all failed
     - "breakout x morning"               # 13 strategies, saturated
     - "ict x any"                        # ICT family failed twice
-    - "momentum x any (new)"             # 54% factor concentration — STOP adding momentum variants
+
+  # Momentum acceptance rule (NOT a blanket ban — high bar only)
+  # Portfolio is 54% momentum. New momentum ideas must clear a higher bar:
+  momentum_policy: "high_bar"
+  momentum_acceptance_criteria:
+    # A momentum idea is accepted ONLY if it meets at least ONE of:
+    - "new_horizon: operates on a horizon not yet covered by existing momentum (e.g., swing, weekly)"
+    - "new_asset_class: targets an asset class where we have no momentum coverage"
+    - "superior_evidence: shows clear evidence of superiority over existing momentum sleeves"
+    - "structural_difference: uses a fundamentally different entry mechanism (not just parameter tweak)"
+    - "portfolio_role: fills a specific gap like afternoon momentum, close-driven, or macro-trend on uncovered assets"
+    # If none of these are met, deprioritize. Do not auto-reject — flag for manual review.
 
 # ── Source Lanes ─────────────────────────────────────────────────────────────
 # Each lane is independently enable/disable. Only one should be active at a time
