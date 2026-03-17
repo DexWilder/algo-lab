@@ -20,6 +20,16 @@ data/raw/
 # Large backtest artifacts (regenerable)
 backtests/**/*_equity.csv
 
+# Registry backups (rotational, regenerable)
+research/data/strategy_registry.bak.*.json
+
+# Generated reports (regenerable from pipeline)
+research/reports/controller_raw_*.json
+research/reports/daily_decision_*.json
+research/reports/daily_decision_*.md
+research/reports/integrity_report_*.json
+research/reports/weekly_scorecard_*.json
+
 # OS
 .DS_Store
 Thumbs.db
@@ -30,3 +40,6 @@ Thumbs.db
 # IDE
 .vscode/
 .idea/
+
+# pytest
+.pytest_cache/

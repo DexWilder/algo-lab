@@ -1,5 +1,5 @@
 {
-  "report_date": "2026-03-15 22:27",
+  "report_date": "2026-03-16 17:36",
   "regime_snapshot": {
     "MES": {
       "vol_regime": "HIGH_VOL",
@@ -97,6 +97,60 @@
         "health_status": "FAIL",
         "genome_cluster": "trend_persistence",
         "session_drift_severity": "ALARM"
+      },
+      "allocation": {
+        "strategy_id": "VWAP-MNQ-Long",
+        "base_tier": 2,
+        "base_tier_name": "REDUCED",
+        "target_tier": 3,
+        "target_tier_name": "BASE",
+        "final_tier": 3,
+        "final_tier_name": "BASE",
+        "sessions": {
+          "morning": {
+            "tier": 3,
+            "tier_name": "BASE",
+            "reason_codes": []
+          },
+          "midday": {
+            "tier": 2,
+            "tier_name": "REDUCED",
+            "reason_codes": [
+              "ALLOC_SESSION_REDUCE"
+            ]
+          },
+          "afternoon": {
+            "tier": 0,
+            "tier_name": "OFF",
+            "reason_codes": [
+              "ALLOC_SESSION_BLOCK"
+            ]
+          }
+        },
+        "hard_restricted": false,
+        "reason_codes": [
+          "ALLOC_BASE_FROM_ACTION",
+          "ALLOC_CONTRIB_BOOST"
+        ],
+        "adjustments": [
+          {
+            "stage": "contribution",
+            "direction": "UP",
+            "reason": "Strong contribution (marginal_sharpe=0.7)"
+          },
+          {
+            "stage": "session_drift",
+            "session": "midday",
+            "direction": "DOWN",
+            "reason": "DRIFT in midday"
+          },
+          {
+            "stage": "session_drift",
+            "session": "afternoon",
+            "direction": "BLOCK",
+            "reason": "ALARM in afternoon"
+          }
+        ]
       }
     },
     {
@@ -163,6 +217,66 @@
         "health_status": "FAIL",
         "genome_cluster": "trend_persistence",
         "session_drift_severity": "DRIFT"
+      },
+      "allocation": {
+        "strategy_id": "XB-PB-EMA-MES-Short",
+        "base_tier": 3,
+        "base_tier_name": "BASE",
+        "target_tier": 3,
+        "target_tier_name": "BASE",
+        "final_tier": 3,
+        "final_tier_name": "BASE",
+        "sessions": {
+          "morning": {
+            "tier": 3,
+            "tier_name": "BASE",
+            "reason_codes": []
+          },
+          "midday": {
+            "tier": 3,
+            "tier_name": "BASE",
+            "reason_codes": [
+              "ALLOC_SESSION_REDUCE"
+            ]
+          },
+          "afternoon": {
+            "tier": 3,
+            "tier_name": "BASE",
+            "reason_codes": [
+              "ALLOC_SESSION_REDUCE"
+            ]
+          }
+        },
+        "hard_restricted": false,
+        "reason_codes": [
+          "ALLOC_BASE_FROM_ACTION",
+          "ALLOC_CONTRIB_BOOST",
+          "ALLOC_CROWDING_CAP"
+        ],
+        "adjustments": [
+          {
+            "stage": "contribution",
+            "direction": "UP",
+            "reason": "Strong contribution (marginal_sharpe=1.0)"
+          },
+          {
+            "stage": "session_drift",
+            "session": "midday",
+            "direction": "DOWN",
+            "reason": "DRIFT in midday"
+          },
+          {
+            "stage": "session_drift",
+            "session": "afternoon",
+            "direction": "DOWN",
+            "reason": "DRIFT in afternoon"
+          },
+          {
+            "stage": "crowding",
+            "direction": "CAP",
+            "reason": "trend_persistence: 4 strategies, capped at BASE"
+          }
+        ]
       }
     },
     {
@@ -223,6 +337,142 @@
         "health_status": "FAIL",
         "genome_cluster": "opening_range",
         "session_drift_severity": "ALARM"
+      },
+      "allocation": {
+        "strategy_id": "ORB-MGC-Long",
+        "base_tier": 3,
+        "base_tier_name": "BASE",
+        "target_tier": 4,
+        "target_tier_name": "BOOST",
+        "final_tier": 4,
+        "final_tier_name": "BOOST",
+        "sessions": {
+          "morning": {
+            "tier": 4,
+            "tier_name": "BOOST",
+            "reason_codes": []
+          },
+          "midday": {
+            "tier": 0,
+            "tier_name": "OFF",
+            "reason_codes": [
+              "ALLOC_SESSION_BLOCK"
+            ]
+          },
+          "afternoon": {
+            "tier": 4,
+            "tier_name": "BOOST",
+            "reason_codes": []
+          }
+        },
+        "hard_restricted": false,
+        "reason_codes": [
+          "ALLOC_BASE_FROM_ACTION",
+          "ALLOC_CONTRIB_BOOST"
+        ],
+        "adjustments": [
+          {
+            "stage": "contribution",
+            "direction": "UP",
+            "reason": "Strong contribution (marginal_sharpe=0.7)"
+          },
+          {
+            "stage": "session_drift",
+            "session": "midday",
+            "direction": "BLOCK",
+            "reason": "ALARM in midday"
+          }
+        ]
+      }
+    },
+    {
+      "strategy_id": "Donchian-MNQ-Long-GRINDING",
+      "asset": "MNQ",
+      "family": "breakout",
+      "primary_exposure": "trend_persistence",
+      "current_state": "ACTIVE",
+      "new_state": "ACTIVE",
+      "state_changed": false,
+      "activation_score": 0.6375,
+      "sub_scores": {
+        "regime_fit": 0.4,
+        "half_life": 1.0,
+        "contribution": 0.4,
+        "redundancy": 0.7,
+        "health": 0.0,
+        "kill_criteria": 1.0,
+        "session_drift": 0.85,
+        "time_of_day": 0.5,
+        "asset_fit": 1.0,
+        "recent_stability": 1.0
+      },
+      "recommended_action": "REDUCED_ON",
+      "situation": "HEALTHY",
+      "reason_codes": [
+        "REGIME_MATCH_LOW",
+        "HALF_LIFE_STRENGTHENING",
+        "PORTFOLIO_NEUTRAL",
+        "LOW_REDUNDANCY",
+        "HEALTH_FAIL",
+        "KILL_NONE",
+        "SESSION_DRIFT_NORMAL",
+        "SESSION_CONCENTRATION",
+        "TIME_WINDOW_PARTIAL",
+        "ASSET_FIT_GOOD",
+        "RECENT_STABLE"
+      ],
+      "transition_trigger": "No transition \u2014 current state appropriate",
+      "confidence": 1.0,
+      "uncertainty": false,
+      "warnings": [
+        "Morning session concentration >60% \u2014 diversification risk"
+      ],
+      "review_priority": "LOW",
+      "session_restrictions": [],
+      "_signals": {
+        "half_life_status": "HEALTHY",
+        "contribution_verdict": "NEUTRAL",
+        "health_status": "FAIL",
+        "genome_cluster": "trend_persistence",
+        "session_drift_severity": "NORMAL"
+      },
+      "allocation": {
+        "strategy_id": "Donchian-MNQ-Long-GRINDING",
+        "base_tier": 2,
+        "base_tier_name": "REDUCED",
+        "target_tier": 3,
+        "target_tier_name": "BASE",
+        "final_tier": 3,
+        "final_tier_name": "BASE",
+        "sessions": {
+          "morning": {
+            "tier": 3,
+            "tier_name": "BASE",
+            "reason_codes": []
+          },
+          "midday": {
+            "tier": 3,
+            "tier_name": "BASE",
+            "reason_codes": []
+          },
+          "afternoon": {
+            "tier": 3,
+            "tier_name": "BASE",
+            "reason_codes": []
+          }
+        },
+        "hard_restricted": false,
+        "reason_codes": [
+          "ALLOC_BASE_FROM_ACTION",
+          "ALLOC_CONTRIB_BOOST"
+        ],
+        "adjustments": [
+          {
+            "stage": "contribution",
+            "direction": "UP",
+            "reason": "Strong contribution (marginal_sharpe=0.4)"
+          }
+        ]
       }
     },
     {
@@ -289,6 +539,60 @@
         "health_status": "FAIL",
         "genome_cluster": "mean_reversion",
         "session_drift_severity": "ALARM"
+      },
+      "allocation": {
+        "strategy_id": "BB-EQ-MGC-Long",
+        "base_tier": 3,
+        "base_tier_name": "BASE",
+        "target_tier": 4,
+        "target_tier_name": "BOOST",
+        "final_tier": 4,
+        "final_tier_name": "BOOST",
+        "sessions": {
+          "morning": {
+            "tier": 4,
+            "tier_name": "BOOST",
+            "reason_codes": []
+          },
+          "midday": {
+            "tier": 3,
+            "tier_name": "BASE",
+            "reason_codes": [
+              "ALLOC_SESSION_REDUCE"
+            ]
+          },
+          "afternoon": {
+            "tier": 0,
+            "tier_name": "OFF",
+            "reason_codes": [
+              "ALLOC_SESSION_BLOCK"
+            ]
+          }
+        },
+        "hard_restricted": false,
+        "reason_codes": [
+          "ALLOC_BASE_FROM_ACTION",
+          "ALLOC_CONTRIB_BOOST"
+        ],
+        "adjustments": [
+          {
+            "stage": "contribution",
+            "direction": "UP",
+            "reason": "Strong contribution (marginal_sharpe=0.7)"
+          },
+          {
+            "stage": "session_drift",
+            "session": "midday",
+            "direction": "DOWN",
+            "reason": "DRIFT in midday"
+          },
+          {
+            "stage": "session_drift",
+            "session": "afternoon",
+            "direction": "BLOCK",
+            "reason": "ALARM in afternoon"
+          }
+        ]
       }
     },
     {
@@ -341,17 +645,237 @@
         "health_status": "FAIL",
         "genome_cluster": "trend_persistence",
         "session_drift_severity": "NORMAL"
+      },
+      "allocation": {
+        "strategy_id": "PB-MGC-Short",
+        "base_tier": 3,
+        "base_tier_name": "BASE",
+        "target_tier": 3,
+        "target_tier_name": "BASE",
+        "final_tier": 3,
+        "final_tier_name": "BASE",
+        "sessions": {
+          "morning": {
+            "tier": 3,
+            "tier_name": "BASE",
+            "reason_codes": []
+          },
+          "midday": {
+            "tier": 3,
+            "tier_name": "BASE",
+            "reason_codes": []
+          },
+          "afternoon": {
+            "tier": 3,
+            "tier_name": "BASE",
+            "reason_codes": []
+          }
+        },
+        "hard_restricted": false,
+        "reason_codes": [
+          "ALLOC_BASE_FROM_ACTION",
+          "ALLOC_CONTRIB_BOOST",
+          "ALLOC_CROWDING_CAP"
+        ],
+        "adjustments": [
+          {
+            "stage": "contribution",
+            "direction": "UP",
+            "reason": "Strong contribution (marginal_sharpe=0.7)"
+          },
+          {
+            "stage": "crowding",
+            "direction": "CAP",
+            "reason": "trend_persistence: 4 strategies, capped at BASE"
+          }
+        ]
       }
     },
     {
-      "strategy_id": "Donchian-MNQ-Long-GRINDING",
-      "asset": "MNQ",
-      "family": "breakout",
-      "primary_exposure": "trend_persistence",
-      "current_state": "ACTIVE",
+      "strategy_id": "MomIgn-M2K-Short",
+      "asset": "M2K",
+      "family": "momentum",
+      "primary_exposure": "volatility_expansion",
+      "current_state": "PROBATION",
       "new_state": "ACTIVE",
+      "state_changed": true,
+      "activation_score": 0.67,
+      "sub_scores": {
+        "regime_fit": 0.6,
+        "half_life": 1.0,
+        "contribution": 0.4,
+        "redundancy": 0.7,
+        "health": 0.0,
+        "kill_criteria": 1.0,
+        "session_drift": 0.7,
+        "time_of_day": 0.5,
+        "asset_fit": 1.0,
+        "recent_stability": 1.0
+      },
+      "recommended_action": "REDUCED_ON",
+      "situation": "HEALTHY",
+      "reason_codes": [
+        "REGIME_MATCH_MODERATE",
+        "HALF_LIFE_STRENGTHENING",
+        "PORTFOLIO_NEUTRAL",
+        "LOW_REDUNDANCY",
+        "HEALTH_FAIL",
+        "KILL_NONE",
+        "SESSION_DRIFT_NORMAL",
+        "TIME_WINDOW_PARTIAL",
+        "ASSET_FIT_GOOD",
+        "RECENT_STABLE"
+      ],
+      "transition_trigger": "Recovery: score=0.67, HL=HEALTHY",
+      "confidence": 1.0,
+      "uncertainty": true,
+      "warnings": [],
+      "review_priority": "HIGH",
+      "session_restrictions": [],
+      "_signals": {
+        "half_life_status": "HEALTHY",
+        "contribution_verdict": "NEUTRAL",
+        "health_status": "FAIL",
+        "genome_cluster": "volatility_expansion",
+        "session_drift_severity": "NO_DATA"
+      },
+      "allocation": {
+        "strategy_id": "MomIgn-M2K-Short",
+        "base_tier": 2,
+        "base_tier_name": "REDUCED",
+        "target_tier": 3,
+        "target_tier_name": "BASE",
+        "final_tier": 3,
+        "final_tier_name": "BASE",
+        "sessions": {
+          "morning": {
+            "tier": 3,
+            "tier_name": "BASE",
+            "reason_codes": []
+          },
+          "midday": {
+            "tier": 3,
+            "tier_name": "BASE",
+            "reason_codes": []
+          },
+          "afternoon": {
+            "tier": 3,
+            "tier_name": "BASE",
+            "reason_codes": []
+          }
+        },
+        "hard_restricted": false,
+        "reason_codes": [
+          "ALLOC_BASE_FROM_ACTION",
+          "ALLOC_CONTRIB_BOOST"
+        ],
+        "adjustments": [
+          {
+            "stage": "contribution",
+            "direction": "UP",
+            "reason": "Strong contribution (marginal_sharpe=0.4)"
+          }
+        ]
+      }
+    },
+    {
+      "strategy_id": "CloseVWAP-M2K-Short",
+      "asset": "M2K",
+      "family": "mean_reversion",
+      "primary_exposure": "session_structure",
+      "current_state": "PROBATION",
+      "new_state": "PROBATION",
       "state_changed": false,
-      "activation_score": 0.6375,
+      "activation_score": 0.52,
+      "sub_scores": {
+        "regime_fit": 0.6,
+        "half_life": 0.3,
+        "contribution": 0.4,
+        "redundancy": 1.0,
+        "health": 0.0,
+        "kill_criteria": 1.0,
+        "session_drift": 0.7,
+        "time_of_day": 0.5,
+        "asset_fit": 1.0,
+        "recent_stability": 1.0
+      },
+      "recommended_action": "PROBATION",
+      "situation": "EDGE_DECAY",
+      "reason_codes": [
+        "REGIME_MATCH_MODERATE",
+        "HALF_LIFE_DECAY",
+        "PORTFOLIO_NEUTRAL",
+        "LOW_REDUNDANCY",
+        "HEALTH_FAIL",
+        "KILL_NONE",
+        "SESSION_DRIFT_NORMAL",
+        "TIME_WINDOW_PARTIAL",
+        "ASSET_FIT_GOOD",
+        "RECENT_STABLE"
+      ],
+      "transition_trigger": "No transition \u2014 current state appropriate",
+      "confidence": 1.0,
+      "uncertainty": true,
+      "warnings": [
+        "Edge decaying: HL status=DECAYING"
+      ],
+      "review_priority": "MEDIUM",
+      "session_restrictions": [],
+      "_signals": {
+        "half_life_status": "DECAYING",
+        "contribution_verdict": "NEUTRAL",
+        "health_status": "FAIL",
+        "genome_cluster": "session_structure",
+        "session_drift_severity": "NO_DATA"
+      },
+      "allocation": {
+        "strategy_id": "CloseVWAP-M2K-Short",
+        "base_tier": 1,
+        "base_tier_name": "MICRO",
+        "target_tier": 2,
+        "target_tier_name": "REDUCED",
+        "final_tier": 2,
+        "final_tier_name": "REDUCED",
+        "sessions": {
+          "morning": {
+            "tier": 2,
+            "tier_name": "REDUCED",
+            "reason_codes": []
+          },
+          "midday": {
+            "tier": 2,
+            "tier_name": "REDUCED",
+            "reason_codes": []
+          },
+          "afternoon": {
+            "tier": 2,
+            "tier_name": "REDUCED",
+            "reason_codes": []
+          }
+        },
+        "hard_restricted": false,
+        "reason_codes": [
+          "ALLOC_BASE_FROM_ACTION",
+          "ALLOC_CONTRIB_BOOST"
+        ],
+        "adjustments": [
+          {
+            "stage": "contribution",
+            "direction": "UP",
+            "reason": "Strong contribution (marginal_sharpe=0.4)"
+          }
+        ]
+      }
+    },
+    {
+      "strategy_id": "TTMSqueeze-M2K-Short",
+      "asset": "M2K",
+      "family": "vol_expansion",
+      "primary_exposure": "volatility_expansion",
+      "current_state": "PROBATION",
+      "new_state": "PROBATION",
+      "state_changed": false,
+      "activation_score": 0.645,
       "sub_scores": {
         "regime_fit": 0.4,
         "half_life": 1.0,
@@ -359,8 +883,8 @@
         "redundancy": 0.7,
         "health": 0.0,
         "kill_criteria": 1.0,
-        "session_drift": 0.85,
-        "time_of_day": 0.5,
+        "session_drift": 0.7,
+        "time_of_day": 1.0,
         "asset_fit": 1.0,
         "recent_stability": 1.0
       },
@@ -374,25 +898,412 @@
         "HEALTH_FAIL",
         "KILL_NONE",
         "SESSION_DRIFT_NORMAL",
-        "SESSION_CONCENTRATION",
-        "TIME_WINDOW_PARTIAL",
+        "TIME_WINDOW_MATCH",
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
       "transition_trigger": "No transition \u2014 current state appropriate",
       "confidence": 1.0,
       "uncertainty": false,
-      "warnings": [
-        "Morning session concentration >60% \u2014 diversification risk"
-      ],
+      "warnings": [],
       "review_priority": "LOW",
       "session_restrictions": [],
       "_signals": {
         "half_life_status": "HEALTHY",
         "contribution_verdict": "NEUTRAL",
         "health_status": "FAIL",
-        "genome_cluster": "trend_persistence",
-        "session_drift_severity": "NORMAL"
+        "genome_cluster": "volatility_expansion",
+        "session_drift_severity": "NO_DATA"
+      },
+      "allocation": {
+        "strategy_id": "TTMSqueeze-M2K-Short",
+        "base_tier": 2,
+        "base_tier_name": "REDUCED",
+        "target_tier": 3,
+        "target_tier_name": "BASE",
+        "final_tier": 3,
+        "final_tier_name": "BASE",
+        "sessions": {
+          "morning": {
+            "tier": 3,
+            "tier_name": "BASE",
+            "reason_codes": []
+          },
+          "midday": {
+            "tier": 3,
+            "tier_name": "BASE",
+            "reason_codes": []
+          },
+          "afternoon": {
+            "tier": 3,
+            "tier_name": "BASE",
+            "reason_codes": []
+          }
+        },
+        "hard_restricted": false,
+        "reason_codes": [
+          "ALLOC_BASE_FROM_ACTION",
+          "ALLOC_CONTRIB_BOOST"
+        ],
+        "adjustments": [
+          {
+            "stage": "contribution",
+            "direction": "UP",
+            "reason": "Strong contribution (marginal_sharpe=0.4)"
+          }
+        ]
+      }
+    },
+    {
+      "strategy_id": "ORBEnh-M2K-Short",
+      "asset": "M2K",
+      "family": "breakout",
+      "primary_exposure": "opening_range",
+      "current_state": "PROBATION",
+      "new_state": "PROBATION",
+      "state_changed": false,
+      "activation_score": 0.42,
+      "sub_scores": {
+        "regime_fit": 0.6,
+        "half_life": 0.0,
+        "contribution": 0.4,
+        "redundancy": 0.7,
+        "health": 0.0,
+        "kill_criteria": 1.0,
+        "session_drift": 0.7,
+        "time_of_day": 0.5,
+        "asset_fit": 1.0,
+        "recent_stability": 0.0
+      },
+      "recommended_action": "PROBATION",
+      "situation": "EDGE_DECAY",
+      "reason_codes": [
+        "REGIME_MATCH_MODERATE",
+        "HALF_LIFE_DEAD",
+        "PORTFOLIO_NEUTRAL",
+        "LOW_REDUNDANCY",
+        "HEALTH_FAIL",
+        "KILL_NONE",
+        "SESSION_DRIFT_NORMAL",
+        "TIME_WINDOW_PARTIAL",
+        "ASSET_FIT_GOOD",
+        "RECENT_COLLAPSE"
+      ],
+      "transition_trigger": "No transition \u2014 current state appropriate",
+      "confidence": 1.0,
+      "uncertainty": true,
+      "warnings": [
+        "Edge decaying: HL status=ARCHIVE_CANDIDATE"
+      ],
+      "review_priority": "MEDIUM",
+      "session_restrictions": [],
+      "_signals": {
+        "half_life_status": "ARCHIVE_CANDIDATE",
+        "contribution_verdict": "NEUTRAL",
+        "health_status": "FAIL",
+        "genome_cluster": "opening_range",
+        "session_drift_severity": "NO_DATA"
+      },
+      "allocation": {
+        "strategy_id": "ORBEnh-M2K-Short",
+        "base_tier": 1,
+        "base_tier_name": "MICRO",
+        "target_tier": 2,
+        "target_tier_name": "REDUCED",
+        "final_tier": 2,
+        "final_tier_name": "REDUCED",
+        "sessions": {
+          "morning": {
+            "tier": 2,
+            "tier_name": "REDUCED",
+            "reason_codes": []
+          },
+          "midday": {
+            "tier": 2,
+            "tier_name": "REDUCED",
+            "reason_codes": []
+          },
+          "afternoon": {
+            "tier": 2,
+            "tier_name": "REDUCED",
+            "reason_codes": []
+          }
+        },
+        "hard_restricted": false,
+        "reason_codes": [
+          "ALLOC_BASE_FROM_ACTION",
+          "ALLOC_CONTRIB_BOOST"
+        ],
+        "adjustments": [
+          {
+            "stage": "contribution",
+            "direction": "UP",
+            "reason": "Strong contribution (marginal_sharpe=0.4)"
+          }
+        ]
+      }
+    },
+    {
+      "strategy_id": "VWAPMR-MCL-Short",
+      "asset": "MCL",
+      "family": "mean_reversion",
+      "primary_exposure": "mean_reversion",
+      "current_state": "PROBATION",
+      "new_state": "PROBATION",
+      "state_changed": false,
+      "activation_score": 0.4,
+      "sub_scores": {
+        "regime_fit": 0.4,
+        "half_life": 0.0,
+        "contribution": 0.4,
+        "redundancy": 0.7,
+        "health": 0.0,
+        "kill_criteria": 1.0,
+        "session_drift": 0.7,
+        "time_of_day": 0.5,
+        "asset_fit": 1.0,
+        "recent_stability": 0.0
+      },
+      "recommended_action": "PROBATION",
+      "situation": "EDGE_DECAY",
+      "reason_codes": [
+        "REGIME_MATCH_LOW",
+        "HALF_LIFE_DEAD",
+        "PORTFOLIO_NEUTRAL",
+        "LOW_REDUNDANCY",
+        "HEALTH_FAIL",
+        "KILL_NONE",
+        "SESSION_DRIFT_NORMAL",
+        "TIME_WINDOW_PARTIAL",
+        "ASSET_FIT_GOOD",
+        "RECENT_COLLAPSE"
+      ],
+      "transition_trigger": "No transition \u2014 current state appropriate",
+      "confidence": 1.0,
+      "uncertainty": true,
+      "warnings": [
+        "Edge decaying: HL status=ARCHIVE_CANDIDATE"
+      ],
+      "review_priority": "MEDIUM",
+      "session_restrictions": [],
+      "_signals": {
+        "half_life_status": "ARCHIVE_CANDIDATE",
+        "contribution_verdict": "NEUTRAL",
+        "health_status": "FAIL",
+        "genome_cluster": "mean_reversion",
+        "session_drift_severity": "NO_DATA"
+      },
+      "allocation": {
+        "strategy_id": "VWAPMR-MCL-Short",
+        "base_tier": 1,
+        "base_tier_name": "MICRO",
+        "target_tier": 2,
+        "target_tier_name": "REDUCED",
+        "final_tier": 2,
+        "final_tier_name": "REDUCED",
+        "sessions": {
+          "morning": {
+            "tier": 2,
+            "tier_name": "REDUCED",
+            "reason_codes": []
+          },
+          "midday": {
+            "tier": 2,
+            "tier_name": "REDUCED",
+            "reason_codes": []
+          },
+          "afternoon": {
+            "tier": 2,
+            "tier_name": "REDUCED",
+            "reason_codes": []
+          }
+        },
+        "hard_restricted": false,
+        "reason_codes": [
+          "ALLOC_BASE_FROM_ACTION",
+          "ALLOC_CONTRIB_BOOST"
+        ],
+        "adjustments": [
+          {
+            "stage": "contribution",
+            "direction": "UP",
+            "reason": "Strong contribution (marginal_sharpe=0.4)"
+          }
+        ]
+      }
+    },
+    {
+      "strategy_id": "GapMom",
+      "asset": "multi",
+      "family": "unknown",
+      "primary_exposure": "unknown",
+      "current_state": "PROBATION",
+      "new_state": "PROBATION",
+      "state_changed": false,
+      "activation_score": 0.545,
+      "sub_scores": {
+        "regime_fit": 0.4,
+        "half_life": 0.5,
+        "contribution": 0.4,
+        "redundancy": 1.0,
+        "health": 0.0,
+        "kill_criteria": 1.0,
+        "session_drift": 0.7,
+        "time_of_day": 1.0,
+        "asset_fit": 1.0,
+        "recent_stability": 0.0
+      },
+      "recommended_action": "PROBATION",
+      "situation": "HEALTHY",
+      "reason_codes": [
+        "REGIME_MATCH_LOW",
+        "PORTFOLIO_NEUTRAL",
+        "LOW_REDUNDANCY",
+        "HEALTH_FAIL",
+        "KILL_NONE",
+        "SESSION_DRIFT_NORMAL",
+        "TIME_WINDOW_MATCH",
+        "ASSET_FIT_GOOD",
+        "RECENT_COLLAPSE"
+      ],
+      "transition_trigger": "No transition \u2014 current state appropriate",
+      "confidence": 1.0,
+      "uncertainty": true,
+      "warnings": [],
+      "review_priority": "MEDIUM",
+      "session_restrictions": [],
+      "_signals": {
+        "half_life_status": "ERROR",
+        "contribution_verdict": "NEUTRAL",
+        "health_status": "FAIL",
+        "genome_cluster": "unknown",
+        "session_drift_severity": "NO_DATA"
+      },
+      "allocation": {
+        "strategy_id": "GapMom",
+        "base_tier": 1,
+        "base_tier_name": "MICRO",
+        "target_tier": 2,
+        "target_tier_name": "REDUCED",
+        "final_tier": 2,
+        "final_tier_name": "REDUCED",
+        "sessions": {
+          "morning": {
+            "tier": 2,
+            "tier_name": "REDUCED",
+            "reason_codes": []
+          },
+          "midday": {
+            "tier": 2,
+            "tier_name": "REDUCED",
+            "reason_codes": []
+          },
+          "afternoon": {
+            "tier": 2,
+            "tier_name": "REDUCED",
+            "reason_codes": []
+          }
+        },
+        "hard_restricted": false,
+        "reason_codes": [
+          "ALLOC_BASE_FROM_ACTION",
+          "ALLOC_CONTRIB_BOOST"
+        ],
+        "adjustments": [
+          {
+            "stage": "contribution",
+            "direction": "UP",
+            "reason": "Strong contribution (marginal_sharpe=0.4)"
+          }
+        ]
+      }
+    },
+    {
+      "strategy_id": "RangeExpansion",
+      "asset": "multi",
+      "family": "unknown",
+      "primary_exposure": "unknown",
+      "current_state": "PROBATION",
+      "new_state": "PROBATION",
+      "state_changed": false,
+      "activation_score": 0.485,
+      "sub_scores": {
+        "regime_fit": 0.4,
+        "half_life": 0.5,
+        "contribution": 0.4,
+        "redundancy": 1.0,
+        "health": 0.0,
+        "kill_criteria": 0.4,
+        "session_drift": 0.7,
+        "time_of_day": 1.0,
+        "asset_fit": 1.0,
+        "recent_stability": 0.0
+      },
+      "recommended_action": "PROBATION",
+      "situation": "HEALTHY",
+      "reason_codes": [
+        "REGIME_MATCH_LOW",
+        "PORTFOLIO_NEUTRAL",
+        "LOW_REDUNDANCY",
+        "HEALTH_FAIL",
+        "KILL_TRIGGER_SOFT",
+        "SESSION_DRIFT_NORMAL",
+        "TIME_WINDOW_MATCH",
+        "ASSET_FIT_GOOD",
+        "RECENT_COLLAPSE"
+      ],
+      "transition_trigger": "No transition \u2014 current state appropriate",
+      "confidence": 1.0,
+      "uncertainty": false,
+      "warnings": [
+        "Kill flags: decay"
+      ],
+      "review_priority": "MEDIUM",
+      "session_restrictions": [],
+      "_signals": {
+        "half_life_status": "ERROR",
+        "contribution_verdict": "NEUTRAL",
+        "health_status": "FAIL",
+        "genome_cluster": "unknown",
+        "session_drift_severity": "NO_DATA"
+      },
+      "allocation": {
+        "strategy_id": "RangeExpansion",
+        "base_tier": 1,
+        "base_tier_name": "MICRO",
+        "target_tier": 2,
+        "target_tier_name": "REDUCED",
+        "final_tier": 2,
+        "final_tier_name": "REDUCED",
+        "sessions": {
+          "morning": {
+            "tier": 2,
+            "tier_name": "REDUCED",
+            "reason_codes": []
+          },
+          "midday": {
+            "tier": 2,
+            "tier_name": "REDUCED",
+            "reason_codes": []
+          },
+          "afternoon": {
+            "tier": 2,
+            "tier_name": "REDUCED",
+            "reason_codes": []
+          }
+        },
+        "hard_restricted": false,
+        "reason_codes": [
+          "ALLOC_BASE_FROM_ACTION",
+          "ALLOC_CONTRIB_BOOST"
+        ],
+        "adjustments": [
+          {
+            "stage": "contribution",
+            "direction": "UP",
+            "reason": "Strong contribution (marginal_sharpe=0.4)"
+          }
+        ]
       }
     },
     {
@@ -444,22 +1355,60 @@
         "health_status": "FAIL",
         "genome_cluster": "volatility_expansion",
         "session_drift_severity": "NO_DATA"
+      },
+      "allocation": {
+        "strategy_id": "NoiseBoundary-MNQ-Long",
+        "base_tier": 2,
+        "base_tier_name": "REDUCED",
+        "target_tier": 3,
+        "target_tier_name": "BASE",
+        "final_tier": 3,
+        "final_tier_name": "BASE",
+        "sessions": {
+          "morning": {
+            "tier": 3,
+            "tier_name": "BASE",
+            "reason_codes": []
+          },
+          "midday": {
+            "tier": 3,
+            "tier_name": "BASE",
+            "reason_codes": []
+          },
+          "afternoon": {
+            "tier": 3,
+            "tier_name": "BASE",
+            "reason_codes": []
+          }
+        },
+        "hard_restricted": false,
+        "reason_codes": [
+          "ALLOC_BASE_FROM_ACTION",
+          "ALLOC_CONTRIB_BOOST"
+        ],
+        "adjustments": [
+          {
+            "stage": "contribution",
+            "direction": "UP",
+            "reason": "Strong contribution (marginal_sharpe=1.0)"
+          }
+        ]
       }
     },
     {
-      "strategy_id": "RangeExpansion-MCL-Short",
-      "asset": "MCL",
-      "family": "vol_expansion",
-      "primary_exposure": "volatility_expansion",
-      "current_state": "VALIDATED",
-      "new_state": "VALIDATED",
+      "strategy_id": "MomPB-6J-Long-US",
+      "asset": "6J",
+      "family": "unknown",
+      "primary_exposure": "unknown",
+      "current_state": "PROBATION",
+      "new_state": "PROBATION",
       "state_changed": false,
-      "activation_score": 0.42,
+      "activation_score": 0.545,
       "sub_scores": {
-        "regime_fit": 1.0,
-        "half_life": 0.0,
-        "contribution": 1.0,
-        "redundancy": 0.7,
+        "regime_fit": 0.4,
+        "half_life": 0.5,
+        "contribution": 0.4,
+        "redundancy": 1.0,
         "health": 0.0,
         "kill_criteria": 1.0,
         "session_drift": 0.7,
@@ -468,11 +1417,10 @@
         "recent_stability": 0.0
       },
       "recommended_action": "PROBATION",
-      "situation": "EDGE_DECAY",
+      "situation": "HEALTHY",
       "reason_codes": [
-        "REGIME_MATCH_HIGH",
-        "HALF_LIFE_DEAD",
-        "PORTFOLIO_ADDS_VALUE",
+        "REGIME_MATCH_LOW",
+        "PORTFOLIO_NEUTRAL",
         "LOW_REDUNDANCY",
         "HEALTH_FAIL",
         "KILL_NONE",
@@ -484,133 +1432,346 @@
       "transition_trigger": "No transition \u2014 current state appropriate",
       "confidence": 1.0,
       "uncertainty": true,
-      "warnings": [
-        "Edge decaying: HL status=ARCHIVE_CANDIDATE"
-      ],
+      "warnings": [],
       "review_priority": "MEDIUM",
       "session_restrictions": [],
       "_signals": {
-        "half_life_status": "ARCHIVE_CANDIDATE",
-        "contribution_verdict": "ADDS VALUE",
+        "half_life_status": "ERROR",
+        "contribution_verdict": "NEUTRAL",
         "health_status": "FAIL",
-        "genome_cluster": "volatility_expansion",
+        "genome_cluster": "unknown",
         "session_drift_severity": "NO_DATA"
-      }
-    },
-    {
-      "strategy_id": "GapMom-MGC-Long",
-      "asset": "MGC",
-      "family": "breakout",
-      "primary_exposure": "gap_continuation",
-      "current_state": "VALIDATED",
-      "new_state": "VALIDATED",
-      "state_changed": false,
-      "activation_score": 0.84,
-      "sub_scores": {
-        "regime_fit": 1.0,
-        "half_life": 1.0,
-        "contribution": 1.0,
-        "redundancy": 0.7,
-        "health": 0.0,
-        "kill_criteria": 1.0,
-        "session_drift": 0.7,
-        "time_of_day": 0.5,
-        "asset_fit": 1.0,
-        "recent_stability": 1.0
       },
-      "recommended_action": "FULL_ON",
-      "situation": "HEALTHY",
-      "reason_codes": [
-        "REGIME_MATCH_HIGH",
-        "HALF_LIFE_STRENGTHENING",
-        "PORTFOLIO_ADDS_VALUE",
-        "LOW_REDUNDANCY",
-        "HEALTH_FAIL",
-        "KILL_NONE",
-        "SESSION_DRIFT_NORMAL",
-        "TIME_WINDOW_PARTIAL",
-        "ASSET_FIT_GOOD",
-        "RECENT_STABLE"
-      ],
-      "transition_trigger": "No transition \u2014 current state appropriate",
-      "confidence": 1.0,
-      "uncertainty": false,
-      "warnings": [],
-      "review_priority": "LOW",
-      "session_restrictions": [],
-      "_signals": {
-        "half_life_status": "HEALTHY",
-        "contribution_verdict": "ADDS VALUE",
-        "health_status": "FAIL",
-        "genome_cluster": "gap_continuation",
-        "session_drift_severity": "NO_DATA"
+      "allocation": {
+        "strategy_id": "MomPB-6J-Long-US",
+        "base_tier": 1,
+        "base_tier_name": "MICRO",
+        "target_tier": 2,
+        "target_tier_name": "REDUCED",
+        "final_tier": 2,
+        "final_tier_name": "REDUCED",
+        "sessions": {
+          "morning": {
+            "tier": 2,
+            "tier_name": "REDUCED",
+            "reason_codes": []
+          },
+          "midday": {
+            "tier": 2,
+            "tier_name": "REDUCED",
+            "reason_codes": []
+          },
+          "afternoon": {
+            "tier": 2,
+            "tier_name": "REDUCED",
+            "reason_codes": []
+          }
+        },
+        "hard_restricted": false,
+        "reason_codes": [
+          "ALLOC_BASE_FROM_ACTION",
+          "ALLOC_CONTRIB_BOOST"
+        ],
+        "adjustments": [
+          {
+            "stage": "contribution",
+            "direction": "UP",
+            "reason": "Strong contribution (marginal_sharpe=0.4)"
+          }
+        ]
       }
     },
     {
-      "strategy_id": "GapMom-MNQ-Long",
-      "asset": "MNQ",
-      "family": "breakout",
-      "primary_exposure": "gap_continuation",
-      "current_state": "VALIDATED",
-      "new_state": "VALIDATED",
+      "strategy_id": "FXBreak-6J-Short-London",
+      "asset": "6J",
+      "family": "unknown",
+      "primary_exposure": "unknown",
+      "current_state": "PROBATION",
+      "new_state": "PROBATION",
       "state_changed": false,
-      "activation_score": 0.42,
+      "activation_score": 0.545,
       "sub_scores": {
-        "regime_fit": 0.6,
-        "half_life": 0.0,
-        "contribution": 0.7,
-        "redundancy": 0.7,
+        "regime_fit": 0.4,
+        "half_life": 0.5,
+        "contribution": 0.4,
+        "redundancy": 1.0,
         "health": 0.0,
         "kill_criteria": 1.0,
         "session_drift": 0.7,
-        "time_of_day": 0.5,
+        "time_of_day": 1.0,
         "asset_fit": 1.0,
-        "recent_stability": 1.0
+        "recent_stability": 0.0
       },
       "recommended_action": "PROBATION",
-      "situation": "EDGE_DECAY",
+      "situation": "HEALTHY",
       "reason_codes": [
-        "REGIME_MATCH_MODERATE",
-        "HALF_LIFE_DEAD",
-        "PORTFOLIO_ADDS_VALUE",
+        "REGIME_MATCH_LOW",
+        "PORTFOLIO_NEUTRAL",
         "LOW_REDUNDANCY",
         "HEALTH_FAIL",
         "KILL_NONE",
         "SESSION_DRIFT_NORMAL",
-        "TIME_WINDOW_PARTIAL",
+        "TIME_WINDOW_MATCH",
         "ASSET_FIT_GOOD",
-        "RECENT_STABLE"
+        "RECENT_COLLAPSE"
       ],
       "transition_trigger": "No transition \u2014 current state appropriate",
       "confidence": 1.0,
       "uncertainty": true,
-      "warnings": [
-        "Edge decaying: HL status=ARCHIVE_CANDIDATE"
-      ],
+      "warnings": [],
       "review_priority": "MEDIUM",
       "session_restrictions": [],
       "_signals": {
-        "half_life_status": "ARCHIVE_CANDIDATE",
+        "half_life_status": "ERROR",
         "contribution_verdict": "NEUTRAL",
         "health_status": "FAIL",
-        "genome_cluster": "gap_continuation",
+        "genome_cluster": "unknown",
         "session_drift_severity": "NO_DATA"
+      },
+      "allocation": {
+        "strategy_id": "FXBreak-6J-Short-London",
+        "base_tier": 1,
+        "base_tier_name": "MICRO",
+        "target_tier": 2,
+        "target_tier_name": "REDUCED",
+        "final_tier": 2,
+        "final_tier_name": "REDUCED",
+        "sessions": {
+          "morning": {
+            "tier": 2,
+            "tier_name": "REDUCED",
+            "reason_codes": []
+          },
+          "midday": {
+            "tier": 2,
+            "tier_name": "REDUCED",
+            "reason_codes": []
+          },
+          "afternoon": {
+            "tier": 2,
+            "tier_name": "REDUCED",
+            "reason_codes": []
+          }
+        },
+        "hard_restricted": false,
+        "reason_codes": [
+          "ALLOC_BASE_FROM_ACTION",
+          "ALLOC_CONTRIB_BOOST"
+        ],
+        "adjustments": [
+          {
+            "stage": "contribution",
+            "direction": "UP",
+            "reason": "Strong contribution (marginal_sharpe=0.4)"
+          }
+        ]
+      }
+    },
+    {
+      "strategy_id": "MomPB-6E-Long-US",
+      "asset": "6E",
+      "family": "unknown",
+      "primary_exposure": "unknown",
+      "current_state": "VALIDATED",
+      "new_state": "VALIDATED",
+      "state_changed": false,
+      "activation_score": 0.545,
+      "sub_scores": {
+        "regime_fit": 0.4,
+        "half_life": 0.5,
+        "contribution": 0.4,
+        "redundancy": 1.0,
+        "health": 0.0,
+        "kill_criteria": 1.0,
+        "session_drift": 0.7,
+        "time_of_day": 1.0,
+        "asset_fit": 1.0,
+        "recent_stability": 0.0
+      },
+      "recommended_action": "PROBATION",
+      "situation": "HEALTHY",
+      "reason_codes": [
+        "REGIME_MATCH_LOW",
+        "PORTFOLIO_NEUTRAL",
+        "LOW_REDUNDANCY",
+        "HEALTH_FAIL",
+        "KILL_NONE",
+        "SESSION_DRIFT_NORMAL",
+        "TIME_WINDOW_MATCH",
+        "ASSET_FIT_GOOD",
+        "RECENT_COLLAPSE"
+      ],
+      "transition_trigger": "No transition \u2014 current state appropriate",
+      "confidence": 1.0,
+      "uncertainty": true,
+      "warnings": [],
+      "review_priority": "MEDIUM",
+      "session_restrictions": [],
+      "_signals": {
+        "half_life_status": "ERROR",
+        "contribution_verdict": "NEUTRAL",
+        "health_status": "FAIL",
+        "genome_cluster": "unknown",
+        "session_drift_severity": "NO_DATA"
+      },
+      "allocation": {
+        "strategy_id": "MomPB-6E-Long-US",
+        "base_tier": 1,
+        "base_tier_name": "MICRO",
+        "target_tier": 2,
+        "target_tier_name": "REDUCED",
+        "final_tier": 2,
+        "final_tier_name": "REDUCED",
+        "sessions": {
+          "morning": {
+            "tier": 2,
+            "tier_name": "REDUCED",
+            "reason_codes": []
+          },
+          "midday": {
+            "tier": 2,
+            "tier_name": "REDUCED",
+            "reason_codes": []
+          },
+          "afternoon": {
+            "tier": 2,
+            "tier_name": "REDUCED",
+            "reason_codes": []
+          }
+        },
+        "hard_restricted": false,
+        "reason_codes": [
+          "ALLOC_BASE_FROM_ACTION",
+          "ALLOC_CONTRIB_BOOST"
+        ],
+        "adjustments": [
+          {
+            "stage": "contribution",
+            "direction": "UP",
+            "reason": "Strong contribution (marginal_sharpe=0.4)"
+          }
+        ]
+      }
+    },
+    {
+      "strategy_id": "DailyTrend-MGC-Long",
+      "asset": "MGC",
+      "family": "unknown",
+      "primary_exposure": "unknown",
+      "current_state": "PROBATION",
+      "new_state": "PROBATION",
+      "state_changed": false,
+      "activation_score": 0.545,
+      "sub_scores": {
+        "regime_fit": 0.4,
+        "half_life": 0.5,
+        "contribution": 0.4,
+        "redundancy": 1.0,
+        "health": 0.0,
+        "kill_criteria": 1.0,
+        "session_drift": 0.7,
+        "time_of_day": 1.0,
+        "asset_fit": 1.0,
+        "recent_stability": 0.0
+      },
+      "recommended_action": "PROBATION",
+      "situation": "HEALTHY",
+      "reason_codes": [
+        "REGIME_MATCH_LOW",
+        "PORTFOLIO_NEUTRAL",
+        "LOW_REDUNDANCY",
+        "HEALTH_FAIL",
+        "KILL_NONE",
+        "SESSION_DRIFT_NORMAL",
+        "TIME_WINDOW_MATCH",
+        "ASSET_FIT_GOOD",
+        "RECENT_COLLAPSE"
+      ],
+      "transition_trigger": "No transition \u2014 current state appropriate",
+      "confidence": 1.0,
+      "uncertainty": true,
+      "warnings": [],
+      "review_priority": "MEDIUM",
+      "session_restrictions": [],
+      "_signals": {
+        "half_life_status": "ERROR",
+        "contribution_verdict": "NEUTRAL",
+        "health_status": "FAIL",
+        "genome_cluster": "unknown",
+        "session_drift_severity": "NO_DATA"
+      },
+      "allocation": {
+        "strategy_id": "DailyTrend-MGC-Long",
+        "base_tier": 1,
+        "base_tier_name": "MICRO",
+        "target_tier": 2,
+        "target_tier_name": "REDUCED",
+        "final_tier": 2,
+        "final_tier_name": "REDUCED",
+        "sessions": {
+          "morning": {
+            "tier": 2,
+            "tier_name": "REDUCED",
+            "reason_codes": []
+          },
+          "midday": {
+            "tier": 2,
+            "tier_name": "REDUCED",
+            "reason_codes": []
+          },
+          "afternoon": {
+            "tier": 2,
+            "tier_name": "REDUCED",
+            "reason_codes": []
+          }
+        },
+        "hard_restricted": false,
+        "reason_codes": [
+          "ALLOC_BASE_FROM_ACTION",
+          "ALLOC_CONTRIB_BOOST"
+        ],
+        "adjustments": [
+          {
+            "stage": "contribution",
+            "direction": "UP",
+            "reason": "Strong contribution (marginal_sharpe=0.4)"
+          }
+        ]
       }
     }
   ],
-  "state_transitions": [],
+  "state_transitions": [
+    {
+      "strategy_id": "MomIgn-M2K-Short",
+      "timestamp": "2026-03-16T17:48:22.330095",
+      "from_state": "PROBATION",
+      "to_state": "ACTIVE",
+      "reason_codes": [
+        "HALF_LIFE_STRENGTHENING"
+      ],
+      "trigger": "Recovery: score=0.67, HL=HEALTHY"
+    }
+  ],
   "portfolio_summary": {
-    "total_strategies": 10,
-    "active": 8,
-    "probation": 2,
+    "total_strategies": 18,
+    "active": 9,
+    "probation": 9,
     "disabled_or_off": 0,
-    "state_changes": 0,
+    "state_changes": 1,
     "health_status": "FAIL",
-    "avg_activation_score": 0.6728
+    "avg_activation_score": 0.6063
   },
   "health_signals": {
     "overall": "FAIL",
     "fail_count": 1,
     "warn_count": 7
+  },
+  "allocation_summary": {
+    "total_strategies": 18,
+    "tier_distribution": {
+      "BASE": 7,
+      "BOOST": 2,
+      "REDUCED": 9
+    }
   }
 }

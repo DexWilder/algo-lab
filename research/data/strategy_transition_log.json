@@ -8,5 +8,15 @@
       "HALF_LIFE_STRENGTHENING"
     ],
     "trigger": "Recovery: score=0.69, HL=HEALTHY"
+  },
+  {
+    "strategy_id": "MomIgn-M2K-Short",
+    "timestamp": "2026-03-16T17:48:22.330095",
+    "from_state": "PROBATION",
+    "to_state": "ACTIVE",
+    "reason_codes": [
+      "HALF_LIFE_STRENGTHENING"
+    ],
+    "trigger": "Recovery: score=0.67, HL=HEALTHY"
   }
 ]

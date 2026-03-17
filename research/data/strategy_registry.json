@@ -1,5 +1,5 @@
 {
-  "_schema_version": "3.0",
+  "_schema_version": "2.0",
   "_generated": "2026-03-16",
   "_description": "FQL Strategy Registry \u2014 institutional memory of all strategy ideas, tested candidates, and deployed strategies",
   "_purpose": "Preserves research knowledge, enables crossbreeding, feeds Strategy Factory",
@@ -41,7 +41,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-03-15",
+      "last_controller_date": "2026-03-16",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
@@ -118,7 +118,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-03-15",
+      "last_controller_date": "2026-03-16",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
@@ -196,7 +196,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-03-15",
+      "last_controller_date": "2026-03-16",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
@@ -270,7 +270,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-03-15",
+      "last_controller_date": "2026-03-16",
       "review_priority": "LOW",
       "state_history": [
         {
@@ -353,7 +353,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-03-15",
+      "last_controller_date": "2026-03-16",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
@@ -431,7 +431,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-03-15",
+      "last_controller_date": "2026-03-16",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
@@ -498,7 +498,38 @@
         "failures": 0
       },
       "lifecycle_stage": "forward_validation",
-      "state_history": []
+      "state_history": [
+        {
+          "date": "2026-03-16",
+          "from": "PROBATION",
+          "to": "ACTIVE",
+          "trigger": "Recovery: score=0.67, HL=HEALTHY"
+        }
+      ],
+      "controller_state": "ACTIVE",
+      "prior_state": "PROBATION",
+      "controller_action": "REDUCED_ON",
+      "activation_score": 0.67,
+      "controller_reason_codes": [
+        "REGIME_MATCH_MODERATE",
+        "HALF_LIFE_STRENGTHENING",
+        "PORTFOLIO_NEUTRAL",
+        "LOW_REDUNDANCY",
+        "HEALTH_FAIL",
+        "KILL_NONE",
+        "SESSION_DRIFT_NORMAL",
+        "TIME_WINDOW_PARTIAL",
+        "ASSET_FIT_GOOD",
+        "RECENT_STABLE"
+      ],
+      "last_controller_date": "2026-03-16",
+      "review_priority": "HIGH",
+      "half_life_status": "HEALTHY",
+      "contribution_status": "NEUTRAL",
+      "health_status": "FAIL",
+      "genome_cluster": "volatility_expansion",
+      "resurrection_flag": false,
+      "state_entered_date": "2026-03-16"
     },
     {
       "strategy_id": "CloseVWAP-M2K-Short",
@@ -526,7 +557,30 @@
         "failures": 0
       },
       "lifecycle_stage": "forward_validation",
-      "state_history": []
+      "state_history": [],
+      "controller_state": "PROBATION",
+      "prior_state": "PROBATION",
+      "controller_action": "PROBATION",
+      "activation_score": 0.52,
+      "controller_reason_codes": [
+        "REGIME_MATCH_MODERATE",
+        "HALF_LIFE_DECAY",
+        "PORTFOLIO_NEUTRAL",
+        "LOW_REDUNDANCY",
+        "HEALTH_FAIL",
+        "KILL_NONE",
+        "SESSION_DRIFT_NORMAL",
+        "TIME_WINDOW_PARTIAL",
+        "ASSET_FIT_GOOD",
+        "RECENT_STABLE"
+      ],
+      "last_controller_date": "2026-03-16",
+      "review_priority": "MEDIUM",
+      "half_life_status": "DECAYING",
+      "contribution_status": "NEUTRAL",
+      "health_status": "FAIL",
+      "genome_cluster": "session_structure",
+      "resurrection_flag": false
     },
     {
       "strategy_id": "TTMSqueeze-M2K-Short",
@@ -554,7 +608,30 @@
         "failures": 0
       },
       "lifecycle_stage": "forward_validation",
-      "state_history": []
+      "state_history": [],
+      "controller_state": "PROBATION",
+      "prior_state": "PROBATION",
+      "controller_action": "REDUCED_ON",
+      "activation_score": 0.645,
+      "controller_reason_codes": [
+        "REGIME_MATCH_LOW",
+        "HALF_LIFE_STRENGTHENING",
+        "PORTFOLIO_NEUTRAL",
+        "LOW_REDUNDANCY",
+        "HEALTH_FAIL",
+        "KILL_NONE",
+        "SESSION_DRIFT_NORMAL",
+        "TIME_WINDOW_MATCH",
+        "ASSET_FIT_GOOD",
+        "RECENT_STABLE"
+      ],
+      "last_controller_date": "2026-03-16",
+      "review_priority": "LOW",
+      "half_life_status": "HEALTHY",
+      "contribution_status": "NEUTRAL",
+      "health_status": "FAIL",
+      "genome_cluster": "volatility_expansion",
+      "resurrection_flag": false
     },
     {
       "strategy_id": "ORBEnh-M2K-Short",
@@ -582,7 +659,30 @@
         "failures": 0
       },
       "lifecycle_stage": "forward_validation",
-      "state_history": []
+      "state_history": [],
+      "controller_state": "PROBATION",
+      "prior_state": "PROBATION",
+      "controller_action": "PROBATION",
+      "activation_score": 0.42,
+      "controller_reason_codes": [
+        "REGIME_MATCH_MODERATE",
+        "HALF_LIFE_DEAD",
+        "PORTFOLIO_NEUTRAL",
+        "LOW_REDUNDANCY",
+        "HEALTH_FAIL",
+        "KILL_NONE",
+        "SESSION_DRIFT_NORMAL",
+        "TIME_WINDOW_PARTIAL",
+        "ASSET_FIT_GOOD",
+        "RECENT_COLLAPSE"
+      ],
+      "last_controller_date": "2026-03-16",
+      "review_priority": "MEDIUM",
+      "half_life_status": "ARCHIVE_CANDIDATE",
+      "contribution_status": "NEUTRAL",
+      "health_status": "FAIL",
+      "genome_cluster": "opening_range",
+      "resurrection_flag": false
     },
     {
       "strategy_id": "VWAPMR-MCL-Short",
@@ -610,7 +710,30 @@
         "failures": 0
       },
       "lifecycle_stage": "forward_validation",
-      "state_history": []
+      "state_history": [],
+      "controller_state": "PROBATION",
+      "prior_state": "PROBATION",
+      "controller_action": "PROBATION",
+      "activation_score": 0.4,
+      "controller_reason_codes": [
+        "REGIME_MATCH_LOW",
+        "HALF_LIFE_DEAD",
+        "PORTFOLIO_NEUTRAL",
+        "LOW_REDUNDANCY",
+        "HEALTH_FAIL",
+        "KILL_NONE",
+        "SESSION_DRIFT_NORMAL",
+        "TIME_WINDOW_PARTIAL",
+        "ASSET_FIT_GOOD",
+        "RECENT_COLLAPSE"
+      ],
+      "last_controller_date": "2026-03-16",
+      "review_priority": "MEDIUM",
+      "half_life_status": "ARCHIVE_CANDIDATE",
+      "contribution_status": "NEUTRAL",
+      "health_status": "FAIL",
+      "genome_cluster": "mean_reversion",
+      "resurrection_flag": false
     },
     {
       "strategy_id": "CloseVWAP-MNQ-Long",
@@ -1362,7 +1485,29 @@
       "last_review_date": "2026-03-16",
       "source_category": "tradingview",
       "lifecycle_stage": "forward_validation",
-      "state_history": []
+      "state_history": [],
+      "controller_state": "PROBATION",
+      "prior_state": "PROBATION",
+      "controller_action": "PROBATION",
+      "activation_score": 0.545,
+      "controller_reason_codes": [
+        "REGIME_MATCH_LOW",
+        "PORTFOLIO_NEUTRAL",
+        "LOW_REDUNDANCY",
+        "HEALTH_FAIL",
+        "KILL_NONE",
+        "SESSION_DRIFT_NORMAL",
+        "TIME_WINDOW_MATCH",
+        "ASSET_FIT_GOOD",
+        "RECENT_COLLAPSE"
+      ],
+      "last_controller_date": "2026-03-16",
+      "review_priority": "MEDIUM",
+      "half_life_status": "ERROR",
+      "contribution_status": "NEUTRAL",
+      "health_status": "FAIL",
+      "genome_cluster": "unknown",
+      "resurrection_flag": false
     },
     {
       "strategy_id": "RangeExpansion",
@@ -1386,7 +1531,29 @@
       "last_review_date": "2026-03-15",
       "source_category": "tradingview",
       "lifecycle_stage": "forward_validation",
-      "state_history": []
+      "state_history": [],
+      "controller_state": "PROBATION",
+      "prior_state": "PROBATION",
+      "controller_action": "PROBATION",
+      "activation_score": 0.485,
+      "controller_reason_codes": [
+        "REGIME_MATCH_LOW",
+        "PORTFOLIO_NEUTRAL",
+        "LOW_REDUNDANCY",
+        "HEALTH_FAIL",
+        "KILL_TRIGGER_SOFT",
+        "SESSION_DRIFT_NORMAL",
+        "TIME_WINDOW_MATCH",
+        "ASSET_FIT_GOOD",
+        "RECENT_COLLAPSE"
+      ],
+      "last_controller_date": "2026-03-16",
+      "review_priority": "MEDIUM",
+      "half_life_status": "ERROR",
+      "contribution_status": "NEUTRAL",
+      "health_status": "FAIL",
+      "genome_cluster": "unknown",
+      "resurrection_flag": false
     },
     {
       "strategy_id": "NG-MeanRev",
@@ -1513,7 +1680,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-03-15",
+      "last_controller_date": "2026-03-16",
       "review_priority": "LOW",
       "prior_state": "PROBATION",
       "half_life_status": "HEALTHY",
@@ -1732,15 +1899,25 @@
       "last_review_date": "2026-03-16",
       "controller_state": "PROBATION",
       "controller_action": "PROBATION",
-      "activation_score": null,
-      "controller_reason_codes": [],
+      "activation_score": 0.545,
+      "controller_reason_codes": [
+        "REGIME_MATCH_LOW",
+        "PORTFOLIO_NEUTRAL",
+        "LOW_REDUNDANCY",
+        "HEALTH_FAIL",
+        "KILL_NONE",
+        "SESSION_DRIFT_NORMAL",
+        "TIME_WINDOW_MATCH",
+        "ASSET_FIT_GOOD",
+        "RECENT_COLLAPSE"
+      ],
       "last_controller_date": "2026-03-16",
-      "review_priority": "HIGH",
-      "prior_state": null,
-      "half_life_status": null,
-      "contribution_status": null,
-      "health_status": null,
-      "genome_cluster": null,
+      "review_priority": "MEDIUM",
+      "prior_state": "PROBATION",
+      "half_life_status": "ERROR",
+      "contribution_status": "NEUTRAL",
+      "health_status": "FAIL",
+      "genome_cluster": "unknown",
       "resurrection_flag": false,
       "state_history": [],
       "session_filter": {
@@ -1809,7 +1986,7 @@
       "last_review_date": "2026-03-16",
       "controller_state": "PROBATION",
       "controller_action": "PROBATION",
-      "review_priority": "HIGH",
+      "review_priority": "MEDIUM",
       "state_history": [],
       "deployment_restrictions": {
         "session": "london_0300_0800_ET",
@@ -1847,7 +2024,26 @@
         "score": 5,
         "failures": 3
       },
-      "lifecycle_stage": "forward_validation"
+      "lifecycle_stage": "forward_validation",
+      "prior_state": "PROBATION",
+      "activation_score": 0.545,
+      "controller_reason_codes": [
+        "REGIME_MATCH_LOW",
+        "PORTFOLIO_NEUTRAL",
+        "LOW_REDUNDANCY",
+        "HEALTH_FAIL",
+        "KILL_NONE",
+        "SESSION_DRIFT_NORMAL",
+        "TIME_WINDOW_MATCH",
+        "ASSET_FIT_GOOD",
+        "RECENT_COLLAPSE"
+      ],
+      "last_controller_date": "2026-03-16",
+      "half_life_status": "ERROR",
+      "contribution_status": "NEUTRAL",
+      "health_status": "FAIL",
+      "genome_cluster": "unknown",
+      "resurrection_flag": false
     },
     {
       "strategy_id": "FXBreak-6E-Watchlist",
@@ -1926,8 +2122,8 @@
       "notes": "Batch discovery: PF 1.72, Sharpe 2.90, 48 trades, US session. Previously missed because 6E was only tested without session filter. Needs validation battery.",
       "last_review_date": "2026-03-16",
       "controller_state": "VALIDATED",
-      "controller_action": "OFF",
-      "review_priority": "HIGH",
+      "controller_action": "PROBATION",
+      "review_priority": "MEDIUM",
       "batch_first_pass": {
         "run_date": "2026-03-16",
         "classification": "SALVAGE",
@@ -1945,7 +2141,26 @@
         "score": 5,
         "failures": 2
       },
-      "lifecycle_stage": "first_pass"
+      "lifecycle_stage": "first_pass",
+      "prior_state": "VALIDATED",
+      "activation_score": 0.545,
+      "controller_reason_codes": [
+        "REGIME_MATCH_LOW",
+        "PORTFOLIO_NEUTRAL",
+        "LOW_REDUNDANCY",
+        "HEALTH_FAIL",
+        "KILL_NONE",
+        "SESSION_DRIFT_NORMAL",
+        "TIME_WINDOW_MATCH",
+        "ASSET_FIT_GOOD",
+        "RECENT_COLLAPSE"
+      ],
+      "last_controller_date": "2026-03-16",
+      "half_life_status": "ERROR",
+      "contribution_status": "NEUTRAL",
+      "health_status": "FAIL",
+      "genome_cluster": "unknown",
+      "resurrection_flag": false
     },
     {
       "strategy_id": "DailyTrend-MGC-Long",
@@ -1963,7 +2178,7 @@
       "last_review_date": "2026-03-16",
       "controller_state": "PROBATION",
       "controller_action": "PROBATION",
-      "review_priority": "HIGH",
+      "review_priority": "MEDIUM",
       "deployment_restrictions": {
         "direction": "long_only",
         "timeframe": "daily_bars",
@@ -1999,7 +2214,26 @@
         "best_asset": "MES",
         "best_pf": 0
       },
-      "lifecycle_stage": "forward_validation"
+      "lifecycle_stage": "forward_validation",
+      "prior_state": "PROBATION",
+      "activation_score": 0.545,
+      "controller_reason_codes": [
+        "REGIME_MATCH_LOW",
+        "PORTFOLIO_NEUTRAL",
+        "LOW_REDUNDANCY",
+        "HEALTH_FAIL",
+        "KILL_NONE",
+        "SESSION_DRIFT_NORMAL",
+        "TIME_WINDOW_MATCH",
+        "ASSET_FIT_GOOD",
+        "RECENT_COLLAPSE"
+      ],
+      "last_controller_date": "2026-03-16",
+      "half_life_status": "ERROR",
+      "contribution_status": "NEUTRAL",
+      "health_status": "FAIL",
+      "genome_cluster": "unknown",
+      "resurrection_flag": false
     },
     {
       "strategy_id": "FVG-Inversion-Signal",
