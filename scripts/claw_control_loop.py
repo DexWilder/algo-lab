@@ -39,9 +39,11 @@ GENOME_PATH = ROOT / "research" / "data" / "strategy_genome_map.json"
 MANIFEST_PATH = ROOT / "research" / "data" / "harvest_manifest.json"
 
 TODAY = datetime.now().strftime("%Y-%m-%d")
+NOW = datetime.now().strftime("%H:%M")
 DOW = datetime.now().strftime("%A")
+HOUR = datetime.now().hour
 
-# Day-of-week task map (matches Claw's HEARTBEAT.md schedule)
+# Day-of-week PRIMARY task (the anchor task for each day)
 CLAW_SCHEDULE = {
     "Monday": "gap_harvest",
     "Tuesday": "academic_scan",
@@ -51,6 +53,20 @@ CLAW_SCHEDULE = {
     "Saturday": "off",
     "Sunday": "blocker_mapping",
 }
+
+# Secondary task queue — Claw pulls from this after completing primary task.
+# Ordered by value. Claw works through these until daily budget is exhausted.
+SECONDARY_TASKS = [
+    "gap_harvest_supplemental",    # Always valuable: more gap-targeted ideas
+    "cross_source_verification",   # Check if existing ideas are confirmed by new sources
+    "blocker_reassessment",        # Quick check: have any blockers been resolved?
+    "family_variant_scan",         # Lightweight: scan for variants of promising families
+    "cluster_maintenance",         # Merge/split/relabel existing clusters
+]
+
+# Daily work budget: max notes Claw should generate per day across all tasks
+DAILY_NOTE_CAP = 15
+DAILY_REPORT_CAP = 2
 
 TOMORROW_MAP = {
     "Monday": "Tuesday", "Tuesday": "Wednesday", "Wednesday": "Thursday",
@@ -67,6 +83,8 @@ def read_claw_status():
         "today_task": CLAW_SCHEDULE.get(DOW, "unknown"),
         "today_completed": False,
         "today_log": None,
+        "today_phases_completed": 0,
+        "today_notes_generated": 0,
         "harvest_notes_today": [],
         "refinement_notes_today": [],
         "cluster_reports_today": [],
@@ -74,13 +92,23 @@ def read_claw_status():
         "total_harvest_pending": 0,
         "total_refinement_pending": 0,
         "recent_logs": [],
+        "budget_remaining": DAILY_NOTE_CAP,
     }
 
-    # Check today's log
+    # Check today's logs (may have multiple phases: _task.log, _task_2.log, etc.)
     log_file = CLAW_LOGS / f"{TODAY}_task.log"
     if log_file.exists():
         status["today_completed"] = True
         status["today_log"] = log_file.read_text().strip()
+        status["today_phases_completed"] = 1
+
+    # Check for additional phase logs
+    for phase in range(2, 10):
+        phase_log = CLAW_LOGS / f"{TODAY}_task_{phase}.log"
+        if phase_log.exists():
+            status["today_phases_completed"] = phase
+            extra = phase_log.read_text().strip()
+            status["today_log"] = (status["today_log"] or "") + f"\n[Phase {phase}] {extra}"
 
     # Count pending notes in each folder
     harvest_dir = CLAW_INBOX / "harvest"
@@ -111,6 +139,12 @@ def read_claw_status():
         status["assessment_reports_today"] = [
             f.name for f in assessment_dir.glob(f"{TODAY}*.md")
         ]
+
+    # Count today's total notes generated
+    status["today_notes_generated"] = (
+        len(status["harvest_notes_today"]) + len(status["refinement_notes_today"])
+    )
+    status["budget_remaining"] = max(0, DAILY_NOTE_CAP - status["today_notes_generated"])
 
     # Recent logs (last 7 days)
     if CLAW_LOGS.exists():
@@ -200,79 +234,165 @@ def compute_priorities(registry_state):
 
 # ── 4. Write Directives ─────────────────────────────────────────────────────
 
-def write_directives(claw_status, registry_state, priorities):
-    """Write _directives_today.md for Claw."""
-    tomorrow = TOMORROW_MAP.get(DOW, "Monday")
-    tomorrow_task = CLAW_SCHEDULE.get(tomorrow, "unknown")
+def _task_instructions(task_name):
+    """Return instructions for a given task type."""
+    instructions = {
+        "gap_harvest": """Focus on the highest-priority gaps. Read `_priorities.md` for closed
+families, momentum high-bar rule, and search terms.
+Generate 5-8 notes to `inbox/harvest/`.""",
 
+        "academic_scan": """Search Quantpedia, SSRN, AlphaArchitect, Return Stacked for documented
+futures edges. Focus on HIGH-priority factors.
+Generate 3-5 notes to `inbox/harvest/`.""",
+
+        "family_refinement": """Read `_family_queue.md` for families needing depth. Generate 3-5
+refinement notes to `inbox/refinement/`. Deepen existing clusters,
+don't create redundant new ideas.""",
+
+        "tradingview_scan": """Search TradingView public scripts for mechanical futures strategies.
+Focus on gap factors. Reject discretionary, ICT, crypto, spot forex.
+Generate 5-8 notes to `inbox/harvest/`.""",
+
+        "cluster_review": """Review all notes from this week. Group into concept clusters.
+Flag duplicates, near-duplicates, closed-family violations.
+Write a single cluster report to `inbox/clustering/`.""",
+
+        "blocker_mapping": """Review blocked ideas. Assess which blockers may have been resolved.
+Write a gap refresh report to `inbox/assessment/`.""",
+
+        "gap_harvest_supplemental": """Generate 3-5 additional gap-targeted notes focusing on factors NOT
+covered by today's primary task. Emphasize different asset classes or
+sessions than the primary batch. Write to `inbox/harvest/`.""",
+
+        "cross_source_verification": """Pick 3-5 existing ideas from `_priorities.md` and search for
+independent confirmation from a different source type. If an idea
+from Quantpedia also appears in a TradingView script or practitioner
+blog, note the convergent evidence. Write to `inbox/refinement/`.""",
+
+        "blocker_reassessment": """Quick scan of blocked ideas. For each blocker type, check if any
+new data sources, tools, or infrastructure might have resolved it.
+Write a short assessment to `inbox/assessment/`.""",
+
+        "family_variant_scan": """Pick 2-3 families with HIGH-priority gaps. Generate 2-3 lightweight
+variant ideas per family — different entry timing, different asset,
+different exit structure. Write to `inbox/refinement/`.""",
+
+        "cluster_maintenance": """Review existing clusters. Merge clusters that are too similar.
+Split clusters that contain genuinely different mechanisms. Update
+best-representative picks. Write report to `inbox/clustering/`.""",
+
+        "off": "Day off. No catalog task needed.",
+    }
+    return instructions.get(task_name, "No instructions defined for this task.")
+
+
+def _determine_next_task(claw_status, priorities):
+    """Determine what Claw should do next based on completion state and budget."""
+    primary_task = CLAW_SCHEDULE.get(DOW, "off")
+    budget = claw_status["budget_remaining"]
+    phases_done = claw_status["today_phases_completed"]
+
+    if primary_task == "off":
+        # Saturday: still allow lightweight secondary work
+        if budget > 0 and phases_done < 2:
+            return "blocker_reassessment", "secondary"
+        return "off", "done"
+
+    if not claw_status["today_completed"]:
+        # Primary task not done yet
+        return primary_task, "primary"
+
+    if budget <= 0:
+        return "off", "budget_exhausted"
+
+    # Primary done, budget remaining — assign secondary tasks
+    # Skip tasks that don't make sense given today's primary
+    skip = set()
+    if primary_task == "gap_harvest":
+        skip.add("gap_harvest_supplemental")  # Already did harvest
+    if primary_task == "cluster_review":
+        skip.add("cluster_maintenance")  # Already did clustering
+    if primary_task == "blocker_mapping":
+        skip.add("blocker_reassessment")  # Already did blockers
+
+    for task in SECONDARY_TASKS:
+        if task in skip:
+            continue
+        # Check if this secondary was already completed today
+        sec_log = CLAW_LOGS / f"{TODAY}_task_{phases_done + 1}.log"
+        if not sec_log.exists():
+            return task, "secondary"
+
+    return "off", "all_tasks_complete"
+
+
+def write_directives(claw_status, registry_state, priorities):
+    """Write _directives_today.md for Claw — multi-phase aware."""
     top_gaps = [g for g in priorities if g["priority"] in ("HIGH", "MEDIUM")]
     gap_lines = "\n".join(
         f"- **{g['priority']}** {g['factor']}: {g['active']} active, {g['ideas']} ideas"
         for g in top_gaps
     )
 
-    content = f"""# Claw Directives — {TODAY} ({DOW})
+    next_task, task_type = _determine_next_task(claw_status, priorities)
 
-*Auto-generated by Claude control loop. Claw reads this before executing.*
+    content = f"""# Claw Directives — {TODAY} {NOW} ({DOW})
 
-## Today's Status
+*Auto-generated by Claude control loop every 4 hours. Read before executing.*
 
-- Scheduled task: **{claw_status['today_task']}**
-- Completed: **{'YES' if claw_status['today_completed'] else 'NO'}**
-- Harvest notes pending pickup: **{claw_status['total_harvest_pending']}**
-- Refinement notes pending pickup: **{claw_status['total_refinement_pending']}**
+## Status Right Now
+
+- Primary task: **{claw_status['today_task']}** — {'DONE' if claw_status['today_completed'] else 'PENDING'}
+- Phases completed today: **{claw_status['today_phases_completed']}**
+- Notes generated today: **{claw_status['today_notes_generated']}**
+- Daily budget remaining: **{claw_status['budget_remaining']}** notes
+- Harvest pending pickup: **{claw_status['total_harvest_pending']}**
+- Refinement pending pickup: **{claw_status['total_refinement_pending']}**
 
 ## Current Gap Priorities
 
 {gap_lines}
 
-## Next Task: {tomorrow} — {tomorrow_task}
+## YOUR NEXT TASK: {next_task} ({task_type})
 
 """
-    if tomorrow_task == "gap_harvest":
-        content += """Focus on the highest-priority gaps listed above. Read `_priorities.md`
-for closed families, momentum high-bar rule, and search terms.
-Generate 5-8 notes to `inbox/harvest/`.
+    if task_type == "budget_exhausted":
+        content += f"""Daily note budget exhausted ({DAILY_NOTE_CAP} notes). No more generation tasks.
+You may still do cluster maintenance or blocker reassessment (report-only, no notes).
+Log completion and wait for tomorrow's directives.
 """
-    elif tomorrow_task == "academic_scan":
-        content += """Search Quantpedia, SSRN, AlphaArchitect, Return Stacked for documented
-futures edges. Focus on the HIGH-priority factors above.
-Generate 3-5 notes to `inbox/harvest/`.
+    elif task_type == "all_tasks_complete":
+        content += """All primary and secondary tasks complete for today. Well done.
+Log completion and wait for tomorrow's directives.
 """
-    elif tomorrow_task == "family_refinement":
-        content += """Read `_family_queue.md` for families needing depth. Generate 3-5
-refinement notes to `inbox/refinement/`. Deepen existing clusters,
-don't create redundant new ideas.
-"""
-    elif tomorrow_task == "tradingview_scan":
-        content += """Search TradingView public scripts for mechanical futures strategies.
-Focus on gap factors. Reject discretionary, ICT, crypto, spot forex.
-Generate 5-8 notes to `inbox/harvest/`.
-"""
-    elif tomorrow_task == "cluster_review":
-        content += """Review all notes from this week. Group into concept clusters.
-Flag duplicates, near-duplicates, closed-family violations.
-Write a single cluster report to `inbox/clustering/`.
-"""
-    elif tomorrow_task == "blocker_mapping":
-        content += """Review blocked ideas. Assess which blockers may have been resolved.
-Write a gap refresh report to `inbox/assessment/`.
-"""
-    elif tomorrow_task == "off":
-        content += "Day off. No catalog task needed.\n"
+    elif task_type == "done":
+        content += "Day off or all work complete. Rest.\n"
+    else:
+        content += _task_instructions(next_task) + "\n"
 
     content += f"""
+## After Completing This Task
+
+1. Log to `logs/{TODAY}_task{'_' + str(claw_status['today_phases_completed'] + 1) if claw_status['today_phases_completed'] > 0 else ''}.log`
+2. Read `_directives_today.md` again — Claude may have refreshed it with a new task
+3. If budget remains and directives show another task, execute it
+4. If budget is exhausted or directives say "done", stop
+
+## Daily Budget
+
+- Cap: {DAILY_NOTE_CAP} notes/day, {DAILY_REPORT_CAP} reports/day
+- Generated so far: {claw_status['today_notes_generated']} notes
+- Remaining: {claw_status['budget_remaining']} notes
+
 ## Registry Snapshot
 
-- Total strategies: {registry_state.get('total', '?')}
-- Status distribution: {registry_state.get('statuses', {})}
-- Blocked ideas: {registry_state.get('blocked_count', '?')}
+- Total: {registry_state.get('total', '?')} strategies
+- Blocked: {registry_state.get('blocked_count', '?')} ideas
 
-## Governance Reminder
+## Governance
 
 You NEVER: convert to code, test, backtest, promote, demote, or modify
-any file outside ~/openclaw-intake/. You recommend verdicts. The human
-decides.
+any file outside ~/openclaw-intake/. You recommend verdicts. The human decides.
 """
 
     (CLAW_INBOX / "_directives_today.md").write_text(content)
@@ -406,10 +526,10 @@ def write_eod_audit(claw_status, registry_state, priorities):
 
 | Component | Schedule | Last Run |
 |-----------|----------|----------|
-| Claw task execution | Daily via heartbeat | {TODAY if claw_status['today_completed'] else 'not today'} |
-| Claude directive refresh | Daily 06:00 ET (launchd) | {TODAY} |
-| Claude EOD audit | Daily 20:00 ET (launchd) | {TODAY} |
-| Claude priority refresh | Sunday + after registry changes | see _priorities.md |
+| Claw task execution | Hourly heartbeat check | {TODAY}, {claw_status['today_phases_completed']} phases |
+| Claude directive refresh | Every 4h (launchd, 6x/day) | {TODAY} {NOW} |
+| Claude EOD audit | 20:00 ET daily | {TODAY} |
+| Claude priority refresh | Every cycle + after registry changes | {TODAY} |
 | Human review | Monday + Friday sessions | manual |
 
 ### Governance

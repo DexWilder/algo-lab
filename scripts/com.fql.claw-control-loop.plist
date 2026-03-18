@@ -11,9 +11,15 @@
         <string>/Users/chasefisher/projects/Algo Trading/algo-lab/scripts/run_claw_control_loop.sh</string>
     </array>
 
-    <!-- Twice daily: 06:00 ET (morning directives) and 20:00 ET (EOD audit) -->
+    <!-- Every 4 hours: 02:00, 06:00, 10:00, 14:00, 18:00, 22:00 ET -->
     <key>StartCalendarInterval</key>
     <array>
+        <dict>
+            <key>Hour</key>
+            <integer>2</integer>
+            <key>Minute</key>
+            <integer>0</integer>
+        </dict>
         <dict>
             <key>Hour</key>
             <integer>6</integer>
@@ -22,7 +28,25 @@
         </dict>
         <dict>
             <key>Hour</key>
-            <integer>20</integer>
+            <integer>10</integer>
+            <key>Minute</key>
+            <integer>0</integer>
+        </dict>
+        <dict>
+            <key>Hour</key>
+            <integer>14</integer>
+            <key>Minute</key>
+            <integer>0</integer>
+        </dict>
+        <dict>
+            <key>Hour</key>
+            <integer>18</integer>
+            <key>Minute</key>
+            <integer>0</integer>
+        </dict>
+        <dict>
+            <key>Hour</key>
+            <integer>22</integer>
             <key>Minute</key>
             <integer>0</integer>
         </dict>
