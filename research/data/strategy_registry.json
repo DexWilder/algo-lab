@@ -3287,11 +3287,11 @@
       "direction": "both",
       "source": "Quantpedia \u2014 Term Structure Effect in Commodities",
       "rule_summary": "Rank commodity futures by curve slope / roll yield. Long backwardated contracts, short contangoed ones. Cross-sectional carry across energy and metals sectors with sector balancing.",
-      "status": "idea",
-      "notes": "ACCEPTED via academic harvest. Priority #1 in batch. Cleanest commodity-carry expression. Needs careful roll construction and sector balancing. Fills primary CARRY gap.",
+      "status": "spec_review",
+      "notes": "Spec drafted. Conversion slot opened 2026-03-17. Using 60-day return proxy for carry (true term-structure data not available). 2-asset cross-section (MCL + MGC). Monthly rebalance. Awaiting spec approval before strategy.py.",
       "last_review_date": "2026-03-17",
       "review_priority": "HIGH",
-      "lifecycle_stage": "discovery",
+      "lifecycle_stage": "specification",
       "source_category": "academic",
       "tags": [
         "CARRY",
@@ -3300,7 +3300,8 @@
       "state_history": [],
       "harvest_batch": "academic_harvest_batch_2026-03-17",
       "harvest_note": "42_commodity_term_structure_carry_energy_metals.md",
-      "batch_priority": 1
+      "batch_priority": 1,
+      "spec_path": "research/specs/Commodity-TermStructure-Carry.md"
     },
     {
       "strategy_id": "ManagedFutures-Carry-Diversified",
