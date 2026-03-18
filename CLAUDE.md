@@ -9,13 +9,15 @@ real issue or a probation review threshold is hit.
 **Daily priority:** Help run `./scripts/start_forward_day.sh` on market days.
 **Friday priority:** Help review `python3 research/weekly_scorecard.py` output.
 
-## Probation Portfolio (3 strategies accumulating forward evidence)
+## Probation Portfolio (5 strategies accumulating forward evidence)
 
 | Strategy | Asset | Horizon | Tier | Target Trades | Promotion PF |
 |----------|-------|---------|------|---------------|-------------|
 | DailyTrend-MGC-Long | MGC | Daily | REDUCED | 15 | > 1.2 |
 | MomPB-6J-Long-US | 6J | Intraday (US) | REDUCED | 30 | > 1.2 |
 | FXBreak-6J-Short-London | 6J | Intraday (London) | MICRO | 50 | > 1.1 |
+| PreFOMC-Drift-Equity | MES | Event (FOMC) | MICRO | 8 | > 1.2 |
+| TV-NFP-High-Low-Levels | MES | Event (NFP) | MICRO | 8 | > 1.1 |
 
 Review criteria: `docs/PROBATION_REVIEW_CRITERIA.md`
 Week 8 formal review is the next major decision point.
@@ -29,12 +31,14 @@ Week 8 formal review is the next major decision point.
 
 ## System State
 
-- **Registry:** 65 strategies, schema v3.0, rejection taxonomy
+- **Registry:** 103 strategies, schema v3.0, rejection taxonomy
 - **Genome map:** 9-dimension classification, overcrowding + gap analysis
-- **Factory:** batch_first_pass operational, 13 reports processed
-- **Forward runner:** 10 strategies across 4 assets, 2 horizons
+- **Factory:** batch_first_pass operational, 20+ reports processed
+- **Forward runner:** 10 strategies across 4 assets, 2 horizons, probation included
 - **Tests:** 127 passing
-- **Harvest engine:** dormant by default, gap-aware targeting configured
+- **Harvest engine:** Phase 1 active — 5 of 6 lanes running (legacy_revival disabled)
+- **Factor coverage:** MOMENTUM 54%, STRUCTURAL 1, EVENT 2 (probation), CARRY 0 (GAP), VOLATILITY 0 (GAP)
+- **Conversion queue:** Natural pause — no strong candidates pending
 
 ## Auto-Commit & Push
 
