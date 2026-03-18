@@ -21,19 +21,24 @@ Claude should do these automatically at the start of relevant sessions:
 
 - **Market-day session (when requested):** Run `./scripts/start_forward_day.sh`
   (not scheduled — manual start, automated downstream reporting)
-- **Monday session:** Scan harvest inbox (`python3 research/harvest_engine.py --scan`),
-  stage new notes, present for review
-- **Friday session:** Run full review sequence:
+- **Monday session:** Scan Claw outputs from `~/openclaw-intake/inbox/harvest/`
+  and `inbox/refinement/`. Dedupe, tag, cluster, present for accept/reject.
+  Also run `python3 research/harvest_engine.py --scan`.
+- **Friday session:** Read Claw cluster report from `inbox/clustering/`,
+  verify assignments. Then run full review sequence:
   ```bash
   python3 research/weekly_scorecard.py --save
   python3 research/weekly_intake_digest.py --save
   python3 research/operating_dashboard.py
   ```
   Present consolidated summary with recommended actions.
+- **Sunday/Monday:** Read Claw gap refresh from `inbox/assessment/`, update
+  `inbox/_priorities.md` and `inbox/_family_queue.md` for next week's Claw runs.
 - **Monthly (or after 20+ new registry entries):** Refresh genome map and
   factor decomposition.
 
 See `docs/CONTINUOUS_DISCOVERY_OPERATING_PLAN.md` for the full operating plan.
+See `docs/CLAW_CATALOG_ENGINE.md` for Claw's scheduled task definitions.
 
 ## Probation Portfolio (5 strategies accumulating forward evidence)
 
@@ -93,6 +98,7 @@ See `docs/release_workflow.md` for full details.
 ## Key Documentation
 
 - `docs/CONTINUOUS_DISCOVERY_OPERATING_PLAN.md` — discovery vs deployment split
+- `docs/CLAW_CATALOG_ENGINE.md` — Claw weekly schedule, output structure, governance
 - `docs/FQL_ARCHITECTURE.md` — 7-layer system reference
 - `docs/OPERATING_RHYTHM.md` — weekly cadence (superseded by discovery plan)
 - `docs/PROBATION_REVIEW_CRITERIA.md` — promotion/downgrade thresholds

@@ -93,44 +93,41 @@ system-level automation inside the algo-lab repo.
 
 ## 2. What Runs Continuously on Claw's (OpenClaw) Side
 
-Claw is the external idea generation engine. It runs outside the repo and
-drops notes into the intake folder. Claude picks them up.
+Claw operates as a **scheduled catalog engine**, not a prompt-dependent
+assistant. It runs on a weekly rotating schedule via heartbeat/cron.
+You do not need to prompt Claw — it runs on its own cadence.
 
-### 2a. Weekly Claw Tasks (You + Claw Together)
+See `docs/CLAW_CATALOG_ENGINE.md` for the full specification.
 
-| Task | Cadence | Output | Destination |
-|------|---------|--------|-------------|
-| **Tactical gap prompts** | Weekly | 5-10 factor-targeted notes | `~/openclaw-intake/inbox/` |
-| **Strategic discovery** | Weekly | 10-15 broad discovery notes | `~/openclaw-intake/inbox/` |
-| **TradingView script scan** | Weekly | 5-10 curated scripts | `~/openclaw-intake/inbox/` |
+### 2a. Weekly Rotating Schedule
 
-### 2b. Biweekly Claw Tasks
+| Day | Task | Category | Cap | Output |
+|-----|------|----------|-----|--------|
+| **Mon** | Gap-targeted harvest | HARVEST | 5-8 | `inbox/harvest/` |
+| **Tue** | Academic / literature scan | HARVEST | 3-5 | `inbox/harvest/` |
+| **Wed** | Family refinement | REFINEMENT | 3-5 | `inbox/refinement/` |
+| **Thu** | TradingView / practitioner scan | HARVEST | 5-8 | `inbox/harvest/` |
+| **Fri** | Cluster review + dedupe sweep | CLUSTERING | 1 report | `inbox/clustering/` |
+| **Sat** | Off | — | — | — |
+| **Sun** | Blocker mapping + gap refresh | ASSESSMENT | 1 report | `inbox/assessment/` |
 
-| Task | Cadence | Output | Destination |
-|------|---------|--------|-------------|
-| **Academic paper review** | Biweekly | 3-8 paper extractions | `~/openclaw-intake/inbox/` |
-| **YouTube practitioner extraction** | Biweekly | 2-5 mechanical rules | `~/openclaw-intake/inbox/` |
+### 2b. Claw Reads, Claude Writes
 
-### 2c. What Claw Should NOT Do
+Claw reads two files that Claude maintains:
+- `inbox/_priorities.md` — current factor/asset/horizon gaps, closed families,
+  momentum high-bar rule, search suggestions
+- `inbox/_family_queue.md` — families needing Wednesday refinement depth
 
-- Never modify the registry, genome map, or any repo file
-- Never test or backtest — that's Claude's job
-- Never decide whether to accept or reject — that's the gate
-- Never generate momentum variants without explicitly addressing the high-bar rule
-- Never generate ideas in closed families without addressing the specific failure mode
+Claude updates these weekly based on genome map and factor decomposition.
+This is the feedback loop that keeps Claw targeted without manual prompting.
 
-### 2d. Claw Prompt Guidance (Updated by Claude)
+### 2c. Governance Boundary (Absolute)
 
-Claude updates the gap-targeting priorities in `research/harvest_config.yaml`
-based on genome map analysis. Claw should read these priorities before
-generating notes. The flow:
-
-```
-Claude: genome map → gap analysis → update harvest_config.yaml priority_gaps
-You: read priority_gaps → craft Claw prompts targeting those gaps
-Claw: generate notes → drop in inbox
-Claude: scan inbox → dedupe → stage → you review → accept/reject
-```
+- Claw NEVER modifies any file in the algo-lab repo
+- Claw NEVER converts, tests, backtests, promotes, or changes live logic
+- Claw NEVER decides accept/reject — it recommends, you decide
+- Claw only writes markdown notes inside `~/openclaw-intake/`
+- Claude is the only bridge between Claw's output and the repo
 
 ---
 
