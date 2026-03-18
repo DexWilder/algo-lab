@@ -3413,7 +3413,7 @@
       "source": "Moreira & Muir (NBER w22208) \u2014 Volatility-Managed Portfolios",
       "rule_summary": "Scale equity-index futures exposure inversely with recent realized volatility. Reduce position when vol is high, increase when vol is low. Leverage-capped. Sharpe improvement from vol timing rather than directional signal.",
       "status": "idea",
-      "notes": "ACCEPTED via academic harvest. Priority #3 in batch. Benchmark-style volatility overlay. Design choice needed: standalone sleeve vs portfolio overlay vs risk-management layer. Fills VOLATILITY gap. UPGRADE SEQUENCE #2: Next conversion slot after carry battle settles. Fills VOL gap. Moreira/Muir NBER basis. FALLBACK: becomes lead upgrade path if Treasury-Rolldown weakens materially before June 1.",
+      "notes": "ACCEPTED via academic harvest. Priority #3 in batch. Benchmark-style volatility overlay. Design choice needed: standalone sleeve vs portfolio overlay vs risk-management layer. Fills VOLATILITY gap. UPGRADE SEQUENCE #2: Next conversion slot after carry battle settles. Fills VOL gap. Moreira/Muir NBER basis. FALLBACK: becomes lead upgrade path if Treasury-Rolldown weakens materially before June 1. Spec drafted 2026-03-18. Quick feasibility: Sharpe 0.64\u21920.92 (+44%) on MES 2019-2026. Rubric estimate 19 raw + 2 gap = 21 effective. Ready for conversion when slot opens.",
       "last_review_date": "2026-03-18",
       "review_priority": "HIGH",
       "lifecycle_stage": "discovery",
@@ -3427,7 +3427,8 @@
       "harvest_note": "46_equity_index_volatility_managed_futures.md",
       "batch_priority": 3,
       "upgrade_sequence": 2,
-      "upgrade_role": "next_conversion_slot"
+      "upgrade_role": "next_conversion_slot",
+      "spec_path": "research/specs/VolManaged-EquityIndex.md"
     },
     {
       "strategy_id": "Commodity-Carry-TailRisk-Overlay",
