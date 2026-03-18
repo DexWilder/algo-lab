@@ -184,3 +184,109 @@ that VWAP-MNQ session analysis depends on.
 | 2 | Donchian-MNQ | **Archive.** NoiseBoundary supersedes on every robustness metric. | Ready for approval |
 | 3 | RangeExpansion-MCL | **Immediate downgrade** to testing/OFF. Hard deadline for archive. | Urgent — active decay |
 | 4 | VWAP-MNQ | **Queued** — session restriction research pending. | After #2 and #3 |
+
+---
+
+## 4. VWAP-MNQ-Long: Session Restriction Research (EXECUTED)
+
+### Baseline
+
+VWAP-MNQ all sessions: **1,280 trades | PF 1.13 | WR 36% | PnL +$7,074**
+
+### Session Decomposition
+
+| Session | Trades | PF | WR | PnL | Avg PnL |
+|---------|--------|-----|-----|------|---------|
+| Morning (09-12) | 967 | 1.16 | 36% | +$6,748 | +$7 |
+| Midday (12-14) | 254 | 1.12 | 37% | +$1,086 | +$4 |
+| Afternoon (14-16) | 59 | **0.72** | 37% | **-$759** | -$13 |
+
+### Direction Decomposition
+
+| Direction | Trades | PF | PnL |
+|-----------|--------|-----|------|
+| Long | 607 | 1.32 | +$7,758 |
+| Short | 673 | 0.98 | -$683 |
+
+### Morning-Only Simulated Performance
+
+| Variant | Trades | PF | WR | PnL |
+|---------|--------|-----|-----|------|
+| All sessions | 1,280 | 1.13 | 36% | +$7,074 |
+| **Morning-only** | 967 | **1.16** | 36% | +$6,748 |
+| Removed (midday+afternoon) | 313 | — | — | +$326 |
+
+### Morning-Only Year-by-Year
+
+| Year | Trades | PF | PnL |
+|------|--------|-----|------|
+| 2019 | 76 | 0.53 | -$573 |
+| 2020 | 135 | 0.93 | -$402 |
+| 2021 | 135 | 1.26 | +$1,121 |
+| 2022 | 129 | 1.13 | +$916 |
+| 2023 | 163 | 1.15 | +$955 |
+| 2024 | 151 | 0.79 | -$1,604 |
+| 2025 | 154 | 1.75 | +$5,318 |
+| 2026 | 24 | 1.65 | +$1,016 |
+
+### Versus NoiseBoundary-MNQ-Long (Potential Replacement)
+
+| Metric | VWAP-MNQ (morning-only) | NoiseBoundary-MNQ |
+|--------|------------------------|-------------------|
+| Trades | 967 | 612 |
+| PF | 1.16 | **1.31** |
+| PnL | +$6,748 | **+$9,683** |
+| WF score | 5.0/10 | **10/10 PERFECT** |
+| Direction | Both (long PF 1.32, short PF 0.98) | Long only |
+| Academic source | None | **Published** |
+
+### Findings
+
+1. **Afternoon is broken.** 59 trades at PF 0.72, -$759. The drift
+   monitor ALARM is confirmed by the backtest. This session should be
+   restricted.
+
+2. **Midday is marginal.** 254 trades at PF 1.12, +$1,086. Positive
+   but thin. Removing it loses $1,086 but removes 254 low-quality trades.
+
+3. **Morning is the core edge.** PF 1.16 on 967 trades. Removing
+   afternoon and midday barely changes total PnL ($7,074 → $6,748,
+   a $326 loss) but improves PF (1.13 → 1.16).
+
+4. **Session restriction helps but doesn't transform.** PF 1.13 → 1.16
+   is not a meaningful improvement. The strategy is mediocre across all
+   variants.
+
+5. **NoiseBoundary is clearly stronger.** Higher PF (1.31 vs 1.16),
+   higher total PnL ($9,683 vs $6,748), perfect WF (10/10 vs 5.0),
+   academic source, cross-asset validation. On fewer trades (612 vs 967)
+   but with much better quality.
+
+6. **Short side is losing money.** VWAP-MNQ shorts have PF 0.98
+   (-$683). The long side at PF 1.32 carries the strategy. If
+   restricted to long-only + morning-only, it would overlap almost
+   perfectly with NoiseBoundary.
+
+### Verdict
+
+**Session restriction alone is not enough to save VWAP-MNQ-Long.**
+
+The strategy scores 15/24 MARGINAL on the Elite Rubric. Morning-only
+raises PF from 1.13 to 1.16 — still MARGINAL. The short side is
+unprofitable. The walk-forward is 5.0/10 vs NoiseBoundary's 10/10.
+
+**Two options for your decision:**
+
+**Option A: Archive VWAP-MNQ, promote NoiseBoundary as the MNQ-long
+workhorse.** NoiseBoundary is stronger on every quality metric. This
+is the elite-standard answer.
+
+**Option B: Restrict VWAP-MNQ to morning + long-only, keep it as a
+secondary workhorse alongside NoiseBoundary.** Both are MNQ-long
+morning strategies, so this adds concentration without adding
+diversification. Only justified if you want the trade volume (967
+vs 612 trades) for faster forward evidence accumulation.
+
+**Recommendation: Option A.** NoiseBoundary is the superior
+representative. Running both is paying double attention for
+correlated returns in the same slot.
