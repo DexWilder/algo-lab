@@ -236,45 +236,85 @@ Claude is the only entity that:
 
 ---
 
-## 5. Claw Implementation
+## 5. Scheduling and Verification
 
-### HEARTBEAT.md Configuration
+### Claw Heartbeat: OpenClaw Native Cron
 
-Claw's heartbeat file should be updated to include the daily schedule check:
-
-```markdown
-# HEARTBEAT.md
-
-Check today's day of week against the FQL Catalog Engine schedule:
-- Monday: Run gap-targeted harvest (read inbox/_priorities.md, generate 5-8 notes to inbox/harvest/)
-- Tuesday: Run academic scan (generate 3-5 notes to inbox/harvest/)
-- Wednesday: Run family refinement (read inbox/_family_queue.md, generate 3-5 notes to inbox/refinement/)
-- Thursday: Run TradingView/practitioner scan (generate 5-8 notes to inbox/harvest/)
-- Friday: Run cluster review (read this week's notes, write report to inbox/clustering/)
-- Saturday: Off
-- Sunday: Run blocker mapping + gap refresh (write report to inbox/assessment/)
-
-If today's task was already completed (check logs/), reply HEARTBEAT_OK.
-If not, execute the task, log completion to logs/YYYY-MM-DD_task.log, then reply with summary.
-
-Cap: Never generate more than 8 notes per harvest run.
-Format: Use the standard intake note format from inbox/_note_template.md.
-Governance: Never modify any file outside ~/openclaw-intake/. Never convert, test, or promote.
-```
-
-### Cron Alternative (if heartbeat frequency is insufficient)
+Claw runs via OpenClaw's built-in cron scheduler, firing every 30 minutes.
 
 ```
-# Daily at 09:00 ET — run the day's catalog task
-0 9 * * 1 openclaw run --task gap_harvest
-0 9 * * 2 openclaw run --task academic_scan
-0 9 * * 3 openclaw run --task family_refinement
-0 9 * * 4 openclaw run --task tradingview_scan
-0 9 * * 5 openclaw run --task cluster_review
-0 9 * * 0 openclaw run --task gap_refresh
+Job:      fql-catalog-heartbeat
+ID:       85c3eb78-b228-4106-a71e-ff6011e5ac1d
+Schedule: every 30m
+Agent:    main
+Target:   isolated session
+Timeout:  300s
+Thinking: medium
 ```
 
-Choose whichever mechanism fits Claw's runtime model better.
+### Verification Commands
+
+```bash
+# Check job is registered and next fire time
+openclaw cron list
+
+# Check scheduler status (enabled, next wake time)
+openclaw cron status
+
+# View recent execution history
+openclaw cron runs --id 85c3eb78-b228-4106-a71e-ff6011e5ac1d --limit 10
+
+# Manual test fire (does not affect schedule)
+openclaw cron run 85c3eb78-b228-4106-a71e-ff6011e5ac1d
+
+# Disable temporarily (e.g., during maintenance)
+openclaw cron disable 85c3eb78-b228-4106-a71e-ff6011e5ac1d
+
+# Re-enable
+openclaw cron enable 85c3eb78-b228-4106-a71e-ff6011e5ac1d
+```
+
+### Stall Detection
+
+Check these if you suspect the loop has stalled:
+
+```bash
+# 1. Is the cron job still enabled and scheduled?
+openclaw cron status
+
+# 2. When did it last fire?
+openclaw cron runs --id 85c3eb78-b228-4106-a71e-ff6011e5ac1d --limit 3
+
+# 3. Did Claw actually write a log today?
+ls -la ~/openclaw-intake/logs/$(date +%Y-%m-%d)*.log
+
+# 4. Is the Gateway running? (cron requires it)
+openclaw gateway status 2>/dev/null || echo "Gateway may not be running"
+
+# 5. Check Claude's side — did the control loop run?
+ls -la ~/projects/Algo\ Trading/algo-lab/research/logs/claw_loop_$(date +%Y%m%d)*.log
+```
+
+### Log Locations
+
+| Component | Where to Look |
+|-----------|---------------|
+| Claw task logs | `~/openclaw-intake/logs/YYYY-MM-DD_task*.log` |
+| Claw cron run history | `openclaw cron runs --limit 10` |
+| Claude control loop logs | `research/logs/claw_loop_YYYYMMDD_HHMM.log` |
+| Claude launchd stdout | `research/logs/launchd_claw_loop_stdout.log` |
+| EOD audit archive | `research/data/claw_audits/audit_YYYY-MM-DD.md` |
+| Directive freshness | Check timestamp in `inbox/_directives_today.md` header |
+
+### Full Cadence Summary
+
+| Component | Frequency | Mechanism |
+|-----------|-----------|-----------|
+| Claw heartbeat | Every 30 min | OpenClaw cron (`fql-catalog-heartbeat`) |
+| Claude directive refresh | Every 4 hours | launchd (`com.fql.claw-control-loop`) |
+| Claude EOD audit | 22:00 ET | Same launchd (last run of day) |
+| Max idle between work | ~30 min | Claw heartbeat interval |
+| Daily note budget | 15 notes + 2 reports | Enforced in directives + HEARTBEAT.md |
 
 ---
 
