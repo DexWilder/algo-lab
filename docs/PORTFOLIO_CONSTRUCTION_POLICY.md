@@ -49,6 +49,52 @@ across managed accounts.
 
 ---
 
+## A1b. Cap Philosophy: Competition, Not Stagnation
+
+Caps apply to attention-consuming active slots only:
+
+| Layer | Capped? | Max | Purpose |
+|-------|---------|-----|---------|
+| **Core** | Yes | 10 | Replacement pressure — to add #11, archive the weakest |
+| **Conviction probation** | Yes | 5 | Weekly monitoring budget — only the strongest candidates |
+| **Watch** | Yes | 3 | Quarterly review budget — promising but unproven |
+| **Testing** | No | Unlimited | Factory pipeline, zero monitoring cost |
+| **Ideas / Catalog** | No | Unlimited | Discovery engine — grows without bound |
+
+### Caps Create Competition, Not Stagnation
+
+**A full cap does NOT block an elite new candidate from entering.**
+
+Instead, a full cap forces a displacement decision. If a new candidate
+scores higher on the Elite Review Rubric than the weakest incumbent in
+the capped bucket, it may replace that incumbent. The displaced strategy
+moves down one layer (core → watch, conviction → watch, watch → testing).
+
+This means:
+- The catalog and testing pipeline are never constrained — discovery
+  is relentless and unlimited
+- Every capped slot is earned and defended — incumbents must remain
+  elite or risk displacement
+- The portfolio trends toward higher quality over time as stronger
+  candidates displace weaker ones
+- No strategy survives on tenure alone — only on current evidence
+  and rubric score
+
+### Displacement Rules
+
+1. **New candidate must score higher** than the weakest incumbent on
+   the Elite Review Rubric (6-question total score)
+2. **Ties go to the incumbent** — burden of proof is on the new entrant
+3. **Gap-filling candidates get +2 rubric bonus** when competing for
+   displacement. A strategy that fills a factor/asset/session gap is
+   more valuable than one that adds depth to a covered area.
+4. **Event sleeves count at 0.5 slots** against conviction and core
+   caps. Low monitoring cost, high diversification value.
+5. **Displacement is logged** in the registry with state_history entry
+   documenting what was displaced and why.
+
+---
+
 ## A2. Factor Diversification
 
 ### Rules (Universal)
@@ -257,18 +303,45 @@ These trigger a review even if individual strategies look acceptable.
 
 ---
 
-## B2. Prop-Specific Concentration Limits
+## B2. Prop-Specific Slot Structure and Concentration Limits
+
+### Slot Caps (Active)
+
+| Bucket | Cap | Monitoring | Displacement? |
+|--------|-----|-----------|---------------|
+| **Core** | 10 | Daily (automated) + weekly review | Yes — weakest can be displaced by stronger promoted strategy |
+| **Conviction probation** | 5 | Weekly review, active promotion timeline | Yes — weakest displaced by stronger validated candidate |
+| **Watch** | 3 | Quarterly review, passive evidence accumulation | Yes — weakest displaced, or expires at deadline |
+| **Event sleeves** | Count at 0.5 | Checkpoint review only | Same displacement rules |
+
+### Uncapped (Unlimited)
+
+| Bucket | Monitoring | Purpose |
+|--------|-----------|---------|
+| Testing | Zero (batch pipeline handles it) | Factory throughput |
+| Ideas / Catalog | Zero | Discovery engine |
+
+### Concentration Limits
 
 | Dimension | Soft Limit | Hard Cap | Rationale |
 |-----------|-----------|----------|-----------|
-| Asset (single) | 4 strategies | 5 | Micro contracts = low margin, but attention budget is finite |
-| Session (single) | 5 strategies | 6 | Signal overlap risk on small account |
-| Probation slots | 6 | 8 | Each needs weekly monitoring; quality > quantity |
-| Max probation per asset | 3 | — | Prevent over-testing one asset |
-| Max probation per factor | 3 | — | Prevent loading same factor bet |
-| Max time in probation | 16 weeks | — | Promote, extend once, or remove |
-| Direction ratio | 2:1 | 3:1 | Structural long bias acceptable on micros |
-| Horizon (single bar freq) | 70% | 80% | 5-minute dominance is a real risk |
+| Asset (single) | 4 strategies | 5 | Attention budget is finite |
+| Session (single) | 4 strategies | 5 | Morning concentration is #1 structural risk |
+| Factor (single) | 40% | 50% | Force diversification; ELITE-only entrants above 40%, zero above 50% |
+| Max conviction per asset | 3 | — | Prevent over-testing one asset |
+| Max conviction per factor | 3 | — | Prevent loading same factor bet |
+| Max time in conviction | 16 weeks (24 for events) | — | Promote, extend once, or remove |
+| Max time in watch | 16 weeks | — | Promote, archive, or expire |
+| Direction ratio | 1.5:1 | 3:1 | Push harder for short-side strategies |
+| Horizon (single bar freq) | 60% | 80% | Push for non-5m strategies |
+
+### Watch Slot Rules
+
+Every watch strategy must have:
+- **A review deadline** (max 16 weeks from entry)
+- **A promote condition** (specific metric that elevates to conviction)
+- **An archive condition** (specific metric that eliminates it)
+- No indefinite passive survival — deadline is enforced
 
 ### Prop-Specific Asset Distribution Target
 

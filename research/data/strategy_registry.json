@@ -500,15 +500,15 @@
       "direction": "short",
       "source": "internal_research",
       "rule_summary": "VWAP cross + 2x volume surge + RSI confirm + EMA slope. M2K-specific momentum burst.",
-      "status": "probation",
+      "status": "watch",
       "validation_score": 6.0,
       "parameter_stability": 96,
       "extended_history_status": "passed_conditional",
       "portfolio_role": "tail_engine",
       "trades_6yr": 90,
       "profit_factor": 1.24,
-      "notes": "Was 9.0/10 on 2yr, collapsed to 6.0/10 on 6.7yr. Edge narrower than expected. Needs 50 trades for promotion.",
-      "last_review_date": "2026-03-16",
+      "notes": "MOVED TO WATCH 2026-03-18. Elite review: 14/24 MARGINAL. PF 1.24 on 90 trades with healthy half-life. Only midday M2K strategy. Validation collapsed 9.0->6.0 on extended data. MOMENTUM overcrowded. WATCH CONDITIONS: Promote to conviction if forward PF > 1.3 after 20+ forward trades. Archive if forward PF < 1.0 after 20+ forward trades. DEADLINE: 2026-06-01 \u2014 if neither condition met, archive.",
+      "last_review_date": "2026-03-18",
       "source_category": "internal",
       "validation_result": {
         "report_file": "research/validation/momentum_ignition_M2K_short_validation.json",
@@ -516,13 +516,19 @@
         "score": 0,
         "failures": 0
       },
-      "lifecycle_stage": "forward_validation",
+      "lifecycle_stage": "watch",
       "state_history": [
         {
           "date": "2026-03-16",
           "from": "PROBATION",
           "to": "ACTIVE",
           "trigger": "Recovery: score=0.67, HL=HEALTHY"
+        },
+        {
+          "from": "probation",
+          "to": "watch",
+          "date": "2026-03-18",
+          "reason": "elite review 14/24, moved to watch with deadline 2026-06-01"
         }
       ],
       "controller_state": "ACTIVE",
@@ -661,15 +667,15 @@
       "direction": "short",
       "source": "internal_research",
       "rule_summary": "Enhanced ORB with volume + range filters on M2K",
-      "status": "probation",
+      "status": "testing",
       "validation_score": 8.0,
       "parameter_stability": 100,
       "extended_history_status": "needs_extended",
       "portfolio_role": "core",
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "8.0/10 on 2yr data. 100% param stability. Needs extended-history validation and 150+ trade accumulation.",
-      "last_review_date": "2026-03-16",
+      "notes": "DOWNGRADED from probation 2026-03-18. Elite review: 13/24 MARGINAL. No extended-history validation, no registry PF, ARCHIVE_CANDIDATE half-life, saturated breakout x morning family. DEADLINE: 2026-05-01 \u2014 validate on 6.7yr extended history or archive permanently.",
+      "last_review_date": "2026-03-18",
       "source_category": "internal",
       "validation_result": {
         "report_file": "research/validation/orb_enhanced_M2K_short_validation.json",
@@ -677,12 +683,19 @@
         "score": 0,
         "failures": 0
       },
-      "lifecycle_stage": "forward_validation",
-      "state_history": [],
+      "lifecycle_stage": "downgraded",
+      "state_history": [
+        {
+          "from": "probation",
+          "to": "testing",
+          "date": "2026-03-18",
+          "reason": "elite review 13/24 MARGINAL, no extended-history validation, slot pressure"
+        }
+      ],
       "controller_state": "PROBATION",
       "prior_state": "PROBATION",
-      "controller_action": "PROBATION",
-      "activation_score": 0.42,
+      "controller_action": "OFF",
+      "activation_score": 0.0,
       "controller_reason_codes": [
         "REGIME_MATCH_MODERATE",
         "HALF_LIFE_DEAD",
@@ -712,15 +725,15 @@
       "direction": "short",
       "source": "internal_research",
       "rule_summary": "VWAP deviation mean reversion on crude oil micro",
-      "status": "probation",
+      "status": "testing",
       "validation_score": 6.5,
       "parameter_stability": 70,
       "extended_history_status": "needs_extended",
       "portfolio_role": "diversifier",
       "trades_6yr": null,
       "profit_factor": null,
-      "notes": "6.5/10 on 2yr. 70% param stability (weakest of probation). Needs extended validation and 150+ trades.",
-      "last_review_date": "2026-03-16",
+      "notes": "DOWNGRADED from probation 2026-03-18. Elite review: 13/24 MARGINAL. 70% param stability (worst in portfolio), validation 6.5 (weakest), ARCHIVE_CANDIDATE half-life. MCL slot valuable but occupant not earning it. DEADLINE: 2026-05-01 \u2014 validate on extended history with param stability >= 85% or archive.",
+      "last_review_date": "2026-03-18",
       "source_category": "internal",
       "validation_result": {
         "report_file": "research/validation/vwap_mean_reversion_MCL_short_validation.json",
@@ -728,12 +741,19 @@
         "score": 0,
         "failures": 0
       },
-      "lifecycle_stage": "forward_validation",
-      "state_history": [],
+      "lifecycle_stage": "downgraded",
+      "state_history": [
+        {
+          "from": "probation",
+          "to": "testing",
+          "date": "2026-03-18",
+          "reason": "elite review 13/24 MARGINAL, 70% param stability disqualifying, slot pressure"
+        }
+      ],
       "controller_state": "PROBATION",
       "prior_state": "PROBATION",
-      "controller_action": "PROBATION",
-      "activation_score": 0.4,
+      "controller_action": "OFF",
+      "activation_score": 0.0,
       "controller_reason_codes": [
         "REGIME_MATCH_LOW",
         "HALF_LIFE_DEAD",
@@ -1493,18 +1513,25 @@
       "direction": "both",
       "source": "tradingview_harvest_batch1",
       "rule_summary": "Gap momentum system \u2014 trade in direction of opening gap with momentum confirmation",
-      "status": "probation",
+      "status": "watch",
       "validation_score": 6.7,
       "parameter_stability": 83,
       "extended_history_status": "passed",
       "portfolio_role": "enhancer",
       "trades_6yr": null,
       "profit_factor": 1.72,
-      "notes": "PROMOTED to probation 2026-03-15. MGC-long: PF=1.72, WF 6.7/10. MNQ-long: PF=1.31, WF 6.7/10 (83% window survival). Best combo: MGC-long.",
-      "last_review_date": "2026-03-16",
+      "notes": "MOVED TO WATCH 2026-03-18. Elite review: 16/24 MARGINAL. PF 1.72 on MGC-long is strong but adds to MGC + morning concentration. Second breakout on same asset/session as ORB-MGC (core, PF 1.99). WATCH CONDITIONS: Promote to conviction if MCL or MNQ results improve to PF > 1.3 (non-MGC edge). Archive if forward evidence confirms it is just a weaker ORB-MGC. DEADLINE: 2026-06-01 \u2014 if neither condition met, archive.",
+      "last_review_date": "2026-03-18",
       "source_category": "tradingview",
-      "lifecycle_stage": "forward_validation",
-      "state_history": [],
+      "lifecycle_stage": "watch",
+      "state_history": [
+        {
+          "from": "probation",
+          "to": "watch",
+          "date": "2026-03-18",
+          "reason": "elite review 16/24, MGC+morning concentration, moved to watch with deadline 2026-06-01"
+        }
+      ],
       "controller_state": "PROBATION",
       "prior_state": "PROBATION",
       "controller_action": "PROBATION",
