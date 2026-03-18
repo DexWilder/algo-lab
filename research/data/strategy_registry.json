@@ -3413,7 +3413,7 @@
       "source": "Moreira & Muir (NBER w22208) \u2014 Volatility-Managed Portfolios",
       "rule_summary": "Scale equity-index futures exposure inversely with recent realized volatility. Reduce position when vol is high, increase when vol is low. Leverage-capped. Sharpe improvement from vol timing rather than directional signal.",
       "status": "testing",
-      "notes": "FIRST-PASS + COUNTERFACTUAL COMPLETE 2026-03-18. Standalone: Sharpe +44% MES, +47% MNQ, DD reduced 41%/32%. Portfolio counterfactual: marginal Sharpe +0.089 (ADDS VALUE), portfolio corr 0.088 (excellent). NB overlap: pairwise 0.368 but portfolio-level 0.088 \u2014 acceptable. VM gains when NB loses. Crisis cost: VM hurts during COVID (-$3.1K) and 2022 bear (-$4.9K) \u2014 known limitation, size conservatively. Rubric: 20/24 raw + 2 gap = 22 effective. ALL conviction entry conditions met today. UPGRADE SEQUENCE #2: Enters conviction when slot opens after June 1. CORE CHALLENGE PATH: After 8+ weeks conviction with forward Sharpe > 0.5 \u2192 challenge PB-MGC-Short (16).",
+      "notes": "CONVICTION-READY. First-pass + counterfactual complete 2026-03-18. Rubric: 20/24 raw + 2 gap = 22 effective (highest challenger in system). Marginal Sharpe +0.089 (ADDS VALUE). Portfolio corr 0.088. NB overlap acceptable (pairwise 0.368, portfolio 0.088, VM gains when NB loses). Crisis cost: hurts in COVID/2022 \u2014 ENTER AT MICRO/REDUCED ONLY until forward evidence proves otherwise. UPGRADE SEQUENCE #2: Enters conviction when next slot opens (after June 1). CORE CHALLENGE PATH: After 8+ weeks conviction with forward Sharpe > 0.5 \u2192 challenge PB-MGC-Short (16). FALLBACK: Auto-elevates to lead if Treasury-Rolldown weakens.",
       "last_review_date": "2026-03-18",
       "review_priority": "HIGH",
       "lifecycle_stage": "first_pass",
@@ -3428,7 +3428,8 @@
       "batch_priority": 3,
       "upgrade_sequence": 2,
       "upgrade_role": "next_conversion_slot",
-      "spec_path": "research/specs/VolManaged-EquityIndex.md"
+      "spec_path": "research/specs/VolManaged-EquityIndex.md",
+      "deployment_restrictions": "MICRO or REDUCED tier only. Do not assign BASE until forward evidence confirms crisis-behavior DD is acceptable."
     },
     {
       "strategy_id": "Commodity-Carry-TailRisk-Overlay",

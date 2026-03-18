@@ -659,13 +659,41 @@ def write_eod_audit(claw_status, registry_state, priorities):
                 claw_status['cluster_reports_today']]):
         content += "- No new outputs today.\n"
 
+    # Compute days to June 1 for the brief
+    try:
+        _june1 = datetime.strptime("2026-06-01", "%Y-%m-%d")
+        _days_to_june1 = max(0, (_june1 - datetime.now()).days)
+    except Exception:
+        _days_to_june1 = "?"
+
+    # Check VolManaged status from registry
+    _vm_status = "unknown"
+    _vm_fwd_trades = 0
+    if REGISTRY_PATH.exists():
+        _r = json.load(open(REGISTRY_PATH))
+        for _s in _r.get("strategies", []):
+            if _s["strategy_id"] == "VolManaged-EquityIndex-Futures":
+                _vm_status = _s.get("status", "?")
+                break
+
     content += f"""
 ### 4. Pressure Summary
 
-- **Weakest core:** PB-MGC-Short (rubric 16, fwd: {forward.get('pnl', 0):+.0f} overall)
-- **Weakest watch:** MomIgn-M2K-Short (rubric 14, deadline 2026-06-01)
-- **Top challenger:** Treasury-Rolldown-Carry-Spread (effective 20, CARRY + Rates)
-- **Next displacement:** Treasury-Rolldown → MomIgn at June 1
+- **Weakest core:** PB-MGC-Short (rubric 16)
+- **Weakest watch:** MomIgn-M2K-Short (rubric 14, deadline June 1 — {_days_to_june1} days)
+- **Top challenger:** Treasury-Rolldown-Carry-Spread (eff. 20, CARRY + Rates)
+- **Next displacement:** Treasury-Rolldown → MomIgn at June 1 (base case)
+
+### 4b. Upgrade Ladder
+
+| # | Challenger | Score | Target | Status | Timeline |
+|---|-----------|-------|--------|--------|----------|
+| 1 | Treasury-Rolldown | eff. 20 | MomIgn (watch) | Evidence accumulating | June 1 ({_days_to_june1}d) |
+| 2 | VolManaged-Equity | eff. 22 | Conviction entry | **CONVICTION-READY** ({_vm_status}) | After June 1 |
+| 3 | VolManaged-Equity | eff. 22 | PB-MGC (core) | Needs 8w conviction + fwd Sharpe > 0.5 | ~6 months |
+| 4 | Commodity-Carry v2 | eff. 19 | Watch slot | Needs v2 data or fwd evidence | Later |
+
+- VolManaged tier restriction: **MICRO/REDUCED only** until forward evidence confirms crisis DD acceptable
 
 ### 5. Vitality / Decay Alerts
 
