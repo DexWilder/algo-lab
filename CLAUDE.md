@@ -53,16 +53,17 @@ See `docs/CLAW_CATALOG_ENGINE.md` for Claw's scheduled task definitions.
 Review criteria: `docs/PROBATION_REVIEW_CRITERIA.md`
 Week 8 formal review is the next major decision point.
 
-## Automation (3 active launchd agents)
+## Automation (4 active launchd agents)
 
 - **Daily:** weekdays 17:30 ET — 6 research jobs (health, half-life, contribution, controller, report, drift)
 - **Twice-weekly:** Tue/Thu 18:00 ET — batch_first_pass factory testing
 - **Weekly:** Fri 18:30 ET — integrity monitor, kill criteria, auto-report
+- **Claw control loop:** daily 06:00 + 20:00 ET — read Claw status, write directives, EOD audit
 - **Forward runner:** DESIGNED but DISABLED (`scripts/com.fql.forward-trading.plist`)
 
 ## System State
 
-- **Registry:** 103 strategies, schema v3.0, rejection taxonomy
+- **Registry:** 110 strategies, schema v3.0, rejection taxonomy
 - **Genome map:** 9-dimension classification, overcrowding + gap analysis
 - **Factory:** batch_first_pass operational, 20+ reports processed
 - **Forward runner:** 10 strategies across 4 assets, 2 horizons, probation included
