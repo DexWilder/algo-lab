@@ -13,7 +13,7 @@
       "direction": "long",
       "source": "internal_research",
       "rule_summary": "Price above VWAP on longer timeframe, trend continuation entry with ATR trailing stop",
-      "status": "core",
+      "status": "rejected",
       "validation_score": 6.5,
       "parameter_stability": 100,
       "extended_history_status": "passed",
@@ -22,11 +22,11 @@
       "pnl_share": 32.4,
       "profit_factor": 1.26,
       "notes": "Highest trade count (41.7%). Layer 1 backbone. Regime gate: avoid HIGH_VOL (+$1,166 recovery queued)",
-      "kill_flag": null,
-      "kill_details": null,
-      "last_review_date": "2026-03-15",
-      "controller_state": "ACTIVE",
-      "controller_action": "PROBATION",
+      "kill_flag": "redundancy",
+      "kill_details": "Superseded by NoiseBoundary-MNQ-Long. Elite standard: 15/24 MARGINAL does not earn a slot.",
+      "last_review_date": "2026-03-18",
+      "controller_state": "ARCHIVED",
+      "controller_action": "OFF",
       "activation_score": 0.51,
       "controller_reason_codes": [
         "REGIME_MISMATCH",
@@ -49,7 +49,14 @@
       "health_status": "FAIL",
       "genome_cluster": "trend_persistence",
       "resurrection_flag": false,
-      "state_history": [],
+      "state_history": [
+        {
+          "from": "core",
+          "to": "rejected",
+          "date": "2026-03-18",
+          "reason": "representative replacement by NoiseBoundary-MNQ-Long under elite standard"
+        }
+      ],
       "execution_config": {
         "avoid_regimes": [
           "RANGING"
@@ -79,7 +86,9 @@
         "score": 0,
         "failures": 0
       },
-      "lifecycle_stage": "deployed"
+      "lifecycle_stage": "archived",
+      "rejection_reason": "REDUNDANT",
+      "rejection_details": "Representative replacement under elite standard. NoiseBoundary-MNQ-Long is stronger on every quality metric: PF 1.31 vs 1.16 (morning-only), WF 10/10 vs 5.0, PnL $9.7K vs $6.7K, academic source, cross-asset validated. Session restriction research confirmed afternoon is broken (PF 0.72), short side unprofitable (PF 0.98). Morning-only PF 1.16 is still MARGINAL. Archived 2026-03-18."
     },
     {
       "strategy_id": "XB-PB-EMA-MES-Short",
@@ -1675,10 +1684,10 @@
       "validation_score": 10.0,
       "parameter_stability": 100,
       "extended_history_status": "passed",
-      "portfolio_role": "core",
+      "portfolio_role": "workhorse",
       "trades_6yr": 609,
       "profit_factor": 1.28,
-      "notes": "PROMOTED to probation 2026-03-15. WF 10/10 PERFECT. MNQ-long: PF=1.28, Sharpe=1.40, 609 trades. 83% window survival, cross-asset edge on MES+MYM, 100% param stability. Academic source: Zarattini/Aziz/Barbon 2024.",
+      "notes": "DESIGNATED MNQ-long workhorse 2026-03-18. Replaced VWAP-MNQ-Long (archived \u2014 elite standard, representative replacement). WF 10/10 PERFECT. 609 trades, PF 1.28, Sharpe 1.40. Academic source: Zarattini/Aziz/Barbon 2024. Cross-asset edge on MES+MYM. 100% param stability.",
       "kill_flag": null,
       "kill_details": "Redundancy with Donchian-MNQ resolved \u2014 Donchian archived 2026-03-18. NoiseBoundary is the surviving representative.",
       "last_review_date": "2026-03-18",
