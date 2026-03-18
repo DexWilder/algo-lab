@@ -2378,17 +2378,18 @@
       "source": "openclaw_tactical_harvest",
       "rule_summary": "12-month time-series momentum on Treasury futures. Long when 12m return positive, short when negative. Monthly rebalance. Source: OpenClaw note 07.",
       "status": "idea",
-      "notes": "ACCEPTED. Conversion priority #1. Rates-native macro momentum on daily/monthly bars. Passes momentum high-bar: new asset class without momentum coverage + new horizon. Needs rates data backfill for proper validation.",
+      "notes": "MONITOR. Rates TSM mechanism appears real but sample too thin. Short-only edge: ZN PF 3.89 (6 trades), ZF PF 4.13 (5 trades), ZB PF 4.10 (7 trades). Long side catastrophic on all contracts (PF 0.00-0.44). Dominated by 2022-2024 tightening cycle \u2014 one regime drives everything. 12M and 6M lookbacks produce identical results. Not ready for probation. Needs 10+ year data covering 2+ full rate cycles. Do not iterate without longer history.",
       "last_review_date": "2026-03-17",
-      "review_priority": "HIGH",
+      "review_priority": "LOW",
       "lifecycle_stage": "discovery",
       "source_category": "academic",
       "tags": [
-        "EVENT",
-        "CARRY",
+        "MOMENTUM",
+        "high_bar_pass",
         "rates_native",
-        "daily_bar",
-        "conversion_priority_1"
+        "MONITOR",
+        "regime_dependent",
+        "needs_longer_history"
       ],
       "state_history": []
     },
