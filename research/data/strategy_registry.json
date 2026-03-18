@@ -565,15 +565,15 @@
       "direction": "short",
       "source": "internal_research",
       "rule_summary": "Session VWAP deviation band fade (2 sigma + RSI). Targets close session 15:00-15:55.",
-      "status": "probation",
+      "status": "watch",
       "validation_score": 6.0,
       "parameter_stability": 100,
       "extended_history_status": "passed_conditional",
       "portfolio_role": "stabilizer",
       "trades_6yr": 146,
       "profit_factor": 1.42,
-      "notes": "Close stabilizer. 100% param stability on 6.7yr. M2K-specific. Needs 60 trades for promotion.",
-      "last_review_date": "2026-03-16",
+      "notes": "MOVED TO WATCH 2026-03-18. Elite review: 16/24, below conviction threshold (18). Close session is unique and valuable but DECAYING half-life is disqualifying for conviction. PF 1.42 on 146 trades is solid historically but decay must stabilize. WATCH CONDITIONS: Promote to conviction if Decay stabilizes (half-life status returns to HEALTHY) AND forward PF > 1.2 after 30+ forward trades. Archive if Decay continues (half-life remains DECAYING at next monthly review) OR forward PF < 1.0 after 20+ trades. DEADLINE: 2026-06-01.",
+      "last_review_date": "2026-03-18",
       "source_category": "internal",
       "validation_result": {
         "report_file": "research/validation/close_vwap_reversion_M2K_short_validation.json",
@@ -581,8 +581,15 @@
         "score": 0,
         "failures": 0
       },
-      "lifecycle_stage": "forward_validation",
-      "state_history": [],
+      "lifecycle_stage": "watch",
+      "state_history": [
+        {
+          "from": "probation",
+          "to": "watch",
+          "date": "2026-03-18",
+          "reason": "rubric 16/24, below conviction threshold 18"
+        }
+      ],
       "controller_state": "PROBATION",
       "prior_state": "PROBATION",
       "controller_action": "PROBATION",
@@ -616,15 +623,15 @@
       "direction": "short",
       "source": "phase_harvest_ttm",
       "rule_summary": "BB(20,2.0) inside KC(20,1.5x ATR) for 12+ bars \u2192 first expansion bar + momentum direction. Profit ladder exit.",
-      "status": "probation",
+      "status": "watch",
       "validation_score": 5.5,
       "parameter_stability": 86,
       "extended_history_status": "passed_conditional",
       "portfolio_role": "tail_engine",
       "trades_6yr": 48,
       "profit_factor": 1.97,
-      "notes": "First vol expansion strategy. Longer squeeze (12 bars) = better tail profile. M2K-specific. Needs 100 trades for promotion.",
-      "last_review_date": "2026-03-16",
+      "notes": "MOVED TO WATCH 2026-03-18. Elite review: 17/24, below conviction threshold (18). First vol-expansion strategy, M2K short \u2014 fills VOLATILITY factor niche. PF 1.97 on 48 trades is strong but param stability 86% and validation 5.5 are below elite bar. WATCH CONDITIONS: Promote to conviction if Forward PF > 1.3 after 20+ forward trades (demonstrates VOL factor edge persists). Archive if Forward PF < 1.0 after 20+ forward trades. DEADLINE: 2026-06-01.",
+      "last_review_date": "2026-03-18",
       "source_category": "internal",
       "validation_result": {
         "report_file": "research/validation/ttm_squeeze_MGC_long_validation.json",
@@ -632,8 +639,15 @@
         "score": 0,
         "failures": 0
       },
-      "lifecycle_stage": "forward_validation",
-      "state_history": [],
+      "lifecycle_stage": "watch",
+      "state_history": [
+        {
+          "from": "probation",
+          "to": "watch",
+          "date": "2026-03-18",
+          "reason": "rubric 17/24, below conviction threshold 18"
+        }
+      ],
       "controller_state": "PROBATION",
       "prior_state": "PROBATION",
       "controller_action": "REDUCED_ON",
@@ -2032,15 +2046,22 @@
       "direction": "short",
       "source": "native_prototype",
       "rule_summary": "Asian range breakout at London open (03:00 ET). Short only. ATR filter + volume confirmation + trailing stop.",
-      "status": "probation",
+      "status": "watch",
       "validation_score": 5.0,
       "profit_factor": 1.2,
-      "notes": "CONDITIONAL_PASS (5/8). Walk-forward most stable of expansion (1.08/1.35). 125 trades, PF 1.20, Sharpe 1.09. Short bias (short PF 1.21, long PF 1.00). Regime-stable (0 catastrophic cells, trades all regimes). Param stability 75% (ATR=30 variants PF 1.46-1.54). Asset-specific to 6J (6E PF 1.00, 6B PF 0.66). Complementary to MomPB-6J: different session (London vs US), different direction (short bias vs long only), different entry (range breakout vs pullback). Restrictions: London session, MICRO tier, both directions, review after 50+ forward trades. POST-PROBATION ENHANCEMENT: Carry bias filter improves PF 1.20->1.36, Sharpe 1.09->2.03. Biggest improvement of any strategy. NOT applied during probation. Apply at promotion. CARRY FILTER RESEARCH (2026-03-18): Do not apply. Binary filter halves trades (125\u219259) and PnL ($3,638\u2192$1,662) for 2bp PF improvement (1.47\u21921.49). Long side IS profitable (PF 1.20). Carry negative for 100% of data \u2014 cannot validate carry-flip scenario. Raw edge is solid. Not an elite improvement lever.",
+      "notes": "MOVED TO WATCH 2026-03-18. Elite review: 17/24, below conviction threshold (18). FX London session and short-bias are valuable but raw PF 1.20 (weakest of official 5) does not meet conviction bar. Carry filter research showed no improvement. WATCH CONDITIONS: Promote to conviction if Forward PF > 1.2 after 30+ forward trades, OR carry filter re-analysis with regime diversity lifts rubric to 18+. Archive if Forward PF < 0.95 after 30+ forward trades. DEADLINE: 2026-06-01.",
       "last_review_date": "2026-03-18",
       "controller_state": "PROBATION",
       "controller_action": "PROBATION",
       "review_priority": "MEDIUM",
-      "state_history": [],
+      "state_history": [
+        {
+          "from": "probation",
+          "to": "watch",
+          "date": "2026-03-18",
+          "reason": "rubric 17/24, below conviction threshold 18"
+        }
+      ],
       "deployment_restrictions": {
         "session": "london_0300_0800_ET",
         "direction": "both_short_bias",
@@ -2077,7 +2098,7 @@
         "score": 5,
         "failures": 3
       },
-      "lifecycle_stage": "forward_validation",
+      "lifecycle_stage": "watch",
       "prior_state": "PROBATION",
       "activation_score": 0.545,
       "controller_reason_codes": [
