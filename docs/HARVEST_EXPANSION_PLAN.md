@@ -7,13 +7,25 @@
 
 ## Philosophy
 
-Most hedge funds maintain strategy catalogs of 500-2,000+ ideas. FQL has 103.
-The goal is to build a much larger idea base while keeping conversion
-discipline tight. Store aggressively, test selectively.
+**Continuous catalog growth is a standing FQL principle.**
+
+Most hedge funds maintain strategy catalogs of 500-2,000+ ideas. The goal
+is to build a deep idea base while keeping conversion discipline tight.
+Store aggressively, test selectively. The catalog engine is always on —
+discovery never pauses, even when deployment is bottlenecked.
 
 **The catalog IS the competitive advantage.** Having 500 tagged, clustered,
 deduplicated ideas means future research sprints can immediately access
 the best candidates for any factor gap, asset class, or market regime.
+
+**Why always-on:**
+- No idle time in the research engine — time not discovering is time wasted
+- Each new idea sharpens clusters, reveals family patterns, and surfaces
+  convergent evidence across independent sources
+- Blocker mapping continues so ideas become immediately actionable when
+  infrastructure catches up
+- The only reason to pause a lane is a quality problem, not a deployment
+  bottleneck
 
 ---
 

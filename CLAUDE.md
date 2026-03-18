@@ -2,12 +2,18 @@
 
 ## Current Mode: CONTINUOUS DISCOVERY, SELECTIVE DEPLOYMENT
 
-FQL discovers continuously and deploys selectively. The catalog grows every
-week. The live portfolio changes only when forward evidence clears the bar.
+**Continuous catalog growth is a standing FQL principle.** The discovery
+engine never idles. Harvesting, cataloging, tagging, clustering, blocker
+mapping, and assessment run at all times — even when deployment is
+bottlenecked, all probation slots are full, or no conversion is planned.
+
+Conversion, testing, probation, and live portfolio changes remain selective
+and gated. These two clocks run at different speeds, on purpose.
 
 **Do NOT** start new build lanes, prototype strategies, or infrastructure
 projects unless the weekly scorecard flags a real issue or a probation
-review threshold is hit.
+review threshold is hit. Discovery work (scan, stage, tag, assess) is
+always appropriate.
 
 ### Proactive Session Behaviors
 

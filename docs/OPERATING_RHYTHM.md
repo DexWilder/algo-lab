@@ -1,7 +1,19 @@
 # FQL Weekly Operating Rhythm
 
-*Steady-state operating cadence during observe-and-accumulate phase.*
+*Steady-state operating cadence. See also:
+`docs/CONTINUOUS_DISCOVERY_OPERATING_PLAN.md` for the full discovery plan.*
 *Effective: 2026-03-17 onward*
+
+---
+
+## Standing Principle
+
+**Continuous catalog growth is a standing FQL principle.** Discovery,
+harvesting, cataloging, tagging, clustering, and assessment never pause.
+Source lanes run on cadence but the catalog engine is always on. Conversion
+and deployment remain selective and gated. See the operating plan for the
+full rationale (hedge-fund-level depth, no idle research time, continuous
+idea accumulation).
 
 ---
 

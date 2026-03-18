@@ -5,13 +5,52 @@
 
 ---
 
-## Principle
+## Standing Principle: Continuous Catalog Growth
 
 > **Discover continuously. Deploy selectively.**
->
-> The catalog grows every week. The live portfolio changes only when
-> forward evidence clears the promotion bar. These two clocks run at
-> different speeds, on purpose.
+
+Continuous catalog growth is a standing FQL principle. The research engine
+never idles. Discovery, harvesting, cataloging, tagging, clustering, blocker
+mapping, and assessment run at all times. Source lanes may follow a cadence,
+but **discovery itself never pauses.** The catalog engine is always on.
+
+Conversion, testing, probation, and live portfolio changes remain selective
+and gated. These two clocks — discovery and deployment — run at different
+speeds, on purpose.
+
+### Why This Is Policy
+
+1. **Hedge-fund-level discovery depth.** Institutional quant shops maintain
+   catalogs of 500-2,000+ ideas. Every idea is a future option. A thin
+   catalog means thin options when the market regime shifts and you need
+   a new strategy family. A deep catalog means you can immediately pull
+   the best candidate for any gap.
+
+2. **No idle time in the research engine.** Time spent not discovering is
+   time wasted. Even when the deployment pipeline is bottlenecked — all
+   probation slots full, conversion queue paused, no strong candidates —
+   the discovery side should still be accumulating ideas, mapping blockers,
+   forming new clusters, and refining family knowledge.
+
+3. **Continuous accumulation of ideas, families, and variants.** Each new
+   idea makes the catalog smarter: it sharpens cluster boundaries, reveals
+   family patterns, identifies which blockers are worth unblocking, and
+   surfaces convergent evidence across independent sources. A strategy
+   confirmed by three independent sources is stronger than one found once.
+
+### What "Always On" Means Concretely
+
+- Harvest lanes run on their defined cadences without waiting for
+  conversion slots to open
+- Every session is an opportunity to scan, stage, tag, or assess
+- Registry entries accumulate even when no conversion is planned
+- Blocker mapping continues so that when a data pipeline or engineering
+  capability is built, the ideas that were blocked by it are immediately
+  actionable
+- Genome map and factor decomposition refresh regularly to keep gap
+  targeting current
+- The only reason to pause a harvest lane is a quality problem (>50%
+  reject rate), not a deployment bottleneck
 
 ---
 
