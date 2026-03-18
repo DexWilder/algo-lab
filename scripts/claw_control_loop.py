@@ -704,8 +704,21 @@ def write_eod_audit(claw_status, registry_state, priorities):
     else:
         content += "- No immediate decisions needed. System operating normally.\n"
 
+    # Automation health
+    auto_health_lines = "- Health check unavailable\n"
+    try:
+        from scripts.automation_health import run_health_check, format_brief_section
+        health_results = run_health_check()
+        auto_health_lines = format_brief_section(health_results)
+    except Exception:
+        pass
+
     content += f"""
 ---
+
+### 10. Automation Health
+
+{auto_health_lines}
 
 ### Factor Coverage
 
