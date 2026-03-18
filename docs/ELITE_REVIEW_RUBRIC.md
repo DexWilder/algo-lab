@@ -185,6 +185,45 @@ Decision: [ ] CONTINUE  [ ] PROMOTE  [ ] DOWNGRADE  [ ] KILL
 Reasoning: ___________________
 ```
 
+### Template: Displacement Check (MANDATORY for every tested/validation candidate)
+
+Every candidate that reaches TESTED or VALIDATION_PASS must include this
+displacement analysis. This is a standing review rule, not optional.
+
+```
+Candidate: ___________________
+Rubric Score: ___/24
+Factor: ___________  Session: ___________  Asset: ___________
+
+DISPLACEMENT CHECK 1: Core Vulnerability
+  Weakest core incumbent: PB-MGC-Short (16/24 MARGINAL)
+  Does this candidate beat it?  [ ] YES (score ___) [ ] NO
+  Same asset/session overlap?   [ ] YES → direct replacement candidate
+                                [ ] NO → additive if core has room
+  If YES: what does the portfolio gain by swapping?
+  ___________________
+
+DISPLACEMENT CHECK 2: Watch Slot
+  Weakest watch name: MomIgn-M2K-Short (14/24)
+  Does this candidate beat it?  [ ] YES (score ___) [ ] NO
+  If YES and watch is full: which watch name does it displace?
+  ___________________
+
+DISPLACEMENT CHECK 3: Gap Value
+  Fills a factor gap (CARRY/STRUCTURAL/VOL with 0 active)?  [ ] YES [ ] NO
+  Fills an asset gap (MCL/Rates with 0 active)?              [ ] YES [ ] NO
+  Fills a session gap (afternoon/Tokyo/overnight)?            [ ] YES [ ] NO
+  Number of gaps filled: ___
+  Gap-filling bonus: +2 if any gap filled
+
+DISPLACEMENT VERDICT:
+  [ ] DISPLACE core incumbent (score > 16 + fills gap PB-MGC doesn't)
+  [ ] DISPLACE watch name (score > weakest watch)
+  [ ] ADD to open slot (conviction/watch has room)
+  [ ] QUEUE — strong candidate but no slot available, wait for expiry
+  [ ] REJECT — does not beat any incumbent and fills no gap
+```
+
 ### Template: Blocked Unlock Proposal
 
 ```
