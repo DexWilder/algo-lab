@@ -44,6 +44,44 @@ well-documented across decades and asset classes.
 There is no entry/exit signal. The strategy is always long. The only
 variable is HOW MUCH — which changes daily based on the vol estimate.
 
+## Sleeve vs Overlay: Design Decision
+
+This strategy can be implemented two ways. The decision matters for
+how it competes for portfolio slots and how it's evaluated.
+
+### Option A: Standalone Sleeve (v1 — recommended for first-pass)
+
+A strategy that holds long MES with vol-managed sizing, evaluated as
+an independent return stream alongside other strategies.
+
+- **Pros:** Fits the standard lifecycle. Can be scored on the rubric,
+  run through batch_first_pass, and compete for slots. Clean evaluation.
+- **Cons:** As a standalone long-equity sleeve, it has directional
+  exposure and will lose money in bear markets. Its Sharpe is higher
+  than unscaled, but it's not alpha — it's a better way to hold beta.
+- **Portfolio role:** Stabilizer (smooths equity exposure) or Diversifier
+  (fills VOL factor gap with a sizing mechanism no other strategy uses).
+
+### Option B: Portfolio Overlay (v2 — future consideration)
+
+A risk-management layer that scales the entire portfolio's gross exposure
+based on realized vol. Not a strategy that competes for a slot — a
+meta-layer that improves all strategies.
+
+- **Pros:** The Moreira & Muir result is strongest as a portfolio overlay.
+  Applying vol-management to the whole portfolio would reduce drawdowns
+  for all strategies simultaneously.
+- **Cons:** Requires multi-strategy position sizing infrastructure that
+  FQL doesn't have yet. Complex to implement and evaluate. Not compatible
+  with the current 1-contract-per-strategy forward runner.
+- **When to build:** After cash-account deployment (Layer C) when
+  position sizing moves from 1-lot to volatility-targeted.
+
+**v1 decision: Standalone Sleeve (Option A).** It's testable now, fits
+the lifecycle, and proves whether vol-management adds value on our data
+before we invest in the overlay infrastructure. If the standalone sleeve
+works, the overlay is a natural v2 upgrade.
+
 ## FQL Implementation: Standalone Sleeve
 
 For the v1 first-pass, implement as a standalone strategy that generates
@@ -57,8 +95,11 @@ This fits the existing `generate_signals` interface: the strategy
 resamples to daily, computes the vol-managed return series, and
 outputs signals with the sizing weight embedded.
 
-For backtest evaluation, the key metric is: does the vol-managed
-equity curve have a higher Sharpe than unscaled buy-and-hold?
+**Honest framing:** This is primarily a volatility/risk-transformation
+mechanism, not a directional timing edge. It does not predict which way
+MES will move. It predicts that scaling down during high vol and up
+during low vol will improve the risk/return tradeoff of holding MES.
+The "edge" is in sizing, not in signal.
 
 ## Parameters (Initial)
 
@@ -146,15 +187,43 @@ The Moreira & Muir result applies to bonds and commodities too.
 
 ## Displacement Framework
 
-### If First-Pass = ADVANCE (PF metric not standard — use Sharpe comparison)
+### First-Pass Comparison Set
 
-For this strategy, the standard PF metric is less meaningful because it's
-always long (PF of buy-and-hold is just the market's PF). The right
-metric is: **does vol-managed Sharpe > unscaled Sharpe?**
+Standard PF is less meaningful for an always-long strategy (PF of
+buy-and-hold is just the market's PF). The first-pass must answer
+three questions, not one:
 
-- If Sharpe improvement > 30% → ADVANCE equivalent
-- If Sharpe improvement 10-30% → SALVAGE (test different params)
-- If Sharpe improvement < 10% → REJECT (vol-management doesn't help on this data)
+**Comparison 1: Vol-managed MES vs unscaled MES buy-and-hold**
+- Primary metric: Sharpe ratio improvement
+- Secondary: max drawdown reduction, Calmar ratio improvement
+- Threshold: Sharpe improvement > 30% = ADVANCE, 10-30% = SALVAGE, < 10% = REJECT
+- This answers: does vol-management work on our data?
+
+**Comparison 2: Vol-managed MES vs current MES roster contribution**
+- The portfolio has 1 MES core strategy (XB-PB-EMA-MES-Short) and
+  1 MNQ conviction (NoiseBoundary-MNQ-Long)
+- Compute: correlation of vol-managed daily returns with XB-PB-EMA
+  and NoiseBoundary daily PnL streams
+- If correlation < 0.25 → genuine diversification value
+- If correlation > 0.50 → just another way to be long equity
+- This answers: does it add something the portfolio doesn't already have?
+
+**Comparison 3: Drawdown and diversification impact**
+- Compute: portfolio equity curve WITH vs WITHOUT VolManaged
+  (same counterfactual methodology as counterfactual_engine.py)
+- Key metrics: does adding VolManaged reduce portfolio max DD?
+  Does it reduce the worst monthly loss? Does it improve the
+  portfolio's rolling 60-day Sharpe?
+- Check specifically: during the March 2020 crash and the 2022
+  bear market, did the vol-managed weight scale down fast enough
+  to reduce losses?
+- This answers: does it make the portfolio more robust, not just higher Sharpe?
+
+**Classification:**
+- ADVANCE: Sharpe improvement > 30% AND corr < 0.35 with existing AND DD reduction > 10%
+- SALVAGE: Sharpe improvement > 30% but corr > 0.35 (works but overlaps)
+- MONITOR: Sharpe improvement 10-30% (marginal, test different params)
+- REJECT: Sharpe improvement < 10% or no DD reduction
 
 ### Rubric Estimate
 
