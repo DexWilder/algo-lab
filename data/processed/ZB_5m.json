@@ -2,14 +2,14 @@
   "dataset_id": "ZB_5m",
   "symbol": "ZB",
   "timeframe": "5m",
-  "start_date": "2024-02-29 19:10:00",
-  "end_date": "2026-03-11 19:45:00",
-  "bar_count": 111796,
-  "trading_days": 625,
+  "start_date": "2019-06-30 20:00:00",
+  "end_date": "2024-02-27 18:55:00",
+  "bar_count": 267290,
+  "trading_days": 1438,
   "source": "databento",
   "source_dataset": "GLBX.MDP3",
   "source_schema": "ohlcv-1m",
   "has_volume": true,
-  "volume_mean": 1383.2,
-  "processed_date": "2026-03-13 10:25:44"
+  "volume_mean": 1050.5,
+  "processed_date": "2026-03-17 19:34:16"
 }
