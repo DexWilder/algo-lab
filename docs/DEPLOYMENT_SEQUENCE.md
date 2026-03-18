@@ -9,14 +9,16 @@
 ## Sequence Overview
 
 ```
-STAGE 1: Paper Forward (ACTIVE NOW)
+STAGE 1:  Paper Forward (ACTIVE NOW)
     ↓ gate
-STAGE 2: Small Live Prop
-    ↓ gate (paper continues in parallel)
-STAGE 3: Cash Paper
-    ↓ gate (prop live + paper both continue)
-STAGE 4: Small Real-Cash Pilot
-    (prop live + cash paper + paper forward all continue)
+STAGE 2:  Small Live Prop (1 account, 3-5 core strategies, $10-25K)
+    ↓ gate (paper continues)
+STAGE 3A: Cash Paper — Small ($50-100K simulated, validate mechanics)
+    ↓ gate (prop live + paper continue)
+STAGE 3B: Cash Paper — Full ($200-500K simulated, validate scale)
+    ↓ gate (prop live + paper continue)
+STAGE 4:  Small Real-Cash Pilot ($200-500K real)
+    (all prior stages continue in parallel)
 ```
 
 Every later stage runs in parallel with every earlier stage. Nothing
@@ -86,11 +88,21 @@ lifecycle pipeline works end-to-end.*
 
 ## Stage 2: Small Live Prop
 
-*Prove the system generates real PnL on real capital with real fills.*
+*Smallest real prop footprint that meaningfully tests execution.
+This is NOT scaling. This is operational proof.*
+
+### Scope
+
+- **1 account, $10-25K, micro contracts, 1 lot per strategy**
+- Deploy only strategies that have been promoted to core with forward
+  evidence. Not the full strategy set — the proven subset.
+- Likely 3-5 strategies live, not 10+. The rest stay paper-only.
+- Purpose: test execution plumbing, fill quality, discipline, and
+  paper-to-live divergence. NOT to maximize PnL or prove the portfolio.
 
 ### What's Running
-- **NEW: Live prop account** ($25-50K, micro contracts, 1 lot per strategy)
-- Paper forward continues in parallel (identical strategy set)
+- **NEW: Live prop account** (1 account, $10-25K, 3-5 core strategies only)
+- Paper forward continues in parallel (full strategy set, unchanged)
 - All automated pipelines unchanged
 - Discovery loop unchanged
 
@@ -98,31 +110,49 @@ lifecycle pipeline works end-to-end.*
 - Real fills match paper fills within expected slippage
 - Real commissions match estimates
 - The forward runner operates correctly in live mode
-- Drawdown behavior on real capital matches paper expectations
+- Broker API integration works end-to-end (order routing, confirmation, reconciliation)
 - Psychological discipline holds (no manual overrides outside governance)
-- Paper-to-live divergence is small and explainable
+- Paper-to-live divergence is small and explainable on the live subset
+
+### What Is NOT Being Proven Yet
+- Full portfolio performance at scale
+- Multi-contract sizing
+- DD halt logic (that's Stage 3)
+- Cash-account reporting
 
 ### What Changes From Paper
-- `FORWARD_ENABLED=true` in forward runner config
+- `FORWARD_ENABLED=true` in forward runner config for the live subset
 - Orders route to broker API (Interactive Brokers or equivalent)
-- Pre-trade checks activated (margin, position limits)
-- Daily reconciliation: compare live fills vs paper signals
+- Pre-trade checks activated (margin, position limits, fat-finger guard)
+- Daily reconciliation: compare live fills vs paper signals for the same strategies
 - Real money on the line — governance discipline is tested for real
 
+### Strategy Selection for Live
+Deploy only strategies that meet ALL of:
+- Status = core (promoted through full lifecycle)
+- Forward PF > 1.2 on paper
+- Rubric score >= 18
+- No active kill flags or decay signals
+
+The remaining strategies (conviction, watch, testing) stay paper-only
+and continue accumulating evidence.
+
 ### What Continues In Parallel
-- **Paper forward runs identically.** Same strategies, same signals,
-  same timing. The paper and live accounts should produce near-identical
-  trade logs. Divergence > 5% of PnL per month is investigated.
+- **Paper forward runs the full set.** Same strategies, same signals,
+  same timing. The live subset should match paper exactly for those
+  strategies. Divergence > 5% of PnL per month is investigated.
 - All automation, discovery, scoreboard, vitality monitor unchanged.
-- Master Operating Brief adds a "Live vs Paper" comparison section.
+- Master Operating Brief adds a "Live vs Paper" comparison section
+  for the live subset only.
 
 ### Key Metrics Tracked
-- Live PnL vs paper PnL (should be within 5%)
+- Live PnL vs paper PnL for the live subset (should be within 5%)
 - Slippage: actual vs estimated (should be < 2 ticks average)
 - Commission: actual vs estimated
-- Fill rate: % of signals that execute successfully
+- Fill rate: % of signals that execute successfully (target 100%)
 - Live max DD (tracked against paper DD for divergence)
 - Psychological log: any manual overrides or interventions documented
+- Broker uptime: any API failures or missed signals
 
 ### Gate to Stage 3
 
@@ -147,47 +177,100 @@ lifecycle pipeline works end-to-end.*
 
 ---
 
-## Stage 3: Cash Paper
+## Stage 3A: Cash Paper — Small Scale
 
-*Prove the cash-account sizing, DD limits, and reporting work before
-risking real cash capital.*
+*Validate the cash overlay mechanics at a comfortable scale before
+testing them at full size.*
+
+### Scope
+
+- **Simulated $50-100K with vol-targeted sizing**
+- Same strategy set as live prop (core + conviction)
+- Position sizes will be 1-3 micro contracts per strategy (similar
+  to prop, but computed by the sizing engine rather than fixed)
+- Purpose: prove the sizing engine, DD logic, and NAV calculation
+  work correctly — before scaling up introduces market impact risk
 
 ### What's Running
-- **NEW: Cash paper account** (simulated $200-500K with vol-targeted sizing)
-- Live prop continues ($25-50K, 1 lot per strategy)
-- Paper forward continues (1 lot per strategy)
-- All three run the same strategy set with different sizing
+- **NEW: Cash paper account** (simulated $50-100K, vol-targeted sizing)
+- Live prop continues ($10-25K, 1 lot, proven subset)
+- Paper forward continues (full set, 1 lot)
 
 ### What's Being Proven
-- Volatility-targeted sizing produces correct position sizes
-- DD halt logic fires correctly (5% tier reduction, 8% emergency halt)
-- Multi-contract execution is viable (larger position sizes on micros)
-- Reporting pipeline works (daily NAV, monthly letter)
-- Cash-specific concentration limits (notional-based) produce correct alerts
-- The portfolio behaves differently at scale (larger positions may
-  move markets on illiquid micros — test for market impact)
+- Volatility-targeted sizing engine produces correct contract counts
+- DD tier-reduction logic fires at 5% and recovers correctly
+- DD emergency halt fires at 8%
+- Daily NAV calculation matches manual spot-check
+- Cash paper PnL tracks prop live PnL closely (same strategies,
+  similar sizing at this scale — divergence means a sizing bug)
+- Notional concentration limits (20% per asset, 35% per factor)
+  produce correct alerts
 
 ### What Changes From Prop
-- Sizing engine: `contracts = risk_budget / (ATR × point_value × SL_mult)`
-- DD management: automated tier reduction at 5%, emergency halt at 8%
-- Concentration: notional-based limits (20% per asset, 35% per factor)
-- Reporting: daily NAV calculation, monthly letter template
+- Sizing: `contracts = risk_budget / (ATR × point_value × SL_mult)`
+- DD management: automated tier reduction at 5%, halt at 8%
+- Concentration: notional-based instead of count-based
+- NAV: daily mark-to-market calculation
 - Correlation cap tightened to 0.25
 
-### What Continues In Parallel
-- **Paper forward (1 lot)** — permanent ground truth
-- **Live prop (1 lot)** — real capital baseline
-- **Cash paper (vol-targeted)** — testing cash mechanics
-- All three share the same strategy set. Divergence between them is
-  tracked and investigated.
+### Key Metrics Tracked
+- Sizing accuracy: computed contracts vs expected (should be exact)
+- DD halt accuracy: did triggers fire at correct levels?
+- Cash-prop divergence: PnL difference per strategy (should be < 10%)
+- NAV accuracy: computed vs manual spot-check (should be < 0.1% error)
+
+### Gate to Stage 3B
+
+| # | Gate | Threshold | Why |
+|---|------|-----------|-----|
+| 1 | Duration | **3+ months** | Enough time to observe at least one vol regime shift |
+| 2 | Sizing accuracy | **Zero incorrect computations** | Sizing bugs are catastrophic with real money |
+| 3 | DD halt tested | **At least 1 tier-reduction event** observed and handled correctly | Can't trust untested halt logic |
+| 4 | Cash-prop divergence | **< 10%** cumulative PnL difference | Proves the sizing engine doesn't introduce unexpected behavior |
+| 5 | NAV accuracy | **100% of daily NAV calculations correct** to within 0.1% | NAV errors compound and erode trust |
+
+### Blocking Conditions
+- Any sizing computation error (wrong contract count)
+- DD halt fails to fire when threshold is crossed
+- Cash paper DD > 10% (halt should have prevented this)
+- NAV calculation error > 0.5% on any day
+
+---
+
+## Stage 3B: Cash Paper — Full Scale
+
+*Test vol-targeted sizing at the capital scale where market impact
+and multi-contract execution become real considerations.*
+
+### Scope
+
+- **Simulated $200-500K with vol-targeted sizing**
+- Position sizes will be 3-10+ contracts on some strategies
+- At this scale, market impact on illiquid micros (MCL, M2K) becomes
+  a factor. The paper simulation won't capture this perfectly, but
+  sizing and concentration limits can be validated.
+- Reporting pipeline (monthly letter, quarterly review) activated
+
+### What's Running
+- **SCALED: Cash paper account** ($200-500K, vol-targeted)
+- Live prop continues (baseline)
+- Paper forward continues (ground truth)
+
+### What's Being Proven
+- Multi-contract positions don't create unrealistic concentration
+- Larger sizes on illiquid micros (MCL, M2K) would be executable
+  (check average daily volume vs computed position size)
+- Monthly reporting template produces a useful, complete letter
+- The portfolio behaves as expected at this capital level
+- Gross exposure stays within 150% of AUM limit
+- Net directional stays within 80% of AUM limit
 
 ### Key Metrics Tracked
-- Cash paper Sharpe vs prop live Sharpe (should be similar or better due to sizing)
-- DD halt accuracy: did the 5% and 8% triggers fire at the right times?
-- Position sizing accuracy: did computed contract sizes match expectations?
-- NAV calculation accuracy: does daily NAV match manual spot-check?
-- Monthly letter quality: is the report useful and complete?
-- Market impact: on illiquid micros, do larger sizes degrade fill quality?
+- Cash paper Sharpe vs prop Sharpe (should be similar or better)
+- Position size vs average daily volume per asset (flag if > 1% of ADV)
+- Monthly letter: produced on schedule, accurate, useful
+- Gross and net exposure levels vs limits
+- DD halt behavior at larger PnL swings
 
 ### Gate to Stage 4
 
@@ -195,21 +278,21 @@ risking real cash capital.*
 
 | # | Gate | Threshold | Why |
 |---|------|-----------|-----|
-| 1 | Cash paper duration | **6+ months** | Full regime exposure at cash sizing |
+| 1 | Stage 3B duration | **6+ months** | Full regime exposure at scale |
 | 2 | Cash paper Sharpe | **> 0.5** (trailing 6 months) | Vol-targeted sizing should improve Sharpe vs fixed-lot |
-| 3 | Cash paper max DD | **< 10%** | DD limits must work as designed |
-| 4 | DD halt tested | At least 1 tier-reduction event observed and handled correctly | Can't trust a DD halt that's never fired |
-| 5 | Reporting pipeline | Monthly letter produced for 6 consecutive months | Reporting must be automatic and reliable |
-| 6 | Live prop Sharpe | Still **> 0.3** during cash paper period | Prop baseline hasn't degraded while testing cash |
-| 7 | Factor coverage | **3+ factors in core** | Institutional-grade diversification |
-| 8 | Legal/compliance | Entity structure and account setup complete | Can't deploy real cash without legal framework |
-| 9 | Personal conviction | **You believe this is ready** | Same as Stage 2 — no gate replaces judgment |
+| 3 | Cash paper max DD | **< 10%** | DD limits must work at scale |
+| 4 | Reporting pipeline | **6 consecutive monthly letters** produced | Reporting is automatic and reliable |
+| 5 | Live prop Sharpe | Still **> 0.3** during this period | Prop baseline hasn't degraded |
+| 6 | Factor coverage | **3+ factors in core** | Institutional-grade diversification |
+| 7 | Market impact check | **No asset requires > 2% of ADV** | Positions must be executable without moving the market |
+| 8 | Legal/compliance | Entity and account structure complete | Required before real capital |
+| 9 | Personal conviction | **You believe this is ready** | No gate replaces judgment |
 
 ### Blocking Conditions
-- Cash paper DD > 10% (the limit was supposed to prevent this — if it didn't, the halt logic is broken)
-- Live prop diverges materially from paper during the cash paper period
-- Reporting pipeline misses a month or produces incorrect NAV
-- Market impact is material (> 3 ticks average on larger sizes)
+- Cash paper DD > 10% (halt logic failure at scale)
+- Any asset requires > 5% of ADV (position too large for the market)
+- Reporting pipeline misses a month or produces materially incorrect NAV
+- Live prop diverges materially from paper during this period
 
 ---
 
@@ -242,15 +325,16 @@ risking real cash capital.*
 
 ## Parallel Running Summary
 
-| Component | Stage 1 | Stage 2 | Stage 3 | Stage 4 |
-|-----------|---------|---------|---------|---------|
-| Paper forward (1 lot) | **RUN** | **RUN** | **RUN** | **RUN** |
-| Live prop (1 lot) | — | **RUN** | **RUN** | **RUN** |
-| Cash paper (vol-target) | — | — | **RUN** | Optional |
-| Real cash (vol-target) | — | — | — | **RUN** |
-| Discovery engine | **RUN** | **RUN** | **RUN** | **RUN** |
-| All automation | **RUN** | **RUN** | **RUN** | **RUN** |
-| Master Brief | **RUN** | + live section | + cash section | + cash section |
+| Component | Stage 1 | Stage 2 | Stage 3A | Stage 3B | Stage 4 |
+|-----------|---------|---------|----------|----------|---------|
+| Paper forward (1 lot, full set) | **RUN** | **RUN** | **RUN** | **RUN** | **RUN** |
+| Live prop (1 lot, proven subset) | — | **RUN** | **RUN** | **RUN** | **RUN** |
+| Cash paper small ($50-100K) | — | — | **RUN** | Retired | — |
+| Cash paper full ($200-500K) | — | — | — | **RUN** | Optional |
+| Real cash ($200-500K+) | — | — | — | — | **RUN** |
+| Discovery engine | **RUN** | **RUN** | **RUN** | **RUN** | **RUN** |
+| All automation | **RUN** | **RUN** | **RUN** | **RUN** | **RUN** |
+| Master Brief | **RUN** | + live section | + cash section | + scale section | + cash section |
 
 Paper forward never stops. It is the permanent control group that
 proves the system still works even if live execution has issues.
