@@ -22,13 +22,19 @@ ROOT = Path(__file__).resolve().parent.parent
 
 # ── Freshness Thresholds ─────────────────────────────────────────────────────
 
-# Each component has: where to check, max age before STALE, max age before FAILED
+# Schedule types for NOT_YET_DUE logic:
+#   "continuous"   — expected to run constantly (heartbeat, control loop)
+#   "weekday"      — fires on weekdays only, specific hour
+#   "days_of_week" — fires on specific weekdays only
+#   "manual"       — manually triggered, not on a fixed schedule
+
 COMPONENTS = {
     "claw_heartbeat": {
         "description": "Claw discovery heartbeat (every 30 min)",
         "check": "claw_cron",
         "stale_minutes": 60,
         "failed_minutes": 120,
+        "schedule": "continuous",
     },
     "claude_control_loop": {
         "description": "Claude directive refresh (every 30 min)",
@@ -36,6 +42,7 @@ COMPONENTS = {
         "log_pattern": "research/logs/claw_loop_*.log",
         "stale_minutes": 60,
         "failed_minutes": 120,
+        "schedule": "continuous",
     },
     "master_brief": {
         "description": "Master Operating Brief",
@@ -43,6 +50,7 @@ COMPONENTS = {
         "file_path": str(Path.home() / "openclaw-intake" / "inbox" / "_eod_audit.md"),
         "stale_minutes": 60,
         "failed_minutes": 240,
+        "schedule": "continuous",
     },
     "daily_research": {
         "description": "Daily research pipeline (weekdays 17:30 ET)",
@@ -50,7 +58,8 @@ COMPONENTS = {
         "log_pattern": "research/logs/daily_run_*.log",
         "stale_minutes": 1560,     # 26 hours (fires daily on weekdays)
         "failed_minutes": 2880,    # 48 hours
-        "weekday_only": True,
+        "schedule": "weekday",
+        "fire_hour": 17, "fire_min": 30,
     },
     "twice_weekly_research": {
         "description": "Twice-weekly batch testing (Tue/Thu 18:00 ET)",
@@ -58,6 +67,9 @@ COMPONENTS = {
         "log_pattern": "research/logs/twice_weekly_run_*.log",
         "stale_minutes": 5760,     # 4 days
         "failed_minutes": 10080,   # 7 days
+        "schedule": "days_of_week",
+        "fire_days": [1, 3],       # Tuesday=1, Thursday=3 (Monday=0)
+        "fire_hour": 18, "fire_min": 0,
     },
     "weekly_research": {
         "description": "Weekly integrity/kill criteria (Fri 18:30 ET)",
@@ -65,6 +77,9 @@ COMPONENTS = {
         "log_pattern": "research/logs/weekly_run_*.log",
         "stale_minutes": 10080,    # 7 days
         "failed_minutes": 20160,   # 14 days
+        "schedule": "days_of_week",
+        "fire_days": [4],          # Friday=4
+        "fire_hour": 18, "fire_min": 30,
     },
     "forward_runner": {
         "description": "Forward paper trading day",
@@ -72,8 +87,100 @@ COMPONENTS = {
         "file_path": str(ROOT / "state" / "account_state.json"),
         "stale_minutes": 2880,     # 48 hours (manual, weekdays)
         "failed_minutes": 5760,    # 4 days
+        "schedule": "manual",
     },
 }
+
+
+def _is_past_due(comp):
+    """Check whether a job should have fired by now.
+
+    Returns True if we're past the expected fire time, False if the job
+    hasn't been expected to fire yet (NOT_YET_DUE).
+    """
+    now = datetime.now()
+    schedule = comp.get("schedule", "continuous")
+
+    if schedule == "continuous":
+        return True  # Always expected to be running
+
+    if schedule == "manual":
+        return True  # Can't predict, assume it should have run eventually
+
+    fire_hour = comp.get("fire_hour", 0)
+    fire_min = comp.get("fire_min", 0)
+
+    if schedule == "weekday":
+        # Should have fired on the most recent weekday at fire_hour:fire_min
+        # Check: has a weekday with that time passed since the system was set up?
+        if now.weekday() >= 5:
+            # Weekend — last expected fire was Friday
+            days_back = now.weekday() - 4
+            last_expected = (now - timedelta(days=days_back)).replace(
+                hour=fire_hour, minute=fire_min, second=0)
+        else:
+            # Weekday — expected today if past fire time, else yesterday
+            today_fire = now.replace(hour=fire_hour, minute=fire_min, second=0)
+            if now >= today_fire:
+                last_expected = today_fire
+            elif now.weekday() == 0:
+                # Monday before fire time — last expected was Friday
+                last_expected = (now - timedelta(days=3)).replace(
+                    hour=fire_hour, minute=fire_min, second=0)
+            else:
+                last_expected = (now - timedelta(days=1)).replace(
+                    hour=fire_hour, minute=fire_min, second=0)
+        return True  # There should always be a past weekday fire
+
+    if schedule == "days_of_week":
+        fire_days = comp.get("fire_days", [])
+        # Find the most recent fire day that's in the past
+        for days_back in range(8):  # Check up to 8 days back
+            check_date = now - timedelta(days=days_back)
+            if check_date.weekday() in fire_days:
+                fire_time = check_date.replace(
+                    hour=fire_hour, minute=fire_min, second=0)
+                if now >= fire_time:
+                    return True  # Past a scheduled fire time
+        return False  # No scheduled fire time has passed yet
+
+    return True
+
+
+def _next_fire_time(comp):
+    """Return the next expected fire time for a scheduled job, or None."""
+    now = datetime.now()
+    schedule = comp.get("schedule", "continuous")
+    fire_hour = comp.get("fire_hour", 0)
+    fire_min = comp.get("fire_min", 0)
+
+    if schedule == "continuous":
+        return now  # Always due
+
+    if schedule == "manual":
+        return None  # Unpredictable
+
+    if schedule == "weekday":
+        # Next weekday at fire time
+        for days_ahead in range(7):
+            check = now + timedelta(days=days_ahead)
+            if check.weekday() < 5:  # Weekday
+                fire_time = check.replace(hour=fire_hour, minute=fire_min, second=0, microsecond=0)
+                if fire_time > now:
+                    return fire_time
+        return None
+
+    if schedule == "days_of_week":
+        fire_days = comp.get("fire_days", [])
+        for days_ahead in range(8):
+            check = now + timedelta(days=days_ahead)
+            if check.weekday() in fire_days:
+                fire_time = check.replace(hour=fire_hour, minute=fire_min, second=0, microsecond=0)
+                if fire_time > now:
+                    return fire_time
+        return None
+
+    return None
 
 
 # ── Check Functions ──────────────────────────────────────────────────────────
@@ -178,13 +285,31 @@ def run_health_check():
         elif check_type == "file_mtime":
             last_run, age_min, error = _check_file_mtime(comp["file_path"])
 
-        # Determine status
+        # Determine status (schedule-aware)
+        past_due = _is_past_due(comp)
+        never_ran = (last_run is None)
+        next_fire = _next_fire_time(comp)
+
         if error and ("not found" in str(error) or "no log" in str(error) or "no runs" in str(error)):
-            status = "MISSING"
+            if not past_due:
+                status = "NOT_YET_DUE"
+                error = None
+            elif never_ran and next_fire is not None:
+                # Job has never fired but has a future scheduled time —
+                # treat as NOT_YET_DUE if the next fire is within the
+                # normal schedule window (e.g., weekly job hasn't had
+                # its first Friday yet since installation)
+                status = "NOT_YET_DUE"
+                error = None
+            else:
+                status = "MISSING"
         elif error:
             status = "ERROR"
         elif age_min is None:
-            status = "UNKNOWN"
+            if not past_due:
+                status = "NOT_YET_DUE"
+            else:
+                status = "UNKNOWN"
         elif age_min > comp["failed_minutes"]:
             status = "FAILED"
         elif age_min > comp["stale_minutes"]:
@@ -217,11 +342,12 @@ def run_health_check():
         "issues": launchd_issues,
     }
 
-    # Overall status
+    # Overall status (NOT_YET_DUE does not count as a problem)
     statuses = [v["status"] for k, v in results.items() if k != "_launchd"]
-    if "FAILED" in statuses or "ERROR" in statuses:
+    active_statuses = [s for s in statuses if s != "NOT_YET_DUE"]
+    if "FAILED" in active_statuses or "ERROR" in active_statuses:
         results["_overall"] = "DEGRADED"
-    elif "STALE" in statuses or "MISSING" in statuses:
+    elif "STALE" in active_statuses or "MISSING" in active_statuses:
         results["_overall"] = "WARNING"
     else:
         results["_overall"] = "HEALTHY"
@@ -265,7 +391,7 @@ def print_full_report(results):
         if name.startswith("_"):
             continue
         status = data["status"]
-        marker = "  " if status == "HEALTHY" else "!!" if status in ("STALE", "WARNING") else "XX"
+        marker = "  " if status in ("HEALTHY", "NOT_YET_DUE") else "!!" if status in ("STALE", "WARNING") else "XX"
         last = data.get("last_run") or "—"
         age = data.get("age_human") or "—"
         error = data.get("error") or ""
@@ -287,6 +413,7 @@ def format_brief_section(results):
     healthy = []
     problems = []
 
+    not_due = []
     for name, data in results.items():
         if name.startswith("_"):
             continue
@@ -294,6 +421,8 @@ def format_brief_section(results):
         age = data.get("age_human", "?")
         if status == "HEALTHY":
             healthy.append(f"{name} ({age})")
+        elif status == "NOT_YET_DUE":
+            not_due.append(name)
         else:
             error_detail = f": {data['error']}" if data.get("error") else ""
             problems.append(f"{name}: **{status}** ({age}){error_detail}")
@@ -309,6 +438,8 @@ def format_brief_section(results):
         for p in problems:
             lines.append(f"- {p}")
     lines.append(f"- Healthy: {', '.join(healthy) if healthy else 'none'}")
+    if not_due:
+        lines.append(f"- Not yet due: {', '.join(not_due)}")
 
     return "\n".join(lines)
 
