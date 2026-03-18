@@ -33,7 +33,7 @@ system-level automation inside the algo-lab repo.
 
 | Task | Trigger | What Claude Does |
 |------|---------|------------------|
-| **Forward day run** | Any market-day session | Run `./scripts/start_forward_day.sh`, verify trade log output |
+| **Forward day run** | You request it on a market day | Run `./scripts/start_forward_day.sh`, verify trade log output. **Not scheduled** — the forward runner plist exists but is disabled (`FORWARD_ENABLED=false`). This is a manual start with automated downstream reporting. |
 | **Harvest intake scan** | Monday or any session with new Claw notes | `python3 research/harvest_engine.py --scan` then `--run` |
 | **Friday scorecard** | Friday session | Run scorecard + intake digest + dashboard, flag actions |
 | **Probation checkpoint** | Week 2/4/8/12 of probation cycle | Gather evidence, run `probation_journal.py --snapshot`, present decision |

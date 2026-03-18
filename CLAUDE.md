@@ -13,7 +13,8 @@ review threshold is hit.
 
 Claude should do these automatically at the start of relevant sessions:
 
-- **Any market-day session:** Run `./scripts/start_forward_day.sh`
+- **Market-day session (when requested):** Run `./scripts/start_forward_day.sh`
+  (not scheduled — manual start, automated downstream reporting)
 - **Monday session:** Scan harvest inbox (`python3 research/harvest_engine.py --scan`),
   stage new notes, present for review
 - **Friday session:** Run full review sequence:
