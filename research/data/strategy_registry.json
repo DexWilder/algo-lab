@@ -3207,6 +3207,76 @@
         "tv_vol_priority_5"
       ],
       "state_history": []
+    },
+    {
+      "strategy_id": "THEME-VolGated-Structural-Intraday",
+      "strategy_name": null,
+      "family": "structural",
+      "asset": "MES",
+      "session": "morning",
+      "direction": "both",
+      "source": "internal_research",
+      "rule_summary": "Volatility-gated structural intraday strategies. Use vol-state conditioning (ATR percentile, VIX proxy, or BW regime) to filter intraday session entries. Most promising sub-idea: volatility-gated opening-gap normalization on ES/NQ \u2014 different from failed plain gap-fade because vol-state determines whether gap is tradeable.",
+      "status": "idea",
+      "notes": "FUTURE THEME. Not a single strategy \u2014 a research direction. Inspired by practitioner observations that gap-fade and session-open strategies work only in specific vol regimes. The plain gap-fade family failed (3 rejections) but vol-conditioning may rescue the concept. Do not convert until current queue clears.",
+      "last_review_date": "2026-03-17",
+      "review_priority": "MEDIUM",
+      "lifecycle_stage": "discovery",
+      "source_category": "internal",
+      "tags": [
+        "STRUCTURAL",
+        "VOLATILITY",
+        "future_theme",
+        "vol_gated",
+        "gap_normalization"
+      ],
+      "state_history": []
+    },
+    {
+      "strategy_id": "THEME-Mechanical-Market-Structure",
+      "strategy_name": null,
+      "family": "structural",
+      "asset": "MES",
+      "session": "all_day",
+      "direction": "both",
+      "source": "internal_research",
+      "rule_summary": "Mechanical market-structure intraday strategies. Use objective price-structure patterns (swing highs/lows, range boundaries, session levels) as entry/exit anchors without discretionary interpretation. Distinct from ICT (which failed) because strictly mechanical \u2014 no FVG, no order blocks, no narrative.",
+      "status": "idea",
+      "notes": "FUTURE THEME. Research direction for mechanical structure-based intraday trading. Must be strictly rule-based and avoid anything resembling the failed ICT family. Potential sub-ideas: prior-session-level reactions, mechanical swing-point breakout/fade, range-boundary tests. Do not convert until current queue clears.",
+      "last_review_date": "2026-03-17",
+      "review_priority": "LOW",
+      "lifecycle_stage": "discovery",
+      "source_category": "internal",
+      "tags": [
+        "STRUCTURAL",
+        "future_theme",
+        "market_structure",
+        "mechanical_only"
+      ],
+      "state_history": []
+    },
+    {
+      "strategy_id": "THEME-Exit-Architecture-First",
+      "strategy_name": null,
+      "family": "structural",
+      "asset": "multi",
+      "session": "all_day",
+      "direction": "both",
+      "source": "internal_research",
+      "rule_summary": "Exit-architecture-first research lane. Instead of designing entries and fitting exits, start with exit architecture (trail types, time stops, target structures) and test which entry triggers produce the best results when paired with each exit type. Inverts the normal strategy design process.",
+      "status": "idea",
+      "notes": "FUTURE THEME. Research methodology direction, not a single strategy. Observation: many FQL strategies produce identical results across exit variants (trail/target/time all fire the same). This suggests exit architecture may matter more than entry refinement. Explore after current probation cycle and queue are clear.",
+      "last_review_date": "2026-03-17",
+      "review_priority": "LOW",
+      "lifecycle_stage": "discovery",
+      "source_category": "internal",
+      "tags": [
+        "future_theme",
+        "exit_architecture",
+        "methodology",
+        "research_direction"
+      ],
+      "state_history": []
     }
   ],
   "_rejection_taxonomy": {
