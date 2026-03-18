@@ -1,0 +1,36 @@
+{
+  "_version": "1.0",
+  "_updated": "2026-03-18",
+  "_description": "Static carry inputs. Updated manually after central bank decisions.",
+  "_signal_quality": {
+    "fx": "REAL — interest rate differential from published policy rates",
+    "rate": "APPROXIMATE — yield estimated from price, rolldown from maturity math",
+    "commodity": "PROXY — 60-day trailing return, conflates carry with momentum",
+    "equity_index": "NOT_AVAILABLE — needs dividend yield + financing rate (v2)"
+  },
+
+  "policy_rates": {
+    "USD": {"rate": 0.045, "source": "Fed Funds upper bound", "as_of": "2026-01-29"},
+    "EUR": {"rate": 0.025, "source": "ECB main refinancing rate", "as_of": "2026-01-30"},
+    "JPY": {"rate": -0.001, "source": "BOJ policy rate", "as_of": "2026-01-24"},
+    "GBP": {"rate": 0.045, "source": "BOE bank rate", "as_of": "2026-02-06"}
+  },
+
+  "fx_pairs": {
+    "6J": {"domestic": "USD", "foreign": "JPY", "note": "CME 6J = JPY per USD inverted; long 6J = long JPY"},
+    "6E": {"domestic": "USD", "foreign": "EUR", "note": "CME 6E = EUR per USD inverted; long 6E = long EUR"},
+    "6B": {"domestic": "USD", "foreign": "GBP", "note": "CME 6B = GBP per USD inverted; long 6B = long GBP"}
+  },
+
+  "treasury_params": {
+    "ZN": {"name": "10-Year Note", "notional_coupon": 0.06, "approx_maturity_years": 10, "dv01_approx": 78.0},
+    "ZF": {"name": "5-Year Note",  "notional_coupon": 0.06, "approx_maturity_years": 5,  "dv01_approx": 47.0},
+    "ZB": {"name": "30-Year Bond", "notional_coupon": 0.06, "approx_maturity_years": 30, "dv01_approx": 195.0}
+  },
+
+  "financing_rate": {
+    "rate": 0.045,
+    "source": "Fed Funds proxy (same as USD policy rate)",
+    "as_of": "2026-01-29"
+  }
+}
