@@ -3413,10 +3413,10 @@
       "source": "Moreira & Muir (NBER w22208) \u2014 Volatility-Managed Portfolios",
       "rule_summary": "Scale equity-index futures exposure inversely with recent realized volatility. Reduce position when vol is high, increase when vol is low. Leverage-capped. Sharpe improvement from vol timing rather than directional signal.",
       "status": "idea",
-      "notes": "ACCEPTED via academic harvest. Priority #3 in batch. Benchmark-style volatility overlay. Design choice needed: standalone sleeve vs portfolio overlay vs risk-management layer. Fills VOLATILITY gap. UPGRADE SEQUENCE #2: Next conversion slot after carry battle settles. Fills VOL gap. Moreira/Muir NBER basis. FALLBACK: becomes lead upgrade path if Treasury-Rolldown weakens materially before June 1. Spec drafted 2026-03-18. Quick feasibility: Sharpe 0.64\u21920.92 (+44%) on MES 2019-2026. Rubric estimate 19 raw + 2 gap = 21 effective. Ready for conversion when slot opens.",
+      "notes": "ACCEPTED via academic harvest. Priority #3 in batch. Benchmark-style volatility overlay. Design choice needed: standalone sleeve vs portfolio overlay vs risk-management layer. Fills VOLATILITY gap. Spec drafted and refined 2026-03-18. Quick feasibility: Sharpe 0.64\u21920.92 (+44%) on MES. Rubric estimate 19 raw + 2 gap = 21 effective. UPGRADE SEQUENCE #2: Ready for conversion when next slot opens. FALLBACK: Automatically elevated to lead challenger if Treasury-Rolldown weakens materially (PF collapses, mechanism breaks, rubric drops below 16). MANDATORY REVIEW GATE: First-pass output must explicitly answer the three-part ADVANCE test: (1) standalone Sharpe improvement > 30% vs unscaled, (2) correlation < 0.35 with XB-PB-EMA and NoiseBoundary, (3) portfolio DD reduction > 10%. All three required for ADVANCE.",
       "last_review_date": "2026-03-18",
       "review_priority": "HIGH",
-      "lifecycle_stage": "discovery",
+      "lifecycle_stage": "spec_ready",
       "source_category": "academic",
       "tags": [
         "VOLATILITY",
