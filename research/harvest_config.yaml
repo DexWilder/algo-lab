@@ -127,8 +127,8 @@ source_lanes:
     enabled: true
     description: "TradingView public script scan — factor-aware, futures-focused"
     type: strategic
-    cadence: "biweekly"
-    max_per_run: 8
+    cadence: "weekly"
+    max_per_run: 10
     targeting_mode: "gap_aware"
     factor_targets:
       - "EVENT"
@@ -152,18 +152,43 @@ source_lanes:
     notes: "Biweekly manual TradingView search. Use search_terms as starting prompts. Factor-aware review before staging. Reject momentum clones and equity-morning-breakout variants on sight."
 
   academic_review:
-    enabled: false
-    description: "Academic paper / quant blog review for new ideas"
+    enabled: true
+    description: "Academic paper / quant blog review for documented futures edges"
     type: strategic
-    cadence: "quarterly"
-    max_per_run: 5
-    targeting_mode: "broad"
+    cadence: "biweekly"
+    max_per_run: 8
+    targeting_mode: "gap_aware"
+    factor_targets:
+      - "EVENT"
+      - "CARRY"
+      - "VOLATILITY"
+      - "STRUCTURAL"
     sources:
       - "SSRN"
       - "Quantpedia"
       - "QuantifiedStrategies"
       - "AlphaArchitect"
-    notes: "Quarterly literature review. Focus on documented edges with futures applicability."
+      - "Journal of Financial Economics"
+      - "Review of Financial Studies"
+    notes: "Biweekly literature review. Focus on documented edges with futures applicability. Extract mechanical rules only. Tag with full schema."
+
+  youtube_practitioner:
+    enabled: true
+    description: "YouTube / practitioner strategy extraction — mechanical rules only"
+    type: strategic
+    cadence: "biweekly"
+    max_per_run: 5
+    targeting_mode: "gap_aware"
+    factor_targets:
+      - "STRUCTURAL"
+      - "VOLATILITY"
+      - "EVENT"
+    filters:
+      - "futures only"
+      - "must have explicit entry/exit rules"
+      - "reject discretionary / narrative-only methods"
+      - "reject ICT/SMC concepts (closed family)"
+    notes: "Extract only mechanical, testable rules from practitioner content. Do NOT copy full presentations. Summarize logic in standard intake note format. Reject anything without clear entry/exit rules."
 
   legacy_revival:
     enabled: false
