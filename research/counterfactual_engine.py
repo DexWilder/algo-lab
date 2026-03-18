@@ -34,6 +34,7 @@ sys.path.insert(0, str(ROOT))
 REGISTRY_PATH = ROOT / "research" / "data" / "strategy_registry.json"
 COUNTERFACTUAL_LOG_PATH = ROOT / "research" / "data" / "counterfactual_log.json"
 REPORTS_DIR = ROOT / "research" / "reports"
+TRADE_LOG_PATH = ROOT / "logs" / "trade_log.csv"
 
 # ── Strategy Universe ────────────────────────────────────────────────────────
 
@@ -285,10 +286,48 @@ def _max_drawdown(series: pd.Series) -> float:
 
 # ── Main Runner ──────────────────────────────────────────────────────────────
 
-def run_counterfactual_engine() -> dict:
-    """Run full counterfactual analysis."""
-    print("Building daily PnL matrix...")
-    matrix = build_daily_pnl_matrix()
+def build_forward_pnl_matrix() -> pd.DataFrame:
+    """Build daily PnL matrix from forward trade log.
+
+    Reads logs/trade_log.csv and pivots into a daily PnL matrix
+    with one column per strategy and one row per trading day.
+    """
+    if not TRADE_LOG_PATH.exists():
+        return pd.DataFrame()
+
+    try:
+        df = pd.read_csv(TRADE_LOG_PATH)
+    except Exception:
+        return pd.DataFrame()
+
+    if df.empty or "strategy" not in df.columns or "pnl" not in df.columns:
+        return pd.DataFrame()
+
+    if "date" not in df.columns:
+        return pd.DataFrame()
+
+    # Aggregate PnL per strategy per date
+    daily = df.groupby(["date", "strategy"])["pnl"].sum().reset_index()
+    matrix = daily.pivot(index="date", columns="strategy", values="pnl").fillna(0)
+    matrix.index = pd.to_datetime(matrix.index)
+    matrix = matrix.sort_index()
+    return matrix
+
+
+def run_counterfactual_engine(forward_mode: bool = False) -> dict:
+    """Run full counterfactual analysis.
+
+    Args:
+        forward_mode: If True, use forward trade log data instead of
+                      backtest data. Labels output as FORWARD.
+    """
+    data_source = "FORWARD" if forward_mode else "BACKTEST"
+    print(f"Building {data_source} daily PnL matrix...")
+
+    if forward_mode:
+        matrix = build_forward_pnl_matrix()
+    else:
+        matrix = build_daily_pnl_matrix()
 
     if matrix.empty:
         return {"status": "NO_DATA", "message": "Could not build PnL matrix"}
@@ -382,6 +421,7 @@ def run_counterfactual_engine() -> dict:
 
     return {
         "report_date": report_date,
+        "data_source": data_source,
         "portfolio_summary": {
             "total_days": len(matrix),
             "strategies_evaluated": len(matrix.columns),
@@ -549,9 +589,11 @@ def main():
     parser = argparse.ArgumentParser(description="FQL Counterfactual / Opportunity-Cost Engine")
     parser.add_argument("--json", action="store_true", help="JSON output")
     parser.add_argument("--save", action="store_true", help="Save report + log")
+    parser.add_argument("--forward", action="store_true",
+                        help="Use forward trade log data instead of backtest")
     args = parser.parse_args()
 
-    results = run_counterfactual_engine()
+    results = run_counterfactual_engine(forward_mode=args.forward)
 
     if results.get("status") == "NO_DATA":
         print(results.get("message", "No data available"))
