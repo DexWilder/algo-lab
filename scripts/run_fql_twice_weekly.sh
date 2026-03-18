@@ -40,7 +40,7 @@ log "=== FQL Twice-Weekly Research Run - $(date) ==="
 log "PID: $$ | Repo: $ALGO_LAB"
 log ""
 
-python3 research/fql_research_scheduler.py --twice_weekly >> "$LOG_FILE" 2>&1
+python3 research/fql_research_scheduler.py --twice-weekly >> "$LOG_FILE" 2>&1
 EXIT_CODE=$?
 
 log ""
