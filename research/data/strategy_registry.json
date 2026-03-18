@@ -1,6 +1,6 @@
 {
   "_schema_version": "2.0",
-  "_generated": "2026-03-17",
+  "_generated": "2026-03-18",
   "_description": "FQL Strategy Registry \u2014 institutional memory of all strategy ideas, tested candidates, and deployed strategies",
   "_purpose": "Preserves research knowledge, enables crossbreeding, feeds Strategy Factory",
   "strategies": [
@@ -245,7 +245,7 @@
       "direction": "long",
       "source": "phase10_discovery",
       "rule_summary": "Donchian channel breakout (50-100 bar extreme) with GRINDING persistence filter and profit ladder exit",
-      "status": "probation",
+      "status": "rejected",
       "validation_score": 5.0,
       "parameter_stability": 100,
       "extended_history_status": "passed",
@@ -254,8 +254,8 @@
       "pnl_share": 13.9,
       "profit_factor": 1.6,
       "notes": "True trend-follower (60-bar hold). GRINDING-only filter. Regime gate: avoid HIGH_RV (+$2,199 recovery queued). Needs 150 trades for promotion.",
-      "controller_state": "ACTIVE",
-      "controller_action": "REDUCED_ON",
+      "controller_state": "ARCHIVED",
+      "controller_action": "OFF",
       "activation_score": 0.6375,
       "controller_reason_codes": [
         "REGIME_MATCH_LOW",
@@ -278,6 +278,12 @@
           "from": "PROBATION",
           "to": "ACTIVE",
           "trigger": "Recovery: score=0.69, HL=HEALTHY"
+        },
+        {
+          "from": "probation",
+          "to": "rejected",
+          "date": "2026-03-18",
+          "reason": "representative-redundancy replacement by NoiseBoundary-MNQ-Long"
         }
       ],
       "state_entered_date": "2026-03-15",
@@ -306,7 +312,7 @@
         "exit_variant": "profit_ladder",
         "priority": 3
       },
-      "last_review_date": "2026-03-16",
+      "last_review_date": "2026-03-18",
       "source_category": "internal",
       "validation_result": {
         "report_file": "research/validation/donchian_trend_MNQ_long_validation.json",
@@ -314,7 +320,11 @@
         "score": 0,
         "failures": 0
       },
-      "lifecycle_stage": "forward_validation"
+      "lifecycle_stage": "archived",
+      "rejection_reason": "REDUNDANT",
+      "rejection_details": "Representative-redundancy replacement by NoiseBoundary-MNQ-Long. NoiseBoundary wins on WF (10/10 vs 5.0), trade count (609 vs 47), cross-asset validation (MES+MYM confirmed), and academic source. Correlation=0.374 confirms same bet. Archived to free probation slot.",
+      "kill_flag": "redundancy",
+      "kill_details": "Archived 2026-03-18. Superseded by NoiseBoundary-MNQ-Long."
     },
     {
       "strategy_id": "BB-EQ-MGC-Long",
@@ -1518,24 +1528,31 @@
       "direction": "both",
       "source": "tradingview_harvest_batch1",
       "rule_summary": "Range expansion detection \u2192 momentum entry",
-      "status": "probation",
+      "status": "testing",
       "validation_score": 10.0,
       "parameter_stability": 100,
       "extended_history_status": "passed",
       "portfolio_role": "core",
       "trades_6yr": 214,
       "profit_factor": 1.46,
-      "notes": "PROMOTED to probation 2026-03-15. MCL-short: PF=1.46, Sharpe=2.39, 214 trades. WF 10/10 PERFECT. 75% window survival, 100% param stability. First MCL strategy.",
+      "notes": "DOWNGRADED 2026-03-18. Active decay: Sharpe 2.39 (6yr) \u2192 0.46 (1yr) \u2192 -0.13 (6mo). Monotonic edge decline despite WF 10/10 PERFECT historical. HARD RULE: If trailing 3-month Sharpe is still negative at next monthly review (2026-04-18), archive permanently. MCL slot is valuable but this strategy is no longer earning it.",
       "kill_flag": "decay",
       "kill_details": "Half-life monitor: decay=0.65 ARCHIVE_CANDIDATE. Sharpe 2.39->0.46 (1yr)->-0.13 (6mo). Edge rapidly decaying despite WF 10/10.",
-      "last_review_date": "2026-03-15",
+      "last_review_date": "2026-03-18",
       "source_category": "tradingview",
-      "lifecycle_stage": "forward_validation",
-      "state_history": [],
-      "controller_state": "PROBATION",
+      "lifecycle_stage": "downgraded",
+      "state_history": [
+        {
+          "from": "probation",
+          "to": "testing",
+          "date": "2026-03-18",
+          "reason": "active decay \u2014 Sharpe 2.39\u21920.46\u2192-0.13. Hard deadline: archive if 3mo Sharpe negative at 2026-04-18"
+        }
+      ],
+      "controller_state": "DISABLED",
       "prior_state": "PROBATION",
-      "controller_action": "PROBATION",
-      "activation_score": 0.485,
+      "controller_action": "OFF",
+      "activation_score": 0.0,
       "controller_reason_codes": [
         "REGIME_MATCH_LOW",
         "PORTFOLIO_NEUTRAL",
@@ -1662,9 +1679,9 @@
       "trades_6yr": 609,
       "profit_factor": 1.28,
       "notes": "PROMOTED to probation 2026-03-15. WF 10/10 PERFECT. MNQ-long: PF=1.28, Sharpe=1.40, 609 trades. 83% window survival, cross-asset edge on MES+MYM, 100% param stability. Academic source: Zarattini/Aziz/Barbon 2024.",
-      "kill_flag": "redundancy",
-      "kill_details": "Correlated with Donchian-MNQ-Long (corr=0.374, same MNQ/long/breakout). NoiseBoundary is stronger \u2014 keep this, archive Donchian.",
-      "last_review_date": "2026-03-15",
+      "kill_flag": null,
+      "kill_details": "Redundancy with Donchian-MNQ resolved \u2014 Donchian archived 2026-03-18. NoiseBoundary is the surviving representative.",
+      "last_review_date": "2026-03-18",
       "controller_state": "PROBATION",
       "controller_action": "REDUCED_ON",
       "activation_score": 0.58,
@@ -1982,7 +1999,7 @@
       "status": "probation",
       "validation_score": 5.0,
       "profit_factor": 1.2,
-      "notes": "CONDITIONAL_PASS (5/8). Walk-forward most stable of expansion (1.08/1.35). 125 trades, PF 1.20, Sharpe 1.09. Short bias (short PF 1.21, long PF 1.00). Regime-stable (0 catastrophic cells, trades all regimes). Param stability 75% (ATR=30 variants PF 1.46-1.54). Asset-specific to 6J (6E PF 1.00, 6B PF 0.66). Complementary to MomPB-6J: different session (London vs US), different direction (short bias vs long only), different entry (range breakout vs pullback). Restrictions: London session, MICRO tier, both directions, review after 50+ forward trades. POST-PROBATION ENHANCEMENT: Carry bias filter improves PF 1.20->1.36, Sharpe 1.09->2.03. Biggest improvement of any strategy. NOT applied during probation. Apply at promotion. QUEUED: research comparison \u2014 add carry-direction filter using carry_lookup.get_carry_score('6J') REAL signal. Prefer shorts when 6J carry is negative (currently -4.6%). Do not change live logic until comparison is reviewed.",
+      "notes": "CONDITIONAL_PASS (5/8). Walk-forward most stable of expansion (1.08/1.35). 125 trades, PF 1.20, Sharpe 1.09. Short bias (short PF 1.21, long PF 1.00). Regime-stable (0 catastrophic cells, trades all regimes). Param stability 75% (ATR=30 variants PF 1.46-1.54). Asset-specific to 6J (6E PF 1.00, 6B PF 0.66). Complementary to MomPB-6J: different session (London vs US), different direction (short bias vs long only), different entry (range breakout vs pullback). Restrictions: London session, MICRO tier, both directions, review after 50+ forward trades. POST-PROBATION ENHANCEMENT: Carry bias filter improves PF 1.20->1.36, Sharpe 1.09->2.03. Biggest improvement of any strategy. NOT applied during probation. Apply at promotion. CARRY FILTER RESEARCH (2026-03-18): Do not apply. Binary filter halves trades (125\u219259) and PnL ($3,638\u2192$1,662) for 2bp PF improvement (1.47\u21921.49). Long side IS profitable (PF 1.20). Carry negative for 100% of data \u2014 cannot validate carry-flip scenario. Raw edge is solid. Not an elite improvement lever.",
       "last_review_date": "2026-03-18",
       "controller_state": "PROBATION",
       "controller_action": "PROBATION",
