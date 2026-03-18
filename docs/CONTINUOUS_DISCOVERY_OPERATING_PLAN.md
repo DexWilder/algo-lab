@@ -5,9 +5,11 @@
 
 ---
 
-## Standing Principle: Continuous Catalog Growth
+## Standing Principles
 
-> **Discover continuously. Deploy selectively.**
+> **Discover continuously. Deploy selectively. Accept nothing mediocre.**
+
+### Continuous Catalog Growth
 
 Continuous catalog growth is a standing FQL principle. The research engine
 never idles. Discovery, harvesting, cataloging, tagging, clustering, blocker
@@ -17,6 +19,24 @@ but **discovery itself never pauses.** The catalog engine is always on.
 Conversion, testing, probation, and live portfolio changes remain selective
 and gated. These two clocks — discovery and deployment — run at different
 speeds, on purpose.
+
+### Elite Standard
+
+Elite standard is a standing FQL principle. FQL does not optimize for
+quantity, activity, or mediocre passable results. It optimizes for
+elite-quality edges, elite portfolio construction, elite robustness,
+and elite decision discipline.
+
+- Every strategy must earn its place with forward evidence, not backtest hope
+- Every family must demonstrate a real mechanism, not pattern-mined noise
+- Every unlock must prove its leverage within 2 weeks, or be logged as a miss
+- Every automation must make the system stronger, not just busier
+- Weak or mediocre ideas are pruned quickly — a fast REJECT is more
+  valuable than a slow MONITOR that wastes attention
+- Strong ideas are refined ruthlessly — the best representative in a
+  cluster gets investment, the rest get archived
+- Discovery is relentless, but standards are uncompromising — volume
+  without quality is catalog bloat, not competitive advantage
 
 ### Why This Is Policy
 

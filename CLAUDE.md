@@ -7,6 +7,12 @@ engine never idles. Harvesting, cataloging, tagging, clustering, blocker
 mapping, and assessment run at all times — even when deployment is
 bottlenecked, all probation slots are full, or no conversion is planned.
 
+**Elite standard is a standing FQL principle.** FQL does not optimize for
+quantity, activity, or mediocre passable results. Every strategy, family,
+unlock, and rule must earn its place. Weak ideas are pruned quickly. Strong
+ideas are refined ruthlessly. Forward evidence outranks backtest fantasy.
+Discovery is relentless, but standards are uncompromising.
+
 Conversion, testing, probation, and live portfolio changes remain selective
 and gated. These two clocks run at different speeds, on purpose.
 

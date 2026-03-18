@@ -11,6 +11,12 @@ Every strategy in FQL moves through a defined lifecycle. Each stage has
 entry criteria, exit criteria, key metrics, and escalation triggers.
 No strategy skips a stage. No strategy moves without evidence.
 
+**Elite standard applies at every stage.** A strategy that barely clears
+a threshold is not a pass — it's a warning. Promotion requires conviction,
+not just a checkbox. A fast, honest REJECT is more valuable than a slow
+MONITOR that burns attention. Forward evidence outranks backtest fantasy
+at every decision point.
+
 ```
 IDEA → TESTED → VALIDATION_PASS → PROBATION → CORE
                      ↓                 ↓          ↓

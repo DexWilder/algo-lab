@@ -32,9 +32,17 @@ it. Nothing in Layer A changes.
 
 ## A1. Core Construction Principle
 
-The goal is to maximize the number of genuinely independent bets while
-controlling concentration risk. Every rule exists to prevent the portfolio
-from silently collapsing into a single bet disguised as many strategies.
+The goal is to maximize the number of genuinely independent, elite-quality
+bets while controlling concentration risk. Every rule exists to prevent
+the portfolio from silently collapsing into a single bet disguised as
+many strategies.
+
+**Elite standard applies to portfolio construction.** A portfolio of 20
+mediocre strategies is worse than a portfolio of 8 strong ones. Every
+slot costs attention, margin, and complexity. A strategy that merely
+doesn't lose money is not earning its place — it must actively contribute
+edge, diversification, or structural resilience. When in doubt, fewer
+and stronger beats more and weaker.
 
 This applies whether the portfolio runs $50K on a prop account or $5M
 across managed accounts.
