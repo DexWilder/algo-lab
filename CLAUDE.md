@@ -58,7 +58,7 @@ Week 8 formal review is the next major decision point.
 - **Daily:** weekdays 17:30 ET — 6 research jobs (health, half-life, contribution, controller, report, drift)
 - **Twice-weekly:** Tue/Thu 18:00 ET — batch_first_pass factory testing
 - **Weekly:** Fri 18:30 ET — integrity monitor, kill criteria, auto-report
-- **Claw control loop:** every 4h (02/06/10/14/18/22 ET) — read Claw status, assign next task, refresh priorities, EOD audit at 22:00
+- **Claw control loop:** every 30 min (launchd StartInterval) — read Claw status, assign next task, refresh priorities, EOD audit at 22:00
 - **Forward runner:** DESIGNED but DISABLED (`scripts/com.fql.forward-trading.plist`)
 
 ## System State

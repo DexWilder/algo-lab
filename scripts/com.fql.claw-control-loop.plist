@@ -11,46 +11,9 @@
         <string>/Users/chasefisher/projects/Algo Trading/algo-lab/scripts/run_claw_control_loop.sh</string>
     </array>
 
-    <!-- Every 4 hours: 02:00, 06:00, 10:00, 14:00, 18:00, 22:00 ET -->
-    <key>StartCalendarInterval</key>
-    <array>
-        <dict>
-            <key>Hour</key>
-            <integer>2</integer>
-            <key>Minute</key>
-            <integer>0</integer>
-        </dict>
-        <dict>
-            <key>Hour</key>
-            <integer>6</integer>
-            <key>Minute</key>
-            <integer>0</integer>
-        </dict>
-        <dict>
-            <key>Hour</key>
-            <integer>10</integer>
-            <key>Minute</key>
-            <integer>0</integer>
-        </dict>
-        <dict>
-            <key>Hour</key>
-            <integer>14</integer>
-            <key>Minute</key>
-            <integer>0</integer>
-        </dict>
-        <dict>
-            <key>Hour</key>
-            <integer>18</integer>
-            <key>Minute</key>
-            <integer>0</integer>
-        </dict>
-        <dict>
-            <key>Hour</key>
-            <integer>22</integer>
-            <key>Minute</key>
-            <integer>0</integer>
-        </dict>
-    </array>
+    <!-- Every 30 minutes (1800 seconds) -->
+    <key>StartInterval</key>
+    <integer>1800</integer>
 
     <key>StandardOutPath</key>
     <string>/Users/chasefisher/projects/Algo Trading/algo-lab/research/logs/launchd_claw_loop_stdout.log</string>
