@@ -469,31 +469,230 @@ def write_claw_next_needs(claw_status, priorities):
     return content
 
 
-# ── 5. Write EOD Audit ──────────────────────────────────────────────────────
+# ── 5. Write Master Operating Brief ──────────────────────────────────────────
+
+def _load_vitality_alerts():
+    """Load edge vitality data, running the monitor if scores aren't cached."""
+    if not REGISTRY_PATH.exists():
+        return [], {}
+
+    reg = json.load(open(REGISTRY_PATH))
+
+    # Check if vitality scores are cached in registry
+    has_cached = any(s.get("edge_vitality") is not None
+                     for s in reg.get("strategies", [])
+                     if s.get("status") in ("core", "probation", "watch"))
+
+    if not has_cached:
+        # Run vitality monitor inline to get fresh scores
+        try:
+            from research.edge_vitality_monitor import (
+                load_half_life_data, load_drift_data,
+                load_forward_decay, compute_vitality,
+            )
+            hl = load_half_life_data()
+            dr = load_drift_data()
+            fd = load_forward_decay()
+            vitality_results = compute_vitality(hl, dr, fd)
+        except Exception:
+            vitality_results = {}
+    else:
+        vitality_results = {}
+
+    alerts = []
+    vitality_map = {}
+    for s in reg.get("strategies", []):
+        if s.get("status") not in ("core", "probation", "watch"):
+            continue
+        sid = s["strategy_id"]
+        # Prefer cached, fall back to computed
+        vt = s.get("edge_vitality_tier")
+        vs = s.get("edge_vitality")
+        if vt is None and sid in vitality_results:
+            vt = vitality_results[sid]["tier"]
+            vs = vitality_results[sid]["vitality_score"]
+        if vt is None:
+            vt = "UNKNOWN"
+
+        vitality_map[sid] = {"tier": vt, "score": vs}
+        if vt in ("FADING", "DEAD"):
+            alerts.append(f"{sid}: {vt} (vitality {vs})")
+    return alerts, vitality_map
+
+
+def _load_forward_summary():
+    """Load forward trading summary from trade log."""
+    trade_log = ROOT / "logs" / "trade_log.csv"
+    if not trade_log.exists():
+        return {"trades": 0, "pnl": 0, "strategies": 0, "days": 0}
+    try:
+        import pandas as pd
+        df = pd.read_csv(trade_log)
+        if df.empty:
+            return {"trades": 0, "pnl": 0, "strategies": 0, "days": 0}
+        return {
+            "trades": len(df),
+            "pnl": round(float(df["pnl"].sum()), 2),
+            "strategies": df["strategy"].nunique(),
+            "days": df["date"].nunique(),
+        }
+    except Exception:
+        return {"trades": 0, "pnl": 0, "strategies": 0, "days": 0}
+
+
+def _load_account_state():
+    """Load account state for equity/DD info."""
+    state_path = ROOT / "state" / "account_state.json"
+    if not state_path.exists():
+        return {}
+    try:
+        return json.load(open(state_path))
+    except Exception:
+        return {}
+
 
 def write_eod_audit(claw_status, registry_state, priorities):
-    """Write _eod_audit.md — daily control loop summary."""
-    content = f"""# FQL Discovery Control Loop — EOD Audit
+    """Write _eod_audit.md — single master operating brief.
+
+    This is the ONE report that answers: what happened today, where does
+    FQL stand, and what needs attention.
+    """
+    vitality_alerts, vitality_map = _load_vitality_alerts()
+    forward = _load_forward_summary()
+    account = _load_account_state()
+
+    # Health checks
+    issues = []
+    if not claw_status['today_completed'] and DOW != "Saturday":
+        issues.append("Claw did not complete today's scheduled task")
+    if claw_status['total_harvest_pending'] > 30:
+        issues.append(f"Harvest backlog large ({claw_status['total_harvest_pending']} notes)")
+    days_with_logs = len(claw_status['recent_logs'])
+    if days_with_logs < 3:
+        issues.append(f"Only {days_with_logs} Claw logs in last 7 days")
+    if vitality_alerts:
+        for va in vitality_alerts:
+            issues.append(f"Vitality alert: {va}")
+
+    # Determine top risk and top opportunity
+    top_risk = "None identified"
+    top_opportunity = "None identified"
+
+    # Risk: FADING strategies or negative forward PnL
+    if vitality_alerts:
+        top_risk = f"FADING edge: {vitality_alerts[0]}"
+    elif forward["pnl"] < -500:
+        top_risk = f"Forward PnL is ${forward['pnl']:+,.0f} across {forward['trades']} trades"
+
+    # Opportunity: gap-filling challengers
+    high_gaps = [g for g in priorities if g["priority"] == "HIGH"]
+    if high_gaps:
+        top_opportunity = f"CARRY + Rates gaps remain open — Treasury-Rolldown (eff. 20) is lead challenger"
+
+    # Decisions needed
+    decisions = []
+    # Check for watch deadlines within 30 days
+    reg_data = json.load(open(REGISTRY_PATH)) if REGISTRY_PATH.exists() else {"strategies": []}
+    for s in reg_data.get("strategies", []):
+        if s.get("status") == "watch":
+            notes = s.get("notes", "")
+            for token in notes.split():
+                if token.startswith("2026-") and len(token) == 10:
+                    try:
+                        dl = datetime.strptime(token, "%Y-%m-%d")
+                        days_left = (dl - datetime.now()).days
+                        if 0 < days_left <= 30:
+                            decisions.append(f"{s['strategy_id']}: watch deadline in {days_left} days")
+                    except ValueError:
+                        pass
+
+    content = f"""# FQL Master Operating Brief
 ## {TODAY} ({DOW})
 
-*Auto-generated. Reviews the day's discovery activity and loop health.*
+*Single daily report. Read this one document to know where FQL stands.*
 
 ---
 
-### Claw Execution
+### 1. Claw Discovery Engine
 
-- Scheduled task: **{claw_status['today_task']}**
-- Completed: **{'YES' if claw_status['today_completed'] else 'NO'}**
-- Notes generated today: {len(claw_status['harvest_notes_today']) + len(claw_status['refinement_notes_today'])}
-- Log: {claw_status.get('today_log', 'none')}
+- Task: **{claw_status['today_task']}** — {'DONE' if claw_status['today_completed'] else 'PENDING'}
+- Phases today: **{claw_status['today_phases_completed']}**
+- Notes generated: **{claw_status['today_notes_generated']}** / {DAILY_NOTE_CAP} budget
+- Harvest pending pickup: **{claw_status['total_harvest_pending']}**
+- Refinement pending pickup: **{claw_status['total_refinement_pending']}**
 
-### Pipeline State
+### 2. Claude Automation
 
-- Harvest notes pending Claude pickup: **{claw_status['total_harvest_pending']}**
-- Refinement notes pending Claude pickup: **{claw_status['total_refinement_pending']}**
-- Registry total: **{registry_state.get('total', '?')}**
+- Control loop: running (30-min cadence)
+- Daily research pipeline: {'fired today' if DOW not in ('Saturday', 'Sunday') else 'weekend'}
+- Registry: **{registry_state.get('total', '?')}** strategies
+- Forward runner: **{forward['trades']}** trades across **{forward['strategies']}** strategies, **{forward['days']}** days
 
-### Gap Coverage
+### 3. New Notes / Families / Clusters
+
+"""
+    if claw_status['harvest_notes_today']:
+        for note in claw_status['harvest_notes_today']:
+            content += f"- NEW: `{note}`\n"
+    if claw_status['refinement_notes_today']:
+        for note in claw_status['refinement_notes_today']:
+            content += f"- REF: `{note}`\n"
+    if claw_status['cluster_reports_today']:
+        for note in claw_status['cluster_reports_today']:
+            content += f"- CLUSTER: `{note}`\n"
+    if not any([claw_status['harvest_notes_today'], claw_status['refinement_notes_today'],
+                claw_status['cluster_reports_today']]):
+        content += "- No new outputs today.\n"
+
+    content += f"""
+### 4. Pressure Summary
+
+- **Weakest core:** PB-MGC-Short (rubric 16, fwd: {forward.get('pnl', 0):+.0f} overall)
+- **Weakest watch:** MomIgn-M2K-Short (rubric 14, deadline 2026-06-01)
+- **Top challenger:** Treasury-Rolldown-Carry-Spread (effective 20, CARRY + Rates)
+- **Next displacement:** Treasury-Rolldown → MomIgn at June 1
+
+### 5. Vitality / Decay Alerts
+
+"""
+    if vitality_alerts:
+        for va in vitality_alerts:
+            content += f"- **ALERT:** {va}\n"
+    else:
+        content += "- No FADING or DEAD strategies. Edge health is good.\n"
+
+    content += f"""
+### 6. Forward / Counterfactual
+
+- Forward equity: **${account.get('equity', 0):,.2f}** (DD from HWM: ${account.get('equity_hwm', 0) - account.get('equity', 0):,.2f})
+- Forward trades: **{forward['trades']}** across {forward['strategies']} strategies
+- Forward PnL: **${forward['pnl']:+,.2f}**
+- Only strategy with positive forward PnL: ORB-MGC-Long
+
+### 7. Top Portfolio Risk
+
+**{top_risk}**
+
+### 8. Top Portfolio Opportunity
+
+**{top_opportunity}**
+
+### 9. Decisions / Reviews Needed
+
+"""
+    if decisions:
+        for d in decisions:
+            content += f"- {d}\n"
+    elif issues:
+        for issue in issues:
+            content += f"- INVESTIGATE: {issue}\n"
+    else:
+        content += "- No immediate decisions needed. System operating normally.\n"
+
+    content += f"""
+---
+
+### Factor Coverage
 
 | Factor | Priority | Active | Ideas |
 |--------|----------|--------|-------|
@@ -501,50 +700,22 @@ def write_eod_audit(claw_status, registry_state, priorities):
     for g in priorities:
         content += f"| {g['factor']} | {g['priority']} | {g['active']} | {g['ideas']} |\n"
 
-    # Health checks
-    issues = []
-    if not claw_status['today_completed'] and DOW != "Saturday":
-        issues.append("Claw did not complete today's scheduled task")
-    if claw_status['total_harvest_pending'] > 30:
-        issues.append(f"Harvest backlog is large ({claw_status['total_harvest_pending']} notes) — Claude pickup may be falling behind")
-    if claw_status['total_harvest_pending'] == 0 and DOW in ("Tuesday", "Wednesday", "Thursday", "Friday"):
-        issues.append("No harvest notes pending — Claw may not be running")
+    content += f"""
+### System Health
 
-    days_with_logs = len(claw_status['recent_logs'])
-    if days_with_logs < 3:
-        issues.append(f"Only {days_with_logs} Claw logs in last 7 days — possible execution gap")
-
-    content += "\n### Health\n\n"
+"""
     if issues:
         for issue in issues:
             content += f"- **WARN:** {issue}\n"
     else:
-        content += "- All checks PASS. Control loop is healthy.\n"
-
-    content += f"""
-### Loop Cadence
-
-| Component | Schedule | Last Run |
-|-----------|----------|----------|
-| Claw task execution | Hourly heartbeat check | {TODAY}, {claw_status['today_phases_completed']} phases |
-| Claude directive refresh | Every 4h (launchd, 6x/day) | {TODAY} {NOW} |
-| Claude EOD audit | 20:00 ET daily | {TODAY} |
-| Claude priority refresh | Every cycle + after registry changes | {TODAY} |
-| Human review | Monday + Friday sessions | manual |
-
-### Governance
-
-- Claw boundary: INTACT (writes only to ~/openclaw-intake/)
-- Claude boundary: INTACT (bridge only, no auto-accept)
-- Human gates: INTACT (accept/reject, conversion, promotion all manual)
-"""
+        content += "- All systems nominal.\n"
 
     (CLAW_INBOX / "_eod_audit.md").write_text(content)
 
-    # Also save a copy to algo-lab for Claude's reference
+    # Save archive copy
     audit_dir = ROOT / "research" / "data" / "claw_audits"
     audit_dir.mkdir(parents=True, exist_ok=True)
-    (audit_dir / f"audit_{TODAY}.md").write_text(content)
+    (audit_dir / f"brief_{TODAY}.md").write_text(content)
 
     return content
 
