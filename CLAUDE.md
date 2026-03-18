@@ -1,13 +1,32 @@
 # Algo Lab — Claude Instructions
 
-## Current Mode: OPERATE AND OBSERVE
+## Current Mode: CONTINUOUS DISCOVERY, SELECTIVE DEPLOYMENT
 
-FQL is in operate-and-observe mode. Do NOT start new build lanes, prototype
-strategies, or infrastructure projects unless the weekly scorecard flags a
-real issue or a probation review threshold is hit.
+FQL discovers continuously and deploys selectively. The catalog grows every
+week. The live portfolio changes only when forward evidence clears the bar.
 
-**Daily priority:** Help run `./scripts/start_forward_day.sh` on market days.
-**Friday priority:** Help review `python3 research/weekly_scorecard.py` output.
+**Do NOT** start new build lanes, prototype strategies, or infrastructure
+projects unless the weekly scorecard flags a real issue or a probation
+review threshold is hit.
+
+### Proactive Session Behaviors
+
+Claude should do these automatically at the start of relevant sessions:
+
+- **Any market-day session:** Run `./scripts/start_forward_day.sh`
+- **Monday session:** Scan harvest inbox (`python3 research/harvest_engine.py --scan`),
+  stage new notes, present for review
+- **Friday session:** Run full review sequence:
+  ```bash
+  python3 research/weekly_scorecard.py --save
+  python3 research/weekly_intake_digest.py --save
+  python3 research/operating_dashboard.py
+  ```
+  Present consolidated summary with recommended actions.
+- **Monthly (or after 20+ new registry entries):** Refresh genome map and
+  factor decomposition.
+
+See `docs/CONTINUOUS_DISCOVERY_OPERATING_PLAN.md` for the full operating plan.
 
 ## Probation Portfolio (5 strategies accumulating forward evidence)
 
@@ -66,8 +85,9 @@ See `docs/release_workflow.md` for full details.
 
 ## Key Documentation
 
+- `docs/CONTINUOUS_DISCOVERY_OPERATING_PLAN.md` — discovery vs deployment split
 - `docs/FQL_ARCHITECTURE.md` — 7-layer system reference
-- `docs/OPERATING_RHYTHM.md` — weekly cadence
+- `docs/OPERATING_RHYTHM.md` — weekly cadence (superseded by discovery plan)
 - `docs/PROBATION_REVIEW_CRITERIA.md` — promotion/downgrade thresholds
 - `docs/ASSET_EXPANSION.md` — onboarding checklist for new assets
 - `docs/CHANGELOG.md` — architectural change log

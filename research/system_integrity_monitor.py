@@ -42,6 +42,8 @@ PROBATION_THRESHOLDS = {
     "DailyTrend-MGC-Long": {"target_trades": 15, "min_pf": 1.2},
     "MomPB-6J-Long-US": {"target_trades": 30, "min_pf": 1.2},
     "FXBreak-6J-Short-London": {"target_trades": 50, "min_pf": 1.1},
+    "PreFOMC-Drift-Equity": {"target_trades": 8, "min_pf": 1.2},
+    "TV-NFP-High-Low-Levels": {"target_trades": 8, "min_pf": 1.1},
 }
 
 
