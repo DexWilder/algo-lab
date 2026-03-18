@@ -13,6 +13,13 @@ The edge is structural: backwardation reflects convenience yield (physical
 holders pay a premium to hold the commodity) while contango reflects storage
 costs. These forces are persistent and unrelated to price momentum.
 
+**Important framing: This is a carry-proxy test, not true term-structure
+carry.** We only have continuous front-contract data. The 60-day trailing
+return proxy conflates carry with momentum. If results are positive, we
+cannot claim pure carry until we decompose with real term-structure data.
+The first-pass question is: "Does the carry-proxy signal produce a
+tradeable edge?" — not "Is this pure carry?"
+
 ## Data Constraint
 
 FQL currently has **continuous front-contract data only** for MCL and MGC
@@ -98,12 +105,35 @@ simple long/short pair?"
 - **Gross exposure cap:** Max 2 micro contracts total (1 long + 1 short,
   or 1 directional if spread filter not met).
 
+## Test Variants
+
+Two variants tested in the first pass:
+
+| Variant | Spread Filter | Purpose |
+|---------|---------------|---------|
+| **A: Filtered** | MIN_SPREAD_PCT = 0.02 | Only trade when carry scores diverge meaningfully |
+| **B: Unfiltered** | MIN_SPREAD_PCT = 0.00 | Always take the rank signal, maximize sample size |
+
+### First-Pass Analysis Checklist
+
+- [ ] Does this behave more like commodity momentum than carry?
+      (Compare to simple 60-day momentum — if results are nearly identical,
+      the carry label is misleading)
+- [ ] Does one asset dominate the result?
+      (If MGC drives all the PnL and MCL is flat/negative, the signal is
+      asset-specific, not a carry factor)
+- [ ] Does the spread filter add value or just reduce sample?
+      (Compare Variant A vs B on PF, trade count, and drawdown)
+- [ ] Is performance concentrated in crisis periods?
+      (If most PnL comes from COVID-2020 or 2022 energy crisis, the edge
+      is regime-specific and unreliable going forward)
+
 ## Parameters (Initial)
 
 ```
 CARRY_LOOKBACK_DAYS = 60       # Trailing return window for carry proxy
 REBALANCE = monthly            # Last trading day of each month
-MIN_SPREAD_PCT = 0.02          # Minimum carry-score difference to trade
+MIN_SPREAD_PCT = 0.02          # Variant A: 2% filter. Variant B: 0%
 ATR_LEN = 20                   # For risk normalization and optional stop
 USE_STOP = toggle              # True/False
 SL_ATR_MULT = 2.5              # Stop distance in ATR multiples
