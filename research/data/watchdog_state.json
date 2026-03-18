@@ -1,11 +1,11 @@
 {
-  "timestamp": "2026-03-16T08:06:24.989659",
+  "timestamp": "2026-03-17T19:34:59.908999",
   "overall": "HEALTHY",
   "safe_mode": false,
   "checks": {
     "data_freshness": {
-      "status": "OK",
-      "detail": "All data files recent"
+      "status": "WARN",
+      "detail": "Stale data: MYM_5m (106h old), ES_5m (106h old)"
     },
     "scheduler_health": {
       "status": "WARN",

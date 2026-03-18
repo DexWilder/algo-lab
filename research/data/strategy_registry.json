@@ -1,6 +1,6 @@
 {
   "_schema_version": "2.0",
-  "_generated": "2026-03-16",
+  "_generated": "2026-03-17",
   "_description": "FQL Strategy Registry \u2014 institutional memory of all strategy ideas, tested candidates, and deployed strategies",
   "_purpose": "Preserves research knowledge, enables crossbreeding, feeds Strategy Factory",
   "strategies": [
@@ -26,10 +26,10 @@
       "kill_details": null,
       "last_review_date": "2026-03-15",
       "controller_state": "ACTIVE",
-      "controller_action": "REDUCED_ON",
-      "activation_score": 0.59,
+      "controller_action": "PROBATION",
+      "activation_score": 0.51,
       "controller_reason_codes": [
-        "REGIME_MATCH_LOW",
+        "REGIME_MISMATCH",
         "HALF_LIFE_STRENGTHENING",
         "PORTFOLIO_ADDS_VALUE",
         "REDUNDANT_CLUSTER",
@@ -41,8 +41,8 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-03-16",
-      "review_priority": "LOW",
+      "last_controller_date": "2026-03-17",
+      "review_priority": "MEDIUM",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
       "contribution_status": "NEUTRAL",
@@ -118,7 +118,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-03-16",
+      "last_controller_date": "2026-03-17",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
@@ -181,12 +181,12 @@
       "kill_details": null,
       "last_review_date": "2026-03-15",
       "controller_state": "ACTIVE",
-      "controller_action": "FULL_ON",
-      "activation_score": 0.76,
+      "controller_action": "REDUCED_ON",
+      "activation_score": 0.635,
       "controller_reason_codes": [
-        "REGIME_MATCH_HIGH",
+        "REGIME_MATCH_MODERATE",
         "HALF_LIFE_STRENGTHENING",
-        "PORTFOLIO_ADDS_VALUE",
+        "PORTFOLIO_NEUTRAL",
         "LOW_REDUNDANCY",
         "HEALTH_FAIL",
         "KILL_NONE",
@@ -196,7 +196,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-03-16",
+      "last_controller_date": "2026-03-17",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
@@ -270,7 +270,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-03-16",
+      "last_controller_date": "2026-03-17",
       "review_priority": "LOW",
       "state_history": [
         {
@@ -338,10 +338,10 @@
       "kill_details": null,
       "last_review_date": "2026-03-15",
       "controller_state": "ACTIVE",
-      "controller_action": "FULL_ON",
-      "activation_score": 0.775,
+      "controller_action": "REDUCED_ON",
+      "activation_score": 0.695,
       "controller_reason_codes": [
-        "REGIME_MATCH_HIGH",
+        "REGIME_MATCH_MODERATE",
         "HALF_LIFE_STRENGTHENING",
         "PORTFOLIO_ADDS_VALUE",
         "LOW_REDUNDANCY",
@@ -353,11 +353,11 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-03-16",
+      "last_controller_date": "2026-03-17",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
-      "contribution_status": "ADDS VALUE",
+      "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
       "genome_cluster": "mean_reversion",
       "resurrection_flag": false,
@@ -416,10 +416,10 @@
       "kill_details": null,
       "last_review_date": "2026-03-15",
       "controller_state": "ACTIVE",
-      "controller_action": "FULL_ON",
-      "activation_score": 0.8025,
+      "controller_action": "REDUCED_ON",
+      "activation_score": 0.6025,
       "controller_reason_codes": [
-        "REGIME_MATCH_HIGH",
+        "REGIME_MISMATCH",
         "HALF_LIFE_STRENGTHENING",
         "PORTFOLIO_ADDS_VALUE",
         "LOW_REDUNDANCY",
@@ -431,7 +431,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-03-16",
+      "last_controller_date": "2026-03-17",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
@@ -507,7 +507,7 @@
         }
       ],
       "controller_state": "ACTIVE",
-      "prior_state": "PROBATION",
+      "prior_state": "ACTIVE",
       "controller_action": "REDUCED_ON",
       "activation_score": 0.67,
       "controller_reason_codes": [
@@ -522,8 +522,8 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-03-16",
-      "review_priority": "HIGH",
+      "last_controller_date": "2026-03-17",
+      "review_priority": "LOW",
       "half_life_status": "HEALTHY",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -574,7 +574,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-03-16",
+      "last_controller_date": "2026-03-17",
       "review_priority": "MEDIUM",
       "half_life_status": "DECAYING",
       "contribution_status": "NEUTRAL",
@@ -625,7 +625,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-03-16",
+      "last_controller_date": "2026-03-17",
       "review_priority": "LOW",
       "half_life_status": "HEALTHY",
       "contribution_status": "NEUTRAL",
@@ -676,7 +676,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-03-16",
+      "last_controller_date": "2026-03-17",
       "review_priority": "MEDIUM",
       "half_life_status": "ARCHIVE_CANDIDATE",
       "contribution_status": "NEUTRAL",
@@ -727,7 +727,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-03-16",
+      "last_controller_date": "2026-03-17",
       "review_priority": "MEDIUM",
       "half_life_status": "ARCHIVE_CANDIDATE",
       "contribution_status": "NEUTRAL",
@@ -1501,7 +1501,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-03-16",
+      "last_controller_date": "2026-03-17",
       "review_priority": "MEDIUM",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
@@ -1547,7 +1547,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-03-16",
+      "last_controller_date": "2026-03-17",
       "review_priority": "MEDIUM",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
@@ -1667,9 +1667,9 @@
       "last_review_date": "2026-03-15",
       "controller_state": "PROBATION",
       "controller_action": "REDUCED_ON",
-      "activation_score": 0.665,
+      "activation_score": 0.58,
       "controller_reason_codes": [
-        "REGIME_MATCH_MODERATE",
+        "REGIME_MATCH_LOW",
         "HALF_LIFE_STRENGTHENING",
         "PORTFOLIO_ADDS_VALUE",
         "REDUNDANT_CLUSTER",
@@ -1680,11 +1680,11 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-03-16",
+      "last_controller_date": "2026-03-17",
       "review_priority": "LOW",
       "prior_state": "PROBATION",
       "half_life_status": "HEALTHY",
-      "contribution_status": "ADDS VALUE",
+      "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
       "genome_cluster": "volatility_expansion",
       "resurrection_flag": false,
@@ -1911,7 +1911,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-03-16",
+      "last_controller_date": "2026-03-17",
       "review_priority": "MEDIUM",
       "prior_state": "PROBATION",
       "half_life_status": "ERROR",
@@ -2038,7 +2038,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-03-16",
+      "last_controller_date": "2026-03-17",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -2155,7 +2155,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-03-16",
+      "last_controller_date": "2026-03-17",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -2228,7 +2228,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-03-16",
+      "last_controller_date": "2026-03-17",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -2508,9 +2508,16 @@
         "fomc",
         "zero_momentum_correlation"
       ],
-      "state_history": [],
-      "controller_state": "PROBATION",
-      "controller_action": "PROBATION",
+      "state_history": [
+        {
+          "date": "2026-03-17",
+          "from": "PROBATION",
+          "to": "ACTIVE",
+          "trigger": "Recovery: score=0.68, HL=HEALTHY"
+        }
+      ],
+      "controller_state": "ACTIVE",
+      "controller_action": "REDUCED_ON",
       "validation_score": 7.0,
       "profit_factor": 1.73,
       "deployment_restrictions": {
@@ -2536,7 +2543,28 @@
         "grinding_filter": false,
         "exit_variant": null,
         "priority": 2
-      }
+      },
+      "prior_state": "PROBATION",
+      "activation_score": 0.675,
+      "controller_reason_codes": [
+        "REGIME_MATCH_LOW",
+        "HALF_LIFE_STRENGTHENING",
+        "PORTFOLIO_NEUTRAL",
+        "LOW_REDUNDANCY",
+        "HEALTH_FAIL",
+        "KILL_NONE",
+        "SESSION_DRIFT_NORMAL",
+        "TIME_WINDOW_MATCH",
+        "ASSET_FIT_GOOD",
+        "RECENT_STABLE"
+      ],
+      "last_controller_date": "2026-03-17",
+      "half_life_status": "HEALTHY",
+      "contribution_status": "NEUTRAL",
+      "health_status": "FAIL",
+      "genome_cluster": "unknown",
+      "resurrection_flag": false,
+      "state_entered_date": "2026-03-17"
     },
     {
       "strategy_id": "Treasury-CPI-Day-Long",
@@ -2786,7 +2814,7 @@
       "status": "probation",
       "notes": "CONDITIONAL_PASS (7/9). Second EVENT strategy. First successful salvage. PF 1.66, Sharpe 3.25, 65 trades, WR 42%. Long-only (short side PF 0.38 removed via salvage). NFP-specific: 27x avg PnL vs generic equity long. Momentum corr 0.065 (independent). Walk-forward: H1=1.50, H2=1.61. Top-trade robust: PF 1.54/1.44/1.33. MES cross-validates PF 1.48. WATCH ITEMS: T3 weakening (PF 1.09), MaxDD ,431 (multi-day hold structural), Bootstrap CI 0.93 (below 1.0). Restrictions: MNQ primary, long only, MICRO tier, review after 8+ forward trades.",
       "last_review_date": "2026-03-17",
-      "review_priority": "HIGH",
+      "review_priority": "MEDIUM",
       "lifecycle_stage": "forward_validation",
       "source_category": "tradingview",
       "tags": [
@@ -2831,7 +2859,27 @@
         "T3 walk-forward weakening (PF 1.09 vs T1=2.61, T2=2.19)",
         "Multi-day hold MaxDD ,431 (structural for hold period)",
         "Bootstrap CI 0.93 (below 1.0, needs more trades to tighten)"
-      ]
+      ],
+      "prior_state": "PROBATION",
+      "activation_score": 0.42,
+      "controller_reason_codes": [
+        "REGIME_MATCH_LOW",
+        "HALF_LIFE_DEAD",
+        "PORTFOLIO_NEUTRAL",
+        "LOW_REDUNDANCY",
+        "HEALTH_FAIL",
+        "KILL_NONE",
+        "SESSION_DRIFT_NORMAL",
+        "TIME_WINDOW_MATCH",
+        "ASSET_FIT_GOOD",
+        "RECENT_STABLE"
+      ],
+      "last_controller_date": "2026-03-17",
+      "half_life_status": "ARCHIVE_CANDIDATE",
+      "contribution_status": "NEUTRAL",
+      "health_status": "FAIL",
+      "genome_cluster": "unknown",
+      "resurrection_flag": false
     },
     {
       "strategy_id": "TV-OPEX-Vanna-Charm-Windows",
