@@ -584,10 +584,25 @@ def write_eod_audit(claw_status, registry_state, priorities):
     elif forward["pnl"] < -500:
         top_risk = f"Forward PnL is ${forward['pnl']:+,.0f} across {forward['trades']} trades"
 
-    # Opportunity: gap-filling challengers
+    # Opportunity: upgrade sequence
+    # Check if Treasury-Rolldown is still the lead or if fallback is needed
+    upgrade_lead = None
+    upgrade_fallback = None
+    if REGISTRY_PATH.exists():
+        _reg = json.load(open(REGISTRY_PATH))
+        for _s in _reg.get("strategies", []):
+            if _s.get("upgrade_sequence") == 1:
+                upgrade_lead = _s["strategy_id"]
+            if _s.get("upgrade_sequence") == 2:
+                upgrade_fallback = _s["strategy_id"]
+
     high_gaps = [g for g in priorities if g["priority"] == "HIGH"]
     if high_gaps:
-        top_opportunity = f"CARRY + Rates gaps remain open — Treasury-Rolldown (eff. 20) is lead challenger"
+        top_opportunity = (
+            f"Upgrade sequence: #1 {upgrade_lead or 'Treasury-Rolldown'} (CARRY+Rates), "
+            f"#2 {upgrade_fallback or 'VolManaged-Equity'} (VOL), "
+            f"#3 Commodity-Carry v2"
+        )
 
     # Decisions needed
     decisions = []

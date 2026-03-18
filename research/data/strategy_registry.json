@@ -3362,8 +3362,8 @@
       "source": "Quantpedia \u2014 Term Structure Effect in Commodities",
       "rule_summary": "Rank commodity futures by curve slope / roll yield. Long backwardated contracts, short contangoed ones. Cross-sectional carry across energy and metals sectors with sector balancing.",
       "status": "testing",
-      "notes": "Spec approved. strategy.py written. Carry-proxy test using 60-day trailing return on MCL+MGC. Two variants: filtered (2% spread) and unfiltered. Ready for batch_first_pass. Initial quick test: MGC long PF=10.12 but dominated by 2025 gold rally (+$14.8k from one trade). MCL marginal (PF=1.15). Needs formal first-pass classification.",
-      "last_review_date": "2026-03-17",
+      "notes": "Spec approved. strategy.py written. Carry-proxy test using 60-day trailing return on MCL+MGC. Two variants: filtered (2% spread) and unfiltered. Ready for batch_first_pass. Initial quick test: MGC long PF=10.12 but dominated by 2025 gold rally (+$14.8k from one trade). MCL marginal (PF=1.15). Needs formal first-pass classification. UPGRADE SEQUENCE #3: Later carry expansion after carry lookup validated by Treasury-Rolldown results. Needs v2 front/back data or strong forward proxy evidence.",
+      "last_review_date": "2026-03-18",
       "review_priority": "HIGH",
       "lifecycle_stage": "first_pass",
       "source_category": "academic",
@@ -3375,7 +3375,9 @@
       "harvest_batch": "academic_harvest_batch_2026-03-17",
       "harvest_note": "42_commodity_term_structure_carry_energy_metals.md",
       "batch_priority": 1,
-      "spec_path": "research/specs/Commodity-TermStructure-Carry.md"
+      "spec_path": "research/specs/Commodity-TermStructure-Carry.md",
+      "upgrade_sequence": 3,
+      "upgrade_role": "later_carry_expansion"
     },
     {
       "strategy_id": "ManagedFutures-Carry-Diversified",
@@ -3411,8 +3413,8 @@
       "source": "Moreira & Muir (NBER w22208) \u2014 Volatility-Managed Portfolios",
       "rule_summary": "Scale equity-index futures exposure inversely with recent realized volatility. Reduce position when vol is high, increase when vol is low. Leverage-capped. Sharpe improvement from vol timing rather than directional signal.",
       "status": "idea",
-      "notes": "ACCEPTED via academic harvest. Priority #3 in batch. Benchmark-style volatility overlay. Design choice needed: standalone sleeve vs portfolio overlay vs risk-management layer. Fills VOLATILITY gap.",
-      "last_review_date": "2026-03-17",
+      "notes": "ACCEPTED via academic harvest. Priority #3 in batch. Benchmark-style volatility overlay. Design choice needed: standalone sleeve vs portfolio overlay vs risk-management layer. Fills VOLATILITY gap. UPGRADE SEQUENCE #2: Next conversion slot after carry battle settles. Fills VOL gap. Moreira/Muir NBER basis. FALLBACK: becomes lead upgrade path if Treasury-Rolldown weakens materially before June 1.",
+      "last_review_date": "2026-03-18",
       "review_priority": "HIGH",
       "lifecycle_stage": "discovery",
       "source_category": "academic",
@@ -3423,7 +3425,9 @@
       "state_history": [],
       "harvest_batch": "academic_harvest_batch_2026-03-17",
       "harvest_note": "46_equity_index_volatility_managed_futures.md",
-      "batch_priority": 3
+      "batch_priority": 3,
+      "upgrade_sequence": 2,
+      "upgrade_role": "next_conversion_slot"
     },
     {
       "strategy_id": "Commodity-Carry-TailRisk-Overlay",
@@ -3487,7 +3491,7 @@
       "source": "Return Stacked \u2014 Managed Futures Carry: A Practitioner's Guide (Butler & Butler)",
       "rule_summary": "Rank Treasury tenor buckets on estimated carry (yield + rolldown minus financing). Long rich-carry tenors, short poor-carry tenors in duration-balanced futures spreads. Explicit rolldown/carry harvesting, not rates momentum.",
       "status": "testing",
-      "notes": "Spec approved. strategy.py written. First carry_lookup consumer. EQUAL: 79 trades, PF 1.11, WR 48%, PnL $+9.9K. ZF/ZB pair drives 52% of trades and all profit (PF 1.48). DV01: 79 trades, PF 1.10, WR 56%, PnL $+3.1K. More balanced but lower total. Duration exposure check: corr=0.027 with ZN returns \u2014 spread IS rate-neutral. 2022 stress test: EQUAL PF 1.93, DV01 PF 0.61 \u2014 equal notional outperformed during rate shock. Key concern: 2025-2026 performance is negative for both variants. May be regime-sensitive.",
+      "notes": "Spec approved. strategy.py written. First carry_lookup consumer. EQUAL: 79 trades, PF 1.11, WR 48%, PnL $+9.9K. ZF/ZB pair drives 52% of trades and all profit (PF 1.48). DV01: 79 trades, PF 1.10, WR 56%, PnL $+3.1K. More balanced but lower total. Duration exposure check: corr=0.027 with ZN returns \u2014 spread IS rate-neutral. 2022 stress test: EQUAL PF 1.93, DV01 PF 0.61 \u2014 equal notional outperformed during rate shock. Key concern: 2025-2026 performance is negative for both variants. May be regime-sensitive. UPGRADE SEQUENCE #1: Lead active challenger. Target: displace MomIgn-M2K at June 1 deadline. Needs forward evidence from forward runner.",
       "last_review_date": "2026-03-18",
       "review_priority": "MEDIUM",
       "lifecycle_stage": "first_pass",
@@ -3500,7 +3504,9 @@
       "harvest_batch": "academic_harvest_batch_2026-03-17",
       "harvest_note": "45_treasury_rolldown_carry_spread.md",
       "batch_priority": 5,
-      "spec_path": "research/specs/Treasury-Rolldown-Carry-Spread.md"
+      "spec_path": "research/specs/Treasury-Rolldown-Carry-Spread.md",
+      "upgrade_sequence": 1,
+      "upgrade_role": "lead_active_challenger"
     },
     {
       "strategy_id": "CrudeOil-OPEC-Announcement-Regime",
