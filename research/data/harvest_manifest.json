@@ -129,13 +129,90 @@
       "status": "rejected",
       "review_date": "2026-03-17",
       "review_notes": "REJECTED: London session breakout already well-covered by FXBreak-6J (probation). Generic version adds no new factor diversification."
+    },
+    {
+      "filename": "42_commodity_term_structure_carry_energy_metals.md",
+      "title": "Commodity Term-Structure Carry in Energy and Metals",
+      "lane": "academic_review",
+      "content_hash": "4c71a64233ee",
+      "status": "logged",
+      "scanned_date": "2026-03-17T20:17:21.748861",
+      "logged_date": "2026-03-17T20:17:21.749034",
+      "registry_id": "Commodity-TermStructure-Carry-EnergyMetals",
+      "targeting_gap": "CARRY/VOLATILITY/EVENT factor gaps"
+    },
+    {
+      "filename": "41_managed_futures_carry_diversified.md",
+      "title": "Diversified Managed Futures Carry Basket",
+      "lane": "academic_review",
+      "content_hash": "0b99fd77959f",
+      "status": "logged",
+      "scanned_date": "2026-03-17T20:17:21.749211",
+      "logged_date": "2026-03-17T20:17:21.749213",
+      "registry_id": "ManagedFutures-Carry-Diversified",
+      "targeting_gap": "CARRY/VOLATILITY/EVENT factor gaps"
+    },
+    {
+      "filename": "46_equity_index_volatility_managed_futures.md",
+      "title": "Volatility-Managed Equity Index Futures",
+      "lane": "academic_review",
+      "content_hash": "20d73b119757",
+      "status": "logged",
+      "scanned_date": "2026-03-17T20:17:21.749315",
+      "logged_date": "2026-03-17T20:17:21.749316",
+      "registry_id": "VolManaged-EquityIndex-Futures",
+      "targeting_gap": "CARRY/VOLATILITY/EVENT factor gaps"
+    },
+    {
+      "filename": "43_commodity_carry_tail_risk_overlay.md",
+      "title": "Commodity Carry with Tail-Risk / Stress Overlay",
+      "lane": "academic_review",
+      "content_hash": "1acaed68998d",
+      "status": "logged",
+      "scanned_date": "2026-03-17T20:17:21.749415",
+      "logged_date": "2026-03-17T20:17:21.749416",
+      "registry_id": "Commodity-Carry-TailRisk-Overlay",
+      "targeting_gap": "CARRY/VOLATILITY/EVENT factor gaps"
+    },
+    {
+      "filename": "44_treasury_cash_futures_basis_net_of_carry.md",
+      "title": "Treasury Cash-Futures Basis Net-of-Carry",
+      "lane": "academic_review",
+      "content_hash": "c9a97dfba678",
+      "status": "logged",
+      "scanned_date": "2026-03-17T20:17:21.749504",
+      "logged_date": "2026-03-17T20:17:21.749505",
+      "registry_id": "Treasury-CashFutures-Basis-NetOfCarry",
+      "targeting_gap": "CARRY/VOLATILITY/EVENT factor gaps"
+    },
+    {
+      "filename": "45_treasury_rolldown_carry_spread.md",
+      "title": "Treasury Rolldown Carry Spread Sleeve",
+      "lane": "academic_review",
+      "content_hash": "f67f2271cb55",
+      "status": "logged",
+      "scanned_date": "2026-03-17T20:17:21.749590",
+      "logged_date": "2026-03-17T20:17:21.749591",
+      "registry_id": "Treasury-Rolldown-Carry-Spread",
+      "targeting_gap": "CARRY/VOLATILITY/EVENT factor gaps"
+    },
+    {
+      "filename": "47_crude_oil_opec_announcement_regime.md",
+      "title": "Crude Oil OPEC Announcement Regime Trade",
+      "lane": "academic_review",
+      "content_hash": "76e632bd0ce8",
+      "status": "logged",
+      "scanned_date": "2026-03-17T20:17:21.749680",
+      "logged_date": "2026-03-17T20:17:21.749681",
+      "registry_id": "CrudeOil-OPEC-Announcement-Regime",
+      "targeting_gap": "CARRY/VOLATILITY/EVENT factor gaps"
     }
   ],
-  "last_scan": "2026-03-17T06:14:09.340890",
+  "last_scan": "2026-03-17T20:17:21.749683",
   "stats": {
-    "total": 10,
+    "total": 17,
     "staged": 10,
-    "logged": 20,
+    "logged": 27,
     "rejected": 3
   }
 }
