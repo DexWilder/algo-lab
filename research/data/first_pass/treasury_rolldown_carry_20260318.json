@@ -1,0 +1,18 @@
+{
+  "strategy": "treasury_rolldown_carry",
+  "strategy_id": "Treasury-Rolldown-Carry-Spread",
+  "report_date": "2026-03-18",
+  "data_source": "backtest",
+  "variants_tested": ["equal_notional", "dv01_normalized"],
+  "best_result": {
+    "variant": "equal_notional",
+    "asset": "ZN/ZF/ZB spread",
+    "pf": 1.11,
+    "trades": 79,
+    "sharpe_ann": 0.14,
+    "max_dd": 24062
+  },
+  "overall_classification": "MONITOR",
+  "classification_reasoning": "PF 1.11 is below ADVANCE threshold (1.2). Walk-forward is split: H1 PF 1.58 (strong) but H2 PF 0.69 (failing). 2025-2026 performance is negative. However, the strategy fills the two biggest portfolio gaps (CARRY + Rates) and the rate-neutrality is confirmed (corr 0.027). Classification is MONITOR rather than REJECT because the mechanism is sound, the gap value is extreme, and the APPROXIMATE signal quality may improve with better data.",
+  "notes": "Formal first-pass. Not ADVANCE due to WF instability and recent weakness. Not REJECT because mechanism is real and gap value is highest in portfolio. MONITOR with gap-value override potential."
+}
