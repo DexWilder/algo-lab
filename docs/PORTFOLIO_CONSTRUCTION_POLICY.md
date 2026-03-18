@@ -1,40 +1,56 @@
 # FQL Portfolio Construction Policy
 
-*How validated strategies fit together at the portfolio level.*
+*Layered framework: universal principles + deployment overlays.*
 *Effective: 2026-03-18*
 
 ---
 
-## Mission Alignment
+## Architecture
 
-FQL is a prop-first portfolio. The goal is compounding real capital on
-futures with uncorrelated, mechanically-defined edges. Portfolio
-construction serves this by maximizing the number of independent bets
-while controlling concentration risk. Every rule below exists to prevent
-the portfolio from silently collapsing into a single bet disguised as
-many strategies.
+This policy is structured in three layers:
+
+1. **Layer A — Universal Base:** Research and construction principles that
+   hold regardless of deployment context. These are permanent.
+2. **Layer B — Prop-First Overlay:** Rules specific to the current
+   prop-account deployment. These are the active operating constraints.
+3. **Layer C — Cash-Account Overlay (Placeholder):** Future rules for
+   cash-account or multi-account deployment. Not active — reserved for
+   when the capital base and opportunity set justify it.
+
+Layer A is the constitution. Layers B and C are deployment configurations
+that sit on top of it. When FQL transitions to cash-account deployment,
+Layer B stays in place for the prop book and Layer C activates alongside
+it. Nothing in Layer A changes.
 
 ---
 
-## 1. Factor Concentration Limits
+# LAYER A — UNIVERSAL BASE
+
+*These principles persist across all deployment contexts.*
+
+---
+
+## A1. Core Construction Principle
+
+The goal is to maximize the number of genuinely independent bets while
+controlling concentration risk. Every rule exists to prevent the portfolio
+from silently collapsing into a single bet disguised as many strategies.
+
+This applies whether the portfolio runs $50K on a prop account or $5M
+across managed accounts.
+
+---
+
+## A2. Factor Diversification
+
+### Rules (Universal)
 
 | Rule | Threshold | Action |
 |------|-----------|--------|
-| Single factor > 40% of weighted active exposure | **HARD CAP** | No new strategies in that factor until another factor grows |
-| Single factor > 50% (current MOMENTUM state) | **REDUCE** | Actively seek alternatives; apply high-bar rule to new entrants |
+| Single factor > 40% of weighted active exposure | **SOFT CAP** | No new strategies in that factor until another factor grows |
+| Single factor > 50% of weighted active exposure | **HARD CAP** | Actively reduce; high-bar rule on new entrants |
 | Factor with 0 active or probation strategies | **GAP** | Prioritize in harvest targeting |
 | Factor with 5+ active strategies | **OVERCROWDED** | No new entrants unless clearly superior to weakest existing |
-
-### Current Factor State (2026-03-18)
-
-| Factor | Core | Probation | Total Active | % of Active | Status |
-|--------|------|-----------|-------------|-------------|--------|
-| MOMENTUM | 5 | 6 | 11 | ~61% | **OVER HARD CAP — high-bar only** |
-| MEAN_REVERSION | 1 | 2 | 3 | ~17% | Adequate |
-| VOLATILITY | 0 | 3 | 3 | ~17% | Adequate but no core |
-| EVENT | 0 | 2 | 2 | ~11% | Growing, needs core promotion |
-| CARRY | 0 | 0 | 0 | 0% | **GAP — highest harvest priority** |
-| STRUCTURAL | 0 | 1 | 1 | ~6% | **THIN — harvest priority** |
 
 ### Factor Weighting Method
 
@@ -43,276 +59,372 @@ many strategies.
 - A strategy with primary=MOMENTUM, secondary=CARRY contributes 1.0 to
   MOMENTUM and 0.5 to CARRY
 
-### Momentum High-Bar Rule
+### Six Factors
 
-New momentum strategies are accepted ONLY if they meet at least one of:
-- Operate on a horizon not covered by existing momentum
-- Target an asset class with no momentum coverage
-- Show superior evidence over existing momentum sleeves
-- Use a fundamentally different entry mechanism
-- Fill a specific session/time gap (afternoon, close, overnight)
+| Factor | What It Captures |
+|--------|------------------|
+| MOMENTUM | Directional continuation, trend, breakout, pullback-with-trend |
+| MEAN_REVERSION | Fade extremes, VWAP fade, RSI bounce, range reversion |
+| VOLATILITY | Vol expansion/compression, squeeze, NR7, ATR-based |
+| CARRY | Macro/yield directional bias, roll yield, term structure |
+| EVENT | Calendar or news driven (FOMC, NFP, CPI, OPEC, auctions) |
+| STRUCTURAL | Session microstructure, time-of-day, handoff, closing auction |
 
 ---
 
-## 2. Asset Concentration Limits
+## A3. Asset Diversification
+
+### Rules (Universal)
 
 | Rule | Threshold | Action |
 |------|-----------|--------|
-| Single asset ≥ 5 active strategies | **HARD CAP** | No new strategies on that asset |
-| Single asset = 4 active strategies | **HIGH** | New entrants must be in a different session or factor |
+| Single asset ≥ hard cap (deployment-specific) | **HARD CAP** | No new strategies on that asset |
 | Single asset class ≥ 50% of active strategies | **REBALANCE** | Prioritize other asset classes |
 | Asset with 0 active strategies | **GAP** | Flag in harvest targeting |
 
-### Current Asset State
+### Asset Classes
 
-| Asset | Active Strategies | Cap Status |
-|-------|-------------------|------------|
-| MNQ | 4 (+ 1 event) | **HIGH** — next entrant needs different session/factor |
-| MGC | 4 | **HIGH** — same constraint |
-| M2K | 4 | **HIGH** — same constraint |
-| MES | 1 | Room for 3 more |
-| 6J | 2 | Room for 2 more |
-| MCL | 2 | Room for 2 more |
-| 6E | 1 (testing) | Room |
-| Rates (ZN/ZF/ZB) | 0 | **GAP** |
-| 6B | 0 | **GAP** |
-
-### Asset Class Distribution Target
-
-| Asset Class | Target Range | Current | Status |
-|-------------|-------------|---------|--------|
-| Equity Index (MES/MNQ/M2K) | 30-50% | ~55% | Slightly over |
-| Metal (MGC) | 15-25% | ~22% | On target |
-| Energy (MCL) | 10-20% | ~11% | On target |
-| FX (6J/6E/6B) | 10-25% | ~11% | Room to grow |
-| Rates (ZN/ZF/ZB) | 5-15% | 0% | **GAP** |
+| Class | Instruments |
+|-------|-------------|
+| Equity Index | MES, MNQ, M2K, MYM |
+| Metal | MGC, SI, HG |
+| Energy | MCL, NG |
+| FX | 6E, 6J, 6B |
+| Rates | ZN, ZF, ZB |
+| Agriculture | ZS, ZC, ZW (future) |
 
 ---
 
-## 3. Session and Time-of-Day Concentration Limits
+## A4. Session and Time-of-Day Diversification
+
+### Rules (Universal)
 
 | Rule | Threshold | Action |
 |------|-----------|--------|
-| Single session ≥ 6 active strategies | **HARD CAP** | No new strategies in that session |
-| Morning session (09:30-11:30 ET) ≥ 50% of active | **REBALANCE** | Prioritize afternoon/close/overnight |
+| Single session ≥ hard cap (deployment-specific) | **HARD CAP** | No new strategies in that session |
+| Any session ≥ 50% of active strategies | **REBALANCE** | Prioritize underrepresented sessions |
 | Session with 0 active strategies | **GAP** | Flag in harvest targeting |
-| 3+ strategies generating signals in the same 30-min window | **CROWDED** | Review for correlation; consider staggering |
-
-### Current Session State
-
-| Session | Active Strategies | Status |
-|---------|-------------------|--------|
-| Morning (09:30-11:30 ET) | ~8 | **AT CAP — no new morning strategies** |
-| Midday (11:30-14:00 ET) | 1 | Room |
-| Afternoon (14:00-15:30 ET) | 0 | **GAP** |
-| Close (15:30-16:00 ET) | 1 | Room |
-| All-day | 5 | Acceptable (distributed across hours) |
-| London (03:00-08:00 ET) | 1 | Room |
-| Tokyo | 0 | **GAP** |
-| Overnight | 1 (event only) | Room |
-| Daily close (rebalance) | 1 | Room |
-| Event windows | 2 | Room |
+| 3+ strategies signaling in same 30-min window on same asset | **CROWDED** | Correlation check; stagger or remove weakest |
 
 ### Time Overlap Rule
 
 When 3+ strategies trade the same asset in the same 30-minute window,
 run a correlation check on their daily PnL. If correlation > 0.35,
-they are effectively one bet. Either:
-- Remove the weakest (lowest standalone Sharpe)
-- Stagger entry times if the mechanisms are genuinely independent
-- Accept the overlap if factor diversity justifies it (e.g., one is
-  momentum, another is mean-reversion)
+they are effectively one bet. Either remove the weakest, stagger entry
+times, or accept the overlap only if factor diversity justifies it.
 
 ---
 
-## 4. Portfolio Role Labels
+## A5. Portfolio Role Taxonomy
 
-Every active strategy should be tagged with its portfolio role. This
-determines how it contributes to the whole and what happens when the
-portfolio needs rebalancing.
+Every active strategy gets a role label. Roles determine sizing behavior,
+replacement rules, and how the strategy contributes to the whole.
 
-| Role | Description | Expected Behavior | Sizing |
-|------|-------------|-------------------|--------|
-| **Workhorse** | High trade count, moderate PF, consistent returns. Backbone of the portfolio. | 100+ trades/year, PF 1.15-1.4, low variance | BASE or BOOST |
-| **Tail Engine** | Low frequency, high payoff per trade. Captures rare large moves. | 10-30 trades/year, PF > 1.5, high per-trade variance | MICRO or REDUCED |
-| **Stabilizer** | Low correlation to portfolio, smooths equity curve. May have modest PF. | Correlation < 0.15 to portfolio, PF > 1.1 | REDUCED or BASE |
-| **Event Sleeve** | Calendar-driven, trades only around specific events. | 5-15 trades/year, PF > 1.2, zero overlap with non-event strategies | MICRO |
-| **Diversifier** | Operates in an underrepresented factor, asset, or session. Valued for what it ISN'T as much as what it earns. | Fills a stated gap (factor, asset, session) | MICRO to REDUCED |
-| **Gap Filler** | Temporary or experimental. Fills a known portfolio gap while a better candidate is developed. | May have lower bar for PF (> 1.1) if gap is critical | MICRO only |
+| Role | Description | Expected Behavior |
+|------|-------------|-------------------|
+| **Workhorse** | High trade count, moderate PF, consistent. Backbone. | 100+ trades/year, PF 1.15-1.4, low variance |
+| **Tail Engine** | Low frequency, high payoff. Captures rare large moves. | 10-30 trades/year, PF > 1.5, high per-trade variance |
+| **Stabilizer** | Low correlation, smooths equity curve. Modest PF OK. | Correlation < 0.15 to portfolio, PF > 1.1 |
+| **Event Sleeve** | Calendar-driven, trades only around specific events. | 5-15 trades/year, PF > 1.2, zero non-event overlap |
+| **Diversifier** | Fills an underrepresented factor, asset, or session. | Valued for what it ISN'T as much as what it earns |
+| **Gap Filler** | Temporary. Holds a gap while a proper candidate develops. | Lower PF bar (> 1.1) if gap is critical. MICRO only. |
 
-### Current Role Assignments
+### Role-Based Replacement Rules (Universal)
 
-| Strategy | Role | Justification |
-|----------|------|---------------|
-| VWAP-MNQ-Long | Workhorse | Highest trade count (163/6yr), backbone |
-| XB-PB-EMA-MES-Short | Workhorse | FULL_ON action, consistent contributor |
-| BB-EQ-MGC-Long | Tail Engine | 3x efficiency (5.6% trades → 16.6% PnL), low frequency |
-| NoiseBoundary-MNQ-Long | Workhorse | 609 trades, perfect WF, steady |
-| DailyTrend-MGC-Long | Diversifier | Only daily-horizon strategy, PF 3.65 |
-| MomPB-6J-Long-US | Diversifier | FX asset, US session, carry secondary |
-| FXBreak-6J-Short-London | Diversifier | FX asset, London session, short bias |
-| PreFOMC-Drift-Equity | Event Sleeve | 8 FOMC events/year, zero daily overlap |
-| TV-NFP-High-Low-Levels | Event Sleeve | 12 NFP events/year, zero daily overlap |
-| CloseVWAP-M2K-Short | Stabilizer | Close session, mean-reversion, low overlap |
-
-### Role-Based Replacement Rules
-
-- **Workhorses** are never replaced — only added alongside. The portfolio
-  needs multiple independent workhorses.
-- **Tail Engines** can coexist if they target different events or regimes.
-  Replace only if a new one is strictly superior on the same asset/session.
-- **Diversifiers** are valued for their gap-fill. Replace only if a better
-  gap-filler appears in the same dimension AND the old one is underperforming.
-- **Event Sleeves** should not overlap on the same event. One strategy per
-  event type (FOMC, NFP, OPEC, CPI, etc.).
-- **Gap Fillers** are explicitly temporary. Replace when a proper Diversifier
-  or Workhorse is validated for that gap.
+- **Workhorses:** never replaced, only added alongside
+- **Tail Engines:** coexist if different events/regimes; replace only if
+  strictly superior on same asset/session
+- **Diversifiers:** replace only if better gap-filler appears in same
+  dimension AND old one is underperforming
+- **Event Sleeves:** one per event type (FOMC, NFP, OPEC, CPI, etc.)
+- **Gap Fillers:** explicitly temporary; replace when proper candidate validated
 
 ---
 
-## 5. Probation Slot Limits
+## A6. Add vs Replace Decision Framework
 
-| Rule | Limit | Rationale |
-|------|-------|-----------|
-| **Max probation strategies** | **8** | Attention budget — each needs weekly monitoring. More than 8 dilutes review quality. |
-| **Max probation per asset** | **3** | Prevents over-testing on one asset while others are ignored |
-| **Max probation in one factor** | **3** | Prevents loading up on the same factor bet |
-| **Min forward runner capacity** | Must fit in forward runner without degrading performance | Currently running 17 strategies; practical limit ~25 |
-| **Max time in probation** | **16 weeks** | Promote, extend once (to 16w max), or remove. No indefinite probation. |
+### When to ADD alongside
 
-### Current Probation State (2026-03-18)
+- Different factor, session, or asset than existing
+- Correlation < 0.20 with all existing strategies
+- Portfolio has room under concentration limits
 
-- Probation strategies: 5 official + 4 additional = **9 total**
-- This exceeds the 8-slot cap. The additional 4 (MomIgn-M2K, CloseVWAP-M2K,
-  TTMSqueeze-M2K, ORBEnh-M2K) were activated by the controller before the
-  cap was formalized. Going forward, enforce the cap.
+### When to REPLACE
 
-### Opening a New Probation Slot
+- Same factor + same asset + same session as existing AND demonstrably
+  superior (higher forward PF, higher Sharpe, lower DD, better WF stability)
+- Existing strategy has a kill flag or decay flag
+- Existing strategy is a Gap Filler being replaced by a validated candidate
 
-A new strategy enters probation ONLY when:
-1. A slot is available (current count < 8) OR an existing probation
-   strategy is promoted/removed to make room
-2. The candidate fills a factor, asset, or session gap not already
-   covered by other probation strategies
-3. The candidate passed the full validation battery
-4. You explicitly approve the entry
+### When to REJECT
 
-### Priority for Probation Slots
+- Concentration limits breached for the new strategy's factor/asset/session
+- Correlated > 0.35 with a better-performing existing strategy
+- Doesn't fill any gap and portfolio has no room
 
-When multiple candidates compete for a slot:
-1. Fills a factor GAP (CARRY, STRUCTURAL) → highest priority
-2. Fills an asset GAP (rates, 6B) → high priority
-3. Fills a session GAP (afternoon, Tokyo) → high priority
-4. Diversifier role → medium priority
-5. Additional workhorse in a covered area → lowest priority
+### Decision Checklist (Universal)
+
+Before adding or replacing:
+- [ ] Factor concentration stays within limits
+- [ ] Asset concentration stays within limits
+- [ ] Session concentration stays within limits
+- [ ] Correlation with every existing active strategy documented
+- [ ] Portfolio role assigned
+- [ ] Net portfolio Sharpe improves or is neutral with diversification benefit
 
 ---
 
-## 6. Add vs Replace Decision Framework
+## A7. Portfolio-Level Warning Triggers
 
-### When to ADD alongside existing strategies
-
-- New strategy operates in a **different factor** than existing
-- New strategy operates in a **different session** than existing
-- New strategy operates on a **different asset** than existing
-- New strategy has **correlation < 0.20** with all existing strategies
-- Portfolio has room (under concentration limits)
-
-### When to REPLACE an existing strategy
-
-- New strategy operates in the **same factor + same asset + same session**
-  as an existing strategy AND has demonstrably superior metrics:
-  - Higher forward PF (not just backtest PF)
-  - Higher Sharpe ratio
-  - Lower max drawdown
-  - Better walk-forward stability
-- The existing strategy has a kill flag or is flagged for decay
-- The existing strategy is a Gap Filler being replaced by a validated
-  Diversifier or Workhorse
-
-### When to do NEITHER (reject the new entrant)
-
-- Portfolio is at concentration limits for the new strategy's factor/asset/session
-- New strategy is correlated > 0.35 with an existing strategy that performs
-  better
-- New strategy doesn't fill any gap and the portfolio has no room
-- Adding it would push any concentration metric over the hard cap
-
-### Decision Checklist
-
-Before adding or replacing, verify:
-- [ ] Factor concentration stays under 40% for the target factor
-- [ ] Asset concentration stays under 5 strategies for the target asset
-- [ ] Session concentration stays under 6 for the target session
-- [ ] Correlation with every existing active strategy is documented
-- [ ] Portfolio role is assigned
-- [ ] Net portfolio Sharpe improves (or is neutral with diversification benefit)
-
----
-
-## 7. Portfolio-Level Warning Triggers
-
-These trigger a review even if every individual strategy looks acceptable.
+These trigger a review even if individual strategies look acceptable.
 
 ### Concentration Warnings
 
-| Warning | Trigger | Review Action |
-|---------|---------|---------------|
-| **Factor tilt** | Any factor > 40% weighted exposure | Pause new entrants in that factor; prioritize harvest in gap factors |
-| **Asset crowding** | Any asset ≥ 5 strategies | Reject new entrants on that asset unless they replace a weaker one |
-| **Session pile-up** | Morning session ≥ 50% of active | Pause morning strategy development; target afternoon/close/overnight |
-| **Direction imbalance** | Long:Short ratio > 3:1 or < 1:3 | Flag; consider adding directional counterweight |
+| Warning | Trigger | Action |
+|---------|---------|--------|
+| Factor tilt | Any factor > 40% | Pause new entrants; prioritize gap factors |
+| Asset crowding | Any asset at hard cap | Reject new entrants unless replacing weaker |
+| Session pile-up | Any session ≥ 50% of active | Target underrepresented sessions |
+| Direction imbalance | Long:Short > 3:1 or < 1:3 | Add directional counterweight |
 
 ### Correlation Warnings
 
-| Warning | Trigger | Review Action |
-|---------|---------|---------------|
-| **Pairwise redundancy** | Two strategies corr > 0.35, same asset/direction/family | Flag weaker one for potential removal |
-| **Portfolio correlation spike** | Average pairwise correlation across all active > 0.20 | Review for hidden factor exposure; check regime sensitivity |
-| **Simultaneous drawdown** | 3+ strategies losing on the same day, 3+ times in a month | Run correlation analysis; may be disguised single bet |
+| Warning | Trigger | Action |
+|---------|---------|--------|
+| Pairwise redundancy | Two strategies corr > 0.35, same asset/direction/family | Flag weaker for removal |
+| Portfolio correlation spike | Average pairwise corr > 0.20 | Check hidden factor exposure |
+| Simultaneous drawdown | 3+ strategies losing same day, 3+ times/month | Correlation analysis |
 
 ### Performance Warnings
 
-| Warning | Trigger | Review Action |
-|---------|---------|---------------|
-| **Portfolio Sharpe decay** | Rolling 60-day Sharpe < 0.5 (annualized) | Review regime fit; check if multiple strategies are decaying |
-| **Drawdown breach** | Portfolio DD > 2x historical max DD | Emergency review — check kill criteria across all strategies |
-| **Win rate collapse** | Portfolio win rate drops below 35% over 30+ trades | Review whether edge is structural or was regime-dependent |
-| **Dead capital** | 3+ strategies at MICRO tier with 0 trades in 4+ weeks | Review signal generation; consider removing to free slots |
+| Warning | Trigger | Action |
+|---------|---------|--------|
+| Portfolio Sharpe decay | Rolling 60-day Sharpe < 0.5 | Review regime fit |
+| Drawdown breach | DD > 2x historical max | Emergency review |
+| Win rate collapse | WR < 35% over 30+ trades | Review structural vs regime edge |
+| Dead capital | 3+ strategies at MICRO with 0 trades in 4+ weeks | Remove to free slots |
 
 ### Structural Warnings
 
-| Warning | Trigger | Review Action |
-|---------|---------|---------------|
-| **Regime concentration** | 60%+ of PnL comes from one regime (TRENDING or RANGING) | Portfolio is regime-dependent; prioritize regime-neutral strategies |
-| **Vintage concentration** | All core strategies developed in the same 3-month period | Overfitting risk to the regime that was dominant during development |
-| **Horizon collapse** | 80%+ of strategies on the same bar frequency (e.g., 5-minute) | Single-horizon risk; prioritize daily, swing, or monthly strategies |
-| **Event calendar gap** | Next 30 days have 0 scheduled event trades | Event sleeves are dormant — acceptable but monitor for evidence accumulation pace |
+| Warning | Trigger | Action |
+|---------|---------|--------|
+| Regime concentration | 60%+ PnL from one regime | Prioritize regime-neutral strategies |
+| Vintage concentration | All core from same 3-month dev period | Overfitting risk |
+| Horizon collapse | 80%+ on same bar frequency | Prioritize other horizons |
+| Event calendar gap | 0 event trades in next 30 days | Monitor evidence pace |
 
 ---
 
-## 8. Portfolio Review Cadence
+## A8. Portfolio Review Cadence (Universal)
 
 | Review | Frequency | What It Checks |
 |--------|-----------|----------------|
-| Factor concentration | Weekly (scorecard) | Any factor over 40%? Any GAP factors? |
-| Asset concentration | Weekly (scorecard) | Any asset over cap? |
-| Pairwise correlation | Monthly (contribution report) | Any pair > 0.35? |
-| Portfolio Sharpe | Weekly (scorecard) | Rolling 60-day above 0.5? |
-| Session distribution | Monthly (genome map) | Morning still dominant? Gaps? |
-| Probation slot count | Before any new entry | Under 8? Room for the candidate? |
-| Role balance | Quarterly | Enough workhorses? Enough diversifiers? |
+| Factor concentration | Weekly | Over 40%? GAP factors? |
+| Asset concentration | Weekly | Over cap? |
+| Pairwise correlation | Monthly | Any pair > 0.35? |
+| Portfolio Sharpe | Weekly | Rolling 60-day above 0.5? |
+| Session distribution | Monthly | Dominant session? Gaps? |
+| Role balance | Quarterly | Enough workhorses and diversifiers? |
+| Probation slot count | Before any new entry | Under cap? Room? |
 
 ---
 
-## Appendix: Concentration Limits Summary
+# LAYER B — PROP-FIRST DEPLOYMENT OVERLAY
 
-| Dimension | Soft Limit | Hard Cap | Current State |
-|-----------|-----------|----------|---------------|
-| Factor (single) | 40% | 50% | MOMENTUM 61% — **OVER** |
-| Asset (single) | 4 strategies | 5 strategies | MNQ/MGC/M2K at 4 — **AT LIMIT** |
-| Session (single) | 5 strategies | 6 strategies | Morning at ~8 — **OVER** |
-| Probation slots | 6 | 8 | 9 — **OVER** (legacy, enforce going forward) |
-| Direction ratio | 2:1 | 3:1 | ~2:1 long:short — OK |
-| Horizon (single bar freq) | 70% | 80% | ~80% intraday 5m — **AT LIMIT** |
-| Pairwise correlation | 0.25 (flag) | 0.35 (act) | 1 pair flagged (Donchian/NoiseBoundary) |
+*Active operating constraints for the current prop-account deployment.*
+*These rules sit on top of Layer A and may be tightened or loosened*
+*without changing the universal base.*
+
+---
+
+## B1. Deployment Context
+
+- **Account type:** Single prop account (micro futures)
+- **Starting capital:** $50,000
+- **Contract size:** 1 micro contract per strategy per signal
+- **Margin model:** exchange minimums, no portfolio margin
+- **Execution:** Manual start with automated downstream (forward runner)
+- **Objective:** Compound capital with mechanical edges; prove the system
+  works before scaling
+
+---
+
+## B2. Prop-Specific Concentration Limits
+
+| Dimension | Soft Limit | Hard Cap | Rationale |
+|-----------|-----------|----------|-----------|
+| Asset (single) | 4 strategies | 5 | Micro contracts = low margin, but attention budget is finite |
+| Session (single) | 5 strategies | 6 | Signal overlap risk on small account |
+| Probation slots | 6 | 8 | Each needs weekly monitoring; quality > quantity |
+| Max probation per asset | 3 | — | Prevent over-testing one asset |
+| Max probation per factor | 3 | — | Prevent loading same factor bet |
+| Max time in probation | 16 weeks | — | Promote, extend once, or remove |
+| Direction ratio | 2:1 | 3:1 | Structural long bias acceptable on micros |
+| Horizon (single bar freq) | 70% | 80% | 5-minute dominance is a real risk |
+
+### Prop-Specific Asset Distribution Target
+
+| Asset Class | Target Range |
+|-------------|-------------|
+| Equity Index | 30-50% |
+| Metal | 15-25% |
+| Energy | 10-20% |
+| FX | 10-25% |
+| Rates | 5-15% |
+
+---
+
+## B3. Prop-Specific Tier Sizing
+
+| Tier | Contracts | When Used |
+|------|-----------|-----------|
+| OFF | 0 | Disabled, archived, or kill-flagged |
+| MICRO | 1 | New probation entrants, event sleeves, gap fillers |
+| REDUCED | 1 | Early probation with evidence, newly promoted |
+| BASE | 1 | Proven core strategies with forward evidence |
+| BOOST | 1 | Exceptional forward evidence (PF > 1.5, 100+ trades) |
+| MAX_ALLOWED | 1 | Reserved; requires explicit approval |
+
+On a micro-futures prop account, all tiers execute 1 contract. The tier
+distinction matters for: controller action priority, which strategies
+survive regime-driven cuts, and future position sizing when capital scales.
+
+---
+
+## B4. Prop-Specific Probation Thresholds
+
+| Strategy | Target Trades | Promote PF | Downgrade PF | Remove PF |
+|----------|--------------|------------|--------------|-----------|
+| DailyTrend-MGC-Long | 15 | > 1.2 | < 1.0 | < 0.7 after 20 |
+| MomPB-6J-Long-US | 30 | > 1.2 | < 1.0 | < 0.8 after 40 |
+| FXBreak-6J-Short-London | 50 | > 1.1 | < 0.95 | < 0.85 after 60 |
+| PreFOMC-Drift-Equity | 8 | > 1.2 | < 0.9 | < 0.7 after 12 |
+| TV-NFP-High-Low-Levels | 8 | > 1.1 | < 0.9 | < 0.7 after 12 |
+
+---
+
+## B5. Prop-Specific Role Sizing
+
+| Role | Default Tier | Tier-Up Criteria | Tier-Down Criteria |
+|------|-------------|-----------------|-------------------|
+| Workhorse | BASE | 3 consecutive positive months, PF > 1.3 | 2 consecutive negative months or PF < 1.0 |
+| Tail Engine | REDUCED | Not tier-eligible (low frequency) | Kill flag or PF < 1.0 after 30+ trades |
+| Stabilizer | REDUCED | Contribution confirmed positive for 3 months | Contribution turns dilutive |
+| Event Sleeve | MICRO | Not tier-eligible (too few trades/year) | Forward PF < 0.9 after target trades |
+| Diversifier | MICRO → REDUCED | Passes probation with promote-level PF | Kill flag or forward evidence weakens |
+| Gap Filler | MICRO only | Cannot tier up (temporary by definition) | Replaced by proper candidate |
+
+---
+
+## B6. Current Portfolio State (Prop Overlay Snapshot)
+
+### Factor State
+
+| Factor | Core | Probation | % Active | Status |
+|--------|------|-----------|----------|--------|
+| MOMENTUM | 5 | 6 | ~61% | **OVER HARD CAP** |
+| MEAN_REVERSION | 1 | 2 | ~17% | Adequate |
+| VOLATILITY | 0 | 3 | ~17% | No core yet |
+| EVENT | 0 | 2 | ~11% | Growing |
+| CARRY | 0 | 0 | 0% | **GAP** |
+| STRUCTURAL | 0 | 1 | ~6% | **THIN** |
+
+### Role Assignments
+
+| Strategy | Role |
+|----------|------|
+| VWAP-MNQ-Long | Workhorse |
+| XB-PB-EMA-MES-Short | Workhorse |
+| NoiseBoundary-MNQ-Long | Workhorse |
+| BB-EQ-MGC-Long | Tail Engine |
+| DailyTrend-MGC-Long | Diversifier |
+| MomPB-6J-Long-US | Diversifier |
+| FXBreak-6J-Short-London | Diversifier |
+| PreFOMC-Drift-Equity | Event Sleeve |
+| TV-NFP-High-Low-Levels | Event Sleeve |
+| CloseVWAP-M2K-Short | Stabilizer |
+
+### Concentration Summary
+
+| Dimension | Soft | Hard | Current | Status |
+|-----------|------|------|---------|--------|
+| Factor (MOMENTUM) | 40% | 50% | 61% | **OVER** |
+| Asset (MNQ/MGC/M2K) | 4 | 5 | 4 each | **AT LIMIT** |
+| Session (morning) | 5 | 6 | ~8 | **OVER** |
+| Probation slots | 6 | 8 | 9 | **OVER (legacy)** |
+| Horizon (5m intraday) | 70% | 80% | ~80% | **AT LIMIT** |
+
+---
+
+# LAYER C — CASH-ACCOUNT DEPLOYMENT OVERLAY (PLACEHOLDER)
+
+*Reserved for future deployment to cash or managed accounts.*
+*Not active. Layer A universal rules apply when this activates.*
+
+---
+
+## C1. Design Intent
+
+When FQL's prop-account track record, strategy catalog, and infrastructure
+justify managing external capital, Layer C activates alongside Layer B.
+The prop book continues running under Layer B rules. The cash-account book
+runs under Layer C rules. Both share the same Layer A universal base.
+
+Key differences between prop and cash deployment:
+- **Position sizing:** Multi-contract, volatility-targeted, not fixed 1-lot
+- **Margin model:** Portfolio margin or prime broker margin
+- **Risk budget:** Defined by investor mandate, not personal tolerance
+- **Reporting:** Formal NAV, drawdown tracking, investor-grade reporting
+- **Concentration limits:** Potentially tighter (institutional standards)
+
+---
+
+## C2. Placeholder Parameters (To Be Defined)
+
+These will be set when the cash-account deployment is designed:
+
+| Parameter | Prop (Layer B) | Cash (Layer C) | Notes |
+|-----------|---------------|----------------|-------|
+| Contract sizing | 1 micro | Volatility-targeted | Scale by strategy vol budget |
+| Max portfolio DD | No hard limit (personal) | TBD (e.g., 10-15%) | Investor mandate |
+| Max strategy DD | $5K remove trigger | TBD (% of allocation) | Proportional to AUM |
+| Correlation hard cap | 0.35 | TBD (potentially 0.25) | Tighter for institutional |
+| Factor hard cap | 50% | TBD (potentially 35%) | Institutional diversification |
+| Asset hard cap | 5 strategies | TBD (potentially by notional) | Notional-based, not count-based |
+| Probation slots | 8 | TBD | May run separate probation book |
+| Reporting | Weekly scorecard | TBD (daily NAV, monthly letter) | Investor-grade |
+| Execution | Manual start | TBD (automated or managed) | Depends on scale |
+
+---
+
+## C3. What Carries Over From Layer A
+
+When Layer C activates, the following Layer A rules carry over unchanged:
+- Factor diversification framework (6 factors, weighting method)
+- Asset diversification framework (asset classes, gap targeting)
+- Session diversification framework (time overlap rules)
+- Portfolio role taxonomy (6 roles, replacement rules)
+- Add vs replace decision framework
+- Portfolio-level warning triggers (all 14)
+- Review cadence structure
+
+What changes in Layer C (relative to Layer B):
+- Concentration limits may tighten
+- Sizing moves from fixed-lot to volatility-targeted
+- Drawdown limits become mandate-driven
+- Reporting becomes investor-grade
+- Execution may become fully automated
+
+---
+
+## C4. Transition Criteria (When to Activate Layer C)
+
+Layer C should be designed and activated when:
+- Prop account has 12+ months of forward evidence
+- At least 3 core strategies promoted with forward PF > 1.2
+- Factor coverage spans at least 3 of 6 factors in core
+- Infrastructure supports multi-contract sizing
+- Legal/compliance framework is in place for external capital
+
+These are necessary conditions, not sufficient. The decision to accept
+external capital is strategic and personal — not triggered automatically.
