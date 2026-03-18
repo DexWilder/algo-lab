@@ -67,11 +67,33 @@ targeting:
       note: "Only 3 short-only strategies. Structural long bias."
       priority: LOW
 
-  # Genome map overcrowded areas to AVOID
-  avoid:
-    - "mean_reversion x equity_index"    # 5 tested, all failed
-    - "breakout x morning"               # 13 strategies, saturated
-    - "ict x any"                        # ICT family failed twice
+  # Previously weak/closed families — HIGH BAR ONLY, not absolute ban.
+  # Generic versions are rejected. A candidate is accepted ONLY if it:
+  #   1. States the prior family failure mode explicitly
+  #   2. Describes a new mechanism that addresses that failure mode
+  #   3. Explains why it is not a cosmetic variation of a tested idea
+  # If those are missing, reject or deprioritize.
+  high_bar_families:
+    - family: "mean_reversion x equity_index"
+      failures: 5
+      failure_mode: "structural loss on M2K/MES 5m bars, 25-40% WR"
+      allow_if: "genuinely different mechanism (e.g., vol-gated, daily bars, different asset)"
+    - family: "ict x any"
+      failures: 2
+      failure_mode: "ICT concepts (FVG, sweeps, order blocks) did not produce systematic edge"
+      allow_if: "strictly mechanical with no discretionary interpretation, addresses specific ICT failure"
+    - family: "gap_fade / gap_reversal"
+      failures: 3
+      failure_mode: "gaps on liquid futures hold more than reverse (PF 0.68-0.88)"
+      allow_if: "vol-state conditioning or materially different gap definition"
+    - family: "overnight equity premium"
+      failures: 2
+      failure_mode: "PF 1.03-1.09 unfiltered and filtered — too weak standalone"
+      allow_if: "fundamentally different filtering mechanism or different asset class"
+    - family: "breakout x morning equity"
+      count: 13
+      failure_mode: "saturated, not failed — no more generic variants needed"
+      allow_if: "clearly superior to all 13 existing variants with evidence"
 
   # Momentum acceptance rule (NOT a blanket ban — high bar only)
   # Portfolio is 54% momentum. New momentum ideas must clear a higher bar:
