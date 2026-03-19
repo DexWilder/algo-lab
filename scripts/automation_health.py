@@ -186,28 +186,65 @@ def _next_fire_time(comp):
 # ── Check Functions ──────────────────────────────────────────────────────────
 
 def _check_claw_cron():
-    """Check Claw heartbeat via openclaw cron runs."""
-    try:
-        result = subprocess.run(
-            ["openclaw", "cron", "runs",
-             "--id", "85c3eb78-b228-4106-a71e-ff6011e5ac1d",
-             "--limit", "1"],
-            capture_output=True, text=True, timeout=10,
-        )
-        data = json.loads(result.stdout)
-        entries = data.get("entries", [])
-        if not entries:
-            return None, None, "no runs found"
+    """Check Claw heartbeat via openclaw cron runs.
 
-        last = entries[0]
-        ts_ms = last.get("runAtMs", 0)
-        last_dt = datetime.fromtimestamp(ts_ms / 1000)
-        status = last.get("status", "unknown")
-        age_min = (datetime.now() - last_dt).total_seconds() / 60
-        error = None if status == "ok" else f"status={status}"
-        return last_dt, age_min, error
-    except Exception as e:
-        return None, None, str(e)
+    Retries once on parse failure (gateway may be busy during heartbeat).
+    Falls back to Claw task log freshness if CLI is unavailable.
+    """
+    for attempt in range(2):
+        try:
+            result = subprocess.run(
+                ["openclaw", "cron", "runs",
+                 "--id", "85c3eb78-b228-4106-a71e-ff6011e5ac1d",
+                 "--limit", "1"],
+                capture_output=True, text=True, timeout=30,
+            )
+            if not result.stdout.strip():
+                if attempt == 0:
+                    continue  # Retry once on empty output
+                return None, None, "empty response from openclaw"
+
+            data = json.loads(result.stdout)
+            entries = data.get("entries", [])
+            if not entries:
+                return None, None, "no runs found"
+
+            last = entries[0]
+            ts_ms = last.get("runAtMs", 0)
+            last_dt = datetime.fromtimestamp(ts_ms / 1000)
+            status = last.get("status", "unknown")
+            age_min = (datetime.now() - last_dt).total_seconds() / 60
+            error = None if status == "ok" else f"status={status}"
+            return last_dt, age_min, error
+        except json.JSONDecodeError:
+            if attempt == 0:
+                continue  # Retry once on parse error
+            # Fall back to Claw task log
+            return _check_claw_log_fallback()
+        except subprocess.TimeoutExpired:
+            if attempt == 0:
+                continue
+            return _check_claw_log_fallback()
+        except Exception as e:
+            return None, None, str(e)
+
+    return None, None, "claw cron check failed after retries"
+
+
+def _check_claw_log_fallback():
+    """Fallback: check Claw freshness from task log files instead of CLI."""
+    claw_logs = Path.home() / "openclaw-intake" / "logs"
+    if not claw_logs.exists():
+        return None, None, "no claw logs directory"
+
+    logs = sorted(claw_logs.glob("*.log"))
+    if not logs:
+        return None, None, "no claw task logs"
+
+    latest = logs[-1]
+    mtime = datetime.fromtimestamp(latest.stat().st_mtime)
+    age_min = (datetime.now() - mtime).total_seconds() / 60
+    return mtime, age_min, None
 
 
 def _check_log_glob(pattern):
