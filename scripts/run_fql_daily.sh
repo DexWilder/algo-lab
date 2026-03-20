@@ -81,13 +81,15 @@ if [ "$ERROR_COUNT" -gt 0 ]; then
     FAILED=1
 fi
 
-# ---- Probation + challenger reports (lightweight, non-blocking) ----
+# ---- Report stack (lightweight, non-blocking) ----
 log "--- Generating probation scoreboard ---"
 python3 scripts/probation_scoreboard.py --save >> "$LOG_FILE" 2>&1 || true
 log "--- Generating challenger stack review ---"
 python3 scripts/challenger_stack_review.py --save >> "$LOG_FILE" 2>&1 || true
 log "--- Generating rates challenger review ---"
 python3 scripts/rates_challenger_review.py --save >> "$LOG_FILE" 2>&1 || true
+log "--- Generating operator brief ---"
+python3 scripts/operator_brief.py --save >> "$LOG_FILE" 2>&1 || true
 
 # Clean old per-run logs (keep 30 days)
 find "$LOG_DIR" -name "daily_run_*.log" -mtime +30 -delete 2>/dev/null || true
