@@ -140,6 +140,33 @@ Every rejected strategy is stored with metadata: source, family, validation resu
 ### Automation Over Manual Intervention
 Daily pipeline runs automatically via launchd. Manual intervention is the fallback, not the routine.
 
+### Infrastructure Resilience
+
+*Added 2026-03-20 after post-reboot dead zone incident.*
+
+All critical services must satisfy three requirements:
+
+1. **Health verification, not just auto-start.** `RunAtLoad` and
+   `KeepAlive` are necessary but not sufficient. A service that starts
+   but fails silently is worse than one that stays down — it looks
+   healthy but isn't. Every critical service needs an active health
+   check (process exists AND produces expected output).
+
+2. **Catch-up behavior after downtime.** Scheduled jobs (daily research,
+   twice-weekly batch, weekly scorecard) missed during sleep or reboot
+   must be detected and re-fired. A missed job is not "skipped until
+   tomorrow" — it's a gap in the evidence record.
+
+3. **Visible recovery surface.** All recovery actions must be logged to
+   a persistent audit trail and summarized in a status report readable
+   at a glance. Self-healing that's invisible is indistinguishable from
+   silent failure. The operator must be able to answer "is the system
+   healthy?" in under 5 seconds.
+
+Implementation: `scripts/fql_watchdog.sh` (5-minute health monitor),
+`scripts/fql_recovery_status.sh` (compact status surface),
+`docs/SELF_HEALING_RECOVERY.md` (full specification).
+
 ### Monitor, Don't Micromanage
 The daily routine is checking results, not running the pipeline. Drift monitor, health check, and controller reports surface problems automatically.
 

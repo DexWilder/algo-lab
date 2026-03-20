@@ -3674,7 +3674,7 @@
       "source": "tradingview_scan",
       "rule_summary": "Trade overnight direction at 09:45 ET when overnight range z-score > 1.5 AND opening volume ratio > 1.2. Exit 11:00 ET or 1.5x ATR stop.",
       "status": "rejected",
-      "notes": "REJECTED 2026-03-20. Decomposition test FAILED. All 4 variants have PF < 1.0. Unconditional baseline: MES PF 0.96 (1109 trades), MNQ PF 0.93. Combined filter: MES PF 0.69 (105 trades), MNQ PF 0.68 (92 trades). The z-score + volume filter makes results WORSE, not better (PF delta -0.27). Walk-forward fails on both halves. Overnight continuation signal has no edge on equity index futures regardless of conditioning. The filter selects for high-vol days where the overnight move reverses rather than continues. Archive \u2014 do not iterate on this mechanism.",
+      "notes": "REJECTED 2026-03-20. Decomposition test FAILED. All 4 variants have PF < 1.0. Unconditional baseline: MES PF 0.96 (1109 trades), MNQ PF 0.93. Combined filter: MES PF 0.69 (105 trades), MNQ PF 0.68 (92 trades). The z-score + volume filter makes results WORSE, not better (PF delta -0.27). Walk-forward fails on both halves. Overnight continuation signal has no edge on equity index futures regardless of conditioning. The filter selects for high-vol days where the overnight move reverses rather than continues. Archive \u2014 do not iterate on this mechanism. FAMILY CLOSED: volatility_conditioned_open on equity index futures. Overnight continuation reverses on high-vol days, making vol filters counterproductive. Do not reopen for MES/MNQ/M2K.",
       "last_review_date": "2026-03-20",
       "review_priority": "NONE",
       "lifecycle_stage": "rejected",
@@ -3683,7 +3683,8 @@
         "VOLATILITY",
         "REJECTED",
         "filter_does_not_add_value",
-        "overnight_reversal_not_continuation"
+        "overnight_reversal_not_continuation",
+        "closed_family"
       ],
       "state_history": [
         {
