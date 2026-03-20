@@ -177,13 +177,36 @@ def read_registry_state():
             if t in ("CARRY", "VOLATILITY", "EVENT", "STRUCTURAL", "MOMENTUM", "VALUE"):
                 idea_factors[t] += 1
 
+    # Factor mapping from family (for strategies without explicit factor tags)
+    FAMILY_TO_FACTOR = {
+        "pullback": "MOMENTUM", "breakout": "MOMENTUM", "trend": "MOMENTUM",
+        "mean_reversion": "MEAN_REVERSION", "event_driven": "EVENT",
+        "carry": "CARRY", "afternoon_rates_reversion": "STRUCTURAL",
+        "vol_expansion": "VOLATILITY", "structural": "STRUCTURAL",
+        "volatility": "VOLATILITY",
+    }
+
+    def _get_factor(s):
+        for t in s.get("tags", []):
+            if t in ("CARRY", "VOLATILITY", "EVENT", "STRUCTURAL", "MOMENTUM", "VALUE"):
+                return t
+        return FAMILY_TO_FACTOR.get(s.get("family", ""), None)
+
+    # Core factors
+    core = [s for s in strategies if s.get("status") == "core"]
+    core_factors = Counter()
+    for s in core:
+        f = _get_factor(s)
+        if f:
+            core_factors[f] += 1
+
     # Probation factors
     probation = [s for s in strategies if s.get("status") == "probation"]
     probation_factors = Counter()
     for s in probation:
-        for t in s.get("tags", []):
-            if t in ("CARRY", "VOLATILITY", "EVENT", "STRUCTURAL", "MOMENTUM"):
-                probation_factors[t] += 1
+        f = _get_factor(s)
+        if f:
+            probation_factors[f] += 1
 
     # Blocked ideas
     blocked = [s for s in ideas if any("blocked" in t for t in s.get("tags", []))]
@@ -197,6 +220,7 @@ def read_registry_state():
         "total": len(strategies),
         "statuses": dict(statuses),
         "idea_factors": dict(idea_factors),
+        "core_factors": dict(core_factors),
         "probation_factors": dict(probation_factors),
         "blocked_count": len(blocked),
         "blocker_types": dict(blocker_types),
@@ -206,28 +230,59 @@ def read_registry_state():
 # ── 3. Compute Priorities ───────────────────────────────────────────────────
 
 def compute_priorities(registry_state):
-    """Determine current gap priorities from registry state."""
+    """Determine current gap priorities from registry state.
+
+    Priority logic:
+      HIGH  — 0 active AND 0 core (genuine gap, nothing in pipeline)
+      HIGH  — 0 active AND < 3 ideas (gap with thin catalog)
+      MEDIUM — 1 probation only, no core (thin, fragile coverage)
+      MEDIUM — 0 active AND >= 3 ideas (gap but catalog has options)
+      LOW   — 2+ active, or core coverage exists
+      LOW   — MOMENTUM always (portfolio is overcrowded at 55%)
+
+    "Active" counts both core AND probation strategies tagged with
+    the factor. A single probation strategy is MEDIUM, not LOW —
+    probation is not proven coverage.
+    """
     idea_factors = registry_state.get("idea_factors", {})
     prob_factors = registry_state.get("probation_factors", {})
+    core_factors = registry_state.get("core_factors", {})
 
-    # Factor gap scoring: lower coverage = higher priority
     all_factors = ["CARRY", "VOLATILITY", "EVENT", "STRUCTURAL", "MOMENTUM", "VALUE"]
     gaps = []
     for f in all_factors:
-        active = prob_factors.get(f, 0)
+        core = core_factors.get(f, 0)
+        probation = prob_factors.get(f, 0)
+        active = core + probation
         ideas = idea_factors.get(f, 0)
+
         if f == "MOMENTUM":
-            # Momentum is overcrowded — always LOW unless zero coverage
             priority = "LOW"
-        elif active == 0 and ideas < 3:
+        elif core == 0 and probation == 0 and ideas < 3:
             priority = "HIGH"
-        elif active == 0 and ideas >= 3:
-            priority = "MEDIUM"
-        elif active > 0 and ideas < 5:
-            priority = "MEDIUM"
+        elif core == 0 and probation == 0 and ideas >= 3:
+            priority = "HIGH"  # Still a gap even with ideas — nothing in pipeline
+        elif core == 0 and probation <= 1:
+            priority = "MEDIUM"  # Thin: only 1 probation, not proven
+        elif core == 0 and probation >= 2:
+            priority = "LOW"  # Multiple probation = pipeline is working
         else:
             priority = "LOW"
-        gaps.append({"factor": f, "priority": priority, "active": active, "ideas": ideas})
+
+        target = {
+            "CARRY": "Carry strategies across asset classes (rates, commodity, FX)",
+            "VOLATILITY": "Vol strategies on non-equity assets, non-morning sessions",
+            "EVENT": "Event families beyond FOMC/NFP (CPI, OPEC, auctions, rebalance)",
+            "STRUCTURAL": "Afternoon/close session, rates/FX microstructure",
+            "MOMENTUM": "HIGH BAR ONLY — portfolio is 55% momentum",
+            "VALUE": "Any testable value/fundamental strategy on any asset class",
+        }.get(f, "Fill gap")
+
+        gaps.append({
+            "factor": f, "priority": priority,
+            "core": core, "probation": probation,
+            "active": active, "ideas": ideas, "target": target,
+        })
 
     return sorted(gaps, key=lambda g: {"HIGH": 0, "MEDIUM": 1, "LOW": 2}[g["priority"]])
 
@@ -821,15 +876,8 @@ def refresh_priorities(registry_state, priorities):
 |----------|--------|--------|-------|--------|
 """
     for g in priorities:
-        target = {
-            "CARRY": "First testable carry strategy",
-            "VOLATILITY": "Benchmark vol-management sleeve",
-            "EVENT": "More event families beyond FOMC/NFP",
-            "STRUCTURAL": "Afternoon/close session coverage",
-            "MOMENTUM": "HIGH BAR ONLY — portfolio is 54% momentum",
-            "VALUE": "Any testable value/fundamental strategy",
-        }.get(g["factor"], "Fill gap")
-        content += f"| {g['priority']} | {g['factor']} | {g['active']} | {g['ideas']} | {target} |\n"
+        target = g.get("target", "Fill gap")
+        content += f"| {g['priority']} | {g['factor']} | {g.get('core',0)}c+{g.get('probation',0)}p | {g['ideas']} | {target} |\n"
 
     content += f"""
 ## Registry State

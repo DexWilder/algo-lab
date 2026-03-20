@@ -1,10 +1,16 @@
 # FQL Strategic Harvest Configuration
 # Controls automated and semi-automated strategy idea sourcing.
-# ALL lanes are DISABLED by default. Enable one at a time.
+#
+# DESIGN PRINCIPLE: Broad intake first, ruthless filtering later.
+# The harvest layer casts a wide net. The validation layer is strict.
+# Do not over-constrain search — you want elite outliers, which often
+# look strange before validation.
+#
+# Updated: 2026-03-20
 
 # ── Global Settings ──────────────────────────────────────────────────────────
 harvest:
-  enabled: true                     # Master switch ON — tactical lane active
+  enabled: true                     # Master switch ON
   max_ideas_per_run: 5              # Cap on new ideas logged per harvest run
   dedupe_check: true                # Check registry for duplicate/similar ideas before logging
   auto_log_to_registry: false       # If true, auto-add to registry as status=idea. If false, stage only.
@@ -17,124 +23,167 @@ harvest:
 mode: tactical
 
 # ── Gap-Aware Targeting ──────────────────────────────────────────────────────
-# These priorities are derived from the Strategy Genome Map analysis.
-# Updated periodically based on genome classifier output.
+# These priorities are derived from the portfolio gap dashboard + registry.
+# Updated periodically. Must stay synced with portfolio truth.
 targeting:
-  # Genome map gaps to prioritize (highest priority first)
   priority_gaps:
-    - dimension: "horizon"
-      target: "daily"
-      note: "Only 1 active daily-bar strategy. Multi-horizon is thin."
+    # Factor gaps (from portfolio_gap_dashboard.py 2026-03-20)
+    - dimension: "factor"
+      target: "VOLATILITY"
+      note: "0 core, 1 probation (VolManaged). Biggest validated gap."
       priority: HIGH
-
-    - dimension: "asset_class"
-      target: "energy"
-      note: "0 viable energy strategies. MCL decaying."
-      priority: HIGH
-
-    - dimension: "asset_class"
-      target: "rate"
-      note: "0 active rate strategies after 4 failed attempts."
-      priority: MEDIUM
-
-    - dimension: "session"
-      target: "afternoon"
-      note: "Afternoon/close session underrepresented."
-      priority: MEDIUM
-
-    - dimension: "regime_tendency"
-      target: "ranging"
-      note: "Portfolio is trending-dependent. Need ranging-market strategies."
-      priority: MEDIUM
 
     - dimension: "factor"
-      target: "EVENT"
-      note: "0 primary EVENT strategies. Calendar-driven returns are uncorrelated to momentum."
+      target: "VALUE"
+      note: "0 core, 0 probation, 0 ideas in catalog. Blind spot."
       priority: HIGH
 
     - dimension: "factor"
       target: "CARRY"
-      note: "0 primary CARRY strategies. Macro directional bias is only implicit, never explicit."
+      note: "0 core, 1 probation (Treasury-Rolldown). Thin, fragile."
       priority: MEDIUM
 
     - dimension: "factor"
       target: "STRUCTURAL"
-      note: "Only 1 primary STRUCTURAL strategy (FXBreak-6J). Session-transition edges underrepresented."
+      note: "0 core, 1 probation (ZN-Afternoon-Rev). Thin, fragile."
       priority: MEDIUM
 
+    - dimension: "factor"
+      target: "EVENT"
+      note: "0 core, 2 probation (PreFOMC, TV-NFP). Growing but no core yet."
+      priority: MEDIUM
+
+    # Asset gaps
+    - dimension: "asset_class"
+      target: "energy"
+      note: "0 strategies on MCL. Complete blind spot."
+      priority: HIGH
+
+    - dimension: "asset_class"
+      target: "rate"
+      note: "2 probation on ZN. No core yet. Pipeline active."
+      priority: MEDIUM
+
+    # Session gaps
+    - dimension: "session"
+      target: "afternoon"
+      note: "1 probation (ZN-Afternoon-Rev). Zero non-rates afternoon."
+      priority: MEDIUM
+
+    # Horizon gaps
+    - dimension: "horizon"
+      target: "daily"
+      note: "Only 2 daily-bar strategies. Multi-horizon is thin."
+      priority: MEDIUM
+
+    # Direction gap
     - dimension: "direction"
       target: "short"
-      note: "Only 3 short-only strategies. Structural long bias."
+      note: "Long:Short = 2.7:1. Need short-biased or both-direction ideas."
+      priority: MEDIUM
+
+    # Regime gap
+    - dimension: "regime_tendency"
+      target: "ranging"
+      note: "Portfolio is trending-dependent. Need ranging-market strategies."
       priority: LOW
 
-  # Previously weak/closed families — HIGH BAR ONLY, not absolute ban.
-  # Generic versions are rejected. A candidate is accepted ONLY if it:
-  #   1. States the prior family failure mode explicitly
-  #   2. Describes a new mechanism that addresses that failure mode
-  #   3. Explains why it is not a cosmetic variation of a tested idea
-  # If those are missing, reject or deprioritize.
+  # ── Closed Families ──────────────────────────────────────────────────────
+  # HIGH BAR ONLY — not absolute ban. Generic versions are rejected.
+  # Accept ONLY if note explicitly states the prior failure mode and
+  # describes a new mechanism that addresses it.
   high_bar_families:
     - family: "mean_reversion x equity_index"
       failures: 5
       failure_mode: "structural loss on M2K/MES 5m bars, 25-40% WR"
       allow_if: "genuinely different mechanism (e.g., vol-gated, daily bars, different asset)"
+
     - family: "ict x any"
       failures: 2
       failure_mode: "ICT concepts (FVG, sweeps, order blocks) did not produce systematic edge"
       allow_if: "strictly mechanical with no discretionary interpretation, addresses specific ICT failure"
+
     - family: "gap_fade / gap_reversal"
       failures: 3
       failure_mode: "gaps on liquid futures hold more than reverse (PF 0.68-0.88)"
       allow_if: "vol-state conditioning or materially different gap definition"
+
+    - family: "overnight equity continuation"
+      failures: 3
+      failure_mode: "Unconditional PF 0.96. Z-score+vol filter makes it WORSE (PF 0.69). Overnight moves reverse on high-vol days."
+      allow_if: "fundamentally different asset class (not equity index) or reversal-based mechanism"
+      closed_date: "2026-03-20"
+
     - family: "overnight equity premium"
       failures: 2
       failure_mode: "PF 1.03-1.09 unfiltered and filtered — too weak standalone"
       allow_if: "fundamentally different filtering mechanism or different asset class"
+
     - family: "breakout x morning equity"
       count: 13
       failure_mode: "saturated, not failed — no more generic variants needed"
       allow_if: "clearly superior to all 13 existing variants with evidence"
 
-  # Momentum acceptance rule (NOT a blanket ban — high bar only)
-  # Portfolio is 54% momentum. New momentum ideas must clear a higher bar:
+    - family: "cash_close_reversion x rates"
+      failures: 1
+      failure_mode: "Cash close is not special — PF 0.87 at 15:00 vs PF 1.32 at 14:00. Impulse filter degrades performance."
+      allow_if: "different timing window or different asset class"
+      closed_date: "2026-03-20"
+
+  # ── Momentum Policy ────────────────────────────────────────────────────
+  # Portfolio is 55% momentum. New momentum ideas must clear a higher bar.
   momentum_policy: "high_bar"
   momentum_acceptance_criteria:
-    # A momentum idea is accepted ONLY if it meets at least ONE of:
     - "new_horizon: operates on a horizon not yet covered by existing momentum (e.g., swing, weekly)"
     - "new_asset_class: targets an asset class where we have no momentum coverage"
     - "superior_evidence: shows clear evidence of superiority over existing momentum sleeves"
     - "structural_difference: uses a fundamentally different entry mechanism (not just parameter tweak)"
     - "portfolio_role: fills a specific gap like afternoon momentum, close-driven, or macro-trend on uncovered assets"
-    # If none of these are met, deprioritize. Do not auto-reject — flag for manual review.
 
 # ── Source Lanes ─────────────────────────────────────────────────────────────
-# Each lane is independently enable/disable. Only one should be active at a time
-# during initial rollout.
+# Status: ACTIVE = live and producing notes
+#         ENABLED = configured but may not have dedicated automation
+#         DORMANT = planned but not yet implemented
+#         DISABLED = explicitly turned off
 
 source_lanes:
+
+  # ── ACTIVE LANES (producing notes via Claw weekly schedule) ──
+
   openclaw_tactical:
+    status: ACTIVE                   # Mon gap harvest
     enabled: true
-    description: "OpenClaw targeted prompts for factor gaps (EVENT, CARRY, STRUCTURAL)"
+    description: "OpenClaw targeted prompts for factor gaps"
     type: tactical
     intake_path: "~/openclaw-intake/inbox/"
     cadence: "weekly"
     max_per_run: 5
-    targeting_mode: "gap_aware"       # Uses priority_gaps + factor gaps above
+    targeting_mode: "gap_aware"
     factor_targets:
-      - "EVENT"                       # Highest priority factor gap
-      - "CARRY"                       # Second priority
-      - "STRUCTURAL"                  # Third priority (already have 1, want more)
-    notes: "Factor-aware tactical harvesting. Review every note manually before accepting. Reject any momentum variants immediately."
+      - "VALUE"                      # NEW — biggest catalog blind spot
+      - "VOLATILITY"                 # #1 portfolio gap (0 core)
+      - "CARRY"
+      - "EVENT"
+      - "STRUCTURAL"
+    asset_bias:
+      - "energy"                     # 0 strategies
+      - "rates"                      # pipeline active but thin
+      - "commodity"                  # non-MGC options
+    direction_bias: "prefer short-biased or both-direction"
+    notes: "Factor-aware tactical harvesting. VALUE is now the top priority — no ideas exist in catalog."
 
   openclaw_strategic:
+    status: ACTIVE                   # Tue academic + supplemental
     enabled: true
     description: "OpenClaw factor-aware strategic discovery"
     type: strategic
     intake_path: "~/openclaw-intake/inbox/"
     cadence: "weekly"
     max_per_run: 10
-    targeting_mode: "gap_aware"       # Factor-aware, not truly broad
+    targeting_mode: "gap_aware"
     factor_targets:
+      - "VALUE"                      # NEW
+      - "VOLATILITY"                 # NEW — elevated
       - "EVENT"
       - "CARRY"
       - "STRUCTURAL"
@@ -143,9 +192,12 @@ source_lanes:
       - "daily_bar_non_momentum"
       - "energy_native"
       - "rate_native"
-    notes: "Strategic discovery biased toward factor gaps. Manual review required. Reject momentum variants on sight."
+      - "short_biased_any_asset"     # NEW
+      - "commodity_vol"              # NEW — non-equity VOL
+    notes: "Strategic discovery biased toward factor gaps. VALUE and non-equity VOL are new priorities."
 
   tradingview_scan:
+    status: ACTIVE                   # Thu TradingView scan
     enabled: true
     description: "TradingView public script scan — factor-aware, futures-focused"
     type: strategic
@@ -153,10 +205,11 @@ source_lanes:
     max_per_run: 10
     targeting_mode: "gap_aware"
     factor_targets:
+      - "VALUE"                      # NEW
+      - "VOLATILITY"
       - "EVENT"
       - "CARRY"
       - "STRUCTURAL"
-      - "VOLATILITY"
     filters:
       - "futures"
       - "intraday OR daily"
@@ -168,12 +221,17 @@ source_lanes:
       - "mean reversion afternoon futures"
       - "volatility squeeze daily futures"
       - "carry trade futures"
-      - "overnight drift futures"
       - "CPI NFP reaction futures"
       - "closing range futures strategy"
-    notes: "Biweekly manual TradingView search. Use search_terms as starting prompts. Factor-aware review before staging. Reject momentum clones and equity-morning-breakout variants on sight."
+      - "crude oil futures strategy"         # NEW — energy gap
+      - "treasury futures strategy"          # NEW — rates gap
+      - "value investing futures"            # NEW — VALUE gap
+      - "short selling futures systematic"   # NEW — short bias
+      - "commodity vol strategy futures"     # NEW — non-equity VOL
+    notes: "Weekly TradingView search. Broadened to cover VALUE, energy, rates, short-bias, and commodity vol."
 
   academic_review:
+    status: ACTIVE                   # Tue academic scan (via Claw)
     enabled: true
     description: "Academic paper / quant blog review for documented futures edges"
     type: strategic
@@ -181,9 +239,10 @@ source_lanes:
     max_per_run: 8
     targeting_mode: "gap_aware"
     factor_targets:
+      - "VALUE"                      # NEW
+      - "VOLATILITY"
       - "EVENT"
       - "CARRY"
-      - "VOLATILITY"
       - "STRUCTURAL"
     sources:
       - "SSRN"
@@ -192,9 +251,12 @@ source_lanes:
       - "AlphaArchitect"
       - "Journal of Financial Economics"
       - "Review of Financial Studies"
-    notes: "Biweekly literature review. Focus on documented edges with futures applicability. Extract mechanical rules only. Tag with full schema."
+      - "Return Stacked"
+      - "arXiv quantitative finance"         # NEW
+    notes: "Biweekly literature review. VALUE factor is a new search priority. Focus on documented edges with futures applicability."
 
   youtube_practitioner:
+    status: ENABLED                  # Enabled in config, no dedicated Claw task day
     enabled: true
     description: "YouTube / practitioner strategy extraction — mechanical rules only"
     type: strategic
@@ -205,14 +267,74 @@ source_lanes:
       - "STRUCTURAL"
       - "VOLATILITY"
       - "EVENT"
+      - "VALUE"                      # NEW
     filters:
       - "futures only"
       - "must have explicit entry/exit rules"
       - "reject discretionary / narrative-only methods"
       - "reject ICT/SMC concepts (closed family)"
-    notes: "Extract only mechanical, testable rules from practitioner content. Do NOT copy full presentations. Summarize logic in standard intake note format. Reject anything without clear entry/exit rules."
+    notes: "Extract only mechanical, testable rules. No dedicated Claw task day — folded into Thu practitioner scan."
+
+  # ── DORMANT LANES (planned, not yet implemented) ──
+
+  github_quant_repos:
+    status: DORMANT
+    enabled: false
+    description: "Scan GitHub for systematic futures strategy repos with testable code"
+    type: strategic
+    cadence: "monthly"
+    max_per_run: 5
+    targeting_mode: "gap_aware"
+    factor_targets:
+      - "VOLATILITY"
+      - "VALUE"
+      - "STRUCTURAL"
+    search_targets:
+      - "systematic futures trading"
+      - "quantitative trading strategies python"
+      - "backtesting framework strategies"
+      - "commodity futures systematic"
+    notes: "DORMANT — no scraper or fetcher implemented. Would scan GitHub repos for mechanical strategies with code. Low priority until other lanes are saturated."
+    implementation_needed: "GitHub API search + repo content extraction script"
+
+  reddit_forums:
+    status: DORMANT
+    enabled: false
+    description: "Reddit / X / quant forums for practitioner ideas and edge discussions"
+    type: strategic
+    cadence: "biweekly"
+    max_per_run: 5
+    targeting_mode: "broad"
+    subreddits:
+      - "r/algotrading"
+      - "r/quant"
+      - "r/FuturesTrading"
+    notes: "DORMANT — no scraper implemented. Would extract mechanical strategy descriptions from practitioner discussions. Noise-to-signal ratio is high; aggressive filtering needed."
+    implementation_needed: "Reddit API integration or Claw web-search capability"
+
+  microstructure_specialists:
+    status: DORMANT
+    enabled: false
+    description: "Commodity, rates, and FX specialist sources for microstructure edges"
+    type: strategic
+    cadence: "monthly"
+    max_per_run: 5
+    factor_targets:
+      - "STRUCTURAL"
+      - "CARRY"
+    sources:
+      - "CME Group research papers"
+      - "ICE Futures research"
+      - "Commodity-specific blogs (e.g., Goehring & Rozencwajg, Leigh Drogen)"
+      - "FX-specific (e.g., BIS Triennial Survey insights, LMAX research)"
+      - "Rates-specific (e.g., Treasury market structure writeups)"
+    notes: "DORMANT — no dedicated fetcher. Covers non-obvious adjacent ideas from asset-class specialists. Would be high signal-to-noise if implemented."
+    implementation_needed: "Manual curation or Claw web-search with specialist source list"
+
+  # ── DISABLED LANES ──
 
   legacy_revival:
+    status: DISABLED
     enabled: false
     description: "Re-examine rejected strategies for salvage under new conditions"
     type: tactical
@@ -223,4 +345,4 @@ source_lanes:
       - "rejection_reason: IMPLEMENTATION_BUG"
       - "rejection_reason: SAMPLE_INSUFFICIENT"
       - "rejection_reason: WALK_FORWARD_UNSTABLE"
-    notes: "Only revisit strategies with fixable rejection reasons, not structural losses."
+    notes: "DISABLED — only revisit strategies with fixable rejection reasons, not structural losses."
