@@ -3740,11 +3740,11 @@
       "direction": "both",
       "source": "fql_falsification_discovery",
       "rule_summary": "Fade outsized 13:45-14:00 ET moves in ZN. Entry 14:00, exit 14:25. Impulse threshold 1.5x 20d median. Short-biased, high-vol activated.",
-      "status": "testing",
-      "notes": "Discovered as Variant B during Treasury-Cash-Close-Reversion falsification. Parent REJECTED (cash close not special). This is a distinct, earlier mechanism. First-pass: PF 1.32, 300 trades, WF H1=1.31 H2=1.33. Short-biased (89% PnL). Robustness: threshold stable (1.0-1.75 all PF>1.2), window-specific (peak at 13:45-14:00), high-vol dependent (PF 1.64 HIGH, 1.04 LOW), 4/5 days positive (Tue weak at 0.87), 5/7 full years positive (2021 drawdown in low-vol). ADVANCE to probation pending human approval. MICRO tier.",
+      "status": "probation",
+      "notes": "APPROVED for forward runner 2026-03-20. MICRO tier, probation. Discovered as Variant B during Treasury-Cash-Close-Reversion falsification (parent REJECTED). First-pass: PF 1.32, 300 trades, WF H1=1.31 H2=1.33. Short-biased (89% PnL from shorts). MONITORING NOTES: (1) HIGH_VOL dependent \u2014 PF 1.64 high-vol vs 1.04 low-vol. Will underperform in quiet rate regimes. (2) Window-specific \u2014 \u00b115m shift degrades results. If CME changes session times, edge may vanish. (3) ~18% of weekdays excluded due to sparse ZN bars at 14:00-14:25. Forward results are conditioned on afternoon liquidity. (4) Tuesday is the weak day (PF 0.87). PROBATION TARGETS: 30 forward trades, PF > 1.1, contribution review, overlap check vs Treasury-Rolldown-Carry-Spread. DISTINGUISH FROM Treasury-Rolldown: same asset (ZN) but different mechanism (25m intraday reversion vs monthly carry spread), different session (14:00-14:25 vs daily close), different factor (STRUCTURAL vs CARRY).",
       "last_review_date": "2026-03-20",
       "review_priority": "HIGH",
-      "lifecycle_stage": "first_pass",
+      "lifecycle_stage": "forward_evidence",
       "source_category": "falsification_discovery",
       "tags": [
         "STRUCTURAL",
@@ -3760,12 +3760,41 @@
           "from": "discovery",
           "to": "testing",
           "reason": "Variant B from falsification test; PF 1.32, 300 trades, stable WF"
+        },
+        {
+          "date": "2026-03-20",
+          "from": "testing",
+          "to": "probation",
+          "reason": "Approved for forward runner entry. MICRO tier."
         }
       ],
       "spec_path": "research/specs/ZN-Afternoon-Reversion.md",
       "validation_score": null,
-      "controller_action": "OFF",
-      "activation_score": null
+      "controller_action": "PROBATION",
+      "activation_score": null,
+      "controller_state": "PAPER",
+      "last_controller_date": "2026-03-20",
+      "execution_config": {
+        "avoid_regimes": [],
+        "preferred_regimes": [
+          "HIGH_VOL"
+        ],
+        "preferred_window": [
+          "14:00",
+          "14:25"
+        ],
+        "allowed_window": [
+          "14:00",
+          "14:25"
+        ],
+        "conviction_threshold_outside": 0,
+        "priority": 5,
+        "grinding_filter": false
+      },
+      "event_cadence": {
+        "trades_per_month": 3.75,
+        "cadence_class": "standard"
+      }
     }
   ],
   "_rejection_taxonomy": {

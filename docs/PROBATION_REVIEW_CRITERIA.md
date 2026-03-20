@@ -164,6 +164,58 @@ in promotion decisions because of the factor diversification it provides.
 
 ---
 
+### 7. ZN-Afternoon-Reversion (Falsification Discovery)
+
+| Field | Value |
+|-------|-------|
+| Asset | ZN (10-Year Note) |
+| Horizon | Intraday (25-minute hold, 14:00-14:25 ET) |
+| Direction | Both, short-biased (89% backtest PnL from shorts) |
+| Validation | First-pass PF 1.32, 300 trades, WF 1.31/1.33 |
+| Backtest PF | 1.32 |
+| Allocation tier | MICRO |
+| Promotion threshold | 30 forward trades |
+| **Origin** | Variant B from Treasury-Cash-Close-Reversion falsification (parent REJECTED) |
+| **Factor role** | STRUCTURAL — rates afternoon microstructure. Zero overlap with morning equity strategies. |
+
+**Entered forward runner:** 2026-03-20. Accumulating forward evidence.
+
+**Distinguished from Treasury-Rolldown-Carry-Spread:** Same asset (ZN),
+but different mechanism (25m intraday reversion vs monthly carry spread),
+different session (14:00-14:25 vs daily close evaluation), different
+factor (STRUCTURAL vs CARRY). They are independent bets.
+
+**Monitoring flags:**
+- HIGH_VOL dependency: PF 1.64 in high-vol vs 1.04 in low-vol. Will
+  underperform in quiet rate regimes.
+- Window-specific: ±15m shift degrades results. Monitor for CME session
+  changes.
+- Data caveat: ~18% of weekdays excluded (sparse ZN bars). Forward
+  results conditioned on afternoon liquidity.
+- Tuesday weakness: backtest PF 0.87 on Tuesdays (4/5 other days positive).
+
+**Promote to CONVICTION if:**
+- 30+ forward trades accumulated
+- Forward PF > 1.1
+- Forward Sharpe > 0.5
+- Short bias confirmed in forward (majority of PnL from shorts)
+- No catastrophic DD (> $3K single-strategy)
+- Contribution check: correlation < 0.20 with all existing strategies
+
+**Continue probation if:**
+- 30+ trades but PF 1.0-1.1 (thin edge, needs more data)
+- OR fewer than 30 trades after 6 months (low vol = fewer signals)
+
+**Downgrade to WATCH if:**
+- Forward PF < 0.9 after 30+ trades
+- OR strategy generates no signals for 4+ consecutive weeks (vol regime too low)
+
+**Remove if:**
+- Forward PF < 0.7 after 40+ trades
+- OR ZN afternoon session structure changes materially
+
+---
+
 ## Sparse Event Strategy Vitality Note
 
 **Effective 2026-03-20.** Event strategies with `event_cadence.cadence_class
