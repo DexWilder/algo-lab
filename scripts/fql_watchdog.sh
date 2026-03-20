@@ -430,6 +430,9 @@ else
     log "=== Completed with $ISSUES issue(s) ==="
 fi
 
+# Generate compact recovery status report
+bash "$ALGO_LAB/scripts/fql_recovery_status.sh" > /dev/null 2>&1 || true
+
 # Clean old watchdog logs (keep 14 days)
 find "$LOG_DIR" -name "watchdog_*.log" -mtime +14 -delete 2>/dev/null || true
 find "$LOG_DIR" -name "recovery_actions.log" -size +1M -exec sh -c 'tail -500 "$1" > "$1.tmp" && mv "$1.tmp" "$1"' _ {} \; 2>/dev/null || true
