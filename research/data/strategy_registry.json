@@ -3663,6 +3663,39 @@
       "harvest_batch": "academic_harvest_batch_2026-03-17",
       "harvest_note": "47_crude_oil_opec_announcement_regime.md",
       "batch_priority": 6
+    },
+    {
+      "strategy_id": "Overnight-Z-VolRatio-OpenDrive",
+      "strategy_name": "overnight_z_volratio",
+      "family": "volatility_conditioned_open",
+      "asset": "MES",
+      "session": "morning",
+      "direction": "both",
+      "source": "tradingview_scan",
+      "rule_summary": "Trade overnight direction at 09:45 ET when overnight range z-score > 1.5 AND opening volume ratio > 1.2. Exit 11:00 ET or 1.5x ATR stop.",
+      "status": "rejected",
+      "notes": "REJECTED 2026-03-20. Decomposition test FAILED. All 4 variants have PF < 1.0. Unconditional baseline: MES PF 0.96 (1109 trades), MNQ PF 0.93. Combined filter: MES PF 0.69 (105 trades), MNQ PF 0.68 (92 trades). The z-score + volume filter makes results WORSE, not better (PF delta -0.27). Walk-forward fails on both halves. Overnight continuation signal has no edge on equity index futures regardless of conditioning. The filter selects for high-vol days where the overnight move reverses rather than continues. Archive \u2014 do not iterate on this mechanism.",
+      "last_review_date": "2026-03-20",
+      "review_priority": "NONE",
+      "lifecycle_stage": "rejected",
+      "source_category": "tradingview",
+      "tags": [
+        "VOLATILITY",
+        "REJECTED",
+        "filter_does_not_add_value",
+        "overnight_reversal_not_continuation"
+      ],
+      "state_history": [
+        {
+          "date": "2026-03-20",
+          "from": "idea",
+          "to": "rejected",
+          "reason": "decomposition_test_failed"
+        }
+      ],
+      "harvest_batch": "convert_now_20260320",
+      "harvest_note": "2026-03-19_04_overnight_z_volratio_open_drive.md",
+      "spec_path": "research/specs/Overnight-Z-VolRatio-OpenDrive.md"
     }
   ],
   "_rejection_taxonomy": {

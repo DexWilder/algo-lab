@@ -1,0 +1,19 @@
+{
+  "name": "overnight_z_volratio",
+  "family": "volatility_conditioned_open",
+  "source_url": "https://www.tradingview.com/script/29tGT3Z1-Overnight-Z-VolRatio-Signal/",
+  "author": "FoxchaseTrading",
+  "conversion_type": "first_pass",
+  "harvest_id": "2026-03-19_04_overnight_z_volratio_open_drive",
+  "batch": "convert_now_20260320",
+  "description": "Volatility-conditioned overnight continuation. Trade in overnight direction only when overnight range z-score AND opening volume ratio exceed thresholds.",
+  "parameters": {
+    "Z_THRESHOLD": 1.5,
+    "VOL_THRESHOLD": 1.2,
+    "OVERNIGHT_LOOKBACK": 20,
+    "ATR_LEN": 20,
+    "SL_ATR_MULT": 1.5,
+    "ENTRY_TIME": "09:45",
+    "EXIT_TIME": "11:00"
+  }
+}
