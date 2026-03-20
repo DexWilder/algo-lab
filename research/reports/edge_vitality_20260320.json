@@ -1,0 +1,176 @@
+{
+  "date": "2026-03-20",
+  "results": {
+    "BB-EQ-MGC-Long": {
+      "vitality_score": 0.8,
+      "tier": "VITAL",
+      "backtest_decay": 1.0,
+      "forward_deviation": 0.5,
+      "forward_decay": null,
+      "half_life_status": "HEALTHY",
+      "drift_severity": "UNKNOWN",
+      "forward_trades": 0,
+      "forward_decay_label": "NO_DATA"
+    },
+    "CloseVWAP-M2K-Short": {
+      "vitality_score": 0.41,
+      "tier": "STABLE",
+      "backtest_decay": 0.35,
+      "forward_deviation": 0.5,
+      "forward_decay": null,
+      "half_life_status": "DECAYING",
+      "drift_severity": "UNKNOWN",
+      "forward_trades": 0,
+      "forward_decay_label": "NO_DATA"
+    },
+    "DailyTrend-MGC-Long": {
+      "vitality_score": 0.5,
+      "tier": "STABLE",
+      "backtest_decay": 0.5,
+      "forward_deviation": 0.5,
+      "forward_decay": null,
+      "half_life_status": "ERROR",
+      "drift_severity": "UNKNOWN",
+      "forward_trades": 0,
+      "forward_decay_label": "NO_DATA"
+    },
+    "FXBreak-6J-Short-London": {
+      "vitality_score": 0.5,
+      "tier": "STABLE",
+      "backtest_decay": 0.5,
+      "forward_deviation": 0.5,
+      "forward_decay": null,
+      "half_life_status": "ERROR",
+      "drift_severity": "UNKNOWN",
+      "forward_trades": 0,
+      "forward_decay_label": "NO_DATA"
+    },
+    "GapMom": {
+      "vitality_score": 0.5,
+      "tier": "STABLE",
+      "backtest_decay": 0.5,
+      "forward_deviation": 0.5,
+      "forward_decay": null,
+      "half_life_status": "ERROR",
+      "drift_severity": "UNKNOWN",
+      "forward_trades": 0,
+      "forward_decay_label": "NO_DATA"
+    },
+    "MomIgn-M2K-Short": {
+      "vitality_score": 0.8,
+      "tier": "VITAL",
+      "backtest_decay": 1.0,
+      "forward_deviation": 0.5,
+      "forward_decay": null,
+      "half_life_status": "HEALTHY",
+      "drift_severity": "UNKNOWN",
+      "forward_trades": 0,
+      "forward_decay_label": "NO_DATA"
+    },
+    "MomPB-6J-Long-US": {
+      "vitality_score": 0.5,
+      "tier": "STABLE",
+      "backtest_decay": 0.5,
+      "forward_deviation": 0.5,
+      "forward_decay": null,
+      "half_life_status": "ERROR",
+      "drift_severity": "UNKNOWN",
+      "forward_trades": 0,
+      "forward_decay_label": "NO_DATA"
+    },
+    "NoiseBoundary-MNQ-Long": {
+      "vitality_score": 0.8,
+      "tier": "VITAL",
+      "backtest_decay": 1.0,
+      "forward_deviation": 0.5,
+      "forward_decay": null,
+      "half_life_status": "HEALTHY",
+      "drift_severity": "UNKNOWN",
+      "forward_trades": 3,
+      "forward_decay_label": "INSUFFICIENT"
+    },
+    "ORB-MGC-Long": {
+      "vitality_score": 0.8,
+      "tier": "VITAL",
+      "backtest_decay": 1.0,
+      "forward_deviation": 0.5,
+      "forward_decay": null,
+      "half_life_status": "HEALTHY",
+      "drift_severity": "UNKNOWN",
+      "forward_trades": 2,
+      "forward_decay_label": "INSUFFICIENT"
+    },
+    "PB-MGC-Short": {
+      "vitality_score": 0.8,
+      "tier": "VITAL",
+      "backtest_decay": 1.0,
+      "forward_deviation": 0.5,
+      "forward_decay": null,
+      "half_life_status": "HEALTHY",
+      "drift_severity": "UNKNOWN",
+      "forward_trades": 3,
+      "forward_decay_label": "INSUFFICIENT"
+    },
+    "PreFOMC-Drift-Equity": {
+      "vitality_score": 0.85,
+      "tier": "VITAL",
+      "backtest_decay": 1.0,
+      "forward_deviation": 0.5,
+      "forward_decay": null,
+      "half_life_status": "HEALTHY",
+      "drift_severity": "UNKNOWN",
+      "forward_trades": 0,
+      "forward_decay_label": "NO_DATA",
+      "cadence_class": "sparse_event",
+      "sparse_floor_applied": false,
+      "weights_used": "sparse_event"
+    },
+    "TTMSqueeze-M2K-Short": {
+      "vitality_score": 0.8,
+      "tier": "VITAL",
+      "backtest_decay": 1.0,
+      "forward_deviation": 0.5,
+      "forward_decay": null,
+      "half_life_status": "HEALTHY",
+      "drift_severity": "UNKNOWN",
+      "forward_trades": 2,
+      "forward_decay_label": "INSUFFICIENT"
+    },
+    "TV-NFP-High-Low-Levels": {
+      "vitality_score": 0.4,
+      "tier": "STABLE",
+      "backtest_decay": 0.1,
+      "forward_deviation": 0.5,
+      "forward_decay": null,
+      "half_life_status": "ARCHIVE_CANDIDATE",
+      "drift_severity": "UNKNOWN",
+      "forward_trades": 0,
+      "forward_decay_label": "NO_DATA",
+      "cadence_class": "sparse_event",
+      "sparse_floor_applied": true,
+      "weights_used": "sparse_event"
+    },
+    "Treasury-Rolldown-Carry-Spread": {
+      "vitality_score": 0.5,
+      "tier": "STABLE",
+      "backtest_decay": 0.5,
+      "forward_deviation": 0.5,
+      "forward_decay": null,
+      "half_life_status": "ERROR",
+      "drift_severity": "UNKNOWN",
+      "forward_trades": 0,
+      "forward_decay_label": "NO_DATA"
+    },
+    "XB-PB-EMA-MES-Short": {
+      "vitality_score": 0.74,
+      "tier": "VITAL",
+      "backtest_decay": 1.0,
+      "forward_deviation": 0.5,
+      "forward_decay": 0.8,
+      "half_life_status": "HEALTHY",
+      "drift_severity": "UNKNOWN",
+      "forward_trades": 8,
+      "forward_decay_label": "STABLE"
+    }
+  }
+}

@@ -122,6 +122,68 @@ in promotion decisions because of the factor diversification it provides.
 
 ---
 
+### 6. Treasury-Rolldown-Carry-Spread (Active Carry Challenger)
+
+| Field | Value |
+|-------|-------|
+| Asset | ZN/ZF/ZB (3-tenor spread) |
+| Horizon | Monthly rebalance |
+| Direction | Both (spread: long rich-carry, short poor-carry) |
+| Validation | MONITOR (first-pass PF 1.11, 79 trades) |
+| Backtest PF | 1.11 (equal-notional) |
+| Allocation tier | MICRO |
+| Promotion threshold | 8 forward rebalance cycles |
+| **Factor role** | **First CARRY + first Rates strategy. Fills the two biggest portfolio gaps.** |
+| **Displacement target** | MomIgn-M2K-Short at June 1, 2026 deadline |
+
+**Entered forward runner:** 2026-03-20. Accumulating forward evidence.
+
+**Promote to CONVICTION if:**
+- 8+ forward rebalance cycles completed (~8 months)
+- Forward PF > 1.1
+- Forward Sharpe > 0.3
+- Walk-forward stability maintains (no regime where all trades lose)
+- No catastrophic drawdown (> $3K single-strategy DD)
+
+**Displace MomIgn at June 1 if:**
+- Forward PnL positive over March–May 2026 (3 cycles)
+- Rubric score remains ≥ 18 (eff. 20 with gap bonus)
+- MomIgn fails its own promote condition by deadline
+
+**Continue probation if:**
+- Forward PnL flat or slightly negative but mechanism intact
+- OR fewer than 3 rebalance cycles completed (monthly = slow evidence)
+
+**Downgrade to WATCH if:**
+- 3 consecutive months of negative forward spread PnL
+- OR forward PF < 0.8 after 8 cycles
+
+**Remove if:**
+- Forward PF < 0.5 after 12 cycles
+- OR carry signal stops producing rank changes (spread is static)
+
+---
+
+## Sparse Event Strategy Vitality Note
+
+**Effective 2026-03-20.** Event strategies with `event_cadence.cadence_class
+= "sparse_event"` use adjusted vitality weights:
+
+- Backtest decay: 50% (up from 30%) — dominates when forward sample is tiny
+- Forward deviation: 30% (down from 40%)
+- Forward decay: 20% (down from 30%)
+
+FADING alerts are suppressed until the strategy has accumulated ≥ 4 event
+occurrences with forward trade data. This prevents false FADING alerts
+during inter-event silence.
+
+**Affected strategies:** TV-NFP-High-Low-Levels, PreFOMC-Drift-Equity.
+
+Do not act on vitality FADING alerts for these strategies unless ≥ 4
+event occurrences show declining PnL trend.
+
+---
+
 ## Review Schedule
 
 | Week | Action |

@@ -41,10 +41,39 @@ VITAL_THRESHOLD = 0.7
 STABLE_THRESHOLD = 0.4
 FADING_THRESHOLD = 0.1
 
-# Weights for composite score
+# Weights for composite score (default — intraday/daily strategies)
 W_FORWARD_DEVIATION = 0.40
 W_BACKTEST_DECAY = 0.30
 W_FORWARD_DECAY = 0.30
+
+# Weights for sparse event strategies (event_cadence.cadence_class == "sparse_event")
+# Backtest stability dominates because forward sample is tiny
+W_SPARSE_FORWARD_DEVIATION = 0.30
+W_SPARSE_BACKTEST_DECAY = 0.50
+W_SPARSE_FORWARD_DECAY = 0.20
+
+# Sparse event: minimum events before FADING can trigger
+SPARSE_EVENT_MIN_EVENTS = 4
+
+
+# ── Event Cadence Lookup ──────────────────────────────────────────────────────
+
+def load_event_cadence():
+    """Load event_cadence metadata from registry.
+
+    Returns dict of {strategy_id: cadence_info} for strategies that have
+    an event_cadence field. Used to adjust vitality weights for sparse
+    event strategies (NFP, FOMC, etc.) that fire < 4 trades/month.
+    """
+    if not REGISTRY_PATH.exists():
+        return {}
+    reg = json.load(open(REGISTRY_PATH))
+    result = {}
+    for s in reg.get("strategies", []):
+        ec = s.get("event_cadence")
+        if ec and ec.get("cadence_class") == "sparse_event":
+            result[s["strategy_id"]] = ec
+    return result
 
 
 # ── Data Sources ─────────────────────────────────────────────────────────────
@@ -180,16 +209,30 @@ def load_forward_decay():
 
 # ── Composite Vitality Score ─────────────────────────────────────────────────
 
-def compute_vitality(half_life_data, drift_data, forward_decay_data):
+def compute_vitality(half_life_data, drift_data, forward_decay_data,
+                     event_cadence_data=None):
     """Compute unified Edge Vitality Score per strategy.
 
-    Weights:
+    Default weights (intraday/daily strategies):
       40% forward deviation (drift monitor)
       30% backtest decay trajectory (half-life)
       30% forward-specific decay (trade log, if available)
 
+    Sparse event weights (event_cadence.cadence_class == "sparse_event"):
+      30% forward deviation
+      50% backtest decay trajectory (dominates — forward sample is tiny)
+      20% forward-specific decay
+
+    For sparse event strategies, FADING only triggers if the strategy has
+    accumulated >= SPARSE_EVENT_MIN_EVENTS forward events with declining PnL.
+    Otherwise the strategy gets a floor at STABLE to prevent false alarms
+    from inter-event silence.
+
     If forward decay is unavailable, redistribute weight to backtest.
     """
+    if event_cadence_data is None:
+        event_cadence_data = {}
+
     # Collect all active strategy IDs
     all_sids = set(half_life_data.keys()) | set(drift_data.keys())
 
@@ -198,24 +241,46 @@ def compute_vitality(half_life_data, drift_data, forward_decay_data):
         hl = half_life_data.get(sid, {})
         dr = drift_data.get(sid, {})
         fd = forward_decay_data.get(sid, {})
+        ec = event_cadence_data.get(sid)
 
         backtest_score = hl.get("backtest_decay_score", 0.5)
         deviation_score = dr.get("forward_deviation_score", 0.5)
         forward_score = fd.get("forward_decay_score")
+        forward_trades = fd.get("forward_trades", 0)
+
+        # Select weights based on event cadence
+        is_sparse = ec is not None
+        if is_sparse:
+            w_dev = W_SPARSE_FORWARD_DEVIATION
+            w_bt = W_SPARSE_BACKTEST_DECAY
+            w_fwd = W_SPARSE_FORWARD_DECAY
+        else:
+            w_dev = W_FORWARD_DEVIATION
+            w_bt = W_BACKTEST_DECAY
+            w_fwd = W_FORWARD_DECAY
 
         if forward_score is not None:
-            # All three sources available
             vitality = (
-                W_FORWARD_DEVIATION * deviation_score +
-                W_BACKTEST_DECAY * backtest_score +
-                W_FORWARD_DECAY * forward_score
+                w_dev * deviation_score +
+                w_bt * backtest_score +
+                w_fwd * forward_score
             )
         else:
             # No forward decay data — redistribute to backtest
             vitality = (
-                W_FORWARD_DEVIATION * deviation_score +
-                (W_BACKTEST_DECAY + W_FORWARD_DECAY) * backtest_score
+                w_dev * deviation_score +
+                (w_bt + w_fwd) * backtest_score
             )
+
+        # Sparse event floor: don't trigger FADING unless we have enough
+        # event occurrences to make a meaningful decay judgment
+        sparse_floor_applied = False
+        if is_sparse:
+            min_events = ec.get("min_vitality_events", SPARSE_EVENT_MIN_EVENTS)
+            if forward_trades < min_events and vitality < STABLE_THRESHOLD:
+                # Insufficient events to judge — floor at STABLE
+                vitality = max(vitality, STABLE_THRESHOLD)
+                sparse_floor_applied = True
 
         # Classify
         if vitality >= VITAL_THRESHOLD:
@@ -227,7 +292,7 @@ def compute_vitality(half_life_data, drift_data, forward_decay_data):
         else:
             tier = "DEAD"
 
-        results[sid] = {
+        result_entry = {
             "vitality_score": round(vitality, 3),
             "tier": tier,
             "backtest_decay": backtest_score,
@@ -235,9 +300,15 @@ def compute_vitality(half_life_data, drift_data, forward_decay_data):
             "forward_decay": forward_score,
             "half_life_status": hl.get("half_life_status", "UNKNOWN"),
             "drift_severity": dr.get("drift_severity", "UNKNOWN"),
-            "forward_trades": fd.get("forward_trades", 0),
+            "forward_trades": forward_trades,
             "forward_decay_label": fd.get("forward_decay_label", "NO_DATA"),
         }
+        if is_sparse:
+            result_entry["cadence_class"] = "sparse_event"
+            result_entry["sparse_floor_applied"] = sparse_floor_applied
+            result_entry["weights_used"] = "sparse_event"
+
+        results[sid] = result_entry
 
     return results
 
@@ -332,8 +403,9 @@ def main():
     hl_data = load_half_life_data()
     drift_data = load_drift_data()
     forward_data = load_forward_decay()
+    event_cadence = load_event_cadence()
 
-    results = compute_vitality(hl_data, drift_data, forward_data)
+    results = compute_vitality(hl_data, drift_data, forward_data, event_cadence)
 
     if args.json:
         print(json.dumps(results, indent=2, default=str))

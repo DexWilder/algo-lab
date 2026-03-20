@@ -1,0 +1,77 @@
+{
+  "strategy": "commodity_carry_proxy",
+  "run_date": "2026-03-20T11:36:30.130583",
+  "session_filter": null,
+  "asset_results": {
+    "MGC": {
+      "asset": "MGC",
+      "bars": 247928,
+      "modes": {
+        "both": {
+          "trades": 20,
+          "pnl": 18788.2,
+          "pf": 3.052,
+          "sharpe": 4.45,
+          "maxdd": 6262.92,
+          "wr": 40.0,
+          "avg_pnl": 939.41,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 10,
+          "pnl": 24033.6,
+          "pf": 9.439,
+          "sharpe": 8.92,
+          "maxdd": 2408.72,
+          "wr": 60.0,
+          "avg_pnl": 2403.36,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 10,
+          "pnl": -5245.4,
+          "pf": 0.168,
+          "sharpe": -10.15,
+          "maxdd": 5190.92,
+          "wr": 20.0,
+          "avg_pnl": -524.54,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 12,
+          "pnl": -3524.88,
+          "pf": 0.52,
+          "sharpe": -3.72,
+          "maxdd": 6262.92,
+          "wr": 16.7,
+          "avg_pnl": -293.74
+        },
+        "H2": {
+          "trades": 8,
+          "pnl": 22253.08,
+          "pf": 13.332,
+          "sharpe": 9.53,
+          "maxdd": 1804.48,
+          "wr": 75.0,
+          "avg_pnl": 2781.64
+        }
+      },
+      "classification": "SALVAGE",
+      "classification_reasons": [
+        "Overall PF 3.05, but directional split shows PF > 1.2"
+      ]
+    }
+  },
+  "best_result": {
+    "asset": "MGC",
+    "classification": "SALVAGE",
+    "pf": 3.052,
+    "trades": 20
+  },
+  "overall_classification": "SALVAGE",
+  "overall_reasons": [
+    "Overall PF 3.05, but directional split shows PF > 1.2"
+  ]
+}
