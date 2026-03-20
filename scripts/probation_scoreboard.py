@@ -56,6 +56,114 @@ EXPECTED_FREQ = {
 }
 
 
+# ── Probation aging: max weeks before a decision is forced ──
+# After this many weeks, strategy must promote, extend (once), or remove.
+MAX_PROBATION_WEEKS = {
+    "DailyTrend-MGC-Long":           16,
+    "MomPB-6J-Long-US":              16,
+    "FXBreak-6J-Short-London":       24,
+    "PreFOMC-Drift-Equity":          24,  # Event — slow cadence
+    "TV-NFP-High-Low-Levels":        24,  # Event — slow cadence
+    "NoiseBoundary-MNQ-Long":        16,
+    "Treasury-Rolldown-Carry-Spread": 48, # Monthly — very slow cadence
+    "ZN-Afternoon-Reversion":        24,  # ~3-4/month, HIGH_VOL dependent
+    "VolManaged-EquityIndex-Futures": 12, # Daily — fast evidence
+}
+
+
+def compute_aging(sid, trades, registry):
+    """Compute probation aging status for a strategy.
+
+    Returns dict with:
+        days_in_probation, weeks_in_probation, max_weeks,
+        expected_trades_by_now, actual_trades, evidence_ratio,
+        aging_status: TOO_EARLY | HEALTHY_SLOW | ON_TRACK | UNDER_EVIDENCED | STALE | FAILING
+    """
+    reg_entry = registry.get(sid, {})
+
+    # Find probation entry date
+    entry_date = None
+    for h in reg_entry.get("state_history", []):
+        if h.get("to") == "probation":
+            entry_date = h.get("date")
+    if not entry_date:
+        entry_date = reg_entry.get("last_review_date", TODAY)
+
+    try:
+        entry_dt = datetime.strptime(entry_date, "%Y-%m-%d")
+    except (ValueError, TypeError):
+        entry_dt = datetime.now()
+
+    days = (datetime.now() - entry_dt).days
+    weeks = days / 7.0
+    max_weeks = MAX_PROBATION_WEEKS.get(sid, 16)
+
+    # Actual forward trades
+    st = trades[trades["strategy"] == sid] if not trades.empty else pd.DataFrame()
+    actual = len(st)
+
+    # Expected trades by now (based on expected frequency and time elapsed)
+    expected_freq = EXPECTED_FREQ.get(sid, 5.0)  # trades/month
+    months_elapsed = max(days / 30.0, 0.1)
+    expected_by_now = expected_freq * months_elapsed
+    target = TARGETS.get(sid, {}).get("trades", 30)
+
+    # Evidence ratio: actual / expected (1.0 = on track, <0.5 = under-evidenced)
+    evidence_ratio = actual / expected_by_now if expected_by_now > 0 else 0
+
+    # PF check for strategies with enough trades
+    pf = None
+    if actual >= 10 and not st.empty:
+        w = st[st["pnl"] > 0]["pnl"].sum()
+        l = abs(st[st["pnl"] < 0]["pnl"].sum())
+        pf = w / l if l > 0 else 99.0
+
+    # Status classification
+    if days < 7:
+        status = "TOO_EARLY"
+    elif days < 14 and actual < 3:
+        status = "TOO_EARLY"
+    elif actual >= target:
+        # Enough trades for a verdict
+        target_pf = TARGETS.get(sid, {}).get("pf", 1.0)
+        if pf is not None and pf < 0.9:
+            status = "FAILING"
+        elif pf is not None and pf >= target_pf:
+            status = "GATE_REACHED"
+        else:
+            status = "REVIEW_READY"
+    elif evidence_ratio >= 0.7:
+        status = "ON_TRACK"
+    elif evidence_ratio >= 0.3:
+        # Check if this is a genuinely slow strategy or under-performing
+        if expected_freq < 1.0:
+            status = "HEALTHY_SLOW"  # Event/monthly — slow is expected
+        else:
+            status = "UNDER_EVIDENCED"
+    elif days > 28 and actual == 0 and expected_freq >= 2.0:
+        status = "STALE"  # Should have trades by now but doesn't
+    elif expected_freq < 1.0:
+        status = "HEALTHY_SLOW"  # Sparse event — patience required
+    else:
+        status = "UNDER_EVIDENCED"
+
+    # Time pressure
+    pct_time_used = weeks / max_weeks * 100 if max_weeks > 0 else 0
+
+    return {
+        "days_in_probation": days,
+        "weeks_in_probation": round(weeks, 1),
+        "max_weeks": max_weeks,
+        "pct_time_used": round(pct_time_used, 0),
+        "expected_by_now": round(expected_by_now, 1),
+        "actual_trades": actual,
+        "evidence_ratio": round(evidence_ratio, 2),
+        "aging_status": status,
+        "entry_date": entry_date,
+        "pf": round(pf, 2) if pf is not None else None,
+    }
+
+
 def load_trades():
     if not TRADE_LOG.exists():
         return pd.DataFrame()
@@ -208,36 +316,38 @@ def generate_report():
     lines.append("")
     lines.append("## Scoreboard")
     lines.append("")
-    lines.append("| Strategy | Fwd Trades | Target | Fwd PnL | PF | Target PF | WR | MaxDD | Status |")
-    lines.append("|----------|-----------|--------|---------|----|-----------|----|-------|--------|")
+    lines.append("| Strategy | Fwd Trades | Target | Fwd PnL | PF | Target PF | Status | Aging |")
+    lines.append("|----------|-----------|--------|---------|----|-----------|---------| ------|")
 
+    aging_data = {}
     for sid in sorted(TARGETS.keys()):
         t = TARGETS[sid]
         s = compute_forward_stats(trades, sid)
+        a = compute_aging(sid, trades, registry)
+        aging_data[sid] = a
 
         pf_str = f"{s['pf']:.2f}" if s['pf'] is not None else "—"
         pnl_str = f"${s['pnl']:+,.0f}" if s['trades'] > 0 else "—"
-        wr_str = f"{s['wr']}%" if s['wr'] is not None else "—"
-        dd_str = f"${s['maxdd']:,.0f}" if s['maxdd'] > 0 else "—"
 
-        # Status judgment
-        if s["trades"] == 0:
-            status = "Waiting"
-        elif s["trades"] >= t["trades"]:
-            if s["pf"] and s["pf"] >= t["pf"]:
-                status = "PROMOTE?"
-            elif s["pf"] and s["pf"] < 0.9:
-                status = "DOWNGRADE?"
-            else:
-                status = "Review"
-        else:
-            pct = s["trades"] / t["trades"] * 100
-            status = f"{pct:.0f}% to gate"
+        # Status from aging logic (replaces old manual classification)
+        status_map = {
+            "TOO_EARLY": "Too early",
+            "HEALTHY_SLOW": "Healthy/slow",
+            "ON_TRACK": "On track",
+            "UNDER_EVIDENCED": "**Under-ev**",
+            "STALE": "**STALE**",
+            "FAILING": "**FAILING**",
+            "GATE_REACHED": "**GATE**",
+            "REVIEW_READY": "Review",
+        }
+        status = status_map.get(a["aging_status"], a["aging_status"])
+
+        # Aging: time used as percentage of max probation window
+        aging_str = f"{a['pct_time_used']:.0f}% ({a['weeks_in_probation']:.0f}w/{a['max_weeks']}w)"
 
         lines.append(
             f"| {sid:<38s} | {s['trades']:>9d} | {t['trades']:>6d} | "
-            f"{pnl_str:>7s} | {pf_str:>4s} | >{t['pf']:<9} | {wr_str:>4s} | "
-            f"{dd_str:>5s} | {status} |"
+            f"{pnl_str:>7s} | {pf_str:>4s} | >{t['pf']:<9} | {status:<9s} | {aging_str} |"
         )
 
     # ── Caveat flags ──
@@ -298,6 +408,30 @@ def generate_report():
             for f in flags:
                 lines.append(f"- {f}")
             lines.append("")
+
+    # ── Aging summary ──
+    lines.append("## Probation Aging")
+    lines.append("")
+    lines.append("| Strategy | Days In | Expected Trades | Actual | Evidence Ratio | Status |")
+    lines.append("|----------|---------|----------------|--------|----------------|--------|")
+
+    for sid in sorted(TARGETS.keys()):
+        a = aging_data.get(sid, compute_aging(sid, trades, registry))
+        exp_str = f"{a['expected_by_now']:.0f}"
+        ratio_str = f"{a['evidence_ratio']:.2f}"
+        status_markers = {
+            "STALE": "**STALE** ◄",
+            "UNDER_EVIDENCED": "**Under-ev** ◄",
+            "FAILING": "**FAILING** ◄",
+            "GATE_REACHED": "GATE ✓",
+        }
+        status_str = status_markers.get(a["aging_status"], a["aging_status"])
+        lines.append(
+            f"| {sid:<38s} | {a['days_in_probation']:>7d} | {exp_str:>14s} | "
+            f"{a['actual_trades']:>6d} | {ratio_str:>14s} | {status_str} |"
+        )
+
+    lines.append("")
 
     # ── Signal frequency drift ──
     lines.append("## Signal Frequency vs Expectation")

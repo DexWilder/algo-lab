@@ -168,19 +168,81 @@ def section_probation():
 
     trades = _load_csv(TRADE_LOG)
 
-    probation = [s for s in reg.get("strategies", []) if s.get("status") == "probation"]
+    # Import aging logic from scoreboard
+    sys.path.insert(0, str(ROOT / "scripts"))
+    from probation_scoreboard import compute_aging, TARGETS, EXPECTED_FREQ
 
-    # Categorize
-    active = []    # Has forward trades
-    waiting = []   # No forward trades yet
-    flagged = []   # Has a concern
+    probation = [s for s in reg.get("strategies", []) if s.get("status") == "probation"]
+    registry_map = {s["strategy_id"]: s for s in probation}
+
+    # Categorize by aging status
+    on_track = []
+    too_early = []
+    healthy_slow = []
+    under_evidenced = []
+    stale = []
+    failing = []
+    gate = []
 
     for s in probation:
         sid = s["strategy_id"]
+        a = compute_aging(sid, trades, registry_map)
         st = trades[trades["strategy"] == sid] if not trades.empty and "strategy" in trades.columns else pd.DataFrame()
         n = len(st)
+        pnl = st["pnl"].sum() if n > 0 else 0
 
-        # Check for flags
+        label = f"{sid}: {n} trades" + (f", ${pnl:+,.0f}" if n > 0 else "") + f" ({a['weeks_in_probation']:.0f}w/{a['max_weeks']}w)"
+
+        status = a["aging_status"]
+        if status == "TOO_EARLY":
+            too_early.append(label)
+        elif status == "HEALTHY_SLOW":
+            healthy_slow.append(label)
+        elif status == "ON_TRACK":
+            on_track.append(label)
+        elif status == "UNDER_EVIDENCED":
+            under_evidenced.append(label)
+        elif status == "STALE":
+            stale.append(label)
+        elif status == "FAILING":
+            failing.append(label)
+        elif status in ("GATE_REACHED", "REVIEW_READY"):
+            gate.append(label)
+
+    # Print in urgency order
+    if failing:
+        lines.append(f"**FAILING ({len(failing)}):** enough evidence, edge not present")
+        for f in failing:
+            lines.append(f"  - {f}")
+    if stale:
+        lines.append(f"**STALE ({len(stale)}):** should have trades by now but doesn't")
+        for s in stale:
+            lines.append(f"  - {s}")
+    if gate:
+        lines.append(f"**GATE REACHED ({len(gate)}):** ready for promote/downgrade decision")
+        for g in gate:
+            lines.append(f"  - {g}")
+    if under_evidenced:
+        lines.append(f"**Under-evidenced ({len(under_evidenced)}):** fewer trades than expected")
+        for u in under_evidenced:
+            lines.append(f"  - {u}")
+    if on_track:
+        lines.append(f"**On track ({len(on_track)}):** evidence accumulating as expected")
+        for o in on_track:
+            lines.append(f"  - {o}")
+    if healthy_slow:
+        lines.append(f"**Healthy/slow ({len(healthy_slow)}):** sparse cadence, patience required")
+        for h in healthy_slow:
+            lines.append(f"  - {h}")
+    if too_early:
+        lines.append(f"**Too early ({len(too_early)}):** entered recently, no judgment yet")
+        for t in too_early:
+            lines.append(f"  - {t}")
+
+    # Flagged: vitality/half-life concerns (separate from aging)
+    flagged = []
+    for s in probation:
+        sid = s["strategy_id"]
         flags = []
         hl = s.get("half_life_status")
         if hl in ("DECAYING", "ARCHIVE_CANDIDATE"):
@@ -188,34 +250,11 @@ def section_probation():
         vit = s.get("edge_vitality_tier")
         if vit in ("FADING", "DEAD"):
             flags.append(f"vitality {vit}")
-
-        if n > 0:
-            pnl = st["pnl"].sum()
-            active.append(f"{sid}: {n} trades, ${pnl:+,.0f}")
-        else:
-            waiting.append(sid)
-
         if flags:
             flagged.append(f"{sid}: {', '.join(flags)}")
 
-    if active:
-        lines.append(f"**Active ({len(active)}):** generating forward evidence")
-        for a in active:
-            lines.append(f"  - {a}")
-    if waiting:
-        lines.append(f"**Waiting ({len(waiting)}):** no forward trades yet")
-        # Group by expected timeline
-        fast = [s for s in waiting if s == "VolManaged-EquityIndex-Futures"]
-        medium = [s for s in waiting if s in ("ZN-Afternoon-Reversion", "MomPB-6J-Long-US", "FXBreak-6J-Short-London", "NoiseBoundary-MNQ-Long", "DailyTrend-MGC-Long")]
-        slow = [s for s in waiting if s in ("Treasury-Rolldown-Carry-Spread", "PreFOMC-Drift-Equity", "TV-NFP-High-Low-Levels")]
-        if fast:
-            lines.append(f"  - Fast evidence (days): {', '.join(fast)}")
-        if medium:
-            lines.append(f"  - Medium evidence (weeks): {', '.join(medium)}")
-        if slow:
-            lines.append(f"  - Slow evidence (months): {', '.join(slow)}")
     if flagged:
-        lines.append(f"**Flagged ({len(flagged)}):**")
+        lines.append(f"**Edge health flags ({len(flagged)}):**")
         for f in flagged:
             lines.append(f"  - {f}")
 
