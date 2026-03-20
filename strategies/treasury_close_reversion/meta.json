@@ -1,0 +1,19 @@
+{
+  "name": "treasury_close_reversion",
+  "family": "afternoon_rates_close_reversion",
+  "source_url": "internal",
+  "author": "Claw synthesis from public intraday market-microstructure literature",
+  "conversion_type": "first_pass",
+  "harvest_id": "2026-03-20_04_treasury_cash_close_reversion_window",
+  "batch": "convert_now_20260320",
+  "description": "Fade the 14:45-15:00 ET pre-cash-close impulse in ZN Treasury futures. Enter at 15:00, exit by 15:25 or on 60% retracement. STRUCTURAL factor — session microstructure edge.",
+  "parameters": {
+    "IMPULSE_THRESHOLD": 1.5,
+    "LOOKBACK": 20,
+    "ATR_LEN": 20,
+    "SL_ATR_MULT": 1.5,
+    "RETRACE_PCT": 0.60,
+    "ENTRY_TIME": "15:00",
+    "EXIT_TIME": "15:25"
+  }
+}
