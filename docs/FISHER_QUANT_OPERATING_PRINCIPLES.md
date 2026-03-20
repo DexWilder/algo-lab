@@ -47,10 +47,35 @@ Markets evolve. Edges decay. Regimes shift. FQL must continuously adapt through:
 
 The edge comes from volume of ideas combined with ruthless quality gates.
 
+**The harvest layer and the validation layer have different jobs.**
+The harvest layer optimizes for coverage, diversity, and novelty.
+The validation layer optimizes for truth, robustness, and portfolio
+usefulness. Do not confuse them. Narrowing intake too early is worse
+than processing noise — you can always filter, but you cannot discover
+what you never searched for.
+
+**Intake discipline rules (added 2026-03-20):**
+1. Intake should be broader than comfort. Collect more than seems useful.
+2. No source monoculture. If most ideas come from one lane, diversify.
+3. Portfolio gaps drive search bias. If a factor/asset/session is weak,
+   search should tilt there via gap bonuses.
+4. Closed families stay closed. Wide net does not mean revisiting dead ends.
+5. Prefer under-covered assets/sessions when tie-breaking.
+6. Human taste should not narrow intake too early. Elite outliers often
+   look strange before validation.
+
+**All major source classes must be open:**
+Academic, TradingView, GitHub, YouTube, Reddit/forums, microstructure
+specialists. Per-lane caps and noise penalties control volume; clustering
+compresses duplicates; gap bonuses elevate undercovered areas.
+
 ```
-Harvest ideas (TradingView, GitHub, papers, social, microstructure research)
+Harvest ideas (ALL sources: academic, TradingView, GitHub, YouTube,
+              Reddit/forums, microstructure specialists)
     |
-Deduplicate and standardize
+Tag with source, factor, asset, session, direction, mechanism
+    |
+Deduplicate and cluster (compress variants into families)
     |
 Cheap validation (baseline backtest, minimum thresholds)
     |

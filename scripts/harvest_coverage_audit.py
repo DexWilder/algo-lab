@@ -143,16 +143,24 @@ def generate_report():
 
     active_count = 0
     dormant_count = 0
+    via_claw = 0
     for name, cfg in lanes.items():
         status = cfg.get("status", "ENABLED" if cfg.get("enabled") else "DISABLED")
-        factors = ", ".join(cfg.get("factor_targets", []))
-        if status == "ACTIVE":
+        factors = ", ".join(cfg.get("factor_targets", []))[:35]
+        cap = cfg.get("max_per_run", "?")
+        if "ACTIVE" in status:
             active_count += 1
+            if "CLAW" in status:
+                via_claw += 1
         elif status == "DORMANT":
             dormant_count += 1
-        lines.append(f"| {name:<25s} | {status:<8s} | {factors:<30s} | — |")
+        lines.append(f"| {name:<28s} | {status:<16s} | {factors:<35s} | {cap:>3} |")
 
-    lines.append(f"\n**Active: {active_count} | Dormant: {dormant_count} | Total configured: {len(lanes)}**")
+    lines.append(f"\n**Active: {active_count} ({via_claw} via Claw) | Dormant: {dormant_count} | Total: {len(lanes)}**")
+    lines.append("")
+    lines.append("Source classes covered: Academic, TradingView, GitHub, YouTube,")
+    lines.append("Reddit/forums, microstructure specialists. All search via Claw —")
+    lines.append("no separate scrapers needed.")
 
     # ── Recent note sources ──
     lines.append("")

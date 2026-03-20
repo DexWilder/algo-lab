@@ -17,6 +17,53 @@ harvest:
   manifest_path: "research/data/harvest_manifest.json"
   genome_map_path: "research/data/strategy_genome_map.json"
 
+# ── Intake Discipline ────────────────────────────────────────────────────────
+# Broad intake requires structure to prevent noise, duplication, and
+# pipeline drag. These controls ensure wide search stays productive.
+intake_discipline:
+
+  # Source diversity: no single source should dominate intake
+  source_diversity:
+    min_source_types_per_week: 3     # Flag if fewer than 3 source types produce notes
+    max_single_source_pct: 50        # Flag if one source > 50% of weekly notes
+    check_in: "cluster_review"       # Friday cluster review checks diversity
+
+  # Per-lane caps prevent noisy sources from swamping the inbox
+  per_lane_caps:
+    openclaw_tactical: 8             # High-signal, gap-targeted
+    openclaw_strategic: 10           # Broad but factor-aware
+    tradingview_scan: 10             # Practitioner content
+    academic_review: 8               # Research papers
+    youtube_practitioner: 5          # Mechanical rules only
+    github_quant_repos: 3            # High noise, need quality filter
+    reddit_forums: 3                 # Very high noise
+    microstructure_specialists: 3    # High signal
+
+  # Noise penalties: down-rank or reject low-specificity content
+  noise_penalties:
+    - "Reject: no explicit entry/exit rules"
+    - "Reject: purely discretionary or narrative-only"
+    - "Reject: crypto, spot forex, or non-futures instruments"
+    - "Reject: ICT/SMC concepts (closed family)"
+    - "Down-rank: generic 'buy when RSI is low' without specificity"
+    - "Down-rank: no quantitative evidence or backtest results"
+    - "Down-rank: same mechanism as existing registry idea (near-duplicate)"
+
+  # Gap bonuses: elevate ideas that fill uncovered areas
+  gap_bonuses:
+    - "+3: fills a HIGH-priority factor gap (VALUE, VOLATILITY)"
+    - "+2: fills an asset class gap (Energy)"
+    - "+2: short-biased or both-direction on an underrepresented asset"
+    - "+2: non-morning session (afternoon, close, overnight)"
+    - "+1: daily or longer horizon (non-5m intraday)"
+    - "+1: from a source type underrepresented this week"
+
+  # Clustering before review: compress repeated variants
+  clustering:
+    cluster_on_intake: true           # Group similar notes before human review
+    max_notes_per_cluster: 3          # Show top 3, archive the rest
+    merge_threshold: 0.8              # Similarity score above this → merge
+
 # ── Harvest Mode ─────────────────────────────────────────────────────────────
 # tactical: fill specific gaps identified by genome map + factor decomposition
 # strategic: broad discovery sweep across all sources (high volume, periodic)
@@ -275,61 +322,91 @@ source_lanes:
       - "reject ICT/SMC concepts (closed family)"
     notes: "Extract only mechanical, testable rules. No dedicated Claw task day — folded into Thu practitioner scan."
 
-  # ── DORMANT LANES (planned, not yet implemented) ──
+  # ── ACTIVE VIA CLAW (no dedicated scraper needed — Claw searches autonomously) ──
+  # These sources are searched by Claw during gap_harvest, academic_scan,
+  # and tradingview_scan tasks. Claw has web search capability and reads
+  # these sources directly. No separate scraper/fetcher is required.
 
   github_quant_repos:
-    status: DORMANT
-    enabled: false
-    description: "Scan GitHub for systematic futures strategy repos with testable code"
+    status: ACTIVE_VIA_CLAW          # Claw searches GitHub during gap harvest
+    enabled: true
+    description: "GitHub quant repos with testable strategy code"
     type: strategic
-    cadence: "monthly"
-    max_per_run: 5
+    cadence: "weekly"                # Searched during Mon/Thu tasks
+    max_per_run: 3                   # Low cap — high noise, need quality filter
     targeting_mode: "gap_aware"
     factor_targets:
       - "VOLATILITY"
       - "VALUE"
       - "STRUCTURAL"
+      - "CARRY"
     search_targets:
-      - "systematic futures trading"
-      - "quantitative trading strategies python"
-      - "backtesting framework strategies"
+      - "systematic futures trading python"
+      - "quantitative trading strategies backtest"
       - "commodity futures systematic"
-    notes: "DORMANT — no scraper or fetcher implemented. Would scan GitHub repos for mechanical strategies with code. Low priority until other lanes are saturated."
-    implementation_needed: "GitHub API search + repo content extraction script"
+      - "volatility managed portfolio"
+      - "value investing futures systematic"
+    noise_controls:
+      - "Must have testable code or mechanical rules"
+      - "Reject crypto-only repos"
+      - "Reject repos with no documentation or results"
+      - "Prefer repos with backtest results showing futures applicability"
+    notes: "ACTIVE VIA CLAW — Claw searches GitHub during gap_harvest and tradingview_scan tasks. No separate scraper needed. Low per-run cap because noise is high."
 
   reddit_forums:
-    status: DORMANT
-    enabled: false
-    description: "Reddit / X / quant forums for practitioner ideas and edge discussions"
+    status: ACTIVE_VIA_CLAW          # Claw searches Reddit during gap harvest
+    enabled: true
+    description: "Reddit / forums / social discussion sources for practitioner ideas"
     type: strategic
-    cadence: "biweekly"
-    max_per_run: 5
-    targeting_mode: "broad"
-    subreddits:
+    cadence: "weekly"                # Searched during Mon/Thu tasks
+    max_per_run: 3                   # Low cap — very high noise
+    targeting_mode: "gap_aware"
+    communities:
       - "r/algotrading"
       - "r/quant"
       - "r/FuturesTrading"
-    notes: "DORMANT — no scraper implemented. Would extract mechanical strategy descriptions from practitioner discussions. Noise-to-signal ratio is high; aggressive filtering needed."
-    implementation_needed: "Reddit API integration or Claw web-search capability"
+      - "EliteTrader forums"
+      - "NuclearPhynance"
+      - "QuantConnect community"
+    noise_controls:
+      - "Must describe a MECHANICAL strategy with explicit entry/exit"
+      - "Reject vague 'buy when RSI is low' type content"
+      - "Reject pure opinion/prediction posts"
+      - "Reject crypto/spot forex discussions"
+      - "Extract only the testable rule, not the narrative"
+      - "Down-rank if no quantitative evidence provided"
+    gap_bonuses:
+      - "Elevate ideas targeting uncovered factor/asset/session gaps"
+      - "Elevate short-biased or both-direction ideas"
+      - "Elevate non-equity, non-morning ideas"
+    notes: "ACTIVE VIA CLAW — Claw searches Reddit/forums during gap_harvest and tradingview_scan tasks. Very aggressive noise filtering. Most posts will not produce notes — that is correct."
 
   microstructure_specialists:
-    status: DORMANT
-    enabled: false
+    status: ACTIVE_VIA_CLAW          # Claw searches specialist sources
+    enabled: true
     description: "Commodity, rates, and FX specialist sources for microstructure edges"
     type: strategic
-    cadence: "monthly"
-    max_per_run: 5
+    cadence: "weekly"                # Searched during academic_scan and blocker_mapping
+    max_per_run: 3
     factor_targets:
       - "STRUCTURAL"
       - "CARRY"
+      - "VALUE"
+      - "EVENT"
     sources:
-      - "CME Group research papers"
+      - "CME Group research papers and education"
       - "ICE Futures research"
-      - "Commodity-specific blogs (e.g., Goehring & Rozencwajg, Leigh Drogen)"
-      - "FX-specific (e.g., BIS Triennial Survey insights, LMAX research)"
-      - "Rates-specific (e.g., Treasury market structure writeups)"
-    notes: "DORMANT — no dedicated fetcher. Covers non-obvious adjacent ideas from asset-class specialists. Would be high signal-to-noise if implemented."
-    implementation_needed: "Manual curation or Claw web-search with specialist source list"
+      - "BIS Triennial Survey insights"
+      - "Commodity-specific practitioners (Goehring & Rozencwajg, etc.)"
+      - "FX-specific research (LMAX, BIS, central bank working papers)"
+      - "Rates-specific research (Treasury market structure, repo market)"
+      - "Agricultural commodity specialists (USDA WASDE analysis)"
+      - "Energy market specialists (EIA, OPEC reports)"
+    noise_controls:
+      - "Must translate into a testable futures strategy"
+      - "Reject macro commentary without actionable rules"
+      - "Extract the microstructure insight, not the opinion"
+    notes: "ACTIVE VIA CLAW — Claw searches specialist sources during academic_scan and blocker_mapping tasks. High signal-to-noise expected because sources are pre-filtered for quality."
 
   # ── DISABLED LANES ──
 

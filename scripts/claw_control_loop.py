@@ -290,39 +290,84 @@ def compute_priorities(registry_state):
 # ── 4. Write Directives ─────────────────────────────────────────────────────
 
 def _task_instructions(task_name):
-    """Return instructions for a given task type."""
+    """Return instructions for a given task type.
+
+    Source diversity rule: each task should search DIFFERENT sources than
+    the previous day. The weekly rotation ensures all major source classes
+    get coverage across the week. No single source should dominate intake.
+
+    Source classes (all are valid search targets):
+      - Academic: SSRN, Quantpedia, arXiv, AlphaArchitect, Return Stacked,
+        Journal of Financial Economics, Review of Financial Studies
+      - TradingView: public scripts with mechanical futures rules
+      - GitHub: quant repos with testable strategy code
+      - YouTube: practitioner content with explicit entry/exit rules
+      - Reddit/forums: r/algotrading, r/quant, r/FuturesTrading,
+        EliteTrader, NuclearPhynance, QuantConnect forums
+      - Microstructure: CME research, BIS reports, specialist blogs,
+        commodity/rates/FX-specific practitioner content
+    """
     instructions = {
-        "gap_harvest": """Focus on the highest-priority gaps. Read `_priorities.md` for closed
-families, momentum high-bar rule, and search terms.
+        "gap_harvest": """MULTI-SOURCE gap harvest. Search across ALL available sources for
+the highest-priority gaps in `_priorities.md`. Cast a WIDE net:
+  - Academic papers and quant blogs
+  - TradingView public scripts
+  - GitHub quant repos with testable code
+  - YouTube practitioner content (mechanical rules only)
+  - Reddit/forum discussions (r/algotrading, r/quant, EliteTrader)
+  - Microstructure specialist sources
+Tag each note with its source. Focus on HIGH-priority factors.
+Prefer non-equity assets, non-morning sessions, short-biased ideas.
+Read closed families list — do NOT regenerate dead mechanisms.
 Generate 5-8 notes to `inbox/harvest/`.""",
 
-        "academic_scan": """Search Quantpedia, SSRN, AlphaArchitect, Return Stacked for documented
-futures edges. Focus on HIGH-priority factors.
+        "academic_scan": """Search academic and research sources for documented futures edges:
+  - SSRN, arXiv quantitative finance
+  - Quantpedia, QuantifiedStrategies, AlphaArchitect
+  - Return Stacked, AQR research
+  - Journal of Financial Economics, Review of Financial Studies
+Focus on HIGH-priority factors (check `_priorities.md`).
+Prefer papers with: testable mechanical rules, futures applicability,
+non-equity assets, value/fundamental factors.
 Generate 3-5 notes to `inbox/harvest/`.""",
 
         "family_refinement": """Read `_family_queue.md` for families needing depth. Generate 3-5
 refinement notes to `inbox/refinement/`. Deepen existing clusters,
-don't create redundant new ideas.""",
+don't create redundant new ideas. Search across ALL sources for
+variants and confirmations of existing families.""",
 
-        "tradingview_scan": """Search TradingView public scripts for mechanical futures strategies.
+        "tradingview_scan": """Search TradingView AND practitioner/YouTube sources for mechanical
+futures strategies. This day covers all practitioner content:
+  - TradingView public scripts (futures, not crypto/spot forex)
+  - YouTube channels with explicit mechanical rules
+  - GitHub repos with strategy code
+  - Reddit/forum strategy discussions
 Focus on gap factors. Reject discretionary, ICT, crypto, spot forex.
+Tag each note with exact source (URL or channel name).
 Generate 5-8 notes to `inbox/harvest/`.""",
 
         "cluster_review": """Review all notes from this week. Group into concept clusters.
 Flag duplicates, near-duplicates, closed-family violations.
+Check source diversity: are notes coming from multiple source types?
+If one source dominates, flag it.
 Write a single cluster report to `inbox/clustering/`.""",
 
         "blocker_mapping": """Review blocked ideas. Assess which blockers may have been resolved.
+Also: scan for ideas in source classes not well-represented this week
+(e.g., if no GitHub or Reddit ideas appeared, do a quick search).
 Write a gap refresh report to `inbox/assessment/`.""",
 
-        "gap_harvest_supplemental": """Generate 3-5 additional gap-targeted notes focusing on factors NOT
-covered by today's primary task. Emphasize different asset classes or
-sessions than the primary batch. Write to `inbox/harvest/`.""",
+        "gap_harvest_supplemental": """Generate 3-5 additional gap-targeted notes. KEY RULE: use DIFFERENT
+sources than the primary task today. If primary used academic papers,
+supplemental should search TradingView/YouTube/Reddit/GitHub.
+Emphasize different asset classes or sessions than the primary batch.
+Write to `inbox/harvest/`.""",
 
         "cross_source_verification": """Pick 3-5 existing ideas from `_priorities.md` and search for
-independent confirmation from a different source type. If an idea
+independent confirmation from a DIFFERENT source type. If an idea
 from Quantpedia also appears in a TradingView script or practitioner
-blog, note the convergent evidence. Write to `inbox/refinement/`.""",
+blog, note the convergent evidence. Multi-source confirmation
+strengthens ideas. Write to `inbox/refinement/`.""",
 
         "blocker_reassessment": """Quick scan of blocked ideas. For each blocker type, check if any
 new data sources, tools, or infrastructure might have resolved it.
