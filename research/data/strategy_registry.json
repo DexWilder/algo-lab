@@ -3410,9 +3410,9 @@
       "source": "Quantpedia \u2014 Term Structure Effect in Commodities",
       "rule_summary": "Rank commodity futures by curve slope / roll yield. Long backwardated contracts, short contangoed ones. Cross-sectional carry across energy and metals sectors with sector balancing.",
       "status": "testing",
-      "notes": "Spec approved. strategy.py written. Carry-proxy test using 60-day trailing return on MCL+MGC. Two variants: filtered (2% spread) and unfiltered. Ready for batch_first_pass. Initial quick test: MGC long PF=10.12 but dominated by 2025 gold rally (+$14.8k from one trade). MCL marginal (PF=1.15). Needs formal first-pass classification. UPGRADE SEQUENCE #3: Later carry expansion after carry lookup validated by Treasury-Rolldown results. Needs v2 front/back data or strong forward proxy evidence.",
+      "notes": "SALVAGE \u2014 FROZEN. Path A re-test 2026-03-20 confirmed: MGC long-only PF 9.44 / 10 trades / WF H1=0.52 H2=13.33. Fails on trade count (<15) and walk-forward (H1<1.0). Rally-dependent, proxy conflates carry with momentum. DO NOT ADVANCE unless: (1) momentum decomposition shows carry component is real, AND (2) Path B data investment (Databento front/back ~$50-100) is approved. No further iteration without human approval.",
       "last_review_date": "2026-03-18",
-      "review_priority": "MEDIUM",
+      "review_priority": "LOW",
       "lifecycle_stage": "first_pass",
       "source_category": "academic",
       "tags": [
@@ -3428,7 +3428,7 @@
       "upgrade_role": "later_carry_expansion",
       "controller_state": "PAPER",
       "prior_state": "PAPER",
-      "controller_action": "PROBATION",
+      "controller_action": "OFF",
       "activation_score": 0.545,
       "controller_reason_codes": [
         "REGIME_MATCH_LOW",

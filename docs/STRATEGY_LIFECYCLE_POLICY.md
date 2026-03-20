@@ -400,6 +400,77 @@ This is a HIGH BAR. Most killed strategies stay dead.
 
 ---
 
+## Sparse Event Strategy Rules
+
+*Effective: 2026-03-20. Applies to any strategy with < 4 trades/month.*
+
+Strategies that fire on calendar events (NFP, FOMC, CPI, OPEC, etc.) or
+that use monthly/quarterly rebalance generate too few forward trades for
+standard vitality monitoring. These strategies require adjusted rules to
+prevent false FADING alerts and ensure evidence accumulates meaningfully.
+
+### Identification
+
+A strategy is classified as **sparse event** when it has an `event_cadence`
+field in the registry with `cadence_class: "sparse_event"`. This field
+must include:
+
+```json
+"event_cadence": {
+    "trades_per_month": 0.8,
+    "cadence_class": "sparse_event",
+    "events_per_year": 12,
+    "min_vitality_events": 4
+}
+```
+
+### Vitality Monitor Adjustment
+
+Sparse event strategies use different vitality weights:
+
+| Component | Standard Weight | Sparse Event Weight |
+|-----------|----------------|---------------------|
+| Forward deviation | 40% | 30% |
+| Backtest decay | 30% | **50%** |
+| Forward decay | 30% | 20% |
+
+**Rationale:** When forward sample is tiny (0-3 trades), backtest
+stability is the best available evidence. Overweighting sparse forward
+data produces noisy, misleading vitality scores.
+
+### FADING Floor
+
+Sparse event strategies cannot trigger FADING until they have accumulated
+`min_vitality_events` forward events (default: 4). Until that threshold,
+the vitality score floors at STABLE (0.40).
+
+This prevents false alarms during inter-event silence. The floor lifts
+automatically once enough events have occurred to make a meaningful
+decay judgment.
+
+### Probation Timeline
+
+Sparse event strategies accumulate evidence slowly. Adjusted timelines:
+
+| Cadence | Standard Probation | Sparse Probation |
+|---------|-------------------|-----------------|
+| 50+ trades/month (intraday) | 8-12 weeks | N/A |
+| 5-15 trades/month (daily) | 12-16 weeks | N/A |
+| 0.5-2 trades/month (event/monthly) | N/A | 24-48 weeks |
+
+Event sleeves count at 0.5 slots against probation caps (per Portfolio
+Construction Policy A1b).
+
+### Current Sparse Event Strategies
+
+| Strategy | Events/Year | trades_per_month | min_vitality_events |
+|----------|------------|-----------------|---------------------|
+| TV-NFP-High-Low-Levels | 12 (NFP) | 0.8 | 4 |
+| PreFOMC-Drift-Equity | 8 (FOMC) | 0.67 | 4 |
+| Treasury-Rolldown-Carry-Spread | 12 (monthly) | ~0.2 (rank changes) | 4 |
+
+---
+
 ## Quick Reference: Status Transitions
 
 ```
