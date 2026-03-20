@@ -81,6 +81,10 @@ if [ "$ERROR_COUNT" -gt 0 ]; then
     FAILED=1
 fi
 
+# ---- Rates challenger review (lightweight, non-blocking) ----
+log "--- Generating rates challenger review ---"
+python3 scripts/rates_challenger_review.py --save >> "$LOG_FILE" 2>&1 || true
+
 # Clean old per-run logs (keep 30 days)
 find "$LOG_DIR" -name "daily_run_*.log" -mtime +30 -delete 2>/dev/null || true
 
