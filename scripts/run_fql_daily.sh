@@ -81,7 +81,9 @@ if [ "$ERROR_COUNT" -gt 0 ]; then
     FAILED=1
 fi
 
-# ---- Rates challenger review (lightweight, non-blocking) ----
+# ---- Probation scoreboard + rates challenger review (lightweight, non-blocking) ----
+log "--- Generating probation scoreboard ---"
+python3 scripts/probation_scoreboard.py --save >> "$LOG_FILE" 2>&1 || true
 log "--- Generating rates challenger review ---"
 python3 scripts/rates_challenger_review.py --save >> "$LOG_FILE" 2>&1 || true
 
