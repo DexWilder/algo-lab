@@ -1,0 +1,19 @@
+{
+  "name": "zn_afternoon_reversion",
+  "family": "afternoon_rates_reversion",
+  "source_url": "internal — discovered as Variant B during Treasury-Cash-Close-Reversion falsification",
+  "author": "FQL falsification decomposition",
+  "conversion_type": "discovery_from_falsification",
+  "harvest_id": "variant_B_from_treasury_close_reversion_decomp_20260320",
+  "batch": "discovery_20260320",
+  "description": "Fade outsized 13:45-14:00 ET moves in ZN Treasury futures. Enter at 14:00, exit by 14:25. Short-biased, strongest in high-vol regimes. Discovered during falsification of the cash-close reversion hypothesis.",
+  "parameters": {
+    "IMPULSE_THRESHOLD": 1.5,
+    "LOOKBACK": 20,
+    "ATR_LEN": 20,
+    "SL_ATR_MULT": 1.5,
+    "RETRACE_PCT": 0.60,
+    "ENTRY_TIME": "14:00",
+    "EXIT_TIME": "14:25"
+  }
+}

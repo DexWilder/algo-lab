@@ -3708,7 +3708,7 @@
       "source": "openclaw_strategic_harvest",
       "rule_summary": "Fade the 14:45-15:00 ET pre-cash-close impulse in ZN when impulse exceeds 1.5x 20d median. Enter 15:00, exit 15:25 or 60% retracement.",
       "status": "rejected",
-      "notes": "REJECTED 2026-03-20. Falsification test failed on both criteria. Variant A (close reversion): PF 0.87, 321 trades \u2014 no edge. Variant B (generic afternoon 1h earlier): PF 1.32, 300 trades \u2014 STRONGER than close window. The cash close is not special; if anything, fading the 13:45-14:00 move at 14:00 works better. Variant C (unconditional close fade): PF 0.97, 721 trades \u2014 impulse filter makes results worse. Decomposition conclusion: (1) There IS an afternoon reversion effect on ZN, but it peaks BEFORE the cash close, not at it. (2) The impulse threshold filter degrades performance. The unconditional fade is better. NOTABLE: Variant B (PF 1.32, WF H1=1.31 H2=1.33, short-biased .6K short PnL) is genuinely interesting and merits its own spec as a separate idea \u2014 but it is NOT the hypothesis being tested here. Filed as discovery lead, not as an advance of this strategy.",
+      "notes": "REJECTED 2026-03-20. Falsification test failed on both criteria. Variant A (close reversion): PF 0.87, 321 trades \u2014 no edge. Variant B (generic afternoon 1h earlier): PF 1.32, 300 trades \u2014 STRONGER than close window. The cash close is not special; if anything, fading the 13:45-14:00 move at 14:00 works better. Variant C (unconditional close fade): PF 0.97, 721 trades \u2014 impulse filter makes results worse. Decomposition conclusion: (1) There IS an afternoon reversion effect on ZN, but it peaks BEFORE the cash close, not at it. (2) The impulse threshold filter degrades performance. The unconditional fade is better. NOTABLE: Variant B (PF 1.32, WF H1=1.31 H2=1.33, short-biased .6K short PnL) is genuinely interesting and merits its own spec as a separate idea \u2014 but it is NOT the hypothesis being tested here. Filed as discovery lead, not as an advance of this strategy. CHILD SPAWNED: ZN-Afternoon-Reversion from Variant B.",
       "last_review_date": "2026-03-20",
       "review_priority": "NONE",
       "lifecycle_stage": "rejected",
@@ -3717,7 +3717,8 @@
         "STRUCTURAL",
         "REJECTED",
         "close_not_special",
-        "afternoon_reversion_real_but_earlier"
+        "afternoon_reversion_real_but_earlier",
+        "spawned_child:ZN-Afternoon-Reversion"
       ],
       "state_history": [
         {
@@ -3729,6 +3730,42 @@
       ],
       "harvest_note": "2026-03-20_04_treasury_cash_close_reversion_window.md",
       "spec_path": "research/specs/Treasury-Cash-Close-Reversion-Window.md"
+    },
+    {
+      "strategy_id": "ZN-Afternoon-Reversion",
+      "strategy_name": "zn_afternoon_reversion",
+      "family": "afternoon_rates_reversion",
+      "asset": "ZN",
+      "session": "afternoon",
+      "direction": "both",
+      "source": "fql_falsification_discovery",
+      "rule_summary": "Fade outsized 13:45-14:00 ET moves in ZN. Entry 14:00, exit 14:25. Impulse threshold 1.5x 20d median. Short-biased, high-vol activated.",
+      "status": "testing",
+      "notes": "Discovered as Variant B during Treasury-Cash-Close-Reversion falsification. Parent REJECTED (cash close not special). This is a distinct, earlier mechanism. First-pass: PF 1.32, 300 trades, WF H1=1.31 H2=1.33. Short-biased (89% PnL). Robustness: threshold stable (1.0-1.75 all PF>1.2), window-specific (peak at 13:45-14:00), high-vol dependent (PF 1.64 HIGH, 1.04 LOW), 4/5 days positive (Tue weak at 0.87), 5/7 full years positive (2021 drawdown in low-vol). ADVANCE to probation pending human approval. MICRO tier.",
+      "last_review_date": "2026-03-20",
+      "review_priority": "HIGH",
+      "lifecycle_stage": "first_pass",
+      "source_category": "falsification_discovery",
+      "tags": [
+        "STRUCTURAL",
+        "rates_native",
+        "afternoon_session",
+        "short_biased",
+        "high_vol_edge",
+        "parent_rejected:Treasury-Cash-Close-Reversion-Window"
+      ],
+      "state_history": [
+        {
+          "date": "2026-03-20",
+          "from": "discovery",
+          "to": "testing",
+          "reason": "Variant B from falsification test; PF 1.32, 300 trades, stable WF"
+        }
+      ],
+      "spec_path": "research/specs/ZN-Afternoon-Reversion.md",
+      "validation_score": null,
+      "controller_action": "OFF",
+      "activation_score": null
     }
   ],
   "_rejection_taxonomy": {
