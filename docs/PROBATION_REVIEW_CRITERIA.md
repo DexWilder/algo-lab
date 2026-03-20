@@ -216,6 +216,60 @@ factor (STRUCTURAL vs CARRY). They are independent bets.
 
 ---
 
+### 8. VolManaged-EquityIndex-Futures (Volatility Gap Fill)
+
+| Field | Value |
+|-------|-------|
+| Asset | MES (S&P 500 Micro) |
+| Horizon | Daily (always-in, daily rebalance of position weight) |
+| Direction | Long only |
+| Validation | Conviction-ready — rubric 22 effective (highest in system) |
+| Backtest Sharpe | 0.92 (vs 0.64 unscaled buy-and-hold, +44%) |
+| Allocation tier | MICRO / REDUCED only |
+| Promotion threshold | 30 forward days with daily weight tracking |
+| **Factor role** | **First VOLATILITY strategy. Fills the #1 portfolio gap.** |
+| **Mechanism** | Sizing regime, not entry/exit timing — unique in portfolio |
+
+**Entered forward runner:** 2026-03-20.
+
+**This strategy is always long.** It does not generate entry/exit signals
+like other strategies. It adjusts HOW MUCH to hold based on realized vol.
+Forward evaluation compares vol-managed returns vs unscaled returns on
+the same days.
+
+**Promote to CONVICTION if:**
+- 30+ forward trading days accumulated
+- Forward Sharpe > 0.5 (vol-managed)
+- Forward Sharpe improvement > 20% vs unscaled baseline on same days
+- No crisis DD exceeding 1.5x backtest worst ($4,674 backtest max DD)
+- Portfolio contribution confirmed additive (marginal Sharpe > 0)
+
+**Continue probation if:**
+- Sharpe 0.3-0.5 (edge present but thinner than backtest)
+- OR fewer than 30 forward days (slow market period)
+- OR crisis DD within 1.0-1.5x backtest range (monitoring)
+
+**Downgrade to WATCH if:**
+- Forward Sharpe < 0.3 after 60+ forward days
+- OR crisis DD exceeds 1.5x backtest worst
+- OR portfolio contribution turns dilutive (marginal Sharpe < 0)
+- OR daily weight diverges >20% from backtest expectation on same dates
+  (signal replication failure)
+
+**Remove if:**
+- Forward Sharpe < 0 after 90+ forward days
+- OR crisis DD exceeds 2x backtest worst ($9,348)
+- OR long-bias concern confirmed: VolManaged DD clusters with portfolio DD
+  on same days, proving the "unique mechanism" thesis is wrong
+
+**Monitoring flags:**
+- Crisis DD: compare forward max DD to backtest $4,674
+- Weight replication: compare live weights to what backtest would produce
+- Long-bias interaction: track same-day DD clustering with portfolio
+- Contribution: marginal Sharpe must remain positive
+
+---
+
 ## Sparse Event Strategy Vitality Note
 
 **Effective 2026-03-20.** Event strategies with `event_cadence.cadence_class

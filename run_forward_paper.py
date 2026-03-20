@@ -364,7 +364,7 @@ def main():
         tier = alloc_tiers.get(strat_key, "BASE")
         # Classify horizon for logging
         _name = strat_cfg.get("name", "")
-        if _name in ("fx_daily_trend", "rate_daily_momentum", "treasury_rolldown_carry"):
+        if _name in ("fx_daily_trend", "rate_daily_momentum", "treasury_rolldown_carry", "vol_managed_equity"):
             horizon = "monthly" if _name == "treasury_rolldown_carry" else "daily"
         elif _name in ("nfp_level_breakout", "pre_fomc_drift_v2"):
             horizon = "event"

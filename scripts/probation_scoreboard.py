@@ -39,6 +39,7 @@ TARGETS = {
     "NoiseBoundary-MNQ-Long":        {"trades": 30, "pf": 1.2, "horizon": "intraday", "review": "Week 8"},
     "Treasury-Rolldown-Carry-Spread": {"trades": 8, "pf": 1.1, "horizon": "monthly",  "review": "June 1 displacement"},
     "ZN-Afternoon-Reversion":        {"trades": 30, "pf": 1.1, "horizon": "intraday", "review": "~Oct 2026"},
+    "VolManaged-EquityIndex-Futures": {"trades": 30, "pf": 1.0, "horizon": "daily",    "review": "30 forward days, Sharpe > 0.5"},
 }
 
 # Expected signal frequencies (trades per month)
@@ -51,6 +52,7 @@ EXPECTED_FREQ = {
     "NoiseBoundary-MNQ-Long":    5.0,
     "Treasury-Rolldown-Carry-Spread": 0.2,
     "ZN-Afternoon-Reversion":    3.75,
+    "VolManaged-EquityIndex-Futures": 21.0,  # Always-in, daily rebalance = ~21 trading days/month
 }
 
 
@@ -268,6 +270,14 @@ def generate_report():
         # HIGH_VOL dependence
         if sid == "ZN-Afternoon-Reversion":
             flags.append("HIGH_VOL dependent — expect quiet periods in calm markets")
+
+        # VolManaged-specific checks
+        if sid == "VolManaged-EquityIndex-Futures":
+            flags.append("MICRO/REDUCED only — crisis DD not yet confirmed in forward")
+            flags.append("Long-only MES — adds to 2.7:1 long bias (unique sizing mechanism justifies)")
+            s = compute_forward_stats(trades, sid)
+            if s["trades"] >= 1 and s["maxdd"] > 3000:
+                flags.append(f"**FLAG:** Forward DD ${s['maxdd']:,.0f} — check if crisis-level")
 
         # Missing bar caveat
         if sid in ("ZN-Afternoon-Reversion", "Treasury-Rolldown-Carry-Spread"):

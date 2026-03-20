@@ -1,6 +1,6 @@
 {
   "_schema_version": "2.0",
-  "_generated": "2026-03-19",
+  "_generated": "2026-03-20",
   "_description": "FQL Strategy Registry \u2014 institutional memory of all strategy ideas, tested candidates, and deployed strategies",
   "_purpose": "Preserves research knowledge, enables crossbreeding, feeds Strategy Factory",
   "strategies": [
@@ -113,7 +113,7 @@
       "last_review_date": "2026-03-15",
       "controller_state": "ACTIVE",
       "controller_action": "FULL_ON",
-      "activation_score": 0.8175,
+      "activation_score": 0.8325,
       "controller_reason_codes": [
         "REGIME_MATCH_HIGH",
         "HALF_LIFE_STRENGTHENING",
@@ -123,11 +123,11 @@
         "KILL_NONE",
         "SESSION_DRIFT_DEGRADED",
         "SESSION_CONCENTRATION",
-        "TIME_WINDOW_PARTIAL",
+        "TIME_WINDOW_MATCH",
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-03-19",
+      "last_controller_date": "2026-03-20",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
@@ -193,7 +193,7 @@
       "last_review_date": "2026-03-15",
       "controller_state": "ACTIVE",
       "controller_action": "REDUCED_ON",
-      "activation_score": 0.635,
+      "activation_score": 0.65,
       "controller_reason_codes": [
         "REGIME_MATCH_MODERATE",
         "HALF_LIFE_STRENGTHENING",
@@ -203,11 +203,11 @@
         "KILL_NONE",
         "SESSION_DRIFT_BROKEN",
         "SESSION_CONCENTRATION",
-        "TIME_WINDOW_PARTIAL",
+        "TIME_WINDOW_MATCH",
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-03-19",
+      "last_controller_date": "2026-03-20",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
@@ -376,7 +376,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-03-19",
+      "last_controller_date": "2026-03-20",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
@@ -442,7 +442,7 @@
       "last_review_date": "2026-03-18",
       "controller_state": "ACTIVE",
       "controller_action": "FULL_ON",
-      "activation_score": 0.8025,
+      "activation_score": 0.8175,
       "controller_reason_codes": [
         "REGIME_MATCH_HIGH",
         "HALF_LIFE_STRENGTHENING",
@@ -452,11 +452,11 @@
         "KILL_NONE",
         "SESSION_DRIFT_NORMAL",
         "SESSION_CONCENTRATION",
-        "TIME_WINDOW_PARTIAL",
+        "TIME_WINDOW_MATCH",
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-03-19",
+      "last_controller_date": "2026-03-20",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
@@ -732,11 +732,11 @@
         "HEALTH_FAIL",
         "KILL_NONE",
         "SESSION_DRIFT_NORMAL",
-        "TIME_WINDOW_PARTIAL",
+        "TIME_WINDOW_MATCH",
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-03-19",
+      "last_controller_date": "2026-03-20",
       "review_priority": "MEDIUM",
       "half_life_status": "ARCHIVE_CANDIDATE",
       "contribution_status": "NEUTRAL",
@@ -781,7 +781,7 @@
       "controller_state": "PROBATION",
       "prior_state": "PROBATION",
       "controller_action": "PROBATION",
-      "activation_score": 0.4,
+      "activation_score": 0.415,
       "controller_reason_codes": [
         "REGIME_MATCH_LOW",
         "HALF_LIFE_DEAD",
@@ -790,11 +790,11 @@
         "HEALTH_FAIL",
         "KILL_NONE",
         "SESSION_DRIFT_NORMAL",
-        "TIME_WINDOW_PARTIAL",
+        "TIME_WINDOW_MATCH",
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-03-19",
+      "last_controller_date": "2026-03-20",
       "review_priority": "MEDIUM",
       "half_life_status": "ARCHIVE_CANDIDATE",
       "contribution_status": "NEUTRAL",
@@ -1630,7 +1630,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-03-19",
+      "last_controller_date": "2026-03-20",
       "review_priority": "MEDIUM",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
@@ -1763,9 +1763,9 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-03-19",
-      "review_priority": "HIGH",
-      "prior_state": "PROBATION",
+      "last_controller_date": "2026-03-20",
+      "review_priority": "LOW",
+      "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -2004,7 +2004,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-03-19",
+      "last_controller_date": "2026-03-20",
       "review_priority": "MEDIUM",
       "prior_state": "PROBATION",
       "half_life_status": "ERROR",
@@ -2259,7 +2259,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-03-19",
+      "last_controller_date": "2026-03-20",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -2332,7 +2332,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-03-19",
+      "last_controller_date": "2026-03-20",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -2665,7 +2665,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-03-19",
+      "last_controller_date": "2026-03-20",
       "half_life_status": "HEALTHY",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -2989,7 +2989,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-03-19",
+      "last_controller_date": "2026-03-20",
       "half_life_status": "ARCHIVE_CANDIDATE",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -3412,7 +3412,7 @@
       "status": "testing",
       "notes": "SALVAGE \u2014 FROZEN. Path A re-test 2026-03-20 confirmed: MGC long-only PF 9.44 / 10 trades / WF H1=0.52 H2=13.33. Fails on trade count (<15) and walk-forward (H1<1.0). Rally-dependent, proxy conflates carry with momentum. DO NOT ADVANCE unless: (1) momentum decomposition shows carry component is real, AND (2) Path B data investment (Databento front/back ~$50-100) is approved. No further iteration without human approval.",
       "last_review_date": "2026-03-18",
-      "review_priority": "LOW",
+      "review_priority": "MEDIUM",
       "lifecycle_stage": "first_pass",
       "source_category": "academic",
       "tags": [
@@ -3428,7 +3428,7 @@
       "upgrade_role": "later_carry_expansion",
       "controller_state": "PAPER",
       "prior_state": "PAPER",
-      "controller_action": "OFF",
+      "controller_action": "PROBATION",
       "activation_score": 0.545,
       "controller_reason_codes": [
         "REGIME_MATCH_LOW",
@@ -3441,7 +3441,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-03-19",
+      "last_controller_date": "2026-03-20",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -3481,17 +3481,24 @@
       "direction": "long",
       "source": "Moreira & Muir (NBER w22208) \u2014 Volatility-Managed Portfolios",
       "rule_summary": "Scale equity-index futures exposure inversely with recent realized volatility. Reduce position when vol is high, increase when vol is low. Leverage-capped. Sharpe improvement from vol timing rather than directional signal.",
-      "status": "testing",
-      "notes": "CONVICTION-READY. First-pass + counterfactual complete 2026-03-18. Rubric: 20/24 raw + 2 gap = 22 effective (highest challenger in system). Marginal Sharpe +0.089 (ADDS VALUE). Portfolio corr 0.088. NB overlap acceptable (pairwise 0.368, portfolio 0.088, VM gains when NB loses). Crisis cost: hurts in COVID/2022 \u2014 ENTER AT MICRO/REDUCED ONLY until forward evidence proves otherwise. UPGRADE SEQUENCE #2: Enters conviction when next slot opens (after June 1). CORE CHALLENGE PATH: After 8+ weeks conviction with forward Sharpe > 0.5 \u2192 challenge PB-MGC-Short (16). FALLBACK: Auto-elevates to lead if Treasury-Rolldown weakens.",
-      "last_review_date": "2026-03-18",
-      "review_priority": "MEDIUM",
-      "lifecycle_stage": "first_pass",
+      "status": "probation",
+      "notes": "APPROVED for forward runner 2026-03-20. MICRO tier, probation. Rubric 22 effective (highest challenger). Fills VOLATILITY gap (0 active before this). Marginal Sharpe +0.089, portfolio corr 0.088. MONITORING NOTES: (1) CRISIS DD \u2014 vol-managed sizing REDUCES position in high-vol but this is long-only equity: COVID-2020 and 2022 rate hikes will show DD. Monitor forward DD vs backtest DD. If forward crisis DD exceeds 1.5x backtest worst, downgrade tier. (2) CONTRIBUTION \u2014 must remain additive (marginal Sharpe > 0). If portfolio Sharpe degrades after adding VolManaged, it is dilutive and should be paused. (3) LONG BIAS \u2014 adds to 2.7:1 long ratio. Acceptable because mechanism is unique (sizing, not timing) and vol-scaling has negative correlation with crisis drawdowns. But monitor: if portfolio DD clusters with VolManaged DD on same days, the long-bias diversification thesis is failing. (4) VOL-SCALING LIVE BEHAVIOR \u2014 compare forward daily weights to what backtest would have produced on the same dates. If live weights diverge >20% from backtest (data feed difference, computation timing), the signal is not replicating correctly.",
+      "last_review_date": "2026-03-20",
+      "review_priority": "HIGH",
+      "lifecycle_stage": "forward_evidence",
       "source_category": "academic",
       "tags": [
         "VOLATILITY",
         "testable_now"
       ],
-      "state_history": [],
+      "state_history": [
+        {
+          "date": "2026-03-20",
+          "from": "testing",
+          "to": "probation",
+          "reason": "Approved for forward runner. MICRO tier. VOL gap fill."
+        }
+      ],
       "harvest_batch": "academic_harvest_batch_2026-03-17",
       "harvest_note": "46_equity_index_volatility_managed_futures.md",
       "batch_priority": 3,
@@ -3514,12 +3521,27 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-03-19",
+      "last_controller_date": "2026-03-20",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
       "genome_cluster": "unknown",
-      "resurrection_flag": false
+      "resurrection_flag": false,
+      "execution_config": {
+        "avoid_regimes": [],
+        "preferred_regimes": [],
+        "preferred_window": [
+          "09:30",
+          "15:15"
+        ],
+        "allowed_window": [
+          "09:30",
+          "15:15"
+        ],
+        "conviction_threshold_outside": 0,
+        "priority": 5,
+        "grinding_filter": false
+      }
     },
     {
       "strategy_id": "Commodity-Carry-TailRisk-Overlay",
@@ -3585,7 +3607,7 @@
       "status": "probation",
       "notes": "ACTIVE CARRY CHALLENGER. Entered forward runner 2026-03-20. MICRO tier, monthly rebalance, 1 contract per spread leg. Rubric 18 (eff. 20 with gap bonus). Fills CARRY + Rates gaps. June 1 displacement target: MomIgn-M2K-Short. Promote condition: 3mo forward Sharpe > 0 + WF improvement. Archive condition: 3mo consecutive negative forward returns.",
       "last_review_date": "2026-03-20",
-      "review_priority": "HIGH",
+      "review_priority": "MEDIUM",
       "lifecycle_stage": "forward_evidence",
       "source_category": "academic",
       "tags": [
@@ -3614,7 +3636,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-03-19",
+      "last_controller_date": "2026-03-20",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
