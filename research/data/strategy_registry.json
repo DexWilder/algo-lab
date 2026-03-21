@@ -4495,7 +4495,17 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "sizing_overlay"
+      "component_type": "sizing_overlay",
+      "components": {
+        "entry": "Always long (sizing regime, not entry signal)",
+        "exit": "Never (continuous hold with varying weight)",
+        "filter": null,
+        "sizing": "Weight = target_vol / realized_vol, capped [0.25, 2.0]",
+        "regime": "Vol-inverse: reduce in high-vol, increase in low-vol",
+        "timing": "Daily rebalance at close",
+        "asset_scope": "MES (equity index)",
+        "validation_status": "validated"
+      }
     },
     {
       "strategy_id": "Commodity-Carry-TailRisk-Overlay",
@@ -4639,7 +4649,17 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "components": {
+        "entry": "Monthly rebalance: long highest-carry tenor, short lowest-carry",
+        "exit": "Next monthly rebalance",
+        "filter": null,
+        "sizing": "Equal-notional or DV01-weighted spread",
+        "regime": null,
+        "timing": "Monthly rebalance at daily close",
+        "asset_scope": "ZN/ZF/ZB (rates, 3-tenor spread)",
+        "validation_status": "validated"
+      }
     },
     {
       "strategy_id": "CrudeOil-OPEC-Announcement-Regime",
@@ -4717,7 +4737,18 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "components": {
+        "entry": "Trade overnight direction at 09:45 if overnight z-score > 1.5 AND vol ratio > 1.2",
+        "exit": "Fixed time 11:00 ET or 1.5x ATR stop",
+        "filter": "Overnight range z-score + opening volume ratio (REJECTED: selects for reversal days)",
+        "sizing": null,
+        "regime": null,
+        "timing": "09:45-11:00 ET morning (REJECTED)",
+        "asset_scope": "MES/MNQ (equity index)",
+        "validation_status": "rejected_in_context",
+        "salvageable": "z-score concept may work on different asset/session (not equity morning)"
+      }
     },
     {
       "strategy_id": "Treasury-Cash-Close-Reversion-Window",
@@ -4761,7 +4792,18 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "components": {
+        "entry": "Fade 14:45-15:00 impulse at 15:00 ET (REJECTED: PF 0.87)",
+        "exit": "Fixed time 15:25 ET or 60% retracement",
+        "filter": "Impulse threshold 1.5x median (REJECTED: degrades results)",
+        "sizing": null,
+        "regime": null,
+        "timing": "15:00-15:25 ET post-cash-close (REJECTED: not special)",
+        "asset_scope": "ZN (rates)",
+        "validation_status": "rejected_in_context",
+        "salvageable": "Afternoon reversion timing (validated in earlier window as ZN-Afternoon-Rev)"
+      }
     },
     {
       "strategy_id": "ZN-Afternoon-Reversion",
@@ -4852,7 +4894,17 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "components": {
+        "entry": "Fade impulse > 1.5x 20d median at 14:00 ET",
+        "exit": "Fixed time 14:25 ET or 60% retracement or 1.5x ATR stop",
+        "filter": "Impulse threshold: magnitude > 1.5x rolling 20d median",
+        "sizing": null,
+        "regime": "HIGH_VOL preferred (PF 1.64 high-vol, 1.04 low-vol)",
+        "timing": "13:45-14:25 ET afternoon pre-cash-close window",
+        "asset_scope": "ZN (rates)",
+        "validation_status": "validated"
+      }
     }
   ],
   "_rejection_taxonomy": {
