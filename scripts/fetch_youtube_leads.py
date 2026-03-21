@@ -146,14 +146,25 @@ def main():
             # Try to get transcript excerpt
             excerpt = get_transcript_excerpt(r["video_id"])
 
+            # Quality gate: skip videos without usable transcripts
+            # unless the title is highly strategy-specific
+            title_lower = r["title"].lower()
+            title_quality = sum(1 for kw in ["backtest", "systematic", "futures",
+                                              "strategy", "algorithm", "quantitative"]
+                                if kw in title_lower)
+
+            if excerpt is None and title_quality < 2:
+                continue  # No transcript + generic title = skip
+
             lead = {
                 "title": r["title"],
                 "url": r["url"],
                 "query": query,
                 "has_transcript": excerpt is not None,
+                "title_quality": title_quality,
             }
             if excerpt:
-                lead["excerpt"] = excerpt[:300]
+                lead["excerpt"] = excerpt[:400]
 
             all_leads.append(lead)
             if len(all_leads) >= MAX_LEADS:
@@ -161,16 +172,16 @@ def main():
 
         time.sleep(2)  # Rate limit
 
+    # Sort by quality: transcript > no transcript, higher title quality first
+    all_leads.sort(key=lambda x: (x["has_transcript"], x.get("title_quality", 0)), reverse=True)
+
     # Write leads
     lines = [
-        "# YouTube Source Leads",
+        "# YouTube Source Leads (quality-filtered)",
         f"# Generated: {TIMESTAMP}",
-        "# For Claw to review during harvest tasks.",
-        "#",
-        "# Format: one video per block. Claw should watch/read the content,",
-        "# extract any mechanical futures strategy logic, and write",
-        "# a standard harvest note if the content is testable.",
-        "# Reject discretionary/narrative-only content.",
+        "# Quality-filtered: videos without transcripts AND generic titles are excluded.",
+        "# Claw should read the transcript excerpt and title, extract any mechanical",
+        "# futures strategy logic, and write a harvest note if testable.",
         "",
     ]
 
@@ -179,8 +190,8 @@ def main():
         lines.append(f"  url: {lead['url']}")
         lines.append(f"  query: {lead['query']}")
         lines.append(f"  has_transcript: {lead['has_transcript']}")
+        lines.append(f"  title_quality: {lead.get('title_quality', 0)}")
         if lead.get("excerpt"):
-            # Clean excerpt for markdown
             excerpt = lead["excerpt"].replace("\n", " ").replace("|", " ")
             lines.append(f"  excerpt: {excerpt}")
         lines.append("")

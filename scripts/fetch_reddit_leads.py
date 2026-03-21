@@ -19,7 +19,7 @@ import time
 from datetime import datetime
 from pathlib import Path
 from urllib.request import Request, urlopen
-from urllib.parse import quote
+from urllib.parse import quote, unquote
 
 LEADS_DIR = Path.home() / "openclaw-intake" / "inbox" / "source_leads"
 OUTPUT = LEADS_DIR / "reddit_leads.md"
@@ -66,16 +66,50 @@ def fetch_reddit(subreddit, query, limit=5):
             title_lower = d.get("title", "").lower()
             if any(kw in title_lower for kw in ["crypto", "bitcoin", "ethereum", "nft", "defi"]):
                 continue
+            # Extract self-text excerpt if available
+            selftext = d.get("selftext", "")[:500].strip()
+            if selftext:
+                selftext = selftext.replace("\n", " ").replace("|", " ")
+
             posts.append({
                 "title": d.get("title", ""),
                 "url": f"https://reddit.com{d.get('permalink', '')}",
                 "subreddit": subreddit,
                 "upvotes": d.get("ups", 0),
                 "comments": d.get("num_comments", 0),
+                "selftext": selftext,
+                "created": datetime.fromtimestamp(d.get("created_utc", 0)).strftime("%Y-%m-%d") if d.get("created_utc") else "",
             })
         return posts
     except Exception as e:
         print(f"  Warning: failed to fetch r/{subreddit} for '{query}': {e}", file=sys.stderr)
+        return []
+
+
+def fetch_top_comments(permalink, max_comments=3):
+    """Fetch top comments from a Reddit post."""
+    url = f"https://www.reddit.com{permalink}.json?sort=top&limit={max_comments}"
+    req = Request(url, headers={"User-Agent": USER_AGENT})
+    try:
+        with urlopen(req, timeout=10) as resp:
+            data = json.loads(resp.read())
+        if len(data) < 2:
+            return []
+        comments = []
+        for child in data[1].get("data", {}).get("children", []):
+            d = child.get("data", {})
+            body = d.get("body", "").strip()
+            if not body or body == "[deleted]" or body == "[removed]":
+                continue
+            score = d.get("ups", 0)
+            if score < 3:
+                continue
+            body_clean = body[:300].replace("\n", " ").replace("|", " ")
+            comments.append({"body": body_clean, "score": score})
+            if len(comments) >= max_comments:
+                break
+        return comments
+    except Exception:
         return []
 
 
@@ -94,22 +128,28 @@ def main():
                 if p["url"] in seen_urls:
                     continue
                 seen_urls.add(p["url"])
+
+                # Fetch top comments for high-engagement posts
+                if p["comments"] >= 5:
+                    permalink = p["url"].replace("https://reddit.com", "")
+                    top_comments = fetch_top_comments(permalink, max_comments=2)
+                    p["top_comments"] = top_comments
+                    time.sleep(1.0)
+                else:
+                    p["top_comments"] = []
+
                 all_leads.append(p)
                 if len(all_leads) >= MAX_TOTAL:
                     break
-            # Rate limit: Reddit public API allows ~1 req/sec
             time.sleep(1.5)
 
     # Write leads
     lines = [
-        "# Reddit Source Leads",
+        "# Reddit Source Leads (enriched)",
         f"# Generated: {TIMESTAMP}",
-        "# For Claw to review during harvest tasks.",
-        "#",
-        "# Format: one post per block. Claw should read the discussion,",
-        "# extract any mechanical futures strategy logic, and write",
-        "# a standard harvest note if the content is testable.",
-        "# Reject discretionary/narrative posts.",
+        "# Enriched with self-text excerpts and top comments.",
+        "# Claw should read the discussion, extract any mechanical",
+        "# futures strategy logic, and write a harvest note if testable.",
         "",
     ]
 
@@ -119,6 +159,12 @@ def main():
         lines.append(f"  subreddit: r/{lead['subreddit']}")
         lines.append(f"  upvotes: {lead['upvotes']}")
         lines.append(f"  comments: {lead['comments']}")
+        if lead.get("created"):
+            lines.append(f"  date: {lead['created']}")
+        if lead.get("selftext"):
+            lines.append(f"  selftext: {lead['selftext'][:300]}")
+        for i, c in enumerate(lead.get("top_comments", [])):
+            lines.append(f"  top_comment_{i+1}: [{c['score']} pts] {c['body']}")
         lines.append("")
 
     lines.append(f"# Total leads: {len(all_leads)}")

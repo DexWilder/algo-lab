@@ -35,9 +35,9 @@ if [ -f "$LEADS_DIR/reddit_leads.md" ]; then
     mv "$LEADS_DIR/reddit_leads.md" "$LEADS_DIR/reddit_leads_prev.md" 2>/dev/null || true
 fi
 
-# ── Fetch GitHub leads ──
+# ── Fetch GitHub leads (v2 — enriched with READMEs) ──
 log "--- Fetching GitHub leads ---"
-GH_OUTPUT=$(bash "$ALGO_LAB/scripts/fetch_github_leads.sh" 2>&1) || true
+GH_OUTPUT=$(python3 "$ALGO_LAB/scripts/fetch_github_leads.py" 2>&1) || true
 GH_COUNT=$(echo "$GH_OUTPUT" | grep -o '[0-9]* repos' | grep -o '[0-9]*' || echo 0)
 log "GitHub: $GH_COUNT leads fetched"
 
