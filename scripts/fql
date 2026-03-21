@@ -22,6 +22,11 @@ Operations:
     fql restart         Kickstart all launch agents
     fql alerts          Show active alerts
     fql review          Show probation scoreboard + challenger stack
+
+Utilities:
+    fql notify-test     Send a test macOS notification
+    fql last            Show latest run times for all platform components
+    fql checkpoint --auto  Automated pass/fail checkpoint evaluation
     fql help            This help screen
 """
 
@@ -447,6 +452,221 @@ def _check_and_notify():
             pass  # Notification is best-effort
 
 
+def cmd_notify_test():
+    """Send a test macOS notification to confirm notifications work."""
+    try:
+        subprocess.run([
+            "osascript", "-e",
+            'display notification "Notifications are working." with title "FQL Test"'
+        ], capture_output=True, timeout=5)
+        print("  Test notification sent. Check Notification Center.")
+    except Exception as e:
+        print(f"  Notification failed: {e}")
+
+
+def cmd_last():
+    """Show latest timestamps for key platform runs."""
+    import time as _time
+    from datetime import datetime
+
+    print("  FQL Last Run Times")
+    print("  " + "-" * 45)
+
+    def _latest(pattern, base=None):
+        base = base or (ROOT / "research" / "logs")
+        files = sorted(base.glob(pattern), key=lambda p: p.stat().st_mtime, reverse=True)
+        if not files:
+            return "never", ""
+        age_min = ((_time.time() - files[0].stat().st_mtime) / 60)
+        ts = datetime.fromtimestamp(files[0].stat().st_mtime).strftime("%Y-%m-%d %H:%M")
+        if age_min < 60:
+            ago = f"{age_min:.0f}m ago"
+        elif age_min < 1440:
+            ago = f"{age_min/60:.1f}h ago"
+        else:
+            ago = f"{age_min/1440:.1f}d ago"
+        return ts, ago
+
+    checks = [
+        ("Doctor",          "_system_health.md",                INBOX),
+        ("Watchdog",        "watchdog_*.log",                   None),
+        ("Claw loop",       "claw_loop_*.log",                  None),
+        ("Daily pipeline",  "daily_run_*.log",                  None),
+        ("Weekly pipeline", "weekly_run_*.log",                 None),
+        ("Source helpers",   "source_helpers_*.log",             None),
+        ("Operator brief",  "_operator_brief.md",               INBOX),
+        ("Alerts",          "_alerts.md",                       INBOX),
+    ]
+
+    for name, pattern, base in checks:
+        if base:
+            ts, ago = _latest(pattern, base)
+        else:
+            ts, ago = _latest(pattern)
+        print(f"  {name:<20s} {ts:<18s} {ago}")
+
+    print()
+
+
+def cmd_checkpoint_auto():
+    """Automated checkpoint with pass/fail summary."""
+    import json
+    from datetime import datetime
+
+    print("=" * 60)
+    print("  FQL CHECKPOINT — AUTOMATED EVALUATION")
+    print("=" * 60)
+    print()
+
+    # Refresh reports silently
+    print("  Refreshing reports...", end=" ", flush=True)
+    for script in ["fql_alerts.py --save", "probation_scoreboard.py --save",
+                    "harvest_quality_review.py --days 14 --save",
+                    "harvest_coverage_audit.py --save",
+                    "portfolio_gap_dashboard.py --save",
+                    "operator_brief.py --save"]:
+        parts = script.split()
+        _run(["python3", str(SCRIPTS / parts[0])] + parts[1:], show_output=False)
+    print("done")
+    print()
+
+    results = []
+
+    # ── Check 1: Source lead conversion ──
+    manifest = INBOX / "source_leads" / "_manifest.json"
+    if manifest.exists():
+        try:
+            data = json.load(open(manifest))
+            lifecycle = data.get("lifecycle", {})
+            picked = sum(1 for v in lifecycle.values() if v.get("picked_up"))
+            notes = sum(v.get("notes_produced", 0) for v in lifecycle.values())
+            total_batches = len(lifecycle)
+            if total_batches > 0 and picked > 0:
+                results.append(("Source lead conversion", "PASS", f"{picked}/{total_batches} batches picked up, {notes} notes"))
+            elif total_batches > 0:
+                results.append(("Source lead conversion", "FAIL", f"0/{total_batches} batches picked up"))
+            else:
+                results.append(("Source lead conversion", "WAIT", "No lead batches yet"))
+        except Exception:
+            results.append(("Source lead conversion", "WAIT", "Manifest unreadable"))
+    else:
+        results.append(("Source lead conversion", "WAIT", "No manifest"))
+
+    # ── Check 2: Component tagging ──
+    tagged = 0
+    total_notes = 0
+    if INBOX.joinpath("harvest").exists():
+        cutoff = (datetime.now() - __import__("datetime").timedelta(days=14)).strftime("%Y-%m-%d")
+        for f in INBOX.joinpath("harvest").glob("*.md"):
+            if f.name[:10] >= cutoff:
+                total_notes += 1
+                try:
+                    if "component_type:" in f.read_text():
+                        tagged += 1
+                except Exception:
+                    pass
+    if total_notes > 0 and tagged / total_notes >= 0.3:
+        results.append(("Component tagging", "PASS", f"{tagged}/{total_notes} notes tagged ({tagged/total_notes*100:.0f}%)"))
+    elif total_notes > 0:
+        results.append(("Component tagging", "FAIL", f"{tagged}/{total_notes} tagged ({tagged/total_notes*100:.0f}%) — need ≥30%"))
+    else:
+        results.append(("Component tagging", "WAIT", "No recent notes"))
+
+    # ── Check 3: Source convergence ──
+    reg = {}
+    try:
+        reg = json.load(open(ROOT / "research" / "data" / "strategy_registry.json"))
+    except Exception:
+        pass
+    convergent = sum(1 for s in reg.get("strategies", []) if s.get("convergent_sources"))
+    if convergent >= 5:
+        results.append(("Source convergence", "PASS", f"{convergent} ideas with multi-source confirmation → BUILD convergence scoring"))
+    elif convergent >= 2:
+        results.append(("Source convergence", "PARTIAL", f"{convergent} convergent ideas — stage convergence scoring"))
+    else:
+        results.append(("Source convergence", "WAIT", f"{convergent} convergent — catalog not deep enough yet"))
+
+    # ── Check 4: Portfolio gap targeting ──
+    review_path = INBOX / "_harvest_quality_review.md"
+    if review_path.exists():
+        text = review_path.read_text()
+        vol_ok = "VOLATILITY" in text and "gap not addressed" not in text.split("VOLATILITY")[1][:100] if "VOLATILITY" in text else False
+        val_ok = "VALUE" in text and "gap not addressed" not in text.split("VALUE")[1][:100] if "VALUE" in text else False
+        if vol_ok and val_ok:
+            results.append(("Portfolio gap targeting", "PASS", "VOL and VALUE gaps addressed in harvest"))
+        else:
+            missing = []
+            if not vol_ok:
+                missing.append("VOL")
+            if not val_ok:
+                missing.append("VALUE")
+            results.append(("Portfolio gap targeting", "FAIL", f"Gaps not addressed: {', '.join(missing)}"))
+    else:
+        results.append(("Portfolio gap targeting", "WAIT", "No harvest quality review yet"))
+
+    # ── Check 5: System health ──
+    health_result = _run(["python3", str(SCRIPTS / "fql_doctor.py"), "--json"], show_output=False)
+    try:
+        hdata = json.loads(health_result)
+        overall = hdata["overall"]
+        if overall == "HEALTHY":
+            results.append(("System health", "PASS", "All components healthy"))
+        else:
+            issues = [c["name"] for c in hdata["checks"] if c["status"] != "HEALTHY"]
+            results.append(("System health", "FAIL", f"{overall}: {', '.join(issues)}"))
+    except Exception:
+        results.append(("System health", "WAIT", "Could not run doctor"))
+
+    # ── Check 6: Forward evidence ──
+    try:
+        import pandas as pd
+        trades = pd.read_csv(ROOT / "logs" / "trade_log.csv")
+        n = len(trades)
+        strategies_with_trades = trades["strategy"].nunique() if "strategy" in trades.columns else 0
+        if n >= 10 and strategies_with_trades >= 3:
+            results.append(("Forward evidence", "PASS", f"{n} trades across {strategies_with_trades} strategies"))
+        elif n > 0:
+            results.append(("Forward evidence", "PARTIAL", f"{n} trades, {strategies_with_trades} strategies — accumulating"))
+        else:
+            results.append(("Forward evidence", "WAIT", "No forward trades yet"))
+    except Exception:
+        results.append(("Forward evidence", "WAIT", "No trade log"))
+
+    # ── Print results ──
+    passes = sum(1 for _, s, _ in results if s == "PASS")
+    fails = sum(1 for _, s, _ in results if s == "FAIL")
+    waits = sum(1 for _, s, _ in results if s in ("WAIT", "PARTIAL"))
+
+    print(f"  Results: {passes} PASS | {fails} FAIL | {waits} WAITING")
+    print()
+    print(f"  {'Check':<28s} {'Result':<10s} Detail")
+    print(f"  {'-'*28} {'-'*10} {'-'*40}")
+    for name, status, detail in results:
+        icon = {"PASS": "+", "FAIL": "X", "WAIT": "?", "PARTIAL": "~"}.get(status, "?")
+        print(f"  [{icon}] {name:<25s} {status:<10s} {detail}")
+
+    # ── Decisions ──
+    print()
+    print("  Decisions:")
+    build_convergence = any(s == "PASS" for n, s, _ in results if n == "Source convergence")
+    if build_convergence:
+        print("  >> BUILD Phase 2 convergence scoring — data threshold met")
+    elif any(s == "PARTIAL" for n, s, _ in results if n == "Source convergence"):
+        print("  -- STAGE convergence scoring — design but don't build yet")
+    else:
+        print("  -- WAIT on convergence scoring — insufficient data")
+
+    if fails > 0:
+        print(f"  >> FIX {fails} failing check(s) before building new modules")
+
+    if fails == 0 and waits <= 1:
+        print("  >> System ready for next architecture phase")
+    elif fails == 0:
+        print("  -- Continue accumulating data — next checkpoint in 2 weeks")
+
+    print()
+
+
 def cmd_help():
     """Show help."""
     print(__doc__)
@@ -474,6 +694,9 @@ COMMANDS = {
     "restart": cmd_restart,
     "alerts": cmd_alerts,
     "review": cmd_review,
+    # Utilities
+    "notify-test": cmd_notify_test,
+    "last": cmd_last,
     "help": cmd_help,
 }
 
@@ -484,6 +707,10 @@ def main():
         return
 
     cmd = sys.argv[1].lower()
+    # Handle checkpoint --auto
+    if cmd == "checkpoint" and len(sys.argv) > 2 and sys.argv[2] == "--auto":
+        cmd_checkpoint_auto()
+        return
     if cmd in COMMANDS:
         COMMANDS[cmd]()
     else:
