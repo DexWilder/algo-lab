@@ -153,8 +153,12 @@ def main():
                                               "strategy", "algorithm", "quantitative"]
                                 if kw in title_lower)
 
-            if excerpt is None and title_quality < 2:
-                continue  # No transcript + generic title = skip
+            # Score with whatever we have
+            score_text = f"{title} {excerpt or ''}"
+            prelim = score_lead(score_text, title) if 'score_lead' in dir() else None
+
+            if excerpt is None and title_quality < 1:
+                continue  # No transcript + completely generic title = skip
 
             lead = {
                 "title": r["title"],

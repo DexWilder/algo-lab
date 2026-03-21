@@ -149,11 +149,13 @@ def tier_lead(score_result):
 
     if noise > mechanism and noise >= 4:
         return "R"  # Noise dominates
-    if mechanism >= 8 and len(components) >= 2:
-        return "A"  # Strong mechanical content with multiple components
-    if mechanism >= 4 or len(components) >= 1:
+    if mechanism >= 6 and len(components) >= 1:
+        return "A"  # Strong mechanical content
+    if mechanism >= 6:
+        return "A"  # High mechanism density even without detected components
+    if mechanism >= 3 or len(components) >= 1:
         return "B"  # Useful fragment
-    if mechanism >= 2:
+    if mechanism >= 1:
         return "C"  # Weak but maybe salvageable
     return "R"  # Too thin
 

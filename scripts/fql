@@ -697,6 +697,7 @@ COMMANDS = {
     # Utilities
     "notify-test": cmd_notify_test,
     "last": cmd_last,
+    "funnel": lambda: _py("helper_funnel_audit.py", "--save"),
     "help": cmd_help,
 }
 
