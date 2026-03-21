@@ -1,12 +1,21 @@
 #!/usr/bin/env python3
 """FQL — single command layer for the Fisher Quant Lab platform.
 
-Usage:
+Routines:
+    fql morning         Doctor + daily brief (start of day)
+    fql friday          Weekly reports + review (end of week)
+    fql sunday          Harvest helpers + doctor (pre-week prep)
+    fql checkpoint      April-style evaluation bundle
+
+Core:
     fql status          Quick health + today's brief
     fql doctor          Full system health audit
     fql repair          Audit + auto-fix common issues
     fql daily           Show today's operator brief
     fql refresh         Regenerate all daily reports + alerts
+    fql summary         One-screen snapshot of everything that matters
+
+Operations:
     fql harvest         Run source helpers + show lead status
     fql weekly          Run weekly reports (gap dashboard, coverage, quality)
     fql components      Search strategy components (with filters)
@@ -220,32 +229,245 @@ def cmd_review():
             print(f"  {name}: not found. Run: fql refresh")
 
 
+def cmd_morning():
+    """Start-of-day routine: doctor + daily brief."""
+    print("=" * 60)
+    print("  FQL MORNING CHECK")
+    print("=" * 60)
+    print()
+    _py("fql_doctor.py")
+    print()
+    _show_file(INBOX / "_operator_brief.md")
+    _check_and_notify()
+
+
+def cmd_friday():
+    """End-of-week routine: weekly reports + review."""
+    print("=" * 60)
+    print("  FQL FRIDAY REVIEW")
+    print("=" * 60)
+    print()
+    cmd_weekly()
+    print()
+    cmd_review()
+    print()
+    _show_file(INBOX / "_portfolio_gap_dashboard.md")
+
+
+def cmd_sunday():
+    """Pre-week prep: harvest + doctor."""
+    print("=" * 60)
+    print("  FQL SUNDAY PREP")
+    print("=" * 60)
+    print()
+    cmd_harvest()
+    print()
+    _py("fql_doctor.py")
+
+
+def cmd_checkpoint():
+    """Run April-style evaluation bundle."""
+    print("=" * 60)
+    print("  FQL CHECKPOINT EVALUATION")
+    print("=" * 60)
+    print()
+
+    # Refresh everything first
+    print("Refreshing all reports...")
+    _py("fql_alerts.py", "--save")
+    _py("probation_scoreboard.py", "--save")
+    _py("challenger_stack_review.py", "--save")
+    _py("rates_challenger_review.py", "--save")
+    _py("harvest_quality_review.py", "--days", "14", "--save")
+    _py("harvest_coverage_audit.py", "--save")
+    _py("portfolio_gap_dashboard.py", "--save")
+    _py("operator_brief.py", "--save")
+    _py("fql_doctor.py")
+    print()
+
+    # Show key outputs
+    print("=" * 60)
+    print("  SYSTEM HEALTH")
+    print("=" * 60)
+    _show_file(INBOX / "_system_health.md")
+
+    print("=" * 60)
+    print("  HARVEST QUALITY")
+    print("=" * 60)
+    _show_file(INBOX / "_harvest_quality_review.md")
+
+    print("=" * 60)
+    print("  PORTFOLIO GAPS")
+    print("=" * 60)
+    _show_file(INBOX / "_portfolio_gap_dashboard.md")
+
+    print("=" * 60)
+    print("  PROBATION SCOREBOARD")
+    print("=" * 60)
+    _show_file(INBOX / "_probation_scoreboard.md")
+
+    print("=" * 60)
+    print("  CHALLENGER STACK")
+    print("=" * 60)
+    _show_file(INBOX / "_challenger_stack_review.md")
+
+    print("=" * 60)
+    print("  ALERTS")
+    print("=" * 60)
+    _show_file(INBOX / "_alerts.md")
+
+    print()
+    print("Checklist: research/notes/april_3_evaluation_checklist.md")
+
+
+def cmd_summary():
+    """One-screen snapshot of everything that matters."""
+    import json
+    from datetime import datetime
+
+    print("=" * 60)
+    print("  FQL SUMMARY")
+    print(f"  {datetime.now().strftime('%A, %Y-%m-%d %H:%M')}")
+    print("=" * 60)
+    print()
+
+    # Health (compact)
+    result = _run(["python3", str(SCRIPTS / "fql_doctor.py"), "--json"], show_output=False)
+    try:
+        data = json.loads(result)
+        overall = data["overall"]
+        degraded = [c["name"] for c in data["checks"] if c["status"] != "HEALTHY"]
+        if degraded:
+            print(f"  Health: {overall} — issues: {', '.join(degraded)}")
+        else:
+            print(f"  Health: {overall}")
+    except Exception:
+        print("  Health: could not check")
+
+    # Alerts (compact)
+    alerts_path = INBOX / "_alerts.md"
+    if alerts_path.exists():
+        text = alerts_path.read_text()
+        a = text.count("[ALERT]")
+        ac = text.count("[ACTION]")
+        w = text.count("[WARN]")
+        if a + ac > 0:
+            print(f"  Alerts: {a} ALERT, {ac} ACTION, {w} WARN")
+        elif w > 0:
+            print(f"  Alerts: {w} warnings")
+        else:
+            print("  Alerts: none")
+
+    # Account state
+    acct_path = ROOT / "state" / "account_state.json"
+    if acct_path.exists():
+        try:
+            acct = json.load(open(acct_path))
+            eq = acct.get("equity", 0)
+            hwm = acct.get("equity_hwm", 0)
+            dd = hwm - eq
+            pnl = acct.get("cumulative_pnl", 0)
+            print(f"  Equity: ${eq:,.0f} | DD: ${dd:,.0f} | PnL: ${pnl:+,.0f}")
+        except Exception:
+            pass
+
+    # Trades
+    trade_path = ROOT / "logs" / "trade_log.csv"
+    if trade_path.exists():
+        try:
+            import pandas as pd
+            trades = pd.read_csv(trade_path)
+            total = len(trades)
+            today_str = datetime.now().strftime("%Y-%m-%d")
+            today_n = len(trades[trades["date"] == today_str]) if "date" in trades.columns else 0
+            print(f"  Trades: {total} total, {today_n} today")
+        except Exception:
+            pass
+
+    # Probation (compact)
+    reg_path = ROOT / "research" / "data" / "strategy_registry.json"
+    if reg_path.exists():
+        try:
+            reg = json.load(open(reg_path))
+            prob = [s for s in reg.get("strategies", []) if s.get("status") == "probation"]
+            core = [s for s in reg.get("strategies", []) if s.get("status") == "core"]
+            total = len(reg.get("strategies", []))
+            print(f"  Portfolio: {len(core)} core, {len(prob)} probation, {total} registry")
+        except Exception:
+            pass
+
+    # Source helpers
+    manifest = INBOX / "source_leads" / "_manifest.json"
+    if manifest.exists():
+        try:
+            data = json.load(open(manifest))
+            runs = data.get("runs", [])
+            if runs:
+                last = runs[-1]
+                print(f"  Leads: {last.get('total', 0)} from last fetch ({last.get('timestamp', '?')[:10]})")
+        except Exception:
+            pass
+
+    # Next checkpoint
+    print(f"  Next checkpoint: April 3, 2026")
+    print()
+
+
+def _check_and_notify():
+    """Send macOS notification if ALERT or DEGRADED/BROKEN found."""
+    alerts_path = INBOX / "_alerts.md"
+    health_path = INBOX / "_system_health.md"
+
+    messages = []
+
+    if alerts_path.exists():
+        text = alerts_path.read_text()
+        alert_count = text.count("[ALERT]")
+        action_count = text.count("[ACTION]")
+        if alert_count > 0:
+            messages.append(f"{alert_count} ALERT(s) require attention")
+        if action_count > 0:
+            messages.append(f"{action_count} decision(s) needed")
+
+    if health_path.exists():
+        text = health_path.read_text()
+        if "BROKEN" in text:
+            messages.append("System status: BROKEN")
+        elif "DEGRADED" in text:
+            messages.append("System status: DEGRADED")
+
+    if messages:
+        body = ". ".join(messages)
+        try:
+            subprocess.run([
+                "osascript", "-e",
+                f'display notification "{body}" with title "FQL Alert"'
+            ], capture_output=True, timeout=5)
+        except Exception:
+            pass  # Notification is best-effort
+
+
 def cmd_help():
     """Show help."""
     print(__doc__)
-    print("Examples:")
-    print("  fql status                    Quick health + brief")
-    print("  fql doctor                    Full system audit")
-    print("  fql repair                    Audit + auto-fix")
-    print("  fql daily                     Today's operator brief")
-    print("  fql refresh                   Regenerate all reports")
-    print("  fql harvest                   Run source helpers")
-    print("  fql weekly                    Run weekly reports")
-    print("  fql components --type filter  Search components")
-    print("  fql components --asset ZN     Search by asset")
-    print("  fql restart                   Restart all services")
-    print("  fql alerts                    Show active alerts")
-    print("  fql review                    Probation + challenger view")
 
 
 # ── Router ────────────────────────────────────────────────────────────────
 
 COMMANDS = {
+    # Routines
+    "morning": cmd_morning,
+    "friday": cmd_friday,
+    "sunday": cmd_sunday,
+    "checkpoint": cmd_checkpoint,
+    # Core
     "status": cmd_status,
     "doctor": cmd_doctor,
     "repair": cmd_repair,
     "daily": cmd_daily,
     "refresh": cmd_refresh,
+    "summary": cmd_summary,
+    # Operations
     "harvest": cmd_harvest,
     "weekly": cmd_weekly,
     "components": cmd_components,
