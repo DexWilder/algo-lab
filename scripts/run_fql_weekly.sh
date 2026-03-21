@@ -48,6 +48,8 @@ log "--- Generating portfolio gap dashboard ---"
 python3 scripts/portfolio_gap_dashboard.py --save >> "$LOG_FILE" 2>&1 || true
 log "--- Generating harvest coverage audit ---"
 python3 scripts/harvest_coverage_audit.py --save >> "$LOG_FILE" 2>&1 || true
+log "--- Generating harvest quality review ---"
+python3 scripts/harvest_quality_review.py --days 14 --save >> "$LOG_FILE" 2>&1 || true
 
 log ""
 if [ "$EXIT_CODE" -eq 0 ]; then
