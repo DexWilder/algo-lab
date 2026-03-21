@@ -27,16 +27,34 @@ MAX_LEADS = 15
 MAX_PER_QUERY = 5
 
 QUERIES = [
+    # Broad quant/systematic
     "quantitative trading strategy",
     "systematic trading backtest",
-    "volatility managed portfolio",
     "algorithmic trading futures",
     "backtesting framework python trading",
+    "trading strategy backtest python",
+    # Factor-specific (portfolio gaps)
+    "volatility managed portfolio",
     "carry trade systematic",
     "mean reversion trading strategy",
+    "value factor investing quantitative",
+    "momentum trading systematic python",
+    # Asset-specific (portfolio gaps)
     "commodity trading systematic",
+    "commodity futures python",
+    "treasury bond trading strategy",
+    "crude oil trading algorithm",
+    "gold futures strategy",
+    "forex carry trade python",
+    # Mechanism-specific
     "intraday trading strategy python",
-    "trading strategy backtest python",
+    "pairs trading cointegration",
+    "statistical arbitrage futures",
+    "risk parity portfolio python",
+    "trend following backtest",
+    "market microstructure trading",
+    "session trading strategy",
+    "overnight gap strategy",
 ]
 
 JUNK_KEYWORDS = ["crypto", "bitcoin", "ethereum", "defi", "nft", "spot forex",

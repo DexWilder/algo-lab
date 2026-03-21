@@ -19,23 +19,34 @@ Usage:
 # Higher weight = stronger signal of actionable strategy logic.
 
 STRONG_MECHANISM = [
-    # Entry/exit rules
+    # Entry/exit rules (formal)
     "entry when", "enter when", "buy when", "sell when", "go long when",
     "go short when", "exit when", "exit after", "close position",
     "stop loss", "stop at", "take profit", "profit target",
+    # Entry/exit rules (informal — how Reddit/YouTube actually talk)
+    "i enter", "i buy", "i sell", "i short", "i exit",
+    "my entry", "my exit", "my stop", "my target",
+    "the rule is", "the signal is", "trigger is",
+    "when price", "if price", "when it breaks", "if it crosses",
+    "above the", "below the", "breaks above", "breaks below",
     # Filters and conditions
     "filter by", "only when", "only during", "only if", "condition",
-    "threshold", "above", "below", "crosses", "breakout",
+    "threshold", "crosses", "breakout",
     # Specific mechanics
     "atr", "vwap", "ema", "sma", "rsi", "bollinger", "macd",
     "z-score", "percentile", "standard deviation",
-    "rebalance", "lookback", "rolling",
+    "rebalance", "lookback", "rolling", "moving average",
     # Backtest evidence
     "backtest", "backtested", "sharpe", "profit factor", "win rate",
-    "drawdown", "walk forward", "out of sample",
+    "drawdown", "walk forward", "out of sample", "sample size",
+    "tested on", "tested over", "results show",
     # Strategy structure
     "systematic", "mechanical", "algorithmic", "quantitative",
-    "rules-based", "rule-based",
+    "rules-based", "rule-based", "rules based",
+    # Timing/session (informal)
+    "at the open", "at close", "first hour", "last hour",
+    "overnight", "pre-market", "after hours", "london session",
+    "new york session", "asian session",
 ]
 
 MODERATE_MECHANISM = [

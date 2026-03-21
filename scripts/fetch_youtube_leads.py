@@ -32,14 +32,27 @@ MAX_LEADS = 10
 
 # Search queries — same gap-aware targeting as other helpers
 QUERIES = [
-    "futures trading strategy systematic",
-    "volatility managed portfolio",
-    "commodity futures carry trade",
-    "mean reversion futures intraday",
+    # Strategy-specific (high signal)
+    "futures trading strategy rules",
+    "systematic trading backtest results",
+    "volatility managed portfolio backtest",
+    "mean reversion strategy backtest",
     "algorithmic trading futures backtest",
+    "trend following strategy rules",
+    # Asset-specific
     "treasury bond futures strategy",
-    "crude oil futures systematic",
+    "crude oil futures trading rules",
+    "gold futures strategy backtest",
+    "commodity futures carry trade",
+    # Mechanism-specific
     "session microstructure trading",
+    "overnight gap trading strategy",
+    "VWAP strategy futures",
+    "ATR stop loss strategy",
+    "bollinger band squeeze strategy",
+    # Practitioner channels (high-quality)
+    "Adam Grimes trading strategy",
+    "quantitative trading explained",
 ]
 
 # YouTube channel IDs known for mechanical/systematic content (optional filter)

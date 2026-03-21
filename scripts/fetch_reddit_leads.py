@@ -25,19 +25,38 @@ LEADS_DIR = Path.home() / "openclaw-intake" / "inbox" / "source_leads"
 OUTPUT = LEADS_DIR / "reddit_leads.md"
 TIMESTAMP = datetime.now().strftime("%Y-%m-%d %H:%M")
 
-# Subreddits to search (futures/quant focused)
-SUBREDDITS = ["algotrading", "quant", "FuturesTrading"]
+# Subreddits to search
+SUBREDDITS = [
+    "algotrading",
+    "quant",
+    "FuturesTrading",
+    "quantfinance",
+    "options",         # Options ideas often translate to futures
+    "RealDayTrading",  # Practitioner discussions with rules
+]
 
 # Search queries targeting portfolio gaps
 QUERIES = [
+    # Strategy types
     "futures strategy systematic",
-    "volatility targeting futures",
-    "carry trade futures",
-    "value investing systematic",
-    "crude oil futures strategy",
-    "treasury futures",
-    "session microstructure",
     "mean reversion futures",
+    "trend following rules",
+    "carry trade strategy",
+    "volatility targeting",
+    # Asset-specific
+    "crude oil futures strategy",
+    "treasury futures trading",
+    "gold futures strategy",
+    "commodity futures systematic",
+    # Mechanism-specific
+    "backtest results strategy",
+    "entry exit rules",
+    "session trading strategy",
+    "overnight gap strategy",
+    "stop loss strategy systematic",
+    # Fragments
+    "volatility filter",
+    "regime detection trading",
 ]
 
 MAX_PER_QUERY = 5
