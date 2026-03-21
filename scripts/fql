@@ -1,0 +1,274 @@
+#!/usr/bin/env python3
+"""FQL — single command layer for the Fisher Quant Lab platform.
+
+Usage:
+    fql status          Quick health + today's brief
+    fql doctor          Full system health audit
+    fql repair          Audit + auto-fix common issues
+    fql daily           Show today's operator brief
+    fql refresh         Regenerate all daily reports + alerts
+    fql harvest         Run source helpers + show lead status
+    fql weekly          Run weekly reports (gap dashboard, coverage, quality)
+    fql components      Search strategy components (with filters)
+    fql restart         Kickstart all launch agents
+    fql alerts          Show active alerts
+    fql review          Show probation scoreboard + challenger stack
+    fql help            This help screen
+"""
+
+import os
+import subprocess
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+SCRIPTS = ROOT / "scripts"
+INBOX = Path.home() / "openclaw-intake" / "inbox"
+
+
+def _run(cmd, cwd=None, show_output=True):
+    """Run a command, streaming output."""
+    try:
+        result = subprocess.run(
+            cmd, cwd=cwd or str(ROOT),
+            capture_output=not show_output,
+            text=True, timeout=300
+        )
+        if not show_output:
+            return result.stdout
+        return result.returncode == 0
+    except subprocess.TimeoutExpired:
+        print("  Command timed out.")
+        return False
+    except Exception as e:
+        print(f"  Error: {e}")
+        return False
+
+
+def _show_file(path):
+    """Print a file's contents."""
+    p = Path(path)
+    if p.exists():
+        print(p.read_text())
+    else:
+        print(f"  Not found: {p}")
+
+
+def _py(script, *args):
+    """Run a Python script with args."""
+    return _run(["python3", str(SCRIPTS / script)] + list(args))
+
+
+def _bash(script, *args):
+    """Run a bash script with args."""
+    return _run(["bash", str(SCRIPTS / script)] + list(args))
+
+
+# ── Commands ──────────────────────────────────────────────────────────────
+
+def cmd_status():
+    """Quick health check + today's brief."""
+    print("=" * 60)
+    print("  FQL STATUS")
+    print("=" * 60)
+    print()
+    _py("fql_doctor.py")
+    print()
+    print("-" * 60)
+    print()
+    _show_file(INBOX / "_operator_brief.md")
+
+
+def cmd_doctor():
+    """Full system health audit."""
+    _py("fql_doctor.py")
+
+
+def cmd_repair():
+    """Audit + auto-fix common issues."""
+    _py("fql_doctor.py", "--repair")
+
+
+def cmd_daily():
+    """Show today's operator brief."""
+    brief = INBOX / "_operator_brief.md"
+    if brief.exists():
+        _show_file(brief)
+    else:
+        print("  No operator brief found. Run: fql refresh")
+
+
+def cmd_refresh():
+    """Regenerate all daily reports + alerts."""
+    print("Refreshing FQL reports...")
+    print()
+
+    steps = [
+        ("Alerts", lambda: _py("fql_alerts.py", "--save")),
+        ("Probation scoreboard", lambda: _py("probation_scoreboard.py", "--save")),
+        ("Challenger stack", lambda: _py("challenger_stack_review.py", "--save")),
+        ("Rates review", lambda: _py("rates_challenger_review.py", "--save")),
+        ("Operator brief", lambda: _py("operator_brief.py", "--save")),
+        ("Recovery status", lambda: _bash("fql_recovery_status.sh")),
+        ("System health", lambda: _py("fql_doctor.py")),
+    ]
+
+    for name, fn in steps:
+        print(f"  {name}...", end=" ", flush=True)
+        fn()
+        print()
+
+    print()
+    print("All reports refreshed.")
+
+
+def cmd_harvest():
+    """Run source helpers + show lead status."""
+    print("Running source helpers...")
+    print()
+    _bash("run_source_helpers.sh")
+    print()
+    print("-" * 60)
+    print()
+    manifest = INBOX / "source_leads" / "_manifest.json"
+    if manifest.exists():
+        import json
+        data = json.load(open(manifest))
+        runs = data.get("runs", [])
+        if runs:
+            last = runs[-1]
+            print(f"Last fetch: {last.get('timestamp', '?')[:16]}")
+            print(f"  GitHub:  {last.get('github_leads', 0)} leads")
+            print(f"  Reddit:  {last.get('reddit_leads', 0)} leads")
+            print(f"  YouTube: {last.get('youtube_leads', 0)} leads")
+            print(f"  Blog:    {last.get('blog_leads', 0)} leads")
+            print(f"  Digest:  {last.get('digest_leads', 0)} leads")
+            print(f"  Total:   {last.get('total', 0)} leads")
+
+
+def cmd_weekly():
+    """Run weekly reports."""
+    print("Running weekly reports...")
+    print()
+
+    steps = [
+        ("Portfolio gap dashboard", lambda: _py("portfolio_gap_dashboard.py", "--save")),
+        ("Harvest coverage audit", lambda: _py("harvest_coverage_audit.py", "--save")),
+        ("Harvest quality review", lambda: _py("harvest_quality_review.py", "--days", "14", "--save")),
+    ]
+
+    for name, fn in steps:
+        print(f"  {name}...", end=" ", flush=True)
+        fn()
+        print()
+
+    print()
+    print("Weekly reports generated.")
+
+
+def cmd_components():
+    """Search strategy components."""
+    # Pass remaining args to component_search
+    extra = sys.argv[2:] if len(sys.argv) > 2 else []
+    _py("component_search.py", *extra)
+
+
+def cmd_restart():
+    """Kickstart all FQL launch agents."""
+    uid = os.getuid()
+    agents = [
+        "ai.openclaw.gateway",
+        "com.fql.watchdog",
+        "com.fql.claw-control-loop",
+        "com.fql.daily-research",
+        "com.fql.twice-weekly-research",
+        "com.fql.weekly-research",
+        "com.fql.source-helpers",
+    ]
+    print("Restarting FQL services...")
+    for label in agents:
+        print(f"  {label}...", end=" ", flush=True)
+        _run(["launchctl", "kickstart", "-k", f"gui/{uid}/{label}"], show_output=False)
+        print("done")
+    print()
+    print("All services restarted. Run 'fql doctor' to verify.")
+
+
+def cmd_alerts():
+    """Show active alerts."""
+    alerts = INBOX / "_alerts.md"
+    if alerts.exists():
+        _show_file(alerts)
+    else:
+        print("  No alerts file. Run: fql refresh")
+
+
+def cmd_review():
+    """Show probation + challenger reviews."""
+    for name, filename in [
+        ("PROBATION SCOREBOARD", "_probation_scoreboard.md"),
+        ("CHALLENGER STACK", "_challenger_stack_review.md"),
+    ]:
+        path = INBOX / filename
+        if path.exists():
+            print("=" * 60)
+            print(f"  {name}")
+            print("=" * 60)
+            _show_file(path)
+            print()
+        else:
+            print(f"  {name}: not found. Run: fql refresh")
+
+
+def cmd_help():
+    """Show help."""
+    print(__doc__)
+    print("Examples:")
+    print("  fql status                    Quick health + brief")
+    print("  fql doctor                    Full system audit")
+    print("  fql repair                    Audit + auto-fix")
+    print("  fql daily                     Today's operator brief")
+    print("  fql refresh                   Regenerate all reports")
+    print("  fql harvest                   Run source helpers")
+    print("  fql weekly                    Run weekly reports")
+    print("  fql components --type filter  Search components")
+    print("  fql components --asset ZN     Search by asset")
+    print("  fql restart                   Restart all services")
+    print("  fql alerts                    Show active alerts")
+    print("  fql review                    Probation + challenger view")
+
+
+# ── Router ────────────────────────────────────────────────────────────────
+
+COMMANDS = {
+    "status": cmd_status,
+    "doctor": cmd_doctor,
+    "repair": cmd_repair,
+    "daily": cmd_daily,
+    "refresh": cmd_refresh,
+    "harvest": cmd_harvest,
+    "weekly": cmd_weekly,
+    "components": cmd_components,
+    "restart": cmd_restart,
+    "alerts": cmd_alerts,
+    "review": cmd_review,
+    "help": cmd_help,
+}
+
+
+def main():
+    if len(sys.argv) < 2 or sys.argv[1] in ("-h", "--help", "help"):
+        cmd_help()
+        return
+
+    cmd = sys.argv[1].lower()
+    if cmd in COMMANDS:
+        COMMANDS[cmd]()
+    else:
+        print(f"Unknown command: {cmd}")
+        print(f"Run 'fql help' for available commands.")
+        sys.exit(1)
+
+
+if __name__ == "__main__":
+    main()
