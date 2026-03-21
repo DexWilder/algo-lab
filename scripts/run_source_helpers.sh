@@ -47,15 +47,22 @@ RD_OUTPUT=$(python3 "$ALGO_LAB/scripts/fetch_reddit_leads.py" 2>&1) || true
 RD_COUNT=$(echo "$RD_OUTPUT" | grep -o '[0-9]* posts' | grep -o '[0-9]*' || echo 0)
 log "Reddit: $RD_COUNT leads fetched"
 
-# ── Fetch YouTube leads (if helper exists) ──
+# ── Fetch YouTube leads ──
 YT_COUNT=0
 if [ -f "$ALGO_LAB/scripts/fetch_youtube_leads.py" ]; then
     log "--- Fetching YouTube leads ---"
     YT_OUTPUT=$(python3 "$ALGO_LAB/scripts/fetch_youtube_leads.py" 2>&1) || true
     YT_COUNT=$(echo "$YT_OUTPUT" | grep -o '[0-9]* videos' | grep -o '[0-9]*' || echo 0)
     log "YouTube: $YT_COUNT leads fetched"
-else
-    log "YouTube helper not yet installed — skipping"
+fi
+
+# ── Fetch blog/Substack leads ──
+BL_COUNT=0
+if [ -f "$ALGO_LAB/scripts/fetch_blog_leads.py" ]; then
+    log "--- Fetching blog leads ---"
+    BL_OUTPUT=$(python3 "$ALGO_LAB/scripts/fetch_blog_leads.py" 2>&1) || true
+    BL_COUNT=$(echo "$BL_OUTPUT" | grep -o '[0-9]* posts' | grep -o '[0-9]*' || echo 0)
+    log "Blog: $BL_COUNT leads fetched"
 fi
 
 # ── Update manifest ──
@@ -74,7 +81,8 @@ run = {
     'github_leads': int('$GH_COUNT' or 0),
     'reddit_leads': int('$RD_COUNT' or 0),
     'youtube_leads': int('$YT_COUNT' or 0),
-    'total': int('$GH_COUNT' or 0) + int('$RD_COUNT' or 0) + int('$YT_COUNT' or 0),
+    'blog_leads': int('$BL_COUNT' or 0),
+    'total': int('$GH_COUNT' or 0) + int('$RD_COUNT' or 0) + int('$YT_COUNT' or 0) + int('$BL_COUNT' or 0),
 }
 manifest['runs'].append(run)
 
@@ -89,7 +97,7 @@ for key in list(manifest.get('lifecycle', {}).keys()):
         entry['stale_date'] = datetime.now().strftime('%Y-%m-%d')
 
 # Register new leads
-for source, count_str in [('github', '$GH_COUNT'), ('reddit', '$RD_COUNT'), ('youtube', '$YT_COUNT')]:
+for source, count_str in [('github', '$GH_COUNT'), ('reddit', '$RD_COUNT'), ('youtube', '$YT_COUNT'), ('blog', '$BL_COUNT')]:
     count = int(count_str or 0)
     if count > 0:
         lead_key = f'{source}_{datetime.now().strftime(\"%Y%m%d\")}'
@@ -113,7 +121,7 @@ json.dump(manifest, open(manifest_path, 'w'), indent=2)
 print(f'Manifest updated: {len(manifest[\"lifecycle\"])} active lead batches')
 " >> "$LOG_FILE" 2>&1
 
-log "=== Source helpers complete: GH=$GH_COUNT RD=$RD_COUNT YT=$YT_COUNT ==="
+log "=== Source helpers complete: GH=$GH_COUNT RD=$RD_COUNT YT=$YT_COUNT BL=$BL_COUNT ==="
 
 # Clean old logs
 find "$LOG_DIR" -name "source_helpers_*.log" -mtime +30 -delete 2>/dev/null || true
