@@ -139,26 +139,51 @@ def main():
                     p["top_comments"] = []
 
                 all_leads.append(p)
-                if len(all_leads) >= MAX_TOTAL:
+                if len(all_leads) >= MAX_TOTAL * 2:  # Fetch extra, score later
                     break
             time.sleep(1.5)
 
+    # Score and tier all leads
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from lead_scorer import score_lead, tier_lead, format_score_line
+
+    scored = []
+    for lead in all_leads:
+        # Build full text from title + selftext + comments
+        full_text = lead["title"]
+        if lead.get("selftext"):
+            full_text += " " + lead["selftext"]
+        for c in lead.get("top_comments", []):
+            full_text += " " + c["body"]
+
+        result = score_lead(full_text, lead["title"])
+        tier = tier_lead(result)
+        lead["_score"] = result
+        lead["_tier"] = tier
+        lead["_score_line"] = format_score_line(result, tier)
+        if tier != "R":  # Keep A, B, C — reject R
+            scored.append(lead)
+
+    # Sort by mechanism score, take top MAX_TOTAL
+    scored.sort(key=lambda x: x["_score"]["net_score"], reverse=True)
+    scored = scored[:MAX_TOTAL]
+
     # Write leads
     lines = [
-        "# Reddit Source Leads (enriched)",
+        "# Reddit Source Leads (scored)",
         f"# Generated: {TIMESTAMP}",
-        "# Enriched with self-text excerpts and top comments.",
-        "# Claw should read the discussion, extract any mechanical",
-        "# futures strategy logic, and write a harvest note if testable.",
+        "# Scored by mechanism density, not title appeal.",
+        "# Tiers: A=mechanical, B=fragment, C=weak, R=rejected",
         "",
     ]
 
-    for lead in all_leads:
+    for lead in scored:
         lines.append(f"- title: {lead['title']}")
         lines.append(f"  url: {lead['url']}")
         lines.append(f"  subreddit: r/{lead['subreddit']}")
         lines.append(f"  upvotes: {lead['upvotes']}")
         lines.append(f"  comments: {lead['comments']}")
+        lines.append(f"  score: {lead['_score_line']}")
         if lead.get("created"):
             lines.append(f"  date: {lead['created']}")
         if lead.get("selftext"):

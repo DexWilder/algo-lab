@@ -172,25 +172,43 @@ def main():
 
         time.sleep(2)  # Rate limit
 
-    # Sort by quality: transcript > no transcript, higher title quality first
-    all_leads.sort(key=lambda x: (x["has_transcript"], x.get("title_quality", 0)), reverse=True)
+    # Score with shared scorer
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from lead_scorer import score_lead, tier_lead, format_score_line
+
+    scored = []
+    for lead in all_leads:
+        full_text = lead["title"]
+        if lead.get("excerpt"):
+            full_text += " " + lead["excerpt"]
+
+        result = score_lead(full_text, lead["title"])
+        tier = tier_lead(result)
+        lead["_score"] = result
+        lead["_tier"] = tier
+        lead["_score_line"] = format_score_line(result, tier)
+
+        if tier != "R":
+            scored.append(lead)
+
+    # Sort by mechanism score
+    scored.sort(key=lambda x: x["_score"]["net_score"], reverse=True)
 
     # Write leads
     lines = [
-        "# YouTube Source Leads (quality-filtered)",
+        "# YouTube Source Leads (scored)",
         f"# Generated: {TIMESTAMP}",
-        "# Quality-filtered: videos without transcripts AND generic titles are excluded.",
-        "# Claw should read the transcript excerpt and title, extract any mechanical",
-        "# futures strategy logic, and write a harvest note if testable.",
+        "# Scored by mechanism density. Tiers: A/B/C/R.",
+        "# Quality-filtered: generic videos without transcripts excluded.",
         "",
     ]
 
-    for lead in all_leads:
+    for lead in scored:
         lines.append(f"- title: {lead['title']}")
         lines.append(f"  url: {lead['url']}")
         lines.append(f"  query: {lead['query']}")
         lines.append(f"  has_transcript: {lead['has_transcript']}")
-        lines.append(f"  title_quality: {lead.get('title_quality', 0)}")
+        lines.append(f"  score: {lead['_score_line']}")
         if lead.get("excerpt"):
             excerpt = lead["excerpt"].replace("\n", " ").replace("|", " ")
             lines.append(f"  excerpt: {excerpt}")

@@ -165,20 +165,30 @@ def main():
 
         time.sleep(0.5)
 
-    # Sort by relevance score, take top MAX_LEADS
+    # Score with shared scorer
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from lead_scorer import score_lead, tier_lead, format_score_line
+
+    for lead in all_leads:
+        full_text = f"{lead['title']} {lead.get('excerpt', '')}"
+        result = score_lead(full_text, lead["title"])
+        tier = tier_lead(result)
+        lead["_score"] = result
+        lead["_tier"] = tier
+        lead["_score_line"] = format_score_line(result, tier)
+        # Combine old relevance + mechanism score
+        lead["relevance_score"] = lead["relevance_score"] + result["net_score"]
+
+    # Filter rejects, sort by combined score
+    all_leads = [l for l in all_leads if l.get("_tier") != "R"]
     all_leads.sort(key=lambda x: x["relevance_score"], reverse=True)
     all_leads = all_leads[:MAX_LEADS]
 
     # Write leads
     lines = [
-        "# Practitioner Blog Source Leads",
+        "# Practitioner Blog Source Leads (scored)",
         f"# Generated: {TIMESTAMP}",
-        "# For Claw to review during harvest tasks.",
-        "#",
-        "# Format: one post per block. Claw should read the full post,",
-        "# extract any mechanical/systematic strategy logic, and write",
-        "# a standard harvest note if testable rules are present.",
-        "# These are high-signal sources — most posts will have substance.",
+        "# Scored by mechanism density. Tiers: A/B/C/R.",
         "",
     ]
 
@@ -188,6 +198,8 @@ def main():
         lines.append(f"  source: {lead['source']}")
         lines.append(f"  category: {lead['category']}")
         lines.append(f"  relevance_score: {lead['relevance_score']}")
+        if lead.get("_score_line"):
+            lines.append(f"  score: {lead['_score_line']}")
         if lead.get("excerpt"):
             excerpt = lead["excerpt"][:300].replace("\n", " ").replace("|", " ")
             lines.append(f"  excerpt: {excerpt}")

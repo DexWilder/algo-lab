@@ -168,15 +168,30 @@ def main():
                 "query": query,
             })
 
-    # Sort by quality, take top MAX_LEADS
-    all_leads.sort(key=lambda x: x["quality_score"], reverse=True)
+    # Score with shared scorer
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from lead_scorer import score_lead, tier_lead, format_score_line
+
+    for lead in all_leads:
+        full_text = f"{lead['description']} {lead.get('readme_excerpt', '')}"
+        result = score_lead(full_text, lead["name"])
+        tier = tier_lead(result)
+        lead["_score"] = result
+        lead["_tier"] = tier
+        lead["_score_line"] = format_score_line(result, tier)
+        # Combine repo quality + mechanism score
+        lead["combined_score"] = lead["quality_score"] + result["net_score"]
+
+    # Filter out rejects, sort by combined score
+    all_leads = [l for l in all_leads if l["_tier"] != "R"]
+    all_leads.sort(key=lambda x: x["combined_score"], reverse=True)
     all_leads = all_leads[:MAX_LEADS]
 
     # Write
     lines = [
-        "# GitHub Source Leads (enriched)",
+        "# GitHub Source Leads (scored)",
         f"# Generated: {TIMESTAMP}",
-        "# Enriched with README excerpts, topics, language, quality scores.",
+        "# Scored by mechanism density + repo quality. Tiers: A/B/C/R.",
         "",
     ]
 
@@ -186,6 +201,7 @@ def main():
         lines.append(f"  stars: {lead['stars']}")
         lines.append(f"  updated: {lead['updated']}")
         lines.append(f"  quality_score: {lead['quality_score']}")
+        lines.append(f"  score: {lead['_score_line']}")
         lines.append(f"  description: {lead['description']}")
         if lead.get("readme_excerpt"):
             excerpt = lead["readme_excerpt"][:400]
