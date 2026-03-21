@@ -306,6 +306,12 @@ def _task_instructions(task_name):
         EliteTrader, NuclearPhynance, QuantConnect forums
       - Microstructure: CME research, BIS reports, specialist blogs,
         commodity/rates/FX-specific practitioner content
+
+    PRE-GATHERED LEADS: Check `inbox/source_leads/` for pre-fetched
+    URLs from GitHub, Reddit, and other helpers. These are curated
+    starting points — read each lead, assess for futures applicability
+    and mechanical rules, and write a harvest note if it qualifies.
+    Not every lead will produce a note; that is expected.
     """
     instructions = {
         "gap_harvest": """MULTI-SOURCE gap harvest. Search across ALL available sources for
@@ -316,6 +322,8 @@ the highest-priority gaps in `_priorities.md`. Cast a WIDE net:
   - YouTube practitioner content (mechanical rules only)
   - Reddit/forum discussions (r/algotrading, r/quant, EliteTrader)
   - Microstructure specialist sources
+ALSO: check `inbox/source_leads/` for pre-gathered URLs from GitHub
+and Reddit helpers. Review each lead for futures applicability.
 Tag each note with its source. Focus on HIGH-priority factors.
 Prefer non-equity assets, non-morning sessions, short-biased ideas.
 Read closed families list — do NOT regenerate dead mechanisms.
@@ -342,6 +350,8 @@ futures strategies. This day covers all practitioner content:
   - YouTube channels with explicit mechanical rules
   - GitHub repos with strategy code
   - Reddit/forum strategy discussions
+ALSO: check `inbox/source_leads/` for pre-gathered URLs from GitHub
+and Reddit helpers. These are curated starting points to review.
 Focus on gap factors. Reject discretionary, ICT, crypto, spot forex.
 Tag each note with exact source (URL or channel name).
 Generate 5-8 notes to `inbox/harvest/`.""",
