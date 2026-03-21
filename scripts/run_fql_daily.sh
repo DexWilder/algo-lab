@@ -88,6 +88,8 @@ log "--- Generating challenger stack review ---"
 python3 scripts/challenger_stack_review.py --save >> "$LOG_FILE" 2>&1 || true
 log "--- Generating rates challenger review ---"
 python3 scripts/rates_challenger_review.py --save >> "$LOG_FILE" 2>&1 || true
+log "--- Running alert engine ---"
+python3 scripts/fql_alerts.py --save >> "$LOG_FILE" 2>&1 || true
 log "--- Generating operator brief ---"
 python3 scripts/operator_brief.py --save >> "$LOG_FILE" 2>&1 || true
 

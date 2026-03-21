@@ -118,6 +118,43 @@ def section_health():
     return lines
 
 
+def section_alerts():
+    """Surface active alerts from the alert engine."""
+    lines = []
+
+    alerts_file = INBOX / "_alerts.md"
+    if not alerts_file.exists():
+        return lines
+
+    try:
+        text = alerts_file.read_text()
+    except Exception:
+        return lines
+
+    # Count alert levels
+    alert_count = text.count("[ALERT]")
+    action_count = text.count("[ACTION]")
+    warn_count = text.count("[WARN]")
+
+    if alert_count == 0 and action_count == 0 and warn_count == 0:
+        return lines
+
+    lines.append("## Active Alerts")
+    lines.append("")
+
+    # Show only ALERT and ACTION level in the brief (high signal)
+    for line in text.split("\n"):
+        if "[ALERT]" in line or "[ACTION]" in line:
+            lines.append(line.strip())
+        elif line.strip().startswith("Action:") and lines and ("[ALERT]" in lines[-1] or "[ACTION]" in lines[-1]):
+            lines.append(f"  {line.strip()}")
+
+    if warn_count > 0 and alert_count == 0 and action_count == 0:
+        lines.append(f"{warn_count} warnings — see _alerts.md for details")
+
+    return lines
+
+
 def section_forward_evidence():
     """New forward evidence since yesterday."""
     lines = []
@@ -351,8 +388,8 @@ def generate_report():
     lines.append(f"*{DOW}, {TIMESTAMP}*")
     lines.append("")
 
-    for section_fn in [section_health, section_forward_evidence, section_probation,
-                       section_attention, section_decisions]:
+    for section_fn in [section_health, section_alerts, section_forward_evidence,
+                       section_probation, section_attention, section_decisions]:
         lines.extend(section_fn())
         lines.append("")
 
