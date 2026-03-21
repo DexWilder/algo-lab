@@ -86,7 +86,32 @@ Portfolio contribution analysis (marginal Sharpe, overlap, gap fit)
 Promotion or rejection (with full reason codes)
 ```
 
-Every candidate gets a fair hearing. Most get rejected. Rejections are recorded with reasons to prevent re-testing the same idea. The registry is institutional memory.
+Every candidate gets a fair hearing. Most get rejected. Rejections are
+recorded with reasons to prevent re-testing the same idea. The registry
+is institutional memory.
+
+**Full-spectrum discovery (added 2026-03-20):**
+
+The lab should not only find complete strategies. It should also capture:
+- Partial mechanisms (entry logic, exit logic, filters)
+- Regime/vol/timing overlays
+- Asset-specific structural behaviors
+- Practitioner heuristics and session effects
+
+These fragments are tagged by component type and stored as reusable
+building blocks. Elite strategies are often assembled from validated
+components, not merely found whole.
+
+**Source convergence strengthens evidence.** When 3 independent sources
+describe the same mechanism, that's stronger signal than 1 source
+describing it once. Duplicates from different sources are convergent
+evidence, not waste.
+
+**Relationships and recombination.** The registry tracks parent/child
+links, salvage origins, and component dependencies. When a strategy is
+rejected, its salvageable components survive. When a falsification
+control outperforms the hypothesis (as with ZN-Afternoon-Reversion),
+the discovery is preserved and promoted.
 
 ### 4. Survivability First
 

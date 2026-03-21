@@ -1,5 +1,5 @@
 {
-  "_schema_version": "2.0",
+  "_schema_version": "3.1",
   "_generated": "2026-03-20",
   "_description": "FQL Strategy Registry \u2014 institutional memory of all strategy ideas, tested candidates, and deployed strategies",
   "_purpose": "Preserves research knowledge, enables crossbreeding, feeds Strategy Factory",
@@ -88,7 +88,16 @@
       },
       "lifecycle_stage": "archived",
       "rejection_reason": "REDUNDANT",
-      "rejection_details": "Representative replacement under elite standard. NoiseBoundary-MNQ-Long is stronger on every quality metric: PF 1.31 vs 1.16 (morning-only), WF 10/10 vs 5.0, PnL $9.7K vs $6.7K, academic source, cross-asset validated. Session restriction research confirmed afternoon is broken (PF 0.72), short side unprofitable (PF 0.98). Morning-only PF 1.16 is still MARGINAL. Archived 2026-03-18."
+      "rejection_details": "Representative replacement under elite standard. NoiseBoundary-MNQ-Long is stronger on every quality metric: PF 1.31 vs 1.16 (morning-only), WF 10/10 vs 5.0, PnL $9.7K vs $6.7K, academic source, cross-asset validated. Session restriction research confirmed afternoon is broken (PF 0.72), short side unprofitable (PF 0.98). Morning-only PF 1.16 is still MARGINAL. Archived 2026-03-18.",
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "XB-PB-EMA-MES-Short",
@@ -113,7 +122,7 @@
       "last_review_date": "2026-03-15",
       "controller_state": "ACTIVE",
       "controller_action": "FULL_ON",
-      "activation_score": 0.8325,
+      "activation_score": 0.8175,
       "controller_reason_codes": [
         "REGIME_MATCH_HIGH",
         "HALF_LIFE_STRENGTHENING",
@@ -123,7 +132,7 @@
         "KILL_NONE",
         "SESSION_DRIFT_DEGRADED",
         "SESSION_CONCENTRATION",
-        "TIME_WINDOW_MATCH",
+        "TIME_WINDOW_PARTIAL",
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
@@ -168,7 +177,16 @@
       },
       "lifecycle_stage": "deployed",
       "edge_vitality": 0.74,
-      "edge_vitality_tier": "VITAL"
+      "edge_vitality_tier": "VITAL",
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "ORB-MGC-Long",
@@ -193,7 +211,7 @@
       "last_review_date": "2026-03-15",
       "controller_state": "ACTIVE",
       "controller_action": "REDUCED_ON",
-      "activation_score": 0.65,
+      "activation_score": 0.635,
       "controller_reason_codes": [
         "REGIME_MATCH_MODERATE",
         "HALF_LIFE_STRENGTHENING",
@@ -203,7 +221,7 @@
         "KILL_NONE",
         "SESSION_DRIFT_BROKEN",
         "SESSION_CONCENTRATION",
-        "TIME_WINDOW_MATCH",
+        "TIME_WINDOW_PARTIAL",
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
@@ -247,7 +265,16 @@
       },
       "lifecycle_stage": "deployed",
       "edge_vitality": 0.8,
-      "edge_vitality_tier": "VITAL"
+      "edge_vitality_tier": "VITAL",
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "Donchian-MNQ-Long-GRINDING",
@@ -337,7 +364,16 @@
       "rejection_reason": "REDUNDANT",
       "rejection_details": "Representative-redundancy replacement by NoiseBoundary-MNQ-Long. NoiseBoundary wins on WF (10/10 vs 5.0), trade count (609 vs 47), cross-asset validation (MES+MYM confirmed), and academic source. Correlation=0.374 confirms same bet. Archived to free probation slot.",
       "kill_flag": "redundancy",
-      "kill_details": "Archived 2026-03-18. Superseded by NoiseBoundary-MNQ-Long."
+      "kill_details": "Archived 2026-03-18. Superseded by NoiseBoundary-MNQ-Long.",
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "BB-EQ-MGC-Long",
@@ -417,7 +453,16 @@
       },
       "lifecycle_stage": "deployed",
       "edge_vitality": 0.8,
-      "edge_vitality_tier": "VITAL"
+      "edge_vitality_tier": "VITAL",
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "PB-MGC-Short",
@@ -442,7 +487,7 @@
       "last_review_date": "2026-03-18",
       "controller_state": "ACTIVE",
       "controller_action": "FULL_ON",
-      "activation_score": 0.8175,
+      "activation_score": 0.8025,
       "controller_reason_codes": [
         "REGIME_MATCH_HIGH",
         "HALF_LIFE_STRENGTHENING",
@@ -452,7 +497,7 @@
         "KILL_NONE",
         "SESSION_DRIFT_NORMAL",
         "SESSION_CONCENTRATION",
-        "TIME_WINDOW_MATCH",
+        "TIME_WINDOW_PARTIAL",
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
@@ -497,7 +542,16 @@
       },
       "lifecycle_stage": "deployed",
       "edge_vitality": 0.8,
-      "edge_vitality_tier": "VITAL"
+      "edge_vitality_tier": "VITAL",
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "MomIgn-M2K-Short",
@@ -564,7 +618,16 @@
       "resurrection_flag": false,
       "state_entered_date": "2026-03-16",
       "edge_vitality": 0.8,
-      "edge_vitality_tier": "VITAL"
+      "edge_vitality_tier": "VITAL",
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "CloseVWAP-M2K-Short",
@@ -624,7 +687,16 @@
       "genome_cluster": "session_structure",
       "resurrection_flag": false,
       "edge_vitality": 0.41,
-      "edge_vitality_tier": "STABLE"
+      "edge_vitality_tier": "STABLE",
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "TTMSqueeze-M2K-Short",
@@ -684,7 +756,16 @@
       "genome_cluster": "volatility_expansion",
       "resurrection_flag": false,
       "edge_vitality": 0.8,
-      "edge_vitality_tier": "VITAL"
+      "edge_vitality_tier": "VITAL",
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "ORBEnh-M2K-Short",
@@ -732,7 +813,7 @@
         "HEALTH_FAIL",
         "KILL_NONE",
         "SESSION_DRIFT_NORMAL",
-        "TIME_WINDOW_MATCH",
+        "TIME_WINDOW_PARTIAL",
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
@@ -742,7 +823,16 @@
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
       "genome_cluster": "opening_range",
-      "resurrection_flag": false
+      "resurrection_flag": false,
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "VWAPMR-MCL-Short",
@@ -781,7 +871,7 @@
       "controller_state": "PROBATION",
       "prior_state": "PROBATION",
       "controller_action": "PROBATION",
-      "activation_score": 0.415,
+      "activation_score": 0.4,
       "controller_reason_codes": [
         "REGIME_MATCH_LOW",
         "HALF_LIFE_DEAD",
@@ -790,7 +880,7 @@
         "HEALTH_FAIL",
         "KILL_NONE",
         "SESSION_DRIFT_NORMAL",
-        "TIME_WINDOW_MATCH",
+        "TIME_WINDOW_PARTIAL",
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
@@ -800,7 +890,16 @@
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
       "genome_cluster": "mean_reversion",
-      "resurrection_flag": false
+      "resurrection_flag": false,
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "CloseVWAP-MNQ-Long",
@@ -830,7 +929,16 @@
       "lifecycle_stage": "archived",
       "state_history": [],
       "rejection_reason": "WALK_FORWARD_UNSTABLE",
-      "rejection_description": "Backtest profitable but walk-forward collapses"
+      "rejection_description": "Backtest profitable but walk-forward collapses",
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "TTMSqueeze-MNQ-Short",
@@ -860,7 +968,16 @@
       "lifecycle_stage": "archived",
       "state_history": [],
       "rejection_reason": "STRUCTURAL_LOSS",
-      "rejection_description": "Strategy loses money across all modes and parameter variants"
+      "rejection_description": "Strategy loses money across all modes and parameter variants",
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "TTMSqueeze-MGC-Long",
@@ -890,7 +1007,16 @@
       "lifecycle_stage": "archived",
       "state_history": [],
       "rejection_reason": "STRUCTURAL_LOSS",
-      "rejection_description": "Strategy loses money across all modes and parameter variants"
+      "rejection_description": "Strategy loses money across all modes and parameter variants",
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "ICT-010-Sweep",
@@ -914,7 +1040,16 @@
       "lifecycle_stage": "archived",
       "state_history": [],
       "rejection_reason": "ICT_FAMILY_FAILED",
-      "rejection_description": "ICT-derived concepts have not produced systematic edge in FQL"
+      "rejection_description": "ICT-derived concepts have not produced systematic edge in FQL",
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "ICT-011-LiqSweep",
@@ -938,7 +1073,16 @@
       "lifecycle_stage": "archived",
       "state_history": [],
       "rejection_reason": "ICT_FAMILY_FAILED",
-      "rejection_description": "ICT-derived concepts have not produced systematic edge in FQL"
+      "rejection_description": "ICT-derived concepts have not produced systematic edge in FQL",
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "ATRComp-Multi",
@@ -962,7 +1106,16 @@
       "lifecycle_stage": "archived",
       "state_history": [],
       "rejection_reason": "STRUCTURAL_LOSS",
-      "rejection_description": "Strategy loses money across all modes and parameter variants"
+      "rejection_description": "Strategy loses money across all modes and parameter variants",
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "IBS-MR-M2K",
@@ -984,7 +1137,16 @@
       "last_review_date": "2026-03-16",
       "source_category": "academic",
       "lifecycle_stage": "discovery",
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "ORB-VIX-Filter",
@@ -1006,7 +1168,16 @@
       "last_review_date": "2026-03-16",
       "source_category": "academic",
       "lifecycle_stage": "discovery",
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "NR7-Breakout",
@@ -1028,7 +1199,16 @@
       "last_review_date": "2026-03-16",
       "source_category": "academic",
       "lifecycle_stage": "discovery",
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "GapFill-M2K",
@@ -1050,7 +1230,16 @@
       "last_review_date": "2026-03-16",
       "source_category": "academic",
       "lifecycle_stage": "discovery",
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "PreFOMC-Drift",
@@ -1074,7 +1263,16 @@
       "lifecycle_stage": "archived",
       "state_history": [],
       "rejection_reason": "SAMPLE_INSUFFICIENT",
-      "rejection_description": "Too few trades to determine edge (< 20)"
+      "rejection_description": "Too few trades to determine edge (< 20)",
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "BBW-Percentile",
@@ -1096,7 +1294,16 @@
       "last_review_date": "2026-03-16",
       "source_category": "tradingview",
       "lifecycle_stage": "discovery",
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "DualThrust",
@@ -1118,7 +1325,16 @@
       "last_review_date": "2026-03-16",
       "source_category": "academic",
       "lifecycle_stage": "discovery",
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "VCP-Intraday",
@@ -1140,7 +1356,16 @@
       "last_review_date": "2026-03-16",
       "source_category": "academic",
       "lifecycle_stage": "discovery",
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "EventDay-MetaLayer",
@@ -1162,7 +1387,16 @@
       "last_review_date": "2026-03-16",
       "source_category": "internal",
       "lifecycle_stage": "discovery",
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "Russell-Reconstitution",
@@ -1184,7 +1418,16 @@
       "last_review_date": "2026-03-16",
       "source_category": "academic",
       "lifecycle_stage": "discovery",
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "ConsolidationBreakout",
@@ -1206,7 +1449,16 @@
       "last_review_date": "2026-03-16",
       "source_category": "user",
       "lifecycle_stage": "discovery",
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "LiqGrab-StopRun",
@@ -1228,7 +1480,16 @@
       "last_review_date": "2026-03-16",
       "source_category": "user",
       "lifecycle_stage": "discovery",
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "ICT-LiqSweep-V2",
@@ -1250,7 +1511,16 @@
       "last_review_date": "2026-03-16",
       "source_category": "user",
       "lifecycle_stage": "discovery",
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "RVWAP-MR",
@@ -1274,7 +1544,16 @@
       "lifecycle_stage": "archived",
       "state_history": [],
       "rejection_reason": "STRUCTURAL_LOSS",
-      "rejection_description": "Strategy loses money across all modes and parameter variants"
+      "rejection_description": "Strategy loses money across all modes and parameter variants",
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "VIXChannel-MES",
@@ -1298,7 +1577,16 @@
       "rejection_reason": "SAMPLE_INSUFFICIENT",
       "rejection_description": "Too few trades to determine edge (< 20)",
       "lifecycle_stage": "archived",
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "ORION-VolBreakout",
@@ -1322,7 +1610,16 @@
       "lifecycle_stage": "archived",
       "state_history": [],
       "rejection_reason": "INSUFFICIENT_EDGE",
-      "rejection_description": "PF 0.9-1.1 \u2014 near breakeven, not enough to overcome costs"
+      "rejection_description": "PF 0.9-1.1 \u2014 near breakeven, not enough to overcome costs",
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "BBKC-Squeeze-Classic",
@@ -1346,7 +1643,16 @@
       "lifecycle_stage": "archived",
       "state_history": [],
       "rejection_reason": "INSUFFICIENT_EDGE",
-      "rejection_description": "PF 0.9-1.1 \u2014 near breakeven, not enough to overcome costs"
+      "rejection_description": "PF 0.9-1.1 \u2014 near breakeven, not enough to overcome costs",
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "RSI2-Bounce-M2K",
@@ -1368,7 +1674,16 @@
       "last_review_date": "2026-03-16",
       "source_category": "academic",
       "lifecycle_stage": "discovery",
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "HVPercentile-Expansion",
@@ -1390,7 +1705,16 @@
       "last_review_date": "2026-03-16",
       "source_category": "academic",
       "lifecycle_stage": "discovery",
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "ExtremeDonchian-Tail",
@@ -1412,7 +1736,16 @@
       "last_review_date": "2026-03-16",
       "source_category": "internal",
       "lifecycle_stage": "discovery",
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "IB-Breakout-Gold",
@@ -1434,7 +1767,16 @@
       "last_review_date": "2026-03-16",
       "source_category": "internal",
       "lifecycle_stage": "discovery",
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "SessionVWAPFade",
@@ -1458,7 +1800,16 @@
       "lifecycle_stage": "archived",
       "state_history": [],
       "rejection_reason": "STRUCTURAL_LOSS",
-      "rejection_description": "Strategy loses money across all modes and parameter variants"
+      "rejection_description": "Strategy loses money across all modes and parameter variants",
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "SessionRevGold",
@@ -1482,7 +1833,16 @@
       "lifecycle_stage": "archived",
       "state_history": [],
       "rejection_reason": "STRUCTURAL_LOSS",
-      "rejection_description": "Strategy loses money across all modes and parameter variants"
+      "rejection_description": "Strategy loses money across all modes and parameter variants",
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "CloseLiqSweep",
@@ -1506,7 +1866,16 @@
       "lifecycle_stage": "archived",
       "state_history": [],
       "rejection_reason": "INSUFFICIENT_EDGE",
-      "rejection_description": "PF 0.9-1.1 \u2014 near breakeven, not enough to overcome costs"
+      "rejection_description": "PF 0.9-1.1 \u2014 near breakeven, not enough to overcome costs",
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "CloseMomentum",
@@ -1530,7 +1899,16 @@
       "lifecycle_stage": "archived",
       "state_history": [],
       "rejection_reason": "IMPLEMENTATION_BUG",
-      "rejection_description": "Code bug found \u2014 hypothesis not tested, may revisit"
+      "rejection_description": "Code bug found \u2014 hypothesis not tested, may revisit",
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "GapMom",
@@ -1583,7 +1961,16 @@
       "genome_cluster": "unknown",
       "resurrection_flag": false,
       "edge_vitality": 0.5,
-      "edge_vitality_tier": "STABLE"
+      "edge_vitality_tier": "STABLE",
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "RangeExpansion",
@@ -1636,7 +2023,16 @@
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
       "genome_cluster": "unknown",
-      "resurrection_flag": false
+      "resurrection_flag": false,
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "NG-MeanRev",
@@ -1658,7 +2054,16 @@
       "last_review_date": "2026-03-16",
       "source_category": "expansion",
       "lifecycle_stage": "discovery",
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "YM-Trend",
@@ -1680,7 +2085,16 @@
       "last_review_date": "2026-03-16",
       "source_category": "expansion",
       "lifecycle_stage": "discovery",
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "MCL-Breakout",
@@ -1702,7 +2116,16 @@
       "last_review_date": "2026-03-16",
       "source_category": "expansion",
       "lifecycle_stage": "discovery",
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "IMC-Afternoon",
@@ -1726,7 +2149,16 @@
       "lifecycle_stage": "archived",
       "state_history": [],
       "rejection_reason": "STRUCTURAL_LOSS",
-      "rejection_description": "Strategy loses money across all modes and parameter variants"
+      "rejection_description": "Strategy loses money across all modes and parameter variants",
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "NoiseBoundary-MNQ-Long",
@@ -1783,7 +2215,16 @@
       "lifecycle_stage": "forward_validation",
       "state_entered_date": "2026-03-19",
       "edge_vitality": 0.8,
-      "edge_vitality_tier": "VITAL"
+      "edge_vitality_tier": "VITAL",
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "VWAPPullback-MES-Long",
@@ -1805,7 +2246,16 @@
       "last_review_date": "2026-03-16",
       "source_category": "practitioner",
       "lifecycle_stage": "discovery",
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "RussellORB-M2K-Long",
@@ -1829,7 +2279,16 @@
       "lifecycle_stage": "archived",
       "state_history": [],
       "rejection_reason": "STRUCTURAL_LOSS",
-      "rejection_description": "Strategy loses money across all modes and parameter variants"
+      "rejection_description": "Strategy loses money across all modes and parameter variants",
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "KeltnerBreakout-M2K-Long",
@@ -1853,7 +2312,16 @@
       "lifecycle_stage": "archived",
       "state_history": [],
       "rejection_reason": "INSUFFICIENT_EDGE",
-      "rejection_description": "PF 0.9-1.1 \u2014 near breakeven, not enough to overcome costs"
+      "rejection_description": "PF 0.9-1.1 \u2014 near breakeven, not enough to overcome costs",
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "SPY-IWM-Spread",
@@ -1875,7 +2343,16 @@
       "last_review_date": "2026-03-16",
       "source_category": "academic",
       "lifecycle_stage": "discovery",
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "CL-VWAP-Bounce-Long",
@@ -1899,7 +2376,16 @@
       "lifecycle_stage": "archived",
       "state_history": [],
       "rejection_reason": "INSUFFICIENT_EDGE",
-      "rejection_description": "PF 0.9-1.1 \u2014 near breakeven, not enough to overcome costs"
+      "rejection_description": "PF 0.9-1.1 \u2014 near breakeven, not enough to overcome costs",
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "CL-ORB-Long",
@@ -1923,7 +2409,16 @@
       "lifecycle_stage": "archived",
       "state_history": [],
       "rejection_reason": "INSUFFICIENT_EDGE",
-      "rejection_description": "PF 0.9-1.1 \u2014 near breakeven, not enough to overcome costs"
+      "rejection_description": "PF 0.9-1.1 \u2014 near breakeven, not enough to overcome costs",
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "EIA-Inventory-Surprise",
@@ -1945,7 +2440,16 @@
       "last_review_date": "2026-03-16",
       "source_category": "practitioner",
       "lifecycle_stage": "discovery",
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "OPEX-Week-Long",
@@ -1967,7 +2471,16 @@
       "last_review_date": "2026-03-16",
       "source_category": "academic",
       "lifecycle_stage": "discovery",
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "MomPB-6J-Long-US",
@@ -2063,7 +2576,16 @@
       },
       "lifecycle_stage": "forward_validation",
       "edge_vitality": 0.5,
-      "edge_vitality_tier": "STABLE"
+      "edge_vitality_tier": "STABLE",
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "FXBreak-6J-Short-London",
@@ -2147,7 +2669,16 @@
       "genome_cluster": "unknown",
       "resurrection_flag": false,
       "edge_vitality": 0.5,
-      "edge_vitality_tier": "STABLE"
+      "edge_vitality_tier": "STABLE",
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "FXBreak-6E-Watchlist",
@@ -2177,7 +2708,16 @@
         "score": 5,
         "failures": 3
       },
-      "lifecycle_stage": "discovery"
+      "lifecycle_stage": "discovery",
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "FXBreak-6B-NoPriority",
@@ -2209,7 +2749,16 @@
       },
       "lifecycle_stage": "archived",
       "rejection_reason": "ASSET_MISMATCH",
-      "rejection_description": "Strategy logic does not transfer to this asset class"
+      "rejection_description": "Strategy logic does not transfer to this asset class",
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "MomPB-6E-Long-US",
@@ -2264,7 +2813,16 @@
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
       "genome_cluster": "unknown",
-      "resurrection_flag": false
+      "resurrection_flag": false,
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "DailyTrend-MGC-Long",
@@ -2339,7 +2897,16 @@
       "genome_cluster": "unknown",
       "resurrection_flag": false,
       "edge_vitality": 0.5,
-      "edge_vitality_tier": "STABLE"
+      "edge_vitality_tier": "STABLE",
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "FVG-Inversion-Signal",
@@ -2356,7 +2923,16 @@
       "review_priority": "LOW",
       "state_history": [],
       "source_category": "ict",
-      "lifecycle_stage": "discovery"
+      "lifecycle_stage": "discovery",
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "DualThrust-ZB-Short-Monitor",
@@ -2380,7 +2956,16 @@
         "best_asset": "MGC",
         "best_pf": 1.572
       },
-      "lifecycle_stage": "discovery"
+      "lifecycle_stage": "discovery",
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "Treasury-2Y-FOMC-Momentum",
@@ -2403,7 +2988,16 @@
         "blocked_by_data",
         "needs_monthly_horizon_support"
       ],
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "FX-Carry-Trade",
@@ -2425,7 +3019,16 @@
         "blocked_by_data",
         "consider_as_filter_first"
       ],
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "CrossCurrency-YieldCurve-Flattening",
@@ -2448,7 +3051,16 @@
         "needs_curve_data",
         "complex_implementation"
       ],
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "FX-PPP-Value",
@@ -2472,7 +3084,16 @@
         "needs_macro_feed",
         "quarterly_horizon"
       ],
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "Treasury-12M-TSM",
@@ -2497,7 +3118,16 @@
         "regime_dependent",
         "needs_longer_history"
       ],
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "FX-Daily-Donchian-Breakout",
@@ -2521,7 +3151,16 @@
         "fx_native",
         "conversion_priority_2"
       ],
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "FX-Asian-Session-Breakout",
@@ -2544,7 +3183,16 @@
         "fx_native",
         "conversion_priority_3"
       ],
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "FX-ORB",
@@ -2567,7 +3215,16 @@
         "fx_native",
         "conversion_priority_4"
       ],
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "Treasury-Curve-Drift-MR",
@@ -2592,7 +3249,16 @@
         "needs_curve_hedge_support",
         "conversion_priority_5"
       ],
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "PreFOMC-Drift-Equity",
@@ -2679,7 +3345,16 @@
         "min_vitality_events": 4
       },
       "edge_vitality": 0.85,
-      "edge_vitality_tier": "VITAL"
+      "edge_vitality_tier": "VITAL",
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "Treasury-CPI-Day-Long",
@@ -2703,7 +3378,16 @@
         "regime_dependent",
         "needs_data_backfill"
       ],
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "OPEX-Week-Effect",
@@ -2727,7 +3411,16 @@
         "weekly_hold",
         "event_conversion_priority_3"
       ],
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "CPI-Reaction-Bias-Equity",
@@ -2750,7 +3443,16 @@
         "needs_regime_check",
         "event_conversion_priority_4"
       ],
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "EIA-30s-Box-Breakout-MCL",
@@ -2774,7 +3476,16 @@
         "needs_high_resolution_execution_model",
         "event_conversion_priority_5"
       ],
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "Equity-Overnight-Drift",
@@ -2797,7 +3508,16 @@
         "MONITOR",
         "bear_market_vulnerable"
       ],
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "Equity-Closing-Auction-Flow",
@@ -2820,7 +3540,16 @@
         "needs_auction_imbalance_data",
         "structural_conversion_priority_2"
       ],
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "Treasury-Roll-Microstructure",
@@ -2844,7 +3573,16 @@
         "needs_spread_level_data",
         "structural_conversion_priority_3"
       ],
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "WTI-CMA-Roll-Structure",
@@ -2868,7 +3606,16 @@
         "needs_roll_expression",
         "structural_conversion_priority_4"
       ],
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "Gold-Overnight-Drift",
@@ -2892,7 +3639,16 @@
         "needs_futures_native_validation",
         "structural_conversion_priority_5"
       ],
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "TV-FOMC-Rate-Decision-Cycles",
@@ -2915,7 +3671,16 @@
         "fomc",
         "tv_event_priority_1"
       ],
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "TV-NFP-High-Low-Levels",
@@ -3002,7 +3767,16 @@
         "min_vitality_events": 4
       },
       "edge_vitality": 0.4,
-      "edge_vitality_tier": "STABLE"
+      "edge_vitality_tier": "STABLE",
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "TV-OPEX-Vanna-Charm-Windows",
@@ -3026,7 +3800,16 @@
         "options_flow",
         "tv_event_priority_3"
       ],
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "TV-CPI-15m-Expansion",
@@ -3049,7 +3832,16 @@
         "cpi",
         "tv_event_priority_4"
       ],
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "TV-NFP-Price-Zones",
@@ -3072,7 +3864,16 @@
         "needs_single_playbook",
         "tv_event_priority_5"
       ],
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "TV-FOMC-Sweep-Reaction",
@@ -3095,7 +3896,16 @@
         "needs_mechanical_definition",
         "tv_event_priority_6"
       ],
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "TV-Larry-Oops-Gap-Reversal",
@@ -3118,7 +3928,16 @@
         "session_open",
         "tv_structural_priority_1"
       ],
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "TV-Session-Gap-Fill",
@@ -3141,7 +3960,16 @@
         "session_open",
         "tv_structural_priority_2"
       ],
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "TV-EOD-Sentiment-Flip",
@@ -3165,7 +3993,16 @@
         "sentiment_reversal",
         "tv_structural_priority_3"
       ],
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "TV-Overnight-Gap-Analysis",
@@ -3188,7 +4025,16 @@
         "gap_classification",
         "tv_structural_priority_4"
       ],
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "TV-Gap-Filling-Strategy",
@@ -3211,7 +4057,16 @@
         "needs_single_playbook",
         "tv_structural_priority_5"
       ],
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "TV-Gold-Bandwidth-Squeeze",
@@ -3234,7 +4089,16 @@
         "gold",
         "tv_vol_priority_1"
       ],
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "TV-VIX-Term-Structure-Hedge",
@@ -3257,7 +4121,16 @@
         "needs_hedge_and_roll_controls",
         "tv_vol_priority_2"
       ],
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "TV-VVIX-VIX-Divergence-Regime",
@@ -3280,7 +4153,16 @@
         "needs_mechanical_thresholds",
         "tv_vol_priority_3"
       ],
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "TV-Crude-OVX-Regime-Shift",
@@ -3304,7 +4186,16 @@
         "needs_finished_playbook",
         "tv_vol_priority_4"
       ],
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "TV-Treasury-Macro-Vol-Targeting",
@@ -3328,7 +4219,16 @@
         "needs_model_infrastructure",
         "tv_vol_priority_5"
       ],
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "THEME-VolGated-Structural-Intraday",
@@ -3352,7 +4252,16 @@
         "vol_gated",
         "gap_normalization"
       ],
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "THEME-Mechanical-Market-Structure",
@@ -3375,7 +4284,16 @@
         "market_structure",
         "mechanical_only"
       ],
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "THEME-Exit-Architecture-First",
@@ -3398,7 +4316,16 @@
         "methodology",
         "research_direction"
       ],
-      "state_history": []
+      "state_history": [],
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "Commodity-TermStructure-Carry-EnergyMetals",
@@ -3446,7 +4373,16 @@
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
       "genome_cluster": "unknown",
-      "resurrection_flag": false
+      "resurrection_flag": false,
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "ManagedFutures-Carry-Diversified",
@@ -3470,7 +4406,16 @@
       "state_history": [],
       "harvest_batch": "academic_harvest_batch_2026-03-17",
       "harvest_note": "41_managed_futures_carry_diversified.md",
-      "batch_priority": 2
+      "batch_priority": 2,
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "VolManaged-EquityIndex-Futures",
@@ -3484,7 +4429,7 @@
       "status": "probation",
       "notes": "APPROVED for forward runner 2026-03-20. MICRO tier, probation. Rubric 22 effective (highest challenger). Fills VOLATILITY gap (0 active before this). Marginal Sharpe +0.089, portfolio corr 0.088. MONITORING NOTES: (1) CRISIS DD \u2014 vol-managed sizing REDUCES position in high-vol but this is long-only equity: COVID-2020 and 2022 rate hikes will show DD. Monitor forward DD vs backtest DD. If forward crisis DD exceeds 1.5x backtest worst, downgrade tier. (2) CONTRIBUTION \u2014 must remain additive (marginal Sharpe > 0). If portfolio Sharpe degrades after adding VolManaged, it is dilutive and should be paused. (3) LONG BIAS \u2014 adds to 2.7:1 long ratio. Acceptable because mechanism is unique (sizing, not timing) and vol-scaling has negative correlation with crisis drawdowns. But monitor: if portfolio DD clusters with VolManaged DD on same days, the long-bias diversification thesis is failing. (4) VOL-SCALING LIVE BEHAVIOR \u2014 compare forward daily weights to what backtest would have produced on the same dates. If live weights diverge >20% from backtest (data feed difference, computation timing), the signal is not replicating correctly.",
       "last_review_date": "2026-03-20",
-      "review_priority": "HIGH",
+      "review_priority": "MEDIUM",
       "lifecycle_stage": "forward_evidence",
       "source_category": "academic",
       "tags": [
@@ -3541,7 +4486,16 @@
         "conviction_threshold_outside": 0,
         "priority": 5,
         "grinding_filter": false
-      }
+      },
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "sizing_overlay"
     },
     {
       "strategy_id": "Commodity-Carry-TailRisk-Overlay",
@@ -3567,7 +4521,16 @@
       "state_history": [],
       "harvest_batch": "academic_harvest_batch_2026-03-17",
       "harvest_note": "43_commodity_carry_tail_risk_overlay.md",
-      "batch_priority": 4
+      "batch_priority": 4,
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "Treasury-CashFutures-Basis-NetOfCarry",
@@ -3593,7 +4556,16 @@
       "state_history": [],
       "harvest_batch": "academic_harvest_batch_2026-03-17",
       "harvest_note": "44_treasury_cash_futures_basis_net_of_carry.md",
-      "batch_priority": 7
+      "batch_priority": 7,
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "Treasury-Rolldown-Carry-Spread",
@@ -3658,7 +4630,16 @@
         "grinding_filter": false
       },
       "edge_vitality": 0.5,
-      "edge_vitality_tier": "STABLE"
+      "edge_vitality_tier": "STABLE",
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "CrudeOil-OPEC-Announcement-Regime",
@@ -3684,7 +4665,16 @@
       "state_history": [],
       "harvest_batch": "academic_harvest_batch_2026-03-17",
       "harvest_note": "47_crude_oil_opec_announcement_regime.md",
-      "batch_priority": 6
+      "batch_priority": 6,
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "Overnight-Z-VolRatio-OpenDrive",
@@ -3718,7 +4708,16 @@
       ],
       "harvest_batch": "convert_now_20260320",
       "harvest_note": "2026-03-19_04_overnight_z_volratio_open_drive.md",
-      "spec_path": "research/specs/Overnight-Z-VolRatio-OpenDrive.md"
+      "spec_path": "research/specs/Overnight-Z-VolRatio-OpenDrive.md",
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "Treasury-Cash-Close-Reversion-Window",
@@ -3751,7 +4750,18 @@
         }
       ],
       "harvest_note": "2026-03-20_04_treasury_cash_close_reversion_window.md",
-      "spec_path": "research/specs/Treasury-Cash-Close-Reversion-Window.md"
+      "spec_path": "research/specs/Treasury-Cash-Close-Reversion-Window.md",
+      "convergent_sources": [],
+      "relationships": {
+        "parent": null,
+        "children": [
+          "ZN-Afternoon-Reversion"
+        ],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     },
     {
       "strategy_id": "ZN-Afternoon-Reversion",
@@ -3765,7 +4775,7 @@
       "status": "probation",
       "notes": "APPROVED for forward runner 2026-03-20. MICRO tier, probation. Discovered as Variant B during Treasury-Cash-Close-Reversion falsification (parent REJECTED). First-pass: PF 1.32, 300 trades, WF H1=1.31 H2=1.33. Short-biased (89% PnL from shorts). MONITORING NOTES: (1) HIGH_VOL dependent \u2014 PF 1.64 high-vol vs 1.04 low-vol. Will underperform in quiet rate regimes. (2) Window-specific \u2014 \u00b115m shift degrades results. If CME changes session times, edge may vanish. (3) ~18% of weekdays excluded due to sparse ZN bars at 14:00-14:25. Forward results are conditioned on afternoon liquidity. (4) Tuesday is the weak day (PF 0.87). PROBATION TARGETS: 30 forward trades, PF > 1.1, contribution review, overlap check vs Treasury-Rolldown-Carry-Spread. DISTINGUISH FROM Treasury-Rolldown: same asset (ZN) but different mechanism (25m intraday reversion vs monthly carry spread), different session (14:00-14:25 vs daily close), different factor (STRUCTURAL vs CARRY).",
       "last_review_date": "2026-03-20",
-      "review_priority": "HIGH",
+      "review_priority": "MEDIUM",
       "lifecycle_stage": "forward_evidence",
       "source_category": "falsification_discovery",
       "tags": [
@@ -3793,7 +4803,7 @@
       "spec_path": "research/specs/ZN-Afternoon-Reversion.md",
       "validation_score": null,
       "controller_action": "PROBATION",
-      "activation_score": null,
+      "activation_score": 0.545,
       "controller_state": "PAPER",
       "last_controller_date": "2026-03-20",
       "execution_config": {
@@ -3816,7 +4826,33 @@
       "event_cadence": {
         "trades_per_month": 3.75,
         "cadence_class": "standard"
-      }
+      },
+      "prior_state": "PAPER",
+      "controller_reason_codes": [
+        "REGIME_MATCH_LOW",
+        "PORTFOLIO_NEUTRAL",
+        "LOW_REDUNDANCY",
+        "HEALTH_FAIL",
+        "KILL_NONE",
+        "SESSION_DRIFT_NORMAL",
+        "TIME_WINDOW_MATCH",
+        "ASSET_FIT_GOOD",
+        "RECENT_COLLAPSE"
+      ],
+      "half_life_status": "ERROR",
+      "contribution_status": "NEUTRAL",
+      "health_status": "FAIL",
+      "genome_cluster": "unknown",
+      "resurrection_flag": false,
+      "convergent_sources": [],
+      "relationships": {
+        "parent": "Treasury-Cash-Close-Reversion-Window",
+        "children": [],
+        "related": [],
+        "salvaged_from": null,
+        "components_used": []
+      },
+      "component_type": "full_strategy"
     }
   ],
   "_rejection_taxonomy": {
@@ -3831,5 +4867,6 @@
     "IMPLEMENTATION_BUG": "Code bug found \u2014 hypothesis not tested, may revisit",
     "ICT_FAMILY_FAILED": "ICT-derived concepts have not produced systematic edge in FQL",
     "CLASSIC_TA_DECAY": "Well-known pattern (RSI, NR7, gap fill) shows no edge on futures 5m bars"
-  }
+  },
+  "_schema_note": "Added convergent_sources, relationships, component_type (2026-03-20)"
 }

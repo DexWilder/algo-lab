@@ -308,10 +308,22 @@ def _task_instructions(task_name):
         commodity/rates/FX-specific practitioner content
 
     PRE-GATHERED LEADS: Check `inbox/source_leads/` for pre-fetched
-    URLs from GitHub, Reddit, and other helpers. These are curated
-    starting points — read each lead, assess for futures applicability
-    and mechanical rules, and write a harvest note if it qualifies.
-    Not every lead will produce a note; that is expected.
+    URLs from GitHub, Reddit, YouTube, and blog helpers. These are
+    curated starting points — read each lead, assess for futures
+    applicability and mechanical rules, and write a harvest note if
+    it qualifies. Not every lead will produce a note; that is expected.
+
+    COMPONENT TYPES: Not every note needs to be a full strategy. Tag
+    notes with component_type (see _note_template.md):
+      full_strategy, entry_logic, exit_logic, filter, sizing_overlay,
+      asset_behavior, session_effect
+    Partial mechanisms (filters, exits, timing effects) are valuable
+    as reusable components that can improve existing strategies.
+
+    CONVERGENT EVIDENCE: If you find an idea that already exists in the
+    registry from a different source, do NOT discard it. Note the
+    convergence — multiple independent sources confirming the same
+    mechanism is stronger evidence than one source alone.
     """
     instructions = {
         "gap_harvest": """MULTI-SOURCE gap harvest. Search across ALL available sources for
