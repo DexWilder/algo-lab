@@ -65,6 +65,15 @@ if [ -f "$ALGO_LAB/scripts/fetch_blog_leads.py" ]; then
     log "Blog: $BL_COUNT leads fetched"
 fi
 
+# ── Fetch strategy digest leads ──
+DG_COUNT=0
+if [ -f "$ALGO_LAB/scripts/fetch_digest_leads.py" ]; then
+    log "--- Fetching strategy digest leads ---"
+    DG_OUTPUT=$(python3 "$ALGO_LAB/scripts/fetch_digest_leads.py" 2>&1) || true
+    DG_COUNT=$(echo "$DG_OUTPUT" | grep -o '[0-9]* strategies' | grep -o '[0-9]*' || echo 0)
+    log "Digest: $DG_COUNT leads fetched"
+fi
+
 # ── Update manifest ──
 log "--- Updating lead manifest ---"
 python3 -c "
@@ -82,7 +91,8 @@ run = {
     'reddit_leads': int('$RD_COUNT' or 0),
     'youtube_leads': int('$YT_COUNT' or 0),
     'blog_leads': int('$BL_COUNT' or 0),
-    'total': int('$GH_COUNT' or 0) + int('$RD_COUNT' or 0) + int('$YT_COUNT' or 0) + int('$BL_COUNT' or 0),
+    'digest_leads': int('$DG_COUNT' or 0),
+    'total': int('$GH_COUNT' or 0) + int('$RD_COUNT' or 0) + int('$YT_COUNT' or 0) + int('$BL_COUNT' or 0) + int('$DG_COUNT' or 0),
 }
 manifest['runs'].append(run)
 
@@ -97,7 +107,7 @@ for key in list(manifest.get('lifecycle', {}).keys()):
         entry['stale_date'] = datetime.now().strftime('%Y-%m-%d')
 
 # Register new leads
-for source, count_str in [('github', '$GH_COUNT'), ('reddit', '$RD_COUNT'), ('youtube', '$YT_COUNT'), ('blog', '$BL_COUNT')]:
+for source, count_str in [('github', '$GH_COUNT'), ('reddit', '$RD_COUNT'), ('youtube', '$YT_COUNT'), ('blog', '$BL_COUNT'), ('digest', '$DG_COUNT')]:
     count = int(count_str or 0)
     if count > 0:
         lead_key = f'{source}_{datetime.now().strftime(\"%Y%m%d\")}'
@@ -121,7 +131,7 @@ json.dump(manifest, open(manifest_path, 'w'), indent=2)
 print(f'Manifest updated: {len(manifest[\"lifecycle\"])} active lead batches')
 " >> "$LOG_FILE" 2>&1
 
-log "=== Source helpers complete: GH=$GH_COUNT RD=$RD_COUNT YT=$YT_COUNT BL=$BL_COUNT ==="
+log "=== Source helpers complete: GH=$GH_COUNT RD=$RD_COUNT YT=$YT_COUNT BL=$BL_COUNT DG=$DG_COUNT ==="
 
 # Clean old logs
 find "$LOG_DIR" -name "source_helpers_*.log" -mtime +30 -delete 2>/dev/null || true
