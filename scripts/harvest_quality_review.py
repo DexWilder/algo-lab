@@ -260,6 +260,58 @@ def generate_report(lookback_days):
         lines.append("No notes converted to testing/probation in this period.")
     lines.append("(Normal for early cycles — conversion is selective and gated.)")
 
+    # ── Source helper metrics ──
+    lines.append("")
+    lines.append("## Source Helper Pipeline")
+    lines.append("")
+
+    manifest_path = Path.home() / "openclaw-intake" / "inbox" / "source_leads" / "_manifest.json"
+    if manifest_path.exists():
+        try:
+            manifest = json.load(open(manifest_path))
+            runs = manifest.get("runs", [])
+            lifecycle = manifest.get("lifecycle", {})
+
+            if runs:
+                last_run = runs[-1]
+                lines.append(f"**Last fetch:** {last_run.get('timestamp', '?')}")
+                lines.append(f"- GitHub: {last_run.get('github_leads', 0)} leads")
+                lines.append(f"- Reddit: {last_run.get('reddit_leads', 0)} leads")
+                lines.append(f"- YouTube: {last_run.get('youtube_leads', 0)} leads")
+                lines.append(f"- Total: {last_run.get('total', 0)} leads")
+                lines.append("")
+
+            # Lifecycle summary
+            fetched = sum(1 for v in lifecycle.values() if v.get("status") == "fetched")
+            picked = sum(1 for v in lifecycle.values() if v.get("status") == "picked_up")
+            stale = sum(1 for v in lifecycle.values() if v.get("status") == "stale")
+            total_notes = sum(v.get("notes_produced", 0) for v in lifecycle.values())
+
+            lines.append(f"**Lead lifecycle:** {fetched} fetched, {picked} picked up, {stale} stale")
+            lines.append(f"**Notes produced from leads:** {total_notes}")
+
+            if picked > 0 and total_notes == 0:
+                lines.append("**NOTE:** Leads were picked up but produced 0 harvest notes.")
+                lines.append("This may mean lead quality is low, or Claw filtered all of them.")
+            elif total_notes > 0:
+                conversion = total_notes / (fetched + picked + stale) * 100 if (fetched + picked + stale) > 0 else 0
+                lines.append(f"**Conversion rate:** {conversion:.0f}% of lead batches produced notes")
+
+            # Run history
+            if len(runs) > 1:
+                lines.append("")
+                lines.append("| Run Date | GitHub | Reddit | YouTube | Total |")
+                lines.append("|----------|--------|--------|---------|-------|")
+                for r in runs[-4:]:
+                    lines.append(
+                        f"| {r.get('timestamp','?')[:10]} | {r.get('github_leads',0)} | "
+                        f"{r.get('reddit_leads',0)} | {r.get('youtube_leads',0)} | {r.get('total',0)} |"
+                    )
+        except Exception as e:
+            lines.append(f"Could not read manifest: {e}")
+    else:
+        lines.append("No source helper manifest found. Helpers may not have run yet.")
+
     # ── Recommendations ──
     lines.append("")
     lines.append("## Recommendations")

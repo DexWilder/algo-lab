@@ -950,6 +950,89 @@ def refresh_priorities(registry_state, priorities):
     (CLAW_INBOX / "_priorities.md").write_text(content)
 
 
+# ── Source Lead Lifecycle ─────────────────────────────────────────────────────
+
+def _track_lead_pickup():
+    """Check if Claw has consumed any source leads by comparing harvest notes
+    to the leads in source_leads/. Lightweight — runs every control loop cycle
+    but only does real work when new harvest notes appear.
+    """
+    leads_dir = CLAW_INBOX / "source_leads"
+    manifest_path = leads_dir / "_manifest.json"
+
+    if not manifest_path.exists():
+        return
+
+    try:
+        manifest = json.load(open(manifest_path))
+    except Exception:
+        return
+
+    # Count current leads files
+    lead_files = list(leads_dir.glob("*_leads.md"))
+    lead_count = 0
+    for lf in lead_files:
+        if lf.name.startswith("_"):
+            continue
+        try:
+            text = lf.read_text()
+            lead_count += text.count("- url:") + text.count("- title:")
+        except Exception:
+            pass
+
+    # Count today's harvest notes (rough proxy for pickup)
+    harvest_dir = CLAW_INBOX / "harvest"
+    today_notes = list(harvest_dir.glob(f"{TODAY}*.md")) if harvest_dir.exists() else []
+
+    # Check if any today's notes reference source_leads sources
+    source_lead_urls = set()
+    for lf in lead_files:
+        if lf.name.startswith("_"):
+            continue
+        try:
+            for line in lf.read_text().split("\n"):
+                if line.strip().startswith("- url:") or line.strip().startswith("url:"):
+                    url = line.split(":", 1)[-1].strip() if ":" in line else ""
+                    if url:
+                        source_lead_urls.add(url[:60])  # Prefix match
+        except Exception:
+            pass
+
+    notes_from_leads = 0
+    for note in today_notes:
+        try:
+            text = note.read_text()
+            for line in text.split("\n"):
+                if line.startswith("- source URL:"):
+                    url = line.split(":", 1)[-1].strip()
+                    # Check if this URL matches any source lead
+                    for lead_url in source_lead_urls:
+                        if lead_url[:40] in url or url[:40] in lead_url:
+                            notes_from_leads += 1
+                            break
+        except Exception:
+            pass
+
+    # Update manifest with pickup stats
+    lifecycle = manifest.get("lifecycle", {})
+    for key in lifecycle:
+        entry = lifecycle[key]
+        if entry.get("status") == "fetched" and today_notes:
+            entry["picked_up"] = True
+            entry["pickup_date"] = TODAY
+            entry["status"] = "picked_up"
+            entry["notes_produced"] = notes_from_leads
+
+    manifest["last_pickup_check"] = NOW
+    manifest["pending_leads"] = lead_count
+
+    try:
+        with open(manifest_path, "w") as f:
+            json.dump(manifest, f, indent=2)
+    except Exception:
+        pass
+
+
 # ── Main ─────────────────────────────────────────────────────────────────────
 
 def run_full_cycle():
@@ -984,7 +1067,10 @@ def run_full_cycle():
     print("  Writing EOD audit...")
     write_eod_audit(claw_status, registry_state, priorities)
 
-    # 5. Refresh priorities (only on Sundays or if significant changes)
+    # 5. Track source lead pickup
+    _track_lead_pickup()
+
+    # 6. Refresh priorities (only on Sundays or if significant changes)
     print("  Refreshing priorities...")
     refresh_priorities(registry_state, priorities)
 
