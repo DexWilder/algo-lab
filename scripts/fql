@@ -401,15 +401,33 @@ def cmd_summary():
         except Exception:
             pass
 
-    # Source helpers
+    # Source helpers + pickup
     manifest = INBOX / "source_leads" / "_manifest.json"
     if manifest.exists():
         try:
             data = json.load(open(manifest))
             runs = data.get("runs", [])
+            lifecycle = data.get("lifecycle", {})
             if runs:
                 last = runs[-1]
-                print(f"  Leads: {last.get('total', 0)} from last fetch ({last.get('timestamp', '?')[:10]})")
+                picked = sum(1 for v in lifecycle.values() if v.get("picked_up"))
+                notes = sum(v.get("notes_produced", 0) for v in lifecycle.values())
+                print(f"  Leads: {last.get('total', 0)} fetched → {picked} picked up → {notes} notes")
+        except Exception:
+            pass
+
+    # Components this week (north-star metric)
+    reg_path = ROOT / "research" / "data" / "strategy_registry.json"
+    if reg_path.exists():
+        try:
+            reg = json.load(open(reg_path))
+            components_with_data = sum(1 for s in reg.get("strategies", [])
+                                       if s.get("components") and any(s["components"].values()))
+            non_full = sum(1 for s in reg.get("strategies", [])
+                          if s.get("component_type", "full_strategy") != "full_strategy")
+            convergent = sum(1 for s in reg.get("strategies", [])
+                           if s.get("convergent_sources"))
+            print(f"  Components: {components_with_data} extracted, {non_full} fragments, {convergent} convergent")
         except Exception:
             pass
 

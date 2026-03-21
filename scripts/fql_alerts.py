@@ -356,6 +356,50 @@ def check_recovery_activity():
 
 # ── Main ──────────────────────────────────────────────────────────────────
 
+WARN_HISTORY_PATH = ROOT / "research" / "logs" / ".alert_warn_history.json"
+ESCALATION_THRESHOLD = 3  # Promote WARN → ALERT after this many consecutive cycles
+
+
+def _load_warn_history():
+    try:
+        return json.load(open(WARN_HISTORY_PATH))
+    except Exception:
+        return {}
+
+
+def _save_warn_history(history):
+    try:
+        with open(WARN_HISTORY_PATH, "w") as f:
+            json.dump(history, f, indent=2)
+    except Exception:
+        pass
+
+
+def _escalate_persistent_warns(alerts):
+    """Promote WARN → ALERT if the same warning has appeared for 3+ cycles."""
+    history = _load_warn_history()
+    current_warns = set()
+
+    for a in alerts:
+        if a["level"] == "WARN":
+            # Use message as key (stable across runs)
+            key = a["message"][:80]
+            current_warns.add(key)
+            count = history.get(key, 0) + 1
+            history[key] = count
+            if count >= ESCALATION_THRESHOLD:
+                a["level"] = "ALERT"
+                a["message"] = f"[ESCALATED from WARN x{count}] {a['message']}"
+
+    # Clear warnings that didn't fire this cycle
+    for key in list(history.keys()):
+        if key not in current_warns:
+            del history[key]
+
+    _save_warn_history(history)
+    return alerts
+
+
 def generate_alerts():
     """Run all alert checks and return sorted alerts."""
     all_alerts = []
@@ -366,6 +410,9 @@ def generate_alerts():
     all_alerts.extend(check_probation_aging())
     all_alerts.extend(check_short_side_dependence())
     all_alerts.extend(check_recovery_activity())
+
+    # Escalate persistent warnings
+    all_alerts = _escalate_persistent_warns(all_alerts)
 
     # Sort by severity
     level_order = {"ALERT": 0, "ACTION": 1, "WARN": 2, "INFO": 3}
