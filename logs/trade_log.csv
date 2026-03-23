@@ -13,3 +13,13 @@ date,strategy,asset,status,tier,horizon,entry_time,exit_time,side,pnl
 2026-03-16,NoiseBoundary-MNQ-Long,MNQ,probation,BASE,intraday,2026-03-13 09:55:00,2026-03-13 10:20:00,long,-270.24
 2026-03-16,NoiseBoundary-MNQ-Long,MNQ,probation,BASE,intraday,2026-03-16 09:50:00,2026-03-16 10:40:00,long,-142.24
 2026-03-17,NoiseBoundary-MNQ-Long,MNQ,probation,BASE,intraday,2026-03-17 09:50:00,2026-03-17 10:20:00,long,-118.74
+2026-03-18,XB-PB-EMA-MES-Short,MES,core,BOOST,intraday,2026-03-18 09:55:00,2026-03-18 11:05:00,short,73.76
+2026-03-18,TTMSqueeze-M2K-Short,M2K,watch,BASE,intraday,2026-03-18 14:35:00,2026-03-18 14:55:00,short,68.5
+2026-03-18,XB-PB-EMA-MES-Short,MES,core,BOOST,intraday,2026-03-18 09:55:00,2026-03-18 11:05:00,short,73.76
+2026-03-18,TTMSqueeze-M2K-Short,M2K,watch,BASE,intraday,2026-03-18 14:35:00,2026-03-18 14:55:00,short,68.5
+2026-03-22,XB-PB-EMA-MES-Short,MES,core,BOOST,intraday,2026-03-19 10:05:00,2026-03-19 10:35:00,short,-9.99
+2026-03-22,PB-MGC-Short,MGC,core,BOOST,intraday,2026-03-20 09:50:00,2026-03-20 09:55:00,short,285.76
+2026-03-22,CloseVWAP-M2K-Short,M2K,watch,BASE,intraday,2026-03-19 15:05:00,2026-03-19 15:10:00,short,-54.5
+2026-03-22,MomPB-6E-Long-US,6E,testing,REDUCED,intraday,2026-03-20 13:15:00,2026-03-22 19:30:00,long,0.0
+2026-03-22,VolManaged-EquityIndex-Futures,MES,probation,REDUCED,daily,2026-03-20 00:00:00,2026-03-20 00:00:00,long,-0.02
+2026-03-22,VolManaged-EquityIndex-Futures,MES,probation,REDUCED,daily,2026-03-22 00:00:00,2026-03-22 00:00:00,long,-0.04

@@ -316,11 +316,83 @@ def main():
         pnl = new_trades["pnl"].sum() if not new_trades.empty else 0
         print(f"    {strat_key}: {tc} new trades, PnL=${pnl:,.0f}")
 
+    # ── Handle always-in strategies (e.g., VolManaged) ──────────────────
+    # These don't produce discrete trades — they produce daily weighted returns.
+    # Generate synthetic trade-log entries for each new day of contribution.
+    ALWAYS_IN_STRATEGIES = {"VolManaged-EquityIndex-Futures"}
+
+    for strat_key in ALWAYS_IN_STRATEGIES:
+        if strat_key not in strat_configs:
+            continue
+        strat = strat_configs[strat_key]
+        asset = strat["asset"]
+        if asset not in data_cache:
+            continue
+
+        full_df, new_bars = data_cache[asset]
+        config = ASSET_CONFIG[asset]
+        mod = load_strategy(strat["name"])
+        signals = mod.generate_signals(full_df)
+
+        if "weight" not in signals.columns:
+            continue
+
+        # Find days in the new-bars window
+        new_start = new_bars["datetime"].min() if not new_bars.empty else None
+        if new_start is None:
+            continue
+
+        signals["datetime"] = pd.to_datetime(signals["datetime"])
+        new_days = signals[signals["datetime"] >= new_start].copy()
+
+        if new_days.empty:
+            continue
+
+        # Compute daily weighted PnL: daily_return * weight * point_value
+        new_days["ret"] = new_days["close"].pct_change()
+        new_days["weight"] = new_days.get("weight", pd.Series(1.0, index=new_days.index))
+
+        # For the first row, we need the prior day's close
+        prior_idx = signals.index[signals.index < new_days.index[0]]
+        if len(prior_idx) > 0:
+            prev_close = signals.loc[prior_idx[-1], "close"]
+            new_days.loc[new_days.index[0], "ret"] = (
+                new_days.loc[new_days.index[0], "close"] / prev_close - 1
+            )
+
+        synthetic_trades = []
+        for _, day in new_days.iterrows():
+            if pd.isna(day["ret"]) or pd.isna(day.get("weight", 1.0)):
+                continue
+            daily_pnl = day["ret"] * day.get("weight", 1.0) * config["point_value"]
+            synthetic_trades.append({
+                "entry_time": str(day["datetime"]),
+                "exit_time": str(day["datetime"]),
+                "side": "long",
+                "entry_price": day["open"],
+                "exit_price": day["close"],
+                "pnl": round(daily_pnl, 2),
+                "contracts": day.get("weight", 1.0),
+            })
+
+        if synthetic_trades:
+            synth_df = pd.DataFrame(synthetic_trades)
+            all_new_trades[strat_key] = synth_df
+            total_pnl = synth_df["pnl"].sum()
+            print(f"    {strat_key}: {len(synth_df)} daily contributions, "
+                  f"PnL=${total_pnl:,.0f} (always-in, weight-adjusted)")
+            total_signals += len(synth_df)
+
     # ── Apply Strategy Controller ────────────────────────────────────────
     print(f"\n  Applying strategy controller...")
     ctrl_result = controller.simulate(all_new_trades, regime_cache)
     controlled_trades = ctrl_result["filtered_trades"]
     filter_stats = ctrl_result["filter_stats"]
+
+    # Always-in strategies bypass the controller (no regime gating)
+    for strat_key in ALWAYS_IN_STRATEGIES:
+        if strat_key in all_new_trades and not all_new_trades[strat_key].empty:
+            controlled_trades[strat_key] = all_new_trades[strat_key]
 
     total_base = sum(len(t) for t in all_new_trades.values())
     total_ctrl = sum(len(t) for t in controlled_trades.values())
