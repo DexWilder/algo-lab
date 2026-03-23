@@ -55,6 +55,10 @@ FEEDS = [
 
     # Vol / options / market structure
     {"url": "https://moontowermeta.com/feed/", "name": "Moontower (Kris Abdelmessih)", "category": "vol_structure"},
+
+    # Value / macro / portfolio construction
+    {"url": "https://www.philosophicaleconomics.com/feed/", "name": "Philosophical Economics", "category": "value_macro"},
+    {"url": "https://mutinyfund.com/feed/", "name": "Mutiny Fund", "category": "portfolio_construction"},
 ]
 
 # Strategy-relevance keywords (scored by specificity)
