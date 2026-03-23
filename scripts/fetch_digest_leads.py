@@ -39,6 +39,12 @@ FEEDS = [
         "category": "strategy_digest",
         "note": "Curated strategy database. Most entries are documented with performance data."
     },
+    {
+        "url": "https://investresolve.com/feed/",
+        "name": "ReSolve Asset Management",
+        "category": "strategy_digest",
+        "note": "Managed futures / CTA research. Carry, trend, risk parity, portable alpha."
+    },
     # QuantifiedStrategies does not have a working RSS — Claw searches
     # their site directly during academic_scan tasks.
 ]

@@ -49,14 +49,12 @@ FEEDS = [
     # Managed futures / CTA / carry / vol
     {"url": "https://www.returnstacked.com/feed/", "name": "Return Stacked", "category": "managed_futures"},
 
-    # Rates / fixed income specific
-    # (Add as discovered — rates blogs are rare but high-value for FQL)
+    # Managed futures / CTA / carry / vol (additional)
+    {"url": "https://investresolve.com/feed/", "name": "ReSolve Asset Management", "category": "managed_futures"},
+    # Verdad Capital — no working RSS feed (custom CMS). Claw searches directly.
 
-    # Commodity specific
-    # (Add as discovered)
-
-    # Market microstructure
-    # (Add as discovered)
+    # Vol / options / market structure
+    {"url": "https://moontowermeta.com/feed/", "name": "Moontower (Kris Abdelmessih)", "category": "vol_structure"},
 ]
 
 # Strategy-relevance keywords (scored by specificity)
