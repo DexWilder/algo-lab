@@ -426,7 +426,7 @@ def cmd_summary():
         except Exception:
             pass
 
-    # Components this week (north-star metric)
+    # Components (north-star metric) + type distribution from recent notes
     reg_path = ROOT / "research" / "data" / "strategy_registry.json"
     if reg_path.exists():
         try:
@@ -440,6 +440,30 @@ def cmd_summary():
             print(f"  Components: {components_with_data} extracted, {non_full} fragments, {convergent} convergent")
         except Exception:
             pass
+
+    # Note type distribution from recent harvest (shows fragment capture progress)
+    harvest_dir = Path.home() / "openclaw-intake" / "inbox" / "harvest"
+    reviewed_dir = Path.home() / "openclaw-intake" / "reviewed"
+    if harvest_dir.exists():
+        from collections import Counter
+        type_counts = Counter()
+        cutoff = (datetime.now() - __import__("datetime").timedelta(days=7)).strftime("%Y-%m-%d")
+        for d in [harvest_dir, reviewed_dir]:
+            if not d.exists():
+                continue
+            for f in d.glob("*.md"):
+                if f.name[:10] >= cutoff:
+                    try:
+                        for line in f.read_text().split("\n"):
+                            if line.startswith("- component_type:"):
+                                ct = line.split(":", 1)[-1].strip()
+                                type_counts[ct] += 1
+                                break
+                    except Exception:
+                        pass
+        if type_counts:
+            parts = [f"{t}={c}" for t, c in type_counts.most_common()]
+            print(f"  Note types (7d): {', '.join(parts)}")
 
     # Next checkpoint
     print(f"  Next checkpoint: April 3, 2026")
