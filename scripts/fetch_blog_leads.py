@@ -28,8 +28,8 @@ LEADS_DIR = Path.home() / "openclaw-intake" / "inbox" / "source_leads"
 OUTPUT = LEADS_DIR / "blog_leads.md"
 TIMESTAMP = datetime.now().strftime("%Y-%m-%d %H:%M")
 
-MAX_LEADS = 15
-MAX_PER_FEED = 3
+MAX_LEADS = 20
+MAX_PER_FEED = 4
 MAX_AGE_DAYS = 30  # Only posts from last 30 days
 
 USER_AGENT = "FQL-Harvest-Helper/1.0 (research tool)"

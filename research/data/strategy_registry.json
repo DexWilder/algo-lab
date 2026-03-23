@@ -186,7 +186,17 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "components": {
+        "entry": "Pullback to EMA in downtrend, enter short on bounce rejection",
+        "exit": "Time stop or ATR-based trailing stop",
+        "filter": "EMA trend direction (short bias when below 20 EMA)",
+        "sizing": null,
+        "regime": "Trending preferred, avoid RANGING",
+        "timing": "Morning session 09:30-12:00 ET",
+        "asset_scope": "MES (equity index)",
+        "validation_status": "validated"
+      }
     },
     {
       "strategy_id": "ORB-MGC-Long",
@@ -274,7 +284,17 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "components": {
+        "entry": "Opening range breakout above first 30m high on MGC",
+        "exit": "Time stop at session end or trailing ATR stop",
+        "filter": "Regime gate: avoid LOW_VOL",
+        "sizing": null,
+        "regime": "Avoid LOW_VOL",
+        "timing": "Morning session 10:00-12:00 ET",
+        "asset_scope": "MGC (metal)",
+        "validation_status": "validated"
+      }
     },
     {
       "strategy_id": "Donchian-MNQ-Long-GRINDING",
@@ -462,7 +482,17 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "components": {
+        "entry": "Bollinger Band squeeze breakout on MGC, enter long on expansion",
+        "exit": "Mean reversion back to midline or time stop",
+        "filter": "Bandwidth percentile squeeze detection",
+        "sizing": null,
+        "regime": null,
+        "timing": "Morning session",
+        "asset_scope": "MGC (metal)",
+        "validation_status": "validated"
+      }
     },
     {
       "strategy_id": "PB-MGC-Short",
@@ -551,7 +581,17 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "components": {
+        "entry": "Pullback in downtrend on MGC, short on failed bounce",
+        "exit": "ATR-based stop or time exit",
+        "filter": "Trend direction confirmation",
+        "sizing": null,
+        "regime": null,
+        "timing": "Morning session",
+        "asset_scope": "MGC (metal)",
+        "validation_status": "validated"
+      }
     },
     {
       "strategy_id": "MomIgn-M2K-Short",
@@ -2224,7 +2264,17 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "components": {
+        "entry": "Breakout above noise boundary level on MNQ",
+        "exit": "ATR-based or time stop",
+        "filter": null,
+        "sizing": null,
+        "regime": null,
+        "timing": "All day",
+        "asset_scope": "MNQ (equity index)",
+        "validation_status": "validated"
+      }
     },
     {
       "strategy_id": "VWAPPullback-MES-Long",
@@ -2585,7 +2635,17 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "components": {
+        "entry": "Momentum pullback entry on 6J during US session, long on dip in uptrend",
+        "exit": "Intraday time stop or profit target",
+        "filter": "US session only (08:00-17:00 ET)",
+        "sizing": null,
+        "regime": null,
+        "timing": "US session 08:00-17:00 ET",
+        "asset_scope": "6J (FX, Japanese Yen)",
+        "validation_status": "validated"
+      }
     },
     {
       "strategy_id": "FXBreak-6J-Short-London",
@@ -2906,7 +2966,17 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "components": {
+        "entry": "Daily bar trend signal on MGC, enter long on confirmed uptrend",
+        "exit": "Daily close evaluation, exit on trend reversal",
+        "filter": null,
+        "sizing": null,
+        "regime": null,
+        "timing": "Daily close evaluation",
+        "asset_scope": "MGC (metal)",
+        "validation_status": "validated"
+      }
     },
     {
       "strategy_id": "FVG-Inversion-Signal",
@@ -3354,7 +3424,17 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "components": {
+        "entry": "Long equity index futures before FOMC announcement (anticipation drift)",
+        "exit": "Before or shortly after FOMC release",
+        "filter": "FOMC calendar dates only",
+        "sizing": null,
+        "regime": null,
+        "timing": "Overnight into FOMC day",
+        "asset_scope": "MNQ (equity index)",
+        "validation_status": "validated"
+      }
     },
     {
       "strategy_id": "Treasury-CPI-Day-Long",
@@ -3776,7 +3856,17 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "components": {
+        "entry": "2 consecutive daily closes above NFP-day high (long) or below low (short)",
+        "exit": "Before next NFP or at NFP midpoint stop",
+        "filter": "One entry per NFP cycle, NFP calendar dates",
+        "sizing": null,
+        "regime": null,
+        "timing": "Multi-day hold triggered by daily closes after NFP",
+        "asset_scope": "MNQ (equity index)",
+        "validation_status": "validated"
+      }
     },
     {
       "strategy_id": "TV-OPEX-Vanna-Charm-Windows",

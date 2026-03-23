@@ -24,8 +24,8 @@ LEADS_DIR = Path.home() / "openclaw-intake" / "inbox" / "source_leads"
 OUTPUT = LEADS_DIR / "digest_leads.md"
 TIMESTAMP = datetime.now().strftime("%Y-%m-%d %H:%M")
 
-MAX_LEADS = 12
-MAX_PER_FEED = 6
+MAX_LEADS = 15
+MAX_PER_FEED = 8
 
 USER_AGENT = "FQL-Harvest-Helper/1.0 (research tool)"
 
