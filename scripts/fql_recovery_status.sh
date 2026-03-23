@@ -5,7 +5,9 @@
 # Writes to: ~/openclaw-intake/inbox/_recovery_status.md
 # Also prints to stdout.
 
-set -euo pipefail
+set -uo pipefail
+# Note: -e omitted intentionally. ls|head triggers SIGPIPE with pipefail
+# which would kill the script. We handle errors explicitly instead.
 
 export PATH="/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 export HOME="/Users/chasefisher"
