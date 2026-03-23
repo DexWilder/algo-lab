@@ -1025,6 +1025,30 @@ def _track_lead_pickup():
                 if note.name[:10] >= (datetime.now() - __import__("datetime").timedelta(days=3)).strftime("%Y-%m-%d"):
                     recent_notes.append(note)
 
+    # Also extract URLs from lead files for direct URL matching
+    lead_urls_by_source = {}  # {source_type: set_of_url_prefixes}
+    for lf in lead_files:
+        if lf.name.startswith("_"):
+            continue
+        source_type = lf.stem.replace("_leads", "").replace("_prev", "")
+        urls = set()
+        try:
+            for line in lf.read_text().split("\n"):
+                stripped = line.strip()
+                if stripped.startswith("- url:") or stripped.startswith("url:"):
+                    url = stripped.split(":", 1)[-1].strip() if ":" in stripped else ""
+                    if url and url.startswith("http"):
+                        # Use domain + first path segment as match key
+                        parts = url.split("/")
+                        if len(parts) >= 4:
+                            urls.add("/".join(parts[:4]).lower())
+                        elif len(parts) >= 3:
+                            urls.add("/".join(parts[:3]).lower())
+        except Exception:
+            pass
+        if urls:
+            lead_urls_by_source[source_type] = urls
+
     # Match notes to lead signatures + detect component types
     notes_by_source = {}
     components_by_source = {}  # {source: {type: count}}
@@ -1036,46 +1060,71 @@ def _track_lead_pickup():
             text_lower = text.lower()
             note_words = set(w for w in text_lower.split() if len(w) >= 4)
 
-            for source_type, sigs in lead_signatures.items():
-                for sig in sigs:
-                    overlap = sig & note_words
-                    if len(overlap) >= 3:
-                        notes_by_source[source_type] = notes_by_source.get(source_type, 0) + 1
+            # Extract source URL from note
+            note_url = ""
+            for line in text.split("\n"):
+                if line.startswith("- source URL:"):
+                    note_url = line.split(":", 1)[-1].strip().lower()
+                    break
 
-                        # Detect component_type in the note
-                        comp_type = "full_strategy"
-                        for line in text.split("\n"):
-                            if line.startswith("- component_type:"):
-                                comp_type = line.split(":", 1)[-1].strip()
-                                break
+            matched_source = None
 
-                        if source_type not in note_types_by_source:
-                            note_types_by_source[source_type] = {"full_strategy": 0, "fragment": 0}
-                        if comp_type == "full_strategy":
-                            note_types_by_source[source_type]["full_strategy"] += 1
-                        else:
-                            note_types_by_source[source_type]["fragment"] += 1
+            # Method 1: URL prefix match (highest confidence)
+            if note_url and note_url != "internal":
+                for source_type, urls in lead_urls_by_source.items():
+                    for lead_url in urls:
+                        if lead_url in note_url or note_url.startswith(lead_url):
+                            matched_source = source_type
+                            break
+                    if matched_source:
+                        break
 
-                        # Detect reusable components via keyword scan
-                        _COMP_HINTS = {
-                            "entry_logic": ["entry", "enter when", "buy when", "go long"],
-                            "exit_logic": ["exit", "stop loss", "take profit", "trailing"],
-                            "filter": ["filter", "only when", "regime", "threshold"],
-                            "sizing": ["position size", "vol target", "risk parity", "leverage"],
-                            "session_effect": ["session", "overnight", "morning", "afternoon"],
-                        }
-                        detected = []
-                        for ctype, kws in _COMP_HINTS.items():
-                            if sum(1 for kw in kws if kw in text_lower) >= 2:
-                                detected.append(ctype)
+            # Method 2: Content similarity fallback
+            if not matched_source:
+                for source_type, sigs in lead_signatures.items():
+                    for sig in sigs:
+                        overlap = sig & note_words
+                        if len(overlap) >= 3:
+                            matched_source = source_type
+                            break
+                    if matched_source:
+                        break
 
-                        if detected:
-                            if source_type not in components_by_source:
-                                components_by_source[source_type] = {}
-                            for ct in detected:
-                                components_by_source[source_type][ct] = components_by_source[source_type].get(ct, 0) + 1
+            if matched_source:
+                notes_by_source[matched_source] = notes_by_source.get(matched_source, 0) + 1
 
-                        break  # Count each note only once per source
+                # Detect component_type in the note
+                comp_type = "full_strategy"
+                for line in text.split("\n"):
+                    if line.startswith("- component_type:"):
+                        comp_type = line.split(":", 1)[-1].strip()
+                        break
+
+                if matched_source not in note_types_by_source:
+                    note_types_by_source[matched_source] = {"full_strategy": 0, "fragment": 0}
+                if comp_type == "full_strategy":
+                    note_types_by_source[matched_source]["full_strategy"] += 1
+                else:
+                    note_types_by_source[matched_source]["fragment"] += 1
+
+                # Detect reusable components via keyword scan
+                _COMP_HINTS = {
+                    "entry_logic": ["entry", "enter when", "buy when", "go long"],
+                    "exit_logic": ["exit", "stop loss", "take profit", "trailing"],
+                    "filter": ["filter", "only when", "regime", "threshold"],
+                    "sizing": ["position size", "vol target", "risk parity", "leverage"],
+                    "session_effect": ["session", "overnight", "morning", "afternoon"],
+                }
+                detected = []
+                for ctype, kws in _COMP_HINTS.items():
+                    if sum(1 for kw in kws if kw in text_lower) >= 2:
+                        detected.append(ctype)
+
+                if detected:
+                    if matched_source not in components_by_source:
+                        components_by_source[matched_source] = {}
+                    for ct in detected:
+                        components_by_source[matched_source][ct] = components_by_source[matched_source].get(ct, 0) + 1
         except Exception:
             pass
 
