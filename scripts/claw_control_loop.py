@@ -313,12 +313,17 @@ def _task_instructions(task_name):
     applicability and mechanical rules, and write a harvest note if
     it qualifies. Not every lead will produce a note; that is expected.
 
-    COMPONENT TYPES: Not every note needs to be a full strategy. Tag
-    notes with component_type (see _note_template.md):
-      full_strategy, entry_logic, exit_logic, filter, sizing_overlay,
-      asset_behavior, session_effect
-    Partial mechanisms (filters, exits, timing effects) are valuable
-    as reusable components that can improve existing strategies.
+    COMPONENT TYPES: Most notes should NOT be full_strategy. If a source
+    describes only an entry condition, or only a filter, or only an asset
+    behavior — tag it as that component type. See _note_template.md for
+    examples of each type. Fragments are MORE valuable than forced-complete
+    strategies because they combine with existing validated logic.
+
+    Types: full_strategy, entry_logic, exit_logic, filter, sizing_overlay,
+           asset_behavior, session_effect
+
+    WHEN IN DOUBT: use a component type, not full_strategy. A well-tagged
+    fragment is more useful than a vaguely specified full strategy.
 
     CONVERGENT EVIDENCE: If you find an idea that already exists in the
     registry from a different source, do NOT discard it. Note the
