@@ -24,6 +24,7 @@ Operations:
     fql review          Show probation scoreboard + challenger stack
 
 Utilities:
+    fql midweek         Midweek mini-checkpoint with intervention triggers
     fql notify-test     Send a test macOS notification
     fql last            Show latest run times for all platform components
     fql checkpoint --auto  Automated pass/fail checkpoint evaluation
@@ -504,6 +505,161 @@ def _check_and_notify():
             pass  # Notification is best-effort
 
 
+def cmd_midweek():
+    """Midweek mini-checkpoint with intervention triggers."""
+    import json
+    from datetime import datetime, timedelta
+    from collections import Counter
+
+    print("=" * 60)
+    print("  FQL MIDWEEK CHECKPOINT")
+    print(f"  {datetime.now().strftime('%A, %Y-%m-%d %H:%M')}")
+    print("=" * 60)
+    print()
+
+    triggers = []  # (level, message, action)
+
+    # ── 1. Lead pipeline ──
+    manifest = INBOX / "source_leads" / "_manifest.json"
+    if manifest.exists():
+        data = json.load(open(manifest))
+        attr = data.get("last_attribution", {})
+        lifecycle = data.get("lifecycle", {})
+        runs = data.get("runs", [])
+
+        picked = sum(1 for v in lifecycle.values() if v.get("picked_up"))
+        notes = attr.get("total_attributed", 0)
+        by_source = attr.get("attributed_by_source", {})
+        total_leads = runs[-1].get("total", 0) if runs else 0
+
+        print(f"  Pipeline: {total_leads} fetched → {picked} picked up → {notes} notes")
+        print(f"  By source: {by_source or 'none attributed'}")
+
+        if picked == 0 and total_leads > 20:
+            triggers.append(("ALERT", "Zero leads picked up despite fetching",
+                             "Check if Claw reads source_leads/. Review task instructions."))
+        if notes == 0 and picked > 0:
+            triggers.append(("WARN", "Leads picked up but zero notes attributed",
+                             "May be attribution gap. Review recent notes manually for source matches."))
+    else:
+        triggers.append(("WARN", "No manifest — helpers may not have run", "Run: fql harvest"))
+
+    # ── 2. Note type mix ──
+    harvest_dir = Path.home() / "openclaw-intake" / "inbox" / "harvest"
+    reviewed_dir = Path.home() / "openclaw-intake" / "reviewed"
+    cutoff = (datetime.now() - timedelta(days=7)).strftime("%Y-%m-%d")
+
+    type_counts = Counter()
+    total_recent = 0
+    for d in [harvest_dir, reviewed_dir]:
+        if not d.exists():
+            continue
+        for f in d.glob("*.md"):
+            if f.name[:10] >= cutoff:
+                total_recent += 1
+                try:
+                    for line in f.read_text().split("\n"):
+                        if line.startswith("- component_type:"):
+                            ct = line.split(":", 1)[-1].strip()
+                            type_counts[ct] += 1
+                            break
+                except Exception:
+                    pass
+
+    if type_counts:
+        parts = [f"{t}={c}" for t, c in type_counts.most_common()]
+        print(f"  Note types (7d): {', '.join(parts)}")
+        full = type_counts.get("full_strategy", 0)
+        fragments = total_recent - full if total_recent > 0 else 0
+        frag_pct = fragments / total_recent * 100 if total_recent > 0 else 0
+        print(f"  Fragment share: {frag_pct:.0f}% ({fragments}/{total_recent})")
+
+        if total_recent >= 5 and frag_pct < 20:
+            triggers.append(("WARN", f"Fragment share only {frag_pct:.0f}% — full_strategy still dominates",
+                             "Tighten Claw component_type instructions. Add more fragment examples."))
+        if len(type_counts) < 3 and total_recent >= 5:
+            triggers.append(("WARN", f"Only {len(type_counts)} component types — low diversity",
+                             "Review note template examples. Claw may not understand all component types."))
+    else:
+        print(f"  Note types (7d): no tagged notes")
+        if total_recent >= 5:
+            triggers.append(("ALERT", "No component_type tags in recent notes",
+                             "Fragment capture not working. Check _note_template.md and task instructions."))
+
+    # ── 3. Source role movement ──
+    if manifest.exists():
+        note_types = attr.get("note_types_by_source", {})
+        comp_detail = attr.get("components_by_source", {})
+
+        active_sources = set(list(by_source.keys()))
+        if len(active_sources) == 0:
+            print(f"  Active sources: none producing notes")
+        else:
+            print(f"  Active sources: {', '.join(sorted(active_sources))}")
+
+        dark_sources = {"github", "reddit", "youtube"} - active_sources
+        if dark_sources:
+            print(f"  Dark sources: {', '.join(sorted(dark_sources))}")
+            # Only trigger if they've had multiple cycles
+            if len(runs) >= 3:
+                triggers.append(("INFO", f"Sources still dark after {len(runs)} cycles: {', '.join(sorted(dark_sources))}",
+                                 "May be attribution gap or genuinely low conversion. Review manually."))
+
+    # ── 4. Forward evidence ──
+    trade_path = ROOT / "logs" / "trade_log.csv"
+    if trade_path.exists():
+        try:
+            import pandas as pd
+            trades = pd.read_csv(trade_path)
+            n = len(trades)
+            recent = trades[pd.to_datetime(trades["date"]) >= (datetime.now() - timedelta(days=7)).strftime("%Y-%m-%d")] if "date" in trades.columns else pd.DataFrame()
+            print(f"  Forward trades: {n} total, {len(recent)} this week")
+
+            if n > 0 and len(recent) == 0:
+                triggers.append(("WARN", "No forward trades this week",
+                                 "Check forward runner. Data feed may need updating."))
+        except Exception:
+            pass
+
+    # ── 5. Component catalog growth ──
+    reg_path = ROOT / "research" / "data" / "strategy_registry.json"
+    if reg_path.exists():
+        reg = json.load(open(reg_path))
+        with_components = sum(1 for s in reg.get("strategies", [])
+                             if s.get("components") and any(v for v in s["components"].values() if v))
+        convergent = sum(1 for s in reg.get("strategies", []) if s.get("convergent_sources"))
+        print(f"  Component catalog: {with_components} strategies with components, {convergent} convergent")
+
+    # ── Triggers ──
+    print()
+    if triggers:
+        alerts = [t for t in triggers if t[0] == "ALERT"]
+        warns = [t for t in triggers if t[0] == "WARN"]
+        infos = [t for t in triggers if t[0] == "INFO"]
+
+        if alerts:
+            print("  INTERVENTION NEEDED:")
+            for _, msg, action in alerts:
+                print(f"    !! {msg}")
+                print(f"       → {action}")
+        if warns:
+            print("  WATCH:")
+            for _, msg, action in warns:
+                print(f"    ** {msg}")
+                print(f"       → {action}")
+        if infos:
+            print("  INFO:")
+            for _, msg, _ in infos:
+                print(f"    -- {msg}")
+    else:
+        print("  No intervention triggers. System progressing as expected.")
+
+    print()
+    print("  Next: fql friday (end of week review)")
+    print("  Then: fql checkpoint --auto (April 3)")
+    print()
+
+
 def cmd_notify_test():
     """Send a test macOS notification to confirm notifications work."""
     try:
@@ -750,6 +906,7 @@ COMMANDS = {
     "notify-test": cmd_notify_test,
     "last": cmd_last,
     "funnel": lambda: _py("helper_funnel_audit.py", "--save"),
+    "midweek": cmd_midweek,
     "help": cmd_help,
 }
 
