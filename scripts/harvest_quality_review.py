@@ -297,15 +297,48 @@ def generate_report(lookback_days):
                 conversion = total_notes / (fetched + picked + stale) * 100 if (fetched + picked + stale) > 0 else 0
                 lines.append(f"**Conversion rate:** {conversion:.0f}% of lead batches produced notes")
 
+            # Component yield by source
+            attr = manifest.get("last_attribution", {})
+            note_types = attr.get("note_types_by_source", {})
+            comp_detail = attr.get("components_by_source", {})
+
+            if note_types or comp_detail:
+                lines.append("")
+                lines.append("### Component Yield by Source")
+                lines.append("")
+                lines.append("| Source | Notes | Full Strategy | Fragments | Components Detected |")
+                lines.append("|--------|-------|--------------|-----------|-------------------|")
+
+                all_sources = set(list(note_types.keys()) + list(comp_detail.keys()))
+                for src in sorted(all_sources):
+                    nt = note_types.get(src, {})
+                    full = nt.get("full_strategy", 0)
+                    frag = nt.get("fragment", 0)
+                    notes_n = full + frag
+                    comps = comp_detail.get(src, {})
+                    comp_str = ", ".join(f"{k}={v}" for k, v in comps.items()) if comps else "none"
+                    lines.append(f"| {src:<8s} | {notes_n:>5d} | {full:>12d} | {frag:>9d} | {comp_str} |")
+
+                # Best fragment source
+                best_frag = max(note_types.items(), key=lambda x: x[1].get("fragment", 0), default=None)
+                best_comp = max(comp_detail.items(), key=lambda x: sum(x[1].values()), default=None)
+                if best_frag and best_frag[1].get("fragment", 0) > 0:
+                    lines.append(f"\n**Best fragment source:** {best_frag[0]} ({best_frag[1]['fragment']} fragments)")
+                if best_comp:
+                    lines.append(f"**Best component source:** {best_comp[0]} ({sum(best_comp[1].values())} components detected)")
+
             # Run history
             if len(runs) > 1:
                 lines.append("")
-                lines.append("| Run Date | GitHub | Reddit | YouTube | Total |")
-                lines.append("|----------|--------|--------|---------|-------|")
+                lines.append("### Run History")
+                lines.append("")
+                lines.append("| Run Date | GitHub | Reddit | YouTube | Blog | Digest | Total |")
+                lines.append("|----------|--------|--------|---------|------|--------|-------|")
                 for r in runs[-4:]:
                     lines.append(
                         f"| {r.get('timestamp','?')[:10]} | {r.get('github_leads',0)} | "
-                        f"{r.get('reddit_leads',0)} | {r.get('youtube_leads',0)} | {r.get('total',0)} |"
+                        f"{r.get('reddit_leads',0)} | {r.get('youtube_leads',0)} | "
+                        f"{r.get('blog_leads',0)} | {r.get('digest_leads',0)} | {r.get('total',0)} |"
                     )
         except Exception as e:
             lines.append(f"Could not read manifest: {e}")

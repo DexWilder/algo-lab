@@ -401,18 +401,28 @@ def cmd_summary():
         except Exception:
             pass
 
-    # Source helpers + pickup
+    # Source helpers + pickup + components
     manifest = INBOX / "source_leads" / "_manifest.json"
     if manifest.exists():
         try:
             data = json.load(open(manifest))
             runs = data.get("runs", [])
             lifecycle = data.get("lifecycle", {})
+            attr = data.get("last_attribution", {})
             if runs:
                 last = runs[-1]
                 picked = sum(1 for v in lifecycle.values() if v.get("picked_up"))
-                notes = sum(v.get("notes_produced", 0) for v in lifecycle.values())
-                print(f"  Leads: {last.get('total', 0)} fetched → {picked} picked up → {notes} notes")
+                notes = attr.get("total_attributed", 0)
+                # Count components detected
+                comp_detail = attr.get("components_by_source", {})
+                total_comps = sum(sum(v.values()) for v in comp_detail.values()) if comp_detail else 0
+                note_types = attr.get("note_types_by_source", {})
+                frags = sum(v.get("fragment", 0) for v in note_types.values()) if note_types else 0
+
+                lead_line = f"  Leads: {last.get('total', 0)} fetched → {picked} picked up → {notes} notes"
+                if total_comps > 0 or frags > 0:
+                    lead_line += f" ({frags} fragments, {total_comps} components)"
+                print(lead_line)
         except Exception:
             pass
 

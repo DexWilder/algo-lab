@@ -1025,19 +1025,56 @@ def _track_lead_pickup():
                 if note.name[:10] >= (datetime.now() - __import__("datetime").timedelta(days=3)).strftime("%Y-%m-%d"):
                     recent_notes.append(note)
 
-    # Match notes to lead signatures
+    # Match notes to lead signatures + detect component types
     notes_by_source = {}
+    components_by_source = {}  # {source: {type: count}}
+    note_types_by_source = {}  # {source: {"full_strategy": N, "fragment": N}}
+
     for note in recent_notes:
         try:
-            text = note.read_text().lower()
-            note_words = set(w for w in text.split() if len(w) >= 4)
+            text = note.read_text()
+            text_lower = text.lower()
+            note_words = set(w for w in text_lower.split() if len(w) >= 4)
 
             for source_type, sigs in lead_signatures.items():
                 for sig in sigs:
-                    # A lead "matches" a note if 3+ distinctive words overlap
                     overlap = sig & note_words
                     if len(overlap) >= 3:
                         notes_by_source[source_type] = notes_by_source.get(source_type, 0) + 1
+
+                        # Detect component_type in the note
+                        comp_type = "full_strategy"
+                        for line in text.split("\n"):
+                            if line.startswith("- component_type:"):
+                                comp_type = line.split(":", 1)[-1].strip()
+                                break
+
+                        if source_type not in note_types_by_source:
+                            note_types_by_source[source_type] = {"full_strategy": 0, "fragment": 0}
+                        if comp_type == "full_strategy":
+                            note_types_by_source[source_type]["full_strategy"] += 1
+                        else:
+                            note_types_by_source[source_type]["fragment"] += 1
+
+                        # Detect reusable components via keyword scan
+                        _COMP_HINTS = {
+                            "entry_logic": ["entry", "enter when", "buy when", "go long"],
+                            "exit_logic": ["exit", "stop loss", "take profit", "trailing"],
+                            "filter": ["filter", "only when", "regime", "threshold"],
+                            "sizing": ["position size", "vol target", "risk parity", "leverage"],
+                            "session_effect": ["session", "overnight", "morning", "afternoon"],
+                        }
+                        detected = []
+                        for ctype, kws in _COMP_HINTS.items():
+                            if sum(1 for kw in kws if kw in text_lower) >= 2:
+                                detected.append(ctype)
+
+                        if detected:
+                            if source_type not in components_by_source:
+                                components_by_source[source_type] = {}
+                            for ct in detected:
+                                components_by_source[source_type][ct] = components_by_source[source_type].get(ct, 0) + 1
+
                         break  # Count each note only once per source
         except Exception:
             pass
@@ -1071,6 +1108,8 @@ def _track_lead_pickup():
         "notes_checked": len(recent_notes),
         "attributed_by_source": notes_by_source,
         "total_attributed": total_attributed,
+        "note_types_by_source": note_types_by_source,
+        "components_by_source": components_by_source,
     }
 
     try:
