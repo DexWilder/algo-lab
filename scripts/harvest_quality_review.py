@@ -415,6 +415,117 @@ def generate_report(lookback_days):
     else:
         lines.append("No source helper manifest found. Helpers may not have run yet.")
 
+    # ── Top new fragments this week ──
+    lines.append("## Top New Fragments This Week")
+    lines.append("")
+
+    harvest_dir = Path.home() / "openclaw-intake" / "inbox" / "harvest"
+    reviewed_dir = Path.home() / "openclaw-intake" / "reviewed"
+    cutoff = (datetime.now() - timedelta(days=lookback_days)).strftime("%Y-%m-%d")
+
+    fragments_found = []
+    for d in [harvest_dir, reviewed_dir]:
+        if not d.exists():
+            continue
+        for f in d.glob("*.md"):
+            if f.name[:10] < cutoff:
+                continue
+            try:
+                text = f.read_text()
+                comp_type = None
+                title = ""
+                summary = ""
+                factor = ""
+                for line in text.split("\n"):
+                    if line.startswith("- component_type:"):
+                        comp_type = line.split(":", 1)[-1].strip()
+                    elif line.startswith("- title:"):
+                        title = line.split(":", 1)[-1].strip()
+                    elif line.startswith("- summary:"):
+                        summary = line.split(":", 1)[-1].strip()[:120]
+                    elif line.startswith("- factor fit:"):
+                        factor = line.split(":", 1)[-1].strip()
+
+                if comp_type and comp_type != "full_strategy" and title:
+                    fragments_found.append({
+                        "title": title,
+                        "type": comp_type,
+                        "factor": factor,
+                        "summary": summary,
+                        "file": f.name,
+                    })
+            except Exception:
+                pass
+
+    if fragments_found:
+        lines.append(f"**{len(fragments_found)} fragments captured this period:**")
+        lines.append("")
+        for frag in fragments_found[:5]:
+            lines.append(f"- **[{frag['type']}]** {frag['title']} ({frag['factor']})")
+            if frag["summary"]:
+                lines.append(f"  {frag['summary']}")
+        if len(fragments_found) > 5:
+            lines.append(f"  ... and {len(fragments_found) - 5} more")
+    else:
+        lines.append("No non-full_strategy fragments captured this period.")
+        lines.append("Check that _note_template.md examples are guiding Claw toward component tagging.")
+
+    lines.append("")
+
+    # ── Salvage wins ──
+    lines.append("## Salvage Wins")
+    lines.append("")
+    lines.append("*Rejected parents that produced useful children or salvageable components.*")
+    lines.append("")
+
+    reg_path = ROOT / "research" / "data" / "strategy_registry.json"
+    if reg_path.exists():
+        try:
+            reg = json.load(open(reg_path))
+            salvage_wins = []
+            for s in reg.get("strategies", []):
+                rels = s.get("relationships", {})
+                if rels.get("parent"):
+                    # Find the parent
+                    parent_id = rels["parent"]
+                    parent = next((p for p in reg["strategies"] if p["strategy_id"] == parent_id), None)
+                    if parent and parent.get("status") == "rejected":
+                        salvage_wins.append({
+                            "child": s["strategy_id"],
+                            "child_status": s.get("status", "?"),
+                            "parent": parent_id,
+                            "parent_status": "rejected",
+                        })
+
+                # Also check for strategies with salvageable components
+                comps = s.get("components", {})
+                if s.get("status") == "rejected" and comps.get("salvageable"):
+                    salvage_wins.append({
+                        "child": f"[component] {comps['salvageable'][:60]}",
+                        "child_status": "salvageable",
+                        "parent": s["strategy_id"],
+                        "parent_status": "rejected",
+                    })
+
+            if salvage_wins:
+                lines.append(f"**{len(salvage_wins)} salvage wins found:**")
+                lines.append("")
+                seen = set()
+                for sw in salvage_wins:
+                    key = f"{sw['parent']}→{sw['child']}"
+                    if key in seen:
+                        continue
+                    seen.add(key)
+                    lines.append(f"- **{sw['parent']}** (rejected) → **{sw['child']}** ({sw['child_status']})")
+            else:
+                lines.append("No salvage wins yet. These appear when rejected strategies produce useful children or fragments.")
+        except Exception:
+            lines.append("Could not read registry.")
+    else:
+        lines.append("Registry not found.")
+
+    lines.append("")
+
     # ── Recommendations ──
     lines.append("")
     lines.append("## Recommendations")
