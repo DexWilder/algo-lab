@@ -965,9 +965,15 @@ def refresh_priorities(registry_state, priorities):
 # ── Source Lead Lifecycle ─────────────────────────────────────────────────────
 
 def _track_lead_pickup():
-    """Check if Claw has consumed any source leads by comparing harvest notes
-    to the leads in source_leads/. Lightweight — runs every control loop cycle
-    but only does real work when new harvest notes appear.
+    """Track source lead consumption by content similarity, not URL matching.
+
+    Root cause of prior notes_produced=0: Claw writes 'source URL: internal'
+    when synthesizing, even if the idea came from a source lead. URL matching
+    fails because Claw doesn't cite leads directly.
+
+    Fix: extract title/description keywords from source leads and check if
+    recent harvest notes contain similar content. This is fuzzy attribution —
+    it won't be perfect, but it's directionally correct.
     """
     leads_dir = CLAW_INBOX / "source_leads"
     manifest_path = leads_dir / "_manifest.json"
@@ -980,63 +986,92 @@ def _track_lead_pickup():
     except Exception:
         return
 
-    # Count current leads files
+    # Extract title keywords from each source lead file
     lead_files = list(leads_dir.glob("*_leads.md"))
+    lead_signatures = {}  # {source_type: [set_of_keywords, ...]}
     lead_count = 0
+
     for lf in lead_files:
         if lf.name.startswith("_"):
             continue
-        try:
-            text = lf.read_text()
-            lead_count += text.count("- url:") + text.count("- title:")
-        except Exception:
-            pass
-
-    # Count today's harvest notes (rough proxy for pickup)
-    harvest_dir = CLAW_INBOX / "harvest"
-    today_notes = list(harvest_dir.glob(f"{TODAY}*.md")) if harvest_dir.exists() else []
-
-    # Check if any today's notes reference source_leads sources
-    source_lead_urls = set()
-    for lf in lead_files:
-        if lf.name.startswith("_"):
-            continue
+        source_type = lf.stem.replace("_leads", "").replace("_prev", "")
+        sigs = []
         try:
             for line in lf.read_text().split("\n"):
-                if line.strip().startswith("- url:") or line.strip().startswith("url:"):
-                    url = line.split(":", 1)[-1].strip() if ":" in line else ""
-                    if url:
-                        source_lead_urls.add(url[:60])  # Prefix match
+                if line.strip().startswith("- title:") or line.strip().startswith("- description:"):
+                    text = line.split(":", 1)[-1].strip().lower()
+                    # Extract distinctive words (4+ chars, not common)
+                    words = set(w for w in text.split() if len(w) >= 4
+                               and w not in {"this", "that", "with", "from", "your",
+                                            "about", "their", "have", "been", "will",
+                                            "more", "most", "some", "what", "when",
+                                            "here", "into", "also", "just", "than"})
+                    if len(words) >= 3:
+                        sigs.append(words)
+                        lead_count += 1
         except Exception:
             pass
+        if sigs:
+            lead_signatures[source_type] = sigs
 
-    notes_from_leads = 0
-    for note in today_notes:
+    # Check recent harvest notes (last 3 days) for content overlap
+    harvest_dir = CLAW_INBOX / "harvest"
+    reviewed_dir = CLAW_INBOX.parent / "reviewed"
+    recent_notes = []
+    for d in [harvest_dir, reviewed_dir]:
+        if d.exists():
+            for note in d.glob("*.md"):
+                # Recent = last 3 days
+                if note.name[:10] >= (datetime.now() - __import__("datetime").timedelta(days=3)).strftime("%Y-%m-%d"):
+                    recent_notes.append(note)
+
+    # Match notes to lead signatures
+    notes_by_source = {}
+    for note in recent_notes:
         try:
-            text = note.read_text()
-            for line in text.split("\n"):
-                if line.startswith("- source URL:"):
-                    url = line.split(":", 1)[-1].strip()
-                    # Check if this URL matches any source lead
-                    for lead_url in source_lead_urls:
-                        if lead_url[:40] in url or url[:40] in lead_url:
-                            notes_from_leads += 1
-                            break
+            text = note.read_text().lower()
+            note_words = set(w for w in text.split() if len(w) >= 4)
+
+            for source_type, sigs in lead_signatures.items():
+                for sig in sigs:
+                    # A lead "matches" a note if 3+ distinctive words overlap
+                    overlap = sig & note_words
+                    if len(overlap) >= 3:
+                        notes_by_source[source_type] = notes_by_source.get(source_type, 0) + 1
+                        break  # Count each note only once per source
         except Exception:
             pass
 
-    # Update manifest with pickup stats
+    total_attributed = sum(notes_by_source.values())
+
+    # Update manifest
     lifecycle = manifest.get("lifecycle", {})
     for key in lifecycle:
         entry = lifecycle[key]
-        if entry.get("status") == "fetched" and today_notes:
-            entry["picked_up"] = True
-            entry["pickup_date"] = TODAY
-            entry["status"] = "picked_up"
-            entry["notes_produced"] = notes_from_leads
+        source = entry.get("source", "")
+
+        # Mark as picked up if leads file exists (Claw reads source_leads/)
+        if entry.get("status") == "fetched":
+            # Check if the leads file for this source still exists
+            leads_file = leads_dir / f"{source}_leads.md"
+            if leads_file.exists():
+                entry["picked_up"] = True
+                entry["pickup_date"] = TODAY
+                entry["status"] = "picked_up"
+
+        # Update notes attribution
+        if source in notes_by_source:
+            entry["notes_produced"] = notes_by_source[source]
 
     manifest["last_pickup_check"] = NOW
     manifest["pending_leads"] = lead_count
+    manifest["attribution_method"] = "content_similarity"
+    manifest["last_attribution"] = {
+        "date": TODAY,
+        "notes_checked": len(recent_notes),
+        "attributed_by_source": notes_by_source,
+        "total_attributed": total_attributed,
+    }
 
     try:
         with open(manifest_path, "w") as f:

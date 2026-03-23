@@ -41,7 +41,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-03-17",
+      "last_controller_date": "2026-03-23",
       "review_priority": "MEDIUM",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
@@ -310,7 +310,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-03-17",
+      "last_controller_date": "2026-03-23",
       "review_priority": "LOW",
       "state_history": [
         {
@@ -609,7 +609,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-03-17",
+      "last_controller_date": "2026-03-23",
       "review_priority": "LOW",
       "half_life_status": "HEALTHY",
       "contribution_status": "NEUTRAL",
@@ -679,7 +679,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-03-17",
+      "last_controller_date": "2026-03-23",
       "review_priority": "MEDIUM",
       "half_life_status": "DECAYING",
       "contribution_status": "NEUTRAL",
@@ -748,7 +748,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-03-17",
+      "last_controller_date": "2026-03-23",
       "review_priority": "LOW",
       "half_life_status": "HEALTHY",
       "contribution_status": "NEUTRAL",
@@ -1953,7 +1953,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-03-17",
+      "last_controller_date": "2026-03-23",
       "review_priority": "MEDIUM",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
@@ -2662,7 +2662,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-03-17",
+      "last_controller_date": "2026-03-23",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
