@@ -3,11 +3,20 @@
 Scores leads by extractable mechanical substance, not title appeal.
 Used by all fetchers to rank and tier leads before Claw synthesis.
 
-Scoring doctrine:
+CORE DOCTRINE:
+  source role = ranking (caps, priority, expectations)
+  content quality = survival (mechanism density decides keep/reject)
+  closed family / obvious junk = rejection (hard block)
+
+  Never reject a lead just because of its source class if the content
+  itself contains a testable mechanism or useful fragment. A good idea
+  from an ugly place is still a good idea.
+
+Scoring rules:
   - Rank by mechanism strength, not headline quality
   - Prefer explicit rules, entries, exits, filters, regime logic
   - Allow partial fragments through if they look reusable
-  - Suppress vague/discretionary/hype content
+  - Suppress only truly obvious junk (no rules, pure hype, crypto, ICT)
   - Bias toward portfolio usefulness and novelty
 
 Usage:
@@ -151,24 +160,42 @@ def tier_lead(score_result):
         "A" — high-confidence mechanical content
         "B" — useful fragment or partial mechanism
         "C" — weak but potentially salvageable
-        "R" — reject (noise dominates)
+        "R" — reject (obvious junk only)
+
+    DOCTRINE: R is only for truly obvious trash — noise dominates AND
+    no mechanism detected. If ANY testable mechanism or component is
+    present, the lead survives at C or better. We optimize for low
+    false negatives, not low volume.
     """
     net = score_result["net_score"]
     mechanism = score_result["mechanism_score"]
     noise = score_result["noise_score"]
     components = score_result["component_hints"]
 
-    if noise > mechanism and noise >= 4:
-        return "R"  # Noise dominates
-    if mechanism >= 6 and len(components) >= 1:
-        return "A"  # Strong mechanical content
+    # A lead with any detected component always survives
+    if len(components) >= 1:
+        if mechanism >= 6:
+            return "A"
+        return "B"
+
+    # High mechanism density = A
     if mechanism >= 6:
-        return "A"  # High mechanism density even without detected components
-    if mechanism >= 3 or len(components) >= 1:
-        return "B"  # Useful fragment
+        return "A"
+
+    # Moderate mechanism = B
+    if mechanism >= 3:
+        return "B"
+
+    # Low mechanism but present = C (salvageable)
     if mechanism >= 1:
-        return "C"  # Weak but maybe salvageable
-    return "R"  # Too thin
+        return "C"
+
+    # Only reject when noise truly dominates with zero mechanism
+    if noise >= 4 and mechanism == 0:
+        return "R"
+
+    # Default: C (keep in the net, let Claw decide)
+    return "C"
 
 
 def format_score_line(score_result, tier):

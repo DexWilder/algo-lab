@@ -4,6 +4,26 @@
 content quality assessment, and transcript availability.*
 *Date: 2026-03-23*
 
+## Doctrine
+
+Source roles are **prioritization, not gates.**
+
+- Primary idea sources → higher caps, earlier review
+- Fragment/support sources → lower caps, different expectations
+- Noise traps → block only truly obvious junk
+
+**Never reject a lead just because of its source class if the content
+itself contains a testable mechanism or useful fragment.** A good idea
+from an ugly place is still a good idea.
+
+Hard rejects (Tier R) only for:
+- Zero mechanism AND noise dominates (hype, discretionary vibes)
+- Closed-family resurrection
+- Clearly off-scope (crypto-only, spot forex)
+- Pure narrative with no testable rules at all
+
+Everything else survives at Tier C or better. Claw decides the rest.
+
 ---
 
 ## 1. YouTube
