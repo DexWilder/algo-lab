@@ -327,6 +327,76 @@ def generate_report(lookback_days):
                 if best_comp:
                     lines.append(f"**Best component source:** {best_comp[0]} ({sum(best_comp[1].values())} components detected)")
 
+            # Source role classification
+            lines.append("")
+            lines.append("### Source Roles")
+            lines.append("")
+            lines.append("*Auto-classified from observed contribution. Activates after 2+ attributed notes per source.*")
+            lines.append("")
+
+            # Gather per-source metrics from lifecycle + attribution
+            source_metrics = {}
+            for key, entry in lifecycle.items():
+                src = entry.get("source", "")
+                if not src:
+                    continue
+                if src not in source_metrics:
+                    source_metrics[src] = {"leads": 0, "notes": 0, "full": 0, "frag": 0, "comps": 0}
+                source_metrics[src]["leads"] += entry.get("count", 0)
+                source_metrics[src]["notes"] += entry.get("notes_produced", 0)
+
+            # Add component detail from attribution
+            for src, nt in note_types.items():
+                if src not in source_metrics:
+                    source_metrics[src] = {"leads": 0, "notes": 0, "full": 0, "frag": 0, "comps": 0}
+                source_metrics[src]["full"] = nt.get("full_strategy", 0)
+                source_metrics[src]["frag"] = nt.get("fragment", 0)
+            for src, cd in comp_detail.items():
+                if src in source_metrics:
+                    source_metrics[src]["comps"] = sum(cd.values())
+
+            # Classify roles
+            lines.append("| Source | Leads | Notes | Fragments | Components | Role | Tuning |")
+            lines.append("|--------|-------|-------|-----------|------------|------|--------|")
+
+            for src in sorted(source_metrics.keys()):
+                m = source_metrics[src]
+                leads = m["leads"]
+                notes = m["notes"]
+                frags = m["frag"]
+                comps = m["comps"]
+                full = m["full"]
+
+                # Classify
+                if notes == 0 and leads > 0:
+                    role = "Unproven"
+                    tuning = "Wait for data"
+                elif notes >= 3 and (frags >= 2 or comps >= 3):
+                    role = "**Fragment source**"
+                    tuning = "Raise cap — produces reusable components"
+                elif notes >= 3 and full >= 2:
+                    role = "**Primary idea source**"
+                    tuning = "Raise cap — produces full strategies"
+                elif notes >= 1 and notes <= 2:
+                    role = "Support/convergence"
+                    tuning = "Keep — may confirm ideas from other sources"
+                elif leads > 20 and notes == 0:
+                    role = "Low-yield"
+                    tuning = "Lower cap or tighten queries"
+                else:
+                    role = "Emerging"
+                    tuning = "Monitor — needs more cycles"
+
+                lines.append(
+                    f"| {src:<8s} | {leads:>5d} | {notes:>5d} | {frags:>9d} | "
+                    f"{comps:>10d} | {role} | {tuning} |"
+                )
+
+            if not source_metrics:
+                lines.append("No source data yet. Run helpers and wait for attribution.")
+
+            lines.append("")
+
             # Run history
             if len(runs) > 1:
                 lines.append("")
