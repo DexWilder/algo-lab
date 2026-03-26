@@ -159,6 +159,45 @@ def check_daily_pipeline():
                 "repair": "kickstart:com.fql.daily-research"}
 
 
+def check_forward_day():
+    """Check if forward data is fresh (updated today on weekdays)."""
+    status = _launchd_status("com.fql.forward-day")
+    acct_path = ROOT / "state" / "account_state.json"
+
+    if not status["loaded"]:
+        return {"name": "Forward day", "status": "DEGRADED", "detail": "Not loaded",
+                "repair": "kickstart:com.fql.forward-day"}
+
+    if not acct_path.exists():
+        return {"name": "Forward day", "status": "DEGRADED", "detail": "No account state"}
+
+    try:
+        import json
+        acct = json.load(open(acct_path))
+        last_run = acct.get("last_run", "")
+        if last_run:
+            from datetime import datetime
+            last_dt = datetime.strptime(last_run, "%Y-%m-%d %H:%M:%S")
+            age_hours = (NOW - last_dt).total_seconds() / 3600
+
+            # On weekdays after 17:30, should have run today
+            if NOW.weekday() < 5 and NOW.hour >= 18 and age_hours > 26:
+                return {"name": "Forward day", "status": "DEGRADED",
+                        "detail": f"Last run {age_hours:.0f}h ago — data may be stale",
+                        "repair": "run:scripts/run_forward_day.sh"}
+            elif age_hours > 48 and NOW.weekday() < 5:
+                return {"name": "Forward day", "status": "DEGRADED",
+                        "detail": f"Last run {age_hours:.0f}h ago",
+                        "repair": "run:scripts/run_forward_day.sh"}
+            else:
+                return {"name": "Forward day", "status": "HEALTHY",
+                        "detail": f"Last run {age_hours:.0f}h ago"}
+        else:
+            return {"name": "Forward day", "status": "DEGRADED", "detail": "Never run"}
+    except Exception:
+        return {"name": "Forward day", "status": "DEGRADED", "detail": "Could not read state"}
+
+
 def check_source_helpers():
     manifest = INBOX / "source_leads" / "_manifest.json"
     if not manifest.exists():
@@ -274,6 +313,7 @@ def run_doctor(repair=False):
         check_gateway(),
         check_watchdog(),
         check_claw_loop(),
+        check_forward_day(),
         check_daily_pipeline(),
         check_source_helpers(),
         check_reports(),

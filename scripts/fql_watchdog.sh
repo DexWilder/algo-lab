@@ -303,6 +303,18 @@ check_missed_jobs() {
 
     local missed=""
 
+    # Forward day: should have run today (weekday) by 17:30 if it's past 17:45
+    if [ "$dow" -le 5 ] && [ "$hour" -ge 18 ]; then
+        local fwd_log
+        fwd_log="$(ls -t "$LOG_DIR"/forward_day_${TODAY}*.log 2>/dev/null | head -1)"
+        if [ -z "$fwd_log" ]; then
+            missed="$missed forward_day"
+            log "  MISS: Forward day has not run today (expected by 17:00)"
+        else
+            log "  OK: Forward day ran today — $(basename "$fwd_log")"
+        fi
+    fi
+
     # Daily research: should have run today (weekday) by 18:00 if it's past 18:30
     if [ "$dow" -le 5 ] && [ "$hour" -ge 18 ]; then
         local daily_log
@@ -357,6 +369,10 @@ recover_missed_jobs() {
         fi
 
         case "$job" in
+            forward_day)
+                log_recovery "Firing catch-up: forward day (data + trading)..."
+                launchctl kickstart "gui/$(id -u)/com.fql.forward-day" 2>/dev/null || true
+                ;;
             daily)
                 log_recovery "Firing catch-up: daily research..."
                 launchctl kickstart "gui/$(id -u)/$DAILY_LABEL" 2>/dev/null || true
@@ -377,6 +393,7 @@ recover_missed_jobs() {
         # Verify
         local verify_log
         case "$job" in
+            forward_day) verify_log="$(ls -t "$LOG_DIR"/forward_day_${TODAY}*.log 2>/dev/null | head -1)" ;;
             daily) verify_log="$(ls -t "$LOG_DIR"/daily_run_${TODAY}*.log 2>/dev/null | head -1)" ;;
             twice_weekly) verify_log="$(ls -t "$LOG_DIR"/twice_weekly_run_${TODAY}*.log 2>/dev/null | head -1)" ;;
             weekly) verify_log="$(ls -t "$LOG_DIR"/weekly_run_${TODAY}*.log 2>/dev/null | head -1)" ;;
