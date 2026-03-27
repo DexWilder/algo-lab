@@ -1,60 +1,60 @@
 {
-  "last_update": "2026-03-23 14:31:15",
+  "last_update": "2026-03-26 17:01:00",
   "symbols": {
     "MES": {
       "status": "updated",
-      "new_bars": 462,
-      "last_bar": "2026-03-22 19:55:00"
+      "new_bars": 0,
+      "last_bar": "2026-03-25 19:55:00"
     },
     "MNQ": {
       "status": "updated",
-      "new_bars": 462,
-      "last_bar": "2026-03-22 19:55:00"
+      "new_bars": 0,
+      "last_bar": "2026-03-25 19:55:00"
     },
     "MGC": {
       "status": "updated",
-      "new_bars": 552,
-      "last_bar": "2026-03-22 19:55:00"
+      "new_bars": 0,
+      "last_bar": "2026-03-25 19:55:00"
     },
     "M2K": {
       "status": "updated",
-      "new_bars": 376,
-      "last_bar": "2026-03-22 19:55:00"
+      "new_bars": 276,
+      "last_bar": "2026-03-25 19:55:00"
     },
     "MCL": {
       "status": "updated",
-      "new_bars": 498,
-      "last_bar": "2026-03-22 19:55:00"
+      "new_bars": 0,
+      "last_bar": "2026-03-25 19:55:00"
     },
     "ZN": {
       "status": "updated",
-      "new_bars": 36,
-      "last_bar": "2026-03-22 19:55:00"
+      "new_bars": 0,
+      "last_bar": "2026-03-25 19:55:00"
     },
     "ZB": {
       "status": "updated",
-      "new_bars": 32,
-      "last_bar": "2026-03-22 19:55:00"
+      "new_bars": 0,
+      "last_bar": "2026-03-25 19:55:00"
     },
     "ZF": {
       "status": "updated",
-      "new_bars": 21,
-      "last_bar": "2026-03-19 15:45:00"
+      "new_bars": 0,
+      "last_bar": "2026-03-25 08:25:00"
     },
     "6E": {
       "status": "updated",
-      "new_bars": 301,
-      "last_bar": "2026-03-22 19:30:00"
+      "new_bars": 0,
+      "last_bar": "2026-03-25 19:05:00"
     },
     "6J": {
       "status": "updated",
-      "new_bars": 162,
-      "last_bar": "2026-03-22 18:50:00"
+      "new_bars": 0,
+      "last_bar": "2026-03-25 19:40:00"
     },
     "6B": {
       "status": "updated",
-      "new_bars": 90,
-      "last_bar": "2026-03-22 18:45:00"
+      "new_bars": 0,
+      "last_bar": "2026-03-25 11:55:00"
     }
   }
 }

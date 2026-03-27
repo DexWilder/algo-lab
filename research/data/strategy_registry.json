@@ -1,6 +1,6 @@
 {
-  "_schema_version": "3.1",
-  "_generated": "2026-03-20",
+  "_schema_version": "2.0",
+  "_generated": "2026-03-26",
   "_description": "FQL Strategy Registry \u2014 institutional memory of all strategy ideas, tested candidates, and deployed strategies",
   "_purpose": "Preserves research knowledge, enables crossbreeding, feeds Strategy Factory",
   "strategies": [
@@ -136,7 +136,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-03-20",
+      "last_controller_date": "2026-03-26",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
@@ -235,7 +235,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-03-20",
+      "last_controller_date": "2026-03-26",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
@@ -432,11 +432,11 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-03-20",
+      "last_controller_date": "2026-03-26",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
-      "contribution_status": "NEUTRAL",
+      "contribution_status": "ADDS VALUE",
       "health_status": "FAIL",
       "genome_cluster": "mean_reversion",
       "resurrection_flag": false,
@@ -531,7 +531,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-03-20",
+      "last_controller_date": "2026-03-26",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
@@ -857,7 +857,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-03-20",
+      "last_controller_date": "2026-03-26",
       "review_priority": "MEDIUM",
       "half_life_status": "ARCHIVE_CANDIDATE",
       "contribution_status": "NEUTRAL",
@@ -924,7 +924,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-03-20",
+      "last_controller_date": "2026-03-26",
       "review_priority": "MEDIUM",
       "half_life_status": "ARCHIVE_CANDIDATE",
       "contribution_status": "NEUTRAL",
@@ -2057,7 +2057,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-03-20",
+      "last_controller_date": "2026-03-26",
       "review_priority": "MEDIUM",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
@@ -2235,7 +2235,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-03-20",
+      "last_controller_date": "2026-03-26",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
@@ -2567,7 +2567,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-03-20",
+      "last_controller_date": "2026-03-26",
       "review_priority": "MEDIUM",
       "prior_state": "PROBATION",
       "half_life_status": "ERROR",
@@ -2868,7 +2868,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-03-20",
+      "last_controller_date": "2026-03-26",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -2950,7 +2950,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-03-20",
+      "last_controller_date": "2026-03-26",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -3401,7 +3401,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-03-20",
+      "last_controller_date": "2026-03-26",
       "half_life_status": "HEALTHY",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -3834,7 +3834,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-03-20",
+      "last_controller_date": "2026-03-26",
       "half_life_status": "ARCHIVE_CANDIDATE",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -4458,7 +4458,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-03-20",
+      "last_controller_date": "2026-03-26",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -4556,7 +4556,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-03-20",
+      "last_controller_date": "2026-03-26",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -4708,7 +4708,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-03-20",
+      "last_controller_date": "2026-03-26",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -4937,7 +4937,7 @@
       "controller_action": "PROBATION",
       "activation_score": 0.545,
       "controller_state": "PAPER",
-      "last_controller_date": "2026-03-20",
+      "last_controller_date": "2026-03-26",
       "execution_config": {
         "avoid_regimes": [],
         "preferred_regimes": [
