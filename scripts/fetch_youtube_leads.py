@@ -53,6 +53,12 @@ QUERIES = [
     # Practitioner channels (high-quality)
     "Adam Grimes trading strategy",
     "quantitative trading explained",
+    # Energy blind spot
+    "crude oil futures strategy rules",
+    "energy futures trading systematic",
+    # VALUE blind spot
+    "value investing futures systematic",
+    "cross asset relative value trading",
 ]
 
 # YouTube channel IDs known for mechanical/systematic content (optional filter)

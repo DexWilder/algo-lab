@@ -55,6 +55,14 @@ QUERIES = [
     "market microstructure trading",
     "session trading strategy",
     "overnight gap strategy",
+    # Energy blind spot
+    "crude oil trading algorithm python",
+    "energy futures seasonal strategy",
+    "oil inventory trading systematic",
+    # VALUE blind spot
+    "value factor systematic futures",
+    "earnings yield trading systematic",
+    "relative value cross asset python",
 ]
 
 JUNK_KEYWORDS = ["crypto", "bitcoin", "ethereum", "defi", "nft", "spot forex",

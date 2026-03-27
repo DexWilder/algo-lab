@@ -57,6 +57,13 @@ QUERIES = [
     # Fragments
     "volatility filter",
     "regime detection trading",
+    # Energy blind spot
+    "crude oil futures strategy rules",
+    "energy futures seasonal",
+    "oil settlement trading",
+    # VALUE blind spot
+    "value factor futures",
+    "relative value cross asset",
 ]
 
 MAX_PER_QUERY = 5
