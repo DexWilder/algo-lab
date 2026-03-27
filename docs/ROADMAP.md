@@ -196,3 +196,16 @@ It's the foundation that makes every later module smarter:
 - Exit evolution uses it to compare exit methods across contexts
 
 Building it now means every future build inherits better data.
+
+---
+
+## Post-Checkpoint Build Queue (if April 3 is green)
+
+*Locked 2026-03-27. Execute in this order.*
+
+1. **Component validation memory** — schema + backfill (~2h)
+2. **Review Energy/VALUE harvest results** — did blind-spot queries produce ideas? (~30m)
+3. **Walk-forward robustness matrix** — visualization for promotion gates (~2h)
+4. **ATR vol regime filter validation** — test as reusable component across parents (~1h)
+
+Then re-evaluate Tier 2 items based on checkpoint data.
