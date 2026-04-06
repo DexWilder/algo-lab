@@ -1,0 +1,15 @@
+{
+  "name": "fx_value_mean_reversion",
+  "family": "fx_relative_value_mean_reversion",
+  "source_url": "https://quantpedia.com/how-to-build-mean-reversion-strategies-in-currencies/?a=6080",
+  "author": "Quantpedia",
+  "conversion_type": "first_pass",
+  "harvest_id": "2026-04-06_02_fx_mean_reversion_linear_anchor",
+  "batch": "tier2_value_prototype",
+  "description": "Cross-sectional FX mean reversion. Rank 6J/6E/6B by deviation from basket average cumulative return. Long undervalued, short overvalued, size by deviation magnitude. Monthly rebalance. First VALUE strategy for FQL.",
+  "parameters": {
+    "LOOKBACK": 60,
+    "REBALANCE": "monthly",
+    "MIN_DEVIATION": 0.005
+  }
+}
