@@ -260,6 +260,13 @@ def check_probation_aging():
                 "action": "Investigate: controller blocking? Data feed? Strategy logic?",
             })
         elif status == "UNDER_EVIDENCED":
+            # Don't warn for strategies classified as HEALTHY_SLOW by aging,
+            # or strategies with expected frequency < 4/month. These are slow
+            # by design — under-evidenced warnings would just escalate into
+            # false ALERTs that need manual clearing every week.
+            expected_freq = EXPECTED_FREQ.get(sid, 5.0)
+            if expected_freq < 4.0:
+                continue  # Low-frequency strategy — inactivity is expected
             alerts.append({
                 "level": "WARN",
                 "category": "probation",
