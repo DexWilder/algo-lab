@@ -4497,7 +4497,14 @@
       "harvest_batch": "academic_harvest_batch_2026-03-17",
       "harvest_note": "41_managed_futures_carry_diversified.md",
       "batch_priority": 2,
-      "convergent_sources": [],
+      "convergent_sources": [
+        {
+          "source": "GitHub (Rubenr02)",
+          "url": "https://github.com/Rubenr02/Futures-carry",
+          "date": "2026-04-06",
+          "mechanism": "Cross-asset front-next carry ranker \u2014 independent implementation of the same multi-asset carry concept"
+        }
+      ],
       "relationships": {
         "parent": null,
         "children": [],
@@ -4751,7 +4758,14 @@
       },
       "edge_vitality": 0.5,
       "edge_vitality_tier": "STABLE",
-      "convergent_sources": [],
+      "convergent_sources": [
+        {
+          "source": "GitHub (Robert Carver)",
+          "url": "https://raw.githubusercontent.com/robcarver17/systematictradingexamples/master/carry.py",
+          "date": "2026-04-06",
+          "mechanism": "Vol-normalized rolldown carry on Treasury futures \u2014 independent implementation confirms the carry-ranking concept"
+        }
+      ],
       "relationships": {
         "parent": null,
         "children": [],
