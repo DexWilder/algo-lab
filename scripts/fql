@@ -906,6 +906,7 @@ COMMANDS = {
     "notify-test": cmd_notify_test,
     "last": cmd_last,
     "funnel": lambda: _py("helper_funnel_audit.py", "--save"),
+    "convergence": lambda: _py("convergence_scorer.py", "--scan", "--save"),
     "midweek": cmd_midweek,
     "help": cmd_help,
 }

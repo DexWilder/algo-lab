@@ -4706,7 +4706,7 @@
       "status": "probation",
       "notes": "ACTIVE CARRY CHALLENGER. Entered forward runner 2026-03-20. MICRO tier, monthly rebalance, 1 contract per spread leg. Rubric 18 (eff. 20 with gap bonus). Fills CARRY + Rates gaps. June 1 displacement target: MomIgn-M2K-Short. Promote condition: 3mo forward Sharpe > 0 + WF improvement. Archive condition: 3mo consecutive negative forward returns.",
       "last_review_date": "2026-03-20",
-      "review_priority": "MEDIUM",
+      "review_priority": "HIGH",
       "lifecycle_stage": "forward_evidence",
       "source_category": "academic",
       "tags": [
