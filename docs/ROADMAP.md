@@ -209,3 +209,17 @@ Building it now means every future build inherits better data.
 4. **ATR vol regime filter validation** — test as reusable component across parents (~1h)
 
 Then re-evaluate Tier 2 items based on checkpoint data.
+
+## Known Limitations (logged 2026-04-06)
+
+- **Spread strategy forward-run visibility:** Treasury-Rolldown trades
+  on ZF/ZB legs but the forward runner only tracks ZN. Actual spread PnL
+  is generated but not logged. Future improvement: add spread-leg-aware
+  forward logging so all legs contribute to forward evidence.
+- **Claw loop launchd reliability:** StartInterval=1800 does not always
+  re-fire reliably on macOS. Watchdog compensates via kickstart. Reloaded
+  2026-04-06. Monitor cadence. If unstable, consider switching to
+  StartCalendarInterval or accepting watchdog as primary trigger.
+- **Low-frequency strategy inactivity:** DailyTrend-MGC-Long and similar
+  low-signal strategies can go 5+ weeks without a trade. The aging system
+  should not escalate these to ALERT — they are HEALTHY_SLOW by design.
