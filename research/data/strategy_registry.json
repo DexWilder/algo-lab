@@ -1725,7 +1725,9 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "test_date": "2026-04-06"
+      "test_date": "2026-04-06",
+      "salvage_lane": "long_only_regime_filtered",
+      "salvage_notes": "Long-only PF 1.39 / WR 66% has real signal. Short side (PF 0.97) is dead weight. 2020 catastrophe (PF 0.34) suggests regime gate or crash filter needed, not full rejection. Future test: strip short side, add vol regime or drawdown exclusion."
     },
     {
       "strategy_id": "HVPercentile-Expansion",
