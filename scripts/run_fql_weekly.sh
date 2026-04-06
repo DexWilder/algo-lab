@@ -52,6 +52,8 @@ log "--- Generating harvest quality review ---"
 python3 scripts/harvest_quality_review.py --days 14 --save >> "$LOG_FILE" 2>&1 || true
 log "--- Running convergence scorer ---"
 python3 scripts/convergence_scorer.py --scan --apply --save >> "$LOG_FILE" 2>&1 || true
+log "--- Running throughput audit ---"
+python3 scripts/throughput_audit.py --save >> "$LOG_FILE" 2>&1 || true
 
 log ""
 if [ "$EXIT_CODE" -eq 0 ]; then

@@ -25,6 +25,8 @@ Operations:
 
 Utilities:
     fql digest          Today's exception-only digest (auto-runs at 18:00)
+    fql throughput      Factory throughput audit — surface dormant inventory
+    fql screen          Mass screen results from last run
     fql midweek         Midweek mini-checkpoint with intervention triggers
     fql notify-test     Send a test macOS notification
     fql last            Show latest run times for all platform components
@@ -930,6 +932,8 @@ COMMANDS = {
     "convergence": lambda: _py("convergence_scorer.py", "--scan", "--save"),
     "midweek": cmd_midweek,
     "digest": cmd_digest,
+    "throughput": lambda: _py("throughput_audit.py", "--save"),
+    "screen": lambda: _run(["python3", str(ROOT / "research" / "mass_screen.py"), "--report"]),
     "help": cmd_help,
 }
 
