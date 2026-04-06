@@ -1,0 +1,197 @@
+{
+  "strategy": "fx_value_mean_reversion",
+  "run_date": "2026-04-06T14:14:01.461340",
+  "session_filter": null,
+  "asset_results": {
+    "6J": {
+      "asset": "6J",
+      "bars": 70368,
+      "modes": {
+        "both": {
+          "trades": 6,
+          "pnl": -102.5,
+          "pf": 0.99,
+          "sharpe": -0.07,
+          "maxdd": 3411.25,
+          "wr": 33.3,
+          "avg_pnl": -17.08,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 3,
+          "pnl": -757.5,
+          "pf": 0.811,
+          "sharpe": -1.31,
+          "maxdd": 2258.75,
+          "wr": 33.3,
+          "avg_pnl": -252.5,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 3,
+          "pnl": 655.0,
+          "pf": 1.112,
+          "sharpe": 0.62,
+          "maxdd": 1652.5,
+          "wr": 33.3,
+          "avg_pnl": 218.33,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 4,
+          "pnl": -8072.5,
+          "pf": 0.0,
+          "sharpe": -20.52,
+          "maxdd": 3882.5,
+          "wr": 0.0,
+          "avg_pnl": -2018.12
+        },
+        "H2": {
+          "trades": 3,
+          "pnl": 8198.75,
+          "pf": 4.63,
+          "sharpe": 9.63,
+          "maxdd": 2258.75,
+          "wr": 66.7,
+          "avg_pnl": 2732.92
+        }
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Negative edge: PF 0.99"
+      ]
+    },
+    "6E": {
+      "asset": "6E",
+      "bars": 79047,
+      "modes": {
+        "both": {
+          "trades": 6,
+          "pnl": 2653.75,
+          "pf": 1.239,
+          "sharpe": 1.23,
+          "maxdd": 11123.75,
+          "wr": 66.7,
+          "avg_pnl": 442.29,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 3,
+          "pnl": 5430.0,
+          "pf": 2.268,
+          "sharpe": 4.22,
+          "maxdd": 4283.75,
+          "wr": 66.7,
+          "avg_pnl": 1810.0,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 3,
+          "pnl": -2776.25,
+          "pf": 0.594,
+          "sharpe": -2.7,
+          "maxdd": 6840.0,
+          "wr": 66.7,
+          "avg_pnl": -925.42,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 4,
+          "pnl": 8677.5,
+          "pf": 99.0,
+          "sharpe": 16.6,
+          "maxdd": 0.0,
+          "wr": 100.0,
+          "avg_pnl": 2169.38
+        },
+        "H2": {
+          "trades": 3,
+          "pnl": -5220.0,
+          "pf": 0.531,
+          "sharpe": -4.1,
+          "maxdd": 11123.75,
+          "wr": 33.3,
+          "avg_pnl": -1740.0
+        }
+      },
+      "classification": "MONITOR",
+      "classification_reasons": [
+        "PF 1.24 > 1.0 but only 6 trades \u2014 insufficient sample"
+      ]
+    },
+    "6B": {
+      "asset": "6B",
+      "bars": 59990,
+      "modes": {
+        "both": {
+          "trades": 6,
+          "pnl": -1265.0,
+          "pf": 0.8,
+          "sharpe": -1.36,
+          "maxdd": 5617.5,
+          "wr": 50.0,
+          "avg_pnl": -210.83,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 3,
+          "pnl": 748.75,
+          "pf": 1.236,
+          "sharpe": 1.18,
+          "maxdd": 3177.5,
+          "wr": 66.7,
+          "avg_pnl": 249.58,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 3,
+          "pnl": -2013.75,
+          "pf": 0.36,
+          "sharpe": -5.96,
+          "maxdd": 2440.0,
+          "wr": 33.3,
+          "avg_pnl": -671.25,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 4,
+          "pnl": 415.0,
+          "pf": 1.373,
+          "sharpe": 1.99,
+          "maxdd": 402.5,
+          "wr": 50.0,
+          "avg_pnl": 103.75
+        },
+        "H2": {
+          "trades": 3,
+          "pnl": -1132.5,
+          "pf": 0.798,
+          "sharpe": -1.42,
+          "maxdd": 5617.5,
+          "wr": 33.3,
+          "avg_pnl": -377.5
+        }
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Negative edge: PF 0.80"
+      ]
+    }
+  },
+  "best_result": {
+    "asset": "6E",
+    "classification": "MONITOR",
+    "pf": 1.239,
+    "trades": 6
+  },
+  "overall_classification": "MONITOR",
+  "overall_reasons": [
+    "PF 1.24 > 1.0 but only 6 trades \u2014 insufficient sample"
+  ]
+}

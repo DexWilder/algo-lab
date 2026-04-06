@@ -1,0 +1,137 @@
+{
+  "strategy": "treasury_tsm",
+  "run_date": "2026-04-06T14:17:40.535074",
+  "session_filter": null,
+  "asset_results": {
+    "ZN": {
+      "asset": "ZN",
+      "bars": 397468,
+      "modes": {
+        "both": {
+          "trades": 12,
+          "pnl": 14970.0,
+          "pf": 2.021,
+          "sharpe": 2.35,
+          "maxdd": 11353.13,
+          "wr": 25.0,
+          "avg_pnl": 1247.5,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 6,
+          "pnl": -5624.38,
+          "pf": 0.253,
+          "sharpe": -9.36,
+          "maxdd": 4616.88,
+          "wr": 16.7,
+          "avg_pnl": -937.4,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 6,
+          "pnl": 20594.38,
+          "pf": 3.886,
+          "sharpe": 4.57,
+          "maxdd": 6887.5,
+          "wr": 33.3,
+          "avg_pnl": 3432.4,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 2,
+          "pnl": 26041.87,
+          "pf": 23.474,
+          "sharpe": 10.31,
+          "maxdd": 0.0,
+          "wr": 50.0,
+          "avg_pnl": 13020.93
+        },
+        "H2": {
+          "trades": 10,
+          "pnl": -11353.13,
+          "pf": 0.159,
+          "sharpe": -9.85,
+          "maxdd": 8741.25,
+          "wr": 20.0,
+          "avg_pnl": -1135.31
+        }
+      },
+      "classification": "MONITOR",
+      "classification_reasons": [
+        "PF 2.02 > 1.0 but only 12 trades \u2014 insufficient sample"
+      ]
+    },
+    "ZB": {
+      "asset": "ZB",
+      "bars": 381796,
+      "modes": {
+        "both": {
+          "trades": 15,
+          "pnl": 5806.25,
+          "pf": 1.135,
+          "sharpe": 0.57,
+          "maxdd": 28652.5,
+          "wr": 26.7,
+          "avg_pnl": 387.08,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 8,
+          "pnl": -31051.25,
+          "pf": 0.0,
+          "sharpe": -22.97,
+          "maxdd": 22705.0,
+          "wr": 0.0,
+          "avg_pnl": -3881.41,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 7,
+          "pnl": 36857.5,
+          "pf": 4.102,
+          "sharpe": 5.74,
+          "maxdd": 10783.75,
+          "wr": 57.1,
+          "avg_pnl": 5265.36,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 4,
+          "pnl": 35271.25,
+          "pf": 3.772,
+          "sharpe": 7.05,
+          "maxdd": 4377.5,
+          "wr": 50.0,
+          "avg_pnl": 8817.81
+        },
+        "H2": {
+          "trades": 11,
+          "pnl": -28652.5,
+          "pf": 0.052,
+          "sharpe": -11.63,
+          "maxdd": 21118.75,
+          "wr": 18.2,
+          "avg_pnl": -2604.77
+        }
+      },
+      "classification": "MONITOR",
+      "classification_reasons": [
+        "PF 1.14 > 1.0 but only 15 trades \u2014 insufficient sample"
+      ]
+    }
+  },
+  "best_result": {
+    "asset": "ZN",
+    "classification": "MONITOR",
+    "pf": 2.021,
+    "trades": 12
+  },
+  "overall_classification": "MONITOR",
+  "overall_reasons": [
+    "PF 2.02 > 1.0 but only 12 trades \u2014 insufficient sample"
+  ]
+}

@@ -1,0 +1,424 @@
+{
+  "strategy": "range_expansion",
+  "run_date": "2026-03-19T18:01:21.642104",
+  "session_filter": null,
+  "asset_results": {
+    "MES": {
+      "asset": "MES",
+      "bars": 471058,
+      "modes": {
+        "both": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "trades": 0,
+          "pf": 0
+        },
+        "long": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "trades": 0,
+          "pf": 0
+        },
+        "short": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "trades": 0,
+          "pf": 0
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "pf": 0,
+          "trades": 0
+        },
+        "H2": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "pf": 0,
+          "trades": 0
+        }
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Negative edge: PF 0.00"
+      ]
+    },
+    "MNQ": {
+      "asset": "MNQ",
+      "bars": 470935,
+      "modes": {
+        "both": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "trades": 0,
+          "pf": 0
+        },
+        "long": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "trades": 0,
+          "pf": 0
+        },
+        "short": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "trades": 0,
+          "pf": 0
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "pf": 0,
+          "trades": 0
+        },
+        "H2": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "pf": 0,
+          "trades": 0
+        }
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Negative edge: PF 0.00"
+      ]
+    },
+    "MGC": {
+      "asset": "MGC",
+      "bars": 247928,
+      "modes": {
+        "both": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "trades": 0,
+          "pf": 0
+        },
+        "long": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "trades": 0,
+          "pf": 0
+        },
+        "short": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "trades": 0,
+          "pf": 0
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "pf": 0,
+          "trades": 0
+        },
+        "H2": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "pf": 0,
+          "trades": 0
+        }
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Negative edge: PF 0.00"
+      ]
+    },
+    "M2K": {
+      "asset": "M2K",
+      "bars": 466775,
+      "modes": {
+        "both": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "trades": 0,
+          "pf": 0
+        },
+        "long": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "trades": 0,
+          "pf": 0
+        },
+        "short": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "trades": 0,
+          "pf": 0
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "pf": 0,
+          "trades": 0
+        },
+        "H2": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "pf": 0,
+          "trades": 0
+        }
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Negative edge: PF 0.00"
+      ]
+    },
+    "MCL": {
+      "asset": "MCL",
+      "bars": 327926,
+      "modes": {
+        "both": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "trades": 0,
+          "pf": 0
+        },
+        "long": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "trades": 0,
+          "pf": 0
+        },
+        "short": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "trades": 0,
+          "pf": 0
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "pf": 0,
+          "trades": 0
+        },
+        "H2": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "pf": 0,
+          "trades": 0
+        }
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Negative edge: PF 0.00"
+      ]
+    },
+    "ZN": {
+      "asset": "ZN",
+      "bars": 394749,
+      "modes": {
+        "both": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "trades": 0,
+          "pf": 0
+        },
+        "long": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "trades": 0,
+          "pf": 0
+        },
+        "short": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "trades": 0,
+          "pf": 0
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "pf": 0,
+          "trades": 0
+        },
+        "H2": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "pf": 0,
+          "trades": 0
+        }
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Negative edge: PF 0.00"
+      ]
+    },
+    "ZB": {
+      "asset": "ZB",
+      "bars": 379135,
+      "modes": {
+        "both": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "trades": 0,
+          "pf": 0
+        },
+        "long": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "trades": 0,
+          "pf": 0
+        },
+        "short": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "trades": 0,
+          "pf": 0
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "pf": 0,
+          "trades": 0
+        },
+        "H2": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "pf": 0,
+          "trades": 0
+        }
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Negative edge: PF 0.00"
+      ]
+    },
+    "ZF": {
+      "asset": "ZF",
+      "bars": 330917,
+      "modes": {
+        "both": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "trades": 0,
+          "pf": 0
+        },
+        "long": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "trades": 0,
+          "pf": 0
+        },
+        "short": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "trades": 0,
+          "pf": 0
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "pf": 0,
+          "trades": 0
+        },
+        "H2": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "pf": 0,
+          "trades": 0
+        }
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Negative edge: PF 0.00"
+      ]
+    },
+    "6E": {
+      "asset": "6E",
+      "bars": 77555,
+      "modes": {
+        "both": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "trades": 0,
+          "pf": 0
+        },
+        "long": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "trades": 0,
+          "pf": 0
+        },
+        "short": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "trades": 0,
+          "pf": 0
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "pf": 0,
+          "trades": 0
+        },
+        "H2": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "pf": 0,
+          "trades": 0
+        }
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Negative edge: PF 0.00"
+      ]
+    },
+    "6J": {
+      "asset": "6J",
+      "bars": 69697,
+      "modes": {
+        "both": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "trades": 0,
+          "pf": 0
+        },
+        "long": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "trades": 0,
+          "pf": 0
+        },
+        "short": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "trades": 0,
+          "pf": 0
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "pf": 0,
+          "trades": 0
+        },
+        "H2": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "pf": 0,
+          "trades": 0
+        }
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Negative edge: PF 0.00"
+      ]
+    },
+    "6B": {
+      "asset": "6B",
+      "bars": 59645,
+      "modes": {
+        "both": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "trades": 0,
+          "pf": 0
+        },
+        "long": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "trades": 0,
+          "pf": 0
+        },
+        "short": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "trades": 0,
+          "pf": 0
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "pf": 0,
+          "trades": 0
+        },
+        "H2": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "pf": 0,
+          "trades": 0
+        }
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Negative edge: PF 0.00"
+      ]
+    }
+  },
+  "best_result": {
+    "asset": "MES",
+    "classification": "REJECT",
+    "pf": 0,
+    "trades": 0
+  },
+  "overall_classification": "REJECT",
+  "overall_reasons": [
+    "Negative edge: PF 0.00"
+  ]
+}

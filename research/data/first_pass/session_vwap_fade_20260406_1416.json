@@ -1,0 +1,54 @@
+{
+  "strategy": "session_vwap_fade",
+  "run_date": "2026-04-06T14:16:57.396159",
+  "session_filter": null,
+  "asset_results": {
+    "MES": {
+      "asset": "MES",
+      "bars": 474187,
+      "modes": {
+        "both": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "trades": 0,
+          "pf": 0
+        },
+        "long": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "trades": 0,
+          "pf": 0
+        },
+        "short": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "trades": 0,
+          "pf": 0
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "pf": 0,
+          "trades": 0
+        },
+        "H2": {
+          "error": "generate_signals() got an unexpected keyword argument 'mode'",
+          "pf": 0,
+          "trades": 0
+        }
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Negative edge: PF 0.00"
+      ]
+    }
+  },
+  "best_result": {
+    "asset": "MES",
+    "classification": "REJECT",
+    "pf": 0,
+    "trades": 0
+  },
+  "overall_classification": "REJECT",
+  "overall_reasons": [
+    "Negative edge: PF 0.00"
+  ]
+}

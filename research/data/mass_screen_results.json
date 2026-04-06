@@ -1,0 +1,996 @@
+[
+  {
+    "strategy": "6j_tokyo_london",
+    "classification": "SALVAGE",
+    "best_pf": 1.021,
+    "best_trades": 162,
+    "best_asset": "6J",
+    "assets_tested": [
+      "6J",
+      "6E"
+    ],
+    "reasons": [
+      "Period-specific edge: H1=1.31, H2=0.92"
+    ],
+    "timestamp": "20260406_1413"
+  },
+  {
+    "strategy": "atr_compression_breakout",
+    "classification": "REJECT",
+    "best_pf": 0,
+    "best_trades": 0,
+    "best_asset": "MCL",
+    "assets_tested": [
+      "MCL",
+      "M2K"
+    ],
+    "reasons": [
+      "Negative edge: PF 0.00"
+    ],
+    "timestamp": "20260406_1413"
+  },
+  {
+    "strategy": "atr_expansion_breakout",
+    "classification": "REJECT",
+    "best_pf": 0.9,
+    "best_trades": 4592,
+    "best_asset": "MCL",
+    "assets_tested": [
+      "MCL"
+    ],
+    "reasons": [
+      "Sufficient trades (4592) but PF 0.90 < 1.1"
+    ],
+    "timestamp": "20260406_1413"
+  },
+  {
+    "strategy": "bb_compression_gold",
+    "classification": "REJECT",
+    "best_pf": 0,
+    "best_trades": 0,
+    "best_asset": "MGC",
+    "assets_tested": [
+      "MGC"
+    ],
+    "reasons": [
+      "Negative edge: PF 0.00"
+    ],
+    "timestamp": "20260406_1413"
+  },
+  {
+    "strategy": "bb_equilibrium",
+    "classification": "REJECT",
+    "best_pf": 0,
+    "best_trades": 0,
+    "best_asset": "MGC",
+    "assets_tested": [
+      "MGC"
+    ],
+    "reasons": [
+      "Negative edge: PF 0.00"
+    ],
+    "timestamp": "20260406_1413"
+  },
+  {
+    "strategy": "bb_range_mr",
+    "classification": "REJECT",
+    "best_pf": 0,
+    "best_trades": 0,
+    "best_asset": "MES",
+    "assets_tested": [
+      "MES",
+      "MNQ"
+    ],
+    "reasons": [
+      "Negative edge: PF 0.00"
+    ],
+    "timestamp": "20260406_1413"
+  },
+  {
+    "strategy": "bbkc_squeeze",
+    "classification": "REJECT",
+    "best_pf": 0,
+    "best_trades": 0,
+    "best_asset": "MES",
+    "assets_tested": [
+      "MES",
+      "MNQ",
+      "MGC",
+      "M2K",
+      "MCL",
+      "ZN"
+    ],
+    "reasons": [
+      "Negative edge: PF 0.00"
+    ],
+    "timestamp": "20260406_1413"
+  },
+  {
+    "strategy": "cl_orb",
+    "classification": "REJECT",
+    "best_pf": 0,
+    "best_trades": 0,
+    "best_asset": "MCL",
+    "assets_tested": [
+      "MCL"
+    ],
+    "reasons": [
+      "Negative edge: PF 0.00"
+    ],
+    "timestamp": "20260406_1413"
+  },
+  {
+    "strategy": "cl_vwap_bounce",
+    "classification": "REJECT",
+    "best_pf": 0,
+    "best_trades": 0,
+    "best_asset": "MCL",
+    "assets_tested": [
+      "MCL"
+    ],
+    "reasons": [
+      "Negative edge: PF 0.00"
+    ],
+    "timestamp": "20260406_1413"
+  },
+  {
+    "strategy": "close_liquidity_sweep",
+    "classification": "REJECT",
+    "best_pf": 0,
+    "best_trades": 0,
+    "best_asset": "MES",
+    "assets_tested": [
+      "MES",
+      "MNQ",
+      "M2K"
+    ],
+    "reasons": [
+      "Negative edge: PF 0.00"
+    ],
+    "timestamp": "20260406_1413"
+  },
+  {
+    "strategy": "close_momentum",
+    "classification": "REJECT",
+    "best_pf": 0,
+    "best_trades": 0,
+    "best_asset": "MES",
+    "assets_tested": [
+      "MES"
+    ],
+    "reasons": [
+      "Negative edge: PF 0.00"
+    ],
+    "timestamp": "20260406_1413"
+  },
+  {
+    "strategy": "close_vwap_reversion",
+    "classification": "REJECT",
+    "best_pf": 0,
+    "best_trades": 0,
+    "best_asset": "MES",
+    "assets_tested": [
+      "MES"
+    ],
+    "reasons": [
+      "Negative edge: PF 0.00"
+    ],
+    "timestamp": "20260406_1413"
+  },
+  {
+    "strategy": "donchian_trend",
+    "classification": "REJECT",
+    "best_pf": 0,
+    "best_trades": 0,
+    "best_asset": "MES",
+    "assets_tested": [
+      "MES",
+      "MNQ",
+      "MGC",
+      "M2K",
+      "MCL",
+      "ZN"
+    ],
+    "reasons": [
+      "Negative edge: PF 0.00"
+    ],
+    "timestamp": "20260406_1413"
+  },
+  {
+    "strategy": "donchian_trend_breakout",
+    "classification": "REJECT",
+    "best_pf": 0.575,
+    "best_trades": 1366,
+    "best_asset": "ZB",
+    "assets_tested": [
+      "ZB"
+    ],
+    "reasons": [
+      "Sufficient trades (1366) but PF 0.57 < 1.1"
+    ],
+    "timestamp": "20260406_1413"
+  },
+  {
+    "strategy": "ema_trend_rider",
+    "classification": "REJECT",
+    "best_pf": 0,
+    "best_trades": 0,
+    "best_asset": "MES",
+    "assets_tested": [
+      "MES",
+      "MNQ",
+      "MGC",
+      "M2K",
+      "MCL",
+      "ZN"
+    ],
+    "reasons": [
+      "Negative edge: PF 0.00"
+    ],
+    "timestamp": "20260406_1413"
+  },
+  {
+    "strategy": "eod_sentiment_flip",
+    "classification": "REJECT",
+    "best_pf": 0.985,
+    "best_trades": 1364,
+    "best_asset": "MES",
+    "assets_tested": [
+      "MES",
+      "MNQ"
+    ],
+    "reasons": [
+      "Sufficient trades (1364) but PF 0.98 < 1.1"
+    ],
+    "timestamp": "20260406_1414"
+  },
+  {
+    "strategy": "fx_value_mean_reversion",
+    "classification": "MONITOR",
+    "best_pf": 1.239,
+    "best_trades": 6,
+    "best_asset": "6E",
+    "assets_tested": [
+      "6J",
+      "6E",
+      "6B"
+    ],
+    "reasons": [
+      "PF 1.24 > 1.0 but only 6 trades \u2014 insufficient sample"
+    ],
+    "timestamp": "20260406_1414"
+  },
+  {
+    "strategy": "gap_mom",
+    "classification": "REJECT",
+    "best_pf": 0,
+    "best_trades": 0,
+    "best_asset": "MES",
+    "assets_tested": [
+      "MES",
+      "MNQ",
+      "MGC",
+      "M2K",
+      "MCL",
+      "ZN"
+    ],
+    "reasons": [
+      "Negative edge: PF 0.00"
+    ],
+    "timestamp": "20260406_1414"
+  },
+  {
+    "strategy": "gold_bw_squeeze",
+    "classification": "SALVAGE",
+    "best_pf": 1.377,
+    "best_trades": 23,
+    "best_asset": "MGC",
+    "assets_tested": [
+      "MGC"
+    ],
+    "reasons": [
+      "Overall PF 1.38, but directional split shows PF > 1.2"
+    ],
+    "timestamp": "20260406_1414"
+  },
+  {
+    "strategy": "ict_010",
+    "classification": "REJECT",
+    "best_pf": 0,
+    "best_trades": 0,
+    "best_asset": "MGC",
+    "assets_tested": [
+      "MGC",
+      "MES",
+      "MNQ"
+    ],
+    "reasons": [
+      "Negative edge: PF 0.00"
+    ],
+    "timestamp": "20260406_1414"
+  },
+  {
+    "strategy": "imc_afternoon",
+    "classification": "REJECT",
+    "best_pf": 0,
+    "best_trades": 0,
+    "best_asset": "MES",
+    "assets_tested": [
+      "MES",
+      "MNQ",
+      "MGC",
+      "M2K",
+      "MCL",
+      "ZN"
+    ],
+    "reasons": [
+      "Negative edge: PF 0.00"
+    ],
+    "timestamp": "20260406_1414"
+  },
+  {
+    "strategy": "keltner_breakout",
+    "classification": "REJECT",
+    "best_pf": 0,
+    "best_trades": 0,
+    "best_asset": "M2K",
+    "assets_tested": [
+      "M2K"
+    ],
+    "reasons": [
+      "Negative edge: PF 0.00"
+    ],
+    "timestamp": "20260406_1414"
+  },
+  {
+    "strategy": "keltner_channel",
+    "classification": "REJECT",
+    "best_pf": 0,
+    "best_trades": 0,
+    "best_asset": "MES",
+    "assets_tested": [
+      "MES",
+      "MNQ",
+      "MGC",
+      "M2K",
+      "MCL",
+      "ZN"
+    ],
+    "reasons": [
+      "Negative edge: PF 0.00"
+    ],
+    "timestamp": "20260406_1414"
+  },
+  {
+    "strategy": "larry_oops",
+    "classification": "REJECT",
+    "best_pf": 0.914,
+    "best_trades": 342,
+    "best_asset": "MNQ",
+    "assets_tested": [
+      "MGC",
+      "MES",
+      "MNQ"
+    ],
+    "reasons": [
+      "Sufficient trades (342) but PF 0.91 < 1.1"
+    ],
+    "timestamp": "20260406_1414"
+  },
+  {
+    "strategy": "lucid-100k",
+    "classification": "REJECT",
+    "best_pf": 0,
+    "best_trades": 0,
+    "best_asset": "MES",
+    "assets_tested": [
+      "MES"
+    ],
+    "reasons": [
+      "Negative edge: PF 0.00"
+    ],
+    "timestamp": "20260406_1414"
+  },
+  {
+    "strategy": "momentum_ignition",
+    "classification": "REJECT",
+    "best_pf": 0,
+    "best_trades": 0,
+    "best_asset": "MES",
+    "assets_tested": [
+      "MES"
+    ],
+    "reasons": [
+      "Negative edge: PF 0.00"
+    ],
+    "timestamp": "20260406_1414"
+  },
+  {
+    "strategy": "momentum_pullback_trend",
+    "classification": "REJECT",
+    "best_pf": 0.578,
+    "best_trades": 2233,
+    "best_asset": "ZB",
+    "assets_tested": [
+      "ZB"
+    ],
+    "reasons": [
+      "Sufficient trades (2233) but PF 0.58 < 1.1"
+    ],
+    "timestamp": "20260406_1414"
+  },
+  {
+    "strategy": "nfp_level_breakout",
+    "classification": "SALVAGE",
+    "best_pf": 1.053,
+    "best_trades": 81,
+    "best_asset": "MNQ",
+    "assets_tested": [
+      "MES",
+      "MNQ"
+    ],
+    "reasons": [
+      "Overall PF 1.05, but directional split shows PF > 1.2"
+    ],
+    "timestamp": "20260406_1415"
+  },
+  {
+    "strategy": "noise_boundary",
+    "classification": "REJECT",
+    "best_pf": 0,
+    "best_trades": 0,
+    "best_asset": "MES",
+    "assets_tested": [
+      "MES"
+    ],
+    "reasons": [
+      "Negative edge: PF 0.00"
+    ],
+    "timestamp": "20260406_1415"
+  },
+  {
+    "strategy": "opex_week",
+    "classification": "REJECT",
+    "best_pf": 0.978,
+    "best_trades": 81,
+    "best_asset": "MNQ",
+    "assets_tested": [
+      "MES",
+      "MNQ"
+    ],
+    "reasons": [
+      "Sufficient trades (81) but PF 0.98 < 1.1"
+    ],
+    "timestamp": "20260406_1415"
+  },
+  {
+    "strategy": "orb_009",
+    "classification": "REJECT",
+    "best_pf": 0,
+    "best_trades": 0,
+    "best_asset": "MES",
+    "assets_tested": [
+      "MES",
+      "MNQ",
+      "MGC",
+      "M2K",
+      "MCL",
+      "ZN"
+    ],
+    "reasons": [
+      "Negative edge: PF 0.00"
+    ],
+    "timestamp": "20260406_1415"
+  },
+  {
+    "strategy": "orb_fade",
+    "classification": "REJECT",
+    "best_pf": 0,
+    "best_trades": 0,
+    "best_asset": "MES",
+    "assets_tested": [
+      "MES",
+      "MNQ",
+      "MGC",
+      "M2K",
+      "MCL",
+      "ZN"
+    ],
+    "reasons": [
+      "Negative edge: PF 0.00"
+    ],
+    "timestamp": "20260406_1415"
+  },
+  {
+    "strategy": "orion_vol",
+    "classification": "REJECT",
+    "best_pf": 0,
+    "best_trades": 0,
+    "best_asset": "MES",
+    "assets_tested": [
+      "MES",
+      "MNQ",
+      "MGC",
+      "M2K",
+      "MCL",
+      "ZN"
+    ],
+    "reasons": [
+      "Negative edge: PF 0.00"
+    ],
+    "timestamp": "20260406_1415"
+  },
+  {
+    "strategy": "overnight_drift",
+    "classification": "REJECT",
+    "best_pf": 1.074,
+    "best_trades": 1653,
+    "best_asset": "MNQ",
+    "assets_tested": [
+      "MES",
+      "MNQ"
+    ],
+    "reasons": [
+      "Sufficient trades (1653) but PF 1.07 < 1.1"
+    ],
+    "timestamp": "20260406_1415"
+  },
+  {
+    "strategy": "overnight_z_volratio",
+    "classification": "REJECT",
+    "best_pf": 0.694,
+    "best_trades": 105,
+    "best_asset": "MES",
+    "assets_tested": [
+      "MES",
+      "MNQ"
+    ],
+    "reasons": [
+      "Sufficient trades (105) but PF 0.69 < 1.1"
+    ],
+    "timestamp": "20260406_1416"
+  },
+  {
+    "strategy": "pb_trend",
+    "classification": "REJECT",
+    "best_pf": 0,
+    "best_trades": 0,
+    "best_asset": "MGC",
+    "assets_tested": [
+      "MGC",
+      "MES",
+      "MNQ"
+    ],
+    "reasons": [
+      "Negative edge: PF 0.00"
+    ],
+    "timestamp": "20260406_1416"
+  },
+  {
+    "strategy": "pre_fomc_drift",
+    "classification": "REJECT",
+    "best_pf": 0,
+    "best_trades": 0,
+    "best_asset": "MES",
+    "assets_tested": [
+      "MES",
+      "MNQ",
+      "MGC",
+      "M2K",
+      "MCL",
+      "ZN"
+    ],
+    "reasons": [
+      "Negative edge: PF 0.00"
+    ],
+    "timestamp": "20260406_1416"
+  },
+  {
+    "strategy": "pre_fomc_drift_v2",
+    "classification": "ADVANCE",
+    "best_pf": 1.7,
+    "best_trades": 97,
+    "best_asset": "MNQ",
+    "assets_tested": [
+      "MES",
+      "MNQ"
+    ],
+    "reasons": [
+      "PF 1.70 > 1.2 with 97 trades",
+      "Walk-forward stable: H1=2.03, H2=1.41"
+    ],
+    "timestamp": "20260406_1416"
+  },
+  {
+    "strategy": "rate_daily_momentum",
+    "classification": "ADVANCE",
+    "best_pf": 1.67,
+    "best_trades": 60,
+    "best_asset": "ZF",
+    "assets_tested": [
+      "MES",
+      "ZN",
+      "ZB",
+      "ZF"
+    ],
+    "reasons": [
+      "PF 1.67 > 1.2 with 60 trades",
+      "Walk-forward stable: H1=1.88, H2=1.54"
+    ],
+    "timestamp": "20260406_1416"
+  },
+  {
+    "strategy": "rate_intraday_mr",
+    "classification": "REJECT",
+    "best_pf": 0.626,
+    "best_trades": 1262,
+    "best_asset": "ZF",
+    "assets_tested": [
+      "ZN",
+      "ZB",
+      "ZF"
+    ],
+    "reasons": [
+      "Sufficient trades (1262) but PF 0.63 < 1.1"
+    ],
+    "timestamp": "20260406_1416"
+  },
+  {
+    "strategy": "russell_orb",
+    "classification": "REJECT",
+    "best_pf": 0,
+    "best_trades": 0,
+    "best_asset": "M2K",
+    "assets_tested": [
+      "M2K"
+    ],
+    "reasons": [
+      "Negative edge: PF 0.00"
+    ],
+    "timestamp": "20260406_1416"
+  },
+  {
+    "strategy": "rvwap_mr",
+    "classification": "REJECT",
+    "best_pf": 0,
+    "best_trades": 0,
+    "best_asset": "MES",
+    "assets_tested": [
+      "MES",
+      "MNQ",
+      "MGC",
+      "M2K",
+      "MCL",
+      "ZN"
+    ],
+    "reasons": [
+      "Negative edge: PF 0.00"
+    ],
+    "timestamp": "20260406_1416"
+  },
+  {
+    "strategy": "session_reversion_gold",
+    "classification": "REJECT",
+    "best_pf": 0,
+    "best_trades": 0,
+    "best_asset": "MGC",
+    "assets_tested": [
+      "MGC",
+      "6E"
+    ],
+    "reasons": [
+      "Negative edge: PF 0.00"
+    ],
+    "timestamp": "20260406_1416"
+  },
+  {
+    "strategy": "session_vwap_fade",
+    "classification": "REJECT",
+    "best_pf": 0,
+    "best_trades": 0,
+    "best_asset": "MES",
+    "assets_tested": [
+      "MES"
+    ],
+    "reasons": [
+      "Negative edge: PF 0.00"
+    ],
+    "timestamp": "20260406_1416"
+  },
+  {
+    "strategy": "sma-crossover",
+    "classification": "REJECT",
+    "best_pf": 0,
+    "best_trades": 0,
+    "best_asset": "MES",
+    "assets_tested": [
+      "MES",
+      "MNQ",
+      "MGC",
+      "M2K",
+      "MCL",
+      "ZN"
+    ],
+    "reasons": [
+      "Negative edge: PF 0.00"
+    ],
+    "timestamp": "20260406_1416"
+  },
+  {
+    "strategy": "treasury_close_reversion",
+    "classification": "SALVAGE",
+    "best_pf": 1.084,
+    "best_trades": 418,
+    "best_asset": "MES",
+    "assets_tested": [
+      "MES",
+      "ZN"
+    ],
+    "reasons": [
+      "Overall PF 1.08, but directional split shows PF > 1.2"
+    ],
+    "timestamp": "20260406_1417"
+  },
+  {
+    "strategy": "treasury_cpi_day",
+    "classification": "SALVAGE",
+    "best_pf": 1.151,
+    "best_trades": 81,
+    "best_asset": "MES",
+    "assets_tested": [
+      "MES",
+      "ZN",
+      "ZB"
+    ],
+    "reasons": [
+      "Period-specific edge: H1=0.71, H2=2.02"
+    ],
+    "timestamp": "20260406_1417"
+  },
+  {
+    "strategy": "treasury_tsm",
+    "classification": "MONITOR",
+    "best_pf": 2.021,
+    "best_trades": 12,
+    "best_asset": "ZN",
+    "assets_tested": [
+      "ZN",
+      "ZB"
+    ],
+    "reasons": [
+      "PF 2.02 > 1.0 but only 12 trades \u2014 insufficient sample"
+    ],
+    "timestamp": "20260406_1417"
+  },
+  {
+    "strategy": "trend_continuation",
+    "classification": "REJECT",
+    "best_pf": 0,
+    "best_trades": 0,
+    "best_asset": "MES",
+    "assets_tested": [
+      "MES",
+      "MNQ",
+      "MGC",
+      "M2K",
+      "MCL",
+      "ZN"
+    ],
+    "reasons": [
+      "Negative edge: PF 0.00"
+    ],
+    "timestamp": "20260406_1417"
+  },
+  {
+    "strategy": "ttm_squeeze",
+    "classification": "REJECT",
+    "best_pf": 0,
+    "best_trades": 0,
+    "best_asset": "MES",
+    "assets_tested": [
+      "MES",
+      "MNQ",
+      "MGC",
+      "M2K",
+      "MCL",
+      "ZN"
+    ],
+    "reasons": [
+      "Negative edge: PF 0.00"
+    ],
+    "timestamp": "20260406_1417"
+  },
+  {
+    "strategy": "vix_channel",
+    "classification": "REJECT",
+    "best_pf": 0,
+    "best_trades": 0,
+    "best_asset": "MES",
+    "assets_tested": [
+      "MES",
+      "MNQ",
+      "MGC",
+      "M2K",
+      "MCL",
+      "ZN"
+    ],
+    "reasons": [
+      "Negative edge: PF 0.00"
+    ],
+    "timestamp": "20260406_1417"
+  },
+  {
+    "strategy": "vol_compression_breakout",
+    "classification": "REJECT",
+    "best_pf": 0.488,
+    "best_trades": 107,
+    "best_asset": "M2K",
+    "assets_tested": [
+      "M2K"
+    ],
+    "reasons": [
+      "Sufficient trades (107) but PF 0.49 < 1.1"
+    ],
+    "timestamp": "20260406_1419"
+  },
+  {
+    "strategy": "vol_compression_breakout_v2",
+    "classification": "REJECT",
+    "best_pf": 0,
+    "best_trades": 0,
+    "best_asset": "MES",
+    "assets_tested": [
+      "MES",
+      "MNQ",
+      "M2K"
+    ],
+    "reasons": [
+      "Negative edge: PF 0.00"
+    ],
+    "timestamp": "20260406_1419"
+  },
+  {
+    "strategy": "vwap_006",
+    "classification": "REJECT",
+    "best_pf": 0,
+    "best_trades": 0,
+    "best_asset": "MES",
+    "assets_tested": [
+      "MES",
+      "MNQ",
+      "MGC",
+      "M2K",
+      "MCL",
+      "ZN"
+    ],
+    "reasons": [
+      "Negative edge: PF 0.00"
+    ],
+    "timestamp": "20260406_1419"
+  },
+  {
+    "strategy": "vwap_dev_mr",
+    "classification": "REJECT",
+    "best_pf": 0,
+    "best_trades": 0,
+    "best_asset": "MES",
+    "assets_tested": [
+      "MES"
+    ],
+    "reasons": [
+      "Negative edge: PF 0.00"
+    ],
+    "timestamp": "20260406_1419"
+  },
+  {
+    "strategy": "vwap_mr_gold",
+    "classification": "REJECT",
+    "best_pf": 0,
+    "best_trades": 0,
+    "best_asset": "MGC",
+    "assets_tested": [
+      "MGC",
+      "MES"
+    ],
+    "reasons": [
+      "Negative edge: PF 0.00"
+    ],
+    "timestamp": "20260406_1419"
+  },
+  {
+    "strategy": "vwap_rev",
+    "classification": "REJECT",
+    "best_pf": 0,
+    "best_trades": 0,
+    "best_asset": "MES",
+    "assets_tested": [
+      "MES",
+      "MNQ",
+      "MGC",
+      "M2K",
+      "MCL",
+      "ZN"
+    ],
+    "reasons": [
+      "Negative edge: PF 0.00"
+    ],
+    "timestamp": "20260406_1419"
+  },
+  {
+    "strategy": "vwap_trend",
+    "classification": "REJECT",
+    "best_pf": 0,
+    "best_trades": 0,
+    "best_asset": "MES",
+    "assets_tested": [
+      "MES",
+      "MNQ",
+      "MGC",
+      "M2K",
+      "MCL",
+      "ZN"
+    ],
+    "reasons": [
+      "Negative edge: PF 0.00"
+    ],
+    "timestamp": "20260406_1419"
+  },
+  {
+    "strategy": "xb_orb_ema_ladder",
+    "classification": "REJECT",
+    "best_pf": 0,
+    "best_trades": 0,
+    "best_asset": "MNQ",
+    "assets_tested": [
+      "MNQ"
+    ],
+    "reasons": [
+      "Negative edge: PF 0.00"
+    ],
+    "timestamp": "20260406_1419"
+  },
+  {
+    "strategy": "xb_pb_ema_timestop",
+    "classification": "REJECT",
+    "best_pf": 0,
+    "best_trades": 0,
+    "best_asset": "MES",
+    "assets_tested": [
+      "MES"
+    ],
+    "reasons": [
+      "Negative edge: PF 0.00"
+    ],
+    "timestamp": "20260406_1419"
+  },
+  {
+    "strategy": "xb_pb_squeeze_chand",
+    "classification": "REJECT",
+    "best_pf": 0,
+    "best_trades": 0,
+    "best_asset": "MGC",
+    "assets_tested": [
+      "MGC"
+    ],
+    "reasons": [
+      "Negative edge: PF 0.00"
+    ],
+    "timestamp": "20260406_1419"
+  },
+  {
+    "strategy": "zn_afternoon_reversion",
+    "classification": "SALVAGE",
+    "best_pf": 1.074,
+    "best_trades": 304,
+    "best_asset": "ZN",
+    "assets_tested": [
+      "MES",
+      "ZN",
+      "ZB"
+    ],
+    "reasons": [
+      "Overall PF 1.07, but directional split shows PF > 1.2"
+    ],
+    "timestamp": "20260406_1419"
+  }
+]
