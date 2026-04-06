@@ -24,6 +24,7 @@ Operations:
     fql review          Show probation scoreboard + challenger stack
 
 Utilities:
+    fql digest          Today's exception-only digest (auto-runs at 18:00)
     fql midweek         Midweek mini-checkpoint with intervention triggers
     fql notify-test     Send a test macOS notification
     fql last            Show latest run times for all platform components
@@ -199,6 +200,7 @@ def cmd_restart():
         "com.fql.twice-weekly-research",
         "com.fql.weekly-research",
         "com.fql.source-helpers",
+        "com.fql.operator-digest",
     ]
     print("Restarting FQL services...")
     for label in agents:
@@ -875,6 +877,25 @@ def cmd_checkpoint_auto():
     print()
 
 
+def cmd_digest():
+    """Show today's operator digest (exception-only intelligence)."""
+    digest = INBOX / "_daily_digest.md"
+    if digest.exists():
+        # Check freshness
+        import time
+        age_hours = (time.time() - digest.stat().st_mtime) / 3600
+        if age_hours > 4:
+            print("  Digest is stale — regenerating...")
+            _py("operator_digest.py", "--save")
+            print()
+        _show_file(digest)
+    else:
+        print("  No digest found — generating...")
+        _py("operator_digest.py", "--save")
+        print()
+        _show_file(INBOX / "_daily_digest.md")
+
+
 def cmd_help():
     """Show help."""
     print(__doc__)
@@ -908,6 +929,7 @@ COMMANDS = {
     "funnel": lambda: _py("helper_funnel_audit.py", "--save"),
     "convergence": lambda: _py("convergence_scorer.py", "--scan", "--save"),
     "midweek": cmd_midweek,
+    "digest": cmd_digest,
     "help": cmd_help,
 }
 

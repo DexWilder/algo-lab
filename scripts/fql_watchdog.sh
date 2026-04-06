@@ -126,6 +126,16 @@ record_success() {
     local component="$1"
     local state
     state="$(load_state)"
+    # Check if component was previously in failure state (for CLEARED logging)
+    local prev_failures
+    prev_failures="$(echo "$state" | python3 -c "
+import json, sys
+state = json.load(sys.stdin)
+print(state.get('$component', {}).get('failures', 0))
+" 2>/dev/null || echo 0)"
+    if [ "$prev_failures" -gt 0 ]; then
+        log_recovery "CLEARED: $component recovered after $prev_failures failure(s)"
+    fi
     state="$(python3 -c "
 import json, sys
 state = json.load(sys.stdin)

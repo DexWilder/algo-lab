@@ -236,6 +236,7 @@ def check_reports():
         "_eod_audit.md": 2,              # hours — every 30 min
         "_probation_scoreboard.md": 26,  # hours — daily
         "_alerts.md": 26,               # hours — daily
+        "_daily_digest.md": 26,          # hours — daily (operator digest)
     }
     issues = []
     for name, max_hours in reports.items():

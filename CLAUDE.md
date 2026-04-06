@@ -59,13 +59,23 @@ See `docs/CLAW_CATALOG_ENGINE.md` for Claw's scheduled task definitions.
 Review criteria: `docs/PROBATION_REVIEW_CRITERIA.md`
 Week 8 formal review is the next major decision point.
 
-## Automation (4 active launchd agents)
+## Automation (8 active launchd agents)
 
-- **Daily:** weekdays 17:30 ET — 6 research jobs (health, half-life, contribution, controller, report, drift)
+- **Forward day:** weekdays 17:00 ET — data refresh + forward paper trading
+- **Daily research:** weekdays 17:30 ET — 6 research jobs + report stack
+- **Operator digest:** weekdays 18:00 ET — exception-only daily intelligence (`scripts/operator_digest.py`)
 - **Twice-weekly:** Tue/Thu 18:00 ET — batch_first_pass factory testing
 - **Weekly:** Fri 18:30 ET — integrity monitor, kill criteria, auto-report
-- **Claw control loop:** every 30 min (launchd StartInterval) — read Claw status, assign next task, refresh priorities, EOD audit at 22:00
-- **Forward runner:** DESIGNED but DISABLED (`scripts/com.fql.forward-trading.plist`)
+- **Claw control loop:** every 30 min — Claw coordination, EOD audit at 22:00
+- **Source helpers:** every 3 days — GitHub/Reddit/YouTube/blog/digest lead fetching
+- **Watchdog:** every 5 min — gateway/claw/job health, self-healing recovery, CLEARED transition logging
+
+The operator digest is the primary interface. It auto-runs daily and:
+- Suppresses noise (only surfaces state changes)
+- Generates decision memos when thresholds are hit
+- Sends macOS notification only for ACTION/ALERT items
+- Emits "nothing actionable" when system is nominal
+- On-demand: `fql digest`
 
 ## System State
 
