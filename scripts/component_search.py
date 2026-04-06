@@ -89,6 +89,12 @@ def search(component_type=None, asset_scope=None, factor=None,
             if component_type and ctype != component_type:
                 continue
 
+            # Attach validation history if available
+            val_history = []
+            for vh in s.get("component_validation_history", []):
+                if vh.get("type") == ctype or ctype in vh.get("component", ""):
+                    val_history.append(vh)
+
             results.append({
                 "strategy": sid,
                 "status": status,
@@ -100,6 +106,7 @@ def search(component_type=None, asset_scope=None, factor=None,
                 "convergent_sources": s_convergence,
                 "timing": components.get("timing", ""),
                 "salvageable": components.get("salvageable", ""),
+                "validation_history": val_history,
             })
 
     return results
@@ -144,6 +151,16 @@ def format_results(results, save=False):
                 lines.append(f"    Salvageable: {r['salvageable']}")
             if r["convergent_sources"] > 0:
                 lines.append(f"    Convergent sources: {r['convergent_sources']}")
+            for vh in r.get("validation_history", []):
+                ctx = vh.get("context", {})
+                ctx_str = f"{ctx.get('asset','?')} / {ctx.get('session','?')} / {ctx.get('regime','?')}"
+                lines.append(f"    Evidence [{vh['result'].upper()}]: {vh.get('evidence', '')[:80]}")
+                lines.append(f"    Context: {ctx_str}")
+                if vh.get("failure_contexts"):
+                    lines.append(f"    Failed in: {', '.join(vh['failure_contexts'][:2])}")
+                if vh.get("reusable_in"):
+                    reuse = vh["reusable_in"] if isinstance(vh["reusable_in"], list) else [vh["reusable_in"]]
+                    lines.append(f"    Reusable: {', '.join(reuse[:2])}")
             lines.append("")
 
     lines.append("---")

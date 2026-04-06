@@ -1,6 +1,6 @@
 {
-  "_schema_version": "2.0",
-  "_generated": "2026-03-26",
+  "_schema_version": "3.2",
+  "_generated": "2026-04-02",
   "_description": "FQL Strategy Registry \u2014 institutional memory of all strategy ideas, tested candidates, and deployed strategies",
   "_purpose": "Preserves research knowledge, enables crossbreeding, feeds Strategy Factory",
   "strategies": [
@@ -122,7 +122,7 @@
       "last_review_date": "2026-03-15",
       "controller_state": "ACTIVE",
       "controller_action": "FULL_ON",
-      "activation_score": 0.8175,
+      "activation_score": 0.8325,
       "controller_reason_codes": [
         "REGIME_MATCH_HIGH",
         "HALF_LIFE_STRENGTHENING",
@@ -132,11 +132,11 @@
         "KILL_NONE",
         "SESSION_DRIFT_DEGRADED",
         "SESSION_CONCENTRATION",
-        "TIME_WINDOW_PARTIAL",
+        "TIME_WINDOW_MATCH",
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-03-26",
+      "last_controller_date": "2026-04-02",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
@@ -221,7 +221,7 @@
       "last_review_date": "2026-03-15",
       "controller_state": "ACTIVE",
       "controller_action": "REDUCED_ON",
-      "activation_score": 0.635,
+      "activation_score": 0.65,
       "controller_reason_codes": [
         "REGIME_MATCH_MODERATE",
         "HALF_LIFE_STRENGTHENING",
@@ -231,11 +231,11 @@
         "KILL_NONE",
         "SESSION_DRIFT_BROKEN",
         "SESSION_CONCENTRATION",
-        "TIME_WINDOW_PARTIAL",
+        "TIME_WINDOW_MATCH",
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-03-26",
+      "last_controller_date": "2026-04-02",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
@@ -432,11 +432,11 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-03-26",
+      "last_controller_date": "2026-04-02",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
-      "contribution_status": "ADDS VALUE",
+      "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
       "genome_cluster": "mean_reversion",
       "resurrection_flag": false,
@@ -517,7 +517,7 @@
       "last_review_date": "2026-03-18",
       "controller_state": "ACTIVE",
       "controller_action": "FULL_ON",
-      "activation_score": 0.8025,
+      "activation_score": 0.8175,
       "controller_reason_codes": [
         "REGIME_MATCH_HIGH",
         "HALF_LIFE_STRENGTHENING",
@@ -527,11 +527,11 @@
         "KILL_NONE",
         "SESSION_DRIFT_NORMAL",
         "SESSION_CONCENTRATION",
-        "TIME_WINDOW_PARTIAL",
+        "TIME_WINDOW_MATCH",
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-03-26",
+      "last_controller_date": "2026-04-02",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
@@ -844,20 +844,20 @@
       "controller_state": "PROBATION",
       "prior_state": "PROBATION",
       "controller_action": "PROBATION",
-      "activation_score": 0.42,
+      "activation_score": 0.415,
       "controller_reason_codes": [
-        "REGIME_MATCH_MODERATE",
+        "REGIME_MATCH_LOW",
         "HALF_LIFE_DEAD",
         "PORTFOLIO_NEUTRAL",
         "LOW_REDUNDANCY",
         "HEALTH_FAIL",
         "KILL_NONE",
         "SESSION_DRIFT_NORMAL",
-        "TIME_WINDOW_PARTIAL",
+        "TIME_WINDOW_MATCH",
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-03-26",
+      "last_controller_date": "2026-04-02",
       "review_priority": "MEDIUM",
       "half_life_status": "ARCHIVE_CANDIDATE",
       "contribution_status": "NEUTRAL",
@@ -911,7 +911,7 @@
       "controller_state": "PROBATION",
       "prior_state": "PROBATION",
       "controller_action": "PROBATION",
-      "activation_score": 0.4,
+      "activation_score": 0.415,
       "controller_reason_codes": [
         "REGIME_MATCH_LOW",
         "HALF_LIFE_DEAD",
@@ -920,11 +920,11 @@
         "HEALTH_FAIL",
         "KILL_NONE",
         "SESSION_DRIFT_NORMAL",
-        "TIME_WINDOW_PARTIAL",
+        "TIME_WINDOW_MATCH",
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-03-26",
+      "last_controller_date": "2026-04-02",
       "review_priority": "MEDIUM",
       "half_life_status": "ARCHIVE_CANDIDATE",
       "contribution_status": "NEUTRAL",
@@ -2057,7 +2057,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-03-26",
+      "last_controller_date": "2026-04-02",
       "review_priority": "MEDIUM",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
@@ -2235,7 +2235,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-03-26",
+      "last_controller_date": "2026-04-02",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
@@ -2567,7 +2567,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-03-26",
+      "last_controller_date": "2026-04-02",
       "review_priority": "MEDIUM",
       "prior_state": "PROBATION",
       "half_life_status": "ERROR",
@@ -2868,7 +2868,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-03-26",
+      "last_controller_date": "2026-04-02",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -2950,7 +2950,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-03-26",
+      "last_controller_date": "2026-04-02",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -3401,7 +3401,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-03-26",
+      "last_controller_date": "2026-04-02",
       "half_life_status": "HEALTHY",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -3834,7 +3834,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-03-26",
+      "last_controller_date": "2026-04-02",
       "half_life_status": "ARCHIVE_CANDIDATE",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -4458,7 +4458,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-03-26",
+      "last_controller_date": "2026-04-02",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -4556,7 +4556,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-03-26",
+      "last_controller_date": "2026-04-02",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -4595,7 +4595,27 @@
         "timing": "Daily rebalance at close",
         "asset_scope": "MES (equity index)",
         "validation_status": "validated"
-      }
+      },
+      "component_validation_history": [
+        {
+          "component": "inverse_vol_sizing",
+          "type": "sizing_overlay",
+          "context": {
+            "asset": "MES",
+            "session": "daily",
+            "regime": "all"
+          },
+          "result": "validated",
+          "evidence": "Sharpe 0.64 \u2192 0.92 (+44%). Documented across decades (Moreira & Muir).",
+          "reusable_in": [
+            "any equity index strategy",
+            "potentially commodity/rates"
+          ],
+          "failure_contexts": [
+            "Crisis periods (COVID, 2022) \u2014 reduces position but still holds long"
+          ]
+        }
+      ]
     },
     {
       "strategy_id": "Commodity-Carry-TailRisk-Overlay",
@@ -4708,7 +4728,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-03-26",
+      "last_controller_date": "2026-04-02",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -4749,7 +4769,27 @@
         "timing": "Monthly rebalance at daily close",
         "asset_scope": "ZN/ZF/ZB (rates, 3-tenor spread)",
         "validation_status": "validated"
-      }
+      },
+      "component_validation_history": [
+        {
+          "component": "carry_rank_monthly_rebalance",
+          "type": "entry_logic",
+          "context": {
+            "asset": "ZN/ZF/ZB",
+            "session": "monthly",
+            "regime": "all"
+          },
+          "result": "validated",
+          "evidence": "PF 1.11, 79 spread trades. Rate-neutral (corr 0.027 with rates direction).",
+          "reusable_in": [
+            "other tenor-spread strategies",
+            "cross-asset carry ranking"
+          ],
+          "failure_contexts": [
+            "2025-2026 segment was negative (-$15K equal-notional)"
+          ]
+        }
+      ]
     },
     {
       "strategy_id": "CrudeOil-OPEC-Announcement-Regime",
@@ -4838,7 +4878,43 @@
         "asset_scope": "MES/MNQ (equity index)",
         "validation_status": "rejected_in_context",
         "salvageable": "z-score concept may work on different asset/session (not equity morning)"
-      }
+      },
+      "component_validation_history": [
+        {
+          "component": "overnight_range_zscore",
+          "type": "filter",
+          "context": {
+            "asset": "MES/MNQ",
+            "session": "morning (09:45)",
+            "regime": "all"
+          },
+          "result": "rejected",
+          "evidence": "Filter selects for high-vol days where overnight moves REVERSE, not continue. PF 0.69 (worse than unconditional 0.96).",
+          "reusable_in": [
+            "POSSIBLY on non-equity assets or different sessions \u2014 the z-score concept is not inherently bad, the equity morning context was wrong"
+          ],
+          "failure_contexts": [
+            "MES/MNQ morning \u2014 overnight continuation is inverted on equity indices"
+          ]
+        },
+        {
+          "component": "opening_volume_ratio",
+          "type": "filter",
+          "context": {
+            "asset": "MES/MNQ",
+            "session": "morning (09:30-09:45)",
+            "regime": "all"
+          },
+          "result": "rejected",
+          "evidence": "Volume ratio filter does not add value. PF 0.90 (unconditional 0.96). High opening volume does not predict continuation.",
+          "reusable_in": [
+            "unlikely \u2014 volume confirmation is weak on liquid equity futures"
+          ],
+          "failure_contexts": [
+            "MES/MNQ morning"
+          ]
+        }
+      ]
     },
     {
       "strategy_id": "Treasury-Cash-Close-Reversion-Window",
@@ -4893,7 +4969,41 @@
         "asset_scope": "ZN (rates)",
         "validation_status": "rejected_in_context",
         "salvageable": "Afternoon reversion timing (validated in earlier window as ZN-Afternoon-Rev)"
-      }
+      },
+      "component_validation_history": [
+        {
+          "component": "cash_close_impulse_fade",
+          "type": "entry_logic",
+          "context": {
+            "asset": "ZN",
+            "session": "15:00-15:25",
+            "regime": "all"
+          },
+          "result": "rejected",
+          "evidence": "PF 0.87. Cash close is NOT special \u2014 generic afternoon reversion 1h earlier (PF 1.32) works far better.",
+          "reusable_in": [
+            "none at 15:00 window \u2014 but the afternoon reversion concept WAS validated at 14:00"
+          ],
+          "failure_contexts": [
+            "ZN 15:00-15:25 \u2014 the post-cash-close window continues rather than reverses"
+          ]
+        },
+        {
+          "component": "afternoon_session_reversion_timing",
+          "type": "session_effect",
+          "context": {
+            "asset": "ZN",
+            "session": "13:45-14:25",
+            "regime": "HIGH_VOL"
+          },
+          "result": "salvaged",
+          "evidence": "Discovered as Variant B control. PF 1.32 at 14:00 vs 0.87 at 15:00. Spawned ZN-Afternoon-Reversion.",
+          "reusable_in": [
+            "validated \u2014 became ZN-Afternoon-Reversion"
+          ],
+          "failure_contexts": []
+        }
+      ]
     },
     {
       "strategy_id": "ZN-Afternoon-Reversion",
@@ -4937,7 +5047,7 @@
       "controller_action": "PROBATION",
       "activation_score": 0.545,
       "controller_state": "PAPER",
-      "last_controller_date": "2026-03-26",
+      "last_controller_date": "2026-04-02",
       "execution_config": {
         "avoid_regimes": [],
         "preferred_regimes": [
@@ -4994,7 +5104,75 @@
         "timing": "13:45-14:25 ET afternoon pre-cash-close window",
         "asset_scope": "ZN (rates)",
         "validation_status": "validated"
-      }
+      },
+      "component_validation_history": [
+        {
+          "component": "impulse_threshold_1.5x",
+          "type": "filter",
+          "context": {
+            "asset": "ZN",
+            "session": "14:00-14:25",
+            "regime": "all"
+          },
+          "result": "validated",
+          "evidence": "PF +0.34 vs unconditional (0.98 \u2192 1.32). Stable across 1.0-1.75 threshold range.",
+          "reusable_in": [
+            "other rates afternoon strategies",
+            "any impulse-fade setup"
+          ],
+          "failure_contexts": [
+            "ZN 15:00-15:25 (cash close window \u2014 PF -0.09 vs unconditional)"
+          ]
+        },
+        {
+          "component": "fixed_time_exit_25m",
+          "type": "exit_logic",
+          "context": {
+            "asset": "ZN",
+            "session": "14:00-14:25",
+            "regime": "all"
+          },
+          "result": "validated",
+          "evidence": "25-minute hold captures most of the reversion. Tested 15m-45m range.",
+          "reusable_in": [
+            "short-duration intraday reversion strategies"
+          ],
+          "failure_contexts": []
+        },
+        {
+          "component": "60pct_retracement_target",
+          "type": "exit_logic",
+          "context": {
+            "asset": "ZN",
+            "session": "14:00-14:25",
+            "regime": "all"
+          },
+          "result": "validated",
+          "evidence": "60% retracement exit triggers on ~30% of winning trades. Adds modest value.",
+          "reusable_in": [
+            "any impulse-fade strategy"
+          ],
+          "failure_contexts": []
+        },
+        {
+          "component": "high_vol_regime_preference",
+          "type": "regime_logic",
+          "context": {
+            "asset": "ZN",
+            "session": "afternoon",
+            "regime": "HIGH_VOL"
+          },
+          "result": "validated",
+          "evidence": "PF 1.64 in HIGH_VOL vs 1.04 in LOW_VOL. Edge is vol-activated.",
+          "reusable_in": [
+            "any rates reversion strategy",
+            "vol-gated entries"
+          ],
+          "failure_contexts": [
+            "LOW_VOL regime (PF 1.04 \u2014 barely positive)"
+          ]
+        }
+      ]
     }
   ],
   "_rejection_taxonomy": {
@@ -5010,5 +5188,5 @@
     "ICT_FAMILY_FAILED": "ICT-derived concepts have not produced systematic edge in FQL",
     "CLASSIC_TA_DECAY": "Well-known pattern (RSI, NR7, gap fill) shows no edge on futures 5m bars"
   },
-  "_schema_note": "Added convergent_sources, relationships, component_type (2026-03-20)"
+  "_schema_note": "Added component_validation_history (2026-04-06)"
 }
