@@ -5255,11 +5255,13 @@
       "id": "exit-profit-ladder-bug",
       "created": "2026-04-07",
       "priority": "medium",
-      "status": "queued",
+      "status": "resolved",
       "title": "exit_profit_ladder ignores target_mult and trail_mult",
       "description": "exit_profit_ladder in crossbreeding_engine.py uses fixed 1R/2R/3R ratchet milestones and never reads target_mult or trail_mult from params. Discovered during xb_orb_ema_ladder sweep when 27 target/trail combinations produced identical PF for fixed stop_mult. IMPLICATION: The current xb_orb_ema_ladder result (PF 1.62) is a FLOOR, not a ceiling. The edge was achieved with NO functional exit tuning \u2014 fixing the bug can only raise the family's potential, never lower it. This is upside optionality, not a blocker. Queue for after crossbreeding family sweep.",
       "blocks": [],
-      "discovered_during": "xb_orb_ema_ladder variant sweep 2026-04-07"
+      "discovered_during": "xb_orb_ema_ladder variant sweep 2026-04-07",
+      "resolved_date": "2026-04-07",
+      "resolution": "FIXED via opt-in ladder_style=\"configurable\" param. Preserved live variant 100% unchanged. Exit surface sweep (25 combos of target_mult\u00d7trail_mult) showed only modest improvement: best variant avg PF 1.560 vs classic 1.548 (+0.8%). target_mult has essentially zero effect beyond 2.0 (trades rarely reach higher R levels). trail_mult=1.0 is already optimal. MGC drawdown duration unchanged. CONCLUSION: The exit surface was NOT the limiting factor. The edge lives in the entry+filter combination. Classic ladder remains the live baseline."
     }
   ]
 }
