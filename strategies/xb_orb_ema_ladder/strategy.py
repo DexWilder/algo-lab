@@ -35,6 +35,12 @@ TICK_SIZE = 0.25  # Patched per asset by runner
 # NOTE: TARGET_MULT and TRAIL_MULT are currently IGNORED by
 # exit_profit_ladder (fixed 1R/2R/3R ratchets). Queued as research item
 # "exit_profit_ladder bug" — fixing will unlock a new optimization surface.
+#
+# IMPLICATION: The current xb_orb_ema_ladder result is a FLOOR, not a
+# ceiling. The edge was achieved with no functional exit tuning — target
+# and trail params were never helping. A properly wired exit could only
+# raise the edge further, never lower it. Treat current PF ~1.62 as the
+# conservative baseline of this family's true potential.
 STOP_MULT = 2.0
 TARGET_MULT = 4.0
 TRAIL_MULT = 2.5
