@@ -63,11 +63,17 @@ OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 # candidate that survived deep validation. Below ~500 trades, any apparent
 # edge is likely outlier-driven.
 
-CONCENTRATION_TOP3_MAX = 0.30   # top 3 trades < 30% of PnL for ADVANCE
-CONCENTRATION_TOP5_MAX = 0.45   # top 5 trades < 45% of PnL for ADVANCE
-MAX_YEAR_SHARE = 0.40            # no single year > 40% of PnL for ADVANCE
-MIN_TRADES_ADVANCE = 500         # concentration trust threshold
-MIN_TRADES_ROBUST = 100          # meaningful sample for SALVAGE
+CONCENTRATION_TOP3_MAX = 0.30    # top 3 trades < 30% of PnL for ADVANCE
+CONCENTRATION_TOP5_MAX = 0.45    # top 5 trades < 45% of PnL for ADVANCE
+CONCENTRATION_TOP10_MAX = 0.55   # top 10 trades < 55% of PnL — added 2026-04-07
+                                  # after donchian_trend (top-10=55%) and
+                                  # ema_trend_rider (top-10=98%) failed validation
+                                  # despite passing top-3 check
+MAX_YEAR_SHARE = 0.40             # no single year > 40% of PnL for ADVANCE
+MIN_MEDIAN_TRADE = 0              # median trade must be non-negative —
+                                  # negative median = tail-dependent, not edge
+MIN_TRADES_ADVANCE = 500          # concentration trust threshold
+MIN_TRADES_ROBUST = 100           # meaningful sample for SALVAGE
 
 
 def compute_concentration(trades_df):
@@ -86,6 +92,7 @@ def compute_concentration(trades_df):
     top3 = sorted_pnl.head(3).sum() / total_pnl
     top5 = sorted_pnl.head(5).sum() / total_pnl
     top10 = sorted_pnl.head(10).sum() / total_pnl
+    median_trade = float(trades_df["pnl"].median())
 
     # Year concentration
     year_share = 0
@@ -104,6 +111,7 @@ def compute_concentration(trades_df):
         "top5_share": round(float(top5), 3),
         "top10_share": round(float(top10), 3),
         "max_year_share": round(float(year_share), 3),
+        "median_trade": round(median_trade, 2),
     }
 
 
@@ -116,7 +124,9 @@ def classify(pf, trades, wf_h1_pf, wf_h2_pf, mode_results, concentration=None):
     conc = concentration or {}
     top3 = conc.get("top3_share", 0)
     top5 = conc.get("top5_share", 0)
+    top10 = conc.get("top10_share", 0)
     year_share = conc.get("max_year_share", 0)
+    median_trade = conc.get("median_trade", 0)
 
     # Check if any single mode shows strong edge
     any_mode_above_1_2 = any(m["pf"] > 1.2 and m["trades"] >= 15 for m in mode_results)
@@ -124,7 +134,13 @@ def classify(pf, trades, wf_h1_pf, wf_h2_pf, mode_results, concentration=None):
     # ── ADVANCE: strong across the board AND concentration-clean ──
     if (pf > 1.2 and trades >= MIN_TRADES_ADVANCE
             and wf_h1_pf > 1.0 and wf_h2_pf > 1.0):
-        # Concentration checks
+        # Concentration checks (ordered: cheapest first)
+        if median_trade < MIN_MEDIAN_TRADE:
+            reasons.append(
+                f"Median trade ${median_trade:.2f} < 0 — edge is tail-dependent, "
+                f"not distributed. Demoted to SALVAGE."
+            )
+            return "SALVAGE", reasons
         if top3 > CONCENTRATION_TOP3_MAX:
             reasons.append(
                 f"Top-3 concentration {top3*100:.0f}% > {CONCENTRATION_TOP3_MAX*100:.0f}% — "
@@ -137,6 +153,12 @@ def classify(pf, trades, wf_h1_pf, wf_h2_pf, mode_results, concentration=None):
                 f"demoted to SALVAGE"
             )
             return "SALVAGE", reasons
+        if top10 > CONCENTRATION_TOP10_MAX:
+            reasons.append(
+                f"Top-10 concentration {top10*100:.0f}% > {CONCENTRATION_TOP10_MAX*100:.0f}% — "
+                f"only a handful of trades drive returns. Demoted to SALVAGE."
+            )
+            return "SALVAGE", reasons
         if year_share > MAX_YEAR_SHARE:
             reasons.append(
                 f"Single year = {year_share*100:.0f}% of PnL (> {MAX_YEAR_SHARE*100:.0f}%) — "
@@ -146,8 +168,9 @@ def classify(pf, trades, wf_h1_pf, wf_h2_pf, mode_results, concentration=None):
         reasons.append(f"PF {pf:.2f} > 1.2 with {trades} trades")
         reasons.append(f"Walk-forward stable: H1={wf_h1_pf:.2f}, H2={wf_h2_pf:.2f}")
         reasons.append(
-            f"Concentration clean: top3={top3*100:.0f}%, "
-            f"top5={top5*100:.0f}%, max year={year_share*100:.0f}%"
+            f"Concentration clean: top3={top3*100:.0f}%, top5={top5*100:.0f}%, "
+            f"top10={top10*100:.0f}%, max year={year_share*100:.0f}%, "
+            f"median trade ${median_trade:.2f}"
         )
         return "ADVANCE", reasons
 

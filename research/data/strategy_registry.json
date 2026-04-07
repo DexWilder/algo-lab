@@ -313,7 +313,7 @@
       "trades_6yr": 47,
       "pnl_share": 13.9,
       "profit_factor": 1.6,
-      "notes": "True trend-follower (60-bar hold). GRINDING-only filter. Regime gate: avoid HIGH_RV (+$2,199 recovery queued). Needs 150 trades for promotion.",
+      "notes": "True trend-follower (60-bar hold). GRINDING-only filter. Regime gate: avoid HIGH_RV (+$2,199 recovery queued). Needs 150 trades for promotion. | DEEP VALIDATION REJECT 2026-04-07: Top-10=55%, top-20=88%, only MNQ profitable (1/6), median trade -$11.49, 1042-day DD.",
       "controller_state": "ARCHIVED",
       "controller_action": "OFF",
       "activation_score": 0.6375,
@@ -381,7 +381,7 @@
         "failures": 0
       },
       "lifecycle_stage": "archived",
-      "rejection_reason": "REDUNDANT",
+      "rejection_reason": "cross_asset_failure_1_of_6",
       "rejection_details": "Representative-redundancy replacement by NoiseBoundary-MNQ-Long. NoiseBoundary wins on WF (10/10 vs 5.0), trade count (609 vs 47), cross-asset validation (MES+MYM confirmed), and academic source. Correlation=0.374 confirms same bet. Archived to free probation slot.",
       "kill_flag": "redundancy",
       "kill_details": "Archived 2026-03-18. Superseded by NoiseBoundary-MNQ-Long.",
