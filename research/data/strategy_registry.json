@@ -1,6 +1,6 @@
 {
-  "_schema_version": "3.2",
-  "_generated": "2026-04-02",
+  "_schema_version": "2.0",
+  "_generated": "2026-04-06",
   "_description": "FQL Strategy Registry \u2014 institutional memory of all strategy ideas, tested candidates, and deployed strategies",
   "_purpose": "Preserves research knowledge, enables crossbreeding, feeds Strategy Factory",
   "strategies": [
@@ -122,9 +122,9 @@
       "last_review_date": "2026-03-15",
       "controller_state": "ACTIVE",
       "controller_action": "FULL_ON",
-      "activation_score": 0.8325,
+      "activation_score": 0.7375,
       "controller_reason_codes": [
-        "REGIME_MATCH_HIGH",
+        "REGIME_MATCH_MODERATE",
         "HALF_LIFE_STRENGTHENING",
         "PORTFOLIO_ADDS_VALUE",
         "LOW_REDUNDANCY",
@@ -132,11 +132,11 @@
         "KILL_NONE",
         "SESSION_DRIFT_DEGRADED",
         "SESSION_CONCENTRATION",
-        "TIME_WINDOW_MATCH",
+        "TIME_WINDOW_PARTIAL",
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-04-02",
+      "last_controller_date": "2026-04-06",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
@@ -221,7 +221,7 @@
       "last_review_date": "2026-03-15",
       "controller_state": "ACTIVE",
       "controller_action": "REDUCED_ON",
-      "activation_score": 0.65,
+      "activation_score": 0.635,
       "controller_reason_codes": [
         "REGIME_MATCH_MODERATE",
         "HALF_LIFE_STRENGTHENING",
@@ -231,11 +231,11 @@
         "KILL_NONE",
         "SESSION_DRIFT_BROKEN",
         "SESSION_CONCENTRATION",
-        "TIME_WINDOW_MATCH",
+        "TIME_WINDOW_PARTIAL",
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-04-02",
+      "last_controller_date": "2026-04-06",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
@@ -404,7 +404,7 @@
       "direction": "long",
       "source": "phase15_gold_snapback",
       "rule_summary": "Bollinger Band equilibrium bounce in trending sessions. Gold mean-reverts cleanly intraday.",
-      "status": "core",
+      "status": "rejected",
       "validation_score": 5.0,
       "parameter_stability": 100,
       "extended_history_status": "passed",
@@ -412,7 +412,7 @@
       "trades_6yr": 22,
       "pnl_share": 16.6,
       "profit_factor": 1.68,
-      "notes": "3x efficiency (5.6% trades, 16.6% PnL). Layer 3 tail engine. Regime gate: avoid HIGH_RV (+$350 recovery queued)",
+      "notes": "3x efficiency (5.6% trades, 16.6% PnL). Layer 3 tail engine. Regime gate: avoid HIGH_RV (+$350 recovery queued) | DEEP VALIDATION REJECT 2026-04-06: Top-3 = 88% of PnL, 2026 YTD = 79% of PnL, MES and MNQ both losers, 1077-day drawdown.",
       "kill_flag": null,
       "kill_details": null,
       "last_review_date": "2026-03-15",
@@ -432,7 +432,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-04-02",
+      "last_controller_date": "2026-04-06",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
@@ -492,7 +492,8 @@
         "timing": "Morning session",
         "asset_scope": "MGC (metal)",
         "validation_status": "validated"
-      }
+      },
+      "rejection_reason": "concentration_and_regime"
     },
     {
       "strategy_id": "PB-MGC-Short",
@@ -517,7 +518,7 @@
       "last_review_date": "2026-03-18",
       "controller_state": "ACTIVE",
       "controller_action": "FULL_ON",
-      "activation_score": 0.8175,
+      "activation_score": 0.8025,
       "controller_reason_codes": [
         "REGIME_MATCH_HIGH",
         "HALF_LIFE_STRENGTHENING",
@@ -527,11 +528,11 @@
         "KILL_NONE",
         "SESSION_DRIFT_NORMAL",
         "SESSION_CONCENTRATION",
-        "TIME_WINDOW_MATCH",
+        "TIME_WINDOW_PARTIAL",
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-04-02",
+      "last_controller_date": "2026-04-06",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
@@ -844,7 +845,7 @@
       "controller_state": "PROBATION",
       "prior_state": "PROBATION",
       "controller_action": "PROBATION",
-      "activation_score": 0.415,
+      "activation_score": 0.4,
       "controller_reason_codes": [
         "REGIME_MATCH_LOW",
         "HALF_LIFE_DEAD",
@@ -853,11 +854,11 @@
         "HEALTH_FAIL",
         "KILL_NONE",
         "SESSION_DRIFT_NORMAL",
-        "TIME_WINDOW_MATCH",
+        "TIME_WINDOW_PARTIAL",
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-04-02",
+      "last_controller_date": "2026-04-06",
       "review_priority": "MEDIUM",
       "half_life_status": "ARCHIVE_CANDIDATE",
       "contribution_status": "NEUTRAL",
@@ -911,7 +912,7 @@
       "controller_state": "PROBATION",
       "prior_state": "PROBATION",
       "controller_action": "PROBATION",
-      "activation_score": 0.415,
+      "activation_score": 0.4,
       "controller_reason_codes": [
         "REGIME_MATCH_LOW",
         "HALF_LIFE_DEAD",
@@ -920,11 +921,11 @@
         "HEALTH_FAIL",
         "KILL_NONE",
         "SESSION_DRIFT_NORMAL",
-        "TIME_WINDOW_MATCH",
+        "TIME_WINDOW_PARTIAL",
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-04-02",
+      "last_controller_date": "2026-04-06",
       "review_priority": "MEDIUM",
       "half_life_status": "ARCHIVE_CANDIDATE",
       "contribution_status": "NEUTRAL",
@@ -1965,14 +1966,14 @@
       "direction": "both",
       "source": "tradingview_harvest_batch1",
       "rule_summary": "Gap momentum system \u2014 trade in direction of opening gap with momentum confirmation",
-      "status": "watch",
+      "status": "rejected",
       "validation_score": 6.7,
       "parameter_stability": 83,
       "extended_history_status": "passed",
       "portfolio_role": "enhancer",
       "trades_6yr": null,
       "profit_factor": 1.72,
-      "notes": "MOVED TO WATCH 2026-03-18. Elite review: 16/24 MARGINAL. PF 1.72 on MGC-long is strong but adds to MGC + morning concentration. Second breakout on same asset/session as ORB-MGC (core, PF 1.99). WATCH CONDITIONS: Promote to conviction if MCL or MNQ results improve to PF > 1.3 (non-MGC edge). Archive if forward evidence confirms it is just a weaker ORB-MGC. DEADLINE: 2026-06-01 \u2014 if neither condition met, archive.",
+      "notes": "MOVED TO WATCH 2026-03-18. Elite review: 16/24 MARGINAL. PF 1.72 on MGC-long is strong but adds to MGC + morning concentration. Second breakout on same asset/session as ORB-MGC (core, PF 1.99). WATCH CONDITIONS: Promote to conviction if MCL or MNQ results improve to PF > 1.3 (non-MGC edge). Archive if forward evidence confirms it is just a weaker ORB-MGC. DEADLINE: 2026-06-01 \u2014 if neither condition met, archive. | DEEP VALIDATION REJECT 2026-04-06: Top-3 = 110% of PnL, one trade (2025-04-08) = 86% of all PnL, 2025 = 96% of total PnL.",
       "last_review_date": "2026-03-18",
       "source_category": "tradingview",
       "lifecycle_stage": "watch",
@@ -2016,7 +2017,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "rejection_reason": "single_trade_concentration"
     },
     {
       "strategy_id": "RangeExpansion",
@@ -2063,7 +2065,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-04-02",
+      "last_controller_date": "2026-04-06",
       "review_priority": "MEDIUM",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
@@ -2228,9 +2230,9 @@
       "last_review_date": "2026-03-18",
       "controller_state": "ACTIVE",
       "controller_action": "REDUCED_ON",
-      "activation_score": 0.68,
+      "activation_score": 0.64,
       "controller_reason_codes": [
-        "REGIME_MATCH_MODERATE",
+        "REGIME_MATCH_LOW",
         "HALF_LIFE_STRENGTHENING",
         "PORTFOLIO_ADDS_VALUE",
         "REDUNDANT_CLUSTER",
@@ -2241,7 +2243,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-04-02",
+      "last_controller_date": "2026-04-06",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
@@ -2573,7 +2575,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-04-02",
+      "last_controller_date": "2026-04-06",
       "review_priority": "MEDIUM",
       "prior_state": "PROBATION",
       "half_life_status": "ERROR",
@@ -2874,7 +2876,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-04-02",
+      "last_controller_date": "2026-04-06",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -2956,7 +2958,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-04-02",
+      "last_controller_date": "2026-04-06",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -3345,8 +3347,8 @@
       "direction": "long",
       "source": "openclaw_strategic_harvest",
       "rule_summary": "Pre-FOMC announcement drift: equity indices tend to drift higher in the 24 hours before FOMC announcements. Long MES/MNQ day before FOMC, exit after announcement. ~8 events/year.",
-      "status": "probation",
-      "notes": "PASS (7/8). First EVENT factor strategy. PF 1.73, 96 trades, Sharpe 3.85. Momentum correlation: -0.004 (ZERO \u2014 proven independent). Walk-forward: H1=2.03, H2=1.46. Top-trade removal: PF 1.49/1.27/1.15. MC ruin 4.2%. MES cross-validates PF 1.27. 2023 bad year explained: Fed pause reduced anticipation drift. Restrictions: MNQ primary, MICRO tier, 8 trades/yr, review after 8+ forward trades.",
+      "status": "rejected",
+      "notes": "PASS (7/8). First EVENT factor strategy. PF 1.73, 96 trades, Sharpe 3.85. Momentum correlation: -0.004 (ZERO \u2014 proven independent). Walk-forward: H1=2.03, H2=1.46. Top-trade removal: PF 1.49/1.27/1.15. MC ruin 4.2%. MES cross-validates PF 1.27. 2023 bad year explained: Fed pause reduced anticipation drift. Restrictions: MNQ primary, MICRO tier, 8 trades/yr, review after 8+ forward trades. | DEEP VALIDATION REJECT 2026-04-06: Top-3 = 81% of PnL, 2022 = 59% of PnL, MES cross-asset 4/7 years negative, 680-day drawdown.",
       "last_review_date": "2026-03-17",
       "review_priority": "LOW",
       "lifecycle_stage": "forward_validation",
@@ -3407,7 +3409,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-04-02",
+      "last_controller_date": "2026-04-06",
       "half_life_status": "HEALTHY",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -3440,7 +3442,8 @@
         "timing": "Overnight into FOMC day",
         "asset_scope": "MNQ (equity index)",
         "validation_status": "validated"
-      }
+      },
+      "rejection_reason": "concentration"
     },
     {
       "strategy_id": "Treasury-CPI-Day-Long",
@@ -3840,7 +3843,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-04-02",
+      "last_controller_date": "2026-04-06",
       "half_life_status": "ARCHIVE_CANDIDATE",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -4464,7 +4467,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-04-02",
+      "last_controller_date": "2026-04-06",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -4569,7 +4572,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-04-02",
+      "last_controller_date": "2026-04-06",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -4712,7 +4715,7 @@
       "status": "probation",
       "notes": "ACTIVE CARRY CHALLENGER. Entered forward runner 2026-03-20. MICRO tier, monthly rebalance, 1 contract per spread leg. Rubric 18 (eff. 20 with gap bonus). Fills CARRY + Rates gaps. June 1 displacement target: MomIgn-M2K-Short. Promote condition: 3mo forward Sharpe > 0 + WF improvement. Archive condition: 3mo consecutive negative forward returns.",
       "last_review_date": "2026-03-20",
-      "review_priority": "HIGH",
+      "review_priority": "MEDIUM",
       "lifecycle_stage": "forward_evidence",
       "source_category": "academic",
       "tags": [
@@ -4741,7 +4744,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-04-02",
+      "last_controller_date": "2026-04-06",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -5067,7 +5070,7 @@
       "controller_action": "PROBATION",
       "activation_score": 0.545,
       "controller_state": "PAPER",
-      "last_controller_date": "2026-04-02",
+      "last_controller_date": "2026-04-06",
       "execution_config": {
         "avoid_regimes": [],
         "preferred_regimes": [
@@ -5193,6 +5196,23 @@
           ]
         }
       ]
+    },
+    {
+      "strategy_id": "XB-ORB-EMA-Ladder-MNQ",
+      "strategy_name": "xb_orb_ema_ladder",
+      "family": "crossbreed_breakout",
+      "asset": "MNQ",
+      "session": "all_day",
+      "direction": "both",
+      "source": "internal_crossbreeding",
+      "rule_summary": "ORB + EMA ladder crossbreed. Both directions, 60% win rate, payoff 1.05.",
+      "status": "probation",
+      "validation_score": 9.0,
+      "trades_6yr": 1183,
+      "profit_factor": 1.59,
+      "portfolio_role": "workhorse",
+      "promotion_date": "2026-04-06",
+      "notes": "PASSED deep validation 2026-04-06. 1183 trades, 8/8 years profitable, top-3 concentration 10%, 7/7 walk-forward windows positive, all 4 cross-assets profitable, max DD only 3.1%, H2 stronger than H1. Edge is WR-based (60% WR, payoff 1.05) \u2014 monitor for WR drift. First true elite candidate from mass screen."
     }
   ],
   "_rejection_taxonomy": {
