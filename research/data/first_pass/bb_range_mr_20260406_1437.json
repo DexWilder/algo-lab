@@ -1,0 +1,137 @@
+{
+  "strategy": "bb_range_mr",
+  "run_date": "2026-04-06T14:33:59.999197",
+  "session_filter": null,
+  "asset_results": {
+    "MES": {
+      "asset": "MES",
+      "bars": 474187,
+      "modes": {
+        "both": {
+          "trades": 741,
+          "pnl": -3313.84,
+          "pf": 0.787,
+          "sharpe": -1.48,
+          "maxdd": 3952.7,
+          "wr": 38.7,
+          "avg_pnl": -4.47,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 302,
+          "pnl": -1305.73,
+          "pf": 0.829,
+          "sharpe": -1.17,
+          "maxdd": 1975.04,
+          "wr": 42.1,
+          "avg_pnl": -4.32,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 439,
+          "pnl": -2008.11,
+          "pf": 0.747,
+          "sharpe": -1.83,
+          "maxdd": 2377.48,
+          "wr": 36.4,
+          "avg_pnl": -4.57,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 352,
+          "pnl": -2157.73,
+          "pf": 0.703,
+          "sharpe": -2.13,
+          "maxdd": 2214.19,
+          "wr": 35.2,
+          "avg_pnl": -6.13
+        },
+        "H2": {
+          "trades": 389,
+          "pnl": -1156.11,
+          "pf": 0.861,
+          "sharpe": -0.95,
+          "maxdd": 1832.36,
+          "wr": 41.9,
+          "avg_pnl": -2.97
+        }
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Sufficient trades (741) but PF 0.79 < 1.1"
+      ]
+    },
+    "MNQ": {
+      "asset": "MNQ",
+      "bars": 474064,
+      "modes": {
+        "both": {
+          "trades": 702,
+          "pnl": -1991.48,
+          "pf": 0.914,
+          "sharpe": -0.55,
+          "maxdd": 3664.84,
+          "wr": 36.0,
+          "avg_pnl": -2.84,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 293,
+          "pnl": 1469.68,
+          "pf": 1.14,
+          "sharpe": 0.83,
+          "maxdd": 1460.44,
+          "wr": 41.3,
+          "avg_pnl": 5.02,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 409,
+          "pnl": -3461.16,
+          "pf": 0.726,
+          "sharpe": -1.88,
+          "maxdd": 4275.68,
+          "wr": 32.3,
+          "avg_pnl": -8.46,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 358,
+          "pnl": 87.08,
+          "pf": 1.009,
+          "sharpe": 0.05,
+          "maxdd": 1102.72,
+          "wr": 36.9,
+          "avg_pnl": 0.24
+        },
+        "H2": {
+          "trades": 344,
+          "pnl": -2078.56,
+          "pf": 0.841,
+          "sharpe": -1.1,
+          "maxdd": 3030.76,
+          "wr": 35.2,
+          "avg_pnl": -6.04
+        }
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Sufficient trades (702) but PF 0.91 < 1.1"
+      ]
+    }
+  },
+  "best_result": {
+    "asset": "MNQ",
+    "classification": "REJECT",
+    "pf": 0.914,
+    "trades": 702
+  },
+  "overall_classification": "REJECT",
+  "overall_reasons": [
+    "Sufficient trades (702) but PF 0.91 < 1.1"
+  ]
+}

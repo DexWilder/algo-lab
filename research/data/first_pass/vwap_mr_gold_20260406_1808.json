@@ -1,0 +1,137 @@
+{
+  "strategy": "vwap_mr_gold",
+  "run_date": "2026-04-06T18:08:03.785394",
+  "session_filter": null,
+  "asset_results": {
+    "MGC": {
+      "asset": "MGC",
+      "bars": 250118,
+      "modes": {
+        "both": {
+          "trades": 1164,
+          "pnl": -3661.36,
+          "pf": 0.873,
+          "sharpe": -0.64,
+          "maxdd": 5628.0,
+          "wr": 42.0,
+          "avg_pnl": -3.15,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 571,
+          "pnl": -1345.04,
+          "pf": 0.909,
+          "sharpe": -0.35,
+          "maxdd": 2805.48,
+          "wr": 40.6,
+          "avg_pnl": -2.36,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 593,
+          "pnl": -2316.32,
+          "pf": 0.837,
+          "sharpe": -1.03,
+          "maxdd": 3196.24,
+          "wr": 43.3,
+          "avg_pnl": -3.91,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 590,
+          "pnl": -3016.6,
+          "pf": 0.751,
+          "sharpe": -1.75,
+          "maxdd": 3051.0,
+          "wr": 40.7,
+          "avg_pnl": -5.11
+        },
+        "H2": {
+          "trades": 573,
+          "pnl": -637.52,
+          "pf": 0.962,
+          "sharpe": -0.18,
+          "maxdd": 2640.44,
+          "wr": 43.5,
+          "avg_pnl": -1.11
+        }
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Sufficient trades (1164) but PF 0.87 < 1.1"
+      ]
+    },
+    "MES": {
+      "asset": "MES",
+      "bars": 474187,
+      "modes": {
+        "both": {
+          "trades": 2254,
+          "pnl": -13894.96,
+          "pf": 0.749,
+          "sharpe": -2.06,
+          "maxdd": 14198.19,
+          "wr": 41.8,
+          "avg_pnl": -6.16,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 1015,
+          "pnl": -6233.6,
+          "pf": 0.765,
+          "sharpe": -1.72,
+          "maxdd": 7079.96,
+          "wr": 42.6,
+          "avg_pnl": -6.14,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 1239,
+          "pnl": -7661.36,
+          "pf": 0.735,
+          "sharpe": -1.7,
+          "maxdd": 8034.01,
+          "wr": 41.2,
+          "avg_pnl": -6.18,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 1150,
+          "pnl": -5631.0,
+          "pf": 0.79,
+          "sharpe": -1.79,
+          "maxdd": 5945.34,
+          "wr": 42.8,
+          "avg_pnl": -4.9
+        },
+        "H2": {
+          "trades": 1104,
+          "pnl": -8263.96,
+          "pf": 0.712,
+          "sharpe": -2.3,
+          "maxdd": 8470.43,
+          "wr": 40.8,
+          "avg_pnl": -7.49
+        }
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Sufficient trades (2254) but PF 0.75 < 1.1"
+      ]
+    }
+  },
+  "best_result": {
+    "asset": "MGC",
+    "classification": "REJECT",
+    "pf": 0.873,
+    "trades": 1164
+  },
+  "overall_classification": "REJECT",
+  "overall_reasons": [
+    "Sufficient trades (1164) but PF 0.87 < 1.1"
+  ]
+}

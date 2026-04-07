@@ -144,6 +144,24 @@ def load_strategy(strategy_name, tick_size):
     return mod
 
 
+def _call_generate_signals(mod, df, mode="both", asset=None):
+    """Call generate_signals with interface detection.
+
+    Handles both old-style (df) and new-style (df, asset, mode) signatures.
+    """
+    import inspect
+    sig = inspect.signature(mod.generate_signals)
+    params = set(sig.parameters.keys())
+
+    kwargs = {}
+    if "asset" in params and asset:
+        kwargs["asset"] = asset
+    if "mode" in params:
+        kwargs["mode"] = mode
+
+    return mod.generate_signals(df, **kwargs)
+
+
 # ── Data Loading ─────────────────────────────────────────────────────────────
 
 def load_data(asset, session_filter=None):
@@ -202,7 +220,7 @@ def run_first_pass(strategy_name, assets, session_filter=None):
         mode_results = []
         for mode in ["both", "long", "short"]:
             try:
-                signals = mod.generate_signals(df.copy(), mode=mode)
+                signals = _call_generate_signals(mod, df.copy(), mode=mode, asset=asset)
                 # Handle daily-resampling strategies: if signals has fewer
                 # rows than input data, use signals as both df and signals
                 bt_df = signals if len(signals) < len(df) else df
@@ -228,7 +246,7 @@ def run_first_pass(strategy_name, assets, session_filter=None):
             try:
                 mod = load_strategy(strategy_name, cfg["tick_size"])
                 sub_reset = sub.copy().reset_index(drop=True)
-                signals = mod.generate_signals(sub_reset, mode="both")
+                signals = _call_generate_signals(mod, sub_reset, mode="both", asset=asset)
                 bt_df = signals if len(signals) < len(sub_reset) else sub_reset
                 r = run_backtest(
                     bt_df, signals, mode="both",

@@ -1,0 +1,77 @@
+{
+  "strategy": "donchian_trend_breakout",
+  "run_date": "2026-04-06T14:57:23.737483",
+  "session_filter": null,
+  "asset_results": {
+    "ZB": {
+      "asset": "ZB",
+      "bars": 381796,
+      "modes": {
+        "both": {
+          "trades": 1366,
+          "pnl": -92446.25,
+          "pf": 0.575,
+          "sharpe": -3.25,
+          "maxdd": 93361.25,
+          "wr": 35.9,
+          "avg_pnl": -67.68,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 723,
+          "pnl": -52182.5,
+          "pf": 0.537,
+          "sharpe": -3.65,
+          "maxdd": 54760.0,
+          "wr": 33.5,
+          "avg_pnl": -72.17,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 663,
+          "pnl": -43782.5,
+          "pf": 0.601,
+          "sharpe": -2.85,
+          "maxdd": 43780.0,
+          "wr": 37.6,
+          "avg_pnl": -66.04,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 682,
+          "pnl": -35423.75,
+          "pf": 0.688,
+          "sharpe": -2.13,
+          "maxdd": 39596.25,
+          "wr": 39.7,
+          "avg_pnl": -51.94
+        },
+        "H2": {
+          "trades": 683,
+          "pnl": -56082.5,
+          "pf": 0.457,
+          "sharpe": -4.91,
+          "maxdd": 57117.5,
+          "wr": 32.2,
+          "avg_pnl": -82.11
+        }
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Sufficient trades (1366) but PF 0.57 < 1.1"
+      ]
+    }
+  },
+  "best_result": {
+    "asset": "ZB",
+    "classification": "REJECT",
+    "pf": 0.575,
+    "trades": 1366
+  },
+  "overall_classification": "REJECT",
+  "overall_reasons": [
+    "Sufficient trades (1366) but PF 0.57 < 1.1"
+  ]
+}

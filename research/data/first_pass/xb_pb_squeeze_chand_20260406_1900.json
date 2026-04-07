@@ -1,0 +1,77 @@
+{
+  "strategy": "xb_pb_squeeze_chand",
+  "run_date": "2026-04-06T18:59:58.635247",
+  "session_filter": null,
+  "asset_results": {
+    "MGC": {
+      "asset": "MGC",
+      "bars": 250118,
+      "modes": {
+        "both": {
+          "trades": 1218,
+          "pnl": -3890.32,
+          "pf": 0.893,
+          "sharpe": -0.51,
+          "maxdd": 6031.72,
+          "wr": 37.7,
+          "avg_pnl": -3.19,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 597,
+          "pnl": 2896.72,
+          "pf": 1.188,
+          "sharpe": 0.81,
+          "maxdd": 1952.68,
+          "wr": 40.2,
+          "avg_pnl": 4.85,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 621,
+          "pnl": -6787.04,
+          "pf": 0.678,
+          "sharpe": -1.41,
+          "maxdd": 7983.24,
+          "wr": 35.3,
+          "avg_pnl": -10.93,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 616,
+          "pnl": -239.84,
+          "pf": 0.982,
+          "sharpe": -0.1,
+          "maxdd": 1931.76,
+          "wr": 37.3,
+          "avg_pnl": -0.39
+        },
+        "H2": {
+          "trades": 603,
+          "pnl": -3632.72,
+          "pf": 0.844,
+          "sharpe": -0.77,
+          "maxdd": 4219.2,
+          "wr": 38.1,
+          "avg_pnl": -6.02
+        }
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Sufficient trades (1218) but PF 0.89 < 1.1"
+      ]
+    }
+  },
+  "best_result": {
+    "asset": "MGC",
+    "classification": "REJECT",
+    "pf": 0.893,
+    "trades": 1218
+  },
+  "overall_classification": "REJECT",
+  "overall_reasons": [
+    "Sufficient trades (1218) but PF 0.89 < 1.1"
+  ]
+}
