@@ -1,0 +1,887 @@
+[
+  {
+    "id": "anchor",
+    "entry": "orb_breakout",
+    "filter": "ema_slope",
+    "exit": "profit_ladder",
+    "classification": "ADVANCE",
+    "reason": "all 4 profitable, avg PF 1.55",
+    "profitable": 4,
+    "avg_pf": 1.548,
+    "total_trades": 4191,
+    "best_asset": "MGC",
+    "best_pf": 1.651,
+    "per_asset": [
+      {
+        "asset": "MNQ",
+        "trades": 1183,
+        "pf": 1.62,
+        "pnl": 50785.0,
+        "top3": 9.4,
+        "top10": 22.7,
+        "median": 43.26,
+        "max_year": 21.6,
+        "dd_days": 143
+      },
+      {
+        "asset": "MES",
+        "trades": 1213,
+        "pf": 1.584,
+        "pnl": 28387.0,
+        "top3": 10.1,
+        "top10": 23.1,
+        "median": 23.76,
+        "max_year": 22.0,
+        "dd_days": 228
+      },
+      {
+        "asset": "MGC",
+        "trades": 644,
+        "pf": 1.651,
+        "pnl": 12597.0,
+        "top3": 19.3,
+        "top10": 47.3,
+        "median": 9.26,
+        "max_year": 30.6,
+        "dd_days": 363
+      },
+      {
+        "asset": "M2K",
+        "trades": 1151,
+        "pf": 1.335,
+        "pnl": 10804.0,
+        "top3": 10.6,
+        "top10": 29.4,
+        "median": 7.76,
+        "max_year": 28.7,
+        "dd_days": 265
+      }
+    ]
+  },
+  {
+    "id": "entry_donchian",
+    "entry": "donchian_breakout",
+    "filter": "ema_slope",
+    "exit": "profit_ladder",
+    "classification": "REJECT",
+    "reason": "0/4 profitable (need majority)",
+    "profitable": 0,
+    "avg_pf": 0.0,
+    "total_trades": 0,
+    "best_asset": "MNQ",
+    "best_pf": 0,
+    "per_asset": [
+      {
+        "asset": "MNQ",
+        "trades": 0,
+        "pf": 0,
+        "pnl": 0,
+        "top3": 0,
+        "top10": 0,
+        "median": 0,
+        "max_year": 0,
+        "dd_days": 0
+      },
+      {
+        "asset": "MES",
+        "trades": 0,
+        "pf": 0,
+        "pnl": 0,
+        "top3": 0,
+        "top10": 0,
+        "median": 0,
+        "max_year": 0,
+        "dd_days": 0
+      },
+      {
+        "asset": "MGC",
+        "trades": 0,
+        "pf": 0,
+        "pnl": 0,
+        "top3": 0,
+        "top10": 0,
+        "median": 0,
+        "max_year": 0,
+        "dd_days": 0
+      },
+      {
+        "asset": "M2K",
+        "trades": 0,
+        "pf": 0,
+        "pnl": 0,
+        "top3": 0,
+        "top10": 0,
+        "median": 0,
+        "max_year": 0,
+        "dd_days": 0
+      }
+    ]
+  },
+  {
+    "id": "entry_pb_pullback",
+    "entry": "pb_pullback",
+    "filter": "ema_slope",
+    "exit": "profit_ladder",
+    "classification": "REJECT",
+    "reason": "negative median on ['MES']",
+    "profitable": 4,
+    "avg_pf": 1.223,
+    "total_trades": 5167,
+    "best_asset": "MNQ",
+    "best_pf": 1.391,
+    "per_asset": [
+      {
+        "asset": "MNQ",
+        "trades": 1446,
+        "pf": 1.391,
+        "pnl": 28122.0,
+        "top3": 10.8,
+        "top10": 29.4,
+        "median": 6.76,
+        "max_year": 41.3,
+        "dd_days": 254
+      },
+      {
+        "asset": "MES",
+        "trades": 1456,
+        "pf": 1.149,
+        "pnl": 6483.0,
+        "top3": 27.7,
+        "top10": 72.8,
+        "median": -3.74,
+        "max_year": 70.4,
+        "dd_days": 950
+      },
+      {
+        "asset": "MGC",
+        "trades": 850,
+        "pf": 1.157,
+        "pnl": 4303.0,
+        "top3": 54.3,
+        "top10": 132.6,
+        "median": 3.76,
+        "max_year": 60.1,
+        "dd_days": 538
+      },
+      {
+        "asset": "M2K",
+        "trades": 1415,
+        "pf": 1.193,
+        "pnl": 5646.0,
+        "top3": 19.9,
+        "top10": 51.5,
+        "median": 1.26,
+        "max_year": 33.8,
+        "dd_days": 553
+      }
+    ]
+  },
+  {
+    "id": "entry_vwap_cont",
+    "entry": "vwap_continuation",
+    "filter": "ema_slope",
+    "exit": "profit_ladder",
+    "classification": "REJECT",
+    "reason": "negative median on ['MNQ', 'MES', 'MGC']",
+    "profitable": 4,
+    "avg_pf": 1.138,
+    "total_trades": 2824,
+    "best_asset": "MGC",
+    "best_pf": 1.221,
+    "per_asset": [
+      {
+        "asset": "MNQ",
+        "trades": 803,
+        "pf": 1.047,
+        "pnl": 2090.0,
+        "top3": 103.5,
+        "top10": 277.3,
+        "median": -4.74,
+        "max_year": 142.7,
+        "dd_days": 2293
+      },
+      {
+        "asset": "MES",
+        "trades": 869,
+        "pf": 1.065,
+        "pnl": 1742.0,
+        "top3": 97.6,
+        "top10": 234.4,
+        "median": -3.74,
+        "max_year": 174.8,
+        "dd_days": 2080
+      },
+      {
+        "asset": "MGC",
+        "trades": 364,
+        "pf": 1.221,
+        "pnl": 2541.0,
+        "top3": 71.4,
+        "top10": 166.7,
+        "median": -0.24,
+        "max_year": 70.4,
+        "dd_days": 674
+      },
+      {
+        "asset": "M2K",
+        "trades": 788,
+        "pf": 1.217,
+        "pnl": 3532.0,
+        "top3": 23.1,
+        "top10": 69.0,
+        "median": 1.76,
+        "max_year": 35.8,
+        "dd_days": 872
+      }
+    ]
+  },
+  {
+    "id": "entry_bb_reversion",
+    "entry": "bb_reversion",
+    "filter": "ema_slope",
+    "exit": "profit_ladder",
+    "classification": "REJECT",
+    "reason": "negative median on ['MES']",
+    "profitable": 4,
+    "avg_pf": 1.299,
+    "total_trades": 2251,
+    "best_asset": "MGC",
+    "best_pf": 1.514,
+    "per_asset": [
+      {
+        "asset": "MNQ",
+        "trades": 662,
+        "pf": 1.265,
+        "pnl": 9407.0,
+        "top3": 41.5,
+        "top10": 85.9,
+        "median": 5.01,
+        "max_year": 23.7,
+        "dd_days": 293
+      },
+      {
+        "asset": "MES",
+        "trades": 676,
+        "pf": 1.125,
+        "pnl": 2511.0,
+        "top3": 117.2,
+        "top10": 225.7,
+        "median": -3.74,
+        "max_year": 87.0,
+        "dd_days": 941
+      },
+      {
+        "asset": "MGC",
+        "trades": 288,
+        "pf": 1.514,
+        "pnl": 4083.0,
+        "top3": 74.5,
+        "top10": 128.8,
+        "median": 3.76,
+        "max_year": 86.7,
+        "dd_days": 1140
+      },
+      {
+        "asset": "M2K",
+        "trades": 625,
+        "pf": 1.292,
+        "pnl": 3378.0,
+        "top3": 25.7,
+        "top10": 70.2,
+        "median": 0.26,
+        "max_year": 45.6,
+        "dd_days": 788
+      }
+    ]
+  },
+  {
+    "id": "filter_vwap_slope",
+    "entry": "orb_breakout",
+    "filter": "vwap_slope",
+    "exit": "profit_ladder",
+    "classification": "REJECT",
+    "reason": "negative median on ['MGC', 'M2K']",
+    "profitable": 3,
+    "avg_pf": 1.046,
+    "total_trades": 6531,
+    "best_asset": "MGC",
+    "best_pf": 1.157,
+    "per_asset": [
+      {
+        "asset": "MNQ",
+        "trades": 1824,
+        "pf": 1.059,
+        "pnl": 9442.0,
+        "top3": 44.6,
+        "top10": 118.7,
+        "median": 8.01,
+        "max_year": 54.4,
+        "dd_days": 1391
+      },
+      {
+        "asset": "MES",
+        "trades": 1898,
+        "pf": 1.038,
+        "pnl": 3578.0,
+        "top3": 69.8,
+        "top10": 179.1,
+        "median": 2.51,
+        "max_year": 91.7,
+        "dd_days": 1586
+      },
+      {
+        "asset": "MGC",
+        "trades": 1024,
+        "pf": 1.157,
+        "pnl": 6231.0,
+        "top3": 59.2,
+        "top10": 129.8,
+        "median": -1.24,
+        "max_year": 55.1,
+        "dd_days": 1878
+      },
+      {
+        "asset": "M2K",
+        "trades": 1785,
+        "pf": 0.929,
+        "pnl": -4187.0,
+        "top3": 0,
+        "top10": 0,
+        "median": -0.74,
+        "max_year": 0,
+        "dd_days": 2373
+      }
+    ]
+  },
+  {
+    "id": "filter_bw_squeeze",
+    "entry": "orb_breakout",
+    "filter": "bandwidth_squeeze",
+    "exit": "profit_ladder",
+    "classification": "REJECT",
+    "reason": "negative median on ['MGC', 'M2K']",
+    "profitable": 3,
+    "avg_pf": 1.055,
+    "total_trades": 6465,
+    "best_asset": "MGC",
+    "best_pf": 1.197,
+    "per_asset": [
+      {
+        "asset": "MNQ",
+        "trades": 1815,
+        "pf": 1.05,
+        "pnl": 8039.0,
+        "top3": 52.4,
+        "top10": 139.5,
+        "median": 7.76,
+        "max_year": 57.4,
+        "dd_days": 1529
+      },
+      {
+        "asset": "MES",
+        "trades": 1870,
+        "pf": 1.045,
+        "pnl": 4254.0,
+        "top3": 58.7,
+        "top10": 150.6,
+        "median": 3.76,
+        "max_year": 77.1,
+        "dd_days": 1476
+      },
+      {
+        "asset": "MGC",
+        "trades": 1010,
+        "pf": 1.197,
+        "pnl": 7612.0,
+        "top3": 48.4,
+        "top10": 106.3,
+        "median": -0.74,
+        "max_year": 71.6,
+        "dd_days": 2051
+      },
+      {
+        "asset": "M2K",
+        "trades": 1770,
+        "pf": 0.928,
+        "pnl": -4202.0,
+        "top3": 0,
+        "top10": 0,
+        "median": -0.49,
+        "max_year": 0,
+        "dd_days": 2373
+      }
+    ]
+  },
+  {
+    "id": "filter_morning",
+    "entry": "orb_breakout",
+    "filter": "session_morning",
+    "exit": "profit_ladder",
+    "classification": "REJECT",
+    "reason": "negative median on ['MGC', 'M2K']",
+    "profitable": 3,
+    "avg_pf": 1.034,
+    "total_trades": 5743,
+    "best_asset": "MGC",
+    "best_pf": 1.15,
+    "per_asset": [
+      {
+        "asset": "MNQ",
+        "trades": 1615,
+        "pf": 1.031,
+        "pnl": 4565.0,
+        "top3": 83.6,
+        "top10": 220.2,
+        "median": 10.26,
+        "max_year": 110.8,
+        "dd_days": 1576
+      },
+      {
+        "asset": "MES",
+        "trades": 1658,
+        "pf": 1.019,
+        "pnl": 1640.0,
+        "top3": 122.1,
+        "top10": 337.2,
+        "median": 3.76,
+        "max_year": 220.1,
+        "dd_days": 1480
+      },
+      {
+        "asset": "MGC",
+        "trades": 913,
+        "pf": 1.15,
+        "pnl": 5495.0,
+        "top3": 57.0,
+        "top10": 134.4,
+        "median": -1.24,
+        "max_year": 40.5,
+        "dd_days": 1513
+      },
+      {
+        "asset": "M2K",
+        "trades": 1557,
+        "pf": 0.935,
+        "pnl": -3497.0,
+        "top3": 0,
+        "top10": 0,
+        "median": -0.74,
+        "max_year": 0,
+        "dd_days": 2373
+      }
+    ]
+  },
+  {
+    "id": "filter_afternoon",
+    "entry": "orb_breakout",
+    "filter": "session_afternoon",
+    "exit": "profit_ladder",
+    "classification": "REJECT",
+    "reason": "2/4 profitable (need majority)",
+    "profitable": 2,
+    "avg_pf": 1.012,
+    "total_trades": 5787,
+    "best_asset": "MNQ",
+    "best_pf": 1.071,
+    "per_asset": [
+      {
+        "asset": "MNQ",
+        "trades": 1618,
+        "pf": 1.071,
+        "pnl": 7296.0,
+        "top3": 54.0,
+        "top10": 123.2,
+        "median": 6.76,
+        "max_year": 53.0,
+        "dd_days": 1099
+      },
+      {
+        "asset": "MES",
+        "trades": 1701,
+        "pf": 0.974,
+        "pnl": -1747.0,
+        "top3": 0,
+        "top10": 0,
+        "median": 0.01,
+        "max_year": 0,
+        "dd_days": 2070
+      },
+      {
+        "asset": "MGC",
+        "trades": 911,
+        "pf": 1.031,
+        "pnl": 845.0,
+        "top3": 313.4,
+        "top10": 697.9,
+        "median": -2.24,
+        "max_year": 320.7,
+        "dd_days": 2070
+      },
+      {
+        "asset": "M2K",
+        "trades": 1557,
+        "pf": 0.972,
+        "pnl": -1023.0,
+        "top3": 0,
+        "top10": 0,
+        "median": -0.24,
+        "max_year": 0,
+        "dd_days": 2373
+      }
+    ]
+  },
+  {
+    "id": "filter_none",
+    "entry": "orb_breakout",
+    "filter": "none",
+    "exit": "profit_ladder",
+    "classification": "REJECT",
+    "reason": "negative median on ['MGC', 'M2K']",
+    "profitable": 3,
+    "avg_pf": 1.042,
+    "total_trades": 6569,
+    "best_asset": "MGC",
+    "best_pf": 1.142,
+    "per_asset": [
+      {
+        "asset": "MNQ",
+        "trades": 1829,
+        "pf": 1.056,
+        "pnl": 9083.0,
+        "top3": 46.4,
+        "top10": 123.5,
+        "median": 7.76,
+        "max_year": 54.7,
+        "dd_days": 1385
+      },
+      {
+        "asset": "MES",
+        "trades": 1901,
+        "pf": 1.041,
+        "pnl": 3928.0,
+        "top3": 63.6,
+        "top10": 163.1,
+        "median": 2.51,
+        "max_year": 85.4,
+        "dd_days": 1553
+      },
+      {
+        "asset": "MGC",
+        "trades": 1050,
+        "pf": 1.142,
+        "pnl": 5936.0,
+        "top3": 62.1,
+        "top10": 136.3,
+        "median": -1.24,
+        "max_year": 59.3,
+        "dd_days": 2033
+      },
+      {
+        "asset": "M2K",
+        "trades": 1789,
+        "pf": 0.929,
+        "pnl": -4193.0,
+        "top3": 0,
+        "top10": 0,
+        "median": -0.74,
+        "max_year": 0,
+        "dd_days": 2373
+      }
+    ]
+  },
+  {
+    "id": "exit_atr_trail",
+    "entry": "orb_breakout",
+    "filter": "ema_slope",
+    "exit": "atr_trail",
+    "classification": "REJECT",
+    "reason": "negative median on ['MNQ', 'MES', 'MGC', 'M2K']",
+    "profitable": 4,
+    "avg_pf": 1.326,
+    "total_trades": 4191,
+    "best_asset": "MNQ",
+    "best_pf": 1.511,
+    "per_asset": [
+      {
+        "asset": "MNQ",
+        "trades": 1183,
+        "pf": 1.511,
+        "pnl": 27953.0,
+        "top3": 10.7,
+        "top10": 29.0,
+        "median": -0.74,
+        "max_year": 27.1,
+        "dd_days": 327
+      },
+      {
+        "asset": "MES",
+        "trades": 1213,
+        "pf": 1.414,
+        "pnl": 13498.0,
+        "top3": 11.4,
+        "top10": 33.4,
+        "median": -4.99,
+        "max_year": 26.1,
+        "dd_days": 284
+      },
+      {
+        "asset": "MGC",
+        "trades": 644,
+        "pf": 1.157,
+        "pnl": 2543.0,
+        "top3": 52.1,
+        "top10": 129.1,
+        "median": -5.24,
+        "max_year": 46.6,
+        "dd_days": 608
+      },
+      {
+        "asset": "M2K",
+        "trades": 1151,
+        "pf": 1.22,
+        "pnl": 4808.0,
+        "top3": 17.1,
+        "top10": 49.8,
+        "median": -5.24,
+        "max_year": 38.4,
+        "dd_days": 670
+      }
+    ]
+  },
+  {
+    "id": "exit_midline_bb",
+    "entry": "orb_breakout",
+    "filter": "ema_slope",
+    "exit": "midline_target",
+    "classification": "REJECT",
+    "reason": "1/4 profitable (need majority)",
+    "profitable": 1,
+    "avg_pf": 0.95,
+    "total_trades": 4191,
+    "best_asset": "MNQ",
+    "best_pf": 1.08,
+    "per_asset": [
+      {
+        "asset": "MNQ",
+        "trades": 1183,
+        "pf": 1.08,
+        "pnl": 2222.0,
+        "top3": 59.9,
+        "top10": 141.9,
+        "median": 0.26,
+        "max_year": 102.5,
+        "dd_days": 1315
+      },
+      {
+        "asset": "MES",
+        "trades": 1213,
+        "pf": 0.882,
+        "pnl": -1962.0,
+        "top3": 0,
+        "top10": 0,
+        "median": -2.49,
+        "max_year": 0,
+        "dd_days": 2463
+      },
+      {
+        "asset": "MGC",
+        "trades": 644,
+        "pf": 0.928,
+        "pnl": -698.0,
+        "top3": 0,
+        "top10": 0,
+        "median": -4.24,
+        "max_year": 0,
+        "dd_days": 2387
+      },
+      {
+        "asset": "M2K",
+        "trades": 1151,
+        "pf": 0.909,
+        "pnl": -1028.0,
+        "top3": 0,
+        "top10": 0,
+        "median": -0.74,
+        "max_year": 0,
+        "dd_days": 1850
+      }
+    ]
+  },
+  {
+    "id": "exit_midline_vwap",
+    "entry": "orb_breakout",
+    "filter": "ema_slope",
+    "exit": "midline_target",
+    "classification": "REJECT",
+    "reason": "1/4 profitable (need majority)",
+    "profitable": 1,
+    "avg_pf": 0.966,
+    "total_trades": 4191,
+    "best_asset": "MNQ",
+    "best_pf": 1.089,
+    "per_asset": [
+      {
+        "asset": "MNQ",
+        "trades": 1183,
+        "pf": 1.089,
+        "pnl": 2467.0,
+        "top3": 53.9,
+        "top10": 127.8,
+        "median": 1.26,
+        "max_year": 92.3,
+        "dd_days": 1497
+      },
+      {
+        "asset": "MES",
+        "trades": 1213,
+        "pf": 0.886,
+        "pnl": -1888.0,
+        "top3": 0,
+        "top10": 0,
+        "median": -2.49,
+        "max_year": 0,
+        "dd_days": 2463
+      },
+      {
+        "asset": "MGC",
+        "trades": 644,
+        "pf": 0.958,
+        "pnl": -414.0,
+        "top3": 0,
+        "top10": 0,
+        "median": -4.24,
+        "max_year": 0,
+        "dd_days": 2387
+      },
+      {
+        "asset": "M2K",
+        "trades": 1151,
+        "pf": 0.929,
+        "pnl": -789.0,
+        "top3": 0,
+        "top10": 0,
+        "median": -0.24,
+        "max_year": 0,
+        "dd_days": 1850
+      }
+    ]
+  },
+  {
+    "id": "exit_chandelier",
+    "entry": "orb_breakout",
+    "filter": "ema_slope",
+    "exit": "chandelier",
+    "classification": "REJECT",
+    "reason": "negative median on ['MNQ', 'MES', 'MGC', 'M2K']",
+    "profitable": 4,
+    "avg_pf": 1.337,
+    "total_trades": 4191,
+    "best_asset": "MNQ",
+    "best_pf": 1.558,
+    "per_asset": [
+      {
+        "asset": "MNQ",
+        "trades": 1183,
+        "pf": 1.558,
+        "pnl": 31397.0,
+        "top3": 15.2,
+        "top10": 33.0,
+        "median": -5.24,
+        "max_year": 31.0,
+        "dd_days": 278
+      },
+      {
+        "asset": "MES",
+        "trades": 1213,
+        "pf": 1.404,
+        "pnl": 13738.0,
+        "top3": 17.2,
+        "top10": 40.8,
+        "median": -8.74,
+        "max_year": 25.0,
+        "dd_days": 271
+      },
+      {
+        "asset": "MGC",
+        "trades": 644,
+        "pf": 1.183,
+        "pnl": 3006.0,
+        "top3": 49.9,
+        "top10": 131.6,
+        "median": -7.24,
+        "max_year": 37.2,
+        "dd_days": 673
+      },
+      {
+        "asset": "M2K",
+        "trades": 1151,
+        "pf": 1.203,
+        "pnl": 4603.0,
+        "top3": 19.9,
+        "top10": 53.4,
+        "median": -5.24,
+        "max_year": 35.8,
+        "dd_days": 532
+      }
+    ]
+  },
+  {
+    "id": "exit_time_stop",
+    "entry": "orb_breakout",
+    "filter": "ema_slope",
+    "exit": "time_stop",
+    "classification": "REJECT",
+    "reason": "negative median on ['MNQ', 'MES', 'MGC', 'M2K']",
+    "profitable": 4,
+    "avg_pf": 1.299,
+    "total_trades": 4191,
+    "best_asset": "MNQ",
+    "best_pf": 1.433,
+    "per_asset": [
+      {
+        "asset": "MNQ",
+        "trades": 1183,
+        "pf": 1.433,
+        "pnl": 23229.0,
+        "top3": 12.6,
+        "top10": 32.3,
+        "median": -0.24,
+        "max_year": 29.8,
+        "dd_days": 358
+      },
+      {
+        "asset": "MES",
+        "trades": 1213,
+        "pf": 1.343,
+        "pnl": 11011.0,
+        "top3": 15.2,
+        "top10": 39.0,
+        "median": -4.99,
+        "max_year": 31.0,
+        "dd_days": 459
+      },
+      {
+        "asset": "MGC",
+        "trades": 644,
+        "pf": 1.212,
+        "pnl": 3317.0,
+        "top3": 41.1,
+        "top10": 102.5,
+        "median": -4.24,
+        "max_year": 35.7,
+        "dd_days": 670
+      },
+      {
+        "asset": "M2K",
+        "trades": 1151,
+        "pf": 1.207,
+        "pnl": 4461.0,
+        "top3": 20.5,
+        "top10": 52.3,
+        "median": -3.74,
+        "max_year": 36.7,
+        "dd_days": 670
+      }
+    ]
+  }
+]
