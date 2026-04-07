@@ -49,34 +49,128 @@ OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 
 # ── Classification Rules ─────────────────────────────────────────────────────
+#
+# Concentration-aware thresholds (added 2026-04-06 after 4/5 ADVANCE candidates
+# failed deep validation due to top-N trade concentration and single-year
+# dependence). First-pass must now catch these before labeling ADVANCE.
+#
+# Thresholds (based on validation outcomes):
+#   ADVANCE:  trades ≥ 500, top-3 concentration < 30%, max year share < 40%
+#   SALVAGE:  trades ≥ 100 with some directional/period edge
+#   THIN:     trades ≥ 20 but < 100 — too few for concentration check to trust
+#
+# The xb_orb_ema_ladder result (1183 trades, top-3 = 10%) was the only
+# candidate that survived deep validation. Below ~500 trades, any apparent
+# edge is likely outlier-driven.
 
-def classify(pf, trades, wf_h1_pf, wf_h2_pf, mode_results):
-    """Apply deterministic classification rules.
+CONCENTRATION_TOP3_MAX = 0.30   # top 3 trades < 30% of PnL for ADVANCE
+CONCENTRATION_TOP5_MAX = 0.45   # top 5 trades < 45% of PnL for ADVANCE
+MAX_YEAR_SHARE = 0.40            # no single year > 40% of PnL for ADVANCE
+MIN_TRADES_ADVANCE = 500         # concentration trust threshold
+MIN_TRADES_ROBUST = 100          # meaningful sample for SALVAGE
+
+
+def compute_concentration(trades_df):
+    """Compute top-N trade concentration and single-year share.
+
+    Returns dict with top3_share, top5_share, top10_share, max_year_share.
+    """
+    if trades_df is None or len(trades_df) == 0:
+        return {"top3_share": 0, "top5_share": 0, "top10_share": 0, "max_year_share": 0}
+
+    total_pnl = trades_df["pnl"].sum()
+    if total_pnl <= 0:
+        return {"top3_share": 0, "top5_share": 0, "top10_share": 0, "max_year_share": 0}
+
+    sorted_pnl = trades_df["pnl"].sort_values(ascending=False)
+    top3 = sorted_pnl.head(3).sum() / total_pnl
+    top5 = sorted_pnl.head(5).sum() / total_pnl
+    top10 = sorted_pnl.head(10).sum() / total_pnl
+
+    # Year concentration
+    year_share = 0
+    if "entry_time" in trades_df.columns:
+        try:
+            trades_df = trades_df.copy()
+            trades_df["year"] = pd.to_datetime(trades_df["entry_time"]).dt.year
+            yearly = trades_df.groupby("year")["pnl"].sum()
+            if yearly.sum() > 0:
+                year_share = yearly.max() / yearly.sum()
+        except Exception:
+            pass
+
+    return {
+        "top3_share": round(float(top3), 3),
+        "top5_share": round(float(top5), 3),
+        "top10_share": round(float(top10), 3),
+        "max_year_share": round(float(year_share), 3),
+    }
+
+
+def classify(pf, trades, wf_h1_pf, wf_h2_pf, mode_results, concentration=None):
+    """Apply deterministic classification rules with concentration checks.
 
     Returns (classification, reasons) tuple.
     """
     reasons = []
+    conc = concentration or {}
+    top3 = conc.get("top3_share", 0)
+    top5 = conc.get("top5_share", 0)
+    year_share = conc.get("max_year_share", 0)
 
     # Check if any single mode shows strong edge
-    best_mode_pf = max((m["pf"] for m in mode_results if m["trades"] >= 15), default=0)
     any_mode_above_1_2 = any(m["pf"] > 1.2 and m["trades"] >= 15 for m in mode_results)
 
-    # ADVANCE: strong across the board
-    if pf > 1.2 and trades >= 30 and wf_h1_pf > 1.0 and wf_h2_pf > 1.0:
+    # ── ADVANCE: strong across the board AND concentration-clean ──
+    if (pf > 1.2 and trades >= MIN_TRADES_ADVANCE
+            and wf_h1_pf > 1.0 and wf_h2_pf > 1.0):
+        # Concentration checks
+        if top3 > CONCENTRATION_TOP3_MAX:
+            reasons.append(
+                f"Top-3 concentration {top3*100:.0f}% > {CONCENTRATION_TOP3_MAX*100:.0f}% — "
+                f"edge is outlier-driven, demoted to SALVAGE"
+            )
+            return "SALVAGE", reasons
+        if top5 > CONCENTRATION_TOP5_MAX:
+            reasons.append(
+                f"Top-5 concentration {top5*100:.0f}% > {CONCENTRATION_TOP5_MAX*100:.0f}% — "
+                f"demoted to SALVAGE"
+            )
+            return "SALVAGE", reasons
+        if year_share > MAX_YEAR_SHARE:
+            reasons.append(
+                f"Single year = {year_share*100:.0f}% of PnL (> {MAX_YEAR_SHARE*100:.0f}%) — "
+                f"regime dependent, demoted to SALVAGE"
+            )
+            return "SALVAGE", reasons
         reasons.append(f"PF {pf:.2f} > 1.2 with {trades} trades")
         reasons.append(f"Walk-forward stable: H1={wf_h1_pf:.2f}, H2={wf_h2_pf:.2f}")
+        reasons.append(
+            f"Concentration clean: top3={top3*100:.0f}%, "
+            f"top5={top5*100:.0f}%, max year={year_share*100:.0f}%"
+        )
         return "ADVANCE", reasons
 
-    # SALVAGE: partial edge worth one follow-up
+    # ── ADVANCE_THIN: good numbers but low trade count — flag for caution ──
+    if (pf > 1.2 and trades >= 30 and trades < MIN_TRADES_ADVANCE
+            and wf_h1_pf > 1.0 and wf_h2_pf > 1.0):
+        reasons.append(
+            f"PF {pf:.2f}, {trades} trades (< {MIN_TRADES_ADVANCE} trust threshold). "
+            f"Top-3={top3*100:.0f}%, max year={year_share*100:.0f}%. "
+            f"Likely outlier-driven — validate deeply before promotion."
+        )
+        return "SALVAGE", reasons
+
+    # ── SALVAGE: partial edge worth one follow-up ──
     if pf > 1.0 and trades >= 20:
         if any_mode_above_1_2:
-            reasons.append(f"Overall PF {pf:.2f}, but directional split shows PF > 1.2")
+            reasons.append(f"Overall PF {pf:.2f}, directional split shows PF > 1.2")
             return "SALVAGE", reasons
         if wf_h1_pf > 1.3 or wf_h2_pf > 1.3:
             reasons.append(f"Period-specific edge: H1={wf_h1_pf:.2f}, H2={wf_h2_pf:.2f}")
             return "SALVAGE", reasons
 
-    # MONITOR: signal but insufficient data
+    # ── MONITOR: signal but insufficient data ──
     if pf > 1.0 and trades < 20:
         reasons.append(f"PF {pf:.2f} > 1.0 but only {trades} trades — insufficient sample")
         return "MONITOR", reasons
@@ -84,7 +178,7 @@ def classify(pf, trades, wf_h1_pf, wf_h2_pf, mode_results):
         reasons.append(f"PF {pf:.2f} > 1.2 but walk-forward unstable: H1={wf_h1_pf:.2f}, H2={wf_h2_pf:.2f}")
         return "MONITOR", reasons
 
-    # REJECT: no viable edge
+    # ── REJECT: no viable edge ──
     if trades >= 30 and pf < 1.1:
         reasons.append(f"Sufficient trades ({trades}) but PF {pf:.2f} < 1.1")
     elif pf < 1.0:
@@ -218,6 +312,7 @@ def run_first_pass(strategy_name, assets, session_filter=None):
 
         # Run each mode
         mode_results = []
+        both_trades_df = None  # Save "both" trades for concentration check
         for mode in ["both", "long", "short"]:
             try:
                 signals = _call_generate_signals(mod, df.copy(), mode=mode, asset=asset)
@@ -235,6 +330,8 @@ def run_first_pass(strategy_name, assets, session_filter=None):
                 m["mode"] = mode
                 asset_report["modes"][mode] = m
                 mode_results.append(m)
+                if mode == "both":
+                    both_trades_df = r["trades_df"]
             except Exception as e:
                 asset_report["modes"][mode] = {"error": str(e), "trades": 0, "pf": 0}
                 mode_results.append({"pf": 0, "trades": 0, "mode": mode})
@@ -260,13 +357,18 @@ def run_first_pass(strategy_name, assets, session_filter=None):
                 wf[label] = {"error": str(e), "pf": 0, "trades": 0}
         asset_report["walk_forward"] = wf
 
-        # Classify this asset
+        # Concentration metrics from "both" mode
+        concentration = compute_concentration(both_trades_df)
+        asset_report["concentration"] = concentration
+
+        # Classify this asset with concentration checks
         both = asset_report["modes"].get("both", {"pf": 0, "trades": 0})
         h1_pf = wf.get("H1", {}).get("pf", 0)
         h2_pf = wf.get("H2", {}).get("pf", 0)
         cls, reasons = classify(
             both.get("pf", 0), both.get("trades", 0),
             h1_pf, h2_pf, mode_results,
+            concentration=concentration,
         )
         asset_report["classification"] = cls
         asset_report["classification_reasons"] = reasons

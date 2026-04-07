@@ -5212,7 +5212,22 @@
       "profit_factor": 1.59,
       "portfolio_role": "workhorse",
       "promotion_date": "2026-04-06",
-      "notes": "PASSED deep validation 2026-04-06. 1183 trades, 8/8 years profitable, top-3 concentration 10%, 7/7 walk-forward windows positive, all 4 cross-assets profitable, max DD only 3.1%, H2 stronger than H1. Edge is WR-based (60% WR, payoff 1.05) \u2014 monitor for WR drift. First true elite candidate from mass screen."
+      "notes": "PASSED deep validation 2026-04-06. 1183 trades, 8/8 years profitable, top-3 concentration 10%, 7/7 walk-forward windows positive, all 4 cross-assets profitable, max DD only 3.1%, H2 stronger than H1. Edge is WR-based (60% WR, payoff 1.05) \u2014 monitor for WR drift. First true elite candidate from mass screen.",
+      "controller_action": "PROBATION",
+      "last_controller_date": "2026-04-06",
+      "execution_config": {
+        "preferred_window": [
+          "09:30",
+          "14:30"
+        ],
+        "allowed_window": [
+          "09:30",
+          "15:15"
+        ],
+        "conviction_threshold_inside": 2,
+        "conviction_threshold_outside": 2,
+        "priority": 9
+      }
     }
   ],
   "_rejection_taxonomy": {
