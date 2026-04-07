@@ -306,26 +306,83 @@ def exit_atr_trail(f, i, state, params):
     return 0
 
 
+def _compute_ladder_lock_r(current_r, target_mult, trail_mult):
+    """Compute the highest lock level reached, given current R and ladder params.
+
+    Configurable ladder formula:
+      At milestone kR (k = 1, 2, ..., floor(target_mult)), lock at:
+        lock_r = max(0, k - (1.0 / trail_mult))
+
+    Interpretation:
+      trail_mult = 1.0 → lock_r = k - 1 → locks at 0R/1R/2R/3R (breakeven then tight)
+      trail_mult = 2.0 → lock_r = k - 0.5 → tighter: locks at 0.5R/1.5R/2.5R/...
+      trail_mult = 0.5 → lock_r = k - 2 → looser: locks at 0R/0R/1R/2R/... (clamped)
+
+    target_mult controls ladder length; larger values add higher milestones.
+    """
+    if current_r < 1.0:
+        return 0.0
+    spread = 1.0 / trail_mult
+    lock_r = 0.0
+    max_k = int(min(target_mult, current_r)) + 1  # +1 to be inclusive
+    for k in range(1, max_k + 1):
+        if current_r >= k and k <= target_mult:
+            candidate = max(0.0, k - spread)
+            if candidate > lock_r:
+                lock_r = candidate
+    return lock_r
+
+
 def exit_profit_ladder(f, i, state, params):
-    """Ratcheting stops at R-milestones (1R→lock 0.25R, 2R→lock 1R, 3R→lock 2R)."""
+    """Ratcheting stops at R-milestones.
+
+    Two modes, selected by `ladder_style` param (defaults to "classic"):
+
+    1. "classic" (DEFAULT — preserves original hardcoded behavior):
+         1R → lock 0.25R, 2R → lock 1R, 3R → lock 2R
+
+    2. "configurable" (NEW — exposes target_mult and trail_mult as real dials):
+         Uses _compute_ladder_lock_r() formula:
+         At milestone kR for k=1..target_mult: lock at max(0, k - 1/trail_mult) * R
+
+         - target_mult: ladder length (default 3.0 = 3 milestones; 5.0 = 5 milestones)
+         - trail_mult: lock tightness (higher = tighter)
+
+    IMPORTANT: "classic" mode exists to preserve the live xb_orb_ema_ladder
+    probation variant unchanged. The bug fix is opt-in via
+    ladder_style="configurable" to avoid disrupting forward evidence accumulation.
+    """
     pos = state["position"]
     entry_price = state["entry_price"]
     initial_risk = state["initial_risk"]
     if initial_risk <= 0:
         return exit_atr_trail(f, i, state, params)
 
+    ladder_style = params.get("ladder_style", "classic")
+
     if pos == 1:
         if f["high"][i] > state["highest"]:
             state["highest"] = f["high"][i]
         current_r = (state["highest"] - entry_price) / initial_risk
-        if current_r >= 3.0:
-            lock_price = entry_price + initial_risk * 2.0
-        elif current_r >= 2.0:
-            lock_price = entry_price + initial_risk * 1.0
-        elif current_r >= 1.0:
-            lock_price = entry_price + initial_risk * 0.25
-        else:
-            lock_price = state["trailing_stop"]
+
+        if ladder_style == "classic":
+            if current_r >= 3.0:
+                lock_price = entry_price + initial_risk * 2.0
+            elif current_r >= 2.0:
+                lock_price = entry_price + initial_risk * 1.0
+            elif current_r >= 1.0:
+                lock_price = entry_price + initial_risk * 0.25
+            else:
+                lock_price = state["trailing_stop"]
+        else:  # configurable
+            target_mult = params.get("target_mult", 3.0)
+            trail_mult = params.get("trail_mult", 1.0)
+            lock_r = _compute_ladder_lock_r(current_r, target_mult, trail_mult)
+            if lock_r > 0:
+                lock_price = entry_price + initial_risk * lock_r
+            else:
+                lock_price = state["trailing_stop"]
+
         state["trailing_stop"] = max(state["trailing_stop"], lock_price)
         if f["low"][i] <= state["trailing_stop"]:
             return 1
@@ -334,14 +391,25 @@ def exit_profit_ladder(f, i, state, params):
         if f["low"][i] < state["lowest"]:
             state["lowest"] = f["low"][i]
         current_r = (entry_price - state["lowest"]) / initial_risk
-        if current_r >= 3.0:
-            lock_price = entry_price - initial_risk * 2.0
-        elif current_r >= 2.0:
-            lock_price = entry_price - initial_risk * 1.0
-        elif current_r >= 1.0:
-            lock_price = entry_price - initial_risk * 0.25
-        else:
-            lock_price = state["trailing_stop"]
+
+        if ladder_style == "classic":
+            if current_r >= 3.0:
+                lock_price = entry_price - initial_risk * 2.0
+            elif current_r >= 2.0:
+                lock_price = entry_price - initial_risk * 1.0
+            elif current_r >= 1.0:
+                lock_price = entry_price - initial_risk * 0.25
+            else:
+                lock_price = state["trailing_stop"]
+        else:  # configurable
+            target_mult = params.get("target_mult", 3.0)
+            trail_mult = params.get("trail_mult", 1.0)
+            lock_r = _compute_ladder_lock_r(current_r, target_mult, trail_mult)
+            if lock_r > 0:
+                lock_price = entry_price - initial_risk * lock_r
+            else:
+                lock_price = state["trailing_stop"]
+
         state["trailing_stop"] = min(state["trailing_stop"], lock_price)
         if f["high"][i] >= state["trailing_stop"]:
             return -1
