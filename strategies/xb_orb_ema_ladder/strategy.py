@@ -25,7 +25,17 @@ from research.crossbreeding.crossbreeding_engine import generate_crossbred_signa
 TICK_SIZE = 0.25  # Patched per asset by runner
 
 # Module-level params (perturbable by validation battery)
-STOP_MULT = 0.5
+# Upgraded 2026-04-07 from 0.5 to 2.0 after stop-sweep study (see
+# research/data/xb_orb_stop_sweep_results.json). stop=2.0 was the best
+# variant by both avg PF (1.548 vs 1.454) and avg drawdown duration
+# (250d vs 314d) across 4-asset cross-validation (MNQ/MES/MGC/M2K).
+# The upgrade sits inside a broad stability plateau (10/10 clean variants
+# across stop_mult 0.1-3.0), so this is a baseline selection, not a fit.
+#
+# NOTE: TARGET_MULT and TRAIL_MULT are currently IGNORED by
+# exit_profit_ladder (fixed 1R/2R/3R ratchets). Queued as research item
+# "exit_profit_ladder bug" — fixing will unlock a new optimization surface.
+STOP_MULT = 2.0
 TARGET_MULT = 4.0
 TRAIL_MULT = 2.5
 

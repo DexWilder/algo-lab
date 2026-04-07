@@ -5209,10 +5209,10 @@
       "status": "probation",
       "validation_score": 9.0,
       "trades_6yr": 1183,
-      "profit_factor": 1.59,
+      "profit_factor": 1.62,
       "portfolio_role": "workhorse",
       "promotion_date": "2026-04-06",
-      "notes": "PASSED deep validation 2026-04-06. 1183 trades, 8/8 years profitable, top-3 concentration 10%, 7/7 walk-forward windows positive, all 4 cross-assets profitable, max DD only 3.1%, H2 stronger than H1. Edge is WR-based (60% WR, payoff 1.05) \u2014 monitor for WR drift. First true elite candidate from mass screen.",
+      "notes": "PROBATION BASELINE UPGRADED 2026-04-07 from stop=0.5 to stop=2.0 after stop-sweep study (10/10 variants clean across 0.1-3.0 range). stop=2.0 wins on both PF (1.62 vs 1.59) and DD duration. MNQ: 1183 trades, PF 1.62, PnL $50,785, top-10 22.7%, median $43.26, max DD 143 days. Cross-asset confirmed on all 4 equity-index micros. Sits inside broad stability plateau \u2014 this is a baseline selection, not a parameter fit. Edge is WR-based (60% WR, payoff 1.05).",
       "controller_action": "PROBATION",
       "last_controller_date": "2026-04-06",
       "execution_config": {
@@ -5227,6 +5227,12 @@
         "conviction_threshold_inside": 2,
         "conviction_threshold_outside": 2,
         "priority": 9
+      },
+      "baseline_update_date": "2026-04-07",
+      "baseline_params": {
+        "stop_mult": 2.0,
+        "target_mult": 4.0,
+        "trail_mult": 2.5
       }
     }
   ],
@@ -5243,5 +5249,17 @@
     "ICT_FAMILY_FAILED": "ICT-derived concepts have not produced systematic edge in FQL",
     "CLASSIC_TA_DECAY": "Well-known pattern (RSI, NR7, gap fill) shows no edge on futures 5m bars"
   },
-  "_schema_note": "Added component_validation_history (2026-04-06)"
+  "_schema_note": "Added component_validation_history (2026-04-06)",
+  "research_items": [
+    {
+      "id": "exit-profit-ladder-bug",
+      "created": "2026-04-07",
+      "priority": "low",
+      "status": "queued",
+      "title": "exit_profit_ladder ignores target_mult and trail_mult",
+      "description": "The profit_ladder exit in research/crossbreeding/crossbreeding_engine.py uses fixed 1R/2R/3R ratchet milestones and never reads target_mult or trail_mult from params. This was discovered during the xb_orb_ema_ladder stop sweep (27 combos produced identical PF for fixed stop_mult). Fixing would unlock a new optimization surface \u2014 target_mult would control max target distance, trail_mult would control pre-1R trailing behavior. Not a blocker for current probation evidence accumulation.",
+      "blocks": [],
+      "discovered_during": "xb_orb_ema_ladder variant sweep 2026-04-07"
+    }
+  ]
 }
