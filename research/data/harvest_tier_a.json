@@ -1,0 +1,164 @@
+[
+  {
+    "file": "2026-03-20_08_crude_settlement_wash_reversion.md",
+    "title": "Crude Settlement Wash Reversion",
+    "factor": "STRUCTURAL",
+    "family": "new family: energy settlement ",
+    "verdict": "ACCEPT as idea",
+    "blocker": "needs_exact_CL_settlement_timestamp_convention_and",
+    "testability": "High + timing, filters, and ex",
+    "score": 170,
+    "reasons": [
+      "gaps=energy+time_of_day(100)",
+      "high_distinct(+30)",
+      "high_test(+40)",
+      "blocked(-30)",
+      "verdict_accept(+20)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-03-19_08_crude_hedging_pressure_carry.md",
+    "title": "Crude Oil Hedging-Pressure Carry Alignment",
+    "factor": "CARRY",
+    "family": "new family: energy_hedging_pre",
+    "verdict": "ACCEPT but blocked",
+    "blocker": "needs_hedging_pressure_normalization_and_contract_",
+    "testability": "High + the inputs are standard",
+    "score": 155,
+    "reasons": [
+      "gaps=energy+carry(100)",
+      "high_distinct(+30)",
+      "high_test(+40)",
+      "blocked(-30)",
+      "verdict_blocked(+5)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-03-25_05_standardized_macro_event_box.md",
+    "title": "Standardized Macro Event Box Breakout",
+    "factor": "EVENT",
+    "family": "new family: macro_event_box_fr",
+    "verdict": "ACCEPT as idea",
+    "blocker": "needs_single_standard_event_duration_and_release_s",
+    "testability": "High + release calendars are k",
+    "score": 150,
+    "reasons": [
+      "gaps=time_of_day(80)",
+      "high_distinct(+30)",
+      "high_test(+40)",
+      "blocked(-30)",
+      "verdict_accept(+20)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-03-26_01_nq_overnight_range_regime_filter.md",
+    "title": "NQ Overnight Range Regime Filter for ORB Selection",
+    "factor": "STRUCTURAL",
+    "family": "new family: overnight_range_re",
+    "verdict": "ACCEPT as idea",
+    "blocker": "needs_sessionized_intraday_data_and_explicit_orb_w",
+    "testability": "High + the time window, ATR lo",
+    "score": 150,
+    "reasons": [
+      "gaps=time_of_day(80)",
+      "high_distinct(+30)",
+      "high_test(+40)",
+      "blocked(-30)",
+      "verdict_accept(+20)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-03-19_01_gap_statistics_regime_filter.md",
+    "title": "Gap Statistics Regime Filter",
+    "factor": "STRUCTURAL",
+    "family": "gap taxonomy / session transit",
+    "verdict": "ACCEPT as idea",
+    "blocker": "needs_category_thresholds_and_one_fixed_playbook",
+    "testability": "High + gap size, direction, fi",
+    "score": 150,
+    "reasons": [
+      "gaps=time_of_day(80)",
+      "high_distinct(+30)",
+      "high_test(+40)",
+      "blocked(-30)",
+      "verdict_accept(+20)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-03-19_03_overnight_gap_dominance_filter.md",
+    "title": "Overnight Gap Dominance Regime Filter",
+    "factor": "VOLATILITY",
+    "family": "volatility conditioned session",
+    "verdict": "ACCEPT as idea",
+    "blocker": "needs_link_to_specific_trade_expression",
+    "testability": "High + the ratio is mechanical",
+    "score": 150,
+    "reasons": [
+      "gaps=time_of_day(80)",
+      "high_distinct(+30)",
+      "high_test(+40)",
+      "blocked(-30)",
+      "verdict_accept(+20)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-03-19_04_overnight_z_volratio_open_drive.md",
+    "title": "Overnight Z-VolRatio Open-Drive Filter",
+    "factor": "VOLATILITY",
+    "family": "volatility conditioned open co",
+    "verdict": "ACCEPT as idea",
+    "blocker": "needs_short_side_and_instrument_robustness_check",
+    "testability": "High + the published threshold",
+    "score": 150,
+    "reasons": [
+      "gaps=time_of_day(80)",
+      "high_distinct(+30)",
+      "high_test(+40)",
+      "blocked(-30)",
+      "verdict_accept(+20)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-03-20_04_treasury_cash_close_reversion_window.md",
+    "title": "Treasury Cash-Close Reversion Window",
+    "factor": "STRUCTURAL",
+    "family": "new family: afternoon rates cl",
+    "verdict": "ACCEPT as idea",
+    "blocker": "needs_precise_intraday_Treasury_futures_data_and_m",
+    "testability": "High \u2014 rules are explicit and ",
+    "score": 150,
+    "reasons": [
+      "gaps=time_of_day(80)",
+      "high_distinct(+30)",
+      "high_test(+40)",
+      "blocked(-30)",
+      "verdict_accept(+20)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-03-20_07_spx_lunch_compression_afternoon_release.md",
+    "title": "S&P Lunch Compression Afternoon Release",
+    "factor": "STRUCTURAL",
+    "family": "new family: afternoon session ",
+    "verdict": "ACCEPT as idea",
+    "blocker": "needs_clean_RTH_intraday_ES_data_with_consistent_V",
+    "testability": "High + the regime, trigger, an",
+    "score": 150,
+    "reasons": [
+      "gaps=time_of_day(80)",
+      "high_distinct(+30)",
+      "high_test(+40)",
+      "blocked(-30)",
+      "verdict_accept(+20)",
+      "data_avail(+10)"
+    ]
+  }
+]

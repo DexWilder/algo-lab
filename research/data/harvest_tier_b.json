@@ -1,0 +1,1042 @@
+[
+  {
+    "file": "2026-03-24_13_stress_gated_commodity_carry.md",
+    "title": "Stress-Gated Commodity Carry Overlay",
+    "factor": "CARRY",
+    "family": "new family: commodity_carry_st",
+    "verdict": "ACCEPT but blocked",
+    "blocker": "needs_stress_proxy_choice_and_upper_lower_threshol",
+    "testability": "High + the carry leg and stres",
+    "score": 145,
+    "reasons": [
+      "gaps=tail+carry(90)",
+      "high_distinct(+30)",
+      "high_test(+40)",
+      "blocked(-30)",
+      "verdict_blocked(+5)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-03-26_02_vix_channel_session_trend.md",
+    "title": "VIX-Implied Opening Channel Session Trend Strategy",
+    "factor": "VOLATILITY",
+    "family": "new family: vix_channel_sessio",
+    "verdict": "ACCEPT but blocked",
+    "blocker": "needs_intraday_VIX_or_VIX9D_series_aligned_to_inde",
+    "testability": "High + the entry clock, direct",
+    "score": 145,
+    "reasons": [
+      "gaps=tail+time_of_day(90)",
+      "high_distinct(+30)",
+      "high_test(+40)",
+      "blocked(-30)",
+      "verdict_blocked(+5)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-03-24_15_wti_carry_term_structure_flip.md",
+    "title": "WTI 12M Carry Term-Structure Flip",
+    "factor": "CARRY",
+    "family": "new family: crude_term_structu",
+    "verdict": "ACCEPT but blocked",
+    "blocker": "needs_reliable_CL_curve_history_and_monthly_roll_c",
+    "testability": "High + entry, direction, rebal",
+    "score": 140,
+    "reasons": [
+      "gaps=energy+carry(100)",
+      "med_distinct(+15)",
+      "high_test(+40)",
+      "blocked(-30)",
+      "verdict_blocked(+5)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-03-25_03_non_equity_vol_managed_factor_overlay.md",
+    "title": "Non-Equity Vol-Managed Factor Overlay",
+    "factor": "VOLATILITY",
+    "family": "new family: non_equity_vol_man",
+    "verdict": "ACCEPT as idea",
+    "blocker": "needs_base_sleeve_choice_realized_vol_window_and_l",
+    "testability": "High + realized-vol windows, r",
+    "score": 140,
+    "reasons": [
+      "gaps=carry+value(70)",
+      "high_distinct(+30)",
+      "high_test(+40)",
+      "blocked(-30)",
+      "verdict_accept(+20)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-04-06_08_vol_normalized_rolldown_signal.md",
+    "title": "Vol-Normalized Treasury Rolldown Carry Signal",
+    "factor": "CARRY",
+    "family": "new family: treasury_rolldown_",
+    "verdict": "ACCEPT as idea",
+    "blocker": "needs_contract_pair_mapping_and_expiry_calendar",
+    "testability": "High, requires traded-versus-n",
+    "score": 140,
+    "reasons": [
+      "gaps=carry(70)",
+      "high_distinct(+30)",
+      "high_test(+40)",
+      "blocked(-30)",
+      "verdict_accept(+20)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-04-07_14_front_back_energy_curve_carry_gate.md",
+    "title": "Front-Back Energy Curve Carry Gate",
+    "factor": "CARRY",
+    "family": "new family: energy_curve_carry",
+    "verdict": "ACCEPT but blocked",
+    "blocker": "needs_continuous_contract_roll_method_and_energy_u",
+    "testability": "High + the contract pairs, reb",
+    "score": 140,
+    "reasons": [
+      "gaps=energy+carry(100)",
+      "med_distinct(+15)",
+      "high_test(+40)",
+      "blocked(-30)",
+      "verdict_blocked(+5)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-03-20_02_broad_commodity_curve_slope_carry.md",
+    "title": "Broad Commodity Curve-Slope Carry Basket",
+    "factor": "CARRY",
+    "family": "new family: broad_commodity_ca",
+    "verdict": "ACCEPT as idea",
+    "blocker": "needs_unified_contract_selection_and_curve_slope_a",
+    "testability": "High + contract selection, cur",
+    "score": 140,
+    "reasons": [
+      "gaps=carry(70)",
+      "high_distinct(+30)",
+      "high_test(+40)",
+      "blocked(-30)",
+      "verdict_accept(+20)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-03-20_04_risk_asset_only_volatility_target_basket.md",
+    "title": "Risk-Asset-Only Volatility-Targeted Futures Basket",
+    "factor": "VOLATILITY",
+    "family": "new family: risk_asset_vol_tar",
+    "verdict": "ACCEPT as idea",
+    "blocker": "needs_final_risk_asset_universe_and_shock_reentry_",
+    "testability": "High + target vol, realized-vo",
+    "score": 135,
+    "reasons": [
+      "gaps=time_of_day(80)",
+      "med_distinct(+15)",
+      "high_test(+40)",
+      "blocked(-30)",
+      "verdict_accept(+20)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-03-24_07_crude_ovx_state_filter.md",
+    "title": "Crude OVX State Filter for CL Regime Switching",
+    "factor": "VOLATILITY",
+    "family": "new family: crude_implied_vol_",
+    "verdict": "ACCEPT but blocked",
+    "blocker": "needs_OVX_thresholds_and_regime_to_trade_mapping",
+    "testability": "Medium + OVX history is availa",
+    "score": 135,
+    "reasons": [
+      "gaps=energy(100)",
+      "high_distinct(+30)",
+      "med_test(+20)",
+      "blocked(-30)",
+      "verdict_blocked(+5)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-03-24_11_volatility_expansion_stress_gate.md",
+    "title": "Volatility-Expansion Stress Gate for Gold or Crude",
+    "factor": "VOLATILITY",
+    "family": "new family: vol_expansion_stre",
+    "verdict": "ACCEPT but blocked",
+    "blocker": "needs_stress_index_formula_upper_threshold_and_res",
+    "testability": "Medium + the gating concept is",
+    "score": 135,
+    "reasons": [
+      "gaps=energy(100)",
+      "high_distinct(+30)",
+      "med_test(+20)",
+      "blocked(-30)",
+      "verdict_blocked(+5)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-03-25_08_overnight_gap_bucket_selection.md",
+    "title": "Overnight Gap Bucket Selection",
+    "factor": "STRUCTURAL",
+    "family": "new family: overnight_gap_regi",
+    "verdict": "ACCEPT but blocked",
+    "blocker": "needs_gap_bucket_scheme_and_fill_vs_hold_mapping_b",
+    "testability": "High + gap measurement, bucket",
+    "score": 135,
+    "reasons": [
+      "gaps=time_of_day(80)",
+      "high_distinct(+30)",
+      "high_test(+40)",
+      "blocked(-30)",
+      "verdict_blocked(+5)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-04-07_06_nq_overnight_atr_regime_filter.md",
+    "title": "NQ Overnight ATR Regime Filter for ORB Style Selection",
+    "factor": "STRUCTURAL",
+    "family": "new family: overnight_atr_regi",
+    "verdict": "ACCEPT as idea",
+    "blocker": "needs_sessionized_intraday_data_and_one_house_orb_",
+    "testability": "High + the session window, ATR",
+    "score": 135,
+    "reasons": [
+      "gaps=time_of_day(80)",
+      "med_distinct(+15)",
+      "high_test(+40)",
+      "blocked(-30)",
+      "verdict_accept(+20)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-04-07_06_weekly_roll_yield_carry_vol_target_basket.md",
+    "title": "Weekly Roll-Yield Carry Vol-Target Basket",
+    "factor": "CARRY",
+    "family": "new family: weekly_roll_yield_",
+    "verdict": "ACCEPT but blocked",
+    "blocker": "needs_fixed_roll_yield_definition_contract_stitchi",
+    "testability": "High + the ranking cadence, ca",
+    "score": 135,
+    "reasons": [
+      "gaps=time_of_day+carry+vol(80)",
+      "high_distinct(+30)",
+      "high_test(+40)",
+      "blocked(-30)",
+      "verdict_blocked(+5)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-04-07_11_opec_meeting_day_crude_breakout.md",
+    "title": "OPEC Meeting Day Crude Breakout After Pre-Decision Compression",
+    "factor": "EVENT",
+    "family": "new family: opec_event_breakou",
+    "verdict": "NEEDS REVIEW",
+    "blocker": "needs_precise_opec_headline_timestamp_series_and_r",
+    "testability": "Medium + scheduled meeting dat",
+    "score": 130,
+    "reasons": [
+      "gaps=energy(100)",
+      "high_distinct(+30)",
+      "med_test(+20)",
+      "blocked(-30)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-03-17_08_treasury_macro_vol_targeting.md",
+    "title": "Macro Volatility-Driven Treasury Futures Targeting",
+    "factor": "VOLATILITY",
+    "family": "Volatility Management",
+    "verdict": "ACCEPT but blocked",
+    "blocker": "needs_macro_vol_feature_specification",
+    "testability": "Medium + the scheduling and ex",
+    "score": 125,
+    "reasons": [
+      "gaps=tail(90)",
+      "high_distinct(+30)",
+      "med_test(+20)",
+      "blocked(-30)",
+      "verdict_blocked(+5)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-03-26_10_commodity_implied_vol_regime_filter.md",
+    "title": "Commodity Implied-Volatility Regime Filter from Custom VIX",
+    "factor": "VOLATILITY",
+    "family": "new family: commodity_implied_",
+    "verdict": "ACCEPT but blocked",
+    "blocker": "needs_commodity_options_chain_pipeline_and_custom_",
+    "testability": "Medium + the volatility-index ",
+    "score": 125,
+    "reasons": [
+      "gaps=tail+carry(90)",
+      "high_distinct(+30)",
+      "med_test(+20)",
+      "blocked(-30)",
+      "verdict_blocked(+5)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-04-06_07_cross_asset_front_next_carry_ranker.md",
+    "title": "Cross-Asset Front-Next Carry Ranker",
+    "factor": "CARRY",
+    "family": "new family: cross_asset_front_",
+    "verdict": "ACCEPT as idea",
+    "blocker": "needs_front_next_contract_curve_construction",
+    "testability": "High, needs continuous front/n",
+    "score": 125,
+    "reasons": [
+      "gaps=carry(70)",
+      "med_distinct(+15)",
+      "high_test(+40)",
+      "blocked(-30)",
+      "verdict_accept(+20)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-04-07_08_commodity_custom_implied_vol_filter.md",
+    "title": "Commodity Custom Implied-Volatility Filter Using VIX-Style Replication",
+    "factor": "VOLATILITY",
+    "family": "new family: commodity_implied_",
+    "verdict": "ACCEPT but blocked",
+    "blocker": "needs_commodity_options_chain_pipeline_and_fixed_c",
+    "testability": "Medium + the regime concept is",
+    "score": 125,
+    "reasons": [
+      "gaps=tail+carry(90)",
+      "high_distinct(+30)",
+      "med_test(+20)",
+      "blocked(-30)",
+      "verdict_blocked(+5)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-04-07_12_treasury_auction_tail_direction_filter.md",
+    "title": "Treasury Auction Tail Direction Filter",
+    "factor": "EVENT",
+    "family": "treasury_auction_window",
+    "verdict": "ACCEPT but blocked",
+    "blocker": "needs_when_issued_reference_series_and_structured_",
+    "testability": "Medium + the auction tail or s",
+    "score": 125,
+    "reasons": [
+      "gaps=tail(90)",
+      "high_distinct(+30)",
+      "med_test(+20)",
+      "blocked(-30)",
+      "verdict_blocked(+5)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-03-25_10_tokyo_vwap_bounce_6j.md",
+    "title": "Tokyo Session VWAP Bounce on JPY Futures",
+    "factor": "STRUCTURAL",
+    "family": "new family: tokyo_vwap_reversi",
+    "verdict": "ACCEPT as idea",
+    "blocker": "needs_minute_level_6J_session_calendar_and_precise",
+    "testability": "High + VWAP, session windows, ",
+    "score": 120,
+    "reasons": [
+      "gaps=time_of_day(80)",
+      "high_distinct(+30)",
+      "high_test(+40)",
+      "blocked(-30)",
+      "verdict_accept(+20)",
+      "no_data(-20)"
+    ]
+  },
+  {
+    "file": "2026-03-26_08_london_preopen_currency_futures_breakout.md",
+    "title": "London Pre-Open Currency Futures Breakout",
+    "factor": "STRUCTURAL",
+    "family": "new family: london_session_tra",
+    "verdict": "ACCEPT as idea",
+    "blocker": "needs_precise_abnormal_volatility_threshold_and_co",
+    "testability": "High + the observation window,",
+    "score": 120,
+    "reasons": [
+      "gaps=time_of_day(80)",
+      "high_distinct(+30)",
+      "high_test(+40)",
+      "blocked(-30)",
+      "verdict_accept(+20)",
+      "no_data(-20)"
+    ]
+  },
+  {
+    "file": "2026-04-07_01_commodity_real_price_value_basket.md",
+    "title": "Commodity Real-Price Value Basket",
+    "factor": "VALUE",
+    "family": "new family: commodity_real_pri",
+    "verdict": "ACCEPT but blocked",
+    "blocker": "needs_roll_adjusted_real_price_series_definition_a",
+    "testability": "High + the ranking, rebalance ",
+    "score": 120,
+    "reasons": [
+      "gaps=value(65)",
+      "high_distinct(+30)",
+      "high_test(+40)",
+      "blocked(-30)",
+      "verdict_blocked(+5)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-04-07_02_value_confirmed_cross_asset_momentum_filter.md",
+    "title": "Value-Confirmed Cross-Asset Momentum Filter",
+    "factor": "VALUE",
+    "family": "cross_asset_value",
+    "verdict": "ACCEPT as idea",
+    "blocker": "needs_asset_class_specific_value_proxy_map_and_sig",
+    "testability": "Medium + the filter logic is m",
+    "score": 120,
+    "reasons": [
+      "gaps=carry+value(70)",
+      "high_distinct(+30)",
+      "med_test(+20)",
+      "blocked(-30)",
+      "verdict_accept(+20)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-04-07_04_cross_sectional_commodity_term_structure_value.md",
+    "title": "Cross-Sectional Commodity Term-Structure Value",
+    "factor": "VALUE",
+    "family": "commodity_curve_value",
+    "verdict": "ACCEPT as idea",
+    "blocker": "needs_fixed_nearby_next_contract_selection_and_rol",
+    "testability": "High + the monthly sort, portf",
+    "score": 120,
+    "reasons": [
+      "gaps=value(65)",
+      "med_distinct(+15)",
+      "high_test(+40)",
+      "blocked(-30)",
+      "verdict_accept(+20)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-03-17_09_ny_afternoon_fx_range_reversion.md",
+    "title": "New York Afternoon FX Range Reversion After London Close",
+    "factor": "STRUCTURAL",
+    "family": "Session Transition / Afternoon",
+    "verdict": "ACCEPT as idea",
+    "blocker": "needs_fixed_post_london_range_definition",
+    "testability": "High + session times, boundari",
+    "score": 120,
+    "reasons": [
+      "gaps=time_of_day(80)",
+      "high_distinct(+30)",
+      "high_test(+40)",
+      "blocked(-30)",
+      "verdict_accept(+20)",
+      "no_data(-20)"
+    ]
+  },
+  {
+    "file": "2026-03-20_05_tokyo_fix_fx_reversal.md",
+    "title": "Tokyo Fix FX Reversal After Early-Session Impulse",
+    "factor": "STRUCTURAL",
+    "family": "new family: Tokyo fix microstr",
+    "verdict": "ACCEPT as idea",
+    "blocker": "needs_confirmed_Tokyo_fix_timestamp_convention_and",
+    "testability": "High \u2014 timing and triggers are",
+    "score": 120,
+    "reasons": [
+      "gaps=time_of_day(80)",
+      "high_distinct(+30)",
+      "high_test(+40)",
+      "blocked(-30)",
+      "verdict_accept(+20)",
+      "no_data(-20)"
+    ]
+  },
+  {
+    "file": "2026-03-17_04_cross_asset_adjusted_yield_value.md",
+    "title": "Cross-Asset Adjusted-Yield Value Rotation",
+    "factor": "VALUE",
+    "family": "new family: cross_asset_value",
+    "verdict": "ACCEPT as idea",
+    "blocker": "needs_value_signal_mapping_across_asset_classes",
+    "testability": "Medium + the framework is publ",
+    "score": 115,
+    "reasons": [
+      "gaps=value(65)",
+      "high_distinct(+30)",
+      "med_test(+20)",
+      "blocked(-30)",
+      "verdict_accept(+20)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-03-18_01_equity_treasury_yield_gap_value.md",
+    "title": "Equity\u2013Treasury Yield-Gap Value Rotation",
+    "factor": "VALUE",
+    "family": "cross_asset_value",
+    "verdict": "ACCEPT as idea",
+    "blocker": "needs_equity_vs_bond_adjusted_yield_definition",
+    "testability": "Medium + monthly data and publ",
+    "score": 115,
+    "reasons": [
+      "gaps=value(65)",
+      "high_distinct(+30)",
+      "med_test(+20)",
+      "blocked(-30)",
+      "verdict_accept(+20)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-03-26_09_non_equity_dual_thrust_breakout.md",
+    "title": "Non-Equity Dual Thrust Threshold Reversal System",
+    "factor": "STRUCTURAL",
+    "family": "new family: non_equity_dual_th",
+    "verdict": "ACCEPT as idea",
+    "blocker": "needs_exact_dual_thrust_parameterization_and_contr",
+    "testability": "Medium + the logic is explicit",
+    "score": 115,
+    "reasons": [
+      "gaps=time_of_day(80)",
+      "med_distinct(+15)",
+      "med_test(+20)",
+      "blocked(-30)",
+      "verdict_accept(+20)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-04-07_13_opec_gap_hold_through_settlement.md",
+    "title": "OPEC Gap Hold Through Settlement",
+    "factor": "EVENT",
+    "family": "opec_event_breakout",
+    "verdict": "ACCEPT but blocked",
+    "blocker": "needs_opec_decision_timestamp_archive_and_bullish_",
+    "testability": "Medium + the continuation and ",
+    "score": 115,
+    "reasons": [
+      "gaps=time_of_day(80)",
+      "high_distinct(+30)",
+      "med_test(+20)",
+      "blocked(-30)",
+      "verdict_blocked(+5)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-03-17_10_agricultural_term_structure_carry.md",
+    "title": "Agricultural Term-Structure Carry Rotation",
+    "factor": "CARRY",
+    "family": "Carry / Commodity",
+    "verdict": "ACCEPT as idea",
+    "blocker": "needs_agricultural_curve_construction_rule",
+    "testability": "High + only needs continuous a",
+    "score": 110,
+    "reasons": [
+      "gaps=carry(70)",
+      "high_distinct(+30)",
+      "high_test(+40)",
+      "blocked(-30)",
+      "verdict_accept(+20)",
+      "no_data(-20)"
+    ]
+  },
+  {
+    "file": "2026-03-19_09_softs_historical_basis_rotation.md",
+    "title": "Softs Historical-Basis Carry Rotation",
+    "factor": "CARRY",
+    "family": "new family: softs_basis_carry",
+    "verdict": "ACCEPT as idea",
+    "blocker": "needs_historical_basis_window_and_softs_continuous",
+    "testability": "High + the strategy only needs",
+    "score": 110,
+    "reasons": [
+      "gaps=carry(70)",
+      "high_distinct(+30)",
+      "high_test(+40)",
+      "blocked(-30)",
+      "verdict_accept(+20)",
+      "no_data(-20)"
+    ]
+  },
+  {
+    "file": "2026-03-20_07_gold_london_fix_handoff_reversion.md",
+    "title": "Gold London-Fix to COMEX Handoff Reversion",
+    "factor": "STRUCTURAL",
+    "family": "new family: precious_metals_se",
+    "verdict": "NEEDS REVIEW",
+    "blocker": "needs_LBMA_fix_proxy_timestamp_and_post_fix_extens",
+    "testability": "Medium \u2014 the windows and exits",
+    "score": 110,
+    "reasons": [
+      "gaps=time_of_day(80)",
+      "high_distinct(+30)",
+      "med_test(+20)",
+      "blocked(-30)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-03-25_12_non_equity_weekly_carry_sleeve.md",
+    "title": "Non-Equity Weekly Carry Sleeve",
+    "factor": "CARRY",
+    "family": "new family: non_equity_weekly_",
+    "verdict": "ACCEPT but blocked",
+    "blocker": "needs_standardized_roll_yield_definition_across_co",
+    "testability": "High + weekly signal generatio",
+    "score": 110,
+    "reasons": [
+      "gaps=carry(70)",
+      "med_distinct(+15)",
+      "high_test(+40)",
+      "blocked(-30)",
+      "verdict_blocked(+5)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-04-07_09_tokyo_open_dxy_bias_session_effect.md",
+    "title": "Tokyo Open DXY Bias Session Effect",
+    "factor": "STRUCTURAL",
+    "family": "new family: tokyo_dxy_bias",
+    "verdict": "NEEDS REVIEW",
+    "blocker": "needs_precise_tokyo_session_open_definition_first_",
+    "testability": "Medium + the session anchor an",
+    "score": 110,
+    "reasons": [
+      "gaps=time_of_day(80)",
+      "high_distinct(+30)",
+      "med_test(+20)",
+      "blocked(-30)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-03-17_11_energy_convenience_yield_carry.md",
+    "title": "Energy Convenience-Yield Carry with Volatility Gate",
+    "factor": "CARRY",
+    "family": "Carry / Commodity",
+    "verdict": "ACCEPT but blocked",
+    "blocker": "needs_energy_carry_formula_and_vol_gate_specificat",
+    "testability": "Medium + the ranking logic is ",
+    "score": 105,
+    "reasons": [
+      "gaps=energy+carry(100)",
+      "high_distinct(+30)",
+      "med_test(+20)",
+      "blocked(-30)",
+      "verdict_blocked(+5)",
+      "no_data(-20)"
+    ]
+  },
+  {
+    "file": "2026-03-20_03_equity_index_dividend_carry_rotation.md",
+    "title": "Equity Index Dividend-Carry Rotation",
+    "factor": "CARRY",
+    "family": "new family: equity index carry",
+    "verdict": "ACCEPT but blocked",
+    "blocker": "needs_implied_dividend_basis_series_and_local_fina",
+    "testability": "Medium \u2014 rules are mechanical,",
+    "score": 105,
+    "reasons": [
+      "gaps=carry(70)",
+      "high_distinct(+30)",
+      "med_test(+20)",
+      "blocked(-30)",
+      "verdict_blocked(+5)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-03-24_09_pre_london_fx_hour_break.md",
+    "title": "Pre-London Last-Hour FX Breakout Filter",
+    "factor": "STRUCTURAL",
+    "family": "new family: fx_pre_london_tran",
+    "verdict": "ACCEPT as idea",
+    "blocker": "needs_final_range_expansion_confirmation_threshold",
+    "testability": "High + the time windows, range",
+    "score": 105,
+    "reasons": [
+      "gaps=time_of_day(80)",
+      "med_distinct(+15)",
+      "high_test(+40)",
+      "blocked(-30)",
+      "verdict_accept(+20)",
+      "no_data(-20)"
+    ]
+  },
+  {
+    "file": "2026-03-24_12_diversified_futures_carry_ranker.md",
+    "title": "Diversified Futures Carry Ranker",
+    "factor": "CARRY",
+    "family": "new family: diversified_future",
+    "verdict": "ACCEPT but blocked",
+    "blocker": "needs_asset_class_carry_lookup_table_and_sector_ne",
+    "testability": "Medium + the ranking and rebal",
+    "score": 105,
+    "reasons": [
+      "gaps=carry(70)",
+      "high_distinct(+30)",
+      "med_test(+20)",
+      "blocked(-30)",
+      "verdict_blocked(+5)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-03-26_06_cross_asset_futures_carry_ranker.md",
+    "title": "Cross-Asset Futures Carry Ranker with Monthly Rebalance",
+    "factor": "CARRY",
+    "family": "new family: cross_asset_future",
+    "verdict": "ACCEPT but blocked",
+    "blocker": "needs_standardized_cross_asset_carry_definition_an",
+    "testability": "Medium + the monthly rebalance",
+    "score": 105,
+    "reasons": [
+      "gaps=carry(70)",
+      "high_distinct(+30)",
+      "med_test(+20)",
+      "blocked(-30)",
+      "verdict_blocked(+5)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-04-06_02_fx_mean_reversion_linear_anchor.md",
+    "title": "FX Mean-Reversion Basket with Linear Deviation Weights",
+    "factor": "VALUE",
+    "family": "new family: fx_relative_value_",
+    "verdict": "ACCEPT as idea",
+    "blocker": "needs_house_definition_of_continuous_fx_series_and",
+    "testability": "High + entry direction, sizing",
+    "score": 105,
+    "reasons": [
+      "gaps=value(65)",
+      "high_distinct(+30)",
+      "high_test(+40)",
+      "blocked(-30)",
+      "verdict_accept(+20)",
+      "no_data(-20)"
+    ]
+  },
+  {
+    "file": "2026-04-06_04_signal_strength_weighted_fx_value.md",
+    "title": "Signal-Strength-Weighted FX Value Sleeve",
+    "factor": "VALUE",
+    "family": "fx_ppp_value",
+    "verdict": "ACCEPT as idea",
+    "blocker": "needs_signal_strength_to_weight_mapping_and_risk_c",
+    "testability": "High + the ranking direction, ",
+    "score": 105,
+    "reasons": [
+      "gaps=value(65)",
+      "high_distinct(+30)",
+      "high_test(+40)",
+      "blocked(-30)",
+      "verdict_accept(+20)",
+      "no_data(-20)"
+    ]
+  },
+  {
+    "file": "2026-04-07_05_cross_asset_adjusted_yield_value_ranker.md",
+    "title": "Cross-Asset Adjusted-Yield Value Ranker",
+    "factor": "VALUE",
+    "family": "cross_asset_value",
+    "verdict": "ACCEPT but blocked",
+    "blocker": "needs_cross_asset_valuation_proxy_dictionary_and_s",
+    "testability": "Medium + the ranking logic is ",
+    "score": 105,
+    "reasons": [
+      "gaps=carry+value(70)",
+      "high_distinct(+30)",
+      "med_test(+20)",
+      "blocked(-30)",
+      "verdict_blocked(+5)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-04-07_07_multicontract_term_structure_extremes.md",
+    "title": "Multi-Contract Term Structure Extremes",
+    "factor": "CARRY",
+    "family": "new family: multicontract_term",
+    "verdict": "ACCEPT but blocked",
+    "blocker": "needs_fixed_contract_weight_scheme_rebalance_frequ",
+    "testability": "Medium + the ranking logic is ",
+    "score": 105,
+    "reasons": [
+      "gaps=carry(70)",
+      "high_distinct(+30)",
+      "med_test(+20)",
+      "blocked(-30)",
+      "verdict_blocked(+5)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-04-07_08_open_interest_pressure_filter.md",
+    "title": "Open Interest Pressure Filter",
+    "factor": "STRUCTURAL",
+    "family": "new family: open_interest_pres",
+    "verdict": "ACCEPT but blocked",
+    "blocker": "needs_large_trader_positioning_dataset_and_mapping",
+    "testability": "Medium + the signal logic is m",
+    "score": 105,
+    "reasons": [
+      "gaps=carry(70)",
+      "high_distinct(+30)",
+      "med_test(+20)",
+      "blocked(-30)",
+      "verdict_blocked(+5)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-03-17_05_rates_relative_yield_value.md",
+    "title": "Rates Relative-Yield Value Spread",
+    "factor": "VALUE",
+    "family": "new family: rates_value",
+    "verdict": "ACCEPT but blocked",
+    "blocker": "needs_rates_value_lookup_framework",
+    "testability": "Medium + the concept is straig",
+    "score": 100,
+    "reasons": [
+      "gaps=value(65)",
+      "high_distinct(+30)",
+      "med_test(+20)",
+      "blocked(-30)",
+      "verdict_blocked(+5)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-03-18_11_global_equity_earnings_yield_value.md",
+    "title": "Global Equity Earnings-Yield Value Rotation",
+    "factor": "VALUE",
+    "family": "cross_asset_value",
+    "verdict": "ACCEPT but blocked",
+    "blocker": "needs_global_equity_earnings_yield_data_feed_and_c",
+    "testability": "Medium + the monthly rebalance",
+    "score": 100,
+    "reasons": [
+      "gaps=value(65)",
+      "high_distinct(+30)",
+      "med_test(+20)",
+      "blocked(-30)",
+      "verdict_blocked(+5)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-03-18_15_treasury_term_premium_value_rotation.md",
+    "title": "Treasury Term-Premium Value Rotation",
+    "factor": "VALUE",
+    "family": "new family: rates_value",
+    "verdict": "ACCEPT but blocked",
+    "blocker": "needs_term_premium_to_futures_bucket_mapping_and_p",
+    "testability": "Medium + the trading rule is e",
+    "score": 100,
+    "reasons": [
+      "gaps=value(65)",
+      "high_distinct(+30)",
+      "med_test(+20)",
+      "blocked(-30)",
+      "verdict_blocked(+5)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-03-20_06_gold_real_rate_value_dislocation.md",
+    "title": "Gold Real-Rate Value Dislocation Reversion",
+    "factor": "VALUE",
+    "family": "new family: precious metals ma",
+    "verdict": "ACCEPT but blocked",
+    "blocker": "needs_stable_gold_fair_value_model_specification_w",
+    "testability": "Medium + the signal and exits ",
+    "score": 100,
+    "reasons": [
+      "gaps=value(65)",
+      "high_distinct(+30)",
+      "med_test(+20)",
+      "blocked(-30)",
+      "verdict_blocked(+5)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-03-23_01_static_value_managed_futures_overlay.md",
+    "title": "Static Value + Managed Futures Overlay Blend",
+    "factor": "VALUE",
+    "family": "new family: value_overlay_allo",
+    "verdict": "ACCEPT but blocked",
+    "blocker": "needs_equity_value_sleeve_definition_and_overlay_b",
+    "testability": "Medium + the rebalance rule is",
+    "score": 100,
+    "reasons": [
+      "gaps=value(65)",
+      "high_distinct(+30)",
+      "med_test(+20)",
+      "blocked(-30)",
+      "verdict_blocked(+5)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-03-23_02_tracking_error_capped_value_overlay.md",
+    "title": "Tracking-Error-Capped Value-to-Futures Overlay Switch",
+    "factor": "VALUE",
+    "family": "new family: value_overlay_allo",
+    "verdict": "ACCEPT but blocked",
+    "blocker": "needs_tracking_error_model_and_overlay_notional_ma",
+    "testability": "Medium + the signal logic is m",
+    "score": 100,
+    "reasons": [
+      "gaps=value(65)",
+      "high_distinct(+30)",
+      "med_test(+20)",
+      "blocked(-30)",
+      "verdict_blocked(+5)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-03-23_06_small_value_large_growth_futures_rotation.md",
+    "title": "Small-Value vs Large-Growth Futures Rotation",
+    "factor": "VALUE",
+    "family": "new family: value_style_rotati",
+    "verdict": "ACCEPT but blocked",
+    "blocker": "needs_value_vs_growth_futures_proxy_definition_and",
+    "testability": "Medium + the timing rule is ex",
+    "score": 100,
+    "reasons": [
+      "gaps=value(65)",
+      "high_distinct(+30)",
+      "med_test(+20)",
+      "blocked(-30)",
+      "verdict_blocked(+5)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-03-24_01_small_value_large_growth_timing.md",
+    "title": "Small-Value vs Large-Growth Futures Timing Spread",
+    "factor": "VALUE",
+    "family": "new family: value_style_rotati",
+    "verdict": "ACCEPT but blocked",
+    "blocker": "needs_value_growth_proxy_definition_and_final_tren",
+    "testability": "Medium + the entry and rebalan",
+    "score": 100,
+    "reasons": [
+      "gaps=value(65)",
+      "high_distinct(+30)",
+      "med_test(+20)",
+      "blocked(-30)",
+      "verdict_blocked(+5)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-03-24_02_value_plus_managed_futures_overlay.md",
+    "title": "Value Tilt Plus Managed-Futures Overlay Allocation",
+    "factor": "VALUE",
+    "family": "new family: value_overlay_allo",
+    "verdict": "ACCEPT but blocked",
+    "blocker": "needs_value_proxy_overlay_basket_definition_and_ta",
+    "testability": "Medium + the rebalance logic i",
+    "score": 100,
+    "reasons": [
+      "gaps=value(65)",
+      "high_distinct(+30)",
+      "med_test(+20)",
+      "blocked(-30)",
+      "verdict_blocked(+5)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-03-25_06_fomc_liquidity_sweep_reversal_filter.md",
+    "title": "FOMC Liquidity-Sweep Reversal Filter",
+    "factor": "EVENT",
+    "family": "new family: fomc_intraday_reac",
+    "verdict": "NEEDS REVIEW",
+    "blocker": "needs_fast_anchor_choice_and_structure_reclaim_rul",
+    "testability": "Medium + the release time and ",
+    "score": 100,
+    "reasons": [
+      "gaps=carry(70)",
+      "high_distinct(+30)",
+      "med_test(+20)",
+      "blocked(-30)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-04-06_05_commodity_relative_basis_value.md",
+    "title": "Commodity Relative-Basis Value Ranker",
+    "factor": "VALUE",
+    "family": "new family: commodity_curve_va",
+    "verdict": "ACCEPT but blocked",
+    "blocker": "needs_relative_basis_curve_construction_and_deferr",
+    "testability": "Medium + the ranking rule is m",
+    "score": 100,
+    "reasons": [
+      "gaps=value(65)",
+      "high_distinct(+30)",
+      "med_test(+20)",
+      "blocked(-30)",
+      "verdict_blocked(+5)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-04-06_06_commodity_convenience_yield_risk_value.md",
+    "title": "Commodity Convenience-Yield-Risk Value Portfolio",
+    "factor": "VALUE",
+    "family": "commodity_curve_value",
+    "verdict": "ACCEPT but blocked",
+    "blocker": "needs_convenience_yield_risk_estimator_and_contrac",
+    "testability": "Medium + the monthly sorting r",
+    "score": 100,
+    "reasons": [
+      "gaps=value(65)",
+      "high_distinct(+30)",
+      "med_test(+20)",
+      "blocked(-30)",
+      "verdict_blocked(+5)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-04-07_03_sovereign_bond_yield_richness_gate.md",
+    "title": "Sovereign Bond Yield-Richness Gate",
+    "factor": "VALUE",
+    "family": "rates_value",
+    "verdict": "ACCEPT but blocked",
+    "blocker": "needs_futures_to_benchmark_yield_mapping_duration_",
+    "testability": "Medium + the gating rule is ex",
+    "score": 100,
+    "reasons": [
+      "gaps=value(65)",
+      "high_distinct(+30)",
+      "med_test(+20)",
+      "blocked(-30)",
+      "verdict_blocked(+5)",
+      "data_avail(+10)"
+    ]
+  }
+]

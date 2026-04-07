@@ -1,0 +1,56 @@
+[
+  {
+    "file": "2026-03-19_08_crude_hedging_pressure_carry.md",
+    "title": "Crude Oil Hedging-Pressure Carry Alignment",
+    "factor": "CARRY",
+    "family": "new family: energy_hedging_pre",
+    "verdict": "ACCEPT but blocked",
+    "blocker": "needs_hedging_pressure_normalization_and_contract_",
+    "testability": "High + the inputs are standard",
+    "score": 155,
+    "reasons": [
+      "gaps=energy+carry(100)",
+      "high_distinct(+30)",
+      "high_test(+40)",
+      "blocked(-30)",
+      "verdict_blocked(+5)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-03-25_05_standardized_macro_event_box.md",
+    "title": "Standardized Macro Event Box Breakout",
+    "factor": "EVENT",
+    "family": "new family: macro_event_box_fr",
+    "verdict": "ACCEPT as idea",
+    "blocker": "needs_single_standard_event_duration_and_release_s",
+    "testability": "High + release calendars are k",
+    "score": 150,
+    "reasons": [
+      "gaps=time_of_day(80)",
+      "high_distinct(+30)",
+      "high_test(+40)",
+      "blocked(-30)",
+      "verdict_accept(+20)",
+      "data_avail(+10)"
+    ]
+  },
+  {
+    "file": "2026-03-20_07_spx_lunch_compression_afternoon_release.md",
+    "title": "S&P Lunch Compression Afternoon Release",
+    "factor": "STRUCTURAL",
+    "family": "new family: afternoon session ",
+    "verdict": "ACCEPT as idea",
+    "blocker": "needs_clean_RTH_intraday_ES_data_with_consistent_V",
+    "testability": "High + the regime, trigger, an",
+    "score": 150,
+    "reasons": [
+      "gaps=time_of_day(80)",
+      "high_distinct(+30)",
+      "high_test(+40)",
+      "blocked(-30)",
+      "verdict_accept(+20)",
+      "data_avail(+10)"
+    ]
+  }
+]
