@@ -1,0 +1,542 @@
+[
+  {
+    "stop_mult": 0.1,
+    "profitable_count": 4,
+    "avg_pf": 1.456,
+    "avg_dd_days": 317.0,
+    "total_trades": 4191,
+    "all_median_positive": true,
+    "per_asset": [
+      {
+        "asset": "MNQ",
+        "stop_mult": 0.1,
+        "trades": 1183,
+        "pf": 1.592,
+        "pnl": 45261.0,
+        "top3": 10.6,
+        "top10": 24.4,
+        "median": 41.26,
+        "dd_days": 182
+      },
+      {
+        "asset": "MES",
+        "stop_mult": 0.1,
+        "trades": 1213,
+        "pf": 1.41,
+        "pnl": 19396.0,
+        "top3": 14.8,
+        "top10": 34.3,
+        "median": 13.76,
+        "dd_days": 256
+      },
+      {
+        "asset": "MGC",
+        "stop_mult": 0.1,
+        "trades": 644,
+        "pf": 1.487,
+        "pnl": 8905.0,
+        "top3": 20.2,
+        "top10": 48.9,
+        "median": 6.76,
+        "dd_days": 528
+      },
+      {
+        "asset": "M2K",
+        "stop_mult": 0.1,
+        "trades": 1151,
+        "pf": 1.337,
+        "pnl": 10269.0,
+        "top3": 10.7,
+        "top10": 29.6,
+        "median": 7.76,
+        "dd_days": 302
+      }
+    ]
+  },
+  {
+    "stop_mult": 0.25,
+    "profitable_count": 4,
+    "avg_pf": 1.462,
+    "avg_dd_days": 336.0,
+    "total_trades": 4191,
+    "all_median_positive": true,
+    "per_asset": [
+      {
+        "asset": "MNQ",
+        "stop_mult": 0.25,
+        "trades": 1183,
+        "pf": 1.61,
+        "pnl": 47221.0,
+        "top3": 10.2,
+        "top10": 24.3,
+        "median": 41.76,
+        "dd_days": 184
+      },
+      {
+        "asset": "MES",
+        "stop_mult": 0.25,
+        "trades": 1213,
+        "pf": 1.414,
+        "pnl": 19971.0,
+        "top3": 14.4,
+        "top10": 33.3,
+        "median": 15.01,
+        "dd_days": 267
+      },
+      {
+        "asset": "MGC",
+        "stop_mult": 0.25,
+        "trades": 644,
+        "pf": 1.495,
+        "pnl": 9162.0,
+        "top3": 19.6,
+        "top10": 49.0,
+        "median": 6.76,
+        "dd_days": 592
+      },
+      {
+        "asset": "M2K",
+        "stop_mult": 0.25,
+        "trades": 1151,
+        "pf": 1.329,
+        "pnl": 10194.0,
+        "top3": 10.8,
+        "top10": 29.8,
+        "median": 7.76,
+        "dd_days": 302
+      }
+    ]
+  },
+  {
+    "stop_mult": 0.5,
+    "profitable_count": 4,
+    "avg_pf": 1.454,
+    "avg_dd_days": 314.0,
+    "total_trades": 4191,
+    "all_median_positive": true,
+    "per_asset": [
+      {
+        "asset": "MNQ",
+        "stop_mult": 0.5,
+        "trades": 1183,
+        "pf": 1.589,
+        "pnl": 46692.0,
+        "top3": 10.3,
+        "top10": 24.6,
+        "median": 41.76,
+        "dd_days": 145
+      },
+      {
+        "asset": "MES",
+        "stop_mult": 0.5,
+        "trades": 1213,
+        "pf": 1.435,
+        "pnl": 21158.0,
+        "top3": 13.6,
+        "top10": 31.6,
+        "median": 17.51,
+        "dd_days": 252
+      },
+      {
+        "asset": "MGC",
+        "stop_mult": 0.5,
+        "trades": 644,
+        "pf": 1.479,
+        "pnl": 9057.0,
+        "top3": 19.3,
+        "top10": 47.3,
+        "median": 6.26,
+        "dd_days": 593
+      },
+      {
+        "asset": "M2K",
+        "stop_mult": 0.5,
+        "trades": 1151,
+        "pf": 1.313,
+        "pnl": 9899.0,
+        "top3": 11.4,
+        "top10": 31.3,
+        "median": 7.76,
+        "dd_days": 265
+      }
+    ]
+  },
+  {
+    "stop_mult": 0.75,
+    "profitable_count": 4,
+    "avg_pf": 1.498,
+    "avg_dd_days": 313.0,
+    "total_trades": 4191,
+    "all_median_positive": true,
+    "per_asset": [
+      {
+        "asset": "MNQ",
+        "stop_mult": 0.75,
+        "trades": 1183,
+        "pf": 1.635,
+        "pnl": 50071.0,
+        "top3": 9.6,
+        "top10": 23.0,
+        "median": 42.76,
+        "dd_days": 143
+      },
+      {
+        "asset": "MES",
+        "stop_mult": 0.75,
+        "trades": 1213,
+        "pf": 1.486,
+        "pnl": 23401.0,
+        "top3": 12.3,
+        "top10": 28.5,
+        "median": 18.76,
+        "dd_days": 252
+      },
+      {
+        "asset": "MGC",
+        "stop_mult": 0.75,
+        "trades": 644,
+        "pf": 1.543,
+        "pnl": 10444.0,
+        "top3": 22.9,
+        "top10": 51.5,
+        "median": 6.76,
+        "dd_days": 593
+      },
+      {
+        "asset": "M2K",
+        "stop_mult": 0.75,
+        "trades": 1151,
+        "pf": 1.329,
+        "pnl": 10411.0,
+        "top3": 11.0,
+        "top10": 30.5,
+        "median": 8.26,
+        "dd_days": 265
+      }
+    ]
+  },
+  {
+    "stop_mult": 1.0,
+    "profitable_count": 4,
+    "avg_pf": 1.506,
+    "avg_dd_days": 259.0,
+    "total_trades": 4191,
+    "all_median_positive": true,
+    "per_asset": [
+      {
+        "asset": "MNQ",
+        "stop_mult": 1.0,
+        "trades": 1183,
+        "pf": 1.638,
+        "pnl": 50721.0,
+        "top3": 8.8,
+        "top10": 21.7,
+        "median": 43.26,
+        "dd_days": 143
+      },
+      {
+        "asset": "MES",
+        "stop_mult": 1.0,
+        "trades": 1213,
+        "pf": 1.505,
+        "pnl": 24440.0,
+        "top3": 11.7,
+        "top10": 27.2,
+        "median": 20.01,
+        "dd_days": 252
+      },
+      {
+        "asset": "MGC",
+        "stop_mult": 1.0,
+        "trades": 644,
+        "pf": 1.553,
+        "pnl": 10679.0,
+        "top3": 22.4,
+        "top10": 52.4,
+        "median": 6.76,
+        "dd_days": 370
+      },
+      {
+        "asset": "M2K",
+        "stop_mult": 1.0,
+        "trades": 1151,
+        "pf": 1.327,
+        "pnl": 10407.0,
+        "top3": 11.0,
+        "top10": 30.5,
+        "median": 8.26,
+        "dd_days": 272
+      }
+    ]
+  },
+  {
+    "stop_mult": 1.25,
+    "profitable_count": 4,
+    "avg_pf": 1.514,
+    "avg_dd_days": 260.0,
+    "total_trades": 4191,
+    "all_median_positive": true,
+    "per_asset": [
+      {
+        "asset": "MNQ",
+        "stop_mult": 1.25,
+        "trades": 1183,
+        "pf": 1.612,
+        "pnl": 49713.0,
+        "top3": 9.7,
+        "top10": 23.2,
+        "median": 42.76,
+        "dd_days": 147
+      },
+      {
+        "asset": "MES",
+        "stop_mult": 1.25,
+        "trades": 1213,
+        "pf": 1.536,
+        "pnl": 25901.0,
+        "top3": 11.1,
+        "top10": 25.8,
+        "median": 21.26,
+        "dd_days": 244
+      },
+      {
+        "asset": "MGC",
+        "stop_mult": 1.25,
+        "trades": 644,
+        "pf": 1.589,
+        "pnl": 11348.0,
+        "top3": 21.1,
+        "top10": 50.2,
+        "median": 7.26,
+        "dd_days": 370
+      },
+      {
+        "asset": "M2K",
+        "stop_mult": 1.25,
+        "trades": 1151,
+        "pf": 1.32,
+        "pnl": 10328.0,
+        "top3": 11.1,
+        "top10": 30.7,
+        "median": 8.26,
+        "dd_days": 280
+      }
+    ]
+  },
+  {
+    "stop_mult": 1.5,
+    "profitable_count": 4,
+    "avg_pf": 1.528,
+    "avg_dd_days": 296.0,
+    "total_trades": 4191,
+    "all_median_positive": true,
+    "per_asset": [
+      {
+        "asset": "MNQ",
+        "stop_mult": 1.5,
+        "trades": 1183,
+        "pf": 1.601,
+        "pnl": 49297.0,
+        "top3": 9.7,
+        "top10": 23.4,
+        "median": 42.76,
+        "dd_days": 147
+      },
+      {
+        "asset": "MES",
+        "stop_mult": 1.5,
+        "trades": 1213,
+        "pf": 1.521,
+        "pnl": 25385.0,
+        "top3": 10.7,
+        "top10": 24.3,
+        "median": 22.51,
+        "dd_days": 228
+      },
+      {
+        "asset": "MGC",
+        "stop_mult": 1.5,
+        "trades": 644,
+        "pf": 1.669,
+        "pnl": 12699.0,
+        "top3": 19.1,
+        "top10": 46.9,
+        "median": 7.76,
+        "dd_days": 528
+      },
+      {
+        "asset": "M2K",
+        "stop_mult": 1.5,
+        "trades": 1151,
+        "pf": 1.321,
+        "pnl": 10430.0,
+        "top3": 11.0,
+        "top10": 30.4,
+        "median": 8.26,
+        "dd_days": 280
+      }
+    ]
+  },
+  {
+    "stop_mult": 2.0,
+    "profitable_count": 4,
+    "avg_pf": 1.548,
+    "avg_dd_days": 250.0,
+    "total_trades": 4191,
+    "all_median_positive": true,
+    "per_asset": [
+      {
+        "asset": "MNQ",
+        "stop_mult": 2.0,
+        "trades": 1183,
+        "pf": 1.62,
+        "pnl": 50785.0,
+        "top3": 9.4,
+        "top10": 22.7,
+        "median": 43.26,
+        "dd_days": 143
+      },
+      {
+        "asset": "MES",
+        "stop_mult": 2.0,
+        "trades": 1213,
+        "pf": 1.584,
+        "pnl": 28387.0,
+        "top3": 10.1,
+        "top10": 23.1,
+        "median": 23.76,
+        "dd_days": 228
+      },
+      {
+        "asset": "MGC",
+        "stop_mult": 2.0,
+        "trades": 644,
+        "pf": 1.651,
+        "pnl": 12597.0,
+        "top3": 19.3,
+        "top10": 47.3,
+        "median": 9.26,
+        "dd_days": 363
+      },
+      {
+        "asset": "M2K",
+        "stop_mult": 2.0,
+        "trades": 1151,
+        "pf": 1.335,
+        "pnl": 10804.0,
+        "top3": 10.6,
+        "top10": 29.4,
+        "median": 7.76,
+        "dd_days": 265
+      }
+    ]
+  },
+  {
+    "stop_mult": 2.5,
+    "profitable_count": 4,
+    "avg_pf": 1.536,
+    "avg_dd_days": 232.0,
+    "total_trades": 4191,
+    "all_median_positive": true,
+    "per_asset": [
+      {
+        "asset": "MNQ",
+        "stop_mult": 2.5,
+        "trades": 1183,
+        "pf": 1.591,
+        "pnl": 49298.0,
+        "top3": 9.7,
+        "top10": 23.4,
+        "median": 42.76,
+        "dd_days": 143
+      },
+      {
+        "asset": "MES",
+        "stop_mult": 2.5,
+        "trades": 1213,
+        "pf": 1.573,
+        "pnl": 28345.0,
+        "top3": 10.1,
+        "top10": 23.6,
+        "median": 23.76,
+        "dd_days": 188
+      },
+      {
+        "asset": "MGC",
+        "stop_mult": 2.5,
+        "trades": 644,
+        "pf": 1.635,
+        "pnl": 12443.0,
+        "top3": 19.5,
+        "top10": 47.9,
+        "median": 8.76,
+        "dd_days": 316
+      },
+      {
+        "asset": "M2K",
+        "stop_mult": 2.5,
+        "trades": 1151,
+        "pf": 1.346,
+        "pnl": 11295.0,
+        "top3": 11.3,
+        "top10": 31.1,
+        "median": 8.26,
+        "dd_days": 280
+      }
+    ]
+  },
+  {
+    "stop_mult": 3.0,
+    "profitable_count": 4,
+    "avg_pf": 1.545,
+    "avg_dd_days": 241.0,
+    "total_trades": 4191,
+    "all_median_positive": true,
+    "per_asset": [
+      {
+        "asset": "MNQ",
+        "stop_mult": 3.0,
+        "trades": 1183,
+        "pf": 1.649,
+        "pnl": 53354.0,
+        "top3": 12.2,
+        "top10": 24.8,
+        "median": 43.26,
+        "dd_days": 143
+      },
+      {
+        "asset": "MES",
+        "stop_mult": 3.0,
+        "trades": 1213,
+        "pf": 1.59,
+        "pnl": 29562.0,
+        "top3": 13.0,
+        "top10": 26.1,
+        "median": 25.01,
+        "dd_days": 228
+      },
+      {
+        "asset": "MGC",
+        "stop_mult": 3.0,
+        "trades": 644,
+        "pf": 1.602,
+        "pnl": 12043.0,
+        "top3": 20.2,
+        "top10": 49.5,
+        "median": 8.76,
+        "dd_days": 314
+      },
+      {
+        "asset": "M2K",
+        "stop_mult": 3.0,
+        "trades": 1151,
+        "pf": 1.338,
+        "pnl": 11056.0,
+        "top3": 11.5,
+        "top10": 31.0,
+        "median": 8.76,
+        "dd_days": 280
+      }
+    ]
+  }
+]
