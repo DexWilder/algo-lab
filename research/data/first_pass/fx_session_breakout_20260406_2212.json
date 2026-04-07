@@ -1,0 +1,215 @@
+{
+  "strategy": "fx_session_breakout",
+  "run_date": "2026-04-06T22:12:53.364756",
+  "session_filter": null,
+  "asset_results": {
+    "6J": {
+      "asset": "6J",
+      "bars": 70368,
+      "modes": {
+        "both": {
+          "trades": 128,
+          "pnl": 1998.75,
+          "pf": 1.231,
+          "sharpe": 1.22,
+          "maxdd": 1552.5,
+          "wr": 55.5,
+          "avg_pnl": 15.62,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 78,
+          "pnl": 167.5,
+          "pf": 1.027,
+          "sharpe": 0.15,
+          "maxdd": 1436.25,
+          "wr": 48.7,
+          "avg_pnl": 2.15,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 60,
+          "pnl": 831.25,
+          "pf": 1.222,
+          "sharpe": 1.18,
+          "maxdd": 1345.0,
+          "wr": 61.7,
+          "avg_pnl": 13.85,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 64,
+          "pnl": 396.25,
+          "pf": 1.083,
+          "sharpe": 0.45,
+          "maxdd": 1545.0,
+          "wr": 51.6,
+          "avg_pnl": 6.19
+        },
+        "H2": {
+          "trades": 64,
+          "pnl": 1602.5,
+          "pf": 1.411,
+          "sharpe": 2.14,
+          "maxdd": 1552.5,
+          "wr": 59.4,
+          "avg_pnl": 25.04
+        }
+      },
+      "concentration": {
+        "top3_share": 0.987,
+        "top5_share": 1.329,
+        "top10_share": 2.045,
+        "max_year_share": 1.126
+      },
+      "classification": "SALVAGE",
+      "classification_reasons": [
+        "PF 1.23, 128 trades (< 500 trust threshold). Top-3=99%, max year=113%. Likely outlier-driven \u2014 validate deeply before promotion."
+      ]
+    },
+    "6E": {
+      "asset": "6E",
+      "bars": 79047,
+      "modes": {
+        "both": {
+          "trades": 138,
+          "pnl": 505.0,
+          "pf": 1.033,
+          "sharpe": 0.2,
+          "maxdd": 3163.75,
+          "wr": 60.9,
+          "avg_pnl": 3.66,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 82,
+          "pnl": 907.5,
+          "pf": 1.097,
+          "sharpe": 0.59,
+          "maxdd": 3205.0,
+          "wr": 58.5,
+          "avg_pnl": 11.07,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 71,
+          "pnl": 872.5,
+          "pf": 1.119,
+          "sharpe": 0.71,
+          "maxdd": 1338.75,
+          "wr": 63.4,
+          "avg_pnl": 12.29,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 92,
+          "pnl": -1092.5,
+          "pf": 0.895,
+          "sharpe": -0.67,
+          "maxdd": 3163.75,
+          "wr": 59.8,
+          "avg_pnl": -11.88
+        },
+        "H2": {
+          "trades": 46,
+          "pnl": 1597.5,
+          "pf": 1.32,
+          "sharpe": 1.9,
+          "maxdd": 2076.25,
+          "wr": 63.0,
+          "avg_pnl": 34.73
+        }
+      },
+      "concentration": {
+        "top3_share": 3.129,
+        "top5_share": 4.827,
+        "top10_share": 8.156,
+        "max_year_share": 1.649
+      },
+      "classification": "SALVAGE",
+      "classification_reasons": [
+        "Period-specific edge: H1=0.90, H2=1.32"
+      ]
+    },
+    "6B": {
+      "asset": "6B",
+      "bars": 59990,
+      "modes": {
+        "both": {
+          "trades": 194,
+          "pnl": -7772.5,
+          "pf": 0.632,
+          "sharpe": -3.01,
+          "maxdd": 7947.5,
+          "wr": 48.5,
+          "avg_pnl": -40.06,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 106,
+          "pnl": -5402.5,
+          "pf": 0.562,
+          "sharpe": -4.01,
+          "maxdd": 6302.5,
+          "wr": 46.2,
+          "avg_pnl": -50.97,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 122,
+          "pnl": -2398.75,
+          "pf": 0.792,
+          "sharpe": -1.42,
+          "maxdd": 3236.25,
+          "wr": 52.5,
+          "avg_pnl": -19.66,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 96,
+          "pnl": -2452.5,
+          "pf": 0.743,
+          "sharpe": -2.13,
+          "maxdd": 3480.0,
+          "wr": 50.0,
+          "avg_pnl": -25.55
+        },
+        "H2": {
+          "trades": 98,
+          "pnl": -5320.0,
+          "pf": 0.542,
+          "sharpe": -3.74,
+          "maxdd": 5948.75,
+          "wr": 46.9,
+          "avg_pnl": -54.29
+        }
+      },
+      "concentration": {
+        "top3_share": 0,
+        "top5_share": 0,
+        "top10_share": 0,
+        "max_year_share": 0
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Sufficient trades (194) but PF 0.63 < 1.1"
+      ]
+    }
+  },
+  "best_result": {
+    "asset": "6J",
+    "classification": "SALVAGE",
+    "pf": 1.231,
+    "trades": 128
+  },
+  "overall_classification": "SALVAGE",
+  "overall_reasons": [
+    "PF 1.23, 128 trades (< 500 trust threshold). Top-3=99%, max year=113%. Likely outlier-driven \u2014 validate deeply before promotion."
+  ]
+}

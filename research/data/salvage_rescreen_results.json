@@ -1,0 +1,194 @@
+[
+  {
+    "strategy": "donchian_trend",
+    "classification": "SALVAGE",
+    "pf": 1.143,
+    "trades": 2242,
+    "asset": "MNQ",
+    "top3_concentration": 25.0,
+    "max_year_share": 39.900000000000006,
+    "reasons": [
+      "Overall PF 1.14, directional split shows PF > 1.2"
+    ]
+  },
+  {
+    "strategy": "ema_trend_rider",
+    "classification": "SALVAGE",
+    "pf": 1.079,
+    "trades": 1985,
+    "asset": "MNQ",
+    "top3_concentration": 34.699999999999996,
+    "max_year_share": 50.3,
+    "reasons": [
+      "Overall PF 1.08, directional split shows PF > 1.2"
+    ]
+  },
+  {
+    "strategy": "xb_pb_ema_timestop",
+    "classification": "SALVAGE",
+    "pf": 1.019,
+    "trades": 1456,
+    "asset": "MES",
+    "top3_concentration": 189.3,
+    "max_year_share": 311.4,
+    "reasons": [
+      "Overall PF 1.02, directional split shows PF > 1.2"
+    ]
+  },
+  {
+    "strategy": "vwap_trend",
+    "classification": "SALVAGE",
+    "pf": 1.076,
+    "trades": 1287,
+    "asset": "MNQ",
+    "top3_concentration": 64.0,
+    "max_year_share": 107.1,
+    "reasons": [
+      "Overall PF 1.08, directional split shows PF > 1.2"
+    ]
+  },
+  {
+    "strategy": "orb_009",
+    "classification": "SALVAGE",
+    "pf": 1.14,
+    "trades": 715,
+    "asset": "MGC",
+    "top3_concentration": 97.8,
+    "max_year_share": 100.49999999999999,
+    "reasons": [
+      "Period-specific edge: H1=0.90, H2=1.33"
+    ]
+  },
+  {
+    "strategy": "orion_vol",
+    "classification": "SALVAGE",
+    "pf": 1.066,
+    "trades": 535,
+    "asset": "MGC",
+    "top3_concentration": 170.79999999999998,
+    "max_year_share": 112.7,
+    "reasons": [
+      "Overall PF 1.07, directional split shows PF > 1.2"
+    ]
+  },
+  {
+    "strategy": "treasury_close_reversion",
+    "classification": "SALVAGE",
+    "pf": 1.084,
+    "trades": 418,
+    "asset": "MES",
+    "top3_concentration": 103.1,
+    "max_year_share": 127.0,
+    "reasons": [
+      "Overall PF 1.08, directional split shows PF > 1.2"
+    ]
+  },
+  {
+    "strategy": "vol_compression_breakout_v2",
+    "classification": "SALVAGE",
+    "pf": 1.184,
+    "trades": 310,
+    "asset": "MNQ",
+    "top3_concentration": 33.300000000000004,
+    "max_year_share": 56.39999999999999,
+    "reasons": [
+      "Overall PF 1.18, directional split shows PF > 1.2"
+    ]
+  },
+  {
+    "strategy": "zn_afternoon_reversion",
+    "classification": "SALVAGE",
+    "pf": 1.074,
+    "trades": 304,
+    "asset": "ZN",
+    "top3_concentration": 151.2,
+    "max_year_share": 201.9,
+    "reasons": [
+      "Overall PF 1.07, directional split shows PF > 1.2"
+    ]
+  },
+  {
+    "strategy": "imc_afternoon",
+    "classification": "SALVAGE",
+    "pf": 1.212,
+    "trades": 256,
+    "asset": "MGC",
+    "top3_concentration": 119.19999999999999,
+    "max_year_share": 63.5,
+    "reasons": [
+      "Overall PF 1.21, directional split shows PF > 1.2"
+    ]
+  },
+  {
+    "strategy": "6j_tokyo_london",
+    "classification": "SALVAGE",
+    "pf": 1.021,
+    "trades": 162,
+    "asset": "6J",
+    "top3_concentration": 790.3,
+    "max_year_share": 903.1,
+    "reasons": [
+      "Period-specific edge: H1=1.31, H2=0.92"
+    ]
+  },
+  {
+    "strategy": "pb_trend",
+    "classification": "SALVAGE",
+    "pf": 1.052,
+    "trades": 119,
+    "asset": "MGC",
+    "top3_concentration": 326.7,
+    "max_year_share": 411.7,
+    "reasons": [
+      "Overall PF 1.05, directional split shows PF > 1.2"
+    ]
+  },
+  {
+    "strategy": "treasury_cpi_day",
+    "classification": "SALVAGE",
+    "pf": 1.151,
+    "trades": 81,
+    "asset": "MES",
+    "top3_concentration": 197.70000000000002,
+    "max_year_share": 113.7,
+    "reasons": [
+      "Period-specific edge: H1=0.71, H2=2.02"
+    ]
+  },
+  {
+    "strategy": "nfp_level_breakout",
+    "classification": "SALVAGE",
+    "pf": 1.053,
+    "trades": 81,
+    "asset": "MNQ",
+    "top3_concentration": 377.5,
+    "max_year_share": 297.7,
+    "reasons": [
+      "Overall PF 1.05, directional split shows PF > 1.2"
+    ]
+  },
+  {
+    "strategy": "pre_fomc_drift",
+    "classification": "SALVAGE",
+    "pf": 1.402,
+    "trades": 54,
+    "asset": "M2K",
+    "top3_concentration": 118.19999999999999,
+    "max_year_share": 56.89999999999999,
+    "reasons": [
+      "Overall PF 1.40, directional split shows PF > 1.2"
+    ]
+  },
+  {
+    "strategy": "gold_bw_squeeze",
+    "classification": "SALVAGE",
+    "pf": 1.377,
+    "trades": 23,
+    "asset": "MGC",
+    "top3_concentration": 320.7,
+    "max_year_share": 108.1,
+    "reasons": [
+      "Overall PF 1.38, directional split shows PF > 1.2"
+    ]
+  }
+]

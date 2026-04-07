@@ -1,0 +1,413 @@
+{
+  "strategy": "ema_trend_rider",
+  "run_date": "2026-04-06T22:11:41.781717",
+  "session_filter": null,
+  "asset_results": {
+    "MES": {
+      "asset": "MES",
+      "bars": 474187,
+      "modes": {
+        "both": {
+          "trades": 2032,
+          "pnl": -3772.18,
+          "pf": 0.936,
+          "sharpe": -0.41,
+          "maxdd": 6167.93,
+          "wr": 42.1,
+          "avg_pnl": -1.86,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 1100,
+          "pnl": -684.0,
+          "pf": 0.977,
+          "sharpe": -0.14,
+          "maxdd": 2978.62,
+          "wr": 44.8,
+          "avg_pnl": -0.62,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 932,
+          "pnl": -3088.18,
+          "pf": 0.895,
+          "sharpe": -0.61,
+          "maxdd": 4983.35,
+          "wr": 38.9,
+          "avg_pnl": -3.31,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 1011,
+          "pnl": -2276.14,
+          "pf": 0.921,
+          "sharpe": -0.5,
+          "maxdd": 3653.89,
+          "wr": 42.3,
+          "avg_pnl": -2.25
+        },
+        "H2": {
+          "trades": 1021,
+          "pnl": -1504.79,
+          "pf": 0.95,
+          "sharpe": -0.32,
+          "maxdd": 3145.45,
+          "wr": 41.8,
+          "avg_pnl": -1.47
+        }
+      },
+      "concentration": {
+        "top3_share": 0,
+        "top5_share": 0,
+        "top10_share": 0,
+        "max_year_share": 0
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Sufficient trades (2032) but PF 0.94 < 1.1"
+      ]
+    },
+    "MNQ": {
+      "asset": "MNQ",
+      "bars": 474064,
+      "modes": {
+        "both": {
+          "trades": 1985,
+          "pnl": 7574.1,
+          "pf": 1.079,
+          "sharpe": 0.46,
+          "maxdd": 3831.94,
+          "wr": 43.3,
+          "avg_pnl": 3.82,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 1045,
+          "pnl": 9448.2,
+          "pf": 1.21,
+          "sharpe": 1.09,
+          "maxdd": 2320.34,
+          "wr": 47.2,
+          "avg_pnl": 9.04,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 940,
+          "pnl": -1874.1,
+          "pf": 0.963,
+          "sharpe": -0.2,
+          "maxdd": 6785.08,
+          "wr": 38.9,
+          "avg_pnl": -1.99,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 989,
+          "pnl": 1002.64,
+          "pf": 1.023,
+          "sharpe": 0.13,
+          "maxdd": 3816.8,
+          "wr": 43.6,
+          "avg_pnl": 1.01
+        },
+        "H2": {
+          "trades": 996,
+          "pnl": 6571.46,
+          "pf": 1.126,
+          "sharpe": 0.75,
+          "maxdd": 2329.92,
+          "wr": 43.0,
+          "avg_pnl": 6.6
+        }
+      },
+      "concentration": {
+        "top3_share": 0.347,
+        "top5_share": 0.545,
+        "top10_share": 0.98,
+        "max_year_share": 0.503
+      },
+      "classification": "SALVAGE",
+      "classification_reasons": [
+        "Overall PF 1.08, directional split shows PF > 1.2"
+      ]
+    },
+    "MGC": {
+      "asset": "MGC",
+      "bars": 250118,
+      "modes": {
+        "both": {
+          "trades": 1116,
+          "pnl": -11177.84,
+          "pf": 0.683,
+          "sharpe": -1.7,
+          "maxdd": 12480.84,
+          "wr": 39.4,
+          "avg_pnl": -10.02,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 571,
+          "pnl": -5299.04,
+          "pf": 0.701,
+          "sharpe": -1.56,
+          "maxdd": 5722.56,
+          "wr": 40.8,
+          "avg_pnl": -9.28,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 545,
+          "pnl": -5878.8,
+          "pf": 0.666,
+          "sharpe": -1.62,
+          "maxdd": 6758.28,
+          "wr": 38.0,
+          "avg_pnl": -10.79,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 558,
+          "pnl": -455.92,
+          "pf": 0.957,
+          "sharpe": -0.25,
+          "maxdd": 2385.36,
+          "wr": 40.1,
+          "avg_pnl": -0.82
+        },
+        "H2": {
+          "trades": 558,
+          "pnl": -10711.92,
+          "pf": 0.567,
+          "sharpe": -2.52,
+          "maxdd": 10958.84,
+          "wr": 38.9,
+          "avg_pnl": -19.2
+        }
+      },
+      "concentration": {
+        "top3_share": 0,
+        "top5_share": 0,
+        "top10_share": 0,
+        "max_year_share": 0
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Sufficient trades (1116) but PF 0.68 < 1.1"
+      ]
+    },
+    "M2K": {
+      "asset": "M2K",
+      "bars": 469818,
+      "modes": {
+        "both": {
+          "trades": 1948,
+          "pnl": -4264.02,
+          "pf": 0.884,
+          "sharpe": -0.76,
+          "maxdd": 5402.08,
+          "wr": 40.5,
+          "avg_pnl": -2.19,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 988,
+          "pnl": -2234.62,
+          "pf": 0.876,
+          "sharpe": -0.77,
+          "maxdd": 3528.02,
+          "wr": 41.6,
+          "avg_pnl": -2.26,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 960,
+          "pnl": -2029.4,
+          "pf": 0.892,
+          "sharpe": -0.64,
+          "maxdd": 2834.3,
+          "wr": 39.3,
+          "avg_pnl": -2.11,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 984,
+          "pnl": -3459.66,
+          "pf": 0.822,
+          "sharpe": -1.24,
+          "maxdd": 3714.7,
+          "wr": 41.1,
+          "avg_pnl": -3.52
+        },
+        "H2": {
+          "trades": 964,
+          "pnl": -804.36,
+          "pf": 0.953,
+          "sharpe": -0.29,
+          "maxdd": 2313.62,
+          "wr": 39.8,
+          "avg_pnl": -0.83
+        }
+      },
+      "concentration": {
+        "top3_share": 0,
+        "top5_share": 0,
+        "top10_share": 0,
+        "max_year_share": 0
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Sufficient trades (1948) but PF 0.88 < 1.1"
+      ]
+    },
+    "MCL": {
+      "asset": "MCL",
+      "bars": 330908,
+      "modes": {
+        "both": {
+          "trades": 1385,
+          "pnl": -1154.4,
+          "pf": 0.964,
+          "sharpe": -0.22,
+          "maxdd": 2936.32,
+          "wr": 40.0,
+          "avg_pnl": -0.83,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 749,
+          "pnl": -2182.76,
+          "pf": 0.869,
+          "sharpe": -0.79,
+          "maxdd": 3028.88,
+          "wr": 39.7,
+          "avg_pnl": -2.91,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 636,
+          "pnl": 1028.36,
+          "pf": 1.067,
+          "sharpe": 0.34,
+          "maxdd": 1864.52,
+          "wr": 40.4,
+          "avg_pnl": 1.62,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 684,
+          "pnl": 995.84,
+          "pf": 1.054,
+          "sharpe": 0.33,
+          "maxdd": 1794.6,
+          "wr": 42.4,
+          "avg_pnl": 1.46
+        },
+        "H2": {
+          "trades": 701,
+          "pnl": -2176.24,
+          "pf": 0.84,
+          "sharpe": -0.97,
+          "maxdd": 2936.32,
+          "wr": 37.7,
+          "avg_pnl": -3.1
+        }
+      },
+      "concentration": {
+        "top3_share": 0,
+        "top5_share": 0,
+        "top10_share": 0,
+        "max_year_share": 0
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Sufficient trades (1385) but PF 0.96 < 1.1"
+      ]
+    },
+    "ZN": {
+      "asset": "ZN",
+      "bars": 397468,
+      "modes": {
+        "both": {
+          "trades": 1830,
+          "pnl": -59215.37,
+          "pf": 0.521,
+          "sharpe": -3.87,
+          "maxdd": 59227.87,
+          "wr": 29.8,
+          "avg_pnl": -32.36,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 916,
+          "pnl": -33618.12,
+          "pf": 0.467,
+          "sharpe": -4.6,
+          "maxdd": 34081.85,
+          "wr": 29.4,
+          "avg_pnl": -36.7,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 914,
+          "pnl": -25597.25,
+          "pf": 0.577,
+          "sharpe": -2.99,
+          "maxdd": 26417.29,
+          "wr": 30.3,
+          "avg_pnl": -28.01,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 919,
+          "pnl": -28953.66,
+          "pf": 0.516,
+          "sharpe": -3.8,
+          "maxdd": 28944.9,
+          "wr": 29.3,
+          "avg_pnl": -31.51
+        },
+        "H2": {
+          "trades": 911,
+          "pnl": -30261.71,
+          "pf": 0.526,
+          "sharpe": -3.94,
+          "maxdd": 30293.59,
+          "wr": 30.4,
+          "avg_pnl": -33.22
+        }
+      },
+      "concentration": {
+        "top3_share": 0,
+        "top5_share": 0,
+        "top10_share": 0,
+        "max_year_share": 0
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Sufficient trades (1830) but PF 0.52 < 1.1"
+      ]
+    }
+  },
+  "best_result": {
+    "asset": "MNQ",
+    "classification": "SALVAGE",
+    "pf": 1.079,
+    "trades": 1985
+  },
+  "overall_classification": "SALVAGE",
+  "overall_reasons": [
+    "Overall PF 1.08, directional split shows PF > 1.2"
+  ]
+}

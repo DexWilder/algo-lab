@@ -1,0 +1,83 @@
+{
+  "strategy": "gold_bw_squeeze",
+  "run_date": "2026-04-06T23:04:54.928694",
+  "session_filter": null,
+  "asset_results": {
+    "MGC": {
+      "asset": "MGC",
+      "bars": 250118,
+      "modes": {
+        "both": {
+          "trades": 23,
+          "pnl": 2275.48,
+          "pf": 1.377,
+          "sharpe": 1.26,
+          "maxdd": 2020.88,
+          "wr": 30.4,
+          "avg_pnl": 98.93,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 13,
+          "pnl": 5440.88,
+          "pf": 3.414,
+          "sharpe": 4.36,
+          "maxdd": 1384.72,
+          "wr": 38.5,
+          "avg_pnl": 418.53,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 10,
+          "pnl": -3165.4,
+          "pf": 0.162,
+          "sharpe": -8.71,
+          "maxdd": 3073.92,
+          "wr": 20.0,
+          "avg_pnl": -316.54,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 8,
+          "pnl": -1843.92,
+          "pf": 0.003,
+          "sharpe": -8.49,
+          "maxdd": 1810.68,
+          "wr": 12.5,
+          "avg_pnl": -230.49
+        },
+        "H2": {
+          "trades": 12,
+          "pnl": 3806.12,
+          "pf": 1.942,
+          "sharpe": 3.0,
+          "maxdd": 1872.48,
+          "wr": 41.7,
+          "avg_pnl": 317.18
+        }
+      },
+      "concentration": {
+        "top3_share": 3.207,
+        "top5_share": 3.591,
+        "top10_share": 3.606,
+        "max_year_share": 1.081
+      },
+      "classification": "SALVAGE",
+      "classification_reasons": [
+        "Overall PF 1.38, directional split shows PF > 1.2"
+      ]
+    }
+  },
+  "best_result": {
+    "asset": "MGC",
+    "classification": "SALVAGE",
+    "pf": 1.377,
+    "trades": 23
+  },
+  "overall_classification": "SALVAGE",
+  "overall_reasons": [
+    "Overall PF 1.38, directional split shows PF > 1.2"
+  ]
+}

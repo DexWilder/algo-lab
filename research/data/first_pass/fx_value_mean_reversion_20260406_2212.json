@@ -1,0 +1,215 @@
+{
+  "strategy": "fx_value_mean_reversion",
+  "run_date": "2026-04-06T22:12:55.355601",
+  "session_filter": null,
+  "asset_results": {
+    "6J": {
+      "asset": "6J",
+      "bars": 70368,
+      "modes": {
+        "both": {
+          "trades": 5,
+          "pnl": 2175.0,
+          "pf": 1.402,
+          "sharpe": 1.93,
+          "maxdd": 5408.75,
+          "wr": 80.0,
+          "avg_pnl": 435.0,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 3,
+          "pnl": 373.75,
+          "pf": 1.069,
+          "sharpe": 0.4,
+          "maxdd": 5408.75,
+          "wr": 66.7,
+          "avg_pnl": 124.58,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 2,
+          "pnl": 1801.25,
+          "pf": 99.0,
+          "sharpe": 12.21,
+          "maxdd": 0.0,
+          "wr": 100.0,
+          "avg_pnl": 900.62,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 4,
+          "pnl": 7952.5,
+          "pf": 99.0,
+          "sharpe": 20.22,
+          "maxdd": 0.0,
+          "wr": 100.0,
+          "avg_pnl": 1988.12
+        },
+        "H2": {
+          "trades": 2,
+          "pnl": -6036.25,
+          "pf": 0.0,
+          "sharpe": -14.17,
+          "maxdd": 5408.75,
+          "wr": 0.0,
+          "avg_pnl": -3018.12
+        }
+      },
+      "concentration": {
+        "top3_share": 3.453,
+        "top5_share": 1.0,
+        "top10_share": 1.0,
+        "max_year_share": 3.487
+      },
+      "classification": "MONITOR",
+      "classification_reasons": [
+        "PF 1.40 > 1.0 but only 5 trades \u2014 insufficient sample"
+      ]
+    },
+    "6E": {
+      "asset": "6E",
+      "bars": 79047,
+      "modes": {
+        "both": {
+          "trades": 6,
+          "pnl": 2653.75,
+          "pf": 1.239,
+          "sharpe": 1.23,
+          "maxdd": 11123.75,
+          "wr": 66.7,
+          "avg_pnl": 442.29,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 3,
+          "pnl": 5430.0,
+          "pf": 2.268,
+          "sharpe": 4.22,
+          "maxdd": 4283.75,
+          "wr": 66.7,
+          "avg_pnl": 1810.0,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 3,
+          "pnl": -2776.25,
+          "pf": 0.594,
+          "sharpe": -2.7,
+          "maxdd": 6840.0,
+          "wr": 66.7,
+          "avg_pnl": -925.42,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 4,
+          "pnl": 8677.5,
+          "pf": 99.0,
+          "sharpe": 16.6,
+          "maxdd": 0.0,
+          "wr": 100.0,
+          "avg_pnl": 2169.38
+        },
+        "H2": {
+          "trades": 3,
+          "pnl": -5220.0,
+          "pf": 0.531,
+          "sharpe": -4.1,
+          "maxdd": 11123.75,
+          "wr": 33.3,
+          "avg_pnl": -1740.0
+        }
+      },
+      "concentration": {
+        "top3_share": 5.113,
+        "top5_share": 3.577,
+        "top10_share": 1.0,
+        "max_year_share": 5.192
+      },
+      "classification": "MONITOR",
+      "classification_reasons": [
+        "PF 1.24 > 1.0 but only 6 trades \u2014 insufficient sample"
+      ]
+    },
+    "6B": {
+      "asset": "6B",
+      "bars": 59990,
+      "modes": {
+        "both": {
+          "trades": 7,
+          "pnl": 7782.5,
+          "pf": 3.579,
+          "sharpe": 8.55,
+          "maxdd": 2308.75,
+          "wr": 71.4,
+          "avg_pnl": 1111.79,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 3,
+          "pnl": 5280.0,
+          "pf": 99.0,
+          "sharpe": 23.05,
+          "maxdd": 0.0,
+          "wr": 100.0,
+          "avg_pnl": 1760.0,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 4,
+          "pnl": 2502.5,
+          "pf": 1.829,
+          "sharpe": 3.81,
+          "maxdd": 2308.75,
+          "wr": 50.0,
+          "avg_pnl": 625.62,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 3,
+          "pnl": 1205.0,
+          "pf": 2.7,
+          "sharpe": 5.72,
+          "maxdd": 0.0,
+          "wr": 66.7,
+          "avg_pnl": 401.67
+        },
+        "H2": {
+          "trades": 4,
+          "pnl": 6015.0,
+          "pf": 3.605,
+          "sharpe": 9.21,
+          "maxdd": 2308.75,
+          "wr": 75.0,
+          "avg_pnl": 1503.75
+        }
+      },
+      "concentration": {
+        "top3_share": 1.07,
+        "top5_share": 1.388,
+        "top10_share": 1.0,
+        "max_year_share": 0.773
+      },
+      "classification": "MONITOR",
+      "classification_reasons": [
+        "PF 3.58 > 1.0 but only 7 trades \u2014 insufficient sample"
+      ]
+    }
+  },
+  "best_result": {
+    "asset": "6B",
+    "classification": "MONITOR",
+    "pf": 3.579,
+    "trades": 7
+  },
+  "overall_classification": "MONITOR",
+  "overall_reasons": [
+    "PF 3.58 > 1.0 but only 7 trades \u2014 insufficient sample"
+  ]
+}

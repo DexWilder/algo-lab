@@ -1,0 +1,281 @@
+{
+  "strategy": "fx_daily_trend",
+  "run_date": "2026-04-06T22:12:51.986914",
+  "session_filter": null,
+  "asset_results": {
+    "MES": {
+      "asset": "MES",
+      "bars": 474187,
+      "modes": {
+        "both": {
+          "trades": 93,
+          "pnl": -5807.82,
+          "pf": 0.76,
+          "sharpe": -1.73,
+          "maxdd": 7626.66,
+          "wr": 38.7,
+          "avg_pnl": -62.45,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 54,
+          "pnl": 3568.04,
+          "pf": 1.382,
+          "sharpe": 1.97,
+          "maxdd": 2179.89,
+          "wr": 50.0,
+          "avg_pnl": 66.07,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 42,
+          "pnl": -10767.08,
+          "pf": 0.328,
+          "sharpe": -7.28,
+          "maxdd": 11898.37,
+          "wr": 21.4,
+          "avg_pnl": -256.36,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 47,
+          "pnl": -2263.28,
+          "pf": 0.795,
+          "sharpe": -1.49,
+          "maxdd": 5073.42,
+          "wr": 40.4,
+          "avg_pnl": -48.15
+        },
+        "H2": {
+          "trades": 46,
+          "pnl": -3932.04,
+          "pf": 0.7,
+          "sharpe": -2.17,
+          "maxdd": 5684.88,
+          "wr": 37.0,
+          "avg_pnl": -85.48
+        }
+      },
+      "concentration": {
+        "top3_share": 0,
+        "top5_share": 0,
+        "top10_share": 0,
+        "max_year_share": 0
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Sufficient trades (93) but PF 0.76 < 1.1"
+      ]
+    },
+    "6J": {
+      "asset": "6J",
+      "bars": 70368,
+      "modes": {
+        "both": {
+          "trades": 24,
+          "pnl": 3233.75,
+          "pf": 1.304,
+          "sharpe": 1.52,
+          "maxdd": 5556.25,
+          "wr": 45.8,
+          "avg_pnl": 134.74,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 9,
+          "pnl": 1083.75,
+          "pf": 1.411,
+          "sharpe": 2.04,
+          "maxdd": 2035.0,
+          "wr": 55.6,
+          "avg_pnl": 120.42,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 15,
+          "pnl": 2150.0,
+          "pf": 1.269,
+          "sharpe": 1.37,
+          "maxdd": 5087.5,
+          "wr": 40.0,
+          "avg_pnl": 143.33,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 11,
+          "pnl": 6235.0,
+          "pf": 3.015,
+          "sharpe": 5.51,
+          "maxdd": 972.5,
+          "wr": 54.5,
+          "avg_pnl": 566.82
+        },
+        "H2": {
+          "trades": 13,
+          "pnl": -3613.75,
+          "pf": 0.529,
+          "sharpe": -4.02,
+          "maxdd": 5556.25,
+          "wr": 30.8,
+          "avg_pnl": -277.98
+        }
+      },
+      "concentration": {
+        "top3_share": 2.763,
+        "top5_share": 3.653,
+        "top10_share": 4.271,
+        "max_year_share": 2.022
+      },
+      "classification": "SALVAGE",
+      "classification_reasons": [
+        "Overall PF 1.30, directional split shows PF > 1.2"
+      ]
+    },
+    "6E": {
+      "asset": "6E",
+      "bars": 79047,
+      "modes": {
+        "both": {
+          "trades": 32,
+          "pnl": -14673.75,
+          "pf": 0.356,
+          "sharpe": -6.74,
+          "maxdd": 13927.5,
+          "wr": 18.8,
+          "avg_pnl": -458.55,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 16,
+          "pnl": -5477.5,
+          "pf": 0.545,
+          "sharpe": -3.98,
+          "maxdd": 5713.75,
+          "wr": 25.0,
+          "avg_pnl": -342.34,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 17,
+          "pnl": -7761.25,
+          "pf": 0.28,
+          "sharpe": -8.65,
+          "maxdd": 7015.0,
+          "wr": 17.6,
+          "avg_pnl": -456.54,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 16,
+          "pnl": -5165.0,
+          "pf": 0.528,
+          "sharpe": -3.8,
+          "maxdd": 7853.75,
+          "wr": 18.8,
+          "avg_pnl": -322.81
+        },
+        "H2": {
+          "trades": 15,
+          "pnl": -6537.5,
+          "pf": 0.356,
+          "sharpe": -6.61,
+          "maxdd": 6766.25,
+          "wr": 26.7,
+          "avg_pnl": -435.83
+        }
+      },
+      "concentration": {
+        "top3_share": 0,
+        "top5_share": 0,
+        "top10_share": 0,
+        "max_year_share": 0
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Sufficient trades (32) but PF 0.36 < 1.1"
+      ]
+    },
+    "6B": {
+      "asset": "6B",
+      "bars": 59990,
+      "modes": {
+        "both": {
+          "trades": 31,
+          "pnl": -4002.5,
+          "pf": 0.638,
+          "sharpe": -2.84,
+          "maxdd": 6183.75,
+          "wr": 35.5,
+          "avg_pnl": -129.11,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 14,
+          "pnl": 983.75,
+          "pf": 1.243,
+          "sharpe": 1.29,
+          "maxdd": 2946.25,
+          "wr": 50.0,
+          "avg_pnl": 70.27,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 18,
+          "pnl": -5607.5,
+          "pf": 0.264,
+          "sharpe": -9.11,
+          "maxdd": 5027.5,
+          "wr": 22.2,
+          "avg_pnl": -311.53,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 14,
+          "pnl": 533.75,
+          "pf": 1.179,
+          "sharpe": 1.05,
+          "maxdd": 1280.0,
+          "wr": 42.9,
+          "avg_pnl": 38.12
+        },
+        "H2": {
+          "trades": 17,
+          "pnl": -6042.5,
+          "pf": 0.25,
+          "sharpe": -9.6,
+          "maxdd": 5447.5,
+          "wr": 29.4,
+          "avg_pnl": -355.44
+        }
+      },
+      "concentration": {
+        "top3_share": 0,
+        "top5_share": 0,
+        "top10_share": 0,
+        "max_year_share": 0
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Sufficient trades (31) but PF 0.64 < 1.1"
+      ]
+    }
+  },
+  "best_result": {
+    "asset": "6J",
+    "classification": "SALVAGE",
+    "pf": 1.304,
+    "trades": 24
+  },
+  "overall_classification": "SALVAGE",
+  "overall_reasons": [
+    "Overall PF 1.30, directional split shows PF > 1.2"
+  ]
+}

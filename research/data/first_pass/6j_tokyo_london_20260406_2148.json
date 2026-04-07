@@ -1,0 +1,149 @@
+{
+  "strategy": "6j_tokyo_london",
+  "run_date": "2026-04-06T21:48:00.175524",
+  "session_filter": null,
+  "asset_results": {
+    "6J": {
+      "asset": "6J",
+      "bars": 70368,
+      "modes": {
+        "both": {
+          "trades": 162,
+          "pnl": 245.0,
+          "pf": 1.021,
+          "sharpe": 0.12,
+          "maxdd": 2240.0,
+          "wr": 53.7,
+          "avg_pnl": 1.51,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 66,
+          "pnl": -2321.25,
+          "pf": 0.648,
+          "sharpe": -2.36,
+          "maxdd": 3103.75,
+          "wr": 43.9,
+          "avg_pnl": -35.17,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 102,
+          "pnl": 720.0,
+          "pf": 1.104,
+          "sharpe": 0.57,
+          "maxdd": 1780.0,
+          "wr": 56.9,
+          "avg_pnl": 7.06,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 74,
+          "pnl": 1621.25,
+          "pf": 1.315,
+          "sharpe": 1.54,
+          "maxdd": 1256.25,
+          "wr": 58.1,
+          "avg_pnl": 21.91
+        },
+        "H2": {
+          "trades": 84,
+          "pnl": -428.75,
+          "pf": 0.923,
+          "sharpe": -0.48,
+          "maxdd": 2116.25,
+          "wr": 51.2,
+          "avg_pnl": -5.1
+        }
+      },
+      "concentration": {
+        "top3_share": 7.903,
+        "top5_share": 11.378,
+        "top10_share": 17.755,
+        "max_year_share": 9.031
+      },
+      "classification": "SALVAGE",
+      "classification_reasons": [
+        "Period-specific edge: H1=1.31, H2=0.92"
+      ]
+    },
+    "6E": {
+      "asset": "6E",
+      "bars": 79047,
+      "modes": {
+        "both": {
+          "trades": 209,
+          "pnl": -6066.25,
+          "pf": 0.723,
+          "sharpe": -2.07,
+          "maxdd": 6613.75,
+          "wr": 46.4,
+          "avg_pnl": -29.03,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 124,
+          "pnl": -3847.5,
+          "pf": 0.693,
+          "sharpe": -2.35,
+          "maxdd": 3920.0,
+          "wr": 44.4,
+          "avg_pnl": -31.03,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 105,
+          "pnl": -2462.5,
+          "pf": 0.773,
+          "sharpe": -1.62,
+          "maxdd": 3300.0,
+          "wr": 50.5,
+          "avg_pnl": -23.45,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 107,
+          "pnl": -2586.25,
+          "pf": 0.741,
+          "sharpe": -1.86,
+          "maxdd": 2756.25,
+          "wr": 45.8,
+          "avg_pnl": -24.17
+        },
+        "H2": {
+          "trades": 96,
+          "pnl": -3065.0,
+          "pf": 0.721,
+          "sharpe": -2.12,
+          "maxdd": 3501.25,
+          "wr": 47.9,
+          "avg_pnl": -31.93
+        }
+      },
+      "concentration": {
+        "top3_share": 0,
+        "top5_share": 0,
+        "top10_share": 0,
+        "max_year_share": 0
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Sufficient trades (209) but PF 0.72 < 1.1"
+      ]
+    }
+  },
+  "best_result": {
+    "asset": "6J",
+    "classification": "SALVAGE",
+    "pf": 1.021,
+    "trades": 162
+  },
+  "overall_classification": "SALVAGE",
+  "overall_reasons": [
+    "Period-specific edge: H1=1.31, H2=0.92"
+  ]
+}
