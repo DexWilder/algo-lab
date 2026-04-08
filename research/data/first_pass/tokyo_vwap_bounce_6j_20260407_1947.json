@@ -1,0 +1,91 @@
+{
+  "strategy": "tokyo_vwap_bounce_6j",
+  "run_date": "2026-04-07T19:47:58.083617",
+  "session_filter": null,
+  "asset_results": {
+    "6J": {
+      "asset": "6J",
+      "bars": 70403,
+      "modes": {
+        "both": {
+          "trades": 352,
+          "pnl": -6336.25,
+          "pf": 0.563,
+          "sharpe": -4.26,
+          "maxdd": 6615.0,
+          "wr": 32.7,
+          "avg_pnl": -18.0,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 162,
+          "pnl": -2792.5,
+          "pf": 0.618,
+          "sharpe": -3.66,
+          "maxdd": 3213.75,
+          "wr": 31.5,
+          "avg_pnl": -17.24,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 190,
+          "pnl": -3543.75,
+          "pf": 0.507,
+          "sharpe": -4.42,
+          "maxdd": 3632.5,
+          "wr": 33.7,
+          "avg_pnl": -18.65,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 174,
+          "pnl": -2685.0,
+          "pf": 0.611,
+          "sharpe": -3.71,
+          "maxdd": 3815.0,
+          "wr": 34.5,
+          "avg_pnl": -15.43
+        },
+        "H2": {
+          "trades": 178,
+          "pnl": -3651.25,
+          "pf": 0.52,
+          "sharpe": -4.78,
+          "maxdd": 4065.0,
+          "wr": 30.9,
+          "avg_pnl": -20.51
+        }
+      },
+      "concentration": {
+        "top3_share": 0,
+        "top5_share": 0,
+        "top10_share": 0,
+        "max_year_share": 0
+      },
+      "classification": "TAIL_ENGINE_REJECT",
+      "classification_reasons": [
+        "[tail-engine path \u2014 352 trades < 500 workhorse threshold]",
+        "median trade $-30.62 < 0 (tail-dependent)",
+        "positive instances 35% < 60%",
+        "instance CV 3.73 > 3.0",
+        "PF 0.563 < 1.0"
+      ]
+    }
+  },
+  "best_result": {
+    "asset": "6J",
+    "classification": "TAIL_ENGINE_REJECT",
+    "pf": 0.563,
+    "trades": 352
+  },
+  "overall_classification": "TAIL_ENGINE_REJECT",
+  "overall_reasons": [
+    "[tail-engine path \u2014 352 trades < 500 workhorse threshold]",
+    "median trade $-30.62 < 0 (tail-dependent)",
+    "positive instances 35% < 60%",
+    "instance CV 3.73 > 3.0",
+    "PF 0.563 < 1.0"
+  ]
+}
