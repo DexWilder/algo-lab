@@ -260,6 +260,145 @@ def print_tail_engine_report(name, classification, reasons, metrics):
 
 # ── Cadence classification (helper to decide which gate to apply) ────────
 
+def decompose_by_event_type(trades_df, classifier):
+    """Decompose a composite event-strategy's trades by event type.
+
+    Parameters
+    ----------
+    trades_df : DataFrame
+        Must have entry_time and pnl columns.
+    classifier : callable
+        Takes a datetime.date and returns a string event type label, or None
+        if the date is not a known event day. Strategies expose this via a
+        module-level EVENT_CLASSIFIER attribute.
+
+    Returns dict mapping event_type -> metrics. Also includes
+    "_decomposition_verdict" key with plain-text interpretation.
+
+    This is the diagnostic pattern discovered during Macro Event Box salvage
+    on 2026-04-08: composite event strategies always dilute their best
+    signal, and per-event breakdown reveals the real structure in seconds.
+    """
+    if trades_df is None or len(trades_df) == 0:
+        return {"_decomposition_verdict": "no trades to decompose"}
+
+    td = trades_df.copy()
+    td["entry_time"] = pd.to_datetime(td["entry_time"])
+    td["entry_date"] = td["entry_time"].dt.date
+    td["event_type"] = td["entry_date"].apply(classifier)
+
+    result = {}
+    event_summary = []
+
+    for ev_type, sub in td.groupby("event_type", dropna=False):
+        ev_type_key = "UNCLASSIFIED" if ev_type is None else str(ev_type)
+
+        n = len(sub)
+        total_pnl = float(sub["pnl"].sum())
+        wins = sub.loc[sub["pnl"] > 0, "pnl"].sum()
+        losses = abs(sub.loc[sub["pnl"] < 0, "pnl"].sum())
+        pf = float(wins / losses) if losses > 0 else (99.0 if wins > 0 else 0.0)
+        median = float(sub["pnl"].median())
+
+        instance_pnl = sub.groupby("entry_date")["pnl"].sum()
+        instance_count = len(instance_pnl)
+        positive_instance_frac = (
+            float((instance_pnl > 0).sum() / instance_count)
+            if instance_count > 0 else 0.0
+        )
+        if total_pnl > 0:
+            max_instance_share = float(instance_pnl.max() / total_pnl)
+        else:
+            max_instance_share = 0.0
+
+        sub = sub.copy()
+        sub["year"] = sub["entry_time"].dt.year
+        yearly = sub.groupby("year")["pnl"].sum()
+        max_year_share = (
+            float(yearly.max() / yearly.sum())
+            if yearly.sum() > 0 else 0.0
+        )
+
+        if instance_count >= 3:
+            mean_inst = instance_pnl.mean()
+            std_inst = instance_pnl.std()
+            cv = (float(std_inst / abs(mean_inst))
+                  if mean_inst != 0 else float("inf"))
+        else:
+            cv = None
+
+        result[ev_type_key] = {
+            "trades": n,
+            "instances": instance_count,
+            "pnl": round(total_pnl, 2),
+            "pf": round(pf, 3),
+            "median_trade": round(median, 2),
+            "positive_instance_frac": round(positive_instance_frac, 3),
+            "max_instance_share": round(max_instance_share, 3),
+            "max_year_share": round(max_year_share, 3),
+            "instance_cv": (round(cv, 2)
+                            if cv is not None and cv != float("inf") else None),
+        }
+        event_summary.append((ev_type_key, pf, n))
+
+    # Verdict
+    real_signals = [ev for ev, pf, n in event_summary
+                    if ev != "UNCLASSIFIED" and pf >= 1.15 and n >= 10]
+    weak_signals = [ev for ev, pf, n in event_summary
+                    if ev != "UNCLASSIFIED" and pf < 1.0 and n >= 10]
+
+    if len(real_signals) == 1 and len(weak_signals) >= 1:
+        verdict = (
+            f"ISOLATE {real_signals[0]}: one event type (PF>=1.15) is carrying "
+            f"the bundle; {len(weak_signals)} other event type(s) are actively "
+            f"diluting. Rebuild as {real_signals[0]}-only strategy and re-evaluate."
+        )
+    elif len(real_signals) == 0:
+        verdict = (
+            "ALL EVENTS WEAK: no single event type has PF >= 1.15 with sufficient "
+            "sample. The mechanism does not work on any of the bundled events. "
+            "Close the strategy."
+        )
+    elif len(real_signals) >= 2 and len(weak_signals) == 0:
+        verdict = (
+            f"COMPOSITE VIABLE: {len(real_signals)} event types each have "
+            f"standalone edge ({', '.join(real_signals)}). Composite is legitimate. "
+            f"Consider building per-event siblings for independent evaluation."
+        )
+    else:
+        verdict = (
+            f"MIXED: {len(real_signals)} event(s) with edge, {len(weak_signals)} weak. "
+            f"Strong events: {real_signals}. Consider isolating."
+        )
+
+    result["_decomposition_verdict"] = verdict
+    return result
+
+
+def print_event_decomposition(name, decomposition):
+    """Pretty-print a per-event-type decomposition."""
+    print()
+    print(f"  === PER-EVENT DECOMPOSITION: {name} ===")
+    print()
+    print(f"  {'Event':<18s} {'Trades':>7s} {'Inst':>5s} {'PnL':>9s} "
+          f"{'PF':>6s} {'Med':>8s} {'PosI%':>6s} {'MaxI%':>6s} {'MaxYr%':>7s} {'CV':>6s}")
+    print(f"  {'-'*18} {'-'*7} {'-'*5} {'-'*9} {'-'*6} {'-'*8} "
+          f"{'-'*6} {'-'*6} {'-'*7} {'-'*6}")
+    for ev_type, m in decomposition.items():
+        if ev_type.startswith("_"):
+            continue
+        cv_str = f"{m['instance_cv']:.1f}" if m['instance_cv'] is not None else "-"
+        print(f"  {ev_type:<18s} {m['trades']:>7d} {m['instances']:>5d} "
+              f"${m['pnl']:>+8.0f} {m['pf']:>6.2f} ${m['median_trade']:>+6.2f} "
+              f"{m['positive_instance_frac']*100:>5.0f}% "
+              f"{m['max_instance_share']*100:>5.0f}% "
+              f"{m['max_year_share']*100:>6.0f}% {cv_str:>6s}")
+    print()
+    if "_decomposition_verdict" in decomposition:
+        print(f"  >> Verdict: {decomposition['_decomposition_verdict']}")
+        print()
+
+
 def infer_cadence(trades_df, strategy_registry_entry=None):
     """Decide whether to apply workhorse or tail-engine gates.
 

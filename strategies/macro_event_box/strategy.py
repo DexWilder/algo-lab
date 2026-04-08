@@ -87,6 +87,17 @@ def _event_info(trade_date):
     return None
 
 
+def EVENT_CLASSIFIER(trade_date):
+    """Classifier used by batch_first_pass auto-decomposition.
+
+    Returns an event type string for a given trade date, or None if the date
+    is not a known event day. Picked up automatically by batch_first_pass
+    when a composite event strategy is being tested.
+    """
+    info = _event_info(trade_date)
+    return info[0] if info else None
+
+
 def generate_signals(df):
     df = df.copy()
     dt_col = pd.to_datetime(df["datetime"])

@@ -466,6 +466,20 @@ def run_first_pass(strategy_name, assets, session_filter=None):
         asset_report["classification"] = cls
         asset_report["classification_reasons"] = reasons
 
+        # Auto per-event decomposition for composite event strategies.
+        # Triggered when strategy module declares EVENT_CLASSIFIER.
+        # Diagnostic discovered 2026-04-08 during Macro Event Box salvage.
+        event_classifier = getattr(mod, "EVENT_CLASSIFIER", None)
+        if (event_classifier is not None
+                and both_trades_df is not None
+                and len(both_trades_df) >= 20):
+            try:
+                from research.tail_engine_classification import decompose_by_event_type
+                decomposition = decompose_by_event_type(both_trades_df, event_classifier)
+                asset_report["event_decomposition"] = decomposition
+            except Exception as e:
+                asset_report["event_decomposition_error"] = str(e)
+
         report["asset_results"][asset] = asset_report
         all_results.append((asset, cls, both.get("pf", 0), both.get("trades", 0)))
 
@@ -522,6 +536,15 @@ def print_report(report):
 
         for reason in ar.get("classification_reasons", []):
             print(f"  {'':4s}  > {reason}")
+
+        # Per-event decomposition (when strategy has EVENT_CLASSIFIER)
+        decomp = ar.get("event_decomposition")
+        if decomp:
+            try:
+                from research.tail_engine_classification import print_event_decomposition
+                print_event_decomposition(f"{report['strategy']} on {asset}", decomp)
+            except Exception:
+                pass
 
     best = report.get("best_result")
     if best:

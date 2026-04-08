@@ -1,0 +1,129 @@
+{
+  "strategy": "macro_event_box",
+  "run_date": "2026-04-08T05:33:01.349013",
+  "session_filter": null,
+  "asset_results": {
+    "MNQ": {
+      "asset": "MNQ",
+      "bars": 474340,
+      "modes": {
+        "both": {
+          "trades": 234,
+          "pnl": -498.16,
+          "pf": 0.952,
+          "sharpe": -0.27,
+          "maxdd": 1771.98,
+          "wr": 27.8,
+          "avg_pnl": -2.13,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 131,
+          "pnl": -83.44,
+          "pf": 0.983,
+          "sharpe": -0.09,
+          "maxdd": 1033.1,
+          "wr": 27.5,
+          "avg_pnl": -0.64,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 103,
+          "pnl": -414.72,
+          "pf": 0.924,
+          "sharpe": -0.45,
+          "maxdd": 1863.42,
+          "wr": 28.2,
+          "avg_pnl": -4.03,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 117,
+          "pnl": -393.58,
+          "pf": 0.91,
+          "sharpe": -0.5,
+          "maxdd": 1289.52,
+          "wr": 28.2,
+          "avg_pnl": -3.36
+        },
+        "H2": {
+          "trades": 117,
+          "pnl": -104.58,
+          "pf": 0.983,
+          "sharpe": -0.1,
+          "maxdd": 1771.98,
+          "wr": 27.4,
+          "avg_pnl": -0.89
+        }
+      },
+      "concentration": {
+        "top3_share": 0,
+        "top5_share": 0,
+        "top10_share": 0,
+        "max_year_share": 0
+      },
+      "classification": "TAIL_ENGINE_REJECT",
+      "classification_reasons": [
+        "[tail-engine path \u2014 234 trades < 500 workhorse threshold]",
+        "median trade $-25.24 < 0 (tail-dependent)",
+        "positive instances 28% < 60%",
+        "max DD 1048d > 900d",
+        "instance CV 57.90 > 3.0",
+        "PF 0.952 < 1.0"
+      ],
+      "event_decomposition": {
+        "CPI": {
+          "trades": 105,
+          "instances": 105,
+          "pnl": -883.2,
+          "pf": 0.781,
+          "median_trade": -22.74,
+          "positive_instance_frac": 0.276,
+          "max_instance_share": 0.0,
+          "max_year_share": 0.0,
+          "instance_cv": 11.15
+        },
+        "FOMC": {
+          "trades": 52,
+          "instances": 52,
+          "pnl": -343.98,
+          "pf": 0.892,
+          "median_trade": -33.99,
+          "positive_instance_frac": 0.327,
+          "max_instance_share": 0.0,
+          "max_year_share": 0.0,
+          "instance_cv": 23.85
+        },
+        "NFP": {
+          "trades": 77,
+          "instances": 77,
+          "pnl": 729.02,
+          "pf": 1.225,
+          "median_trade": -25.24,
+          "positive_instance_frac": 0.247,
+          "max_instance_share": 0.607,
+          "max_year_share": 0.901,
+          "instance_cv": 14.02
+        },
+        "_decomposition_verdict": "ISOLATE NFP: one event type (PF>=1.15) is carrying the bundle; 2 other event type(s) are actively diluting. Rebuild as NFP-only strategy and re-evaluate."
+      }
+    }
+  },
+  "best_result": {
+    "asset": "MNQ",
+    "classification": "TAIL_ENGINE_REJECT",
+    "pf": 0.952,
+    "trades": 234
+  },
+  "overall_classification": "TAIL_ENGINE_REJECT",
+  "overall_reasons": [
+    "[tail-engine path \u2014 234 trades < 500 workhorse threshold]",
+    "median trade $-25.24 < 0 (tail-dependent)",
+    "positive instances 28% < 60%",
+    "max DD 1048d > 900d",
+    "instance CV 57.90 > 3.0",
+    "PF 0.952 < 1.0"
+  ]
+}
