@@ -1,0 +1,60 @@
+[
+  {
+    "file": "2026-03-26_02_vix_channel_session_trend.md",
+    "title": "VIX-Implied Opening Channel Session Trend Strategy",
+    "factor": "VOLATILITY",
+    "family": "new family: vix_channel_sessio",
+    "verdict": "ACCEPT but blocked",
+    "blocker": "needs_intraday_VIX_or_VIX9D_series_aligned_to_inde",
+    "testability": "High + the entry clock, direct",
+    "score": 145,
+    "reasons": [
+      "gaps=tail+time_of_day(90)",
+      "high_distinct(+30)",
+      "high_test(+40)",
+      "blocked(-30)",
+      "verdict_blocked(+5)",
+      "data_avail(+10)"
+    ],
+    "workhorse_score": 4,
+    "sparse_score": 1
+  },
+  {
+    "file": "2026-03-26_15_unconstrained_equity_trend_sleeve.md",
+    "title": "Keep Equity Trend Sleeve Unconstrained Inside Managed Futures Stack",
+    "factor": "STRUCTURAL",
+    "family": "new family: unconstrained_equi",
+    "verdict": "ACCEPT but blocked",
+    "blocker": "needs_house_managed_futures_sector_decomposition_a",
+    "testability": "High + the implementation is a",
+    "score": 55,
+    "reasons": [
+      "high_distinct(+30)",
+      "high_test(+40)",
+      "blocked(-30)",
+      "verdict_blocked(+5)",
+      "data_avail(+10)"
+    ],
+    "workhorse_score": 3,
+    "sparse_score": 0
+  },
+  {
+    "file": "2026-03-26_12_bottom_up_trend_replication.md",
+    "title": "Bottom-Up Managed Futures Trend Replication via Multi-Horizon Ensemble",
+    "factor": "MOMENTUM",
+    "family": "new family: bottom_up_trend_re",
+    "verdict": "ACCEPT but blocked",
+    "blocker": "needs_explicit_component_signal_library_and_replic",
+    "testability": "Medium + the ensemble concept ",
+    "score": 5,
+    "reasons": [
+      "high_distinct(+30)",
+      "med_test(+20)",
+      "blocked(-30)",
+      "verdict_blocked(+5)",
+      "no_data(-20)"
+    ],
+    "workhorse_score": 3,
+    "sparse_score": 1
+  }
+]

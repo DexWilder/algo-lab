@@ -211,6 +211,75 @@ def classify(pf, trades, wf_h1_pf, wf_h2_pf, mode_results, concentration=None):
     return "REJECT", reasons
 
 
+def classify_with_tail_engine(pf, trades, wf_h1_pf, wf_h2_pf, mode_results,
+                               concentration=None, trades_df=None):
+    """Enhanced classify that routes sparse strategies through tail-engine gates.
+
+    Routing rules (applied in order):
+      1. trades >= 500 → PURE workhorse path (classify()).
+         This is the intended workhorse archetype; tail-engine inapplicable.
+
+      2. trades < 500 AND workhorse path yields ADVANCE → impossible
+         (workhorse ADVANCE requires trades >= 500). Skip.
+
+      3. trades < 500 → evaluate BOTH paths and return the STRICTER verdict.
+         - This prevents sparse strategies from cheesing the directional-split
+           SALVAGE pathway when they genuinely fail tail-engine concentration
+           gates (the SPX Lunch Compression case).
+         - If tail-engine REJECTs and workhorse SALVAGEs, return REJECT.
+         - If tail-engine STRONG and workhorse SALVAGE, return STRONG.
+         - This is the "AND" gate: sparse strategies must pass whichever
+           gate is appropriate for their actual trade profile.
+
+    Rationale: sparse strategies are tail-engine by definition. The workhorse
+    path can give them lenient "SALVAGE" via directional split even when
+    their concentration profile is unsurvivable. Always apply tail-engine
+    gates when trades < 500.
+    """
+    # Workhorse classification (existing logic)
+    wh_cls, wh_reasons = classify(pf, trades, wf_h1_pf, wf_h2_pf, mode_results, concentration)
+
+    # If trades >= 500, workhorse-only (intended workhorse archetype)
+    if trades >= 500:
+        return wh_cls, wh_reasons
+
+    # Sparse strategy: apply tail-engine gates in parallel
+    if trades_df is None or len(trades_df) < 8:
+        return wh_cls, wh_reasons
+
+    try:
+        from research.tail_engine_classification import classify_tail_engine
+        te_cls, te_reasons, te_metrics = classify_tail_engine(trades_df)
+    except Exception:
+        return wh_cls, wh_reasons
+
+    # Strictness ordering
+    te_tier = {
+        "TAIL_ENGINE_STRONG": 1,
+        "TAIL_ENGINE_VIABLE": 2,
+        "TAIL_ENGINE_MONITOR": 3,
+        "TAIL_ENGINE_REJECT": 4,
+    }
+    wh_tier = {"ADVANCE": 1, "SALVAGE": 2, "MONITOR": 3, "REJECT": 4}
+    te_rank = te_tier.get(te_cls, 5)
+    wh_rank = wh_tier.get(wh_cls, 5)
+
+    # Return the STRICTER (higher rank = worse) verdict.
+    # This ensures sparse strategies can't dodge tail-engine rejection.
+    if te_rank >= wh_rank:
+        # Tail-engine is stricter or equal — use tail-engine verdict
+        combined_reasons = [f"[tail-engine path — {te_metrics['trades']} trades < 500 workhorse threshold]"]
+        combined_reasons.extend(te_reasons)
+        if te_rank > wh_rank:
+            combined_reasons.append(f"(stricter than workhorse verdict '{wh_cls}')")
+        return te_cls, combined_reasons
+    else:
+        # Workhorse is stricter — use workhorse verdict
+        combined_reasons = list(wh_reasons)
+        combined_reasons.append(f"(stricter than tail-engine verdict '{te_cls}')")
+        return wh_cls, combined_reasons
+
+
 # ── Metrics ──────────────────────────────────────────────────────────────────
 
 def compute_metrics(trades_df):
@@ -384,14 +453,15 @@ def run_first_pass(strategy_name, assets, session_filter=None):
         concentration = compute_concentration(both_trades_df)
         asset_report["concentration"] = concentration
 
-        # Classify this asset with concentration checks
+        # Classify this asset — uses tail-engine gates as fallback for sparse strategies
         both = asset_report["modes"].get("both", {"pf": 0, "trades": 0})
         h1_pf = wf.get("H1", {}).get("pf", 0)
         h2_pf = wf.get("H2", {}).get("pf", 0)
-        cls, reasons = classify(
+        cls, reasons = classify_with_tail_engine(
             both.get("pf", 0), both.get("trades", 0),
             h1_pf, h2_pf, mode_results,
             concentration=concentration,
+            trades_df=both_trades_df,
         )
         asset_report["classification"] = cls
         asset_report["classification_reasons"] = reasons
