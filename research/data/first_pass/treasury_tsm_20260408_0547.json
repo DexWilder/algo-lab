@@ -1,0 +1,175 @@
+{
+  "strategy": "treasury_tsm",
+  "run_date": "2026-04-08T05:47:02.802779",
+  "session_filter": null,
+  "asset_results": {
+    "ZN": {
+      "asset": "ZN",
+      "bars": 397744,
+      "modes": {
+        "both": {
+          "trades": 12,
+          "pnl": 15141.88,
+          "pf": 2.045,
+          "sharpe": 2.38,
+          "maxdd": 11181.25,
+          "wr": 25.0,
+          "avg_pnl": 1261.82,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 6,
+          "pnl": -5452.5,
+          "pf": 0.259,
+          "sharpe": -9.17,
+          "maxdd": 4616.88,
+          "wr": 16.7,
+          "avg_pnl": -908.75,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 6,
+          "pnl": 20594.38,
+          "pf": 3.886,
+          "sharpe": 4.57,
+          "maxdd": 6887.5,
+          "wr": 33.3,
+          "avg_pnl": 3432.4,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 2,
+          "pnl": 25870.0,
+          "pf": 23.326,
+          "sharpe": 10.3,
+          "maxdd": 0.0,
+          "wr": 50.0,
+          "avg_pnl": 12935.0
+        },
+        "H2": {
+          "trades": 10,
+          "pnl": -11181.25,
+          "pf": 0.161,
+          "sharpe": -9.74,
+          "maxdd": 8569.37,
+          "wr": 20.0,
+          "avg_pnl": -1118.12
+        }
+      },
+      "concentration": {
+        "top3_share": 1.957,
+        "top5_share": 1.93,
+        "top10_share": 1.493,
+        "max_year_share": 1.815,
+        "median_trade": -861.88
+      },
+      "classification": "TAIL_ENGINE_REJECT",
+      "classification_reasons": [
+        "[tail-engine path \u2014 12 trades < 500 workhorse threshold]",
+        "median trade $-861.88 < 0 (tail-dependent)",
+        "top-3 196% > 50%",
+        "top-5 193% > 70%",
+        "single instance 182% > 35%",
+        "positive instances 25% < 60%",
+        "single year 182% > 50%",
+        "instance CV 6.67 > 3.0",
+        "(stricter than workhorse verdict 'MONITOR')"
+      ]
+    },
+    "ZB": {
+      "asset": "ZB",
+      "bars": 382063,
+      "modes": {
+        "both": {
+          "trades": 15,
+          "pnl": 6337.5,
+          "pf": 1.149,
+          "sharpe": 0.62,
+          "maxdd": 28121.25,
+          "wr": 26.7,
+          "avg_pnl": 422.5,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 8,
+          "pnl": -30520.0,
+          "pf": 0.0,
+          "sharpe": -22.03,
+          "maxdd": 22173.75,
+          "wr": 0.0,
+          "avg_pnl": -3815.0,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 7,
+          "pnl": 36857.5,
+          "pf": 4.102,
+          "sharpe": 5.74,
+          "maxdd": 10783.75,
+          "wr": 57.1,
+          "avg_pnl": 5265.36,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 4,
+          "pnl": 35302.5,
+          "pf": 3.775,
+          "sharpe": 7.06,
+          "maxdd": 4377.5,
+          "wr": 50.0,
+          "avg_pnl": 8825.62
+        },
+        "H2": {
+          "trades": 11,
+          "pnl": -28121.25,
+          "pf": 0.052,
+          "sharpe": -11.36,
+          "maxdd": 20587.5,
+          "wr": 18.2,
+          "avg_pnl": -2556.48
+        }
+      },
+      "concentration": {
+        "top3_share": 7.652,
+        "top5_share": 7.661,
+        "top10_share": 6.431,
+        "max_year_share": 4.738,
+        "median_trade": -1658.75
+      },
+      "classification": "TAIL_ENGINE_REJECT",
+      "classification_reasons": [
+        "[tail-engine path \u2014 15 trades < 500 workhorse threshold]",
+        "median trade $-1658.75 < 0 (tail-dependent)",
+        "top-3 765% > 50%",
+        "top-5 766% > 70%",
+        "single instance 543% > 35%",
+        "positive instances 27% < 60%",
+        "single year 474% > 50%",
+        "instance CV 25.56 > 3.0",
+        "(stricter than workhorse verdict 'MONITOR')"
+      ]
+    }
+  },
+  "best_result": {
+    "asset": "ZN",
+    "classification": "TAIL_ENGINE_REJECT",
+    "pf": 2.045,
+    "trades": 12
+  },
+  "overall_classification": "TAIL_ENGINE_REJECT",
+  "overall_reasons": [
+    "[tail-engine path \u2014 12 trades < 500 workhorse threshold]",
+    "median trade $-861.88 < 0 (tail-dependent)",
+    "top-3 196% > 50%",
+    "top-5 193% > 70%",
+    "single instance 182% > 35%",
+    "positive instances 25% < 60%",
+    "single year 182% > 50%",
+    "instance CV 6.67 > 3.0",
+    "(stricter than workhorse verdict 'MONITOR')"
+  ]
+}

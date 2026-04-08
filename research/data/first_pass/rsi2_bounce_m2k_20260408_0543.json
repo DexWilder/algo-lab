@@ -1,0 +1,149 @@
+{
+  "strategy": "rsi2_bounce_m2k",
+  "run_date": "2026-04-08T05:43:34.301627",
+  "session_filter": null,
+  "asset_results": {
+    "MES": {
+      "asset": "MES",
+      "bars": 474463,
+      "modes": {
+        "both": {
+          "trades": 1455,
+          "pnl": -6386.7,
+          "pf": 0.708,
+          "sharpe": -2.41,
+          "maxdd": 6603.62,
+          "wr": 64.1,
+          "avg_pnl": -4.39,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 1455,
+          "pnl": -6386.7,
+          "pf": 0.708,
+          "sharpe": -2.41,
+          "maxdd": 6603.62,
+          "wr": 64.1,
+          "avg_pnl": -4.39,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 0,
+          "pnl": 0,
+          "pf": 0,
+          "sharpe": 0,
+          "maxdd": 0,
+          "wr": 0,
+          "avg_pnl": 0,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 734,
+          "pnl": -2563.91,
+          "pf": 0.735,
+          "sharpe": -2.2,
+          "maxdd": 2657.37,
+          "wr": 64.0,
+          "avg_pnl": -3.49
+        },
+        "H2": {
+          "trades": 721,
+          "pnl": -3822.79,
+          "pf": 0.686,
+          "sharpe": -2.6,
+          "maxdd": 3926.66,
+          "wr": 64.1,
+          "avg_pnl": -5.3
+        }
+      },
+      "concentration": {
+        "top3_share": 0,
+        "top5_share": 0,
+        "top10_share": 0,
+        "max_year_share": 0
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Sufficient trades (1455) but PF 0.71 < 1.1"
+      ]
+    },
+    "M2K": {
+      "asset": "M2K",
+      "bars": 470094,
+      "modes": {
+        "both": {
+          "trades": 1393,
+          "pnl": -3329.82,
+          "pf": 0.769,
+          "sharpe": -1.9,
+          "maxdd": 3523.96,
+          "wr": 63.8,
+          "avg_pnl": -2.39,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 1393,
+          "pnl": -3329.82,
+          "pf": 0.769,
+          "sharpe": -1.9,
+          "maxdd": 3523.96,
+          "wr": 63.8,
+          "avg_pnl": -2.39,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 0,
+          "pnl": 0,
+          "pf": 0,
+          "sharpe": 0,
+          "maxdd": 0,
+          "wr": 0,
+          "avg_pnl": 0,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 733,
+          "pnl": -1386.42,
+          "pf": 0.816,
+          "sharpe": -1.47,
+          "maxdd": 1407.44,
+          "wr": 65.8,
+          "avg_pnl": -1.89
+        },
+        "H2": {
+          "trades": 660,
+          "pnl": -1943.4,
+          "pf": 0.719,
+          "sharpe": -2.39,
+          "maxdd": 2145.54,
+          "wr": 61.7,
+          "avg_pnl": -2.94
+        }
+      },
+      "concentration": {
+        "top3_share": 0,
+        "top5_share": 0,
+        "top10_share": 0,
+        "max_year_share": 0
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Sufficient trades (1393) but PF 0.77 < 1.1"
+      ]
+    }
+  },
+  "best_result": {
+    "asset": "M2K",
+    "classification": "REJECT",
+    "pf": 0.769,
+    "trades": 1393
+  },
+  "overall_classification": "REJECT",
+  "overall_reasons": [
+    "Sufficient trades (1393) but PF 0.77 < 1.1"
+  ]
+}

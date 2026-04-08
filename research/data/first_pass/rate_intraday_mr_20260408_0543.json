@@ -1,0 +1,215 @@
+{
+  "strategy": "rate_intraday_mr",
+  "run_date": "2026-04-08T05:43:07.367328",
+  "session_filter": null,
+  "asset_results": {
+    "ZN": {
+      "asset": "ZN",
+      "bars": 397744,
+      "modes": {
+        "both": {
+          "trades": 1448,
+          "pnl": -46854.56,
+          "pf": 0.533,
+          "sharpe": -4.33,
+          "maxdd": 46933.31,
+          "wr": 42.8,
+          "avg_pnl": -32.36,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 719,
+          "pnl": -25188.27,
+          "pf": 0.498,
+          "sharpe": -4.4,
+          "maxdd": 25735.15,
+          "wr": 42.6,
+          "avg_pnl": -35.03,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 748,
+          "pnl": -21776.27,
+          "pf": 0.577,
+          "sharpe": -3.8,
+          "maxdd": 21805.02,
+          "wr": 43.2,
+          "avg_pnl": -29.11,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 728,
+          "pnl": -24320.15,
+          "pf": 0.534,
+          "sharpe": -4.29,
+          "maxdd": 24777.66,
+          "wr": 42.2,
+          "avg_pnl": -33.41
+        },
+        "H2": {
+          "trades": 720,
+          "pnl": -22534.41,
+          "pf": 0.533,
+          "sharpe": -4.37,
+          "maxdd": 23510.68,
+          "wr": 43.5,
+          "avg_pnl": -31.3
+        }
+      },
+      "concentration": {
+        "top3_share": 0,
+        "top5_share": 0,
+        "top10_share": 0,
+        "max_year_share": 0
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Sufficient trades (1448) but PF 0.53 < 1.1"
+      ]
+    },
+    "ZB": {
+      "asset": "ZB",
+      "bars": 382063,
+      "modes": {
+        "both": {
+          "trades": 1478,
+          "pnl": -94601.25,
+          "pf": 0.583,
+          "sharpe": -3.86,
+          "maxdd": 95475.0,
+          "wr": 44.7,
+          "avg_pnl": -64.01,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 736,
+          "pnl": -58183.75,
+          "pf": 0.518,
+          "sharpe": -4.48,
+          "maxdd": 58898.75,
+          "wr": 42.7,
+          "avg_pnl": -79.05,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 776,
+          "pnl": -39190.0,
+          "pf": 0.648,
+          "sharpe": -3.0,
+          "maxdd": 39357.5,
+          "wr": 46.5,
+          "avg_pnl": -50.5,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 759,
+          "pnl": -48272.5,
+          "pf": 0.62,
+          "sharpe": -3.42,
+          "maxdd": 50296.25,
+          "wr": 45.7,
+          "avg_pnl": -63.6
+        },
+        "H2": {
+          "trades": 719,
+          "pnl": -46328.75,
+          "pf": 0.535,
+          "sharpe": -4.58,
+          "maxdd": 47916.25,
+          "wr": 43.5,
+          "avg_pnl": -64.43
+        }
+      },
+      "concentration": {
+        "top3_share": 0,
+        "top5_share": 0,
+        "top10_share": 0,
+        "max_year_share": 0
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Sufficient trades (1478) but PF 0.58 < 1.1"
+      ]
+    },
+    "ZF": {
+      "asset": "ZF",
+      "bars": 331951,
+      "modes": {
+        "both": {
+          "trades": 1263,
+          "pnl": -20298.18,
+          "pf": 0.627,
+          "sharpe": -3.08,
+          "maxdd": 20379.12,
+          "wr": 44.6,
+          "avg_pnl": -16.07,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 642,
+          "pnl": -11722.28,
+          "pf": 0.588,
+          "sharpe": -3.11,
+          "maxdd": 11730.41,
+          "wr": 44.1,
+          "avg_pnl": -18.26,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 641,
+          "pnl": -9211.82,
+          "pf": 0.661,
+          "sharpe": -2.84,
+          "maxdd": 9292.76,
+          "wr": 44.9,
+          "avg_pnl": -14.37,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 631,
+          "pnl": -10452.55,
+          "pf": 0.603,
+          "sharpe": -3.14,
+          "maxdd": 11327.22,
+          "wr": 43.7,
+          "avg_pnl": -16.57
+        },
+        "H2": {
+          "trades": 632,
+          "pnl": -9814.38,
+          "pf": 0.65,
+          "sharpe": -3.0,
+          "maxdd": 10648.46,
+          "wr": 45.4,
+          "avg_pnl": -15.53
+        }
+      },
+      "concentration": {
+        "top3_share": 0,
+        "top5_share": 0,
+        "top10_share": 0,
+        "max_year_share": 0
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Sufficient trades (1263) but PF 0.63 < 1.1"
+      ]
+    }
+  },
+  "best_result": {
+    "asset": "ZF",
+    "classification": "REJECT",
+    "pf": 0.627,
+    "trades": 1263
+  },
+  "overall_classification": "REJECT",
+  "overall_reasons": [
+    "Sufficient trades (1263) but PF 0.63 < 1.1"
+  ]
+}

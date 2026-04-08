@@ -1,0 +1,413 @@
+{
+  "strategy": "trend_continuation",
+  "run_date": "2026-04-08T05:47:05.088819",
+  "session_filter": null,
+  "asset_results": {
+    "MES": {
+      "asset": "MES",
+      "bars": 474463,
+      "modes": {
+        "both": {
+          "trades": 0,
+          "pnl": 0,
+          "pf": 0,
+          "sharpe": 0,
+          "maxdd": 0,
+          "wr": 0,
+          "avg_pnl": 0,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 0,
+          "pnl": 0,
+          "pf": 0,
+          "sharpe": 0,
+          "maxdd": 0,
+          "wr": 0,
+          "avg_pnl": 0,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 0,
+          "pnl": 0,
+          "pf": 0,
+          "sharpe": 0,
+          "maxdd": 0,
+          "wr": 0,
+          "avg_pnl": 0,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 0,
+          "pnl": 0,
+          "pf": 0,
+          "sharpe": 0,
+          "maxdd": 0,
+          "wr": 0,
+          "avg_pnl": 0
+        },
+        "H2": {
+          "trades": 0,
+          "pnl": 0,
+          "pf": 0,
+          "sharpe": 0,
+          "maxdd": 0,
+          "wr": 0,
+          "avg_pnl": 0
+        }
+      },
+      "concentration": {
+        "top3_share": 0,
+        "top5_share": 0,
+        "top10_share": 0,
+        "max_year_share": 0
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Negative edge: PF 0.00"
+      ]
+    },
+    "MNQ": {
+      "asset": "MNQ",
+      "bars": 474340,
+      "modes": {
+        "both": {
+          "trades": 0,
+          "pnl": 0,
+          "pf": 0,
+          "sharpe": 0,
+          "maxdd": 0,
+          "wr": 0,
+          "avg_pnl": 0,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 0,
+          "pnl": 0,
+          "pf": 0,
+          "sharpe": 0,
+          "maxdd": 0,
+          "wr": 0,
+          "avg_pnl": 0,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 0,
+          "pnl": 0,
+          "pf": 0,
+          "sharpe": 0,
+          "maxdd": 0,
+          "wr": 0,
+          "avg_pnl": 0,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 0,
+          "pnl": 0,
+          "pf": 0,
+          "sharpe": 0,
+          "maxdd": 0,
+          "wr": 0,
+          "avg_pnl": 0
+        },
+        "H2": {
+          "trades": 0,
+          "pnl": 0,
+          "pf": 0,
+          "sharpe": 0,
+          "maxdd": 0,
+          "wr": 0,
+          "avg_pnl": 0
+        }
+      },
+      "concentration": {
+        "top3_share": 0,
+        "top5_share": 0,
+        "top10_share": 0,
+        "max_year_share": 0
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Negative edge: PF 0.00"
+      ]
+    },
+    "MGC": {
+      "asset": "MGC",
+      "bars": 250121,
+      "modes": {
+        "both": {
+          "trades": 0,
+          "pnl": 0,
+          "pf": 0,
+          "sharpe": 0,
+          "maxdd": 0,
+          "wr": 0,
+          "avg_pnl": 0,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 0,
+          "pnl": 0,
+          "pf": 0,
+          "sharpe": 0,
+          "maxdd": 0,
+          "wr": 0,
+          "avg_pnl": 0,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 0,
+          "pnl": 0,
+          "pf": 0,
+          "sharpe": 0,
+          "maxdd": 0,
+          "wr": 0,
+          "avg_pnl": 0,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 0,
+          "pnl": 0,
+          "pf": 0,
+          "sharpe": 0,
+          "maxdd": 0,
+          "wr": 0,
+          "avg_pnl": 0
+        },
+        "H2": {
+          "trades": 0,
+          "pnl": 0,
+          "pf": 0,
+          "sharpe": 0,
+          "maxdd": 0,
+          "wr": 0,
+          "avg_pnl": 0
+        }
+      },
+      "concentration": {
+        "top3_share": 0,
+        "top5_share": 0,
+        "top10_share": 0,
+        "max_year_share": 0
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Negative edge: PF 0.00"
+      ]
+    },
+    "M2K": {
+      "asset": "M2K",
+      "bars": 470094,
+      "modes": {
+        "both": {
+          "trades": 0,
+          "pnl": 0,
+          "pf": 0,
+          "sharpe": 0,
+          "maxdd": 0,
+          "wr": 0,
+          "avg_pnl": 0,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 0,
+          "pnl": 0,
+          "pf": 0,
+          "sharpe": 0,
+          "maxdd": 0,
+          "wr": 0,
+          "avg_pnl": 0,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 0,
+          "pnl": 0,
+          "pf": 0,
+          "sharpe": 0,
+          "maxdd": 0,
+          "wr": 0,
+          "avg_pnl": 0,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 0,
+          "pnl": 0,
+          "pf": 0,
+          "sharpe": 0,
+          "maxdd": 0,
+          "wr": 0,
+          "avg_pnl": 0
+        },
+        "H2": {
+          "trades": 0,
+          "pnl": 0,
+          "pf": 0,
+          "sharpe": 0,
+          "maxdd": 0,
+          "wr": 0,
+          "avg_pnl": 0
+        }
+      },
+      "concentration": {
+        "top3_share": 0,
+        "top5_share": 0,
+        "top10_share": 0,
+        "max_year_share": 0
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Negative edge: PF 0.00"
+      ]
+    },
+    "MCL": {
+      "asset": "MCL",
+      "bars": 331184,
+      "modes": {
+        "both": {
+          "trades": 1,
+          "pnl": -25.24,
+          "pf": 0.0,
+          "sharpe": 0.0,
+          "maxdd": 0.0,
+          "wr": 0.0,
+          "avg_pnl": -25.24,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 0,
+          "pnl": 0,
+          "pf": 0,
+          "sharpe": 0,
+          "maxdd": 0,
+          "wr": 0,
+          "avg_pnl": 0,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 1,
+          "pnl": -25.24,
+          "pf": 0.0,
+          "sharpe": 0.0,
+          "maxdd": 0.0,
+          "wr": 0.0,
+          "avg_pnl": -25.24,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 1,
+          "pnl": -25.24,
+          "pf": 0.0,
+          "sharpe": 0.0,
+          "maxdd": 0.0,
+          "wr": 0.0,
+          "avg_pnl": -25.24
+        },
+        "H2": {
+          "trades": 0,
+          "pnl": 0,
+          "pf": 0,
+          "sharpe": 0,
+          "maxdd": 0,
+          "wr": 0,
+          "avg_pnl": 0
+        }
+      },
+      "concentration": {
+        "top3_share": 0,
+        "top5_share": 0,
+        "top10_share": 0,
+        "max_year_share": 0
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Negative edge: PF 0.00"
+      ]
+    },
+    "ZN": {
+      "asset": "ZN",
+      "bars": 397744,
+      "modes": {
+        "both": {
+          "trades": 1,
+          "pnl": -2.5,
+          "pf": 0.0,
+          "sharpe": 0.0,
+          "maxdd": 0.0,
+          "wr": 0.0,
+          "avg_pnl": -2.5,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 0,
+          "pnl": 0,
+          "pf": 0,
+          "sharpe": 0,
+          "maxdd": 0,
+          "wr": 0,
+          "avg_pnl": 0,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 1,
+          "pnl": -2.5,
+          "pf": 0.0,
+          "sharpe": 0.0,
+          "maxdd": 0.0,
+          "wr": 0.0,
+          "avg_pnl": -2.5,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 1,
+          "pnl": -2.5,
+          "pf": 0.0,
+          "sharpe": 0.0,
+          "maxdd": 0.0,
+          "wr": 0.0,
+          "avg_pnl": -2.5
+        },
+        "H2": {
+          "trades": 0,
+          "pnl": 0,
+          "pf": 0,
+          "sharpe": 0,
+          "maxdd": 0,
+          "wr": 0,
+          "avg_pnl": 0
+        }
+      },
+      "concentration": {
+        "top3_share": 0,
+        "top5_share": 0,
+        "top10_share": 0,
+        "max_year_share": 0
+      },
+      "classification": "REJECT",
+      "classification_reasons": [
+        "Negative edge: PF 0.00"
+      ]
+    }
+  },
+  "best_result": {
+    "asset": "MES",
+    "classification": "REJECT",
+    "pf": 0,
+    "trades": 0
+  },
+  "overall_classification": "REJECT",
+  "overall_reasons": [
+    "Negative edge: PF 0.00"
+  ]
+}

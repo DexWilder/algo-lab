@@ -1,0 +1,164 @@
+{
+  "strategy": "overnight_z_volratio",
+  "run_date": "2026-04-08T05:42:05.197792",
+  "session_filter": null,
+  "asset_results": {
+    "MES": {
+      "asset": "MES",
+      "bars": 474463,
+      "modes": {
+        "both": {
+          "trades": 105,
+          "pnl": -4060.21,
+          "pf": 0.694,
+          "sharpe": -1.95,
+          "maxdd": 4279.1,
+          "wr": 46.7,
+          "avg_pnl": -38.67,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 39,
+          "pnl": 1717.88,
+          "pf": 1.615,
+          "sharpe": 2.64,
+          "maxdd": 852.48,
+          "wr": 59.0,
+          "avg_pnl": 44.05,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 66,
+          "pnl": -5778.09,
+          "pf": 0.449,
+          "sharpe": -4.18,
+          "maxdd": 5934.36,
+          "wr": 39.4,
+          "avg_pnl": -87.55,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 58,
+          "pnl": -2469.43,
+          "pf": 0.663,
+          "sharpe": -2.46,
+          "maxdd": 2804.58,
+          "wr": 44.8,
+          "avg_pnl": -42.58
+        },
+        "H2": {
+          "trades": 47,
+          "pnl": -1590.78,
+          "pf": 0.732,
+          "sharpe": -1.49,
+          "maxdd": 2566.07,
+          "wr": 48.9,
+          "avg_pnl": -33.85
+        }
+      },
+      "concentration": {
+        "top3_share": 0,
+        "top5_share": 0,
+        "top10_share": 0,
+        "max_year_share": 0
+      },
+      "classification": "TAIL_ENGINE_REJECT",
+      "classification_reasons": [
+        "[tail-engine path \u2014 105 trades < 500 workhorse threshold]",
+        "median trade $-14.99 < 0 (tail-dependent)",
+        "positive instances 47% < 60%",
+        "max DD 2176d > 900d",
+        "instance CV 8.13 > 3.0",
+        "PF 0.694 < 1.0"
+      ]
+    },
+    "MNQ": {
+      "asset": "MNQ",
+      "bars": 474340,
+      "modes": {
+        "both": {
+          "trades": 92,
+          "pnl": -6845.58,
+          "pf": 0.68,
+          "sharpe": -2.31,
+          "maxdd": 9275.3,
+          "wr": 44.6,
+          "avg_pnl": -74.41,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 31,
+          "pnl": -1223.94,
+          "pf": 0.836,
+          "sharpe": -1.04,
+          "maxdd": 2676.66,
+          "wr": 54.8,
+          "avg_pnl": -39.48,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 61,
+          "pnl": -5621.64,
+          "pf": 0.596,
+          "sharpe": -3.16,
+          "maxdd": 7109.52,
+          "wr": 39.3,
+          "avg_pnl": -92.16,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 50,
+          "pnl": -8555.5,
+          "pf": 0.346,
+          "sharpe": -6.57,
+          "maxdd": 8881.78,
+          "wr": 38.0,
+          "avg_pnl": -171.11
+        },
+        "H2": {
+          "trades": 42,
+          "pnl": 1709.92,
+          "pf": 1.207,
+          "sharpe": 1.09,
+          "maxdd": 2674.18,
+          "wr": 52.4,
+          "avg_pnl": 40.71
+        }
+      },
+      "concentration": {
+        "top3_share": 0,
+        "top5_share": 0,
+        "top10_share": 0,
+        "max_year_share": 0
+      },
+      "classification": "TAIL_ENGINE_REJECT",
+      "classification_reasons": [
+        "[tail-engine path \u2014 92 trades < 500 workhorse threshold]",
+        "median trade $-71.49 < 0 (tail-dependent)",
+        "positive instances 45% < 60%",
+        "max DD 2318d > 900d",
+        "instance CV 6.87 > 3.0",
+        "PF 0.68 < 1.0"
+      ]
+    }
+  },
+  "best_result": {
+    "asset": "MES",
+    "classification": "TAIL_ENGINE_REJECT",
+    "pf": 0.694,
+    "trades": 105
+  },
+  "overall_classification": "TAIL_ENGINE_REJECT",
+  "overall_reasons": [
+    "[tail-engine path \u2014 105 trades < 500 workhorse threshold]",
+    "median trade $-14.99 < 0 (tail-dependent)",
+    "positive instances 47% < 60%",
+    "max DD 2176d > 900d",
+    "instance CV 8.13 > 3.0",
+    "PF 0.694 < 1.0"
+  ]
+}
