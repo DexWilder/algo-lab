@@ -1,0 +1,212 @@
+[
+  {
+    "stop_mult": 0.1,
+    "per_asset": [
+      {
+        "asset": "MCL",
+        "stop_mult": 0.1,
+        "trades": 898,
+        "pf": 1.237,
+        "pnl": 6339.0,
+        "top3": 19.6,
+        "top10": 55.5,
+        "median": 5.76,
+        "dd_days": 368
+      }
+    ],
+    "mcl_pf": 1.237,
+    "mcl_dd_days": 368,
+    "mcl_pnl": 6339.0,
+    "mcl_top10": 55.5,
+    "mcl_median": 5.76
+  },
+  {
+    "stop_mult": 0.25,
+    "per_asset": [
+      {
+        "asset": "MCL",
+        "stop_mult": 0.25,
+        "trades": 898,
+        "pf": 1.274,
+        "pnl": 7357.0,
+        "top3": 16.9,
+        "top10": 48.1,
+        "median": 7.26,
+        "dd_days": 368
+      }
+    ],
+    "mcl_pf": 1.274,
+    "mcl_dd_days": 368,
+    "mcl_pnl": 7357.0,
+    "mcl_top10": 48.1,
+    "mcl_median": 7.26
+  },
+  {
+    "stop_mult": 0.5,
+    "per_asset": [
+      {
+        "asset": "MCL",
+        "stop_mult": 0.5,
+        "trades": 898,
+        "pf": 1.278,
+        "pnl": 7613.0,
+        "top3": 16.3,
+        "top10": 46.6,
+        "median": 8.76,
+        "dd_days": 195
+      }
+    ],
+    "mcl_pf": 1.278,
+    "mcl_dd_days": 195,
+    "mcl_pnl": 7613.0,
+    "mcl_top10": 46.6,
+    "mcl_median": 8.76
+  },
+  {
+    "stop_mult": 0.75,
+    "per_asset": [
+      {
+        "asset": "MCL",
+        "stop_mult": 0.75,
+        "trades": 898,
+        "pf": 1.321,
+        "pnl": 8784.0,
+        "top3": 14.1,
+        "top10": 40.4,
+        "median": 10.76,
+        "dd_days": 159
+      }
+    ],
+    "mcl_pf": 1.321,
+    "mcl_dd_days": 159,
+    "mcl_pnl": 8784.0,
+    "mcl_top10": 40.4,
+    "mcl_median": 10.76
+  },
+  {
+    "stop_mult": 1.0,
+    "per_asset": [
+      {
+        "asset": "MCL",
+        "stop_mult": 1.0,
+        "trades": 898,
+        "pf": 1.309,
+        "pnl": 8657.0,
+        "top3": 14.3,
+        "top10": 41.0,
+        "median": 10.76,
+        "dd_days": 157
+      }
+    ],
+    "mcl_pf": 1.309,
+    "mcl_dd_days": 157,
+    "mcl_pnl": 8657.0,
+    "mcl_top10": 41.0,
+    "mcl_median": 10.76
+  },
+  {
+    "stop_mult": 1.25,
+    "per_asset": [
+      {
+        "asset": "MCL",
+        "stop_mult": 1.25,
+        "trades": 898,
+        "pf": 1.317,
+        "pnl": 9000.0,
+        "top3": 13.8,
+        "top10": 39.4,
+        "median": 10.76,
+        "dd_days": 157
+      }
+    ],
+    "mcl_pf": 1.317,
+    "mcl_dd_days": 157,
+    "mcl_pnl": 9000.0,
+    "mcl_top10": 39.4,
+    "mcl_median": 10.76
+  },
+  {
+    "stop_mult": 1.5,
+    "per_asset": [
+      {
+        "asset": "MCL",
+        "stop_mult": 1.5,
+        "trades": 898,
+        "pf": 1.335,
+        "pnl": 9547.0,
+        "top3": 13.0,
+        "top10": 37.0,
+        "median": 10.76,
+        "dd_days": 145
+      }
+    ],
+    "mcl_pf": 1.335,
+    "mcl_dd_days": 145,
+    "mcl_pnl": 9547.0,
+    "mcl_top10": 37.0,
+    "mcl_median": 10.76
+  },
+  {
+    "stop_mult": 2.0,
+    "per_asset": [
+      {
+        "asset": "MCL",
+        "stop_mult": 2.0,
+        "trades": 898,
+        "pf": 1.332,
+        "pnl": 9578.0,
+        "top3": 13.0,
+        "top10": 37.0,
+        "median": 11.26,
+        "dd_days": 158
+      }
+    ],
+    "mcl_pf": 1.332,
+    "mcl_dd_days": 158,
+    "mcl_pnl": 9578.0,
+    "mcl_top10": 37.0,
+    "mcl_median": 11.26
+  },
+  {
+    "stop_mult": 2.5,
+    "per_asset": [
+      {
+        "asset": "MCL",
+        "stop_mult": 2.5,
+        "trades": 898,
+        "pf": 1.313,
+        "pnl": 9341.0,
+        "top3": 13.3,
+        "top10": 38.0,
+        "median": 12.26,
+        "dd_days": 168
+      }
+    ],
+    "mcl_pf": 1.313,
+    "mcl_dd_days": 168,
+    "mcl_pnl": 9341.0,
+    "mcl_top10": 38.0,
+    "mcl_median": 12.26
+  },
+  {
+    "stop_mult": 3.0,
+    "per_asset": [
+      {
+        "asset": "MCL",
+        "stop_mult": 3.0,
+        "trades": 898,
+        "pf": 1.361,
+        "pnl": 10525.0,
+        "top3": 11.8,
+        "top10": 33.9,
+        "median": 12.76,
+        "dd_days": 158
+      }
+    ],
+    "mcl_pf": 1.361,
+    "mcl_dd_days": 158,
+    "mcl_pnl": 10525.0,
+    "mcl_top10": 33.9,
+    "mcl_median": 12.76
+  }
+]
