@@ -1,0 +1,246 @@
+{
+  "strategy": "nfp_event_box",
+  "run_date": "2026-04-08T05:28:33.277426",
+  "session_filter": null,
+  "asset_results": {
+    "MES": {
+      "asset": "MES",
+      "bars": 474463,
+      "modes": {
+        "both": {
+          "trades": 77,
+          "pnl": 58.27,
+          "pf": 1.029,
+          "sharpe": 0.17,
+          "maxdd": 558.59,
+          "wr": 31.2,
+          "avg_pnl": 0.76,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 49,
+          "pnl": 291.74,
+          "pf": 1.258,
+          "sharpe": 1.41,
+          "maxdd": 313.63,
+          "wr": 36.7,
+          "avg_pnl": 5.95,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 28,
+          "pnl": -233.47,
+          "pf": 0.741,
+          "sharpe": -1.81,
+          "maxdd": 372.26,
+          "wr": 21.4,
+          "avg_pnl": -8.34,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 38,
+          "pnl": -87.12,
+          "pf": 0.911,
+          "sharpe": -0.56,
+          "maxdd": 376.01,
+          "wr": 28.9,
+          "avg_pnl": -2.29
+        },
+        "H2": {
+          "trades": 39,
+          "pnl": 145.39,
+          "pf": 1.137,
+          "sharpe": 0.81,
+          "maxdd": 558.59,
+          "wr": 33.3,
+          "avg_pnl": 3.73
+        }
+      },
+      "concentration": {
+        "top3_share": 9.16,
+        "top5_share": 14.03,
+        "top10_share": 23.105,
+        "max_year_share": 3.348,
+        "median_trade": -19.99
+      },
+      "classification": "TAIL_ENGINE_REJECT",
+      "classification_reasons": [
+        "[tail-engine path \u2014 77 trades < 500 workhorse threshold]",
+        "median trade $-19.99 < 0 (tail-dependent)",
+        "top-3 916% > 50%",
+        "top-5 1403% > 70%",
+        "single instance 348% > 35%",
+        "positive instances 31% < 60%",
+        "max DD 1280d > 900d",
+        "single year 335% > 50%",
+        "instance CV 91.30 > 3.0",
+        "(stricter than workhorse verdict 'SALVAGE')"
+      ]
+    },
+    "MNQ": {
+      "asset": "MNQ",
+      "bars": 474340,
+      "modes": {
+        "both": {
+          "trades": 77,
+          "pnl": 729.02,
+          "pf": 1.225,
+          "sharpe": 1.13,
+          "maxdd": 657.66,
+          "wr": 24.7,
+          "avg_pnl": 9.47,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 42,
+          "pnl": 740.42,
+          "pf": 1.457,
+          "sharpe": 2.14,
+          "maxdd": 491.64,
+          "wr": 28.6,
+          "avg_pnl": 17.63,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 35,
+          "pnl": -11.4,
+          "pf": 0.993,
+          "sharpe": -0.04,
+          "maxdd": 477.42,
+          "wr": 20.0,
+          "avg_pnl": -0.33,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 38,
+          "pnl": -222.12,
+          "pf": 0.856,
+          "sharpe": -0.87,
+          "maxdd": 657.66,
+          "wr": 21.1,
+          "avg_pnl": -5.85
+        },
+        "H2": {
+          "trades": 39,
+          "pnl": 951.14,
+          "pf": 1.561,
+          "sharpe": 2.52,
+          "maxdd": 394.66,
+          "wr": 28.2,
+          "avg_pnl": 24.39
+        }
+      },
+      "concentration": {
+        "top3_share": 1.651,
+        "top5_share": 2.406,
+        "top10_share": 3.942,
+        "max_year_share": 0.901,
+        "median_trade": -25.24
+      },
+      "classification": "TAIL_ENGINE_REJECT",
+      "classification_reasons": [
+        "[tail-engine path \u2014 77 trades < 500 workhorse threshold]",
+        "median trade $-25.24 < 0 (tail-dependent)",
+        "top-3 165% > 50%",
+        "top-5 241% > 70%",
+        "single instance 61% > 35%",
+        "positive instances 25% < 60%",
+        "single year 90% > 50%",
+        "instance CV 14.02 > 3.0",
+        "(stricter than workhorse verdict 'SALVAGE')"
+      ]
+    },
+    "MGC": {
+      "asset": "MGC",
+      "bars": 250121,
+      "modes": {
+        "both": {
+          "trades": 54,
+          "pnl": -689.96,
+          "pf": 0.62,
+          "sharpe": -2.57,
+          "maxdd": 1021.8,
+          "wr": 29.6,
+          "avg_pnl": -12.78,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 32,
+          "pnl": -633.68,
+          "pf": 0.468,
+          "sharpe": -4.37,
+          "maxdd": 770.88,
+          "wr": 25.0,
+          "avg_pnl": -19.8,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 22,
+          "pnl": -56.28,
+          "pf": 0.91,
+          "sharpe": -0.46,
+          "maxdd": 269.96,
+          "wr": 36.4,
+          "avg_pnl": -2.56,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 26,
+          "pnl": 157.76,
+          "pf": 1.271,
+          "sharpe": 1.19,
+          "maxdd": 316.64,
+          "wr": 30.8,
+          "avg_pnl": 6.07
+        },
+        "H2": {
+          "trades": 28,
+          "pnl": -847.72,
+          "pf": 0.314,
+          "sharpe": -6.5,
+          "maxdd": 1021.8,
+          "wr": 28.6,
+          "avg_pnl": -30.28
+        }
+      },
+      "concentration": {
+        "top3_share": 0,
+        "top5_share": 0,
+        "top10_share": 0,
+        "max_year_share": 0
+      },
+      "classification": "TAIL_ENGINE_REJECT",
+      "classification_reasons": [
+        "[tail-engine path \u2014 54 trades < 500 workhorse threshold]",
+        "median trade $-24.24 < 0 (tail-dependent)",
+        "positive instances 30% < 60%",
+        "instance CV 6.17 > 3.0",
+        "PF 0.62 < 1.0"
+      ]
+    }
+  },
+  "best_result": {
+    "asset": "MNQ",
+    "classification": "TAIL_ENGINE_REJECT",
+    "pf": 1.225,
+    "trades": 77
+  },
+  "overall_classification": "TAIL_ENGINE_REJECT",
+  "overall_reasons": [
+    "[tail-engine path \u2014 77 trades < 500 workhorse threshold]",
+    "median trade $-25.24 < 0 (tail-dependent)",
+    "top-3 165% > 50%",
+    "top-5 241% > 70%",
+    "single instance 61% > 35%",
+    "positive instances 25% < 60%",
+    "single year 90% > 50%",
+    "instance CV 14.02 > 3.0",
+    "(stricter than workhorse verdict 'SALVAGE')"
+  ]
+}
