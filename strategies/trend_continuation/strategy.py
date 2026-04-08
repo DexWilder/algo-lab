@@ -1,5 +1,15 @@
 """TREND-CONTINUATION — Multi-Bar Consolidation Breakout in Trend.
 
+!!! BROKEN — DO NOT TEST !!!
+Discovered 2026-04-08: produces 0 signals across 474K MES bars despite
+clean signature and no errors. The multi-bar consolidation tracking logic
+has a latent bug that never fires entries. Silent failure detector in
+batch_first_pass now flags it if run.
+
+Left in place for historical reference. To re-enable: debug the
+consolidation state machine in the main loop, remove BROKEN flag, and
+re-run through mass_screen.
+
 Tail engine strategy — low frequency, large winners, convex payoff.
 Targets sustained trend moves after tight consolidation near the 20-EMA.
 
@@ -24,6 +34,11 @@ No prop rules, no phase sizing, no guardrails.
 
 import pandas as pd
 import numpy as np
+
+
+# Broken flag — honored by mass_screen to skip this strategy in auto-testing.
+# Remove this line once the consolidation state machine is debugged.
+BROKEN = True
 
 
 # ── Parameters ───────────────────────────────────────────────────────────────

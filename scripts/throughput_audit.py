@@ -55,7 +55,11 @@ def _load_json(path):
 # ── Bucket 1: Coded but never backtested ─────────────────────────────────
 
 def audit_coded_untested():
-    """Strategies with strategy.py but no first_pass result."""
+    """Strategies with strategy.py but no first_pass result.
+
+    Skips strategies with module-level BROKEN = True flag — these are
+    intentionally excluded from auto-testing until fixed.
+    """
     has_first_pass = set()
     for f in FIRST_PASS_DIR.glob("*.json"):
         name = f.stem.split("_2026")[0].split("_2025")[0].split("_2024")[0]
@@ -64,9 +68,17 @@ def audit_coded_untested():
     untested = []
     for d in sorted(STRAT_DIR.iterdir()):
         if d.is_dir() and (d / "strategy.py").exists():
-            if d.name not in has_first_pass:
-                age_days = (time.time() - (d / "strategy.py").stat().st_mtime) / 86400
-                untested.append({"name": d.name, "age_days": int(age_days)})
+            if d.name in has_first_pass:
+                continue
+            # Skip known-broken strategies
+            try:
+                content = (d / "strategy.py").read_text()
+                if "\nBROKEN = True" in content:
+                    continue
+            except Exception:
+                pass
+            age_days = (time.time() - (d / "strategy.py").stat().st_mtime) / 86400
+            untested.append({"name": d.name, "age_days": int(age_days)})
 
     return {
         "bucket": "Coded but never backtested",

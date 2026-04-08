@@ -29,18 +29,42 @@ SCREEN_RESULTS = ROOT / "research" / "data" / "mass_screen_results.json"
 from engine.asset_config import get_asset, get_assets_by_status
 
 
+def _is_broken(strategy_dir):
+    """Check if a strategy has the BROKEN module flag."""
+    path = strategy_dir / "strategy.py"
+    try:
+        with open(path) as f:
+            content = f.read()
+        # Simple static check — avoids importing broken modules
+        return "\nBROKEN = True" in content or "^BROKEN = True" in content
+    except Exception:
+        return False
+
+
 def find_untested():
-    """Find strategies with code but no first_pass result."""
+    """Find strategies with code but no first_pass result.
+
+    Skips strategies with the module-level BROKEN = True flag. These are
+    known-broken and intentionally excluded from auto-testing until fixed.
+    """
     has_first_pass = set()
     for f in FIRST_PASS_DIR.glob("*.json"):
         name = f.stem.split("_2026")[0].split("_2025")[0].split("_2024")[0]
         has_first_pass.add(name)
 
     untested = []
+    skipped_broken = []
     for d in sorted(STRAT_DIR.iterdir()):
         if d.is_dir() and (d / "strategy.py").exists():
-            if d.name not in has_first_pass:
-                untested.append(d.name)
+            if d.name in has_first_pass:
+                continue
+            if _is_broken(d):
+                skipped_broken.append(d.name)
+                continue
+            untested.append(d.name)
+
+    if skipped_broken:
+        print(f"  Skipping {len(skipped_broken)} known-broken strategies: {skipped_broken}")
 
     return untested
 

@@ -5264,6 +5264,43 @@
         }
       ],
       "state_entered_date": "2026-04-07"
+    },
+    {
+      "strategy_id": "XB-ORB-EMA-Ladder-MCL",
+      "strategy_name": "xb_orb_ema_ladder",
+      "family": "crossbreed_breakout",
+      "asset": "MCL",
+      "session": "all_day",
+      "direction": "both",
+      "source": "internal_crossbreeding_cross_asset_extension",
+      "rule_summary": "ORB + EMA ladder crossbreed on crude oil. Same exact code as MNQ variant. stop_mult=2.0.",
+      "status": "probation",
+      "validation_score": 9.0,
+      "trades_6yr": 898,
+      "profit_factor": 1.33,
+      "portfolio_role": "workhorse",
+      "controller_action": "PROBATION",
+      "last_controller_date": "2026-04-08",
+      "promotion_date": "2026-04-08",
+      "baseline_params": {
+        "stop_mult": 2.0,
+        "target_mult": 4.0,
+        "trail_mult": 2.5
+      },
+      "execution_config": {
+        "preferred_window": [
+          "09:30",
+          "14:30"
+        ],
+        "allowed_window": [
+          "09:30",
+          "15:15"
+        ],
+        "conviction_threshold_inside": 2,
+        "conviction_threshold_outside": 2,
+        "priority": 9
+      },
+      "notes": "PROMOTED 2026-04-08 after cross-asset extension test. Same exact strategy code as XB-ORB-EMA-Ladder-MNQ (stop_mult=2.0 baseline), applied to MCL. Deep validation passed: PF 1.33, 898 trades, 5/6 years profitable, worst PF with any year removed = 1.26 (no single year carries edge), 3/4 rolling walk-forward windows pass OOS, shorts stronger than longs (fits crude supply-shock pattern), top-3 13% / top-10 37% concentration, max DD 158 days matches MNQ profile, 0 zero-trade months over 58 months, positive median trade $11.26. FILLS ENERGY GAP that could not be filled by dedicated MCL prototypes (Settlement Reversion, HV Percentile, Hedging Pressure Carry all REJECT). The winning mechanism is asset-agnostic \u2014 no MCL-specific code."
     }
   ],
   "_rejection_taxonomy": {

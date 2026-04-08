@@ -172,10 +172,9 @@ def main():
                                               "strategy", "algorithm", "quantitative"]
                                 if kw in title_lower)
 
-            # Score with whatever we have
-            score_text = f"{title} {excerpt or ''}"
-            prelim = score_lead(score_text, title) if 'score_lead' in dir() else None
-
+            # Score with whatever we have (title_lower is already set above)
+            # Removed broken reference to undefined 'title' and 'score_lead'
+            # variables; scoring happens in the shared scorer below.
             if excerpt is None and title_quality < 1:
                 continue  # No transcript + completely generic title = skip
 

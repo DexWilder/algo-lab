@@ -213,6 +213,12 @@ def _get_dormant_snapshot():
     if strat_dir.exists():
         for d in strat_dir.iterdir():
             if d.is_dir() and (d / "strategy.py").exists() and d.name not in fp_names:
+                # Skip known-broken strategies (module-level BROKEN = True)
+                try:
+                    if "\nBROKEN = True" in (d / "strategy.py").read_text():
+                        continue
+                except Exception:
+                    pass
                 snapshot["coded_untested"] += 1
 
     # 2. Registry ideas never tested

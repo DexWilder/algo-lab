@@ -1,0 +1,91 @@
+{
+  "strategy": "xb_orb_ema_ladder",
+  "run_date": "2026-04-08T08:19:19.910860",
+  "session_filter": null,
+  "asset_results": {
+    "MCL": {
+      "asset": "MCL",
+      "bars": 331184,
+      "modes": {
+        "both": {
+          "trades": 898,
+          "pnl": 9578.48,
+          "pf": 1.332,
+          "sharpe": 1.59,
+          "maxdd": 1477.6,
+          "wr": 56.7,
+          "avg_pnl": 10.67,
+          "mode": "both",
+          "raw_signals": 898
+        },
+        "long": {
+          "trades": 446,
+          "pnl": 2136.96,
+          "pf": 1.144,
+          "sharpe": 0.73,
+          "maxdd": 1538.88,
+          "wr": 56.3,
+          "avg_pnl": 4.79,
+          "mode": "long",
+          "raw_signals": 898
+        },
+        "short": {
+          "trades": 452,
+          "pnl": 7441.52,
+          "pf": 1.53,
+          "sharpe": 2.42,
+          "maxdd": 1119.52,
+          "wr": 57.1,
+          "avg_pnl": 16.46,
+          "mode": "short",
+          "raw_signals": 898
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 438,
+          "pnl": 7036.88,
+          "pf": 1.439,
+          "sharpe": 2.13,
+          "maxdd": 1328.08,
+          "wr": 58.0,
+          "avg_pnl": 16.07
+        },
+        "H2": {
+          "trades": 461,
+          "pnl": 2565.36,
+          "pf": 1.2,
+          "sharpe": 0.97,
+          "maxdd": 1477.6,
+          "wr": 55.5,
+          "avg_pnl": 5.56
+        }
+      },
+      "concentration": {
+        "top3_share": 0.13,
+        "top5_share": 0.207,
+        "top10_share": 0.37,
+        "max_year_share": 0.278,
+        "median_trade": 11.26
+      },
+      "classification": "ADVANCE",
+      "classification_reasons": [
+        "PF 1.33 > 1.2 with 898 trades",
+        "Walk-forward stable: H1=1.44, H2=1.20",
+        "Concentration clean: top3=13%, top5=21%, top10=37%, max year=28%, median trade $11.26"
+      ]
+    }
+  },
+  "best_result": {
+    "asset": "MCL",
+    "classification": "ADVANCE",
+    "pf": 1.332,
+    "trades": 898
+  },
+  "overall_classification": "ADVANCE",
+  "overall_reasons": [
+    "PF 1.33 > 1.2 with 898 trades",
+    "Walk-forward stable: H1=1.44, H2=1.20",
+    "Concentration clean: top3=13%, top5=21%, top10=37%, max year=28%, median trade $11.26"
+  ]
+}
