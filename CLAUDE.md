@@ -46,26 +46,35 @@ Claude should do these automatically at the start of relevant sessions:
 See `docs/CONTINUOUS_DISCOVERY_OPERATING_PLAN.md` for the full operating plan.
 See `docs/CLAW_CATALOG_ENGINE.md` for Claw's scheduled task definitions.
 
-## Probation Portfolio (5 strategies accumulating forward evidence)
+## Probation Portfolio
 
-| Strategy | Asset | Horizon | Tier | Target Trades | Promotion PF |
-|----------|-------|---------|------|---------------|-------------|
-| DailyTrend-MGC-Long | MGC | Daily | REDUCED | 15 | > 1.2 |
-| MomPB-6J-Long-US | 6J | Intraday (US) | REDUCED | 30 | > 1.2 |
-| FXBreak-6J-Short-London | 6J | Intraday (London) | MICRO | 50 | > 1.1 |
-| PreFOMC-Drift-Equity | MES | Event (FOMC) | MICRO | 8 | > 1.2 |
-| TV-NFP-High-Low-Levels | MES | Event (NFP) | MICRO | 8 | > 1.1 |
+**Primary workhorse candidates (promoted 2026-04-06 and 2026-04-08):**
+
+| Strategy | Asset | Archetype | Baseline PF | Trades | Status |
+|----------|-------|-----------|------------|--------|--------|
+| **XB-ORB-EMA-Ladder-MNQ** | MNQ | Workhorse | 1.62 | 1183 | Live forward |
+| **XB-ORB-EMA-Ladder-MCL** | MCL | Workhorse | 1.33 | 898 | Live forward |
+
+Both use the same strategy code: ORB breakout + EMA slope filter + profit_ladder
+exit with `stop_mult=2.0`. Cross-asset validated on MNQ/MES/MGC/M2K (equity+gold)
+and MCL (energy). Does NOT extend to rates (ZN/ZF/ZB) or FX (6J/6E/6B — small
+sample). See `docs/` and `research/data/xb_orb_*_sweep_results.json` for full
+sweep and validation results.
+
+**Other probation / watch strategies:**
+- DailyTrend-MGC-Long, MomPB-6J-Long-US, FXBreak-6J-Short-London (legacy watch)
+- NoiseBoundary-MNQ-Long, ZN-Afternoon-Reversion, VolManaged-EquityIndex-Futures
+- PreFOMC-Drift-Equity, TV-NFP-High-Low-Levels (event sleeves)
 
 Review criteria: `docs/PROBATION_REVIEW_CRITERIA.md`
-Week 8 formal review is the next major decision point.
 
 ## Automation (8 active launchd agents)
 
 - **Forward day:** weekdays 17:00 ET — data refresh + forward paper trading
 - **Daily research:** weekdays 17:30 ET — 6 research jobs + report stack
 - **Operator digest:** weekdays 18:00 ET — exception-only daily intelligence (`scripts/operator_digest.py`)
-- **Twice-weekly:** Tue/Thu 18:00 ET — batch_first_pass factory testing
-- **Weekly:** Fri 18:30 ET — integrity monitor, kill criteria, auto-report
+- **Twice-weekly:** Tue/Thu 18:00 ET — batch_first_pass factory testing **+ auto mass-screen of untested strategies**
+- **Weekly:** Fri 18:30 ET — integrity monitor, kill criteria, auto-report, throughput audit
 - **Claw control loop:** every 30 min — Claw coordination, EOD audit at 22:00
 - **Source helpers:** every 3 days — GitHub/Reddit/YouTube/blog/digest lead fetching
 - **Watchdog:** every 5 min — gateway/claw/job health, self-healing recovery, CLEARED transition logging
@@ -75,18 +84,54 @@ The operator digest is the primary interface. It auto-runs daily and:
 - Generates decision memos when thresholds are hit
 - Sends macOS notification only for ACTION/ALERT items
 - Emits "nothing actionable" when system is nominal
+- **Shows dormant inventory counts every day** (coded untested, ideas untested, harvest notes)
 - On-demand: `fql digest`
 
-## System State
+## Factory Classification (dual archetype, 2026-04-07)
 
-- **Registry:** 110 strategies, schema v3.0, rejection taxonomy
+The factory classifies every strategy through one of two paths:
+
+**Workhorse path** (trades ≥ 500):
+- PF > 1.2, walk-forward H1/H2 both > 1.0
+- Top-3 < 30%, Top-5 < 45%, Top-10 < 55% concentration
+- Median trade ≥ 0
+- Max single year < 40%
+- Catches continuous intraday grinders like xb_orb_ema_ladder
+
+**Tail-engine path** (trades < 500):
+- PF ≥ 1.15 for VIABLE, ≥ 1.30 for STRONG
+- Max single instance < 35%, positive instance fraction ≥ 60%
+- Instance CV < 3.0 (cross-instance stability)
+- Max DD duration < 900d, max year < 50%
+- Catches sparse event/session/carry strategies
+
+**Routing rule**: trades < 500 → both paths run, stricter verdict wins.
+Prevents sparse strategies from cheesing the workhorse "directional split"
+SALVAGE path.
+
+**Automatic features**:
+- Silent failure detector: flags strategies producing 0 signals on 10k+ bars
+- Per-event decomposition: when a strategy exposes `EVENT_CLASSIFIER`, the
+  factory auto-breaks down results by event type and emits verdicts
+  (ISOLATE X / ALL EVENTS WEAK / COMPOSITE VIABLE)
+- Dormant safety net: 4 defensive layers (runtime, twice-weekly clear,
+  daily digest line, weekly throughput audit)
+
+## System State (2026-04-08)
+
+- **Registry:** 115+ strategies, schema v3.2, rejection taxonomy
 - **Genome map:** 9-dimension classification, overcrowding + gap analysis
-- **Factory:** batch_first_pass operational, 20+ reports processed
-- **Forward runner:** 10 strategies across 4 assets, 2 horizons, probation included
-- **Tests:** 127 passing
-- **Harvest engine:** Phase 1 active — 5 of 6 lanes running (legacy_revival disabled)
-- **Factor coverage:** MOMENTUM 54%, STRUCTURAL 1, EVENT 2 (probation), CARRY 0 (GAP), VOLATILITY 0 (GAP)
-- **Conversion queue:** Natural pause — no strong candidates pending
+- **Factory:** batch_first_pass with dual-archetype classification, silent
+  failure detector, auto per-event decomposition
+- **Forward runner:** probation includes XB-ORB-EMA-Ladder on MNQ + MCL
+  (two workhorse candidates), plus legacy watch/event sleeves
+- **Harvest engine:** Phase 1 active — Claw lanes running, ~127 notes queued
+- **Energy gap:** FILLED via cross-asset extension of xb_orb_ema_ladder to
+  MCL (not via dedicated crude prototypes, which all failed)
+- **Dormant safety net:** 4-layer defense (silent failure detector, auto
+  mass-screen, daily dormant digest line, weekly throughput audit)
+- **Validation doctrine:** positive median trade, cross-asset generalization,
+  sample size, low concentration — all four required for workhorse ADVANCE
 
 ## Auto-Commit & Push
 
