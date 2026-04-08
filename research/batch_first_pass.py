@@ -405,12 +405,24 @@ def run_first_pass(strategy_name, assets, session_filter=None):
         # Run each mode
         mode_results = []
         both_trades_df = None  # Save "both" trades for concentration check
+        signal_raw_counts = {}  # raw signal count pre-backtest (for silent failure detection)
         for mode in ["both", "long", "short"]:
             try:
                 signals = _call_generate_signals(mod, df.copy(), mode=mode, asset=asset)
                 # Handle daily-resampling strategies: if signals has fewer
                 # rows than input data, use signals as both df and signals
                 bt_df = signals if len(signals) < len(df) else df
+
+                # Silent-failure guard: count raw signals BEFORE backtest.
+                # If generate_signals returned zero non-zero signals, the
+                # strategy is either genuinely quiet or silently broken
+                # (e.g., interface mismatch ignoring mode=). We track this.
+                if "signal" in signals.columns:
+                    raw_sig_count = int((signals["signal"] != 0).sum())
+                else:
+                    raw_sig_count = 0
+                signal_raw_counts[mode] = raw_sig_count
+
                 r = run_backtest(
                     bt_df, signals, mode=mode,
                     point_value=cfg["point_value"],
@@ -420,6 +432,7 @@ def run_first_pass(strategy_name, assets, session_filter=None):
                 )
                 m = compute_metrics(r["trades_df"])
                 m["mode"] = mode
+                m["raw_signals"] = raw_sig_count
                 asset_report["modes"][mode] = m
                 mode_results.append(m)
                 if mode == "both":
@@ -427,6 +440,21 @@ def run_first_pass(strategy_name, assets, session_filter=None):
             except Exception as e:
                 asset_report["modes"][mode] = {"error": str(e), "trades": 0, "pf": 0}
                 mode_results.append({"pf": 0, "trades": 0, "mode": mode})
+                signal_raw_counts[mode] = 0
+
+        # Silent failure flag: zero raw signals across ALL modes on a sufficient
+        # sample. This catches the 2026-04-06 interface-mismatch bug where
+        # batch_first_pass was passing mode= to strategies that didn't accept it,
+        # and the failure was silently caught as "REJECT 0 trades".
+        total_raw = sum(signal_raw_counts.values())
+        if total_raw == 0 and len(df) >= 10000:
+            asset_report["silent_failure_suspected"] = True
+            asset_report["silent_failure_reason"] = (
+                f"Strategy produced ZERO signals across all modes on {len(df)} bars. "
+                f"Likely causes: interface mismatch (mode=/asset= param ignored), "
+                f"broken signal logic, or data column issue. Inspect generate_signals() "
+                f"signature and output shape."
+            )
 
         # Walk-forward on "both" mode
         mid = len(df) // 2
@@ -520,6 +548,11 @@ def print_report(report):
         cls = ar.get("classification", "?")
         icon = {"ADVANCE": "+", "SALVAGE": "~", "MONITOR": "?", "REJECT": "X"}.get(cls, "!")
         print(f"\n  [{icon}] {asset} — {cls}")
+
+        # Silent failure warning — loud so it can't be missed
+        if ar.get("silent_failure_suspected"):
+            print(f"  {'':4s}*** SILENT FAILURE SUSPECTED ***")
+            print(f"  {'':4s}{ar.get('silent_failure_reason', '')}")
         print(f"  {'':4s}{'Mode':<7s} {'Trades':>7s} {'PnL':>10s} {'PF':>6s} {'Sharpe':>7s} {'WR':>5s}")
         print(f"  {'':4s}{'-' * 45}")
         for mode in ["both", "long", "short"]:

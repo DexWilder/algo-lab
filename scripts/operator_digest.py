@@ -187,6 +187,48 @@ def _get_probation_snapshot():
     return snapshot
 
 
+# ── Dormant inventory snapshot (fast lite-check) ─────────────────────────
+
+def _get_dormant_snapshot():
+    """Quick check: how much work is sitting idle in each pipeline stage.
+
+    Added 2026-04-08 after discovering 24 strategies silently untested for
+    2 days. This lite check runs daily in the digest so dormant work can't
+    sit longer than 24h without surfacing.
+    """
+    snapshot = {"coded_untested": 0, "ideas_untested": 0, "harvest_unconverted": 0}
+
+    # 1. Coded but never backtested
+    strat_dir = ROOT / "strategies"
+    fp_dir = ROOT / "research" / "data" / "first_pass"
+    fp_names = set()
+    if fp_dir.exists():
+        for f in fp_dir.glob("*.json"):
+            name = f.stem
+            for sep in ["_2026", "_2025", "_2024", "_2023", "_2022"]:
+                if sep in name:
+                    name = name.split(sep)[0]
+                    break
+            fp_names.add(name)
+    if strat_dir.exists():
+        for d in strat_dir.iterdir():
+            if d.is_dir() and (d / "strategy.py").exists() and d.name not in fp_names:
+                snapshot["coded_untested"] += 1
+
+    # 2. Registry ideas never tested
+    reg = _load_json(str(REGISTRY_PATH))
+    for s in reg.get("strategies", []):
+        if s.get("status") == "idea" and not s.get("profit_factor") and not s.get("trades_6yr"):
+            snapshot["ideas_untested"] += 1
+
+    # 3. Harvest notes (uncommitted count)
+    harvest_dir = Path.home() / "openclaw-intake" / "inbox" / "harvest"
+    if harvest_dir.exists():
+        snapshot["harvest_unconverted"] = len(list(harvest_dir.glob("*.md")))
+
+    return snapshot
+
+
 # ── Decision memos ───────────────────────────────────────────────────────
 
 def generate_decision_memos(prev_state):
@@ -308,9 +350,10 @@ def generate_decision_memos(prev_state):
 
 # ── State change detection ───────────────────────────────────────────────
 
-def detect_state_changes(prev_state, health, alert_counts, probation):
+def detect_state_changes(prev_state, health, alert_counts, probation, dormant=None):
     """Compare current state to previous and return changes."""
     changes = []
+    dormant = dormant or {}
 
     # Health changes
     prev_health = prev_state.get("health", {})
@@ -367,6 +410,31 @@ def detect_state_changes(prev_state, health, alert_counts, probation):
         except Exception:
             pass
 
+    # Dormant inventory: flag if untested strategy backlog appears or grows.
+    # Threshold: any coded-untested is actionable (should be zero after
+    # twice-weekly auto-mass-screen runs). Added 2026-04-08.
+    prev_dormant = prev_state.get("dormant", {})
+    curr_coded_untested = dormant.get("coded_untested", 0)
+    prev_coded_untested = prev_dormant.get("coded_untested", 0)
+    if curr_coded_untested > 0 and curr_coded_untested != prev_coded_untested:
+        changes.append({
+            "category": "dormant",
+            "message": (
+                f"Coded untested: {prev_coded_untested} -> {curr_coded_untested} "
+                f"(run: python3 research/mass_screen.py)"
+            ),
+            "direction": "degraded" if curr_coded_untested > prev_coded_untested else "improved",
+        })
+    # Harvest backlog growth
+    curr_harvest = dormant.get("harvest_unconverted", 0)
+    prev_harvest = prev_dormant.get("harvest_unconverted", 0)
+    if curr_harvest > prev_harvest + 10:  # only flag growth of 10+
+        changes.append({
+            "category": "dormant",
+            "message": f"Harvest backlog: {prev_harvest} -> {curr_harvest} (+{curr_harvest - prev_harvest})",
+            "direction": "degraded",
+        })
+
     return changes
 
 
@@ -380,8 +448,9 @@ def generate_digest():
     health = _get_health_snapshot()
     alert_counts, raw_alerts = _get_alert_snapshot()
     probation = _get_probation_snapshot()
+    dormant = _get_dormant_snapshot()
 
-    changes = detect_state_changes(prev_state, health, alert_counts, probation)
+    changes = detect_state_changes(prev_state, health, alert_counts, probation, dormant)
     memos = generate_decision_memos(prev_state)
 
     # Count actionable items
@@ -447,6 +516,16 @@ def generate_digest():
         today_trades = trades[trades["date"] == TODAY]
         lines.append(f"  Forward trades: {len(trades)} total, {len(today_trades)} today")
 
+    # Dormant inventory (persistent line — visible every day)
+    d = dormant
+    dormant_parts = []
+    if d.get("coded_untested", 0) > 0:
+        dormant_parts.append(f"coded untested: {d['coded_untested']}")
+    if d.get("ideas_untested", 0) > 0:
+        dormant_parts.append(f"registry ideas: {d['ideas_untested']}")
+    dormant_parts.append(f"harvest notes: {d.get('harvest_unconverted', 0)}")
+    lines.append(f"  Dormant: {' | '.join(dormant_parts)}")
+
     lines.append("")
     lines.append("---")
     lines.append("*Full reports: _alerts.md, _operator_brief.md, _probation_scoreboard.md, _portfolio_gap_dashboard.md*")
@@ -456,6 +535,7 @@ def generate_digest():
         "health": health,
         "alert_counts": alert_counts,
         "probation": probation,
+        "dormant": dormant,
         "decision_memos_issued": list(set(
             prev_state.get("decision_memos_issued", []) + [m["key"] for m in memos]
         )),

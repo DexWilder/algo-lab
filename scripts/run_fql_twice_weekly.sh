@@ -43,6 +43,14 @@ log ""
 python3 research/fql_research_scheduler.py --twice-weekly >> "$LOG_FILE" 2>&1
 EXIT_CODE=$?
 
+# Auto mass-screen any strategies with code but no first_pass result.
+# Added 2026-04-08 after discovering that 24 strategies had been silently
+# untested for up to 48 hours following an interrupted re-screen. This
+# prevents recurrence by processing the backlog on every twice-weekly run.
+log ""
+log "--- Auto mass-screen: untested strategies ---"
+python3 research/mass_screen.py >> "$LOG_FILE" 2>&1 || true
+
 log ""
 if [ "$EXIT_CODE" -eq 0 ]; then
     log "=== Twice-weekly jobs completed successfully - $(date) ==="
