@@ -1,0 +1,93 @@
+{
+  "strategy": "vol_compression_breakout",
+  "run_date": "2026-04-08T06:44:30.356139",
+  "session_filter": null,
+  "asset_results": {
+    "M2K": {
+      "asset": "M2K",
+      "bars": 470094,
+      "modes": {
+        "both": {
+          "trades": 107,
+          "pnl": -647.18,
+          "pf": 0.488,
+          "sharpe": -4.67,
+          "maxdd": 666.44,
+          "wr": 29.0,
+          "avg_pnl": -6.05,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 53,
+          "pnl": -367.22,
+          "pf": 0.42,
+          "sharpe": -5.28,
+          "maxdd": 413.04,
+          "wr": 30.2,
+          "avg_pnl": -6.93,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 54,
+          "pnl": -279.96,
+          "pf": 0.556,
+          "sharpe": -4.09,
+          "maxdd": 316.8,
+          "wr": 27.8,
+          "avg_pnl": -5.18,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 48,
+          "pnl": -239.02,
+          "pf": 0.56,
+          "sharpe": -3.55,
+          "maxdd": 326.84,
+          "wr": 33.3,
+          "avg_pnl": -4.98
+        },
+        "H2": {
+          "trades": 59,
+          "pnl": -408.16,
+          "pf": 0.434,
+          "sharpe": -5.7,
+          "maxdd": 406.42,
+          "wr": 25.4,
+          "avg_pnl": -6.92
+        }
+      },
+      "concentration": {
+        "top3_share": 0,
+        "top5_share": 0,
+        "top10_share": 0,
+        "max_year_share": 0
+      },
+      "classification": "TAIL_ENGINE_REJECT",
+      "classification_reasons": [
+        "[tail-engine path \u2014 107 trades < 500 workhorse threshold]",
+        "median trade $-11.24 < 0 (tail-dependent)",
+        "positive instances 30% < 60%",
+        "max DD 2421d > 900d",
+        "instance CV 3.40 > 3.0",
+        "PF 0.488 < 1.0"
+      ]
+    }
+  },
+  "best_result": {
+    "asset": "M2K",
+    "classification": "TAIL_ENGINE_REJECT",
+    "pf": 0.488,
+    "trades": 107
+  },
+  "overall_classification": "TAIL_ENGINE_REJECT",
+  "overall_reasons": [
+    "[tail-engine path \u2014 107 trades < 500 workhorse threshold]",
+    "median trade $-11.24 < 0 (tail-dependent)",
+    "positive instances 30% < 60%",
+    "max DD 2421d > 900d",
+    "instance CV 3.40 > 3.0",
+    "PF 0.488 < 1.0"
+  ]
+}

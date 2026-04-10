@@ -1,0 +1,151 @@
+{
+  "strategy": "vol_managed_equity",
+  "run_date": "2026-04-08T06:48:50.808186",
+  "session_filter": null,
+  "asset_results": {
+    "MES": {
+      "asset": "MES",
+      "bars": 474463,
+      "modes": {
+        "both": {
+          "trades": 1,
+          "pnl": 18093.76,
+          "pf": 99.0,
+          "sharpe": 0.0,
+          "maxdd": 0.0,
+          "wr": 100.0,
+          "avg_pnl": 18093.76,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 1,
+          "pnl": 18093.76,
+          "pf": 99.0,
+          "sharpe": 0.0,
+          "maxdd": 0.0,
+          "wr": 100.0,
+          "avg_pnl": 18093.76,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 0,
+          "pnl": 0,
+          "pf": 0,
+          "sharpe": 0,
+          "maxdd": 0,
+          "wr": 0,
+          "avg_pnl": 0,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 1,
+          "pnl": 4741.26,
+          "pf": 99.0,
+          "sharpe": 0.0,
+          "maxdd": 0.0,
+          "wr": 100.0,
+          "avg_pnl": 4741.26
+        },
+        "H2": {
+          "trades": 1,
+          "pnl": 13538.76,
+          "pf": 99.0,
+          "sharpe": 0.0,
+          "maxdd": 0.0,
+          "wr": 100.0,
+          "avg_pnl": 13538.76
+        }
+      },
+      "concentration": {
+        "top3_share": 1.0,
+        "top5_share": 1.0,
+        "top10_share": 1.0,
+        "max_year_share": 1.0,
+        "median_trade": 18093.76
+      },
+      "classification": "MONITOR",
+      "classification_reasons": [
+        "PF 99.00 > 1.0 but only 1 trades \u2014 insufficient sample"
+      ]
+    },
+    "MNQ": {
+      "asset": "MNQ",
+      "bars": 474340,
+      "modes": {
+        "both": {
+          "trades": 1,
+          "pnl": 32564.26,
+          "pf": 99.0,
+          "sharpe": 0.0,
+          "maxdd": 0.0,
+          "wr": 100.0,
+          "avg_pnl": 32564.26,
+          "mode": "both"
+        },
+        "long": {
+          "trades": 1,
+          "pnl": 32564.26,
+          "pf": 99.0,
+          "sharpe": 0.0,
+          "maxdd": 0.0,
+          "wr": 100.0,
+          "avg_pnl": 32564.26,
+          "mode": "long"
+        },
+        "short": {
+          "trades": 0,
+          "pnl": 0,
+          "pf": 0,
+          "sharpe": 0,
+          "maxdd": 0,
+          "wr": 0,
+          "avg_pnl": 0,
+          "mode": "short"
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 1,
+          "pnl": 7531.26,
+          "pf": 99.0,
+          "sharpe": 0.0,
+          "maxdd": 0.0,
+          "wr": 100.0,
+          "avg_pnl": 7531.26
+        },
+        "H2": {
+          "trades": 1,
+          "pnl": 25484.76,
+          "pf": 99.0,
+          "sharpe": 0.0,
+          "maxdd": 0.0,
+          "wr": 100.0,
+          "avg_pnl": 25484.76
+        }
+      },
+      "concentration": {
+        "top3_share": 1.0,
+        "top5_share": 1.0,
+        "top10_share": 1.0,
+        "max_year_share": 1.0,
+        "median_trade": 32564.26
+      },
+      "classification": "MONITOR",
+      "classification_reasons": [
+        "PF 99.00 > 1.0 but only 1 trades \u2014 insufficient sample"
+      ]
+    }
+  },
+  "best_result": {
+    "asset": "MES",
+    "classification": "MONITOR",
+    "pf": 99.0,
+    "trades": 1
+  },
+  "overall_classification": "MONITOR",
+  "overall_reasons": [
+    "PF 99.00 > 1.0 but only 1 trades \u2014 insufficient sample"
+  ]
+}
