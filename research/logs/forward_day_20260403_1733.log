@@ -1,0 +1,172 @@
+=== FQL Forward Day - Fri Apr  3 17:33:36 PDT 2026 ===
+PID: 48582 | Repo: /Users/chasefisher/projects/Algo Trading/algo-lab
+
+--- Step 1: Updating market data ---
+============================================================
+  INCREMENTAL DATA UPDATE
+============================================================
+
+  MES: last bar = 2026-03-26 19:55:00
+
+  MNQ: last bar = 2026-03-26 19:55:00
+
+  MGC: last bar = 2026-03-26 19:55:00
+
+  M2K: last bar = 2026-03-26 19:55:00
+
+  MCL: last bar = 2026-03-26 19:55:00
+
+  ZN: last bar = 2026-03-26 19:55:00
+
+  ZB: last bar = 2026-03-26 19:55:00
+
+  ZF: last bar = 2026-03-26 13:35:00
+
+  6E: last bar = 2026-03-26 19:50:00
+
+  6J: last bar = 2026-03-26 19:50:00
+
+  6B: last bar = 2026-03-26 19:50:00
+  Fetching MES from 2026-03-26T18:55:00 to 2026-04-03...
+  MES: ERROR — HTTPSConnectionPool(host='hist.databento.com', port=443): Max retries exceeded with url: /v0/timeseries.get_range (Caused by NameResolutionError("HTTPSConnection(host='hist.databento.com', port=443): Failed to resolve 'hist.databento.com' ([Errno 8] nodename nor servname provided, or not known)"))
+  Fetching MNQ from 2026-03-26T18:55:00 to 2026-04-03...
+  MNQ: ERROR — HTTPSConnectionPool(host='hist.databento.com', port=443): Max retries exceeded with url: /v0/timeseries.get_range (Caused by NameResolutionError("HTTPSConnection(host='hist.databento.com', port=443): Failed to resolve 'hist.databento.com' ([Errno 8] nodename nor servname provided, or not known)"))
+  Fetching MGC from 2026-03-26T18:55:00 to 2026-04-03...
+  MGC: ERROR — HTTPSConnectionPool(host='hist.databento.com', port=443): Max retries exceeded with url: /v0/timeseries.get_range (Caused by NameResolutionError("HTTPSConnection(host='hist.databento.com', port=443): Failed to resolve 'hist.databento.com' ([Errno 8] nodename nor servname provided, or not known)"))
+  Fetching M2K from 2026-03-26T18:55:00 to 2026-04-03...
+  M2K: ERROR — HTTPSConnectionPool(host='hist.databento.com', port=443): Max retries exceeded with url: /v0/timeseries.get_range (Caused by NameResolutionError("HTTPSConnection(host='hist.databento.com', port=443): Failed to resolve 'hist.databento.com' ([Errno 8] nodename nor servname provided, or not known)"))
+  Fetching MCL from 2026-03-26T18:55:00 to 2026-04-03...
+  MCL: ERROR — HTTPSConnectionPool(host='hist.databento.com', port=443): Max retries exceeded with url: /v0/timeseries.get_range (Caused by NameResolutionError("HTTPSConnection(host='hist.databento.com', port=443): Failed to resolve 'hist.databento.com' ([Errno 8] nodename nor servname provided, or not known)"))
+  Fetching ZN from 2026-03-26T18:55:00 to 2026-04-03...
+  ZN: ERROR — HTTPSConnectionPool(host='hist.databento.com', port=443): Max retries exceeded with url: /v0/timeseries.get_range (Caused by NameResolutionError("HTTPSConnection(host='hist.databento.com', port=443): Failed to resolve 'hist.databento.com' ([Errno 8] nodename nor servname provided, or not known)"))
+  Fetching ZB from 2026-03-26T18:55:00 to 2026-04-03...
+  ZB: ERROR — HTTPSConnectionPool(host='hist.databento.com', port=443): Max retries exceeded with url: /v0/timeseries.get_range (Caused by NameResolutionError("HTTPSConnection(host='hist.databento.com', port=443): Failed to resolve 'hist.databento.com' ([Errno 8] nodename nor servname provided, or not known)"))
+  Fetching ZF from 2026-03-26T12:35:00 to 2026-04-03...
+  ZF: ERROR — HTTPSConnectionPool(host='hist.databento.com', port=443): Max retries exceeded with url: /v0/timeseries.get_range (Caused by NameResolutionError("HTTPSConnection(host='hist.databento.com', port=443): Failed to resolve 'hist.databento.com' ([Errno 8] nodename nor servname provided, or not known)"))
+  Fetching 6E from 2026-03-26T18:50:00 to 2026-04-03...
+  6E: ERROR — HTTPSConnectionPool(host='hist.databento.com', port=443): Max retries exceeded with url: /v0/timeseries.get_range (Caused by NameResolutionError("HTTPSConnection(host='hist.databento.com', port=443): Failed to resolve 'hist.databento.com' ([Errno 8] nodename nor servname provided, or not known)"))
+  Fetching 6J from 2026-03-26T18:50:00 to 2026-04-03...
+  6J: ERROR — HTTPSConnectionPool(host='hist.databento.com', port=443): Max retries exceeded with url: /v0/timeseries.get_range (Caused by NameResolutionError("HTTPSConnection(host='hist.databento.com', port=443): Failed to resolve 'hist.databento.com' ([Errno 8] nodename nor servname provided, or not known)"))
+  Fetching 6B from 2026-03-26T18:50:00 to 2026-04-03...
+  6B: ERROR — HTTPSConnectionPool(host='hist.databento.com', port=443): Max retries exceeded with url: /v0/timeseries.get_range (Caused by NameResolutionError("HTTPSConnection(host='hist.databento.com', port=443): Failed to resolve 'hist.databento.com' ([Errno 8] nodename nor servname provided, or not known)"))
+
+============================================================
+  Update complete. State saved to: state/data_update_state.json
+============================================================
+
+--- Step 2: Running forward paper trading ---
+======================================================================
+  FORWARD PAPER TRADING — SMOKE TEST
+  2026-04-03 17:33:39
+======================================================================
+  Loaded account state (last run: 2026-03-27 17:06:03)
+
+  Checking for new data...
+    6E: last processed = 2026-03-26 19:50:00
+    6E: 0 new 5m bars
+    6J: last processed = 2026-03-26 19:50:00
+    6J: 0 new 5m bars
+    M2K: last processed = 2026-03-26 19:55:00
+    M2K: 0 new 5m bars
+    MCL: last processed = 2026-03-26 19:55:00
+    MCL: 0 new 5m bars
+    MES: last processed = 2026-03-26 19:55:00
+    MES: 0 new 5m bars
+    MGC: last processed = 2026-03-26 19:55:00
+    MGC: 0 new 5m bars
+    MNQ: last processed = 2026-03-26 19:55:00
+    MNQ: 0 new 5m bars
+    ZN: last processed = 2026-03-26 19:55:00
+    ZN: 0 new 5m bars
+    multi: SKIP (no data or asset config)
+
+  No new bars to process. Data is current.
+  Run scripts/update_daily_data.py to fetch new data.
+
+--- Step 3: Refreshing alerts + brief ---
+# FQL Alerts
+*2026-04-03 18:11*
+
+**2 ALERT | 3 WARN**
+
+## Probation
+
+!! [ALERT] [ESCALATED from WARN x5] DailyTrend-MGC-Long: under-evidenced — ratio 0.00 (0 vs 1 expected)
+   Action: Monitor — may need investigation if ratio stays low
+
+!! [ALERT] [ESCALATED from WARN x3] MomPB-6J-Long-US: under-evidenced — ratio 0.00 (0 vs 4 expected)
+   Action: Monitor — may need investigation if ratio stays low
+
+** [WARN] ZN-Afternoon-Reversion: under-evidenced — ratio 0.00 (0 vs 2 expected)
+   Action: Monitor — may need investigation if ratio stays low
+
+## Harvest
+
+** [WARN] github helper produced 0 leads on last run (2026-04-02)
+   Action: Check scripts/fetch_github_leads.* for errors
+
+** [WARN] youtube helper produced 0 leads on last run (2026-04-02)
+   Action: Check scripts/fetch_youtube_leads.* for errors
+
+
+  Saved to: /Users/chasefisher/openclaw-intake/inbox/_alerts.md
+# FQL Operator Brief
+*Friday, 2026-04-03 18:11*
+
+## System Health
+
+- Gateway: OK
+- Claw loop: **STALE (404m)**
+- Recovery actions today: 2
+- Consecutive failures: 0
+
+## Active Alerts
+
+!! [ALERT] [ESCALATED from WARN x5] DailyTrend-MGC-Long: under-evidenced — ratio 0.00 (0 vs 1 expected)
+  Action: Monitor — may need investigation if ratio stays low
+!! [ALERT] [ESCALATED from WARN x3] MomPB-6J-Long-US: under-evidenced — ratio 0.00 (0 vs 4 expected)
+  Action: Monitor — may need investigation if ratio stays low
+
+## Forward Evidence
+
+No new trades today or yesterday.
+
+Equity: $49,182 | DD from HWM: $818 | Cumulative PnL: $-818
+
+## Probation & Challengers
+
+**Under-evidenced (3):** fewer trades than expected
+  - MomPB-6J-Long-US: 0 trades (2w/16w)
+  - DailyTrend-MGC-Long: 0 trades (3w/16w)
+  - ZN-Afternoon-Reversion: 0 trades (2w/24w)
+**On track (2):** evidence accumulating as expected
+  - NoiseBoundary-MNQ-Long: 5 trades, $-691 (2w/16w)
+  - VolManaged-EquityIndex-Futures: 8 trades, $+0 (2w/12w)
+**Healthy/slow (3):** sparse cadence, patience required
+  - PreFOMC-Drift-Equity: 0 trades (2w/24w)
+  - TV-NFP-High-Low-Levels: 0 trades (2w/24w)
+  - Treasury-Rolldown-Carry-Spread: 0 trades (2w/48w)
+**Edge health flags (1):**
+  - TV-NFP-High-Low-Levels: half-life ARCHIVE_CANDIDATE
+
+## Today's Attention
+
+- **Friday review:** Check weekly scorecard, Claw cluster report,
+  portfolio gap dashboard refresh
+- **VolManaged-Equity:** Check that daily weight-adjusted positions are
+  generating. First days confirm signal replication in forward runner.
+- **ZN-Afternoon-Rev:** Expect ~1 trade this week. Zero is normal;
+  check signal log for afternoon ZN bar availability.
+- **Treasury-Rolldown:** Leave alone until ~March 31 (next monthly rebalance).
+
+## Decisions Needed
+
+- **Harvest backlog:** 74 notes pending — intake needed
+
+---
+*Detail reports: _probation_scoreboard.md, _challenger_stack_review.md,*
+*_rates_challenger_review.md, _portfolio_gap_dashboard.md, _recovery_status.md*
+
+  Saved to: /Users/chasefisher/openclaw-intake/inbox/_operator_brief.md
+
+=== Forward day completed successfully - Fri Apr  3 18:11:38 PDT 2026 ===

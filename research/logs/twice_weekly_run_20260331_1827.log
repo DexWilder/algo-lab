@@ -1,0 +1,17 @@
+=== FQL Twice-Weekly Research Run - Tue Mar 31 18:27:22 PDT 2026 ===
+PID: 46591 | Repo: /Users/chasefisher/projects/Algo Trading/algo-lab
+
+
+FQL Research Scheduler — TWICE_WEEKLY jobs
+  3 jobs queued
+==================================================
+  [PLACEHOLDER] biweekly_candidate_scan
+  Running biweekly_batch_first_pass...
+  No untested strategies found for batch first-pass
+  [    SUCCESS] biweekly_batch_first_pass
+  Running biweekly_baseline_backtest...
+  [    SUCCESS] biweekly_baseline_backtest
+
+Done: 2 success, 0 errors, 1 skipped
+
+=== Twice-weekly jobs completed successfully - Thu Apr  2 03:26:49 PDT 2026 ===

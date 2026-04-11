@@ -1,0 +1,83 @@
+[
+  {
+    "strategy": "vwap_006",
+    "classification": "REJECT",
+    "best_pf": 0.992,
+    "best_trades": 3317,
+    "best_asset": "MNQ",
+    "assets_tested": [
+      "MES",
+      "MNQ",
+      "MGC",
+      "M2K",
+      "MCL",
+      "ZN"
+    ],
+    "reasons": [
+      "Sufficient trades (3317) but PF 0.99 < 1.1"
+    ],
+    "timestamp": "20260409_1918"
+  },
+  {
+    "strategy": "vwap_dev_mr",
+    "classification": "REJECT",
+    "best_pf": 0.849,
+    "best_trades": 973,
+    "best_asset": "MES",
+    "assets_tested": [
+      "MES"
+    ],
+    "reasons": [
+      "Sufficient trades (973) but PF 0.85 < 1.1"
+    ],
+    "timestamp": "20260409_1919"
+  },
+  {
+    "strategy": "vwap_mr_gold",
+    "classification": "REJECT",
+    "best_pf": 0.829,
+    "best_trades": 1165,
+    "best_asset": "MGC",
+    "assets_tested": [
+      "MGC",
+      "MES"
+    ],
+    "reasons": [
+      "Sufficient trades (1165) but PF 0.83 < 1.1"
+    ],
+    "timestamp": "20260409_1919"
+  },
+  {
+    "strategy": "vwap_rev",
+    "classification": "MONITOR",
+    "best_pf": 8.039,
+    "best_trades": 5,
+    "best_asset": "MGC",
+    "assets_tested": [
+      "MES",
+      "MNQ",
+      "MGC",
+      "M2K",
+      "MCL",
+      "ZN"
+    ],
+    "reasons": [
+      "PF 8.04 > 1.0 but only 5 trades \u2014 insufficient sample"
+    ],
+    "timestamp": "20260409_2027"
+  },
+  {
+    "strategy": "xb_pb_squeeze_chand",
+    "classification": "REJECT",
+    "best_pf": 0.881,
+    "best_trades": 1218,
+    "best_asset": "MGC",
+    "assets_tested": [
+      "MGC"
+    ],
+    "reasons": [
+      "Sufficient trades (1218) but PF 0.88 < 1.1"
+    ],
+    "timestamp": "20260409_2028"
+  }
+]

@@ -18,5 +18,35 @@
       "HALF_LIFE_STRENGTHENING"
     ],
     "trigger": "Recovery: score=0.67, HL=HEALTHY"
+  },
+  {
+    "strategy_id": "PreFOMC-Drift-Equity",
+    "timestamp": "2026-03-17T17:47:50.834408",
+    "from_state": "PROBATION",
+    "to_state": "ACTIVE",
+    "reason_codes": [
+      "HALF_LIFE_STRENGTHENING"
+    ],
+    "trigger": "Recovery: score=0.68, HL=HEALTHY"
+  },
+  {
+    "strategy_id": "NoiseBoundary-MNQ-Long",
+    "timestamp": "2026-03-19T17:55:26.506643",
+    "from_state": "PROBATION",
+    "to_state": "ACTIVE",
+    "reason_codes": [
+      "HALF_LIFE_STRENGTHENING"
+    ],
+    "trigger": "Recovery: score=0.68, HL=HEALTHY"
+  },
+  {
+    "strategy_id": "XB-ORB-EMA-Ladder-MNQ",
+    "timestamp": "2026-04-07T17:53:50.885843",
+    "from_state": "PROBATION",
+    "to_state": "ACTIVE",
+    "reason_codes": [
+      "HALF_LIFE_STRENGTHENING"
+    ],
+    "trigger": "Recovery: score=0.68, HL=HEALTHY"
   }
 ]

@@ -1,0 +1,10 @@
+2026-03-20 21:37:28 === Source Helper Run ===
+2026-03-20 21:37:28 --- Fetching GitHub leads ---
+2026-03-20 21:37:34 GitHub: 10 leads fetched
+2026-03-20 21:37:34 --- Fetching Reddit leads ---
+2026-03-20 21:37:52 Reddit: 15 leads fetched
+2026-03-20 21:37:52 --- Fetching YouTube leads ---
+2026-03-20 21:38:02 YouTube: 10 leads fetched
+2026-03-20 21:38:02 --- Updating lead manifest ---
+Manifest updated: 3 active lead batches
+2026-03-20 21:38:02 === Source helpers complete: GH=10 RD=15 YT=10 ===

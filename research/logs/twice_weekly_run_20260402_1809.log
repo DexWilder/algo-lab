@@ -1,0 +1,18 @@
+=== FQL Twice-Weekly Research Run - Thu Apr  2 18:09:26 PDT 2026 ===
+PID: 47992 | Repo: /Users/chasefisher/projects/Algo Trading/algo-lab
+
+
+FQL Research Scheduler — TWICE_WEEKLY jobs
+  3 jobs queued
+==================================================
+  [PLACEHOLDER] biweekly_candidate_scan
+  Running biweekly_batch_first_pass...
+  No untested strategies found for batch first-pass
+  [    SUCCESS] biweekly_batch_first_pass
+  Running biweekly_baseline_backtest...
+  ERROR in biweekly_baseline_backtest: Command '['/usr/local/opt/python@3.14/bin/python3.14', '-m', 'research.batch_harvest_validation']' timed out after 1800 seconds
+  [      ERROR] biweekly_baseline_backtest
+
+Done: 1 success, 1 errors, 1 skipped
+
+=== Twice-weekly jobs completed successfully - Sat Apr  4 23:23:40 PDT 2026 ===

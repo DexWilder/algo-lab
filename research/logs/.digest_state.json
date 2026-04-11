@@ -1,0 +1,62 @@
+{
+  "health": {
+    "Gateway": "HEALTHY",
+    "Claw Loop": "HEALTHY",
+    "Watchdog": "HEALTHY",
+    "Forward Runner": "HEALTHY"
+  },
+  "alert_counts": {
+    "ALERT": 2,
+    "ACTION": 0,
+    "WARN": 0,
+    "INFO": 0
+  },
+  "probation": {
+    "DailyTrend-MGC-Long": {
+      "status": "UNDER_EVIDENCED",
+      "trades": 0,
+      "pct_time": 22
+    },
+    "MomPB-6J-Long-US": {
+      "status": "UNDER_EVIDENCED",
+      "trades": 0,
+      "pct_time": 21
+    },
+    "TV-NFP-High-Low-Levels": {
+      "status": "HEALTHY_SLOW",
+      "trades": 0,
+      "pct_time": 14
+    },
+    "NoiseBoundary-MNQ-Long": {
+      "status": "ON_TRACK",
+      "trades": 9,
+      "pct_time": 21
+    },
+    "Treasury-Rolldown-Carry-Spread": {
+      "status": "HEALTHY_SLOW",
+      "trades": 0,
+      "pct_time": 6
+    },
+    "ZN-Afternoon-Reversion": {
+      "status": "UNDER_EVIDENCED",
+      "trades": 0,
+      "pct_time": 12
+    },
+    "VolManaged-EquityIndex-Futures": {
+      "status": "ON_TRACK",
+      "trades": 20,
+      "pct_time": 25
+    }
+  },
+  "dormant": {
+    "coded_untested": 0,
+    "ideas_untested": 63,
+    "harvest_unconverted": 143
+  },
+  "decision_memos_issued": [
+    "energy-gap-persistent"
+  ],
+  "energy_gap_cycles": 5,
+  "date": "2026-04-10",
+  "timestamp": "2026-04-10 18:00"
+}

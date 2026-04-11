@@ -1,0 +1,14 @@
+2026-04-01 20:03:02 === Source Helper Run ===
+2026-04-01 20:03:02 --- Fetching GitHub leads ---
+2026-04-01 20:03:06 GitHub: 0 leads fetched
+2026-04-01 20:03:06 --- Fetching Reddit leads ---
+2026-04-02 03:22:08 Reddit: 17 leads fetched
+2026-04-02 03:22:08 --- Fetching YouTube leads ---
+2026-04-02 03:22:09 YouTube: 0 leads fetched
+2026-04-02 03:22:09 --- Fetching blog leads ---
+2026-04-02 03:22:18 Blog: 20 leads fetched
+2026-04-02 03:22:18 --- Fetching strategy digest leads ---
+2026-04-02 03:22:21 Digest: 14 leads fetched
+2026-04-02 03:22:21 --- Updating lead manifest ---
+Manifest updated: 16 active lead batches
+2026-04-02 03:22:21 === Source helpers complete: GH=0 RD=17 YT=0 BL=20 DG=14 ===

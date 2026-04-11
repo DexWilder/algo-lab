@@ -3,13 +3,13 @@
   "symbol": "MCL",
   "timeframe": "5m",
   "start_date": "2024-02-29 19:00:00",
-  "end_date": "2026-03-11 19:55:00",
-  "bar_count": 142079,
+  "end_date": "2026-04-09 19:55:00",
+  "bar_count": 147545,
   "trading_days": 634,
   "source": "databento",
   "source_dataset": "GLBX.MDP3",
   "source_schema": "ohlcv-1m",
   "has_volume": true,
   "volume_mean": 243.9,
-  "processed_date": "2026-03-13 09:11:58"
+  "processed_date": "2026-04-10 17:00:21"
 }

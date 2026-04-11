@@ -328,5 +328,1077 @@
     "status": "SUCCESS",
     "finished": "2026-03-17T17:47:51.644875",
     "duration_sec": 0.074374
+  },
+  {
+    "job": "biweekly_candidate_scan",
+    "cadence": "twice_weekly",
+    "started": "2026-03-18T06:55:59.750999",
+    "status": "PLACEHOLDER",
+    "message": "Job not yet automated: Scan for new strategy candidates from sources"
+  },
+  {
+    "job": "biweekly_batch_first_pass",
+    "cadence": "twice_weekly",
+    "started": "2026-03-18T06:55:59.751043",
+    "status": "SUCCESS",
+    "finished": "2026-03-18T06:56:08.760466",
+    "duration_sec": 9.009436
+  },
+  {
+    "job": "biweekly_baseline_backtest",
+    "cadence": "twice_weekly",
+    "started": "2026-03-18T06:56:08.760516",
+    "status": "SUCCESS",
+    "finished": "2026-03-18T07:11:50.969852",
+    "duration_sec": 942.209463
+  },
+  {
+    "job": "daily_health_check",
+    "cadence": "daily",
+    "started": "2026-03-18T17:35:57.201798",
+    "status": "SUCCESS",
+    "finished": "2026-03-18T17:36:00.506006",
+    "duration_sec": 3.304212
+  },
+  {
+    "job": "daily_half_life",
+    "cadence": "daily",
+    "started": "2026-03-18T17:36:00.506055",
+    "status": "SUCCESS",
+    "finished": "2026-03-18T17:40:13.294591",
+    "duration_sec": 252.788553
+  },
+  {
+    "job": "daily_contribution",
+    "cadence": "daily",
+    "started": "2026-03-18T17:40:13.294954",
+    "status": "SUCCESS",
+    "finished": "2026-03-18T17:43:00.896323",
+    "duration_sec": 167.601433
+  },
+  {
+    "job": "daily_activation_matrix",
+    "cadence": "daily",
+    "started": "2026-03-18T17:43:00.896670",
+    "status": "SUCCESS",
+    "finished": "2026-03-18T17:53:01.750368",
+    "duration_sec": 600.853703
+  },
+  {
+    "job": "daily_decision_report",
+    "cadence": "daily",
+    "started": "2026-03-18T17:53:01.750457",
+    "status": "SUCCESS",
+    "finished": "2026-03-18T17:53:02.447327",
+    "duration_sec": 0.696899
+  },
+  {
+    "job": "daily_drift_monitor",
+    "cadence": "daily",
+    "started": "2026-03-18T17:53:02.447409",
+    "status": "SUCCESS",
+    "finished": "2026-03-18T17:53:02.521521",
+    "duration_sec": 0.074115
+  },
+  {
+    "job": "daily_health_check",
+    "cadence": "daily",
+    "started": "2026-03-19T17:30:05.358458",
+    "status": "SUCCESS",
+    "finished": "2026-03-19T17:30:08.363358",
+    "duration_sec": 3.004916
+  },
+  {
+    "job": "daily_half_life",
+    "cadence": "daily",
+    "started": "2026-03-19T17:30:08.363562",
+    "status": "SUCCESS",
+    "finished": "2026-03-19T17:35:29.321502",
+    "duration_sec": 320.957975
+  },
+  {
+    "job": "daily_contribution",
+    "cadence": "daily",
+    "started": "2026-03-19T17:35:29.323526",
+    "status": "SUCCESS",
+    "finished": "2026-03-19T17:39:46.732687",
+    "duration_sec": 257.409299
+  },
+  {
+    "job": "daily_activation_matrix",
+    "cadence": "daily",
+    "started": "2026-03-19T17:39:46.733703",
+    "status": "SUCCESS",
+    "finished": "2026-03-19T17:55:26.530781",
+    "duration_sec": 939.797121
+  },
+  {
+    "job": "daily_decision_report",
+    "cadence": "daily",
+    "started": "2026-03-19T17:55:26.531113",
+    "status": "SUCCESS",
+    "finished": "2026-03-19T17:55:27.660101",
+    "duration_sec": 1.129046
+  },
+  {
+    "job": "daily_drift_monitor",
+    "cadence": "daily",
+    "started": "2026-03-19T17:55:27.660305",
+    "status": "SUCCESS",
+    "finished": "2026-03-19T17:55:27.759365",
+    "duration_sec": 0.099087
+  },
+  {
+    "job": "biweekly_candidate_scan",
+    "cadence": "twice_weekly",
+    "started": "2026-03-19T18:00:05.216148",
+    "status": "PLACEHOLDER",
+    "message": "Job not yet automated: Scan for new strategy candidates from sources"
+  },
+  {
+    "job": "biweekly_batch_first_pass",
+    "cadence": "twice_weekly",
+    "started": "2026-03-19T18:00:05.216189",
+    "status": "SUCCESS",
+    "finished": "2026-03-19T18:01:29.890439",
+    "duration_sec": 84.674268
+  },
+  {
+    "job": "biweekly_baseline_backtest",
+    "cadence": "twice_weekly",
+    "started": "2026-03-19T18:01:29.890509",
+    "status": "SUCCESS",
+    "finished": "2026-03-19T18:18:36.701460",
+    "duration_sec": 1026.811034
+  },
+  {
+    "job": "daily_health_check",
+    "cadence": "daily",
+    "started": "2026-03-20T12:07:21.778865",
+    "status": "SUCCESS",
+    "finished": "2026-03-20T12:07:24.513449",
+    "duration_sec": 2.734588
+  },
+  {
+    "job": "daily_half_life",
+    "cadence": "daily",
+    "started": "2026-03-20T12:07:24.513499",
+    "status": "SUCCESS",
+    "finished": "2026-03-20T12:12:48.807199",
+    "duration_sec": 324.293897
+  },
+  {
+    "job": "daily_contribution",
+    "cadence": "daily",
+    "started": "2026-03-20T12:12:48.807912",
+    "status": "SUCCESS",
+    "finished": "2026-03-20T12:17:01.587810",
+    "duration_sec": 252.779962
+  },
+  {
+    "job": "daily_activation_matrix",
+    "cadence": "daily",
+    "started": "2026-03-20T12:17:01.588288",
+    "status": "SUCCESS",
+    "finished": "2026-03-20T12:32:25.200245",
+    "duration_sec": 923.611965
+  },
+  {
+    "job": "daily_decision_report",
+    "cadence": "daily",
+    "started": "2026-03-20T12:32:25.200323",
+    "status": "SUCCESS",
+    "finished": "2026-03-20T12:32:26.230070",
+    "duration_sec": 1.029812
+  },
+  {
+    "job": "daily_drift_monitor",
+    "cadence": "daily",
+    "started": "2026-03-20T12:32:26.230533",
+    "status": "SUCCESS",
+    "finished": "2026-03-20T12:32:26.311211",
+    "duration_sec": 0.080687
+  },
+  {
+    "job": "daily_health_check",
+    "cadence": "daily",
+    "started": "2026-03-20T17:30:00.741700",
+    "status": "SUCCESS",
+    "finished": "2026-03-20T17:30:03.009640",
+    "duration_sec": 2.267944
+  },
+  {
+    "job": "daily_half_life",
+    "cadence": "daily",
+    "started": "2026-03-20T17:30:03.009688",
+    "status": "SUCCESS",
+    "finished": "2026-03-20T17:33:30.151697",
+    "duration_sec": 207.142017
+  },
+  {
+    "job": "daily_contribution",
+    "cadence": "daily",
+    "started": "2026-03-20T17:33:30.152585",
+    "status": "SUCCESS",
+    "finished": "2026-03-20T17:36:12.247172",
+    "duration_sec": 162.094622
+  },
+  {
+    "job": "daily_activation_matrix",
+    "cadence": "daily",
+    "started": "2026-03-20T17:36:12.248000",
+    "status": "SUCCESS",
+    "finished": "2026-03-20T17:46:10.439371",
+    "duration_sec": 598.191374
+  },
+  {
+    "job": "daily_decision_report",
+    "cadence": "daily",
+    "started": "2026-03-20T17:46:10.439453",
+    "status": "SUCCESS",
+    "finished": "2026-03-20T17:46:11.114790",
+    "duration_sec": 0.675368
+  },
+  {
+    "job": "daily_drift_monitor",
+    "cadence": "daily",
+    "started": "2026-03-20T17:46:11.114873",
+    "status": "SUCCESS",
+    "finished": "2026-03-20T17:46:11.192802",
+    "duration_sec": 0.077933
+  },
+  {
+    "job": "weekly_walk_forward",
+    "cadence": "weekly",
+    "started": "2026-03-20T18:30:05.757680",
+    "status": "ERROR",
+    "message": "Exit code 1: ",
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/chasefisher/projects/Algo Trading/algo-lab/research/fql_research_scheduler.py\", line 373, in run_job\n    raise RuntimeError(f\"Exit code {proc.returncode}: {proc.stderr[-500:]}\")\nRuntimeError: Exit code 1: \n",
+    "finished": "2026-03-20T18:30:06.618466",
+    "duration_sec": 0.860807
+  },
+  {
+    "job": "weekly_kill_criteria",
+    "cadence": "weekly",
+    "started": "2026-03-20T18:30:06.618512",
+    "status": "SUCCESS",
+    "finished": "2026-03-20T18:41:15.329211",
+    "duration_sec": 668.710703
+  },
+  {
+    "job": "weekly_registry_update",
+    "cadence": "weekly",
+    "started": "2026-03-20T18:41:15.330634",
+    "status": "MANUAL",
+    "message": "Job not yet automated: Update registry with latest scores, statuses, flags"
+  },
+  {
+    "job": "weekly_auto_report",
+    "cadence": "weekly",
+    "started": "2026-03-20T18:41:15.330648",
+    "status": "SUCCESS",
+    "finished": "2026-03-20T18:41:15.339870",
+    "duration_sec": 0.009224
+  },
+  {
+    "job": "weekly_integrity_monitor",
+    "cadence": "weekly",
+    "started": "2026-03-20T18:41:15.339887",
+    "status": "SUCCESS",
+    "finished": "2026-03-20T18:41:16.034954",
+    "duration_sec": 0.695096
+  },
+  {
+    "job": "daily_health_check",
+    "cadence": "daily",
+    "started": "2026-03-23T17:30:05.687427",
+    "status": "SUCCESS",
+    "finished": "2026-03-23T17:30:08.080875",
+    "duration_sec": 2.393453
+  },
+  {
+    "job": "daily_half_life",
+    "cadence": "daily",
+    "started": "2026-03-23T17:30:08.080925",
+    "status": "SUCCESS",
+    "finished": "2026-03-23T17:33:36.086757",
+    "duration_sec": 208.005845
+  },
+  {
+    "job": "daily_contribution",
+    "cadence": "daily",
+    "started": "2026-03-23T17:33:36.087070",
+    "status": "SUCCESS",
+    "finished": "2026-03-23T17:36:21.151213",
+    "duration_sec": 165.06421
+  },
+  {
+    "job": "daily_activation_matrix",
+    "cadence": "daily",
+    "started": "2026-03-23T17:36:21.151576",
+    "status": "SUCCESS",
+    "finished": "2026-03-23T17:46:19.916872",
+    "duration_sec": 598.7653
+  },
+  {
+    "job": "daily_decision_report",
+    "cadence": "daily",
+    "started": "2026-03-23T17:46:19.916904",
+    "status": "SUCCESS",
+    "finished": "2026-03-23T17:46:20.608076",
+    "duration_sec": 0.691203
+  },
+  {
+    "job": "daily_drift_monitor",
+    "cadence": "daily",
+    "started": "2026-03-23T17:46:20.608161",
+    "status": "SUCCESS",
+    "finished": "2026-03-23T17:46:20.687050",
+    "duration_sec": 0.078893
+  },
+  {
+    "job": "daily_health_check",
+    "cadence": "daily",
+    "started": "2026-03-24T17:30:02.706436",
+    "status": "SUCCESS",
+    "finished": "2026-03-24T17:30:05.203891",
+    "duration_sec": 2.497459
+  },
+  {
+    "job": "daily_half_life",
+    "cadence": "daily",
+    "started": "2026-03-24T17:30:05.203939",
+    "status": "SUCCESS",
+    "finished": "2026-03-24T17:33:33.744672",
+    "duration_sec": 208.540746
+  },
+  {
+    "job": "daily_contribution",
+    "cadence": "daily",
+    "started": "2026-03-24T17:33:33.745529",
+    "status": "SUCCESS",
+    "finished": "2026-03-24T17:36:17.715224",
+    "duration_sec": 163.969754
+  },
+  {
+    "job": "daily_activation_matrix",
+    "cadence": "daily",
+    "started": "2026-03-24T17:36:17.715593",
+    "status": "SUCCESS",
+    "finished": "2026-03-24T17:46:22.230177",
+    "duration_sec": 604.514587
+  },
+  {
+    "job": "daily_decision_report",
+    "cadence": "daily",
+    "started": "2026-03-24T17:46:22.230284",
+    "status": "SUCCESS",
+    "finished": "2026-03-24T17:46:22.930586",
+    "duration_sec": 0.700332
+  },
+  {
+    "job": "daily_drift_monitor",
+    "cadence": "daily",
+    "started": "2026-03-24T17:46:22.930671",
+    "status": "SUCCESS",
+    "finished": "2026-03-24T17:46:23.003576",
+    "duration_sec": 0.07291
+  },
+  {
+    "job": "biweekly_candidate_scan",
+    "cadence": "twice_weekly",
+    "started": "2026-03-24T18:00:05.508292",
+    "status": "PLACEHOLDER",
+    "message": "Job not yet automated: Scan for new strategy candidates from sources"
+  },
+  {
+    "job": "biweekly_batch_first_pass",
+    "cadence": "twice_weekly",
+    "started": "2026-03-24T18:00:05.508321",
+    "status": "SUCCESS",
+    "finished": "2026-03-24T18:00:06.266279",
+    "duration_sec": 0.757968
+  },
+  {
+    "job": "biweekly_baseline_backtest",
+    "cadence": "twice_weekly",
+    "started": "2026-03-24T18:00:06.266307",
+    "status": "SUCCESS",
+    "finished": "2026-03-24T18:10:31.565709",
+    "duration_sec": 625.299447
+  },
+  {
+    "job": "daily_health_check",
+    "cadence": "daily",
+    "started": "2026-03-25T17:30:03.126566",
+    "status": "SUCCESS",
+    "finished": "2026-03-25T17:30:05.710550",
+    "duration_sec": 2.583988
+  },
+  {
+    "job": "daily_half_life",
+    "cadence": "daily",
+    "started": "2026-03-25T17:30:05.710652",
+    "status": "SUCCESS",
+    "finished": "2026-03-25T17:33:36.050730",
+    "duration_sec": 210.340094
+  },
+  {
+    "job": "daily_contribution",
+    "cadence": "daily",
+    "started": "2026-03-25T17:33:36.051712",
+    "status": "SUCCESS",
+    "finished": "2026-03-25T17:36:22.558826",
+    "duration_sec": 166.507188
+  },
+  {
+    "job": "daily_activation_matrix",
+    "cadence": "daily",
+    "started": "2026-03-25T17:36:22.559769",
+    "status": "SUCCESS",
+    "finished": "2026-03-25T17:46:28.850225",
+    "duration_sec": 606.290509
+  },
+  {
+    "job": "daily_decision_report",
+    "cadence": "daily",
+    "started": "2026-03-25T17:46:28.850663",
+    "status": "SUCCESS",
+    "finished": "2026-03-25T17:46:29.654274",
+    "duration_sec": 0.803643
+  },
+  {
+    "job": "daily_drift_monitor",
+    "cadence": "daily",
+    "started": "2026-03-25T17:46:29.654376",
+    "status": "SUCCESS",
+    "finished": "2026-03-25T17:46:29.727329",
+    "duration_sec": 0.072957
+  },
+  {
+    "job": "daily_health_check",
+    "cadence": "daily",
+    "started": "2026-03-26T17:30:00.744325",
+    "status": "SUCCESS",
+    "finished": "2026-03-26T17:30:03.178230",
+    "duration_sec": 2.433908
+  },
+  {
+    "job": "daily_half_life",
+    "cadence": "daily",
+    "started": "2026-03-26T17:30:03.178281",
+    "status": "SUCCESS",
+    "finished": "2026-03-26T17:33:34.917199",
+    "duration_sec": 211.738936
+  },
+  {
+    "job": "daily_contribution",
+    "cadence": "daily",
+    "started": "2026-03-26T17:33:34.918145",
+    "status": "SUCCESS",
+    "finished": "2026-03-26T17:36:21.359495",
+    "duration_sec": 166.441414
+  },
+  {
+    "job": "daily_activation_matrix",
+    "cadence": "daily",
+    "started": "2026-03-26T17:36:21.360119",
+    "status": "SUCCESS",
+    "finished": "2026-03-26T17:46:44.221962",
+    "duration_sec": 622.861847
+  },
+  {
+    "job": "daily_decision_report",
+    "cadence": "daily",
+    "started": "2026-03-26T17:46:44.222000",
+    "status": "SUCCESS",
+    "finished": "2026-03-26T17:46:45.000522",
+    "duration_sec": 0.77856
+  },
+  {
+    "job": "daily_drift_monitor",
+    "cadence": "daily",
+    "started": "2026-03-26T17:46:45.000623",
+    "status": "SUCCESS",
+    "finished": "2026-03-26T17:46:45.081597",
+    "duration_sec": 0.08098
+  },
+  {
+    "job": "biweekly_candidate_scan",
+    "cadence": "twice_weekly",
+    "started": "2026-03-26T18:00:00.683321",
+    "status": "PLACEHOLDER",
+    "message": "Job not yet automated: Scan for new strategy candidates from sources"
+  },
+  {
+    "job": "biweekly_batch_first_pass",
+    "cadence": "twice_weekly",
+    "started": "2026-03-26T18:00:00.683349",
+    "status": "SUCCESS",
+    "finished": "2026-03-26T18:00:01.443623",
+    "duration_sec": 0.760283
+  },
+  {
+    "job": "biweekly_baseline_backtest",
+    "cadence": "twice_weekly",
+    "started": "2026-03-26T18:00:01.443650",
+    "status": "SUCCESS",
+    "finished": "2026-03-26T18:10:25.070609",
+    "duration_sec": 623.627017
+  },
+  {
+    "job": "daily_health_check",
+    "cadence": "daily",
+    "started": "2026-03-27T17:35:32.956843",
+    "status": "SUCCESS",
+    "finished": "2026-03-27T17:35:36.801833",
+    "duration_sec": 3.845005
+  },
+  {
+    "job": "daily_half_life",
+    "cadence": "daily",
+    "started": "2026-03-27T17:35:36.802061",
+    "status": "SUCCESS",
+    "finished": "2026-03-27T17:40:09.139933",
+    "duration_sec": 272.3379
+  },
+  {
+    "job": "daily_contribution",
+    "cadence": "daily",
+    "started": "2026-03-27T17:40:09.140932",
+    "status": "SUCCESS",
+    "finished": "2026-03-27T17:42:59.898602",
+    "duration_sec": 170.757736
+  },
+  {
+    "job": "daily_activation_matrix",
+    "cadence": "daily",
+    "started": "2026-03-27T17:42:59.899423",
+    "status": "SUCCESS",
+    "finished": "2026-03-27T17:53:30.282233",
+    "duration_sec": 630.382814
+  },
+  {
+    "job": "daily_decision_report",
+    "cadence": "daily",
+    "started": "2026-03-27T17:53:30.282267",
+    "status": "SUCCESS",
+    "finished": "2026-03-27T17:53:31.047188",
+    "duration_sec": 0.764956
+  },
+  {
+    "job": "daily_drift_monitor",
+    "cadence": "daily",
+    "started": "2026-03-27T17:53:31.047283",
+    "status": "SUCCESS",
+    "finished": "2026-03-27T17:53:31.131160",
+    "duration_sec": 0.083883
+  },
+  {
+    "job": "weekly_walk_forward",
+    "cadence": "weekly",
+    "started": "2026-03-27T18:30:03.191008",
+    "status": "ERROR",
+    "message": "Exit code 1: ",
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/chasefisher/projects/Algo Trading/algo-lab/research/fql_research_scheduler.py\", line 373, in run_job\n    raise RuntimeError(f\"Exit code {proc.returncode}: {proc.stderr[-500:]}\")\nRuntimeError: Exit code 1: \n",
+    "finished": "2026-03-27T18:30:04.041057",
+    "duration_sec": 0.850067
+  },
+  {
+    "job": "weekly_kill_criteria",
+    "cadence": "weekly",
+    "started": "2026-03-27T18:30:04.041106",
+    "status": "SUCCESS",
+    "finished": "2026-03-27T18:41:20.635059",
+    "duration_sec": 676.593957
+  },
+  {
+    "job": "weekly_registry_update",
+    "cadence": "weekly",
+    "started": "2026-03-27T18:41:20.636620",
+    "status": "MANUAL",
+    "message": "Job not yet automated: Update registry with latest scores, statuses, flags"
+  },
+  {
+    "job": "weekly_auto_report",
+    "cadence": "weekly",
+    "started": "2026-03-27T18:41:20.636636",
+    "status": "SUCCESS",
+    "finished": "2026-03-27T18:41:20.645058",
+    "duration_sec": 0.008424
+  },
+  {
+    "job": "weekly_integrity_monitor",
+    "cadence": "weekly",
+    "started": "2026-03-27T18:41:20.645075",
+    "status": "SUCCESS",
+    "finished": "2026-03-27T18:41:21.328255",
+    "duration_sec": 0.683208
+  },
+  {
+    "job": "biweekly_candidate_scan",
+    "cadence": "twice_weekly",
+    "started": "2026-03-31T18:27:22.334937",
+    "status": "PLACEHOLDER",
+    "message": "Job not yet automated: Scan for new strategy candidates from sources"
+  },
+  {
+    "job": "biweekly_batch_first_pass",
+    "cadence": "twice_weekly",
+    "started": "2026-03-31T18:27:22.334990",
+    "status": "SUCCESS",
+    "finished": "2026-03-31T18:27:23.370281",
+    "duration_sec": 1.035305
+  },
+  {
+    "job": "biweekly_baseline_backtest",
+    "cadence": "twice_weekly",
+    "started": "2026-03-31T18:27:23.370338",
+    "status": "SUCCESS",
+    "finished": "2026-04-02T03:26:48.996136",
+    "duration_sec": 118765.625853
+  },
+  {
+    "job": "daily_health_check",
+    "cadence": "daily",
+    "started": "2026-03-30T17:45:39.048610",
+    "status": "SUCCESS",
+    "finished": "2026-03-30T17:45:43.707396",
+    "duration_sec": 4.658827
+  },
+  {
+    "job": "daily_half_life",
+    "cadence": "daily",
+    "started": "2026-03-30T17:45:43.707695",
+    "status": "SUCCESS",
+    "finished": "2026-03-31T14:23:24.584237",
+    "duration_sec": 74260.876579
+  },
+  {
+    "job": "daily_contribution",
+    "cadence": "daily",
+    "started": "2026-03-31T14:23:24.585430",
+    "status": "SUCCESS",
+    "finished": "2026-04-01T06:17:27.194596",
+    "duration_sec": 57242.609241
+  },
+  {
+    "job": "daily_activation_matrix",
+    "cadence": "daily",
+    "started": "2026-04-01T06:17:27.195011",
+    "status": "SUCCESS",
+    "finished": "2026-04-02T15:38:51.540796",
+    "duration_sec": 120084.3458
+  },
+  {
+    "job": "daily_decision_report",
+    "cadence": "daily",
+    "started": "2026-04-02T15:38:51.540988",
+    "status": "ERROR",
+    "message": "Command '['/usr/local/opt/python@3.14/bin/python3.14', '-m', 'research.daily_portfolio_decision_report', '--from-cache', '--save']' timed out after 1800 seconds",
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/chasefisher/projects/Algo Trading/algo-lab/research/fql_research_scheduler.py\", line 369, in run_job\n    proc = subprocess.run(\n        cmd, cwd=str(ROOT), capture_output=True, text=True, timeout=timeout,\n    )\n  File \"/usr/local/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py\", line 556, in run\n    stdout, stderr = process.communicate(input, timeout=timeout)\n                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py\", line 1220, in communicate\n    stdout, stderr = self._communicate(input, endtime, timeout)\n                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py\", line 2153, in _communicate\n    self._check_timeout(endtime, orig_timeout, stdout, stderr)\n    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py\", line 1267, in _check_timeout\n    raise TimeoutExpired(\n    ...<2 lines>...\n            stderr=b''.join(stderr_seq) if stderr_seq else None)\nsubprocess.TimeoutExpired: Command '['/usr/local/opt/python@3.14/bin/python3.14', '-m', 'research.daily_portfolio_decision_report', '--from-cache', '--save']' timed out after 1800 seconds\n",
+    "finished": "2026-04-04T23:08:39.854460",
+    "duration_sec": 199788.313575
+  },
+  {
+    "job": "daily_drift_monitor",
+    "cadence": "daily",
+    "started": "2026-04-04T23:08:39.854653",
+    "status": "SUCCESS",
+    "finished": "2026-04-04T23:08:40.019683",
+    "duration_sec": 0.165047
+  },
+  {
+    "job": "biweekly_candidate_scan",
+    "cadence": "twice_weekly",
+    "started": "2026-04-02T18:09:26.813524",
+    "status": "PLACEHOLDER",
+    "message": "Job not yet automated: Scan for new strategy candidates from sources"
+  },
+  {
+    "job": "biweekly_batch_first_pass",
+    "cadence": "twice_weekly",
+    "started": "2026-04-02T18:09:26.813613",
+    "status": "SUCCESS",
+    "finished": "2026-04-02T18:09:27.501181",
+    "duration_sec": 0.687617
+  },
+  {
+    "job": "biweekly_baseline_backtest",
+    "cadence": "twice_weekly",
+    "started": "2026-04-02T18:09:27.501320",
+    "status": "ERROR",
+    "message": "Command '['/usr/local/opt/python@3.14/bin/python3.14', '-m', 'research.batch_harvest_validation']' timed out after 1800 seconds",
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/chasefisher/projects/Algo Trading/algo-lab/research/fql_research_scheduler.py\", line 369, in run_job\n    proc = subprocess.run(\n        cmd, cwd=str(ROOT), capture_output=True, text=True, timeout=timeout,\n    )\n  File \"/usr/local/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py\", line 556, in run\n    stdout, stderr = process.communicate(input, timeout=timeout)\n                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py\", line 1220, in communicate\n    stdout, stderr = self._communicate(input, endtime, timeout)\n                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py\", line 2153, in _communicate\n    self._check_timeout(endtime, orig_timeout, stdout, stderr)\n    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py\", line 1267, in _check_timeout\n    raise TimeoutExpired(\n    ...<2 lines>...\n            stderr=b''.join(stderr_seq) if stderr_seq else None)\nsubprocess.TimeoutExpired: Command '['/usr/local/opt/python@3.14/bin/python3.14', '-m', 'research.batch_harvest_validation']' timed out after 1800 seconds\n",
+    "finished": "2026-04-04T23:23:40.368698",
+    "duration_sec": 191652.867457
+  },
+  {
+    "job": "weekly_walk_forward",
+    "cadence": "weekly",
+    "started": "2026-04-03T18:34:37.236403",
+    "status": "ERROR",
+    "message": "Exit code 1: ",
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/chasefisher/projects/Algo Trading/algo-lab/research/fql_research_scheduler.py\", line 373, in run_job\n    raise RuntimeError(f\"Exit code {proc.returncode}: {proc.stderr[-500:]}\")\nRuntimeError: Exit code 1: \n",
+    "finished": "2026-04-03T18:34:38.434332",
+    "duration_sec": 1.197961
+  },
+  {
+    "job": "weekly_kill_criteria",
+    "cadence": "weekly",
+    "started": "2026-04-03T18:34:38.434413",
+    "status": "SUCCESS",
+    "finished": "2026-04-05T13:16:08.092131",
+    "duration_sec": 153689.657728
+  },
+  {
+    "job": "weekly_registry_update",
+    "cadence": "weekly",
+    "started": "2026-04-05T13:16:08.093629",
+    "status": "MANUAL",
+    "message": "Job not yet automated: Update registry with latest scores, statuses, flags"
+  },
+  {
+    "job": "weekly_auto_report",
+    "cadence": "weekly",
+    "started": "2026-04-05T13:16:08.093675",
+    "status": "SUCCESS",
+    "finished": "2026-04-05T13:16:08.109070",
+    "duration_sec": 0.015401
+  },
+  {
+    "job": "weekly_integrity_monitor",
+    "cadence": "weekly",
+    "started": "2026-04-05T13:16:08.109114",
+    "status": "SUCCESS",
+    "finished": "2026-04-05T13:16:09.610560",
+    "duration_sec": 1.50152
+  },
+  {
+    "job": "daily_health_check",
+    "cadence": "daily",
+    "started": "2026-04-06T17:30:00.915664",
+    "status": "SUCCESS",
+    "finished": "2026-04-06T17:30:03.262309",
+    "duration_sec": 2.346649
+  },
+  {
+    "job": "daily_half_life",
+    "cadence": "daily",
+    "started": "2026-04-06T17:30:03.262360",
+    "status": "SUCCESS",
+    "finished": "2026-04-06T17:36:00.485592",
+    "duration_sec": 357.223268
+  },
+  {
+    "job": "daily_contribution",
+    "cadence": "daily",
+    "started": "2026-04-06T17:36:00.513516",
+    "status": "SUCCESS",
+    "finished": "2026-04-06T17:40:20.275883",
+    "duration_sec": 259.762446
+  },
+  {
+    "job": "daily_activation_matrix",
+    "cadence": "daily",
+    "started": "2026-04-06T17:40:20.276487",
+    "status": "SUCCESS",
+    "finished": "2026-04-06T17:55:27.282955",
+    "duration_sec": 907.006474
+  },
+  {
+    "job": "daily_decision_report",
+    "cadence": "daily",
+    "started": "2026-04-06T17:55:27.283001",
+    "status": "SUCCESS",
+    "finished": "2026-04-06T17:55:28.167739",
+    "duration_sec": 0.88477
+  },
+  {
+    "job": "daily_drift_monitor",
+    "cadence": "daily",
+    "started": "2026-04-06T17:55:28.167830",
+    "status": "SUCCESS",
+    "finished": "2026-04-06T17:55:28.247316",
+    "duration_sec": 0.07949
+  },
+  {
+    "job": "daily_health_check",
+    "cadence": "daily",
+    "started": "2026-04-07T17:30:05.806974",
+    "status": "SUCCESS",
+    "finished": "2026-04-07T17:30:08.318838",
+    "duration_sec": 2.511868
+  },
+  {
+    "job": "daily_half_life",
+    "cadence": "daily",
+    "started": "2026-04-07T17:30:08.318939",
+    "status": "SUCCESS",
+    "finished": "2026-04-07T17:34:48.788062",
+    "duration_sec": 280.469143
+  },
+  {
+    "job": "daily_contribution",
+    "cadence": "daily",
+    "started": "2026-04-07T17:34:48.789101",
+    "status": "SUCCESS",
+    "finished": "2026-04-07T17:38:49.962913",
+    "duration_sec": 241.173875
+  },
+  {
+    "job": "daily_activation_matrix",
+    "cadence": "daily",
+    "started": "2026-04-07T17:38:49.963728",
+    "status": "SUCCESS",
+    "finished": "2026-04-07T17:53:50.906069",
+    "duration_sec": 900.942349
+  },
+  {
+    "job": "daily_decision_report",
+    "cadence": "daily",
+    "started": "2026-04-07T17:53:50.906140",
+    "status": "SUCCESS",
+    "finished": "2026-04-07T17:53:51.935395",
+    "duration_sec": 1.029295
+  },
+  {
+    "job": "daily_drift_monitor",
+    "cadence": "daily",
+    "started": "2026-04-07T17:53:51.935506",
+    "status": "SUCCESS",
+    "finished": "2026-04-07T17:53:52.051048",
+    "duration_sec": 0.115549
+  },
+  {
+    "job": "biweekly_candidate_scan",
+    "cadence": "twice_weekly",
+    "started": "2026-04-07T18:00:05.784911",
+    "status": "PLACEHOLDER",
+    "message": "Job not yet automated: Scan for new strategy candidates from sources"
+  },
+  {
+    "job": "biweekly_batch_first_pass",
+    "cadence": "twice_weekly",
+    "started": "2026-04-07T18:00:05.784937",
+    "status": "SUCCESS",
+    "finished": "2026-04-07T18:03:20.645090",
+    "duration_sec": 194.860159
+  },
+  {
+    "job": "biweekly_baseline_backtest",
+    "cadence": "twice_weekly",
+    "started": "2026-04-07T18:03:20.645134",
+    "status": "SUCCESS",
+    "finished": "2026-04-07T18:19:50.548125",
+    "duration_sec": 989.903077
+  },
+  {
+    "job": "daily_health_check",
+    "cadence": "daily",
+    "started": "2026-04-08T17:30:05.204753",
+    "status": "SUCCESS",
+    "finished": "2026-04-08T17:30:08.429729",
+    "duration_sec": 3.22498
+  },
+  {
+    "job": "daily_half_life",
+    "cadence": "daily",
+    "started": "2026-04-08T17:30:08.429783",
+    "status": "SUCCESS",
+    "finished": "2026-04-08T17:33:40.229042",
+    "duration_sec": 211.799269
+  },
+  {
+    "job": "daily_contribution",
+    "cadence": "daily",
+    "started": "2026-04-08T17:33:40.229145",
+    "status": "SUCCESS",
+    "finished": "2026-04-08T17:36:25.942765",
+    "duration_sec": 165.713686
+  },
+  {
+    "job": "daily_activation_matrix",
+    "cadence": "daily",
+    "started": "2026-04-08T17:36:25.943564",
+    "status": "SUCCESS",
+    "finished": "2026-04-08T17:47:10.923568",
+    "duration_sec": 644.980008
+  },
+  {
+    "job": "daily_decision_report",
+    "cadence": "daily",
+    "started": "2026-04-08T17:47:10.923613",
+    "status": "SUCCESS",
+    "finished": "2026-04-08T17:47:11.619404",
+    "duration_sec": 0.695819
+  },
+  {
+    "job": "daily_drift_monitor",
+    "cadence": "daily",
+    "started": "2026-04-08T17:47:11.619496",
+    "status": "SUCCESS",
+    "finished": "2026-04-08T17:47:11.697745",
+    "duration_sec": 0.078253
+  },
+  {
+    "job": "daily_health_check",
+    "cadence": "daily",
+    "started": "2026-04-09T17:30:04.656484",
+    "status": "SUCCESS",
+    "finished": "2026-04-09T17:30:07.212217",
+    "duration_sec": 2.555745
+  },
+  {
+    "job": "daily_half_life",
+    "cadence": "daily",
+    "started": "2026-04-09T17:30:07.212380",
+    "status": "SUCCESS",
+    "finished": "2026-04-09T17:33:49.438745",
+    "duration_sec": 222.2264
+  },
+  {
+    "job": "daily_contribution",
+    "cadence": "daily",
+    "started": "2026-04-09T17:33:49.439652",
+    "status": "SUCCESS",
+    "finished": "2026-04-09T17:37:15.532100",
+    "duration_sec": 206.092508
+  },
+  {
+    "job": "daily_activation_matrix",
+    "cadence": "daily",
+    "started": "2026-04-09T17:37:15.532924",
+    "status": "SUCCESS",
+    "finished": "2026-04-09T17:52:17.138714",
+    "duration_sec": 901.605822
+  },
+  {
+    "job": "daily_decision_report",
+    "cadence": "daily",
+    "started": "2026-04-09T17:52:17.138829",
+    "status": "SUCCESS",
+    "finished": "2026-04-09T17:52:18.369521",
+    "duration_sec": 1.230747
+  },
+  {
+    "job": "daily_drift_monitor",
+    "cadence": "daily",
+    "started": "2026-04-09T17:52:18.369669",
+    "status": "SUCCESS",
+    "finished": "2026-04-09T17:52:18.460150",
+    "duration_sec": 0.090493
+  },
+  {
+    "job": "biweekly_candidate_scan",
+    "cadence": "twice_weekly",
+    "started": "2026-04-09T18:00:05.006142",
+    "status": "PLACEHOLDER",
+    "message": "Job not yet automated: Scan for new strategy candidates from sources"
+  },
+  {
+    "job": "biweekly_batch_first_pass",
+    "cadence": "twice_weekly",
+    "started": "2026-04-09T18:00:05.006173",
+    "status": "SUCCESS",
+    "finished": "2026-04-09T18:00:05.779021",
+    "duration_sec": 0.772859
+  },
+  {
+    "job": "biweekly_baseline_backtest",
+    "cadence": "twice_weekly",
+    "started": "2026-04-09T18:00:05.779054",
+    "status": "SUCCESS",
+    "finished": "2026-04-09T18:14:34.600920",
+    "duration_sec": 868.821948
+  },
+  {
+    "job": "daily_health_check",
+    "cadence": "daily",
+    "started": "2026-04-10T17:30:04.943208",
+    "status": "SUCCESS",
+    "finished": "2026-04-10T17:30:07.256477",
+    "duration_sec": 2.313272
+  },
+  {
+    "job": "daily_half_life",
+    "cadence": "daily",
+    "started": "2026-04-10T17:30:07.256571",
+    "status": "SUCCESS",
+    "finished": "2026-04-10T17:33:35.947462",
+    "duration_sec": 208.690904
+  },
+  {
+    "job": "daily_contribution",
+    "cadence": "daily",
+    "started": "2026-04-10T17:33:35.947536",
+    "status": "SUCCESS",
+    "finished": "2026-04-10T17:36:19.884149",
+    "duration_sec": 163.936683
+  },
+  {
+    "job": "daily_activation_matrix",
+    "cadence": "daily",
+    "started": "2026-04-10T17:36:19.884347",
+    "status": "SUCCESS",
+    "finished": "2026-04-10T17:46:44.229581",
+    "duration_sec": 624.345237
+  },
+  {
+    "job": "daily_decision_report",
+    "cadence": "daily",
+    "started": "2026-04-10T17:46:44.229615",
+    "status": "SUCCESS",
+    "finished": "2026-04-10T17:46:44.929914",
+    "duration_sec": 0.70033
+  },
+  {
+    "job": "daily_drift_monitor",
+    "cadence": "daily",
+    "started": "2026-04-10T17:46:44.930005",
+    "status": "SUCCESS",
+    "finished": "2026-04-10T17:46:45.008975",
+    "duration_sec": 0.078974
+  },
+  {
+    "job": "weekly_walk_forward",
+    "cadence": "weekly",
+    "started": "2026-04-10T18:30:04.201867",
+    "status": "ERROR",
+    "message": "Exit code 1: ",
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/chasefisher/projects/Algo Trading/algo-lab/research/fql_research_scheduler.py\", line 373, in run_job\n    raise RuntimeError(f\"Exit code {proc.returncode}: {proc.stderr[-500:]}\")\nRuntimeError: Exit code 1: \n",
+    "finished": "2026-04-10T18:30:05.049140",
+    "duration_sec": 0.847298
+  },
+  {
+    "job": "weekly_kill_criteria",
+    "cadence": "weekly",
+    "started": "2026-04-10T18:30:05.049191",
+    "status": "SUCCESS",
+    "finished": "2026-04-10T18:41:21.360868",
+    "duration_sec": 676.311682
+  },
+  {
+    "job": "weekly_registry_update",
+    "cadence": "weekly",
+    "started": "2026-04-10T18:41:21.362351",
+    "status": "MANUAL",
+    "message": "Job not yet automated: Update registry with latest scores, statuses, flags"
+  },
+  {
+    "job": "weekly_auto_report",
+    "cadence": "weekly",
+    "started": "2026-04-10T18:41:21.362368",
+    "status": "SUCCESS",
+    "finished": "2026-04-10T18:41:21.369274",
+    "duration_sec": 0.006909
+  },
+  {
+    "job": "weekly_integrity_monitor",
+    "cadence": "weekly",
+    "started": "2026-04-10T18:41:21.369295",
+    "status": "SUCCESS",
+    "finished": "2026-04-10T18:41:22.082070",
+    "duration_sec": 0.712803
   }
 ]

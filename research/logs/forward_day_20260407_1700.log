@@ -1,0 +1,257 @@
+=== FQL Forward Day - Tue Apr  7 17:00:04 PDT 2026 ===
+PID: 75850 | Repo: /Users/chasefisher/projects/Algo Trading/algo-lab
+
+--- Step 1: Updating market data ---
+============================================================
+  INCREMENTAL DATA UPDATE
+============================================================
+
+  MES: last bar = 2026-04-05 19:55:00
+
+  MNQ: last bar = 2026-04-05 19:55:00
+
+  MGC: last bar = 2026-04-02 16:05:00
+
+  M2K: last bar = 2026-04-05 19:55:00
+
+  MCL: last bar = 2026-04-05 19:55:00
+
+  ZN: last bar = 2026-04-05 19:55:00
+
+  ZB: last bar = 2026-04-05 19:55:00
+
+  ZF: last bar = 2026-04-05 19:55:00
+
+  6E: last bar = 2026-04-05 19:50:00
+
+  6J: last bar = 2026-04-05 18:05:00
+
+  6B: last bar = 2026-04-05 18:45:00
+  Fetching MES from 2026-04-05T18:55:00 to 2026-04-07...
+  MES: +276 new 5m bars (now through 2026-04-06 19:55:00)
+  Fetching MNQ from 2026-04-05T18:55:00 to 2026-04-07...
+  MNQ: +276 new 5m bars (now through 2026-04-06 19:55:00)
+  Fetching MGC from 2026-04-02T15:05:00 to 2026-04-07...
+  MGC: +3 new 5m bars (now through 2026-04-05 20:15:00)
+  Fetching M2K from 2026-04-05T18:55:00 to 2026-04-07...
+  M2K: +276 new 5m bars (now through 2026-04-06 19:55:00)
+  Fetching MCL from 2026-04-05T18:55:00 to 2026-04-07...
+  MCL: +276 new 5m bars (now through 2026-04-06 19:55:00)
+  Fetching ZN from 2026-04-05T18:55:00 to 2026-04-07...
+  ZN: +276 new 5m bars (now through 2026-04-06 19:55:00)
+  Fetching ZB from 2026-04-05T18:55:00 to 2026-04-07...
+  ZB: +267 new 5m bars (now through 2026-04-06 19:55:00)
+  Fetching ZF from 2026-04-05T18:55:00 to 2026-04-07...
+  ZF: +269 new 5m bars (now through 2026-04-06 19:55:00)
+  Fetching 6E from 2026-04-05T18:50:00 to 2026-04-07...
+  6E: +52 new 5m bars (now through 2026-04-06 16:55:00)
+  Fetching 6J from 2026-04-05T17:05:00 to 2026-04-07...
+  6J: +35 new 5m bars (now through 2026-04-06 16:00:00)
+  Fetching 6B from 2026-04-05T17:45:00 to 2026-04-07...
+  6B: +5 new 5m bars (now through 2026-04-06 04:25:00)
+
+============================================================
+  Update complete. State saved to: state/data_update_state.json
+============================================================
+
+--- Step 2: Running forward paper trading ---
+======================================================================
+  FORWARD PAPER TRADING — SMOKE TEST
+  2026-04-07 17:00:35
+======================================================================
+  Loaded account state (last run: 2026-04-06 05:09:52)
+
+  Checking for new data...
+    6E: last processed = 2026-04-05 19:50:00
+    6E: 52 new 5m bars
+    6J: last processed = 2026-04-05 18:05:00
+    6J: 35 new 5m bars
+    M2K: last processed = 2026-04-05 19:55:00
+    M2K: 276 new 5m bars
+    MCL: last processed = 2026-04-05 19:55:00
+    MCL: 276 new 5m bars
+    MES: last processed = 2026-04-05 19:55:00
+    MES: 276 new 5m bars
+    MGC: last processed = 2026-04-02 16:05:00
+    MGC: 3 new 5m bars
+    MNQ: last processed = 2026-04-05 19:55:00
+    MNQ: 276 new 5m bars
+    ZN: last processed = 2026-04-05 19:55:00
+    ZN: 276 new 5m bars
+    multi: SKIP (no data or asset config)
+
+  Current regime: HIGH_VOL_TRENDING | RV=HIGH_RV | Persist=CHOPPY
+
+  Running strategies on new bars...
+    XB-PB-EMA-MES-Short: 0 new trades, PnL=$0
+    ORB-MGC-Long: 0 new trades, PnL=$0
+    BB-EQ-MGC-Long: 0 new trades, PnL=$0
+    PB-MGC-Short: 0 new trades, PnL=$0
+    MomIgn-M2K-Short: 2 new trades, PnL=$-88
+    CloseVWAP-M2K-Short: 0 new trades, PnL=$0
+    TTMSqueeze-M2K-Short: 1 new trades, PnL=$-44
+    ORBEnh-M2K-Short: 0 new trades, PnL=$0
+    VWAPMR-MCL-Short: 0 new trades, PnL=$0
+    GapMom: SKIP (no data for asset 'multi')
+    RangeExpansion: SKIP (no data for asset 'multi')
+    NoiseBoundary-MNQ-Long: 1 new trades, PnL=$-180
+    MomPB-6J-Long-US: 0 new trades, PnL=$0
+    FXBreak-6J-Short-London: 1 new trades, PnL=$175
+    MomPB-6E-Long-US: 0 new trades, PnL=$0
+    DailyTrend-MGC-Long: 0 new trades, PnL=$0
+    PreFOMC-Drift-Equity: 0 new trades, PnL=$0
+    TV-NFP-High-Low-Levels: 0 new trades, PnL=$0
+    Commodity-TermStructure-Carry-EnergyMetals: SKIP (no data for asset 'multi')
+    VolManaged-EquityIndex-Futures: 0 new trades, PnL=$0
+    Treasury-Rolldown-Carry-Spread: 0 new trades, PnL=$0
+    ZN-Afternoon-Reversion: 0 new trades, PnL=$0
+    XB-ORB-EMA-Ladder-MNQ: 0 new trades, PnL=$0
+    VolManaged-EquityIndex-Futures: 1 daily contributions, PnL=$0 (always-in, weight-adjusted)
+
+  Applying strategy controller...
+    Trades: 6 raw → 5 after controller
+
+======================================================================
+  FORWARD PAPER TRADING REPORT
+======================================================================
+
+  Date:                2026-04-06
+  Equity:              $48,756.02
+  Daily PnL:           $-311.72
+  Cumulative PnL:      $-1,243.98
+  Trailing DD:         $1,243.98
+  Equity HWM:          $50,000.00
+
+  Signals generated:   1
+  Trades (raw):        6
+  Trades (controlled): 5
+
+  Active strategies:
+    - XB-PB-EMA-MES-Short
+    - ORB-MGC-Long
+    - BB-EQ-MGC-Long
+    - PB-MGC-Short
+    - MomIgn-M2K-Short
+    - CloseVWAP-M2K-Short
+    - TTMSqueeze-M2K-Short
+    - ORBEnh-M2K-Short
+    - VWAPMR-MCL-Short
+    - GapMom
+    - RangeExpansion
+    - NoiseBoundary-MNQ-Long
+    - MomPB-6J-Long-US
+    - MomPB-6E-Long-US
+    - DailyTrend-MGC-Long
+    - Commodity-TermStructure-Carry-EnergyMetals
+    - VolManaged-EquityIndex-Futures
+    - Treasury-Rolldown-Carry-Spread
+    - XB-ORB-EMA-Ladder-MNQ
+
+  Controller regime:   HIGH_VOL_TRENDING
+  RV regime:           HIGH_RV
+  Persistence:         CHOPPY
+
+  Kill Switch:         OK
+
+  Last processed bars:
+    6E: 2026-04-06 16:55:00
+    6J: 2026-04-06 16:00:00
+    M2K: 2026-04-06 19:55:00
+    MCL: 2026-04-06 19:55:00
+    MES: 2026-04-06 19:55:00
+    MGC: 2026-04-05 20:15:00
+    MNQ: 2026-04-06 19:55:00
+    ZN: 2026-04-06 19:55:00
+
+  Run count:           14
+  Logs written to:     logs/
+    - trade_log.csv
+    - signal_log.csv
+    - daily_report.csv
+
+======================================================================
+  SMOKE TEST PASSED
+======================================================================
+
+--- Step 3: Refreshing alerts + brief ---
+# FQL Alerts
+*2026-04-07 17:06*
+
+**2 ALERT**
+
+## Probation
+
+!! [ALERT] [ESCALATED from WARN x10] MomPB-6J-Long-US: under-evidenced — ratio 0.00 (0 vs 5 expected)
+   Action: Monitor — may need investigation if ratio stays low
+
+## Harvest
+
+!! [ALERT] [ESCALATED from WARN x10] youtube helper produced 0 leads on last run (2026-04-06)
+   Action: Check scripts/fetch_youtube_leads.* for errors
+
+
+  Saved to: /Users/chasefisher/openclaw-intake/inbox/_alerts.md
+# FQL Operator Brief
+*Tuesday, 2026-04-07 17:06*
+
+## System Health
+
+- Gateway: OK
+- Claw loop: OK (8m ago)
+- Recovery actions today: 0
+- Consecutive failures: 0
+
+## Active Alerts
+
+!! [ALERT] [ESCALATED from WARN x10] MomPB-6J-Long-US: under-evidenced — ratio 0.00 (0 vs 5 expected)
+  Action: Monitor — may need investigation if ratio stays low
+!! [ALERT] [ESCALATED from WARN x10] youtube helper produced 0 leads on last run (2026-04-06)
+  Action: Check scripts/fetch_youtube_leads.* for errors
+
+## Forward Evidence
+
+Last 24h: 5 trades, $-312
+  - MomIgn-M2K-Short: short on M2K, $-51
+  - MomIgn-M2K-Short: short on M2K, $-37
+  - TTMSqueeze-M2K-Short: short on M2K, $-44
+  - NoiseBoundary-MNQ-Long: long on MNQ, $-180
+  - VolManaged-EquityIndex-Futures: long on MES, $+0
+
+Equity: $48,756 | DD from HWM: $1,244 | Cumulative PnL: $-1,244
+
+## Probation & Challengers
+
+**Under-evidenced (3):** fewer trades than expected
+  - MomPB-6J-Long-US: 0 trades (3w/16w)
+  - DailyTrend-MGC-Long: 0 trades (3w/16w)
+  - ZN-Afternoon-Reversion: 0 trades (3w/24w)
+**On track (2):** evidence accumulating as expected
+  - NoiseBoundary-MNQ-Long: 9 trades, $-1,118 (3w/16w)
+  - VolManaged-EquityIndex-Futures: 17 trades, $+0 (3w/12w)
+**Healthy/slow (2):** sparse cadence, patience required
+  - TV-NFP-High-Low-Levels: 0 trades (3w/24w)
+  - Treasury-Rolldown-Carry-Spread: 0 trades (3w/48w)
+**Too early (1):** entered recently, no judgment yet
+  - XB-ORB-EMA-Ladder-MNQ: 0 trades (0w/16w)
+**Edge health flags (1):**
+  - TV-NFP-High-Low-Levels: half-life ARCHIVE_CANDIDATE
+
+## Today's Attention
+
+- **VolManaged-Equity:** Check that daily weight-adjusted positions are
+  generating. First days confirm signal replication in forward runner.
+- **ZN-Afternoon-Rev:** Expect ~1 trade this week. Zero is normal;
+  check signal log for afternoon ZN bar availability.
+- **Treasury-Rolldown:** Leave alone until ~March 31 (next monthly rebalance).
+
+## Decisions Needed
+
+- **Harvest backlog:** 101 notes pending — intake needed
+
+---
+*Detail reports: _probation_scoreboard.md, _challenger_stack_review.md,*
+*_rates_challenger_review.md, _portfolio_gap_dashboard.md, _recovery_status.md*
+
+  Saved to: /Users/chasefisher/openclaw-intake/inbox/_operator_brief.md
+
+=== Forward day completed successfully - Tue Apr  7 17:06:34 PDT 2026 ===

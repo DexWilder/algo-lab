@@ -1,0 +1,66 @@
+=== FQL Operator Digest - Thu Apr  9 18:00:04 PDT 2026 ===
+PID: 5242 | Repo: /Users/chasefisher/projects/Algo Trading/algo-lab
+
+--- Refreshing alerts ---
+# FQL Alerts
+*2026-04-09 18:00*
+
+**3 ALERT**
+
+## Probation
+
+!! [ALERT] [ESCALATED from WARN x12] MomPB-6J-Long-US: under-evidenced — ratio 0.00 (0 vs 6 expected)
+   Action: Monitor — may need investigation if ratio stays low
+
+## Harvest
+
+!! [ALERT] [ESCALATED from WARN x12] Possible closed-family match in 2026-04-08_06_prelondon_tokyo_range_break_fx_session_effect.md: 'breakout x morning equity'
+   Action: Review note — reject if it doesn't address the prior failure mode
+
+!! [ALERT] [ESCALATED from WARN x12] Possible closed-family match in 2026-04-08_04_strong_auction_equity_relief_filter.md: 'cash_close_reversion x rates'
+   Action: Review note — reject if it doesn't address the prior failure mode
+
+
+  Saved to: /Users/chasefisher/openclaw-intake/inbox/_alerts.md
+--- Health check ---
+# FQL System Health
+*2026-04-09 18:00:05*
+
+## Overall: DEGRADED — NEEDS ATTENTION
+
+| Component | Status | Detail |
+|-----------|--------|--------|
+| Gateway | HEALTHY | PID 20445, health OK |
+| Watchdog | HEALTHY | Last run 2m ago |
+| Claw loop | HEALTHY | Last run 28m ago |
+| Forward day | HEALTHY | Last run 1h ago |
+| Daily pipeline | HEALTHY | Ran today (daily_run_20260409_1730.log) |
+| Source helpers | HEALTHY | Last run 2026-04-09: 77 leads (0d ago) |
+| Reports | HEALTHY | All reports fresh |
+| Alerts | DEGRADED | 3 ALERT, 0 ACTION, 0 WARN |
+| Recovery | HEALTHY | 0 recovery actions today |
+--- Generating operator digest ---
+# FQL Daily Digest
+*Thursday, 2026-04-09 18:00*
+
+**All systems nominal. No operator action required.**
+
+## Decision Memos
+
+### [REVIEW] Energy gap unfilled for 4+ weekly cycles
+- **What changed:** Energy slot at 0 strategies for 4 cycles
+- **Why it matters:** MCL settlement + HV percentile both rejected. Need fundamentally different approach.
+- **Options:** Adjust Claw targeting toward EIA/seasonal/spread ideas | Accept gap temporarily
+
+## Status
+
+  Health: Gateway: HEALTHY | Claw Loop: HEALTHY | Watchdog: HEALTHY | Forward Runner: HEALTHY
+  Forward trades: 66 total, 0 today
+  Dormant: coded untested: 5 | registry ideas: 63 | harvest notes: 130
+
+---
+*Full reports: _alerts.md, _operator_brief.md, _probation_scoreboard.md, _portfolio_gap_dashboard.md*
+
+  Saved to: /Users/chasefisher/openclaw-intake/inbox/_daily_digest.md
+
+=== Digest completed successfully - Thu Apr  9 18:00:06 PDT 2026 ===

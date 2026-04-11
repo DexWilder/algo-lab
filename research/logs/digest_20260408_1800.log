@@ -1,0 +1,78 @@
+=== FQL Operator Digest - Wed Apr  8 18:00:04 PDT 2026 ===
+PID: 47129 | Repo: /Users/chasefisher/projects/Algo Trading/algo-lab
+
+--- Refreshing alerts ---
+# FQL Alerts
+*2026-04-08 18:00*
+
+**4 ALERT**
+
+## Probation
+
+!! [ALERT] [ESCALATED from WARN x6] MomPB-6J-Long-US: under-evidenced — ratio 0.00 (0 vs 6 expected)
+   Action: Monitor — may need investigation if ratio stays low
+
+## Harvest
+
+!! [ALERT] [ESCALATED from WARN x19] youtube helper produced 0 leads on last run (2026-04-06)
+   Action: Check scripts/fetch_youtube_leads.* for errors
+
+!! [ALERT] [ESCALATED from WARN x6] Possible closed-family match in 2026-04-08_06_prelondon_tokyo_range_break_fx_session_effect.md: 'breakout x morning equity'
+   Action: Review note — reject if it doesn't address the prior failure mode
+
+!! [ALERT] [ESCALATED from WARN x6] Possible closed-family match in 2026-04-08_04_strong_auction_equity_relief_filter.md: 'cash_close_reversion x rates'
+   Action: Review note — reject if it doesn't address the prior failure mode
+
+
+  Saved to: /Users/chasefisher/openclaw-intake/inbox/_alerts.md
+--- Health check ---
+# FQL System Health
+*2026-04-08 18:00:05*
+
+## Overall: DEGRADED — NEEDS ATTENTION
+
+| Component | Status | Detail |
+|-----------|--------|--------|
+| Gateway | HEALTHY | PID 20445, health OK |
+| Watchdog | HEALTHY | Last run 5m ago |
+| Claw loop | HEALTHY | Last run 29m ago |
+| Forward day | HEALTHY | Last run 1h ago |
+| Daily pipeline | HEALTHY | Ran today (daily_run_20260408_1730.log) |
+| Source helpers | HEALTHY | Last run 2026-04-06: 65 leads (2d ago) |
+| Reports | HEALTHY | All reports fresh |
+| Alerts | DEGRADED | 4 ALERT, 0 ACTION, 0 WARN |
+| Recovery | HEALTHY | 3 recovery action(s) today — self-healing worked |
+--- Generating operator digest ---
+# FQL Daily Digest
+*Wednesday, 2026-04-08 18:00*
+
+**All systems nominal. No operator action required.**
+
+## State Changes
+
+  ++ [recovery] CLEARED: gateway recovered after 1 failure(s)
+  ++ [dormant] Coded untested: 18 -> 5 (run: python3 research/mass_screen.py)
+
+## Active Alerts
+
+  [ALERT] [ESCALATED from WARN x20] youtube helper produced 0 leads on last run (2026-04-06)
+  Action: Check scripts/fetch_youtube_leads.* for errors
+  [ALERT] [ESCALATED from WARN x7] Possible closed-family match in 2026-04-08_06_prelondon_tokyo_range_break_fx_session_effect.md: 'breakout x morning equity'
+  Action: Review note — reject if it doesn't address the prior failure mode
+  [ALERT] [ESCALATED from WARN x7] Possible closed-family match in 2026-04-08_04_strong_auction_equity_relief_filter.md: 'cash_close_reversion x rates'
+  Action: Review note — reject if it doesn't address the prior failure mode
+  [ALERT] [ESCALATED from WARN x7] MomPB-6J-Long-US: under-evidenced — ratio 0.00 (0 vs 6 expected)
+  Action: Monitor — may need investigation if ratio stays low
+
+## Status
+
+  Health: Gateway: HEALTHY | Claw Loop: HEALTHY | Watchdog: HEALTHY | Forward Runner: HEALTHY
+  Forward trades: 65 total, 0 today
+  Dormant: coded untested: 5 | registry ideas: 63 | harvest notes: 113
+
+---
+*Full reports: _alerts.md, _operator_brief.md, _probation_scoreboard.md, _portfolio_gap_dashboard.md*
+
+  Saved to: /Users/chasefisher/openclaw-intake/inbox/_daily_digest.md
+
+=== Digest completed successfully - Wed Apr  8 18:00:05 PDT 2026 ===

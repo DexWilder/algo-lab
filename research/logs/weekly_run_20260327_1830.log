@@ -1,0 +1,343 @@
+=== FQL Weekly Research Run - Fri Mar 27 18:30:03 PDT 2026 ===
+PID: 31406 | Repo: /Users/chasefisher/projects/Algo Trading/algo-lab
+
+
+FQL Research Scheduler — WEEKLY jobs
+  5 jobs queued
+==================================================
+  Running weekly_walk_forward...
+  ERROR in weekly_walk_forward: Exit code 1: 
+  [      ERROR] weekly_walk_forward
+  Running weekly_kill_criteria...
+Loading strategies and building daily PnL matrix...
+Check 1/4: Portfolio dilution...
+Check 2/4: Edge redundancy...
+Check 3/4: Edge decay...
+Check 4/4: Regime failure...
+  [    SUCCESS] weekly_kill_criteria
+  [     MANUAL] weekly_registry_update
+  Running weekly_auto_report...
+  [    SUCCESS] weekly_auto_report
+  Running weekly_integrity_monitor...
+  [    SUCCESS] weekly_integrity_monitor
+
+Done: 3 success, 1 errors, 1 skipped
+--- Generating portfolio gap dashboard ---
+# FQL Portfolio Gap & Crowding Dashboard
+*Generated: 2026-03-27 18:41*
+*Active: 4 core + 8 probation = 12 strategies*
+
+## Factor Distribution
+
+| Factor | Core | Probation | Total | % of Active | Ideas | Status |
+|--------|------|-----------|-------|-------------|-------|--------|
+| MOMENTUM        |    3 |         3 |     6 |         50% |    12 | **CROWDED** |
+| MEAN_REVERSION  |    1 |         0 |     1 |          8% |     5 | OK |
+| VOLATILITY      |    0 |         1 |     1 |          8% |     9 | THIN (probation only) |
+| CARRY           |    0 |         1 |     1 |          8% |     7 | THIN (probation only) |
+| EVENT           |    0 |         2 |     2 |         17% |    15 | OK |
+| STRUCTURAL      |    0 |         1 |     1 |          8% |    15 | THIN (probation only) |
+| VALUE           |    0 |         0 |     0 |          0% |     0 | **GAP** |
+
+## Asset Distribution
+
+| Asset | Count | Direction | Status |
+|-------|-------|-----------|--------|
+| 6J     |     1 | long=1                    | OK |
+| MES    |     2 | long=1, short=1           | OK |
+| MGC    |     4 | long=3, short=1           | **AT LIMIT** |
+| MNQ    |     3 | long=3                    | Heavy |
+| ZN     |     2 | both=2                    | OK |
+
+| Asset Class | Count | Target Range | Status |
+|-------------|-------|-------------|--------|
+| Equity Index  |     5 (42%) | 30-50% | OK |
+| Metal         |     4 (33%) | 15-25% | **OVER** |
+| Energy        |     0 (0%) | 10-20% | **GAP** |
+| FX            |     1 (8%) | 10-25% | UNDER |
+| Rates         |     2 (17%) | 5-15% | **OVER** |
+
+## Session Distribution
+
+| Session | Count | Strategies | Status |
+|---------|-------|-----------|--------|
+| Afternoon (14:00-15:30)      |     1 | ZN | OK |
+| All Day                      |     1 | NoiseBoundar | OK |
+| Daily Close                  |     3 | DailyTrend, VolManaged, Treasury | Heavy |
+| Morning (09:30-12:00)        |     4 | XB, ORB, BB, PB | Heavy |
+| Multi-Day Event              |     1 | TV | OK |
+| Overnight/Event              |     1 | PreFOMC | OK |
+| US Session (08:00-17:00)     |     1 | MomPB | OK |
+
+## Horizon Distribution
+
+| Horizon | Count | % | Status |
+|---------|-------|---|--------|
+| Daily                     |     3 | 25% | OK |
+| Event                     |     2 | 17% | OK |
+| Intraday (afternoon)      |     1 | 8% | OK |
+| Intraday (morning)        |     6 | 50% | OK |
+
+## Direction Bias
+
+- Long exposure: 9.0 strategies
+- Short exposure: 3.0 strategies
+- Ratio: 3.0:1 — **LONG HEAVY**
+- Long-only strategies: 8
+- Short-only strategies: 2
+- Both-direction strategies: 2
+
+## Current Gaps
+
+| Type | Gap | Detail | Priority |
+|------|-----|--------|----------|
+| FACTOR | VALUE | No active or probation strategy | HIGH |
+| ASSET_CLASS | Energy | No strategies in this class | HIGH |
+| FACTOR | VOLATILITY | Only 1 probation, no core | MEDIUM |
+| FACTOR | CARRY | Only 1 probation, no core | MEDIUM |
+| FACTOR | STRUCTURAL | Only 1 probation, no core | MEDIUM |
+| DIRECTION | Short exposure | Long:Short = 3.0:1 | MEDIUM |
+| SESSION | Non-rates afternoon | Only rates cover afternoon session | LOW |
+
+## Crowding Risks
+
+| Type | Area | Detail | Action |
+|------|------|--------|--------|
+| FACTOR | MOMENTUM | 50% of active strategies | Deprioritize new MOMENTUM ideas |
+| ASSET | MGC | 4 strategies | No new MGC strategies unless displacing weakest |
+
+## Research Targeting Recommendations
+
+### Prioritize
+- **VALUE**: No active or probation strategy. 0 ideas in catalog.
+- **Energy**: No strategies in this class. 0 ideas in catalog.
+
+### Monitor
+- VOLATILITY: Only 1 probation, no core
+- CARRY: Only 1 probation, no core
+- STRUCTURAL: Only 1 probation, no core
+- Short exposure: Long:Short = 3.0:1
+
+### Deprioritize
+- **MOMENTUM**: 50% of active strategies. Deprioritize new MOMENTUM ideas.
+- **MGC**: 4 strategies. No new MGC strategies unless displacing weakest.
+
+  Saved to: /Users/chasefisher/openclaw-intake/inbox/_portfolio_gap_dashboard.md
+--- Generating harvest coverage audit ---
+# Harvest Coverage Audit
+*Generated: 2026-03-27 18:41*
+
+*Principle: broad intake first, ruthless filtering later.*
+
+## Source Lanes
+
+| Lane | Status | Factor Targets | Notes/Week (last 7d) |
+|------|--------|----------------|---------------------|
+| openclaw_tactical            | ACTIVE           | VALUE, VOLATILITY, CARRY, EVENT, ST |   5 |
+| openclaw_strategic           | ACTIVE           | VALUE, VOLATILITY, EVENT, CARRY, ST |  10 |
+| tradingview_scan             | ACTIVE           | VALUE, VOLATILITY, EVENT, CARRY, ST |  10 |
+| academic_review              | ACTIVE           | VALUE, VOLATILITY, EVENT, CARRY, ST |   8 |
+| youtube_practitioner         | ENABLED          | STRUCTURAL, VOLATILITY, EVENT, VALU |   5 |
+| github_quant_repos           | ACTIVE_VIA_CLAW  | VOLATILITY, VALUE, STRUCTURAL, CARR |   3 |
+| reddit_forums                | ACTIVE_VIA_CLAW  |                                     |   3 |
+| microstructure_specialists   | ACTIVE_VIA_CLAW  | STRUCTURAL, CARRY, VALUE, EVENT     |   3 |
+| legacy_revival               | DISABLED         |                                     |   3 |
+
+**Active: 7 (3 via Claw) | Dormant: 0 | Total: 9**
+
+Source classes covered: Academic, TradingView, GitHub, YouTube,
+Reddit/forums, microstructure specialists. All search via Claw —
+no separate scrapers needed.
+
+## Recent Notes by Source (last 7 days)
+
+Total: 54 notes
+- Other: 18 (33%)
+- Academic: 11 (20%)
+- TradingView: 10 (19%)
+- GitHub: 9 (17%)
+- Claw synthesis: 6 (11%)
+
+## Factor Coverage vs Search Targeting
+
+| Factor | Core | Prob | Ideas | Portfolio Status | In Search Targets? | Gap Covered? |
+|--------|------|------|-------|-----------------|-------------------|-------------|
+| MOMENTUM        |    3 |    3 |    12 | CROWDED           | **NO**              | **UNCOVERED** |
+| MEAN_REVERSION  |    1 |    0 |     5 | OK                | **NO**              | **UNCOVERED** |
+| VOLATILITY      |    0 |    1 |     9 | Thin              | YES                 | YES |
+| CARRY           |    0 |    1 |     7 | Thin              | YES                 | YES |
+| EVENT           |    0 |    2 |    15 | Thin              | YES                 | YES |
+| STRUCTURAL      |    0 |    1 |    15 | Thin              | YES                 | YES |
+| VALUE           |    0 |    0 |     0 | **BLIND SPOT**    | YES                 | SEARCH ONLY |
+
+## Asset Class Search Coverage
+
+| Asset Class | In Active Search? | Notes |
+|-------------|------------------|-------|
+| Equity Index  | **NO**             | |
+| Metal         | **NO**             | |
+| Energy        | YES                | |
+| FX            | **NO**             | |
+| Rates         | YES                | |
+
+## Gaps Without Live Search Coverage
+
+All portfolio gaps have at least one live search lane targeting them.
+
+## Closed Families (blocked from rediscovery)
+
+| Family | Failures | Closed Date |
+|--------|----------|-------------|
+| mean_reversion x equity_index | 5 | legacy |
+| ict x any | 2 | legacy |
+| gap_fade / gap_reversal | 3 | legacy |
+| overnight equity continuation | 3 | 2026-03-20 |
+| overnight equity premium | 2 | legacy |
+| breakout x morning equity | 13 | legacy |
+| cash_close_reversion x rates | 1 | 2026-03-20 |
+
+## Recommendations
+
+- Coverage is adequate. Focus on filtering quality, not search breadth.
+
+  Saved to: /Users/chasefisher/openclaw-intake/inbox/_harvest_coverage_audit.md
+--- Generating harvest quality review ---
+# Harvest Quality Review
+*Generated: 2026-03-27 18:41 | Lookback: 14 days*
+
+**Total notes scanned: 88**
+
+## Notes by Source Lane
+
+| Source | Notes | % | Accepted | Blocked | Rejected | Top Factor |
+|--------|-------|---|----------|---------|----------|------------|
+| Other            |    26 | 30% |        4 |      19 |        0 | VOLATILITY |
+| Academic         |    24 | 27% |        9 |      15 |        0 | CARRY |
+| TradingView      |    15 | 17% |       10 |       3 |        0 | EVENT |
+| GitHub           |    10 | 11% |        5 |       5 |        0 | STRUCTURAL |
+| Claw synthesis   |     9 | 10% |        4 |       4 |        0 | STRUCTURAL |
+| Reddit/Forum     |     4 |  5% |        1 |       2 |        0 | VOLATILITY |
+
+Source diversity: 6 types, largest is Other at 30%. OK.
+
+## Unique Idea Families by Source
+
+| Source | Unique Factor Families | Notes per Family |
+|--------|----------------------|------------------|
+| Academic         |                      5 |              4.8 ◄ high duplication |
+| Claw synthesis   |                      3 |              3.0 |
+| GitHub           |                      4 |              2.5 |
+| Other            |                      6 |              4.3 ◄ high duplication |
+| Reddit/Forum     |                      1 |              4.0 |
+| TradingView      |                      3 |              5.0 ◄ high duplication |
+
+## Portfolio Gap Fit
+
+| Factor | Notes | Portfolio Gap | Targeting Effective? |
+|--------|-------|-------------|---------------------|
+| MOMENTUM        |     1 | LOW/crowded   | OK |
+| MEAN_REVERSION  |     0 | LOW/crowded   | OK |
+| VOLATILITY      |    22 | HIGH gap      | YES |
+| CARRY           |    17 | MEDIUM gap    | YES |
+| EVENT           |     9 | MEDIUM gap    | YES |
+| STRUCTURAL      |    26 | MEDIUM gap    | YES |
+| VALUE           |    13 | HIGH gap      | YES |
+
+## Noise Rate by Source
+
+| Source | Accepted | Needs Review | Blocked | Rejected | Noise Rate |
+|--------|----------|-------------|---------|----------|------------|
+| Other            |        4 |           3 |      19 |        0 |         0% |
+| Academic         |        9 |           0 |      15 |        0 |         0% |
+| TradingView      |       10 |           2 |       3 |        0 |         0% |
+| GitHub           |        5 |           0 |       5 |        0 |         0% |
+| Claw synthesis   |        4 |           1 |       4 |        0 |         0% |
+| Reddit/Forum     |        1 |           1 |       2 |        0 |         0% |
+
+## Conversion Pipeline
+
+Notes that reached testing/probation in this period:
+  - academic: 3
+  - internal: 2
+  - falsification_discovery: 2
+  - tradingview: 1
+(Normal for early cycles — conversion is selective and gated.)
+
+## Source Helper Pipeline
+
+**Last fetch:** 2026-03-26T03:01:49Z
+- GitHub: 12 leads
+- Reddit: 18 leads
+- YouTube: 0 leads
+- Total: 65 leads
+
+**Lead lifecycle:** 0 fetched, 13 picked up, 0 stale
+**Notes produced from leads:** 61
+**Conversion rate:** 469% of lead batches produced notes
+
+### Component Yield by Source
+
+| Source | Notes | Full Strategy | Fragments | Components Detected |
+|--------|-------|--------------|-----------|-------------------|
+| blog     |     3 |            0 |         3 | none |
+| digest   |     7 |            4 |         3 | filter=2, entry_logic=1 |
+| github   |     6 |            3 |         3 | session_effect=2, filter=2 |
+| reddit   |     4 |            0 |         4 | filter=3 |
+
+**Best fragment source:** reddit (4 fragments)
+**Best component source:** github (4 components detected)
+
+### Source Roles
+
+*Auto-classified from observed contribution. Activates after 2+ attributed notes per source.*
+
+| Source | Leads | Notes | Fragments | Components | Role | Tuning |
+|--------|-------|-------|-----------|------------|------|--------|
+| blog     |    45 |     9 |         3 |          0 | **Fragment source** | Raise cap — produces reusable components |
+| digest   |    29 |    21 |         3 |          3 | **Fragment source** | Raise cap — produces reusable components |
+| github   |    34 |    18 |         3 |          4 | **Fragment source** | Raise cap — produces reusable components |
+| reddit   |    53 |    12 |         4 |          3 | **Fragment source** | Raise cap — produces reusable components |
+| youtube  |     3 |     1 |         0 |          0 | Support/convergence | Keep — may confirm ideas from other sources |
+
+
+### Run History
+
+| Run Date | GitHub | Reddit | YouTube | Blog | Digest | Total |
+|----------|--------|--------|---------|------|--------|-------|
+| 2026-03-21 | 10 | 15 | 10 | 14 | 7 | 56 |
+| 2026-03-21 | 10 | 17 | 3 | 12 | 7 | 49 |
+| 2026-03-23 | 12 | 18 | 0 | 13 | 7 | 50 |
+| 2026-03-26 | 12 | 18 | 0 | 20 | 15 | 65 |
+## Top New Fragments This Week
+
+**29 fragments captured this period:**
+
+- **[session_effect]** Standardized Macro Event Box Breakout (EVENT)
+  For scheduled releases such as CPI, NFP, PPI, GDP, or FOMC, build a fixed-duration event box using the release window hi
+- **[filter]** Crisis-Hedge Sleeve Selector for Futures Portfolio Construction (VOLATILITY)
+  On each monthly rebalance, score candidate futures sleeves by their downside correlation to equities and by returns duri
+- **[filter]** Crude OVX State Filter for CL Regime Switching (VOLATILITY)
+  Classify crude into three regimes using OVX level and 5-day OVX slope: expansion-watch when OVX is rising from a low bas
+- **[session_effect]** OPEX Calendar-Window Directional Bias (EVENT)
+  Go long index futures from the Monday of the week before monthly options expiration through Tuesday of OPEX week, then f
+- **[sizing_overlay]** 40/60 Value Plus Managed Futures Overlay Mix (VALUE)
+  Form a blended sleeve with 40% long/short value exposure and 60% managed futures exposure, rebalance the mix periodicall
+  ... and 24 more
+
+## Salvage Wins
+
+*Rejected parents that produced useful children or salvageable components.*
+
+**3 salvage wins found:**
+
+- **Overnight-Z-VolRatio-OpenDrive** (rejected) → **[component] z-score concept may work on different asset/session (not equ** (salvageable)
+- **Treasury-Cash-Close-Reversion-Window** (rejected) → **[component] Afternoon reversion timing (validated in earlier window as Z** (salvageable)
+- **Treasury-Cash-Close-Reversion-Window** (rejected) → **ZN-Afternoon-Reversion** (probation)
+
+
+## Recommendations
+
+
+  Saved to: /Users/chasefisher/openclaw-intake/inbox/_harvest_quality_review.md
+
+=== Weekly jobs completed successfully - Fri Mar 27 18:41:21 PDT 2026 ===

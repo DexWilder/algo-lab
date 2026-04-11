@@ -3,13 +3,13 @@
   "symbol": "ZF",
   "timeframe": "5m",
   "start_date": "2019-06-30 20:00:00",
-  "end_date": "2024-02-27 18:55:00",
-  "bar_count": 233107,
+  "end_date": "2026-04-09 19:55:00",
+  "bar_count": 234993,
   "trading_days": 1393,
   "source": "databento",
   "source_dataset": "GLBX.MDP3",
   "source_schema": "ohlcv-1m",
   "has_volume": true,
   "volume_mean": 2775.1,
-  "processed_date": "2026-03-17 19:31:43"
+  "processed_date": "2026-04-10 17:00:31"
 }

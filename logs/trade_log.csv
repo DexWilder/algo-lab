@@ -57,3 +57,14 @@ date,strategy,asset,status,tier,horizon,entry_time,exit_time,side,pnl
 2026-04-05,VolManaged-EquityIndex-Futures,MES,probation,REDUCED,daily,2026-04-02 00:00:00,2026-04-02 00:00:00,long,0.05
 2026-04-05,VolManaged-EquityIndex-Futures,MES,probation,REDUCED,daily,2026-04-03 00:00:00,2026-04-03 00:00:00,long,-0.01
 2026-04-05,VolManaged-EquityIndex-Futures,MES,probation,REDUCED,daily,2026-04-05 00:00:00,2026-04-05 00:00:00,long,-0.01
+2026-04-06,MomIgn-M2K-Short,M2K,watch,BASE,intraday,2026-04-06 10:05:00,2026-04-06 10:25:00,short,-51.0
+2026-04-06,MomIgn-M2K-Short,M2K,watch,BASE,intraday,2026-04-06 13:15:00,2026-04-06 13:25:00,short,-37.0
+2026-04-06,TTMSqueeze-M2K-Short,M2K,watch,BASE,intraday,2026-04-06 13:15:00,2026-04-06 13:30:00,short,-44.0
+2026-04-06,NoiseBoundary-MNQ-Long,MNQ,probation,BASE,intraday,2026-04-06 09:55:00,2026-04-06 10:05:00,long,-179.74
+2026-04-06,VolManaged-EquityIndex-Futures,MES,probation,REDUCED,daily,2026-04-06 00:00:00,2026-04-06 00:00:00,long,0.02
+2026-04-07,VolManaged-EquityIndex-Futures,MES,probation,REDUCED,daily,2026-04-07 00:00:00,2026-04-07 00:00:00,long,0.11
+2026-04-07,XB-ORB-EMA-Ladder-MCL,MCL,probation,BASE,intraday,2026-04-07 12:00:00,2026-04-07 15:20:00,short,249.0
+2026-04-08,VolManaged-EquityIndex-Futures,MES,probation,REDUCED,daily,2026-04-08 00:00:00,2026-04-08 00:00:00,long,-0.0
+2026-04-09,VolManaged-EquityIndex-Futures,MES,probation,REDUCED,daily,2026-04-09 00:00:00,2026-04-09 00:00:00,long,0.03
+2026-04-09,XB-ORB-EMA-Ladder-MNQ,MNQ,probation,BASE,intraday,2026-04-09 11:35:00,2026-04-09 15:35:00,long,240.76
+2026-04-09,XB-ORB-EMA-Ladder-MCL,MCL,probation,REDUCED,intraday,2026-04-09 12:05:00,2026-04-09 15:35:00,short,-61.0
