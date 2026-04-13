@@ -274,39 +274,157 @@ def check_assertions():
 # ── 7. Ranked actions ────────────────────────────────────────────────────
 
 def rank_actions(harvest, source, idle, flags, assertions):
-    """Produce top 3 ranked actions by leverage."""
+    """Produce top 3 ranked actions with routing metadata.
+
+    Each action now includes: priority, description, owner/module,
+    queue destination, next trigger. This turns the audit from a
+    reporting layer into a routing engine.
+    """
     actions = []
 
     # Data bottleneck
     if harvest["hard_blocked"] > 20:
-        actions.append((90, f"DATA: {harvest['hard_blocked']} notes blocked by missing data feeds. Accept this limitation or plan data expansion phase."))
+        actions.append({
+            "priority": 90,
+            "action": f"DATA: {harvest['hard_blocked']} notes blocked by missing data feeds",
+            "owner": "operator decision",
+            "queue": "deferred — future data expansion phase",
+            "trigger": "accept limitation OR plan data sourcing",
+        })
 
     # Limbo strategies
     if len(idle) > 0:
-        actions.append((80, f"LIMBO: {len(idle)} strategies in watch/testing/monitor with no next step. Archive or define trigger."))
+        actions.append({
+            "priority": 80,
+            "action": f"LIMBO: {len(idle)} strategies with no next step",
+            "owner": "weekly_operational_audit → operator",
+            "queue": "archive or define trigger in registry",
+            "trigger": "resolve this week — each item needs archive/trigger decision",
+        })
 
     # Source pipeline
     if source.get("picked_up", 0) == 0 and source.get("total_leads", 0) > 0:
-        actions.append((75, "SOURCE: leads being fetched but not picked up by Claw. Check task instructions."))
+        actions.append({
+            "priority": 75,
+            "action": "SOURCE: leads fetched but not picked up by Claw",
+            "owner": "claw_control_loop.py → _task_instructions()",
+            "queue": "investigate Claw task instructions",
+            "trigger": "next Claw control loop cycle",
+        })
 
     # Testability ratio
     if harvest["total"] > 0 and harvest["clean"] / harvest["total"] < 0.05:
-        actions.append((70, f"TESTABILITY: only {harvest['clean']}/{harvest['total']} notes are clean. Claw retargeting needed."))
+        actions.append({
+            "priority": 70,
+            "action": f"TESTABILITY: only {harvest['clean']}/{harvest['total']} notes are clean ({harvest['clean']/harvest['total']*100:.0f}%)",
+            "owner": "_priorities.md + _claw_next_needs.md",
+            "queue": "monitor Claw retargeting effectiveness",
+            "trigger": "review in 2 weekly cycles — expect testability ratio to improve",
+        })
 
     # Assertion failures
     fails = [a for a in assertions if a.startswith("FAIL")]
     if fails:
-        actions.append((95, f"ASSERTIONS: {len(fails)} assertion failure(s) — investigate immediately"))
+        actions.append({
+            "priority": 95,
+            "action": f"ASSERTIONS: {len(fails)} failure(s) — investigate immediately",
+            "owner": "operator",
+            "queue": "immediate — system integrity",
+            "trigger": "resolve before next daily pipeline run",
+        })
 
     # Forward evidence pace
     if TRADE_LOG.exists():
         trades = pd.read_csv(TRADE_LOG)
         xb = trades[trades["strategy"].str.contains("XB-ORB", na=False)] if "strategy" in trades.columns else pd.DataFrame()
         if len(xb) < 5:
-            actions.append((60, f"FORWARD: only {len(xb)} XB-ORB trades so far. Patience required — accumulating."))
+            actions.append({
+                "priority": 60,
+                "action": f"FORWARD: only {len(xb)} XB-ORB trades — accumulating",
+                "owner": "forward_runner (automatic)",
+                "queue": "patience — no action needed",
+                "trigger": f"first formal review at 20 trades (~{max(0, 20-len(xb))} remaining)",
+            })
 
-    actions.sort(key=lambda x: -x[0])
-    return actions[:3]
+    # Reporting healthy but routing stalled
+    # (detected when audit runs multiple weeks with same top actions)
+    actions.append({
+        "priority": 40,
+        "action": "META: verify top actions are CHANGING week-over-week, not repeating",
+        "owner": "weekly_operational_audit self-check",
+        "queue": "compare this week's top actions to last week's",
+        "trigger": "if same top 3 persist 3+ weeks → routing is stalled, escalate",
+    })
+
+    actions.sort(key=lambda x: -x["priority"])
+    return actions[:5]
+
+
+# ── 8. Conversion funnel velocity ────────────────────────────────────────
+
+def compute_funnel_velocity():
+    """Track movement rates and median age across pipeline stages.
+
+    Stages: idea → tested → validated → probation → core
+    Also tracks: harvested → converted (note → code)
+
+    Returns dict of per-stage metrics:
+      count, median_age_days, oldest_item, items_this_week
+    """
+    reg = _load_json(str(REGISTRY_PATH))
+    strategies = reg.get("strategies", [])
+    week_ago = (NOW - timedelta(days=7)).strftime("%Y-%m-%d")
+
+    stages = {}
+    for status in ["idea", "testing", "watch", "monitor", "probation", "core",
+                    "rejected", "archived", "broken"]:
+        items = [s for s in strategies if s.get("status") == status]
+        # Estimate age from test_date or promotion_date
+        ages = []
+        for s in items:
+            date_str = (s.get("test_date") or s.get("promotion_date") or
+                       s.get("last_controller_date") or "")
+            if date_str:
+                try:
+                    age = (NOW - pd.to_datetime(date_str)).days
+                    ages.append(age)
+                except Exception:
+                    pass
+
+        recent = 0
+        for s in items:
+            date_str = (s.get("test_date") or s.get("promotion_date") or "")
+            if date_str and date_str >= week_ago:
+                recent += 1
+
+        stages[status] = {
+            "count": len(items),
+            "median_age_days": int(pd.Series(ages).median()) if ages else None,
+            "moved_this_week": recent,
+        }
+
+    # Harvest → strategy conversion
+    # Count harvest notes vs strategy entries created recently
+    harvest_count = 0
+    for d in [HARVEST_DIR, REVIEWED_DIR]:
+        if d.exists():
+            harvest_count += len(list(d.glob("*.md")))
+
+    # First-pass results created this week
+    fp_dir = ROOT / "research" / "data" / "first_pass"
+    fp_recent = 0
+    if fp_dir.exists():
+        for f in fp_dir.glob("*.json"):
+            if f.stat().st_mtime > (NOW - timedelta(days=7)).timestamp():
+                fp_recent += 1
+
+    stages["_harvest_notes"] = harvest_count
+    stages["_first_pass_this_week"] = fp_recent
+    stages["_conversion_rate"] = (
+        f"{fp_recent}/{harvest_count}" if harvest_count > 0 else "0/0"
+    )
+
+    return stages
 
 
 # ── Report ───────────────────────────────────────────────────────────────
@@ -319,20 +437,24 @@ def generate_report():
     flags = compute_diagnostic_flags(harvest, source, idle)
     assertions = check_assertions()
     top_actions = rank_actions(harvest, source, idle, flags, assertions)
+    funnel = compute_funnel_velocity()
 
     lines = []
     lines.append("# FQL Weekly Operational Audit")
     lines.append(f"*{TIMESTAMP}*")
     lines.append("")
 
-    # Top 3 actions
-    lines.append("## Top 3 Actions by Leverage")
+    # Top actions with routing
+    lines.append("## Routed Actions (by leverage)")
     lines.append("")
     if top_actions:
-        for i, (score, action) in enumerate(top_actions, 1):
-            lines.append(f"**{i}.** {action}")
+        for i, a in enumerate(top_actions, 1):
+            lines.append(f"**{i}.** {a['action']}")
+            lines.append(f"   Owner: {a['owner']} | Queue: {a['queue']}")
+            lines.append(f"   Trigger: {a['trigger']}")
+            lines.append("")
     else:
-        lines.append("No high-leverage actions identified. System is clean.")
+        lines.append("No actions needed. System is clean.")
     lines.append("")
 
     # Diagnostic flags
@@ -379,6 +501,30 @@ def generate_report():
         lines.append(f"  {icon} {a}")
     lines.append("")
 
+    # Conversion funnel velocity
+    lines.append("## Conversion Funnel Velocity")
+    lines.append("")
+    lines.append(f"  {'Stage':<15s} {'Count':>7s} {'Med Age':>8s} {'Moved/wk':>9s}")
+    lines.append(f"  {'-'*15} {'-'*7} {'-'*8} {'-'*9}")
+    for stage in ["idea", "testing", "watch", "monitor", "probation", "core", "rejected", "archived"]:
+        s = funnel.get(stage, {})
+        age_str = f"{s.get('median_age_days', '?')}d" if s.get("median_age_days") is not None else "—"
+        moved = s.get("moved_this_week", 0)
+        moved_str = str(moved) if moved > 0 else "—"
+        lines.append(f"  {stage:<15s} {s.get('count', 0):>7d} {age_str:>8s} {moved_str:>9s}")
+    lines.append("")
+    lines.append(f"  Harvest notes: {funnel.get('_harvest_notes', 0)}")
+    lines.append(f"  First-pass runs this week: {funnel.get('_first_pass_this_week', 0)}")
+    lines.append(f"  Conversion rate: {funnel.get('_conversion_rate', '?')}")
+    lines.append("")
+
+    # Flow health flag
+    fp_week = funnel.get("_first_pass_this_week", 0)
+    ideas = funnel.get("idea", {}).get("count", 0)
+    if ideas > 50 and fp_week == 0:
+        lines.append("  ⚠️ FLOW STALLED: 0 first-pass runs this week with 50+ ideas in queue")
+        lines.append("")
+
     # Unwired tooling
     if unwired:
         lines.append(f"## Unwired Scripts ({len(unwired)})")
@@ -388,7 +534,7 @@ def generate_report():
         lines.append("")
 
     lines.append("---")
-    lines.append("*Weekly audit surfaces bottlenecks and drift. Daily digest surfaces exceptions.*")
+    lines.append("*Weekly audit: bottlenecks + routing + velocity. Daily digest: exceptions only.*")
 
     return "\n".join(lines)
 
