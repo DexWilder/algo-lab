@@ -30,6 +30,30 @@ research/reports/daily_decision_*.md
 research/reports/integrity_report_*.json
 research/reports/weekly_scorecard_*.json
 
+# Operational logs (regenerable, high-volume)
+research/logs/claw_loop_*.log
+research/logs/watchdog_*.log
+research/logs/daily_run_*.log
+research/logs/twice_weekly_run_*.log
+research/logs/weekly_run_*.log
+research/logs/forward_day_*.log
+research/logs/digest_*.log
+research/logs/source_helpers_*.log
+research/logs/launchd_*.log
+logs/claw_control_loop.log
+
+# Watchdog/digest state files (regenerable)
+research/logs/.watchdog_state.json
+research/logs/.digest_state.json
+research/logs/.alert_warn_history.json
+
+# Claw audit briefs (generated daily, high-volume)
+research/data/claw_audits/
+
+# Temp analysis scripts
+tmp_*.py
+research/_*.py
+
 # OS
 .DS_Store
 Thumbs.db
