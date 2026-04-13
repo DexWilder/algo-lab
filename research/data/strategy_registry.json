@@ -886,7 +886,12 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-04-10"
+      "created_date": "2026-04-10",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "filter"
+      ],
+      "crossbreeding_eligible": false
     },
     {
       "strategy_id": "VWAPMR-MCL-Short",
@@ -954,7 +959,10 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-04-10"
+      "created_date": "2026-04-10",
+      "reusable_as_component": false,
+      "extractable_components": null,
+      "crossbreeding_eligible": false
     },
     {
       "strategy_id": "CloseVWAP-MNQ-Long",
@@ -1313,7 +1321,10 @@
       "component_type": "full_strategy",
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
-      "triage_reason": "dead_closed_family_or_untestable"
+      "triage_reason": "dead_closed_family_or_untestable",
+      "reusable_as_component": false,
+      "extractable_components": null,
+      "crossbreeding_eligible": false
     },
     {
       "strategy_id": "PreFOMC-Drift",
@@ -1486,7 +1497,12 @@
       "component_type": "full_strategy",
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
-      "triage_reason": "dead_closed_family_or_untestable"
+      "triage_reason": "dead_closed_family_or_untestable",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "exit"
+      ],
+      "crossbreeding_eligible": false
     },
     {
       "strategy_id": "Russell-Reconstitution",
@@ -1520,7 +1536,12 @@
       "component_type": "full_strategy",
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
-      "triage_reason": "dead_closed_family_or_untestable"
+      "triage_reason": "dead_closed_family_or_untestable",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry"
+      ],
+      "crossbreeding_eligible": false
     },
     {
       "strategy_id": "ConsolidationBreakout",
@@ -1554,7 +1575,12 @@
       "component_type": "full_strategy",
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
-      "triage_reason": "dead_closed_family_or_untestable"
+      "triage_reason": "dead_closed_family_or_untestable",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry"
+      ],
+      "crossbreeding_eligible": false
     },
     {
       "strategy_id": "LiqGrab-StopRun",
@@ -1588,7 +1614,12 @@
       "component_type": "full_strategy",
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
-      "triage_reason": "dead_closed_family_or_untestable"
+      "triage_reason": "dead_closed_family_or_untestable",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "exit"
+      ],
+      "crossbreeding_eligible": false
     },
     {
       "strategy_id": "ICT-LiqSweep-V2",
@@ -1622,7 +1653,12 @@
       "component_type": "full_strategy",
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
-      "triage_reason": "dead_closed_family_or_untestable"
+      "triage_reason": "dead_closed_family_or_untestable",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry"
+      ],
+      "crossbreeding_eligible": false
     },
     {
       "strategy_id": "RVWAP-MR",
@@ -2377,7 +2413,12 @@
         "asset_scope": "MNQ (equity index)",
         "validation_status": "validated"
       },
-      "created_date": "2026-04-10"
+      "created_date": "2026-04-10",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "exit"
+      ],
+      "crossbreeding_eligible": false
     },
     {
       "strategy_id": "VWAPPullback-MES-Long",
@@ -2769,7 +2810,13 @@
         "asset_scope": "6J (FX, Japanese Yen)",
         "validation_status": "validated"
       },
-      "created_date": "2026-04-10"
+      "created_date": "2026-04-10",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry",
+        "filter"
+      ],
+      "crossbreeding_eligible": true
     },
     {
       "strategy_id": "FXBreak-6J-Short-London",
@@ -2906,7 +2953,12 @@
       "component_type": "full_strategy",
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
-      "triage_reason": "duplicate_of_tested_strategy"
+      "triage_reason": "duplicate_of_tested_strategy",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry"
+      ],
+      "crossbreeding_eligible": false
     },
     {
       "strategy_id": "FXBreak-6B-NoPriority",
@@ -3138,7 +3190,13 @@
       "component_type": "full_strategy",
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
-      "triage_reason": "dead_closed_family_or_untestable"
+      "triage_reason": "dead_closed_family_or_untestable",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "exit",
+        "filter"
+      ],
+      "crossbreeding_eligible": true
     },
     {
       "strategy_id": "DualThrust-ZB-Short-Monitor",
@@ -3174,7 +3232,12 @@
       "component_type": "full_strategy",
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
-      "triage_reason": "duplicate_of_tested_strategy"
+      "triage_reason": "duplicate_of_tested_strategy",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry"
+      ],
+      "crossbreeding_eligible": false
     },
     {
       "strategy_id": "Treasury-2Y-FOMC-Momentum",
@@ -3647,7 +3710,10 @@
       "component_type": "full_strategy",
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
-      "triage_reason": "duplicate_of_tested_strategy"
+      "triage_reason": "duplicate_of_tested_strategy",
+      "reusable_as_component": false,
+      "extractable_components": null,
+      "crossbreeding_eligible": false
     },
     {
       "strategy_id": "OPEX-Week-Effect",
@@ -3792,7 +3858,12 @@
       "component_type": "full_strategy",
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
-      "triage_reason": "dead_closed_family_or_untestable"
+      "triage_reason": "dead_closed_family_or_untestable",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry"
+      ],
+      "crossbreeding_eligible": false
     },
     {
       "strategy_id": "Equity-Closing-Auction-Flow",
@@ -3827,7 +3898,10 @@
       "component_type": "full_strategy",
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
-      "triage_reason": "dead_closed_family_or_untestable"
+      "triage_reason": "dead_closed_family_or_untestable",
+      "reusable_as_component": false,
+      "extractable_components": null,
+      "crossbreeding_eligible": false
     },
     {
       "strategy_id": "Treasury-Roll-Microstructure",
@@ -3937,7 +4011,12 @@
       "component_type": "full_strategy",
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
-      "triage_reason": "dead_closed_family_or_untestable"
+      "triage_reason": "dead_closed_family_or_untestable",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry"
+      ],
+      "crossbreeding_eligible": false
     },
     {
       "strategy_id": "TV-FOMC-Rate-Decision-Cycles",
@@ -3972,7 +4051,10 @@
       "component_type": "full_strategy",
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
-      "triage_reason": "dead_closed_family_or_untestable"
+      "triage_reason": "dead_closed_family_or_untestable",
+      "reusable_as_component": false,
+      "extractable_components": null,
+      "crossbreeding_eligible": false
     },
     {
       "strategy_id": "TV-NFP-High-Low-Levels",
@@ -4115,7 +4197,10 @@
       "component_type": "full_strategy",
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
-      "triage_reason": "dead_closed_family_or_untestable"
+      "triage_reason": "dead_closed_family_or_untestable",
+      "reusable_as_component": false,
+      "extractable_components": null,
+      "crossbreeding_eligible": false
     },
     {
       "strategy_id": "TV-CPI-15m-Expansion",
@@ -4258,7 +4343,10 @@
       "component_type": "full_strategy",
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
-      "triage_reason": "dead_closed_family_or_untestable"
+      "triage_reason": "dead_closed_family_or_untestable",
+      "reusable_as_component": false,
+      "extractable_components": null,
+      "crossbreeding_eligible": false
     },
     {
       "strategy_id": "TV-Session-Gap-Fill",
@@ -4293,7 +4381,12 @@
       "component_type": "full_strategy",
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
-      "triage_reason": "dead_closed_family_or_untestable"
+      "triage_reason": "dead_closed_family_or_untestable",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "exit"
+      ],
+      "crossbreeding_eligible": false
     },
     {
       "strategy_id": "TV-EOD-Sentiment-Flip",
@@ -4365,7 +4458,10 @@
       "component_type": "full_strategy",
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
-      "triage_reason": "dead_closed_family_or_untestable"
+      "triage_reason": "dead_closed_family_or_untestable",
+      "reusable_as_component": false,
+      "extractable_components": null,
+      "crossbreeding_eligible": false
     },
     {
       "strategy_id": "TV-Gap-Filling-Strategy",
@@ -4400,7 +4496,10 @@
       "component_type": "full_strategy",
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
-      "triage_reason": "dead_closed_family_or_untestable"
+      "triage_reason": "dead_closed_family_or_untestable",
+      "reusable_as_component": false,
+      "extractable_components": null,
+      "crossbreeding_eligible": false
     },
     {
       "strategy_id": "TV-Gold-Bandwidth-Squeeze",
@@ -4654,7 +4753,13 @@
       "component_type": "full_strategy",
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
-      "triage_reason": "dead_closed_family_or_untestable"
+      "triage_reason": "dead_closed_family_or_untestable",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry",
+        "exit"
+      ],
+      "crossbreeding_eligible": true
     },
     {
       "strategy_id": "THEME-Exit-Architecture-First",
@@ -4689,7 +4794,13 @@
       "component_type": "full_strategy",
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
-      "triage_reason": "dead_closed_family_or_untestable"
+      "triage_reason": "dead_closed_family_or_untestable",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry",
+        "exit"
+      ],
+      "crossbreeding_eligible": true
     },
     {
       "strategy_id": "Commodity-TermStructure-Carry-EnergyMetals",
@@ -4747,7 +4858,10 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-04-10"
+      "created_date": "2026-04-10",
+      "reusable_as_component": false,
+      "extractable_components": null,
+      "crossbreeding_eligible": false
     },
     {
       "strategy_id": "ManagedFutures-Carry-Diversified",
@@ -5092,7 +5206,10 @@
           ]
         }
       ],
-      "created_date": "2026-04-10"
+      "created_date": "2026-04-10",
+      "reusable_as_component": false,
+      "extractable_components": null,
+      "crossbreeding_eligible": false
     },
     {
       "strategy_id": "CrudeOil-OPEC-Announcement-Regime",
