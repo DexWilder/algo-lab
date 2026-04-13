@@ -217,6 +217,14 @@ def compute_diagnostic_flags(harvest, source, idle):
     if source.get("total_leads", 0) > 30 and source.get("picked_up", 0) == 0:
         flags.append(f"SOURCE PIPELINE STALLED: {source['total_leads']} leads fetched but 0 picked up by Claw")
 
+    # Harvesting faster than routing (ideas accumulate at top of funnel)
+    if harvest["total"] > 100 and len(idle) == 0:
+        # Clean downstream but large upstream backlog
+        reg = _load_json(str(REGISTRY_PATH))
+        ideas = [s for s in reg.get("strategies", []) if s.get("status") == "idea"]
+        if len(ideas) > 50:
+            flags.append(f"FUNNEL TOP-HEAVY: {len(ideas)} ideas + {harvest['total']} harvest notes but 0 in testing/watch. Ideas harvested faster than routed.")
+
     return flags
 
 
@@ -346,6 +354,25 @@ def rank_actions(harvest, source, idle, flags, assertions):
                 "trigger": f"first formal review at 20 trades (~{max(0, 20-len(xb))} remaining)",
             })
 
+    # Stale ideas
+    aging = compute_idea_aging()
+    if aging["stale_no_owner"] > 20:
+        actions.append({
+            "priority": 75,
+            "action": f"STALE IDEAS: {aging['stale_no_owner']} ideas >30d old with no salvage lane",
+            "owner": "operator → registry triage",
+            "queue": "batch archive or define routing for each",
+            "trigger": "resolve top 10 this week, remainder next week",
+        })
+    elif aging["stale_count"] > 0:
+        actions.append({
+            "priority": 50,
+            "action": f"AGING: {aging['stale_count']} ideas >30d old ({aging['stale_salvageable']} salvageable)",
+            "owner": "weekly audit tracking",
+            "queue": "monitor — force archive if >60d with no routing",
+            "trigger": "auto-archive at 60d unless explicitly extended",
+        })
+
     # Reporting healthy but routing stalled
     # (detected when audit runs multiple weeks with same top actions)
     actions.append({
@@ -429,6 +456,55 @@ def compute_funnel_velocity():
 
 # ── Report ───────────────────────────────────────────────────────────────
 
+def compute_idea_aging():
+    """Compute age buckets and stale-idea metrics for the registry."""
+    reg = _load_json(str(REGISTRY_PATH))
+    ideas = [s for s in reg.get("strategies", []) if s.get("status") == "idea"]
+
+    buckets = {"0-7d": 0, "8-30d": 0, "31-60d": 0, "60d+": 0}
+    stale = []  # > 30d with no review
+    stale_salvageable = []  # stale but has salvage_lane or convergent_sources
+    oldest = []
+
+    for s in ideas:
+        created_str = s.get("created_date", "")
+        if not created_str:
+            continue
+        try:
+            created = pd.to_datetime(created_str)
+            age = (NOW - created).days
+        except Exception:
+            continue
+
+        if age <= 7:
+            buckets["0-7d"] += 1
+        elif age <= 30:
+            buckets["8-30d"] += 1
+        elif age <= 60:
+            buckets["31-60d"] += 1
+        else:
+            buckets["60d+"] += 1
+
+        if age > 30:
+            has_salvage = bool(s.get("salvage_lane") or s.get("convergent_sources"))
+            entry = {"id": s["strategy_id"], "age": age, "salvageable": has_salvage}
+            stale.append(entry)
+            if has_salvage:
+                stale_salvageable.append(entry)
+            oldest.append(entry)
+
+    oldest.sort(key=lambda x: -x["age"])
+
+    return {
+        "total_ideas": len(ideas),
+        "buckets": buckets,
+        "stale_count": len(stale),
+        "stale_salvageable": len(stale_salvageable),
+        "stale_no_owner": len(stale) - len(stale_salvageable),
+        "oldest_5": oldest[:5],
+    }
+
+
 def generate_report():
     harvest = audit_harvest_funnel()
     source = audit_source_productivity()
@@ -436,6 +512,7 @@ def generate_report():
     unwired = audit_unwired_tooling()
     flags = compute_diagnostic_flags(harvest, source, idle)
     assertions = check_assertions()
+    aging = compute_idea_aging()
     top_actions = rank_actions(harvest, source, idle, flags, assertions)
     funnel = compute_funnel_velocity()
 
@@ -499,6 +576,22 @@ def generate_report():
     for a in assertions:
         icon = "✅" if a.startswith("PASS") else "❌"
         lines.append(f"  {icon} {a}")
+    lines.append("")
+
+    # Idea aging
+    lines.append("## Idea Aging")
+    lines.append(f"  Total ideas: {aging['total_ideas']}")
+    lines.append(f"  Age buckets: " + " | ".join(f"{k}: {v}" for k, v in aging["buckets"].items()))
+    lines.append(f"  Stale (>30d): {aging['stale_count']} ({aging['stale_salvageable']} salvageable, {aging['stale_no_owner']} no owner)")
+    if aging["oldest_5"]:
+        lines.append(f"  Oldest unresolved:")
+        for item in aging["oldest_5"]:
+            tag = " [salvageable]" if item["salvageable"] else ""
+            lines.append(f"    {item['id']}: {item['age']}d{tag}")
+    if aging["stale_count"] > aging["total_ideas"] * 0.5:
+        lines.append(f"  ⚠️ STALE MAJORITY: {aging['stale_count']}/{aging['total_ideas']} ideas are >30d old")
+    if aging["stale_no_owner"] > 10:
+        lines.append(f"  ⚠️ UNOWNED STALE: {aging['stale_no_owner']} stale ideas with no salvage lane or convergent evidence")
     lines.append("")
 
     # Conversion funnel velocity

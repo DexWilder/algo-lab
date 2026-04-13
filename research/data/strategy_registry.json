@@ -97,7 +97,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-23"
     },
     {
       "strategy_id": "XB-PB-EMA-MES-Short",
@@ -196,7 +197,8 @@
         "timing": "Morning session 09:30-12:00 ET",
         "asset_scope": "MES (equity index)",
         "validation_status": "validated"
-      }
+      },
+      "created_date": "2026-04-10"
     },
     {
       "strategy_id": "ORB-MGC-Long",
@@ -294,7 +296,8 @@
         "timing": "Morning session 10:00-12:00 ET",
         "asset_scope": "MGC (metal)",
         "validation_status": "validated"
-      }
+      },
+      "created_date": "2026-04-10"
     },
     {
       "strategy_id": "Donchian-MNQ-Long-GRINDING",
@@ -393,7 +396,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-23"
     },
     {
       "strategy_id": "BB-EQ-MGC-Long",
@@ -493,7 +497,8 @@
         "asset_scope": "MGC (metal)",
         "validation_status": "validated"
       },
-      "rejection_reason": "concentration_and_regime"
+      "rejection_reason": "concentration_and_regime",
+      "created_date": "2026-04-06"
     },
     {
       "strategy_id": "PB-MGC-Short",
@@ -592,7 +597,8 @@
         "timing": "Morning session",
         "asset_scope": "MGC (metal)",
         "validation_status": "validated"
-      }
+      },
+      "created_date": "2026-04-10"
     },
     {
       "strategy_id": "MomIgn-M2K-Short",
@@ -669,7 +675,8 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "rejection_reason": "failed_dual_archetype_gates"
+      "rejection_reason": "failed_dual_archetype_gates",
+      "created_date": "2026-03-23"
     },
     {
       "strategy_id": "CloseVWAP-M2K-Short",
@@ -739,7 +746,8 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "rejection_reason": "failed_dual_archetype_gates"
+      "rejection_reason": "failed_dual_archetype_gates",
+      "created_date": "2026-03-23"
     },
     {
       "strategy_id": "TTMSqueeze-M2K-Short",
@@ -809,7 +817,8 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "rejection_reason": "failed_dual_archetype_gates"
+      "rejection_reason": "failed_dual_archetype_gates",
+      "created_date": "2026-03-23"
     },
     {
       "strategy_id": "ORBEnh-M2K-Short",
@@ -876,7 +885,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-04-10"
     },
     {
       "strategy_id": "VWAPMR-MCL-Short",
@@ -943,7 +953,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-04-10"
     },
     {
       "strategy_id": "CloseVWAP-MNQ-Long",
@@ -982,7 +993,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "TTMSqueeze-MNQ-Short",
@@ -1021,7 +1033,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "TTMSqueeze-MGC-Long",
@@ -1060,7 +1073,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "ICT-010-Sweep",
@@ -1093,7 +1107,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "ICT-011-LiqSweep",
@@ -1126,7 +1141,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "ATRComp-Multi",
@@ -1159,7 +1175,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "IBS-MR-M2K",
@@ -1191,7 +1208,8 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "test_date": "2026-04-06"
+      "test_date": "2026-04-06",
+      "created_date": "2026-04-06"
     },
     {
       "strategy_id": "ORB-VIX-Filter",
@@ -1222,7 +1240,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "NR7-Breakout",
@@ -1253,7 +1272,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "GapFill-M2K",
@@ -1284,7 +1304,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "PreFOMC-Drift",
@@ -1317,7 +1338,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "BBW-Percentile",
@@ -1348,7 +1370,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "DualThrust",
@@ -1379,7 +1402,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "VCP-Intraday",
@@ -1410,7 +1434,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "EventDay-MetaLayer",
@@ -1441,7 +1466,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "Russell-Reconstitution",
@@ -1472,7 +1498,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "ConsolidationBreakout",
@@ -1503,7 +1530,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "LiqGrab-StopRun",
@@ -1534,7 +1562,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "ICT-LiqSweep-V2",
@@ -1565,7 +1594,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "RVWAP-MR",
@@ -1598,7 +1628,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "VIXChannel-MES",
@@ -1631,7 +1662,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "ORION-VolBreakout",
@@ -1664,7 +1696,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "BBKC-Squeeze-Classic",
@@ -1697,7 +1730,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "RSI2-Bounce-M2K",
@@ -1731,7 +1765,8 @@
       "component_type": "full_strategy",
       "test_date": "2026-04-06",
       "salvage_lane": "long_only_regime_filtered",
-      "salvage_notes": "Long-only PF 1.39 / WR 66% has real signal. Short side (PF 0.97) is dead weight. 2020 catastrophe (PF 0.34) suggests regime gate or crash filter needed, not full rejection. Future test: strip short side, add vol regime or drawdown exclusion."
+      "salvage_notes": "Long-only PF 1.39 / WR 66% has real signal. Short side (PF 0.97) is dead weight. 2020 catastrophe (PF 0.34) suggests regime gate or crash filter needed, not full rejection. Future test: strip short side, add vol regime or drawdown exclusion.",
+      "created_date": "2026-04-06"
     },
     {
       "strategy_id": "HVPercentile-Expansion",
@@ -1764,7 +1799,8 @@
       },
       "component_type": "full_strategy",
       "rejection_reason": "insufficient_sample",
-      "test_date": "2026-04-06"
+      "test_date": "2026-04-06",
+      "created_date": "2026-04-06"
     },
     {
       "strategy_id": "ExtremeDonchian-Tail",
@@ -1795,7 +1831,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "IB-Breakout-Gold",
@@ -1826,7 +1863,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "SessionVWAPFade",
@@ -1859,7 +1897,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "SessionRevGold",
@@ -1892,7 +1931,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "CloseLiqSweep",
@@ -1925,7 +1965,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "CloseMomentum",
@@ -1958,7 +1999,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "GapMom",
@@ -2021,7 +2063,8 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "rejection_reason": "single_trade_concentration"
+      "rejection_reason": "single_trade_concentration",
+      "created_date": "2026-03-23"
     },
     {
       "strategy_id": "RangeExpansion",
@@ -2084,7 +2127,8 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "rejection_reason": "failed_dual_archetype_gates"
+      "rejection_reason": "failed_dual_archetype_gates",
+      "created_date": "2026-04-10"
     },
     {
       "strategy_id": "NG-MeanRev",
@@ -2115,7 +2159,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "YM-Trend",
@@ -2146,7 +2191,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "MCL-Breakout",
@@ -2177,7 +2223,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "IMC-Afternoon",
@@ -2210,7 +2257,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "NoiseBoundary-MNQ-Long",
@@ -2286,7 +2334,8 @@
         "timing": "All day",
         "asset_scope": "MNQ (equity index)",
         "validation_status": "validated"
-      }
+      },
+      "created_date": "2026-04-10"
     },
     {
       "strategy_id": "VWAPPullback-MES-Long",
@@ -2317,7 +2366,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "RussellORB-M2K-Long",
@@ -2350,7 +2400,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "KeltnerBreakout-M2K-Long",
@@ -2383,7 +2434,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "SPY-IWM-Spread",
@@ -2414,7 +2466,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "CL-VWAP-Bounce-Long",
@@ -2447,7 +2500,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "CL-ORB-Long",
@@ -2480,7 +2534,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "EIA-Inventory-Surprise",
@@ -2511,7 +2566,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "OPEX-Week-Long",
@@ -2542,7 +2598,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "MomPB-6J-Long-US",
@@ -2657,7 +2714,8 @@
         "timing": "US session 08:00-17:00 ET",
         "asset_scope": "6J (FX, Japanese Yen)",
         "validation_status": "validated"
-      }
+      },
+      "created_date": "2026-04-10"
     },
     {
       "strategy_id": "FXBreak-6J-Short-London",
@@ -2751,7 +2809,8 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "rejection_reason": "failed_dual_archetype_gates"
+      "rejection_reason": "failed_dual_archetype_gates",
+      "created_date": "2026-03-23"
     },
     {
       "strategy_id": "FXBreak-6E-Watchlist",
@@ -2790,7 +2849,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "FXBreak-6B-NoPriority",
@@ -2831,7 +2891,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "MomPB-6E-Long-US",
@@ -2896,7 +2957,8 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "rejection_reason": "failed_dual_archetype_gates"
+      "rejection_reason": "failed_dual_archetype_gates",
+      "created_date": "2026-04-10"
     },
     {
       "strategy_id": "DailyTrend-MGC-Long",
@@ -2990,7 +3052,8 @@
         "timing": "Daily close evaluation",
         "asset_scope": "MGC (metal)",
         "validation_status": "validated"
-      }
+      },
+      "created_date": "2026-04-10"
     },
     {
       "strategy_id": "FVG-Inversion-Signal",
@@ -3016,7 +3079,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "DualThrust-ZB-Short-Monitor",
@@ -3049,7 +3113,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "Treasury-2Y-FOMC-Momentum",
@@ -3081,7 +3146,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "FX-Carry-Trade",
@@ -3112,7 +3178,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "CrossCurrency-YieldCurve-Flattening",
@@ -3144,7 +3211,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "FX-PPP-Value",
@@ -3177,7 +3245,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "Treasury-12M-TSM",
@@ -3211,7 +3280,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "FX-Daily-Donchian-Breakout",
@@ -3244,7 +3314,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "FX-Asian-Session-Breakout",
@@ -3276,7 +3347,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "FX-ORB",
@@ -3308,7 +3380,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "Treasury-Curve-Drift-MR",
@@ -3342,7 +3415,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "PreFOMC-Drift-Equity",
@@ -3449,7 +3523,8 @@
         "asset_scope": "MNQ (equity index)",
         "validation_status": "validated"
       },
-      "rejection_reason": "concentration"
+      "rejection_reason": "concentration",
+      "created_date": "2026-04-06"
     },
     {
       "strategy_id": "Treasury-CPI-Day-Long",
@@ -3482,7 +3557,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "OPEX-Week-Effect",
@@ -3515,7 +3591,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "CPI-Reaction-Bias-Equity",
@@ -3547,7 +3624,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "EIA-30s-Box-Breakout-MCL",
@@ -3580,7 +3658,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "Equity-Overnight-Drift",
@@ -3612,7 +3691,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "Equity-Closing-Auction-Flow",
@@ -3644,7 +3724,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "Treasury-Roll-Microstructure",
@@ -3677,7 +3758,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "WTI-CMA-Roll-Structure",
@@ -3710,7 +3792,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "Gold-Overnight-Drift",
@@ -3743,7 +3826,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "TV-FOMC-Rate-Decision-Cycles",
@@ -3775,7 +3859,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "TV-NFP-High-Low-Levels",
@@ -3881,7 +3966,8 @@
         "timing": "Multi-day hold triggered by daily closes after NFP",
         "asset_scope": "MNQ (equity index)",
         "validation_status": "validated"
-      }
+      },
+      "created_date": "2026-04-10"
     },
     {
       "strategy_id": "TV-OPEX-Vanna-Charm-Windows",
@@ -3914,7 +4000,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "TV-CPI-15m-Expansion",
@@ -3946,7 +4033,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "TV-NFP-Price-Zones",
@@ -3978,7 +4066,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "TV-FOMC-Sweep-Reaction",
@@ -4010,7 +4099,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "TV-Larry-Oops-Gap-Reversal",
@@ -4042,7 +4132,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "TV-Session-Gap-Fill",
@@ -4074,7 +4165,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "TV-EOD-Sentiment-Flip",
@@ -4107,7 +4199,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "TV-Overnight-Gap-Analysis",
@@ -4139,7 +4232,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "TV-Gap-Filling-Strategy",
@@ -4171,7 +4265,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "TV-Gold-Bandwidth-Squeeze",
@@ -4203,7 +4298,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "TV-VIX-Term-Structure-Hedge",
@@ -4235,7 +4331,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "TV-VVIX-VIX-Divergence-Regime",
@@ -4267,7 +4364,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "TV-Crude-OVX-Regime-Shift",
@@ -4300,7 +4398,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "TV-Treasury-Macro-Vol-Targeting",
@@ -4333,7 +4432,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "THEME-VolGated-Structural-Intraday",
@@ -4366,7 +4466,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "THEME-Mechanical-Market-Structure",
@@ -4398,7 +4499,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "THEME-Exit-Architecture-First",
@@ -4430,7 +4532,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "Commodity-TermStructure-Carry-EnergyMetals",
@@ -4487,7 +4590,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-04-10"
     },
     {
       "strategy_id": "ManagedFutures-Carry-Diversified",
@@ -4527,7 +4631,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "VolManaged-EquityIndex-Futures",
@@ -4637,7 +4742,8 @@
             "Crisis periods (COVID, 2022) \u2014 reduces position but still holds long"
           ]
         }
-      ]
+      ],
+      "created_date": "2026-04-10"
     },
     {
       "strategy_id": "Commodity-Carry-TailRisk-Overlay",
@@ -4672,7 +4778,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "Treasury-CashFutures-Basis-NetOfCarry",
@@ -4707,7 +4814,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "Treasury-Rolldown-Carry-Spread",
@@ -4818,7 +4926,8 @@
             "2025-2026 segment was negative (-$15K equal-notional)"
           ]
         }
-      ]
+      ],
+      "created_date": "2026-04-10"
     },
     {
       "strategy_id": "CrudeOil-OPEC-Announcement-Regime",
@@ -4853,7 +4962,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "Overnight-Z-VolRatio-OpenDrive",
@@ -4943,7 +5053,8 @@
             "MES/MNQ morning"
           ]
         }
-      ]
+      ],
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "Treasury-Cash-Close-Reversion-Window",
@@ -5032,7 +5143,8 @@
           ],
           "failure_contexts": []
         }
-      ]
+      ],
+      "created_date": "2026-03-15"
     },
     {
       "strategy_id": "ZN-Afternoon-Reversion",
@@ -5201,7 +5313,8 @@
             "LOW_VOL regime (PF 1.04 \u2014 barely positive)"
           ]
         }
-      ]
+      ],
+      "created_date": "2026-04-10"
     },
     {
       "strategy_id": "XB-ORB-EMA-Ladder-MNQ",
@@ -5269,7 +5382,8 @@
           "trigger": "Recovery: score=0.68, HL=HEALTHY"
         }
       ],
-      "state_entered_date": "2026-04-07"
+      "state_entered_date": "2026-04-07",
+      "created_date": "2026-04-06"
     },
     {
       "strategy_id": "XB-ORB-EMA-Ladder-MCL",
@@ -5328,7 +5442,8 @@
       "health_status": "FAIL",
       "genome_cluster": "unknown",
       "resurrection_flag": false,
-      "state_history": []
+      "state_history": [],
+      "created_date": "2026-04-08"
     },
     {
       "strategy_id": "XB-ORB-EMA-Ladder-MYM",
@@ -5365,7 +5480,8 @@
         "conviction_threshold_outside": 2,
         "priority": 8
       },
-      "notes": "PROMOTED 2026-04-13 via autocorrelation doctrine + sanity backtest. MYM has POSITIVE 5-min autocorrelation (+0.015), strongest of all assets. PF 1.67, 340 trades on 2y data \u2014 highest raw PF but short data window. All 3 calendar periods profitable (2024 PF 1.39, 2025 PF 1.91, 2026 PF 1.45). Year-exclusion: PF 1.40 without best year (edge survives). Profile matches MNQ exactly: 304 min hold, 14 trades/month, 137d max DD. CAUTION: 2-year data window means concentration is elevated (top-3 32%, top-10 61%). Monitor closely as data accumulates. Tail-engine gates fired on data-length artifacts, not structural edge failure."
+      "notes": "PROMOTED 2026-04-13 via autocorrelation doctrine + sanity backtest. MYM has POSITIVE 5-min autocorrelation (+0.015), strongest of all assets. PF 1.67, 340 trades on 2y data \u2014 highest raw PF but short data window. All 3 calendar periods profitable (2024 PF 1.39, 2025 PF 1.91, 2026 PF 1.45). Year-exclusion: PF 1.40 without best year (edge survives). Profile matches MNQ exactly: 304 min hold, 14 trades/month, 137d max DD. CAUTION: 2-year data window means concentration is elevated (top-3 32%, top-10 61%). Monitor closely as data accumulates. Tail-engine gates fired on data-length artifacts, not structural edge failure.",
+      "created_date": "2026-04-13"
     }
   ],
   "_rejection_taxonomy": {
