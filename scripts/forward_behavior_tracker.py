@@ -207,6 +207,40 @@ def generate_report():
                 lines.append(f"    - {'; '.join(a['flags'])}")
         else:
             lines.append("  No behavioral flags.")
+
+        # Rolling drift scoreboard (append-only, compounds per trade)
+        if len(assessments) >= 2:
+            lines.append("")
+            lines.append("### Drift Scoreboard")
+            hold_times = [a["hold_min"] for a in assessments]
+            entry_hours = [a["entry_hour"] for a in assessments]
+            pnls = [a["pnl"] for a in assessments]
+
+            avg_hold = sum(hold_times) / len(hold_times)
+            hold_drift = avg_hold - profile["hold_min_median"]
+            hold_drift_pct = hold_drift / profile["hold_min_median"] * 100
+
+            avg_entry_hr = sum(entry_hours) / len(entry_hours)
+            entry_hr_drift = avg_entry_hr - profile["entry_hour_mode"]
+
+            # Frequency: trades per calendar day
+            fwd_dates = pd.to_datetime(fwd["entry_time"])
+            if len(fwd_dates) > 1:
+                fwd_span_days = (fwd_dates.max() - fwd_dates.min()).days
+                fwd_freq = len(fwd) / max(fwd_span_days, 1) * 30.44
+            else:
+                fwd_freq = float("nan")
+
+            lines.append(f"  {'Metric':<25s} {'Forward':>10s} {'Backtest':>10s} {'Drift':>10s}")
+            lines.append(f"  {'-'*25} {'-'*10} {'-'*10} {'-'*10}")
+            lines.append(f"  {'Avg hold (min)':<25s} {avg_hold:>10.0f} {profile['hold_min_median']:>10.0f} {hold_drift_pct:>+9.0f}%")
+            lines.append(f"  {'Avg entry hour':<25s} {avg_entry_hr:>10.1f} {profile['entry_hour_mode']:>10d} {entry_hr_drift:>+10.1f}")
+            lines.append(f"  {'Win rate':<25s} {fwd_wr*100:>9.0f}% {profile['wr']*100:>9.0f}% {(fwd_wr-profile['wr'])*100:>+9.0f}pp")
+            lines.append(f"  {'Long%':<25s} {fwd_long_frac*100:>9.0f}% {profile['long_frac']*100:>9.0f}% {(fwd_long_frac-profile['long_frac'])*100:>+9.0f}pp")
+            if not pd.isna(fwd_freq):
+                lines.append(f"  {'Trades/month':<25s} {fwd_freq:>10.1f} {'~14':>10s} {'—':>10s}")
+            lines.append("")
+            lines.append("  *Drift is expected to be noisy with <20 trades. Track trend, not level.*")
         lines.append("")
 
     # Overall verdict

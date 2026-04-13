@@ -935,6 +935,7 @@ COMMANDS = {
     "throughput": lambda: _py("throughput_audit.py", "--save"),
     "screen": lambda: _run(["python3", str(ROOT / "research" / "mass_screen.py"), "--report"]),
     "behavior": lambda: _py("forward_behavior_tracker.py", "--save"),
+    "portfolio": lambda: _py("xb_orb_portfolio_monitor.py", "--save"),
     "help": cmd_help,
 }
 
