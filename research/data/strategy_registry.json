@@ -5323,6 +5323,43 @@
       "genome_cluster": "unknown",
       "resurrection_flag": false,
       "state_history": []
+    },
+    {
+      "strategy_id": "XB-ORB-EMA-Ladder-MYM",
+      "strategy_name": "xb_orb_ema_ladder",
+      "family": "crossbreed_breakout",
+      "asset": "MYM",
+      "session": "all_day",
+      "direction": "both",
+      "source": "internal_crossbreeding_cross_asset_extension",
+      "rule_summary": "ORB + EMA ladder crossbreed on Micro Dow. Same code as MNQ/MCL variant. stop_mult=2.0.",
+      "status": "probation",
+      "validation_score": 8.0,
+      "trades_6yr": 340,
+      "profit_factor": 1.67,
+      "portfolio_role": "workhorse",
+      "controller_action": "PROBATION",
+      "last_controller_date": "2026-04-13",
+      "promotion_date": "2026-04-13",
+      "baseline_params": {
+        "stop_mult": 2.0,
+        "target_mult": 4.0,
+        "trail_mult": 2.5
+      },
+      "execution_config": {
+        "preferred_window": [
+          "09:30",
+          "14:30"
+        ],
+        "allowed_window": [
+          "09:30",
+          "15:15"
+        ],
+        "conviction_threshold_inside": 2,
+        "conviction_threshold_outside": 2,
+        "priority": 8
+      },
+      "notes": "PROMOTED 2026-04-13 via autocorrelation doctrine + sanity backtest. MYM has POSITIVE 5-min autocorrelation (+0.015), strongest of all assets. PF 1.67, 340 trades on 2y data \u2014 highest raw PF but short data window. All 3 calendar periods profitable (2024 PF 1.39, 2025 PF 1.91, 2026 PF 1.45). Year-exclusion: PF 1.40 without best year (edge survives). Profile matches MNQ exactly: 304 min hold, 14 trades/month, 137d max DD. CAUTION: 2-year data window means concentration is elevated (top-3 32%, top-10 61%). Monitor closely as data accumulates. Tail-engine gates fired on data-length artifacts, not structural edge failure."
     }
   ],
   "_rejection_taxonomy": {

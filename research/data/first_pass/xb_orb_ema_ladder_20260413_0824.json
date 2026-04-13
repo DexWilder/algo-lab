@@ -1,0 +1,95 @@
+{
+  "strategy": "xb_orb_ema_ladder",
+  "run_date": "2026-04-13T08:22:04.755553",
+  "session_filter": null,
+  "asset_results": {
+    "MYM": {
+      "asset": "MYM",
+      "bars": 142036,
+      "modes": {
+        "both": {
+          "trades": 340,
+          "pnl": 7496.9,
+          "pf": 1.674,
+          "sharpe": 2.61,
+          "maxdd": 709.2,
+          "wr": 56.5,
+          "avg_pnl": 22.05,
+          "mode": "both",
+          "raw_signals": 340
+        },
+        "long": {
+          "trades": 211,
+          "pnl": 3585.86,
+          "pf": 1.595,
+          "sharpe": 2.15,
+          "maxdd": 937.96,
+          "wr": 58.8,
+          "avg_pnl": 16.99,
+          "mode": "long",
+          "raw_signals": 340
+        },
+        "short": {
+          "trades": 129,
+          "pnl": 3911.04,
+          "pf": 1.767,
+          "sharpe": 3.25,
+          "maxdd": 624.94,
+          "wr": 52.7,
+          "avg_pnl": 30.32,
+          "mode": "short",
+          "raw_signals": 340
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 173,
+          "pnl": 2441.98,
+          "pf": 1.484,
+          "sharpe": 2.28,
+          "maxdd": 709.2,
+          "wr": 55.5,
+          "avg_pnl": 14.12
+        },
+        "H2": {
+          "trades": 168,
+          "pnl": 5628.18,
+          "pf": 1.997,
+          "sharpe": 3.31,
+          "maxdd": 624.94,
+          "wr": 58.3,
+          "avg_pnl": 33.5
+        }
+      },
+      "concentration": {
+        "top3_share": 0.322,
+        "top5_share": 0.41,
+        "top10_share": 0.611,
+        "max_year_share": 0.722,
+        "median_trade": 12.51
+      },
+      "classification": "TAIL_ENGINE_REJECT",
+      "classification_reasons": [
+        "[tail-engine path \u2014 340 trades < 500 workhorse threshold]",
+        "positive instances 56% < 60%",
+        "single year 72% > 50%",
+        "instance CV 6.09 > 3.0",
+        "(stricter than workhorse verdict 'SALVAGE')"
+      ]
+    }
+  },
+  "best_result": {
+    "asset": "MYM",
+    "classification": "TAIL_ENGINE_REJECT",
+    "pf": 1.674,
+    "trades": 340
+  },
+  "overall_classification": "TAIL_ENGINE_REJECT",
+  "overall_reasons": [
+    "[tail-engine path \u2014 340 trades < 500 workhorse threshold]",
+    "positive instances 56% < 60%",
+    "single year 72% > 50%",
+    "instance CV 6.09 > 3.0",
+    "(stricter than workhorse verdict 'SALVAGE')"
+  ]
+}

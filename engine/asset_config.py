@@ -65,6 +65,18 @@ ASSETS = {
         "session": ("09:30", "16:00"),
         "status": "available",
     },
+    "MYM": {
+        "name": "Micro E-mini Dow Jones",
+        "asset_class": "equity_index",
+        "point_value": 0.50,
+        "tick_size": 1.0,
+        "commission_per_side": 0.62,
+        "slippage_ticks": 1,
+        "databento_symbol": "MYM.c.0",
+        "exchange": "CBOT",
+        "session": ("09:30", "16:00"),
+        "status": "available",
+    },
 
     # ── Metals ───────────────────────────────────────────────────────────
     "MGC": {
