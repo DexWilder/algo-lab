@@ -120,6 +120,35 @@ Friday review should show:
 
 ---
 
+## Promotion Engineering Checklist
+
+Before any strategy advances from probation to core with real capital,
+ALL of the following must be verified:
+
+| Gate | Current State | Required for Core |
+|------|--------------|-------------------|
+| **Forward evidence** | Paper batch (17:00 ET daily) | Same — evidence is valid |
+| **Intraday runner** | ❌ Not built | ✅ Required: processes new 5m bars during session, tracks last_processed timestamps, avoids duplicates, supports real-time signal alerting |
+| **Order routing** | ❌ Not built | ✅ Required: connects signals to broker API for execution |
+| **Position management** | ❌ Not built | ✅ Required: tracks open positions, prevents double-entry |
+| **Risk controls** | ❌ Not built | ✅ Required: max position size, daily loss limit, kill switch |
+
+**IMPORTANT:** The current once-daily batch runner at 17:00 ET is correct
+for paper forward evidence collection. It processes all 5-minute bars in
+sequence and produces identical signals/trades to real-time processing.
+The evidence quality is research-valid.
+
+However, the batch runner CANNOT be used for live execution — it processes
+bars after the fact, not at signal time. The intraday runner is a gated
+engineering requirement for core promotion, not a current deficiency.
+
+**Do not blur these layers:**
+- Research-valid evidence → current batch runner ✅
+- Paper-forward monitoring → current batch runner ✅
+- Live execution readiness → requires intraday runner ❌ (build when needed)
+
+---
+
 ## What This Framework Does NOT Cover
 
 - **Non-XB-ORB probation strategies** (DailyTrend-MGC, MomPB-6J, etc.)
