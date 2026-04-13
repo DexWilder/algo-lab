@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Afternoon Pullback + EMA Slope + Profit Ladder",
+    "gap": "afternoon/close session",
+    "entry_from": [
+      "NR7-Breakout",
+      "Russell-Reconstitution",
+      "CloseLiqSweep"
+    ],
+    "filter": "ema_slope (proven)",
+    "exit": "profit_ladder (proven)",
+    "rationale": "XB-ORB fires morning/midday. Afternoon is the biggest session gap. Use proven exit+filter with afternoon entry logic."
+  },
+  {
+    "name": "VWAP Pullback MR + Vol Filter + Trailing Stop",
+    "gap": "mean-reversion regime",
+    "entry_from": [
+      "XB-PB-EMA-MES-Short",
+      "BB-EQ-MGC-Long",
+      "PB-MGC-Short"
+    ],
+    "filter": "vol_filter (from vol_expansion family)",
+    "exit": "trailing_stop or midline_target",
+    "rationale": "XB-ORB is a trend/breakout strategy. A mean-reversion workhorse on the same assets would diversify regime exposure."
+  },
+  {
+    "name": "Vol Squeeze Breakout + Session Filter + Profit Ladder",
+    "gap": "non-ORB breakout mechanism",
+    "entry_from": [
+      "HVPercentile-Expansion",
+      "RangeExpansion"
+    ],
+    "filter": "session_morning or session_afternoon",
+    "exit": "profit_ladder (proven)",
+    "rationale": "Tests whether the proven exit (profit ladder) works with a different entry mechanism (squeeze vs ORB)."
+  },
+  {
+    "name": "Commodity-Specific Crossbreed",
+    "gap": "asset-specific component mixing",
+    "entry_from": [
+      "MCL-Breakout",
+      "EIA-30s-Box-Breakout-MCL"
+    ],
+    "filter": [
+      "PB-MGC-Short"
+    ],
+    "exit": "profit_ladder (proven)",
+    "rationale": "Test whether commodity-specific entry/filter components improve on generic XB-ORB when applied to their native asset."
+  }
+]

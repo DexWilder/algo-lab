@@ -98,7 +98,16 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-23"
+      "created_date": "2026-03-23",
+      "session_tag": "unclassified",
+      "regime_tag": "trending",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry",
+        "exit"
+      ],
+      "crossbreeding_eligible": true,
+      "why_not_now": "REDUNDANT"
     },
     {
       "strategy_id": "XB-PB-EMA-MES-Short",
@@ -198,7 +207,16 @@
         "asset_scope": "MES (equity index)",
         "validation_status": "validated"
       },
-      "created_date": "2026-04-10"
+      "created_date": "2026-04-10",
+      "session_tag": "unclassified",
+      "regime_tag": "unclassified",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry",
+        "exit",
+        "filter"
+      ],
+      "crossbreeding_eligible": true
     },
     {
       "strategy_id": "ORB-MGC-Long",
@@ -297,7 +315,14 @@
         "asset_scope": "MGC (metal)",
         "validation_status": "validated"
       },
-      "created_date": "2026-04-10"
+      "created_date": "2026-04-10",
+      "session_tag": "morning",
+      "regime_tag": "trending",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry"
+      ],
+      "crossbreeding_eligible": false
     },
     {
       "strategy_id": "Donchian-MNQ-Long-GRINDING",
@@ -397,7 +422,17 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-23"
+      "created_date": "2026-03-23",
+      "session_tag": "unclassified",
+      "regime_tag": "trending",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry",
+        "exit",
+        "filter"
+      ],
+      "crossbreeding_eligible": true,
+      "why_not_now": "cross_asset_failure_1_of_6"
     },
     {
       "strategy_id": "BB-EQ-MGC-Long",
@@ -498,7 +533,15 @@
         "validation_status": "validated"
       },
       "rejection_reason": "concentration_and_regime",
-      "created_date": "2026-04-06"
+      "created_date": "2026-04-06",
+      "session_tag": "all_day",
+      "regime_tag": "trending",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry"
+      ],
+      "crossbreeding_eligible": false,
+      "why_not_now": "concentration_and_regime"
     },
     {
       "strategy_id": "PB-MGC-Short",
@@ -598,7 +641,15 @@
         "asset_scope": "MGC (metal)",
         "validation_status": "validated"
       },
-      "created_date": "2026-04-10"
+      "created_date": "2026-04-10",
+      "session_tag": "unclassified",
+      "regime_tag": "trending",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry",
+        "filter"
+      ],
+      "crossbreeding_eligible": true
     },
     {
       "strategy_id": "MomIgn-M2K-Short",
@@ -676,7 +727,13 @@
       },
       "component_type": "full_strategy",
       "rejection_reason": "failed_dual_archetype_gates",
-      "created_date": "2026-03-23"
+      "created_date": "2026-03-23",
+      "session_tag": "unclassified",
+      "regime_tag": "trending",
+      "reusable_as_component": false,
+      "extractable_components": null,
+      "crossbreeding_eligible": false,
+      "why_not_now": "failed_dual_archetype_gates"
     },
     {
       "strategy_id": "CloseVWAP-M2K-Short",
@@ -747,7 +804,15 @@
       },
       "component_type": "full_strategy",
       "rejection_reason": "failed_dual_archetype_gates",
-      "created_date": "2026-03-23"
+      "created_date": "2026-03-23",
+      "session_tag": "afternoon_close",
+      "regime_tag": "mean_reverting",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "exit"
+      ],
+      "crossbreeding_eligible": false,
+      "why_not_now": "failed_dual_archetype_gates"
     },
     {
       "strategy_id": "TTMSqueeze-M2K-Short",
@@ -818,7 +883,15 @@
       },
       "component_type": "full_strategy",
       "rejection_reason": "failed_dual_archetype_gates",
-      "created_date": "2026-03-23"
+      "created_date": "2026-03-23",
+      "session_tag": "unclassified",
+      "regime_tag": "vol_expansion",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "exit"
+      ],
+      "crossbreeding_eligible": false,
+      "why_not_now": "failed_dual_archetype_gates"
     },
     {
       "strategy_id": "ORBEnh-M2K-Short",
@@ -891,7 +964,10 @@
       "extractable_components": [
         "filter"
       ],
-      "crossbreeding_eligible": false
+      "crossbreeding_eligible": false,
+      "session_tag": "morning",
+      "regime_tag": "unclassified",
+      "why_not_now": "deprioritized"
     },
     {
       "strategy_id": "VWAPMR-MCL-Short",
@@ -962,7 +1038,10 @@
       "created_date": "2026-04-10",
       "reusable_as_component": false,
       "extractable_components": null,
-      "crossbreeding_eligible": false
+      "crossbreeding_eligible": false,
+      "session_tag": "daily_plus",
+      "regime_tag": "mean_reverting",
+      "why_not_now": "deprioritized"
     },
     {
       "strategy_id": "CloseVWAP-MNQ-Long",
@@ -1002,7 +1081,13 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "session_tag": "afternoon_close",
+      "regime_tag": "mean_reverting",
+      "reusable_as_component": false,
+      "extractable_components": null,
+      "crossbreeding_eligible": false,
+      "why_not_now": "WALK_FORWARD_UNSTABLE"
     },
     {
       "strategy_id": "TTMSqueeze-MNQ-Short",
@@ -1042,7 +1127,13 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "session_tag": "unclassified",
+      "regime_tag": "vol_expansion",
+      "reusable_as_component": false,
+      "extractable_components": null,
+      "crossbreeding_eligible": false,
+      "why_not_now": "STRUCTURAL_LOSS"
     },
     {
       "strategy_id": "TTMSqueeze-MGC-Long",
@@ -1082,7 +1173,13 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "session_tag": "unclassified",
+      "regime_tag": "vol_expansion",
+      "reusable_as_component": false,
+      "extractable_components": null,
+      "crossbreeding_eligible": false,
+      "why_not_now": "STRUCTURAL_LOSS"
     },
     {
       "strategy_id": "ICT-010-Sweep",
@@ -1116,7 +1213,15 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "session_tag": "unclassified",
+      "regime_tag": "unclassified",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry"
+      ],
+      "crossbreeding_eligible": false,
+      "why_not_now": "ICT_FAMILY_FAILED"
     },
     {
       "strategy_id": "ICT-011-LiqSweep",
@@ -1150,7 +1255,13 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "session_tag": "unclassified",
+      "regime_tag": "unclassified",
+      "reusable_as_component": false,
+      "extractable_components": null,
+      "crossbreeding_eligible": false,
+      "why_not_now": "ICT_FAMILY_FAILED"
     },
     {
       "strategy_id": "ATRComp-Multi",
@@ -1184,7 +1295,15 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "session_tag": "unclassified",
+      "regime_tag": "unclassified",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry"
+      ],
+      "crossbreeding_eligible": false,
+      "why_not_now": "STRUCTURAL_LOSS"
     },
     {
       "strategy_id": "IBS-MR-M2K",
@@ -1217,7 +1336,15 @@
       },
       "component_type": "full_strategy",
       "test_date": "2026-04-06",
-      "created_date": "2026-04-06"
+      "created_date": "2026-04-06",
+      "session_tag": "morning",
+      "regime_tag": "mean_reverting",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry",
+        "exit"
+      ],
+      "crossbreeding_eligible": true
     },
     {
       "strategy_id": "ORB-VIX-Filter",
@@ -1252,7 +1379,15 @@
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
       "triage_reason": "data_blocked",
-      "triage_route": "defer_until_data_expansion_phase"
+      "triage_route": "defer_until_data_expansion_phase",
+      "session_tag": "morning",
+      "regime_tag": "unclassified",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "exit"
+      ],
+      "crossbreeding_eligible": false,
+      "why_not_now": "data_blocked"
     },
     {
       "strategy_id": "NR7-Breakout",
@@ -1287,7 +1422,16 @@
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
       "triage_reason": "convert_next",
-      "triage_route": "build_strategy_code_and_first_pass"
+      "triage_route": "build_strategy_code_and_first_pass",
+      "session_tag": "afternoon_close",
+      "regime_tag": "vol_expansion",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry",
+        "exit"
+      ],
+      "crossbreeding_eligible": true,
+      "why_not_now": "convert_next"
     },
     {
       "strategy_id": "GapFill-M2K",
@@ -1324,7 +1468,10 @@
       "triage_reason": "dead_closed_family_or_untestable",
       "reusable_as_component": false,
       "extractable_components": null,
-      "crossbreeding_eligible": false
+      "crossbreeding_eligible": false,
+      "session_tag": "overnight_international",
+      "regime_tag": "mean_reverting",
+      "why_not_now": "dead_closed_family_or_untestable"
     },
     {
       "strategy_id": "PreFOMC-Drift",
@@ -1358,7 +1505,16 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "session_tag": "overnight_international",
+      "regime_tag": "event",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry",
+        "exit"
+      ],
+      "crossbreeding_eligible": true,
+      "why_not_now": "SAMPLE_INSUFFICIENT"
     },
     {
       "strategy_id": "BBW-Percentile",
@@ -1393,7 +1549,16 @@
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
       "triage_reason": "convert_next",
-      "triage_route": "build_strategy_code_and_first_pass"
+      "triage_route": "build_strategy_code_and_first_pass",
+      "session_tag": "unclassified",
+      "regime_tag": "vol_expansion",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry",
+        "exit"
+      ],
+      "crossbreeding_eligible": true,
+      "why_not_now": "convert_next"
     },
     {
       "strategy_id": "DualThrust",
@@ -1428,7 +1593,13 @@
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
       "triage_reason": "convert_next",
-      "triage_route": "build_strategy_code_and_first_pass"
+      "triage_route": "build_strategy_code_and_first_pass",
+      "session_tag": "morning",
+      "regime_tag": "unclassified",
+      "reusable_as_component": false,
+      "extractable_components": null,
+      "crossbreeding_eligible": false,
+      "why_not_now": "convert_next"
     },
     {
       "strategy_id": "VCP-Intraday",
@@ -1463,7 +1634,15 @@
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
       "triage_reason": "convert_next",
-      "triage_route": "build_strategy_code_and_first_pass"
+      "triage_route": "build_strategy_code_and_first_pass",
+      "session_tag": "all_day",
+      "regime_tag": "unclassified",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry"
+      ],
+      "crossbreeding_eligible": false,
+      "why_not_now": "convert_next"
     },
     {
       "strategy_id": "EventDay-MetaLayer",
@@ -1502,7 +1681,10 @@
       "extractable_components": [
         "exit"
       ],
-      "crossbreeding_eligible": false
+      "crossbreeding_eligible": false,
+      "session_tag": "event_driven",
+      "regime_tag": "carry",
+      "why_not_now": "dead_closed_family_or_untestable"
     },
     {
       "strategy_id": "Russell-Reconstitution",
@@ -1541,7 +1723,10 @@
       "extractable_components": [
         "entry"
       ],
-      "crossbreeding_eligible": false
+      "crossbreeding_eligible": false,
+      "session_tag": "afternoon_close",
+      "regime_tag": "event",
+      "why_not_now": "dead_closed_family_or_untestable"
     },
     {
       "strategy_id": "ConsolidationBreakout",
@@ -1580,7 +1765,10 @@
       "extractable_components": [
         "entry"
       ],
-      "crossbreeding_eligible": false
+      "crossbreeding_eligible": false,
+      "session_tag": "unclassified",
+      "regime_tag": "vol_expansion",
+      "why_not_now": "dead_closed_family_or_untestable"
     },
     {
       "strategy_id": "LiqGrab-StopRun",
@@ -1619,7 +1807,10 @@
       "extractable_components": [
         "exit"
       ],
-      "crossbreeding_eligible": false
+      "crossbreeding_eligible": false,
+      "session_tag": "unclassified",
+      "regime_tag": "unclassified",
+      "why_not_now": "dead_closed_family_or_untestable"
     },
     {
       "strategy_id": "ICT-LiqSweep-V2",
@@ -1658,7 +1849,10 @@
       "extractable_components": [
         "entry"
       ],
-      "crossbreeding_eligible": false
+      "crossbreeding_eligible": false,
+      "session_tag": "unclassified",
+      "regime_tag": "unclassified",
+      "why_not_now": "dead_closed_family_or_untestable"
     },
     {
       "strategy_id": "RVWAP-MR",
@@ -1692,7 +1886,13 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "session_tag": "unclassified",
+      "regime_tag": "mean_reverting",
+      "reusable_as_component": false,
+      "extractable_components": null,
+      "crossbreeding_eligible": false,
+      "why_not_now": "STRUCTURAL_LOSS"
     },
     {
       "strategy_id": "VIXChannel-MES",
@@ -1726,7 +1926,13 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "session_tag": "unclassified",
+      "regime_tag": "trending",
+      "reusable_as_component": false,
+      "extractable_components": null,
+      "crossbreeding_eligible": false,
+      "why_not_now": "SAMPLE_INSUFFICIENT"
     },
     {
       "strategy_id": "ORION-VolBreakout",
@@ -1760,7 +1966,16 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "session_tag": "unclassified",
+      "regime_tag": "vol_expansion",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry",
+        "filter"
+      ],
+      "crossbreeding_eligible": true,
+      "why_not_now": "INSUFFICIENT_EDGE"
     },
     {
       "strategy_id": "BBKC-Squeeze-Classic",
@@ -1794,7 +2009,16 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "session_tag": "unclassified",
+      "regime_tag": "vol_expansion",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "exit",
+        "filter"
+      ],
+      "crossbreeding_eligible": true,
+      "why_not_now": "INSUFFICIENT_EDGE"
     },
     {
       "strategy_id": "RSI2-Bounce-M2K",
@@ -1829,7 +2053,14 @@
       "test_date": "2026-04-06",
       "salvage_lane": "long_only_regime_filtered",
       "salvage_notes": "Long-only PF 1.39 / WR 66% has real signal. Short side (PF 0.97) is dead weight. 2020 catastrophe (PF 0.34) suggests regime gate or crash filter needed, not full rejection. Future test: strip short side, add vol regime or drawdown exclusion.",
-      "created_date": "2026-04-06"
+      "created_date": "2026-04-06",
+      "session_tag": "daily_plus",
+      "regime_tag": "unclassified",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry"
+      ],
+      "crossbreeding_eligible": false
     },
     {
       "strategy_id": "HVPercentile-Expansion",
@@ -1863,7 +2094,15 @@
       "component_type": "full_strategy",
       "rejection_reason": "insufficient_sample",
       "test_date": "2026-04-06",
-      "created_date": "2026-04-06"
+      "created_date": "2026-04-06",
+      "session_tag": "unclassified",
+      "regime_tag": "vol_expansion",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry"
+      ],
+      "crossbreeding_eligible": false,
+      "why_not_now": "insufficient_sample"
     },
     {
       "strategy_id": "ExtremeDonchian-Tail",
@@ -1898,7 +2137,15 @@
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
       "triage_reason": "salvage",
-      "triage_route": "needs_spec_refinement_before_conversion"
+      "triage_route": "needs_spec_refinement_before_conversion",
+      "session_tag": "unclassified",
+      "regime_tag": "unclassified",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry"
+      ],
+      "crossbreeding_eligible": false,
+      "why_not_now": "salvage"
     },
     {
       "strategy_id": "IB-Breakout-Gold",
@@ -1933,7 +2180,15 @@
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
       "triage_reason": "convert_next",
-      "triage_route": "build_strategy_code_and_first_pass"
+      "triage_route": "build_strategy_code_and_first_pass",
+      "session_tag": "morning",
+      "regime_tag": "trending",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry"
+      ],
+      "crossbreeding_eligible": false,
+      "why_not_now": "convert_next"
     },
     {
       "strategy_id": "SessionVWAPFade",
@@ -1967,7 +2222,13 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "session_tag": "afternoon_close",
+      "regime_tag": "mean_reverting",
+      "reusable_as_component": false,
+      "extractable_components": null,
+      "crossbreeding_eligible": false,
+      "why_not_now": "STRUCTURAL_LOSS"
     },
     {
       "strategy_id": "SessionRevGold",
@@ -2001,7 +2262,15 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "session_tag": "afternoon_close",
+      "regime_tag": "mean_reverting",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "exit"
+      ],
+      "crossbreeding_eligible": false,
+      "why_not_now": "STRUCTURAL_LOSS"
     },
     {
       "strategy_id": "CloseLiqSweep",
@@ -2035,7 +2304,15 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "session_tag": "afternoon_close",
+      "regime_tag": "unclassified",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry"
+      ],
+      "crossbreeding_eligible": false,
+      "why_not_now": "INSUFFICIENT_EDGE"
     },
     {
       "strategy_id": "CloseMomentum",
@@ -2069,7 +2346,13 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "session_tag": "afternoon_close",
+      "regime_tag": "trending",
+      "reusable_as_component": false,
+      "extractable_components": null,
+      "crossbreeding_eligible": false,
+      "why_not_now": "IMPLEMENTATION_BUG"
     },
     {
       "strategy_id": "GapMom",
@@ -2133,7 +2416,13 @@
       },
       "component_type": "full_strategy",
       "rejection_reason": "single_trade_concentration",
-      "created_date": "2026-03-23"
+      "created_date": "2026-03-23",
+      "session_tag": "morning",
+      "regime_tag": "trending",
+      "reusable_as_component": false,
+      "extractable_components": null,
+      "crossbreeding_eligible": false,
+      "why_not_now": "single_trade_concentration"
     },
     {
       "strategy_id": "RangeExpansion",
@@ -2197,7 +2486,15 @@
       },
       "component_type": "full_strategy",
       "rejection_reason": "failed_dual_archetype_gates",
-      "created_date": "2026-04-10"
+      "created_date": "2026-04-10",
+      "session_tag": "daily_plus",
+      "regime_tag": "trending",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry"
+      ],
+      "crossbreeding_eligible": false,
+      "why_not_now": "failed_dual_archetype_gates"
     },
     {
       "strategy_id": "NG-MeanRev",
@@ -2232,7 +2529,13 @@
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
       "triage_reason": "data_blocked",
-      "triage_route": "defer_until_data_expansion_phase"
+      "triage_route": "defer_until_data_expansion_phase",
+      "session_tag": "unclassified",
+      "regime_tag": "mean_reverting",
+      "reusable_as_component": false,
+      "extractable_components": null,
+      "crossbreeding_eligible": false,
+      "why_not_now": "data_blocked"
     },
     {
       "strategy_id": "YM-Trend",
@@ -2267,7 +2570,13 @@
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
       "triage_reason": "salvage",
-      "triage_route": "needs_spec_refinement_before_conversion"
+      "triage_route": "needs_spec_refinement_before_conversion",
+      "session_tag": "unclassified",
+      "regime_tag": "trending",
+      "reusable_as_component": false,
+      "extractable_components": null,
+      "crossbreeding_eligible": false,
+      "why_not_now": "salvage"
     },
     {
       "strategy_id": "MCL-Breakout",
@@ -2302,7 +2611,15 @@
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
       "triage_reason": "salvage",
-      "triage_route": "needs_spec_refinement_before_conversion"
+      "triage_route": "needs_spec_refinement_before_conversion",
+      "session_tag": "morning",
+      "regime_tag": "unclassified",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry"
+      ],
+      "crossbreeding_eligible": false,
+      "why_not_now": "salvage"
     },
     {
       "strategy_id": "IMC-Afternoon",
@@ -2336,7 +2653,16 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "session_tag": "afternoon_close",
+      "regime_tag": "trending",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "exit",
+        "filter"
+      ],
+      "crossbreeding_eligible": true,
+      "why_not_now": "STRUCTURAL_LOSS"
     },
     {
       "strategy_id": "NoiseBoundary-MNQ-Long",
@@ -2418,7 +2744,10 @@
       "extractable_components": [
         "exit"
       ],
-      "crossbreeding_eligible": false
+      "crossbreeding_eligible": false,
+      "session_tag": "morning",
+      "regime_tag": "unclassified",
+      "why_not_now": "forward_evidence_failing"
     },
     {
       "strategy_id": "VWAPPullback-MES-Long",
@@ -2453,7 +2782,16 @@
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
       "triage_reason": "convert_next",
-      "triage_route": "build_strategy_code_and_first_pass"
+      "triage_route": "build_strategy_code_and_first_pass",
+      "session_tag": "afternoon_close",
+      "regime_tag": "unclassified",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry",
+        "exit"
+      ],
+      "crossbreeding_eligible": true,
+      "why_not_now": "convert_next"
     },
     {
       "strategy_id": "RussellORB-M2K-Long",
@@ -2487,7 +2825,16 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "session_tag": "morning",
+      "regime_tag": "unclassified",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry",
+        "exit"
+      ],
+      "crossbreeding_eligible": true,
+      "why_not_now": "STRUCTURAL_LOSS"
     },
     {
       "strategy_id": "KeltnerBreakout-M2K-Long",
@@ -2521,7 +2868,16 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "session_tag": "afternoon_close",
+      "regime_tag": "unclassified",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry",
+        "exit"
+      ],
+      "crossbreeding_eligible": true,
+      "why_not_now": "INSUFFICIENT_EDGE"
     },
     {
       "strategy_id": "SPY-IWM-Spread",
@@ -2556,7 +2912,15 @@
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
       "triage_reason": "salvage",
-      "triage_route": "needs_spec_refinement_before_conversion"
+      "triage_route": "needs_spec_refinement_before_conversion",
+      "session_tag": "afternoon_close",
+      "regime_tag": "mean_reverting",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "exit"
+      ],
+      "crossbreeding_eligible": false,
+      "why_not_now": "salvage"
     },
     {
       "strategy_id": "CL-VWAP-Bounce-Long",
@@ -2590,7 +2954,16 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "session_tag": "afternoon_close",
+      "regime_tag": "trending",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry",
+        "exit"
+      ],
+      "crossbreeding_eligible": true,
+      "why_not_now": "INSUFFICIENT_EDGE"
     },
     {
       "strategy_id": "CL-ORB-Long",
@@ -2624,7 +2997,15 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "session_tag": "morning",
+      "regime_tag": "unclassified",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "exit"
+      ],
+      "crossbreeding_eligible": false,
+      "why_not_now": "INSUFFICIENT_EDGE"
     },
     {
       "strategy_id": "EIA-Inventory-Surprise",
@@ -2659,7 +3040,15 @@
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
       "triage_reason": "salvage",
-      "triage_route": "needs_spec_refinement_before_conversion"
+      "triage_route": "needs_spec_refinement_before_conversion",
+      "session_tag": "afternoon_close",
+      "regime_tag": "event",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "exit"
+      ],
+      "crossbreeding_eligible": false,
+      "why_not_now": "salvage"
     },
     {
       "strategy_id": "OPEX-Week-Long",
@@ -2694,7 +3083,16 @@
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
       "triage_reason": "salvage",
-      "triage_route": "needs_spec_refinement_before_conversion"
+      "triage_route": "needs_spec_refinement_before_conversion",
+      "session_tag": "morning",
+      "regime_tag": "event",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry",
+        "exit"
+      ],
+      "crossbreeding_eligible": true,
+      "why_not_now": "salvage"
     },
     {
       "strategy_id": "MomPB-6J-Long-US",
@@ -2816,7 +3214,10 @@
         "entry",
         "filter"
       ],
-      "crossbreeding_eligible": true
+      "crossbreeding_eligible": true,
+      "session_tag": "overnight_international",
+      "regime_tag": "trending",
+      "why_not_now": "deprioritized"
     },
     {
       "strategy_id": "FXBreak-6J-Short-London",
@@ -2911,7 +3312,17 @@
       },
       "component_type": "full_strategy",
       "rejection_reason": "failed_dual_archetype_gates",
-      "created_date": "2026-03-23"
+      "created_date": "2026-03-23",
+      "session_tag": "morning",
+      "regime_tag": "carry",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry",
+        "exit",
+        "filter"
+      ],
+      "crossbreeding_eligible": true,
+      "why_not_now": "failed_dual_archetype_gates"
     },
     {
       "strategy_id": "FXBreak-6E-Watchlist",
@@ -2958,7 +3369,10 @@
       "extractable_components": [
         "entry"
       ],
-      "crossbreeding_eligible": false
+      "crossbreeding_eligible": false,
+      "session_tag": "unclassified",
+      "regime_tag": "unclassified",
+      "why_not_now": "duplicate_of_tested_strategy"
     },
     {
       "strategy_id": "FXBreak-6B-NoPriority",
@@ -3000,7 +3414,15 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "session_tag": "unclassified",
+      "regime_tag": "unclassified",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry"
+      ],
+      "crossbreeding_eligible": false,
+      "why_not_now": "ASSET_MISMATCH"
     },
     {
       "strategy_id": "MomPB-6E-Long-US",
@@ -3066,7 +3488,15 @@
       },
       "component_type": "full_strategy",
       "rejection_reason": "failed_dual_archetype_gates",
-      "created_date": "2026-04-10"
+      "created_date": "2026-04-10",
+      "session_tag": "unclassified",
+      "regime_tag": "trending",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry"
+      ],
+      "crossbreeding_eligible": false,
+      "why_not_now": "failed_dual_archetype_gates"
     },
     {
       "strategy_id": "DailyTrend-MGC-Long",
@@ -3161,7 +3591,15 @@
         "asset_scope": "MGC (metal)",
         "validation_status": "validated"
       },
-      "created_date": "2026-04-10"
+      "created_date": "2026-04-10",
+      "session_tag": "daily_plus",
+      "regime_tag": "trending",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry",
+        "exit"
+      ],
+      "crossbreeding_eligible": true
     },
     {
       "strategy_id": "FVG-Inversion-Signal",
@@ -3196,7 +3634,10 @@
         "exit",
         "filter"
       ],
-      "crossbreeding_eligible": true
+      "crossbreeding_eligible": true,
+      "session_tag": "afternoon_close",
+      "regime_tag": "trending",
+      "why_not_now": "dead_closed_family_or_untestable"
     },
     {
       "strategy_id": "DualThrust-ZB-Short-Monitor",
@@ -3237,7 +3678,10 @@
       "extractable_components": [
         "entry"
       ],
-      "crossbreeding_eligible": false
+      "crossbreeding_eligible": false,
+      "session_tag": "daily_plus",
+      "regime_tag": "unclassified",
+      "why_not_now": "duplicate_of_tested_strategy"
     },
     {
       "strategy_id": "Treasury-2Y-FOMC-Momentum",
@@ -3273,7 +3717,13 @@
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
       "triage_reason": "data_blocked",
-      "triage_route": "defer_until_data_expansion_phase"
+      "triage_route": "defer_until_data_expansion_phase",
+      "session_tag": "daily_plus",
+      "regime_tag": "trending",
+      "reusable_as_component": false,
+      "extractable_components": null,
+      "crossbreeding_eligible": false,
+      "why_not_now": "data_blocked"
     },
     {
       "strategy_id": "FX-Carry-Trade",
@@ -3308,7 +3758,15 @@
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
       "triage_reason": "data_blocked",
-      "triage_route": "defer_until_data_expansion_phase"
+      "triage_route": "defer_until_data_expansion_phase",
+      "session_tag": "daily_plus",
+      "regime_tag": "carry",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "filter"
+      ],
+      "crossbreeding_eligible": false,
+      "why_not_now": "data_blocked"
     },
     {
       "strategy_id": "CrossCurrency-YieldCurve-Flattening",
@@ -3344,7 +3802,15 @@
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
       "triage_reason": "data_blocked",
-      "triage_route": "defer_until_data_expansion_phase"
+      "triage_route": "defer_until_data_expansion_phase",
+      "session_tag": "unclassified",
+      "regime_tag": "carry",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "exit"
+      ],
+      "crossbreeding_eligible": false,
+      "why_not_now": "data_blocked"
     },
     {
       "strategy_id": "FX-PPP-Value",
@@ -3381,7 +3847,13 @@
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
       "triage_reason": "data_blocked",
-      "triage_route": "defer_until_data_expansion_phase"
+      "triage_route": "defer_until_data_expansion_phase",
+      "session_tag": "event_driven",
+      "regime_tag": "trending",
+      "reusable_as_component": false,
+      "extractable_components": null,
+      "crossbreeding_eligible": false,
+      "why_not_now": "data_blocked"
     },
     {
       "strategy_id": "Treasury-12M-TSM",
@@ -3419,7 +3891,15 @@
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
       "triage_reason": "data_blocked",
-      "triage_route": "defer_until_data_expansion_phase"
+      "triage_route": "defer_until_data_expansion_phase",
+      "session_tag": "morning",
+      "regime_tag": "trending",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry"
+      ],
+      "crossbreeding_eligible": false,
+      "why_not_now": "data_blocked"
     },
     {
       "strategy_id": "FX-Daily-Donchian-Breakout",
@@ -3456,7 +3936,15 @@
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
       "triage_reason": "convert_next",
-      "triage_route": "build_strategy_code_and_first_pass"
+      "triage_route": "build_strategy_code_and_first_pass",
+      "session_tag": "morning",
+      "regime_tag": "trending",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry"
+      ],
+      "crossbreeding_eligible": false,
+      "why_not_now": "convert_next"
     },
     {
       "strategy_id": "FX-Asian-Session-Breakout",
@@ -3492,7 +3980,15 @@
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
       "triage_reason": "convert_next",
-      "triage_route": "build_strategy_code_and_first_pass"
+      "triage_route": "build_strategy_code_and_first_pass",
+      "session_tag": "morning",
+      "regime_tag": "unclassified",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry"
+      ],
+      "crossbreeding_eligible": false,
+      "why_not_now": "convert_next"
     },
     {
       "strategy_id": "FX-ORB",
@@ -3528,7 +4024,15 @@
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
       "triage_reason": "salvage",
-      "triage_route": "needs_spec_refinement_before_conversion"
+      "triage_route": "needs_spec_refinement_before_conversion",
+      "session_tag": "morning",
+      "regime_tag": "unclassified",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry"
+      ],
+      "crossbreeding_eligible": false,
+      "why_not_now": "salvage"
     },
     {
       "strategy_id": "Treasury-Curve-Drift-MR",
@@ -3566,7 +4070,15 @@
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
       "triage_reason": "data_blocked",
-      "triage_route": "defer_until_data_expansion_phase"
+      "triage_route": "defer_until_data_expansion_phase",
+      "session_tag": "morning",
+      "regime_tag": "trending",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "exit"
+      ],
+      "crossbreeding_eligible": false,
+      "why_not_now": "data_blocked"
     },
     {
       "strategy_id": "PreFOMC-Drift-Equity",
@@ -3674,7 +4186,15 @@
         "validation_status": "validated"
       },
       "rejection_reason": "concentration",
-      "created_date": "2026-04-06"
+      "created_date": "2026-04-06",
+      "session_tag": "event_driven",
+      "regime_tag": "trending",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "exit"
+      ],
+      "crossbreeding_eligible": false,
+      "why_not_now": "concentration"
     },
     {
       "strategy_id": "Treasury-CPI-Day-Long",
@@ -3713,7 +4233,10 @@
       "triage_reason": "duplicate_of_tested_strategy",
       "reusable_as_component": false,
       "extractable_components": null,
-      "crossbreeding_eligible": false
+      "crossbreeding_eligible": false,
+      "session_tag": "event_driven",
+      "regime_tag": "event",
+      "why_not_now": "duplicate_of_tested_strategy"
     },
     {
       "strategy_id": "OPEX-Week-Effect",
@@ -3750,7 +4273,15 @@
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
       "triage_reason": "salvage",
-      "triage_route": "needs_spec_refinement_before_conversion"
+      "triage_route": "needs_spec_refinement_before_conversion",
+      "session_tag": "daily_plus",
+      "regime_tag": "event",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "exit"
+      ],
+      "crossbreeding_eligible": false,
+      "why_not_now": "salvage"
     },
     {
       "strategy_id": "CPI-Reaction-Bias-Equity",
@@ -3786,7 +4317,13 @@
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
       "triage_reason": "data_blocked",
-      "triage_route": "defer_until_data_expansion_phase"
+      "triage_route": "defer_until_data_expansion_phase",
+      "session_tag": "event_driven",
+      "regime_tag": "trending",
+      "reusable_as_component": false,
+      "extractable_components": null,
+      "crossbreeding_eligible": false,
+      "why_not_now": "data_blocked"
     },
     {
       "strategy_id": "EIA-30s-Box-Breakout-MCL",
@@ -3823,7 +4360,15 @@
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
       "triage_reason": "data_blocked",
-      "triage_route": "defer_until_data_expansion_phase"
+      "triage_route": "defer_until_data_expansion_phase",
+      "session_tag": "event_driven",
+      "regime_tag": "event",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry"
+      ],
+      "crossbreeding_eligible": false,
+      "why_not_now": "data_blocked"
     },
     {
       "strategy_id": "Equity-Overnight-Drift",
@@ -3863,7 +4408,10 @@
       "extractable_components": [
         "entry"
       ],
-      "crossbreeding_eligible": false
+      "crossbreeding_eligible": false,
+      "session_tag": "morning",
+      "regime_tag": "trending",
+      "why_not_now": "dead_closed_family_or_untestable"
     },
     {
       "strategy_id": "Equity-Closing-Auction-Flow",
@@ -3901,7 +4449,10 @@
       "triage_reason": "dead_closed_family_or_untestable",
       "reusable_as_component": false,
       "extractable_components": null,
-      "crossbreeding_eligible": false
+      "crossbreeding_eligible": false,
+      "session_tag": "afternoon_close",
+      "regime_tag": "unclassified",
+      "why_not_now": "dead_closed_family_or_untestable"
     },
     {
       "strategy_id": "Treasury-Roll-Microstructure",
@@ -3938,7 +4489,13 @@
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
       "triage_reason": "data_blocked",
-      "triage_route": "defer_until_data_expansion_phase"
+      "triage_route": "defer_until_data_expansion_phase",
+      "session_tag": "unclassified",
+      "regime_tag": "vol_expansion",
+      "reusable_as_component": false,
+      "extractable_components": null,
+      "crossbreeding_eligible": false,
+      "why_not_now": "data_blocked"
     },
     {
       "strategy_id": "WTI-CMA-Roll-Structure",
@@ -3975,7 +4532,13 @@
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
       "triage_reason": "data_blocked",
-      "triage_route": "defer_until_data_expansion_phase"
+      "triage_route": "defer_until_data_expansion_phase",
+      "session_tag": "all_day",
+      "regime_tag": "carry",
+      "reusable_as_component": false,
+      "extractable_components": null,
+      "crossbreeding_eligible": false,
+      "why_not_now": "data_blocked"
     },
     {
       "strategy_id": "Gold-Overnight-Drift",
@@ -4016,7 +4579,10 @@
       "extractable_components": [
         "entry"
       ],
-      "crossbreeding_eligible": false
+      "crossbreeding_eligible": false,
+      "session_tag": "morning",
+      "regime_tag": "carry",
+      "why_not_now": "dead_closed_family_or_untestable"
     },
     {
       "strategy_id": "TV-FOMC-Rate-Decision-Cycles",
@@ -4054,7 +4620,10 @@
       "triage_reason": "dead_closed_family_or_untestable",
       "reusable_as_component": false,
       "extractable_components": null,
-      "crossbreeding_eligible": false
+      "crossbreeding_eligible": false,
+      "session_tag": "event_driven",
+      "regime_tag": "event",
+      "why_not_now": "dead_closed_family_or_untestable"
     },
     {
       "strategy_id": "TV-NFP-High-Low-Levels",
@@ -4161,7 +4730,12 @@
         "asset_scope": "MNQ (equity index)",
         "validation_status": "validated"
       },
-      "created_date": "2026-04-10"
+      "created_date": "2026-04-10",
+      "session_tag": "daily_plus",
+      "regime_tag": "trending",
+      "reusable_as_component": false,
+      "extractable_components": null,
+      "crossbreeding_eligible": false
     },
     {
       "strategy_id": "TV-OPEX-Vanna-Charm-Windows",
@@ -4200,7 +4774,10 @@
       "triage_reason": "dead_closed_family_or_untestable",
       "reusable_as_component": false,
       "extractable_components": null,
-      "crossbreeding_eligible": false
+      "crossbreeding_eligible": false,
+      "session_tag": "event_driven",
+      "regime_tag": "event",
+      "why_not_now": "dead_closed_family_or_untestable"
     },
     {
       "strategy_id": "TV-CPI-15m-Expansion",
@@ -4236,7 +4813,13 @@
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
       "triage_reason": "data_blocked",
-      "triage_route": "defer_until_data_expansion_phase"
+      "triage_route": "defer_until_data_expansion_phase",
+      "session_tag": "event_driven",
+      "regime_tag": "trending",
+      "reusable_as_component": false,
+      "extractable_components": null,
+      "crossbreeding_eligible": false,
+      "why_not_now": "data_blocked"
     },
     {
       "strategy_id": "TV-NFP-Price-Zones",
@@ -4272,7 +4855,13 @@
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
       "triage_reason": "data_blocked",
-      "triage_route": "defer_until_data_expansion_phase"
+      "triage_route": "defer_until_data_expansion_phase",
+      "session_tag": "event_driven",
+      "regime_tag": "event",
+      "reusable_as_component": false,
+      "extractable_components": null,
+      "crossbreeding_eligible": false,
+      "why_not_now": "data_blocked"
     },
     {
       "strategy_id": "TV-FOMC-Sweep-Reaction",
@@ -4308,7 +4897,13 @@
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
       "triage_reason": "data_blocked",
-      "triage_route": "defer_until_data_expansion_phase"
+      "triage_route": "defer_until_data_expansion_phase",
+      "session_tag": "event_driven",
+      "regime_tag": "mean_reverting",
+      "reusable_as_component": false,
+      "extractable_components": null,
+      "crossbreeding_eligible": false,
+      "why_not_now": "data_blocked"
     },
     {
       "strategy_id": "TV-Larry-Oops-Gap-Reversal",
@@ -4346,7 +4941,10 @@
       "triage_reason": "dead_closed_family_or_untestable",
       "reusable_as_component": false,
       "extractable_components": null,
-      "crossbreeding_eligible": false
+      "crossbreeding_eligible": false,
+      "session_tag": "morning",
+      "regime_tag": "mean_reverting",
+      "why_not_now": "dead_closed_family_or_untestable"
     },
     {
       "strategy_id": "TV-Session-Gap-Fill",
@@ -4386,7 +4984,10 @@
       "extractable_components": [
         "exit"
       ],
-      "crossbreeding_eligible": false
+      "crossbreeding_eligible": false,
+      "session_tag": "unclassified",
+      "regime_tag": "trending",
+      "why_not_now": "dead_closed_family_or_untestable"
     },
     {
       "strategy_id": "TV-EOD-Sentiment-Flip",
@@ -4423,7 +5024,13 @@
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
       "triage_reason": "convert_next",
-      "triage_route": "build_strategy_code_and_first_pass"
+      "triage_route": "build_strategy_code_and_first_pass",
+      "session_tag": "afternoon_close",
+      "regime_tag": "trending",
+      "reusable_as_component": false,
+      "extractable_components": null,
+      "crossbreeding_eligible": false,
+      "why_not_now": "convert_next"
     },
     {
       "strategy_id": "TV-Overnight-Gap-Analysis",
@@ -4461,7 +5068,10 @@
       "triage_reason": "dead_closed_family_or_untestable",
       "reusable_as_component": false,
       "extractable_components": null,
-      "crossbreeding_eligible": false
+      "crossbreeding_eligible": false,
+      "session_tag": "overnight_international",
+      "regime_tag": "unclassified",
+      "why_not_now": "dead_closed_family_or_untestable"
     },
     {
       "strategy_id": "TV-Gap-Filling-Strategy",
@@ -4499,7 +5109,10 @@
       "triage_reason": "dead_closed_family_or_untestable",
       "reusable_as_component": false,
       "extractable_components": null,
-      "crossbreeding_eligible": false
+      "crossbreeding_eligible": false,
+      "session_tag": "unclassified",
+      "regime_tag": "unclassified",
+      "why_not_now": "dead_closed_family_or_untestable"
     },
     {
       "strategy_id": "TV-Gold-Bandwidth-Squeeze",
@@ -4535,7 +5148,15 @@
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
       "triage_reason": "salvage",
-      "triage_route": "needs_spec_refinement_before_conversion"
+      "triage_route": "needs_spec_refinement_before_conversion",
+      "session_tag": "unclassified",
+      "regime_tag": "vol_expansion",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry"
+      ],
+      "crossbreeding_eligible": false,
+      "why_not_now": "salvage"
     },
     {
       "strategy_id": "TV-VIX-Term-Structure-Hedge",
@@ -4571,7 +5192,15 @@
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
       "triage_reason": "data_blocked",
-      "triage_route": "defer_until_data_expansion_phase"
+      "triage_route": "defer_until_data_expansion_phase",
+      "session_tag": "unclassified",
+      "regime_tag": "carry",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "filter"
+      ],
+      "crossbreeding_eligible": false,
+      "why_not_now": "data_blocked"
     },
     {
       "strategy_id": "TV-VVIX-VIX-Divergence-Regime",
@@ -4607,7 +5236,15 @@
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
       "triage_reason": "data_blocked",
-      "triage_route": "defer_until_data_expansion_phase"
+      "triage_route": "defer_until_data_expansion_phase",
+      "session_tag": "unclassified",
+      "regime_tag": "unclassified",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "filter"
+      ],
+      "crossbreeding_eligible": false,
+      "why_not_now": "data_blocked"
     },
     {
       "strategy_id": "TV-Crude-OVX-Regime-Shift",
@@ -4644,7 +5281,15 @@
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
       "triage_reason": "data_blocked",
-      "triage_route": "defer_until_data_expansion_phase"
+      "triage_route": "defer_until_data_expansion_phase",
+      "session_tag": "unclassified",
+      "regime_tag": "vol_expansion",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "filter"
+      ],
+      "crossbreeding_eligible": false,
+      "why_not_now": "data_blocked"
     },
     {
       "strategy_id": "TV-Treasury-Macro-Vol-Targeting",
@@ -4681,7 +5326,16 @@
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
       "triage_reason": "data_blocked",
-      "triage_route": "defer_until_data_expansion_phase"
+      "triage_route": "defer_until_data_expansion_phase",
+      "session_tag": "unclassified",
+      "regime_tag": "unclassified",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "exit",
+        "filter"
+      ],
+      "crossbreeding_eligible": true,
+      "why_not_now": "data_blocked"
     },
     {
       "strategy_id": "THEME-VolGated-Structural-Intraday",
@@ -4718,7 +5372,15 @@
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
       "triage_reason": "convert_next",
-      "triage_route": "build_strategy_code_and_first_pass"
+      "triage_route": "build_strategy_code_and_first_pass",
+      "session_tag": "morning",
+      "regime_tag": "mean_reverting",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "filter"
+      ],
+      "crossbreeding_eligible": false,
+      "why_not_now": "convert_next"
     },
     {
       "strategy_id": "THEME-Mechanical-Market-Structure",
@@ -4759,7 +5421,10 @@
         "entry",
         "exit"
       ],
-      "crossbreeding_eligible": true
+      "crossbreeding_eligible": true,
+      "session_tag": "all_day",
+      "regime_tag": "mean_reverting",
+      "why_not_now": "dead_closed_family_or_untestable"
     },
     {
       "strategy_id": "THEME-Exit-Architecture-First",
@@ -4800,7 +5465,10 @@
         "entry",
         "exit"
       ],
-      "crossbreeding_eligible": true
+      "crossbreeding_eligible": true,
+      "session_tag": "unclassified",
+      "regime_tag": "unclassified",
+      "why_not_now": "dead_closed_family_or_untestable"
     },
     {
       "strategy_id": "Commodity-TermStructure-Carry-EnergyMetals",
@@ -4861,7 +5529,10 @@
       "created_date": "2026-04-10",
       "reusable_as_component": false,
       "extractable_components": null,
-      "crossbreeding_eligible": false
+      "crossbreeding_eligible": false,
+      "session_tag": "daily_plus",
+      "regime_tag": "trending",
+      "why_not_now": "deprioritized"
     },
     {
       "strategy_id": "ManagedFutures-Carry-Diversified",
@@ -4905,7 +5576,13 @@
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
       "triage_reason": "salvage",
-      "triage_route": "needs_spec_refinement_before_conversion"
+      "triage_route": "needs_spec_refinement_before_conversion",
+      "session_tag": "unclassified",
+      "regime_tag": "carry",
+      "reusable_as_component": false,
+      "extractable_components": null,
+      "crossbreeding_eligible": false,
+      "why_not_now": "salvage"
     },
     {
       "strategy_id": "VolManaged-EquityIndex-Futures",
@@ -5016,7 +5693,12 @@
           ]
         }
       ],
-      "created_date": "2026-04-10"
+      "created_date": "2026-04-10",
+      "session_tag": "daily_plus",
+      "regime_tag": "unclassified",
+      "reusable_as_component": false,
+      "extractable_components": null,
+      "crossbreeding_eligible": false
     },
     {
       "strategy_id": "Commodity-Carry-TailRisk-Overlay",
@@ -5055,7 +5737,15 @@
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
       "triage_reason": "data_blocked",
-      "triage_route": "defer_until_data_expansion_phase"
+      "triage_route": "defer_until_data_expansion_phase",
+      "session_tag": "unclassified",
+      "regime_tag": "carry",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "filter"
+      ],
+      "crossbreeding_eligible": false,
+      "why_not_now": "data_blocked"
     },
     {
       "strategy_id": "Treasury-CashFutures-Basis-NetOfCarry",
@@ -5094,7 +5784,15 @@
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
       "triage_reason": "data_blocked",
-      "triage_route": "defer_until_data_expansion_phase"
+      "triage_route": "defer_until_data_expansion_phase",
+      "session_tag": "unclassified",
+      "regime_tag": "carry",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry"
+      ],
+      "crossbreeding_eligible": false,
+      "why_not_now": "data_blocked"
     },
     {
       "strategy_id": "Treasury-Rolldown-Carry-Spread",
@@ -5209,7 +5907,10 @@
       "created_date": "2026-04-10",
       "reusable_as_component": false,
       "extractable_components": null,
-      "crossbreeding_eligible": false
+      "crossbreeding_eligible": false,
+      "session_tag": "daily_plus",
+      "regime_tag": "trending",
+      "why_not_now": "structurally_broken"
     },
     {
       "strategy_id": "CrudeOil-OPEC-Announcement-Regime",
@@ -5248,7 +5949,15 @@
       "created_date": "2026-03-15",
       "triage_date": "2026-04-13",
       "triage_reason": "data_blocked",
-      "triage_route": "defer_until_data_expansion_phase"
+      "triage_route": "defer_until_data_expansion_phase",
+      "session_tag": "event_driven",
+      "regime_tag": "event",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "filter"
+      ],
+      "crossbreeding_eligible": false,
+      "why_not_now": "data_blocked"
     },
     {
       "strategy_id": "Overnight-Z-VolRatio-OpenDrive",
@@ -5339,7 +6048,14 @@
           ]
         }
       ],
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "session_tag": "morning",
+      "regime_tag": "trending",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "exit"
+      ],
+      "crossbreeding_eligible": false
     },
     {
       "strategy_id": "Treasury-Cash-Close-Reversion-Window",
@@ -5429,7 +6145,15 @@
           "failure_contexts": []
         }
       ],
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "session_tag": "afternoon_close",
+      "regime_tag": "mean_reverting",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry",
+        "exit"
+      ],
+      "crossbreeding_eligible": true
     },
     {
       "strategy_id": "ZN-Afternoon-Reversion",
@@ -5599,7 +6323,15 @@
           ]
         }
       ],
-      "created_date": "2026-04-10"
+      "created_date": "2026-04-10",
+      "session_tag": "afternoon_close",
+      "regime_tag": "mean_reverting",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "entry",
+        "exit"
+      ],
+      "crossbreeding_eligible": true
     },
     {
       "strategy_id": "XB-ORB-EMA-Ladder-MNQ",
@@ -5668,7 +6400,12 @@
         }
       ],
       "state_entered_date": "2026-04-07",
-      "created_date": "2026-04-06"
+      "created_date": "2026-04-06",
+      "session_tag": "morning",
+      "regime_tag": "unclassified",
+      "reusable_as_component": false,
+      "extractable_components": null,
+      "crossbreeding_eligible": false
     },
     {
       "strategy_id": "XB-ORB-EMA-Ladder-MCL",
@@ -5728,7 +6465,14 @@
       "genome_cluster": "unknown",
       "resurrection_flag": false,
       "state_history": [],
-      "created_date": "2026-04-08"
+      "created_date": "2026-04-08",
+      "session_tag": "morning",
+      "regime_tag": "carry",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "exit"
+      ],
+      "crossbreeding_eligible": false
     },
     {
       "strategy_id": "XB-ORB-EMA-Ladder-MYM",
@@ -5766,7 +6510,14 @@
         "priority": 8
       },
       "notes": "PROMOTED 2026-04-13 via autocorrelation doctrine + sanity backtest. MYM has POSITIVE 5-min autocorrelation (+0.015), strongest of all assets. PF 1.67, 340 trades on 2y data \u2014 highest raw PF but short data window. All 3 calendar periods profitable (2024 PF 1.39, 2025 PF 1.91, 2026 PF 1.45). Year-exclusion: PF 1.40 without best year (edge survives). Profile matches MNQ exactly: 304 min hold, 14 trades/month, 137d max DD. CAUTION: 2-year data window means concentration is elevated (top-3 32%, top-10 61%). Monitor closely as data accumulates. Tail-engine gates fired on data-length artifacts, not structural edge failure.",
-      "created_date": "2026-04-13"
+      "created_date": "2026-04-13",
+      "session_tag": "morning",
+      "regime_tag": "unclassified",
+      "reusable_as_component": true,
+      "extractable_components": [
+        "exit"
+      ],
+      "crossbreeding_eligible": false
     }
   ],
   "_rejection_taxonomy": {
