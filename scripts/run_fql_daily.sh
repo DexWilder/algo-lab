@@ -98,6 +98,8 @@ log "--- XB-ORB forward behavior tracker ---"
 python3 scripts/forward_behavior_tracker.py --save >> "$LOG_FILE" 2>&1 || true
 log "--- Probation health audit ---"
 python3 scripts/probation_health_audit.py --save >> "$LOG_FILE" 2>&1 || true
+log "--- Doctrine integrity (daily) ---"
+python3 scripts/doctrine_integrity_check.py --daily --save >> "$LOG_FILE" 2>&1 || true
 
 # Clean old per-run logs (keep 30 days)
 find "$LOG_DIR" -name "daily_run_*.log" -mtime +30 -delete 2>/dev/null || true

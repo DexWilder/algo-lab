@@ -938,6 +938,7 @@ COMMANDS = {
     "portfolio": lambda: _py("xb_orb_portfolio_monitor.py", "--save"),
     "probation-health": lambda: _py("probation_health_audit.py", "--save"),
     "weekly-audit": lambda: _py("weekly_operational_audit.py", "--save"),
+    "doctrine-check": lambda: _py("doctrine_integrity_check.py", "--weekly", "--save"),
     "help": cmd_help,
 }
 
