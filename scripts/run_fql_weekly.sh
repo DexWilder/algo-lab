@@ -54,6 +54,8 @@ log "--- Running convergence scorer ---"
 python3 scripts/convergence_scorer.py --scan --apply --save >> "$LOG_FILE" 2>&1 || true
 log "--- Running throughput audit ---"
 python3 scripts/throughput_audit.py --save >> "$LOG_FILE" 2>&1 || true
+log "--- Running weekly operational audit ---"
+python3 scripts/weekly_operational_audit.py --save >> "$LOG_FILE" 2>&1 || true
 
 log ""
 if [ "$EXIT_CODE" -eq 0 ]; then
