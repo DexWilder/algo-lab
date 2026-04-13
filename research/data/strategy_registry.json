@@ -6547,5 +6547,63 @@
       "resolved_date": "2026-04-07",
       "resolution": "FIXED via opt-in ladder_style=\"configurable\" param. Preserved live variant 100% unchanged. Exit surface sweep (25 combos of target_mult\u00d7trail_mult) showed only modest improvement: best variant avg PF 1.560 vs classic 1.548 (+0.8%). target_mult has essentially zero effect beyond 2.0 (trades rarely reach higher R levels). trail_mult=1.0 is already optimal. MGC drawdown duration unchanged. CONCLUSION: The exit surface was NOT the limiting factor. The edge lives in the entry+filter combination. Classic ladder remains the live baseline."
     }
-  ]
+  ],
+  "proven_donors": {
+    "profit_ladder": {
+      "component_type": "exit",
+      "tier": "top",
+      "validated_in": [
+        "XB-ORB-EMA-Ladder-MNQ",
+        "XB-ORB-EMA-Ladder-MCL",
+        "XB-ORB-EMA-Ladder-MYM"
+      ],
+      "key_property": "only known exit producing positive median trade",
+      "mechanism": "ratcheting stops at 1R/2R/3R milestones (lock 0.25R/1R/2R)",
+      "alternatives_tested": [
+        "atr_trail",
+        "chandelier",
+        "time_stop",
+        "midline_bb",
+        "midline_vwap"
+      ],
+      "alternatives_result": "all produce negative median \u2014 tail-dependent"
+    },
+    "ema_slope": {
+      "component_type": "filter",
+      "tier": "top",
+      "validated_in": [
+        "XB-ORB-EMA-Ladder-MNQ",
+        "XB-ORB-EMA-Ladder-MCL",
+        "XB-ORB-EMA-Ladder-MYM"
+      ],
+      "key_property": "only filter maintaining positive median cross-asset",
+      "mechanism": "EMA21 > EMA50 = uptrend (allow longs), vice versa",
+      "alternatives_tested": [
+        "vwap_slope",
+        "bandwidth_squeeze",
+        "session_morning",
+        "session_afternoon",
+        "none"
+      ],
+      "alternatives_result": "all produce negative median on 2+ assets"
+    },
+    "orb_breakout": {
+      "component_type": "entry",
+      "tier": "top",
+      "validated_in": [
+        "XB-ORB-EMA-Ladder-MNQ",
+        "XB-ORB-EMA-Ladder-MCL",
+        "XB-ORB-EMA-Ladder-MYM"
+      ],
+      "key_property": "only entry producing positive median when combined with EMA+ladder",
+      "mechanism": "price breaks 30-min opening range high/low",
+      "alternatives_tested": [
+        "pb_pullback",
+        "vwap_continuation",
+        "bb_reversion",
+        "donchian_breakout"
+      ],
+      "alternatives_result": "all produce negative median on 1+ assets"
+    }
+  }
 }
