@@ -603,14 +603,14 @@
       "direction": "short",
       "source": "internal_research",
       "rule_summary": "VWAP cross + 2x volume surge + RSI confirm + EMA slope. M2K-specific momentum burst.",
-      "status": "watch",
+      "status": "rejected",
       "validation_score": 6.0,
       "parameter_stability": 96,
       "extended_history_status": "passed_conditional",
       "portfolio_role": "tail_engine",
       "trades_6yr": 90,
       "profit_factor": 1.24,
-      "notes": "MOVED TO WATCH 2026-03-18. Elite review: 14/24 MARGINAL. PF 1.24 on 90 trades with healthy half-life. Only midday M2K strategy. Validation collapsed 9.0->6.0 on extended data. MOMENTUM overcrowded. WATCH CONDITIONS: Promote to conviction if forward PF > 1.3 after 20+ forward trades. Archive if forward PF < 1.0 after 20+ forward trades. DEADLINE: 2026-06-01 \u2014 if neither condition met, archive. FIRST-EXPIRY CANDIDATE: Lowest rubric in watch (14/24). Will be archived 2026-06-01 if promote condition not met.",
+      "notes": "MOVED TO WATCH 2026-03-18. Elite review: 14/24 MARGINAL. PF 1.24 on 90 trades with healthy half-life. Only midday M2K strategy. Validation collapsed 9.0->6.0 on extended data. MOMENTUM overcrowded. WATCH CONDITIONS: Promote to conviction if forward PF > 1.3 after 20+ forward trades. Archive if forward PF < 1.0 after 20+ forward trades. DEADLINE: 2026-06-01 \u2014 if neither condition met, archive. FIRST-EXPIRY CANDIDATE: Lowest rubric in watch (14/24). Will be archived 2026-06-01 if promote condition not met. | GATES REJECT 2026-04-13: REJECT: PF 0.75 on MES cross-asset test. No edge.",
       "last_review_date": "2026-03-18",
       "source_category": "internal",
       "validation_result": {
@@ -668,7 +668,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "rejection_reason": "failed_dual_archetype_gates"
     },
     {
       "strategy_id": "CloseVWAP-M2K-Short",
@@ -679,14 +680,14 @@
       "direction": "short",
       "source": "internal_research",
       "rule_summary": "Session VWAP deviation band fade (2 sigma + RSI). Targets close session 15:00-15:55.",
-      "status": "watch",
+      "status": "rejected",
       "validation_score": 6.0,
       "parameter_stability": 100,
       "extended_history_status": "passed_conditional",
       "portfolio_role": "stabilizer",
       "trades_6yr": 146,
       "profit_factor": 1.42,
-      "notes": "MOVED TO WATCH 2026-03-18. Elite review: 16/24, below conviction threshold (18). Close session is unique and valuable but DECAYING half-life is disqualifying for conviction. PF 1.42 on 146 trades is solid historically but decay must stabilize. WATCH CONDITIONS: Promote to conviction if Decay stabilizes (half-life status returns to HEALTHY) AND forward PF > 1.2 after 30+ forward trades. Archive if Decay continues (half-life remains DECAYING at next monthly review) OR forward PF < 1.0 after 20+ trades. DEADLINE: 2026-06-01. FIRST-EXPIRY CANDIDATE: DECAYING half-life + rubric 16/24. Will be archived 2026-06-01 if decay continues.",
+      "notes": "MOVED TO WATCH 2026-03-18. Elite review: 16/24, below conviction threshold (18). Close session is unique and valuable but DECAYING half-life is disqualifying for conviction. PF 1.42 on 146 trades is solid historically but decay must stabilize. WATCH CONDITIONS: Promote to conviction if Decay stabilizes (half-life status returns to HEALTHY) AND forward PF > 1.2 after 30+ forward trades. Archive if Decay continues (half-life remains DECAYING at next monthly review) OR forward PF < 1.0 after 20+ trades. DEADLINE: 2026-06-01. FIRST-EXPIRY CANDIDATE: DECAYING half-life + rubric 16/24. Will be archived 2026-06-01 if decay continues. | GATES REJECT 2026-04-13: REJECT: PF 0.83 on MES cross-asset test. No edge.",
       "last_review_date": "2026-03-18",
       "source_category": "internal",
       "validation_result": {
@@ -737,7 +738,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "rejection_reason": "failed_dual_archetype_gates"
     },
     {
       "strategy_id": "TTMSqueeze-M2K-Short",
@@ -748,14 +750,14 @@
       "direction": "short",
       "source": "phase_harvest_ttm",
       "rule_summary": "BB(20,2.0) inside KC(20,1.5x ATR) for 12+ bars \u2192 first expansion bar + momentum direction. Profit ladder exit.",
-      "status": "watch",
+      "status": "rejected",
       "validation_score": 5.5,
       "parameter_stability": 86,
       "extended_history_status": "passed_conditional",
       "portfolio_role": "tail_engine",
       "trades_6yr": 48,
       "profit_factor": 1.97,
-      "notes": "MOVED TO WATCH 2026-03-18. Elite review: 17/24, below conviction threshold (18). First vol-expansion strategy, M2K short \u2014 fills VOLATILITY factor niche. PF 1.97 on 48 trades is strong but param stability 86% and validation 5.5 are below elite bar. WATCH CONDITIONS: Promote to conviction if Forward PF > 1.3 after 20+ forward trades (demonstrates VOL factor edge persists). Archive if Forward PF < 1.0 after 20+ forward trades. DEADLINE: 2026-06-01.",
+      "notes": "MOVED TO WATCH 2026-03-18. Elite review: 17/24, below conviction threshold (18). First vol-expansion strategy, M2K short \u2014 fills VOLATILITY factor niche. PF 1.97 on 48 trades is strong but param stability 86% and validation 5.5 are below elite bar. WATCH CONDITIONS: Promote to conviction if Forward PF > 1.3 after 20+ forward trades (demonstrates VOL factor edge persists). Archive if Forward PF < 1.0 after 20+ forward trades. DEADLINE: 2026-06-01. | GATES REJECT 2026-04-13: TAIL_ENGINE_REJECT: top3=574%, median -$19, PF 1.07 on best asset (MGC). Registry PF 1.97 was M2K-specific with 48 trades \u2014 concentration-driven.",
       "last_review_date": "2026-03-18",
       "source_category": "internal",
       "validation_result": {
@@ -806,7 +808,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "rejection_reason": "failed_dual_archetype_gates"
     },
     {
       "strategy_id": "ORBEnh-M2K-Short",
@@ -2029,14 +2032,14 @@
       "direction": "both",
       "source": "tradingview_harvest_batch1",
       "rule_summary": "Range expansion detection \u2192 momentum entry",
-      "status": "testing",
+      "status": "rejected",
       "validation_score": 10.0,
       "parameter_stability": 100,
       "extended_history_status": "passed",
       "portfolio_role": "core",
       "trades_6yr": 214,
       "profit_factor": 1.46,
-      "notes": "DOWNGRADED 2026-03-18. Active decay: Sharpe 2.39 (6yr) \u2192 0.46 (1yr) \u2192 -0.13 (6mo). Monotonic edge decline despite WF 10/10 PERFECT historical. HARD RULE: If trailing 3-month Sharpe is still negative at next monthly review (2026-04-18), archive permanently. MCL slot is valuable but this strategy is no longer earning it.",
+      "notes": "DOWNGRADED 2026-03-18. Active decay: Sharpe 2.39 (6yr) \u2192 0.46 (1yr) \u2192 -0.13 (6mo). Monotonic edge decline despite WF 10/10 PERFECT historical. HARD RULE: If trailing 3-month Sharpe is still negative at next monthly review (2026-04-18), archive permanently. MCL slot is valuable but this strategy is no longer earning it. | GATES REJECT 2026-04-13: SALVAGE but concentration fails: top3=383%, year=88%. Edge decay also flagged (Sharpe 2.39\u2192-0.13).",
       "kill_flag": "decay",
       "kill_details": "Half-life monitor: decay=0.65 ARCHIVE_CANDIDATE. Sharpe 2.39->0.46 (1yr)->-0.13 (6mo). Edge rapidly decaying despite WF 10/10.",
       "last_review_date": "2026-03-18",
@@ -2080,7 +2083,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "rejection_reason": "failed_dual_archetype_gates"
     },
     {
       "strategy_id": "NG-MeanRev",
@@ -2664,10 +2668,10 @@
       "direction": "short",
       "source": "native_prototype",
       "rule_summary": "Asian range breakout at London open (03:00 ET). Short only. ATR filter + volume confirmation + trailing stop.",
-      "status": "watch",
+      "status": "rejected",
       "validation_score": 5.0,
       "profit_factor": 1.2,
-      "notes": "MOVED TO WATCH 2026-03-18. Elite review: 17/24, below conviction threshold (18). FX London session and short-bias are valuable but raw PF 1.20 (weakest of official 5) does not meet conviction bar. Carry filter research showed no improvement. WATCH CONDITIONS: Promote to conviction if Forward PF > 1.2 after 30+ forward trades, OR carry filter re-analysis with regime diversity lifts rubric to 18+. Archive if Forward PF < 0.95 after 30+ forward trades. DEADLINE: 2026-06-01.",
+      "notes": "MOVED TO WATCH 2026-03-18. Elite review: 17/24, below conviction threshold (18). FX London session and short-bias are valuable but raw PF 1.20 (weakest of official 5) does not meet conviction bar. Carry filter research showed no improvement. WATCH CONDITIONS: Promote to conviction if Forward PF > 1.2 after 30+ forward trades, OR carry filter re-analysis with regime diversity lifts rubric to 18+. Archive if Forward PF < 0.95 after 30+ forward trades. DEADLINE: 2026-06-01. | GATES REJECT 2026-04-13: SALVAGE but concentration fails: top3=99%, year=113%. Lottery ticket.",
       "last_review_date": "2026-03-18",
       "controller_state": "PROBATION",
       "controller_action": "PROBATION",
@@ -2746,7 +2750,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "rejection_reason": "failed_dual_archetype_gates"
     },
     {
       "strategy_id": "FXBreak-6E-Watchlist",
@@ -2837,10 +2842,10 @@
       "direction": "long",
       "source": "batch_first_pass_discovery",
       "rule_summary": "EMA200 trend + EMA50 pullback bounce + RSI confirmation. US session only. Surfaced by batch_first_pass cross-asset scan.",
-      "status": "testing",
+      "status": "rejected",
       "validation_score": null,
       "profit_factor": 1.72,
-      "notes": "Batch discovery: PF 1.72, Sharpe 2.90, 48 trades, US session. Previously missed because 6E was only tested without session filter. Needs validation battery.",
+      "notes": "Batch discovery: PF 1.72, Sharpe 2.90, 48 trades, US session. Previously missed because 6E was only tested without session filter. Needs validation battery. | GATES REJECT 2026-04-13: REJECT: PF 0.58 on ZB cross-asset test. Strong negative edge.",
       "last_review_date": "2026-03-16",
       "controller_state": "VALIDATED",
       "controller_action": "PROBATION",
@@ -2890,7 +2895,8 @@
         "salvaged_from": null,
         "components_used": []
       },
-      "component_type": "full_strategy"
+      "component_type": "full_strategy",
+      "rejection_reason": "failed_dual_archetype_gates"
     },
     {
       "strategy_id": "DailyTrend-MGC-Long",

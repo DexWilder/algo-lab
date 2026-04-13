@@ -92,6 +92,10 @@ log "--- Running alert engine ---"
 python3 scripts/fql_alerts.py --save >> "$LOG_FILE" 2>&1 || true
 log "--- Generating operator brief ---"
 python3 scripts/operator_brief.py --save >> "$LOG_FILE" 2>&1 || true
+log "--- XB-ORB portfolio monitor ---"
+python3 scripts/xb_orb_portfolio_monitor.py --save >> "$LOG_FILE" 2>&1 || true
+log "--- XB-ORB forward behavior tracker ---"
+python3 scripts/forward_behavior_tracker.py --save >> "$LOG_FILE" 2>&1 || true
 
 # Clean old per-run logs (keep 30 days)
 find "$LOG_DIR" -name "daily_run_*.log" -mtime +30 -delete 2>/dev/null || true
