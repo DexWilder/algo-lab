@@ -1241,7 +1241,10 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "data_blocked",
+      "triage_route": "defer_until_data_expansion_phase"
     },
     {
       "strategy_id": "NR7-Breakout",
@@ -1273,7 +1276,10 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "convert_next",
+      "triage_route": "build_strategy_code_and_first_pass"
     },
     {
       "strategy_id": "GapFill-M2K",
@@ -1284,7 +1290,7 @@
       "direction": "both",
       "source": "russell_microstructure_research",
       "rule_summary": "Overnight gap > threshold \u2192 fade toward fill. 76% of RTY gaps fill during RTH. Overnight midpoint predicts direction (76%).",
-      "status": "idea",
+      "status": "archived",
       "validation_score": null,
       "parameter_stability": null,
       "extended_history_status": "not_tested",
@@ -1305,7 +1311,9 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "dead_closed_family_or_untestable"
     },
     {
       "strategy_id": "PreFOMC-Drift",
@@ -1371,7 +1379,10 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "convert_next",
+      "triage_route": "build_strategy_code_and_first_pass"
     },
     {
       "strategy_id": "DualThrust",
@@ -1403,7 +1414,10 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "convert_next",
+      "triage_route": "build_strategy_code_and_first_pass"
     },
     {
       "strategy_id": "VCP-Intraday",
@@ -1435,7 +1449,10 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "convert_next",
+      "triage_route": "build_strategy_code_and_first_pass"
     },
     {
       "strategy_id": "EventDay-MetaLayer",
@@ -1446,7 +1463,7 @@
       "direction": "both",
       "source": "internal_research",
       "rule_summary": "Not a strategy \u2014 controller enhancement. Pause strategies during event windows, widen stops, reduce size.",
-      "status": "idea",
+      "status": "archived",
       "validation_score": null,
       "parameter_stability": null,
       "extended_history_status": "not_tested",
@@ -1467,7 +1484,9 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "dead_closed_family_or_untestable"
     },
     {
       "strategy_id": "Russell-Reconstitution",
@@ -1478,7 +1497,7 @@
       "direction": "long",
       "source": "academic_research",
       "rule_summary": "Buy close first trading day after June 23rd, sell first trading day of July. 1.34% avg gain over 6 days.",
-      "status": "idea",
+      "status": "archived",
       "validation_score": null,
       "parameter_stability": null,
       "extended_history_status": "not_tested",
@@ -1499,7 +1518,9 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "dead_closed_family_or_untestable"
     },
     {
       "strategy_id": "ConsolidationBreakout",
@@ -1510,7 +1531,7 @@
       "direction": "both",
       "source": "user_mentioned",
       "rule_summary": "Detect tight consolidation range \u2192 breakout with volume confirmation \u2192 enter in breakout direction",
-      "status": "idea",
+      "status": "archived",
       "validation_score": null,
       "parameter_stability": null,
       "extended_history_status": "not_tested",
@@ -1531,7 +1552,9 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "dead_closed_family_or_untestable"
     },
     {
       "strategy_id": "LiqGrab-StopRun",
@@ -1542,7 +1565,7 @@
       "direction": "both",
       "source": "user_mentioned",
       "rule_summary": "Detect liquidity pools (swing highs/lows) \u2192 wait for stop-run sweep \u2192 enter reversal",
-      "status": "idea",
+      "status": "archived",
       "validation_score": null,
       "parameter_stability": null,
       "extended_history_status": "not_tested",
@@ -1563,7 +1586,9 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "dead_closed_family_or_untestable"
     },
     {
       "strategy_id": "ICT-LiqSweep-V2",
@@ -1574,7 +1599,7 @@
       "direction": "both",
       "source": "user_mentioned",
       "rule_summary": "ICT liquidity sweep \u2014 improved version with better sweep detection and entry timing",
-      "status": "idea",
+      "status": "archived",
       "validation_score": null,
       "parameter_stability": null,
       "extended_history_status": "not_tested",
@@ -1595,7 +1620,9 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "dead_closed_family_or_untestable"
     },
     {
       "strategy_id": "RVWAP-MR",
@@ -1832,7 +1859,10 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "salvage",
+      "triage_route": "needs_spec_refinement_before_conversion"
     },
     {
       "strategy_id": "IB-Breakout-Gold",
@@ -1864,7 +1894,10 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "convert_next",
+      "triage_route": "build_strategy_code_and_first_pass"
     },
     {
       "strategy_id": "SessionVWAPFade",
@@ -2160,7 +2193,10 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "data_blocked",
+      "triage_route": "defer_until_data_expansion_phase"
     },
     {
       "strategy_id": "YM-Trend",
@@ -2192,7 +2228,10 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "salvage",
+      "triage_route": "needs_spec_refinement_before_conversion"
     },
     {
       "strategy_id": "MCL-Breakout",
@@ -2224,7 +2263,10 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "salvage",
+      "triage_route": "needs_spec_refinement_before_conversion"
     },
     {
       "strategy_id": "IMC-Afternoon",
@@ -2367,7 +2409,10 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "convert_next",
+      "triage_route": "build_strategy_code_and_first_pass"
     },
     {
       "strategy_id": "RussellORB-M2K-Long",
@@ -2467,7 +2512,10 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "salvage",
+      "triage_route": "needs_spec_refinement_before_conversion"
     },
     {
       "strategy_id": "CL-VWAP-Bounce-Long",
@@ -2567,7 +2615,10 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "salvage",
+      "triage_route": "needs_spec_refinement_before_conversion"
     },
     {
       "strategy_id": "OPEX-Week-Long",
@@ -2599,7 +2650,10 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "salvage",
+      "triage_route": "needs_spec_refinement_before_conversion"
     },
     {
       "strategy_id": "MomPB-6J-Long-US",
@@ -2821,7 +2875,7 @@
       "direction": "both",
       "source": "native_prototype",
       "rule_summary": "6E session breakout needs refinement. PF 1.07/1.08 directional splits. Walk-forward H2 improving.",
-      "status": "idea",
+      "status": "archived",
       "last_review_date": "2026-03-16",
       "controller_state": "VALIDATED",
       "review_priority": "MEDIUM",
@@ -2850,7 +2904,9 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "duplicate_of_tested_strategy"
     },
     {
       "strategy_id": "FXBreak-6B-NoPriority",
@@ -3064,7 +3120,7 @@
       "direction": "both",
       "source": "youtube_transcript_mech_model",
       "rule_summary": "When a 5m bullish FVG gets body closed below (inverted), short. When bearish FVG gets body closed above, long. Higher-TF trend filter (4H EMA). Target 1:1 R:R or next session liquidity. Extracted from full ICT mech model \u2014 only the mechanical inversion component.",
-      "status": "idea",
+      "status": "archived",
       "notes": "Compact hypothesis extracted from discretionary ICT model. Full model too discretionary for FQL. ICT family previously failed (ICT-010, ICT-011). This is a one-shot factory test to formally close or validate the ICT family. LOW PRIORITY \u2014 defer until higher-value candidates are processed.",
       "last_review_date": "2026-03-16",
       "review_priority": "LOW",
@@ -3080,7 +3136,9 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "dead_closed_family_or_untestable"
     },
     {
       "strategy_id": "DualThrust-ZB-Short-Monitor",
@@ -3091,7 +3149,7 @@
       "direction": "short",
       "source": "batch_first_pass_discovery",
       "rule_summary": "DualThrust range breakout, daily bars, short only. First rates directional signal. PF 1.48, 31 trades. Bonds down = rates rising = macro tightening.",
-      "status": "idea",
+      "status": "archived",
       "notes": "MONITOR ONLY. Too few trades (31) for any conclusion. First positive rates signal found. Revisit when more data accumulates.",
       "last_review_date": "2026-03-16",
       "review_priority": "LOW",
@@ -3114,7 +3172,9 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "duplicate_of_tested_strategy"
     },
     {
       "strategy_id": "Treasury-2Y-FOMC-Momentum",
@@ -3147,7 +3207,10 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "data_blocked",
+      "triage_route": "defer_until_data_expansion_phase"
     },
     {
       "strategy_id": "FX-Carry-Trade",
@@ -3179,7 +3242,10 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "data_blocked",
+      "triage_route": "defer_until_data_expansion_phase"
     },
     {
       "strategy_id": "CrossCurrency-YieldCurve-Flattening",
@@ -3212,7 +3278,10 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "data_blocked",
+      "triage_route": "defer_until_data_expansion_phase"
     },
     {
       "strategy_id": "FX-PPP-Value",
@@ -3246,7 +3315,10 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "data_blocked",
+      "triage_route": "defer_until_data_expansion_phase"
     },
     {
       "strategy_id": "Treasury-12M-TSM",
@@ -3281,7 +3353,10 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "data_blocked",
+      "triage_route": "defer_until_data_expansion_phase"
     },
     {
       "strategy_id": "FX-Daily-Donchian-Breakout",
@@ -3315,7 +3390,10 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "convert_next",
+      "triage_route": "build_strategy_code_and_first_pass"
     },
     {
       "strategy_id": "FX-Asian-Session-Breakout",
@@ -3348,7 +3426,10 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "convert_next",
+      "triage_route": "build_strategy_code_and_first_pass"
     },
     {
       "strategy_id": "FX-ORB",
@@ -3381,7 +3462,10 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "salvage",
+      "triage_route": "needs_spec_refinement_before_conversion"
     },
     {
       "strategy_id": "Treasury-Curve-Drift-MR",
@@ -3416,7 +3500,10 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "data_blocked",
+      "triage_route": "defer_until_data_expansion_phase"
     },
     {
       "strategy_id": "PreFOMC-Drift-Equity",
@@ -3535,7 +3622,7 @@
       "direction": "long",
       "source": "openclaw_strategic_harvest",
       "rule_summary": "Treasury futures tend to rally on inflation announcement days (CPI/PPI). Long ZN/ZF on CPI release day. ~12 events/year.",
-      "status": "idea",
+      "status": "archived",
       "notes": "MONITOR. Original long-bias hypothesis REJECTED for current sample. CPI-day rates effect appears real but directionally REGIME-DEPENDENT. ZB short PF 2.81 (19 trades, 63% WR) is the standout \u2014 hawkish regime causes bond selloffs on CPI. ZN short PF 1.34 moderate. ZF long PF 1.24 weak. Not ready for probation. Needs rates data backfill ($12.59) to test across tightening + easing regimes and determine whether this is a regime-switchable strategy or period-specific artifact. Do not iterate further without backfill.",
       "last_review_date": "2026-03-17",
       "review_priority": "LOW",
@@ -3558,7 +3645,9 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "duplicate_of_tested_strategy"
     },
     {
       "strategy_id": "OPEX-Week-Effect",
@@ -3592,7 +3681,10 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "salvage",
+      "triage_route": "needs_spec_refinement_before_conversion"
     },
     {
       "strategy_id": "CPI-Reaction-Bias-Equity",
@@ -3625,7 +3717,10 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "data_blocked",
+      "triage_route": "defer_until_data_expansion_phase"
     },
     {
       "strategy_id": "EIA-30s-Box-Breakout-MCL",
@@ -3659,7 +3754,10 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "data_blocked",
+      "triage_route": "defer_until_data_expansion_phase"
     },
     {
       "strategy_id": "Equity-Overnight-Drift",
@@ -3670,7 +3768,7 @@
       "direction": "long",
       "source": "openclaw_strategic_harvest",
       "rule_summary": "Equity index overnight drift: buy at close, sell at next open. Captures the well-documented overnight equity premium. ~250 events/year.",
-      "status": "idea",
+      "status": "archived",
       "notes": "MONITOR. Overnight premium exists (MNQ PF 1.09, 1641 trades) but too weak/inconsistent for probation. Bear market vulnerability: 2022 PF 0.82 (-$4.9K), 2026 YTD PF 0.60 (-$3.1K). MaxDD $7,210 \u2014 larger than any current probation strategy. Do not optimize further. Revisit only if a regime filter can be added without making it disguised momentum.",
       "last_review_date": "2026-03-17",
       "review_priority": "LOW",
@@ -3692,7 +3790,9 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "dead_closed_family_or_untestable"
     },
     {
       "strategy_id": "Equity-Closing-Auction-Flow",
@@ -3703,7 +3803,7 @@
       "direction": "both",
       "source": "openclaw_strategic_harvest",
       "rule_summary": "Trade equity index futures based on closing auction order imbalance flow. Institutional rebalancing creates predictable close dynamics.",
-      "status": "idea",
+      "status": "archived",
       "notes": "ACCEPTED but BLOCKED. STRUCTURAL priority #2. Blocked by: needs auction imbalance data feed (not available in standard OHLCV). Would need Level 2 or MOC imbalance data.",
       "last_review_date": "2026-03-17",
       "review_priority": "LOW",
@@ -3725,7 +3825,9 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "dead_closed_family_or_untestable"
     },
     {
       "strategy_id": "Treasury-Roll-Microstructure",
@@ -3759,7 +3861,10 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "data_blocked",
+      "triage_route": "defer_until_data_expansion_phase"
     },
     {
       "strategy_id": "WTI-CMA-Roll-Structure",
@@ -3793,7 +3898,10 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "data_blocked",
+      "triage_route": "defer_until_data_expansion_phase"
     },
     {
       "strategy_id": "Gold-Overnight-Drift",
@@ -3804,7 +3912,7 @@
       "direction": "long",
       "source": "openclaw_strategic_harvest",
       "rule_summary": "Gold overnight drift: buy at US close, sell at next US open. Similar to equity overnight premium but on gold \u2014 captures Asian/European session flow into gold.",
-      "status": "idea",
+      "status": "archived",
       "notes": "ACCEPTED but BLOCKED. STRUCTURAL priority #5. Blocked by: source likely references spot gold or ETF \u2014 needs validation that the effect exists on MGC futures specifically. May not transfer cleanly from spot to futures due to roll and carry.",
       "last_review_date": "2026-03-17",
       "review_priority": "LOW",
@@ -3827,7 +3935,9 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "dead_closed_family_or_untestable"
     },
     {
       "strategy_id": "TV-FOMC-Rate-Decision-Cycles",
@@ -3838,7 +3948,7 @@
       "direction": "both",
       "source": "tradingview_scan",
       "rule_summary": "Trade FOMC rate decision cycles based on rate change direction patterns. Source: TradingView public script.",
-      "status": "idea",
+      "status": "archived",
       "notes": "ACCEPTED. TV EVENT batch priority #1. Complements PreFOMC-Drift with a different FOMC angle (decision cycle vs pre-announcement drift).",
       "last_review_date": "2026-03-17",
       "review_priority": "HIGH",
@@ -3860,7 +3970,9 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "dead_closed_family_or_untestable"
     },
     {
       "strategy_id": "TV-NFP-High-Low-Levels",
@@ -3978,7 +4090,7 @@
       "direction": "long",
       "source": "tradingview_scan",
       "rule_summary": "Trade options expiration vanna/charm flow windows. Dealer hedging creates predictable directional pressure around OPEX. Source: TradingView public script.",
-      "status": "idea",
+      "status": "archived",
       "notes": "ACCEPTED. TV EVENT batch priority #3. Different mechanism from simple OPEX week effect \u2014 uses options greeks flow as the signal. More sophisticated EVENT concept.",
       "last_review_date": "2026-03-17",
       "review_priority": "MEDIUM",
@@ -4001,7 +4113,9 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "dead_closed_family_or_untestable"
     },
     {
       "strategy_id": "TV-CPI-15m-Expansion",
@@ -4034,7 +4148,10 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "data_blocked",
+      "triage_route": "defer_until_data_expansion_phase"
     },
     {
       "strategy_id": "TV-NFP-Price-Zones",
@@ -4067,7 +4184,10 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "data_blocked",
+      "triage_route": "defer_until_data_expansion_phase"
     },
     {
       "strategy_id": "TV-FOMC-Sweep-Reaction",
@@ -4100,7 +4220,10 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "data_blocked",
+      "triage_route": "defer_until_data_expansion_phase"
     },
     {
       "strategy_id": "TV-Larry-Oops-Gap-Reversal",
@@ -4111,7 +4234,7 @@
       "direction": "both",
       "source": "tradingview_scan",
       "rule_summary": "Larry Williams Oops pattern: fade overnight gaps that reverse back into prior day range. Structural session-open mean reversion. Source: TradingView.",
-      "status": "idea",
+      "status": "archived",
       "notes": "ACCEPTED. TV STRUCTURAL priority #1. Classic gap-reversal pattern (Larry Williams). Different from GapFill-M2K (rejected) because Oops uses prior-day range reclaim as trigger, not just gap-fill target. Tests whether structured gap fades work better than simple gap fills.",
       "last_review_date": "2026-03-17",
       "review_priority": "HIGH",
@@ -4133,7 +4256,9 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "dead_closed_family_or_untestable"
     },
     {
       "strategy_id": "TV-Session-Gap-Fill",
@@ -4144,7 +4269,7 @@
       "direction": "both",
       "source": "tradingview_scan",
       "rule_summary": "Session gap fill with volume confirmation and time-decay exit. Fade gaps that show early fill momentum. Source: TradingView.",
-      "status": "idea",
+      "status": "archived",
       "notes": "ACCEPTED. TV STRUCTURAL priority #2. More refined gap fill than GapFill-M2K (rejected PF 0.68). Adds volume confirmation and time-decay logic. May overcome the raw gap-fill failure.",
       "last_review_date": "2026-03-17",
       "review_priority": "MEDIUM",
@@ -4166,7 +4291,9 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "dead_closed_family_or_untestable"
     },
     {
       "strategy_id": "TV-EOD-Sentiment-Flip",
@@ -4200,7 +4327,10 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "convert_next",
+      "triage_route": "build_strategy_code_and_first_pass"
     },
     {
       "strategy_id": "TV-Overnight-Gap-Analysis",
@@ -4211,7 +4341,7 @@
       "direction": "both",
       "source": "tradingview_scan",
       "rule_summary": "Overnight gap analysis framework: classify gap types and trade based on gap character (full gap, partial gap, gap-and-go). Source: TradingView.",
-      "status": "idea",
+      "status": "archived",
       "notes": "ACCEPTED. TV STRUCTURAL priority #4. More sophisticated gap framework than simple overnight drift (MONITOR PF 1.09). Classifies gaps by type before trading. May extract the profitable subset from the weak overall overnight premium.",
       "last_review_date": "2026-03-17",
       "review_priority": "LOW",
@@ -4233,7 +4363,9 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "dead_closed_family_or_untestable"
     },
     {
       "strategy_id": "TV-Gap-Filling-Strategy",
@@ -4244,7 +4376,7 @@
       "direction": "both",
       "source": "tradingview_scan",
       "rule_summary": "Generic gap filling strategy. Source: TradingView.",
-      "status": "idea",
+      "status": "archived",
       "notes": "ACCEPTED but BLOCKED. TV STRUCTURAL priority #5. Blocked: strategy ambiguity \u2014 too generic as described, needs consolidation into a single testable playbook. May overlap with TV-Session-Gap-Fill.",
       "last_review_date": "2026-03-17",
       "review_priority": "LOW",
@@ -4266,7 +4398,9 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "dead_closed_family_or_untestable"
     },
     {
       "strategy_id": "TV-Gold-Bandwidth-Squeeze",
@@ -4299,7 +4433,10 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "salvage",
+      "triage_route": "needs_spec_refinement_before_conversion"
     },
     {
       "strategy_id": "TV-VIX-Term-Structure-Hedge",
@@ -4332,7 +4469,10 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "data_blocked",
+      "triage_route": "defer_until_data_expansion_phase"
     },
     {
       "strategy_id": "TV-VVIX-VIX-Divergence-Regime",
@@ -4365,7 +4505,10 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "data_blocked",
+      "triage_route": "defer_until_data_expansion_phase"
     },
     {
       "strategy_id": "TV-Crude-OVX-Regime-Shift",
@@ -4399,7 +4542,10 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "data_blocked",
+      "triage_route": "defer_until_data_expansion_phase"
     },
     {
       "strategy_id": "TV-Treasury-Macro-Vol-Targeting",
@@ -4433,7 +4579,10 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "data_blocked",
+      "triage_route": "defer_until_data_expansion_phase"
     },
     {
       "strategy_id": "THEME-VolGated-Structural-Intraday",
@@ -4467,7 +4616,10 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "convert_next",
+      "triage_route": "build_strategy_code_and_first_pass"
     },
     {
       "strategy_id": "THEME-Mechanical-Market-Structure",
@@ -4478,7 +4630,7 @@
       "direction": "both",
       "source": "internal_research",
       "rule_summary": "Mechanical market-structure intraday strategies. Use objective price-structure patterns (swing highs/lows, range boundaries, session levels) as entry/exit anchors without discretionary interpretation. Distinct from ICT (which failed) because strictly mechanical \u2014 no FVG, no order blocks, no narrative.",
-      "status": "idea",
+      "status": "archived",
       "notes": "FUTURE THEME. Research direction for mechanical structure-based intraday trading. Must be strictly rule-based and avoid anything resembling the failed ICT family. Potential sub-ideas: prior-session-level reactions, mechanical swing-point breakout/fade, range-boundary tests. Do not convert until current queue clears.",
       "last_review_date": "2026-03-17",
       "review_priority": "LOW",
@@ -4500,7 +4652,9 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "dead_closed_family_or_untestable"
     },
     {
       "strategy_id": "THEME-Exit-Architecture-First",
@@ -4511,7 +4665,7 @@
       "direction": "both",
       "source": "internal_research",
       "rule_summary": "Exit-architecture-first research lane. Instead of designing entries and fitting exits, start with exit architecture (trail types, time stops, target structures) and test which entry triggers produce the best results when paired with each exit type. Inverts the normal strategy design process.",
-      "status": "idea",
+      "status": "archived",
       "notes": "FUTURE THEME. Research methodology direction, not a single strategy. Observation: many FQL strategies produce identical results across exit variants (trail/target/time all fire the same). This suggests exit architecture may matter more than entry refinement. Explore after current probation cycle and queue are clear.",
       "last_review_date": "2026-03-17",
       "review_priority": "LOW",
@@ -4533,7 +4687,9 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "dead_closed_family_or_untestable"
     },
     {
       "strategy_id": "Commodity-TermStructure-Carry-EnergyMetals",
@@ -4632,7 +4788,10 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "salvage",
+      "triage_route": "needs_spec_refinement_before_conversion"
     },
     {
       "strategy_id": "VolManaged-EquityIndex-Futures",
@@ -4779,7 +4938,10 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "data_blocked",
+      "triage_route": "defer_until_data_expansion_phase"
     },
     {
       "strategy_id": "Treasury-CashFutures-Basis-NetOfCarry",
@@ -4815,7 +4977,10 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "data_blocked",
+      "triage_route": "defer_until_data_expansion_phase"
     },
     {
       "strategy_id": "Treasury-Rolldown-Carry-Spread",
@@ -4963,7 +5128,10 @@
         "components_used": []
       },
       "component_type": "full_strategy",
-      "created_date": "2026-03-15"
+      "created_date": "2026-03-15",
+      "triage_date": "2026-04-13",
+      "triage_reason": "data_blocked",
+      "triage_route": "defer_until_data_expansion_phase"
     },
     {
       "strategy_id": "Overnight-Z-VolRatio-OpenDrive",
