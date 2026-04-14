@@ -70,10 +70,18 @@ logic, behavioral flag criteria, core-promotion engineering checklist).
 `docs/PROBATION_REVIEW_CRITERIA.md` holds only a pointer for the XB-ORB
 family and governs the non-XB-ORB legacy watch set.
 
-**Other probation / watch strategies:**
-- DailyTrend-MGC-Long, MomPB-6J-Long-US, FXBreak-6J-Short-London (legacy watch)
-- NoiseBoundary-MNQ-Long, ZN-Afternoon-Reversion, VolManaged-EquityIndex-Futures
-- PreFOMC-Drift-Equity, TV-NFP-High-Low-Levels (event sleeves)
+**Other probation strategies (non-XB-ORB, current as of 2026-04-14):**
+
+*Intraday single-asset:*
+- DailyTrend-MGC-Long (MGC, trend, daily bars, sparse)
+- ZN-Afternoon-Reversion (ZN, afternoon rates reversion, full drift tier)
+- TV-NFP-High-Low-Levels (MNQ, sparse event)
+- VolManaged-EquityIndex-Futures (MES, vol-scaled sizing — excluded from per-trade drift by design)
+
+*Out-of-band monthly:*
+- Treasury-Rolldown-Carry-Spread (ZN/ZF/ZB 3-tenor carry spread, re-probated 2026-04-14, monthly rebalance via `research/run_treasury_rolldown_spread.py`; first live fire expected 2026-05-01)
+
+*Removed from probation:* MomPB-6J-Long-US (archived), FXBreak-6J-Short-London (rejected — verified concentration catastrophe, see `docs/PROBATION_REVIEW_CRITERIA.md` §3), NoiseBoundary-MNQ-Long (archived), PreFOMC-Drift-Equity (rejected).
 
 Review criteria: `docs/PROBATION_REVIEW_CRITERIA.md`
 

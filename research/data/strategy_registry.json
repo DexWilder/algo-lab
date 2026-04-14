@@ -6552,7 +6552,8 @@
         "backfill_bars": 6134,
         "root_cause": "symbol_list_omission in data/databento_loader.py SYMBOLS",
         "review_clock_adjustment": "review gates count forward trades from first live bar post-backfill, not from promoted_date"
-      }
+      },
+      "review_clock_start_source": "first_fresh_bar_post_backfill"
     }
   ],
   "_rejection_taxonomy": {
