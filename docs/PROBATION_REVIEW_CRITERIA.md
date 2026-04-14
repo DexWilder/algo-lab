@@ -167,23 +167,45 @@ in promotion decisions because of the factor diversification it provides.
 
 ---
 
-### 6. Treasury-Rolldown-Carry-Spread ~~(ARCHIVED 2026-03-20)~~ ~~(Active Carry Challenger)~~
+### 6. Treasury-Rolldown-Carry-Spread (RE-PROBATED 2026-04-14 — out-of-band monthly)
 
-> **HISTORICAL RECORD — NO LONGER ACTIVE PROBATION.**
-> Archived 2026-03-20 per `research/data/strategy_registry.json`
-> (`status=archived`, `controller_action=ARCHIVE_REVIEW`).
-> Strategy is not in the live/probation path and is not tracked
-> by the drift monitor. Current authority: `strategy_registry.json`.
+> **RE-PROBATED 2026-04-14 via out-of-band monthly execution path.**
+> Previously archived 2026-04-13 with reason "structurally broken —
+> runner tracks ZN but strategy requires ZF/ZB spread." Post-archive
+> review determined the trigger was **infrastructure mismatch, not
+> strategy failure**: the intraday forward runner loads one asset
+> per strategy, so Treasury-Rolldown (a 3-tenor ZN/ZF/ZB spread)
+> produced zero signals and was auto-archived. The spread's
+> backtest evidence (PF 1.11, 79 trades, rate-neutral per
+> component_validation_history) was never invalidated.
 >
-> **The June 1, 2026 displacement plan (below) is now MOOT.**
-> Both Treasury-Rolldown-Carry-Spread and MomIgn-M2K-Short are
-> out of the live/probation path. No active strategy is displacing
-> MomIgn's former slot on June 1. Either a different plan is
-> required for that slot or it stays vacant. Not re-litigated here.
+> **New execution path:** `research/run_treasury_rolldown_spread.py`
+> fires on the first business day of each month via launchd
+> (`com.fql.treasury-rolldown-monthly`). Evidence accrues in
+> `logs/spread_rebalance_log.csv` (one row per rebalance, preserves
+> spread identity via `spread_id`). The strategy stays
+> `controller_action=OFF` in the registry so it never enters the
+> intraday runner — the registry now carries an explicit
+> `execution_path="out_of_band_monthly_batch"` field to make this
+> intentional separation machine-readable.
 >
-> **Portfolio-construction consequence:** at the time of archive,
-> this was the only CARRY strategy and the only Rates strategy
-> in the portfolio — the CARRY and Rates gaps are now re-opened.
+> **Drift monitor handling:** listed in
+> `live_drift_monitor.py BASELINE["excluded_from_strategy_drift"]`.
+> Per-trade severity does not apply to monthly spread rebalances;
+> review via direct inspection of `logs/spread_rebalance_log.csv`
+> and the registry's `component_validation_history`.
+>
+> **June 1 displacement plan:** still moot (MomIgn-M2K-Short
+> remains off). Treasury-Rolldown's re-probation does not
+> automatically revive that displacement target — the portfolio
+> slot left open by MomIgn is a separate design decision.
+>
+> **Thresholds below stand** as the probation gates (8 forward
+> rebalance cycles → promote with PF > 1.1 and Sharpe > 0.3; 3
+> consecutive negative months → downgrade). The clock started
+> with the first real rebalance after 2026-04-14; seeded
+> historical entries (2026-03, 2026-04 in the spread log) are
+> marked in notes and do not count toward the 8-cycle threshold.
 
 | Field | Value |
 |-------|-------|

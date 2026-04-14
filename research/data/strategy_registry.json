@@ -5807,9 +5807,9 @@
       "direction": "both",
       "source": "Return Stacked \u2014 Managed Futures Carry: A Practitioner's Guide (Butler & Butler)",
       "rule_summary": "Rank Treasury tenor buckets on estimated carry (yield + rolldown minus financing). Long rich-carry tenors, short poor-carry tenors in duration-balanced futures spreads. Explicit rolldown/carry harvesting, not rates momentum.",
-      "status": "archived",
-      "notes": "ACTIVE CARRY CHALLENGER. Entered forward runner 2026-03-20. MICRO tier, monthly rebalance, 1 contract per spread leg. Rubric 18 (eff. 20 with gap bonus). Fills CARRY + Rates gaps. June 1 displacement target: MomIgn-M2K-Short. Promote condition: 3mo forward Sharpe > 0 + WF improvement. Archive condition: 3mo consecutive negative forward returns. | ARCHIVED 2026-04-13: 0 forward trades. Structurally broken \u2014 runner tracks ZN but strategy requires ZF/ZB spread. Cannot produce evidence in current infrastructure.",
-      "last_review_date": "2026-03-20",
+      "status": "probation",
+      "notes": "ACTIVE CARRY CHALLENGER. Entered forward runner 2026-03-20. MICRO tier, monthly rebalance, 1 contract per spread leg. Rubric 18 (eff. 20 with gap bonus). Fills CARRY + Rates gaps. June 1 displacement target: MomIgn-M2K-Short. Promote condition: 3mo forward Sharpe > 0 + WF improvement. Archive condition: 3mo consecutive negative forward returns. | ARCHIVED 2026-04-13: 0 forward trades. Structurally broken \u2014 runner tracks ZN but strategy requires ZF/ZB spread. Cannot produce evidence in current infrastructure. | RE-PROBATED 2026-04-14: out-of-band monthly batch via research/run_treasury_rolldown_spread.py. Archive root cause was infrastructure mismatch (intraday runner is single-asset, strategy needs ZN/ZF/ZB spread). Strategy logic was never invalidated \u2014 component_validation_history shows validated with PF 1.11, 79 trades, rate-neutral. Evidence now accrues in logs/spread_rebalance_log.csv; excluded from live_drift_monitor per-trade severity. See docs/PROBATION_REVIEW_CRITERIA.md \u00a76 re-probation banner.",
+      "last_review_date": "2026-04-14",
       "review_priority": "HIGH",
       "lifecycle_stage": "forward_evidence",
       "source_category": "academic",
@@ -5826,7 +5826,7 @@
       "upgrade_role": "lead_active_challenger",
       "controller_state": "PAPER",
       "prior_state": "PAPER",
-      "controller_action": "ARCHIVE_REVIEW",
+      "controller_action": "OFF",
       "activation_score": 0.545,
       "controller_reason_codes": [
         "REGIME_MATCH_LOW",
@@ -5839,12 +5839,12 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-04-10",
+      "last_controller_date": "2026-04-14",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
-      "health_status": "FAIL",
+      "health_status": "OK",
       "genome_cluster": "unknown",
-      "resurrection_flag": false,
+      "resurrection_flag": true,
       "execution_config": {
         "avoid_regimes": [],
         "preferred_regimes": [],
@@ -5914,7 +5914,8 @@
       "crossbreeding_eligible": false,
       "session_tag": "daily_plus",
       "regime_tag": "trending",
-      "why_not_now": "structurally_broken"
+      "why_not_now": null,
+      "execution_path": "out_of_band_monthly_batch"
     },
     {
       "strategy_id": "CrudeOil-OPEC-Announcement-Regime",

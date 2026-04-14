@@ -200,6 +200,21 @@ BASELINE = {
                 "FOLLOW-UP: design VolManaged weight-replication drift."
             ),
         },
+        "Treasury-Rolldown-Carry-Spread": {
+            "reason": (
+                "Monthly 3-tenor (ZN/ZF/ZB) carry spread. Out-of-band "
+                "execution path (not in the intraday runner) so it does "
+                "not appear in logs/trade_log.csv; evidence accrues in "
+                "logs/spread_rebalance_log.csv (one row per monthly "
+                "rebalance with spread_id, legs, entry prices, realized "
+                "PnL of the closed prior spread). Per-trade severity "
+                "classification does not apply. Review via direct "
+                "inspection of the spread log + registry "
+                "component_validation_history. FOLLOW-UP: add a spread-"
+                "aware mini-loader if/when a second out-of-band "
+                "strategy appears."
+            ),
+        },
     },
 }
 
