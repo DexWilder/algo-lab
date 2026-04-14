@@ -227,8 +227,20 @@ def build_portfolio_config(include_probation=False) -> dict:
         return PORTFOLIO_CONFIG
 
     # Build strategy configs from eligible strategies
+    # Belt-and-suspenders: a strategy whose `status` has been set to
+    # `rejected` or `archived` must NEVER reach the live runner, even if
+    # `controller_action` was left in an eligible state. The two fields
+    # can diverge (rejection workflow writes status but not
+    # controller_action), and the pre-2026-04-14 runner trusted only
+    # controller_action — which allowed 4 rejected strategies to keep
+    # trading. This guard treats `status` as the final authority.
+    DEAD_STATUSES = {"rejected", "archived"}
+
     strategies = {}
     for s in registry.get("strategies", []):
+        if s.get("status") in DEAD_STATUSES:
+            continue
+
         action = s.get("controller_action", "OFF")
         eligible = ACTION_ELIGIBILITY.get(action, False)
 
