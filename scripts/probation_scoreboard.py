@@ -33,7 +33,9 @@ TODAY = datetime.now().strftime("%Y-%m-%d")
 TARGETS = {
     "DailyTrend-MGC-Long":           {"trades": 15, "pf": 1.2, "horizon": "daily",    "review": "Week 8"},
     "MomPB-6J-Long-US":              {"trades": 30, "pf": 1.2, "horizon": "intraday", "review": "Week 8"},
-    "FXBreak-6J-Short-London":       {"trades": 50, "pf": 1.1, "horizon": "intraday", "review": "Week 12"},
+    # FXBreak-6J-Short-London removed 2026-04-14: archived with verified
+    # concentration-catastrophe failure mode (top-3=98.7%, max-year=112.6%).
+    # See docs/PROBATION_REVIEW_CRITERIA.md §3.
     "PreFOMC-Drift-Equity":          {"trades": 8,  "pf": 1.2, "horizon": "event",    "review": "After 4 FOMC events"},
     "TV-NFP-High-Low-Levels":        {"trades": 8,  "pf": 1.1, "horizon": "event",    "review": "After 4 NFP events (~Jul 2026)"},
     "NoiseBoundary-MNQ-Long":        {"trades": 30, "pf": 1.2, "horizon": "intraday", "review": "Week 8"},
@@ -46,7 +48,7 @@ TARGETS = {
 EXPECTED_FREQ = {
     "DailyTrend-MGC-Long":       2.0,
     "MomPB-6J-Long-US":          8.0,
-    "FXBreak-6J-Short-London":   12.0,
+    # FXBreak-6J-Short-London: archived 2026-04-14 (see TARGETS note).
     "PreFOMC-Drift-Equity":      0.67,
     "TV-NFP-High-Low-Levels":    0.8,
     "NoiseBoundary-MNQ-Long":    5.0,
@@ -61,7 +63,7 @@ EXPECTED_FREQ = {
 MAX_PROBATION_WEEKS = {
     "DailyTrend-MGC-Long":           16,
     "MomPB-6J-Long-US":              16,
-    "FXBreak-6J-Short-London":       24,
+    # FXBreak-6J-Short-London: archived 2026-04-14 (see TARGETS note).
     "PreFOMC-Drift-Equity":          24,  # Event — slow cadence
     "TV-NFP-High-Low-Levels":        24,  # Event — slow cadence
     "NoiseBoundary-MNQ-Long":        16,

@@ -339,8 +339,11 @@ def section_decisions():
             st = trades[trades["strategy"] == sid]
             n = len(st)
             # Near gate?
+            # FXBreak-6J-Short-London removed 2026-04-14: archived with
+            # verified concentration-catastrophe failure mode. See
+            # docs/PROBATION_REVIEW_CRITERIA.md §3.
             targets = {"DailyTrend-MGC-Long": 15, "MomPB-6J-Long-US": 30,
-                       "FXBreak-6J-Short-London": 50, "NoiseBoundary-MNQ-Long": 30,
+                       "NoiseBoundary-MNQ-Long": 30,
                        "ZN-Afternoon-Reversion": 30, "VolManaged-EquityIndex-Futures": 30}
             target = targets.get(sid, 30)
             if n >= target * 0.8 and n > 0:
