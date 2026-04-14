@@ -199,10 +199,13 @@
 
 | File | Purpose |
 |------|---------|
-| `docs/LAB_STATE.md` | Single source of truth for lab status |
+| `CLAUDE.md` | Authoritative operating/state document |
+| `docs/PROBATION_REVIEW_CRITERIA.md` | Non-XB-ORB probation governance |
+| `docs/XB_ORB_PROBATION_FRAMEWORK.md` | XB-ORB probation governance |
 | `docs/strategy_registry.md` | Every strategy's current status |
 | `docs/research_pipeline.md` | This document — operating manual |
 | `docs/research_log.md` | Chronological experiment record |
+| `docs/LAB_STATE.md` | Historical snapshot only — not maintained |
 | `engine/backtest.py` | Core backtest engine |
 | `engine/statistics.py` | Bootstrap, DSR, statistical tests |
 | `engine/regime_engine.py` | 4-factor regime classifier |

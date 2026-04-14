@@ -93,8 +93,11 @@ Rejected strategies get a postmortem in `research/postmortems/`.
 
 ## Current Lab Status
 
+See `CLAUDE.md` for authoritative current lab state, probation portfolio,
+and automation status.
 See `docs/strategy_registry.md` for the authoritative strategy status table.
-See `docs/LAB_STATE.md` for portfolio metrics and pipeline counts.
+(`docs/LAB_STATE.md` is retained only as a historical snapshot and is no
+longer maintained as a status source.)
 
 ---
 *Updated 2026-03-10. Previous version reflected Phase 3 state (2 strategies). This version reflects current 4-parent + 4-probation portfolio.*
