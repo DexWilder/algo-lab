@@ -1,0 +1,395 @@
+{
+  "report_date": "2026-04-14 08:07",
+  "forward_period": {
+    "days": 27,
+    "trades": 69
+  },
+  "portfolio_drift": {
+    "status": "DRIFT",
+    "forward_days": 27,
+    "forward_trades": 69,
+    "metrics": {
+      "win_rate": {
+        "baseline": 0.499,
+        "live": 0.391,
+        "delta": -0.108,
+        "severity": "DRIFT"
+      },
+      "trade_frequency": {
+        "baseline_tpd": 1.1,
+        "live_tpd": 2.56,
+        "ratio": 2.32,
+        "severity": "ALARM"
+      },
+      "expectancy": {
+        "baseline_avg_pnl": 41.89,
+        "live_avg_pnl": -32.94,
+        "ratio": -0.79,
+        "severity": "ALARM"
+      },
+      "profit_factor": {
+        "baseline": 2.11,
+        "live": 0.47,
+        "severity": "ALARM"
+      },
+      "sharpe": {
+        "baseline": 4.04,
+        "live": -5.68,
+        "severity": "ALARM"
+      },
+      "avg_winner": {
+        "baseline": 159.38,
+        "live": 73.42
+      },
+      "avg_loser": {
+        "baseline": -75.01,
+        "live": -101.32
+      },
+      "trade_retention": {
+        "baseline": 0.7,
+        "live": 0.76
+      }
+    },
+    "baseline_status": "STALE_PENDING_REFRESH",
+    "baseline_note": "Portfolio baseline reflects a 6-strategy Phase 17 composition no longer representative. Refresh requires a combined backtest over the current 3 core + 7 probation portfolio with agreed weights."
+  },
+  "strategy_drift": {
+    "XB-ORB-EMA-Ladder-MNQ": {
+      "trades": 2,
+      "tier": "full",
+      "severity": "INSUFFICIENT_DATA",
+      "message": "2 trades < 30 required for full severity classification",
+      "win_rate": {
+        "live": 0.5
+      },
+      "avg_pnl": {
+        "live": -42.24
+      },
+      "total_pnl": -84.48
+    },
+    "XB-ORB-EMA-Ladder-MCL": {
+      "trades": 1,
+      "tier": "full",
+      "severity": "INSUFFICIENT_DATA",
+      "message": "1 trades < 30 required for full severity classification",
+      "win_rate": {
+        "live": 0.0
+      },
+      "avg_pnl": {
+        "live": -61.0
+      },
+      "total_pnl": -61.0
+    },
+    "XB-ORB-EMA-Ladder-MYM": {
+      "trades": 0,
+      "tier": "full",
+      "severity": "DRIFT",
+      "message": "Missing signals vs backtest cadence"
+    },
+    "ZN-Afternoon-Reversion": {
+      "trades": 0,
+      "tier": "full",
+      "severity": "DRIFT",
+      "message": "Missing signals vs backtest cadence"
+    },
+    "XB-PB-EMA-MES-Short": {
+      "trades": 17,
+      "tier": "reference-only",
+      "severity": "INSUFFICIENT_DATA",
+      "message": "17 trades < 20 required for reference-only severity classification",
+      "win_rate": {
+        "live": 0.353
+      },
+      "avg_pnl": {
+        "live": -16.09
+      },
+      "total_pnl": -273.58
+    },
+    "ORB-MGC-Long": {
+      "trades": 5,
+      "tier": "reference-only",
+      "severity": "INSUFFICIENT_DATA",
+      "message": "5 trades < 20 required for reference-only severity classification",
+      "win_rate": {
+        "live": 0.6
+      },
+      "avg_pnl": {
+        "live": 8.76
+      },
+      "total_pnl": 43.8
+    },
+    "Treasury-Rolldown-Carry-Spread": {
+      "trades": 0,
+      "tier": "reference-only",
+      "severity": "NORMAL",
+      "message": "No trades yet; expected frequency is too low to flag"
+    },
+    "FXBreak-6J-Short-London": {
+      "trades": 0,
+      "tier": "reference-only",
+      "severity": "NORMAL",
+      "message": "No trades yet; expected frequency is too low to flag"
+    },
+    "PB-MGC-Short": {
+      "trades": 4,
+      "tier": "observational",
+      "severity": "INSUFFICIENT_DATA",
+      "message": "4 trades < inf required for observational severity classification",
+      "win_rate": {
+        "live": 0.5
+      },
+      "avg_pnl": {
+        "live": -7.49
+      },
+      "total_pnl": -29.96
+    },
+    "DailyTrend-MGC-Long": {
+      "trades": 0,
+      "tier": "observational",
+      "severity": "OBSERVATIONAL",
+      "message": "No trades yet (observational \u2014 no severity)"
+    },
+    "TV-NFP-High-Low-Levels": {
+      "trades": 0,
+      "tier": "observational",
+      "severity": "OBSERVATIONAL",
+      "message": "No trades yet (observational \u2014 no severity)"
+    },
+    "PreFOMC-Drift-Equity": {
+      "trades": 0,
+      "tier": "observational",
+      "severity": "OBSERVATIONAL",
+      "message": "No trades yet (observational \u2014 no severity)"
+    },
+    "MomPB-6J-Long-US": {
+      "trades": 0,
+      "tier": "observational",
+      "severity": "OBSERVATIONAL",
+      "message": "No trades yet (observational \u2014 no severity)"
+    },
+    "_uncatalogued_live": {
+      "tier": "uncatalogued",
+      "severity": null,
+      "strategies": {
+        "CloseVWAP-M2K-Short": {
+          "trades": 1,
+          "tier": "uncatalogued",
+          "severity": "UNCATALOGUED",
+          "win_rate": 0.0,
+          "avg_pnl": -54.5,
+          "total_pnl": -54.5,
+          "profit_factor": 0.0
+        },
+        "MomIgn-M2K-Short": {
+          "trades": 3,
+          "tier": "uncatalogued",
+          "severity": "UNCATALOGUED",
+          "win_rate": 0.333,
+          "avg_pnl": -17.83,
+          "total_pnl": -53.5,
+          "profit_factor": 0.39
+        },
+        "MomPB-6E-Long-US": {
+          "trades": 3,
+          "tier": "uncatalogued",
+          "severity": "UNCATALOGUED",
+          "win_rate": 0.0,
+          "avg_pnl": -220.83,
+          "total_pnl": -662.5,
+          "profit_factor": 0.0
+        },
+        "NoiseBoundary-MNQ-Long": {
+          "trades": 9,
+          "tier": "uncatalogued",
+          "severity": "UNCATALOGUED",
+          "win_rate": 0.111,
+          "avg_pnl": -124.24,
+          "total_pnl": -1118.16,
+          "profit_factor": 0.17
+        },
+        "TTMSqueeze-M2K-Short": {
+          "trades": 4,
+          "tier": "uncatalogued",
+          "severity": "UNCATALOGUED",
+          "win_rate": 0.5,
+          "avg_pnl": 5.12,
+          "total_pnl": 20.5,
+          "profit_factor": 1.18
+        }
+      },
+      "message": "5 live strategies producing trades have no baseline entry and are not explicitly excluded. Add to BASELINE or reconcile registry."
+    },
+    "_excluded_from_drift": {
+      "tier": "excluded",
+      "severity": null,
+      "strategies": {
+        "VolManaged-EquityIndex-Futures": {
+          "reason": "Daily always-long vol-scaled sizing regime. No per-trade WR/PF in the normal sense; the right drift metric compares live position weight to the weight the backtest would produce on the same realized-vol inputs. Requires a dedicated metric. FOLLOW-UP: design VolManaged weight-replication drift."
+        }
+      },
+      "message": "Tracked separately \u2014 these strategies require a dedicated drift metric. See excluded_from_strategy_drift in BASELINE."
+    }
+  },
+  "regime_drift": {
+    "HIGH_RV": {
+      "days": 20,
+      "avg_daily_pnl": -119.88,
+      "total_pnl": -2397.66,
+      "positive_rate": 0.4
+    }
+  },
+  "session_drift": {
+    "portfolio_sessions": {
+      "morning": {
+        "trades": 31,
+        "trade_share": 0.449,
+        "win_rate": 0.258,
+        "avg_pnl": -83.52,
+        "total_pnl": -2588.98,
+        "profit_factor": 0.26,
+        "severity": "ALARM"
+      },
+      "midday": {
+        "trades": 8,
+        "trade_share": 0.116,
+        "win_rate": 0.375,
+        "avg_pnl": 18.41,
+        "total_pnl": 147.32,
+        "profit_factor": 1.26,
+        "severity": "NORMAL"
+      },
+      "afternoon": {
+        "trades": 10,
+        "trade_share": 0.145,
+        "win_rate": 0.5,
+        "avg_pnl": 16.83,
+        "total_pnl": 168.28,
+        "profit_factor": 1.9,
+        "severity": "NORMAL"
+      }
+    },
+    "strategy_sessions": {
+      "XB-ORB-EMA-Ladder-MNQ": {
+        "morning": {
+          "trades": 0,
+          "severity": "INSUFFICIENT_DATA"
+        },
+        "midday": {
+          "trades": 2,
+          "severity": "INSUFFICIENT_DATA"
+        },
+        "afternoon": {
+          "trades": 0,
+          "severity": "INSUFFICIENT_DATA"
+        }
+      },
+      "XB-ORB-EMA-Ladder-MCL": {
+        "morning": {
+          "trades": 0,
+          "severity": "INSUFFICIENT_DATA"
+        },
+        "midday": {
+          "trades": 1,
+          "severity": "INSUFFICIENT_DATA"
+        },
+        "afternoon": {
+          "trades": 0,
+          "severity": "INSUFFICIENT_DATA"
+        }
+      },
+      "XB-PB-EMA-MES-Short": {
+        "morning": {
+          "trades": 12,
+          "win_rate": 0.417,
+          "wr_delta": -0.14,
+          "avg_pnl": -24.37,
+          "pnl_ratio": -0.84,
+          "severity": "ALARM"
+        },
+        "midday": {
+          "trades": 4,
+          "win_rate": 0.25,
+          "wr_delta": -0.307,
+          "avg_pnl": 17.51,
+          "pnl_ratio": 0.61,
+          "severity": "NORMAL"
+        },
+        "afternoon": {
+          "trades": 1,
+          "severity": "INSUFFICIENT_DATA"
+        }
+      },
+      "ORB-MGC-Long": {
+        "morning": {
+          "trades": 2,
+          "severity": "INSUFFICIENT_DATA"
+        },
+        "midday": {
+          "trades": 1,
+          "severity": "INSUFFICIENT_DATA"
+        },
+        "afternoon": {
+          "trades": 2,
+          "severity": "INSUFFICIENT_DATA"
+        }
+      },
+      "PB-MGC-Short": {
+        "morning": {
+          "trades": 4,
+          "win_rate": 0.5,
+          "wr_delta": -0.167,
+          "avg_pnl": -7.49,
+          "pnl_ratio": -0.09,
+          "severity": "NORMAL"
+        },
+        "midday": {
+          "trades": 0,
+          "severity": "INSUFFICIENT_DATA"
+        },
+        "afternoon": {
+          "trades": 0,
+          "severity": "INSUFFICIENT_DATA"
+        }
+      }
+    },
+    "concentration_warnings": []
+  },
+  "alerts": [
+    {
+      "level": "DRIFT",
+      "scope": "PORTFOLIO",
+      "message": "Portfolio metrics drifting from baseline \u2014 monitor closely"
+    },
+    {
+      "level": "DRIFT",
+      "scope": "XB-ORB-EMA-Ladder-MYM",
+      "message": "XB-ORB-EMA-Ladder-MYM: drifting from baseline metrics"
+    },
+    {
+      "level": "DRIFT",
+      "scope": "ZN-Afternoon-Reversion",
+      "message": "ZN-Afternoon-Reversion: drifting from baseline metrics"
+    },
+    {
+      "level": "INFO",
+      "scope": "COVERAGE",
+      "message": "Uncatalogued live strategies (5): CloseVWAP-M2K-Short, MomIgn-M2K-Short, MomPB-6E-Long-US, NoiseBoundary-MNQ-Long, TTMSqueeze-M2K-Short. Add to BASELINE or reconcile registry."
+    },
+    {
+      "level": "INFO",
+      "scope": "PORTFOLIO_BASELINE",
+      "message": "Portfolio baseline is stale (Phase 17 composition). Portfolio status capped at DRIFT until refreshed."
+    },
+    {
+      "level": "ALARM",
+      "scope": "SESSION:morning",
+      "message": "morning session: portfolio losing money (PF=0.26)"
+    },
+    {
+      "level": "ALARM",
+      "scope": "XB-PB-EMA-MES-Short:morning",
+      "message": "XB-PB-EMA-MES-Short: morning edge degrading (WR delta -14.0%)"
+    }
+  ],
+  "overall_status": "DRIFT"
+}

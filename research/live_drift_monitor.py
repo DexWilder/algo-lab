@@ -69,9 +69,36 @@ STRATEGY_PROMOTED_DATES = {
 }
 
 # ── Backtest Reference Baselines ─────────────────────────────────────────────
-# From Phase 17 backtest (355 trading days, 391 trades)
+#
+# 2026-04-14 refresh. Replaces the Phase 17 6-strategy baseline with the
+# current live/probation universe. Tier conventions:
+#   full            >= 300 backtest trades, trade-shaped. ALARM permitted.
+#   reference-only  50-299 BT trades, or smaller/sparse but still trade-shaped.
+#                   Severity capped at DRIFT (never ALARM).
+#   observational   < 50 BT trades, or sparse event/carry, or non-trade-shaped.
+#                   Metrics recorded, NO severity classification.
+#
+# Portfolio-level baseline is RETAINED BUT ANNOTATED STALE. Portfolio status
+# is force-capped at DRIFT until a deliberate portfolio-construction exercise
+# rebuilds `portfolio` with the current 3 core + 7 probation composition.
+# See compute_portfolio_drift.
+#
+# Strategies explicitly excluded from per-trade drift (different shape):
+#   VolManaged-EquityIndex-Futures — daily always-long sizing regime, needs a
+#   weight-replication metric rather than per-trade WR/PF. FOLLOW-UP required.
 
 BASELINE = {
+    "_meta": {
+        "strategy_baseline_refreshed": "2026-04-14",
+        "portfolio_baseline_status": "STALE_PENDING_REFRESH",
+        "portfolio_baseline_source": "Phase 17 6-strategy portfolio (2026-03-06)",
+        "portfolio_status_cap": "DRIFT",
+        "portfolio_refresh_note": (
+            "Portfolio baseline reflects a 6-strategy Phase 17 composition no "
+            "longer representative. Refresh requires a combined backtest over "
+            "the current 3 core + 7 probation portfolio with agreed weights."
+        ),
+    },
     "portfolio": {
         "trades_per_day": 1.1,
         "win_rate": 0.499,
@@ -86,29 +113,99 @@ BASELINE = {
         "monthly_positive_rate": 0.84,
     },
     "strategies": {
-        "VWAP-MNQ-Long": {
-            "trade_share": 0.417, "pnl_share": 0.324,
-            "win_rate": 0.417, "avg_pnl": 32.51, "trades": 163,
+        # ── Full tier (>= 300 BT trades, ALARM permitted) ────────────────
+        "XB-ORB-EMA-Ladder-MNQ": {
+            "tier": "full", "asset": "MNQ",
+            "trades": 1183, "backtest_days": 1700, "win_rate": 0.61,
+            "avg_pnl": 42.93, "trade_share": None, "pnl_share": None,
+            "source": "research/data/xb_orb_family_sweep_results.json + docs/XB_ORB_PROBATION_FRAMEWORK.md",
         },
+        "XB-ORB-EMA-Ladder-MCL": {
+            "tier": "full", "asset": "MCL",
+            "trades": 898, "backtest_days": 1175, "win_rate": 0.57,
+            "avg_pnl": 7.06, "trade_share": None, "pnl_share": None,
+            "source": "research/data/xb_orb_mcl_stop_sweep_results.json + framework WR",
+        },
+        "XB-ORB-EMA-Ladder-MYM": {
+            "tier": "full", "asset": "MYM",
+            "trades": 340, "backtest_days": 500, "win_rate": 0.56,
+            "avg_pnl": 30.0, "trade_share": None, "pnl_share": None,
+            "source": "docs/XB_ORB_PROBATION_FRAMEWORK.md (avg_pnl estimated from family)",
+        },
+        "ZN-Afternoon-Reversion": {
+            "tier": "full", "asset": "ZN",
+            "trades": 300, "backtest_days": 1500, "win_rate": None,
+            "avg_pnl": None, "trade_share": None, "pnl_share": None,
+            "source": "docs/PROBATION_REVIEW_CRITERIA.md (PF 1.32; WR/avg not published)",
+        },
+        # ── Reference-only (50-299 BT trades, severity capped at DRIFT) ─
         "XB-PB-EMA-MES-Short": {
-            "trade_share": 0.225, "pnl_share": 0.155,
-            "win_rate": 0.557, "avg_pnl": 28.86, "trades": 88,
+            "tier": "reference-only", "asset": "MES",
+            "trades": 88, "backtest_days": 355, "win_rate": 0.557,
+            "avg_pnl": 28.86, "trade_share": 0.225, "pnl_share": 0.155,
+            "source": "Phase 17 baseline (registry PF 1.31, still core)",
         },
         "ORB-MGC-Long": {
-            "trade_share": 0.159, "pnl_share": 0.169,
-            "win_rate": 0.565, "avg_pnl": 44.63, "trades": 62,
+            "tier": "reference-only", "asset": "MGC",
+            "trades": 62, "backtest_days": 355, "win_rate": 0.565,
+            "avg_pnl": 44.63, "trade_share": 0.159, "pnl_share": 0.169,
+            "source": "Phase 17 baseline (registry PF 1.99, still core)",
         },
-        "Donchian-MNQ-Long-GRINDING": {
-            "trade_share": 0.120, "pnl_share": 0.139,
-            "win_rate": 0.553, "avg_pnl": 48.43, "trades": 47,
+        "Treasury-Rolldown-Carry-Spread": {
+            "tier": "reference-only", "asset": "ZN",
+            "trades": 79, "backtest_days": 1500, "win_rate": None,
+            "avg_pnl": None, "trade_share": None, "pnl_share": None,
+            "source": "docs/PROBATION_REVIEW_CRITERIA.md (PF 1.11, monthly)",
         },
-        "BB-EQ-MGC-Long": {
-            "trade_share": 0.056, "pnl_share": 0.166,
-            "win_rate": 0.500, "avg_pnl": 123.40, "trades": 22,
+        "FXBreak-6J-Short-London": {
+            "tier": "reference-only", "asset": "6J",
+            "trades": 50, "backtest_days": 1500, "win_rate": None,
+            "avg_pnl": None, "trade_share": None, "pnl_share": None,
+            "source": "docs/PROBATION_REVIEW_CRITERIA.md (PF 1.20)",
         },
+        # ── Observational (<50 BT trades or sparse/event, no severity) ──
         "PB-MGC-Short": {
-            "trade_share": 0.023, "pnl_share": 0.048,
-            "win_rate": 0.667, "avg_pnl": 86.76, "trades": 9,
+            "tier": "observational", "asset": "MGC",
+            "trades": 9, "backtest_days": 355, "win_rate": 0.667,
+            "avg_pnl": 86.76, "trade_share": 0.023, "pnl_share": 0.048,
+            "source": "Phase 17 baseline (registry PF 2.36, still core but sparse)",
+        },
+        "DailyTrend-MGC-Long": {
+            "tier": "observational", "asset": "MGC",
+            "trades": 15, "backtest_days": 1000, "win_rate": None,
+            "avg_pnl": None, "trade_share": None, "pnl_share": None,
+            "source": "docs/PROBATION_REVIEW_CRITERIA.md (sparse daily, PF 3.65)",
+        },
+        "TV-NFP-High-Low-Levels": {
+            "tier": "observational", "asset": "MNQ",
+            "trades": None, "backtest_days": None, "win_rate": None,
+            "avg_pnl": None, "trade_share": None, "pnl_share": None,
+            "source": "docs/PROBATION_REVIEW_CRITERIA.md (sparse event, vitality-adjusted)",
+        },
+        "PreFOMC-Drift-Equity": {
+            "tier": "observational", "asset": "MES",
+            "trades": None, "backtest_days": None, "win_rate": None,
+            "avg_pnl": None, "trade_share": None, "pnl_share": None,
+            "source": "docs/PROBATION_REVIEW_CRITERIA.md (sparse event)",
+        },
+        "MomPB-6J-Long-US": {
+            "tier": "observational", "asset": "6J",
+            "trades": None, "backtest_days": None, "win_rate": None,
+            "avg_pnl": None, "trade_share": None, "pnl_share": None,
+            "source": "docs/PROBATION_REVIEW_CRITERIA.md (promotion gate at 30 fwd trades)",
+        },
+    },
+    # Strategies that should not participate in per-trade drift severity.
+    # Recorded here so future engineers can see the exclusion is intentional.
+    "excluded_from_strategy_drift": {
+        "VolManaged-EquityIndex-Futures": {
+            "reason": (
+                "Daily always-long vol-scaled sizing regime. No per-trade WR/PF "
+                "in the normal sense; the right drift metric compares live "
+                "position weight to the weight the backtest would produce on "
+                "the same realized-vol inputs. Requires a dedicated metric. "
+                "FOLLOW-UP: design VolManaged weight-replication drift."
+            ),
         },
     },
 }
@@ -356,81 +453,139 @@ def compute_portfolio_drift(trades: pd.DataFrame, equity: pd.DataFrame,
     else:
         overall = "NORMAL"
 
+    # Portfolio baseline is stale (Phase 17 6-strategy composition). Cap
+    # the overall portfolio verdict at DRIFT until BASELINE["portfolio"]
+    # is refreshed against the current 3 core + 7 probation portfolio.
+    cap = BASELINE.get("_meta", {}).get("portfolio_status_cap")
+    if cap == "DRIFT" and overall == "ALARM":
+        overall = "DRIFT"
+
     return {
         "status": overall,
         "forward_days": n_days,
         "forward_trades": n_trades,
         "metrics": metrics,
+        "baseline_status": BASELINE.get("_meta", {}).get("portfolio_baseline_status"),
+        "baseline_note": BASELINE.get("_meta", {}).get("portfolio_refresh_note"),
     }
+
+
+def _apply_tier_clamp(severity: str, tier: str) -> str:
+    """Clamp severity per tier rules.
+
+    observational  -> OBSERVATIONAL (no severity classification)
+    reference-only -> ALARM demoted to DRIFT
+    full           -> unchanged
+    """
+    if tier == "observational":
+        return "OBSERVATIONAL"
+    if tier == "reference-only" and severity == "ALARM":
+        return "DRIFT"
+    return severity
+
+
+# Minimum forward trades before any DRIFT/ALARM severity is emitted.
+# Below this, the severity is INSUFFICIENT_DATA regardless of how
+# extreme the point estimate looks — point estimates on n<20 are noise.
+# Aligns with XB_ORB_PROBATION_FRAMEWORK.md's 20/30-trade gates.
+MIN_TRADES_FOR_SEVERITY = {"full": 30, "reference-only": 20,
+                           "observational": float("inf")}
+
+
+def _missing_signals_severity(tier: str, baseline: dict, n_days: int) -> str:
+    """For a strategy with 0 live trades, decide whether zero is drift.
+
+    Compare expected trades over the elapsed forward window (using the
+    backtest trade cadence) to zero. Only emit severity if the expected
+    count is meaningfully above zero.
+    """
+    if tier == "observational":
+        return "OBSERVATIONAL"
+    bt_trades = baseline.get("trades")
+    bt_days = baseline.get("backtest_days")
+    if not bt_trades or not bt_days or n_days < 5:
+        return "NORMAL"
+    expected = (bt_trades / bt_days) * n_days
+    if expected >= 20:
+        return _apply_tier_clamp("ALARM", tier)
+    if expected >= 5:
+        return _apply_tier_clamp("DRIFT", tier)
+    return "NORMAL"
 
 
 def compute_strategy_drift(trades: pd.DataFrame) -> dict:
     """Compute per-strategy drift vs baseline.
 
-    Note: BASELINE["strategies"] is the Phase 17 portfolio (VWAP-MNQ,
-    XB-PB-EMA-MES, ORB-MGC, Donchian-MNQ, BB-EQ-MGC, PB-MGC). If none
-    of those appear in the live trade set, the baseline is stale and
-    per-strategy drift is not meaningful — surface a single
-    BASELINE_STALE notice instead of emitting 6 spurious ALARMs.
+    Baseline strategies have a `tier` field controlling severity behavior.
+    Live strategies present in trades but not in the baseline and not in
+    excluded_from_strategy_drift are recorded with tier='uncatalogued' —
+    no severity, but surfaced so coverage gaps are visible.
     """
     if trades.empty:
         return {}
 
-    live_strategies = set(trades["strategy"].unique())
-    if live_strategies.isdisjoint(BASELINE["strategies"].keys()):
-        return {
-            "_meta": {
-                "status": "BASELINE_STALE",
-                "message": (
-                    "Baseline strategy set does not overlap with live "
-                    "strategies. Per-strategy drift suppressed. "
-                    "Refresh BASELINE['strategies'] in live_drift_monitor.py "
-                    "to reflect the current portfolio."
-                ),
-                "baseline_strategies": sorted(BASELINE["strategies"].keys()),
-                "live_strategies": sorted(live_strategies),
-            }
-        }
-
     results = {}
     n_total = len(trades)
     n_days = len(trades["date"].unique())
+    baseline_strats = BASELINE["strategies"]
+    excluded = BASELINE.get("excluded_from_strategy_drift", {})
 
-    for strat_name, baseline in BASELINE["strategies"].items():
+    for strat_name, baseline in baseline_strats.items():
+        tier = baseline.get("tier", "full")
         strat_trades = trades[trades["strategy"] == strat_name]
         n = len(strat_trades)
 
         if n == 0:
+            sev = _missing_signals_severity(tier, baseline, n_days)
+            msg = {
+                "OBSERVATIONAL": "No trades yet (observational — no severity)",
+                "NORMAL": "No trades yet; expected frequency is too low to flag",
+                "DRIFT": "Missing signals vs backtest cadence",
+                "ALARM": "Zero trades well below expected frequency",
+            }.get(sev, "")
             results[strat_name] = {
-                "trades": 0,
-                "severity": "ALARM" if n_days >= 5 else "NORMAL",
-                "message": "No trades in forward period" if n_days >= 5 else "Insufficient data",
+                "trades": 0, "tier": tier, "severity": sev, "message": msg,
+            }
+            continue
+
+        # Sample-size guard: below tier minimum, do not classify severity.
+        min_trades = MIN_TRADES_FOR_SEVERITY[tier]
+        if n < min_trades:
+            results[strat_name] = {
+                "trades": n, "tier": tier, "severity": "INSUFFICIENT_DATA",
+                "message": f"{n} trades < {min_trades} required for {tier} severity classification",
+                "win_rate": {"live": round(len(strat_trades[strat_trades["pnl"] > 0]) / n, 3)},
+                "avg_pnl": {"live": round(strat_trades["pnl"].mean(), 2)},
+                "total_pnl": round(strat_trades["pnl"].sum(), 2),
             }
             continue
 
         # Win rate
+        bt_wr = baseline.get("win_rate")
         live_wr = len(strat_trades[strat_trades["pnl"] > 0]) / n
-        wr_delta = live_wr - baseline["win_rate"]
+        wr_delta = (live_wr - bt_wr) if bt_wr is not None else None
+        wr_sev = _classify_drift_abs(abs(wr_delta), 0.10, 0.20) if wr_delta is not None else "NORMAL"
 
-        # Trade share
+        # Trade share (display only, no severity)
+        bt_share = baseline.get("trade_share")
         live_share = n / n_total if n_total > 0 else 0
-        share_delta = live_share - baseline["trade_share"]
+        share_delta = (live_share - bt_share) if bt_share is not None else None
 
         # Avg PnL
+        bt_avg = baseline.get("avg_pnl")
         live_avg = strat_trades["pnl"].mean()
-        pnl_ratio = live_avg / baseline["avg_pnl"] if baseline["avg_pnl"] != 0 else 0
+        pnl_ratio = (live_avg / bt_avg) if (bt_avg and bt_avg != 0) else None
+        pnl_sev = _classify_drift_degradation(pnl_ratio, 0.50, 0.20) if pnl_ratio is not None else "NORMAL"
 
-        # Expected trades per day (from baseline)
-        baseline_tpd = baseline["trades"] / 355  # 355 backtest days
+        # Trade frequency vs strategy-specific backtest cadence.
+        bt_trades = baseline.get("trades")
+        bt_days = baseline.get("backtest_days") or 355
+        baseline_tpd = (bt_trades / bt_days) if (bt_trades and bt_days) else None
         live_tpd = n / max(n_days, 1)
-        freq_ratio = live_tpd / baseline_tpd if baseline_tpd > 0 else 0
+        freq_ratio = (live_tpd / baseline_tpd) if baseline_tpd else None
+        freq_sev = _classify_drift_ratio(freq_ratio, 0.50, 0.70) if freq_ratio is not None else "NORMAL"
 
-        # Severity
-        wr_sev = _classify_drift_abs(abs(wr_delta), 0.10, 0.20)
-        pnl_sev = _classify_drift_degradation(pnl_ratio, 0.50, 0.20)
-        freq_sev = _classify_drift_ratio(freq_ratio, 0.50, 0.70)
-
-        severities = [wr_sev, pnl_sev, freq_sev]
+        severities = [s for s in (wr_sev, pnl_sev, freq_sev) if s]
         if "ALARM" in severities:
             overall = "ALARM"
         elif "DRIFT" in severities:
@@ -438,13 +593,72 @@ def compute_strategy_drift(trades: pd.DataFrame) -> dict:
         else:
             overall = "NORMAL"
 
+        overall = _apply_tier_clamp(overall, tier)
+
         results[strat_name] = {
             "trades": n,
+            "tier": tier,
             "severity": overall,
-            "win_rate": {"baseline": baseline["win_rate"], "live": round(live_wr, 3), "delta": round(wr_delta, 3), "severity": wr_sev},
-            "avg_pnl": {"baseline": baseline["avg_pnl"], "live": round(live_avg, 2), "ratio": round(pnl_ratio, 2), "severity": pnl_sev},
-            "trade_frequency": {"baseline_tpd": round(baseline_tpd, 3), "live_tpd": round(live_tpd, 3), "ratio": round(freq_ratio, 2), "severity": freq_sev},
-            "trade_share": {"baseline": baseline["trade_share"], "live": round(live_share, 3), "delta": round(share_delta, 3)},
+            "win_rate": {"baseline": bt_wr, "live": round(live_wr, 3),
+                         "delta": round(wr_delta, 3) if wr_delta is not None else None,
+                         "severity": wr_sev},
+            "avg_pnl": {"baseline": bt_avg, "live": round(live_avg, 2),
+                        "ratio": round(pnl_ratio, 2) if pnl_ratio is not None else None,
+                        "severity": pnl_sev},
+            "trade_frequency": {"baseline_tpd": round(baseline_tpd, 3) if baseline_tpd else None,
+                                "live_tpd": round(live_tpd, 3),
+                                "ratio": round(freq_ratio, 2) if freq_ratio is not None else None,
+                                "severity": freq_sev},
+            "trade_share": {"baseline": bt_share, "live": round(live_share, 3),
+                            "delta": round(share_delta, 3) if share_delta is not None else None},
+        }
+
+    # ── Uncatalogued live strategies ─────────────────────────────────
+    # Strategies producing trades but not in baseline or excluded list.
+    # Surfaced so registry/baseline gaps are visible instead of silent.
+    live_names = set(trades["strategy"].unique())
+    catalogued = set(baseline_strats.keys()) | set(excluded.keys())
+    uncatalogued = sorted(live_names - catalogued)
+    if uncatalogued:
+        bucket = {}
+        for name in uncatalogued:
+            st = trades[trades["strategy"] == name]
+            n = len(st)
+            wins = len(st[st["pnl"] > 0])
+            gross_profit = st[st["pnl"] > 0]["pnl"].sum()
+            gross_loss = abs(st[st["pnl"] <= 0]["pnl"].sum())
+            pf = (gross_profit / gross_loss) if gross_loss > 0 else float("inf")
+            bucket[name] = {
+                "trades": n,
+                "tier": "uncatalogued",
+                "severity": "UNCATALOGUED",
+                "win_rate": round(wins / n, 3) if n else None,
+                "avg_pnl": round(st["pnl"].mean(), 2) if n else None,
+                "total_pnl": round(st["pnl"].sum(), 2),
+                "profit_factor": round(pf, 2) if gross_loss > 0 else None,
+            }
+        results["_uncatalogued_live"] = {
+            "tier": "uncatalogued",
+            "severity": None,
+            "strategies": bucket,
+            "message": (
+                f"{len(uncatalogued)} live strategies producing trades have "
+                f"no baseline entry and are not explicitly excluded. Add to "
+                f"BASELINE or reconcile registry."
+            ),
+        }
+
+    # Note any excluded strategies that are trading (e.g., VolManaged)
+    excluded_trading = sorted(live_names & set(excluded.keys()))
+    if excluded_trading:
+        results["_excluded_from_drift"] = {
+            "tier": "excluded",
+            "severity": None,
+            "strategies": {n: excluded[n] for n in excluded_trading},
+            "message": (
+                "Tracked separately — these strategies require a dedicated "
+                "drift metric. See excluded_from_strategy_drift in BASELINE."
+            ),
         }
 
     return results
@@ -685,8 +899,12 @@ def run_drift_monitor() -> dict:
             "message": "Portfolio metrics drifting from baseline — monitor closely",
         })
 
-    # Strategy-level alerts
+    # Strategy-level alerts — skip meta keys (_uncatalogued_live,
+    # _excluded_from_drift). OBSERVATIONAL and UNCATALOGUED severities
+    # do not produce alerts by design.
     for strat, data in strategy_drift.items():
+        if strat.startswith("_"):
+            continue
         if data.get("severity") == "ALARM":
             alerts.append({
                 "level": "ALARM",
@@ -699,6 +917,31 @@ def run_drift_monitor() -> dict:
                 "scope": strat,
                 "message": f"{strat}: drifting from baseline metrics",
             })
+
+    # Coverage-gap INFO alerts — visible but non-blocking.
+    uncat = strategy_drift.get("_uncatalogued_live")
+    if uncat and uncat.get("strategies"):
+        names = sorted(uncat["strategies"].keys())
+        alerts.append({
+            "level": "INFO",
+            "scope": "COVERAGE",
+            "message": (
+                f"Uncatalogued live strategies ({len(names)}): "
+                f"{', '.join(names)}. Add to BASELINE or reconcile registry."
+            ),
+        })
+
+    # Portfolio baseline staleness notice (non-blocking).
+    pb_status = portfolio_drift.get("baseline_status")
+    if pb_status == "STALE_PENDING_REFRESH":
+        alerts.append({
+            "level": "INFO",
+            "scope": "PORTFOLIO_BASELINE",
+            "message": (
+                "Portfolio baseline is stale (Phase 17 composition). "
+                "Portfolio status capped at DRIFT until refreshed."
+            ),
+        })
 
     # Session-level alerts
     for session, data in session_drift.get("portfolio_sessions", {}).items():
@@ -820,18 +1063,45 @@ def print_drift_report(results: dict):
         print(f"  {'Strategy':<28s} {'Trades':>6s} {'WR Δ':>8s} {'PnL ratio':>10s} {'Status':>8s}")
         print(f"  {'-' * 62}")
 
-        for strat, data in sorted(strat_drift.items(), key=lambda x: x[1].get("severity", "NORMAL"), reverse=True):
+        def _sev_rank(s):
+            return {"ALARM": 0, "DRIFT": 1, "OBSERVATIONAL": 2,
+                    "NORMAL": 3, "INSUFFICIENT_DATA": 4,
+                    "UNCATALOGUED": 5, None: 6}.get(s, 6)
+
+        catalogued = [(k, v) for k, v in strat_drift.items() if not k.startswith("_")]
+        for strat, data in sorted(catalogued, key=lambda x: _sev_rank(x[1].get("severity"))):
             n = data.get("trades", 0)
-            wr = data.get("win_rate", {})
-            pnl = data.get("avg_pnl", {})
-            sev = data.get("severity", "—")
+            wr = data.get("win_rate", {}) or {}
+            pnl = data.get("avg_pnl", {}) or {}
+            sev = data.get("severity", "—") or "—"
+            tier = data.get("tier", "—")
 
-            wr_delta = f"{wr.get('delta', 0):+.3f}" if isinstance(wr.get("delta"), (int, float)) else "—"
-            pnl_ratio = f"{pnl.get('ratio', 0):.2f}x" if isinstance(pnl.get("ratio"), (int, float)) else "—"
+            wr_delta = f"{wr.get('delta'):+.3f}" if isinstance(wr.get("delta"), (int, float)) else "—"
+            pnl_ratio = f"{pnl.get('ratio'):.2f}x" if isinstance(pnl.get("ratio"), (int, float)) else "—"
 
-            indicator = {"NORMAL": "  ", "DRIFT": "! ", "ALARM": "!!"}
+            indicator = {"ALARM": "!!", "DRIFT": "! ", "NORMAL": "  ",
+                         "OBSERVATIONAL": "· ", "INSUFFICIENT_DATA": "· ",
+                         "UNCATALOGUED": "? "}
             ind = indicator.get(sev, "  ")
-            print(f"  {ind}{strat:<26s} {n:>6d} {wr_delta:>8s} {pnl_ratio:>10s} {sev:>8s}")
+            print(f"  {ind}{strat:<26s} {n:>6d} {wr_delta:>8s} {pnl_ratio:>10s} {sev:>14s}  [{tier}]")
+
+        uncat = strat_drift.get("_uncatalogued_live")
+        if uncat and uncat.get("strategies"):
+            print(f"\n  UNCATALOGUED LIVE (no baseline — coverage gap)")
+            print(f"  {THIN}")
+            for name, data in sorted(uncat["strategies"].items()):
+                pf = data.get("profit_factor")
+                pf_str = f"{pf:.2f}" if isinstance(pf, (int, float)) else "—"
+                print(f"  ? {name:<34s} trades={data['trades']:>3d}  "
+                      f"WR={data.get('win_rate',0):.0%}  PF={pf_str}  "
+                      f"total_pnl=${data.get('total_pnl', 0):+.0f}")
+
+        exc = strat_drift.get("_excluded_from_drift")
+        if exc and exc.get("strategies"):
+            print(f"\n  EXCLUDED FROM STRATEGY DRIFT (tracked separately)")
+            print(f"  {THIN}")
+            for name in sorted(exc["strategies"].keys()):
+                print(f"  ~ {name}")
 
     # ── Regime Drift ──
     regime_drift = results.get("regime_drift", {})

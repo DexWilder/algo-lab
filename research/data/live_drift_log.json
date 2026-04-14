@@ -4658,5 +4658,129 @@
       },
       "concentration_warnings": []
     }
+  },
+  {
+    "date": "2026-04-14 08:07",
+    "overall_status": "DRIFT",
+    "forward_days": 27,
+    "forward_trades": 69,
+    "alerts_count": 7,
+    "portfolio_status": "DRIFT",
+    "session_drift": {
+      "portfolio_sessions": {
+        "morning": {
+          "trades": 31,
+          "trade_share": 0.449,
+          "win_rate": 0.258,
+          "avg_pnl": -83.52,
+          "total_pnl": -2588.98,
+          "profit_factor": 0.26,
+          "severity": "ALARM"
+        },
+        "midday": {
+          "trades": 8,
+          "trade_share": 0.116,
+          "win_rate": 0.375,
+          "avg_pnl": 18.41,
+          "total_pnl": 147.32,
+          "profit_factor": 1.26,
+          "severity": "NORMAL"
+        },
+        "afternoon": {
+          "trades": 10,
+          "trade_share": 0.145,
+          "win_rate": 0.5,
+          "avg_pnl": 16.83,
+          "total_pnl": 168.28,
+          "profit_factor": 1.9,
+          "severity": "NORMAL"
+        }
+      },
+      "strategy_sessions": {
+        "XB-ORB-EMA-Ladder-MNQ": {
+          "morning": {
+            "trades": 0,
+            "severity": "INSUFFICIENT_DATA"
+          },
+          "midday": {
+            "trades": 2,
+            "severity": "INSUFFICIENT_DATA"
+          },
+          "afternoon": {
+            "trades": 0,
+            "severity": "INSUFFICIENT_DATA"
+          }
+        },
+        "XB-ORB-EMA-Ladder-MCL": {
+          "morning": {
+            "trades": 0,
+            "severity": "INSUFFICIENT_DATA"
+          },
+          "midday": {
+            "trades": 1,
+            "severity": "INSUFFICIENT_DATA"
+          },
+          "afternoon": {
+            "trades": 0,
+            "severity": "INSUFFICIENT_DATA"
+          }
+        },
+        "XB-PB-EMA-MES-Short": {
+          "morning": {
+            "trades": 12,
+            "win_rate": 0.417,
+            "wr_delta": -0.14,
+            "avg_pnl": -24.37,
+            "pnl_ratio": -0.84,
+            "severity": "ALARM"
+          },
+          "midday": {
+            "trades": 4,
+            "win_rate": 0.25,
+            "wr_delta": -0.307,
+            "avg_pnl": 17.51,
+            "pnl_ratio": 0.61,
+            "severity": "NORMAL"
+          },
+          "afternoon": {
+            "trades": 1,
+            "severity": "INSUFFICIENT_DATA"
+          }
+        },
+        "ORB-MGC-Long": {
+          "morning": {
+            "trades": 2,
+            "severity": "INSUFFICIENT_DATA"
+          },
+          "midday": {
+            "trades": 1,
+            "severity": "INSUFFICIENT_DATA"
+          },
+          "afternoon": {
+            "trades": 2,
+            "severity": "INSUFFICIENT_DATA"
+          }
+        },
+        "PB-MGC-Short": {
+          "morning": {
+            "trades": 4,
+            "win_rate": 0.5,
+            "wr_delta": -0.167,
+            "avg_pnl": -7.49,
+            "pnl_ratio": -0.09,
+            "severity": "NORMAL"
+          },
+          "midday": {
+            "trades": 0,
+            "severity": "INSUFFICIENT_DATA"
+          },
+          "afternoon": {
+            "trades": 0,
+            "severity": "INSUFFICIENT_DATA"
+          }
+        }
+      },
+      "concentration_warnings": []
+    }
   }
 ]
