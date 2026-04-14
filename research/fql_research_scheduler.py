@@ -35,6 +35,21 @@ SCHEDULER_LOG_PATH = ROOT / "research" / "data" / "scheduler_log.json"
 
 JOBS = {
     # ── Daily (every trading day) ─────────────────────────────────────
+    "daily_system_watchdog": {
+        "cadence": "daily",
+        "description": (
+            "Refresh research/data/watchdog_state.json (5-check pass + "
+            "SAFE_MODE flag). Consumed by scripts/run_fql_forward.sh "
+            "pre-flight gate via `system_watchdog.py --safe-mode`. "
+            "Runs first (priority 0) so downstream jobs and the next "
+            "forward-day run read fresh state."
+        ),
+        "module": "research.system_watchdog",
+        "function": None,
+        "subprocess": True,
+        "subprocess_args": ["--json"],
+        "priority": 0,
+    },
     "daily_health_check": {
         "cadence": "daily",
         "description": "Run 60-point health check across all modules",

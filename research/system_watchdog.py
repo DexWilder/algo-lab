@@ -11,10 +11,32 @@ Consolidates health checks into a single pass that detects:
 Outputs a SAFE_MODE flag when critical failures are detected.
 Does not over-build — this is the immune system, not the brain.
 
+LIVE CONSUMER: scripts/run_fql_forward.sh runs
+`python3 research/system_watchdog.py --safe-mode` as a pre-flight
+gate before every forward-trading day. `--safe-mode` reads the cached
+verdict in research/data/watchdog_state.json and exits 1 if
+safe_mode=true, aborting forward trading.
+
+SCHEDULING: this module is invoked daily by fql_research_scheduler
+as `daily_system_watchdog` (priority 0, runs first). That refresh is
+what keeps the cached state current for the next forward-day pre-flight.
+If you remove this module from the scheduler, the pre-flight gate will
+operate on stale state again.
+
+Relationship to the other health layers:
+    scripts/fql_watchdog.sh            — shell recovery layer, writes
+                                         research/logs/.watchdog_state.json
+                                         (per-component backoff state,
+                                         different file, different purpose)
+    research/fql_health_check.py       — 60-point daily health pass
+                                         (daily_health_check in scheduler)
+    research/system_watchdog.py (this) — 5-check pass + SAFE_MODE flag
+                                         consumed by forward pre-flight
+
 Usage:
     python3 research/system_watchdog.py              # Run all checks
     python3 research/system_watchdog.py --json       # JSON output
-    python3 research/system_watchdog.py --safe-mode  # Check SAFE_MODE status
+    python3 research/system_watchdog.py --safe-mode  # Check cached SAFE_MODE
 """
 
 import argparse

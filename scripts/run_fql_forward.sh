@@ -67,6 +67,12 @@ log "PID: $$ | Repo: $ALGO_LAB"
 log ""
 
 # ---- Pre-flight: Watchdog check ----
+# Reads the cached SAFE_MODE verdict from research/data/watchdog_state.json.
+# That file is refreshed by daily_system_watchdog in fql_research_scheduler
+# (priority 0). If the daily scheduler has not run recently, the verdict
+# here will be stale. See research/system_watchdog.py for the full
+# relationship between this gate, the shell recovery watchdog, and the
+# 60-point fql_health_check.
 log "--- Pre-flight: watchdog check ---"
 WATCHDOG_RESULT="$(python3 research/system_watchdog.py --safe-mode 2>&1)"
 if [ $? -ne 0 ]; then

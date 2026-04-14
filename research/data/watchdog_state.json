@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-03-17T19:34:59.908999",
+  "timestamp": "2026-04-14T08:23:11.447955",
   "overall": "HEALTHY",
   "safe_mode": false,
   "checks": {
     "data_freshness": {
       "status": "WARN",
-      "detail": "Stale data: MYM_5m (106h old), ES_5m (106h old)"
+      "detail": "Stale data: MCL_5m (87h old), MYM_5m (767h old), MES_5m (87h old), ES_5m (767h old)"
     },
     "scheduler_health": {
       "status": "WARN",
-      "detail": "1 error(s): daily_decision_report"
+      "detail": "1 error(s): weekly_walk_forward"
     },
     "state_integrity": {
       "status": "OK",
