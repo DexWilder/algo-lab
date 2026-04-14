@@ -36,13 +36,37 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 # ── Paths ────────────────────────────────────────────────────────────────────
+#
+# 2026-04-14 REPOINT: the previous paths under research/phase17_paper_trading
+# went stale on 2026-03-06 when production forward trading moved to the
+# current runner. The monitor ran for ~39 days emitting identical NORMAL
+# verdicts because its inputs were frozen. Live sources are now:
+#   trade_log       -> logs/trade_log.csv        (written by run_forward_paper)
+#   daily_report    -> logs/daily_report.csv     (equity + regime + pnl)
+# See also STRATEGY_PROMOTED_DATES below for the replay-contamination filter.
 
-FORWARD_DIR = ROOT / "research" / "phase17_paper_trading"
-DAILY_STATES_PATH = FORWARD_DIR / "daily_states.json"
-DAILY_LOGS_DIR = FORWARD_DIR / "daily_logs"
-EQUITY_CURVE_PATH = FORWARD_DIR / "equity_curve.csv"
+TRADE_LOG_PATH = ROOT / "logs" / "trade_log.csv"
+DAILY_REPORT_PATH = ROOT / "logs" / "daily_report.csv"
 DRIFT_LOG_PATH = ROOT / "research" / "data" / "live_drift_log.json"
 REPORTS_DIR = ROOT / "research" / "reports"
+
+# ── Required CSV columns (fail loudly if missing) ────────────────────────────
+
+REQUIRED_TRADE_COLS = {"strategy", "entry_time", "pnl"}
+REQUIRED_DAILY_COLS = {"date", "equity", "daily_pnl", "rv_regime",
+                       "trades_raw", "trades_controlled"}
+
+# ── Promotion dates for probation strategies ─────────────────────────────────
+# Used to filter replayed/backfilled trades from forward evidence. A trade
+# whose entry_time predates its strategy's promoted_date is a historical
+# replay, not forward evidence, and must not count. Keep in sync with
+# docs/XB_ORB_PROBATION_FRAMEWORK.md and the CLAUDE.md Probation Portfolio.
+
+STRATEGY_PROMOTED_DATES = {
+    "XB-ORB-EMA-Ladder-MNQ": "2026-04-06",
+    "XB-ORB-EMA-Ladder-MCL": "2026-04-08",
+    "XB-ORB-EMA-Ladder-MYM": "2026-04-13",
+}
 
 # ── Backtest Reference Baselines ─────────────────────────────────────────────
 # From Phase 17 backtest (355 trading days, 391 trades)
@@ -117,45 +141,105 @@ THRESHOLDS = {
 
 # ── Data Loading ─────────────────────────────────────────────────────────────
 
+def _require_columns(df: pd.DataFrame, required: set, source: str):
+    """Fail loudly if a CSV is missing expected columns."""
+    missing = required - set(df.columns)
+    if missing:
+        raise RuntimeError(
+            f"Drift monitor input {source} is missing required columns: "
+            f"{sorted(missing)}. Present: {sorted(df.columns)}. "
+            f"Refusing to emit a status to avoid silent-NORMAL regressions."
+        )
+
+
+def _filter_replay_trades(df: pd.DataFrame) -> pd.DataFrame:
+    """Drop rows whose entry_time predates the strategy's promoted_date.
+
+    Backfilled / replay rows are not forward evidence. Without this
+    filter, e.g. XB-ORB-EMA-Ladder-MYM picks up 2026-03-09 / 2026-03-11
+    replay rows logged on 2026-04-13 and crosses its 20-trade review
+    gate artificially early.
+    """
+    if df.empty:
+        return df
+    keep = pd.Series(True, index=df.index)
+    for strat, promoted in STRATEGY_PROMOTED_DATES.items():
+        cutoff = pd.Timestamp(promoted)
+        mask = (df["strategy"] == strat) & (df["entry_time"] < cutoff)
+        keep &= ~mask
+    return df[keep].copy()
+
+
 def load_forward_trades() -> pd.DataFrame:
-    """Load all forward trades from daily logs into a DataFrame."""
-    trades = []
-    if not DAILY_LOGS_DIR.exists():
+    """Load live forward trades from logs/trade_log.csv.
+
+    Returns a DataFrame with `date` set to the trade's actual entry
+    date (not the log-capture date), `entry_time` as a Timestamp, and
+    replay rows filtered out via STRATEGY_PROMOTED_DATES.
+    """
+    if not TRADE_LOG_PATH.exists():
         return pd.DataFrame()
 
-    for log_file in sorted(DAILY_LOGS_DIR.glob("*.json")):
-        try:
-            with open(log_file) as f:
-                day_data = json.load(f)
+    df = pd.read_csv(TRADE_LOG_PATH)
+    if df.empty:
+        return df
 
-            date_str = log_file.stem  # e.g., "2026-03-10"
-            for trade in day_data.get("trades", day_data.get("trades_completed", [])):
-                trade["date"] = date_str
-                trades.append(trade)
-        except (json.JSONDecodeError, KeyError):
-            continue
+    _require_columns(df, REQUIRED_TRADE_COLS, TRADE_LOG_PATH.name)
 
-    if not trades:
-        return pd.DataFrame()
-
-    df = pd.DataFrame(trades)
-    df["date"] = pd.to_datetime(df["date"])
+    df["entry_time"] = pd.to_datetime(df["entry_time"])
+    df = _filter_replay_trades(df)
+    # `date` downstream = the trade's entry date, not the log-capture date.
+    df["date"] = df["entry_time"].dt.normalize()
     return df
 
 
 def load_daily_states() -> list:
-    """Load daily state snapshots."""
-    if not DAILY_STATES_PATH.exists():
+    """Synthesize per-day state dicts from logs/daily_report.csv.
+
+    Maps the daily_report columns to the dict shape the regime and
+    retention calculations expect:
+        {
+          "date": "YYYY-MM-DD",
+          "regime": {"vol_regime": <rv_regime>},
+          "portfolio_daily_pnl": <daily_pnl>,
+          "signals_generated": <trades_raw>,
+          "signals_taken":     <trades_controlled>,
+        }
+    """
+    if not DAILY_REPORT_PATH.exists():
         return []
-    with open(DAILY_STATES_PATH) as f:
-        return json.load(f)
+
+    df = pd.read_csv(DAILY_REPORT_PATH)
+    if df.empty:
+        return []
+
+    _require_columns(df, REQUIRED_DAILY_COLS, DAILY_REPORT_PATH.name)
+
+    states = []
+    for _, row in df.iterrows():
+        states.append({
+            "date": str(row["date"]),
+            "regime": {"vol_regime": row.get("rv_regime", "NORMAL")},
+            "portfolio_daily_pnl": float(row.get("daily_pnl", 0) or 0),
+            "signals_generated": int(row.get("trades_raw", 0) or 0),
+            "signals_taken":     int(row.get("trades_controlled", 0) or 0),
+        })
+    return states
 
 
 def load_equity_curve() -> pd.DataFrame:
-    """Load equity curve CSV."""
-    if not EQUITY_CURVE_PATH.exists():
+    """Load live equity curve from logs/daily_report.csv.
+
+    compute_portfolio_drift uses only the `date` and `daily_pnl`
+    columns, so we return that projection.
+    """
+    if not DAILY_REPORT_PATH.exists():
         return pd.DataFrame()
-    df = pd.read_csv(EQUITY_CURVE_PATH)
+    df = pd.read_csv(DAILY_REPORT_PATH)
+    if df.empty:
+        return df
+    _require_columns(df, REQUIRED_DAILY_COLS, DAILY_REPORT_PATH.name)
+    df = df[["date", "equity", "daily_pnl"]].copy()
     df["date"] = pd.to_datetime(df["date"])
     return df
 
@@ -281,9 +365,32 @@ def compute_portfolio_drift(trades: pd.DataFrame, equity: pd.DataFrame,
 
 
 def compute_strategy_drift(trades: pd.DataFrame) -> dict:
-    """Compute per-strategy drift vs baseline."""
+    """Compute per-strategy drift vs baseline.
+
+    Note: BASELINE["strategies"] is the Phase 17 portfolio (VWAP-MNQ,
+    XB-PB-EMA-MES, ORB-MGC, Donchian-MNQ, BB-EQ-MGC, PB-MGC). If none
+    of those appear in the live trade set, the baseline is stale and
+    per-strategy drift is not meaningful — surface a single
+    BASELINE_STALE notice instead of emitting 6 spurious ALARMs.
+    """
     if trades.empty:
         return {}
+
+    live_strategies = set(trades["strategy"].unique())
+    if live_strategies.isdisjoint(BASELINE["strategies"].keys()):
+        return {
+            "_meta": {
+                "status": "BASELINE_STALE",
+                "message": (
+                    "Baseline strategy set does not overlap with live "
+                    "strategies. Per-strategy drift suppressed. "
+                    "Refresh BASELINE['strategies'] in live_drift_monitor.py "
+                    "to reflect the current portfolio."
+                ),
+                "baseline_strategies": sorted(BASELINE["strategies"].keys()),
+                "live_strategies": sorted(live_strategies),
+            }
+        }
 
     results = {}
     n_total = len(trades)
@@ -381,11 +488,14 @@ SESSION_BUCKETS = {
 }
 
 
-def _get_session(entry_time: str) -> str:
-    """Map entry_time string to session bucket."""
+def _get_session(entry_time) -> str:
+    """Map entry_time (str or Timestamp) to session bucket."""
     try:
-        hour = int(entry_time.split(" ")[1].split(":")[0])
-    except (IndexError, ValueError):
+        if hasattr(entry_time, "hour"):
+            hour = int(entry_time.hour)
+        else:
+            hour = int(str(entry_time).split(" ")[1].split(":")[0])
+    except (IndexError, ValueError, TypeError):
         return "unknown"
     for session, (start, end) in SESSION_BUCKETS.items():
         if start <= hour < end:

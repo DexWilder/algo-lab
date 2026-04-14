@@ -5,7 +5,9 @@
     "forward_days": 304,
     "forward_trades": 391,
     "alerts_count": 8,
-    "portfolio_status": "NORMAL"
+    "portfolio_status": "NORMAL",
+    "_invalid": true,
+    "_invalid_reason": "Generated before 2026-04-14 repoint from stale research/phase17_paper_trading inputs (frozen at 2026-03-06). Not a valid drift signal. See commit that repointed live_drift_monitor.py to logs/trade_log.csv + logs/daily_report.csv."
   },
   {
     "date": "2026-03-15 20:38",
@@ -201,7 +203,9 @@
           "message": "morning has 63% of all trades \u2014 concentration risk"
         }
       ]
-    }
+    },
+    "_invalid": true,
+    "_invalid_reason": "Generated before 2026-04-14 repoint from stale research/phase17_paper_trading inputs (frozen at 2026-03-06). Not a valid drift signal. See commit that repointed live_drift_monitor.py to logs/trade_log.csv + logs/daily_report.csv."
   },
   {
     "date": "2026-03-15 21:25",
@@ -397,7 +401,9 @@
           "message": "morning has 63% of all trades \u2014 concentration risk"
         }
       ]
-    }
+    },
+    "_invalid": true,
+    "_invalid_reason": "Generated before 2026-04-14 repoint from stale research/phase17_paper_trading inputs (frozen at 2026-03-06). Not a valid drift signal. See commit that repointed live_drift_monitor.py to logs/trade_log.csv + logs/daily_report.csv."
   },
   {
     "date": "2026-03-15 21:42",
@@ -593,7 +599,9 @@
           "message": "morning has 63% of all trades \u2014 concentration risk"
         }
       ]
-    }
+    },
+    "_invalid": true,
+    "_invalid_reason": "Generated before 2026-04-14 repoint from stale research/phase17_paper_trading inputs (frozen at 2026-03-06). Not a valid drift signal. See commit that repointed live_drift_monitor.py to logs/trade_log.csv + logs/daily_report.csv."
   },
   {
     "date": "2026-03-15 22:10",
@@ -789,7 +797,9 @@
           "message": "morning has 63% of all trades \u2014 concentration risk"
         }
       ]
-    }
+    },
+    "_invalid": true,
+    "_invalid_reason": "Generated before 2026-04-14 repoint from stale research/phase17_paper_trading inputs (frozen at 2026-03-06). Not a valid drift signal. See commit that repointed live_drift_monitor.py to logs/trade_log.csv + logs/daily_report.csv."
   },
   {
     "date": "2026-03-15 22:40",
@@ -985,7 +995,9 @@
           "message": "morning has 63% of all trades \u2014 concentration risk"
         }
       ]
-    }
+    },
+    "_invalid": true,
+    "_invalid_reason": "Generated before 2026-04-14 repoint from stale research/phase17_paper_trading inputs (frozen at 2026-03-06). Not a valid drift signal. See commit that repointed live_drift_monitor.py to logs/trade_log.csv + logs/daily_report.csv."
   },
   {
     "date": "2026-03-16 17:48",
@@ -1181,7 +1193,9 @@
           "message": "morning has 63% of all trades \u2014 concentration risk"
         }
       ]
-    }
+    },
+    "_invalid": true,
+    "_invalid_reason": "Generated before 2026-04-14 repoint from stale research/phase17_paper_trading inputs (frozen at 2026-03-06). Not a valid drift signal. See commit that repointed live_drift_monitor.py to logs/trade_log.csv + logs/daily_report.csv."
   },
   {
     "date": "2026-03-17 17:47",
@@ -1377,7 +1391,9 @@
           "message": "morning has 63% of all trades \u2014 concentration risk"
         }
       ]
-    }
+    },
+    "_invalid": true,
+    "_invalid_reason": "Generated before 2026-04-14 repoint from stale research/phase17_paper_trading inputs (frozen at 2026-03-06). Not a valid drift signal. See commit that repointed live_drift_monitor.py to logs/trade_log.csv + logs/daily_report.csv."
   },
   {
     "date": "2026-03-18 17:53",
@@ -1573,7 +1589,9 @@
           "message": "morning has 63% of all trades \u2014 concentration risk"
         }
       ]
-    }
+    },
+    "_invalid": true,
+    "_invalid_reason": "Generated before 2026-04-14 repoint from stale research/phase17_paper_trading inputs (frozen at 2026-03-06). Not a valid drift signal. See commit that repointed live_drift_monitor.py to logs/trade_log.csv + logs/daily_report.csv."
   },
   {
     "date": "2026-03-19 17:55",
@@ -1769,7 +1787,9 @@
           "message": "morning has 63% of all trades \u2014 concentration risk"
         }
       ]
-    }
+    },
+    "_invalid": true,
+    "_invalid_reason": "Generated before 2026-04-14 repoint from stale research/phase17_paper_trading inputs (frozen at 2026-03-06). Not a valid drift signal. See commit that repointed live_drift_monitor.py to logs/trade_log.csv + logs/daily_report.csv."
   },
   {
     "date": "2026-03-20 12:32",
@@ -1965,7 +1985,9 @@
           "message": "morning has 63% of all trades \u2014 concentration risk"
         }
       ]
-    }
+    },
+    "_invalid": true,
+    "_invalid_reason": "Generated before 2026-04-14 repoint from stale research/phase17_paper_trading inputs (frozen at 2026-03-06). Not a valid drift signal. See commit that repointed live_drift_monitor.py to logs/trade_log.csv + logs/daily_report.csv."
   },
   {
     "date": "2026-03-20 17:46",
@@ -2161,7 +2183,9 @@
           "message": "morning has 63% of all trades \u2014 concentration risk"
         }
       ]
-    }
+    },
+    "_invalid": true,
+    "_invalid_reason": "Generated before 2026-04-14 repoint from stale research/phase17_paper_trading inputs (frozen at 2026-03-06). Not a valid drift signal. See commit that repointed live_drift_monitor.py to logs/trade_log.csv + logs/daily_report.csv."
   },
   {
     "date": "2026-03-23 17:46",
@@ -2357,7 +2381,9 @@
           "message": "morning has 63% of all trades \u2014 concentration risk"
         }
       ]
-    }
+    },
+    "_invalid": true,
+    "_invalid_reason": "Generated before 2026-04-14 repoint from stale research/phase17_paper_trading inputs (frozen at 2026-03-06). Not a valid drift signal. See commit that repointed live_drift_monitor.py to logs/trade_log.csv + logs/daily_report.csv."
   },
   {
     "date": "2026-03-24 17:46",
@@ -2553,7 +2579,9 @@
           "message": "morning has 63% of all trades \u2014 concentration risk"
         }
       ]
-    }
+    },
+    "_invalid": true,
+    "_invalid_reason": "Generated before 2026-04-14 repoint from stale research/phase17_paper_trading inputs (frozen at 2026-03-06). Not a valid drift signal. See commit that repointed live_drift_monitor.py to logs/trade_log.csv + logs/daily_report.csv."
   },
   {
     "date": "2026-03-25 17:46",
@@ -2749,7 +2777,9 @@
           "message": "morning has 63% of all trades \u2014 concentration risk"
         }
       ]
-    }
+    },
+    "_invalid": true,
+    "_invalid_reason": "Generated before 2026-04-14 repoint from stale research/phase17_paper_trading inputs (frozen at 2026-03-06). Not a valid drift signal. See commit that repointed live_drift_monitor.py to logs/trade_log.csv + logs/daily_report.csv."
   },
   {
     "date": "2026-03-26 17:46",
@@ -2945,7 +2975,9 @@
           "message": "morning has 63% of all trades \u2014 concentration risk"
         }
       ]
-    }
+    },
+    "_invalid": true,
+    "_invalid_reason": "Generated before 2026-04-14 repoint from stale research/phase17_paper_trading inputs (frozen at 2026-03-06). Not a valid drift signal. See commit that repointed live_drift_monitor.py to logs/trade_log.csv + logs/daily_report.csv."
   },
   {
     "date": "2026-03-27 17:53",
@@ -3141,7 +3173,9 @@
           "message": "morning has 63% of all trades \u2014 concentration risk"
         }
       ]
-    }
+    },
+    "_invalid": true,
+    "_invalid_reason": "Generated before 2026-04-14 repoint from stale research/phase17_paper_trading inputs (frozen at 2026-03-06). Not a valid drift signal. See commit that repointed live_drift_monitor.py to logs/trade_log.csv + logs/daily_report.csv."
   },
   {
     "date": "2026-04-04 23:08",
@@ -3337,7 +3371,9 @@
           "message": "morning has 63% of all trades \u2014 concentration risk"
         }
       ]
-    }
+    },
+    "_invalid": true,
+    "_invalid_reason": "Generated before 2026-04-14 repoint from stale research/phase17_paper_trading inputs (frozen at 2026-03-06). Not a valid drift signal. See commit that repointed live_drift_monitor.py to logs/trade_log.csv + logs/daily_report.csv."
   },
   {
     "date": "2026-04-06 17:55",
@@ -3533,7 +3569,9 @@
           "message": "morning has 63% of all trades \u2014 concentration risk"
         }
       ]
-    }
+    },
+    "_invalid": true,
+    "_invalid_reason": "Generated before 2026-04-14 repoint from stale research/phase17_paper_trading inputs (frozen at 2026-03-06). Not a valid drift signal. See commit that repointed live_drift_monitor.py to logs/trade_log.csv + logs/daily_report.csv."
   },
   {
     "date": "2026-04-07 17:53",
@@ -3729,7 +3767,9 @@
           "message": "morning has 63% of all trades \u2014 concentration risk"
         }
       ]
-    }
+    },
+    "_invalid": true,
+    "_invalid_reason": "Generated before 2026-04-14 repoint from stale research/phase17_paper_trading inputs (frozen at 2026-03-06). Not a valid drift signal. See commit that repointed live_drift_monitor.py to logs/trade_log.csv + logs/daily_report.csv."
   },
   {
     "date": "2026-04-08 17:47",
@@ -3925,7 +3965,9 @@
           "message": "morning has 63% of all trades \u2014 concentration risk"
         }
       ]
-    }
+    },
+    "_invalid": true,
+    "_invalid_reason": "Generated before 2026-04-14 repoint from stale research/phase17_paper_trading inputs (frozen at 2026-03-06). Not a valid drift signal. See commit that repointed live_drift_monitor.py to logs/trade_log.csv + logs/daily_report.csv."
   },
   {
     "date": "2026-04-09 17:52",
@@ -4121,7 +4163,9 @@
           "message": "morning has 63% of all trades \u2014 concentration risk"
         }
       ]
-    }
+    },
+    "_invalid": true,
+    "_invalid_reason": "Generated before 2026-04-14 repoint from stale research/phase17_paper_trading inputs (frozen at 2026-03-06). Not a valid drift signal. See commit that repointed live_drift_monitor.py to logs/trade_log.csv + logs/daily_report.csv."
   },
   {
     "date": "2026-04-10 17:46",
@@ -4317,6 +4361,302 @@
           "message": "morning has 63% of all trades \u2014 concentration risk"
         }
       ]
+    },
+    "_invalid": true,
+    "_invalid_reason": "Generated before 2026-04-14 repoint from stale research/phase17_paper_trading inputs (frozen at 2026-03-06). Not a valid drift signal. See commit that repointed live_drift_monitor.py to logs/trade_log.csv + logs/daily_report.csv."
+  },
+  {
+    "date": "2026-04-13 19:16",
+    "overall_status": "NORMAL",
+    "forward_days": 304,
+    "forward_trades": 391,
+    "alerts_count": 8,
+    "portfolio_status": "NORMAL",
+    "session_drift": {
+      "portfolio_sessions": {
+        "morning": {
+          "trades": 247,
+          "trade_share": 0.632,
+          "win_rate": 0.494,
+          "avg_pnl": 53.23,
+          "total_pnl": 13147.47,
+          "profit_factor": 2.29,
+          "severity": "NORMAL"
+        },
+        "midday": {
+          "trades": 114,
+          "trade_share": 0.292,
+          "win_rate": 0.518,
+          "avg_pnl": 22.65,
+          "total_pnl": 2582.39,
+          "profit_factor": 1.68,
+          "severity": "NORMAL"
+        },
+        "afternoon": {
+          "trades": 30,
+          "trade_share": 0.077,
+          "win_rate": 0.467,
+          "avg_pnl": 21.6,
+          "total_pnl": 648.05,
+          "profit_factor": 1.91,
+          "severity": "NORMAL"
+        }
+      },
+      "strategy_sessions": {
+        "VWAP-MNQ-Long": {
+          "morning": {
+            "trades": 92,
+            "win_rate": 0.435,
+            "wr_delta": 0.018,
+            "avg_pnl": 50.71,
+            "pnl_ratio": 1.56,
+            "severity": "NORMAL"
+          },
+          "midday": {
+            "trades": 64,
+            "win_rate": 0.422,
+            "wr_delta": 0.005,
+            "avg_pnl": 14.38,
+            "pnl_ratio": 0.44,
+            "severity": "DRIFT"
+          },
+          "afternoon": {
+            "trades": 7,
+            "win_rate": 0.143,
+            "wr_delta": -0.274,
+            "avg_pnl": -40.88,
+            "pnl_ratio": -1.26,
+            "severity": "ALARM"
+          }
+        },
+        "XB-PB-EMA-MES-Short": {
+          "morning": {
+            "trades": 63,
+            "win_rate": 0.476,
+            "wr_delta": -0.081,
+            "avg_pnl": 16.76,
+            "pnl_ratio": 0.58,
+            "severity": "NORMAL"
+          },
+          "midday": {
+            "trades": 19,
+            "win_rate": 0.737,
+            "wr_delta": 0.18,
+            "avg_pnl": 62.9,
+            "pnl_ratio": 2.18,
+            "severity": "DRIFT"
+          },
+          "afternoon": {
+            "trades": 6,
+            "win_rate": 0.833,
+            "wr_delta": 0.276,
+            "avg_pnl": 48.13,
+            "pnl_ratio": 1.67,
+            "severity": "DRIFT"
+          }
+        },
+        "ORB-MGC-Long": {
+          "morning": {
+            "trades": 36,
+            "win_rate": 0.556,
+            "wr_delta": -0.009,
+            "avg_pnl": 56.4,
+            "pnl_ratio": 1.26,
+            "severity": "NORMAL"
+          },
+          "midday": {
+            "trades": 19,
+            "win_rate": 0.579,
+            "wr_delta": 0.014,
+            "avg_pnl": 3.55,
+            "pnl_ratio": 0.08,
+            "severity": "ALARM"
+          },
+          "afternoon": {
+            "trades": 7,
+            "win_rate": 0.571,
+            "wr_delta": 0.006,
+            "avg_pnl": 95.62,
+            "pnl_ratio": 2.14,
+            "severity": "NORMAL"
+          }
+        },
+        "Donchian-MNQ-Long-GRINDING": {
+          "morning": {
+            "trades": 35,
+            "win_rate": 0.543,
+            "wr_delta": -0.01,
+            "avg_pnl": 50.22,
+            "pnl_ratio": 1.04,
+            "severity": "NORMAL"
+          },
+          "midday": {
+            "trades": 7,
+            "win_rate": 0.571,
+            "wr_delta": 0.018,
+            "avg_pnl": 58.33,
+            "pnl_ratio": 1.2,
+            "severity": "NORMAL"
+          },
+          "afternoon": {
+            "trades": 5,
+            "win_rate": 0.6,
+            "wr_delta": 0.047,
+            "avg_pnl": 22.06,
+            "pnl_ratio": 0.46,
+            "severity": "NORMAL"
+          }
+        },
+        "BB-EQ-MGC-Long": {
+          "morning": {
+            "trades": 12,
+            "win_rate": 0.583,
+            "wr_delta": 0.083,
+            "avg_pnl": 238.18,
+            "pnl_ratio": 1.93,
+            "severity": "NORMAL"
+          },
+          "midday": {
+            "trades": 5,
+            "win_rate": 0.6,
+            "wr_delta": 0.1,
+            "avg_pnl": -1.84,
+            "pnl_ratio": -0.01,
+            "severity": "DRIFT"
+          },
+          "afternoon": {
+            "trades": 5,
+            "win_rate": 0.2,
+            "wr_delta": -0.3,
+            "avg_pnl": -26.84,
+            "pnl_ratio": -0.22,
+            "severity": "ALARM"
+          }
+        },
+        "PB-MGC-Short": {
+          "morning": {
+            "trades": 9,
+            "win_rate": 0.667,
+            "wr_delta": -0.0,
+            "avg_pnl": 86.76,
+            "pnl_ratio": 1.0,
+            "severity": "NORMAL"
+          },
+          "midday": {
+            "trades": 0,
+            "severity": "INSUFFICIENT_DATA"
+          },
+          "afternoon": {
+            "trades": 0,
+            "severity": "INSUFFICIENT_DATA"
+          }
+        }
+      },
+      "concentration_warnings": [
+        {
+          "session": "morning",
+          "share": 0.632,
+          "message": "morning has 63% of all trades \u2014 concentration risk"
+        }
+      ]
+    },
+    "_invalid": true,
+    "_invalid_reason": "Generated before 2026-04-14 repoint from stale research/phase17_paper_trading inputs (frozen at 2026-03-06). Not a valid drift signal. See commit that repointed live_drift_monitor.py to logs/trade_log.csv + logs/daily_report.csv."
+  },
+  {
+    "date": "2026-04-14 07:44",
+    "overall_status": "ALARM",
+    "forward_days": 27,
+    "forward_trades": 69,
+    "alerts_count": 9,
+    "portfolio_status": "ALARM",
+    "session_drift": {
+      "portfolio_sessions": {
+        "morning": {
+          "trades": 31,
+          "trade_share": 0.449,
+          "win_rate": 0.258,
+          "avg_pnl": -83.52,
+          "total_pnl": -2588.98,
+          "profit_factor": 0.26,
+          "severity": "ALARM"
+        },
+        "midday": {
+          "trades": 8,
+          "trade_share": 0.116,
+          "win_rate": 0.375,
+          "avg_pnl": 18.41,
+          "total_pnl": 147.32,
+          "profit_factor": 1.26,
+          "severity": "NORMAL"
+        },
+        "afternoon": {
+          "trades": 10,
+          "trade_share": 0.145,
+          "win_rate": 0.5,
+          "avg_pnl": 16.83,
+          "total_pnl": 168.28,
+          "profit_factor": 1.9,
+          "severity": "NORMAL"
+        }
+      },
+      "strategy_sessions": {
+        "XB-PB-EMA-MES-Short": {
+          "morning": {
+            "trades": 12,
+            "win_rate": 0.417,
+            "wr_delta": -0.14,
+            "avg_pnl": -24.37,
+            "pnl_ratio": -0.84,
+            "severity": "ALARM"
+          },
+          "midday": {
+            "trades": 4,
+            "win_rate": 0.25,
+            "wr_delta": -0.307,
+            "avg_pnl": 17.51,
+            "pnl_ratio": 0.61,
+            "severity": "NORMAL"
+          },
+          "afternoon": {
+            "trades": 1,
+            "severity": "INSUFFICIENT_DATA"
+          }
+        },
+        "ORB-MGC-Long": {
+          "morning": {
+            "trades": 2,
+            "severity": "INSUFFICIENT_DATA"
+          },
+          "midday": {
+            "trades": 1,
+            "severity": "INSUFFICIENT_DATA"
+          },
+          "afternoon": {
+            "trades": 2,
+            "severity": "INSUFFICIENT_DATA"
+          }
+        },
+        "PB-MGC-Short": {
+          "morning": {
+            "trades": 4,
+            "win_rate": 0.5,
+            "wr_delta": -0.167,
+            "avg_pnl": -7.49,
+            "pnl_ratio": -0.09,
+            "severity": "NORMAL"
+          },
+          "midday": {
+            "trades": 0,
+            "severity": "INSUFFICIENT_DATA"
+          },
+          "afternoon": {
+            "trades": 0,
+            "severity": "INSUFFICIENT_DATA"
+          }
+        }
+      },
+      "concentration_warnings": []
     }
   }
 ]

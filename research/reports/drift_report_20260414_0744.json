@@ -1,0 +1,296 @@
+{
+  "report_date": "2026-04-14 07:44",
+  "forward_period": {
+    "days": 27,
+    "trades": 69
+  },
+  "portfolio_drift": {
+    "status": "ALARM",
+    "forward_days": 27,
+    "forward_trades": 69,
+    "metrics": {
+      "win_rate": {
+        "baseline": 0.499,
+        "live": 0.391,
+        "delta": -0.108,
+        "severity": "DRIFT"
+      },
+      "trade_frequency": {
+        "baseline_tpd": 1.1,
+        "live_tpd": 2.56,
+        "ratio": 2.32,
+        "severity": "ALARM"
+      },
+      "expectancy": {
+        "baseline_avg_pnl": 41.89,
+        "live_avg_pnl": -32.94,
+        "ratio": -0.79,
+        "severity": "ALARM"
+      },
+      "profit_factor": {
+        "baseline": 2.11,
+        "live": 0.47,
+        "severity": "ALARM"
+      },
+      "sharpe": {
+        "baseline": 4.04,
+        "live": -5.68,
+        "severity": "ALARM"
+      },
+      "avg_winner": {
+        "baseline": 159.38,
+        "live": 73.42
+      },
+      "avg_loser": {
+        "baseline": -75.01,
+        "live": -101.32
+      },
+      "trade_retention": {
+        "baseline": 0.7,
+        "live": 0.76
+      }
+    }
+  },
+  "strategy_drift": {
+    "VWAP-MNQ-Long": {
+      "trades": 0,
+      "severity": "ALARM",
+      "message": "No trades in forward period"
+    },
+    "XB-PB-EMA-MES-Short": {
+      "trades": 17,
+      "severity": "ALARM",
+      "win_rate": {
+        "baseline": 0.557,
+        "live": 0.353,
+        "delta": -0.204,
+        "severity": "ALARM"
+      },
+      "avg_pnl": {
+        "baseline": 28.86,
+        "live": -16.09,
+        "ratio": -0.56,
+        "severity": "ALARM"
+      },
+      "trade_frequency": {
+        "baseline_tpd": 0.248,
+        "live_tpd": 0.63,
+        "ratio": 2.54,
+        "severity": "ALARM"
+      },
+      "trade_share": {
+        "baseline": 0.225,
+        "live": 0.246,
+        "delta": 0.021
+      }
+    },
+    "ORB-MGC-Long": {
+      "trades": 5,
+      "severity": "ALARM",
+      "win_rate": {
+        "baseline": 0.565,
+        "live": 0.6,
+        "delta": 0.035,
+        "severity": "NORMAL"
+      },
+      "avg_pnl": {
+        "baseline": 44.63,
+        "live": 8.76,
+        "ratio": 0.2,
+        "severity": "ALARM"
+      },
+      "trade_frequency": {
+        "baseline_tpd": 0.175,
+        "live_tpd": 0.185,
+        "ratio": 1.06,
+        "severity": "NORMAL"
+      },
+      "trade_share": {
+        "baseline": 0.159,
+        "live": 0.072,
+        "delta": -0.087
+      }
+    },
+    "Donchian-MNQ-Long-GRINDING": {
+      "trades": 0,
+      "severity": "ALARM",
+      "message": "No trades in forward period"
+    },
+    "BB-EQ-MGC-Long": {
+      "trades": 0,
+      "severity": "ALARM",
+      "message": "No trades in forward period"
+    },
+    "PB-MGC-Short": {
+      "trades": 4,
+      "severity": "ALARM",
+      "win_rate": {
+        "baseline": 0.667,
+        "live": 0.5,
+        "delta": -0.167,
+        "severity": "DRIFT"
+      },
+      "avg_pnl": {
+        "baseline": 86.76,
+        "live": -7.49,
+        "ratio": -0.09,
+        "severity": "ALARM"
+      },
+      "trade_frequency": {
+        "baseline_tpd": 0.025,
+        "live_tpd": 0.148,
+        "ratio": 5.84,
+        "severity": "ALARM"
+      },
+      "trade_share": {
+        "baseline": 0.023,
+        "live": 0.058,
+        "delta": 0.035
+      }
+    }
+  },
+  "regime_drift": {
+    "HIGH_RV": {
+      "days": 20,
+      "avg_daily_pnl": -119.88,
+      "total_pnl": -2397.66,
+      "positive_rate": 0.4
+    }
+  },
+  "session_drift": {
+    "portfolio_sessions": {
+      "morning": {
+        "trades": 31,
+        "trade_share": 0.449,
+        "win_rate": 0.258,
+        "avg_pnl": -83.52,
+        "total_pnl": -2588.98,
+        "profit_factor": 0.26,
+        "severity": "ALARM"
+      },
+      "midday": {
+        "trades": 8,
+        "trade_share": 0.116,
+        "win_rate": 0.375,
+        "avg_pnl": 18.41,
+        "total_pnl": 147.32,
+        "profit_factor": 1.26,
+        "severity": "NORMAL"
+      },
+      "afternoon": {
+        "trades": 10,
+        "trade_share": 0.145,
+        "win_rate": 0.5,
+        "avg_pnl": 16.83,
+        "total_pnl": 168.28,
+        "profit_factor": 1.9,
+        "severity": "NORMAL"
+      }
+    },
+    "strategy_sessions": {
+      "XB-PB-EMA-MES-Short": {
+        "morning": {
+          "trades": 12,
+          "win_rate": 0.417,
+          "wr_delta": -0.14,
+          "avg_pnl": -24.37,
+          "pnl_ratio": -0.84,
+          "severity": "ALARM"
+        },
+        "midday": {
+          "trades": 4,
+          "win_rate": 0.25,
+          "wr_delta": -0.307,
+          "avg_pnl": 17.51,
+          "pnl_ratio": 0.61,
+          "severity": "NORMAL"
+        },
+        "afternoon": {
+          "trades": 1,
+          "severity": "INSUFFICIENT_DATA"
+        }
+      },
+      "ORB-MGC-Long": {
+        "morning": {
+          "trades": 2,
+          "severity": "INSUFFICIENT_DATA"
+        },
+        "midday": {
+          "trades": 1,
+          "severity": "INSUFFICIENT_DATA"
+        },
+        "afternoon": {
+          "trades": 2,
+          "severity": "INSUFFICIENT_DATA"
+        }
+      },
+      "PB-MGC-Short": {
+        "morning": {
+          "trades": 4,
+          "win_rate": 0.5,
+          "wr_delta": -0.167,
+          "avg_pnl": -7.49,
+          "pnl_ratio": -0.09,
+          "severity": "NORMAL"
+        },
+        "midday": {
+          "trades": 0,
+          "severity": "INSUFFICIENT_DATA"
+        },
+        "afternoon": {
+          "trades": 0,
+          "severity": "INSUFFICIENT_DATA"
+        }
+      }
+    },
+    "concentration_warnings": []
+  },
+  "alerts": [
+    {
+      "level": "ALARM",
+      "scope": "PORTFOLIO",
+      "message": "Portfolio-level metrics show significant divergence from backtest baseline"
+    },
+    {
+      "level": "ALARM",
+      "scope": "VWAP-MNQ-Long",
+      "message": "VWAP-MNQ-Long: forward performance significantly diverges from backtest"
+    },
+    {
+      "level": "ALARM",
+      "scope": "XB-PB-EMA-MES-Short",
+      "message": "XB-PB-EMA-MES-Short: forward performance significantly diverges from backtest"
+    },
+    {
+      "level": "ALARM",
+      "scope": "ORB-MGC-Long",
+      "message": "ORB-MGC-Long: forward performance significantly diverges from backtest"
+    },
+    {
+      "level": "ALARM",
+      "scope": "Donchian-MNQ-Long-GRINDING",
+      "message": "Donchian-MNQ-Long-GRINDING: forward performance significantly diverges from backtest"
+    },
+    {
+      "level": "ALARM",
+      "scope": "BB-EQ-MGC-Long",
+      "message": "BB-EQ-MGC-Long: forward performance significantly diverges from backtest"
+    },
+    {
+      "level": "ALARM",
+      "scope": "PB-MGC-Short",
+      "message": "PB-MGC-Short: forward performance significantly diverges from backtest"
+    },
+    {
+      "level": "ALARM",
+      "scope": "SESSION:morning",
+      "message": "morning session: portfolio losing money (PF=0.26)"
+    },
+    {
+      "level": "ALARM",
+      "scope": "XB-PB-EMA-MES-Short:morning",
+      "message": "XB-PB-EMA-MES-Short: morning edge degrading (WR delta -14.0%)"
+    }
+  ],
+  "overall_status": "ALARM"
+}
