@@ -120,11 +120,48 @@ sleeves listed below.
 > and is not tracked by the drift monitor. Current authority:
 > `strategy_registry.json`.
 >
-> **Portfolio-construction consequence (not re-litigated here):**
-> This was the only STRUCTURAL primary in the portfolio at the
-> time of rejection — the factor-diversification role it filled
-> has not been formally replaced. Worth flagging in any future
-> portfolio-composition exercise.
+> **Verified failure mode (2026-04-14 post-archive review):**
+> Not a framework mismatch. Not re-probatable on existing evidence.
+> Specific numbers from `research/data/first_pass/fx_session_breakout_20260406_2212.json`
+> (scale: `top*_share` is a ratio — see
+> `research/batch_first_pass.py:79–115`):
+>
+> - **Top-3 trades = 98.7% of total PnL** (3 of 128 trades drove the
+>   edge; other 125 trades approximately breakeven or net-losing)
+> - **Top-10 share = 204.5%** (top 10 winners > total net PnL, i.e.
+>   the bottom 118 trades net-dragged)
+> - **Max-year-share = 112.6%** (one year produced more than the
+>   whole-period total; other years net-negative → regime-dependent
+>   edge, not a persistent structural one)
+>
+> **Both evaluation paths reject:**
+>
+> - **Workhorse path:** fails trade-count (128 < 500) and
+>   concentration (top-3 98.7% >> 30% gate).
+> - **Tail-engine path:** fails max-single-instance (98.7% >> 35%
+>   gate) and max-year-share (112.6% >> 50% gate).
+>
+> This is not a framework-mismatch case like Treasury-Rolldown was.
+> It is a **genuine concentration catastrophe** where the backtest
+> edge depends on a handful of tail events in a specific regime.
+> Deploying forward capital against this profile would be
+> deploying against tail-event luck.
+>
+> **Sibling alternatives are worse, not better:**
+>
+> - `FXBreak-6E-Watchlist`: `top3_share=3.129`, `max_year_share=1.649`
+>   — more concentration-dependent than 6J. Archived.
+> - `FXBreak-6B-NoPriority`: PF 0.63, REJECT (NO_EDGE). Rejection
+>   reason `ASSET_MISMATCH`. Dead.
+>
+> **Implication for the FX + STRUCTURAL gap:** this gap is not
+> recoverable via the FXBreak family. The portfolio's STRUCTURAL
+> role and FX exposure both remain unfilled, and filling them
+> requires a **fresh design pass** (harvest → validate → promote),
+> not a re-probation of existing archived work. As of 2026-04-14,
+> no fresh design lane is open; the gap is a deliberate hold
+> pending Treasury-Rolldown's first live monthly rebalance on
+> 2026-05-01 before new lanes are considered.
 
 | Field | Value |
 |-------|-------|
