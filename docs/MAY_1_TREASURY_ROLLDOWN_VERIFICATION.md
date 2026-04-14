@@ -1,5 +1,12 @@
 # May 1 Treasury-Rolldown First Live Rebalance — Verification Checklist
 
+**Role:** This document handles **verification mechanics** — the 7 checks
+that establish what happened at the rebalance. The **decision wrapper**
+that reads this document's output and renders "Remain / Open lane /
+Hardening / Investigate" lives in **[`MAY_1_CHECKPOINT_TEMPLATE.md`](./MAY_1_CHECKPOINT_TEMPLATE.md)**.
+Run this doc first, then feed the outcome table into the checkpoint
+template.
+
 **Target date:** 2026-05-01 (Friday, first business day of May 2026).
 
 **Context:** Treasury-Rolldown-Carry-Spread was re-probated 2026-04-14 via an

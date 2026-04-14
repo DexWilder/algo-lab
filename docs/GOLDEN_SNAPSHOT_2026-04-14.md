@@ -124,6 +124,25 @@ SAFE_MODE gate verdict at hold entry: **inactive** (forward trading would procee
 - Strategies with `execution_path` field: 1 (Treasury-Rolldown, `out_of_band_monthly_batch`)
 - Strategies with `data_pipeline_gap` field: 1 (XB-ORB-EMA-Ladder-MYM, resolved)
 
+## Audit target paths (for May 1 checkpoint)
+
+Exact file paths and fields the checkpoint procedures inspect. Captured
+here so future reviewers don't have to rediscover them.
+
+| Audit target | Path | Fields / checks |
+|---|---|---|
+| Spread log | `logs/spread_rebalance_log.csv` | 14 columns: `rebalance_date, strategy, spread_id, long_leg_asset, long_leg_entry_price, short_leg_asset, short_leg_entry_price, size_long, size_short, previous_long_leg_asset, previous_short_leg_asset, realized_pnl_prior_spread, days_held_prior_spread, notes` |
+| Treasury-Rolldown stdout | `research/logs/treasury_rolldown_monthly_stdout.log` | launchd fire confirmation; script messages |
+| Treasury-Rolldown stderr | `research/logs/treasury_rolldown_monthly_stderr.log` | tracebacks if any |
+| Registry — Treasury-Rolldown entry | `research/data/strategy_registry.json` → `strategies[].strategy_id == "Treasury-Rolldown-Carry-Spread"` | `status`, `controller_action`, `execution_path`, `last_controller_date`, `notes` (re-probation record) |
+| Registry — MYM entry (data-blocked record) | `research/data/strategy_registry.json` → `strategies[].strategy_id == "XB-ORB-EMA-Ladder-MYM"` | `data_pipeline_gap` structured field, `review_clock_start_source` enum |
+| Drift monitor output | `research/data/live_drift_log.json` | most recent entry's `overall_status`, `forward_days`, `forward_trades`, `portfolio_status` |
+| Drift monitor BASELINE (code) | `research/live_drift_monitor.py` | `BASELINE["excluded_from_strategy_drift"]` must still contain Treasury-Rolldown |
+| Trade log (should NOT contain Treasury-Rolldown) | `logs/trade_log.csv` | confirm no rows with `strategy == "Treasury-Rolldown-Carry-Spread"` |
+| Forward runner universe | `engine/strategy_universe.py` → `build_portfolio_config(include_probation=True)` | should return 10 strategies; Treasury-Rolldown should NOT be in that set (controller_action=OFF keeps it out) |
+| SAFE_MODE verdict | `research/data/watchdog_state.json` | `safe_mode` boolean; should be false for forward trading to proceed |
+| Scheduler log | `research/data/scheduler_log.json` | recent entries for `daily_system_watchdog` (priority 0, should show SUCCESS), `weekly_walk_forward` (should show MANUAL not ERROR) |
+
 ## Key documentation commit refs (authoritative sources)
 
 All docs at HEAD `434a4a0`:

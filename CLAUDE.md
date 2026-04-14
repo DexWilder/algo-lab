@@ -151,6 +151,35 @@ SALVAGE path.
 - **Validation doctrine:** positive median trade, cross-asset generalization,
   sample size, low concentration — all four required for workhorse ADVANCE
 
+## Current Hold & May 1 Checkpoint
+
+**Hold in effect** 2026-04-14 → 2026-05-01. Runtime code, strategy
+lifecycle, portfolio composition, and launchd agents are frozen.
+Documentation, data ops, registry hygiene, and preparation are
+allowed. Full rules in `docs/HOLD_STATE_CHECKLIST.md`.
+
+**Next event:** Treasury-Rolldown-Carry-Spread first live monthly
+rebalance fires on 2026-05-01 (first business day). Verification
+and decision procedure below.
+
+### Operator sequence for May 1
+
+1. **Confirm rebalance fired** — `launchctl list | grep treasury-rolldown` + tail `research/logs/treasury_rolldown_monthly_stdout.log`
+2. **Inspect spread log** — run `docs/SPREAD_LOG_AUDIT_PROCEDURE.md` → one-line OK/WARN/FAIL verdict
+3. **Run verification checks** — execute the 7 checks in `docs/MAY_1_TREASURY_ROLLDOWN_VERIFICATION.md`, fill in outcome table
+4. **Render checkpoint decision** — feed verification output into `docs/MAY_1_CHECKPOINT_TEMPLATE.md` to produce exactly one of: Remain / Open FX-STRUCTURAL lane / Resume hardening queue / Investigate anomaly
+5. **Commit the filled checkpoint** — commit message `Checkpoint 2026-05-01: [decision]`
+6. **Log outcome** — update `docs/PORTFOLIO_TRUTH_TABLE.md` next-checkpoint section + `docs/HOLD_STATE_CHECKLIST.md` exit record
+
+### Hold & checkpoint documentation
+
+- `docs/HOLD_STATE_CHECKLIST.md` — frozen surfaces, allowed actions, breach conditions, exit criteria
+- `docs/GOLDEN_SNAPSHOT_2026-04-14.md` — frozen reference state at hold entry (HEAD commit, runner universe, data freshness, health stack)
+- `docs/DATA_BLOCKED_STRATEGY_RULE.md` — data-blocked vs quiet distinction; review-clock rule (applies to MYM and any future pipeline-gap incident)
+- `docs/MAY_1_TREASURY_ROLLDOWN_VERIFICATION.md` — 7-check mechanics (pass/warn/fail per check, commands, action per outcome)
+- `docs/MAY_1_CHECKPOINT_TEMPLATE.md` — decision wrapper (reads verification output, produces exactly one of four decisions)
+- `docs/SPREAD_LOG_AUDIT_PROCEDURE.md` — documented audit with OK/WARN/FAIL verdict
+
 ## Auto-Commit & Push
 
 After completing any phase, task, or meaningful unit of work:
@@ -183,6 +212,17 @@ See `docs/release_workflow.md` for full details.
 - `docs/OPERATING_RHYTHM.md` — weekly cadence (superseded by discovery plan)
 - `docs/PROBATION_REVIEW_CRITERIA.md` — promotion/downgrade thresholds (non-XB-ORB)
 - `docs/XB_ORB_PROBATION_FRAMEWORK.md` — authoritative governance for all XB-ORB-EMA-Ladder variants
+- `docs/ELITE_PROMOTION_STANDARDS.md` — evaluation framework by strategy shape (prevents wrong-framework failure mode)
+- `docs/PORTFOLIO_TRUTH_TABLE.md` — operator summary of current state (derived, not authoritative)
+
+**Hold-window docs (2026-04-14 → 2026-05-01)** — see "Current Hold & May 1 Checkpoint" section above for purpose and usage:
+
+- `docs/HOLD_STATE_CHECKLIST.md`
+- `docs/GOLDEN_SNAPSHOT_2026-04-14.md`
+- `docs/DATA_BLOCKED_STRATEGY_RULE.md`
+- `docs/MAY_1_TREASURY_ROLLDOWN_VERIFICATION.md`
+- `docs/MAY_1_CHECKPOINT_TEMPLATE.md`
+- `docs/SPREAD_LOG_AUDIT_PROCEDURE.md`
 - `docs/ASSET_EXPANSION.md` — onboarding checklist for new assets
 - `docs/CHANGELOG.md` — architectural change log
 

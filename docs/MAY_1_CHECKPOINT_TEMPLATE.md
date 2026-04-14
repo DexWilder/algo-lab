@@ -6,10 +6,11 @@ first-live-rebalance checkpoint. Reads the raw verification output from
 of four decisions.
 
 **Relationship to other docs:**
-- `docs/MAY_1_TREASURY_ROLLDOWN_VERIFICATION.md` = facts (7 checks, pass/warn/fail per check)
+- [`MAY_1_TREASURY_ROLLDOWN_VERIFICATION.md`](./MAY_1_TREASURY_ROLLDOWN_VERIFICATION.md) = facts (7 checks, pass/warn/fail per check). **Run that doc first; it produces the outcome table that feeds this one.**
 - **This document** = synthesis (reads the facts, decides what to do next)
-- `docs/HOLD_STATE_CHECKLIST.md` = governs the hold this checkpoint is designed to exit
-- `docs/GOLDEN_SNAPSHOT_2026-04-14.md` = the "before" reference for comparison
+- [`HOLD_STATE_CHECKLIST.md`](./HOLD_STATE_CHECKLIST.md) = governs the hold this checkpoint is designed to exit
+- [`GOLDEN_SNAPSHOT_2026-04-14.md`](./GOLDEN_SNAPSHOT_2026-04-14.md) = the "before" reference for comparison
+- [`SPREAD_LOG_AUDIT_PROCEDURE.md`](./SPREAD_LOG_AUDIT_PROCEDURE.md) = detailed spread log audit, feeds §2 below
 
 ---
 
