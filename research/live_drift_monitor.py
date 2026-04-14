@@ -155,19 +155,13 @@ BASELINE = {
             "avg_pnl": 44.63, "trade_share": 0.159, "pnl_share": 0.169,
             "source": "Phase 17 baseline (registry PF 1.99, still core)",
         },
-        "Treasury-Rolldown-Carry-Spread": {
-            "tier": "reference-only", "asset": "ZN",
-            "trades": 79, "backtest_days": 1500, "win_rate": None,
-            "avg_pnl": None, "trade_share": None, "pnl_share": None,
-            "entered_forward_date": "2026-03-20",
-            "source": "docs/PROBATION_REVIEW_CRITERIA.md (PF 1.11, monthly)",
-        },
-        "FXBreak-6J-Short-London": {
-            "tier": "reference-only", "asset": "6J",
-            "trades": 50, "backtest_days": 1500, "win_rate": None,
-            "avg_pnl": None, "trade_share": None, "pnl_share": None,
-            "source": "docs/PROBATION_REVIEW_CRITERIA.md (PF 1.20)",
-        },
+        # Treasury-Rolldown-Carry-Spread removed 2026-04-14: registry
+        # shows status=archived as of 2026-03-20. Strategy is not in
+        # the live/probation path. Historical entry preserved in
+        # docs/PROBATION_REVIEW_CRITERIA.md §6 (struck).
+        # FXBreak-6J-Short-London removed 2026-04-14: registry shows
+        # status=rejected as of 2026-03-18. Historical entry preserved
+        # in docs/PROBATION_REVIEW_CRITERIA.md §3 (struck).
         # ── Observational (<50 BT trades or sparse/event, no severity) ──
         "PB-MGC-Short": {
             "tier": "observational", "asset": "MGC",
@@ -187,18 +181,12 @@ BASELINE = {
             "avg_pnl": None, "trade_share": None, "pnl_share": None,
             "source": "docs/PROBATION_REVIEW_CRITERIA.md (sparse event, vitality-adjusted)",
         },
-        "PreFOMC-Drift-Equity": {
-            "tier": "observational", "asset": "MES",
-            "trades": None, "backtest_days": None, "win_rate": None,
-            "avg_pnl": None, "trade_share": None, "pnl_share": None,
-            "source": "docs/PROBATION_REVIEW_CRITERIA.md (sparse event)",
-        },
-        "MomPB-6J-Long-US": {
-            "tier": "observational", "asset": "6J",
-            "trades": None, "backtest_days": None, "win_rate": None,
-            "avg_pnl": None, "trade_share": None, "pnl_share": None,
-            "source": "docs/PROBATION_REVIEW_CRITERIA.md (promotion gate at 30 fwd trades)",
-        },
+        # PreFOMC-Drift-Equity removed 2026-04-14: registry shows
+        # status=rejected as of 2026-03-17. Historical reference in
+        # docs/PROBATION_REVIEW_CRITERIA.md sparse-event note (struck).
+        # MomPB-6J-Long-US removed 2026-04-14: registry shows
+        # status=archived as of 2026-03-18. Historical entry preserved
+        # in docs/PROBATION_REVIEW_CRITERIA.md §2 (struck).
     },
     # Strategies that should not participate in per-trade drift severity.
     # Recorded here so future engineers can see the exclusion is intentional.

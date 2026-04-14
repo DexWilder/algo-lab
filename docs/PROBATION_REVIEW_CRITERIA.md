@@ -68,7 +68,15 @@ sleeves listed below.
 
 ---
 
-### 2. MomPB-6J-Long-US
+### 2. MomPB-6J-Long-US ~~(ARCHIVED 2026-03-18)~~
+
+> **HISTORICAL RECORD — NO LONGER ACTIVE PROBATION.**
+> Archived 2026-03-18 per `research/data/strategy_registry.json`
+> (`status=archived`, `controller_action=ARCHIVE_REVIEW`). The
+> thresholds below are retained for design-record reasons only;
+> this strategy is not in the live/probation path and is not
+> tracked by the drift monitor. Current authority for probation
+> membership: `strategy_registry.json`.
 
 | Field | Value |
 |-------|-------|
@@ -104,7 +112,19 @@ sleeves listed below.
 
 ---
 
-### 3. FXBreak-6J-Short-London
+### 3. FXBreak-6J-Short-London ~~(REJECTED 2026-03-18)~~
+
+> **HISTORICAL RECORD — NO LONGER ACTIVE PROBATION.**
+> Rejected 2026-03-18 per `research/data/strategy_registry.json`
+> (`status=rejected`). Strategy is not in the live/probation path
+> and is not tracked by the drift monitor. Current authority:
+> `strategy_registry.json`.
+>
+> **Portfolio-construction consequence (not re-litigated here):**
+> This was the only STRUCTURAL primary in the portfolio at the
+> time of rejection — the factor-diversification role it filled
+> has not been formally replaced. Worth flagging in any future
+> portfolio-composition exercise.
 
 | Field | Value |
 |-------|-------|
@@ -147,7 +167,23 @@ in promotion decisions because of the factor diversification it provides.
 
 ---
 
-### 6. Treasury-Rolldown-Carry-Spread (Active Carry Challenger)
+### 6. Treasury-Rolldown-Carry-Spread ~~(ARCHIVED 2026-03-20)~~ ~~(Active Carry Challenger)~~
+
+> **HISTORICAL RECORD — NO LONGER ACTIVE PROBATION.**
+> Archived 2026-03-20 per `research/data/strategy_registry.json`
+> (`status=archived`, `controller_action=ARCHIVE_REVIEW`).
+> Strategy is not in the live/probation path and is not tracked
+> by the drift monitor. Current authority: `strategy_registry.json`.
+>
+> **The June 1, 2026 displacement plan (below) is now MOOT.**
+> Both Treasury-Rolldown-Carry-Spread and MomIgn-M2K-Short are
+> out of the live/probation path. No active strategy is displacing
+> MomIgn's former slot on June 1. Either a different plan is
+> required for that slot or it stays vacant. Not re-litigated here.
+>
+> **Portfolio-construction consequence:** at the time of archive,
+> this was the only CARRY strategy and the only Rates strategy
+> in the portfolio — the CARRY and Rates gaps are now re-opened.
 
 | Field | Value |
 |-------|-------|
@@ -308,7 +344,10 @@ FADING alerts are suppressed until the strategy has accumulated ≥ 4 event
 occurrences with forward trade data. This prevents false FADING alerts
 during inter-event silence.
 
-**Affected strategies:** TV-NFP-High-Low-Levels, PreFOMC-Drift-Equity.
+**Affected strategies:** TV-NFP-High-Low-Levels.
+~~PreFOMC-Drift-Equity~~ was rejected 2026-03-17 per registry and
+is no longer an active probation strategy; the vitality adjustment
+below no longer applies to it.
 
 Do not act on vitality FADING alerts for these strategies unless ≥ 4
 event occurrences show declining PnL trend.
