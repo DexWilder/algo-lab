@@ -1,5 +1,6 @@
 {
-  "_description": "FQL Probation Decision Log — records every review decision with evidence and rationale",
-  "_usage": "python3 research/probation_journal.py --review DailyTrend-MGC-Long --checkpoint week_2",
+  "_description": "DEPRECATED 2026-04-14. This log was never populated (empty since creation 2026-03-16). The tool research/probation_journal.py that writes here references only 3 legacy strategies (DailyTrend-MGC, MomPB-6J, FXBreak-6J) and does not cover the current probation set (Treasury-Rolldown, ZN-Afternoon, VolManaged, XB-ORB-EMA-Ladder-{MNQ,MCL,MYM}). Do not treat this file as authoritative. Governance sources: docs/PROBATION_REVIEW_CRITERIA.md (legacy watch) and docs/XB_ORB_PROBATION_FRAMEWORK.md (XB-ORB family).",
+  "_status": "deprecated",
+  "_deprecated_on": "2026-04-14",
   "entries": []
 }

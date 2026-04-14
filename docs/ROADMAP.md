@@ -1,5 +1,10 @@
 # FQL Roadmap — Re-Ranked 2026-03-27
 
+> **Scope:** Prioritization / build queue only. For authoritative current
+> system state (probation, workhorses, automation, registry counts), see
+> `CLAUDE.md`. The April 3 checkpoint referenced below has passed — tier
+> rankings may still be valid, but date-anchored framing is stale.
+
 *Sorted by what the system actually needs next, not what sounds interesting.*
 *Re-ranked based on: 14 components extracted, 73% fragment share, 40 forward*
 *trades, 5 source lanes producing, 0 convergent sources, April 3 checkpoint ahead.*

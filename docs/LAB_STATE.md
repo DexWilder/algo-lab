@@ -1,6 +1,12 @@
 # Algo Lab State
 
-*Auto-updated after each milestone. Single source of truth for lab status.*
+> **DEPRECATED AS A STATUS SOURCE.** Last refreshed 2026-03-11. For the
+> authoritative current state of the lab (active probation, workhorses,
+> automation, registry counts), read `CLAUDE.md`. This file is retained
+> only as a historical Phase 6–15 snapshot. Do not treat the numbers
+> below as current.
+
+*Historical snapshot — not maintained.*
 
 ## Pipeline Counts
 

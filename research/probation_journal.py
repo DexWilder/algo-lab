@@ -1,6 +1,17 @@
 #!/usr/bin/env python3
 """FQL Probation Decision Journal — Record and review probation decisions.
 
+**DEPRECATED 2026-04-14.** This tool's PROBATION_STRATEGIES dict lists
+only 3 legacy strategies (DailyTrend-MGC, MomPB-6J, FXBreak-6J) and was
+never kept in sync with the current probation set (Treasury-Rolldown,
+ZN-Afternoon, VolManaged, XB-ORB-EMA-Ladder-{MNQ,MCL,MYM}). The backing
+log `research/data/probation_decision_log.json` has been empty since
+2026-03-16. Do not invoke this tool for review decisions. Authoritative
+governance lives in docs/PROBATION_REVIEW_CRITERIA.md (legacy watch set)
+and docs/XB_ORB_PROBATION_FRAMEWORK.md (XB-ORB family). If a structured
+decision journal is wanted in the future, redesign against the current
+probation set rather than extending this one.
+
 Records structured evidence and decisions at each review checkpoint.
 Connects the weekly scorecard, contribution report, and promotion
 playbook into a single decision trail.
