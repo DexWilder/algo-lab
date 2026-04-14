@@ -41,7 +41,9 @@ LOGS_DIR = ROOT / "logs"
 PROBATION_THRESHOLDS = {
     "DailyTrend-MGC-Long": {"target_trades": 15, "min_pf": 1.2},
     "MomPB-6J-Long-US": {"target_trades": 30, "min_pf": 1.2},
-    "FXBreak-6J-Short-London": {"target_trades": 50, "min_pf": 1.1},
+    # FXBreak-6J-Short-London removed 2026-04-14: archived with verified
+    # concentration-catastrophe failure mode. See
+    # docs/PROBATION_REVIEW_CRITERIA.md §3.
     "PreFOMC-Drift-Equity": {"target_trades": 8, "min_pf": 1.2},
     "TV-NFP-High-Low-Levels": {"target_trades": 8, "min_pf": 1.1},
 }

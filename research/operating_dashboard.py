@@ -25,7 +25,10 @@ STATE_DIR = ROOT / "state"
 PROBATION_TARGETS = {
     "DailyTrend-MGC-Long": {"target": 15, "factor": "MOMENTUM", "tier": "REDUCED"},
     "MomPB-6J-Long-US": {"target": 30, "factor": "MOMENTUM", "tier": "REDUCED"},
-    "FXBreak-6J-Short-London": {"target": 50, "factor": "STRUCTURAL", "tier": "MICRO"},
+    # FXBreak-6J-Short-London removed 2026-04-14: archived with verified
+    # concentration-catastrophe failure mode. See
+    # docs/PROBATION_REVIEW_CRITERIA.md §3. STRUCTURAL gap remains open;
+    # not recoverable via FXBreak family.
     "PreFOMC-Drift-Equity": {"target": 8, "factor": "EVENT", "tier": "MICRO"},
     "TV-NFP-High-Low-Levels": {"target": 8, "factor": "EVENT", "tier": "MICRO"},
 }

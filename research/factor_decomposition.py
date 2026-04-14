@@ -66,7 +66,11 @@ STRATEGY_FACTORS = {
     # Probation — non-equity
     "DailyTrend-MGC-Long": {"primary": "MOMENTUM", "secondary": "CARRY", "logic": "Daily Donchian + EMA trend — captures macro gold momentum"},
     "MomPB-6J-Long-US": {"primary": "MOMENTUM", "secondary": "CARRY", "logic": "EMA pullback on 6J — captures USD/JPY macro momentum"},
-    "FXBreak-6J-Short-London": {"primary": "STRUCTURAL", "secondary": "MOMENTUM", "logic": "Asian range breakout at London open — session transition"},
+    # FXBreak-6J-Short-London: factor classification retained for reference,
+    # but strategy is ARCHIVED (rejected 2026-03-18, failure mode verified
+    # 2026-04-14: top-3 concentration 98.7%, max-year share 112.6%). Not
+    # currently active probation. See docs/PROBATION_REVIEW_CRITERIA.md §3.
+    "FXBreak-6J-Short-London": {"primary": "STRUCTURAL", "secondary": "MOMENTUM", "logic": "Asian range breakout at London open — session transition (ARCHIVED)"},
 
     # M2K probation/testing
     "MomIgn-M2K-Short": {"primary": "MOMENTUM", "secondary": "VOLATILITY", "logic": "Volume surge + VWAP cross momentum"},

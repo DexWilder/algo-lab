@@ -41,7 +41,9 @@ STATE_DIR = ROOT / "state"
 PROBATION_THRESHOLDS = {
     "DailyTrend-MGC-Long": {"target": 15, "min_pf": 1.2, "tier": "REDUCED"},
     "MomPB-6J-Long-US": {"target": 30, "min_pf": 1.2, "tier": "REDUCED"},
-    "FXBreak-6J-Short-London": {"target": 50, "min_pf": 1.1, "tier": "MICRO"},
+    # FXBreak-6J-Short-London removed 2026-04-14: archived with verified
+    # concentration-catastrophe failure mode (top-3=98.7%, max-year=112.6%).
+    # See docs/PROBATION_REVIEW_CRITERIA.md §3.
     "PreFOMC-Drift-Equity": {"target": 8, "min_pf": 1.2, "tier": "MICRO"},
     "TV-NFP-High-Low-Levels": {"target": 8, "min_pf": 1.1, "tier": "MICRO"},
 }
