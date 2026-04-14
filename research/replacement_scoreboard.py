@@ -57,7 +57,10 @@ KNOWN_RUBRIC = {
 }
 
 # Current factor/asset gaps for bonus computation
-FACTOR_GAPS = {"CARRY", "STRUCTURAL"}  # 0 active
+# CARRY removed 2026-04-14: closed by Treasury-Rolldown-Carry-Spread
+# re-probation via out-of-band monthly path. STRUCTURAL remains open
+# (FXBreak-6J archived with verified failure mode; no replacement).
+FACTOR_GAPS = {"STRUCTURAL"}
 ASSET_GAPS = {"MCL", "ZN", "ZF", "ZB", "6B"}  # 0 active strategies
 
 GAP_BONUS = 2
