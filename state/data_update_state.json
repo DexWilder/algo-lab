@@ -1,60 +1,10 @@
 {
-  "last_update": "2026-04-10 17:00:38",
+  "last_update": "2026-04-14 11:49:15",
   "symbols": {
-    "MES": {
+    "MYM": {
       "status": "updated",
-      "new_bars": 276,
-      "last_bar": "2026-04-09 19:55:00"
-    },
-    "MNQ": {
-      "status": "updated",
-      "new_bars": 276,
-      "last_bar": "2026-04-09 19:55:00"
-    },
-    "MGC": {
-      "status": "updated",
-      "new_bars": 2,
-      "last_bar": "2026-04-09 06:35:00"
-    },
-    "M2K": {
-      "status": "updated",
-      "new_bars": 276,
-      "last_bar": "2026-04-09 19:55:00"
-    },
-    "MCL": {
-      "status": "updated",
-      "new_bars": 276,
-      "last_bar": "2026-04-09 19:55:00"
-    },
-    "ZN": {
-      "status": "updated",
-      "new_bars": 276,
-      "last_bar": "2026-04-09 19:55:00"
-    },
-    "ZB": {
-      "status": "updated",
-      "new_bars": 275,
-      "last_bar": "2026-04-09 19:55:00"
-    },
-    "ZF": {
-      "status": "updated",
-      "new_bars": 275,
-      "last_bar": "2026-04-09 19:55:00"
-    },
-    "6E": {
-      "status": "updated",
-      "new_bars": 84,
-      "last_bar": "2026-04-09 19:15:00"
-    },
-    "6J": {
-      "status": "updated",
-      "new_bars": 31,
-      "last_bar": "2026-04-09 19:00:00"
-    },
-    "6B": {
-      "status": "updated",
-      "new_bars": 12,
-      "last_bar": "2026-04-09 14:25:00"
+      "new_bars": 6134,
+      "last_bar": "2026-04-13 19:55:00"
     }
   }
 }

@@ -6514,7 +6514,7 @@
         "conviction_threshold_outside": 2,
         "priority": 8
       },
-      "notes": "PROMOTED 2026-04-13 via autocorrelation doctrine + sanity backtest. MYM has POSITIVE 5-min autocorrelation (+0.015), strongest of all assets. PF 1.67, 340 trades on 2y data \u2014 highest raw PF but short data window. All 3 calendar periods profitable (2024 PF 1.39, 2025 PF 1.91, 2026 PF 1.45). Year-exclusion: PF 1.40 without best year (edge survives). Profile matches MNQ exactly: 304 min hold, 14 trades/month, 137d max DD. CAUTION: 2-year data window means concentration is elevated (top-3 32%, top-10 61%). Monitor closely as data accumulates. Tail-engine gates fired on data-length artifacts, not structural edge failure.",
+      "notes": "PROMOTED 2026-04-13 via autocorrelation doctrine + sanity backtest. MYM has POSITIVE 5-min autocorrelation (+0.015), strongest of all assets. PF 1.67, 340 trades on 2y data \u2014 highest raw PF but short data window. All 3 calendar periods profitable (2024 PF 1.39, 2025 PF 1.91, 2026 PF 1.45). Year-exclusion: PF 1.40 without best year (edge survives). Profile matches MNQ exactly: 304 min hold, 14 trades/month, 137d max DD. CAUTION: 2-year data window means concentration is elevated (top-3 32%, top-10 61%). Monitor closely as data accumulates. Tail-engine gates fired on data-length artifacts, not structural edge failure. | DATA PIPELINE GAP 2026-04-13 to 2026-04-14 (resolved): MYM was missing from data/databento_loader.py SYMBOLS dict despite being promoted as XB-ORB workhorse. MYM_5m feed frozen at 2026-03-11 during this window. Strategy was operationally dormant (data-blocked), not quiet - its 0-forward-trade status during this window is not evidence of edge degradation. Fix: added MYM to SYMBOLS 2026-04-14; backfilled +6134 bars through 2026-04-13 19:55. Review clock (20/30/50/100 forward trades per XB_ORB_PROBATION_FRAMEWORK.md) starts from the first fresh bar after backfill, NOT from the 2026-04-13 promotion date.",
       "created_date": "2026-04-13",
       "session_tag": "morning",
       "regime_tag": "unclassified",
@@ -6543,7 +6543,16 @@
       "health_status": "FAIL",
       "genome_cluster": "unknown",
       "resurrection_flag": false,
-      "state_history": []
+      "state_history": [],
+      "data_pipeline_gap": {
+        "start": "2026-04-13",
+        "end": "2026-04-14",
+        "last_bar_before_fix": "2026-03-11 19:55",
+        "last_bar_after_fix": "2026-04-13 19:55",
+        "backfill_bars": 6134,
+        "root_cause": "symbol_list_omission in data/databento_loader.py SYMBOLS",
+        "review_clock_adjustment": "review gates count forward trades from first live bar post-backfill, not from promoted_date"
+      }
     }
   ],
   "_rejection_taxonomy": {

@@ -41,6 +41,7 @@ SYMBOLS = {
     # Equity Index Micros
     "MES": "MES.c.0",
     "MNQ": "MNQ.c.0",
+    "MYM": "MYM.c.0",  # added 2026-04-14: was missing from dict despite MYM being promoted as XB-ORB workhorse 2026-04-13
     "MGC": "MGC.c.0",
     "M2K": "M2K.c.0",
     "MCL": "MCL.c.0",
