@@ -118,6 +118,22 @@ JOBS = {
         "function": None,
         "priority": 20,
         "subprocess": True,
+        "status": "MANUAL",
+        "manual_reason": (
+            "2026-04-14: This scheduled entry was invalid — "
+            "research/walk_forward_matrix.py requires 3 positional args "
+            "(<strategy_module> <asset> <mode>) and no subprocess_args "
+            "were wired, so every weekly run since at least 2026-03-20 "
+            "exited 1 on the usage message. A proper weekly walk-forward "
+            "driver for the current live/probation portfolio does not "
+            "exist yet and needs explicit design (which strategies, what "
+            "parameter grid, aggregated output format for downstream "
+            "consumption, interaction with tier classifications in "
+            "live_drift_monitor BASELINE). Marked MANUAL until that "
+            "driver is built. FOLLOW-UP: design + implement "
+            "weekly_walk_forward_driver covering full-tier probation "
+            "strategies at minimum."
+        ),
     },
     "weekly_kill_criteria": {
         "cadence": "weekly",

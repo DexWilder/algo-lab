@@ -118,24 +118,28 @@ BASELINE = {
             "tier": "full", "asset": "MNQ",
             "trades": 1183, "backtest_days": 1700, "win_rate": 0.61,
             "avg_pnl": 42.93, "trade_share": None, "pnl_share": None,
+            "entered_forward_date": "2026-04-06",
             "source": "research/data/xb_orb_family_sweep_results.json + docs/XB_ORB_PROBATION_FRAMEWORK.md",
         },
         "XB-ORB-EMA-Ladder-MCL": {
             "tier": "full", "asset": "MCL",
             "trades": 898, "backtest_days": 1175, "win_rate": 0.57,
             "avg_pnl": 7.06, "trade_share": None, "pnl_share": None,
+            "entered_forward_date": "2026-04-08",
             "source": "research/data/xb_orb_mcl_stop_sweep_results.json + framework WR",
         },
         "XB-ORB-EMA-Ladder-MYM": {
             "tier": "full", "asset": "MYM",
             "trades": 340, "backtest_days": 500, "win_rate": 0.56,
             "avg_pnl": 30.0, "trade_share": None, "pnl_share": None,
+            "entered_forward_date": "2026-04-13",
             "source": "docs/XB_ORB_PROBATION_FRAMEWORK.md (avg_pnl estimated from family)",
         },
         "ZN-Afternoon-Reversion": {
             "tier": "full", "asset": "ZN",
             "trades": 300, "backtest_days": 1500, "win_rate": None,
             "avg_pnl": None, "trade_share": None, "pnl_share": None,
+            "entered_forward_date": "2026-03-20",
             "source": "docs/PROBATION_REVIEW_CRITERIA.md (PF 1.32; WR/avg not published)",
         },
         # ── Reference-only (50-299 BT trades, severity capped at DRIFT) ─
@@ -155,6 +159,7 @@ BASELINE = {
             "tier": "reference-only", "asset": "ZN",
             "trades": 79, "backtest_days": 1500, "win_rate": None,
             "avg_pnl": None, "trade_share": None, "pnl_share": None,
+            "entered_forward_date": "2026-03-20",
             "source": "docs/PROBATION_REVIEW_CRITERIA.md (PF 1.11, monthly)",
         },
         "FXBreak-6J-Short-London": {
@@ -496,16 +501,32 @@ def _missing_signals_severity(tier: str, baseline: dict, n_days: int) -> str:
     """For a strategy with 0 live trades, decide whether zero is drift.
 
     Compare expected trades over the elapsed forward window (using the
-    backtest trade cadence) to zero. Only emit severity if the expected
-    count is meaningfully above zero.
+    backtest trade cadence) to zero. The elapsed window is capped by
+    the strategy's own `entered_forward_date` — a strategy promoted
+    yesterday has not had 27 days to produce signals, so its missing-
+    signal severity should reflect its 1-day window, not the portfolio
+    window. Without `entered_forward_date` the full n_days is used
+    (legacy strategies trading since the runner began).
     """
     if tier == "observational":
         return "OBSERVATIONAL"
     bt_trades = baseline.get("trades")
     bt_days = baseline.get("backtest_days")
-    if not bt_trades or not bt_days or n_days < 5:
+    if not bt_trades or not bt_days:
         return "NORMAL"
-    expected = (bt_trades / bt_days) * n_days
+
+    entered = baseline.get("entered_forward_date")
+    if entered:
+        days_since_entry = max(
+            0, (datetime.now().date() - datetime.fromisoformat(entered).date()).days
+        )
+        elapsed = min(n_days, days_since_entry)
+    else:
+        elapsed = n_days
+
+    if elapsed < 5:
+        return "NORMAL"
+    expected = (bt_trades / bt_days) * elapsed
     if expected >= 20:
         return _apply_tier_clamp("ALARM", tier)
     if expected >= 5:
