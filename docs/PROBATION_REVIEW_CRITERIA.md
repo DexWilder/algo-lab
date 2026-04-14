@@ -7,6 +7,31 @@
 
 ## Active Probation Strategies
 
+### 0. XB-ORB-EMA-Ladder Workhorse Family (MNQ / MCL / MYM)
+
+| Strategy | Asset | Backtest PF | Backtest Trades | Promoted |
+|----------|-------|-------------|-----------------|----------|
+| XB-ORB-EMA-Ladder-MNQ | MNQ | 1.62 | 1183 | 2026-04-06 |
+| XB-ORB-EMA-Ladder-MCL | MCL | 1.33 | 898  | 2026-04-08 |
+| XB-ORB-EMA-Ladder-MYM | MYM | 1.67 | 340  | 2026-04-13 |
+
+**Governed by:** [`docs/XB_ORB_PROBATION_FRAMEWORK.md`](./XB_ORB_PROBATION_FRAMEWORK.md)
+(effective 2026-04-13). That framework is the single source of truth for
+review gates (20 / 30 / 50 / 100 forward trades), promotion/downgrade/
+archive logic, behavioral flag criteria, and the core-promotion
+engineering checklist for all XB-ORB variants.
+
+**Do NOT duplicate XB-ORB criteria in this document.** If the framework
+needs to change, edit `XB_ORB_PROBATION_FRAMEWORK.md` and leave this
+pointer intact. Keeping XB-ORB rules in one place prevents the exact
+doc-drift failure mode the framework was created to solve.
+
+This document (`PROBATION_REVIEW_CRITERIA.md`) continues to govern all
+**non-XB-ORB** probation strategies — the legacy watch set and event
+sleeves listed below.
+
+---
+
 ### 1. DailyTrend-MGC-Long
 
 | Field | Value |

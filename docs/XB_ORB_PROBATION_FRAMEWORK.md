@@ -2,6 +2,13 @@
 
 *Established 2026-04-13. Governs all XB-ORB-EMA-Ladder probation variants.*
 
+**Authority:** This document is the single source of truth for XB-ORB
+probation governance. [`docs/PROBATION_REVIEW_CRITERIA.md`](./PROBATION_REVIEW_CRITERIA.md)
+holds only a pointer to this file for the XB-ORB family and governs
+the non-XB-ORB legacy watch set (DailyTrend-MGC, MomPB-6J, FXBreak-6J,
+Treasury-Rolldown, ZN-Afternoon, VolManaged). Do not duplicate XB-ORB
+criteria there.
+
 ## Active Variants
 
 | ID | Asset | Backtest PF | Backtest Trades | Promoted | Data Window |

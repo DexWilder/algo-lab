@@ -1,5 +1,11 @@
 # algo-lab
 
+> **`CLAUDE.md` is the authoritative operating document for this repo.**
+> For current system state, active probation strategies, automation, and
+> operating rhythm, read `CLAUDE.md` first. This README covers only
+> quick-start setup and repo layout and is not kept in sync with live
+> operational state.
+
 Algo factory: TradingView Pine scripts → Python strategies → backtesting + prop firm evaluation.
 
 ## Quick Start
@@ -39,4 +45,5 @@ prompts/            LLM prompt templates for Pine→Python conversion
 
 ## Current Status
 
-**Phase 1** — Foundation complete. See `docs/ROADMAP.md` for the full plan.
+See `CLAUDE.md` — the authoritative operating document. This README does
+not track live system state.

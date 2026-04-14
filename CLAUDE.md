@@ -48,18 +48,27 @@ See `docs/CLAW_CATALOG_ENGINE.md` for Claw's scheduled task definitions.
 
 ## Probation Portfolio
 
-**Primary workhorse candidates (promoted 2026-04-06 and 2026-04-08):**
+**Primary workhorse candidates (XB-ORB-EMA-Ladder family, promoted 2026-04-06 / 04-08 / 04-13):**
 
-| Strategy | Asset | Archetype | Baseline PF | Trades | Status |
-|----------|-------|-----------|------------|--------|--------|
-| **XB-ORB-EMA-Ladder-MNQ** | MNQ | Workhorse | 1.62 | 1183 | Live forward |
-| **XB-ORB-EMA-Ladder-MCL** | MCL | Workhorse | 1.33 | 898 | Live forward |
+| Strategy | Asset | Archetype | Baseline PF | Trades | Promoted | Status |
+|----------|-------|-----------|------------|--------|----------|--------|
+| **XB-ORB-EMA-Ladder-MNQ** | MNQ | Workhorse | 1.62 | 1183 | 2026-04-06 | Live forward |
+| **XB-ORB-EMA-Ladder-MCL** | MCL | Workhorse | 1.33 | 898  | 2026-04-08 | Live forward |
+| **XB-ORB-EMA-Ladder-MYM** | MYM | Workhorse | 1.67 | 340  | 2026-04-13 | Live forward |
 
-Both use the same strategy code: ORB breakout + EMA slope filter + profit_ladder
-exit with `stop_mult=2.0`. Cross-asset validated on MNQ/MES/MGC/M2K (equity+gold)
-and MCL (energy). Does NOT extend to rates (ZN/ZF/ZB) or FX (6J/6E/6B — small
-sample). See `docs/` and `research/data/xb_orb_*_sweep_results.json` for full
-sweep and validation results.
+All three use the same strategy code: ORB breakout + EMA slope filter +
+profit_ladder exit with `stop_mult=2.0`. MYM was added after the intraday
+autocorrelation screen flagged it as the top expansion target. Cross-asset
+validated on MNQ/MES/MGC/M2K (equity+gold), MCL (energy), MYM (equity
+index). Does NOT extend to rates (ZN/ZF/ZB) or FX (6J/6E/6B — small
+sample). See `research/data/xb_orb_*_sweep_results.json` for full sweep
+and validation results.
+
+**XB-ORB probation governance lives in [`docs/XB_ORB_PROBATION_FRAMEWORK.md`](docs/XB_ORB_PROBATION_FRAMEWORK.md)**
+(review gates at 20/30/50/100 forward trades, promotion/downgrade/archive
+logic, behavioral flag criteria, core-promotion engineering checklist).
+`docs/PROBATION_REVIEW_CRITERIA.md` holds only a pointer for the XB-ORB
+family and governs the non-XB-ORB legacy watch set.
 
 **Other probation / watch strategies:**
 - DailyTrend-MGC-Long, MomPB-6J-Long-US, FXBreak-6J-Short-London (legacy watch)
@@ -117,14 +126,15 @@ SALVAGE path.
 - Dormant safety net: 4 defensive layers (runtime, twice-weekly clear,
   daily digest line, weekly throughput audit)
 
-## System State (2026-04-08)
+## System State (2026-04-14)
 
 - **Registry:** 115+ strategies, schema v3.2, rejection taxonomy
 - **Genome map:** 9-dimension classification, overcrowding + gap analysis
 - **Factory:** batch_first_pass with dual-archetype classification, silent
   failure detector, auto per-event decomposition
-- **Forward runner:** probation includes XB-ORB-EMA-Ladder on MNQ + MCL
-  (two workhorse candidates), plus legacy watch/event sleeves
+- **Forward runner:** probation includes XB-ORB-EMA-Ladder on MNQ + MCL + MYM
+  (three workhorse candidates — MYM wired 2026-04-13 via autocorrelation
+  expansion screen), plus legacy watch/event sleeves
 - **Harvest engine:** Phase 1 active — Claw lanes running, ~127 notes queued
 - **Energy gap:** FILLED via cross-asset extension of xb_orb_ema_ladder to
   MCL (not via dedicated crude prototypes, which all failed)
@@ -163,7 +173,8 @@ See `docs/release_workflow.md` for full details.
 - `docs/CLAW_CATALOG_ENGINE.md` — Claw weekly schedule, output structure, governance
 - `docs/FQL_ARCHITECTURE.md` — 7-layer system reference
 - `docs/OPERATING_RHYTHM.md` — weekly cadence (superseded by discovery plan)
-- `docs/PROBATION_REVIEW_CRITERIA.md` — promotion/downgrade thresholds
+- `docs/PROBATION_REVIEW_CRITERIA.md` — promotion/downgrade thresholds (non-XB-ORB)
+- `docs/XB_ORB_PROBATION_FRAMEWORK.md` — authoritative governance for all XB-ORB-EMA-Ladder variants
 - `docs/ASSET_EXPANSION.md` — onboarding checklist for new assets
 - `docs/CHANGELOG.md` — architectural change log
 
