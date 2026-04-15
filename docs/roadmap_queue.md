@@ -170,6 +170,42 @@ anything meaningful to automate.
 **Earliest review.** After items 1, 2, 3, and 5 have each reached their
 own activation state. Realistically not before 2026-06-15.
 
+## Item 9 — Graceful unwind from Lane A (demotion + exposure unwind protocol)
+
+**Why it matters.** `LANE_A_B_OPERATING_DOCTRINE.md` specifies a
+rigorous 5-condition promotion protocol for Lane B → Lane A
+transitions (framework attestation, plumbing readiness, portfolio
+role, atomic registry transition, post-promotion verification).
+**There is no equivalent protocol for Lane A → Lane B demotion or
+live-exposure unwind.** This is a real architectural asymmetry, not
+nicer wording. Questions it would answer:
+
+- What happens when a promoted strategy turns out to be wrong in forward evidence?
+- How does a probation workhorse demote cleanly when kill criteria fire?
+- How does live exposure unwind without crystallizing bad fills or causing concentration shocks on remaining actives?
+- What registry state transition covers "was probation, kill-criteria tripped, needs to move out of controller-eligible without being 'rejected' for research memory purposes"?
+- How does a candidate rejoin Lane B for re-examination versus move to permanent archive?
+
+Without this protocol, the first real demotion event will be
+improvised under pressure. The asymmetry is easy to forget until it
+bites.
+
+**Activation evidence.** Either (a) a Lane A strategy (existing core
+or probation, including Treasury-Rolldown) produces forward evidence
+indicating demotion is the correct next decision, or (b) the 2026-05-01
+Treasury-Rolldown checkpoint or any subsequent cycle surfaces a
+concrete unwind question. Treasury-Rolldown's out-of-band path is the
+first real Lane A live exposure under the new regime, so any unwind
+question there activates this item directly.
+
+**Earliest review.** Post-2026-05-01 Treasury-Rolldown checkpoint if
+the monthly rebalance introduces any unwind question, OR any earlier
+moment when a kill-criteria trigger on an active strategy makes the
+protocol gap operationally visible. No earlier than post-May-1 without
+a specific triggering event.
+
+---
+
 ## Item 8 — Maturity checkpoints (graduation milestones)
 
 **Why it matters.** Roadmap has many module-level items but few
@@ -208,9 +244,11 @@ but the operational reality didn't need it.
 
 ## Current status
 
-All 8 items are **queued** as of 2026-04-15. None are in execution.
+All 9 items are **queued** as of 2026-04-15. None are in execution.
 Next review: day-14 gate, which will evaluate items 1, 2, 6 (partial),
-and 8 against their activation evidence.
+and 8 against their activation evidence. Item 9 (graceful unwind) is
+not expected to activate at day-14 absent a specific demotion
+triggering event.
 
 ## Related authorities
 
