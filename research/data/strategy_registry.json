@@ -6074,7 +6074,7 @@
       "source": "tradingview_scan",
       "rule_summary": "Trade overnight direction at 09:45 ET when overnight range z-score > 1.5 AND opening volume ratio > 1.2. Exit 11:00 ET or 1.5x ATR stop.",
       "status": "rejected",
-      "notes": "REJECTED 2026-03-20. Decomposition test FAILED. All 4 variants have PF < 1.0. Unconditional baseline: MES PF 0.96 (1109 trades), MNQ PF 0.93. Combined filter: MES PF 0.69 (105 trades), MNQ PF 0.68 (92 trades). The z-score + volume filter makes results WORSE, not better (PF delta -0.27). Walk-forward fails on both halves. Overnight continuation signal has no edge on equity index futures regardless of conditioning. The filter selects for high-vol days where the overnight move reverses rather than continues. Archive \u2014 do not iterate on this mechanism. FAMILY CLOSED: volatility_conditioned_open on equity index futures. Overnight continuation reverses on high-vol days, making vol filters counterproductive. Do not reopen for MES/MNQ/M2K.",
+      "notes": "REJECTED 2026-03-20. Decomposition test FAILED. All 4 variants have PF < 1.0. Unconditional baseline: MES PF 0.96 (1109 trades), MNQ PF 0.93. Combined filter: MES PF 0.69 (105 trades), MNQ PF 0.68 (92 trades). The z-score + volume filter makes results WORSE, not better (PF delta -0.27). Walk-forward fails on both halves. Overnight continuation signal has no edge on equity index futures regardless of conditioning. The filter selects for high-vol days where the overnight move reverses rather than continues. Archive \u2014 do not iterate on this mechanism. FAMILY CLOSED: volatility_conditioned_open on equity index futures. Overnight continuation reverses on high-vol days, making vol filters counterproductive. Do not reopen for MES/MNQ/M2K. | REJECTION_REASON FIELD FILLED 2026-04-15: \"no_edge_decomposition_failed\" \u2014 stale rule #5 cleared via day-1 fallback closure work. Reason sourced directly from the existing notes field's pre-existing narrative; no new evidence introduced.",
       "last_review_date": "2026-03-20",
       "review_priority": "NONE",
       "lifecycle_stage": "rejected",
@@ -6160,7 +6160,8 @@
       "extractable_components": [
         "exit"
       ],
-      "crossbreeding_eligible": false
+      "crossbreeding_eligible": false,
+      "rejection_reason": "no_edge_decomposition_failed"
     },
     {
       "strategy_id": "Treasury-Cash-Close-Reversion-Window",
@@ -6172,7 +6173,7 @@
       "source": "openclaw_strategic_harvest",
       "rule_summary": "Fade the 14:45-15:00 ET pre-cash-close impulse in ZN when impulse exceeds 1.5x 20d median. Enter 15:00, exit 15:25 or 60% retracement.",
       "status": "rejected",
-      "notes": "REJECTED 2026-03-20. Falsification test failed on both criteria. Variant A (close reversion): PF 0.87, 321 trades \u2014 no edge. Variant B (generic afternoon 1h earlier): PF 1.32, 300 trades \u2014 STRONGER than close window. The cash close is not special; if anything, fading the 13:45-14:00 move at 14:00 works better. Variant C (unconditional close fade): PF 0.97, 721 trades \u2014 impulse filter makes results worse. Decomposition conclusion: (1) There IS an afternoon reversion effect on ZN, but it peaks BEFORE the cash close, not at it. (2) The impulse threshold filter degrades performance. The unconditional fade is better. NOTABLE: Variant B (PF 1.32, WF H1=1.31 H2=1.33, short-biased .6K short PnL) is genuinely interesting and merits its own spec as a separate idea \u2014 but it is NOT the hypothesis being tested here. Filed as discovery lead, not as an advance of this strategy. CHILD SPAWNED: ZN-Afternoon-Reversion from Variant B.",
+      "notes": "REJECTED 2026-03-20. Falsification test failed on both criteria. Variant A (close reversion): PF 0.87, 321 trades \u2014 no edge. Variant B (generic afternoon 1h earlier): PF 1.32, 300 trades \u2014 STRONGER than close window. The cash close is not special; if anything, fading the 13:45-14:00 move at 14:00 works better. Variant C (unconditional close fade): PF 0.97, 721 trades \u2014 impulse filter makes results worse. Decomposition conclusion: (1) There IS an afternoon reversion effect on ZN, but it peaks BEFORE the cash close, not at it. (2) The impulse threshold filter degrades performance. The unconditional fade is better. NOTABLE: Variant B (PF 1.32, WF H1=1.31 H2=1.33, short-biased .6K short PnL) is genuinely interesting and merits its own spec as a separate idea \u2014 but it is NOT the hypothesis being tested here. Filed as discovery lead, not as an advance of this strategy. CHILD SPAWNED: ZN-Afternoon-Reversion from Variant B. | REJECTION_REASON FIELD FILLED 2026-04-15: \"falsification_thesis_failed\" \u2014 stale rule #5 cleared via day-1 fallback closure work. Reason sourced directly from the existing notes field's pre-existing narrative; no new evidence introduced.",
       "last_review_date": "2026-03-20",
       "review_priority": "NONE",
       "lifecycle_stage": "rejected",
@@ -6258,7 +6259,8 @@
         "entry",
         "exit"
       ],
-      "crossbreeding_eligible": true
+      "crossbreeding_eligible": true,
+      "rejection_reason": "falsification_thesis_failed"
     },
     {
       "strategy_id": "ZN-Afternoon-Reversion",
