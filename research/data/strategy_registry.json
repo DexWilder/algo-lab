@@ -1,6 +1,6 @@
 {
   "_schema_version": "2.0",
-  "_generated": "2026-04-13",
+  "_generated": "2026-04-14",
   "_description": "FQL Strategy Registry \u2014 institutional memory of all strategy ideas, tested candidates, and deployed strategies",
   "_purpose": "Preserves research knowledge, enables crossbreeding, feeds Strategy Factory",
   "strategies": [
@@ -132,7 +132,7 @@
       "last_review_date": "2026-03-15",
       "controller_state": "ACTIVE",
       "controller_action": "FULL_ON",
-      "activation_score": 0.7375,
+      "activation_score": 0.725,
       "controller_reason_codes": [
         "REGIME_MATCH_MODERATE",
         "HALF_LIFE_STRENGTHENING",
@@ -140,13 +140,12 @@
         "LOW_REDUNDANCY",
         "HEALTH_FAIL",
         "KILL_NONE",
-        "SESSION_DRIFT_DEGRADED",
-        "SESSION_CONCENTRATION",
+        "SESSION_DRIFT_BROKEN",
         "TIME_WINDOW_PARTIAL",
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-04-13",
+      "last_controller_date": "2026-04-14",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
@@ -241,21 +240,20 @@
       "last_review_date": "2026-03-15",
       "controller_state": "ACTIVE",
       "controller_action": "REDUCED_ON",
-      "activation_score": 0.635,
+      "activation_score": 0.61,
       "controller_reason_codes": [
-        "REGIME_MATCH_MODERATE",
+        "REGIME_MISMATCH",
         "HALF_LIFE_STRENGTHENING",
-        "PORTFOLIO_NEUTRAL",
+        "PORTFOLIO_ADDS_VALUE",
         "LOW_REDUNDANCY",
         "HEALTH_FAIL",
         "KILL_NONE",
-        "SESSION_DRIFT_BROKEN",
-        "SESSION_CONCENTRATION",
+        "SESSION_DRIFT_NORMAL",
         "TIME_WINDOW_PARTIAL",
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-04-13",
+      "last_controller_date": "2026-04-14",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
@@ -565,22 +563,21 @@
       "kill_details": null,
       "last_review_date": "2026-03-18",
       "controller_state": "ACTIVE",
-      "controller_action": "FULL_ON",
-      "activation_score": 0.8025,
+      "controller_action": "REDUCED_ON",
+      "activation_score": 0.61,
       "controller_reason_codes": [
-        "REGIME_MATCH_HIGH",
+        "REGIME_MISMATCH",
         "HALF_LIFE_STRENGTHENING",
         "PORTFOLIO_ADDS_VALUE",
         "LOW_REDUNDANCY",
         "HEALTH_FAIL",
         "KILL_NONE",
         "SESSION_DRIFT_NORMAL",
-        "SESSION_CONCENTRATION",
         "TIME_WINDOW_PARTIAL",
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-04-13",
+      "last_controller_date": "2026-04-14",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
@@ -3234,7 +3231,7 @@
       "status": "rejected",
       "validation_score": 5.0,
       "profit_factor": 1.2,
-      "notes": "MOVED TO WATCH 2026-03-18. Elite review: 17/24, below conviction threshold (18). FX London session and short-bias are valuable but raw PF 1.20 (weakest of official 5) does not meet conviction bar. Carry filter research showed no improvement. WATCH CONDITIONS: Promote to conviction if Forward PF > 1.2 after 30+ forward trades, OR carry filter re-analysis with regime diversity lifts rubric to 18+. Archive if Forward PF < 0.95 after 30+ forward trades. DEADLINE: 2026-06-01. | GATES REJECT 2026-04-13: SALVAGE but concentration fails: top3=99%, year=113%. Lottery ticket.",
+      "notes": "MOVED TO WATCH 2026-03-18. Elite review: 17/24, below conviction threshold (18). FX London session and short-bias are valuable but raw PF 1.20 (weakest of official 5) does not meet conviction bar. Carry filter research showed no improvement. WATCH CONDITIONS: Promote to conviction if Forward PF > 1.2 after 30+ forward trades, OR carry filter re-analysis with regime diversity lifts rubric to 18+. Archive if Forward PF < 0.95 after 30+ forward trades. DEADLINE: 2026-06-01. | GATES REJECT 2026-04-13: SALVAGE but concentration fails: top3=99%, year=113%. Lottery ticket. | MEMORY PAYLOAD COMPLETED 2026-04-15: 6-field structured payload added per docs/fql_forge/memory_index.md schema. Salvage classification set to extract-components-only. See memory_payload field. Component extraction (packet item 2) populates component_validation_history separately.",
       "last_review_date": "2026-03-18",
       "controller_state": "PROBATION",
       "controller_action": "PROBATION",
@@ -3325,7 +3322,48 @@
         "filter"
       ],
       "crossbreeding_eligible": true,
-      "why_not_now": "failed_dual_archetype_gates"
+      "why_not_now": "failed_dual_archetype_gates",
+      "portfolio_role": "STRUCTURAL primary; session-transition (London open). Was intended to fill the portfolio STRUCTURAL factor gap. Failure leaves STRUCTURAL + FX gaps unfilled per docs/PORTFOLIO_TRUTH_TABLE.md.",
+      "salvage_classification": "extract-components-only",
+      "memory_payload": {
+        "core_idea": "Asian-range breakout at London open (03:00 ET) on 6J, short only. Thesis: Asian-session consolidation resolves at the London handoff; short bias captures the dominant regime of yen strength on session transitions.",
+        "family_structure": {
+          "primary_factor": "STRUCTURAL",
+          "secondary_factor": "MOMENTUM",
+          "family": "breakout",
+          "session": "london_open (03:00-08:00 ET)",
+          "shape": "sparse session-transition structural (per ELITE_PROMOTION_STANDARDS.md)",
+          "asset": "6J (Japanese Yen futures)",
+          "direction": "short only"
+        },
+        "why_failed": {
+          "verdict": "concentration catastrophe",
+          "not_framework_mismatch": "both workhorse and tail-engine paths reject on concentration + year-share gates; verified 2026-04-14 via batch_first_pass.py scale audit",
+          "evidence": {
+            "top3_share": 0.987,
+            "top3_pct_of_pnl": "98.7%",
+            "top10_share": 2.045,
+            "top10_pct_of_pnl": "204.5% (non-top-10 net-dragged)",
+            "max_year_share": 1.126,
+            "max_year_pct": "112.6% (one year > whole-period total; other years net-negative)",
+            "backtest_trades": 128,
+            "backtest_pf": 1.231,
+            "backtest_wr": 0.555,
+            "walk_forward_h1": 1.083,
+            "walk_forward_h2": 1.411
+          },
+          "interpretation": "Edge depends on a handful of tail events in a specific regime. Deploying forward capital is deploying against tail-event luck, not reproducible behavior. Not salvageable by framework change or session adjustment at the parent level.",
+          "source": "docs/PROBATION_REVIEW_CRITERIA.md \u00a73; research/data/first_pass/fx_session_breakout_20260406_2212.json"
+        },
+        "salvageability": "extract-components-only",
+        "reusable_parts": {
+          "summary": "Session-transition entry concept is sound in principle (Asian-range-to-London-break is a valid microstructure hypothesis). Specific parameterization on 6J is not viable. Parts potentially reusable in other session-transition contexts with different asset/regime profiles.",
+          "see_also": "component_validation_history (populated by packet item 2)"
+        },
+        "portfolio_role_observation": "Was slotted as the portfolio's only STRUCTURAL primary and the only FX exposure. Failure leaves the STRUCTURAL factor role and FX asset-class coverage unfilled. Not recoverable via sibling FXBreak variants (6E worse concentration; 6B no edge). Fresh design required, not re-probation.",
+        "payload_completed_date": "2026-04-15",
+        "payload_completed_by": "FQL Forge v1 day-1 operational packet item 1"
+      }
     },
     {
       "strategy_id": "FXBreak-6E-Watchlist",
@@ -3568,7 +3606,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-04-13",
+      "last_controller_date": "2026-04-14",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -4701,7 +4739,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-04-13",
+      "last_controller_date": "2026-04-14",
       "half_life_status": "ARCHIVE_CANDIDATE",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -5637,7 +5675,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-04-13",
+      "last_controller_date": "2026-04-14",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -5810,7 +5848,7 @@
       "status": "probation",
       "notes": "ACTIVE CARRY CHALLENGER. Entered forward runner 2026-03-20. MICRO tier, monthly rebalance, 1 contract per spread leg. Rubric 18 (eff. 20 with gap bonus). Fills CARRY + Rates gaps. June 1 displacement target: MomIgn-M2K-Short. Promote condition: 3mo forward Sharpe > 0 + WF improvement. Archive condition: 3mo consecutive negative forward returns. | ARCHIVED 2026-04-13: 0 forward trades. Structurally broken \u2014 runner tracks ZN but strategy requires ZF/ZB spread. Cannot produce evidence in current infrastructure. | RE-PROBATED 2026-04-14: out-of-band monthly batch via research/run_treasury_rolldown_spread.py. Archive root cause was infrastructure mismatch (intraday runner is single-asset, strategy needs ZN/ZF/ZB spread). Strategy logic was never invalidated \u2014 component_validation_history shows validated with PF 1.11, 79 trades, rate-neutral. Evidence now accrues in logs/spread_rebalance_log.csv; excluded from live_drift_monitor per-trade severity. See docs/PROBATION_REVIEW_CRITERIA.md \u00a76 re-probation banner.",
       "last_review_date": "2026-04-14",
-      "review_priority": "HIGH",
+      "review_priority": "MEDIUM",
       "lifecycle_stage": "forward_evidence",
       "source_category": "academic",
       "tags": [
@@ -5826,7 +5864,7 @@
       "upgrade_role": "lead_active_challenger",
       "controller_state": "PAPER",
       "prior_state": "PAPER",
-      "controller_action": "OFF",
+      "controller_action": "PROBATION",
       "activation_score": 0.545,
       "controller_reason_codes": [
         "REGIME_MATCH_LOW",
@@ -5842,9 +5880,9 @@
       "last_controller_date": "2026-04-14",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
-      "health_status": "OK",
+      "health_status": "FAIL",
       "genome_cluster": "unknown",
-      "resurrection_flag": true,
+      "resurrection_flag": false,
       "execution_config": {
         "avoid_regimes": [],
         "preferred_regimes": [],
@@ -6202,7 +6240,7 @@
       "controller_action": "PROBATION",
       "activation_score": 0.545,
       "controller_state": "PAPER",
-      "last_controller_date": "2026-04-13",
+      "last_controller_date": "2026-04-14",
       "execution_config": {
         "avoid_regimes": [],
         "preferred_regimes": [
@@ -6355,7 +6393,7 @@
       "promotion_date": "2026-04-06",
       "notes": "PROBATION BASELINE UPGRADED 2026-04-07 from stop=0.5 to stop=2.0 after stop-sweep study (10/10 variants clean across 0.1-3.0 range). stop=2.0 wins on both PF (1.62 vs 1.59) and DD duration. MNQ: 1183 trades, PF 1.62, PnL $50,785, top-10 22.7%, median $43.26, max DD 143 days. Cross-asset confirmed on all 4 equity-index micros. Sits inside broad stability plateau \u2014 this is a baseline selection, not a parameter fit. Edge is WR-based (60% WR, payoff 1.05). | IMPORTANT: This PF is a FLOOR, not a ceiling. target_mult and trail_mult are ignored by exit_profit_ladder (fixed 1R/2R/3R ratchets), so the edge was achieved with no functional exit tuning. Fixing the bug can only raise the family potential, never lower it.",
       "controller_action": "REDUCED_ON",
-      "last_controller_date": "2026-04-13",
+      "last_controller_date": "2026-04-14",
       "execution_config": {
         "preferred_window": [
           "09:30",
@@ -6377,7 +6415,7 @@
       },
       "controller_state": "ACTIVE",
       "prior_state": "ACTIVE",
-      "activation_score": 0.675,
+      "activation_score": 0.69,
       "controller_reason_codes": [
         "REGIME_MATCH_LOW",
         "HALF_LIFE_STRENGTHENING",
@@ -6427,7 +6465,7 @@
       "profit_factor": 1.33,
       "portfolio_role": "workhorse",
       "controller_action": "PROBATION",
-      "last_controller_date": "2026-04-13",
+      "last_controller_date": "2026-04-14",
       "promotion_date": "2026-04-08",
       "baseline_params": {
         "stop_mult": 2.0,
@@ -6494,7 +6532,7 @@
       "profit_factor": 1.67,
       "portfolio_role": "workhorse",
       "controller_action": "PROBATION",
-      "last_controller_date": "2026-04-13",
+      "last_controller_date": "2026-04-14",
       "promotion_date": "2026-04-13",
       "baseline_params": {
         "stop_mult": 2.0,
