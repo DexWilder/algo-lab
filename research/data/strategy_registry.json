@@ -6654,6 +6654,120 @@
         "review_clock_adjustment": "review gates count forward trades from first live bar post-backfill, not from promoted_date"
       },
       "review_clock_start_source": "first_fresh_bar_post_backfill"
+    },
+    {
+      "strategy_id": "SPX-Lunch-Compression-Afternoon-Release",
+      "strategy_name": "spx_lunch_compression",
+      "family": "afternoon_session_structural",
+      "asset": "MES",
+      "session": "afternoon (13:30-15:25 ET)",
+      "direction": "both",
+      "source": "Claw synthesis from public intraday index-microstructure literature",
+      "source_category": "claw_synthesis",
+      "rule_summary": "Between 12:00-13:30 ET, define lunch-hour compression (session range below 20th percentile of prior 60 sessions + price within 0.35x 14d intraday ATR of VWAP). Enter at first 5m close after 13:30 ET breaking lunch range by >=0.10x daily ATR in break direction. Exit 15:25 ET or on range re-entry for 2 bars.",
+      "status": "rejected",
+      "lifecycle_stage": "archived",
+      "controller_action": "OFF",
+      "rejection_reason": "failed_dual_archetype_gates",
+      "kill_flag": null,
+      "last_review_date": "2026-04-15",
+      "last_controller_date": "2026-04-15",
+      "created_date": "2026-04-07",
+      "harvest_note": "2026-03-20_07_spx_lunch_compression_afternoon_release.md",
+      "spec_path": null,
+      "reusable_as_component": true,
+      "salvage_classification": "extract-components-only",
+      "memory_payload": {
+        "core_idea": "Afternoon-session-transition strategy on equity index micros. Detect midday compression regime (range + ATR around VWAP) between 12:00-13:30 ET; enter on first 5m close after 13:30 breaking the lunch range; exit at 15:25 or on range re-entry.",
+        "family_structure": {
+          "primary_factor": "STRUCTURAL",
+          "secondary_factor": null,
+          "family": "afternoon_session_structural",
+          "session": "afternoon transition 13:30-15:25 ET",
+          "shape": "intraday single-asset, sparse side (session-restricted)",
+          "asset": "MES / MNQ (cross-asset tested)",
+          "direction": "both"
+        },
+        "why_failed": {
+          "verdict": "concentration catastrophe + period-specific edge",
+          "not_framework_mismatch": "Both MES and MNQ fail tail-engine gates on multiple dimensions (top-3 share, top-5 share, single-year share, instance CV, positive instance fraction). Same pattern on both assets rules out asset-specific artifact. Both workhorse and tail-engine paths reject for the same reasons \u2014 not a framework misapplication.",
+          "evidence": {
+            "MES": {
+              "trades": 128,
+              "pf": 1.424,
+              "sharpe": 1.8,
+              "wr": 0.484,
+              "top3_share": 0.949,
+              "top5_share": 1.288,
+              "max_year_share": 0.521,
+              "median_trade": -6.24,
+              "wf_h1_pf": 0.843,
+              "wf_h2_pf": 1.818,
+              "classification": "TAIL_ENGINE_REJECT"
+            },
+            "MNQ": {
+              "trades": 96,
+              "pf": 1.916,
+              "sharpe": 3.05,
+              "wr": 0.51,
+              "top3_share": 0.746,
+              "top5_share": 0.962,
+              "max_year_share": 0.62,
+              "median_trade": 0.26,
+              "wf_h1_pf": 0.889,
+              "wf_h2_pf": 2.754,
+              "classification": "TAIL_ENGINE_REJECT"
+            }
+          },
+          "interpretation": "Strong H2 walk-forward (1.82 MES, 2.75 MNQ) while H1 underwater (0.84, 0.89) indicates period-specific edge not sustainable; the recent-period improvement is likely regime-specific rather than a structural edge. Combined with top-3 / top-5 / max-year gate failures, verdict is REJECT not SALVAGE. Not a workhorse either \u2014 96-128 trades is sparse-side intraday, not volume-scale.",
+          "source": "research/data/first_pass/spx_lunch_compression_20260407_1930.json"
+        },
+        "salvageability": "extract-components-only",
+        "reusable_parts": {
+          "summary": "Lunch-compression regime filter (session range < 20th percentile of 60 prior sessions + price within 0.35x ATR of VWAP) is a potentially reusable regime detector even though this strategy as a whole failed. Breakout trigger itself (first 5m close after 13:30 breaking lunch range by >=0.10x ATR) is a generic pattern not strategy-specific.",
+          "see_also": "component_validation_history"
+        },
+        "portfolio_role_observation": "Would have addressed STRUCTURAL factor gap and the undercovered 12:00-15:30 ET afternoon window in equity indexes (per harvest note distinctness analysis). Failure leaves both gaps unfilled. STRUCTURAL gap persists as of 2026-04-15 per docs/PORTFOLIO_TRUTH_TABLE.md.",
+        "payload_completed_date": "2026-04-15",
+        "payload_completed_by": "FQL Forge v1 day-1 operational packet item 3"
+      },
+      "component_validation_history": [
+        {
+          "component": "lunch_compression_regime_filter",
+          "type": "regime",
+          "context": {
+            "asset": "MES / MNQ",
+            "session": "midday 12:00-13:30 ET",
+            "regime": "low-range low-volatility consolidation"
+          },
+          "result": "parent_failed_concept_potentially_reusable",
+          "evidence": "Regime filter construction (range < 20th percentile over prior 60 sessions + VWAP-anchored ATR band) is a reasonable way to define consolidation; did not itself cause the parent failure. The downstream breakout edge is what failed concentration gates.",
+          "reusable_in": [
+            "Other afternoon-session strategies where compression-then-release pattern matters",
+            "As a signal gate in hybrid strategies needing \"is market in consolidation regime right now\" classification"
+          ],
+          "failure_contexts": [
+            "Alone as the sole entry gate for breakout strategies: insufficient \u2014 this parent proves it"
+          ],
+          "added_date": "2026-04-15"
+        }
+      ],
+      "notes": "TRIAGED 2026-04-15 as FQL Forge v1 day-1 packet item 3. Discovered as GHOST CANDIDATE: strategy.py existed at strategies/spx_lunch_compression/ (written 2026-04-07), first-pass ran 2026-04-07 (3 result files), classifier returned clean TAIL_ENGINE_REJECT, but no registry entry was ever created. This is the ghost-candidate failure mode FQL Forge v1 is designed to catch \u2014 tested work not reaching memory. Registry entry now exists with status=rejected, memory_payload complete, salvage=extract-components-only. Ghost-candidate pattern logged separately in docs/fql_forge/improvement_log.md 2026-04-15 entry.",
+      "controller_state": "REJECTED",
+      "prior_state": "NEVER_REGISTERED",
+      "health_status": "N/A",
+      "portfolio_role": "Would have been STRUCTURAL primary targeting afternoon 12:00-15:30 ET equity-index window. Failed. Role unfilled.",
+      "resurrection_flag": false,
+      "execution_config": null,
+      "relationships": {
+        "parent": null,
+        "children": [],
+        "related": [
+          "ZN-Afternoon-Reversion (adjacent shape: afternoon session structural on different asset)"
+        ],
+        "salvaged_from": null,
+        "components_used": []
+      }
     }
   ],
   "_rejection_taxonomy": {

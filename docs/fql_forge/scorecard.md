@@ -155,9 +155,10 @@ Thin is not the same as empty. Thin is honest. Empty is missing.
 # Daily entries (append-only below this line)
 
 ## 2026-04-15
-- Advanced: none yet — day 1 seed packet selected but not executed at time of append. First packet: FXBreak-6J-Short-London memory payload + component extraction + S&P Lunch Compression triage.
-- Produced artifact: FQL Forge v1 seed operational artifacts — inaugural active packet, this scorecard entry, populated source_map with registry-derived yield baseline, day-1 stale scan, day-1 improvement log.
-- State change: queue counts unchanged (registry not mutated today); FQL Forge itself transitioned from designed → operational. First rhythmic appendage establishes append-only discipline.
-- Stale cleared: none yet. Day-1 stale scan revealed N items meeting stale thresholds (see improvement log for enumeration); clearing is day-2 work.
-- Tomorrow: execute packet items — complete FXBreak-6J memory payload, extract components, triage S&P Lunch Compression. If time permits, begin clearing the stale backlog surfaced by day-1 scan.
+- Advanced: FXBreak-6J-Short-London memory payload completed (packet item 1); FXBreak-6J component_validation_history populated (packet item 2); SPX-Lunch-Compression-Afternoon-Release triaged → REJECT with full memory payload (packet item 3). Three distinct commits: 421bded, a8d6f96, pending-this-commit.
+- Produced artifact: 3 closed packet items; 1 new registry entry created (SPX-Lunch-Compression-Afternoon-Release); 4 component_validation_history entries written across 2 strategies; 1 new failure pattern discovered (GHOST CANDIDATE) + logged + added to weekly integrity cadence.
+- State change: Rejected +1 (SPX-Lunch-Compression). Two entries (FXBreak-6J, SPX-Lunch-Compression) now satisfy stale rule #7 (memory payload complete). Registry entry count 116→117.
+- Stale cleared: rule #7 cleared for 2 items this session (FXBreak-6J via packet item 1; SPX-Lunch-Compression via packet item 3's creation with complete payload). Pre-v1 rule-#7 backlog: 28→26 remaining for memory-cleanup fallback days.
+- Tomorrow: inaugural packet is fully executed. Tomorrow's packet candidates: (a) clear the 2 rule-#5 rejected-without-reason firings (fallback closure); (b) informal ghost-candidate scan across `strategies/*/strategy.py` before Friday rollup; (c) continue whatever fresh discovery shows up. Keep packet bounded; today was closure-heavy, tomorrow lean into discovery/validation balance.
+- Operating rule observed and confirmed: *Do not open a new primary item mid-day unless one current packet item is fully closed or explicitly blocked.* Held today — all 3 items were in the committed packet from start; no mid-day expansion occurred.
 

@@ -62,13 +62,14 @@ expanded run on day 14 (v1 exit gate).
 Weekly checklist:
 - [ ] Scorecard written every day this week (no missing days)
 - [ ] All 9 stale rules reviewed; any firings have been acted on
-- [ ] Memory payloads complete for every closure within 3-day deadline
+- [ ] Memory payloads complete for every closure within 3-day deadline (v1-launch-date scope per stale rule #7)
 - [ ] All blockers have types assigned from the 6-type taxonomy
 - [ ] Oldest-item rule satisfied every day (each daily packet advanced ≥1 aging item)
 - [ ] No "machine not trying" signal (no 2+ consecutive days with zero artifacts AND zero state changes AND zero stale cleared)
 - [ ] Docs/process definitions still match actual behavior
 - [ ] Anti-drift metrics within expected ranges (or explained)
 - [ ] Fallback-mode usage rate not exceeding 40% (or explained)
+- [ ] **Ghost-candidate scan** (added 2026-04-15 per improvement log): any `strategies/*/strategy.py` + `research/data/first_pass/*.json` pair without a matching `research/data/strategy_registry.json` entry? Manual scan in v1 until v2+ audit helper automates. Any ghosts discovered get full-memory-payload triage treatment, same as spx_lunch_compression precedent.
 
 Observable pressure signals to scan (from `stale_checks.md`):
 - Under-pressure: empty packets, no new inbox items, no closures, fallback use >40%

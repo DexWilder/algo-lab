@@ -131,6 +131,59 @@ Added to the queue:
 
 Both to be revisited at 2026-04-17 first weekly rollup and 2026-04-28 day-14 gate.
 
+### 2026-04-15 addendum — GHOST CANDIDATE pattern discovered
+
+Packet item 3 (S&P Lunch Compression Afternoon Release triage)
+surfaced a previously-undetected failure mode. The candidate was
+classified in `harvest_fresh_tier_a.json` as a fresh Tier A item for
+triage — but on investigation:
+
+- **`strategies/spx_lunch_compression/strategy.py` already exists** (written 2026-04-07, 7368 bytes)
+- **Three first-pass result files exist** (`research/data/first_pass/spx_lunch_compression_{20260407_1531,20260407_1928,20260407_1930}.json`)
+- Latest first-pass (2026-04-07 19:30) produced a clean classifier verdict: **TAIL_ENGINE_REJECT** on both MES and MNQ
+- **No registry entry existed** until packet item 3 created one
+- No meta.json, no spec, no postmortem
+
+The candidate was **converted → tested → orphaned.** The work happened,
+the results produced a clear verdict, and then nothing updated the
+registry, the inbox, or any other memory surface. For 8 days the
+candidate existed only as disconnected files in the repo.
+
+This is precisely the failure mode the doctrine describes as *"research
+work happening without visible compounding artifacts"* — and precisely
+why stale rule #7 + memory payloads + queue discipline exist.
+
+**Impact beyond this candidate:** if one ghost exists, others might.
+The harvest/first-pass/registry chain has a documented gap somewhere
+between "run the first-pass batch" and "create / update the registry
+entry." The batch evidently doesn't auto-register, or if it tries, it
+silently fails for this class of candidate.
+
+**v2+ candidate added to queue:**
+- **Ghost-candidate audit helper** — scan `strategies/*/strategy.py`
+  directories + `research/data/first_pass/*.json` results and flag any
+  strategy_name present in both that is NOT present in
+  `research/data/strategy_registry.json`. Run as part of weekly
+  integrity cadence. Simple query; no heavy infrastructure.
+
+**v1 refinement applied immediately:**
+- Weekly integrity cadence checklist (in `cadence.md` Layer 4) gets a
+  new item: *"Ghost-candidate scan — any strategy dir + first-pass
+  result without a registry entry?"* This can be run manually in v1
+  until the v2 audit helper automates it.
+
+**Action for next few days:** informal pass across
+`strategies/*/strategy.py` and `research/data/first_pass/*.json` before
+Friday's weekly rollup. Any other ghost candidates discovered get the
+same full-memory-payload treatment this packet item applied to
+spx_lunch_compression. If 2+ more are found, the ghost-audit gets
+formally promoted in the 2026-04-28 v1 exit gate.
+
+This is the first substantive refinement the machine surfaced by
+running, as distinct from by being designed. The doctrine's prediction
+is earning evidence: relentless discipline surfaces real operational
+gaps fast.
+
 
 ---
 
