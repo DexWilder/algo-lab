@@ -214,6 +214,7 @@ See `docs/release_workflow.md` for full details.
 - `docs/XB_ORB_PROBATION_FRAMEWORK.md` — authoritative governance for all XB-ORB-EMA-Ladder variants
 - `docs/ELITE_PROMOTION_STANDARDS.md` — evaluation framework by strategy shape (prevents wrong-framework failure mode)
 - `docs/PORTFOLIO_TRUTH_TABLE.md` — operator summary of current state (derived, not authoritative)
+- `docs/LANE_A_B_OPERATING_DOCTRINE.md` — **standing doctrine:** relentless Lane B research + protected Lane A live discipline; defines the promotion protocol that governs the seam
 
 **Hold-window docs (2026-04-14 → 2026-05-01)** — see "Current Hold & May 1 Checkpoint" section above for purpose and usage:
 
