@@ -3231,7 +3231,7 @@
       "status": "rejected",
       "validation_score": 5.0,
       "profit_factor": 1.2,
-      "notes": "MOVED TO WATCH 2026-03-18. Elite review: 17/24, below conviction threshold (18). FX London session and short-bias are valuable but raw PF 1.20 (weakest of official 5) does not meet conviction bar. Carry filter research showed no improvement. WATCH CONDITIONS: Promote to conviction if Forward PF > 1.2 after 30+ forward trades, OR carry filter re-analysis with regime diversity lifts rubric to 18+. Archive if Forward PF < 0.95 after 30+ forward trades. DEADLINE: 2026-06-01. | GATES REJECT 2026-04-13: SALVAGE but concentration fails: top3=99%, year=113%. Lottery ticket. | MEMORY PAYLOAD COMPLETED 2026-04-15: 6-field structured payload added per docs/fql_forge/memory_index.md schema. Salvage classification set to extract-components-only. See memory_payload field. Component extraction (packet item 2) populates component_validation_history separately.",
+      "notes": "MOVED TO WATCH 2026-03-18. Elite review: 17/24, below conviction threshold (18). FX London session and short-bias are valuable but raw PF 1.20 (weakest of official 5) does not meet conviction bar. Carry filter research showed no improvement. WATCH CONDITIONS: Promote to conviction if Forward PF > 1.2 after 30+ forward trades, OR carry filter re-analysis with regime diversity lifts rubric to 18+. Archive if Forward PF < 0.95 after 30+ forward trades. DEADLINE: 2026-06-01. | GATES REJECT 2026-04-13: SALVAGE but concentration fails: top3=99%, year=113%. Lottery ticket. | MEMORY PAYLOAD COMPLETED 2026-04-15: 6-field structured payload added per docs/fql_forge/memory_index.md schema. Salvage classification set to extract-components-only. See memory_payload field. Component extraction (packet item 2) populates component_validation_history separately. | COMPONENT EXTRACTION COMPLETED 2026-04-15: 3 entries added to component_validation_history per memory_index.md schema. Only session-transition entry concept is genuinely reusable (and only as concept, not parameterization); ATR-filter and trailing-stop components are generic utilities, listed for completeness.",
       "last_review_date": "2026-03-18",
       "controller_state": "PROBATION",
       "controller_action": "PROBATION",
@@ -3363,7 +3363,69 @@
         "portfolio_role_observation": "Was slotted as the portfolio's only STRUCTURAL primary and the only FX exposure. Failure leaves the STRUCTURAL factor role and FX asset-class coverage unfilled. Not recoverable via sibling FXBreak variants (6E worse concentration; 6B no edge). Fresh design required, not re-probation.",
         "payload_completed_date": "2026-04-15",
         "payload_completed_by": "FQL Forge v1 day-1 operational packet item 1"
-      }
+      },
+      "component_validation_history": [
+        {
+          "component": "session_transition_entry_concept",
+          "type": "entry_logic",
+          "context": {
+            "asset": "6J",
+            "session": "london_open (03:00-08:00 ET)",
+            "regime": "asian_range_consolidation_to_london_break"
+          },
+          "result": "parent_failed_concept_potentially_reusable",
+          "evidence": "Parent FXBreak-6J-Short-London failed with top-3 concentration 98.7%, max-year 112.6% (both workhorse and tail-engine paths reject). The entry concept itself \u2014 detect range consolidation in one session, trade the breakout at the next session handoff \u2014 is a valid microstructure hypothesis that shows up in unrelated profitable strategies (e.g., XB-ORB-EMA-Ladder is a session-open breakout with regime filter). The concept is not what killed this parent; the statistical profile of 6J London trades is.",
+          "reusable_in": [
+            "Other session-transition contexts (NY open, Tokyo open, equity close -> overnight)",
+            "Different asset classes where session-transition microstructure is documented (equity futures sessions, not just FX)",
+            "As a component in hybrid strategies where session-break is one of multiple filters rather than the sole entry trigger"
+          ],
+          "failure_contexts": [
+            "6J + London open + short-only + standalone: concentration catastrophe (this parent)",
+            "Any context where the component is used standalone with a 50-150 trade sample: insufficient statistical basis to validate"
+          ],
+          "reusable_caveat": "Extract concept, not parameterization. The specific ATR thresholds, volume filter levels, and trailing-stop distances used in this parent are not themselves validated; they co-varied with the failed edge.",
+          "added_date": "2026-04-15",
+          "source": "FQL Forge v1 day-1 packet item 2; parent evidence in memory_payload.why_failed"
+        },
+        {
+          "component": "atr_plus_volume_entry_filter",
+          "type": "filter",
+          "context": {
+            "asset": "6J",
+            "session": "london_open",
+            "regime": "any"
+          },
+          "result": "inconclusive",
+          "evidence": "Generic filter. Did not cause the failure (parent PF 1.23 was not terrible at the trade level; failure was distributional concentration). Did not save it either. No isolated evidence this filter contributed positively or negatively.",
+          "reusable_in": [
+            "Any strategy where entry needs vol-adjusted range + flow confirmation"
+          ],
+          "failure_contexts": [
+            "When the underlying entry edge is concentration-driven, no filter fixes it"
+          ],
+          "reusable_caveat": "Filter quality is only as good as the edge being filtered. Not a strategy; a utility component.",
+          "added_date": "2026-04-15"
+        },
+        {
+          "component": "trailing_stop_exit_on_breakout",
+          "type": "exit_logic",
+          "context": {
+            "asset": "6J",
+            "session": "london_open"
+          },
+          "result": "inconclusive",
+          "evidence": "Standard trailing-stop exit. Did not contribute to failure (parent exit was not premature or late in any pattern visible in the first-pass results). Fully generic.",
+          "reusable_in": [
+            "Any trending/breakout strategy with momentum follow-through requirement"
+          ],
+          "failure_contexts": [
+            "Range-bound or mean-reverting strategies"
+          ],
+          "reusable_caveat": "Generic utility. Not strategy-specific.",
+          "added_date": "2026-04-15"
+        }
+      ]
     },
     {
       "strategy_id": "FXBreak-6E-Watchlist",
