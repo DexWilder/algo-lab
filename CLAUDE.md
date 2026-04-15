@@ -215,6 +215,7 @@ See `docs/release_workflow.md` for full details.
 - `docs/ELITE_PROMOTION_STANDARDS.md` — evaluation framework by strategy shape (prevents wrong-framework failure mode)
 - `docs/PORTFOLIO_TRUTH_TABLE.md` — operator summary of current state (derived, not authoritative)
 - `docs/LANE_A_B_OPERATING_DOCTRINE.md` — **standing doctrine:** relentless Lane B research + protected Lane A live discipline; defines the promotion protocol that governs the seam
+- `docs/roadmap_queue.md` — deferred roadmap items with evidence thresholds; items activate via observed evidence, not planning enthusiasm
 
 **Hold-window docs (2026-04-14 → 2026-05-01)** — see "Current Hold & May 1 Checkpoint" section above for purpose and usage:
 
