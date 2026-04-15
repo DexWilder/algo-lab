@@ -82,6 +82,58 @@ once the machine has run for at least one full week.
 
 ---
 
+## 2026-04-15 — Day 1 operational seed entry
+
+### Day-1 stale scan against existing registry
+
+Ran the 9 stale rules against current registry reality. Findings:
+
+- **Rule #5 (rejected without reason):** 2 items. Legitimate stale triggers — these registry entries are `status=rejected` but carry no `rejection_reason` field. Clearing requires filling the reason or un-rejecting. **Action:** enumerate and clear during first weekly cadence (2026-04-17).
+- **Rule #7 (closed without memory payload):** 28 items. A large backlog. Most are historical rejected/archived entries that predate FQL Forge's 6-field payload schema. They were closed under the old implicit "write some notes and move on" pattern, not the new explicit 6-field discipline.
+
+**Scale of rule #7 backlog vs the 3-day deadline rule:**
+
+The rule says "closed items must have memory payload complete within 3 days of closure." Applied retroactively to 28 historical items, this is impossible — they closed weeks or months ago. The rule is intended to govern **new closures going forward**, not force retroactive compliance on historical data.
+
+**Proposed v1 refinement (immediate, applied today):**
+
+- Rule #7 applies to items whose closure date is ≥ 2026-04-14 (v1 launch). Pre-v1 closures carry a different disposition: they should get memory payloads completed via a dedicated backfill effort (6 required fields), but not under the 3-day deadline — under a separate "pre-v1 memory backfill" workstream that runs as fallback work on memory-cleanup days.
+- Document pre-v1 items with incomplete payloads in an explicit queue / note, separate from active stale-firing items.
+
+Without this refinement, the day-1 integrity check reports 28 stale firings, which would trigger Rule #7 as critically exceeded and collapse the machine's signal value. With it, Rule #7 reports 0 new-closure firings and the pre-v1 backlog becomes scheduled work on memory-cleanup fallback days.
+
+**This is exactly the kind of friction day-1 execution is supposed to surface.** Logging as a v1 refinement.
+
+### Immediate friction from day 1 (other items)
+
+1. **`source_map.md` lifetime yield table has `unknown` in the "yielded components" column for every lane.** Per-source component attribution isn't in the historical registry — component_validation_history is per-strategy but not aggregated upward. v2+ candidate: add per-source aggregation helper or retrofit historical items. For v1, accept `unknown` as honest.
+
+2. **Packet item naming is awkward when an item is technically two actions on the same parent** (e.g., "FXBreak-6J memory payload" + "FXBreak-6J component extraction"). Day-1 compromise: list as two rows with shared parent. If this becomes frequent, v1 refinement: packet supports "sub-tasks" per parent, or v2+ refinement: packet structure allows parent-item + action-list nesting.
+
+3. **5-day rotation hint showed 4 of 5 dimensions on day 1.** Validation dimension not hit because no candidate in Validation state today. This is expected for v1 day 1 — no Validation work inherited, Validation queue at zero. The hint is "note why if <3" — noted. Not a concern until week 1 rollup shows repeated misses.
+
+4. **Day 1 scorecard entry format worked but raised a question:** should the scorecard show the packet **before** execution (planning view) or **after** execution (results view)? Today's entry captures "day not yet executed at append time" which is awkward. Proposed: v1 convention = append scorecard at end of work day, after packet execution. Day-1 is a special case (seed).
+
+### v1 refinements applied today (from friction observed)
+
+- **Rule #7 scope clarified:** applies to closures ≥ 2026-04-14. Pre-v1 closures handled via dedicated backfill on memory-cleanup fallback days. This change is a v1 refinement, not v2 work. Update to `stale_checks.md` will be applied in next commit.
+
+### v1 → v2 upgrade candidates surfaced today
+
+Added to the queue:
+- **Per-source component attribution** — aggregate `component_validation_history` up to source category. (Noted in `source_map.md` as candidate.)
+- **Packet sub-task structure** — if parent-child action pairs become common. Watch frequency over first 2 weeks.
+
+### Open questions (no answer yet)
+
+- Will rule #5 (rejected without reason) be chronic at volume, or does it reflect a one-time historical bookkeeping gap?
+- How often will fallback modes chosen exceed 40% sustained? Day-1 is 100% fallback mode (seed day); legitimate but establishes nothing about steady-state.
+
+Both to be revisited at 2026-04-17 first weekly rollup and 2026-04-28 day-14 gate.
+
+
+---
+
 ## v1 → v2 upgrade candidates
 
 These are already-named v2+ items earning their place here as a record

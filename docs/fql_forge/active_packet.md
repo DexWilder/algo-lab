@@ -5,37 +5,37 @@ cadence (end of prior work day or start of current).
 
 ---
 
-## Current packet — [DATE]
+## Current packet — 2026-04-15 (v1 day 1)
 
-**Selected: [UTC date]**
-**Selected for (gap/hypothesis/rotation rationale):** _________
+**Selected:** 2026-04-15
+**Selected for (rationale):** First operational day of FQL Forge v1. Seed packet deliberately small (3 items) to establish rhythm and surface friction. Two items cluster around the closing-out of FXBreak-6J (this session's richest reject with full evidence) — closure + component extraction naturally pair. One item samples the open STRUCTURAL gap via fresh Tier A harvest candidate.
 
 ### Items in packet
 
 | ID | State | Shape | Today's action | Done-for-today criterion |
 |---|---|---|---|---|
-| — | — | — | — | — |
+| FXBreak-6J-Short-London | Rejected (2026-03-18) | intraday single-asset (retroactive) | Fill all 6 memory-payload fields per `memory_index.md`; currently only `rejection_reason` and `notes` populated | Registry entry has explicit fields for core idea, family/structure, why-failed, salvage classification, reusable parts, portfolio-role observation. Stale rule #6 and #7 cleared for this candidate. |
+| FXBreak-6J-Short-London (component extraction) | paired closure | — | Identify what's reusable from FXBreak-6J even though parent is dead. Write `component_validation_history` entry for the session-transition entry logic. Mark `reusable_as_component: true` if anything genuinely survives. | At least one component documented with `type`, `context`, `result`, `reusable_in`, or honest "no reusable components — documented why" entry. |
+| S&P Lunch Compression Afternoon Release | Inbox (`harvest_fresh_tier_a.json` item 2) | unknown — triage step is to classify the shape | Triage: read the candidate; classify family + expected shape per `ELITE_PROMOTION_STANDARDS.md`; decide Inbox → In Progress vs Rejected-immediately vs parked-with-note. Target fills STRUCTURAL gap. | Candidate has a triage verdict recorded. If moved to In Progress, next action named. If rejected, reason recorded. If parked, blocker type assigned. |
 
 ### Packet composition check
 
-- [ ] At least 1 closure-direction item (moving toward Validated or Rejected)
-- [ ] At least 1 aging item (oldest-in-stage; see `stale_checks.md`)
-- [ ] Soft: ≤ 2 new items started today
-- [ ] WIP caps respected (In Progress ≤5, Validation ≤3)
+- [x] At least 1 closure-direction item — FXBreak-6J memory payload closes out a stale reject
+- [x] At least 1 aging item — FXBreak-6J has been in Rejected since 2026-03-18 without memory payload; easily the oldest unresolved
+- [x] Soft: ≤ 2 new items started today — 1 new (the S&P Lunch Compression triage)
+- [x] WIP caps respected — 3 items in packet, all within In Progress ≤5 / Validation ≤3 caps
 
 ### 5-day rotation hint (heuristic, not rigid)
 
-Across any rolling 5-day window, packets should usually touch at least
-3 of these 5 dimensions:
+- [x] Closure (FXBreak-6J memory payload)
+- [x] Discovery (S&P Lunch Compression triage)
+- [x] Improvement (by virtue of being day 1 — all process friction gets logged)
+- [ ] Validation — not hit today
+- [x] Gaps (S&P Lunch Compression targets STRUCTURAL open gap)
 
-- [ ] Discovery (harvest, triage, convert)
-- [ ] Validation (deep testing, framework application)
-- [ ] Closure (memory payload, rejection writeup, salvage classification)
-- [ ] Gaps (gap-directed item selection)
-- [ ] Improvement (process log, stale-threshold review, source expansion)
-
-**If the rolling window touches fewer than 3 dimensions, note why in the
-weekly rollup.** Not an automatic failure — a flag worth explaining.
+4 of 5 dimensions touched. Validation not hit because no candidate in
+Validation state today needs action. Acceptable for day 1; rolling
+window will be monitored in first weekly rollup.
 
 ---
 

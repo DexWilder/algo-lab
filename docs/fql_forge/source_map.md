@@ -95,6 +95,47 @@ Populated during weekly source yield review (see `cadence.md` Layer 2).
 
 ---
 
+## Day-1 source yield baseline (2026-04-15)
+
+Derived from `research/data/strategy_registry.json` `source_category`
+aggregation. This is a **lifetime** snapshot, not a weekly rate —
+weekly rates begin accumulating from the first weekly rollup on
+Friday 2026-04-17. The columns below are mapped from registry fields
+as a best approximation; several are marked `unknown` because the
+data to compute them doesn't exist yet (component tracking was not
+per-source, elite-watch is a recent concept, weekly noise rate
+requires weekly data).
+
+| Source lane | Harvested (lifetime) | Reached probation / core | Yielded components | Noise rate (archived+rejected / total) | Dominant blocker |
+|---|---|---|---|---|---|
+| academic | 41 | 2 probation | unknown | 37% (15/41) | unknown |
+| tradingview | 28 | 1 probation | unknown | 61% (17/28) | unknown |
+| internal | 21 | 3 core | unknown | 71% (15/21) | unknown |
+| expansion | 7 | 0 | unknown | 57% (4/7) | unknown |
+| practitioner | 5 | 0 | unknown | 20% (1/5) | unknown |
+| ict | 3 | 0 | unknown | 100% (3/3) | unknown |
+| user | 3 | 0 | unknown | 100% (3/3) | unknown |
+| factory | 3 | 1 probation | unknown | 67% (2/3) | unknown |
+| internal_crossbreeding_cross_asset_extension | 2 | 2 probation | unknown | 0% (0/2) | unknown |
+| claw_synthesis | 1 | 0 | unknown | 100% (1/1) | unknown |
+| falsification_discovery | 1 | 1 probation | unknown | 0% (0/1) | unknown |
+| internal_crossbreeding | 1 | 1 probation | unknown | 0% (0/1) | unknown |
+
+### Initial observations (not conclusions — need weekly data)
+
+- `internal_crossbreeding*` lanes look extraordinarily efficient on this lifetime view (both items reached probation), but sample size is trivial (N=2, N=1). Worth watching whether this holds as volume grows.
+- `ict` and `user` lanes show 100% noise on lifetime data. Candidates for demotion consideration after observation — but again, small samples.
+- `academic` lane has the highest volume (41) with 2 probation. 5% probation yield is low in absolute terms but may reflect the lane's inherent selectivity; academic papers require more framework-fitting than TradingView scripts.
+- `tradingview` lane has 28 items, 61% noise, only 1 reaching probation. Historically a high-volume/low-yield lane.
+- `internal` lane produced all 3 current core strategies — the highest-value lane historically, but also possibly because early work was predominantly internal and had the benefit of custom framework fit.
+- **Every lane's "yielded components" is `unknown`** because per-source component attribution wasn't tracked historically. v2+ should add this instrumentation — current registry has `component_validation_history` per strategy but not aggregated by source. Log this as improvement-log candidate.
+
+### Lanes to activate (prioritized for biweekly source expansion)
+
+Unchanged from baseline list above — reminder that **podcasts / interview transcripts** are the next queued expansion test (prioritized for first biweekly expansion cycle, target: 2026-04-17 weekly rollup + 2026-04-24 biweekly expansion review).
+
+---
+
 ## Source lane promotion / demotion
 
 Criteria (established as heuristics; refine via improvement log):

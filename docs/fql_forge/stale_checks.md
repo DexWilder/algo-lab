@@ -34,6 +34,7 @@ of day) and the weekly Friday integrity cadence (expanded pass).
 
 ### 7. Closed without memory payload complete
 - **Threshold:** 3 days since entering Validated or Rejected state
+- **Scope:** applies to items whose closure date is ≥ 2026-04-14 (v1 launch). Pre-v1 closures are handled via dedicated "pre-v1 memory backfill" workstream that runs as fallback work on memory-cleanup days — not under the 3-day deadline (refinement applied 2026-04-15 per day-1 improvement log; day-1 stale scan found 28 pre-v1 closures with incomplete payloads, impossible to force retroactive 3-day compliance).
 - **Action on trigger:** fill the 6-field memory payload (see `memory_index.md`). Candidates without memory payloads do not compound.
 
 ### 8. Blocker without type
