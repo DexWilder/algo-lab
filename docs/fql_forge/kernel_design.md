@@ -470,10 +470,26 @@ active log only.
 Per IP-protection feedback memory (`feedback_security.md`):
 
 - `.gitignore` adds `research/data/forge_kernel/*`
-- **Exceptions tracked in git for audit trail:** `forge_promotion_candidates.json` (each promotion decision needs reproducible record), `forge_kernel_halt` if present (operator action history)
+- **Exceptions tracked in git for audit trail:** `forge_promotion_candidates.json` (currently-pending candidates only — see cap rule below), `forge_kernel_halt` if present (operator action history)
 - This design doc and v1.1/v2 evolutions tracked normally
 - Strategy outputs (registry entries, generated candidate files) follow
   existing IP classification — operator decides commits during promotion review
+
+**Audit-file discipline (`forge_promotion_candidates.json` must stay concise):**
+
+The tracked file holds **only currently-pending** candidates. The audit
+value comes from git history of items appearing and disappearing — not
+from a growing dump.
+
+- When operator clears an entry (promotion decision made), the entry is
+  appended to `archive/forge_promotion_decisions_<year>.jsonl` (which IS
+  .gitignored — local audit only) along with decision + rationale, then
+  removed from the tracked file.
+- Hard cap on tracked file: 25 active entries. Exceeded → integrity flag
+  `PROMOTION_BACKLOG` fires; selector enters conservative mode until
+  operator drains. Prevents the file from becoming a noise dump.
+- The originating `cycle_id` in each entry links back to `forge_cycle_log.jsonl`
+  for forensic detail without needing the detail in the tracked file itself.
 
 ---
 
