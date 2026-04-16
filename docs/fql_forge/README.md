@@ -56,6 +56,7 @@ closed.
 | [`memory_index.md`](./memory_index.md) | Strategy memory payload schema |
 | [`cadence.md`](./cadence.md) | 4 cadence layers + 6 fallback modes + 2-week gate |
 | [`source_map.md`](./source_map.md) | Source lanes + expansion protocol |
+| [`kernel_design.md`](./kernel_design.md) | Always-on kernel design (v1, design only — not yet built) |
 
 ## Relationship to authorities
 
