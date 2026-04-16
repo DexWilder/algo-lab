@@ -99,6 +99,22 @@ computed when needed:
 v2+ may promote any of these views to first-class queues if operational
 friction demands. v1 does not.
 
+### Ghost-candidate rule (STANDING POLICY, formalized 2026-04-16)
+
+**Any converted/tested candidate that lacks registry presence is a
+same-week integrity issue, not deferred cleanup.** Confirmed systemic:
+day-1 scan found 1 ghost (SPX-Lunch-Compression); day-2 scan found 33
+more (the entire 2026-04-06 → 2026-04-09 batch_first_pass sweep never
+auto-registered results). Root cause: the batch creates `strategies/`
+dirs + `first_pass/*.json` results but does not write registry entries.
+
+**Disposition categories for discovered ghosts:**
+- `batch_register_reject` — clear REJECT or TAIL_ENGINE_REJECT from first-pass. Queue for bulk memory-closure on fallback days. Does not need individual triage.
+- `individual_triage` — SALVAGE or ADVANCE classification. Deserves individual read of first-pass detail + gap relevance assessment. Enters today's or next available packet.
+- `monitor_pending` — MONITOR classification (too few trades for verdict). Park; re-evaluate when data grows or strategy cadence produces more observations.
+
+**Standing inventory:** `docs/fql_forge/ghost_inventory.md`
+
 ---
 
 ## Blocker taxonomy (6 types)

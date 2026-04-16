@@ -69,7 +69,7 @@ Weekly checklist:
 - [ ] Docs/process definitions still match actual behavior
 - [ ] Anti-drift metrics within expected ranges (or explained)
 - [ ] Fallback-mode usage rate not exceeding 40% (or explained)
-- [ ] **Ghost-candidate scan** (added 2026-04-15 per improvement log): any `strategies/*/strategy.py` + `research/data/first_pass/*.json` pair without a matching `research/data/strategy_registry.json` entry? Manual scan in v1 until v2+ audit helper automates. Any ghosts discovered get full-memory-payload triage treatment, same as spx_lunch_compression precedent.
+- [ ] **Ghost-candidate scan** (**STANDING POLICY, formalized 2026-04-16** — evidence: day-1 found 1 ghost, day-2 scan found 33 more; pattern confirmed systemic): any `strategies/*/strategy.py` + `research/data/first_pass/*.json` pair without a matching `research/data/strategy_registry.json` entry? Manual scan in v1 until v2+ audit helper automates. Any ghost found is classified into one of three dispositions: `batch_register_reject` (clear REJECT/TAIL_ENGINE_REJECT — queue for memory-closure fallback days), `individual_triage` (SALVAGE/ADVANCE — triage in next available packet), `monitor_pending` (MONITOR — too few trades, park until data grows). Standing inventory: `docs/fql_forge/ghost_inventory.md`.
 
 Observable pressure signals to scan (from `stale_checks.md`):
 - Under-pressure: empty packets, no new inbox items, no closures, fallback use >40%

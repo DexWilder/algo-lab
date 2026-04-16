@@ -131,6 +131,24 @@ Added to the queue:
 
 Both to be revisited at 2026-04-17 first weekly rollup and 2026-04-28 day-14 gate.
 
+### 2026-04-15 addendum — ghost-scan glob bug
+
+The day-2 ghost scan used `Path('research/data/first_pass').glob(f'{name}*.json')`
+to match first-pass results per strategy. This glob is too loose:
+`vol_compression_breakout*` matched both the v1 file AND the v2 file
+(`vol_compression_breakout_v2_20260406_2310.json`), causing the scan to
+report PF 1.184 / SALVAGE for `vol_compression_breakout` when the
+actual v1 result is PF 0.488 / TAIL_ENGINE_REJECT.
+
+**Impact:** minor — one misclassification caught during the manual
+triage step. Would have been caught anyway because triage reads the
+actual first-pass file, not the scan summary.
+
+**v2+ fix candidate:** matching logic should use exact-name matching
+(match `f'{name}_20'` pattern, not `f'{name}*'`) or compare against the
+`"strategy"` field inside the JSON. Low priority — manual triage catches
+the mismatch. Log for when the ghost-audit helper is built.
+
 ### 2026-04-15 addendum — GHOST CANDIDATE pattern discovered
 
 Packet item 3 (S&P Lunch Compression Afternoon Release triage)

@@ -163,3 +163,10 @@ Thin is not the same as empty. Thin is honest. Empty is missing.
 - Operating rule observed and confirmed: *Do not open a new primary item mid-day unless one current packet item is fully closed or explicitly blocked.* Held today — all 3 items were in the committed packet from start; no mid-day expansion occurred.
 - Post-packet fallback closure (one item, deliberate): cleared both rule-#5 rejected-without-reason firings (Overnight-Z-VolRatio-OpenDrive → `no_edge_decomposition_failed`; Treasury-Cash-Close-Reversion-Window → `falsification_thesis_failed`). Both reasons sourced from each item's existing `notes` narrative — no new evidence introduced, no scope creep. Rule-#5 backlog: 2 → 0.
 
+## 2026-04-16
+- Advanced: ghost-candidate scan completed (33 ghosts found, pattern confirmed systemic). Ghost-pattern rule formalized in cadence.md + queues.md. Ghost inventory created. All 5 SALVAGE-classified ghosts triaged individually → all 5 REJECT on closer inspection.
+- Produced artifact: `docs/fql_forge/ghost_inventory.md` (new, standing reference); formalized ghost-pattern standing policy; 5 triage verdicts with documented reasons + salvage classifications; 1 glob-matching bug identified and documented.
+- State change: individual_triage queue 5→0 (all resolved to REJECT). batch_register_reject queue confirmed at 26 (including vol_compression_breakout reclassified from SALVAGE to REJECT due to scan bug). monitor_pending stays at 2.
+- Stale cleared: ghost-candidate pattern itself was the aging item (1 case day-1 → 33 cases day-2 → formalized as standing policy). Individual triage backlog cleared to zero same-day.
+- Tomorrow: candidates for next packet include (a) batch-register a first tranche of the 26 REJECT ghosts as memory-closure fallback work, or (b) fresh harvest / discovery from inbox / source lanes if the pipeline has new items. Friday's weekly rollup is tomorrow — that's the first real operating-picture review. Keep tomorrow's packet lean; the rollup itself takes real time.
+
