@@ -264,13 +264,21 @@ monitoring closes the loop.
 ### During hold (2026-04-14 → 2026-05-01)
 
 Per `docs/HOLD_STATE_CHECKLIST.md`, the hold restricts Lane A surface
-changes. Auto-actions are evaluated against this:
+changes. Auto-actions are evaluated against this principle:
+
+> **During hold, auto-actions are permitted ONLY for classification and
+> clock-control style actions. Auto-actions are NEVER permitted for
+> anything that changes Lane A governance, promotion state, or archive
+> state — those remain operator-only regardless of class.**
+
+Per-class application:
 
 | Class | Permitted during hold? | Reasoning |
 |-------|------------------------|-----------|
-| HARVEST_NOISE auto-reject | YES | No Lane A surface; reversible (rejected/ folder) |
+| HARVEST_NOISE auto-reject | YES | No Lane A surface; reversible (rejected/ folder); pre-registry, so no governance touched |
 | DATA_PIPELINE auto-retry | YES | Operational, not strategic |
-| STRATEGY_BEHAVIOR / DATA_BLOCKED auto-classify | YES (registry append only, not status change) | Aligns with `DATA_BLOCKED_STRATEGY_RULE.md` |
+| STRATEGY_BEHAVIOR / DATA_BLOCKED — *classification + clock pause only* | YES | Aligns with `DATA_BLOCKED_STRATEGY_RULE.md`; registry field append, no status change |
+| STRATEGY_BEHAVIOR / DATA_BLOCKED — promotion / archive / status change | NO during hold (or post-hold without operator) | Lane A governance surface |
 | STRATEGY_BEHAVIOR / QUIET → HEALTHY_SLOW downgrade | NO during hold | Status change = Lane A surface |
 | INFRASTRUCTURE auto-recovery | YES | Watchdog already does this |
 | META_MONITORING surfacing | YES | Detection-only, no action |
@@ -410,12 +418,12 @@ Implement v1 with placeholder values; refine after 30+ days of pipeline data:
 
 ---
 
-## 11. Standing questions for v1 design (operator-answered)
+## 11. Operator decisions (RESOLVED 2026-04-16)
 
-1. **Auto-action permitted during hold for HARVEST_NOISE?** — DEFAULT yes (no Lane A surface, easily reversible). Confirm.
-2. **Auto-action permitted during hold for STRATEGY_BEHAVIOR / DATA_BLOCKED?** — DEFAULT yes (registry append only, aligns with `DATA_BLOCKED_STRATEGY_RULE.md`). Confirm.
-3. **Phase A heartbeat update is invasive (touches every scheduled job's script).** Acceptable to do as a single coordinated change, or prefer per-job rollout? — DEFAULT single coordinated change in Phase A.
-4. **Should `exception_state.json` be tracked in git for audit trail (like `forge_promotion_candidates.json`)?** — DEFAULT no (high churn, low audit value vs `exception_actions.jsonl`). Confirm.
+1. **Auto-action permitted during hold for HARVEST_NOISE?** — **YES.** No Lane A surface; reversible via rejected/ folder.
+2. **Auto-action permitted during hold for STRATEGY_BEHAVIOR / DATA_BLOCKED?** — **YES, but bounded:** classification + clock-pause actions only. NO for promotion, archive, or any status change that touches Lane A governance — those remain operator-only regardless of hold state. See §6 principle statement.
+3. **Phase A heartbeat update — coordinated or per-job rollout?** — **Single coordinated change.** Foundational monitoring hygiene; better done coherently than patchwork.
+4. **`exception_state.json` tracked in git?** — **NO.** High churn, low audit value. `exception_actions.jsonl` is the audit trail (gitignored locally — operator can promote selected actions to git if needed).
 
 ---
 
