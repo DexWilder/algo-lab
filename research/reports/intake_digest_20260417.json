@@ -1,0 +1,284 @@
+{
+  "generated": "2026-04-17T06:24:30.708575",
+  "intake": {
+    "total_strategies": 117,
+    "status_distribution": {
+      "idea": 42,
+      "rejected": 36,
+      "archived": 26,
+      "probation": 8,
+      "core": 3,
+      "monitor": 2
+    },
+    "total_ideas": 42,
+    "blocked_ideas": 18,
+    "actionable_ideas": 24,
+    "idea_sources": {
+      "academic": 22,
+      "tradingview": 10,
+      "practitioner": 4,
+      "internal": 3,
+      "expansion": 3
+    },
+    "idea_factors": {
+      "EVENT": 8,
+      "CARRY": 8,
+      "VOLATILITY": 8,
+      "STRUCTURAL": 7,
+      "MOMENTUM": 2,
+      "VALUE": 1
+    },
+    "manifest_total": 17,
+    "manifest_staged": 10,
+    "manifest_logged": 27,
+    "manifest_rejected": 3
+  },
+  "family_representatives": {
+    "EVENT": {
+      "id": "OPEX-Week-Effect",
+      "priority": "MEDIUM",
+      "in_probation": true
+    },
+    "CARRY": {
+      "id": "ManagedFutures-Carry-Diversified",
+      "priority": "HIGH",
+      "in_probation": true
+    },
+    "STRUCTURAL": {
+      "id": "FX-Asian-Session-Breakout",
+      "priority": "MEDIUM",
+      "in_probation": true
+    },
+    "VOLATILITY": {
+      "id": "TV-Gold-Bandwidth-Squeeze",
+      "priority": "HIGH",
+      "in_probation": true
+    },
+    "VALUE": {
+      "id": "FX-PPP-Value",
+      "priority": "BLOCKED",
+      "in_probation": false
+    }
+  },
+  "conversion_queue": [
+    {
+      "id": "Treasury-CPI-Day-Long",
+      "factor": "EVENT",
+      "priority": 1,
+      "blocked": false
+    },
+    {
+      "id": "TV-Larry-Oops-Gap-Reversal",
+      "factor": "STRUCTURAL",
+      "priority": 2,
+      "blocked": false
+    },
+    {
+      "id": "OPEX-Week-Effect",
+      "factor": "EVENT",
+      "priority": 3,
+      "blocked": false
+    },
+    {
+      "id": "TV-Session-Gap-Fill",
+      "factor": "STRUCTURAL",
+      "priority": 4,
+      "blocked": false
+    },
+    {
+      "id": "Treasury-12M-TSM",
+      "factor": "CARRY/MOMENTUM",
+      "priority": 5,
+      "blocked": true,
+      "blocker": "rates_data_backfill ($12.59)"
+    }
+  ],
+  "overlap_clusters": [
+    {
+      "family": "event_driven",
+      "asset": "MES",
+      "count": 5,
+      "strategies": [
+        "OPEX-Week-Long",
+        "OPEX-Week-Effect",
+        "CPI-Reaction-Bias-Equity",
+        "TV-CPI-15m-Expansion",
+        "TV-NFP-Price-Zones"
+      ]
+    },
+    {
+      "family": "event_driven",
+      "asset": "MCL",
+      "count": 3,
+      "strategies": [
+        "EIA-Inventory-Surprise",
+        "EIA-30s-Box-Breakout-MCL",
+        "CrudeOil-OPEC-Announcement-Regime"
+      ]
+    },
+    {
+      "family": "carry",
+      "asset": "multi",
+      "count": 3,
+      "strategies": [
+        "CrossCurrency-YieldCurve-Flattening",
+        "ManagedFutures-Carry-Diversified",
+        "Commodity-Carry-TailRisk-Overlay"
+      ]
+    },
+    {
+      "family": "breakout",
+      "asset": "6J",
+      "count": 3,
+      "strategies": [
+        "FX-Daily-Donchian-Breakout",
+        "FX-Asian-Session-Breakout",
+        "FX-ORB"
+      ]
+    },
+    {
+      "family": "breakout",
+      "asset": "MGC",
+      "count": 2,
+      "strategies": [
+        "ORB-VIX-Filter",
+        "IB-Breakout-Gold"
+      ]
+    },
+    {
+      "family": "vol_expansion",
+      "asset": "M2K",
+      "count": 2,
+      "strategies": [
+        "NR7-Breakout",
+        "BBW-Percentile"
+      ]
+    },
+    {
+      "family": "breakout",
+      "asset": "multi",
+      "count": 2,
+      "strategies": [
+        "DualThrust",
+        "ExtremeDonchian-Tail"
+      ]
+    },
+    {
+      "family": "vol_expansion",
+      "asset": "MGC",
+      "count": 2,
+      "strategies": [
+        "VCP-Intraday",
+        "TV-Gold-Bandwidth-Squeeze"
+      ]
+    },
+    {
+      "family": "structural",
+      "asset": "MES",
+      "count": 2,
+      "strategies": [
+        "TV-EOD-Sentiment-Flip",
+        "THEME-VolGated-Structural-Intraday"
+      ]
+    },
+    {
+      "family": "vol_expansion",
+      "asset": "MES",
+      "count": 2,
+      "strategies": [
+        "TV-VIX-Term-Structure-Hedge",
+        "TV-VVIX-VIX-Divergence-Regime"
+      ]
+    }
+  ],
+  "blocked_closest": [
+    {
+      "id": "FX-Carry-Trade",
+      "blockers": [
+        "blocked_by_data"
+      ],
+      "priority": "MEDIUM",
+      "family": "carry"
+    },
+    {
+      "id": "Treasury-2Y-FOMC-Momentum",
+      "blockers": [
+        "blocked_by_data",
+        "needs_monthly_horizon_support"
+      ],
+      "priority": "MEDIUM",
+      "family": "macro_momentum"
+    },
+    {
+      "id": "TV-VIX-Term-Structure-Hedge",
+      "blockers": [
+        "blocked_by_tail_risk",
+        "needs_hedge_and_roll_controls"
+      ],
+      "priority": "MEDIUM",
+      "family": "vol_expansion"
+    },
+    {
+      "id": "Commodity-Carry-TailRisk-Overlay",
+      "blockers": [
+        "blocked_by_strategy_ambiguity",
+        "needs_fixed_stress_thresholds"
+      ],
+      "priority": "MEDIUM",
+      "family": "carry"
+    },
+    {
+      "id": "CrudeOil-OPEC-Announcement-Regime",
+      "blockers": [
+        "blocked_by_sample_size",
+        "needs_execution_rule"
+      ],
+      "priority": "MEDIUM",
+      "family": "event_driven"
+    },
+    {
+      "id": "Treasury-12M-TSM",
+      "blockers": [
+        "needs_longer_history"
+      ],
+      "priority": "LOW",
+      "family": "macro_momentum"
+    },
+    {
+      "id": "CrossCurrency-YieldCurve-Flattening",
+      "blockers": [
+        "blocked_by_data",
+        "needs_curve_data"
+      ],
+      "priority": "LOW",
+      "family": "carry"
+    },
+    {
+      "id": "FX-PPP-Value",
+      "blockers": [
+        "blocked_by_data",
+        "needs_macro_feed"
+      ],
+      "priority": "LOW",
+      "family": "value"
+    },
+    {
+      "id": "Treasury-Curve-Drift-MR",
+      "blockers": [
+        "blocked_by_engineering",
+        "needs_curve_hedge_support"
+      ],
+      "priority": "LOW",
+      "family": "relative_value"
+    },
+    {
+      "id": "CPI-Reaction-Bias-Equity",
+      "blockers": [
+        "blocked_by_sample_size",
+        "needs_regime_check"
+      ],
+      "priority": "LOW",
+      "family": "event_driven"
+    }
+  ]
+}

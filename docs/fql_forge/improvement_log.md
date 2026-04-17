@@ -205,6 +205,64 @@ gaps fast.
 
 ---
 
+## 2026-04-17 — Week ending (first full Forge v1 week)
+
+### What slowed us down this week
+- Weekly-rollup execution took real time despite the scorecard template being concise. Reason: gap-review + blocker-taxonomy + source-yield sections all require cross-referencing three separate outputs (scorecard JSON, intake digest, dashboard). Not a framework problem; a throughput observation. Acceptable for a first real rollup; watch whether it shortens naturally by week 3.
+- Cluster verification required spot-checking 4 specific notes against 2 cluster reports against operator_digest alerts. The three-way cross-reference is what surfaced the closed-family detector false-positive rate — valuable, but indicates that pipeline design case-1 is more urgent than case-2 (which was yesterday's hypothesis).
+
+### What repeated manual step should be templated or automated
+- **Closed-family detector false-positive review.** Today's finding: `scripts/fql_alerts.py` fired 8 closed-family ALERTs; spot-check of 4 showed 4/4 false positives. Notes were: close-session-momentum (not morning-breakout), non-equity ORB (explicitly non-equity), treasury-basis-value (VALUE filter, not cash_close_reversion), support-bounce exit-logic (not rates). Detector uses crude substring matching (e.g., "breakout" + "morning" + "equity") against note content and produces many false matches. Operator is reviewing and dismissing each daily — this is pure manual toil.
+  - Short-term: manually dismiss today's 8 alerts in triage (task #4 today, with revised scope — dismiss not reject).
+  - Medium-term: exception pipeline Phase C (post-May-1) wires `harvest_engine.py` auto-reject with better precision AND flags detector-vs-Claw disagreement as a META_MONITORING signal.
+  - The design's HARVEST_NOISE class handles this directly. Today's evidence: the detector quality is worse than assumed — pipeline's auto-reject rule must be gated by quality (e.g., require Claw cluster-review agreement), not just pattern-match. Updating the pipeline design is a v1.1 candidate if the problem persists.
+
+### What stale check caught something useful
+- Rule-7 scope discipline (closure without memory payload) held across all 7 closures this week (FXBreak-6J, SPX-Lunch, 5 ghosts). 100% memory-payload-complete rate on new closures — the rule is working as designed.
+- Ghost-candidate rule (added day 2 after 33 ghosts found) has cleared the individual_triage backlog and will produce 26 batch-REJECTs as memory-closure fallback work next week.
+
+### What false-positive stale rule should be refined
+- None observed this week. Rule thresholds all fired with real items underneath. Watch list rather than action list.
+
+### What queue definition needs adjustment
+- **Formal queue-age tracking is missing.** Today's rollup had to put "not formally tracked yet" under Anti-drift snapshot → "Avg queue age by state." This should carry a timestamp per item entering each state, so age-by-state is computable. v1.1 refinement candidate: add `entered_state_at` field when an item transitions between queue states. Low-effort add; high visibility gain.
+
+### What automation would increase validation capacity
+- **Validation-battery scheduler** (existing code: `research/validation/run_validation_battery.py`, currently manually invoked) as a queue drainer is the biggest single lever. Already specified in Forge kernel design §1 component #7 and §7 Phase D. No change to direction — this week validates the prioritization.
+- Secondary: gap-targeted candidate generation. Week's evidence shows Claw produces plenty of candidates in well-served clusters (Tokyo/pre-London, close-session short-bias, energy-native MCL) and under-serves the factor gaps (CARRY, VALUE, VOLATILITY). Kernel selector's rule-budget system (§3) addresses this directly.
+
+### What source lane should be expanded or demoted
+- **External non-refinement sources need a push.** Cluster Report 1 flags refinement-dominance (78/138 notes = 57%) as weak diversity. Cluster Report 2 says source mix among externals is "acceptable" — both true. The issue is ratio: too much internal derivative work vs fresh external intake.
+- No demotions this week; first real source-yield data. Biweekly source expansion cadence fires 2026-04-24 (next Friday) — that's the right place to decide lane changes, not this weekly rollup.
+
+### What rotation dimension was repeatedly missed
+- All 5 dimensions hit this week (Discovery, Validation-partial, Closure, Gaps, Improvement). No systematic miss. Validation-partial is marked because no full validation-battery run occurred — acceptable under hold (no promotion anyway).
+
+### Process changes applied this week
+- Ghost-candidate rule formalized in `cadence.md` Layer 4 and `queues.md` (2026-04-16)
+- Ghost inventory standing reference created at `docs/fql_forge/ghost_inventory.md` (2026-04-16)
+- Forge always-on kernel design v1 + C-constraint addition (2026-04-16, committed `0123dbd`, `fae4b54`)
+- Exception pipeline design v1 + decision lock-in (2026-04-16, committed `f7bcde5`, `2b61d0b`)
+
+### Process changes deferred to v2+ (or v1.1)
+- **v1.1 candidate:** add `entered_state_at` per item (queue-age tracking) — see "What queue definition needs adjustment" above
+- **v1.1 candidate:** pipeline HARVEST_NOISE auto-reject may need Claw-cluster-agreement gate in addition to pattern-match, based on today's false-positive evidence
+- **Both designs (kernel + pipeline)** gate on May 1 checkpoint — not pulled into v1 Forge
+
+### Major control-gap finding (2026-04-17)
+**Case-2 of the exception pipeline diagnosis is systemic, not isolated.** Yesterday's pipeline design used MGC-Long as the anchor example for STRATEGY_BEHAVIOR/stale classification. This week's scorecard shows **4 probation strategies at 0 forward trades** (DailyTrend-MGC-Long 32d, MomPB-6J-Long-US, PreFOMC-Drift-Equity, TV-NFP-High-Low-Levels — all NO_EVIDENCE). Implications:
+
+- Pipeline's STRATEGY_BEHAVIOR sub-classifier needs to handle 4+ simultaneous stale strategies, not treat each as a one-off
+- Hold-window rule applies: cannot demote during hold, but classification + clock-pause CAN happen per design §6
+- May 1 checkpoint should batch-review all 4 together rather than case-by-case
+- Strengthens priority of pipeline Phase D (STRATEGY_BEHAVIOR) — more leverage than anticipated
+
+### Major control-gap finding (2026-04-17) — part 2
+**Case-1 is also worse than designed.** Today's spot-check confirmed 4/4 false-positive rate in the existing closed-family detector. The pipeline's HARVEST_NOISE auto-reject was designed as a straightforward policy application. Evidence shows the *detector itself* has a quality problem, not just a missing action step. Implication: pipeline Phase C must include either detector refinement or a quality-gate (e.g., require Claw cluster-review disagreement check before auto-reject). Logged as v1.1 candidate for pipeline design.
+
+
+---
+
 ## v1 → v2 upgrade candidates
 
 These are already-named v2+ items earning their place here as a record

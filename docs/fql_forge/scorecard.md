@@ -170,3 +170,108 @@ Thin is not the same as empty. Thin is honest. Empty is missing.
 - Stale cleared: ghost-candidate pattern itself was the aging item (1 case day-1 → 33 cases day-2 → formalized as standing policy). Individual triage backlog cleared to zero same-day.
 - Tomorrow: candidates for next packet include (a) batch-register a first tranche of the 26 REJECT ghosts as memory-closure fallback work, or (b) fresh harvest / discovery from inbox / source lanes if the pipeline has new items. Friday's weekly rollup is tomorrow — that's the first real operating-picture review. Keep tomorrow's packet lean; the rollup itself takes real time.
 
+## 2026-04-17
+- Advanced: Friday proactive sequence executed in order — cluster-assignment verification, review stack (weekly_scorecard + weekly_intake_digest + operating_dashboard), and Forge v1 first weekly rollup (this entry + rollup block below). Two cluster reports read and cross-validated via spot-check of 4 flagged notes.
+- Produced artifact: verification finding — `fql_alerts.py` closed-family detector is producing false positives at 4/4 spot-check rate (close-session-momentum, non-equity-ORB, treasury-basis-value, support-bounce-exit-logic all incorrectly matched against 'breakout x morning equity' / 'cash_close_reversion x rates' closed-family patterns). Claw's cluster-review judgment is correct; detector's substring matching is crude. Plus this weekly rollup.
+- State change: no Forge-queue movement today (rollup day); registry stays at 117. Forward runner this week: +$1,656.65 / 31 trades / no DD. Scorecard weekly rollup saved as `research/reports/weekly_scorecard_20260417.json`; intake digest saved as `research/reports/intake_digest_20260417.json`.
+- Stale cleared: none today — rollup day, not closure-focused.
+- Tomorrow: weekend. Next operational day Monday 2026-04-20 → scan Claw outputs from `~/openclaw-intake/inbox/harvest/` and `inbox/refinement/` per CLAUDE.md Monday cadence; triage new notes; possibly begin batch-register of the 26 REJECT ghosts as memory-closure fallback work. Keep Monday packet lean given weekend intake accumulation.
+- Control-gap finding logged: 4 probation strategies at 0 forward trades (DailyTrend-MGC-Long, MomPB-6J-Long-US, PreFOMC-Drift-Equity, TV-NFP-High-Low-Levels), not just MGC-Long. Exception pipeline design case-2 scenario is systemic, not isolated. Added to improvement_log.md.
+
+## 2026-04-17 Weekly Rollup (week of 2026-04-14 → 2026-04-17)
+
+*First Forge v1 weekly rollup. Partial week — Forge shipped Monday 2026-04-14; operating days 04-15/04-16/04-17 = 3 primary-track days.*
+
+### Throughput
+- Validated artifacts produced this week (12):
+  1. Forge v1 documentation (10 docs, ship day)
+  2. FXBreak-6J-Short-London memory payload completed
+  3. FXBreak-6J component_validation_history populated
+  4. SPX-Lunch-Compression-Afternoon-Release triaged REJECT + full memory payload
+  5. 2 rule-5 rejected-without-reason firings cleared (fallback closure)
+  6. Ghost-candidate scan (33 ghosts, pattern formalized)
+  7. `docs/fql_forge/ghost_inventory.md` standing reference
+  8. 5 SALVAGE→REJECT triages with memory payloads
+  9. Forge always-on kernel design v1
+  10. Exception pipeline design v1 + decision lock-in
+  11. Cluster verification finding (detector false-positive rate 4/4)
+  12. This weekly rollup
+- Items conclusively resolved: 7 packet items + 26 ghost-REJECTs pending batch-register
+- Items opened: 1 new registry entry (SPX-Lunch-Compression) + 2 sister design docs
+- Closure ratio: 7/3 = 2.33 (closure-dominant — healthy)
+- Reusable components added to memory: 4 component_validation_history entries across 2 strategies; ghost inventory; kernel design; pipeline design
+
+### Queue health
+- Forge sub-queues (tracked in daily entries): individual_triage 0, batch_register_reject 26, monitor_pending 2
+- Operator-facing 5-state view: Inbox (new 04-17 intake 15) / In Progress (0 mid-day) / Validation (0) / Validated (FXBreak-6J payload) / Rejected (+6 this week — 1 SPX-Lunch + 5 ghosts)
+- Harvest intake backlog (Claw upstream, not Forge): 217 notes (+15 overnight)
+- Rejected this week with memory-payload-complete: 6/6 ✓
+
+### Anti-drift snapshot (first-week baseline — bootstrap caveat per kernel design §6.7)
+- Harvest-to-closure ratio (this week): 7 closed / 3 opened = 2.33
+- Avg queue age by state: not formally tracked (v1.1 refinement candidate — add queue age stamps)
+- % active items with concrete next action: 100% (every day had a defined packet)
+- % closed items with memory payload complete: 100% (6/6)
+
+### Fallback-mode usage
+- Days run as primary-track: 3 (04-15, 04-16, 04-17)
+- Days run as fallback: 0
+- Fallback usage rate: 0% — well below the 40% flag threshold, but first-week small sample
+- Note: 04-15 had a *deliberate post-packet* fallback closure (rule-5 backlog 2→0). Primary-track classification holds — fallback was additive, not substitute
+
+### Rotation dimensions hit this week
+- Discovery: Y (ghost scan, 33 instances; cluster verification)
+- Validation: Partial (triages performed; no full validation-battery runs — acceptable for first week during hold)
+- Closure: Y (7 items + 26 batch-pending)
+- Gaps: Y (FXBreak-6J addressed FX-short-London family partially)
+- Improvement: Y (ghost-pattern rule formalized; kernel + pipeline designs shipped; control-gap diagnosis)
+- All 5 dimensions hit ✓
+
+### Blocker taxonomy summary (from intake digest)
+- data missing: 2 (pre-2019 rates backfill; CTD mapping for treasury basis)
+- conversion issue: 0
+- framework mismatch: 0
+- unclear hypothesis: 1 (Commodity-Carry-TailRisk-Overlay)
+- validation capacity: 0
+- external dependency: 1 (TV-VIX-Term-Structure-Hedge — tail-risk/hedge controls)
+- sample size: 1 (CrudeOil-OPEC-Announcement-Regime)
+- **Dominant choking point:** data missing (50% of blockers). Pre-2019 rates backfill unlocks the Treasury-CPI-Day re-test and Treasury-12M-TSM symmetric test per dashboard.
+
+### Source yield (from source_map.md + cluster reports)
+- Best source lane this week: academic (22 registry entries carry this tag; 3 of next 5 conversion candidates sourced academic)
+- Weakest source lane: internal / expansion (3 registry entries each — thin)
+- Cluster report source mix (raw counts, 153 notes): refinement 77, web 23, github 19, reddit 10, exchange 4, edu 2, gov 2
+- **Flag:** refinement is dominating intake (50%+ of fresh notes are internal derivatives). External source diversity needs a push. Claw's Report 1 flagged this explicitly; Report 2 said "acceptable" among external-only mix — both true simultaneously.
+- Unreviewed source classes: none this window
+
+### Gap review (vs `docs/PORTFOLIO_TRUTH_TABLE.md` + dashboard)
+- Open factor gaps: CARRY (no probation), STRUCTURAL (no probation), VOLATILITY (no probation), VALUE (1 idea, blocked)
+- Claw cluster depth this week: Treasury auction/rates (very large), FX value/PPP (medium-large), Commodity carry (large), Energy-native crude (very large), Tokyo/pre-London FX (very large), Afternoon Treasury structural (medium-large), Close-session short-bias (large)
+- Packets that addressed a gap this week: 1 (FXBreak-6J partial — structural)
+- **Gaps NOT addressed this week:** CARRY, VOLATILITY, VALUE. Claw generated notes in these areas but none converted to Forge packet work.
+- Cluster-to-conversion bottleneck: Claw produces volume; Forge packets convert 1 item/day max. At current throughput, large clusters (very-large Treasury auction) will take weeks to drain.
+
+### Kill list / demotion
+- 4 probation strategies at 0 forward trades (NO_EVIDENCE): DailyTrend-MGC-Long (32d), MomPB-6J-Long-US, PreFOMC-Drift-Equity, TV-NFP-High-Low-Levels
+- **Hold-window:** cannot demote during hold per HOLD_STATE_CHECKLIST.md. Flagged for May 1 checkpoint review.
+- **Systemic finding:** case-2 (stale probation) is not isolated to MGC-Long; it's 4-way. Strengthens case for exception pipeline STRATEGY_BEHAVIOR sub-classifier. Logged to improvement_log.md.
+- Source lanes demoted: none
+- Recurring manual work flagged for templating: closed-family detector false-positive review (happens every digest; needs pipeline)
+
+### Next week's search emphasis (2026-04-20 → 2026-04-24)
+- **Priority gap:** CARRY + VALUE (both untouched this week; factor coverage is weakest here)
+- **Priority source:** external non-refinement (per Claw cluster-report finding that refinement is dominating)
+- **Committed closures:** begin batch-register first tranche of 26 REJECT ghosts as memory-closure fallback; cluster consolidation pass per Claw's merge recommendations (Tokyo/pre-London → 4 canonical; Close-session short-bias → 3 canonical; Afternoon Treasury failed-break → collapsed set)
+
+### Integrity self-check
+- [x] Scorecards written every operating day this week (04-15, 04-16, 04-17; 04-14 was ship day, no daily entry required)
+- [x] Stale thresholds fired as expected (rule-5 backlog cleared 2→0; rule-7 backlog tracked)
+- [x] Memory payloads complete for all closures within 3 days (6/6, 100%)
+- [x] Blockers all have types assigned (5 blockers, 5 types)
+- [x] Oldest-item rule satisfied each day
+- [x] No "machine not trying" signals (3 consecutive productive days; no zero-artifact streaks)
+- [x] Docs/process definitions still match actual behavior (ghost-pattern rule added to cadence.md; closed-family detector behavior doesn't match advertised policy — flagged as detector quality issue, not doc issue)
+
+### Improvement log entry
+One-line summary (detail in `improvement_log.md`): First Forge v1 week produced 12 validated artifacts and uncovered a real control-gap (closed-family detector 4/4 false positive rate; case-2 is systemic across 4 probation strategies). Next week: CARRY + VALUE gap push, external-source rebalance, ghost batch-register; May 1 checkpoint will handle stale-probation demotion decisions.
+
