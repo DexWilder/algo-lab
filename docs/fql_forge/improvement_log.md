@@ -212,10 +212,15 @@ gaps fast.
 - Cluster verification required spot-checking 4 specific notes against 2 cluster reports against operator_digest alerts. The three-way cross-reference is what surfaced the closed-family detector false-positive rate — valuable, but indicates that pipeline design case-1 is more urgent than case-2 (which was yesterday's hypothesis).
 
 ### What repeated manual step should be templated or automated
-- **Closed-family detector false-positive review.** Today's finding: `scripts/fql_alerts.py` fired 8 closed-family ALERTs; spot-check of 4 showed 4/4 false positives. Notes were: close-session-momentum (not morning-breakout), non-equity ORB (explicitly non-equity), treasury-basis-value (VALUE filter, not cash_close_reversion), support-bounce exit-logic (not rates). Detector uses crude substring matching (e.g., "breakout" + "morning" + "equity") against note content and produces many false matches. Operator is reviewing and dismissing each daily — this is pure manual toil.
-  - Short-term: manually dismiss today's 8 alerts in triage (task #4 today, with revised scope — dismiss not reject).
-  - Medium-term: exception pipeline Phase C (post-May-1) wires `harvest_engine.py` auto-reject with better precision AND flags detector-vs-Claw disagreement as a META_MONITORING signal.
-  - The design's HARVEST_NOISE class handles this directly. Today's evidence: the detector quality is worse than assumed — pipeline's auto-reject rule must be gated by quality (e.g., require Claw cluster-review agreement), not just pattern-match. Updating the pipeline design is a v1.1 candidate if the problem persists.
+- **Closed-family detector false-positive review.** Today's full-batch spot-check of all 8 closed-family ALERTs fired by `scripts/fql_alerts.py` confirmed **8/8 false positives** (FP 8 / TP 0). The alerted notes are legitimate intake items that target different assets (energy, FX, rates-relative-value — not equity), different sessions (overnight, close, pre-London, afternoon — not morning), and different mechanisms (imbalance, profile rejection, compression breakout, basis arbitrage — not the closed families). Several notes *explicitly disclaim* the closed family in their own "distinctness" field using language like "rather than generic morning breakout" or "instead of morning index behavior" — the detector's substring matcher is catching the disclaimer words themselves. Pathological failure mode.
+  - **Operating conclusion (with user-approved wording):** *The current closed-family detector is unsuitable for rejection decisions without manual verification.* Claw's cluster-review judgment is the more trustworthy authority for this question today.
+  - **Today's action:** batch-dismissed all 8 alerts (notes remain in the intake pipeline for normal processing). No notes rejected.
+  - **Hardening direction (post-May-1):** exception pipeline Phase C should NOT wire auto-reject against the current detector output. Pipeline's HARVEST_NOISE class needs:
+    1. Detector replacement — substring matching → structured family tags (asset-class + session + mechanism triple, not free-text keyword match)
+    2. Asset-session-aware matching so a CL/MCL note cannot match against "equity" family rules
+    3. Stricter rule logic — require at least one positive match AND no disclaimer match in the distinctness field
+    4. Optional Claw cluster-review agreement gate as a quality filter before any auto-action
+  - Updating the exception pipeline design to reflect this is a v1.1 candidate if the problem recurs next week.
 
 ### What stale check caught something useful
 - Rule-7 scope discipline (closure without memory payload) held across all 7 closures this week (FXBreak-6J, SPX-Lunch, 5 ghosts). 100% memory-payload-complete rate on new closures — the rule is working as designed.
@@ -258,7 +263,7 @@ gaps fast.
 - Strengthens priority of pipeline Phase D (STRATEGY_BEHAVIOR) — more leverage than anticipated
 
 ### Major control-gap finding (2026-04-17) — part 2
-**Case-1 is also worse than designed.** Today's spot-check confirmed 4/4 false-positive rate in the existing closed-family detector. The pipeline's HARVEST_NOISE auto-reject was designed as a straightforward policy application. Evidence shows the *detector itself* has a quality problem, not just a missing action step. Implication: pipeline Phase C must include either detector refinement or a quality-gate (e.g., require Claw cluster-review disagreement check before auto-reject). Logged as v1.1 candidate for pipeline design.
+**Case-1 is also worse than designed.** Today's full-batch spot-check confirmed **8/8 false-positive rate** on the existing closed-family detector (all 8 ALERTs currently active). The pipeline's HARVEST_NOISE auto-reject was designed as a straightforward policy application. Evidence shows the *detector itself* has a quality problem, not just a missing action step. Operating conclusion: *the current closed-family detector is unsuitable for rejection decisions without manual verification.* Implication: pipeline Phase C cannot wire auto-reject against the current detector output — detector replacement (structured family tags, asset-session-aware matching, disclaimer-respecting rule logic) is a prerequisite, not a v1.1 refinement. Updating pipeline design accordingly is queued if the problem recurs.
 
 
 ---
