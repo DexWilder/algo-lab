@@ -178,6 +178,7 @@ and decision procedure below.
 - `docs/DATA_BLOCKED_STRATEGY_RULE.md` — data-blocked vs quiet distinction; review-clock rule (applies to MYM and any future pipeline-gap incident)
 - `docs/MAY_1_TREASURY_ROLLDOWN_VERIFICATION.md` — 7-check mechanics (pass/warn/fail per check, commands, action per outcome)
 - `docs/MAY_1_CHECKPOINT_TEMPLATE.md` — decision wrapper (reads verification output, produces exactly one of four decisions)
+- `docs/MAY_1_STALE_PROBATION_BATCH_REVIEW.md` — required companion when any non-XB-ORB probation strategy shows zero forward trades at checkpoint (4 such strategies as of 2026-04-17)
 - `docs/SPREAD_LOG_AUDIT_PROCEDURE.md` — documented audit with OK/WARN/FAIL verdict
 
 ## Auto-Commit & Push
