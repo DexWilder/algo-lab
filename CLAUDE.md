@@ -218,6 +218,7 @@ See `docs/release_workflow.md` for full details.
 - `docs/roadmap_queue.md` — deferred roadmap items with evidence thresholds; items activate via observed evidence, not planning enthusiasm
 - `docs/fql_forge/kernel_design.md` — always-on Forge kernel design v1 (Lane B continuous research engine; design only — build gated post-May-1)
 - `docs/exception_pipeline_design.md` — classifier-router-actioner design v1 (operational classify/route/auto-act layer; design only — build gated post-May-1)
+- `docs/bad_automation_smells.md` — standing governance reference (10 observed failure patterns; check before granting auto-action authority)
 
 **Hold-window docs (2026-04-14 → 2026-05-01)** — see "Current Hold & May 1 Checkpoint" section above for purpose and usage:
 
