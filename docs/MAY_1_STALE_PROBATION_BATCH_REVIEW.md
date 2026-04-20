@@ -12,13 +12,19 @@ decision section. Only run if at least one non-XB-ORB probation
 strategy shows zero forward trades as of checkpoint date. Skip if all
 non-XB-ORB probation strategies have trade evidence.
 
-**Why batch, not case-by-case:** as of 2026-04-17 scorecard, 4
-non-XB-ORB probation strategies show 0 forward trades simultaneously.
-Case-2 of the exception pipeline diagnosis is systemic, not isolated
-to any single strategy. Reviewing them together surfaces patterns
-(all data-blocked? all quiet? split?) that case-by-case review would
-miss. Also cuts review time — shared fields filled once per column
-instead of N times.
+**Why batch, not case-by-case:** as of 2026-04-20 digest, **5**
+non-XB-ORB probation strategies show 0 forward trades simultaneously
+(grew from 4 on 2026-04-17 when ZN-Afternoon-Reversion flipped
+UNDER_EVIDENCED → STALE). Case-2 of the exception pipeline diagnosis
+is systemic and expanding, not isolated to any single strategy.
+Reviewing them together surfaces patterns (all data-blocked? all
+quiet? split?) that case-by-case review would miss. Also cuts review
+time — shared fields filled once per column instead of N times.
+
+**Growth rate worth noting:** the stale-probation set grew from 4 to
+5 in 3 days. If that pace continues, May 1 may have more than 5
+entries. Refresh from latest scorecard at checkpoint time — do not
+trust this doc's anchor list blindly.
 
 **Relationship to other docs:**
 - `docs/DATA_BLOCKED_STRATEGY_RULE.md` — data-blocked vs quiet distinction
@@ -40,11 +46,22 @@ Read section 2 (PROBATION PROGRESS). List here every **non-XB-ORB**
 probation strategy with **0 forward trades** since entry. Add/remove
 rows in the side-by-side table to match.
 
-**As of 2026-04-17 anchor (may change by May 1):**
-1. DailyTrend-MGC-Long — MGC, trend, daily bars, sparse
-2. MomPB-6J-Long-US — 6J, momentum, sparse
-3. PreFOMC-Drift-Equity — equity, event-driven, sparse
-4. TV-NFP-High-Low-Levels — MNQ, event-driven, sparse
+**As of 2026-04-20 anchor (may change by May 1):**
+1. DailyTrend-MGC-Long — MGC, trend, daily bars, sparse (35d stale)
+2. ZN-Afternoon-Reversion — ZN, afternoon rates reversion (31d, flipped STALE 2026-04-20)
+3. MomPB-6J-Long-US — 6J, momentum, sparse
+4. PreFOMC-Drift-Equity — equity, event-driven, sparse
+5. TV-NFP-High-Low-Levels — MNQ, event-driven, sparse
+
+**Known ambiguity to resolve at checkpoint:** CLAUDE.md's probation
+section (per 2026-04-14 edit) says MomPB-6J-Long-US is "archived" and
+PreFOMC-Drift-Equity is "rejected." The probation scoreboard still
+shows both as active probation with 0 trades. Before running the
+batch review, verify registry truth via
+`research/data/strategy_registry.json` status field. If
+archived/rejected in registry, drop from this batch and reconcile
+CLAUDE.md with reality. If still probation in registry, proceed with
+review.
 
 ---
 
@@ -53,23 +70,23 @@ rows in the side-by-side table to match.
 Fill one column per strategy. Rows are the common review fields. If
 row applies to only some strategies, mark the rest `n/a`.
 
-| Field | DailyTrend-MGC-Long | MomPB-6J-Long-US | PreFOMC-Drift-Equity | TV-NFP-High-Low-Levels |
-|-------|---------------------|------------------|----------------------|------------------------|
-| Asset | MGC | 6J | ES/MES | MNQ |
-| Archetype | trend / sparse | momentum / sparse | event-driven / sparse | event-driven / sparse |
-| Probation entry date (from registry) | | | | |
-| Days in probation at checkpoint | | | | |
-| Expected trade cadence (EXPECTED_FREQ or registry) | | | | |
-| Trades observed since entry | 0 | 0 | 0 | 0 |
-| Last trade date / "never" | | | | |
-| Data feed fresh? (mtime of relevant `data/processed/*.csv` < 2× refresh cadence) | | | | |
-| Data freshness class (per `DATA_BLOCKED_STRATEGY_RULE.md`) | ☐ normal ☐ data-blocked-open ☐ data-blocked-resolved ☐ degraded | same | same | same |
-| Signal-generation check (did strategy logic produce signals that controller blocked, zero signals, or unable to verify?) | | | | |
-| Applicable event window in review period? (for event-driven strategies: did CPI/NFP/FOMC fire between promotion and checkpoint?) | n/a | n/a | | |
-| **Classification** (pick one) | ☐ DATA_BLOCKED ☐ CONTROLLER_BLOCKED ☐ QUIET (sparse, in-expectation) ☐ LOGIC_BLOCKED (errors) ☐ INSUFFICIENT_INFO | same | same | same |
-| Governance doc for disposition | `PROBATION_REVIEW_CRITERIA.md` | `PROBATION_REVIEW_CRITERIA.md` | `PROBATION_REVIEW_CRITERIA.md` | `PROBATION_REVIEW_CRITERIA.md` |
-| **Disposition** (pick one) | ☐ retain ☐ mark DATA_BLOCKED (clock pause) ☐ downgrade to HEALTHY_SLOW ☐ archive ☐ defer to next checkpoint ☐ investigate further | same | same | same |
-| Disposition reason (one sentence) | | | | |
+| Field | DailyTrend-MGC-Long | ZN-Afternoon-Reversion | MomPB-6J-Long-US | PreFOMC-Drift-Equity | TV-NFP-High-Low-Levels |
+|-------|---------------------|------------------------|------------------|----------------------|------------------------|
+| Asset | MGC | ZN | 6J | ES/MES | MNQ |
+| Archetype | trend / sparse | afternoon rates reversion / full drift tier | momentum / sparse | event-driven / sparse | event-driven / sparse |
+| Probation entry date (from registry) | | | | | |
+| Days in probation at checkpoint | | | | | |
+| Expected trade cadence (EXPECTED_FREQ or registry) | | | (4/month per digest) | | |
+| Trades observed since entry | 0 | 0 | 0 | 0 | 0 |
+| Last trade date / "never" | | | | | |
+| Data feed fresh? (mtime of relevant `data/processed/*.csv` < 2× refresh cadence) | | | | | |
+| Data freshness class (per `DATA_BLOCKED_STRATEGY_RULE.md`) | ☐ normal ☐ data-blocked-open ☐ data-blocked-resolved ☐ degraded | same | same | same | same |
+| Signal-generation check (did strategy logic produce signals that controller blocked, zero signals, or unable to verify?) | | | | | |
+| Applicable event window in review period? (for event-driven strategies: did CPI/NFP/FOMC fire between promotion and checkpoint?) | n/a | n/a | n/a | | |
+| **Classification** (pick one) | ☐ DATA_BLOCKED ☐ CONTROLLER_BLOCKED ☐ QUIET (sparse, in-expectation) ☐ LOGIC_BLOCKED (errors) ☐ INSUFFICIENT_INFO | same | same | same | same |
+| Governance doc for disposition | `PROBATION_REVIEW_CRITERIA.md` | `PROBATION_REVIEW_CRITERIA.md` | `PROBATION_REVIEW_CRITERIA.md` | `PROBATION_REVIEW_CRITERIA.md` | `PROBATION_REVIEW_CRITERIA.md` |
+| **Disposition** (pick one) | ☐ retain ☐ mark DATA_BLOCKED (clock pause) ☐ downgrade to HEALTHY_SLOW ☐ archive ☐ defer to next checkpoint ☐ investigate further | same | same | same | same |
+| Disposition reason (one sentence) | | | | | |
 
 ---
 
@@ -125,6 +142,7 @@ is allowed during hold. Every other status change waits for checkpoint.
 | Strategy | Classification | Disposition | Reason |
 |----------|----------------|-------------|--------|
 | DailyTrend-MGC-Long | | | |
+| ZN-Afternoon-Reversion | | | |
 | MomPB-6J-Long-US | | | |
 | PreFOMC-Drift-Equity | | | |
 | TV-NFP-High-Low-Levels | | | |
@@ -161,7 +179,7 @@ is allowed during hold. Every other status change waits for checkpoint.
 ---
 
 *Purpose: prevent case-by-case review from missing systemic patterns.
-4 strategies at 0 trades simultaneously is either a 4-way coincidence
-or a shared root cause. Batch review surfaces which it is. The
-template stays applicable even if the 4 strategies change or the count
-shifts — the structure is stale-probation-count-agnostic.*
+5 strategies at 0 trades simultaneously (grown from 4 in 3 days) is
+either a coincidence or a shared root cause. Batch review surfaces
+which it is. The template stays applicable as the count shifts — the
+structure is stale-probation-count-agnostic.*
