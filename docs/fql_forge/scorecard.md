@@ -275,3 +275,17 @@ Thin is not the same as empty. Thin is honest. Empty is missing.
 ### Improvement log entry
 One-line summary (detail in `improvement_log.md`): First Forge v1 week produced 12 validated artifacts and uncovered a real control-gap (closed-family detector 4/4 false positive rate; case-2 is systemic across 4 probation strategies). Next week: CARRY + VALUE gap push, external-source rebalance, ghost batch-register; May 1 checkpoint will handle stale-probation demotion decisions.
 
+## 2026-04-20
+- Advanced: Friday proactive-sequence follow-through. Confirmed Forward Runner STALE state change was weekend calendar-day noise (last fire Friday 17:04; forward-day is weekday-only; self-cleared today at 17:00). Updated MAY_1_STALE_PROBATION_BATCH_REVIEW anchor list 4→5 after ZN-Afternoon-Reversion flipped UNDER_EVIDENCED → STALE. Refreshed `inbox/_family_queue.md` from month-stale 2026-03-18 version (4 families had "zero candidates" claims that contradicted current cluster reports — Afternoon Session Structural, Energy-Native MCL, Tokyo/pre-London, Close-Session Short all now crowded). Full triage pass on 38 weekend Claw notes (30 harvest + 8 refinement) using Friday's priority filter + 5-gate crowded-family screen.
+- Produced artifact: `research/data/harvest_triage/2026-04-20.md` (new structured triage record with policy-rules section); MAY_1_STALE_PROBATION_BATCH_REVIEW updates including registry-truth ambiguity flag for MomPB-6J-Long-US / PreFOMC-Drift-Equity; major `_family_queue.md` refresh; commits 1e8bfe1 + 5cf3613.
+- State change: no Forge-queue movement (operator-cadence day, not closure-focused). Registry stays at 117. Stale-probation count 4→5. 38 notes dispositioned: 18 ACCEPT HIGH PRIORITY (100% in VALUE/CARRY/Treasury-auction), 9 ACCEPT COMPONENT, 3 NEEDS REVIEW, 8 DEPRIORITIZE.
+- Stale cleared: none today (policy/refresh day, not closure).
+- Tomorrow: Tuesday = observation day. Twice-weekly batch_first_pass + mass_screen fires at 18:00 ET automatically. Watch for Claw intake response to `_family_queue.md` refresh as first reinforcement-signal data point.
+
+## 2026-04-21
+- Advanced: light triage of 15 overnight Claw notes using Monday's exact policy rules (no rule changes). Goal was measurement + reinforcement signal, not deep processing. Confirmed Forward Runner returned HEALTHY at Monday 17:04 fire. No new stale-probation flips overnight (count still 5).
+- Produced artifact: `research/data/harvest_triage/2026-04-21.md`; commit 5014310. Aggregate comparison vs Monday's 38-note batch: ACCEPT HIGH 47%→13%, DEPRIORITIZE 21%→33%, NEEDS REVIEW 8%→33%. Signal captured: head of batch adapting to priority shift (positions 1–4 are all VALUE/CARRY-targeted; VALUE specifically got 4 attempts), tail still fills to budget with pile-on patterns. Mixed result, not a verdict — first reinforcement cycle is rarely complete.
+- State change: no Forge-queue movement. Registry stays at 117. Forward Runner: STALE → HEALTHY (Monday 17:04 fire cleared weekend freshness flag as predicted). No new stale-probation count change.
+- Stale cleared: none today (measurement day).
+- Tomorrow: Wednesday = another observation day. Watch question narrowed: *will tail pile-on rate drop without stronger suppression, or does `_family_queue.md` need explicit "do not generate" language?* Decision point Friday rollup; no intervention before then.
+
