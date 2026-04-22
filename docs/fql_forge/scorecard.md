@@ -289,3 +289,10 @@ One-line summary (detail in `improvement_log.md`): First Forge v1 week produced 
 - Stale cleared: none today (measurement day).
 - Tomorrow: Wednesday = another observation day. Watch question narrowed: *will tail pile-on rate drop without stronger suppression, or does `_family_queue.md` need explicit "do not generate" language?* Decision point Friday rollup; no intervention before then.
 
+## 2026-04-22
+- Advanced: 3rd-cycle light triage of 15 overnight Claw notes, same policy rules. Twice-weekly batch_first_pass fired Tuesday 18:00 as scheduled but produced no new first_pass files (expected — hold window = no new strategy code for mass_screen to pick up; not an issue today, flag as smell-#9 candidate for post-hold). No new stale-probation flips (count still 5; MGC-Long 37d, ZN 33d).
+- Produced artifact: `research/data/harvest_triage/2026-04-22.md`. 3-day series now complete: DEPRIORITIZE rate 21% → 33% → 47% (worsening). Head-of-batch still shifts to VALUE/CARRY/Treasury-auction (3 ACCEPT HIGH today: curve regime-switch carry, auction tail-shock, pre-auction concession follow-through). Tail now contains 6 pattern clusters that are 3+ cycles deep without any suppression (random-entry baselines 3×, support-bounce exits 4×, pre-London breakouts 4×, dual-thrust 3×, hidden-instability filters 3×, kalman VALUE now saturating at 5×).
+- State change: no Forge-queue movement. Registry stays at 117. One positive adaptation signal: 04-22_09 reframed 04-21_08's closed-family-risk framing into explicit non-equity scoping — proves NEEDS REVIEW flags drive behavior on individual notes.
+- Stale cleared: none today (measurement day).
+- Tomorrow: Thursday = observation continuation; Friday = decision point. Evidence now strongly suggests Claw reprioritizes but does not suppress. Friday likely escalates to explicit "Do not generate" language in `_family_queue.md` naming the specific repeated patterns, or a suppression block in `_priorities.md` (higher-effort, requires `claw_control_loop.py` change). No intervention until Friday rollup renders the decision.
+
