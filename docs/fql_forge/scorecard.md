@@ -304,3 +304,126 @@ One-line summary (detail in `improvement_log.md`): First Forge v1 week produced 
 - Stale cleared: none today (observation day).
 - Tomorrow: Friday = triple-decision render day. (1) Explicit suppression layer in `_family_queue.md` — evidence forces it. (2) Harvest→registry coordination A/B/C/D — audit committed Wednesday. (3) VolManaged disposition under hold rules (continuation-defer vs early checkpoint). Plus normal Friday weekly rollup cadence (scorecard + intake digest + operating dashboard + Forge v1 Layer 2).
 
+## 2026-04-24
+- Advanced: Friday full packet rendered. Forward-testing foreground check (equity $50,578.66 +$140 from Thursday, HWM $50,841.57, drawdown -$263, consecutive losses 0 — 04-21 MNQ streak broken by 04-22 MNQ +$249.76). Weekly review stack executed (weekly_scorecard/weekly_intake_digest/operating_dashboard saved). Week-ending cluster review read (independently confirms the suppression case from Claw's own angle — names same 8 pattern clusters as "main risk"). Three decisions rendered.
+- Produced artifact: (1) `inbox/_family_queue.md` updated with explicit 8-pattern suppression layer + 5-gate escape criteria (Decision 1); (2) Decision 2 rendered option D (hybrid: batch-register 23 HIGH canonicals as scheduled Monday/Tuesday packet work next week; absorb 15 COMPONENT items gradually via future packets; documented in this scorecard rollup); (3) Decision 3 rendered VolManaged continuation-defer to May 1 checkpoint per T3 hold rules; (4) Forge Layer 2 weekly rollup + Layer 3 biweekly source expansion blocks below.
+- State change: registry stays at 117 (decisions rendered, remediation scheduled not executed — hold-compliant). Forward equity +$140 overnight. Consecutive losses 0. VolManaged 30→31 trades. Harvest backlog 288→303 (+15 today, +86 over the week).
+- Stale cleared: none today (decision-render day).
+- Tomorrow: weekend + Monday. Claw output scan + triage per normal Monday cadence. Suppression layer's first reinforcement test will be Mon/Tue/Wed batches. May 1 checkpoint is 7 operational days out.
+
+## 2026-04-24 Weekly Rollup (week of 2026-04-20 → 2026-04-24)
+
+*Second proper Forge weekly rollup. First full week post-ship.*
+
+### Throughput
+- Structured triage artifacts (4 cycles): `harvest_triage/2026-04-20.md` (38 notes), `2026-04-21.md` (15), `2026-04-22.md` (15), `2026-04-23.md` (15) — 83 notes triaged with policy rules applied
+- Audit artifact: `harvest_triage/_AUDIT_2026-04-22_registry_gap.md` (structural finding)
+- Governance decisions rendered today: 3 (suppression, harvest→registry option D, VolManaged continuation-defer)
+- `_family_queue.md` refreshed Monday (4 families flipped zero-candidates → overcrowded) + suppression layer added Friday
+- Forward-testing artifacts: 6 new trades logged (4/22 MNQ +249/MYM -109/VolManaged +0.02; 4/23 none in log yet)
+
+### Queue health
+- Harvest backlog: 217 → 303 (+86 over week; Claw continuing discovery at ~15/day)
+- Registry: 117 throughout week (**zero change — the coordination gap**)
+- Stale probation count: 4 → 5 (ZN-Afternoon-Reversion flipped Monday)
+- Forge sub-queues: `batch_register_reject` still 26 (ghost inventory unchanged); `individual_triage` 0; `monitor_pending` 2
+- This week's HIGH PRIORITY accepts in triage files: 23 (18 Mon + 2 Tue + 3 Wed + 1 Thu — pending registry append)
+- This week's COMPONENT accepts: 15 (pending gradual absorption)
+
+### Anti-drift snapshot
+- **Harvest-to-closure ratio: 0 / 86 = 0.00 (worst of series).** Forge-queue closures this week = 0 because industrial triage displaced packet-based closure. This is the registry-gap finding expressed numerically.
+- % closed items with memory payload: N/A (no closures)
+- Pile-on rate trend (tail quality): 21% → 33% → 47% → 60% (monotonic up; motivated Decision 1)
+
+### Fallback-mode usage
+- Days run primary-track: 5 (Mon-Fri, all produced intended artifacts)
+- Days run fallback: 0
+- Fallback usage rate: 0% (same as last week; watch threshold remains 40%)
+
+### Rotation dimensions hit this week
+- Discovery: Y (4 triage passes, cluster review, audit)
+- Validation: N (no validation-battery runs — acceptable under hold; no promotion pipeline active)
+- Closure: **N — structural gap.** Industrial triage does not count as closure; registry didn't move.
+- Gaps: Y (VALUE/CARRY intake surfaced; 6 ACCEPT HIGH across week)
+- Improvement: Y (3 decisions rendered, suppression layer shipped, audit captured)
+- **3/5 dimensions hit.** Missing Validation (hold-expected) and Closure (gap documented, Option D scheduled for next week).
+
+### Blocker taxonomy summary
+- Unchanged from last week. 18 blocked ideas in registry.
+- Per 04-19 Claw blocker mapping: strategy_ambiguity + proxy_data remain the most-clearable; data + sample_size + execution remain hard.
+
+### Source yield (per 2026-04-24 cluster review)
+- Best lanes this week: GitHub + Reddit (dominant on relative-value spread, London-open breakout, and regime-gate fragments)
+- Weakest: academic / digest (under-represented; highest-value notes but few in count)
+- Concentration risk: rising. Source diversity is "good enough" but over-leaning on forum/repo synthesis.
+- No source lanes demoted.
+
+### Gap review
+- VALUE: still 1 idea in registry; but 8+ VALUE notes in intake this week with 2 ACCEPT HIGH — real intake progress, registry not reflecting
+- CARRY: 8 ideas in registry; 11+ CARRY notes in intake this week with 3 ACCEPT HIGH
+- STRUCTURAL / VOLATILITY: factor dashboard still GAP; some component-level progress via filters
+- Gaps clearly addressed by intake priorities; registry movement is the blocker (Decision 2)
+
+### Kill list / demotion
+- 5 stale probation strategies: DailyTrend-MGC-Long (39d), ZN-Afternoon-Reversion (35d), MomPB-6J-Long-US (0 trades), PreFOMC-Drift-Equity (0 trades), TV-NFP-High-Low-Levels (0 trades). All defer to May 1 batch review.
+- VolManaged-EquityIndex-Futures: review gate reached (31 trades). Continuation-defer to May 1 (Decision 3).
+- No archives this week (hold rules prevent).
+
+### Three decisions rendered (today)
+**Decision 1 — Explicit suppression layer in `_family_queue.md`:**
+8 pattern clusters named for "Do NOT generate" list: dual-thrust non-equity, London/pre-London FX breakout variants, random-entry baselines, FX support-bounce quick-exit variants, hidden-instability filters retargeted, Kalman/stationarity/half-life VALUE saturation, fee/slippage gates, parallel consensus filters. Each note in these families must pass at least one of 5 gates (new factor / new asset-session / blocker-clearing / canonical split / materially different implementation). Executed: `_family_queue.md` updated.
+
+**Decision 2 — Harvest→registry coordination: Option D (hybrid)**
+23 HIGH-priority canonical accepts batch-registered as dedicated Monday/Tuesday packet work next week (2026-04-27 / 2026-04-28). 15 COMPONENT accepts absorbed gradually via future packet work when relevant. Registry append is T2 authority per `docs/authority_ladder.md` (additive, no status changes) — allowed during hold. Scheduled, not executed today — keeps Friday documentation-only.
+
+**Decision 3 — VolManaged review-gate: Continuation-defer to May 1**
+Probation strategy hit 30+ trades and review gate. Under hold rules, promotion/downgrade/archive is T3 authority requiring checkpoint. Continuation is the default during hold. VolManaged review becomes an explicit input to the May 1 checkpoint (alongside the stale-probation batch review). No action today.
+
+### Next week's search emphasis (2026-04-27 → 2026-05-01)
+- **Priority gap:** VALUE + CARRY (continue; well-aligned with intake)
+- **Priority source:** academic + digest (rebalance from GitHub/Reddit concentration per cluster report)
+- **Committed closures:** batch-register 23 HIGH canonicals Monday/Tuesday per Decision 2
+- **Committed reviews:** first post-suppression-layer triage cycle Monday AM; validate whether suppression is landing
+
+### Integrity self-check
+- [x] Scorecards written every operating day (5/5 this week)
+- [x] Stale thresholds firing appropriately (5 stale flags, all legitimate per Claw judgment)
+- [ ] Memory payloads complete for all closures: N/A this week (no closures — the gap)
+- [x] Blockers typed (18 blocked, 9 blocker types)
+- [ ] Oldest-item rule: N/A (no packet execution this week; industrial triage pattern)
+- [x] No "machine not trying" signals (4 triage cycles + audit + 3 decisions rendered = machine clearly working)
+- [x] Docs match behavior (updated `_family_queue.md`, `MAY_1_STALE_PROBATION_BATCH_REVIEW.md`, added suppression layer, added audit file)
+
+### Improvement log entry
+Week exposed the industrial-triage vs packet-closure mismatch in concrete numbers (0 closure ratio, 86 intake over week). Three decisions rendered Friday closed the 4-day watch cycle with minimal intervention. Claw's own cluster review independently validated the suppression case — cross-evidence agreement reduces operator-judgment risk.
+
+## 2026-04-24 Source Expansion Review (Layer 3, first biweekly)
+
+*Forge v1 shipped 2026-04-14. First Friday rollup 2026-04-17 was partial-week seed. Today is the first proper biweekly cadence fire.*
+
+### Source map status
+- **Lanes currently harvested (9 active):** openclaw_tactical, openclaw_strategic, tradingview_scan, academic_review, youtube_practitioner, github_quant_repos, reddit_forums, microstructure_specialists; legacy_revival OFF
+- **Yield leaders (2-week window):** GitHub (dominant on quant-repo logic), Reddit (dominant on regime-gate and FX microstructure fragments), openclaw_tactical (highest-quality synthesis)
+- **Yield laggards:** academic / digest — produced the highest-value macro-value and carry sleeves this week but only ~4 items; under-represented in overall mix
+- **Unreviewed source classes:** none open; source map coverage is complete for currently active lanes
+
+### Standing question response
+> *What source surfaces are we not harvesting yet that may contain differentiated strategy ideas or components?*
+
+**This cycle's answer (observational, per operator constraint — no new lane opening):**
+Source concentration is rising within the existing GitHub + Reddit lanes, not because new surfaces are missing but because the rebalance across existing lanes is uneven. The actionable issue is WEIGHTING, not COVERAGE.
+
+Two weeks of observation suggests:
+- Academic / digest lanes produce disproportionately high-value notes (VALUE + CARRY canonicals) per note, but low volume
+- GitHub / Reddit produce disproportionately many notes per note-value, skewing the intake distribution
+- Forum/repo synthesis risk: Claw may be converging on a narrower mechanism space by over-reading GitHub/Reddit
+
+### New source test this cycle
+**None.** Per operator constraint for today's biweekly: this rollup is observational. No new lane opened. Concrete proposal for next biweekly (2026-05-08, post-hold): evaluate whether an explicit per-lane weighting mechanism should exist in `harvest_engine.py` or `claw_control_loop.py` to prevent concentration drift — logged as post-May-1 design candidate (smell #11 candidate per yesterday's note: *governance throughput masking operational visibility* has a cousin, *harvest volume masking yield concentration*).
+
+### Verdict threshold (for future "open new lane" decisions)
+When a candidate source lane is proposed in future biweeklies, it earns permanent status if it produces at least 2 notes per week over 4 weeks AND at least 1 ACCEPT-HIGH disposition in that window. Lower than that = demote. Established today as the new-lane bar for v1.1.
+
+---
+
+
