@@ -426,4 +426,12 @@ When a candidate source lane is proposed in future biweeklies, it earns permanen
 
 ---
 
+## 2026-04-27
+- Advanced: First post-suppression triage cycle. Combined batch — 15 untriaged Friday 04-24 notes + 11 weekend 04-26 notes = 26 total. **Suppression layer landed cleanly.** Pile-on rate dropped 60% → 15% in one cycle (45-point drop). Combined ACCEPT rate 20% → 73%. Of the 8 suppressed clusters: 5 had ZERO instances; 2 had only borderline NEEDS REVIEW cases (different role within family); 1 had a single DEPRIORITIZE (consensus-screen, only 2 cycles deep at suppression time). Read 04-26 blocker mapping: blocked count unchanged at 18; same priority order strategy_ambiguity > proxy_data > instrument_definition; nothing requires immediate _priorities.md / _family_queue.md updates.
+- Produced artifact: `research/data/harvest_triage/2026-04-27.md`. Aggregate dispositions: 10 ACCEPT HIGH (38%), 9 ACCEPT COMPONENT (35%), 3 NEEDS REVIEW (12%), 4 DEPRIORITIZE (15%). Replaced volume concentrated in Treasury-auction (6 notes, priority), VALUE canonicals (5 notes), CARRY-ambiguity-clearing canonicals (4 notes), useful operational components (4 notes). Exactly the desired shift.
+- State change: registry stays at 117 (Decision 2 batch register scheduled for Tuesday). Forward equity $50,205.94 (-$372 vs Friday morning, traceable to 04-23 MNQ -$446 single trade). Forward Runner: HEALTHY → STALE (weekend calendar-day artifact, self-clears today at 17:00 — same pattern as last Monday). Harvest backlog 303 → 314 today. Stale probation count still 5 (MGC 42d, ZN 38d). VolManaged 32 trades.
+- Stale cleared: none today (triage day).
+- Tomorrow: Tuesday — execute Decision 2 batch register. Pending count grew from Friday's 23 HIGH + 15 COMPONENT to **33 HIGH + 24 COMPONENT** with today's adds. Batch will size to 33 HIGH canonical registry appends (T2 authority, hold-compliant). Components absorbed gradually per option D. Suppression layer review clause: *"if pile-on drops, list stays"* — confirmed. No further suppression intervention needed.
+- Decision 1 (suppression) status: **CONFIRMED EFFECTIVE.** Friday 2026-05-01 rollup review of the suppression list becomes a confirmation, not a remediation.
+
 
