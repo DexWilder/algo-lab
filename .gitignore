@@ -58,8 +58,9 @@ research/_*.py
 .DS_Store
 Thumbs.db
 
-# Claude
-.claude/
+# Claude — share settings.json (project-level), ignore local + transcripts
+.claude/*
+!.claude/settings.json
 
 # IDE
 .vscode/

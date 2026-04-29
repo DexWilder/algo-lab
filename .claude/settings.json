@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(fql summary)",
+      "Bash(launchctl list)",
+      "Bash(fql alerts)",
+      "Bash(gh search *)",
+      "Bash(fql last)",
+      "Bash(fql morning)",
+      "Bash(fql midweek)",
+      "Bash(fql help)",
+      "Bash(fql doctor)"
+    ]
+  }
+}
