@@ -11,5 +11,18 @@
       "Bash(fql help)",
       "Bash(fql doctor)"
     ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"/Users/chasefisher/projects/Algo Trading/algo-lab/scripts/session_start_hook.sh\"",
+            "timeout": 30
+          }
+        ]
+      }
+    ]
   }
 }
