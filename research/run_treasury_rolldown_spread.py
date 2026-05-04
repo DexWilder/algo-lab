@@ -8,17 +8,26 @@ tenors simultaneously. See docs/PROBATION_REVIEW_CRITERIA.md §6 for
 full context on the re-probation decision.
 
 Invocation:
-    python3 research/run_treasury_rolldown_spread.py           # live run
-    python3 research/run_treasury_rolldown_spread.py --seed    # seed 2026-03 + 2026-04
-    python3 research/run_treasury_rolldown_spread.py --dry-run # compute but do not write
+    python3 research/run_treasury_rolldown_spread.py             # live run
+    python3 research/run_treasury_rolldown_spread.py --seed      # seed 2026-03 + 2026-04
+    python3 research/run_treasury_rolldown_spread.py --dry-run   # compute but do not write
+    python3 research/run_treasury_rolldown_spread.py --self-test # convention/year-wrap assertions
+
+Convention (per docs/treasury_rolldown_date_mismatch_lane.md, 2026-05-04):
+    spread_id = TRS-YYYY-MM where YYYY-MM is the HOLD month — the calendar
+    month in which the position is held. The strategy rebalances on the
+    last business day of the prior calendar month; this wrapper translates
+    a rebalance_date in calendar month N into a spread_id for calendar
+    month N+1, with explicit year-wrap (December → January).
 
 Live run is idempotent:
-    - Skips if today is not the first business day of the calendar month
-      (compare to holiday-aware "first trading day" of the underlying asset)
-    - Skips if the current month's rebalance is already logged
-    - Writes exactly one row per rebalance to logs/spread_rebalance_log.csv
-
-Spread identity is preserved via `spread_id = TRS-YYYY-MM`.
+    - Looks back to the prior calendar month for the latest unlogged
+      strategy signal (the rebalance_date)
+    - Skips if no eligible prior-month signal exists yet (data not refreshed
+      OR strategy has not yet rebalanced for the prior month)
+    - Skips by spread_id if this hold month's rebalance is already logged
+    - Writes exactly one row per hold-month rebalance to
+      logs/spread_rebalance_log.csv
 """
 
 import argparse
@@ -58,23 +67,29 @@ SCHEMA = [
 ]
 
 
-# ── Date helpers ─────────────────────────────────────────────────────────────
-
-
-def _is_first_business_day_of_month(check_date: date, trading_days: set[date]) -> bool:
-    """True if check_date is the earliest trading day in its calendar month.
-
-    trading_days is derived from the actual data (ZN daily closes), so
-    it respects exchange holidays without needing a separate calendar lib.
-    """
-    if check_date not in trading_days:
-        return False
-    same_month = [d for d in trading_days if d.year == check_date.year and d.month == check_date.month]
-    return check_date == min(same_month)
+# ── Date / id helpers ────────────────────────────────────────────────────────
 
 
 def _spread_id(rebalance_date: date) -> str:
-    return f"TRS-{rebalance_date.year:04d}-{rebalance_date.month:02d}"
+    """TRS-YYYY-MM where YYYY-MM is the HOLD month — the calendar month
+    AFTER the rebalance opens. Explicit year-wrap: December → January.
+
+    See docs/treasury_rolldown_date_mismatch_lane.md for convention.
+    """
+    if rebalance_date.month == 12:
+        hold_year, hold_month = rebalance_date.year + 1, 1
+    else:
+        hold_year, hold_month = rebalance_date.year, rebalance_date.month + 1
+    return f"TRS-{hold_year:04d}-{hold_month:02d}"
+
+
+def _prior_calendar_month(execution_date: date) -> tuple[int, int]:
+    """Return (year, month) of the calendar month before execution_date.
+    Explicit year-wrap: January → previous-year December.
+    """
+    if execution_date.month == 1:
+        return execution_date.year - 1, 12
+    return execution_date.year, execution_date.month - 1
 
 
 # ── Log I/O ──────────────────────────────────────────────────────────────────
@@ -96,14 +111,12 @@ def _read_log() -> pd.DataFrame:
     return df
 
 
-def _already_logged_this_month(rebalance_date: date) -> bool:
+def _already_logged(spread_id_value: str) -> bool:
+    """Idempotency check by spread_id (the hold-month identifier)."""
     df = _read_log()
     if df.empty:
         return False
-    return any(
-        d.year == rebalance_date.year and d.month == rebalance_date.month
-        for d in df["rebalance_date"]
-    )
+    return spread_id_value in set(df["spread_id"])
 
 
 def _append_row(row: dict):
@@ -187,7 +200,17 @@ def _build_row(
 
 
 def run_monthly_rebalance(execution_date: date | None = None, dry_run: bool = False) -> dict | None:
-    """Compute and (optionally) log today's rebalance if conditions are met.
+    """Compute and (optionally) log this hold month's rebalance if conditions are met.
+
+    Per the Option-2 convention (docs/treasury_rolldown_date_mismatch_lane.md):
+    spread_id = TRS-YYYY-MM is the HOLD month. The wrapper looks back to the
+    PRIOR calendar month for the latest unlogged strategy signal (the
+    rebalance_date) and writes one row per hold-month under that spread_id.
+
+    Idempotency is by spread_id, not by rebalance_date month. Skip conditions:
+        - No prior-month signal yet (data not refreshed OR strategy hasn't
+          rebalanced for the prior month)
+        - This hold month's spread_id already logged
 
     Returns the row written (or computed, if dry_run) or None if skipped.
     """
@@ -199,48 +222,76 @@ def run_monthly_rebalance(execution_date: date | None = None, dry_run: bool = Fa
         print(f"[{execution_date}] No signals produced — strategy returned empty frame.")
         return None
 
-    trading_days = {pd.to_datetime(d).date() for d in signals["entry_date"]}
-
-    if not _is_first_business_day_of_month(execution_date, trading_days):
-        # Also allow same-month replay if today is any trading day of a
-        # month whose rebalance hasn't been logged yet. But default cron
-        # pattern is daily; the guard below ensures only first-fire wins.
-        print(f"[{execution_date}] Not first business day of month — skip.")
-        return None
-
-    if _already_logged_this_month(execution_date):
-        print(f"[{execution_date}] Rebalance for {_spread_id(execution_date)} already logged — skip.")
-        return None
-
-    # Find the signals row whose entry_date == execution_date.
     signals["entry_date"] = pd.to_datetime(signals["entry_date"]).dt.date
-    match = signals[signals["entry_date"] == execution_date]
-    if match.empty:
-        print(f"[{execution_date}] No signal row for today — strategy may not have rebalanced on this date.")
+
+    prior_year, prior_month = _prior_calendar_month(execution_date)
+    prior_month_signals = signals[
+        signals["entry_date"].apply(
+            lambda d: d.year == prior_year and d.month == prior_month
+        )
+    ]
+    if prior_month_signals.empty:
+        print(
+            f"[{execution_date}] No prior-month signal "
+            f"(looked for {prior_year}-{prior_month:02d}) — skip."
+        )
         return None
 
-    signals_row = match.iloc[0]
+    # Use the latest prior-month signal (typically the last business day of
+    # that month — the strategy's natural rebalance point).
+    signals_row = prior_month_signals.iloc[-1]
+    rebalance_date = signals_row["entry_date"]
+    spread_id_value = _spread_id(rebalance_date)
 
-    # Prior row for realized PnL
-    log = _read_log()
-    prior_row = None
-    if not log.empty:
-        # Use the strategy's full history to find the row preceding signals_row
-        prior_signals = signals[signals["entry_date"] < execution_date]
-        if not prior_signals.empty:
-            prior_row = prior_signals.iloc[-1]
+    if _already_logged(spread_id_value):
+        print(
+            f"[{execution_date}] {spread_id_value} already logged "
+            f"(rebalance_date {rebalance_date}) — skip."
+        )
+        return None
+
+    # Prior signal for realized PnL — the signal immediately before this one
+    prior_signals = signals[signals["entry_date"] < rebalance_date]
+    prior_row = prior_signals.iloc[-1] if not prior_signals.empty else None
 
     row = _build_row(signals_row, prior_row, notes="live_monthly_rebalance")
 
     if dry_run:
-        print(f"[{execution_date}] DRY RUN — would write:")
+        print(f"[{execution_date}] DRY RUN — would write {spread_id_value}:")
         for k, v in row.items():
             print(f"  {k}: {v}")
         return row
 
     _append_row(row)
-    print(f"[{execution_date}] Wrote {row['spread_id']}: long {row['long_leg_asset']} @ {row['long_leg_entry_price']}, short {row['short_leg_asset']} @ {row['short_leg_entry_price']}")
+    print(
+        f"[{execution_date}] Wrote {spread_id_value}: "
+        f"long {row['long_leg_asset']} @ {row['long_leg_entry_price']}, "
+        f"short {row['short_leg_asset']} @ {row['short_leg_entry_price']}"
+    )
     return row
+
+
+def _self_test():
+    """Convention + year-wrap assertions for _spread_id and _prior_calendar_month.
+
+    Required by the date-mismatch lane scope (acceptance criterion: explicit
+    year-wrap validation). Run via --self-test CLI flag.
+    """
+    # _spread_id: rebalance_date → next-month spread_id
+    assert _spread_id(date(2026, 4, 30)) == "TRS-2026-05", "April rebalance → May spread_id"
+    assert _spread_id(date(2026, 11, 28)) == "TRS-2026-12", "November → December (no wrap)"
+    assert _spread_id(date(2026, 1, 30)) == "TRS-2026-02", "January → February (no wrap)"
+    assert _spread_id(date(2026, 12, 31)) == "TRS-2027-01", "December → January YEAR WRAP forward"
+    assert _spread_id(date(2025, 12, 30)) == "TRS-2026-01", "Dec 2025 → Jan 2026 YEAR WRAP forward"
+
+    # _prior_calendar_month: execution_date → prior (year, month)
+    assert _prior_calendar_month(date(2026, 5, 1)) == (2026, 4), "May 1 → prior month April"
+    assert _prior_calendar_month(date(2026, 1, 1)) == (2025, 12), "Jan 1 → prior month Dec prior year (YEAR WRAP)"
+    assert _prior_calendar_month(date(2026, 1, 15)) == (2025, 12), "Jan 15 → prior month Dec prior year"
+    assert _prior_calendar_month(date(2027, 1, 4)) == (2026, 12), "Jan 4 2027 → prior month Dec 2026"
+    assert _prior_calendar_month(date(2026, 12, 1)) == (2026, 11), "Dec 1 → prior month November"
+
+    print("_self_test: PASS (5 _spread_id + 5 _prior_calendar_month assertions, including year-wrap)")
 
 
 def seed_history():
@@ -294,7 +345,12 @@ def main():
     parser.add_argument("--seed", action="store_true", help="One-time seed of 2026-03 + 2026-04")
     parser.add_argument("--dry-run", action="store_true", help="Compute but do not write")
     parser.add_argument("--date", type=str, default=None, help="Override execution date (YYYY-MM-DD)")
+    parser.add_argument("--self-test", action="store_true", help="Run convention + year-wrap assertions and exit")
     args = parser.parse_args()
+
+    if args.self_test:
+        _self_test()
+        return
 
     if args.seed:
         seed_history()

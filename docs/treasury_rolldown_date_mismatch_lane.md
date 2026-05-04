@@ -114,16 +114,40 @@ Until all 10 are ☑, the hold extension persists.
 
 ---
 
+## Convention decision (rendered 2026-05-04)
+
+**Canonical convention adopted: Option 2 — seed/verification-doc canonical.**
+
+`TRS-YYYY-MM` means **the calendar month in which the position is HELD.** A rebalance opening on the last business day of April (entry_date 2026-04-30) is `TRS-2026-05` because the position is held through May until the next rebalance.
+
+The wrapper script translates strategy entry_dates into hold-month spread_ids: rebalance_date in calendar month N → spread_id for calendar month N+1, with explicit year-wrap (December → January).
+
+**Rationale:**
+- Operator semantics are cleaner — "TRS-2026-05" reads as "the May position," not "the rebalance that opened end-April"
+- Aligns with the existing `MAY_1_TREASURY_ROLLDOWN_VERIFICATION.md` seed table caption that already encoded this convention
+- Avoids teaching the system a weird naming convention to preserve a wrapper quirk
+- Generalizes better if/when additional spread strategies are added
+
+**Constraints accepted with the decision:**
+- Wrapper-only fix (no strategy code changes)
+- No schema changes
+- No opportunistic refactors in same commit
+- Year-wrap (December → January) explicitly validated in the patch
+- Seed and verification doc remain untouched unless a post-fix verification proves a remaining mismatch
+
+---
+
 ## Status log
 
 | Date | Event |
 |---|---|
 | 2026-05-01 17:10 | Launchd fire produced skip message — anomaly observed |
 | 2026-05-04 (filing day) | B.2 root cause + deeper convention conflict diagnosed; lane opened |
-| _____ | Convention decision rendered |
-| _____ | Script fix committed |
-| _____ | Re-fire produces TRS row |
-| _____ | Verification re-run PASSES |
+| 2026-05-04 | Convention decision rendered: Option 2 (TRS-YYYY-MM = hold month) |
+| 2026-05-04 | Script fix committed: `_spread_id` next-month + year-wrap; `_prior_calendar_month` helper; `run_monthly_rebalance` rewrite to look back; `_self_test` flag with 10 assertions |
+| 2026-05-04 | Dry-run verification: `--date 2026-05-01` produces TRS-2026-05 (rebalance_date 2026-04-30, ZF long / ZB short, realized_pnl_prior $507.81, days_held 30) |
+| _____ | Re-fire (live, not dry-run) produces TRS-2026-05 row in spread log |
+| _____ | Verification re-run all 7 checks PASS |
 | _____ | Checkpoint re-run produces non-anomaly decision |
 | _____ | Lane closed |
 
