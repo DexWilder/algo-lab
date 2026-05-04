@@ -146,10 +146,10 @@ The wrapper script translates strategy entry_dates into hold-month spread_ids: r
 | 2026-05-04 | Convention decision rendered: Option 2 (TRS-YYYY-MM = hold month) |
 | 2026-05-04 | Script fix committed: `_spread_id` next-month + year-wrap; `_prior_calendar_month` helper; `run_monthly_rebalance` rewrite to look back; `_self_test` flag with 10 assertions |
 | 2026-05-04 | Dry-run verification: `--date 2026-05-01` produces TRS-2026-05 (rebalance_date 2026-04-30, ZF long / ZB short, realized_pnl_prior $507.81, days_held 30) |
-| _____ | Re-fire (live, not dry-run) produces TRS-2026-05 row in spread log |
-| _____ | Verification re-run all 7 checks PASS |
-| _____ | Checkpoint re-run produces non-anomaly decision |
-| _____ | Lane closed |
+| 2026-05-04 | Live re-fire produced TRS-2026-05 row in spread log; row's `notes` field explicitly documents post-fix-refire context (lane=treasury_rolldown_date_mismatch, originally_failed_2026-05-01, manual_invocation_after_wrapper_patch_commit_933e6a2) |
+| 2026-05-04 | Verification re-run all 7 checks: 5 PASS + 2 WARN (Check 5 days_held cosmetic mismatch; Check 7 drift monitor invisibility — both pre-known and out-of-scope) + 0 FAIL |
+| 2026-05-04 | Checkpoint re-run filed at `docs/2026-05-01_checkpoint_rerun.md` with decision: Remain in stable state |
+| **2026-05-04** | **Lane closed** — all 10 acceptance criteria met (seed and verification doc kept untouched per scope, since post-fix verification did not prove a remaining hard mismatch — only cosmetic WARNs documented as future follow-up) |
 
 ---
 

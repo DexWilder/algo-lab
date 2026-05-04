@@ -1,3 +1,4 @@
 rebalance_date,strategy,spread_id,long_leg_asset,long_leg_entry_price,short_leg_asset,short_leg_entry_price,size_long,size_short,previous_long_leg_asset,previous_short_leg_asset,realized_pnl_prior_spread,days_held_prior_spread,notes
 2026-03-31,Treasury-Rolldown-Carry-Spread,TRS-2026-03,ZF,108.28125,ZB,113.90625,1,1,ZB,ZF,-3359.38,32,seeded_historical_entry_2026-04-14; not from live monthly invocation
 2026-04-12,Treasury-Rolldown-Carry-Spread,TRS-2026-04,ZF,107.96875,ZB,113.21875,1,1,ZF,ZB,375.0,12,seeded_historical_entry_2026-04-14; not from live monthly invocation
+2026-04-30,Treasury-Rolldown-Carry-Spread,TRS-2026-05,ZF,107.851562,ZB,112.96875,1,1,ZF,ZB,507.81,30,post-fix-refire-2026-05-04;lane=treasury_rolldown_date_mismatch;originally_failed_2026-05-01_per_B2_anomaly;manual_invocation_after_wrapper_patch_commit_933e6a2
