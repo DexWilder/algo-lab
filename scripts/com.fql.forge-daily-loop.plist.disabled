@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  FQL Forge Daily Loop — DISABLED launchd plist
+  ──────────────────────────────────────────────────────────────────────
+  This plist is intentionally NOT loaded by default. To activate Phase B
+  scheduling per docs/fql_forge/forge_automation_design.md:
+
+    1. Operator reviews this plist
+    2. Copy to active location:
+         cp scripts/com.fql.forge-daily-loop.plist.disabled \
+            ~/Library/LaunchAgents/com.fql.forge-daily-loop.plist
+    3. Load:
+         launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.fql.forge-daily-loop.plist
+
+  To deactivate:
+    launchctl bootout gui/$(id -u)/com.fql.forge-daily-loop
+    rm ~/Library/LaunchAgents/com.fql.forge-daily-loop.plist
+
+  Scheduled time: weekdays at 19:00 ET (after operator digest at 18:00 ET).
+  Mode: --dry-run --top 5 (autonomous evidence generation only; no mutation).
+
+  Tripwires (per fql_forge_daily_loop.py): self-halt and write
+  _TRIPWIRE_*.md if conditions warrant. Operator must clear tripwires
+  before next run.
+  ──────────────────────────────────────────────────────────────────────
+-->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.fql.forge-daily-loop</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/local/bin/python3</string>
+        <string>/Users/chasefisher/projects/Algo Trading/algo-lab/research/fql_forge_daily_loop.py</string>
+        <string>--dry-run</string>
+        <string>--top</string>
+        <string>5</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/chasefisher/projects/Algo Trading/algo-lab</string>
+
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>19</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+        <key>Weekday</key>
+        <integer>1</integer>
+    </dict>
+
+    <key>StandardOutPath</key>
+    <string>/Users/chasefisher/projects/Algo Trading/algo-lab/research/logs/forge_daily_loop_stdout.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/Users/chasefisher/projects/Algo Trading/algo-lab/research/logs/forge_daily_loop_stderr.log</string>
+
+    <key>RunAtLoad</key>
+    <false/>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    </dict>
+</dict>
+</plist>
