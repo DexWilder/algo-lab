@@ -7,7 +7,7 @@
 
 | Candidate | Asset | Gap | n | PF | Net PnL | Max DD | Verdict |
 |---|---|---|---:|---:|---:|---:|---|
-| XB-VWAP-EMA-Ladder-MYM | MYM | Workhorse cross-asset / VWAP closeout test | 271 | 1.488 | 3164 | -637 | PASS |
+| XB-ORB-EMA-TimeStop-MNQ | MNQ | Asymmetric exit alt — fixed time-stop exit (tail-engine due to forced cutoff) | 1198 | 1.486 | 26858 | -1862 | PASS |
 
 ## Summary
 

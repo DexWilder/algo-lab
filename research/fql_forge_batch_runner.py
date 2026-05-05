@@ -112,11 +112,19 @@ def _verdict(m: dict, archetype: str = "auto") -> str:
 
 
 def _xb_swap(asset: str, entry_name: str, label: str) -> dict:
+    """Swap entry only; defaults to proven trio (ema_slope filter + profit_ladder exit)."""
+    return _xb_general(asset, entry_name, "ema_slope", "profit_ladder", label)
+
+
+def _xb_general(asset: str, entry_name: str, filter_name: str, exit_name: str, label: str) -> dict:
+    """General XB helper: any entry × any filter × any exit. Used by tail-engine
+    variants that swap exits (chandelier/time_stop/atr_trail/midline_target) or
+    filters (session_morning/session_afternoon) away from the proven trio defaults."""
     df = _load(asset)
     cfg = ASSETS[asset]
     sigs = generate_crossbred_signals(df, entry_name=entry_name,
-                                       exit_name="profit_ladder",
-                                       filter_name="ema_slope",
+                                       exit_name=exit_name,
+                                       filter_name=filter_name,
                                        params=_params())
     res = run_backtest(df, sigs, mode="both",
                        point_value=cfg["point_value"], symbol=asset)
@@ -200,13 +208,84 @@ CANDIDATES = {
         "runner": lambda: _xb_swap("MYM", "vwap_continuation", "XB-VWAP-EMA-Ladder-MYM"),
         "baseline": "XB-VWAP-MNQ baseline PF 1.056",
     },
+    # ── Tail-engine cohort (added 2026-05-05) ────────────────────────────────
+    # Sparse-session restrictions (session-morning / session-afternoon filters)
+    # and asymmetric-payoff exit alternatives. Same XB harness; lower n by
+    # design so most fall into tail-engine archetype (n<500). Diversifies the
+    # autonomous evidence pool beyond the workhorse-archetype cross-asset sweep.
+    "XB-ORB-EMA-MorningOnly-MNQ": {
+        "gap": "Sparse-session tail-engine — morning-only XB",
+        "asset": "MNQ", "archetype": "tail",
+        "runner": lambda: _xb_general("MNQ", "orb_breakout", "session_morning", "profit_ladder", "XB-ORB-EMA-MorningOnly-MNQ"),
+        "baseline": "XB-ORB-EMA-Ladder-MNQ all-day PF 1.62",
+    },
+    "XB-ORB-EMA-AfternoonOnly-MNQ": {
+        "gap": "Sparse-session tail-engine — afternoon-only XB",
+        "asset": "MNQ", "archetype": "tail",
+        "runner": lambda: _xb_general("MNQ", "orb_breakout", "session_afternoon", "profit_ladder", "XB-ORB-EMA-AfternoonOnly-MNQ"),
+        "baseline": "XB-ORB-EMA-Ladder-MNQ all-day PF 1.62",
+    },
+    "XB-PB-EMA-MorningOnly-MNQ": {
+        "gap": "Sparse-session tail-engine — morning-only PB entry",
+        "asset": "MNQ", "archetype": "tail",
+        "runner": lambda: _xb_general("MNQ", "pb_pullback", "session_morning", "profit_ladder", "XB-PB-EMA-MorningOnly-MNQ"),
+        "baseline": "XB-PB-EMA-Ladder-MNQ all-day PF 1.403",
+    },
+    "XB-BB-EMA-MorningOnly-MGC": {
+        "gap": "Sparse-session tail-engine — BB entry on already-PASS asset (MGC), morning-restricted",
+        "asset": "MGC", "archetype": "tail",
+        "runner": lambda: _xb_general("MGC", "bb_reversion", "session_morning", "profit_ladder", "XB-BB-EMA-MorningOnly-MGC"),
+        "baseline": "XB-BB-EMA-Ladder-MGC all-day PF 1.522",
+    },
+    "XB-BB-EMA-AfternoonOnly-MGC": {
+        "gap": "Sparse-session tail-engine — BB entry MGC, afternoon-restricted",
+        "asset": "MGC", "archetype": "tail",
+        "runner": lambda: _xb_general("MGC", "bb_reversion", "session_afternoon", "profit_ladder", "XB-BB-EMA-AfternoonOnly-MGC"),
+        "baseline": "XB-BB-EMA-Ladder-MGC all-day PF 1.522",
+    },
+    # Asymmetric-payoff exit alternatives on the proven entry+filter pair
+    "XB-ORB-EMA-Chandelier-MNQ": {
+        "gap": "Asymmetric exit alt — chandelier trailing exit instead of profit_ladder",
+        "asset": "MNQ", "archetype": "workhorse",
+        "runner": lambda: _xb_general("MNQ", "orb_breakout", "ema_slope", "chandelier", "XB-ORB-EMA-Chandelier-MNQ"),
+        "baseline": "XB-ORB-EMA-Ladder-MNQ profit_ladder PF 1.62",
+    },
+    "XB-ORB-EMA-TimeStop-MNQ": {
+        "gap": "Asymmetric exit alt — fixed time-stop exit (tail-engine due to forced cutoff)",
+        "asset": "MNQ", "archetype": "tail",
+        "runner": lambda: _xb_general("MNQ", "orb_breakout", "ema_slope", "time_stop", "XB-ORB-EMA-TimeStop-MNQ"),
+        "baseline": "XB-ORB-EMA-Ladder-MNQ profit_ladder PF 1.62",
+    },
+    "XB-ORB-EMA-MidlineTarget-MNQ": {
+        "gap": "Asymmetric exit alt — midline target (different exit philosophy)",
+        "asset": "MNQ", "archetype": "workhorse",
+        "runner": lambda: _xb_general("MNQ", "orb_breakout", "ema_slope", "midline_target", "XB-ORB-EMA-MidlineTarget-MNQ"),
+        "baseline": "XB-ORB-EMA-Ladder-MNQ profit_ladder PF 1.62",
+    },
 }
 
 
 def _select_top(n: int):
-    """Stub priority ordering: returns first N from CANDIDATES (already arranged
-    by leverage). Future: rank by (gap priority, novelty, source quality, etc.)."""
-    return list(CANDIDATES.items())[:n]
+    """Date-rotated selection: each day picks a different N-candidate window
+    from the pool. Prevents the autonomous loop from re-testing the same
+    candidates every weekday and accumulating redundant evidence.
+
+    Phase A (manual CLI): operator can also pass --candidate <id> to bypass
+    rotation and run a specific candidate.
+    Future (Phase C+): rank by (gap priority, novelty, donor evidence, etc.)
+    instead of date-cycle.
+    """
+    from datetime import date as _date
+    items = list(CANDIDATES.items())
+    if not items:
+        return []
+    # Cycle: day 0 → items[0:n], day 1 → items[n:2n], etc., wrap on overflow
+    days = (_date.today() - _date(2026, 5, 5)).days  # epoch = activation date
+    offset = (days * n) % len(items)
+    selected = items[offset:offset + n]
+    if len(selected) < n:
+        selected += items[:n - len(selected)]
+    return selected
 
 
 def render_table(rows):
