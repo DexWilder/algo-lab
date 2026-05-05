@@ -36,7 +36,7 @@ sys.path.insert(0, str(ROOT))
 # Import the batch runner's internals — single source of truth for candidate
 # definitions, verdict logic, metrics computation.
 from research.fql_forge_batch_runner import (  # noqa: E402
-    CANDIDATES, _xb_swap, _metrics, _verdict,
+    CANDIDATES, _xb_swap, _metrics, _verdict, _select_top,
 )
 
 REPORTS_DIR = ROOT / "research" / "data" / "fql_forge" / "reports"
@@ -51,9 +51,12 @@ TRIPWIRE_RUNTIME_MAX_SEC = 300  # 5 min
 
 
 def _select_candidates(n: int):
-    """Pick top N candidates. Phase A: simple top-N; future phases can rank by
-    gap priority, novelty, source quality, etc."""
-    return list(CANDIDATES.items())[:n]
+    """Date-rotated selection — delegates to batch runner's _select_top so the
+    autonomous loop cycles through the candidate pool instead of re-running the
+    same first N every fire. Day 0 (epoch 2026-05-05) = items[0:n], day 1 =
+    items[n:2n], etc., with wrap. Future phases (C+) can rank by gap priority,
+    novelty, source quality, etc."""
+    return _select_top(n)
 
 
 def _check_tripwires_pre_run() -> tuple[bool, str | None]:
