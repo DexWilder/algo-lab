@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.fql.monthly-system-review</string>
+
+    <!-- Report-only full-system strategic governance review.
+         No registry / Lane A / portfolio / runtime / scheduler / checkpoint mutation.
+         Phase A: manual CLI only. Phase B (this plist): operator-activated.
+
+         This plist is provided as `.disabled` so it cannot be loaded accidentally.
+         Activation steps are in docs/reports/monthly_system_review/README.md (TBD)
+         and/or the Phase B activation pre-flight memo. -->
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/bin/python3</string>
+        <string>/Users/chasefisher/projects/Algo Trading/algo-lab/research/monthly_system_review.py</string>
+        <string>--first-saturday-guard</string>
+        <string>--save</string>
+    </array>
+
+    <!-- Fires every Saturday at 09:00 local. Script self-guards via
+         --first-saturday-guard and exits 0 on Saturdays 8-31. Same idiom as
+         the treasury-rolldown-monthly first-business-day guard. -->
+    <key>StartCalendarInterval</key>
+    <array>
+        <dict>
+            <key>Weekday</key>
+            <integer>6</integer>
+            <key>Hour</key>
+            <integer>9</integer>
+            <key>Minute</key>
+            <integer>0</integer>
+        </dict>
+    </array>
+
+    <key>RunAtLoad</key>
+    <false/>
+
+    <key>StandardOutPath</key>
+    <string>/Users/chasefisher/projects/Algo Trading/algo-lab/research/logs/launchd_monthly_review_stdout.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/Users/chasefisher/projects/Algo Trading/algo-lab/research/logs/launchd_monthly_review_stderr.log</string>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/chasefisher/projects/Algo Trading/algo-lab</string>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+        <key>HOME</key>
+        <string>/Users/chasefisher</string>
+        <key>PYTHONUNBUFFERED</key>
+        <string>1</string>
+    </dict>
+</dict>
+</plist>
