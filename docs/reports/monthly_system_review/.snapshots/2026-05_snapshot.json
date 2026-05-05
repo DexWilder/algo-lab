@@ -1,0 +1,21 @@
+{
+  "month": "2026-05",
+  "generated": "2026-05-05T10:49:07",
+  "registry_total": 151,
+  "status_idea": 76,
+  "status_probation": 8,
+  "status_core": 3,
+  "status_monitor": 2,
+  "status_rejected": 36,
+  "status_archived": 26,
+  "forge_reports_count": 1,
+  "verdict_pass": 2,
+  "verdict_watch": 3,
+  "verdict_kill": 0,
+  "verdict_retest": 0,
+  "candidate_pool_size": 19,
+  "loaded_agents_count": 11,
+  "tripwire_count": 0,
+  "salvaged_from_pop": 0,
+  "components_used_pop": 0
+}
