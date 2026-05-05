@@ -7,13 +7,13 @@
 
 | Candidate | Asset | Gap | n | PF | Net PnL | Max DD | Verdict |
 |---|---|---|---:|---:|---:|---:|---|
-| XB-ORB-EMA-TimeStop-MNQ | MNQ | Asymmetric exit alt — fixed time-stop exit (tail-engine due to forced cutoff) | 1198 | 1.486 | 26858 | -1862 | PASS |
+| XB-ORB-EMA-MidlineTarget-MNQ | MNQ | Asymmetric exit alt — midline target (different exit philosophy) | 1198 | 1.085 | 2413 | -2659 | WATCH |
 
 ## Summary
 
 {
-  "PASS": 1,
-  "WATCH": 0,
+  "PASS": 0,
+  "WATCH": 1,
   "KILL": 0,
   "RETEST": 0
 }
