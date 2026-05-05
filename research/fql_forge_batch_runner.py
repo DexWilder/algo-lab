@@ -231,12 +231,9 @@ CANDIDATES = {
         "runner": lambda: _xb_general("MNQ", "pb_pullback", "session_morning", "profit_ladder", "XB-PB-EMA-MorningOnly-MNQ"),
         "baseline": "XB-PB-EMA-Ladder-MNQ all-day PF 1.403",
     },
-    "XB-BB-EMA-MorningOnly-MGC": {
-        "gap": "Sparse-session tail-engine — BB entry on already-PASS asset (MGC), morning-restricted",
-        "asset": "MGC", "archetype": "tail",
-        "runner": lambda: _xb_general("MGC", "bb_reversion", "session_morning", "profit_ladder", "XB-BB-EMA-MorningOnly-MGC"),
-        "baseline": "XB-BB-EMA-Ladder-MGC all-day PF 1.522",
-    },
+    # XB-BB-EMA-MorningOnly-MGC PRUNED 2026-05-05 after smoke test PF 0.989 KILL.
+    # Evidence preserved in docs/fql_forge/tail_engine_smoke_2026-05-05.md.
+    # Removed from runner pool to avoid wasting autonomous rotation slots.
     "XB-BB-EMA-AfternoonOnly-MGC": {
         "gap": "Sparse-session tail-engine — BB entry MGC, afternoon-restricted",
         "asset": "MGC", "archetype": "tail",
