@@ -175,8 +175,31 @@ CANDIDATES = {
         "runner": lambda: _xb_swap("MYM", "bb_reversion", "XB-BB-EMA-Ladder-MYM"),
         "baseline": "XB-BB-MNQ baseline PF 1.245",
     },
-    # Re-validate proven trio on its native asset cross-section using PB / BB entries
-    # (these complete the entry-substitution sweep across the full 4-asset universe)
+    # VWAP entry — confirmation sweep (was weak on MNQ at PF 1.056; test cross-asset)
+    "XB-VWAP-EMA-Ladder-MES": {
+        "gap": "Workhorse cross-asset / VWAP closeout test",
+        "asset": "MES", "archetype": "workhorse",
+        "runner": lambda: _xb_swap("MES", "vwap_continuation", "XB-VWAP-EMA-Ladder-MES"),
+        "baseline": "XB-VWAP-MNQ baseline PF 1.056 (KILL on MNQ 2026-05-05)",
+    },
+    "XB-VWAP-EMA-Ladder-MGC": {
+        "gap": "Workhorse cross-asset / VWAP closeout test",
+        "asset": "MGC", "archetype": "workhorse",
+        "runner": lambda: _xb_swap("MGC", "vwap_continuation", "XB-VWAP-EMA-Ladder-MGC"),
+        "baseline": "XB-VWAP-MNQ baseline PF 1.056",
+    },
+    "XB-VWAP-EMA-Ladder-MCL": {
+        "gap": "Workhorse cross-asset / VWAP closeout test",
+        "asset": "MCL", "archetype": "workhorse",
+        "runner": lambda: _xb_swap("MCL", "vwap_continuation", "XB-VWAP-EMA-Ladder-MCL"),
+        "baseline": "XB-VWAP-MNQ baseline PF 1.056",
+    },
+    "XB-VWAP-EMA-Ladder-MYM": {
+        "gap": "Workhorse cross-asset / VWAP closeout test",
+        "asset": "MYM", "archetype": "workhorse",
+        "runner": lambda: _xb_swap("MYM", "vwap_continuation", "XB-VWAP-EMA-Ladder-MYM"),
+        "baseline": "XB-VWAP-MNQ baseline PF 1.056",
+    },
 }
 
 
