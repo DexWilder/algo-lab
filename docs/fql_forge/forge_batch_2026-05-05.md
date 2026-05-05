@@ -7,14 +7,14 @@
 
 | Candidate | Asset | Gap | n | PF | Net PnL | Max DD | Verdict |
 |---|---|---|---:|---:|---:|---:|---|
-| XB-BB-EMA-Ladder-MYM | MYM | Workhorse cross-asset | 234 | 1.785 | 3877 | -343 | PASS |
+| XB-BB-EMA-Ladder-MES | MES | Workhorse cross-asset (BB + proven trio) | 682 | 0.930 | -823 | -2604 | KILL |
 
 ## Summary
 
 {
-  "PASS": 1,
+  "PASS": 0,
   "WATCH": 0,
-  "KILL": 0,
+  "KILL": 1,
   "RETEST": 0
 }
 

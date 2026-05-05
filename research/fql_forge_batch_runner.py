@@ -53,6 +53,17 @@ REPORTS_DIR = ROOT / "docs" / "fql_forge"
 DATA_DIR = ROOT / "data" / "processed"
 PARAMS_DEFAULT = {"stop_mult": 2.0, "target_mult": 4.0, "trail_mult": 2.5}
 
+# Allow a single bounded param override at runtime via --stop-mult flag.
+# Per Forge discipline: ONE bounded calibration test per candidate at most.
+_RUNTIME_STOP_MULT = None  # set by CLI; if None, PARAMS_DEFAULT["stop_mult"] is used
+
+
+def _params():
+    p = dict(PARAMS_DEFAULT)
+    if _RUNTIME_STOP_MULT is not None:
+        p["stop_mult"] = _RUNTIME_STOP_MULT
+    return p
+
 
 def _load(asset: str) -> pd.DataFrame:
     return pd.read_csv(DATA_DIR / f"{asset}_5m.csv")
@@ -106,7 +117,7 @@ def _xb_swap(asset: str, entry_name: str, label: str) -> dict:
     sigs = generate_crossbred_signals(df, entry_name=entry_name,
                                        exit_name="profit_ladder",
                                        filter_name="ema_slope",
-                                       params=PARAMS_DEFAULT)
+                                       params=_params())
     res = run_backtest(df, sigs, mode="both",
                        point_value=cfg["point_value"], symbol=asset)
     return _metrics(res["trades_df"], label)
@@ -198,7 +209,15 @@ def main():
     ap.add_argument("--dry-run", action="store_true", help="No-op safety flag (everything is dry-run by design)")
     ap.add_argument("--output", help="Write result memo to path (default: docs/fql_forge/forge_batch_<date>.md)")
     ap.add_argument("--json", help="Write JSON results to path")
+    ap.add_argument("--stop-mult", type=float, default=None,
+                    help="One bounded calibration: override stop_mult (default 2.0). Per Forge discipline, one alt per run only.")
     args = ap.parse_args()
+
+    # Apply optional bounded calibration
+    global _RUNTIME_STOP_MULT
+    if args.stop_mult is not None:
+        _RUNTIME_STOP_MULT = float(args.stop_mult)
+        print(f"[CALIBRATION] stop_mult override: {_RUNTIME_STOP_MULT} (default 2.0)")
 
     if args.list_only:
         print("Available candidates:")
