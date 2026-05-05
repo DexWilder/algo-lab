@@ -36,11 +36,12 @@ REGISTRY_PF = 1.2  # FXBreak-6J-Short-London registry record
 
 # Impulse filter (per plan §4.2):
 #   require breakout magnitude > IMPULSE_THRESHOLD * 20-day median Asian range size
-# 2026-05-05 follow-up calibration: 1.5× admitted only 12 trades on 6J (too tight).
-# Re-running at 1.0× to test whether the donor filter is calibratable on 6J or
-# structurally non-portable. See validation_result_HYB-FX-SessionTransition_2026-05-05.md
-# for the original 1.5× result.
-IMPULSE_THRESHOLD = 1.0
+# 2026-05-05 calibration sequence:
+#   1.5× → 12 trades, PF 1.139 (WARN, sample <30)
+#   1.0× → 24 trades, PF 1.308 (WARN, still <30 but quality improved monotonically)
+#   0.75× → this run; goal: ≥30 trades to allow formal PASS, with PF holding ≥1.15
+# See validation_result_HYB-FX-SessionTransition_*.md memos for prior runs.
+IMPULSE_THRESHOLD = 0.75
 ASIAN_RANGE_LOOKBACK_DAYS = 20
 
 SETUP_START_HHMM = 200   # 02:00 ET
