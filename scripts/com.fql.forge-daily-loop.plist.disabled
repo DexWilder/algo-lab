@@ -42,15 +42,17 @@
     <key>WorkingDirectory</key>
     <string>/Users/chasefisher/projects/Algo Trading/algo-lab</string>
 
+    <!-- Weekdays at 19:00 LOCAL system time (= ~6h after NYSE close on Pacific systems;
+         well after operator digest at 17:30 local). Array-of-dicts pattern matches
+         existing FQL plists (one dict per weekday Mon=1 through Fri=5). -->
     <key>StartCalendarInterval</key>
-    <dict>
-        <key>Hour</key>
-        <integer>19</integer>
-        <key>Minute</key>
-        <integer>0</integer>
-        <key>Weekday</key>
-        <integer>1</integer>
-    </dict>
+    <array>
+        <dict><key>Weekday</key><integer>1</integer><key>Hour</key><integer>19</integer><key>Minute</key><integer>0</integer></dict>
+        <dict><key>Weekday</key><integer>2</integer><key>Hour</key><integer>19</integer><key>Minute</key><integer>0</integer></dict>
+        <dict><key>Weekday</key><integer>3</integer><key>Hour</key><integer>19</integer><key>Minute</key><integer>0</integer></dict>
+        <dict><key>Weekday</key><integer>4</integer><key>Hour</key><integer>19</integer><key>Minute</key><integer>0</integer></dict>
+        <dict><key>Weekday</key><integer>5</integer><key>Hour</key><integer>19</integer><key>Minute</key><integer>0</integer></dict>
+    </array>
 
     <key>StandardOutPath</key>
     <string>/Users/chasefisher/projects/Algo Trading/algo-lab/research/logs/forge_daily_loop_stdout.log</string>
