@@ -14,7 +14,7 @@
 
     <key>ProgramArguments</key>
     <array>
-        <string>/usr/bin/python3</string>
+        <string>/usr/local/bin/python3</string>
         <string>/Users/chasefisher/projects/Algo Trading/algo-lab/research/fql_forge_morning_digest.py</string>
         <string>--save</string>
     </array>

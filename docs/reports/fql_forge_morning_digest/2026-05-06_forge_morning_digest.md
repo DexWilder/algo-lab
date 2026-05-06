@@ -1,7 +1,8 @@
-# FQL Forge Morning Digest — 2026-05-05
+# FQL Forge Morning Digest — 2026-05-06
 
-**Generated:** 2026-05-06T06:28:58
-**Source:** `forge_daily_2026-05-05.{md,json}` + queue + tripwires + logs
+**Generated:** 2026-05-06T08:22:17
+**Source fire date:** 2026-05-05
+**Source artifacts:** `forge_daily_2026-05-05.{md,json}` + queue + tripwires + logs
 **Scope:** Lane B / Forge — daily review packet (read-only)
 
 **Safety contract:** report-only; no registry / Lane A / portfolio / runtime / scheduler / checkpoint mutation.
@@ -83,7 +84,7 @@
 
 ### stdout (`research/logs/forge_daily_loop_stdout.log`)
 
-- size: 0.8 KB; last modified: 11.5h ago
+- size: 0.8 KB; last modified: 13.3h ago
 
 ### Tripwires
 

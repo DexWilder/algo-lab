@@ -344,9 +344,11 @@ def section_recommended_next_action(exec_summary: SectionOutput, absorption: Sec
 # ---------- composer ----------
 
 def render_report(date_str: str, sections: list[SectionOutput], generated_at: datetime) -> str:
-    out = [f"# FQL Forge Morning Digest — {date_str}\n"]
+    digest_run_date = generated_at.date().isoformat()
+    out = [f"# FQL Forge Morning Digest — {digest_run_date}\n"]
     out.append(f"**Generated:** {generated_at.isoformat(timespec='seconds')}")
-    out.append(f"**Source:** `forge_daily_{date_str}.{{md,json}}` + queue + tripwires + logs")
+    out.append(f"**Source fire date:** {date_str}")
+    out.append(f"**Source artifacts:** `forge_daily_{date_str}.{{md,json}}` + queue + tripwires + logs")
     out.append(f"**Scope:** Lane B / Forge — daily review packet (read-only)\n")
     out.append(f"**Safety contract:** report-only; no registry / Lane A / portfolio / runtime / scheduler / checkpoint mutation.\n")
     out.append("---\n")
@@ -417,9 +419,15 @@ def main():
         return
 
     REPORTS_DIR.mkdir(parents=True, exist_ok=True)
-    out_path = REPORTS_DIR / f"{target_date_str}_forge_morning_digest.md"
+    # Filename = the date the digest RAN (today), so a Wed 08:00 digest of
+    # Tue 19:00's fire writes 2026-05-(Wed)_forge_morning_digest.md. The source
+    # fire date is shown prominently in the report header. This matches operator
+    # mental model of "today's morning digest" rather than "the fire's digest."
+    digest_run_date = date.today().isoformat()
+    out_path = REPORTS_DIR / f"{digest_run_date}_forge_morning_digest.md"
     out_path.write_text(report)
     print(f"\n[WRITE] {out_path}")
+    print(f"  (digest ran on {digest_run_date}; source fire was {target_date_str})")
     print("\n[SAFETY] Report-only. No mutation.")
 
 
