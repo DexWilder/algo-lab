@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.fql.forge-morning-digest</string>
+
+    <!-- Report-only Forge morning digest. Consumes prior weekday's 19:00 fire
+         output and surfaces what changed. No registry / Lane A / portfolio /
+         runtime / scheduler / checkpoint mutation.
+
+         Phase A: manual CLI only. Phase B (this plist): operator-activated.
+         Provided as `.disabled` so it cannot be loaded accidentally. -->
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/bin/python3</string>
+        <string>/Users/chasefisher/projects/Algo Trading/algo-lab/research/fql_forge_morning_digest.py</string>
+        <string>--save</string>
+    </array>
+
+    <!-- Weekdays at 08:00 local. Reads the prior weekday's 19:00 fire output. -->
+    <key>StartCalendarInterval</key>
+    <array>
+        <dict>
+            <key>Weekday</key>
+            <integer>1</integer>
+            <key>Hour</key>
+            <integer>8</integer>
+            <key>Minute</key>
+            <integer>0</integer>
+        </dict>
+        <dict>
+            <key>Weekday</key>
+            <integer>2</integer>
+            <key>Hour</key>
+            <integer>8</integer>
+            <key>Minute</key>
+            <integer>0</integer>
+        </dict>
+        <dict>
+            <key>Weekday</key>
+            <integer>3</integer>
+            <key>Hour</key>
+            <integer>8</integer>
+            <key>Minute</key>
+            <integer>0</integer>
+        </dict>
+        <dict>
+            <key>Weekday</key>
+            <integer>4</integer>
+            <key>Hour</key>
+            <integer>8</integer>
+            <key>Minute</key>
+            <integer>0</integer>
+        </dict>
+        <dict>
+            <key>Weekday</key>
+            <integer>5</integer>
+            <key>Hour</key>
+            <integer>8</integer>
+            <key>Minute</key>
+            <integer>0</integer>
+        </dict>
+    </array>
+
+    <key>RunAtLoad</key>
+    <false/>
+
+    <key>StandardOutPath</key>
+    <string>/Users/chasefisher/projects/Algo Trading/algo-lab/research/logs/launchd_forge_morning_digest_stdout.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/Users/chasefisher/projects/Algo Trading/algo-lab/research/logs/launchd_forge_morning_digest_stderr.log</string>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/chasefisher/projects/Algo Trading/algo-lab</string>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+        <key>HOME</key>
+        <string>/Users/chasefisher</string>
+        <key>PYTHONUNBUFFERED</key>
+        <string>1</string>
+    </dict>
+</dict>
+</plist>
