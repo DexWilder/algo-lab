@@ -93,7 +93,7 @@ Review criteria: `docs/PROBATION_REVIEW_CRITERIA.md`
 - **Twice-weekly:** Tue/Thu 18:00 ET — batch_first_pass factory testing **+ auto mass-screen of untested strategies**
 - **Weekly:** Fri 18:30 ET — integrity monitor, kill criteria, auto-report, throughput audit
 - **Claw control loop:** every 30 min — Claw coordination, EOD audit at 22:00
-- **Source helpers:** every 3 days — GitHub/Reddit/YouTube/blog/digest lead fetching
+- **Source helpers:** Sun + Wed 20:00 ET — GitHub/Reddit/YouTube/blog/digest lead fetching
 - **Watchdog:** every 5 min — gateway/claw/job health, self-healing recovery, CLEARED transition logging
 
 The operator digest is the primary interface. It auto-runs daily and:
@@ -134,9 +134,9 @@ SALVAGE path.
 - Dormant safety net: 4 defensive layers (runtime, twice-weekly clear,
   daily digest line, weekly throughput audit)
 
-## System State (2026-04-14)
+## System State (2026-05-06)
 
-- **Registry:** 115+ strategies, schema v3.2, rejection taxonomy
+- **Registry:** 163 strategies, schema v3.2, rejection taxonomy
 - **Genome map:** 9-dimension classification, overcrowding + gap analysis
 - **Factory:** batch_first_pass with dual-archetype classification, silent
   failure detector, auto per-event decomposition

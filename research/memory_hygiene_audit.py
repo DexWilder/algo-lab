@@ -333,8 +333,14 @@ def check_probation_roster() -> CheckResult:
         return CheckResult("Probation roster — CLAUDE.md vs registry", "\n".join(body), drifts)
 
     section = section_match.group(0)
+    # Strip lines that are explicit "removed/archived/rejected" annotations —
+    # those preserve history correctly, not stale claims.
+    active_lines = [ln for ln in section.splitlines()
+                    if not re.search(r"removed from probation|\(archived\)|\(rejected", ln, re.IGNORECASE)]
+    active_section = "\n".join(active_lines)
     claimed = sorted(set(re.findall(r"\b((?:XB-ORB-EMA-Ladder|DailyTrend|MomPB|FXBreak|NoiseBoundary|"
-                                    r"PreFOMC|TV-NFP|VolManaged|ZN-Afternoon|Treasury-Rolldown)[\w\-]+)", section)))
+                                    r"PreFOMC|TV-NFP|VolManaged|ZN-Afternoon|Treasury-Rolldown)[\w\-]+)",
+                                    active_section)))
 
     body.append(f"\n### Strategy IDs mentioned in CLAUDE.md Probation Portfolio section ({len(claimed)})\n")
     for sid in claimed:
