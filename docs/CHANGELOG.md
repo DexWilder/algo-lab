@@ -4,6 +4,22 @@
 
 ---
 
+## 2026-05-06
+
+### Batch Register: 12 Forge Hybrid Candidates
+- Surgical append from 2026-05-05 Forge runner sweep evidence
+- Registry: 151 → 163 strategies (delta +12, all `status: idea`)
+- 4 sibling families under XB-ORB-EMA-Ladder parent: XB-PB (3 cross-asset), XB-BB (4 cross-asset), XB-VWAP (3 cross-asset), XB-ORB exit-alts (chandelier + time_stop on MNQ)
+- 12 entries simultaneously populate `relationships.components_used` for the first time at scale (Item 2 plumbing: 0% → 7.4% of registry)
+- DEFER per pre-flight: HYB-VolMan-Sizing-overlay-MNQ (90%+ correlation), XB-BB-EMA-AfternoonOnly-MGC (subset duplicate)
+- Pre-flight: `docs/_DRAFT_2026-05-06_batch_register_xb_hybrids.md` (operator-approved)
+- Pattern: 2026-04-28 surgical batch register (evidence → packet → pre-flight → operator approval → append)
+- Validation: `operating_dashboard.py` reads cleanly post-append (exit 0)
+- Schema disclosure: new entries omit `tags` and `harvest_note` per operator-approved §3 template (existing entries have these by convention; functionally non-blocking)
+- No live promotion. No portfolio composition changes. No Lane A surfaces touched.
+
+---
+
 ## 2026-03-16
 
 ### Strategic Pivot: Expand Opportunity Set
