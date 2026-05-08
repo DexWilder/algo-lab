@@ -257,7 +257,67 @@ This file is **a snapshot, not a tracking system.** It will go stale. To keep pr
 
 ---
 
-## §9 — Bottom line
+## §9 — System-wide health & roadmap review — coverage map
+
+**The Monthly System Review (`research/monthly_system_review.py`, fires first Saturday of every month) is the canonical system-wide health and roadmap review.** All other Lane B tools are per-domain specialists that feed into it or run on faster cadences.
+
+This section maps the operator's 7 system-wide review requirements to active tooling so no requirement is buried under vague wording.
+
+### Coverage matrix
+
+| # | Requirement | Primary coverage | Secondary coverage | Status |
+|---|---|---|---|---|
+| 1 | **Full automation review** (agents expected vs loaded, cadence correctness, log freshness, stderr, tripwires, stale reports) | Monthly system review §7 (Automation Truth Table) — `monthly_system_review.py` | Governance audit §3 (Lane B Self-Healing); Memory hygiene audit (claims vs reality); Morning digest §5 (Forge-specific) | 🟢 STRONG |
+| 2 | **Full roadmap review** (built, delayed, needs adding, removed/deferred, alignment with FISH/FQL vision) | Monthly system review §8 (Roadmap Review) + §15 (Recommended Roadmap Edits) | This progression plan | 🟡 MEDIUM — vision-alignment is heuristic in v1.1 (gap below) |
+| 3 | **Strategy system review** (registry counts, new candidates, verdict trends, awaiting review, stale probation, components_used/salvaged_from health) | Monthly system review §11 (Registry) + §10 (Forge) | Governance audit §1 (Evidence Absorption); Morning digest §2 + §4 | 🟢 STRONG |
+| 4 | **Portfolio/gap review** (asset/family/session/regime coverage, overconcentration, missing families) | Monthly system review §12 (Portfolio / Gap Review) | Existing weekly `portfolio_gap_dashboard.py --save` produces data | 🟡 MEDIUM — data exists, monthly doesn't yet ingest it (gap below) |
+| 5 | **Lane A / Lane B safety review** (protected-surface drift, unauthorized changes, Forge stays report-only) | Monthly system review §9 (Lane A Review — watchdog, transitions, forward-runner) | Memory hygiene audit; CLAUDE.md probation roster check | 🟡 MEDIUM — no explicit "diff vs prior month" check (gap below) |
+| 6 | **Memory/docs/source-of-truth review** (stale counts, cadence claims, broken paths, missing plists, memory vs repo mismatch) | Memory hygiene audit (`memory_hygiene_audit.py`) — dedicated tool | Monthly system review §13 (thin sample) | 🟢 STRONG |
+| 7 | **Recommendations** (keep/change/add/stop, highest-ROI build) | Monthly system review §1 (Executive) + §15 (Roadmap Edits) + §16 (Watchlist) + §18 (Recommendations) | Governance audit summary actions | 🟢 STRONG |
+
+### Cadence map — when each requirement gets reviewed
+
+| Cadence | Review | Tool |
+|---|---|---|
+| Daily AM | Forge evidence absorption (req #3 partial, #5 partial) | Morning digest |
+| Weekly Fri | Integrity / kill criteria / throughput audit (req #1 partial) | `weekly-research` job |
+| Ad-hoc | Memory/docs drift (req #6) | `memory_hygiene_audit.py` (manual now; not yet scheduled) |
+| Ad-hoc | Review load + Lane B health + cost (req #1 partial, #5 partial) | `governance_audit.py` (manual now; not yet scheduled) |
+| **Monthly (1st Sat)** | **Full system-wide health + roadmap review (req #1-7 comprehensive)** | **`monthly_system_review.py` (scheduled)** |
+
+### Gaps explicitly named (added to roadmap below)
+
+Three coverage gaps surfaced when mapping the requirements above. None block Phase 1; all become candidates for Phase 2 or beyond.
+
+#### Gap 1: Vision-alignment scoring is heuristic
+**Status:** monthly review §4 (Vision Alignment Score) computes GREEN/YELLOW/RED from PASS yield + cross-pollination flow. Heuristic only.
+**v1.2 fix:** parse commit log to compute tooling-vs-strategy commit ratio; flag if tooling >40% of recent commits without registry growth.
+**Already in:** monthly review v1.2 backlog (per `_DRAFT_2026-05-05_monthly_system_review_preflight.md` §"v1.2 polish items").
+**Roadmap action:** keep in monthly review v1.2 backlog; trigger when monthly review needs its first refresh (~2026-06 after first organic fire).
+
+#### Gap 2: Portfolio gap dashboard data not yet ingested by monthly review
+**Status:** weekly job runs `python3 scripts/portfolio_gap_dashboard.py --save` and writes to `research/reports/portfolio_gap*.md`. Monthly review §12 only counts assets/families/sessions from registry; doesn't read the saved dashboards.
+**v1.2 fix:** monthly review §6 reads `research/reports/portfolio_gap*.md` latest output and surfaces top-3 gaps inline.
+**Already in:** monthly review v1.2 backlog (per pre-flight memo).
+**Roadmap action:** keep in monthly review v1.2 backlog.
+
+#### Gap 3: No explicit "Lane A diff vs prior month" check
+**Status:** monthly review §9 reports current Lane A state (watchdog, transitions, log freshness). It does NOT explicitly compute "what changed in Lane A vs last month's snapshot."
+**Risk:** if Lane A drift occurs (unauthorized scheduler change, surprise registry mutation, hold-state edit), it would surface only by comparing current state to memory — which is the current expectation but not automated.
+**v1.2 fix:** monthly review compares prior-month `.snapshots/YYYY-MM_snapshot.json` Lane A fields against current; flags any registry-status-count change, any new launchd agents, any forward-runner config change.
+**NOT yet in any backlog.** **Adding to roadmap as new item.**
+**Roadmap action:** queue as monthly review v1.2 polish item alongside Gaps 1 + 2. Effort: SMALL (snapshot diff). Safety: HIGH (drift detection).
+
+### What this section commits to
+
+1. **The monthly system review is THE system-wide health and roadmap review.** Other tools are specialists; the monthly is the canonical synthesis.
+2. **Every requirement in the operator's list (§1-7) maps to at least one active tool today.** No silent blind spots.
+3. **Every gap (Gaps 1-3 above) is named and queued.** Drift between "we said we'd cover X" and "X is actually being checked" is itself a tracked failure mode now.
+4. **Cadence map (above) sets reviewer expectations.** Daily, weekly, monthly all serve different review depths; monthly is the only comprehensive layer.
+
+---
+
+## §10 — Bottom line
 
 Autonomous machine: **running.** Build gauge: **RED** (governance working). Forward pressure: **visible**, with named dates and named gates.
 
