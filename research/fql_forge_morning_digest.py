@@ -34,10 +34,12 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 REPORTS_DIR = ROOT / "docs" / "reports" / "fql_forge_morning_digest"
+SNAPSHOTS_DIR = REPORTS_DIR / ".snapshots"
 FORGE_REPORTS_DIR = ROOT / "research" / "data" / "fql_forge" / "reports"
 REGISTRY_PATH = ROOT / "research" / "data" / "strategy_registry.json"
 FORGE_STDOUT_LOG = ROOT / "research" / "logs" / "forge_daily_loop_stdout.log"
 FORGE_STDERR_LOG = ROOT / "research" / "logs" / "forge_daily_loop_stderr.log"
+QUEUE_AGING_DAYS = 7  # surface items recommended for >N days without action
 
 # Backlog thresholds
 BACKLOG_GREEN_MAX = 5      # ≤ 5 unreviewed PASSes is fine
@@ -191,7 +193,52 @@ def section_candidate_results(data: dict, prior_runs: list[tuple[date, dict]], r
     return SectionOutput("Candidate Results", "\n".join(body))
 
 
-def section_queue_changes(date_str: str) -> SectionOutput:
+def _extract_queue_recommendations(text: str) -> list[str]:
+    """Parse the 'Next safe Forge actions' bullets out of forge_queue.md."""
+    out = []
+    for i, line in enumerate(text.splitlines()):
+        if "Next safe Forge actions" in line:
+            for follow in text.splitlines()[i+1:i+10]:
+                if follow.strip().startswith("-"):
+                    out.append(follow.strip())
+                elif follow.startswith("**") and out:
+                    break
+            break
+    return out
+
+
+def _save_queue_snapshot(date_str: str, current_text: str) -> None:
+    """Write today's queue snapshot for next-day aging comparison."""
+    SNAPSHOTS_DIR.mkdir(parents=True, exist_ok=True)
+    snap = SNAPSHOTS_DIR / f"{date_str}_queue.md"
+    snap.write_text(current_text)
+
+
+def _compute_queue_aging(current_recommendations: list[str]) -> dict[str, int]:
+    """For each current recommendation, find oldest snapshot it appears in.
+    Returns {recommendation: age_days}."""
+    if not SNAPSHOTS_DIR.exists():
+        return {}
+    snapshots = []
+    for snap in sorted(SNAPSHOTS_DIR.glob("*_queue.md")):
+        m = re.match(r"(\d{4}-\d{2}-\d{2})_queue\.md", snap.name)
+        if m:
+            snap_date = date.fromisoformat(m.group(1))
+            snap_recs = _extract_queue_recommendations(snap.read_text())
+            snapshots.append((snap_date, snap_recs))
+    aging = {}
+    today = date.today()
+    for rec in current_recommendations:
+        # Find oldest snapshot containing this recommendation
+        oldest_date = today
+        for snap_date, snap_recs in snapshots:
+            if rec in snap_recs and snap_date < oldest_date:
+                oldest_date = snap_date
+        aging[rec] = (today - oldest_date).days
+    return aging
+
+
+def section_queue_changes(date_str: str, save_snapshot: bool = True) -> SectionOutput:
     body = []
     queue_path = FORGE_REPORTS_DIR / "forge_queue.md"
     if not queue_path.exists():
@@ -199,25 +246,37 @@ def section_queue_changes(date_str: str) -> SectionOutput:
 
     text = queue_path.read_text()
     body.append(f"### Current rolling queue (`forge_queue.md`)\n")
-    queue_lines = text.splitlines()
-    next_actions = []
-    for i, line in enumerate(queue_lines):
-        if "Next safe Forge actions" in line:
-            for follow in queue_lines[i+1:i+10]:
-                if follow.strip().startswith("-"):
-                    next_actions.append(follow.strip())
-                elif follow.startswith("**") and next_actions:
-                    break
+
+    next_actions = _extract_queue_recommendations(text)
+    aging = _compute_queue_aging(next_actions)
 
     if next_actions:
-        body.append("**Recommended next candidates** (from rolling queue):")
+        body.append("**Recommended next candidates** (from rolling queue, with age in days since first appearance):")
         for a in next_actions[:5]:
-            body.append(f"  {a}")
+            age = aging.get(a, 0)
+            stale = " ⚠️ STALE" if age >= QUEUE_AGING_DAYS else ""
+            body.append(f"  {a}  *(age: {age}d{stale})*")
     else:
         body.append("- (no parseable 'Next safe Forge actions' section)")
 
-    body.append(f"\n### Aging analysis")
-    body.append(f"- v2 TODO: snapshot queue daily and surface entries that have been recommended for >7 days without action")
+    body.append(f"\n### Aging analysis\n")
+    stale_items = [(a, aging.get(a, 0)) for a in next_actions if aging.get(a, 0) >= QUEUE_AGING_DAYS]
+    if stale_items:
+        body.append(f"- {len(stale_items)} item(s) recommended for ≥{QUEUE_AGING_DAYS}d without action:")
+        for a, age in stale_items:
+            body.append(f"  - {a} ({age}d)")
+        body.append(f"- Suggest: prune from rotation OR add to candidate pool intentionally")
+    else:
+        body.append(f"- ✅ no items aging beyond {QUEUE_AGING_DAYS}d threshold")
+
+    snapshots_count = len(list(SNAPSHOTS_DIR.glob("*_queue.md"))) if SNAPSHOTS_DIR.exists() else 0
+    body.append(f"\n### Snapshot history\n- snapshots on disk: {snapshots_count}")
+    if snapshots_count == 0:
+        body.append(f"- (this is the first run after queue-snapshot mechanism added; aging requires ≥2 snapshots to register)")
+
+    # Save today's snapshot for next-day aging comparison (only on real runs, not dry-run)
+    if save_snapshot:
+        _save_queue_snapshot(date_str, text)
 
     return SectionOutput("Queue Changes", "\n".join(body))
 
@@ -395,7 +454,7 @@ def main():
 
     exec_summary = section_executive_summary(target_date_str, data, tripwires)
     candidates = section_candidate_results(data, prior_runs, registered)
-    queue = section_queue_changes(target_date_str)
+    queue = section_queue_changes(target_date_str, save_snapshot=args.save)
     absorption = section_evidence_absorption(target_date_str, prior_runs, data, registered)
     health = section_automation_health(target_date_str, data, tripwires)
     next_action = section_recommended_next_action(exec_summary, absorption, tripwires)
