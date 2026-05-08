@@ -38,7 +38,8 @@ QUERIES = [
     "carry trade systematic",
     "mean reversion trading strategy",
     "value factor investing quantitative",
-    "momentum trading systematic python",
+    # NOTE: removed "momentum trading systematic python" 2026-05-07 per
+    # Forge feedback patch A — momentum family is overweight (55% portfolio).
     # Asset-specific (portfolio gaps)
     "commodity trading systematic",
     "commodity futures python",
@@ -63,6 +64,23 @@ QUERIES = [
     "value factor systematic futures",
     "earnings yield trading systematic",
     "relative value cross asset python",
+    # Forge mechanism-transfer additions (2026-05-07; per source-priority patch A pre-flight a95ac91)
+    # Forge validated `ema_slope + profit_ladder` load-bearing pair across PB/BB/VWAP entries.
+    # Transfer mechanism into UNDERWEIGHT factors instead of amplifying overweight momentum.
+    # VALUE (HIGH gap, 0c+0p):
+    "value momentum hybrid systematic",
+    "trend-filtered value strategy futures",
+    "term premium trading with regime filter",
+    "earnings yield futures systematic with momentum filter",
+    # CARRY + trend-filter (MEDIUM gap):
+    "carry strategy regime detection futures",
+    "treasury carry with EMA regime filter",
+    # VOLATILITY non-equity compression-breakout (MEDIUM gap):
+    "volatility compression breakout treasury futures",
+    "Bollinger squeeze breakout commodity futures",
+    # STRUCTURAL afternoon/close session (MEDIUM gap):
+    "afternoon session microstructure futures",
+    "treasury close auction strategy systematic",
 ]
 
 JUNK_KEYWORDS = ["crypto", "bitcoin", "ethereum", "defi", "nft", "spot forex",
