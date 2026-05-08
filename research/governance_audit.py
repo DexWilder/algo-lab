@@ -33,6 +33,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 REPORTS_DIR = ROOT / "docs" / "reports" / "governance_audit"
+ACKS_PATH = ROOT / "docs" / "reports" / "governance" / "_acknowledgments.json"
 FORGE_REPORTS_DIR = ROOT / "research" / "data" / "fql_forge" / "reports"
 REGISTRY_PATH = ROOT / "research" / "data" / "strategy_registry.json"
 LAUNCHAGENTS_DIR = Path.home() / "Library" / "LaunchAgents"
@@ -205,8 +206,44 @@ def section_evidence_absorption(lookback_days: int) -> SectionOutput:
 
 # ---------- section 2: operator review load score ----------
 
+def _load_acknowledgments() -> dict:
+    """Returns {short_sha: {status, type, due_date?, note}}."""
+    if not ACKS_PATH.exists():
+        return {}
+    try:
+        data = json.loads(ACKS_PATH.read_text())
+    except Exception:
+        return {}
+    out = {}
+    for entry in data.get("acknowledgments", []):
+        sha = entry.get("commit", "")
+        if sha:
+            out[sha[:7]] = entry
+    return out
+
+
+def _ack_discount(entry: dict) -> float:
+    """Return weight multiplier for an acknowledged commit. 0.0 = full discount, 1.0 = full weight."""
+    status = entry.get("status", "")
+    if status in ("VERIFIED_CLEAN", "ACKNOWLEDGED", "SUPERSEDED"):
+        return 0.0
+    if status == "DEFERRED_UNTIL_DATE":
+        due = entry.get("due_date")
+        if due:
+            try:
+                if date.today() < date.fromisoformat(due):
+                    return 0.2  # light weight while deferred
+                else:
+                    return 1.0  # past due — count normally
+            except Exception:
+                return 1.0
+        return 0.2
+    return 1.0
+
+
 def section_review_load_score(lookback_days: int) -> SectionOutput:
     body, risks, actions = [], [], []
+    acks = _load_acknowledgments()
 
     try:
         since = (date.today() - timedelta(days=lookback_days)).isoformat()
@@ -219,62 +256,94 @@ def section_review_load_score(lookback_days: int) -> SectionOutput:
         return SectionOutput("Operator Review Load Score", f"git log read failed: {e}",
                              risks=[f"review load not computable: {e}"])
 
-    score_breakdown = Counter()
+    raw_breakdown = Counter()
+    eff_breakdown_pts = Counter()  # tracks effective points (weight × multiplier)
     items_by_class = {k: [] for k in REVIEW_WEIGHTS}
+    ack_count = 0
+    ack_total_discount = 0.0
+    deferred_count = 0
 
     for sha, msg in commits:
         msg_lower = msg.lower()
-        # Heuristic classification — count toward most-applicable category
-        # Order matters: most-irreversible first
-        if any(k in msg_lower for k in ["activate", "launchctl bootstrap", "phase b activation", "loaded plist"]):
-            score_breakdown["automation_activation"] += 1
-            items_by_class["automation_activation"].append((sha[:7], msg))
-        elif any(k in msg_lower for k in ["lane a", "live", "promote ", "promotion"]):
-            score_breakdown["lane_a_change"] += 1
-            items_by_class["lane_a_change"].append((sha[:7], msg))
-        elif any(k in msg_lower for k in ["batch register", "registry append"]):
-            score_breakdown["registry_proposal"] += 1
-            items_by_class["registry_proposal"].append((sha[:7], msg))
-        elif any(k in msg_lower for k in ["pre-flight", "preflight", "_draft_"]):
-            score_breakdown["preflight"] += 1
-            items_by_class["preflight"].append((sha[:7], msg))
-        else:
-            # Default: treat as report/build (commits that don't propose mutations)
-            score_breakdown["report"] += 1
-            items_by_class["report"].append((sha[:7], msg))
+        short_sha = sha[:7]
 
-    total_score = sum(REVIEW_WEIGHTS[k] * v for k, v in score_breakdown.items())
+        # Classify
+        if any(k in msg_lower for k in ["activate", "launchctl bootstrap", "phase b activation", "loaded plist"]):
+            cls = "automation_activation"
+        elif any(k in msg_lower for k in ["lane a", "live", "promote ", "promotion"]):
+            cls = "lane_a_change"
+        elif any(k in msg_lower for k in ["batch register", "registry append"]):
+            cls = "registry_proposal"
+        elif any(k in msg_lower for k in ["pre-flight", "preflight", "_draft_"]):
+            cls = "preflight"
+        else:
+            cls = "report"
+
+        weight = REVIEW_WEIGHTS[cls]
+        raw_breakdown[cls] += 1
+
+        # Apply acknowledgment discount if present
+        ack = acks.get(short_sha)
+        if ack:
+            multiplier = _ack_discount(ack)
+            ack_count += 1
+            ack_total_discount += weight * (1 - multiplier)
+            if ack.get("status") == "DEFERRED_UNTIL_DATE":
+                deferred_count += 1
+            eff_breakdown_pts[cls] += weight * multiplier
+            items_by_class[cls].append((short_sha, msg, ack.get("status", ""), multiplier))
+        else:
+            eff_breakdown_pts[cls] += weight
+            items_by_class[cls].append((short_sha, msg, "", 1.0))
+
+    raw_score = sum(REVIEW_WEIGHTS[k] * v for k, v in raw_breakdown.items())
+    eff_score = sum(eff_breakdown_pts.values())
 
     body.append(f"### Review Load Score (lookback {lookback_days}d)\n")
-    body.append(f"**Total score: {total_score}**")
-    body.append(f"\n| Class | Weight | Count | Subtotal |")
-    body.append("|---|---:|---:|---:|")
+    body.append(f"**Raw score (all commits): {raw_score}**  |  **Effective score (after acknowledgments): {eff_score:.1f}**")
+    body.append(f"- acknowledgments applied: {ack_count} (discount total: {ack_total_discount:.1f} pts)")
+    body.append(f"- of those, deferred-until-date: {deferred_count}")
+    body.append(f"- ledger: `{ACKS_PATH.relative_to(ROOT)}`")
+
+    body.append(f"\n| Class | Weight | Raw count | Raw pts | Effective pts |")
+    body.append("|---|---:|---:|---:|---:|")
     for k in REVIEW_WEIGHTS:
-        cnt = score_breakdown[k]
-        body.append(f"| {k} | {REVIEW_WEIGHTS[k]} | {cnt} | {REVIEW_WEIGHTS[k] * cnt} |")
+        cnt = raw_breakdown[k]
+        body.append(f"| {k} | {REVIEW_WEIGHTS[k]} | {cnt} | {REVIEW_WEIGHTS[k] * cnt} | {eff_breakdown_pts[k]:.1f} |")
     body.append(f"\n- commits in window: {len(commits)}")
 
-    # Density bands (per 7-day window — operator tunable)
-    if total_score < 15:
+    # Density bands based on EFFECTIVE score (the metric that matters)
+    if eff_score < 15:
         density = "🟢 **GREEN — manageable**"
-    elif total_score < 35:
-        density = "🟡 **YELLOW — review load high**"
-        risks.append(f"Operator review density elevated (score {total_score})")
+    elif eff_score < 35:
+        density = "🟡 **YELLOW — review load elevated**"
+        risks.append(f"Operator review density elevated (effective {eff_score:.1f})")
     else:
         density = "🔴 **RED — operator overload risk**"
-        risks.append(f"Operator review density at OVERLOAD threshold (score {total_score})")
+        risks.append(f"Operator review density at OVERLOAD threshold (effective {eff_score:.1f})")
         actions.append("STOP building; consolidate, review, and absorb before adding new modules")
 
     body.append(f"\n### Density: {density}")
-    body.append(f"- bands (7d window): GREEN <15 / YELLOW 15-34 / RED ≥35  *(tunable via `REVIEW_WEIGHTS`)*")
+    body.append(f"- bands (7d window, on EFFECTIVE score): GREEN <15 / YELLOW 15-34 / RED ≥35")
+    body.append(f"- raw score reflects total commits; effective score reflects unresolved review burden")
 
-    body.append(f"\n### Notable items in window")
-    for cls in ["automation_activation", "lane_a_change", "registry_proposal", "preflight"]:
-        items = items_by_class[cls]
-        if items:
-            body.append(f"\n**{cls}** ({len(items)}):")
-            for sha, msg in items[:5]:
-                body.append(f"- `{sha}` {msg[:90]}")
+    body.append(f"\n### Unresolved items (full or partial weight)")
+    unresolved = []
+    for cls in REVIEW_WEIGHTS:
+        for sha, msg, status, mult in items_by_class[cls]:
+            if mult > 0:
+                unresolved.append((cls, sha, msg, status, mult, REVIEW_WEIGHTS[cls] * mult))
+    unresolved.sort(key=lambda x: -x[5])  # biggest unresolved weight first
+    if not unresolved:
+        body.append("- ✅ no unresolved review burden — every commit in window has been acknowledged")
+    else:
+        body.append("| Class | SHA | Status | Pts | Message |")
+        body.append("|---|---|---|---:|---|")
+        for cls, sha, msg, status, mult, pts in unresolved[:15]:
+            status_str = status if status else "(unacked)"
+            body.append(f"| {cls} | `{sha}` | {status_str} | {pts:.1f} | {msg[:70]} |")
+        if len(unresolved) > 15:
+            body.append(f"| ... | | | | and {len(unresolved) - 15} more |")
 
     return SectionOutput("Operator Review Load Score", "\n".join(body), risks, actions)
 

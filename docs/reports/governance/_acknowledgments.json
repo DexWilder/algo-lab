@@ -1,0 +1,84 @@
+{
+  "_schema_version": "1.0",
+  "_purpose": "Acknowledgment ledger so governance_audit.py can distinguish unresolved review burden from already-absorbed work. Status options: ACKNOWLEDGED, VERIFIED_CLEAN, SUPERSEDED, DEFERRED_UNTIL_DATE.",
+  "_discount_rules": {
+    "VERIFIED_CLEAN": "weight * 0 (full discount)",
+    "ACKNOWLEDGED": "weight * 0 (full discount)",
+    "SUPERSEDED": "weight * 0 (full discount)",
+    "DEFERRED_UNTIL_DATE": "weight * 0.2 before due date; weight * 1.0 if past due and not yet resolved"
+  },
+  "acknowledgments": [
+    {
+      "commit": "060012f",
+      "type": "automation_activation",
+      "status": "VERIFIED_CLEAN",
+      "date": "2026-05-05",
+      "note": "com.fql.forge-daily-loop activated; verified by 3 organic fires (2026-05-05/06/07)"
+    },
+    {
+      "commit": "31d7721",
+      "type": "automation_activation",
+      "status": "VERIFIED_CLEAN",
+      "date": "2026-05-05",
+      "note": "Phase B activation pre-flight; closed by 060012f activation"
+    },
+    {
+      "commit": "ad6ad38",
+      "type": "automation_activation",
+      "status": "VERIFIED_CLEAN",
+      "date": "2026-05-06",
+      "note": "Phase B activation bug fix (python path + filename convention); verified by 2026-05-07 and 2026-05-08 organic morning digest fires"
+    },
+    {
+      "commit": "ff33687",
+      "type": "report",
+      "status": "VERIFIED_CLEAN",
+      "date": "2026-05-06",
+      "note": "forge-morning-digest built; activated 2026-05-06; organically verified 2026-05-07 and 2026-05-08"
+    },
+    {
+      "commit": "e4048eb",
+      "type": "report",
+      "status": "SUPERSEDED",
+      "date": "2026-05-05",
+      "note": "monthly system review v1.0; superseded by v1.1 in a638985"
+    },
+    {
+      "commit": "a638985",
+      "type": "report",
+      "status": "VERIFIED_CLEAN",
+      "date": "2026-05-05",
+      "note": "monthly system review v1.1 active; plist activated; first organic fire scheduled 2026-06-06; smoke-tested clean"
+    },
+    {
+      "commit": "d65c852",
+      "type": "registry_proposal",
+      "status": "VERIFIED_CLEAN",
+      "date": "2026-05-05",
+      "note": "batch register pre-flight; applied via a5d75a1; outcome verified clean"
+    },
+    {
+      "commit": "a5d75a1",
+      "type": "registry_proposal",
+      "status": "VERIFIED_CLEAN",
+      "date": "2026-05-06",
+      "note": "batch register append (151 to 163 strategies); operating_dashboard reads clean; registry stable"
+    },
+    {
+      "commit": "a95ac91",
+      "type": "preflight",
+      "status": "DEFERRED_UNTIL_DATE",
+      "due_date": "2026-05-10",
+      "date": "2026-05-07",
+      "note": "source-priority Patch A pre-flight; substantive review scheduled at first post-patch source-helper fire 2026-05-10"
+    },
+    {
+      "commit": "77e1e5f",
+      "type": "report",
+      "status": "DEFERRED_UNTIL_DATE",
+      "due_date": "2026-05-10",
+      "date": "2026-05-07",
+      "note": "Patch A applied (fetch_github_leads.py QUERIES); syntactically verified; substantive yield review at 2026-05-10 first-fire"
+    }
+  ]
+}
