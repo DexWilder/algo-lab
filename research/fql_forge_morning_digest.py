@@ -208,9 +208,12 @@ def _extract_queue_recommendations(text: str) -> list[str]:
 
 
 def _save_queue_snapshot(date_str: str, current_text: str) -> None:
-    """Write today's queue snapshot for next-day aging comparison."""
+    """Write today's queue snapshot for next-day aging comparison. Filename uses
+    digest-run date (today), not the source-fire date passed in date_str, so the
+    snapshot reflects when the snapshot was taken — fixing 1-day forward drift in
+    aging detection."""
     SNAPSHOTS_DIR.mkdir(parents=True, exist_ok=True)
-    snap = SNAPSHOTS_DIR / f"{date_str}_queue.md"
+    snap = SNAPSHOTS_DIR / f"{date.today().isoformat()}_queue.md"
     snap.write_text(current_text)
 
 
