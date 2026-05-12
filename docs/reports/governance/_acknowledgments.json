@@ -79,6 +79,196 @@
       "due_date": "2026-05-13",
       "date": "2026-05-07",
       "note": "Patch A applied (fetch_github_leads.py QUERIES). First-fire (2026-05-10) showed weak on-theme signal but decision is WAIT FOR WEDNESDAY (one data point insufficient; failure mode may be query crowd-out under cap, not bad queries). No revert. Re-evaluate after 2026-05-13 source-helper fire #2."
+    },
+    {
+      "commit": "cc18ce7",
+      "type": "report",
+      "status": "VERIFIED_CLEAN",
+      "date": "2026-05-05",
+      "note": "daily-loop selection rotation fix; verified by 3+ organic fires showing distinct candidates per day"
+    },
+    {
+      "commit": "30c8bdf",
+      "type": "report",
+      "status": "VERIFIED_CLEAN",
+      "date": "2026-05-06",
+      "note": "memory hygiene audit tool built; produces working drift report (used in this very YELLOW closeout pass)"
+    },
+    {
+      "commit": "06308d8",
+      "type": "report",
+      "status": "VERIFIED_CLEAN",
+      "date": "2026-05-06",
+      "note": "memory hygiene triage; verified by re-run dropping drift 17 to 4 (closed-loop test passed)"
+    },
+    {
+      "commit": "d0438b1",
+      "type": "report",
+      "status": "VERIFIED_CLEAN",
+      "date": "2026-05-07",
+      "note": "Forge to source-helpers feedback layer; tool produced TRANSFER recommendation that informed Patch A"
+    },
+    {
+      "commit": "6b8bd71",
+      "type": "report",
+      "status": "VERIFIED_CLEAN",
+      "date": "2026-05-07",
+      "note": "governance hardening packet (the audit tool we are using right now); first run scored RED 50 which surfaced the metric-bluntness bug and led to 1b7825d"
+    },
+    {
+      "commit": "1b7825d",
+      "type": "report",
+      "status": "VERIFIED_CLEAN",
+      "date": "2026-05-08",
+      "note": "governor repair (acknowledgment ledger + scoring change); math validated; before/after surfaced 50 to 25.6 RED to YELLOW"
+    },
+    {
+      "commit": "38b5d90",
+      "type": "report",
+      "status": "VERIFIED_CLEAN",
+      "date": "2026-05-05",
+      "note": "tail-engine pool expansion (12 to 20 candidates); pool actively rotated by daily-loop"
+    },
+    {
+      "commit": "7427251",
+      "type": "report",
+      "status": "VERIFIED_CLEAN",
+      "date": "2026-05-05",
+      "note": "filter substitution sweep; ema_slope LOAD-BEARING finding captured in project_proven_trio_architecture.md and used by forge_source_feedback.py heuristics"
+    },
+    {
+      "commit": "3023a99",
+      "type": "report",
+      "status": "VERIFIED_CLEAN",
+      "date": "2026-05-05",
+      "note": "Forge batch runner v1; actively used by daily-loop and morning digest"
+    },
+    {
+      "commit": "0056e05",
+      "type": "report",
+      "status": "VERIFIED_CLEAN",
+      "date": "2026-05-05",
+      "note": "hybrid candidate recipes; subset evaluated and registered via batch register a5d75a1"
+    },
+    {
+      "commit": "e1f7f64",
+      "type": "report",
+      "status": "VERIFIED_CLEAN",
+      "date": "2026-05-05",
+      "note": "batch cheap-screen 3 KILL + 1 RETEST; KILL outcomes captured; salvage doctrine downgraded based on this evidence"
+    },
+    {
+      "commit": "7d4f002",
+      "type": "report",
+      "status": "VERIFIED_CLEAN",
+      "date": "2026-05-05",
+      "note": "HYB-FX 0.75x FAIL salvage retire; doctrine captured in project_proven_trio_architecture.md (salvage template downgraded)"
+    },
+    {
+      "commit": "2a7f9e5",
+      "type": "report",
+      "status": "VERIFIED_CLEAN",
+      "date": "2026-05-05",
+      "note": "HYB-FX 1.0x donor-calibratable finding; captured in project_donor_portability_evidence.md"
+    },
+    {
+      "commit": "aaaf98d",
+      "type": "report",
+      "status": "VERIFIED_CLEAN",
+      "date": "2026-05-05",
+      "note": "HYB-VolMan + HYB-FX cheap-validation runs; outcomes led to DEFER decisions in batch register pre-flight"
+    },
+    {
+      "commit": "67659c7",
+      "type": "report",
+      "status": "VERIFIED_CLEAN",
+      "date": "2026-05-05",
+      "note": "HYB validation plans for HYB-FX + HYB-VolMan; plans executed; results captured in subsequent commits"
+    },
+    {
+      "commit": "e59ecd4",
+      "type": "report",
+      "status": "VERIFIED_CLEAN",
+      "date": "2026-05-05",
+      "note": "WATCH calibration follow-up; results captured in project_proven_trio_architecture.md"
+    },
+    {
+      "commit": "ddfdd37",
+      "type": "report",
+      "status": "VERIFIED_CLEAN",
+      "date": "2026-05-04",
+      "note": "harvest triage 2026-05-04 + source-yield/gap-map review; captured in project_source_quality_evidence.md"
+    },
+    {
+      "commit": "510a890",
+      "type": "report",
+      "status": "VERIFIED_CLEAN",
+      "date": "2026-05-04",
+      "note": "Checkpoint 2026-05-01 re-run: Remain in stable state; lane closed cleanly"
+    },
+    {
+      "commit": "933e6a2",
+      "type": "report",
+      "status": "DEFERRED_UNTIL_DATE",
+      "due_date": "2026-06-01",
+      "date": "2026-05-04",
+      "note": "DEFERRED_UNTIL 2026-06-01 — awaiting first-business-day Treasury-Rolldown rebalance production verification. Self-test (10 assertions) passed, but substantive production verification is the com.fql.treasury-rolldown-monthly fire on first-business-day of June."
+    },
+    {
+      "commit": "a85e9cc",
+      "type": "report",
+      "status": "ACKNOWLEDGED",
+      "date": "2026-05-06",
+      "note": "organic Forge closed-loop verification handoff; consumed 2026-05-07 morning for verification work"
+    },
+    {
+      "commit": "1919950",
+      "type": "report",
+      "status": "ACKNOWLEDGED",
+      "date": "2026-05-08",
+      "note": "progression plan 2026-05-08; operator read and critiqued; YELLOW packet items derived"
+    },
+    {
+      "commit": "6b44abe",
+      "type": "report",
+      "status": "ACKNOWLEDGED",
+      "date": "2026-05-08",
+      "note": "progression plan section 9 system-wide review coverage map cross-link; operator read"
+    },
+    {
+      "commit": "214f87f",
+      "type": "report",
+      "status": "ACKNOWLEDGED",
+      "date": "2026-05-11",
+      "note": "Patch A deferral to 2026-05-13 per operator decision; executed cleanly"
+    },
+    {
+      "commit": "68e28c1",
+      "type": "report",
+      "status": "SUPERSEDED",
+      "date": "2026-05-05",
+      "note": "Phase A autonomous evidence loop (manual CLI only); SUPERSEDED by 060012f Phase B activation"
+    },
+    {
+      "commit": "abfa0c4",
+      "type": "report",
+      "status": "SUPERSEDED",
+      "date": "2026-05-05",
+      "note": "VWAP cross-asset + operator review packet (12 candidates); SUPERSEDED by batch register a5d75a1"
+    },
+    {
+      "commit": "5ff1672",
+      "type": "report",
+      "status": "SUPERSEDED",
+      "date": "2026-05-05",
+      "note": "tail-engine smoke tests for 5 remaining candidates; evidence absorbed via batch register a5d75a1"
+    },
+    {
+      "commit": "86f2456",
+      "type": "report",
+      "status": "SUPERSEDED",
+      "date": "2026-05-04",
+      "note": "Checkpoint 2026-05-01 (Investigate anomaly first); SUPERSEDED by 510a890 (re-run with Remain decision after lane closed)"
     }
   ]
 }
