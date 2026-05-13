@@ -36,7 +36,15 @@ Outcome determines ledger update for `a95ac91` + `77e1e5f` and triggers everythi
 - `feedback_channel_vs_thesis.md` — harvest thesis ≠ harvest channel
 - `feedback_durable_artifacts_both_surfaces.md` — memory + repo for durable artifacts (the doctrine this file embodies)
 
-### 🕐 Queued for Phase 1 exit cleanup (8 items)
+### 🕐 Queued for Phase 1 exit cleanup (8 doctrine items + 3 hygiene items)
+
+**Hygiene additions (operator-elevated 2026-05-13):**
+
+- **HYG-1: Condense `project_fql_state.md`** (currently 27 KB and bloated). Reduce to current state + active queues + open future-evidence gates + next checkpoints + standing doctrine references. Move historical narrative to a separate `_HISTORY_*.md` archive doc. Prevents hidden-confusion drift on session start.
+- **HYG-2: `_DRAFT_*.md` lifecycle convention.** Decide what happens to: (a) active drafts (stay as `_DRAFT_`), (b) executed decision docs (become `_DECISION_` or move to `docs/decisions/`), (c) superseded drafts (delete or move to `docs/archive/preflights/`), (d) reusable templates (move to `docs/templates/`). Prevents docs folder bloat as pre-flight count grows.
+- **HYG-3: Decision artifact lifecycle convention.** Every major decision packet gets the lifecycle: **draft → decision → action → verification → archive/reference.** Applies to: Patch decisions, registry proposals, source-helper changes, phase exits, validation promotions, paper/live decisions. Each packet should be inspectable across all 5 stages with paired artifacts. Fits the "more truthful Forge" direction because every decision has an evidence trail and an outcome.
+
+**Doctrine items (8):**
 
 1. **UPDATE `feedback_validation_mode.md`** → rename to "Discovery-and-Validation Mode." Cheap-screen PASS is not deployment proof.
 2. **CONDENSE `feedback_assembly_architecture.md`** → keep meta-principle ("don't build recombination before validated components exist"); remove executed sequencing.
