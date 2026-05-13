@@ -63,11 +63,19 @@ Fill in below ONLY after collecting these.
 
 ## §4 Decision options (operator selects one)
 
-- ☐ **CONTINUE** — Patch A is producing diverse, on-theme leads in target factors. Keep all 10 new queries. Promote DEFERRED ledger entries to VERIFIED_CLEAN.
-- ☐ **PARTIAL TRIM** — Specific queries are returning all junk or zero useful leads. Drop those specific queries; preserve the rest. Mark trimmed queries in commit message.
-- ☐ **FULL REVERT** — Patch A's 10 new queries are not producing yield, OR junk rate spiked, OR triage rejected the new-query leads. Revert `77e1e5f` entirely.
-- ☐ **SHIFT SURFACE** — Patch A's themes are right but GitHub is the wrong channel for VALUE / CARRY (too academic; not coded). Revert GitHub-side Patch A and queue equivalent work on Reddit (Patch B) or source-yield memory / academic harvest lanes instead.
-- ☐ **WAIT** — Two fires still insufficient signal. Defer decision again to 2026-05-17 yield-shift assessment per checklist §3. Update ledger DEFERRED_UNTIL.
+**Reframe (locked 2026-05-13 morning via Lane 1 14-day forge_source_feedback dry-run):** The TRANSFER thesis is REINFORCED, not weakened, by 6 fires of evidence at MODERATE confidence. So tonight's question is NOT "Was TRANSFER wrong?" It IS:
+
+> *"Did GitHub surface TRANSFER-aligned leads under Patch A — or is TRANSFER better routed through another surface (Reddit, academic, source-yield memory)?"*
+
+That framing makes each option below trigger-precise:
+
+- ☐ **CONTINUE** — Wed fire produces clear on-theme VALUE / CARRY / VOL / STRUCTURAL leads without junk-rate deterioration. Keep all 10 new queries. Promote DEFERRED ledger entries to VERIFIED_CLEAN.
+- ☐ **PARTIAL TRIM** — A subset of Patch A queries produces junk/zero signal but others produce on-theme leads. Drop the specific underperforming queries; preserve the rest. Mark trimmed queries in commit message.
+- ☐ **SHIFT SURFACE** — Wed repeats Sunday's pattern: TRANSFER thesis remains strong (per 14-day feedback evidence), but GitHub produces broad/momentum/business-as-usual leads. Revert GitHub-side Patch A and queue equivalent work on Reddit (Patch B) or source-yield / academic harvest lanes. The thesis travels with the operator's intent; the channel does not.
+- ☐ **FULL REVERT** — Only if Patch A materially worsens GitHub intake quality (junk rate ≥50%, or triage rejection on new-query leads). Revert `77e1e5f` entirely.
+- ☐ **WAIT** — Evidence is genuinely mixed but not harmful. Defer decision again to 2026-05-17 yield-shift assessment per checklist §3. Update ledger DEFERRED_UNTIL.
+
+**Key distinction:** SHIFT SURFACE preserves the TRANSFER thesis (which is now MODERATE-confidence reinforced). FULL REVERT discards the thesis with the channel. Don't conflate the two.
 
 ---
 
