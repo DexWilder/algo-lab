@@ -17,15 +17,40 @@ Outcome determines ledger update for `a95ac91` + `77e1e5f` and triggers everythi
 
 ---
 
-## §2 — Phase 1 exit criteria status (per `_PROGRESSION_PLAN_2026-05-08.md`)
+## §2 — Phase 1 exit confirmed 2026-05-14 ✅
 
-| Criterion | Required | Current | Status |
+| Criterion | Required | Final | Status |
 |---|---|---|---|
-| Clean organic Forge fires | ≥7 | 6 (5/5, 5/6, 5/7, 5/8, 5/11, 5/12) | 7th lands tonight 5/13 19:00 PT |
-| Patch A assessment complete | — | Tonight 5/13 21:00 PT | On track |
-| Review load YELLOW or below ≥3 consecutive days | 3 | Day 3 today (Mon GREEN, Tue GREEN, Wed GREEN after closeout) | **Criterion met by EOD today** |
+| Clean organic Forge fires | ≥7 | 7 (5/5, 5/6, 5/7, 5/8, 5/11, 5/12, 5/13) | ✅ |
+| Patch A assessment complete | — | DECISION RENDERED 2026-05-14 (commit `a77dadf`); SHIFT SURFACE | ✅ |
+| Review load YELLOW or below ≥3 consecutive days | 3 | 4 (Mon GREEN / Tue GREEN / Wed GREEN-after-closeout / Thu GREEN) | ✅ |
 
-**Phase 1 exits Thu 2026-05-14 or Fri 2026-05-15** if tonight is clean.
+**Phase 1 EXITED 2026-05-14 morning.**
+
+### Phase 1 outcomes summary
+
+- ✅ Closed-loop tier 2 mature: scheduled testing → digest absorption → source-priority feedback applied
+- ✅ All Lane B governance tooling shipped: governance_audit (with acknowledgment ledger), memory hygiene audit, morning digest with snapshot mechanism, Forge → source-helpers feedback layer, monthly system review v1.1 (awaiting first organic fire 6/6)
+- ✅ Doctrine framework fully stabilized: 4-lane action model, RED/YELLOW/GREEN with recovery mode, channel-vs-thesis distinction, durable-artifacts-both-surfaces
+- ✅ Patch A SHIFT SURFACE decision proves channel-vs-thesis doctrine in production
+- ✅ 7 clean organic Forge fires; rotation working; pool of 19 candidates fully cycled
+- ✅ Registry stable at 163 (0 unauthorized mutations across Phase 1)
+- ✅ Zero tripwires fired; zero Lane A drift events
+- ✅ Operator review-load metric working (Lane 2 governance bug fix landed; acknowledgment ledger discount mechanism functioning)
+
+### Phase 2 build sequence now ELIGIBLE
+
+Per `_PROGRESSION_PLAN_2026-05-08.md` §6, Phase 2 is "Strategy factory expansion" — estimated 2026-05-19 to 2026-06-15. Three queued builds:
+
+1. **Graph-backed candidate generator** — biggest unlock; requires correlation matrix (item §4 #2) as prerequisite input
+2. **Auto candidate-pool proposer** — operator-approved drafts of pool additions
+3. **Auto-drafted pre-flight packets** — eliminates manual pre-flight authoring
+
+Per the post-Phase-1 build sequence (operator-approved 2026-05-13), the actual ORDER is the 6-item Forge build packet in §4 below, not the Phase 2 trio above. Phase 2 trio is "later" in §4 sequencing (graph generator after correlation; auto-pre-flights after that).
+
+### Cleanup packet now ACTIVE
+
+The 8 doctrine items + 3 hygiene items + 6 Forge build items + 5 monthly-review-v1.2 priority sections (§3-§5 of this doc) are now ELIGIBLE to execute. **Operator authorizes individual items; nothing auto-executes.**
 
 ---
 
