@@ -38,8 +38,7 @@ QUERIES = [
     "carry trade systematic",
     "mean reversion trading strategy",
     "value factor investing quantitative",
-    # NOTE: removed "momentum trading systematic python" 2026-05-07 per
-    # Forge feedback patch A — momentum family is overweight (55% portfolio).
+    "momentum trading systematic python",
     # Asset-specific (portfolio gaps)
     "commodity trading systematic",
     "commodity futures python",
@@ -64,23 +63,14 @@ QUERIES = [
     "value factor systematic futures",
     "earnings yield trading systematic",
     "relative value cross asset python",
-    # Forge mechanism-transfer additions (2026-05-07; per source-priority patch A pre-flight a95ac91)
-    # Forge validated `ema_slope + profit_ladder` load-bearing pair across PB/BB/VWAP entries.
-    # Transfer mechanism into UNDERWEIGHT factors instead of amplifying overweight momentum.
-    # VALUE (HIGH gap, 0c+0p):
-    "value momentum hybrid systematic",
-    "trend-filtered value strategy futures",
-    "term premium trading with regime filter",
-    "earnings yield futures systematic with momentum filter",
-    # CARRY + trend-filter (MEDIUM gap):
-    "carry strategy regime detection futures",
-    "treasury carry with EMA regime filter",
-    # VOLATILITY non-equity compression-breakout (MEDIUM gap):
-    "volatility compression breakout treasury futures",
-    "Bollinger squeeze breakout commodity futures",
-    # STRUCTURAL afternoon/close session (MEDIUM gap):
-    "afternoon session microstructure futures",
-    "treasury close auction strategy systematic",
+    # NOTE: Patch A (2026-05-07, commit 77e1e5f) added 10 TRANSFER-themed
+    # queries here. SHIFT SURFACE decision 2026-05-14 (commit f1bcb65 template)
+    # reverted them — channel-vs-thesis: TRANSFER thesis remains valid (per
+    # 14-day Forge feedback at MODERATE confidence) but GitHub search did not
+    # surface TRANSFER-aligned leads under MAX_LEADS=15 cap (Sun 5/10 + Wed
+    # 5/13 fires returned identical top-15 broad-query results; 10 of 12
+    # TRANSFER theme keywords had 0 matches both fires). TRANSFER work queued
+    # for Reddit (Patch B) / academic / source-yield channels.
 ]
 
 JUNK_KEYWORDS = ["crypto", "bitcoin", "ethereum", "defi", "nft", "spot forex",

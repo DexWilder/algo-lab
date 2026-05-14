@@ -1,6 +1,14 @@
+# DECISION RENDERED 2026-05-14 — Patch A Second-Fire Review
+
+**Status:** ✅ DECISION RENDERED 2026-05-14 morning. Operator-approved SHIFT SURFACE. Executed 2026-05-14 in commit chain.
+
+(File retains `_DRAFT_` prefix pending HYG-2 lifecycle convention from `docs/_BACKLOG_post_patch_a_and_phase_1_exit.md` §3 — file will be renamed to `_DECISION_` per Phase 1 exit cleanup work.)
+
+---
+
 # Pre-Flight Template: Patch A Second-Fire Decision (2026-05-13 evening)
 
-**Status:** TEMPLATE — to be filled in by operator after Wed 2026-05-13 20:00 PT source-helpers fire #2 data lands.
+**Original status:** TEMPLATE — to be filled in by operator after Wed 2026-05-13 20:00 PT source-helpers fire #2 data lands.
 **Authority:** T2 (operator-gated decision).
 **Lane:** B (Forge / harvest).
 **Scope of decision:** stays / trims / reverts the source-priority Patch A applied 2026-05-07 (commit `77e1e5f`).
@@ -38,26 +46,26 @@ Fill in below ONLY after collecting these.
 
 ---
 
-## §3 Second-fire data (TO BE FILLED IN)
+## §3 Second-fire data (FILLED IN 2026-05-14 morning)
 
-- Total GitHub leads: ___ / 15 cap
-- Junk count: ___
-- Theme keyword matches:
-  - value: ___
-  - term premium: ___
-  - earnings yield: ___
-  - PPP: ___
-  - carry: ___
-  - regime detection: ___
-  - trend filter: ___
-  - compression: ___
-  - Bollinger: ___
-  - afternoon session: ___
-  - close auction: ___
-  - microstructure: ___
-- Cross-fire: ___ unique new leads / ___ duplicates of Sun
-- Triage outcomes for Sun 5/10 leads: ___ ACCEPT / ___ COMPONENT / ___ REJECT
-- New observations vs first-fire: ___
+- Total GitHub leads: **14 / 15 cap**
+- Junk count: **4** (1 each: crypto, bitcoin, ethereum, defi — same as Sun)
+- Theme keyword matches (across full file):
+  - value: **2** (same as Sun)
+  - term premium: **0**
+  - earnings yield: **0**
+  - PPP: **0**
+  - carry: **0**
+  - regime detection: **0**
+  - trend filter: **0**
+  - compression: **0**
+  - Bollinger: **1** (same as Sun)
+  - afternoon session: **0**
+  - close auction: **0**
+  - microstructure: **0**
+- Cross-fire: **0 unique new leads / 14 duplicates** of Sun (top 8 repo names IDENTICAL)
+- Triage outcomes for Sun 5/10 leads: not yet classified at decision time (Mon harvest cycle didn't pull from Sun's leads materially)
+- New observations vs first-fire: **Wed leads are LITERALLY IDENTICAL to Sun's set** — same top-8 repos by stars, identical keyword counts, identical junk count. Confirmation that GitHub-search ranking returns the same top-15 broad-query results regardless of the 10 added TRANSFER queries.
 
 ---
 
@@ -71,7 +79,7 @@ That framing makes each option below trigger-precise:
 
 - ☐ **CONTINUE** — Wed fire produces clear on-theme VALUE / CARRY / VOL / STRUCTURAL leads without junk-rate deterioration. Keep all 10 new queries. Promote DEFERRED ledger entries to VERIFIED_CLEAN.
 - ☐ **PARTIAL TRIM** — A subset of Patch A queries produces junk/zero signal but others produce on-theme leads. Drop the specific underperforming queries; preserve the rest. Mark trimmed queries in commit message.
-- ☐ **SHIFT SURFACE** — Wed repeats Sunday's pattern: TRANSFER thesis remains strong (per 14-day feedback evidence), but GitHub produces broad/momentum/business-as-usual leads. Revert GitHub-side Patch A and queue equivalent work on Reddit (Patch B) or source-yield / academic harvest lanes. The thesis travels with the operator's intent; the channel does not.
+- ☑ **SHIFT SURFACE** — Wed repeats Sunday's pattern: TRANSFER thesis remains strong (per 14-day feedback evidence), but GitHub produces broad/momentum/business-as-usual leads. Revert GitHub-side Patch A and queue equivalent work on Reddit (Patch B) or source-yield / academic harvest lanes. The thesis travels with the operator's intent; the channel does not. **← OPERATOR-SELECTED 2026-05-14**
 - ☐ **FULL REVERT** — Only if Patch A materially worsens GitHub intake quality (junk rate ≥50%, or triage rejection on new-query leads). Revert `77e1e5f` entirely.
 - ☐ **WAIT** — Evidence is genuinely mixed but not harmful. Defer decision again to 2026-05-17 yield-shift assessment per checklist §3. Update ledger DEFERRED_UNTIL.
 
@@ -79,51 +87,56 @@ That framing makes each option below trigger-precise:
 
 ---
 
-## §5 Recommendation (TO BE FILLED IN AFTER DATA REVIEW)
+## §5 Recommendation (FILLED IN 2026-05-14)
 
-**Selected decision:** ___
+**Selected decision:** **SHIFT SURFACE**
 
-**Reasoning:**
-___
+**Reasoning:** The TRANSFER thesis remains valid and is reinforced by the 14-day Forge feedback evidence (MODERATE confidence; `ema_slope + profit_ladder` load-bearing pair confirmed across PB/BB/VWAP entries on multiple assets). However, GitHub search did not surface TRANSFER-aligned leads under Patch A. Two source-helper fires (Sun 5/10 + Wed 5/13) produced essentially identical results: 14 leads each, identical top-15 repos by stars, 10 of 12 TRANSFER theme keywords with 0 matches both fires, junk count unchanged at 4. The diagnosis is **channel/surface fit failure, not thesis failure**. The 10 new TRANSFER queries either return zero results (terms too academic for GitHub repo descriptions) or return repos that don't beat the broader queries' top-15 by stars under the MAX_LEADS=15 cap.
+
+The thesis-vs-channel distinction (locked in `feedback_channel_vs_thesis.md` 2026-05-13 morning) directly enabled this decision. Without it, the data could have been misread as "TRANSFER is wrong" — leading to a FULL REVERT that discarded both channel and thesis. SHIFT SURFACE preserves the validated thesis for redeployment to channels better suited to academic/niche concept harvesting.
 
 ---
 
 ## §6 Strongest counter-argument (REQUIRED — challenge layer)
 
-What is the best case AGAINST the selected decision? Be honest. If you can't construct a real counter, the decision may be overconfident.
+**Best case AGAINST SHIFT SURFACE:** Two source-helper fires (3-day gap) is a small sample; the pattern of "identical top-15" might be coincidence rather than structural channel-fit failure. A third fire on Sunday 5/17 might surface something different. Reverting now removes the 10 queries before we've seen them get a fair chance under different conditions (e.g., what if a hot new repo on a TRANSFER theme gets indexed next week?).
 
-___
+**Why we proceed anyway:** The "different conditions" scenario is ~5% likely versus ~95% likely the structural cap-crowd-out continues. Even if we waited, the SHIFT SURFACE decision would be the same eventually; running 3 more fires only confirms the pattern. The cost of waiting (1 more week of noise) exceeds the cost of acting now (revert is single-line, trivially reversible if Sun 5/17 shows new pattern).
 
 ---
 
 ## §7 What would prove this decision wrong
 
-Specific observable evidence over the next 1-4 weeks that would indicate the decision was incorrect:
+Specific observable evidence over the next 1-4 weeks:
 
-- ___
-- ___
-- ___
+- Reddit Patch B (when implemented) ALSO produces zero TRANSFER-themed leads → suggests the THESIS, not the channel, is wrong; need to re-evaluate the 14-day feedback that reinforced the thesis
+- Academic source channel ALSO fails to surface TRANSFER concepts → same as above, but with a third channel datapoint
+- Forge feedback over the next 30 days SHIFTS away from TRANSFER recommendation → thesis may be losing strength as more PASS evidence accumulates in different patterns
+- Triage of the 14 GitHub leads (when it happens) shows several were actually on-theme but I missed them in keyword search → keyword analysis was too narrow
 
 ---
 
 ## §8 Reversal criteria
 
-Under what conditions would we reverse this decision? Be specific (data thresholds, time horizons, evidence types):
+Under what conditions would we reverse SHIFT SURFACE and re-add the GitHub queries?
 
-- ___
-- ___
+- A different channel (Reddit B / academic / source-yield memory) demonstrates that the TRANSFER thesis IS productive when given the right surface — at which point we'd reconsider whether GitHub deserves a more carefully-tuned query set, not a blanket re-add
+- GitHub search algorithm changes materially (e.g., repo ranking changes; new TRANSFER-themed repos achieve top-15 stars) → could revisit
+- We add `MAX_LEADS=30` or higher as a separate decision → at higher cap the new queries' results might surface beneath the broad-query top-15. NOT recommended without separate pre-flight.
 
 ---
 
-## §9 Application sequence (only if decision requires code change)
+## §9 Application sequence (executed 2026-05-14)
 
-For decisions other than WAIT, document the exact commands or edits needed:
-
+```bash
+# 1. Edit scripts/fetch_github_leads.py — remove the 10 added queries; restore "momentum trading systematic python"
+# 2. Verify: python3 -c "import importlib.util; ..." → 30 queries restored
+# 3. Update _acknowledgments.json:
+#    - a95ac91: DEFERRED_UNTIL → SUPERSEDED, note SHIFT SURFACE decision
+#    - 77e1e5f: DEFERRED_UNTIL → SUPERSEDED, note GitHub-side revert
+# 4. Single bundled commit: revert + ledger + decision template fill-in
+# 5. No other surfaces touched
 ```
-# (fill in if applicable)
-```
-
-If WAIT: update ledger DEFERRED_UNTIL date to 2026-05-17, no other changes.
 
 ---
 

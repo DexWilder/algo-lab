@@ -67,18 +67,16 @@
     {
       "commit": "a95ac91",
       "type": "preflight",
-      "status": "DEFERRED_UNTIL_DATE",
-      "due_date": "2026-05-13",
+      "status": "SUPERSEDED",
       "date": "2026-05-07",
-      "note": "source-priority Patch A pre-flight. First-fire (2026-05-10) review: WAIT FOR WEDNESDAY per operator. First fire produced 14 GH leads but 10/12 TRANSFER themes had 0 keyword matches; possibly broad-query crowd-out under MAX_LEADS=15 cap. Defer substantive decision to second source-helper fire 2026-05-13."
+      "note": "source-priority Patch A pre-flight. RESOLVED 2026-05-14 via SHIFT SURFACE decision (filled-in template at docs/_DRAFT_2026-05-13_patch_a_second_fire_decision.md). Two source-helper fires (5/10 + 5/13) produced identical results: 10 of 12 TRANSFER themes 0 matches; structural channel-fit failure under MAX_LEADS=15 cap, NOT thesis failure. TRANSFER thesis remains valid; queued for Reddit/academic/source-yield channels."
     },
     {
       "commit": "77e1e5f",
       "type": "report",
-      "status": "DEFERRED_UNTIL_DATE",
-      "due_date": "2026-05-13",
+      "status": "SUPERSEDED",
       "date": "2026-05-07",
-      "note": "Patch A applied (fetch_github_leads.py QUERIES). First-fire (2026-05-10) showed weak on-theme signal but decision is WAIT FOR WEDNESDAY (one data point insufficient; failure mode may be query crowd-out under cap, not bad queries). No revert. Re-evaluate after 2026-05-13 source-helper fire #2."
+      "note": "Patch A applied (fetch_github_leads.py QUERIES +10 / -1). REVERTED 2026-05-14 per SHIFT SURFACE decision. GitHub queries restored to pre-Patch-A baseline (30 queries, 'momentum trading systematic python' restored, 10 TRANSFER queries removed). Channel-vs-thesis distinction held: GitHub-search ranking was the wrong surface for academic/niche TRANSFER concepts, not the thesis."
     },
     {
       "commit": "cc18ce7",
