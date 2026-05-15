@@ -285,13 +285,27 @@ def _select_top(n: int):
     return selected
 
 
+# Evidence tier label — applied forward-only to all verdicts produced by this
+# runner (per Phase 2 Item #1, 2026-05-15). The Forge produces cheap-screen
+# evidence; PASS/WATCH/KILL/RETEST verdicts here are NOT validated edge.
+# See feedback_durable_artifacts_both_surfaces.md and the
+# "more truthful Forge before more productive Forge" doctrine.
+EVIDENCE_TIER = "Cheap Screen Tier"
+
+
+def _label_verdict(v: str) -> str:
+    """Wrap a raw verdict (PASS/WATCH/KILL/RETEST) with its evidence tier.
+    Forward-only: applies to new reports; historical reports unchanged."""
+    return f"{v} — {EVIDENCE_TIER}"
+
+
 def render_table(rows):
     """Markdown result table."""
-    lines = ["| Candidate | Asset | Gap | n | PF | Net PnL | Max DD | Verdict |",
+    lines = ["| Candidate | Asset | Gap | n | PF | Net PnL | Max DD | Verdict (tier) |",
              "|---|---|---|---:|---:|---:|---:|---|"]
     for cid, info, m, v in rows:
         lines.append(f"| {cid} | {info['asset']} | {info['gap']} | {m['n']} | "
-                     f"{m['pf']:.3f} | {m['net']:.0f} | {m['max_dd']:.0f} | {v} |")
+                     f"{m['pf']:.3f} | {m['net']:.0f} | {m['max_dd']:.0f} | {_label_verdict(v)} |")
     return "\n".join(lines)
 
 

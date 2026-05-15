@@ -37,6 +37,7 @@ sys.path.insert(0, str(ROOT))
 # definitions, verdict logic, metrics computation.
 from research.fql_forge_batch_runner import (  # noqa: E402
     CANDIDATES, _xb_swap, _metrics, _verdict, _select_top,
+    EVIDENCE_TIER, _label_verdict,
 )
 
 REPORTS_DIR = ROOT / "research" / "data" / "fql_forge" / "reports"
@@ -144,13 +145,14 @@ def _write_reports(rows, run_mode: str, runtime_total: float):
     md.append(f"**Run mode:** {run_mode}")
     md.append(f"**Total runtime:** {runtime_total:.1f}s")
     md.append(f"**Candidates tested:** {len(rows)}")
-    md.append(f"**Verdict counts:** {counts}\n")
+    md.append(f"**Verdict counts:** {counts}")
+    md.append(f"**Evidence tier:** {EVIDENCE_TIER} — verdicts are cheap-screen surfacing, NOT validated edge. See `feedback_durable_artifacts_both_surfaces.md` and the post-Phase-1 doctrine: Forge currently produces cheap-screen evidence, not validated edge evidence.\n")
     md.append("## Per-candidate results\n")
-    md.append("| Candidate | Asset | Gap | n | PF | Net PnL | Max DD | Runtime | Verdict |")
+    md.append("| Candidate | Asset | Gap | n | PF | Net PnL | Max DD | Runtime | Verdict (tier) |")
     md.append("|---|---|---|---:|---:|---:|---:|---:|---|")
     for cid, info, m, v, rt in rows:
         md.append(f"| {cid} | {info['asset']} | {info['gap']} | {m['n']} | "
-                  f"{m['pf']:.3f} | {m['net']:.0f} | {m['max_dd']:.0f} | {rt:.1f}s | {v} |")
+                  f"{m['pf']:.3f} | {m['net']:.0f} | {m['max_dd']:.0f} | {rt:.1f}s | {_label_verdict(v)} |")
     md.append("")
     md.append("## Architecture trends\n")
     pass_assets = [info["asset"] for cid, info, m, v, rt in rows if v == "PASS"]
