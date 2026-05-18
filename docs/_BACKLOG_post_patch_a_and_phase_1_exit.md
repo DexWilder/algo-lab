@@ -88,27 +88,102 @@ The 8 doctrine items + 3 hygiene items + 6 Forge build items + 5 monthly-review-
 
 ---
 
-## §4 — Forge build packet (apply after Phase 1 exit, in this order)
+## §4 — Phase 2: PAPER-READINESS SPRINT (reframed 2026-05-18)
 
-Three-party convergence (Claude + GPT + operator) on the post-Phase-1 build sequence:
+**Reframe locked 2026-05-18:** Phase 2 is no longer "better Forge infrastructure." It is a **30-day Paper-Readiness Sprint** with one scoreboard:
 
-| # | Item | Lane | Effort |
+> **"How many candidates moved closer to paper trading?"**
+
+NOT: commits per day / reports generated / governance cleanliness / registry size / doctrine count. See `feedback_paper_readiness_sprint.md` for the full doctrine.
+
+**Deliverable:** 1-3 paper-readiness packets within 30 days (target: by 2026-06-17).
+
+**Each packet:** APPROVE / DEFER / REJECT decision with evidence tier, correlation analysis, cost-adjusted metrics, walk-forward outcome, concentration check, promotion humility section, failure modes, remaining blockers.
+
+### Candidate-readiness scoring (13 pts)
+
+| Gate | Weight |
+|---|---:|
+| Cheap-screen PASS | 1 |
+| Correlation cleared (not duplicate) | 1 |
+| Cost-adjusted net PF ≥ 1.15 | 2 |
+| Walk-forward H1/H2 > 1.0 | 3 |
+| Trade count adequate | 1 |
+| Concentration check passed | 2 |
+| Forward-runner trades ≥30 | 2 |
+| Promotion humility packet | 1 |
+
+≥10 pts qualifies for paper consideration; ≥8 pts qualifies for DEFER decision; current 12 candidates at 1/13 each.
+
+### Sprint sequence (~9.5 sessions over 30 days)
+
+| # | Step | Sessions | Status |
 |---|---|---|---|
-| 1 | **Evidence-tier labels in all Forge reports** — `PASS — Cheap Screen Tier` etc. Forward-only (no historical rewrite). | Lane 2 | ~30 min |
-| 2 | **Correlation matrix in cheap-screen + retroactive run on the 12 forge-hybrid registry entries** — Lane 2 for analysis; Lane 3 if registry reclassification needed | Lane 2 | ~1 session |
-| 3 | **Cost/slippage model with edge cushion** — gross PF / net PF / avg trade / cost % / minimum edge cushion (slippage multiplier where PF crosses 1.0) | Lane 2 | ~1 session |
-| 4 | **Pool hygiene** — fix `donchian_breakout` engine bug; add reproducibility tracking (random seed? data refresh? code drift?) | Lane 2 | ~1 session |
-| 5 | **Stale-WATCH thresholds + mutation lane v0** — 2 = low-yield flag, 3 = prune/mutate/hold decision, 4 = auto-remove unless overridden | Lane 1-2 | ~1 session |
-| 6 | **Minimal validation funnel v0** — H1/H2 split, walk-forward/OOS, cost model, trade-count minimum, correlation check, session/regime/year concentration. Not the whole cathedral. | Lane 3-4 | ~4 sessions |
+| 1 | Evidence-tier labels in Forge reports | — | ✅ DONE (commit `17b98a2`, verified 2026-05-15) |
+| 2 | Correlation matrix on 12 registered 2026-05-06 candidates | 1 | Spec locked 2026-05-18 (this conversation §1-§8) |
+| 3 | Deduplicate the 12 into a clean candidate set | (part of #2) | Output of #2; do NOT pick top-3 from raw 12 |
+| 4 | Lock 2 doctrine items (memory only, no big build): evidence hierarchy + promotion humility | 0.5 | Required for paper packets |
+| 5 | Cost/slippage model: gross PF / net PF / avg trade / cost % / minimum edge cushion | 1 | |
+| 6 | Minimal pool hygiene: donchian fix + reproducibility flag | 0.5 | Don't expand scope |
+| 7 | **Validation funnel v0** — heaviest item | 4 | H1/H2 + cost-adjusted PF + trade count + max DD + concentration + correlation re-check |
+| 8 | Select top-3 candidates from clean + validated set | 0.5 | |
+| 9 | Produce 3 paper-readiness packets | 2 | THE DELIVERABLE |
 
-### Restrictions during this packet
+### Three refinements locked into the sequence
+
+1. **Deduplicate before top-3** — XB-ORB-Chandelier-MNQ vs XB-ORB-TimeStop-MNQ are likely 85-95% correlated. Selecting top-3 from raw 12 risks fictional diversification.
+2. **Promotion humility locks BEFORE first paper packet** — the packet structure requires the doctrine.
+3. **Validation funnel v0 is the heavy/core item** — ~4 sessions of real engineering. Don't pretend it's minor.
+
+### How to apply when uncertain
+
+Ask: *"Does this commit/build move at least one candidate closer to paper-readiness scoring?"*
+- Yes → in scope
+- No → defer to post-sprint queue
+
+## §4-OLD — Prior Forge build packet (superseded 2026-05-18)
+
+The earlier 6-item build packet (originally §4) is **superseded by the Paper-Readiness Sprint above.** The items themselves remain valid; their priority shifted. The new §4 sequence above subsumes items 1-5 (evidence-tier labels, correlation, cost/slippage, pool hygiene, stale-WATCH) and explicitly adds validation funnel + paper-readiness packets.
+
+---
+
+## §4-DEFERRED — Items removed from Phase 2 sprint (resume after sprint)
+
+These were on the original §4 build packet but are now explicitly deprioritized during the 30-day sprint (per the 2026-05-18 reframe). Resume after paper packets ship.
+
+- Graph-backed candidate generator (Phase 2 unlock under prior plan)
+- Source-yield memory build
+- Monthly review v1.2 expansion (let v1.1 fire organically 6/6 without changes)
+- Stale-WATCH pruning + mutation lane v0 (resume unless blocks validation)
+- 6 of 8 doctrine cleanup items (defer; only evidence hierarchy + promotion humility lock during sprint)
+- `_DRAFT_*.md` lifecycle conventions
+- `project_fql_state.md` condensation
+- Source-helper expansion (no Patch B/C work during sprint)
+- Candidate pool expansion to 30
+
+### Restrictions during the sprint
 
 - No harvest expansion
 - No pool inflation just to hit 30
-- No registry promotion based on cheap-screen alone
-- No paper-readiness decisions
+- No registry promotion based on cheap-screen alone (paper-readiness packets ARE allowed and ARE the deliverable)
 - No graph generator before correlation exists
 - No expansion of source-helper queries beyond Patch A scope
+- No new feature work that doesn't move at least one candidate closer to paper-readiness scoring
+
+## §4-HISTORICAL — Original 6-item build packet (superseded 2026-05-18 by paper-readiness sprint)
+
+The prior §4 sequence (operator-approved 2026-05-13) was reframed on 2026-05-18 into the Paper-Readiness Sprint above. The items themselves remain in the sprint sequence — only the priority framing changed (infrastructure-first → deliverable-first). For audit purposes, the original 6-item list:
+
+| # | Item | Lane | Effort |
+|---|---|---|---|
+| 1 | Evidence-tier labels | Lane 2 | ~30 min — ✅ DONE |
+| 2 | Correlation matrix + retroactive on 12 | Lane 2 | ~1 session — now sprint step 2-3 |
+| 3 | Cost/slippage model with edge cushion | Lane 2 | ~1 session — now sprint step 5 |
+| 4 | Pool hygiene (donchian + reproducibility) | Lane 2 | ~1 session — now sprint step 6 |
+| 5 | Stale-WATCH thresholds + mutation lane | Lane 1-2 | ~1 session — DEFERRED to post-sprint |
+| 6 | Minimal validation funnel v0 | Lane 3-4 | ~4 sessions — now sprint step 7 |
+
+Net change: 5 of 6 items roll into the sprint (in slightly different sequence); 1 (stale-WATCH) defers.
 
 ---
 
