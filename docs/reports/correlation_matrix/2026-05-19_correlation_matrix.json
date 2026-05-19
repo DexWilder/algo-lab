@@ -1,0 +1,814 @@
+{
+  "date": "2026-05-19",
+  "generated": "2026-05-19T08:24:18",
+  "candidates": [
+    {
+      "cid": "XB-PB-EMA-Ladder-MNQ",
+      "asset": "MNQ",
+      "entry": "pb_pullback",
+      "filter": "ema_slope",
+      "exit": "profit_ladder",
+      "archetype": "workhorse",
+      "n_trades": 1473,
+      "pf": 1.4072298811181199,
+      "daily_days": 1473
+    },
+    {
+      "cid": "XB-PB-EMA-Ladder-MCL",
+      "asset": "MCL",
+      "entry": "pb_pullback",
+      "filter": "ema_slope",
+      "exit": "profit_ladder",
+      "archetype": "workhorse",
+      "n_trades": 1069,
+      "pf": 1.3002035982881124,
+      "daily_days": 1069
+    },
+    {
+      "cid": "XB-PB-EMA-Ladder-MYM",
+      "asset": "MYM",
+      "entry": "pb_pullback",
+      "filter": "ema_slope",
+      "exit": "profit_ladder",
+      "archetype": "tail",
+      "n_trades": 470,
+      "pf": 1.3558597460920632,
+      "daily_days": 470
+    },
+    {
+      "cid": "XB-BB-EMA-Ladder-MNQ",
+      "asset": "MNQ",
+      "entry": "bb_reversion",
+      "filter": "ema_slope",
+      "exit": "profit_ladder",
+      "archetype": "workhorse",
+      "n_trades": 671,
+      "pf": 1.249367931094958,
+      "daily_days": 671
+    },
+    {
+      "cid": "XB-BB-EMA-Ladder-MGC",
+      "asset": "MGC",
+      "entry": "bb_reversion",
+      "filter": "ema_slope",
+      "exit": "profit_ladder",
+      "archetype": "tail",
+      "n_trades": 293,
+      "pf": 1.592009673328549,
+      "daily_days": 293
+    },
+    {
+      "cid": "XB-BB-EMA-Ladder-MCL",
+      "asset": "MCL",
+      "entry": "bb_reversion",
+      "filter": "ema_slope",
+      "exit": "profit_ladder",
+      "archetype": "tail",
+      "n_trades": 462,
+      "pf": 1.2031522037936406,
+      "daily_days": 462
+    },
+    {
+      "cid": "XB-BB-EMA-Ladder-MYM",
+      "asset": "MYM",
+      "entry": "bb_reversion",
+      "filter": "ema_slope",
+      "exit": "profit_ladder",
+      "archetype": "tail",
+      "n_trades": 239,
+      "pf": 1.745063365753021,
+      "daily_days": 239
+    },
+    {
+      "cid": "XB-VWAP-EMA-Ladder-MGC",
+      "asset": "MGC",
+      "entry": "vwap_continuation",
+      "filter": "ema_slope",
+      "exit": "profit_ladder",
+      "archetype": "tail",
+      "n_trades": 375,
+      "pf": 1.289469503159765,
+      "daily_days": 375
+    },
+    {
+      "cid": "XB-VWAP-EMA-Ladder-MCL",
+      "asset": "MCL",
+      "entry": "vwap_continuation",
+      "filter": "ema_slope",
+      "exit": "profit_ladder",
+      "archetype": "workhorse",
+      "n_trades": 505,
+      "pf": 1.2758470136220748,
+      "daily_days": 505
+    },
+    {
+      "cid": "XB-VWAP-EMA-Ladder-MYM",
+      "asset": "MYM",
+      "entry": "vwap_continuation",
+      "filter": "ema_slope",
+      "exit": "profit_ladder",
+      "archetype": "tail",
+      "n_trades": 275,
+      "pf": 1.4968388589051658,
+      "daily_days": 275
+    },
+    {
+      "cid": "XB-ORB-EMA-Chandelier-MNQ",
+      "asset": "MNQ",
+      "entry": "orb_breakout",
+      "filter": "ema_slope",
+      "exit": "chandelier",
+      "archetype": "workhorse",
+      "n_trades": 1207,
+      "pf": 1.5741538435739904,
+      "daily_days": 1207
+    },
+    {
+      "cid": "XB-ORB-EMA-TimeStop-MNQ",
+      "asset": "MNQ",
+      "entry": "orb_breakout",
+      "filter": "ema_slope",
+      "exit": "time_stop",
+      "archetype": "tail",
+      "n_trades": 1207,
+      "pf": 1.5073888242722675,
+      "daily_days": 1207
+    }
+  ],
+  "pairs": [
+    {
+      "a": "XB-PB-EMA-Ladder-MNQ",
+      "b": "XB-PB-EMA-Ladder-MCL",
+      "structural": 3,
+      "pearson": 0.022655494552724774,
+      "overlap_days": 1655,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-PB-EMA-Ladder-MNQ",
+      "b": "XB-PB-EMA-Ladder-MYM",
+      "structural": 3,
+      "pearson": 0.19209581823002178,
+      "overlap_days": 1537,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-PB-EMA-Ladder-MNQ",
+      "b": "XB-BB-EMA-Ladder-MNQ",
+      "structural": 3,
+      "pearson": 0.07411738760711198,
+      "overlap_days": 1706,
+      "same_asset": true,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-PB-EMA-Ladder-MNQ",
+      "b": "XB-BB-EMA-Ladder-MGC",
+      "structural": 2,
+      "pearson": -0.010620153438072107,
+      "overlap_days": 1529,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-PB-EMA-Ladder-MNQ",
+      "b": "XB-BB-EMA-Ladder-MCL",
+      "structural": 2,
+      "pearson": -0.05650274146018764,
+      "overlap_days": 1547,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-PB-EMA-Ladder-MNQ",
+      "b": "XB-BB-EMA-Ladder-MYM",
+      "structural": 2,
+      "pearson": 0.11927746381449927,
+      "overlap_days": 1516,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-PB-EMA-Ladder-MNQ",
+      "b": "XB-VWAP-EMA-Ladder-MGC",
+      "structural": 2,
+      "pearson": 0.002355138992740818,
+      "overlap_days": 1527,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-PB-EMA-Ladder-MNQ",
+      "b": "XB-VWAP-EMA-Ladder-MCL",
+      "structural": 2,
+      "pearson": -0.011751737843097961,
+      "overlap_days": 1558,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-PB-EMA-Ladder-MNQ",
+      "b": "XB-VWAP-EMA-Ladder-MYM",
+      "structural": 2,
+      "pearson": 0.12613173024386476,
+      "overlap_days": 1519,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-PB-EMA-Ladder-MNQ",
+      "b": "XB-ORB-EMA-Chandelier-MNQ",
+      "structural": 2,
+      "pearson": 0.4619658646945636,
+      "overlap_days": 1519,
+      "same_asset": true,
+      "classification": "RELATED_VARIANT"
+    },
+    {
+      "a": "XB-PB-EMA-Ladder-MNQ",
+      "b": "XB-ORB-EMA-TimeStop-MNQ",
+      "structural": 2,
+      "pearson": 0.4310741529659853,
+      "overlap_days": 1519,
+      "same_asset": true,
+      "classification": "RELATED_VARIANT"
+    },
+    {
+      "a": "XB-PB-EMA-Ladder-MCL",
+      "b": "XB-PB-EMA-Ladder-MYM",
+      "structural": 3,
+      "pearson": -0.010422750855149647,
+      "overlap_days": 1130,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-PB-EMA-Ladder-MCL",
+      "b": "XB-BB-EMA-Ladder-MNQ",
+      "structural": 2,
+      "pearson": 0.029443258514768436,
+      "overlap_days": 1333,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-PB-EMA-Ladder-MCL",
+      "b": "XB-BB-EMA-Ladder-MGC",
+      "structural": 2,
+      "pearson": -0.010739975749584312,
+      "overlap_days": 1186,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-PB-EMA-Ladder-MCL",
+      "b": "XB-BB-EMA-Ladder-MCL",
+      "structural": 3,
+      "pearson": 0.003128428635550771,
+      "overlap_days": 1205,
+      "same_asset": true,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-PB-EMA-Ladder-MCL",
+      "b": "XB-BB-EMA-Ladder-MYM",
+      "structural": 2,
+      "pearson": 0.05409228940489669,
+      "overlap_days": 1097,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-PB-EMA-Ladder-MCL",
+      "b": "XB-VWAP-EMA-Ladder-MGC",
+      "structural": 2,
+      "pearson": 0.0016853311132589085,
+      "overlap_days": 1217,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-PB-EMA-Ladder-MCL",
+      "b": "XB-VWAP-EMA-Ladder-MCL",
+      "structural": 3,
+      "pearson": 0.338116091492469,
+      "overlap_days": 1077,
+      "same_asset": true,
+      "classification": "RELATED_VARIANT"
+    },
+    {
+      "a": "XB-PB-EMA-Ladder-MCL",
+      "b": "XB-VWAP-EMA-Ladder-MYM",
+      "structural": 2,
+      "pearson": -0.01818292253325224,
+      "overlap_days": 1099,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-PB-EMA-Ladder-MCL",
+      "b": "XB-ORB-EMA-Chandelier-MNQ",
+      "structural": 1,
+      "pearson": 0.008436124197072795,
+      "overlap_days": 1537,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-PB-EMA-Ladder-MCL",
+      "b": "XB-ORB-EMA-TimeStop-MNQ",
+      "structural": 1,
+      "pearson": -0.023921003026196982,
+      "overlap_days": 1537,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-PB-EMA-Ladder-MYM",
+      "b": "XB-BB-EMA-Ladder-MNQ",
+      "structural": 2,
+      "pearson": 0.06647031841912476,
+      "overlap_days": 976,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-PB-EMA-Ladder-MYM",
+      "b": "XB-BB-EMA-Ladder-MGC",
+      "structural": 2,
+      "pearson": -0.10696004876660209,
+      "overlap_days": 688,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-PB-EMA-Ladder-MYM",
+      "b": "XB-BB-EMA-Ladder-MCL",
+      "structural": 2,
+      "pearson": 0.01777067413647635,
+      "overlap_days": 751,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-PB-EMA-Ladder-MYM",
+      "b": "XB-BB-EMA-Ladder-MYM",
+      "structural": 3,
+      "pearson": 0.09238832648120139,
+      "overlap_days": 544,
+      "same_asset": true,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-PB-EMA-Ladder-MYM",
+      "b": "XB-VWAP-EMA-Ladder-MGC",
+      "structural": 2,
+      "pearson": 0.04343281593193928,
+      "overlap_days": 729,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-PB-EMA-Ladder-MYM",
+      "b": "XB-VWAP-EMA-Ladder-MCL",
+      "structural": 2,
+      "pearson": 0.06229110132727051,
+      "overlap_days": 795,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-PB-EMA-Ladder-MYM",
+      "b": "XB-VWAP-EMA-Ladder-MYM",
+      "structural": 3,
+      "pearson": 0.6322308904020688,
+      "overlap_days": 469,
+      "same_asset": true,
+      "classification": "HIGHLY_CORRELATED"
+    },
+    {
+      "a": "XB-PB-EMA-Ladder-MYM",
+      "b": "XB-ORB-EMA-Chandelier-MNQ",
+      "structural": 1,
+      "pearson": 0.15954896156726325,
+      "overlap_days": 1336,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-PB-EMA-Ladder-MYM",
+      "b": "XB-ORB-EMA-TimeStop-MNQ",
+      "structural": 1,
+      "pearson": 0.14060163860875075,
+      "overlap_days": 1336,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-BB-EMA-Ladder-MNQ",
+      "b": "XB-BB-EMA-Ladder-MGC",
+      "structural": 3,
+      "pearson": -0.07232249123305677,
+      "overlap_days": 831,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-BB-EMA-Ladder-MNQ",
+      "b": "XB-BB-EMA-Ladder-MCL",
+      "structural": 3,
+      "pearson": 0.002914190224317128,
+      "overlap_days": 951,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-BB-EMA-Ladder-MNQ",
+      "b": "XB-BB-EMA-Ladder-MYM",
+      "structural": 3,
+      "pearson": 0.32425400178979763,
+      "overlap_days": 801,
+      "same_asset": false,
+      "classification": "RELATED_VARIANT"
+    },
+    {
+      "a": "XB-BB-EMA-Ladder-MNQ",
+      "b": "XB-VWAP-EMA-Ladder-MGC",
+      "structural": 2,
+      "pearson": 0.03876487052191333,
+      "overlap_days": 895,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-BB-EMA-Ladder-MNQ",
+      "b": "XB-VWAP-EMA-Ladder-MCL",
+      "structural": 2,
+      "pearson": 0.07238142465614943,
+      "overlap_days": 994,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-BB-EMA-Ladder-MNQ",
+      "b": "XB-VWAP-EMA-Ladder-MYM",
+      "structural": 2,
+      "pearson": -0.030631872052510813,
+      "overlap_days": 849,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-BB-EMA-Ladder-MNQ",
+      "b": "XB-ORB-EMA-Chandelier-MNQ",
+      "structural": 2,
+      "pearson": 0.173747210512769,
+      "overlap_days": 1577,
+      "same_asset": true,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-BB-EMA-Ladder-MNQ",
+      "b": "XB-ORB-EMA-TimeStop-MNQ",
+      "structural": 2,
+      "pearson": 0.10209087046278122,
+      "overlap_days": 1577,
+      "same_asset": true,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-BB-EMA-Ladder-MGC",
+      "b": "XB-BB-EMA-Ladder-MCL",
+      "structural": 3,
+      "pearson": 0.03367310982699628,
+      "overlap_days": 678,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-BB-EMA-Ladder-MGC",
+      "b": "XB-BB-EMA-Ladder-MYM",
+      "structural": 3,
+      "pearson": 0.005789363917362203,
+      "overlap_days": 483,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-BB-EMA-Ladder-MGC",
+      "b": "XB-VWAP-EMA-Ladder-MGC",
+      "structural": 3,
+      "pearson": 0.030717729234633624,
+      "overlap_days": 575,
+      "same_asset": true,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-BB-EMA-Ladder-MGC",
+      "b": "XB-VWAP-EMA-Ladder-MCL",
+      "structural": 2,
+      "pearson": -0.04273840538219996,
+      "overlap_days": 720,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-BB-EMA-Ladder-MGC",
+      "b": "XB-VWAP-EMA-Ladder-MYM",
+      "structural": 2,
+      "pearson": -0.04738776175992357,
+      "overlap_days": 524,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-BB-EMA-Ladder-MGC",
+      "b": "XB-ORB-EMA-Chandelier-MNQ",
+      "structural": 1,
+      "pearson": -0.007444025732201788,
+      "overlap_days": 1319,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-BB-EMA-Ladder-MGC",
+      "b": "XB-ORB-EMA-TimeStop-MNQ",
+      "structural": 1,
+      "pearson": -0.007933138065306211,
+      "overlap_days": 1319,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-BB-EMA-Ladder-MCL",
+      "b": "XB-BB-EMA-Ladder-MYM",
+      "structural": 3,
+      "pearson": 0.029652591362152578,
+      "overlap_days": 602,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-BB-EMA-Ladder-MCL",
+      "b": "XB-VWAP-EMA-Ladder-MGC",
+      "structural": 2,
+      "pearson": -0.03194076111065231,
+      "overlap_days": 738,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-BB-EMA-Ladder-MCL",
+      "b": "XB-VWAP-EMA-Ladder-MCL",
+      "structural": 3,
+      "pearson": -0.021777814726298028,
+      "overlap_days": 780,
+      "same_asset": true,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-BB-EMA-Ladder-MCL",
+      "b": "XB-VWAP-EMA-Ladder-MYM",
+      "structural": 2,
+      "pearson": -0.008302856854577219,
+      "overlap_days": 625,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-BB-EMA-Ladder-MCL",
+      "b": "XB-ORB-EMA-Chandelier-MNQ",
+      "structural": 1,
+      "pearson": -0.02961976763751568,
+      "overlap_days": 1347,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-BB-EMA-Ladder-MCL",
+      "b": "XB-ORB-EMA-TimeStop-MNQ",
+      "structural": 1,
+      "pearson": -0.036976856814559894,
+      "overlap_days": 1347,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-BB-EMA-Ladder-MYM",
+      "b": "XB-VWAP-EMA-Ladder-MGC",
+      "structural": 2,
+      "pearson": 0.014280190575200576,
+      "overlap_days": 562,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-BB-EMA-Ladder-MYM",
+      "b": "XB-VWAP-EMA-Ladder-MCL",
+      "structural": 2,
+      "pearson": 0.08718294700236003,
+      "overlap_days": 653,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-BB-EMA-Ladder-MYM",
+      "b": "XB-VWAP-EMA-Ladder-MYM",
+      "structural": 3,
+      "pearson": 0.019070383465803423,
+      "overlap_days": 422,
+      "same_asset": true,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-BB-EMA-Ladder-MYM",
+      "b": "XB-ORB-EMA-Chandelier-MNQ",
+      "structural": 1,
+      "pearson": 0.2600129190931512,
+      "overlap_days": 1288,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-BB-EMA-Ladder-MYM",
+      "b": "XB-ORB-EMA-TimeStop-MNQ",
+      "structural": 1,
+      "pearson": 0.16010289912597175,
+      "overlap_days": 1288,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-VWAP-EMA-Ladder-MGC",
+      "b": "XB-VWAP-EMA-Ladder-MCL",
+      "structural": 3,
+      "pearson": 0.004383267483925598,
+      "overlap_days": 784,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-VWAP-EMA-Ladder-MGC",
+      "b": "XB-VWAP-EMA-Ladder-MYM",
+      "structural": 3,
+      "pearson": -0.004250604794939019,
+      "overlap_days": 587,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-VWAP-EMA-Ladder-MGC",
+      "b": "XB-ORB-EMA-Chandelier-MNQ",
+      "structural": 1,
+      "pearson": -0.021310346063749673,
+      "overlap_days": 1336,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-VWAP-EMA-Ladder-MGC",
+      "b": "XB-ORB-EMA-TimeStop-MNQ",
+      "structural": 1,
+      "pearson": -0.011433983056844,
+      "overlap_days": 1336,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-VWAP-EMA-Ladder-MCL",
+      "b": "XB-VWAP-EMA-Ladder-MYM",
+      "structural": 3,
+      "pearson": 0.019183427186542513,
+      "overlap_days": 674,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-VWAP-EMA-Ladder-MCL",
+      "b": "XB-ORB-EMA-Chandelier-MNQ",
+      "structural": 1,
+      "pearson": 0.038504019766206043,
+      "overlap_days": 1366,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-VWAP-EMA-Ladder-MCL",
+      "b": "XB-ORB-EMA-TimeStop-MNQ",
+      "structural": 1,
+      "pearson": 0.02878587751467768,
+      "overlap_days": 1366,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-VWAP-EMA-Ladder-MYM",
+      "b": "XB-ORB-EMA-Chandelier-MNQ",
+      "structural": 1,
+      "pearson": 0.0296256677960667,
+      "overlap_days": 1290,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-VWAP-EMA-Ladder-MYM",
+      "b": "XB-ORB-EMA-TimeStop-MNQ",
+      "structural": 1,
+      "pearson": 0.039372859819222096,
+      "overlap_days": 1290,
+      "same_asset": false,
+      "classification": "DISTINCT"
+    },
+    {
+      "a": "XB-ORB-EMA-Chandelier-MNQ",
+      "b": "XB-ORB-EMA-TimeStop-MNQ",
+      "structural": 3,
+      "pearson": 0.8825427110958023,
+      "overlap_days": 1207,
+      "same_asset": true,
+      "classification": "DUPLICATE_EXPOSURE"
+    }
+  ],
+  "proposals": [
+    {
+      "candidate": "XB-PB-EMA-Ladder-MNQ",
+      "recommendation": "KEEP_DISTINCT",
+      "reason": "No same-asset peer crosses HIGHLY_CORRELATED threshold",
+      "suggested_action": "No registry change needed"
+    },
+    {
+      "candidate": "XB-PB-EMA-Ladder-MCL",
+      "recommendation": "KEEP_DISTINCT",
+      "reason": "No same-asset peer crosses HIGHLY_CORRELATED threshold",
+      "suggested_action": "No registry change needed"
+    },
+    {
+      "candidate": "XB-PB-EMA-Ladder-MYM",
+      "recommendation": "ACKNOWLEDGE_RELATED",
+      "reason": "Same-asset highly-correlated peer(s); not duplicate but related",
+      "suggested_action": "Update relationships.related list in registry to reflect peer ties"
+    },
+    {
+      "candidate": "XB-BB-EMA-Ladder-MNQ",
+      "recommendation": "KEEP_DISTINCT",
+      "reason": "No same-asset peer crosses HIGHLY_CORRELATED threshold",
+      "suggested_action": "No registry change needed"
+    },
+    {
+      "candidate": "XB-BB-EMA-Ladder-MGC",
+      "recommendation": "KEEP_DISTINCT",
+      "reason": "No same-asset peer crosses HIGHLY_CORRELATED threshold",
+      "suggested_action": "No registry change needed"
+    },
+    {
+      "candidate": "XB-BB-EMA-Ladder-MCL",
+      "recommendation": "KEEP_DISTINCT",
+      "reason": "No same-asset peer crosses HIGHLY_CORRELATED threshold",
+      "suggested_action": "No registry change needed"
+    },
+    {
+      "candidate": "XB-BB-EMA-Ladder-MYM",
+      "recommendation": "KEEP_DISTINCT",
+      "reason": "No same-asset peer crosses HIGHLY_CORRELATED threshold",
+      "suggested_action": "No registry change needed"
+    },
+    {
+      "candidate": "XB-VWAP-EMA-Ladder-MGC",
+      "recommendation": "KEEP_DISTINCT",
+      "reason": "No same-asset peer crosses HIGHLY_CORRELATED threshold",
+      "suggested_action": "No registry change needed"
+    },
+    {
+      "candidate": "XB-VWAP-EMA-Ladder-MCL",
+      "recommendation": "KEEP_DISTINCT",
+      "reason": "No same-asset peer crosses HIGHLY_CORRELATED threshold",
+      "suggested_action": "No registry change needed"
+    },
+    {
+      "candidate": "XB-VWAP-EMA-Ladder-MYM",
+      "recommendation": "ACKNOWLEDGE_RELATED",
+      "reason": "Same-asset highly-correlated peer(s); not duplicate but related",
+      "suggested_action": "Update relationships.related list in registry to reflect peer ties"
+    },
+    {
+      "candidate": "XB-ORB-EMA-Chandelier-MNQ",
+      "recommendation": "FLAG_FOR_OPERATOR_REVIEW",
+      "reason": "Same-asset duplicate-exposure peer(s): ['XB-ORB-EMA-TimeStop-MNQ']",
+      "suggested_action": "Operator decides: KEEP both as distinct (different exits/filters retain real value) OR mark as variant_of_XB-ORB-EMA-TimeStop-MNQ"
+    },
+    {
+      "candidate": "XB-ORB-EMA-TimeStop-MNQ",
+      "recommendation": "FLAG_FOR_OPERATOR_REVIEW",
+      "reason": "Same-asset duplicate-exposure peer(s): ['XB-ORB-EMA-Chandelier-MNQ']",
+      "suggested_action": "Operator decides: KEEP both as distinct (different exits/filters retain real value) OR mark as variant_of_XB-ORB-EMA-Chandelier-MNQ"
+    }
+  ],
+  "thresholds": {
+    "duplicate": 0.85,
+    "highly_correlated": 0.6,
+    "related_variant": 0.3,
+    "min_overlap_days_for_high_confidence": 100
+  }
+}
