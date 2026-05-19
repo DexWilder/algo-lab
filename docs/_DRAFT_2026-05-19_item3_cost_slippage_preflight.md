@@ -3,9 +3,10 @@
 **Filed:** 2026-05-19
 **Authority:** T1 (pre-flight); T2 (build approval)
 **Lane:** 2 (governance fix; affects backtest interpretation AND adds fail-closed enforcement)
-**Status:** APPROVED 2026-05-19 — execute next session. **Upgraded to "cost integrity reset" scope** per operator (added Pieces E/F/G; fail-closed enforcement is now in-scope, not a follow-up). **No build today.**
+**Status:** APPROVED 2026-05-19 — execute next session. **Upgraded to "cost integrity reset" scope** per operator (added Pieces E/F/G; fail-closed enforcement is now in-scope, not a follow-up). **Piece H added same day** after plumbing inspection found the probation/promotion docs use gross/net-ambiguous PF language. **No build today.**
 **Sprint:** Phase 2 / Paper-Readiness Sprint, Item #3. Highest-priority task before pool expansion, validation funnel, or paper packets.
 **Related doctrine:** `feedback_evidence_integrity_failsafe.md` (locked 2026-05-19) — the hard rule this work enforces.
+**Execution order (operator-locked):** E → A → H → C/D/G. Piece E first so the engine fails closed before any other work touches cost-dependent code.
 
 ---
 
@@ -141,6 +142,27 @@ Pieces C and D cover probation (3) and correlation-matrix set (12). The full at-
 
 Deduplicate the union; re-score each under correct cost config; report gross-vs-net delta. Anything outside this surface (rejected, archived, idea-status-only) defers to a later sweep — not blocking the sprint.
 
+### Piece H — Patch probation/promotion docs to explicit net-PF language (~10 min, added 2026-05-19 per plumbing inspection)
+
+Surfaced 2026-05-19 in the proactive inspection follow-up: every probation/promotion gate doc currently says "PF" without a gross/net qualifier. Examples:
+
+- `docs/XB_ORB_PROBATION_FRAMEWORK.md:60` — "Forward PF ≥ 1.15"
+- `docs/XB_ORB_PROBATION_FRAMEWORK.md:75,83` — "Forward PF < 0.90 after 30+ trades" / "Forward PF < 0.80 after 50+ trades"
+- `docs/ELITE_PROMOTION_STANDARDS.md:64,101,140` — "Backtest PF: >= 1.2 / >= 1.4 / >= 1.1"
+- `docs/ELITE_PROMOTION_STANDARDS.md:78,118,159` — "Forward PF < 0.7 after N trades"
+- `docs/PROBATION_REVIEW_CRITERIA.md:50,56` — "Forward PF > 1.2" / "PF 1.0-1.2"
+
+The decision doctrine must match the engine behavior. After Piece E fail-closes the engine, the gate docs need to explicitly say **net PF (cost-adjusted)** so future operator reads can't ambiguously interpret a gross number as gate-passing.
+
+**Concrete edits:**
+
+- For every "PF" reference in a gate or threshold context: prefix with "net" or append "(cost-adjusted)"
+- Add a one-line preamble at the top of each doc: *"All PF references in this document are net (cost-adjusted) PFs. Gross PFs are not gate-eligible; see `feedback_evidence_integrity_failsafe.md`."*
+- The spread-template doc (`ELITE_PROMOTION_STANDARDS.md:241`) already says "Cost-adjusted PF" — make that the canonical phrasing across all docs.
+- No registry edits, no threshold value changes — language only.
+
+10 minutes. Doc-only. Fits in the existing Item #3 session without scope creep.
+
 ### Piece G — Formal gross-vs-net impact report (~0.25 session, added 2026-05-19)
 
 Single canonical report — `docs/reports/cost_integrity_reset/2026-MM-DD_cost_integrity_reset.md` — that aggregates the Pieces C/D/F results into the operator-required structure:
@@ -211,14 +233,16 @@ So this single 1-session item is a gate to all downstream sprint work.
 
 ## Build rule
 
-- Target **~2 sessions execution** (A+B+C+D+E+F+G). The reset is the highest-priority sprint task; the session estimate reflects scope expansion, not scope creep.
+- Target **~2 sessions execution** (A+B+C+D+E+F+G+H). The reset is the highest-priority sprint task; the session estimate reflects scope expansion, not scope creep.
+- **Execution order is operator-locked: E → A → H → C/D/G**, with B and F-tail interleaved opportunistically. Rationale: E first so the engine fails closed before any cost-dependent code runs; A second so the engine has real defaults to use; H third so the doctrine language matches engine behavior; then C/D/G produce the actual re-read evidence on a foundation that is now correct in all three layers (engine / config / doctrine).
 - Blocking vs deferrable if overrun:
-  - **Blocking (must ship before any candidate is re-quoted):** Piece A (cost config), Piece E (fail-closed enforcement), Piece C (probation re-read), Piece D (correlation set re-read), Piece G (impact report)
-  - **Deferrable to a follow-up session:** Piece B (cushion verdict layer — net PFs work without it), Piece F's "watch/monitor" tail (probation + runner + correlation set still cover the urgent surface)
+  - **Blocking (must ship before any candidate is re-quoted):** E (fail-closed enforcement), A (cost config), H (doc patch), C (probation re-read), D (correlation set re-read), G (impact report)
+  - **Deferrable to a follow-up session:** B (cushion verdict layer — net PFs work without it), F's "watch/monitor" tail (probation + runner + correlation set still cover the urgent surface)
 - Single commit per piece, atomic revert path retained per piece.
 - Piece A: explicitly document each assumption (commission, slippage tier, source) in code comments alongside the dict entry. Conservative bias: when uncertain, lean higher slippage. Document the source — operator-confirmed value, broker schedule, public CME data, etc.
 - Piece E: the `InvalidCostAssumption` exception path must be exercised by a test before any other piece is considered done.
 - Piece G: the conclusion section is the deliverable. If the per-candidate table generates but the conclusion section is empty, the report is incomplete — do not ship.
+- **Scope is now closed.** No further scope expansion during Item #3. Additional silent-default fixes belong in Item #3.5 (next session after #3).
 
 ## Hard constraint: no probation/paper/promotion decisions until the reset ships
 
