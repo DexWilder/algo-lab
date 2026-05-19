@@ -3,7 +3,7 @@
 **Filed:** 2026-05-19
 **Authority:** T1 (pre-flight); T2 (eventual build approval)
 **Lane:** B (governance / drift prevention)
-**Status:** DRAFT — narrowed spec per three-party convergence (operator + GPT + Claude) 2026-05-19. **No build today.**
+**Status:** DRAFT — narrowed spec per three-party convergence 2026-05-19; **Monitor 6 (cost-coverage) added later same day as hard requirement** per evidence-integrity doctrine. **No build today.**
 
 ---
 
@@ -39,9 +39,9 @@ If first manual run produces zero new findings beyond what existing audits surfa
 
 ---
 
-## Scope: v0 (narrowed per GPT critique)
+## Scope: v0 (narrowed per GPT critique; Monitor 6 mandatory)
 
-**5 monitors only.** Each targeted at a known failure mode that already bit us.
+**6 monitors.** Monitors 1-5 are narrowed per critique; Monitor 6 was added 2026-05-19 as a hard requirement after the silent zero-cost defaults incident.
 
 ### Monitor 1: Paper-readiness sprint progress
 
@@ -113,6 +113,25 @@ Triggers:
 ```
 
 Requires: prior-report snapshot mechanism (small JSON file `.snapshots/YYYY-MM-DD_sentinel.json`).
+
+### Monitor 6: Cost-coverage integrity (added 2026-05-19; hard requirement per `feedback_evidence_integrity_failsafe.md`)
+
+```
+For each active/probation/paper-candidate strategy:
+  - Resolve its asset
+  - Check engine/backtest.py COST_DEFAULTS for that asset
+  - If asset missing → INVALID_COST_ASSUMPTION
+  - For each candidate report generated this week:
+      - Verify the cost block is present in the report header
+      - If absent → INVALID_COST_REPORT
+
+Triggers:
+- 🔴 RED if ANY active/probation/paper candidate asset lacks cost defaults
+- 🔴 RED if ANY candidate report omits cost assumptions
+- 🟢 GREEN only when all active/probation/paper assets are configured AND all reports show explicit cost blocks
+```
+
+Not optional. This monitor is the reason Sentinel must exist at all — the silent-cost-defaults incident is the failure mode the broader Sentinel concept was supposed to prevent. Monitor 6 is the load-bearing one.
 
 ---
 

@@ -1,10 +1,11 @@
-# Pre-Flight: Item #3 — Cost/Slippage Audit + Edge-Cushion Model
+# Pre-Flight: Item #3 — **Cost Integrity Reset** (was: Cost/Slippage Audit + Edge-Cushion Model)
 
 **Filed:** 2026-05-19
 **Authority:** T1 (pre-flight); T2 (build approval)
-**Lane:** 2 (governance fix; affects backtest interpretation, not strategy logic)
-**Status:** APPROVED 2026-05-19 — execute next session. Scope finalized with Piece D added per operator. **No build today.**
-**Sprint:** Phase 2 / Paper-Readiness Sprint, Item #3.
+**Lane:** 2 (governance fix; affects backtest interpretation AND adds fail-closed enforcement)
+**Status:** APPROVED 2026-05-19 — execute next session. **Upgraded to "cost integrity reset" scope** per operator (added Pieces E/F/G; fail-closed enforcement is now in-scope, not a follow-up). **No build today.**
+**Sprint:** Phase 2 / Paper-Readiness Sprint, Item #3. Highest-priority task before pool expansion, validation funnel, or paper packets.
+**Related doctrine:** `feedback_evidence_integrity_failsafe.md` (locked 2026-05-19) — the hard rule this work enforces.
 
 ---
 
@@ -118,6 +119,44 @@ Run the cushion analyzer against the **12 correlation-matrix candidates** from I
 
 Required because the operator-stated goal is: *"Fix cost assumptions before trusting any paper-readiness ranking."* Without Piece D, Item #8 (top-3 selection) inherits the same gross-PF artifact this whole pre-flight is correcting.
 
+### Piece E — Fail-closed enforcement in engine + reports (~0.25 session, added 2026-05-19 per evidence-integrity doctrine)
+
+Engine and report layers must refuse silent zero-cost substitution for any decision-grade evaluation.
+
+- `engine/backtest.py::get_cost_params`: when called by a decision-grade caller (probation re-read, cushion analyzer, paper-readiness packet generator, runner-pool scoring) and the asset has no `COST_DEFAULTS` entry, raise `InvalidCostAssumption(asset)`. Exploration-tier callers may opt into a `allow_uncosted=True` flag with an explicit `EXPLORATION_TIER` label on the output.
+- Forge daily reports, weekly scorecard, cushion analyzer, paper-readiness packet generator: print the cost block per asset at the top of the output. Absence of cost block = report is invalid; gate the writer.
+- Tag any candidate whose evaluation tried to fall through as `INVALID_COST_ASSUMPTION` — not zero-cost.
+
+Wires in the fail-closed rule from `feedback_evidence_integrity_failsafe.md` at the only two places it matters: the engine entry point and the report writer. Without this piece, the doctrine is decoration — exactly what the doctrine-completion-fallacy rule forbids.
+
+### Piece F — Expanded re-read coverage (~0.25 session, added 2026-05-19)
+
+Pieces C and D cover probation (3) and correlation-matrix set (12). The full at-risk surface is wider:
+
+- All `active` and `core` strategies (3 core + any active per registry)
+- All `probation` strategies (8 total per current count, not just XB-ORB-Ladder MNQ/MCL/MYM)
+- All `monitor` / watch strategies (2 per current count)
+- Any strategy in the Forge runner pool (19 per supply-chain audit)
+- The 12 correlation-matrix candidates
+
+Deduplicate the union; re-score each under correct cost config; report gross-vs-net delta. Anything outside this surface (rejected, archived, idea-status-only) defers to a later sweep — not blocking the sprint.
+
+### Piece G — Formal gross-vs-net impact report (~0.25 session, added 2026-05-19)
+
+Single canonical report — `docs/reports/cost_integrity_reset/2026-MM-DD_cost_integrity_reset.md` — that aggregates the Pieces C/D/F results into the operator-required structure:
+
+**Per-candidate table:**
+| Strategy | Asset | Gross PF | Net PF | Gross PnL | Net PnL | Gross avg trade | Net avg trade | Cost % of avg trade | Rank before | Rank after | Verdict changed? |
+
+**Conclusion section (mandatory):**
+- **Unaffected candidates** — gross ≈ net, cost <5% of avg trade, no rank movement
+- **Weakened but still viable** — net PF ≥ 1.15, cushion intact, decision unchanged
+- **Marginal after costs** — net PF in [1.05, 1.15); decision packet required
+- **Failed after costs** — net PF < 1.05; decision packet required; status review queued
+- **Previous conclusions requiring revision** — explicit list of prior calls (probation ADVANCE, ranking decisions, paper-readiness claims) that the new evidence invalidates or weakens
+
+This conclusion section is the operator-readable deliverable. The per-candidate table is the audit trail.
+
 ---
 
 ## Explicitly NOT in v0
@@ -172,26 +211,33 @@ So this single 1-session item is a gate to all downstream sprint work.
 
 ## Build rule
 
-- Target ~1.25 sessions execution (A+B+C+D). If exceeded:
-  - Pieces A, C, D are blocking for sprint and must ship together.
-  - Piece B (cushion analyzer) may defer if it overruns past 0.5 session — A+C+D can still produce net PFs without the cushion verdict layer (just no GREEN/YELLOW/RED grading).
+- Target **~2 sessions execution** (A+B+C+D+E+F+G). The reset is the highest-priority sprint task; the session estimate reflects scope expansion, not scope creep.
+- Blocking vs deferrable if overrun:
+  - **Blocking (must ship before any candidate is re-quoted):** Piece A (cost config), Piece E (fail-closed enforcement), Piece C (probation re-read), Piece D (correlation set re-read), Piece G (impact report)
+  - **Deferrable to a follow-up session:** Piece B (cushion verdict layer — net PFs work without it), Piece F's "watch/monitor" tail (probation + runner + correlation set still cover the urgent surface)
 - Single commit per piece, atomic revert path retained per piece.
-- For Piece A: explicitly document each assumption (commission, slippage tier, source) in code comments alongside the dict entry, so the operator can audit assumptions without grepping.
-- For Piece D: include a side-by-side gross vs net rank-change column. The rank inversions are the operator-readable finding.
+- Piece A: explicitly document each assumption (commission, slippage tier, source) in code comments alongside the dict entry. Conservative bias: when uncertain, lean higher slippage. Document the source — operator-confirmed value, broker schedule, public CME data, etc.
+- Piece E: the `InvalidCostAssumption` exception path must be exercised by a test before any other piece is considered done.
+- Piece G: the conclusion section is the deliverable. If the per-candidate table generates but the conclusion section is empty, the report is incomplete — do not ship.
+
+## Hard constraint: no probation/paper/promotion decisions until the reset ships
+
+While Item #3 is in flight, all probation reads, paper-readiness rankings, top-3 selections, and promotion considerations are **suspended on cost-related grounds.** Existing forward trades, evidence-tier labels, and qualitative analysis remain valid; PF-dependent decisions do not. This is operator-locked.
 
 ---
 
 ## Operator decision
 
-**APPROVED 2026-05-19** — execute A+B+C+D next session. Scope adjustment per operator: added Piece D (sprint-candidate cost-aware re-read) so the 12/11 correlation-matrix set gets cost-aware scoring before Item #8 top-3 selection inherits any gross-PF artifact.
+**APPROVED 2026-05-19, upgraded same day** — execute A+B+C+D+E+F+G next session. Operator-locked scope expansion: this is now a **cost integrity reset**, not just an audit. The reset is the highest-priority sprint task before pool expansion, validation funnel, or paper packets.
 
-Guardrails locked:
-- No pool expansion before Item #3 ships
-- No Sentinel build before Item #3
+Guardrails locked (unchanged + reinforced):
+- No pool expansion before reset ships
+- No Sentinel build before reset ships
 - No status mutation (probation or otherwise) — re-reads produce decision packets, not state changes
 - No Lane A changes
 - No scheduler / source-helper changes
+- **No probation/paper/promotion PF-dependent decisions while reset is in flight**
 
 ---
 
-*Filed 2026-05-19, approved same day. Lane 2 governance/audit. Pre-flight only — execute next session per proven pre-flight pattern. Net of audit: cost is already in the engine but 11 of 17 assets run at zero — including 2 of 3 probation candidates. Item #3 fixes that, adds edge-cushion analysis, and re-reads probation + the 12 correlation-matrix candidates so the entire paper-readiness ranking sits on cost-aware evidence.*
+*Filed 2026-05-19, approved and upgraded same day. Lane 2 governance/audit + fail-closed enforcement. Pre-flight only — execute next session per proven pre-flight pattern. The reset corrects an evidence-integrity gap (11 of 17 assets ran at zero cost, including 2 of 3 probation candidates), enforces fail-closed defaults so the gap cannot silently recur, and produces a canonical impact report so the operator can see which prior conclusions need revision. After the reset, the pool-expansion 3-pick batch lands on correct cost from day one.*
