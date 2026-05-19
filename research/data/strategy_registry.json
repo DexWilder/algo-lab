@@ -1,6 +1,6 @@
 {
   "_schema_version": "2.0",
-  "_generated": "2026-05-06T05:51:55",
+  "_generated": "2026-05-19T08:33:34",
   "_description": "FQL Strategy Registry \u2014 institutional memory of all strategy ideas, tested candidates, and deployed strategies",
   "_purpose": "Preserves research knowledge, enables crossbreeding, feeds Strategy Factory",
   "strategies": [
@@ -132,9 +132,9 @@
       "last_review_date": "2026-03-15",
       "controller_state": "ACTIVE",
       "controller_action": "FULL_ON",
-      "activation_score": 0.805,
+      "activation_score": 0.725,
       "controller_reason_codes": [
-        "REGIME_MATCH_HIGH",
+        "REGIME_MATCH_MODERATE",
         "HALF_LIFE_STRENGTHENING",
         "PORTFOLIO_ADDS_VALUE",
         "LOW_REDUNDANCY",
@@ -145,7 +145,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-05-05",
+      "last_controller_date": "2026-05-18",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
@@ -253,7 +253,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-05-05",
+      "last_controller_date": "2026-05-18",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
@@ -577,7 +577,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-05-05",
+      "last_controller_date": "2026-05-18",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
@@ -3668,7 +3668,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-05-05",
+      "last_controller_date": "2026-05-18",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -4798,7 +4798,7 @@
       "activation_score": 0.675,
       "controller_reason_codes": [
         "REGIME_MATCH_LOW",
-        "HALF_LIFE_STABLE",
+        "HALF_LIFE_STRENGTHENING",
         "PORTFOLIO_NEUTRAL",
         "LOW_REDUNDANCY",
         "HEALTH_FAIL",
@@ -4808,7 +4808,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-05-05",
+      "last_controller_date": "2026-05-18",
       "half_life_status": "HEALTHY",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -5745,7 +5745,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-05-05",
+      "last_controller_date": "2026-05-18",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -5947,7 +5947,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-05-05",
+      "last_controller_date": "2026-05-18",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -6312,7 +6312,7 @@
       "controller_action": "PROBATION",
       "activation_score": 0.545,
       "controller_state": "PAPER",
-      "last_controller_date": "2026-05-05",
+      "last_controller_date": "2026-05-18",
       "execution_config": {
         "avoid_regimes": [],
         "preferred_regimes": [
@@ -6465,7 +6465,7 @@
       "promotion_date": "2026-04-06",
       "notes": "PROBATION BASELINE UPGRADED 2026-04-07 from stop=0.5 to stop=2.0 after stop-sweep study (10/10 variants clean across 0.1-3.0 range). stop=2.0 wins on both PF (1.62 vs 1.59) and DD duration. MNQ: 1183 trades, PF 1.62, PnL $50,785, top-10 22.7%, median $43.26, max DD 143 days. Cross-asset confirmed on all 4 equity-index micros. Sits inside broad stability plateau \u2014 this is a baseline selection, not a parameter fit. Edge is WR-based (60% WR, payoff 1.05). | IMPORTANT: This PF is a FLOOR, not a ceiling. target_mult and trail_mult are ignored by exit_profit_ladder (fixed 1R/2R/3R ratchets), so the edge was achieved with no functional exit tuning. Fixing the bug can only raise the family potential, never lower it.",
       "controller_action": "REDUCED_ON",
-      "last_controller_date": "2026-05-05",
+      "last_controller_date": "2026-05-18",
       "execution_config": {
         "preferred_window": [
           "09:30",
@@ -6487,7 +6487,7 @@
       },
       "controller_state": "ACTIVE",
       "prior_state": "ACTIVE",
-      "activation_score": 0.69,
+      "activation_score": 0.64,
       "controller_reason_codes": [
         "REGIME_MATCH_LOW",
         "HALF_LIFE_STRENGTHENING",
@@ -6495,7 +6495,7 @@
         "LOW_REDUNDANCY",
         "HEALTH_FAIL",
         "KILL_NONE",
-        "SESSION_DRIFT_NORMAL",
+        "SESSION_DRIFT_BROKEN",
         "TIME_WINDOW_MATCH",
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
@@ -6537,7 +6537,7 @@
       "profit_factor": 1.33,
       "portfolio_role": "workhorse",
       "controller_action": "PROBATION",
-      "last_controller_date": "2026-05-05",
+      "last_controller_date": "2026-05-18",
       "promotion_date": "2026-04-08",
       "baseline_params": {
         "stop_mult": 2.0,
@@ -6568,7 +6568,7 @@
         "LOW_REDUNDANCY",
         "HEALTH_FAIL",
         "KILL_NONE",
-        "SESSION_DRIFT_NORMAL",
+        "SESSION_DRIFT_BROKEN",
         "TIME_WINDOW_MATCH",
         "ASSET_FIT_GOOD",
         "RECENT_VOLATILE"
@@ -6604,7 +6604,7 @@
       "profit_factor": 1.67,
       "portfolio_role": "workhorse",
       "controller_action": "PROBATION",
-      "last_controller_date": "2026-05-05",
+      "last_controller_date": "2026-05-18",
       "promotion_date": "2026-04-13",
       "baseline_params": {
         "stop_mult": 2.0,
@@ -6635,14 +6635,14 @@
       "crossbreeding_eligible": false,
       "controller_state": "PROBATION",
       "prior_state": "PROBATION",
-      "activation_score": 0.53,
+      "activation_score": 0.51,
       "controller_reason_codes": [
         "REGIME_MATCH_LOW",
         "PORTFOLIO_NEUTRAL",
         "LOW_REDUNDANCY",
         "HEALTH_FAIL",
         "KILL_NONE",
-        "SESSION_DRIFT_DEGRADED",
+        "SESSION_DRIFT_BROKEN",
         "TIME_WINDOW_MATCH",
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
@@ -8335,7 +8335,7 @@
       "source": "forge_hybrid_generation_2026-05-05",
       "rule_summary": "pb_pullback entry + ema_slope filter + profit_ladder exit on MYM. stop_mult=2.0. Cheap-screen PASS on 2026-05-05; PF=1.351, n=462, net=$4044, max_DD=$-772.",
       "status": "idea",
-      "notes": "Hybrid generated via Forge runner sweep 2026-05-05. Cheap-screen verdict PASS (tail-archetype, n=462). Validated against XB-ORB-EMA-Ladder family donor pattern. Source memo: docs/fql_forge/forge_batch_2026-05-05.md. Pre-flight: docs/_DRAFT_2026-05-06_batch_register_xb_hybrids.md.",
+      "notes": "Hybrid generated via Forge runner sweep 2026-05-05. Cheap-screen verdict PASS (tail-archetype, n=462). Validated against XB-ORB-EMA-Ladder family donor pattern. Source memo: docs/fql_forge/forge_batch_2026-05-05.md. Pre-flight: docs/_DRAFT_2026-05-06_batch_register_xb_hybrids.md.\n\n2026-05-19 ACKNOWLEDGE_RELATED: peer XB-VWAP-EMA-Ladder-MYM at Pearson r=0.632 (same asset, same filter+exit, different entry). Per operator approval 2026-05-19 (correlation matrix commit 73b5df1). Cluster metadata only; status unchanged.",
       "last_review_date": "2026-05-06",
       "review_priority": "HIGH",
       "lifecycle_stage": "discovery",
@@ -8347,7 +8347,9 @@
       "relationships": {
         "parent": "XB-ORB-EMA-Ladder-MNQ",
         "children": [],
-        "related": [],
+        "related": [
+          "XB-VWAP-EMA-Ladder-MYM"
+        ],
         "salvaged_from": null,
         "components_used": [
           "pb_pullback",
@@ -8629,7 +8631,7 @@
       "source": "forge_hybrid_generation_2026-05-05",
       "rule_summary": "vwap_continuation entry + ema_slope filter + profit_ladder exit on MYM. stop_mult=2.0. Cheap-screen PASS on 2026-05-05; PF=1.488, n=271, net=$3164, max_DD=$-637.",
       "status": "idea",
-      "notes": "Hybrid generated via Forge runner sweep 2026-05-05. Cheap-screen verdict PASS (tail-archetype, n=271). Validated against XB-ORB-EMA-Ladder family donor pattern. Source memo: docs/fql_forge/vwap_cross_asset_2026-05-05.md. Pre-flight: docs/_DRAFT_2026-05-06_batch_register_xb_hybrids.md.",
+      "notes": "Hybrid generated via Forge runner sweep 2026-05-05. Cheap-screen verdict PASS (tail-archetype, n=271). Validated against XB-ORB-EMA-Ladder family donor pattern. Source memo: docs/fql_forge/vwap_cross_asset_2026-05-05.md. Pre-flight: docs/_DRAFT_2026-05-06_batch_register_xb_hybrids.md.\n\n2026-05-19 ACKNOWLEDGE_RELATED: peer XB-PB-EMA-Ladder-MYM at Pearson r=0.632 (same asset, same filter+exit, different entry). Per operator approval 2026-05-19 (correlation matrix commit 73b5df1). Cluster metadata only; status unchanged.",
       "last_review_date": "2026-05-06",
       "review_priority": "HIGH",
       "lifecycle_stage": "discovery",
@@ -8641,7 +8643,9 @@
       "relationships": {
         "parent": "XB-ORB-EMA-Ladder-MNQ",
         "children": [],
-        "related": [],
+        "related": [
+          "XB-PB-EMA-Ladder-MYM"
+        ],
         "salvaged_from": null,
         "components_used": [
           "vwap_continuation",
@@ -8671,7 +8675,7 @@
       "source": "forge_hybrid_generation_2026-05-05",
       "rule_summary": "orb_breakout entry + ema_slope filter + chandelier exit on MNQ. stop_mult=2.0. Cheap-screen PASS on 2026-05-05; PF=1.571, n=1198, net=$32471, max_DD=$-1651.",
       "status": "idea",
-      "notes": "Hybrid generated via Forge runner sweep 2026-05-05. Cheap-screen verdict PASS (workhorse-archetype, n=1198). Validated against XB-ORB-EMA-Ladder family donor pattern. Source memo: docs/fql_forge/tail_engine_pool_expansion_2026-05-05.md. Pre-flight: docs/_DRAFT_2026-05-06_batch_register_xb_hybrids.md.",
+      "notes": "Hybrid generated via Forge runner sweep 2026-05-05. Cheap-screen verdict PASS (workhorse-archetype, n=1198). Validated against XB-ORB-EMA-Ladder family donor pattern. Source memo: docs/fql_forge/tail_engine_pool_expansion_2026-05-05.md. Pre-flight: docs/_DRAFT_2026-05-06_batch_register_xb_hybrids.md.\n\n2026-05-19 cluster decision: cluster=XB-ORB-EMA-MNQ, role=cluster_leader (PF 1.574 > 1.507 TimeStop). Pearson r=0.883 with TimeStop variant. Per operator approval 2026-05-19 (correlation matrix commit 73b5df1). Cluster metadata only; status unchanged.",
       "last_review_date": "2026-05-06",
       "review_priority": "HIGH",
       "lifecycle_stage": "discovery",
@@ -8683,13 +8687,17 @@
       "relationships": {
         "parent": "XB-ORB-EMA-Ladder-MNQ",
         "children": [],
-        "related": [],
+        "related": [
+          "XB-ORB-EMA-TimeStop-MNQ"
+        ],
         "salvaged_from": null,
         "components_used": [
           "orb_breakout",
           "ema_slope",
           "chandelier"
-        ]
+        ],
+        "cluster": "XB-ORB-EMA-MNQ",
+        "cluster_role": "cluster_leader"
       },
       "component_type": "full_strategy",
       "created_date": "2026-05-06",
@@ -8713,7 +8721,7 @@
       "source": "forge_hybrid_generation_2026-05-05",
       "rule_summary": "orb_breakout entry + ema_slope filter + time_stop exit on MNQ. stop_mult=2.0. Cheap-screen PASS on 2026-05-05; PF=1.486, n=1198, net=$26858, max_DD=$-1862.",
       "status": "idea",
-      "notes": "Hybrid generated via Forge runner sweep 2026-05-05. Cheap-screen verdict PASS (tail-archetype, n=1198). Validated against XB-ORB-EMA-Ladder family donor pattern. Source memo: docs/fql_forge/tail_engine_pool_expansion_2026-05-05.md. Pre-flight: docs/_DRAFT_2026-05-06_batch_register_xb_hybrids.md.",
+      "notes": "Hybrid generated via Forge runner sweep 2026-05-05. Cheap-screen verdict PASS (tail-archetype, n=1198). Validated against XB-ORB-EMA-Ladder family donor pattern. Source memo: docs/fql_forge/tail_engine_pool_expansion_2026-05-05.md. Pre-flight: docs/_DRAFT_2026-05-06_batch_register_xb_hybrids.md.\n\n2026-05-19 cluster decision: cluster=XB-ORB-EMA-MNQ, role=retained_variant (exit-substitution evidence; not rejected). Pearson r=0.883 with Chandelier leader. Per operator approval 2026-05-19 (correlation matrix commit 73b5df1). Cluster metadata only; status unchanged.",
       "last_review_date": "2026-05-06",
       "review_priority": "HIGH",
       "lifecycle_stage": "discovery",
@@ -8725,13 +8733,17 @@
       "relationships": {
         "parent": "XB-ORB-EMA-Ladder-MNQ",
         "children": [],
-        "related": [],
+        "related": [
+          "XB-ORB-EMA-Chandelier-MNQ"
+        ],
         "salvaged_from": null,
         "components_used": [
           "orb_breakout",
           "ema_slope",
           "time_stop"
-        ]
+        ],
+        "cluster": "XB-ORB-EMA-MNQ",
+        "cluster_role": "retained_variant"
       },
       "component_type": "full_strategy",
       "created_date": "2026-05-06",
