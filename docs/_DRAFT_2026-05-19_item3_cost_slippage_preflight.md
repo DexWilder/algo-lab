@@ -3,7 +3,7 @@
 **Filed:** 2026-05-19
 **Authority:** T1 (pre-flight); T2 (build approval)
 **Lane:** 2 (governance fix; affects backtest interpretation, not strategy logic)
-**Status:** DRAFT — execute next session. **No build today.**
+**Status:** APPROVED 2026-05-19 — execute next session. Scope finalized with Piece D added per operator. **No build today.**
 **Sprint:** Phase 2 / Paper-Readiness Sprint, Item #3.
 
 ---
@@ -107,6 +107,17 @@ Re-uses existing `run_backtest` — does NOT reimplement. Just calls it with the
 
 Run the cushion analyzer against the 3 probation candidates (MNQ/MCL/MYM) explicitly. Report net PF, cushion, verdict. If MCL or MYM drops to YELLOW/RED, surface as decision packet — do NOT auto-mutate probation status.
 
+### Piece D — Sprint-candidate cost-aware re-read (~0.25 session, added by operator approval 2026-05-19)
+
+Run the cushion analyzer against the **12 correlation-matrix candidates** from Item #2 (the set that produced the 11-exposure-cluster dedup). These are the candidates feeding the top-3 selection at Item #8 — their cost-aware scoring is the gate for any paper-readiness ranking.
+
+- Re-score all 12 under the now-correct cost config
+- Emit cost-aware ranking alongside gross ranking
+- Flag any rank-inversion between gross and net (candidate that looked top-tier on gross but drops out on net) — that finding is the value
+- No registry mutation; no auto-status changes; results feed Item #8 selection only
+
+Required because the operator-stated goal is: *"Fix cost assumptions before trusting any paper-readiness ranking."* Without Piece D, Item #8 (top-3 selection) inherits the same gross-PF artifact this whole pre-flight is correcting.
+
 ---
 
 ## Explicitly NOT in v0
@@ -161,21 +172,26 @@ So this single 1-session item is a gate to all downstream sprint work.
 
 ## Build rule
 
-- Single session execution; if Piece B exceeds 0.5 session, ship A+C and queue B as separate item rather than overrun.
-- Pieces A and C are blocking for sprint; Piece B can defer if needed.
-- Single commit per piece, atomic revert path retained.
+- Target ~1.25 sessions execution (A+B+C+D). If exceeded:
+  - Pieces A, C, D are blocking for sprint and must ship together.
+  - Piece B (cushion analyzer) may defer if it overruns past 0.5 session — A+C+D can still produce net PFs without the cushion verdict layer (just no GREEN/YELLOW/RED grading).
+- Single commit per piece, atomic revert path retained per piece.
+- For Piece A: explicitly document each assumption (commission, slippage tier, source) in code comments alongside the dict entry, so the operator can audit assumptions without grepping.
+- For Piece D: include a side-by-side gross vs net rank-change column. The rank inversions are the operator-readable finding.
 
 ---
 
 ## Operator decision
 
-| Option | Decision |
-|---|---|
-| ☐ Approve as written — execute next session | Default. Pieces A+B+C in one session. |
-| ☐ Approve A+C only — defer Piece B | If cushion analyzer feels too speculative this week. |
-| ☐ Approve, but operator supplies tier 2/3 slippage estimates | Recommended if you have stronger priors on M2K/SI/HG slippage than the defaults proposed. |
-| ☐ Defer Item #3 entirely | Use only if a higher-priority issue surfaces between now and next session. |
+**APPROVED 2026-05-19** — execute A+B+C+D next session. Scope adjustment per operator: added Piece D (sprint-candidate cost-aware re-read) so the 12/11 correlation-matrix set gets cost-aware scoring before Item #8 top-3 selection inherits any gross-PF artifact.
+
+Guardrails locked:
+- No pool expansion before Item #3 ships
+- No Sentinel build before Item #3
+- No status mutation (probation or otherwise) — re-reads produce decision packets, not state changes
+- No Lane A changes
+- No scheduler / source-helper changes
 
 ---
 
-*Filed 2026-05-19. Lane 2 governance/audit. Pre-flight only — execute next session per proven pre-flight pattern. Net of audit: cost is already in the engine but 11 of 17 assets run at zero — including 2 of 3 probation candidates. Item #3 fixes that AND adds edge-cushion analysis so net PFs gate paper-readiness decisions.*
+*Filed 2026-05-19, approved same day. Lane 2 governance/audit. Pre-flight only — execute next session per proven pre-flight pattern. Net of audit: cost is already in the engine but 11 of 17 assets run at zero — including 2 of 3 probation candidates. Item #3 fixes that, adds edge-cushion analysis, and re-reads probation + the 12 correlation-matrix candidates so the entire paper-readiness ranking sits on cost-aware evidence.*
