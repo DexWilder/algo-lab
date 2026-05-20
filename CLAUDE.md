@@ -58,11 +58,13 @@ See `docs/CLAW_CATALOG_ENGINE.md` for Claw's scheduled task definitions.
 
 **Primary workhorse candidates (XB-ORB-EMA-Ladder family, promoted 2026-04-06 / 04-08 / 04-13):**
 
-| Strategy | Asset | Archetype | Baseline PF | Trades | Promoted | Status |
-|----------|-------|-----------|------------|--------|----------|--------|
-| **XB-ORB-EMA-Ladder-MNQ** | MNQ | Workhorse | 1.62 | 1183 | 2026-04-06 | Live forward |
-| **XB-ORB-EMA-Ladder-MCL** | MCL | Workhorse | 1.33 | 898  | 2026-04-08 | Live forward |
-| **XB-ORB-EMA-Ladder-MYM** | MYM | Workhorse | 1.67 | 340  | 2026-04-13 | Live forward |
+| Strategy | Asset | Archetype | Baseline PF *(prior, slip=1)* | Net PF *(post-2026-05-19, decision-authoritative)* | Trades | Promoted | Status |
+|----------|-------|-----------|-------------------------------|----------------------------------------------------|--------|----------|--------|
+| **XB-ORB-EMA-Ladder-MNQ** | MNQ | Workhorse | 1.62 | **1.62** | 1183 | 2026-04-06 | Live forward |
+| **XB-ORB-EMA-Ladder-MCL** | MCL | Workhorse | 1.33 | **1.30** *(fragile — 0.10 above gate; cost 34.7% of gross avg trade; MCL broker rates need verification before paper/prop)* | 898 | 2026-04-08 | Live forward |
+| **XB-ORB-EMA-Ladder-MYM** | MYM | Workhorse | 1.67 | **1.63** | 340 | 2026-04-13 | Live forward |
+
+> *Prior baseline PFs are retained for audit history. Post-2026-05-19 cost-consolidated net PF values (slip=2 for MCL/MYM under conservative bias) are decision-authoritative. Source: `docs/reports/cost_integrity_reset/2026-05-20_cost_integrity_impact_report.md`.*
 
 All three use the same strategy code: ORB breakout + EMA slope filter +
 profit_ladder exit with `stop_mult=2.0`. MYM was added after the intraday
