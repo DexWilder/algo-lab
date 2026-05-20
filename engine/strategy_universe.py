@@ -164,12 +164,48 @@ def get_avoid_regimes(strategy_id: str) -> list:
     return []
 
 
+class InvalidStrategyConfig(ValueError):
+    """Raised when a strategy's execution_config is incomplete for a decision-grade run.
+
+    Per FQL evidence law (CLAUDE.md): if execution_config is present (non-empty),
+    decision-affecting fields exit_variant / avoid_regimes / preferred_regimes
+    must be explicit. Silent permissive defaults are forbidden — a strategy
+    author who omits a field has not made an explicit choice, and the system
+    must not infer one on their behalf.
+    """
+
+
+_DECISION_GRADE_EXEC_FIELDS = ("exit_variant", "avoid_regimes", "preferred_regimes")
+
+
 def _build_strategy_exec_config(strategy: dict) -> dict:
     """Build a single strategy's execution config from registry data.
 
     Produces the same dict shape as entries in PORTFOLIO_CONFIG["strategies"].
+
+    Fail-closed: if `execution_config` is present and non-empty in the
+    registry entry, each of {exit_variant, avoid_regimes, preferred_regimes}
+    must be explicitly set (the value can be None / [] — intent matters).
+    Entries without an execution_config block at all default permissively
+    (legacy idea/rejected/archived entries), which is fine because they're
+    not promoted to decision-grade.
     """
-    exec_cfg = strategy.get("execution_config", {})
+    exec_cfg = strategy.get("execution_config")
+    if exec_cfg is None:
+        exec_cfg = {}
+
+    # Site 3 strict validation: if the author bothered to write execution_config,
+    # the decision-affecting fields must be explicit.
+    if exec_cfg:
+        missing = [f for f in _DECISION_GRADE_EXEC_FIELDS if f not in exec_cfg]
+        if missing:
+            raise InvalidStrategyConfig(
+                f"Strategy {strategy.get('strategy_id', '?')!r}: execution_config "
+                f"is present but missing decision-affecting fields {missing}. "
+                f"Set explicit values (None / [] for no-op intent) per FQL "
+                f"evidence law. Silent permissive defaults are forbidden."
+            )
+
     session = strategy.get("session", "all_day")
     windows = SESSION_WINDOWS.get(session, SESSION_WINDOWS["all_day"])
 

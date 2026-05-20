@@ -269,3 +269,119 @@ class TestSite5_RunnerAssetCoverage:
             "fql_forge_batch_runner must import ASSETS from engine.asset_config "
             "as its enumeration source — see Site 5 of Item #3.5."
         )
+
+
+# ── Site 3: engine/strategy_universe.py InvalidStrategyConfig ────────────────
+
+class TestSite3_InvalidStrategyConfig:
+    """_build_strategy_exec_config must fail closed when execution_config is
+    present but missing decision-affecting fields.
+
+    Operator-approved Option A (2026-05-20): registry entries with
+    execution_config blocks must explicitly set exit_variant /
+    avoid_regimes / preferred_regimes (None or [] is fine — intent must
+    be explicit). Entries without an execution_config block at all still
+    default permissively (legacy idea/rejected entries).
+    """
+
+    def test_raises_when_exec_config_missing_avoid_regimes(self):
+        from engine.strategy_universe import (
+            _build_strategy_exec_config, InvalidStrategyConfig,
+        )
+        bad = {
+            "strategy_id": "test_strat",
+            "strategy_name": "test",
+            "asset": "MES",
+            "direction": "long",
+            "execution_config": {
+                "exit_variant": None,
+                "preferred_regimes": [],
+                # avoid_regimes intentionally missing
+            },
+        }
+        with pytest.raises(InvalidStrategyConfig) as exc_info:
+            _build_strategy_exec_config(bad)
+        assert "test_strat" in str(exc_info.value)
+        assert "avoid_regimes" in str(exc_info.value)
+
+    def test_raises_when_exec_config_missing_exit_variant(self):
+        from engine.strategy_universe import (
+            _build_strategy_exec_config, InvalidStrategyConfig,
+        )
+        bad = {
+            "strategy_id": "test_strat_2",
+            "strategy_name": "test",
+            "asset": "MES",
+            "direction": "long",
+            "execution_config": {
+                "avoid_regimes": [],
+                "preferred_regimes": [],
+            },
+        }
+        with pytest.raises(InvalidStrategyConfig) as exc_info:
+            _build_strategy_exec_config(bad)
+        assert "exit_variant" in str(exc_info.value)
+
+    def test_accepts_explicit_no_op_values(self):
+        """exit_variant=None and empty lists are acceptable — intent is explicit."""
+        from engine.strategy_universe import _build_strategy_exec_config
+        good = {
+            "strategy_id": "good_strat",
+            "strategy_name": "test",
+            "asset": "MES",
+            "direction": "long",
+            "execution_config": {
+                "exit_variant": None,
+                "avoid_regimes": [],
+                "preferred_regimes": [],
+            },
+        }
+        cfg = _build_strategy_exec_config(good)
+        assert cfg["exit_variant"] is None
+        assert cfg["avoid_regimes"] == []
+        assert cfg["preferred_regimes"] == []
+
+    def test_accepts_entry_without_execution_config(self):
+        """Legacy entries without execution_config get permissive defaults."""
+        from engine.strategy_universe import _build_strategy_exec_config
+        legacy = {
+            "strategy_id": "legacy_idea",
+            "strategy_name": "test",
+            "asset": "MES",
+            "direction": "long",
+            # no execution_config field at all
+        }
+        cfg = _build_strategy_exec_config(legacy)
+        # Defaults applied — entry is not promoted to decision-grade
+        assert cfg["avoid_regimes"] == []
+
+    def test_accepts_entry_with_null_execution_config(self):
+        """execution_config=None is treated as absent (legacy entries)."""
+        from engine.strategy_universe import _build_strategy_exec_config
+        legacy = {
+            "strategy_id": "legacy_idea_null",
+            "strategy_name": "test",
+            "asset": "MES",
+            "direction": "long",
+            "execution_config": None,
+        }
+        cfg = _build_strategy_exec_config(legacy)
+        assert cfg["avoid_regimes"] == []
+
+    def test_live_registry_builds_cleanly(self):
+        """Standing guard: every registry entry must pass strict validation now."""
+        from engine.strategy_universe import (
+            _build_strategy_exec_config, get_all_strategies,
+            InvalidStrategyConfig,
+        )
+        failures = []
+        for s in get_all_strategies():
+            try:
+                _build_strategy_exec_config(s)
+            except InvalidStrategyConfig as e:
+                failures.append((s.get("strategy_id"), str(e)))
+        assert not failures, (
+            f"Live registry has {len(failures)} entries with incomplete "
+            f"execution_config: {[f[0] for f in failures]}. Add explicit "
+            f"avoid_regimes/preferred_regimes/exit_variant per Site 3 Option A."
+        )

@@ -164,9 +164,15 @@ class StrategyController:
     # ── Regime Gating ────────────────────────────────────────────────────
 
     def is_regime_allowed(self, strat_key: str, day_regime: dict) -> bool:
-        """Check if a strategy is allowed in the current regime."""
+        """Check if a strategy is allowed in the current regime.
+
+        Strategies are built by `_build_strategy_exec_config` which always
+        sets `avoid_regimes` explicitly (Site 3 fail-closed). Direct access
+        here (no `.get` default) catches any bypass that produces an
+        incomplete strategy dict.
+        """
         strat = self.strategies[strat_key]
-        avoid = set(strat.get("avoid_regimes", []))
+        avoid = set(strat["avoid_regimes"])
         if not avoid:
             return True
 
@@ -180,7 +186,7 @@ class StrategyController:
     def conviction_score(self, strat_key: str, day_regime: dict) -> int:
         """Score how many preferred regime factors are currently active (0-4)."""
         strat = self.strategies[strat_key]
-        preferred = set(strat.get("preferred_regimes", []))
+        preferred = set(strat["preferred_regimes"])
         if not preferred:
             return 2  # neutral — no preference defined
 

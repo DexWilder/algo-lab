@@ -5764,7 +5764,8 @@
         ],
         "conviction_threshold_outside": 0,
         "priority": 5,
-        "grinding_filter": false
+        "grinding_filter": false,
+        "exit_variant": null
       },
       "convergent_sources": [],
       "relationships": {
@@ -5966,7 +5967,8 @@
         ],
         "conviction_threshold_outside": 0,
         "priority": 5,
-        "grinding_filter": false
+        "grinding_filter": false,
+        "exit_variant": null
       },
       "edge_vitality": 0.5,
       "edge_vitality_tier": "STABLE",
@@ -6328,7 +6330,8 @@
         ],
         "conviction_threshold_outside": 0,
         "priority": 5,
-        "grinding_filter": false
+        "grinding_filter": false,
+        "exit_variant": null
       },
       "event_cadence": {
         "trades_per_month": 3.75,
