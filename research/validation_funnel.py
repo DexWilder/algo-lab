@@ -240,6 +240,160 @@ def gate_4_walkforward(candidate: dict) -> tuple:
     return 0, f"failed — H1 PF {wf['h1_pf']:.3f}, H2 PF {wf['h2_pf']:.3f}, worst half {wf['worst_half_pf']:.3f}"
 
 
+# ── Session 3 gates (5+6+7) ──────────────────────────────────────────────────
+
+# Archetype classification per the dual-archetype factory doctrine.
+# Sourced from existing candidate definitions (correlation_matrix.py + factory rules).
+ARCHETYPES = {
+    "XB-ORB-EMA-Ladder-MNQ": "workhorse",
+    "XB-ORB-EMA-Ladder-MCL": "workhorse",
+    "XB-ORB-EMA-Ladder-MYM": "workhorse",
+    "XB-PB-EMA-Ladder-MNQ": "workhorse",
+    "XB-PB-EMA-Ladder-MYM": "tail",
+    "XB-BB-EMA-Ladder-MNQ": "workhorse",
+    "XB-BB-EMA-Ladder-MGC": "tail",
+    "XB-BB-EMA-Ladder-MYM": "tail",
+    "XB-VWAP-EMA-Ladder-MGC": "tail",
+    "XB-VWAP-EMA-Ladder-MYM": "tail",
+    "XB-ORB-EMA-Chandelier-MNQ": "workhorse",
+    "XB-ORB-EMA-TimeStop-MNQ": "tail",
+}
+
+PROBATION_SET = {
+    "XB-ORB-EMA-Ladder-MNQ",
+    "XB-ORB-EMA-Ladder-MCL",
+    "XB-ORB-EMA-Ladder-MYM",
+}
+
+
+def gate_5_trade_count(candidate: dict) -> tuple:
+    """G5 (weight 1): workhorse ≥500 trades; tail ≥30 events.
+
+    Uses full-sample trade count from the cost integrity re-read.
+    """
+    sid = candidate["strategy_id"]
+    archetype = ARCHETYPES.get(sid, "workhorse")
+    n = candidate.get("new_trades", 0)
+    threshold = 500 if archetype == "workhorse" else 30
+    if n >= threshold:
+        return 1, f"{archetype}: {n} ≥ {threshold}"
+    return 0, f"{archetype} requires ≥ {threshold}; got {n}"
+
+
+def concentration_metrics(trades_df) -> dict:
+    """Compute top-3 / top-10 / max-year concentration on a trades_df.
+
+    Returns dict with the 3 ratios + a 'passed' boolean.
+    Gate 6 thresholds (workhorse): top-3 < 30%, top-10 < 55%, max-year < 40%.
+    """
+    if trades_df is None or len(trades_df) == 0:
+        return {"top3_pct": None, "top10_pct": None, "max_year_pct": None,
+                "passed": False, "n_trades": 0}
+    pnl = trades_df["pnl"].values
+    total = pnl.sum()
+    if total <= 0:
+        # If net is non-positive, concentration is degenerate; fail by definition
+        return {"top3_pct": None, "top10_pct": None, "max_year_pct": None,
+                "passed": False, "n_trades": int(len(pnl)),
+                "reason": "net PnL non-positive"}
+
+    sorted_pnl = sorted(pnl, reverse=True)
+    top3 = sum(sorted_pnl[:3]) / total
+    top10 = sum(sorted_pnl[:10]) / total
+
+    # Year concentration
+    trades_df_with_year = trades_df.copy()
+    trades_df_with_year["_year"] = pd.to_datetime(trades_df_with_year["entry_time"]).dt.year
+    by_year = trades_df_with_year.groupby("_year")["pnl"].sum()
+    max_year = float(by_year.max() / total) if total > 0 else 0.0
+
+    passed = (top3 < 0.30) and (top10 < 0.55) and (max_year < 0.40)
+    return {
+        "top3_pct": round(float(top3), 4),
+        "top10_pct": round(float(top10), 4),
+        "max_year_pct": round(float(max_year), 4),
+        "passed": bool(passed),
+        "n_trades": int(len(pnl)),
+    }
+
+
+def run_concentration_for(strategy_id: str) -> dict:
+    """Fresh cost-aware backtest → trades_df → concentration metrics."""
+    spec = STRATEGY_SPECS.get(strategy_id)
+    if spec is None:
+        return {"error": f"no spec for {strategy_id}"}
+
+    asset = spec["asset"]
+    data_path = ROOT / f"data/processed/{asset}_5m.csv"
+    if not data_path.exists():
+        return {"error": f"no data at {data_path}"}
+
+    df = pd.read_csv(data_path)
+    df["datetime"] = pd.to_datetime(df["datetime"])
+
+    asset_cfg = get_asset(asset)
+    signals = generate_crossbred_signals(
+        df, entry_name=spec["entry"], exit_name=spec["exit"],
+        filter_name=spec["filter"], params=spec["params"],
+    )
+    res = run_backtest(
+        df, signals, mode="both",
+        point_value=asset_cfg["point_value"], symbol=asset,
+    )
+    return concentration_metrics(res["trades_df"])
+
+
+def gate_6_concentration(candidate: dict) -> tuple:
+    """G6 (weight 2): top-3 < 30% AND top-10 < 55% AND max-year < 40%."""
+    conc = candidate.get("g6_concentration")
+    if conc is None:
+        return None, "concentration not yet computed"
+    if "error" in conc:
+        return 0, f"error: {conc['error']}"
+    if conc.get("passed"):
+        return 2, (f"top-3={conc['top3_pct']:.1%}, top-10={conc['top10_pct']:.1%}, "
+                   f"max-year={conc['max_year_pct']:.1%}")
+    # Identify which check(s) failed
+    fails = []
+    if conc.get("top3_pct") is not None and conc["top3_pct"] >= 0.30:
+        fails.append(f"top-3={conc['top3_pct']:.1%} ≥ 30%")
+    if conc.get("top10_pct") is not None and conc["top10_pct"] >= 0.55:
+        fails.append(f"top-10={conc['top10_pct']:.1%} ≥ 55%")
+    if conc.get("max_year_pct") is not None and conc["max_year_pct"] >= 0.40:
+        fails.append(f"max-year={conc['max_year_pct']:.1%} ≥ 40%")
+    return 0, "; ".join(fails) if fails else conc.get("reason", "failed")
+
+
+# Forward-runner trade counts (read from logs/trade_log.csv).
+def _forward_trade_count(strategy_id: str) -> int:
+    """Count forward-runner trades for a strategy in logs/trade_log.csv."""
+    log_path = ROOT / "logs/trade_log.csv"
+    if not log_path.exists():
+        return 0
+    df = pd.read_csv(log_path)
+    if "strategy" not in df.columns:
+        return 0
+    return int((df["strategy"] == strategy_id).sum())
+
+
+def gate_7_forward_evidence(candidate: dict) -> tuple:
+    """G7 (weight 2): probation forward trades ≥ 30; else PENDING_FORWARD_EVIDENCE.
+
+    Operator-locked 2026-05-20 framing: non-probation candidates that have
+    never had a forward opportunity are not penalized as failures. They are
+    paper-test eligible (cumulative score advances) but not promotion-eligible
+    until actual forward evidence exists.
+    """
+    sid = candidate["strategy_id"]
+    if sid not in PROBATION_SET:
+        return None, "PENDING_FORWARD_EVIDENCE — non-probation candidate, never forward-traded"
+    n_fwd = _forward_trade_count(sid)
+    candidate["g7_forward_trade_count"] = n_fwd
+    if n_fwd >= 30:
+        return 2, f"forward trades = {n_fwd} ≥ 30"
+    return 0, f"forward trades = {n_fwd} < 30 (probation forward sample insufficient)"
+
+
 # ── Gate registry ────────────────────────────────────────────────────────────
 
 SESSION_1_GATES = [
@@ -253,15 +407,19 @@ SESSION_2_GATES = [
     ("G4_walkforward_h1h2", 3, gate_4_walkforward),
 ]
 
-# Placeholder columns for Sessions 3-4 (will fill incrementally).
-SESSION_3_PLUS_GATES = [
-    ("G5_trade_count", 1, None),
-    ("G6_concentration", 2, None),
-    ("G7_forward_runner_trades", 2, None),
+# Session 3 gates (5+6+7).
+SESSION_3_GATES = [
+    ("G5_trade_count", 1, gate_5_trade_count),
+    ("G6_concentration", 2, gate_6_concentration),
+    ("G7_forward_runner_trades", 2, gate_7_forward_evidence),
+]
+
+# Placeholder for Session 4.
+SESSION_4_GATES = [
     ("G8_promotion_humility_doc", 1, None),
 ]
 
-SESSION_2_PLUS_GATES = SESSION_2_GATES + SESSION_3_PLUS_GATES
+SESSION_2_PLUS_GATES = SESSION_2_GATES + SESSION_3_GATES + SESSION_4_GATES
 
 MAX_TOTAL = sum(w for _, w, _ in SESSION_1_GATES + SESSION_2_PLUS_GATES)  # 13
 
@@ -504,14 +662,114 @@ def render_session2_report(scored, chunk_label):
     return "\n".join(out)
 
 
+def render_session3_report(scored, chunk_label):
+    today = date.today().isoformat()
+    out = []
+    out.append(f"# Validation Funnel v0 — Session 3 ({today}) — chunk: {chunk_label}")
+    out.append("")
+    out.append("**Filed by:** `research/validation_funnel.py`")
+    out.append("**Authority:** T1 intelligence; no registry mutation, no status changes.")
+    out.append("**Sprint:** Phase 2 / Paper-Readiness Sprint Item #7 — Session 3 of 4.")
+    out.append("")
+    out.append("## Gate 7 framing (operator-locked 2026-05-20)")
+    out.append("")
+    out.append("- **Probation candidates:** scored normally using actual forward-runner trade count (≥30 = 2 pts).")
+    out.append("- **Non-probation candidates:** Gate 7 = **PENDING_FORWARD_EVIDENCE**. No points awarded, no failure assigned. Paper-test eligible; not promotion/live eligible until actual forward evidence accumulates.")
+    out.append("")
+    out.append("## Per-candidate Session 3 scorecard")
+    out.append("")
+    out.append("| Candidate | Bucket | Archetype | G5 trade-count | G6 concentration | G7 forward | S3 sub | Notes |")
+    out.append("|---|---|---|---|---|---|---:|---|")
+    for c in sorted(scored, key=lambda x: -x.get("cumulative_score", 0)):
+        sid = c["strategy_id"]
+        g5 = c["scores"].get("G5_trade_count")
+        g6 = c["scores"].get("G6_concentration")
+        g7 = c["scores"].get("G7_forward_runner_trades")
+        g5_str = str(g5) if g5 is not None else "—"
+        g6_str = str(g6) if g6 is not None else "—"
+        if g7 is None:
+            g7_str = "PENDING" if sid not in PROBATION_SET else "—"
+        else:
+            g7_str = str(g7)
+        s3_sub = sum(x for x in (g5, g6, g7) if x is not None)
+        s3_max = sum(w for n, w, fn in SESSION_3_GATES
+                     if c["scores"].get(n) is not None)
+        notes = []
+        if g6 == 0:
+            notes.append(c["explanations"].get("G6_concentration", ""))
+        if g7 == 0 and sid in PROBATION_SET:
+            notes.append(c["explanations"].get("G7_forward_runner_trades", ""))
+        out.append(
+            f"| {sid} | {c['bucket']} | {ARCHETYPES.get(sid, '?')} | "
+            f"{g5_str} | {g6_str} | {g7_str} | {s3_sub}/{s3_max} | {'; '.join(notes)} |"
+        )
+    out.append("")
+    out.append("## Cumulative scores after Session 3 (S1 + S2 + S3)")
+    out.append("")
+    out.append("Max possible: 13 (probation) / 11 (non-probation, G7=PENDING).")
+    out.append("")
+    out.append("| Candidate | S1 | G4 | G5 | G6 | G7 | Cumulative | Net PF | Eligibility |")
+    out.append("|---|---:|---:|---:|---:|---|---:|---:|---|")
+    for c in sorted(scored, key=lambda x: -x.get("cumulative_score", 0)):
+        sid = c["strategy_id"]
+        s1 = c.get("session_1_score", 0)
+        g4 = c["scores"].get("G4_walkforward_h1h2") or 0
+        g5 = c["scores"].get("G5_trade_count") or 0
+        g6 = c["scores"].get("G6_concentration") or 0
+        g7_raw = c["scores"].get("G7_forward_runner_trades")
+        g7 = g7_raw if g7_raw is not None else 0
+        g7_str = "PEND" if g7_raw is None else str(g7_raw)
+        # Cumulative & max
+        cum = s1 + g4 + g5 + g6 + g7
+        max_cum = 13 if sid in PROBATION_SET else 11  # G7=PENDING removes 2 from max
+        # Eligibility classification
+        is_probation = sid in PROBATION_SET
+        if is_probation:
+            elig = "promotion-eligible" if cum >= 10 else "paper-eligible" if cum >= 8 else "REJECT"
+        else:
+            # Non-probation: paper-eligible if cum (out of 11) >= 8; promotion-eligible only after forward
+            elig_floor = 8
+            elig = "paper-eligible (promotion PEND fwd)" if cum >= elig_floor else "REJECT"
+        out.append(
+            f"| {sid} | {s1} | {g4} | {g5} | {g6} | {g7_str} | "
+            f"**{cum}/{max_cum}** | {c.get('new_pf', 0):.3f} | {elig} |"
+        )
+    out.append("")
+    out.append("## Eligibility roll-up")
+    out.append("")
+    promo = [c for c in scored if c["strategy_id"] in PROBATION_SET and c.get("cumulative_score", 0) >= 10]
+    paper = [c for c in scored
+             if (c["strategy_id"] not in PROBATION_SET and c.get("cumulative_score", 0) >= 8)
+             or (c["strategy_id"] in PROBATION_SET and 8 <= c.get("cumulative_score", 0) < 10)]
+    reject = [c for c in scored if c not in promo and c not in paper]
+    out.append(f"- **Promotion-eligible (probation, cum ≥ 10):** {len(promo)} candidate(s) — {', '.join(c['strategy_id'] for c in promo) if promo else 'none'}")
+    out.append(f"- **Paper-eligible (cum ≥ 8):** {len(paper)} candidate(s) — {', '.join(c['strategy_id'] for c in paper) if paper else 'none'}")
+    out.append(f"- **REJECT (cum < 8):** {len(reject)} candidate(s) — {', '.join(c['strategy_id'] for c in reject) if reject else 'none'}")
+    out.append("")
+    out.append("## Cluster / top-3 selection note")
+    out.append("")
+    for retained, leader in CLUSTER_RETAINED_VARIANTS.items():
+        out.append(f"- **{retained}** is retained variant of **{leader}** cluster. Both registered, one exposure slot.")
+    out.append("")
+    out.append("## Remaining (Session 4)")
+    out.append("")
+    out.append("- Gate 8: promotion humility doc check (1 pt). Doc-existence check per candidate.")
+    out.append("- After Session 4: full 13-pt scorecard for probation, 12-pt for non-probation. Inputs ready for Item #8 top-3 selection.")
+    out.append("")
+    out.append("---")
+    out.append("")
+    out.append(f"*Session 3 chunk '{chunk_label}'. Read-only intelligence; no decisions taken.*")
+    return "\n".join(out)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--save", action="store_true",
                     help="Write report + JSON to docs/reports/validation_funnel/")
-    ap.add_argument("--session", type=int, default=1, choices=[1, 2],
-                    help="Which session to run (1 = Gates 1-3; 2 = Gate 4 walk-forward)")
+    ap.add_argument("--session", type=int, default=1, choices=[1, 2, 3],
+                    help="Which session to run (1 = Gates 1-3; 2 = Gate 4 WF; 3 = Gates 5-7)")
     ap.add_argument("--chunk", default="all", choices=list(CHUNK_MAP),
-                    help="Session 2 chunk: probation / corr-top / corr-rest / timestop / all")
+                    help="Session 2/3 chunk: probation / corr-top / corr-rest / timestop / all")
     args = ap.parse_args()
 
     rows = _load_funnel_inputs()
@@ -551,6 +809,61 @@ def main():
             c["cumulative_score"] = s1 + g4
 
         report = render_session2_report(scored, args.chunk)
+    elif args.session == 3:
+        # Run Gates 5+6+7. G5 + G7 are cheap (data reads); G6 needs backtests.
+        chunk_ids = CHUNK_MAP[args.chunk]
+        print(f"Running Session 3 (Gates 5+6+7) on chunk '{args.chunk}' ({len(chunk_ids)} candidates)...\n",
+              flush=True)
+
+        # G5 (trade count) — free
+        for c in scored:
+            if c["strategy_id"] in chunk_ids:
+                pts, why = gate_5_trade_count(c)
+                c["scores"]["G5_trade_count"] = pts
+                c["explanations"]["G5_trade_count"] = why
+
+        # G6 (concentration) — backtest each
+        for c in scored:
+            if c["strategy_id"] in chunk_ids:
+                print(f"  [CONC] {c['strategy_id']} ...", flush=True)
+                c["g6_concentration"] = run_concentration_for(c["strategy_id"])
+                conc = c["g6_concentration"]
+                if "error" in conc:
+                    print(f"    → ERROR: {conc['error']}", flush=True)
+                else:
+                    pass_str = "PASS" if conc.get("passed") else "FAIL"
+                    print(f"    → top3={conc.get('top3_pct')}, top10={conc.get('top10_pct')}, "
+                          f"max-yr={conc.get('max_year_pct')} → {pass_str}", flush=True)
+                pts, why = gate_6_concentration(c)
+                c["scores"]["G6_concentration"] = pts
+                c["explanations"]["G6_concentration"] = why
+
+        # G7 (forward evidence) — log lookup
+        for c in scored:
+            if c["strategy_id"] in chunk_ids:
+                pts, why = gate_7_forward_evidence(c)
+                c["scores"]["G7_forward_runner_trades"] = pts
+                c["explanations"]["G7_forward_runner_trades"] = why
+
+        # Mark deferred candidates
+        for c in scored:
+            if c["strategy_id"] not in chunk_ids:
+                for k in ("G5_trade_count", "G6_concentration", "G7_forward_runner_trades"):
+                    if k not in c["scores"]:
+                        c["scores"][k] = None
+                        c["explanations"][k] = "deferred (different chunk)"
+
+        # Cumulative score
+        for c in scored:
+            s1 = c.get("session_1_score", 0)
+            g4 = c["scores"].get("G4_walkforward_h1h2") or 0
+            g5 = c["scores"].get("G5_trade_count") or 0
+            g6 = c["scores"].get("G6_concentration") or 0
+            g7_raw = c["scores"].get("G7_forward_runner_trades")
+            g7 = g7_raw if g7_raw is not None else 0
+            c["cumulative_score"] = s1 + g4 + g5 + g6 + g7
+
+        report = render_session3_report(scored, args.chunk)
     else:
         report = render_report(scored)
 
@@ -563,9 +876,12 @@ def main():
         if args.session == 1:
             md_path = out_dir / f"{today}_validation_funnel_session1.md"
             json_path = out_dir / f"{today}_validation_funnel_session1.json"
-        else:
+        elif args.session == 2:
             md_path = out_dir / f"{today}_validation_funnel_session2_{args.chunk}.md"
             json_path = out_dir / f"{today}_validation_funnel_session2_{args.chunk}.json"
+        else:
+            md_path = out_dir / f"{today}_validation_funnel_session3_{args.chunk}.md"
+            json_path = out_dir / f"{today}_validation_funnel_session3_{args.chunk}.json"
         md_path.write_text(report + "\n")
         json_path.write_text(json.dumps(scored, indent=2, default=str))
         print(f"\nSaved:\n  {md_path}\n  {json_path}")
