@@ -2,6 +2,8 @@
 
 *Architecture document only. No code to be built until Phase 7 paper trading completes.*
 
+> **Net PF convention (locked 2026-05-19 per `feedback_evidence_integrity_failsafe.md`):** All filter/gate-context PF references in this document mean **net PF (cost-adjusted)**. Historical PF values are retained only for audit/history; **evolution-pipeline filters and gates must use net PF.**
+
 ---
 
 ## Purpose
@@ -135,13 +137,13 @@ class CandidateStrategy:
 Candidate Strategy
     ↓
 [1] Baseline Backtest (all assets × modes)
-    ↓ Filter: PF > 1.0
+    ↓ Filter: net PF > 1.0
 [2] Transaction Cost Adjustment
     ↓ Filter: Net PF > 1.2
 [3] Top-Trade Removal
     ↓ Filter: PF stays > 1.0
 [4] Walk-Forward Split (2024 vs 2025)
-    ↓ Filter: Both periods PF > 0.8
+    ↓ Filter: Both periods net PF > 0.8
 [5] Parameter Stability (if parameterized)
     ↓ Filter: >75% of variations profitable
 [6] Bootstrap CI (10K resamples)
@@ -187,7 +189,7 @@ candidate_validated → correlation_checked → deployment_ready
 
 | Gate | Criteria |
 |------|----------|
-| baseline_tested | PF > 1.0 on at least one asset/mode |
+| baseline_tested | net PF > 1.0 on at least one asset/mode |
 | cost_adjusted | Net PF > 1.2 after commission + slippage |
 | robustness_tested | Passes top-trade, walk-forward, parameter stability |
 | candidate_validated | DSR > 0.90, bootstrap CI lower bound > 0.9 |

@@ -3,6 +3,8 @@
 *Operational rules for the governed continuous recombination lane.*
 *Established 2026-04-13 based on the XB-ORB genealogy.*
 
+> **Net PF convention (locked 2026-05-19 per `feedback_evidence_integrity_failsafe.md`):** All gate/filter-context PF references in this document mean **net PF (cost-adjusted)**. Historical PF values are retained only for audit/history; **donor-eligibility filters and quality gates must use net PF.**
+
 ---
 
 ## What Counts as a Valid Donor
@@ -16,12 +18,12 @@ A strategy or idea qualifies as a component donor when:
 
 **High-value donors** (prioritize these):
 - Components from validated strategies (xb_orb_ema_ladder's profit_ladder, ema_slope)
-- Components from rejected strategies that had PF > 1.0 on at least one asset
+- Components from rejected strategies that had net PF > 1.0 on at least one asset
 - Components from archived ideas with convergent evidence
 
 **Dead donors** (do not use):
 - Components from closed families (ICT, gap-fade, overnight premium)
-- Components that failed on ALL tested assets with PF < 0.8
+- Components that failed on ALL tested assets with net PF < 0.8
 - Components tagged `reusable_as_component: false`
 
 ---
