@@ -1,6 +1,6 @@
 {
   "_schema_version": "2.0",
-  "_generated": "2026-05-19T08:33:34",
+  "_generated": "2026-05-19",
   "_description": "FQL Strategy Registry \u2014 institutional memory of all strategy ideas, tested candidates, and deployed strategies",
   "_purpose": "Preserves research knowledge, enables crossbreeding, feeds Strategy Factory",
   "strategies": [
@@ -145,7 +145,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-05-18",
+      "last_controller_date": "2026-05-19",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
@@ -253,7 +253,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-05-18",
+      "last_controller_date": "2026-05-19",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
@@ -577,7 +577,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-05-18",
+      "last_controller_date": "2026-05-19",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
@@ -3668,7 +3668,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-05-18",
+      "last_controller_date": "2026-05-19",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -4808,7 +4808,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-05-18",
+      "last_controller_date": "2026-05-19",
       "half_life_status": "HEALTHY",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -5745,7 +5745,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-05-18",
+      "last_controller_date": "2026-05-19",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -5947,7 +5947,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-05-18",
+      "last_controller_date": "2026-05-19",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -6312,7 +6312,7 @@
       "controller_action": "PROBATION",
       "activation_score": 0.545,
       "controller_state": "PAPER",
-      "last_controller_date": "2026-05-18",
+      "last_controller_date": "2026-05-19",
       "execution_config": {
         "avoid_regimes": [],
         "preferred_regimes": [
@@ -6465,7 +6465,7 @@
       "promotion_date": "2026-04-06",
       "notes": "PROBATION BASELINE UPGRADED 2026-04-07 from stop=0.5 to stop=2.0 after stop-sweep study (10/10 variants clean across 0.1-3.0 range). stop=2.0 wins on both PF (1.62 vs 1.59) and DD duration. MNQ: 1183 trades, PF 1.62, PnL $50,785, top-10 22.7%, median $43.26, max DD 143 days. Cross-asset confirmed on all 4 equity-index micros. Sits inside broad stability plateau \u2014 this is a baseline selection, not a parameter fit. Edge is WR-based (60% WR, payoff 1.05). | IMPORTANT: This PF is a FLOOR, not a ceiling. target_mult and trail_mult are ignored by exit_profit_ladder (fixed 1R/2R/3R ratchets), so the edge was achieved with no functional exit tuning. Fixing the bug can only raise the family potential, never lower it.",
       "controller_action": "REDUCED_ON",
-      "last_controller_date": "2026-05-18",
+      "last_controller_date": "2026-05-19",
       "execution_config": {
         "preferred_window": [
           "09:30",
@@ -6477,7 +6477,10 @@
         ],
         "conviction_threshold_inside": 2,
         "conviction_threshold_outside": 2,
-        "priority": 9
+        "priority": 9,
+        "avoid_regimes": [],
+        "preferred_regimes": [],
+        "exit_variant": null
       },
       "baseline_update_date": "2026-04-07",
       "baseline_params": {
@@ -6537,7 +6540,7 @@
       "profit_factor": 1.33,
       "portfolio_role": "workhorse",
       "controller_action": "PROBATION",
-      "last_controller_date": "2026-05-18",
+      "last_controller_date": "2026-05-19",
       "promotion_date": "2026-04-08",
       "baseline_params": {
         "stop_mult": 2.0,
@@ -6555,9 +6558,12 @@
         ],
         "conviction_threshold_inside": 2,
         "conviction_threshold_outside": 2,
-        "priority": 9
+        "priority": 9,
+        "avoid_regimes": [],
+        "preferred_regimes": [],
+        "exit_variant": null
       },
-      "notes": "PROMOTED 2026-04-08 after cross-asset extension test. Same exact strategy code as XB-ORB-EMA-Ladder-MNQ (stop_mult=2.0 baseline), applied to MCL. Deep validation passed: PF 1.33, 898 trades, 5/6 years profitable, worst PF with any year removed = 1.26 (no single year carries edge), 3/4 rolling walk-forward windows pass OOS, shorts stronger than longs (fits crude supply-shock pattern), top-3 13% / top-10 37% concentration, max DD 158 days matches MNQ profile, 0 zero-trade months over 58 months, positive median trade $11.26. FILLS ENERGY GAP that could not be filled by dedicated MCL prototypes (Settlement Reversion, HV Percentile, Hedging Pressure Carry all REJECT). The winning mechanism is asset-agnostic \u2014 no MCL-specific code.",
+      "notes": "PROMOTED 2026-04-08 after cross-asset extension test. Same exact strategy code as XB-ORB-EMA-Ladder-MNQ (stop_mult=2.0 baseline), applied to MCL. Deep validation passed: PF 1.33, 898 trades, 5/6 years profitable, worst PF with any year removed = 1.26 (no single year carries edge), 3/4 rolling walk-forward windows pass OOS, shorts stronger than longs (fits crude supply-shock pattern), top-3 13% / top-10 37% concentration, max DD 158 days matches MNQ profile, 0 zero-trade months over 58 months, positive median trade $11.26. FILLS ENERGY GAP that could not be filled by dedicated MCL prototypes (Settlement Reversion, HV Percentile, Hedging Pressure Carry all REJECT). The winning mechanism is asset-agnostic \u2014 no MCL-specific code. COST-FRAGILITY-FLAG 2026-05-20: net PF 1.298 holds above 1.20 gate under conservative cost assumptions, but margin is thin and MCL-specific broker rates need verification before paper/prop.",
       "controller_state": "PROBATION",
       "prior_state": "PROBATION",
       "activation_score": 0.42,
@@ -6571,7 +6577,7 @@
         "SESSION_DRIFT_BROKEN",
         "TIME_WINDOW_MATCH",
         "ASSET_FIT_GOOD",
-        "RECENT_VOLATILE"
+        "RECENT_STABLE"
       ],
       "review_priority": "MEDIUM",
       "half_life_status": "ARCHIVE_CANDIDATE",
@@ -6587,7 +6593,15 @@
       "extractable_components": [
         "exit"
       ],
-      "crossbreeding_eligible": false
+      "crossbreeding_eligible": false,
+      "cost_fragility": {
+        "flag": true,
+        "net_pf": 1.298,
+        "gate": 1.2,
+        "cost_pct_of_gross_avg": 34.7,
+        "reason": "Net PF 1.298 with conservative slip=2 estimate. 0.10 above gate. Cost = 34.7% of gross avg trade. Highest-priority MCL asset to replace conservative estimates with actual broker rate sheet before any paper/prop deployment.",
+        "set_date": "2026-05-20"
+      }
     },
     {
       "strategy_id": "XB-ORB-EMA-Ladder-MYM",
@@ -6604,7 +6618,7 @@
       "profit_factor": 1.67,
       "portfolio_role": "workhorse",
       "controller_action": "PROBATION",
-      "last_controller_date": "2026-05-18",
+      "last_controller_date": "2026-05-19",
       "promotion_date": "2026-04-13",
       "baseline_params": {
         "stop_mult": 2.0,
@@ -6622,7 +6636,10 @@
         ],
         "conviction_threshold_inside": 2,
         "conviction_threshold_outside": 2,
-        "priority": 8
+        "priority": 8,
+        "avoid_regimes": [],
+        "preferred_regimes": [],
+        "exit_variant": null
       },
       "notes": "PROMOTED 2026-04-13 via autocorrelation doctrine + sanity backtest. MYM has POSITIVE 5-min autocorrelation (+0.015), strongest of all assets. PF 1.67, 340 trades on 2y data \u2014 highest raw PF but short data window. All 3 calendar periods profitable (2024 PF 1.39, 2025 PF 1.91, 2026 PF 1.45). Year-exclusion: PF 1.40 without best year (edge survives). Profile matches MNQ exactly: 304 min hold, 14 trades/month, 137d max DD. CAUTION: 2-year data window means concentration is elevated (top-3 32%, top-10 61%). Monitor closely as data accumulates. Tail-engine gates fired on data-length artifacts, not structural edge failure. | DATA PIPELINE GAP 2026-04-13 to 2026-04-14 (resolved): MYM was missing from data/databento_loader.py SYMBOLS dict despite being promoted as XB-ORB workhorse. MYM_5m feed frozen at 2026-03-11 during this window. Strategy was operationally dormant (data-blocked), not quiet - its 0-forward-trade status during this window is not evidence of edge degradation. Fix: added MYM to SYMBOLS 2026-04-14; backfilled +6134 bars through 2026-04-13 19:55. Review clock (20/30/50/100 forward trades per XB_ORB_PROBATION_FRAMEWORK.md) starts from the first fresh bar after backfill, NOT from the 2026-04-13 promotion date.",
       "created_date": "2026-04-13",
@@ -8292,8 +8309,8 @@
       "direction": "both",
       "source": "forge_hybrid_generation_2026-05-05",
       "rule_summary": "pb_pullback entry + ema_slope filter + profit_ladder exit on MCL. stop_mult=2.0. Cheap-screen PASS on 2026-05-05; PF=1.311, n=1061, net=$7386, max_DD=$-1093.",
-      "status": "idea",
-      "notes": "Hybrid generated via Forge runner sweep 2026-05-05. Cheap-screen verdict PASS (workhorse-archetype, n=1061). Validated against XB-ORB-EMA-Ladder family donor pattern. Source memo: docs/fql_forge/forge_batch_2026-05-05.md. Pre-flight: docs/_DRAFT_2026-05-06_batch_register_xb_hybrids.md.",
+      "status": "monitor",
+      "notes": "Hybrid generated via Forge runner sweep 2026-05-05. Cheap-screen verdict PASS (workhorse-archetype, n=1061). Validated against XB-ORB-EMA-Ladder family donor pattern. Source memo: docs/fql_forge/forge_batch_2026-05-05.md. Pre-flight: docs/_DRAFT_2026-05-06_batch_register_xb_hybrids.md. MONITOR 2026-05-20 per cost integrity reset: net PF 1.058 (YELLOW), cost = 78% of gross avg trade. Deferred from Phase 2 top-3 paper-readiness selection. Possible future salvage if broker rates improve.",
       "last_review_date": "2026-05-06",
       "review_priority": "HIGH",
       "lifecycle_stage": "discovery",
@@ -8323,7 +8340,8 @@
       "reusable_as_component": false,
       "extractable_components": [],
       "crossbreeding_eligible": false,
-      "why_not_now": "awaiting_full_validation_battery_post_phase_0"
+      "why_not_now": "awaiting_full_validation_battery_post_phase_0",
+      "cost_integrity_disposition": "MONITOR_COST_AWARE_THIN"
     },
     {
       "strategy_id": "XB-PB-EMA-Ladder-MYM",
@@ -8462,8 +8480,8 @@
       "direction": "both",
       "source": "forge_hybrid_generation_2026-05-05",
       "rule_summary": "bb_reversion entry + ema_slope filter + profit_ladder exit on MCL. stop_mult=2.0. Cheap-screen PASS on 2026-05-05; PF=1.232, n=459, net=$2474, max_DD=$-874.",
-      "status": "idea",
-      "notes": "Hybrid generated via Forge runner sweep 2026-05-05. Cheap-screen verdict PASS (tail-archetype, n=459). Validated against XB-ORB-EMA-Ladder family donor pattern. Source memo: docs/fql_forge/forge_batch_2026-05-05.md. Pre-flight: docs/_DRAFT_2026-05-06_batch_register_xb_hybrids.md.",
+      "status": "archived",
+      "notes": "Hybrid generated via Forge runner sweep 2026-05-05. Cheap-screen verdict PASS (tail-archetype, n=459). Validated against XB-ORB-EMA-Ladder family donor pattern. Source memo: docs/fql_forge/forge_batch_2026-05-05.md. Pre-flight: docs/_DRAFT_2026-05-06_batch_register_xb_hybrids.md. ARCHIVED 2026-05-20 per cost integrity reset: net PF 0.983 (below 1.00 viability gate), cost = 109% of gross avg trade. Cheap-screen PASS was a false positive from silently-zero-cost correlation_matrix run. Preserved as research memory per archive-is-memory doctrine.",
       "last_review_date": "2026-05-06",
       "review_priority": "HIGH",
       "lifecycle_stage": "discovery",
@@ -8493,7 +8511,8 @@
       "reusable_as_component": false,
       "extractable_components": [],
       "crossbreeding_eligible": false,
-      "why_not_now": "awaiting_full_validation_battery_post_phase_0"
+      "why_not_now": "awaiting_full_validation_battery_post_phase_0",
+      "cost_integrity_disposition": "ARCHIVED_COST_AWARE_FAIL"
     },
     {
       "strategy_id": "XB-BB-EMA-Ladder-MYM",
@@ -8588,8 +8607,8 @@
       "direction": "both",
       "source": "forge_hybrid_generation_2026-05-05",
       "rule_summary": "vwap_continuation entry + ema_slope filter + profit_ladder exit on MCL. stop_mult=2.0. Cheap-screen PASS on 2026-05-05; PF=1.283, n=502, net=$3207, max_DD=$-1407.",
-      "status": "idea",
-      "notes": "Hybrid generated via Forge runner sweep 2026-05-05. Cheap-screen verdict PASS (workhorse-archetype, n=502). Validated against XB-ORB-EMA-Ladder family donor pattern. Source memo: docs/fql_forge/vwap_cross_asset_2026-05-05.md. Pre-flight: docs/_DRAFT_2026-05-06_batch_register_xb_hybrids.md.",
+      "status": "archived",
+      "notes": "Hybrid generated via Forge runner sweep 2026-05-05. Cheap-screen verdict PASS (workhorse-archetype, n=502). Validated against XB-ORB-EMA-Ladder family donor pattern. Source memo: docs/fql_forge/vwap_cross_asset_2026-05-05.md. Pre-flight: docs/_DRAFT_2026-05-06_batch_register_xb_hybrids.md. ARCHIVED 2026-05-20 per cost integrity reset: net PF 1.040 (below 1.20 backtest workhorse gate), cost = 84% of gross avg trade. Not worth sprint rescue time. Preserved as research memory.",
       "last_review_date": "2026-05-06",
       "review_priority": "HIGH",
       "lifecycle_stage": "discovery",
@@ -8619,7 +8638,8 @@
       "reusable_as_component": false,
       "extractable_components": [],
       "crossbreeding_eligible": false,
-      "why_not_now": "awaiting_full_validation_battery_post_phase_0"
+      "why_not_now": "awaiting_full_validation_battery_post_phase_0",
+      "cost_integrity_disposition": "ARCHIVED_COST_AWARE_FAIL"
     },
     {
       "strategy_id": "XB-VWAP-EMA-Ladder-MYM",
