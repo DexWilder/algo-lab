@@ -8282,8 +8282,8 @@
       "direction": "both",
       "source": "forge_hybrid_generation_2026-05-05",
       "rule_summary": "pb_pullback entry + ema_slope filter + profit_ladder exit on MNQ. stop_mult=2.0. Cheap-screen PASS on 2026-05-05; PF=1.403, n=1463, net=$29297, max_DD=$-1732.",
-      "status": "idea",
-      "notes": "Hybrid generated via Forge runner sweep 2026-05-05. Cheap-screen verdict PASS (workhorse-archetype, n=1463). Validated against XB-ORB-EMA-Ladder family donor pattern. Source memo: docs/fql_forge/batch_screen_2_2026-05-05.md. Pre-flight: docs/_DRAFT_2026-05-06_batch_register_xb_hybrids.md.",
+      "status": "probation",
+      "notes": "Hybrid generated via Forge runner sweep 2026-05-05. Cheap-screen verdict PASS (workhorse-archetype, n=1463). Validated against XB-ORB-EMA-Ladder family donor pattern. Source memo: docs/fql_forge/batch_screen_2_2026-05-05.md. Pre-flight: docs/_DRAFT_2026-05-06_batch_register_xb_hybrids.md. PAPER_APPROVE_CONDITIONAL 2026-05-20: added to forward paper runner per operator approval. Paper sizing = 1 MNQ contract. status=probation reflects forward-paper-test mapping; NOT live and NOT promoted to core. PENDING_FORWARD_EVIDENCE \u2014 promotion-eligible only after \u226530 forward trades. Distinct entry family (pullback) \u2014 diversifies beyond ORB. Paper-readiness packet: docs/paper_readiness_packets/XB-PB-EMA-Ladder-MNQ.md.",
       "last_review_date": "2026-05-06",
       "review_priority": "HIGH",
       "lifecycle_stage": "discovery",
@@ -8313,7 +8313,41 @@
       "reusable_as_component": false,
       "extractable_components": [],
       "crossbreeding_eligible": false,
-      "why_not_now": "awaiting_full_validation_battery_post_phase_0"
+      "why_not_now": "awaiting_full_validation_battery_post_phase_0",
+      "controller_action": "PROBATION",
+      "controller_state": "PROBATION",
+      "baseline_params": {
+        "stop_mult": 2.0,
+        "target_mult": 4.0,
+        "trail_mult": 2.5
+      },
+      "execution_config": {
+        "preferred_window": [
+          "09:30",
+          "11:30"
+        ],
+        "allowed_window": [
+          "09:30",
+          "15:00"
+        ],
+        "conviction_threshold_inside": 2,
+        "conviction_threshold_outside": 3,
+        "priority": 9,
+        "avoid_regimes": [],
+        "preferred_regimes": [],
+        "grinding_filter": false,
+        "exit_variant": "profit_ladder"
+      },
+      "paper_runner_addition": {
+        "set_date": "2026-05-20",
+        "sizing_contracts": 1,
+        "asset": "MNQ",
+        "scope": "paper_only",
+        "live_eligible": false,
+        "promotion_eligible_after": "30 forward trades + operator review"
+      },
+      "paper_packet_path": "docs/paper_readiness_packets/XB-PB-EMA-Ladder-MNQ.md",
+      "promotion_pending_reason": "PENDING_FORWARD_EVIDENCE"
     },
     {
       "strategy_id": "XB-PB-EMA-Ladder-MCL",
@@ -8721,8 +8755,8 @@
       "direction": "both",
       "source": "forge_hybrid_generation_2026-05-05",
       "rule_summary": "orb_breakout entry + ema_slope filter + chandelier exit on MNQ. stop_mult=2.0. Cheap-screen PASS on 2026-05-05; PF=1.571, n=1198, net=$32471, max_DD=$-1651.",
-      "status": "idea",
-      "notes": "Hybrid generated via Forge runner sweep 2026-05-05. Cheap-screen verdict PASS (workhorse-archetype, n=1198). Validated against XB-ORB-EMA-Ladder family donor pattern. Source memo: docs/fql_forge/tail_engine_pool_expansion_2026-05-05.md. Pre-flight: docs/_DRAFT_2026-05-06_batch_register_xb_hybrids.md.\n\n2026-05-19 cluster decision: cluster=XB-ORB-EMA-MNQ, role=cluster_leader (PF 1.574 > 1.507 TimeStop). Pearson r=0.883 with TimeStop variant. Per operator approval 2026-05-19 (correlation matrix commit 73b5df1). Cluster metadata only; status unchanged.",
+      "status": "probation",
+      "notes": "Hybrid generated via Forge runner sweep 2026-05-05. Cheap-screen verdict PASS (workhorse-archetype, n=1198). Validated against XB-ORB-EMA-Ladder family donor pattern. Source memo: docs/fql_forge/tail_engine_pool_expansion_2026-05-05.md. Pre-flight: docs/_DRAFT_2026-05-06_batch_register_xb_hybrids.md.\n\n2026-05-19 cluster decision: cluster=XB-ORB-EMA-MNQ, role=cluster_leader (PF 1.574 > 1.507 TimeStop). Pearson r=0.883 with TimeStop variant. Per operator approval 2026-05-19 (correlation matrix commit 73b5df1). Cluster metadata only; status unchanged. PAPER_APPROVE_CONDITIONAL 2026-05-20: added to forward paper runner per operator approval. Paper sizing = 1 MNQ contract. status=probation reflects forward-paper-test mapping; NOT live and NOT promoted to core. PENDING_FORWARD_EVIDENCE \u2014 promotion-eligible only after \u226530 forward trades. Cluster leader for XB-ORB-EMA-MNQ exposure; TimeStop variant does NOT separately enter paper. Paper-readiness packet: docs/paper_readiness_packets/XB-ORB-EMA-Chandelier-MNQ.md.",
       "last_review_date": "2026-05-06",
       "review_priority": "HIGH",
       "lifecycle_stage": "discovery",
@@ -8756,7 +8790,41 @@
       "reusable_as_component": false,
       "extractable_components": [],
       "crossbreeding_eligible": false,
-      "why_not_now": "awaiting_full_validation_battery_post_phase_0"
+      "why_not_now": "awaiting_full_validation_battery_post_phase_0",
+      "controller_action": "PROBATION",
+      "controller_state": "PROBATION",
+      "baseline_params": {
+        "stop_mult": 2.0,
+        "target_mult": 4.0,
+        "trail_mult": 2.5
+      },
+      "execution_config": {
+        "preferred_window": [
+          "09:30",
+          "11:30"
+        ],
+        "allowed_window": [
+          "09:30",
+          "15:00"
+        ],
+        "conviction_threshold_inside": 2,
+        "conviction_threshold_outside": 3,
+        "priority": 9,
+        "avoid_regimes": [],
+        "preferred_regimes": [],
+        "grinding_filter": false,
+        "exit_variant": "chandelier"
+      },
+      "paper_runner_addition": {
+        "set_date": "2026-05-20",
+        "sizing_contracts": 1,
+        "asset": "MNQ",
+        "scope": "paper_only",
+        "live_eligible": false,
+        "promotion_eligible_after": "30 forward trades + operator review"
+      },
+      "paper_packet_path": "docs/paper_readiness_packets/XB-ORB-EMA-Chandelier-MNQ.md",
+      "promotion_pending_reason": "PENDING_FORWARD_EVIDENCE"
     },
     {
       "strategy_id": "XB-ORB-EMA-TimeStop-MNQ",
