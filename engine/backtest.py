@@ -1,13 +1,33 @@
 """Backtest runner — event-driven fill-at-next-open engine.
 
 Supports configurable transaction costs (commission + slippage).
+
+Per evidence-integrity doctrine: missing cost assumptions fail closed via
+InvalidCostAssumption. Exploration-tier callers may opt in to uncosted runs
+via allow_uncosted=True (result tagged cost_tier='EXPLORATION_TIER').
 """
 
 import pandas as pd
 import numpy as np
 
 
-# ── Symbol defaults for micro futures ─────────────────────────────────────────
+class InvalidCostAssumption(ValueError):
+    """Raised when cost parameters cannot be resolved for a decision-grade run.
+
+    Decision-grade evaluations (probation re-reads, paper-readiness packets,
+    cushion analyzer, top-3 selection, forward paper runner) must have
+    explicit cost assumptions for the asset. Silent zero-cost defaults
+    would overstate net edge.
+
+    Exploration-tier callers may opt in to uncosted runs by passing
+    allow_uncosted=True; the result is then tagged cost_tier='EXPLORATION_TIER'
+    so downstream consumers can refuse to treat it as decision-grade.
+    """
+
+
+# ── Symbol cost defaults ──────────────────────────────────────────────────────
+# Coverage gap caught 2026-05-19: only 6 of 17 supported assets configured.
+# The 11 missing assets are populated in Piece A of Item #3 cost integrity reset.
 
 SYMBOL_DEFAULTS = {
     "MES": {"commission_per_side": 0.62, "tick_size": 0.25, "slippage_ticks": 1},
@@ -19,13 +39,67 @@ SYMBOL_DEFAULTS = {
 }
 
 
-def get_cost_params(symbol=None, commission_per_side=None, slippage_ticks=None, tick_size=None):
-    """Resolve transaction cost parameters from symbol defaults + overrides."""
+def get_cost_params(symbol=None, commission_per_side=None, slippage_ticks=None,
+                    tick_size=None, allow_uncosted=False):
+    """Resolve transaction cost parameters from symbol defaults + overrides.
+
+    Fail-closed: if any cost parameter cannot be resolved (symbol unknown
+    AND no explicit override provided) AND allow_uncosted=False, raises
+    InvalidCostAssumption. This prevents silent zero-cost defaults from
+    producing overstated net edge on assets that lack configured costs.
+
+    Parameters
+    ----------
+    symbol : str, optional
+        Asset symbol (e.g. 'MES'). Looked up in SYMBOL_DEFAULTS.
+    commission_per_side, slippage_ticks, tick_size : optional
+        Explicit overrides. Bypass the symbol lookup when provided.
+    allow_uncosted : bool, default False
+        Exploration-tier opt-in. When True, missing params fall back to
+        zero-cost defaults and the result is tagged cost_tier='EXPLORATION_TIER'.
+
+    Returns
+    -------
+    dict
+        Keys: commission_per_side, slippage_ticks, tick_size, cost_tier.
+        cost_tier is "VALIDATED" when all params resolved from defaults or
+        explicit overrides, or "EXPLORATION_TIER" when allow_uncosted opted in.
+
+    Raises
+    ------
+    InvalidCostAssumption
+        When any cost parameter remains unresolved and allow_uncosted is False.
+    """
     defaults = SYMBOL_DEFAULTS.get(symbol, {}) if symbol else {}
+
+    resolved_comm = commission_per_side if commission_per_side is not None else defaults.get("commission_per_side")
+    resolved_slip = slippage_ticks if slippage_ticks is not None else defaults.get("slippage_ticks")
+    resolved_tick = tick_size if tick_size is not None else defaults.get("tick_size")
+
+    if resolved_comm is None or resolved_slip is None or resolved_tick is None:
+        if not allow_uncosted:
+            missing = [name for name, val in [
+                ("commission_per_side", resolved_comm),
+                ("slippage_ticks", resolved_slip),
+                ("tick_size", resolved_tick),
+            ] if val is None]
+            raise InvalidCostAssumption(
+                f"Missing cost parameters for symbol={symbol!r}: {missing}. "
+                f"Configure in SYMBOL_DEFAULTS or pass explicit overrides. "
+                f"Set allow_uncosted=True only for exploration-tier work."
+            )
+        resolved_comm = 0.0 if resolved_comm is None else resolved_comm
+        resolved_slip = 0 if resolved_slip is None else resolved_slip
+        resolved_tick = 0.25 if resolved_tick is None else resolved_tick
+        cost_tier = "EXPLORATION_TIER"
+    else:
+        cost_tier = "VALIDATED"
+
     return {
-        "commission_per_side": commission_per_side if commission_per_side is not None else defaults.get("commission_per_side", 0.0),
-        "slippage_ticks": slippage_ticks if slippage_ticks is not None else defaults.get("slippage_ticks", 0),
-        "tick_size": tick_size if tick_size is not None else defaults.get("tick_size", 0.25),
+        "commission_per_side": resolved_comm,
+        "slippage_ticks": resolved_slip,
+        "tick_size": resolved_tick,
+        "cost_tier": cost_tier,
     }
 
 
@@ -40,6 +114,7 @@ def run_backtest(
     commission_per_side: float = None,
     slippage_ticks: int = None,
     tick_size: float = None,
+    allow_uncosted: bool = False,
 ) -> dict:
     """Run a backtest on signal data.
 
@@ -65,17 +140,25 @@ def run_backtest(
         Number of ticks of adverse slippage per fill. Overrides symbol default.
     tick_size : float, optional
         Price value of one tick. Overrides symbol default.
+    allow_uncosted : bool, default False
+        Exploration-tier opt-in. When True, missing cost params fall back to
+        zero and stats.costs.cost_tier is tagged 'EXPLORATION_TIER'. Decision-
+        grade callers should leave this False so missing costs raise
+        InvalidCostAssumption.
 
     Returns
     -------
     dict
-        Keys: trades_df, equity_curve, stats.
+        Keys: trades_df, equity_curve, stats. stats['costs']['cost_tier'] is
+        'VALIDATED' or 'EXPLORATION_TIER'; report writers must surface it.
     """
-    # --- Resolve cost parameters ---
-    costs = get_cost_params(symbol, commission_per_side, slippage_ticks, tick_size)
+    # --- Resolve cost parameters (fail-closed unless allow_uncosted=True) ---
+    costs = get_cost_params(symbol, commission_per_side, slippage_ticks,
+                            tick_size, allow_uncosted=allow_uncosted)
     comm = costs["commission_per_side"]
     slip_ticks = costs["slippage_ticks"]
     t_size = costs["tick_size"]
+    cost_tier = costs["cost_tier"]
     slippage_points = slip_ticks * t_size
 
     # Round-trip commission per contract
@@ -259,6 +342,8 @@ def run_backtest(
             "total_commission": round(total_commission, 2),
             "total_slippage": round(total_slippage, 2),
             "total_friction": round(total_commission + total_slippage, 2),
+            "cost_tier": cost_tier,
+            "symbol": symbol,
         },
     }
 
