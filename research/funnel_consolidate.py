@@ -255,7 +255,8 @@ def render_report(merged):
     out.append("")
     out.append("### 1. Concentration is the cull")
     out.append("")
-    out.append("8 of 12 candidates fail Gate 6 concentration despite passing walk-forward. Multiple show top-10 > 100% of total PnL (i.e., the remaining trades net negative). The strategy depends on a small number of outliers.")
+    fails_g6_count = sum(1 for c in merged if c.get("g6_concentration", {}).get("passed") is False)
+    out.append(f"{fails_g6_count} of {len(merged)} candidates fail Gate 6 concentration despite passing walk-forward. Multiple show top-10 > 100% of total PnL (i.e., the remaining trades net negative). The strategy depends on a small number of outliers.")
     out.append("")
     fails_g6 = [c for c in merged if c.get("g6_concentration", {}).get("passed") is False]
     for c in fails_g6:

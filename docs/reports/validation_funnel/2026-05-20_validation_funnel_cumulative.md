@@ -69,7 +69,7 @@ Threshold: top-3 < 30%, top-10 < 55%, max single year < 40%.
 
 ### 1. Concentration is the cull
 
-8 of 12 candidates fail Gate 6 concentration despite passing walk-forward. Multiple show top-10 > 100% of total PnL (i.e., the remaining trades net negative). The strategy depends on a small number of outliers.
+7 of 12 candidates fail Gate 6 concentration despite passing walk-forward. Multiple show top-10 > 100% of total PnL (i.e., the remaining trades net negative). The strategy depends on a small number of outliers.
 
 - **XB-ORB-EMA-Ladder-MYM**: top-3 31%, top-10 59%, max-year 68%
 - **XB-PB-EMA-Ladder-MYM**: top-3 45%, top-10 111%, max-year 75%
