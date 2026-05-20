@@ -177,18 +177,22 @@ def test_cost_defaults_resolve_validated_tier_for_universe():
         )
 
 
-def test_cost_defaults_tick_size_matches_asset_config():
-    """Tick sizes in SYMBOL_DEFAULTS must match the canonical source.
+def test_cost_defaults_match_asset_config_for_all_fields():
+    """All three cost fields in SYMBOL_DEFAULTS must match asset_config exactly.
 
-    asset_config.py is the source of truth for contract physical properties.
-    SYMBOL_DEFAULTS duplicates tick_size for self-containment of the backtest
-    module; this test prevents silent drift.
+    asset_config.py is the single source of truth for execution-cost
+    assumptions (Piece I 2026-05-20). SYMBOL_DEFAULTS derives from it; this
+    test prevents anyone from reintroducing a manual cost table that drifts
+    silently — the failure mode that overstated Forge/correlation/forward-paper
+    PFs prior to the consolidation.
     """
     from engine.asset_config import ASSETS
     for sym, asset_cfg in ASSETS.items():
-        if sym in SYMBOL_DEFAULTS:
-            bt_tick = SYMBOL_DEFAULTS[sym]["tick_size"]
-            ac_tick = asset_cfg["tick_size"]
-            assert bt_tick == ac_tick, (
-                f"{sym} tick_size mismatch: backtest={bt_tick}, asset_config={ac_tick}"
+        assert sym in SYMBOL_DEFAULTS, f"{sym} missing from SYMBOL_DEFAULTS"
+        bt = SYMBOL_DEFAULTS[sym]
+        for field in ("commission_per_side", "slippage_ticks", "tick_size"):
+            assert bt[field] == asset_cfg[field], (
+                f"{sym} {field} mismatch: backtest={bt[field]}, "
+                f"asset_config={asset_cfg[field]} — SYMBOL_DEFAULTS must derive "
+                f"from asset_config (no separate manual table)."
             )

@@ -10,6 +10,8 @@ via allow_uncosted=True (result tagged cost_tier='EXPLORATION_TIER').
 import pandas as pd
 import numpy as np
 
+from engine.asset_config import ASSETS as _ASSETS
+
 
 class InvalidCostAssumption(ValueError):
     """Raised when cost parameters cannot be resolved for a decision-grade run.
@@ -26,57 +28,38 @@ class InvalidCostAssumption(ValueError):
 
 
 # ── Symbol cost defaults ──────────────────────────────────────────────────────
-# Coverage gap caught 2026-05-19 (Item #3 cost integrity reset).
-# Pre-reset: only 6 of 17 supported assets configured; MCL/MYM (probation
-# candidates) silently defaulted to zero cost, overstating their net PFs.
+# Source of truth: engine/asset_config.py. SYMBOL_DEFAULTS derives from ASSETS
+# at module load so cost values cannot drift between caller paths.
 #
-# Source of truth for tick_size: engine/asset_config.py (duplicated here for
-# self-contained backtest module; consolidate in a follow-up).
+# Per Item #3 Piece I (2026-05-20): the prior manual SYMBOL_DEFAULTS dict
+# allowed source-of-truth drift between asset_config (used by xb_orb_sweep
+# via explicit overrides) and SYMBOL_DEFAULTS (used by Forge daily, correlation
+# matrix, forward paper). The asset_config values are now authoritative for
+# all callers; legacy full-size contracts (ES/NQ/GC) are added explicitly
+# below because they are not in the trading universe.
 #
-# Conservative bias on slippage (higher = more conservative) per operator
-# guidance. Commission estimates are CME retail-broker typical (operator should
-# audit against actual broker schedule and adjust if material).
+# Conservative-bias rule: when uncertain, lean higher slippage and commission.
+# Replace with actual broker/firm rates before paper/prop deployment.
 
-SYMBOL_DEFAULTS = {
-    # ── Equity-index micros (most liquid; 1-tick slippage realistic) ──────────
-    "MES": {"commission_per_side": 0.62, "tick_size": 0.25,    "slippage_ticks": 1},
-    "MNQ": {"commission_per_side": 0.62, "tick_size": 0.25,    "slippage_ticks": 1},
-    "MGC": {"commission_per_side": 0.62, "tick_size": 0.10,    "slippage_ticks": 1},
-
-    # ── Equity-index micros (added 2026-05-20; less liquid → 2 ticks) ─────────
-    # M2K = Russell 2000 micro; MYM = Dow micro (lowest-volume of the equity micros)
-    "M2K": {"commission_per_side": 0.62, "tick_size": 0.10,    "slippage_ticks": 2},
-    "MYM": {"commission_per_side": 0.62, "tick_size": 1.0,     "slippage_ticks": 2},
-
-    # ── Energy micro ──────────────────────────────────────────────────────────
-    # MCL = micro crude; liquid but micros lag full-size — 2 ticks conservative
-    "MCL": {"commission_per_side": 0.62, "tick_size": 0.01,    "slippage_ticks": 2},
-
-    # ── Standard futures: equity-index full-size (for legacy callers) ─────────
-    "ES":  {"commission_per_side": 1.24, "tick_size": 0.25,    "slippage_ticks": 1},
-    "NQ":  {"commission_per_side": 1.24, "tick_size": 0.25,    "slippage_ticks": 1},
-    "GC":  {"commission_per_side": 1.24, "tick_size": 0.10,    "slippage_ticks": 1},
-
-    # ── FX futures (CME standard; quite liquid → 1 tick) ──────────────────────
-    "6B":  {"commission_per_side": 2.50, "tick_size": 0.0001,  "slippage_ticks": 1},
-    "6E":  {"commission_per_side": 2.50, "tick_size": 5e-05,   "slippage_ticks": 1},
-    "6J":  {"commission_per_side": 2.50, "tick_size": 5e-07,   "slippage_ticks": 1},
-
-    # ── Treasury futures ──────────────────────────────────────────────────────
-    # ZN/ZF: deep liquidity → 1 tick. ZB: thinner → 2 ticks (conservative).
-    "ZN":  {"commission_per_side": 1.55, "tick_size": 0.015625, "slippage_ticks": 1},
-    "ZF":  {"commission_per_side": 1.55, "tick_size": 0.0078125, "slippage_ticks": 1},
-    "ZB":  {"commission_per_side": 1.55, "tick_size": 0.03125,  "slippage_ticks": 2},
-
-    # ── Metals (full-size; less liquid than micros) ──────────────────────────
-    "SI":  {"commission_per_side": 2.50, "tick_size": 0.005,   "slippage_ticks": 2},
-    "HG":  {"commission_per_side": 2.50, "tick_size": 0.0005,  "slippage_ticks": 2},
-
-    # ── Agriculturals (typically wider spreads → 2 ticks) ─────────────────────
-    "ZC":  {"commission_per_side": 2.50, "tick_size": 0.25,    "slippage_ticks": 2},
-    "ZS":  {"commission_per_side": 2.50, "tick_size": 0.25,    "slippage_ticks": 2},
-    "ZW":  {"commission_per_side": 2.50, "tick_size": 0.25,    "slippage_ticks": 2},
+_TRADING_UNIVERSE_DEFAULTS = {
+    sym: {
+        "commission_per_side": cfg["commission_per_side"],
+        "slippage_ticks": cfg["slippage_ticks"],
+        "tick_size": cfg["tick_size"],
+    }
+    for sym, cfg in _ASSETS.items()
+    if "commission_per_side" in cfg and "slippage_ticks" in cfg
 }
+
+# Full-size legacy contracts not in the active trading universe.
+# Keep here so legacy CLI callers (e.g., run_all.py with ES/NQ/GC) still resolve.
+_LEGACY_DEFAULTS = {
+    "ES": {"commission_per_side": 1.24, "tick_size": 0.25, "slippage_ticks": 1},
+    "NQ": {"commission_per_side": 1.24, "tick_size": 0.25, "slippage_ticks": 1},
+    "GC": {"commission_per_side": 1.24, "tick_size": 0.10, "slippage_ticks": 1},
+}
+
+SYMBOL_DEFAULTS = {**_TRADING_UNIVERSE_DEFAULTS, **_LEGACY_DEFAULTS}
 
 
 def get_cost_params(symbol=None, commission_per_side=None, slippage_ticks=None,

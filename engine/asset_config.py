@@ -3,6 +3,16 @@
 Replaces the ASSET_CONFIG dicts scattered across 5+ files. All modules should
 import from here instead of maintaining their own copies.
 
+Per Item #3 Piece I (2026-05-20): asset_config is the single source of truth
+for execution-cost assumptions (commission_per_side, slippage_ticks, tick_size).
+engine/backtest.py::SYMBOL_DEFAULTS derives from here. Do NOT maintain a
+separate cost table — drift between sources was the silent-failure mode that
+overstated Forge / correlation / forward-paper PFs prior to 2026-05-20.
+
+Conservative-bias rule for cost values: when uncertain, lean higher slippage
+and higher commission. Replace with actual broker/firm rate sheets before
+paper/prop deployment.
+
 Usage:
     from engine.asset_config import ASSETS, get_asset, get_asset_family
 
@@ -59,7 +69,7 @@ ASSETS = {
         "point_value": 5.0,
         "tick_size": 0.10,
         "commission_per_side": 0.62,
-        "slippage_ticks": 1,
+        "slippage_ticks": 2,  # less liquid than MES/MNQ — conservative bias (Piece I 2026-05-20)
         "databento_symbol": "M2K.c.0",
         "exchange": "CME",
         "session": ("09:30", "16:00"),
@@ -71,7 +81,7 @@ ASSETS = {
         "point_value": 0.50,
         "tick_size": 1.0,
         "commission_per_side": 0.62,
-        "slippage_ticks": 1,
+        "slippage_ticks": 2,  # lowest-volume equity micro — conservative bias (Piece I 2026-05-20)
         "databento_symbol": "MYM.c.0",
         "exchange": "CBOT",
         "session": ("09:30", "16:00"),
@@ -96,8 +106,8 @@ ASSETS = {
         "asset_class": "metal",
         "point_value": 5000.0,
         "tick_size": 0.005,
-        "commission_per_side": 1.50,
-        "slippage_ticks": 1,
+        "commission_per_side": 2.50,  # full-size, less liquid than GC — conservative (Piece I 2026-05-20)
+        "slippage_ticks": 2,
         "databento_symbol": "SI.c.0",
         "exchange": "COMEX",
         "session": ("08:30", "13:00"),
@@ -108,8 +118,8 @@ ASSETS = {
         "asset_class": "metal",
         "point_value": 25000.0,
         "tick_size": 0.0005,
-        "commission_per_side": 1.50,
-        "slippage_ticks": 1,
+        "commission_per_side": 2.50,  # full-size, less liquid — conservative (Piece I 2026-05-20)
+        "slippage_ticks": 2,
         "databento_symbol": "HG.c.0",
         "exchange": "COMEX",
         "session": ("08:30", "13:00"),
@@ -123,7 +133,7 @@ ASSETS = {
         "point_value": 100.0,
         "tick_size": 0.01,
         "commission_per_side": 0.62,
-        "slippage_ticks": 1,
+        "slippage_ticks": 2,  # micros lag full-size CL liquidity — conservative (Piece I 2026-05-20)
         "databento_symbol": "MCL.c.0",
         "exchange": "NYMEX",
         "session": ("09:00", "14:30"),
@@ -136,7 +146,7 @@ ASSETS = {
         "asset_class": "rate",
         "point_value": 1000.0,
         "tick_size": 0.015625,
-        "commission_per_side": 1.25,
+        "commission_per_side": 1.55,  # CME treasury micro estimate — conservative (Piece I 2026-05-20)
         "slippage_ticks": 1,
         "databento_symbol": "ZN.c.0",
         "exchange": "CBOT",
@@ -148,7 +158,7 @@ ASSETS = {
         "asset_class": "rate",
         "point_value": 1000.0,
         "tick_size": 0.0078125,
-        "commission_per_side": 1.25,
+        "commission_per_side": 1.55,
         "slippage_ticks": 1,
         "databento_symbol": "ZF.c.0",
         "exchange": "CBOT",
@@ -160,8 +170,8 @@ ASSETS = {
         "asset_class": "rate",
         "point_value": 1000.0,
         "tick_size": 0.03125,
-        "commission_per_side": 1.25,
-        "slippage_ticks": 1,
+        "commission_per_side": 1.55,
+        "slippage_ticks": 2,  # thinner than ZN/ZF — conservative bias
         "databento_symbol": "ZB.c.0",
         "exchange": "CBOT",
         "session": ("08:20", "15:00"),
@@ -174,7 +184,7 @@ ASSETS = {
         "asset_class": "fx",
         "point_value": 125000.0,
         "tick_size": 0.00005,
-        "commission_per_side": 1.25,
+        "commission_per_side": 2.50,  # CME standard FX retail estimate — conservative (Piece I 2026-05-20)
         "slippage_ticks": 1,
         "databento_symbol": "6E.c.0",
         "exchange": "CME",
@@ -186,7 +196,7 @@ ASSETS = {
         "asset_class": "fx",
         "point_value": 12500000.0,
         "tick_size": 0.0000005,
-        "commission_per_side": 1.25,
+        "commission_per_side": 2.50,
         "slippage_ticks": 1,
         "databento_symbol": "6J.c.0",
         "exchange": "CME",
@@ -198,7 +208,7 @@ ASSETS = {
         "asset_class": "fx",
         "point_value": 62500.0,
         "tick_size": 0.0001,
-        "commission_per_side": 1.25,
+        "commission_per_side": 2.50,
         "slippage_ticks": 1,
         "databento_symbol": "6B.c.0",
         "exchange": "CME",
@@ -212,8 +222,8 @@ ASSETS = {
         "asset_class": "agriculture",
         "point_value": 50.0,
         "tick_size": 0.25,
-        "commission_per_side": 1.50,
-        "slippage_ticks": 1,
+        "commission_per_side": 2.50,  # ag wider spreads — conservative (Piece I 2026-05-20)
+        "slippage_ticks": 2,
         "databento_symbol": "ZC.c.0",
         "exchange": "CBOT",
         "session": ("09:30", "14:20"),
@@ -224,8 +234,8 @@ ASSETS = {
         "asset_class": "agriculture",
         "point_value": 50.0,
         "tick_size": 0.25,
-        "commission_per_side": 1.50,
-        "slippage_ticks": 1,
+        "commission_per_side": 2.50,
+        "slippage_ticks": 2,
         "databento_symbol": "ZS.c.0",
         "exchange": "CBOT",
         "session": ("09:30", "14:20"),
@@ -236,8 +246,8 @@ ASSETS = {
         "asset_class": "agriculture",
         "point_value": 50.0,
         "tick_size": 0.25,
-        "commission_per_side": 1.50,
-        "slippage_ticks": 1,
+        "commission_per_side": 2.50,
+        "slippage_ticks": 2,
         "databento_symbol": "ZW.c.0",
         "exchange": "CBOT",
         "session": ("09:30", "14:20"),
