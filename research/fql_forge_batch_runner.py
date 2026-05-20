@@ -69,11 +69,19 @@ def _load(asset: str) -> pd.DataFrame:
     return pd.read_csv(DATA_DIR / f"{asset}_5m.csv")
 
 
-def _metrics(trades_df, label) -> dict:
+def _metrics(trades_df, label, costs: dict = None) -> dict:
+    """Compute metrics for a Forge cheap-screen result.
+
+    `costs` is the stats.costs block from engine/backtest.py — per FQL
+    evidence law, every result must explicitly carry the cost assumptions
+    that produced it. Reports surface this block so consumers can verify
+    the result is decision-grade (cost_tier == "VALIDATED").
+    """
     if trades_df is None or trades_df.empty:
         return {"label": label, "n": 0, "net": 0.0, "pf": float("nan"),
                 "median": 0.0, "max_dd": 0.0, "max_single_pct": 0.0,
-                "win_rate": 0.0, "sharpe": float("nan")}
+                "win_rate": 0.0, "sharpe": float("nan"),
+                "cost_block": costs or {}}
     pnl = trades_df["pnl"].values
     n = len(pnl); net = float(pnl.sum())
     gp = pnl[pnl > 0].sum(); gl = abs(pnl[pnl < 0].sum())
@@ -87,7 +95,8 @@ def _metrics(trades_df, label) -> dict:
     return {"label": label, "n": n, "net": net, "pf": pf,
             "median": float(np.median(pnl)), "max_dd": max_dd,
             "max_single_pct": max_single_pct,
-            "win_rate": float((pnl > 0).mean()), "sharpe": sharpe}
+            "win_rate": float((pnl > 0).mean()), "sharpe": sharpe,
+            "cost_block": costs or {}}
 
 
 def _verdict(m: dict, archetype: str = "auto") -> str:
@@ -128,7 +137,7 @@ def _xb_general(asset: str, entry_name: str, filter_name: str, exit_name: str, l
                                        params=_params())
     res = run_backtest(df, sigs, mode="both",
                        point_value=cfg["point_value"], symbol=asset)
-    return _metrics(res["trades_df"], label)
+    return _metrics(res["trades_df"], label, costs=res["stats"]["costs"])
 
 
 # Candidate definitions: (id, asset, gap, runner-callable, archetype, baseline-note)
@@ -259,6 +268,21 @@ CANDIDATES = {
         "runner": lambda: _xb_general("MNQ", "orb_breakout", "ema_slope", "midline_target", "XB-ORB-EMA-MidlineTarget-MNQ"),
         "baseline": "XB-ORB-EMA-Ladder-MNQ profit_ladder PF 1.62",
     },
+
+    # ── Cost-aware pool expansion batch (operator-approved 2026-05-20) ───────
+    # Added post-Item-#3 to test under cost-aware engine from day one.
+    # All 3 picks land here only; broader expansion is gated.
+
+    "VWAPPullback-MES-Long": {
+        "gap": "MES-long pullback diversifier (non-ORB entry on equity index)",
+        "asset": "MES", "archetype": "workhorse",
+        # APPROXIMATION (not 1:1 to practitioner spec): pb_pullback entry +
+        # vwap_slope regime filter + profit_ladder exit. The spec calls for
+        # VWAP-touch-from-above + bullish-close + EMA-ribbon — a higher-
+        # fidelity reimplementation should follow if cheap-screen passes.
+        "runner": lambda: _xb_general("MES", "pb_pullback", "vwap_slope", "profit_ladder", "VWAPPullback-MES-Long"),
+        "baseline": "Practitioner composite (MES VWAP-pullback ~100-150 trades/yr); approximation here",
+    },
 }
 
 
@@ -300,12 +324,45 @@ def _label_verdict(v: str) -> str:
 
 
 def render_table(rows):
-    """Markdown result table."""
-    lines = ["| Candidate | Asset | Gap | n | PF | Net PnL | Max DD | Verdict (tier) |",
-             "|---|---|---|---:|---:|---:|---:|---|"]
+    """Markdown result table with explicit cost block per row."""
+    lines = ["| Candidate | Asset | Gap | n | PF (net) | Net PnL | Max DD | Cost (comm/slip) | Tier | Verdict |",
+             "|---|---|---|---:|---:|---:|---:|---|---|---|"]
     for cid, info, m, v in rows:
+        cb = m.get("cost_block") or {}
+        cost_str = (f"${cb.get('commission_per_side', '?')}/{cb.get('slippage_ticks', '?')}t"
+                    if cb else "?")
+        tier = cb.get("cost_tier", "?")
         lines.append(f"| {cid} | {info['asset']} | {info['gap']} | {m['n']} | "
-                     f"{m['pf']:.3f} | {m['net']:.0f} | {m['max_dd']:.0f} | {_label_verdict(v)} |")
+                     f"{m['pf']:.3f} | {m['net']:.0f} | {m['max_dd']:.0f} | "
+                     f"{cost_str} | {tier} | {_label_verdict(v)} |")
+    return "\n".join(lines)
+
+
+def render_cost_block(rows):
+    """Surface the per-asset cost assumptions used in this batch.
+
+    Per FQL evidence law (CLAUDE.md): every report must explicitly show
+    cost assumptions. Absence of this block = report is invalid.
+    """
+    if not rows:
+        return "*(no results)*"
+    seen = {}
+    for cid, info, m, v in rows:
+        asset = info["asset"]
+        cb = m.get("cost_block") or {}
+        if asset not in seen:
+            seen[asset] = cb
+    lines = [
+        "| Asset | Commission/side | Slippage (ticks) | Tick size | Cost tier |",
+        "|---|---:|---:|---|---|",
+    ]
+    for asset in sorted(seen):
+        cb = seen[asset]
+        lines.append(
+            f"| {asset} | ${cb.get('commission_per_side', '?')} | "
+            f"{cb.get('slippage_ticks', '?')} | {cb.get('tick_size', '?')} | "
+            f"{cb.get('cost_tier', '?')} |"
+        )
     return "\n".join(lines)
 
 
@@ -382,6 +439,11 @@ def main():
     md = (f"# FQL Forge Batch — {date.today().isoformat()}\n\n"
           f"**Filed by:** `research/fql_forge_batch_runner.py` (dry-run/report-only)\n"
           f"**Authority:** T1, no Lane A surfaces touched, no registry mutation.\n\n"
+          f"## Cost assumptions used\n\n"
+          f"Per FQL evidence law (CLAUDE.md): all PFs below are **net** (cost-adjusted). "
+          f"Source of truth: `engine/asset_config.py`. Replace conservative estimates "
+          f"with broker rate sheets before paper/prop.\n\n"
+          f"{render_cost_block(rows)}\n\n"
           f"## Result table\n\n"
           f"{render_table(rows)}\n\n"
           f"## Summary\n\n"
