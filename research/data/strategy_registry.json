@@ -6644,7 +6644,7 @@
         "preferred_regimes": [],
         "exit_variant": null
       },
-      "notes": "PROMOTED 2026-04-13 via autocorrelation doctrine + sanity backtest. MYM has POSITIVE 5-min autocorrelation (+0.015), strongest of all assets. PF 1.67, 340 trades on 2y data \u2014 highest raw PF but short data window. All 3 calendar periods profitable (2024 PF 1.39, 2025 PF 1.91, 2026 PF 1.45). Year-exclusion: PF 1.40 without best year (edge survives). Profile matches MNQ exactly: 304 min hold, 14 trades/month, 137d max DD. CAUTION: 2-year data window means concentration is elevated (top-3 32%, top-10 61%). Monitor closely as data accumulates. Tail-engine gates fired on data-length artifacts, not structural edge failure. | DATA PIPELINE GAP 2026-04-13 to 2026-04-14 (resolved): MYM was missing from data/databento_loader.py SYMBOLS dict despite being promoted as XB-ORB workhorse. MYM_5m feed frozen at 2026-03-11 during this window. Strategy was operationally dormant (data-blocked), not quiet - its 0-forward-trade status during this window is not evidence of edge degradation. Fix: added MYM to SYMBOLS 2026-04-14; backfilled +6134 bars through 2026-04-13 19:55. Review clock (20/30/50/100 forward trades per XB_ORB_PROBATION_FRAMEWORK.md) starts from the first fresh bar after backfill, NOT from the 2026-04-13 promotion date.",
+      "notes": "PROMOTED 2026-04-13 via autocorrelation doctrine + sanity backtest. MYM has POSITIVE 5-min autocorrelation (+0.015), strongest of all assets. PF 1.67, 340 trades on 2y data \u2014 highest raw PF but short data window. All 3 calendar periods profitable (2024 PF 1.39, 2025 PF 1.91, 2026 PF 1.45). Year-exclusion: PF 1.40 without best year (edge survives). Profile matches MNQ exactly: 304 min hold, 14 trades/month, 137d max DD. CAUTION: 2-year data window means concentration is elevated (top-3 32%, top-10 61%). Monitor closely as data accumulates. Tail-engine gates fired on data-length artifacts, not structural edge failure. | DATA PIPELINE GAP 2026-04-13 to 2026-04-14 (resolved): MYM was missing from data/databento_loader.py SYMBOLS dict despite being promoted as XB-ORB workhorse. MYM_5m feed frozen at 2026-03-11 during this window. Strategy was operationally dormant (data-blocked), not quiet - its 0-forward-trade status during this window is not evidence of edge degradation. Fix: added MYM to SYMBOLS 2026-04-14; backfilled +6134 bars through 2026-04-13 19:55. Review clock (20/30/50/100 forward trades per XB_ORB_PROBATION_FRAMEWORK.md) starts from the first fresh bar after backfill, NOT from the 2026-04-13 promotion date. G5 strict score 0 (workhorse 500-trade threshold; got 371). DATA_WINDOW_LIMITED 2026-05-20: MYM data window is 2.0y per CLAUDE.md vs 6y workhorse calibration window. Annotated as sample-size limitation, not edge failure. Remains paper-eligible if cumulative score supports. PAPER-BORDERLINE 2026-05-20: failed Gate 6 concentration this pass (top-10 > 55% or top-3 > 30% or max-year > 40%). Not top-3 eligible for this sprint. NOT archived \u2014 preserved for future donor/salvage/regime-filter/exit-evolution/crossbreeding consideration. No rescue work this sprint.",
       "created_date": "2026-04-13",
       "session_tag": "morning",
       "regime_tag": "unclassified",
@@ -6683,7 +6683,19 @@
         "root_cause": "symbol_list_omission in data/databento_loader.py SYMBOLS",
         "review_clock_adjustment": "review gates count forward trades from first live bar post-backfill, not from promoted_date"
       },
-      "review_clock_start_source": "first_fresh_bar_post_backfill"
+      "review_clock_start_source": "first_fresh_bar_post_backfill",
+      "data_window_limited": {
+        "flag": true,
+        "set_date": "2026-05-20",
+        "g5_score": 0,
+        "g5_threshold": 500,
+        "actual_trades": 371,
+        "data_window_years": 2.0,
+        "calibration_window_years": 6.0,
+        "reason": "Workhorse threshold calibrated for 6y; MYM only 2y available"
+      },
+      "paper_borderline_status": "concentration_risk_failed_this_pass",
+      "paper_borderline_detail": "top-3=31.0%, top-10=58.9%, max-year=67.6%"
     },
     {
       "strategy_id": "SPX-Lunch-Compression-Afternoon-Release",
@@ -8356,7 +8368,7 @@
       "source": "forge_hybrid_generation_2026-05-05",
       "rule_summary": "pb_pullback entry + ema_slope filter + profit_ladder exit on MYM. stop_mult=2.0. Cheap-screen PASS on 2026-05-05; PF=1.351, n=462, net=$4044, max_DD=$-772.",
       "status": "idea",
-      "notes": "Hybrid generated via Forge runner sweep 2026-05-05. Cheap-screen verdict PASS (tail-archetype, n=462). Validated against XB-ORB-EMA-Ladder family donor pattern. Source memo: docs/fql_forge/forge_batch_2026-05-05.md. Pre-flight: docs/_DRAFT_2026-05-06_batch_register_xb_hybrids.md.\n\n2026-05-19 ACKNOWLEDGE_RELATED: peer XB-VWAP-EMA-Ladder-MYM at Pearson r=0.632 (same asset, same filter+exit, different entry). Per operator approval 2026-05-19 (correlation matrix commit 73b5df1). Cluster metadata only; status unchanged.",
+      "notes": "Hybrid generated via Forge runner sweep 2026-05-05. Cheap-screen verdict PASS (tail-archetype, n=462). Validated against XB-ORB-EMA-Ladder family donor pattern. Source memo: docs/fql_forge/forge_batch_2026-05-05.md. Pre-flight: docs/_DRAFT_2026-05-06_batch_register_xb_hybrids.md.\n\n2026-05-19 ACKNOWLEDGE_RELATED: peer XB-VWAP-EMA-Ladder-MYM at Pearson r=0.632 (same asset, same filter+exit, different entry). Per operator approval 2026-05-19 (correlation matrix commit 73b5df1). Cluster metadata only; status unchanged. PAPER-BORDERLINE 2026-05-20: top-3=44.7%, top-10=110.7%, max-year=75.4%. Not top-3 eligible this sprint. NOT archived.",
       "last_review_date": "2026-05-06",
       "review_priority": "HIGH",
       "lifecycle_stage": "discovery",
@@ -8388,7 +8400,9 @@
       "reusable_as_component": false,
       "extractable_components": [],
       "crossbreeding_eligible": false,
-      "why_not_now": "awaiting_full_validation_battery_post_phase_0"
+      "why_not_now": "awaiting_full_validation_battery_post_phase_0",
+      "paper_borderline_status": "concentration_risk_failed_this_pass",
+      "paper_borderline_detail": "top-3=44.7%, top-10=110.7%, max-year=75.4%"
     },
     {
       "strategy_id": "XB-BB-EMA-Ladder-MNQ",
@@ -8400,7 +8414,7 @@
       "source": "forge_hybrid_generation_2026-05-05",
       "rule_summary": "bb_reversion entry + ema_slope filter + profit_ladder exit on MNQ. stop_mult=2.0. Cheap-screen PASS on 2026-05-05; PF=1.245, n=667, net=$8877, max_DD=$-2505.",
       "status": "idea",
-      "notes": "Hybrid generated via Forge runner sweep 2026-05-05. Cheap-screen verdict PASS (workhorse-archetype, n=667). Validated against XB-ORB-EMA-Ladder family donor pattern. Source memo: docs/fql_forge/batch_screen_2_2026-05-05.md. Pre-flight: docs/_DRAFT_2026-05-06_batch_register_xb_hybrids.md.",
+      "notes": "Hybrid generated via Forge runner sweep 2026-05-05. Cheap-screen verdict PASS (workhorse-archetype, n=667). Validated against XB-ORB-EMA-Ladder family donor pattern. Source memo: docs/fql_forge/batch_screen_2_2026-05-05.md. Pre-flight: docs/_DRAFT_2026-05-06_batch_register_xb_hybrids.md. PAPER-BORDERLINE 2026-05-20: top-3=44.5%, top-10=94.8%, max-year=25.4%. Not top-3 eligible this sprint. NOT archived.",
       "last_review_date": "2026-05-06",
       "review_priority": "HIGH",
       "lifecycle_stage": "discovery",
@@ -8430,7 +8444,9 @@
       "reusable_as_component": false,
       "extractable_components": [],
       "crossbreeding_eligible": false,
-      "why_not_now": "awaiting_full_validation_battery_post_phase_0"
+      "why_not_now": "awaiting_full_validation_battery_post_phase_0",
+      "paper_borderline_status": "concentration_risk_failed_this_pass",
+      "paper_borderline_detail": "top-3=44.5%, top-10=94.8%, max-year=25.4%"
     },
     {
       "strategy_id": "XB-BB-EMA-Ladder-MGC",
@@ -8442,7 +8458,7 @@
       "source": "forge_hybrid_generation_2026-05-05",
       "rule_summary": "bb_reversion entry + ema_slope filter + profit_ladder exit on MGC. stop_mult=2.0. Cheap-screen PASS on 2026-05-05; PF=1.522, n=289, net=$4146, max_DD=$-637.",
       "status": "idea",
-      "notes": "Hybrid generated via Forge runner sweep 2026-05-05. Cheap-screen verdict PASS (tail-archetype, n=289). Validated against XB-ORB-EMA-Ladder family donor pattern. Source memo: docs/fql_forge/forge_batch_2026-05-05.md. Pre-flight: docs/_DRAFT_2026-05-06_batch_register_xb_hybrids.md.",
+      "notes": "Hybrid generated via Forge runner sweep 2026-05-05. Cheap-screen verdict PASS (tail-archetype, n=289). Validated against XB-ORB-EMA-Ladder family donor pattern. Source memo: docs/fql_forge/forge_batch_2026-05-05.md. Pre-flight: docs/_DRAFT_2026-05-06_batch_register_xb_hybrids.md. PAPER-BORDERLINE 2026-05-20: top-3=63.4%, top-10=115.1%, max-year=88.7%. Not top-3 eligible this sprint. NOT archived.",
       "last_review_date": "2026-05-06",
       "review_priority": "HIGH",
       "lifecycle_stage": "discovery",
@@ -8472,7 +8488,9 @@
       "reusable_as_component": false,
       "extractable_components": [],
       "crossbreeding_eligible": false,
-      "why_not_now": "awaiting_full_validation_battery_post_phase_0"
+      "why_not_now": "awaiting_full_validation_battery_post_phase_0",
+      "paper_borderline_status": "concentration_risk_failed_this_pass",
+      "paper_borderline_detail": "top-3=63.4%, top-10=115.1%, max-year=88.7%"
     },
     {
       "strategy_id": "XB-BB-EMA-Ladder-MCL",
@@ -8527,7 +8545,7 @@
       "source": "forge_hybrid_generation_2026-05-05",
       "rule_summary": "bb_reversion entry + ema_slope filter + profit_ladder exit on MYM. stop_mult=2.0. Cheap-screen PASS on 2026-05-05; PF=1.785, n=234, net=$3877, max_DD=$-343.",
       "status": "idea",
-      "notes": "Hybrid generated via Forge runner sweep 2026-05-05. Cheap-screen verdict PASS (tail-archetype, n=234). Validated against XB-ORB-EMA-Ladder family donor pattern. Source memo: docs/fql_forge/forge_batch_2026-05-05.md. Pre-flight: docs/_DRAFT_2026-05-06_batch_register_xb_hybrids.md.",
+      "notes": "Hybrid generated via Forge runner sweep 2026-05-05. Cheap-screen verdict PASS (tail-archetype, n=234). Validated against XB-ORB-EMA-Ladder family donor pattern. Source memo: docs/fql_forge/forge_batch_2026-05-05.md. Pre-flight: docs/_DRAFT_2026-05-06_batch_register_xb_hybrids.md. PAPER-BORDERLINE 2026-05-20: top-3=57.5%, top-10=115.4%, max-year=78.7%. Not top-3 eligible this sprint. NOT archived.",
       "last_review_date": "2026-05-06",
       "review_priority": "HIGH",
       "lifecycle_stage": "discovery",
@@ -8557,7 +8575,9 @@
       "reusable_as_component": false,
       "extractable_components": [],
       "crossbreeding_eligible": false,
-      "why_not_now": "awaiting_full_validation_battery_post_phase_0"
+      "why_not_now": "awaiting_full_validation_battery_post_phase_0",
+      "paper_borderline_status": "concentration_risk_failed_this_pass",
+      "paper_borderline_detail": "top-3=57.5%, top-10=115.4%, max-year=78.7%"
     },
     {
       "strategy_id": "XB-VWAP-EMA-Ladder-MGC",
@@ -8569,7 +8589,7 @@
       "source": "forge_hybrid_generation_2026-05-05",
       "rule_summary": "vwap_continuation entry + ema_slope filter + profit_ladder exit on MGC. stop_mult=2.0. Cheap-screen PASS on 2026-05-05; PF=1.219, n=368, net=$2669, max_DD=$-1870.",
       "status": "idea",
-      "notes": "Hybrid generated via Forge runner sweep 2026-05-05. Cheap-screen verdict PASS (tail-archetype, n=368). Validated against XB-ORB-EMA-Ladder family donor pattern. Source memo: docs/fql_forge/vwap_cross_asset_2026-05-05.md. Pre-flight: docs/_DRAFT_2026-05-06_batch_register_xb_hybrids.md.",
+      "notes": "Hybrid generated via Forge runner sweep 2026-05-05. Cheap-screen verdict PASS (tail-archetype, n=368). Validated against XB-ORB-EMA-Ladder family donor pattern. Source memo: docs/fql_forge/vwap_cross_asset_2026-05-05.md. Pre-flight: docs/_DRAFT_2026-05-06_batch_register_xb_hybrids.md. PAPER-BORDERLINE 2026-05-20: top-3=58.0%, top-10=131.6%, max-year=48.8%. Not top-3 eligible this sprint. NOT archived.",
       "last_review_date": "2026-05-06",
       "review_priority": "HIGH",
       "lifecycle_stage": "discovery",
@@ -8599,7 +8619,9 @@
       "reusable_as_component": false,
       "extractable_components": [],
       "crossbreeding_eligible": false,
-      "why_not_now": "awaiting_full_validation_battery_post_phase_0"
+      "why_not_now": "awaiting_full_validation_battery_post_phase_0",
+      "paper_borderline_status": "concentration_risk_failed_this_pass",
+      "paper_borderline_detail": "top-3=58.0%, top-10=131.6%, max-year=48.8%"
     },
     {
       "strategy_id": "XB-VWAP-EMA-Ladder-MCL",
@@ -8654,7 +8676,7 @@
       "source": "forge_hybrid_generation_2026-05-05",
       "rule_summary": "vwap_continuation entry + ema_slope filter + profit_ladder exit on MYM. stop_mult=2.0. Cheap-screen PASS on 2026-05-05; PF=1.488, n=271, net=$3164, max_DD=$-637.",
       "status": "idea",
-      "notes": "Hybrid generated via Forge runner sweep 2026-05-05. Cheap-screen verdict PASS (tail-archetype, n=271). Validated against XB-ORB-EMA-Ladder family donor pattern. Source memo: docs/fql_forge/vwap_cross_asset_2026-05-05.md. Pre-flight: docs/_DRAFT_2026-05-06_batch_register_xb_hybrids.md.\n\n2026-05-19 ACKNOWLEDGE_RELATED: peer XB-PB-EMA-Ladder-MYM at Pearson r=0.632 (same asset, same filter+exit, different entry). Per operator approval 2026-05-19 (correlation matrix commit 73b5df1). Cluster metadata only; status unchanged.",
+      "notes": "Hybrid generated via Forge runner sweep 2026-05-05. Cheap-screen verdict PASS (tail-archetype, n=271). Validated against XB-ORB-EMA-Ladder family donor pattern. Source memo: docs/fql_forge/vwap_cross_asset_2026-05-05.md. Pre-flight: docs/_DRAFT_2026-05-06_batch_register_xb_hybrids.md.\n\n2026-05-19 ACKNOWLEDGE_RELATED: peer XB-PB-EMA-Ladder-MYM at Pearson r=0.632 (same asset, same filter+exit, different entry). Per operator approval 2026-05-19 (correlation matrix commit 73b5df1). Cluster metadata only; status unchanged. PAPER-BORDERLINE 2026-05-20: top-3=49.9%, top-10=109.5%, max-year=83.9%. Not top-3 eligible this sprint. NOT archived.",
       "last_review_date": "2026-05-06",
       "review_priority": "HIGH",
       "lifecycle_stage": "discovery",
@@ -8686,7 +8708,9 @@
       "reusable_as_component": false,
       "extractable_components": [],
       "crossbreeding_eligible": false,
-      "why_not_now": "awaiting_full_validation_battery_post_phase_0"
+      "why_not_now": "awaiting_full_validation_battery_post_phase_0",
+      "paper_borderline_status": "concentration_risk_failed_this_pass",
+      "paper_borderline_detail": "top-3=49.9%, top-10=109.5%, max-year=83.9%"
     },
     {
       "strategy_id": "XB-ORB-EMA-Chandelier-MNQ",

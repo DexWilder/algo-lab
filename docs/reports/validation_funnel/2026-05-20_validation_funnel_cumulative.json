@@ -34,7 +34,8 @@
       "G4_walkforward_h1h2": 3,
       "G5_trade_count": 1,
       "G6_concentration": 2,
-      "G7_forward_runner_trades": 0
+      "G7_forward_runner_trades": 0,
+      "G8_promotion_humility_doc": 1
     },
     "explanations": {
       "G1_cheap_screen_pass": "promoted (cheap-screen long since cleared)",
@@ -43,7 +44,8 @@
       "G4_walkforward_h1h2": "H1 PF 1.445, H2 PF 1.781, stability 0.81",
       "G5_trade_count": "workhorse: 1207 \u2265 500",
       "G6_concentration": "top-3=9.2%, top-10=22.2%, max-year=21.1%",
-      "G7_forward_runner_trades": "forward trades = 24 < 30 (probation forward sample insufficient)"
+      "G7_forward_runner_trades": "forward trades = 24 < 30 (probation forward sample insufficient)",
+      "G8_promotion_humility_doc": "complete at docs/promotion_humility/XB-ORB-EMA-Ladder-MNQ.md"
     },
     "session_1_score": 4,
     "session_1_max": 4,
@@ -73,7 +75,7 @@
       "n_trades": 1207
     },
     "g7_forward_trade_count": 24,
-    "cumulative_score": 10,
+    "cumulative_score": 11,
     "cumulative_max": 13
   },
   {
@@ -111,7 +113,8 @@
       "G4_walkforward_h1h2": 3,
       "G5_trade_count": 1,
       "G6_concentration": 2,
-      "G7_forward_runner_trades": 0
+      "G7_forward_runner_trades": 0,
+      "G8_promotion_humility_doc": 1
     },
     "explanations": {
       "G1_cheap_screen_pass": "promoted (cheap-screen long since cleared)",
@@ -120,7 +123,8 @@
       "G4_walkforward_h1h2": "H1 PF 1.379, H2 PF 1.199, stability 0.87",
       "G5_trade_count": "workhorse: 920 \u2265 500",
       "G6_concentration": "top-3=14.4%, top-10=40.8%, max-year=27.1%",
-      "G7_forward_runner_trades": "forward trades = 20 < 30 (probation forward sample insufficient)"
+      "G7_forward_runner_trades": "forward trades = 20 < 30 (probation forward sample insufficient)",
+      "G8_promotion_humility_doc": "complete at docs/promotion_humility/XB-ORB-EMA-Ladder-MCL.md"
     },
     "session_1_score": 4,
     "session_1_max": 4,
@@ -150,7 +154,7 @@
       "n_trades": 920
     },
     "g7_forward_trade_count": 20,
-    "cumulative_score": 10,
+    "cumulative_score": 11,
     "cumulative_max": 13
   },
   {
@@ -188,7 +192,8 @@
       "G4_walkforward_h1h2": 3,
       "G5_trade_count": 0,
       "G6_concentration": 0,
-      "G7_forward_runner_trades": 2
+      "G7_forward_runner_trades": 2,
+      "G8_promotion_humility_doc": 0
     },
     "explanations": {
       "G1_cheap_screen_pass": "promoted (cheap-screen long since cleared)",
@@ -197,7 +202,8 @@
       "G4_walkforward_h1h2": "H1 PF 1.783, H2 PF 1.429, stability 0.80",
       "G5_trade_count": "workhorse requires \u2265 500; got 371",
       "G6_concentration": "top-3=31.0% \u2265 30%; top-10=58.9% \u2265 55%; max-year=67.6% \u2265 40%",
-      "G7_forward_runner_trades": "forward trades = 32 \u2265 30"
+      "G7_forward_runner_trades": "forward trades = 32 \u2265 30",
+      "G8_promotion_humility_doc": "no humility doc at docs/promotion_humility/XB-ORB-EMA-Ladder-MYM.md"
     },
     "session_1_score": 4,
     "session_1_max": 4,
@@ -265,7 +271,8 @@
       "G4_walkforward_h1h2": 3,
       "G7_forward_runner_trades": null,
       "G5_trade_count": 1,
-      "G6_concentration": 2
+      "G6_concentration": 2,
+      "G8_promotion_humility_doc": 1
     },
     "explanations": {
       "G1_cheap_screen_pass": "registered as cheap-screen PASS in correlation matrix set",
@@ -274,7 +281,8 @@
       "G4_walkforward_h1h2": "H1 PF 1.200, H2 PF 1.603, stability 0.75",
       "G7_forward_runner_trades": "deferred (different chunk)",
       "G5_trade_count": "workhorse: 1474 \u2265 500",
-      "G6_concentration": "top-3=10.2%, top-10=27.8%, max-year=39.0%"
+      "G6_concentration": "top-3=10.2%, top-10=27.8%, max-year=39.0%",
+      "G8_promotion_humility_doc": "complete at docs/promotion_humility/XB-PB-EMA-Ladder-MNQ.md"
     },
     "session_1_score": 4,
     "session_1_max": 4,
@@ -303,7 +311,7 @@
       "passed": true,
       "n_trades": 1474
     },
-    "cumulative_score": 10,
+    "cumulative_score": 11,
     "cumulative_max": 11
   },
   {
@@ -341,7 +349,8 @@
       "G4_walkforward_h1h2": 3,
       "G7_forward_runner_trades": null,
       "G5_trade_count": 1,
-      "G6_concentration": 0
+      "G6_concentration": 0,
+      "G8_promotion_humility_doc": 0
     },
     "explanations": {
       "G1_cheap_screen_pass": "registered as cheap-screen PASS in correlation matrix set",
@@ -350,7 +359,8 @@
       "G4_walkforward_h1h2": "H1 PF 1.177, H2 PF 1.218, stability 0.97",
       "G7_forward_runner_trades": "deferred (different chunk)",
       "G5_trade_count": "tail: 471 \u2265 30",
-      "G6_concentration": "top-3=44.7% \u2265 30%; top-10=110.7% \u2265 55%; max-year=75.4% \u2265 40%"
+      "G6_concentration": "top-3=44.7% \u2265 30%; top-10=110.7% \u2265 55%; max-year=75.4% \u2265 40%",
+      "G8_promotion_humility_doc": "no humility doc at docs/promotion_humility/XB-PB-EMA-Ladder-MYM.md"
     },
     "session_1_score": 4,
     "session_1_max": 4,
@@ -417,7 +427,8 @@
       "G4_walkforward_h1h2": 3,
       "G7_forward_runner_trades": null,
       "G5_trade_count": 1,
-      "G6_concentration": 0
+      "G6_concentration": 0,
+      "G8_promotion_humility_doc": 0
     },
     "explanations": {
       "G1_cheap_screen_pass": "registered as cheap-screen PASS in correlation matrix set",
@@ -426,7 +437,8 @@
       "G4_walkforward_h1h2": "H1 PF 1.276, H2 PF 1.209, stability 0.95",
       "G7_forward_runner_trades": "deferred (different chunk)",
       "G5_trade_count": "workhorse: 672 \u2265 500",
-      "G6_concentration": "top-3=44.5% \u2265 30%; top-10=94.8% \u2265 55%"
+      "G6_concentration": "top-3=44.5% \u2265 30%; top-10=94.8% \u2265 55%",
+      "G8_promotion_humility_doc": "no humility doc at docs/promotion_humility/XB-BB-EMA-Ladder-MNQ.md"
     },
     "session_1_score": 4,
     "session_1_max": 4,
@@ -493,7 +505,8 @@
       "G4_walkforward_h1h2": 3,
       "G7_forward_runner_trades": null,
       "G5_trade_count": 1,
-      "G6_concentration": 0
+      "G6_concentration": 0,
+      "G8_promotion_humility_doc": 0
     },
     "explanations": {
       "G1_cheap_screen_pass": "registered as cheap-screen PASS in correlation matrix set",
@@ -502,7 +515,8 @@
       "G4_walkforward_h1h2": "H1 PF 1.191, H2 PF 1.915, stability 0.62",
       "G7_forward_runner_trades": "deferred (different chunk)",
       "G5_trade_count": "tail: 293 \u2265 30",
-      "G6_concentration": "top-3=63.4% \u2265 30%; top-10=115.1% \u2265 55%; max-year=88.7% \u2265 40%"
+      "G6_concentration": "top-3=63.4% \u2265 30%; top-10=115.1% \u2265 55%; max-year=88.7% \u2265 40%",
+      "G8_promotion_humility_doc": "no humility doc at docs/promotion_humility/XB-BB-EMA-Ladder-MGC.md"
     },
     "session_1_score": 4,
     "session_1_max": 4,
@@ -569,7 +583,8 @@
       "G4_walkforward_h1h2": 3,
       "G7_forward_runner_trades": null,
       "G5_trade_count": 1,
-      "G6_concentration": 0
+      "G6_concentration": 0,
+      "G8_promotion_humility_doc": 0
     },
     "explanations": {
       "G1_cheap_screen_pass": "registered as cheap-screen PASS in correlation matrix set",
@@ -578,7 +593,8 @@
       "G4_walkforward_h1h2": "H1 PF 1.216, H2 PF 2.094, stability 0.58",
       "G7_forward_runner_trades": "deferred (different chunk)",
       "G5_trade_count": "tail: 239 \u2265 30",
-      "G6_concentration": "top-3=57.5% \u2265 30%; top-10=115.4% \u2265 55%; max-year=78.7% \u2265 40%"
+      "G6_concentration": "top-3=57.5% \u2265 30%; top-10=115.4% \u2265 55%; max-year=78.7% \u2265 40%",
+      "G8_promotion_humility_doc": "no humility doc at docs/promotion_humility/XB-BB-EMA-Ladder-MYM.md"
     },
     "session_1_score": 4,
     "session_1_max": 4,
@@ -645,7 +661,8 @@
       "G4_walkforward_h1h2": 3,
       "G7_forward_runner_trades": null,
       "G5_trade_count": 1,
-      "G6_concentration": 0
+      "G6_concentration": 0,
+      "G8_promotion_humility_doc": 0
     },
     "explanations": {
       "G1_cheap_screen_pass": "registered as cheap-screen PASS in correlation matrix set",
@@ -654,7 +671,8 @@
       "G4_walkforward_h1h2": "H1 PF 1.246, H2 PF 1.328, stability 0.94",
       "G7_forward_runner_trades": "deferred (different chunk)",
       "G5_trade_count": "tail: 376 \u2265 30",
-      "G6_concentration": "top-3=58.0% \u2265 30%; top-10=131.6% \u2265 55%; max-year=48.8% \u2265 40%"
+      "G6_concentration": "top-3=58.0% \u2265 30%; top-10=131.6% \u2265 55%; max-year=48.8% \u2265 40%",
+      "G8_promotion_humility_doc": "no humility doc at docs/promotion_humility/XB-VWAP-EMA-Ladder-MGC.md"
     },
     "session_1_score": 4,
     "session_1_max": 4,
@@ -721,7 +739,8 @@
       "G4_walkforward_h1h2": 3,
       "G7_forward_runner_trades": null,
       "G5_trade_count": 1,
-      "G6_concentration": 0
+      "G6_concentration": 0,
+      "G8_promotion_humility_doc": 0
     },
     "explanations": {
       "G1_cheap_screen_pass": "registered as cheap-screen PASS in correlation matrix set",
@@ -730,7 +749,8 @@
       "G4_walkforward_h1h2": "H1 PF 1.193, H2 PF 1.468, stability 0.81",
       "G7_forward_runner_trades": "deferred (different chunk)",
       "G5_trade_count": "tail: 276 \u2265 30",
-      "G6_concentration": "top-3=49.9% \u2265 30%; top-10=109.5% \u2265 55%; max-year=83.9% \u2265 40%"
+      "G6_concentration": "top-3=49.9% \u2265 30%; top-10=109.5% \u2265 55%; max-year=83.9% \u2265 40%",
+      "G8_promotion_humility_doc": "no humility doc at docs/promotion_humility/XB-VWAP-EMA-Ladder-MYM.md"
     },
     "session_1_score": 4,
     "session_1_max": 4,
@@ -797,7 +817,8 @@
       "G4_walkforward_h1h2": 3,
       "G7_forward_runner_trades": null,
       "G5_trade_count": 1,
-      "G6_concentration": 2
+      "G6_concentration": 2,
+      "G8_promotion_humility_doc": 1
     },
     "explanations": {
       "G1_cheap_screen_pass": "registered as cheap-screen PASS in correlation matrix set",
@@ -806,7 +827,8 @@
       "G4_walkforward_h1h2": "H1 PF 1.242, H2 PF 1.882, stability 0.66",
       "G7_forward_runner_trades": "deferred (different chunk)",
       "G5_trade_count": "workhorse: 1207 \u2265 500",
-      "G6_concentration": "top-3=14.5%, top-10=31.5%, max-year=29.6%"
+      "G6_concentration": "top-3=14.5%, top-10=31.5%, max-year=29.6%",
+      "G8_promotion_humility_doc": "complete at docs/promotion_humility/XB-ORB-EMA-Chandelier-MNQ.md"
     },
     "session_1_score": 4,
     "session_1_max": 4,
@@ -835,7 +857,7 @@
       "passed": true,
       "n_trades": 1207
     },
-    "cumulative_score": 10,
+    "cumulative_score": 11,
     "cumulative_max": 11
   },
   {
@@ -873,7 +895,8 @@
       "G4_walkforward_h1h2": 3,
       "G7_forward_runner_trades": null,
       "G5_trade_count": 1,
-      "G6_concentration": 2
+      "G6_concentration": 2,
+      "G8_promotion_humility_doc": 1
     },
     "explanations": {
       "G1_cheap_screen_pass": "registered as cheap-screen PASS in correlation matrix set",
@@ -882,7 +905,8 @@
       "G4_walkforward_h1h2": "H1 PF 1.246, H2 PF 1.732, stability 0.72",
       "G7_forward_runner_trades": "PENDING_FORWARD_EVIDENCE \u2014 non-probation candidate, never forward-traded",
       "G5_trade_count": "tail: 1207 \u2265 30",
-      "G6_concentration": "top-3=11.3%, top-10=28.7%, max-year=24.9%"
+      "G6_concentration": "top-3=11.3%, top-10=28.7%, max-year=24.9%",
+      "G8_promotion_humility_doc": "complete at docs/promotion_humility/XB-ORB-EMA-TimeStop-MNQ.md"
     },
     "session_1_score": 3,
     "session_1_max": 4,
@@ -911,7 +935,7 @@
       "passed": true,
       "n_trades": 1207
     },
-    "cumulative_score": 9,
+    "cumulative_score": 10,
     "cumulative_max": 11
   }
 ]

@@ -394,6 +394,41 @@ def gate_7_forward_evidence(candidate: dict) -> tuple:
     return 0, f"forward trades = {n_fwd} < 30 (probation forward sample insufficient)"
 
 
+# ── Gate 8: Promotion humility doc check ─────────────────────────────────────
+
+HUMILITY_DIR = ROOT / "docs/promotion_humility"
+
+REQUIRED_HUMILITY_SECTIONS = (
+    "Failure modes",
+    "Concentration caveat",
+    "Cost caveat",
+    "Forward-evidence caveat",
+    "Cluster / correlation caveat",
+    "What would invalidate",
+)
+
+
+def gate_8_promotion_humility(candidate: dict) -> tuple:
+    """G8 (weight 1): a promotion-humility doc exists with required sections.
+
+    Required sections (case-insensitive): failure modes, concentration caveat,
+    cost caveat, forward-evidence caveat, cluster/correlation caveat, what
+    would invalidate. (Broker-rate caveat is conditional on asset and not
+    required for assets with verified broker rates.)
+
+    Doc path: docs/promotion_humility/<strategy_id>.md
+    """
+    sid = candidate["strategy_id"]
+    doc_path = HUMILITY_DIR / f"{sid}.md"
+    if not doc_path.exists():
+        return 0, f"no humility doc at {doc_path.relative_to(ROOT)}"
+    text = doc_path.read_text().lower()
+    missing = [s for s in REQUIRED_HUMILITY_SECTIONS if s.lower() not in text]
+    if missing:
+        return 0, f"humility doc missing required sections: {missing}"
+    return 1, f"humility doc complete at {doc_path.relative_to(ROOT)}"
+
+
 # ── Gate registry ────────────────────────────────────────────────────────────
 
 SESSION_1_GATES = [
@@ -414,9 +449,9 @@ SESSION_3_GATES = [
     ("G7_forward_runner_trades", 2, gate_7_forward_evidence),
 ]
 
-# Placeholder for Session 4.
+# Session 4 (final).
 SESSION_4_GATES = [
-    ("G8_promotion_humility_doc", 1, None),
+    ("G8_promotion_humility_doc", 1, gate_8_promotion_humility),
 ]
 
 SESSION_2_PLUS_GATES = SESSION_2_GATES + SESSION_3_GATES + SESSION_4_GATES

@@ -102,10 +102,31 @@ def consolidate():
             if c.get("g7_forward_trade_count") is not None:
                 by_id[sid]["g7_forward_trade_count"] = c["g7_forward_trade_count"]
 
+    # G8 (humility doc check) — inline existence + required-sections check
+    humility_dir = ROOT / "docs/promotion_humility"
+    required_sections = (
+        "failure modes", "concentration caveat", "cost caveat",
+        "forward-evidence caveat", "cluster / correlation caveat",
+        "what would invalidate",
+    )
+    for c in by_id.values():
+        sid = c["strategy_id"]
+        doc = humility_dir / f"{sid}.md"
+        if not doc.exists():
+            pts, why = 0, f"no humility doc at {doc.relative_to(ROOT)}"
+        else:
+            text = doc.read_text().lower()
+            missing = [s for s in required_sections if s not in text]
+            if missing:
+                pts, why = 0, f"missing sections: {missing}"
+            else:
+                pts, why = 1, f"complete at {doc.relative_to(ROOT)}"
+        c.setdefault("scores", {})["G8_promotion_humility_doc"] = pts
+        c.setdefault("explanations", {})["G8_promotion_humility_doc"] = why
+
     # Compute cumulative
     for c in by_id.values():
         scores = c.get("scores", {})
-        # session 1 = scores G1+G2+G3
         s1_pts = sum(scores.get(g, 0) or 0 for g in
                      ("G1_cheap_screen_pass", "G2_correlation_cleared", "G3_cost_adjusted_pf"))
         g4 = scores.get("G4_walkforward_h1h2") or 0
@@ -113,7 +134,8 @@ def consolidate():
         g6 = scores.get("G6_concentration") or 0
         g7_raw = scores.get("G7_forward_runner_trades")
         g7 = g7_raw if g7_raw is not None else 0
-        cum = s1_pts + g4 + g5 + g6 + g7
+        g8 = scores.get("G8_promotion_humility_doc") or 0
+        cum = s1_pts + g4 + g5 + g6 + g7 + g8
         c["cumulative_score"] = cum
         c["cumulative_max"] = 13 if c["strategy_id"] in PROBATION_SET else 11
 
@@ -121,17 +143,26 @@ def consolidate():
 
 
 def classify(c):
+    """Classify per Session 4 final thresholds (13-pt scale, 11 for non-probation).
+
+    Probation:
+      ≥11/13 → paper-eligible
+       ≥9/13 → paper-borderline
+       else  → REJECT
+    Non-probation (G7=PENDING):
+      ≥9/11  → paper-eligible (promotion PEND forward)
+      ≥7/11  → paper-borderline (promotion PEND forward)
+       else  → REJECT
+    """
     sid = c["strategy_id"]
     cum = c.get("cumulative_score", 0)
     is_probation = sid in PROBATION_SET
     if is_probation:
-        # 10/13 = paper-ready (≥10 = paper-eligible); promotion needs more forward
-        if cum >= 10:
+        if cum >= 11:
             return "paper-eligible (promotion gate borderline)"
-        if cum >= 8:
+        if cum >= 9:
             return "paper-borderline (work needed)"
         return "REJECT"
-    # Non-probation: paper-eligible if cum >= 8 out of 11
     if cum >= 9:
         return "paper-eligible (promotion PEND forward)"
     if cum >= 7:
@@ -142,11 +173,11 @@ def classify(c):
 def render_report(merged):
     today = date.today().isoformat()
     out = []
-    out.append(f"# Validation Funnel v0 — Consolidated Sessions 1+2+3 ({today})")
+    out.append(f"# Validation Funnel v0 — Final Consolidated ({today})")
     out.append("")
     out.append("**Filed by:** `research/funnel_consolidate.py`")
     out.append("**Authority:** T1 intelligence; no registry mutation, no status changes.")
-    out.append("**Sprint:** Phase 2 / Paper-Readiness Sprint Item #7. Sessions 1–3 complete; Session 4 (Gate 8 humility doc) pending.")
+    out.append("**Sprint:** Phase 2 / Paper-Readiness Sprint Item #7 — **all 4 sessions complete**.")
     out.append("")
     out.append("## Headline")
     out.append("")
@@ -161,8 +192,8 @@ def render_report(merged):
     out.append("")
     out.append("Max possible: **13** (probation) / **11** (non-probation; G7=PENDING_FORWARD_EVIDENCE).")
     out.append("")
-    out.append("| Candidate | Asset | Bucket | S1 | G4 | G5 | G6 | G7 | Cumulative | Net PF | Worst WF | Classification |")
-    out.append("|---|---|---|---:|---:|---:|---:|---|---:|---:|---:|---|")
+    out.append("| Candidate | Asset | Bucket | S1 | G4 | G5 | G6 | G7 | G8 | Cumulative | Net PF | Worst WF | Classification |")
+    out.append("|---|---|---|---:|---:|---:|---:|---|---:|---:|---:|---:|---|")
     for c in sorted(merged, key=lambda x: (-x.get("cumulative_score", 0), -x.get("new_pf", 0))):
         sid = c["strategy_id"]
         scores = c.get("scores", {})
@@ -172,12 +203,14 @@ def render_report(merged):
         g5 = scores.get("G5_trade_count")
         g6 = scores.get("G6_concentration")
         g7 = scores.get("G7_forward_runner_trades")
+        g8 = scores.get("G8_promotion_humility_doc")
         g7_str = "PEND" if g7 is None else str(g7)
         worst_wf = c.get("g4_walkforward", {}).get("worst_half_pf", "?")
         out.append(
             f"| {sid} | {c.get('asset', '?')} | {c.get('bucket', '?')} | "
             f"{s1} | {g4} | {g5 if g5 is not None else '—'} | "
             f"{g6 if g6 is not None else '—'} | {g7_str} | "
+            f"{g8 if g8 is not None else '—'} | "
             f"**{c.get('cumulative_score', 0)}/{c.get('cumulative_max', '?')}** | "
             f"{c.get('new_pf', 0):.3f} | {worst_wf} | {classify(c)} |"
         )
@@ -260,14 +293,23 @@ def render_report(merged):
     for retained, leader in CLUSTER_RETAINED_VARIANTS.items():
         out.append(f"- **{retained}** is retained variant of **{leader}** cluster — one exposure slot.")
     out.append("")
-    out.append("## Remaining (Session 4)")
+    out.append("## Top-3 selection (Item #8)")
     out.append("")
-    out.append("- Gate 8: promotion humility doc check (1 pt). Doc-existence check per candidate.")
-    out.append("- After Session 4 lands, final scoring + Item #8 top-3 selection.")
+    out.append("Per operator lean 2026-05-20:")
+    out.append("")
+    out.append("1. **XB-ORB-EMA-Ladder-MNQ** — probation, cum 11/13, anchor candidate")
+    out.append("2. **XB-ORB-EMA-Chandelier-MNQ** — correlation cluster leader, cum 11/11 (TimeStop collapses to this slot)")
+    out.append("3. **XB-PB-EMA-Ladder-MNQ** — correlation, cum 11/11, cleaner third than fragile MCL")
+    out.append("")
+    out.append("**XB-ORB-EMA-Ladder-MCL** (cum 11/13, fragile) is the alternate. Same gate score as the top-3 but `cost_fragility` flag and lower worst-half WF (1.199 vs 1.242–1.445) make it second-choice. If the top-3 want broker-rate-light candidates only, MCL drops to alternate.")
+    out.append("")
+    out.append("## Next: Item #9 paper-readiness packets")
+    out.append("")
+    out.append("Each top-3 candidate already has its promotion-humility packet (filed today as part of Gate 8). Item #9 builds the full paper-readiness packet around each, combining: cost-aware funnel evidence + humility packet + forward-runner data + decision recommendation. Target ship by 2026-06-17.")
     out.append("")
     out.append("---")
     out.append("")
-    out.append("*Consolidated 2026-05-20. Read-only intelligence; no decisions taken. Awaiting operator on: G5 archetype/threshold question for MYM, Session 4 build, and concentration-failure dispositions.*")
+    out.append("*Final consolidated 2026-05-20. Read-only intelligence; no status mutation. Top-3 selection awaits operator confirmation.*")
     return "\n".join(out)
 
 
