@@ -116,6 +116,19 @@ Every backtest the funnel triggers (walk-forward, regime decomposition) must use
 
 This is the doctrine made enforceable: validation evidence must inherit the same cost basis as the cost integrity reset that just landed.
 
+## Operator-locked guardrails (2026-05-20)
+
+The following are explicit during funnel execution and any follow-on session:
+
+- **No pool expansion** — the funnel operates on the 12 cost-aware-viable candidates only. Adding new candidates mid-funnel reopens scope.
+- **No new engine features** — funnel composes existing gates; no new entries, filters, or exits. New mechanisms require a separate pre-flight.
+- **No generalized entry-registration framework** during this sprint. That is Phase 3 architectural work, not Phase 2 sprint work.
+- **No paper / probation / promotion approvals** until funnel results land for every candidate. Status mutation gated on operator decision packet.
+- **If a gate invalidates a candidate, surface it — do not rescue.** Funnel records the failure; rescue (parameter sweep, scope adjustment, etc.) requires a separate decision and is out of scope for v0.
+- **Broker rate sheet replacement is MANDATORY** before any paper/prop decision on MCL, MYM, treasury (ZN/ZF/ZB), or FX (6B/6E/6J) candidates. Conservative estimates are valid for funnel screening; not valid for paper deployment.
+
+These are explicit because today's pool expansion batch surfaced the failure pattern of "rescue an underperforming candidate by widening engine scope." The funnel must produce honest reject/defer/pass verdicts and stop there.
+
 ---
 
 ## Sequencing impact
