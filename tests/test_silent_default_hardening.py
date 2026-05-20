@@ -156,3 +156,116 @@ class TestSite2_InvalidRegimeProfile:
             {},
         )
         assert active == []
+
+
+# ── Site 4: engine/carry_lookup.py InvalidCarryConfig ────────────────────────
+
+class TestSite4_InvalidCarryConfig:
+    """_fx_carry_score must fail closed when carry config is inconsistent.
+
+    Distinguishes:
+      - asset not in fx_pairs → returns (None, "NOT_AVAILABLE") (legitimate)
+      - fx_pairs references currency not in policy_rates → raises
+      - policy_rates entry has None/missing rate → raises
+
+    Pre-fix: both error cases collapsed into "(None, NOT_AVAILABLE)" which
+    looked identical to legitimate asset-absence — config errors became
+    invisible to operators.
+    """
+
+    def test_asset_not_in_fx_pairs_returns_not_available(self):
+        """Legitimate absence — equity micro, not an FX pair. Not a config error."""
+        from engine.carry_lookup import _fx_carry_score
+        rates = {
+            "fx_pairs": {"6J": {"domestic": "USD", "foreign": "JPY"}},
+            "policy_rates": {"USD": {"rate": 0.045}, "JPY": {"rate": -0.001}},
+        }
+        score, label = _fx_carry_score("MES", rates)
+        assert score is None
+        assert label == "NOT_AVAILABLE"
+
+    def test_raises_when_pair_currency_missing_from_policy(self):
+        """fx_pairs references currency we don't track. Config error."""
+        from engine.carry_lookup import _fx_carry_score, InvalidCarryConfig
+        rates = {
+            "fx_pairs": {"6J": {"domestic": "USD", "foreign": "JPY"}},
+            "policy_rates": {"USD": {"rate": 0.045}},  # JPY missing
+        }
+        with pytest.raises(InvalidCarryConfig) as exc_info:
+            _fx_carry_score("6J", rates)
+        assert "JPY" in str(exc_info.value)
+        assert "policy_rates" in str(exc_info.value)
+
+    def test_raises_when_policy_rate_is_none(self):
+        """Currency present but rate explicitly None. Config error."""
+        from engine.carry_lookup import _fx_carry_score, InvalidCarryConfig
+        rates = {
+            "fx_pairs": {"6E": {"domestic": "USD", "foreign": "EUR"}},
+            "policy_rates": {"USD": {"rate": 0.045}, "EUR": {"rate": None}},
+        }
+        with pytest.raises(InvalidCarryConfig) as exc_info:
+            _fx_carry_score("6E", rates)
+        assert "EUR" in str(exc_info.value)
+        assert "rate" in str(exc_info.value)
+
+    def test_valid_pair_returns_real_carry(self):
+        """Sanity: normal path still works."""
+        from engine.carry_lookup import _fx_carry_score
+        rates = {
+            "fx_pairs": {"6J": {"domestic": "USD", "foreign": "JPY"}},
+            "policy_rates": {"USD": {"rate": 0.045}, "JPY": {"rate": -0.001}},
+        }
+        score, label = _fx_carry_score("6J", rates)
+        assert score is not None
+        assert label == "REAL"
+        # Carry for long 6J = JPY rate - USD rate = -0.001 - 0.045 = -0.046
+        assert abs(score - (-0.046)) < 1e-9
+
+    def test_production_carry_rates_resolve_cleanly(self):
+        """Standing guard: live engine/carry_rates.json must produce no config errors."""
+        import json
+        from pathlib import Path
+        from engine.carry_lookup import _fx_carry_score
+        rates_path = Path(__file__).parent.parent / "engine" / "carry_rates.json"
+        with open(rates_path) as f:
+            rates = json.load(f)
+        # Every FX pair in production data must resolve without raising
+        for asset in rates.get("fx_pairs", {}):
+            score, label = _fx_carry_score(asset, rates)
+            assert score is not None and label == "REAL", (
+                f"{asset} should produce a REAL carry score from production rates"
+            )
+
+
+# ── Site 5: runner asset coverage ────────────────────────────────────────────
+
+class TestSite5_RunnerAssetCoverage:
+    """Forge batch runner must enumerate assets from engine/asset_config.py.
+
+    Pre-fix risk: if CANDIDATES referenced an asset not in ASSETS, the
+    runner would crash mid-batch on a KeyError. The standing test asserts
+    every candidate asset IS in ASSETS so the runner cannot silently drift
+    from the trading universe.
+    """
+
+    def test_every_candidate_asset_is_in_asset_config(self):
+        from research.fql_forge_batch_runner import CANDIDATES
+        from engine.asset_config import ASSETS
+        universe = set(ASSETS.keys())
+        for cid, info in CANDIDATES.items():
+            asset = info.get("asset") if isinstance(info, dict) else None
+            if asset is None:
+                continue
+            assert asset in universe, (
+                f"Candidate {cid!r} references asset {asset!r} which is not "
+                f"in engine/asset_config.py::ASSETS. Add the asset to "
+                f"asset_config (with cost defaults) or remove the candidate."
+            )
+
+    def test_batch_runner_imports_asset_config(self):
+        """Sanity: the import is what binds the runner to the source of truth."""
+        import research.fql_forge_batch_runner as runner
+        assert hasattr(runner, "ASSETS"), (
+            "fql_forge_batch_runner must import ASSETS from engine.asset_config "
+            "as its enumeration source — see Site 5 of Item #3.5."
+        )

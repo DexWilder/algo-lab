@@ -30,6 +30,21 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+
+class InvalidCarryConfig(ValueError):
+    """Raised when carry_rates.json is internally inconsistent.
+
+    Per FQL evidence law: a currency referenced by fx_pairs that doesn't
+    appear in policy_rates, or a policy_rates entry whose 'rate' field is
+    None/missing, is a configuration error — silent None propagation into
+    the carry calculation would produce wrong directional carry signals.
+
+    Distinct from `NOT_AVAILABLE` quality label, which signals an asset
+    class that legitimately has no FX-style carry (e.g., equities). That
+    return path is preserved; only config errors raise.
+    """
+
+
 ROOT = Path(__file__).resolve().parent.parent
 RATES_PATH = Path(__file__).resolve().parent / "carry_rates.json"
 
@@ -59,14 +74,29 @@ def _fx_carry_score(asset: str, rates: dict) -> tuple:
     policy = rates.get("policy_rates", {})
 
     if asset not in fx_pairs:
+        # Legitimate asset-level absence (e.g., equity micro). Not a config error.
         return None, "NOT_AVAILABLE"
 
     pair = fx_pairs[asset]
-    dom_rate = policy.get(pair["domestic"], {}).get("rate")
-    for_rate = policy.get(pair["foreign"], {}).get("rate")
 
-    if dom_rate is None or for_rate is None:
-        return None, "NOT_AVAILABLE"
+    # Config-error fail-closed: pair references a currency missing from policy
+    # OR policy entry exists but rate is None/missing.
+    for ccy_key in ("domestic", "foreign"):
+        ccy = pair[ccy_key]
+        if ccy not in policy:
+            raise InvalidCarryConfig(
+                f"fx_pairs[{asset!r}] references currency {ccy!r} which is "
+                f"not in policy_rates. Add {ccy!r} to engine/carry_rates.json "
+                f"or correct the fx_pairs entry."
+            )
+        if policy[ccy].get("rate") is None:
+            raise InvalidCarryConfig(
+                f"policy_rates[{ccy!r}] is present but 'rate' is None/missing. "
+                f"Set an explicit rate in engine/carry_rates.json."
+            )
+
+    dom_rate = policy[pair["domestic"]]["rate"]
+    for_rate = policy[pair["foreign"]]["rate"]
 
     # Carry for going long the CME contract (long foreign currency)
     carry = for_rate - dom_rate
