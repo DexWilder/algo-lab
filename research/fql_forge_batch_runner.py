@@ -270,19 +270,25 @@ CANDIDATES = {
     },
 
     # ── Cost-aware pool expansion batch (operator-approved 2026-05-20) ───────
-    # Added post-Item-#3 to test under cost-aware engine from day one.
-    # All 3 picks land here only; broader expansion is gated.
-
-    "VWAPPullback-MES-Long": {
-        "gap": "MES-long pullback diversifier (non-ORB entry on equity index)",
-        "asset": "MES", "archetype": "workhorse",
-        # APPROXIMATION (not 1:1 to practitioner spec): pb_pullback entry +
-        # vwap_slope regime filter + profit_ladder exit. The spec calls for
-        # VWAP-touch-from-above + bullish-close + EMA-ribbon — a higher-
-        # fidelity reimplementation should follow if cheap-screen passes.
-        "runner": lambda: _xb_general("MES", "pb_pullback", "vwap_slope", "profit_ladder", "VWAPPullback-MES-Long"),
-        "baseline": "Practitioner composite (MES VWAP-pullback ~100-150 trades/yr); approximation here",
-    },
+    # VWAPPullback-MES-Long PRUNED 2026-05-20 after cost-aware cheap-screen:
+    # net PF 0.847 (KILL) on 2501 trades, -$12,670 net PnL. The approximation
+    # (pb_pullback + vwap_slope + profit_ladder) over-fires relative to the
+    # practitioner spec (VWAP-touch + bullish-close + EMA-ribbon). Evidence:
+    # docs/fql_forge/forge_batch_2026-05-20.md. Removed from runner pool to
+    # avoid wasting autonomous rotation slots. A higher-fidelity
+    # reimplementation may be a separate future pre-flight.
+    #
+    # BBW-Percentile DEFERRED 2026-05-20: requires a NEW entry mechanism
+    # (BBWP cross-above-SMA trigger), not the 0.5-session filter extension
+    # the pool-expansion packet estimated. Engine work exceeds packet scope.
+    # Re-evaluate after the generalized entry-registration framework
+    # (Phase 3 candidate).
+    #
+    # FX-Daily-Donchian-Breakout DEFERRED 2026-05-20: requires daily-bar
+    # data pipeline (only 6J_5m.csv exists), donchian state-tracking
+    # verification on daily bars, and resolution of the existing FX
+    # donchian RETEST flag from 2026-05-05. Re-evaluate after daily-bar
+    # harness work is justified by multiple daily candidates queued.
 }
 
 
