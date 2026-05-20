@@ -22,8 +22,8 @@ from engine.backtest import (
 def test_raises_when_symbol_unknown_and_no_overrides():
     """Asset with no SYMBOL_DEFAULTS entry must raise — the original bug class."""
     with pytest.raises(InvalidCostAssumption) as exc_info:
-        get_cost_params(symbol="MCL")  # MCL was one of the 11 silently-defaulted
-    assert "MCL" in str(exc_info.value)
+        get_cost_params(symbol="NOT_A_REAL_ASSET")
+    assert "NOT_A_REAL_ASSET" in str(exc_info.value)
     assert "commission_per_side" in str(exc_info.value)
 
 
@@ -77,7 +77,7 @@ def test_partial_override_with_known_symbol():
 def test_partial_override_with_unknown_symbol_still_raises():
     """Partial override + unknown symbol = still missing some fields. Raise."""
     with pytest.raises(InvalidCostAssumption) as exc_info:
-        get_cost_params(symbol="MCL", commission_per_side=2.00)
+        get_cost_params(symbol="NOT_A_REAL_ASSET", commission_per_side=2.00)
     # commission resolved, but slippage_ticks and tick_size still missing
     msg = str(exc_info.value)
     assert "slippage_ticks" in msg
@@ -89,7 +89,7 @@ def test_partial_override_with_unknown_symbol_still_raises():
 
 def test_allow_uncosted_returns_exploration_tier_for_unknown_symbol():
     """Explicit opt-in: missing config falls back to zero, tagged for downstream refusal."""
-    costs = get_cost_params(symbol="MCL", allow_uncosted=True)
+    costs = get_cost_params(symbol="NOT_A_REAL_ASSET", allow_uncosted=True)
     assert costs["cost_tier"] == "EXPLORATION_TIER"
     assert costs["commission_per_side"] == 0.0
     assert costs["slippage_ticks"] == 0
@@ -128,7 +128,7 @@ def test_run_backtest_raises_for_unknown_symbol(minimal_data):
     """The integration point: unknown-asset backtests must fail loudly."""
     df, signals = minimal_data
     with pytest.raises(InvalidCostAssumption):
-        run_backtest(df, signals, symbol="MCL")
+        run_backtest(df, signals, symbol="NOT_A_REAL_ASSET")
 
 
 def test_run_backtest_succeeds_with_known_symbol(minimal_data):
@@ -142,20 +142,53 @@ def test_run_backtest_succeeds_with_known_symbol(minimal_data):
 def test_run_backtest_allow_uncosted_tags_exploration(minimal_data):
     """Exploration opt-in: result is tagged so downstream consumers can refuse."""
     df, signals = minimal_data
-    result = run_backtest(df, signals, symbol="MCL", allow_uncosted=True)
+    result = run_backtest(df, signals, symbol="NOT_A_REAL_ASSET", allow_uncosted=True)
     assert result["stats"]["costs"]["cost_tier"] == "EXPLORATION_TIER"
 
 
 # ── Coverage assertion: the asset-config / cost-defaults gap ──────────────────
 
-def test_cost_defaults_documented_coverage():
-    """Document which assets ARE configured. After Piece A this should equal 17.
+def test_every_trading_universe_asset_has_cost_defaults():
+    """Standing test: the failure mode of 2026-05-19 cannot silently recur.
 
-    This test does not assert a count — it surfaces the current count so any
-    accidental regression (removing an asset) is immediately visible.
+    Every asset declared in engine/asset_config.py::ASSETS (the trading
+    universe) must have a SYMBOL_DEFAULTS entry. If a new asset is added
+    to the universe without cost defaults, this test fails immediately —
+    preventing another instance of the silent zero-cost bug.
     """
-    configured = sorted(SYMBOL_DEFAULTS.keys())
-    # Pre-Piece-A state captured here; update intentionally as Piece A lands.
-    assert len(configured) >= 6, "Should never have fewer than the original 6 configured assets"
-    for required_base in ("MES", "MNQ", "MGC"):
-        assert required_base in configured, f"{required_base} must remain configured"
+    from engine.asset_config import ASSETS
+    universe = set(ASSETS.keys())
+    configured = set(SYMBOL_DEFAULTS.keys())
+    missing = universe - configured
+    assert not missing, (
+        f"Trading-universe assets without cost defaults: {sorted(missing)}. "
+        f"Add to SYMBOL_DEFAULTS in engine/backtest.py with documented "
+        f"conservative assumptions, or remove from asset_config if not actively traded."
+    )
+
+
+def test_cost_defaults_resolve_validated_tier_for_universe():
+    """Every universe asset must resolve as VALIDATED (not EXPLORATION_TIER)."""
+    from engine.asset_config import ASSETS
+    for sym in ASSETS:
+        costs = get_cost_params(symbol=sym)
+        assert costs["cost_tier"] == "VALIDATED", (
+            f"{sym} resolves but at non-VALIDATED tier — check SYMBOL_DEFAULTS entry"
+        )
+
+
+def test_cost_defaults_tick_size_matches_asset_config():
+    """Tick sizes in SYMBOL_DEFAULTS must match the canonical source.
+
+    asset_config.py is the source of truth for contract physical properties.
+    SYMBOL_DEFAULTS duplicates tick_size for self-containment of the backtest
+    module; this test prevents silent drift.
+    """
+    from engine.asset_config import ASSETS
+    for sym, asset_cfg in ASSETS.items():
+        if sym in SYMBOL_DEFAULTS:
+            bt_tick = SYMBOL_DEFAULTS[sym]["tick_size"]
+            ac_tick = asset_cfg["tick_size"]
+            assert bt_tick == ac_tick, (
+                f"{sym} tick_size mismatch: backtest={bt_tick}, asset_config={ac_tick}"
+            )

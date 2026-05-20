@@ -26,16 +26,56 @@ class InvalidCostAssumption(ValueError):
 
 
 # ── Symbol cost defaults ──────────────────────────────────────────────────────
-# Coverage gap caught 2026-05-19: only 6 of 17 supported assets configured.
-# The 11 missing assets are populated in Piece A of Item #3 cost integrity reset.
+# Coverage gap caught 2026-05-19 (Item #3 cost integrity reset).
+# Pre-reset: only 6 of 17 supported assets configured; MCL/MYM (probation
+# candidates) silently defaulted to zero cost, overstating their net PFs.
+#
+# Source of truth for tick_size: engine/asset_config.py (duplicated here for
+# self-contained backtest module; consolidate in a follow-up).
+#
+# Conservative bias on slippage (higher = more conservative) per operator
+# guidance. Commission estimates are CME retail-broker typical (operator should
+# audit against actual broker schedule and adjust if material).
 
 SYMBOL_DEFAULTS = {
-    "MES": {"commission_per_side": 0.62, "tick_size": 0.25, "slippage_ticks": 1},
-    "MNQ": {"commission_per_side": 0.62, "tick_size": 0.25, "slippage_ticks": 1},
-    "MGC": {"commission_per_side": 0.62, "tick_size": 0.10, "slippage_ticks": 1},
-    "ES":  {"commission_per_side": 1.24, "tick_size": 0.25, "slippage_ticks": 1},
-    "NQ":  {"commission_per_side": 1.24, "tick_size": 0.25, "slippage_ticks": 1},
-    "GC":  {"commission_per_side": 1.24, "tick_size": 0.10, "slippage_ticks": 1},
+    # ── Equity-index micros (most liquid; 1-tick slippage realistic) ──────────
+    "MES": {"commission_per_side": 0.62, "tick_size": 0.25,    "slippage_ticks": 1},
+    "MNQ": {"commission_per_side": 0.62, "tick_size": 0.25,    "slippage_ticks": 1},
+    "MGC": {"commission_per_side": 0.62, "tick_size": 0.10,    "slippage_ticks": 1},
+
+    # ── Equity-index micros (added 2026-05-20; less liquid → 2 ticks) ─────────
+    # M2K = Russell 2000 micro; MYM = Dow micro (lowest-volume of the equity micros)
+    "M2K": {"commission_per_side": 0.62, "tick_size": 0.10,    "slippage_ticks": 2},
+    "MYM": {"commission_per_side": 0.62, "tick_size": 1.0,     "slippage_ticks": 2},
+
+    # ── Energy micro ──────────────────────────────────────────────────────────
+    # MCL = micro crude; liquid but micros lag full-size — 2 ticks conservative
+    "MCL": {"commission_per_side": 0.62, "tick_size": 0.01,    "slippage_ticks": 2},
+
+    # ── Standard futures: equity-index full-size (for legacy callers) ─────────
+    "ES":  {"commission_per_side": 1.24, "tick_size": 0.25,    "slippage_ticks": 1},
+    "NQ":  {"commission_per_side": 1.24, "tick_size": 0.25,    "slippage_ticks": 1},
+    "GC":  {"commission_per_side": 1.24, "tick_size": 0.10,    "slippage_ticks": 1},
+
+    # ── FX futures (CME standard; quite liquid → 1 tick) ──────────────────────
+    "6B":  {"commission_per_side": 2.50, "tick_size": 0.0001,  "slippage_ticks": 1},
+    "6E":  {"commission_per_side": 2.50, "tick_size": 5e-05,   "slippage_ticks": 1},
+    "6J":  {"commission_per_side": 2.50, "tick_size": 5e-07,   "slippage_ticks": 1},
+
+    # ── Treasury futures ──────────────────────────────────────────────────────
+    # ZN/ZF: deep liquidity → 1 tick. ZB: thinner → 2 ticks (conservative).
+    "ZN":  {"commission_per_side": 1.55, "tick_size": 0.015625, "slippage_ticks": 1},
+    "ZF":  {"commission_per_side": 1.55, "tick_size": 0.0078125, "slippage_ticks": 1},
+    "ZB":  {"commission_per_side": 1.55, "tick_size": 0.03125,  "slippage_ticks": 2},
+
+    # ── Metals (full-size; less liquid than micros) ──────────────────────────
+    "SI":  {"commission_per_side": 2.50, "tick_size": 0.005,   "slippage_ticks": 2},
+    "HG":  {"commission_per_side": 2.50, "tick_size": 0.0005,  "slippage_ticks": 2},
+
+    # ── Agriculturals (typically wider spreads → 2 ticks) ─────────────────────
+    "ZC":  {"commission_per_side": 2.50, "tick_size": 0.25,    "slippage_ticks": 2},
+    "ZS":  {"commission_per_side": 2.50, "tick_size": 0.25,    "slippage_ticks": 2},
+    "ZW":  {"commission_per_side": 2.50, "tick_size": 0.25,    "slippage_ticks": 2},
 }
 
 
