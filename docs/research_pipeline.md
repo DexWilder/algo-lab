@@ -2,6 +2,8 @@
 
 *Canonical operating manual for the algo lab. Describes every stage from intake to deployment.*
 
+> **Net PF convention (locked 2026-05-19 per `feedback_evidence_integrity_failsafe.md`):** All PF thresholds in pipeline gates below mean **net PF (cost-adjusted)** — i.e., after `engine/backtest.py` applies commission + slippage from `engine/asset_config.py`. Walk-forward, robustness, and promotion gates all evaluate net PF. Historical PF values, if any appear, are retained only for audit/history.
+
 ---
 
 ## Pipeline Overview
@@ -71,7 +73,7 @@
 - `backtests/<name>_baseline/trades.csv` — all trades with PnL
 - `backtests/<name>_baseline/conversion_notes.md` — findings
 
-**Minimum thresholds:** PF > 1.0 on at least one asset/mode combo with ≥30 trades
+**Minimum thresholds:** net PF > 1.0 on at least one asset/mode combo with ≥30 trades
 
 ---
 
@@ -87,7 +89,7 @@
 5. Trade duration fingerprint (median/avg hold bars)
 
 **Key gates:**
-- At least one combo with PF > 1.2 and ≥30 trades
+- At least one combo with net PF > 1.2 and ≥30 trades
 - Portfolio correlation r < 0.3 vs all parents
 - If r > 0.4 vs any parent → REJECT (structural overlap)
 - Median hold must match intended engine type
@@ -132,15 +134,15 @@
 **Tool:** `research/validation/run_validation_battery.py --strategy <name> --asset <ASSET> --mode <MODE>`
 
 **10 Criteria:**
-1. Walk-forward year splits (both periods PF > 1.0)
-2. Walk-forward rolling windows (≥75% test windows PF > 1.0)
-3. Regime stability (no catastrophic cells with PF < 0.5 and ≥10 trades)
-4. Asset robustness (≥2 of 3 assets PF > 1.0)
-5. Timeframe robustness (≥2 of 3 timeframes PF > 1.0)
+1. Walk-forward year splits (both periods net PF > 1.0)
+2. Walk-forward rolling windows (≥75% test windows net PF > 1.0)
+3. Regime stability (no catastrophic cells with net PF < 0.5 and ≥10 trades)
+4. Asset robustness (≥2 of 3 assets net PF > 1.0)
+5. Timeframe robustness (≥2 of 3 timeframes net PF > 1.0)
 6. Bootstrap PF CI lower bound > 1.0
 7. Deflated Sharpe Ratio > 0.95
 8. Monte Carlo P(ruin at $2K DD) < 5%
-9. Top-trade removal PF > 1.0
+9. Top-trade removal net PF > 1.0
 10. Parameter stability ≥60% of combinations profitable
 
 **LOW_SAMPLE handling:** Slices with <15 trades are flagged LOW_SAMPLE and not counted as hard failures.

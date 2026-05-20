@@ -3,6 +3,8 @@
 *What the ideal 8-12 strategy portfolio should look like.*
 *Effective: 2026-03-26*
 
+> **Net PF convention (locked 2026-05-19 per `feedback_evidence_integrity_failsafe.md`):** All PF thresholds for portfolio inclusion below mean **net PF (cost-adjusted)**. Historical PF values are retained only for audit/history; **decision gates must use net PF.**
+
 ---
 
 ## Design Principle
@@ -76,8 +78,8 @@ or structural resilience.
 |----------|-------------|--------------|---------------|
 | **VolManaged-EquityIndex** | Stabilizer | VOLATILITY factor, unique mechanism | 30 forward days, Sharpe > 0.5 |
 | **Treasury-Rolldown-Carry** | Stabilizer / Diversifier | CARRY + Rates (2 gaps) | June 1 displacement, forward PnL > 0 |
-| **ZN-Afternoon-Reversion** | Diversifier | STRUCTURAL + afternoon + short-biased | 30 trades, PF > 1.1 |
-| **PreFOMC-Drift-Equity** | Event Sleeve | EVENT factor | 8 trades, PF > 1.2 |
+| **ZN-Afternoon-Reversion** | Diversifier | STRUCTURAL + afternoon + short-biased | 30 trades, net PF > 1.1 |
+| **PreFOMC-Drift-Equity** | Event Sleeve | EVENT factor | 8 trades, net PF > 1.2 |
 
 ### What the Portfolio Looks Like After Successful Promotions
 

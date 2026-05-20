@@ -4,6 +4,8 @@
 *Every stage has a purpose, a gate, and a parallel requirement.*
 *Effective: 2026-03-18*
 
+> **Net PF convention (locked 2026-05-19 per `feedback_evidence_integrity_failsafe.md`):** All PF thresholds in deployment gates below mean **net PF (cost-adjusted)** — i.e., after `engine/backtest.py` applies commission + slippage from `engine/asset_config.py`. Historical PF values are retained only for audit/history; **decision gates must use net PF.**
+
 ---
 
 ## Sequence Overview
@@ -70,7 +72,7 @@ lifecycle pipeline works end-to-end.*
 | # | Gate | Threshold | Why |
 |---|------|-----------|-----|
 | 1 | Forward duration | **6+ months continuous** | Covers multiple market regimes, not just one favorable stretch |
-| 2 | Core promotions | **3+ strategies promoted** from probation with forward PF > 1.2 | Proves the lifecycle pipeline works end-to-end |
+| 2 | Core promotions | **3+ strategies promoted** from probation with forward net PF > 1.2 | Proves the lifecycle pipeline works end-to-end |
 | 3 | Factor diversity | **2+ distinct factors** in core (not just MOMENTUM) | Proves the portfolio isn't a single-factor bet |
 | 4 | Forward portfolio Sharpe | **> 0.3** (trailing 6 months, annualized) | Bare minimum: system generates positive risk-adjusted return in paper |
 | 5 | Forward max DD | **< 20%** over the paper period | Proves drawdown is controlled even without DD limits |
@@ -130,7 +132,7 @@ This is NOT scaling. This is operational proof.*
 ### Strategy Selection for Live
 Deploy only strategies that meet ALL of:
 - Status = core (promoted through full lifecycle)
-- Forward PF > 1.2 on paper
+- Forward net PF > 1.2 on paper
 - Rubric score >= 18
 - No active kill flags or decay signals
 
@@ -164,7 +166,7 @@ and continue accumulating evidence.
 | 2 | Live-paper divergence | **< 10% cumulative PnL divergence** | Proves paper ≈ live. Larger gaps mean execution or data problems. |
 | 3 | Live portfolio Sharpe | **> 0.3** (trailing 6 months) | System is profitable live, not just on paper |
 | 4 | Live max DD | **< 15%** | Drawdown controlled with real capital |
-| 5 | Core strategies | **3+ promoted** with live (not just paper) PF > 1.2 | Forward evidence must include real fills |
+| 5 | Core strategies | **3+ promoted** with live (not just paper) net PF > 1.2 | Forward evidence must include real fills |
 | 6 | Factor diversity in core | **2+ factors** | Same bar as paper but confirmed with live data |
 | 7 | Zero manual overrides | No trades added/removed outside governance | Discipline proven under real pressure |
 | 8 | Automation uptime | **> 99%** (missed < 3 trading days in 6 months) | System is reliable enough for larger capital |
