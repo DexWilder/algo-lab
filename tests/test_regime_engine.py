@@ -154,17 +154,32 @@ class TestGetActiveStrategies:
         assert "strat_a" not in active
         assert "strat_b" in active
 
-    def test_no_avoids_includes_all(self):
+    def test_explicit_empty_avoids_includes_all(self):
+        """Explicit `avoid_regimes: []` means 'intentionally trades all regimes'."""
         engine = RegimeEngine()
         profiles = {
             "strat_a": {"avoid_regimes": []},
-            "strat_b": {},
+            "strat_b": {"avoid_regimes": []},
         }
         date_regime = {"vol_regime": "NORMAL", "trend_regime": "RANGING", "rv_regime": "NORMAL_RV"}
 
         active = engine.get_active_strategies(date_regime, profiles)
 
         assert len(active) == 2
+
+    def test_missing_avoid_regimes_key_raises(self):
+        """Item #3.5 Site 2: missing key is forbidden — must be explicit `[]`."""
+        from engine.regime_engine import InvalidRegimeProfile
+        engine = RegimeEngine()
+        profiles = {
+            "strat_a": {"avoid_regimes": []},
+            "strat_b": {},  # absent key — was silently treated as []
+        }
+        date_regime = {"vol_regime": "NORMAL", "trend_regime": "RANGING", "rv_regime": "NORMAL_RV"}
+
+        with pytest.raises(InvalidRegimeProfile) as exc_info:
+            engine.get_active_strategies(date_regime, profiles)
+        assert "strat_b" in str(exc_info.value)
 
 
 class TestShortData:

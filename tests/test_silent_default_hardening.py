@@ -97,3 +97,62 @@ class TestSite1_InvalidMetrics:
         metrics = compute_metrics(empty_trades)
         row = _make_row("regression_check", "long", metrics)
         assert row is not None
+
+
+# ── Site 2: engine/regime_engine.py InvalidRegimeProfile ─────────────────────
+
+class TestSite2_InvalidRegimeProfile:
+    """get_active_strategies must fail closed when a profile is missing
+    'avoid_regimes' — even an empty list is acceptable, but a missing key is not.
+
+    Pre-Site-2 behavior: profile.get('avoid_regimes', []) silently meant
+    "trades all regimes" for any profile missing the key — strategies could
+    trade in regimes their author intended to skip.
+    """
+
+    def _engine(self):
+        from engine.regime_engine import RegimeEngine
+        return RegimeEngine()
+
+    def test_raises_when_avoid_regimes_key_absent(self):
+        from engine.regime_engine import InvalidRegimeProfile
+        eng = self._engine()
+        profiles = {
+            "good_strat": {"avoid_regimes": [], "preferred_regimes": []},
+            "bad_strat": {"preferred_regimes": []},  # missing avoid_regimes
+        }
+        date_regime = {"vol_regime": "LOW_VOL", "trend_regime": "UP", "rv_regime": "MID"}
+        with pytest.raises(InvalidRegimeProfile) as exc_info:
+            eng.get_active_strategies(date_regime, profiles)
+        assert "bad_strat" in str(exc_info.value)
+        assert "avoid_regimes" in str(exc_info.value)
+
+    def test_accepts_explicit_empty_avoid_regimes(self):
+        """Explicit `[]` means 'intentionally trades all regimes' — allowed."""
+        eng = self._engine()
+        profiles = {
+            "trades_everything": {"avoid_regimes": [], "preferred_regimes": []},
+        }
+        date_regime = {"vol_regime": "HIGH_VOL", "trend_regime": "DOWN", "rv_regime": "HIGH"}
+        active = eng.get_active_strategies(date_regime, profiles)
+        assert "trades_everything" in active
+
+    def test_filters_out_strategies_with_matching_avoid_regime(self):
+        """Sanity: normal filtering still works."""
+        eng = self._engine()
+        profiles = {
+            "avoids_high_vol": {"avoid_regimes": ["HIGH_VOL"], "preferred_regimes": []},
+            "trades_high_vol": {"avoid_regimes": [], "preferred_regimes": []},
+        }
+        date_regime = {"vol_regime": "HIGH_VOL", "trend_regime": "UP", "rv_regime": "MID"}
+        active = eng.get_active_strategies(date_regime, profiles)
+        assert "avoids_high_vol" not in active
+        assert "trades_high_vol" in active
+
+    def test_empty_profiles_dict_returns_empty(self):
+        eng = self._engine()
+        active = eng.get_active_strategies(
+            {"vol_regime": "LOW_VOL", "trend_regime": "UP", "rv_regime": "MID"},
+            {},
+        )
+        assert active == []

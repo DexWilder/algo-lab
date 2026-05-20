@@ -17,6 +17,16 @@ import pandas as pd
 from engine.regime import classify_regimes
 
 
+class InvalidRegimeProfile(ValueError):
+    """Raised when a strategy regime profile is missing required fields.
+
+    Per FQL evidence law: an absent 'avoid_regimes' key is forbidden because
+    it would silently mean "trades all regimes" — a permissive default that
+    can produce the wrong trading decision. Explicit empty list is required
+    when the author truly intends "no regimes avoided."
+    """
+
+
 # ── Default Thresholds ───────────────────────────────────────────────────────
 
 DEFAULT_CONFIG = {
@@ -200,7 +210,15 @@ class RegimeEngine:
                 current_regimes.add(date_regime[key])
 
         for strat_label, profile in profiles.items():
-            avoid = set(profile.get("avoid_regimes", []))
+            if "avoid_regimes" not in profile:
+                raise InvalidRegimeProfile(
+                    f"Strategy {strat_label!r} regime profile is missing "
+                    f"'avoid_regimes' key. Explicit empty list (= 'trades all "
+                    f"regimes') is required; absent key is forbidden per FQL "
+                    f"evidence law (silent permissive default → could trade "
+                    f"in regimes the author intended to skip)."
+                )
+            avoid = set(profile["avoid_regimes"])
             if avoid & current_regimes:
                 continue
             active.append(strat_label)
