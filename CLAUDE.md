@@ -1,5 +1,13 @@
 # Algo Lab — Claude Instructions
 
+## FQL Evidence Law (locked 2026-05-19)
+
+**Any missing assumption that can change a trading decision must fail closed.**
+
+No silent zero-cost defaults. No silent missing-metric → 0. No silent missing-regime → trade-all. No silent permissive metadata. The engine raises `Invalid*` exceptions when decision-grade callers cannot resolve required configuration. Exploration-tier callers may opt in to uncosted/permissive runs only by passing an explicit flag, and the result is then tagged so downstream consumers refuse to treat it as decision-grade.
+
+See `~/.claude/projects/-Users-chasefisher/memory/feedback_evidence_integrity_failsafe.md` and `feedback_proactive_plumbing_inspection.md`. The single source of truth for execution-cost assumptions is `engine/asset_config.py` — do not maintain parallel cost tables.
+
 ## Current Mode: CONTINUOUS DISCOVERY, SELECTIVE DEPLOYMENT
 
 **Continuous catalog growth is a standing FQL principle.** The discovery
