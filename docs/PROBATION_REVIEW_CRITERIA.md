@@ -3,6 +3,8 @@
 *Forward evidence thresholds for promotion, continuation, and removal.*
 *Effective: 2026-03-17 onward*
 
+> **Net PF convention (locked 2026-05-19 per `feedback_evidence_integrity_failsafe.md`):** All Forward net PF / continuation / promotion thresholds in this document mean **net PF (cost-adjusted)**. Backtest PF values in the per-strategy evidence tables predate the 2026-05-19 cost integrity reset and may be **gross** (silent zero-cost defaults for 11 asset categories pre-reset); their net values are produced by Piece C re-read. Historical recorded values in tables are retained as-is for audit traceability — **gate decisions must use net.**
+
 ---
 
 ## Active Probation Strategies
@@ -47,23 +49,23 @@ sleeves listed below.
 
 **Promote to ACTIVE if:**
 - 15+ forward trades accumulated
-- Forward PF > 1.2
+- Forward net PF > 1.2
 - Forward Sharpe > 0.5
 - No catastrophic drawdown event (> $3K single-strategy DD)
 - Walk-forward consistency holds (no regime where all trades lose)
 
 **Continue probation if:**
-- 15+ trades but PF 1.0-1.2 (edge present but thin)
+- 15+ trades but net PF 1.0-1.2 (edge present but thin)
 - OR fewer than 15 trades after 3 months (low frequency is expected for daily bars)
 - OR forward metrics are healthy but data is still accumulating
 
 **Downgrade to MONITOR if:**
-- Forward PF < 1.0 after 15+ trades
+- Forward net PF < 1.0 after 15+ trades
 - OR 3+ consecutive losing trades with total drawdown > $2K
 - OR gold enters a sustained ranging regime where the strategy generates no signals for 6+ weeks
 
 **Remove if:**
-- Forward PF < 0.7 after 20+ trades (structural failure)
+- Forward net PF < 0.7 after 20+ trades (structural failure)
 - OR single event drawdown > $5K
 
 ---
@@ -91,23 +93,23 @@ sleeves listed below.
 
 **Promote to ACTIVE if:**
 - 30+ forward trades accumulated
-- Forward PF > 1.2
+- Forward net PF > 1.2
 - Forward Sharpe > 0.8
 - US session edge confirmed (majority of profitable trades in US hours)
 - No regime catastrophe
 
 **Continue probation if:**
-- 30+ trades but PF 1.0-1.2
+- 30+ trades but net PF 1.0-1.2
 - OR fewer than 30 trades after 3 months (moderate frequency expected)
 - Edge appears real but noisy
 
 **Downgrade to MONITOR if:**
-- Forward PF < 1.0 after 30+ trades
+- Forward net PF < 1.0 after 30+ trades
 - OR US session edge disappears (majority of profitable trades NOT in US hours)
 - OR 6J daily volume drops significantly (liquidity concern)
 
 **Remove if:**
-- Forward PF < 0.8 after 40+ trades
+- Forward net PF < 0.8 after 40+ trades
 - OR consistent losing in US session specifically
 
 ---
@@ -183,23 +185,23 @@ in promotion decisions because of the factor diversification it provides.
 
 **Promote to ACTIVE if:**
 - 50+ forward trades accumulated
-- Forward PF > 1.1 (lower bar than MomPB because backtest PF is thinner)
+- Forward net PF > 1.1 (lower bar than MomPB because backtest PF is thinner)
 - Short trades outperform long trades (confirms directional bias)
 - London session generates majority of signals (confirms session structure)
 - Bootstrap CI lower bound improves toward 1.0 with more data
 
 **Continue probation if:**
-- 50+ trades but PF 1.0-1.1
+- 50+ trades but net PF 1.0-1.1
 - OR fewer than 50 trades after 3 months
 - London session structure intact even if overall PF is borderline
 
 **Downgrade to MONITOR if:**
-- Forward PF < 0.95 after 50+ trades (edge too thin for costs)
+- Forward net PF < 0.95 after 50+ trades (edge too thin for costs)
 - OR London session stops producing signals (Asian range structure changed)
 - OR short bias disappears (long and short perform equally badly)
 
 **Remove if:**
-- Forward PF < 0.85 after 60+ trades
+- Forward net PF < 0.85 after 60+ trades
 - OR strategy conflicts with MomPB-6J in ways that net-reduce 6J portfolio value
 
 ---
@@ -238,7 +240,7 @@ in promotion decisions because of the factor diversification it provides.
 > slot left open by MomIgn is a separate design decision.
 >
 > **Thresholds below stand** as the probation gates (8 forward
-> rebalance cycles → promote with PF > 1.1 and Sharpe > 0.3; 3
+> rebalance cycles → promote with net PF > 1.1 and Sharpe > 0.3; 3
 > consecutive negative months → downgrade). The clock started
 > with the first real rebalance after 2026-04-14; seeded
 > historical entries (2026-03, 2026-04 in the spread log) are
@@ -260,7 +262,7 @@ in promotion decisions because of the factor diversification it provides.
 
 **Promote to CONVICTION if:**
 - 8+ forward rebalance cycles completed (~8 months)
-- Forward PF > 1.1
+- Forward net PF > 1.1
 - Forward Sharpe > 0.3
 - Walk-forward stability maintains (no regime where all trades lose)
 - No catastrophic drawdown (> $3K single-strategy DD)
@@ -276,10 +278,10 @@ in promotion decisions because of the factor diversification it provides.
 
 **Downgrade to WATCH if:**
 - 3 consecutive months of negative forward spread PnL
-- OR forward PF < 0.8 after 8 cycles
+- OR forward net PF < 0.8 after 8 cycles
 
 **Remove if:**
-- Forward PF < 0.5 after 12 cycles
+- Forward net PF < 0.5 after 12 cycles
 - OR carry signal stops producing rank changes (spread is static)
 
 ---
@@ -316,22 +318,22 @@ factor (STRUCTURAL vs CARRY). They are independent bets.
 
 **Promote to CONVICTION if:**
 - 30+ forward trades accumulated
-- Forward PF > 1.1
+- Forward net PF > 1.1
 - Forward Sharpe > 0.5
 - Short bias confirmed in forward (majority of PnL from shorts)
 - No catastrophic DD (> $3K single-strategy)
 - Contribution check: correlation < 0.20 with all existing strategies
 
 **Continue probation if:**
-- 30+ trades but PF 1.0-1.1 (thin edge, needs more data)
+- 30+ trades but net PF 1.0-1.1 (thin edge, needs more data)
 - OR fewer than 30 trades after 6 months (low vol = fewer signals)
 
 **Downgrade to WATCH if:**
-- Forward PF < 0.9 after 30+ trades
+- Forward net PF < 0.9 after 30+ trades
 - OR strategy generates no signals for 4+ consecutive weeks (vol regime too low)
 
 **Remove if:**
-- Forward PF < 0.7 after 40+ trades
+- Forward net PF < 0.7 after 40+ trades
 - OR ZN afternoon session structure changes materially
 
 ---
@@ -430,7 +432,7 @@ event occurrences show declining PnL trend.
 Act immediately if ANY of these occur:
 
 - **Kill switch fires** — investigate, do NOT disable kill switch
-- **Forward PF < 0.5 after 20+ trades** — likely structural failure, downgrade immediately
+- **Forward net PF < 0.5 after 20+ trades** — likely structural failure, downgrade immediately
 - **3 strategies losing on same day** — check for correlated risk event
 - **No trades for 2+ consecutive weeks** — check data feed, strategy logic, controller blocking
 - **Drift monitor ALARM on probation strategy** — review whether backtest-to-forward divergence is real
@@ -442,5 +444,5 @@ Act immediately if ANY of these occur:
 **Status:** Low-intensity background test, not a build cycle.
 
 **Action:** Run `fx_daily_trend` on MCL through batch_first_pass with long-only mode.
-If PF > 1.2 with stable walk-forward, draft a spec. Otherwise, log and move on.
+If net PF > 1.2 with stable walk-forward, draft a spec. Otherwise, log and move on.
 Do not spend more than 30 minutes on this.

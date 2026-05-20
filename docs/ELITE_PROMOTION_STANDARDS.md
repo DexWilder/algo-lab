@@ -1,5 +1,7 @@
 # Elite Promotion Standards by Strategy Shape
 
+> **Net PF convention (locked 2026-05-19 per `feedback_evidence_integrity_failsafe.md`):** All PF thresholds in this document mean **net PF (cost-adjusted)** — i.e., after `engine/backtest.py` applies commission + slippage from `SYMBOL_DEFAULTS`. PFs recorded before the 2026-05-19 cost integrity reset may have been gross (silent zero-cost defaults for 11 asset categories). The spread-template section already uses the canonical "Cost-adjusted PF" phrasing; the workhorse / event / sleeve / carry sections now match. **No gate decision may be made on a gross PF.**
+
 **Purpose:** Define the evaluation framework that applies to each kind of
 strategy before promotion. Different shapes require different gates.
 Applying the wrong framework is itself a failure mode — this document
@@ -61,7 +63,7 @@ A verdict rendered under the wrong framework is not a verdict at all.
 
 ### Minimum evidence for promotion
 - **Backtest trades:** >= 500.
-- **Backtest PF:** >= 1.2 (workhorse primary) or >= 1.3 for STRONG.
+- **Backtest net PF:** >= 1.2 (workhorse primary) or >= 1.3 for STRONG.
 - **Walk-forward H1 and H2 both > 1.0** (no regime where all trades lose).
 - **Forward trades:** >= 30 for first formal review (20 for flag-only preview).
 
@@ -75,7 +77,7 @@ A verdict rendered under the wrong framework is not a verdict at all.
 **Dual-archetype classifier in `research/batch_first_pass.py`**, workhorse path. The tail-engine path may also run (trades < 500 would anyway route through both with stricter verdict winning), but pure intraday single-asset is the workhorse archetype and should hit the workhorse thresholds above.
 
 ### Kill criteria (immediate archive)
-- Forward PF < 0.7 after 40+ forward trades.
+- Forward net PF < 0.7 after 40+ forward trades.
 - Single event drawdown > 2× backtest max DD.
 - Silent failure (0 signals over 10k+ bars when expected frequency > 0).
 
@@ -98,12 +100,12 @@ sequence (20 / 30 / 50 / 100 forward-trade gates).
 
 ### Minimum evidence for promotion
 - **Backtest event count:** >= 30 occurrences of the triggering event.
-- **Backtest PF:** >= 1.4 per event (higher bar than workhorse — sparse strategies must earn attention against their small sample).
+- **Backtest net PF:** >= 1.4 per event (higher bar than workhorse — sparse strategies must earn attention against their small sample).
 - **Forward event count:** >= 4 occurrences before any forward verdict.
 
 ### Acceptable concentration
 - Max single event < 40% of total PnL (sparse strategies naturally concentrate; bar is higher than workhorse).
-- Per-event-type PF variance < 2x across sub-types (e.g., if NFP-surprise-up and NFP-surprise-down have wildly different PFs, flag).
+- Per-event-type net PF variance < 2x across sub-types (e.g., if NFP-surprise-up and NFP-surprise-down have wildly different net PFs, flag).
 
 ### Framework to use
 **Tail-engine classifier in `research/batch_first_pass.py`**, via the classify_with_tail_engine routing when trades < 500. Use `per_event_decomposition` when the strategy exposes `EVENT_CLASSIFIER` — factory does this automatically. Concentration gates must be **event-based, not trade-based.**
@@ -115,7 +117,7 @@ sequence (20 / 30 / 50 / 100 forward-trade gates).
 - FADING alerts suppressed until >= 4 event occurrences with forward data.
 
 ### Kill criteria
-- Forward PF < 0.7 after 8+ event occurrences.
+- Forward net PF < 0.7 after 8+ event occurrences.
 - Edge vitality tier DEAD on sparse-adjusted weights.
 - Event type disappears or changes structure (regulatory/calendar shift).
 
@@ -137,7 +139,7 @@ Applying workhorse concentration gates (top-3 < 30%) to sparse event strategies 
 
 ### Minimum evidence for promotion
 - **Backtest rebalance cycles:** >= 60 months (5 years of history).
-- **Backtest PF:** >= 1.1 (lower than workhorse — spread / carry strategies have inherently lower PF ceilings and compensate with low correlation).
+- **Backtest net PF:** >= 1.1 (lower than workhorse — spread / carry strategies have inherently lower net PF ceilings and compensate with low correlation).
 - **Forward cycles:** >= 8 before promotion to CONVICTION.
 
 ### Acceptable concentration
@@ -156,7 +158,7 @@ Applying workhorse concentration gates (top-3 < 30%) to sparse event strategies 
 - Drift monitor lists strategy in `BASELINE["excluded_from_strategy_drift"]` with a reason pointing at the evidence log.
 
 ### Kill criteria
-- Forward PF < 0.5 after 12 cycles.
+- Forward net PF < 0.5 after 12 cycles.
 - Carry/spread signal stops producing rank changes for 6+ consecutive cycles (static ranking = dead mechanism).
 - Sign of realized PnL on closed spreads consistently wrong vs backtest expectation across 4+ cycles.
 
@@ -218,7 +220,7 @@ Applying trade-count or win-rate frameworks to this shape produces nonsense. Vol
 ### Minimum evidence for promotion
 - **Backtest rebalance cycles:** shape-dependent (see shape 3 for monthly).
 - **Rate-neutrality / factor-neutrality check:** spread's correlation with the dominant directional factor in its asset class must be < 0.10 (carry spreads are supposed to isolate carry, not direction).
-- **Spread-level PF:** >= 1.1 (lower ceiling than directional strategies — spreads compete with cash-to-cash carry, not directional edge).
+- **Spread-level net PF:** >= 1.1 (lower ceiling than directional strategies — spreads compete with cash-to-cash carry, not directional edge).
 
 ### Acceptable concentration
 - Max single cycle < 25% (spreads with one dominant cycle are usually directional disguised as carry).

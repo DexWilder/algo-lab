@@ -2,6 +2,8 @@
 
 *Established 2026-04-13. Governs all XB-ORB-EMA-Ladder probation variants.*
 
+> **Net PF convention (locked 2026-05-19 per [`feedback_evidence_integrity_failsafe.md`](../) memory):** All PF thresholds and gate references below mean **net PF (cost-adjusted)** — i.e., after `engine/backtest.py` applies commission + slippage from `SYMBOL_DEFAULTS`. Backtest PFs recorded in the Active Variants table predate the 2026-05-19 cost integrity reset and may be **gross** (MCL/MYM silently defaulted to zero cost prior to the reset); their net values are produced by [`docs/_DRAFT_2026-05-19_item3_cost_slippage_preflight.md`](./_DRAFT_2026-05-19_item3_cost_slippage_preflight.md) Piece C re-read. **Gate decisions must use net PF.**
+
 **Authority:** This document is the single source of truth for XB-ORB
 probation governance. [`docs/PROBATION_REVIEW_CRITERIA.md`](./PROBATION_REVIEW_CRITERIA.md)
 holds only a pointer to this file for the XB-ORB family and governs
@@ -11,7 +13,7 @@ criteria there.
 
 ## Active Variants
 
-| ID | Asset | Backtest PF | Backtest Trades | Promoted | Data Window |
+| ID | Asset | Backtest PF (pre-reset, gross suspected for MCL/MYM) | Backtest Trades | Promoted | Data Window |
 |----|-------|-------------|-----------------|----------|-------------|
 | XB-ORB-EMA-Ladder-MNQ | MNQ | 1.62 | 1183 | 2026-04-06 | 6.8y |
 | XB-ORB-EMA-Ladder-MCL | MCL | 1.33 | 898 | 2026-04-08 | 4.7y |
@@ -47,8 +49,8 @@ tracking is qualitative only (alignment checks, not pass/fail).
 | Gate | Trigger | Action |
 |------|---------|--------|
 | **20 trades** | First meaningful sample | Check WR, hold time, direction mix vs backtest. Flag but do not act. |
-| **30 trades** | First formal review | Full assessment: PF, WR, concentration, drift. Decide: continue / extend / downgrade. |
-| **50 trades** | Mid-probation | Second review. Compare to backtest PF with confidence bands. |
+| **30 trades** | First formal review | Full assessment: net PF, WR, concentration, drift. Decide: continue / extend / downgrade. |
+| **50 trades** | Mid-probation | Second review. Compare to backtest net PF with confidence bands. |
 | **100 trades** | Promotion gate | Full statistical comparison. Promote to core or archive. |
 
 ---
@@ -57,7 +59,7 @@ tracking is qualitative only (alignment checks, not pass/fail).
 
 All of these must hold:
 
-1. **Forward PF ≥ 1.15** (backtest PFs range 1.33-1.67; forward should be at least ~70% of backtest)
+1. **Forward net PF ≥ 1.15** (cost-adjusted; backtest PFs range 1.33-1.67 pre-reset — see net values from Piece C re-read; forward should be at least ~70% of backtest net)
 2. **Forward win rate within 10pp of backtest** (MNQ backtest: 61%, so forward ≥ 51%)
 3. **No behavioral drift** — <20% of trades flagged in behavior tracker
 4. **Positive median forward trade** (same as backtest requirement)
@@ -72,7 +74,7 @@ If all pass → **PROMOTE TO CORE**.
 
 ### Immediate downgrade to WATCH (any one triggers):
 
-- Forward PF < 0.90 after 30+ trades
+- Forward net PF < 0.90 after 30+ trades
 - Forward WR < 40% (vs backtest 56-61%)
 - 3+ consecutive behavioral flags
 - Max drawdown exceeds 2× backtest max DD
@@ -80,7 +82,7 @@ If all pass → **PROMOTE TO CORE**.
 
 ### Immediate ARCHIVE (any one triggers):
 
-- Forward PF < 0.80 after 50+ trades
+- Forward net PF < 0.80 after 50+ trades
 - Edge vitality tier reaches DEAD
 - Forward median trade becomes negative after 30+ trades
 
