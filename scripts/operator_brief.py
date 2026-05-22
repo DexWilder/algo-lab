@@ -220,9 +220,18 @@ def section_probation():
     stale = []
     failing = []
     gate = []
+    pending_module = []
 
     for s in probation:
         sid = s["strategy_id"]
+
+        # Evidence-integrity fail-closed: paper-approved candidates whose
+        # executable module is not wired must not be aged as "under-evidenced".
+        # Their zero-trade state is not evidence — the runner cannot load them.
+        if s.get("executable_state") == "PENDING_EXECUTABLE_MODULE":
+            pending_module.append(sid)
+            continue
+
         a = compute_aging(sid, trades, registry_map)
         st = trades[trades["strategy"] == sid] if not trades.empty and "strategy" in trades.columns else pd.DataFrame()
         n = len(st)
@@ -247,6 +256,10 @@ def section_probation():
             gate.append(label)
 
     # Print in urgency order
+    if pending_module:
+        lines.append(f"**Paper-approved, awaiting executable module ({len(pending_module)}):** not executable / not evaluated — zero-trade state is NOT evidence")
+        for p in pending_module:
+            lines.append(f"  - {p}")
     if failing:
         lines.append(f"**FAILING ({len(failing)}):** enough evidence, edge not present")
         for f in failing:
