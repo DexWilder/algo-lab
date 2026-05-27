@@ -272,9 +272,24 @@ def build_portfolio_config(include_probation=False) -> dict:
     # trading. This guard treats `status` as the final authority.
     DEAD_STATUSES = {"rejected", "archived"}
 
+    # Fail-closed gate (FQL Evidence Law): a candidate marked
+    # PENDING_EXECUTABLE_MODULE has no loadable strategy module. The
+    # forward runner crashed on 2026-05-21 / 25 / 26 when it attempted to
+    # `ROOT / "strategies" / None / "strategy.py"`. This check runs BEFORE
+    # any controller_action eligibility because controller_action is
+    # controller-owned and gets rewritten daily by
+    # portfolio_regime_controller.py — observed silently reverting OFF →
+    # PROBATION over a weekend, re-introducing the crash. executable_state
+    # is the authoritative gate for executable eligibility; controller_action
+    # is only consulted for candidates that are already executable.
+    PENDING_EXECUTABLE_STATES = {"PENDING_EXECUTABLE_MODULE"}
+
     strategies = {}
     for s in registry.get("strategies", []):
         if s.get("status") in DEAD_STATUSES:
+            continue
+
+        if s.get("executable_state") in PENDING_EXECUTABLE_STATES:
             continue
 
         action = s.get("controller_action", "OFF")
