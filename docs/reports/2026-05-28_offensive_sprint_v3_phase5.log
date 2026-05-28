@@ -1,0 +1,80 @@
+[1/8] XB-Donchian-EMA-Ladder-MCL
+[2/8] XB-Donchian-EMA-Ladder-MGC
+[3/8] XB-Donchian-EMA-ATRTrail-MCL
+[4/8] XB-ORB-BBSqueeze-Ladder-MCL
+[5/8] XB-ORB-EMA-Ladder-ZN
+[6/8] XB-ORB-Afternoon-Ladder-MCL
+[7/8] XB-PB-EMA-Ladder-6J
+[8/8] XB-VWAP-EMA-Chandelier-MCL
+
+========================================================================================================================
+PHASE 5 SPRINT RESULTS
+========================================================================================================================
+
+--- XB-PB-EMA-Ladder-6J [P5-7,non-MNQ,non-ORB,non-index,fx] ---
+    asset=6J, entry=pb_pullback, filter=ema_slope, exit=profit_ladder
+    n=319, PF=1.074, net=$1430, median=$-5.00, mean=$4.48
+    cost=79.6%, top-3=179.5%, top-10=406.5%, max-year=169.5%, years 2/3
+    H1=1.011, H2=1.147
+    ARCHETYPE=TAIL_ENGINE, VERDICT=KILL
+    BLOCKER: cost ratio 79.6% > 50% (cost eats edge)
+
+--- XB-Donchian-EMA-Ladder-MCL [P5-1,non-MNQ,non-ORB,non-index,energy] ---
+    asset=MCL, entry=donchian_breakout, filter=ema_slope, exit=profit_ladder
+    n=0, PF=nan, net=$0, median=$0.00, mean=$0.00
+    cost=None%, top-3=0.0%, top-10=0.0%, max-year=0.0%, years 0/0
+    H1=nan, H2=nan
+    ARCHETYPE=UNKNOWN, VERDICT=KILL
+    BLOCKER: no trades produced — strategy did not fire on this asset
+
+--- XB-Donchian-EMA-Ladder-MGC [P5-2,non-MNQ,non-ORB,non-index,gold] ---
+    asset=MGC, entry=donchian_breakout, filter=ema_slope, exit=profit_ladder
+    n=0, PF=nan, net=$0, median=$0.00, mean=$0.00
+    cost=None%, top-3=0.0%, top-10=0.0%, max-year=0.0%, years 0/0
+    H1=nan, H2=nan
+    ARCHETYPE=UNKNOWN, VERDICT=KILL
+    BLOCKER: no trades produced — strategy did not fire on this asset
+
+--- XB-Donchian-EMA-ATRTrail-MCL [P5-3,non-MNQ,non-ORB,non-index,energy] ---
+    asset=MCL, entry=donchian_breakout, filter=ema_slope, exit=atr_trail
+    n=0, PF=nan, net=$0, median=$0.00, mean=$0.00
+    cost=None%, top-3=0.0%, top-10=0.0%, max-year=0.0%, years 0/0
+    H1=nan, H2=nan
+    ARCHETYPE=UNKNOWN, VERDICT=KILL
+    BLOCKER: no trades produced — strategy did not fire on this asset
+
+--- XB-VWAP-EMA-Chandelier-MCL [P5-8,non-MNQ,non-ORB,non-index,energy,tail-payoff-likely] ---
+    asset=MCL, entry=vwap_continuation, filter=ema_slope, exit=chandelier
+    n=508, PF=1.028, net=$350, median=$-15.24, mean=$0.69
+    cost=88.4%, top-3=384.6%, top-10=927.1%, max-year=293.0%, years 2/6
+    H1=0.92, H2=1.202
+    ARCHETYPE=PAYOFF_RATIO_WORKHORSE_FREQUENCY, VERDICT=KILL
+    BLOCKER: cost ratio 88.4% > 50% (cost eats edge)
+
+--- XB-ORB-BBSqueeze-Ladder-MCL [P5-4,non-MNQ,non-index,energy,vol-filter] ---
+    asset=MCL, entry=orb_breakout, filter=bandwidth_squeeze, exit=profit_ladder
+    n=1447, PF=0.892, net=$-6393, median=$-0.24, mean=$-4.42
+    cost=637.7%, top-3=0.0%, top-10=0.0%, max-year=0.0%, years 1/6
+    H1=0.944, H2=0.821
+    ARCHETYPE=UNKNOWN, VERDICT=KILL
+    BLOCKER: PF 0.89 < 1.0 (not profitable)
+
+--- XB-ORB-EMA-Ladder-ZN [P5-5,non-MNQ,non-index,rates] ---
+    asset=ZN, entry=orb_breakout, filter=ema_slope, exit=profit_ladder
+    n=1104, PF=0.886, net=$-10032, median=$-18.73, mean=$-9.09
+    cost=136.0%, top-3=0.0%, top-10=0.0%, max-year=0.0%, years 3/8
+    H1=0.781, H2=1.004
+    ARCHETYPE=UNKNOWN, VERDICT=KILL
+    BLOCKER: PF 0.89 < 1.0 (not profitable)
+
+--- XB-ORB-Afternoon-Ladder-MCL [P5-6,afternoon,non-MNQ,non-index,energy] ---
+    asset=MCL, entry=orb_breakout, filter=session_afternoon, exit=profit_ladder
+    n=1249, PF=0.848, net=$-5841, median=$-4.24, mean=$-4.68
+    cost=929.7%, top-3=0.0%, top-10=0.0%, max-year=0.0%, years 1/6
+    H1=0.928, H2=0.747
+    ARCHETYPE=UNKNOWN, VERDICT=KILL
+    BLOCKER: PF 0.85 < 1.0 (not profitable)
+
+=== CORRELATION GUARD ===
+
+Saved: docs/reports/2026-05-28_offensive_sprint_v3_phase5.json
