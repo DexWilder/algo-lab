@@ -8749,7 +8749,7 @@
     },
     {
       "strategy_id": "XB-ORB-EMA-Chandelier-MNQ",
-      "strategy_name": null,
+      "strategy_name": "xb_orb_ema_chandelier",
       "family": "crossbreed_breakout",
       "asset": "MNQ",
       "session": "all_day",
@@ -8757,7 +8757,7 @@
       "source": "forge_hybrid_generation_2026-05-05",
       "rule_summary": "orb_breakout entry + ema_slope filter + chandelier exit on MNQ. stop_mult=2.0. Cheap-screen PASS on 2026-05-05; PF=1.571, n=1198, net=$32471, max_DD=$-1651.",
       "status": "probation",
-      "notes": "Hybrid generated via Forge runner sweep 2026-05-05. Cheap-screen verdict PASS (workhorse-archetype, n=1198). Validated against XB-ORB-EMA-Ladder family donor pattern. Source memo: docs/fql_forge/tail_engine_pool_expansion_2026-05-05.md. Pre-flight: docs/_DRAFT_2026-05-06_batch_register_xb_hybrids.md.\n\n2026-05-19 cluster decision: cluster=XB-ORB-EMA-MNQ, role=cluster_leader (PF 1.574 > 1.507 TimeStop). Pearson r=0.883 with TimeStop variant. Per operator approval 2026-05-19 (correlation matrix commit 73b5df1). Cluster metadata only; status unchanged. PAPER_APPROVE_CONDITIONAL 2026-05-20: added to forward paper runner per operator approval. Paper sizing = 1 MNQ contract. status=probation reflects forward-paper-test mapping; NOT live and NOT promoted to core. PENDING_FORWARD_EVIDENCE \u2014 promotion-eligible only after \u226530 forward trades. Cluster leader for XB-ORB-EMA-MNQ exposure; TimeStop variant does NOT separately enter paper. Paper-readiness packet: docs/paper_readiness_packets/XB-ORB-EMA-Chandelier-MNQ.md. 2026-05-21: forward runner crashed loading this candidate (strategy_name=None, no executable module exists for this entry+exit combination). Disabled pending wire-up of real executable module. Today's 'Under-evidenced 0 trades' brief line was not real evidence \u2014 strategy was never evaluated.",
+      "notes": "Hybrid generated via Forge runner sweep 2026-05-05. Cheap-screen verdict PASS (workhorse-archetype, n=1198). Validated against XB-ORB-EMA-Ladder family donor pattern. Source memo: docs/fql_forge/tail_engine_pool_expansion_2026-05-05.md. Pre-flight: docs/_DRAFT_2026-05-06_batch_register_xb_hybrids.md.\n\n2026-05-19 cluster decision: cluster=XB-ORB-EMA-MNQ, role=cluster_leader (PF 1.574 > 1.507 TimeStop). Pearson r=0.883 with TimeStop variant. Per operator approval 2026-05-19 (correlation matrix commit 73b5df1). Cluster metadata only; status unchanged. PAPER_APPROVE_CONDITIONAL 2026-05-20: added to forward paper runner per operator approval. Paper sizing = 1 MNQ contract. status=probation reflects forward-paper-test mapping; NOT live and NOT promoted to core. PENDING_FORWARD_EVIDENCE \u2014 promotion-eligible only after \u226530 forward trades. Cluster leader for XB-ORB-EMA-MNQ exposure; TimeStop variant does NOT separately enter paper. Paper-readiness packet: docs/paper_readiness_packets/XB-ORB-EMA-Chandelier-MNQ.md. 2026-05-21: forward runner crashed loading this candidate (strategy_name=None, no executable module exists for this entry+exit combination). Disabled pending wire-up of real executable module. Today's 'Under-evidenced 0 trades' brief line was not real evidence \u2014 strategy was never evaluated. 2026-05-28: EXPERIMENTAL_FORWARD_CLOCK wire authorized. archetype=PAYOFF_RATIO_WORKHORSE_FREQUENCY. paper_ready=false, promotion_eligible=false. Fails the standard workhorse median-trade->=0 gate (full sample median -$4.74; H1 -$8.74; H2 +$0.26) so NOT eligible for paper-readiness under the existing workhorse rubric. Forward-clocked to determine whether FQL should codify a third archetype for payoff-ratio strategies at workhorse trade frequency. Measurement: docs/reports/2026-05-28_chandelier_mnq_measurement.json (PF 1.561, 1211 trades, top-3 14.7%, top-10 31.9%, max-year 30.0%, 7/8 years positive). At 30 forward trades: do NOT auto-promote \u2014 evaluate whether new archetype gates are warranted first.",
       "last_review_date": "2026-05-06",
       "review_priority": "HIGH",
       "lifecycle_stage": "discovery",
@@ -8826,7 +8826,10 @@
       },
       "paper_packet_path": "docs/paper_readiness_packets/XB-ORB-EMA-Chandelier-MNQ.md",
       "promotion_pending_reason": "PENDING_FORWARD_EVIDENCE",
-      "executable_state": "PENDING_EXECUTABLE_MODULE"
+      "executable_state": "EXECUTABLE",
+      "experimental_archetype": "PAYOFF_RATIO_WORKHORSE_FREQUENCY",
+      "promotion_eligible": false,
+      "paper_ready": false
     },
     {
       "strategy_id": "XB-ORB-EMA-TimeStop-MNQ",
