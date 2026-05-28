@@ -1,0 +1,91 @@
+
+[1/7] Running XB-ORB-EMA-ATRTrail-MNQ...
+
+[2/7] Running XB-ORB-EMA-TimeStop-MNQ...
+
+[3/7] Running XB-PB-EMA-Chandelier-MNQ...
+
+[4/7] Running XB-PB-EMA-TimeStop-MNQ...
+
+[5/7] Running XB-VWAP-EMA-Ladder-MNQ...
+
+[6/7] Running XB-ORB-Afternoon-Ladder-MNQ...
+
+[7/7] Running XB-BB-EMA-Ladder-MES...
+
+
+====================================================================================================
+OFFENSIVE FORGE SPRINT v1 — RESULTS
+====================================================================================================
+
+--- XB-ORB-EMA-ATRTrail-MNQ (workhorse / payoff-ratio variant) ---
+    entry=orb_breakout, filter=ema_slope, exit=atr_trail, asset=MNQ, session=all_day
+    n=1211, PF=1.525, net=$29447, median=$-0.74, mean=$24.32
+    cost ratio: 8.4%, win_rate: 49.5%, max_dd: $-1643
+    concentration: top-3=10.1%, top-10=27.6%, max-year=25.7%, years 7/8
+    walk-forward: H1 PF=1.270 (med $-2.24), H2 PF=1.750 (med $0.26)
+    ARCHETYPE: PAYOFF_RATIO_WORKHORSE_FREQUENCY
+    VERDICT: PASS_TO_FORWARD_CLOCK
+    BLOCKER: archetype=PAYOFF_RATIO_WORKHORSE_FREQUENCY — Track 2 only, not paper-eligible without archetype review
+
+--- XB-ORB-EMA-TimeStop-MNQ (workhorse / payoff-ratio variant) ---
+    entry=orb_breakout, filter=ema_slope, exit=time_stop, asset=MNQ, session=all_day
+    n=1211, PF=1.494, net=$27596, median=$-0.74, mean=$22.79
+    cost ratio: 9.0%, win_rate: 49.5%, max_dd: $-1862
+    concentration: top-3=11.5%, top-10=29.2%, max-year=25.4%, years 8/8
+    walk-forward: H1 PF=1.269 (med $-0.74), H2 PF=1.685 (med $-0.24)
+    ARCHETYPE: PAYOFF_RATIO_WORKHORSE_FREQUENCY
+    VERDICT: PASS_TO_FORWARD_CLOCK
+    BLOCKER: archetype=PAYOFF_RATIO_WORKHORSE_FREQUENCY — Track 2 only, not paper-eligible without archetype review
+
+--- XB-PB-EMA-Chandelier-MNQ (diversifying entry family with payoff-ratio exit) ---
+    entry=pb_pullback, filter=ema_slope, exit=chandelier, asset=MNQ, session=all_day
+    n=1478, PF=1.341, net=$23717, median=$-13.74, mean=$16.05
+    cost ratio: 12.2%, win_rate: 44.6%, max_dd: $-1568
+    concentration: top-3=10.9%, top-10=31.4%, max-year=35.8%, years 7/8
+    walk-forward: H1 PF=1.201 (med $-13.74), H2 PF=1.469 (med $-13.74)
+    ARCHETYPE: PAYOFF_RATIO_WORKHORSE_FREQUENCY
+    VERDICT: PASS_TO_FORWARD_CLOCK
+    BLOCKER: archetype=PAYOFF_RATIO_WORKHORSE_FREQUENCY — Track 2 only, not paper-eligible without archetype review
+
+--- XB-BB-EMA-Ladder-MES (PORTFOLIO GAP: mean-reversion stabilizer) ---
+    entry=bb_reversion, filter=ema_slope, exit=profit_ladder, asset=MES, session=all_day
+    n=687, PF=1.136, net=$2801, median=$-3.74, mean=$4.08
+    cost ratio: 47.8%, win_rate: 48.6%, max_dd: $-1831
+    concentration: top-3=105.1%, top-10=202.3%, max-year=78.0%, years 4/8
+    walk-forward: H1 PF=1.019 (med $-3.74), H2 PF=1.231 (med $-3.74)
+    ARCHETYPE: PAYOFF_RATIO_WORKHORSE_FREQUENCY
+    VERDICT: MUTATE
+    BLOCKER: PF 1.14 < 1.2 even for payoff-ratio archetype
+
+--- XB-ORB-Afternoon-Ladder-MNQ (PORTFOLIO GAP: afternoon strategy) ---
+    entry=orb_breakout, filter=session_afternoon, exit=profit_ladder, asset=MNQ, session=afternoon
+    n=1652, PF=1.063, net=$6642, median=$6.76, mean=$4.02
+    cost ratio: 35.8%, win_rate: 52.6%, max_dd: $-4307
+    concentration: top-3=59.4%, top-10=135.3%, max-year=58.2%, years 4/8
+    walk-forward: H1 PF=1.015 (med $3.51), H2 PF=1.106 (med $10.76)
+    ARCHETYPE: WORKHORSE
+    VERDICT: MUTATE
+    BLOCKER: PF 1.06 < workhorse gate 1.2; try exit/filter variant
+
+--- XB-PB-EMA-TimeStop-MNQ (MNQ sibling of XB-PB-EMA-MES-Short core strategy) ---
+    entry=pb_pullback, filter=ema_slope, exit=time_stop, asset=MNQ, session=all_day
+    n=1478, PF=1.355, net=$23887, median=$-11.74, mean=$16.16
+    cost ratio: 12.2%, win_rate: 44.4%, max_dd: $-1546
+    concentration: top-3=11.9%, top-10=30.9%, max-year=41.5%, years 7/8
+    walk-forward: H1 PF=1.186 (med $-11.74), H2 PF=1.513 (med $-12.24)
+    ARCHETYPE: PAYOFF_RATIO_WORKHORSE_FREQUENCY
+    VERDICT: DEFER
+    BLOCKER: max-year 41.5% > 40% gate
+
+--- XB-VWAP-EMA-Ladder-MNQ (different entry family — VWAP continuation) ---
+    entry=vwap_continuation, filter=ema_slope, exit=profit_ladder, asset=MNQ, session=all_day
+    n=819, PF=1.069, net=$3104, median=$-2.24, mean=$3.79
+    cost ratio: 37.1%, win_rate: 49.3%, max_dd: $-5212
+    concentration: top-3=69.7%, top-10=186.7%, max-year=117.4%, years 3/8
+    walk-forward: H1 PF=0.800 (med $-13.24), H2 PF=1.366 (med $15.26)
+    ARCHETYPE: PAYOFF_RATIO_WORKHORSE_FREQUENCY
+    VERDICT: KILL
+    BLOCKER: only 3/8 years positive (<50%)
+
+Saved: docs/reports/2026-05-28_offensive_sprint_v1.json
