@@ -1,0 +1,60 @@
+{
+  "_measurement_date": "2026-05-28",
+  "_combo": "orb_breakout + ema_slope + chandelier",
+  "_asset": "MNQ",
+  "_params": {
+    "stop_mult": 2.0,
+    "target_mult": 4.0,
+    "trail_mult": 2.5,
+    "chandelier_mult": 3.0,
+    "vwap_proximity": 0.5,
+    "pb_proximity": 0.5,
+    "bw_threshold": 50,
+    "max_bars": 30,
+    "min_hold": 3
+  },
+  "_cost_basis": {
+    "commission_per_side": 0.62,
+    "slippage_ticks": 1
+  },
+  "metrics": {
+    "trades_6yr": 1211,
+    "net_pf": 1.561,
+    "net_pnl": 32429.86,
+    "win_rate_pct": 48.4,
+    "median_trade": -4.74,
+    "mean_trade": 26.78,
+    "max_dd": -1650.62,
+    "cost_ratio_pct": 7.7,
+    "top1_share_pct": 5.3,
+    "top3_share_pct": 14.7,
+    "top10_share_pct": 31.9,
+    "max_year_share_pct": 30.0,
+    "n_years": 8,
+    "positive_years": 7
+  },
+  "walk_forward": {
+    "H1": {
+      "trades": 605,
+      "pf": 1.257,
+      "median": -8.74,
+      "period": "2019-07-02 -> 2022-12-28"
+    },
+    "H2": {
+      "trades": 606,
+      "pf": 1.841,
+      "median": 0.26,
+      "period": "2023-01-03 -> 2026-05-22"
+    }
+  },
+  "yearly_pnl_share_pct": {
+    "2019": -0.2,
+    "2020": 1.3,
+    "2021": 7.3,
+    "2022": 13.6,
+    "2023": 12.3,
+    "2024": 24.3,
+    "2025": 30.0,
+    "2026": 11.4
+  }
+}
