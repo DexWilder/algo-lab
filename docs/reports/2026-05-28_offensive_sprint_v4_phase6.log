@@ -1,0 +1,42 @@
+[1/5] XB-Donchian-NoFilter-Ladder-MCL
+[2/5] XB-Donchian-NoFilter-Ladder-MGC
+[3/5] XB-Donchian-NoFilter-Ladder-6E
+[4/5] XB-Donchian-NoFilter-ATRTrail-MCL
+[5/5] XB-ORB-BBSqueeze-Ladder-GC
+
+====================================================================================================
+PHASE 6 — DIAGNOSTIC SPRINT
+====================================================================================================
+
+--- XB-Donchian-NoFilter-Ladder-MCL ---
+  n=0, PF=nan, median=$0.00, mean=$0.00
+  cost=None%, top-3=0.0%, max-year=0.0%
+  H1=nan, H2=nan
+  ARCHETYPE=UNKNOWN, VERDICT=KILL
+  BLOCKER: no trades produced — strategy did not fire on this asset
+
+--- XB-Donchian-NoFilter-Ladder-MGC ---
+  n=0, PF=nan, median=$0.00, mean=$0.00
+  cost=None%, top-3=0.0%, max-year=0.0%
+  H1=nan, H2=nan
+  ARCHETYPE=UNKNOWN, VERDICT=KILL
+  BLOCKER: no trades produced — strategy did not fire on this asset
+
+--- XB-Donchian-NoFilter-Ladder-6E ---
+  n=0, PF=nan, median=$0.00, mean=$0.00
+  cost=None%, top-3=0.0%, max-year=0.0%
+  H1=nan, H2=nan
+  ARCHETYPE=UNKNOWN, VERDICT=KILL
+  BLOCKER: no trades produced — strategy did not fire on this asset
+
+--- XB-Donchian-NoFilter-ATRTrail-MCL ---
+  n=0, PF=nan, median=$0.00, mean=$0.00
+  cost=None%, top-3=0.0%, max-year=0.0%
+  H1=nan, H2=nan
+  ARCHETYPE=UNKNOWN, VERDICT=KILL
+  BLOCKER: no trades produced — strategy did not fire on this asset
+
+--- XB-ORB-BBSqueeze-Ladder-GC ---
+  ERROR: [Errno 2] No such file or directory: '/Users/chasefisher/projects/Algo Trading/algo-lab/data/processed/GC_5m.csv'
+
+Saved
