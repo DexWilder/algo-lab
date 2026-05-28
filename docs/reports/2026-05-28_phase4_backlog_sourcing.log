@@ -1,0 +1,174 @@
+parsed: 649 non-empty structured notes (out of 649 files)
+
+priority distribution: Counter({'LOW': 494, 'MEDIUM': 155})
+feasibility distribution: Counter({'NEW_INFRA': 489, 'NEEDS_HOST': 134, 'SCREENABLE_WITH_DEFAULT': 26})
+factor distribution: [('VALUE', 239), ('CARRY', 137), ('STRUCTURAL', 116), ('VOLATILITY', 80), ('EVENT', 67), ('MOMENTUM', 10)]
+session distribution: Counter({'unspecified': 566, 'london': 33, 'close': 22, 'overnight': 15, 'afternoon': 11, 'open': 1, 'morning': 1})
+
+=== Top 25 candidates (ranked) ===
+
+1. [MEDIUM] Partial profit ladder for non-equity trends
+   factor=STRUCTURAL, feasibility=SCREENABLE_WITH_DEFAULT, session=unspecified
+   assets=['6N', 'CL', 'GC', 'MCL', 'MGC', 'ZB', 'ZN'] (['energy', 'fx', 'gold', 'rates'])
+   entry=['NEW_OR_INFERRED'], filter=['NEW_OR_INFERRED'], exit=['profit_ladder']
+   role=STRUCTURAL+component, blocker=none
+
+2. [MEDIUM] Time stop for threshold reversal failures
+   factor=STRUCTURAL, feasibility=SCREENABLE_WITH_DEFAULT, session=unspecified
+   assets=['CL', 'GC', 'MCL', 'MGC', 'ZF', 'ZN'] (['energy', 'gold', 'rates'])
+   entry=['NEW_OR_INFERRED'], filter=['NEW_OR_INFERRED'], exit=['time_stop']
+   role=STRUCTURAL+component, blocker=needs_followthrough_threshold_and_time_window_definition
+
+3. [MEDIUM] dual thrust opening range breakout for rates and commodities
+   factor=STRUCTURAL, feasibility=SCREENABLE_WITH_DEFAULT, session=unspecified
+   assets=['CL', 'GC', 'MCL', 'MGC', 'ZB', 'ZN'] (['energy', 'gold', 'rates'])
+   entry=['orb_breakout'], filter=['NEW_OR_INFERRED'], exit=['NEW_OR_INFERRED']
+   role=STRUCTURAL+component, blocker=none
+
+4. [MEDIUM] Donchian channel breakout fragment for non-equity trends
+   factor=STRUCTURAL, feasibility=SCREENABLE_WITH_DEFAULT, session=unspecified
+   assets=['6E', 'CL', 'GC', 'MCL', 'MGC'] (['energy', 'fx', 'gold'])
+   entry=['donchian_breakout'], filter=['NEW_OR_INFERRED'], exit=['NEW_OR_INFERRED']
+   role=STRUCTURAL+component, blocker=needs_lookback_definition
+
+5. [MEDIUM] atr stop plus donchian entry for commodity and rates trends
+   factor=STRUCTURAL, feasibility=SCREENABLE_WITH_DEFAULT, session=unspecified
+   assets=['CL', 'MCL', 'NG', 'ZB', 'ZN'] (['energy', 'rates'])
+   entry=['donchian_breakout'], filter=['NEW_OR_INFERRED'], exit=['NEW_OR_INFERRED']
+   role=STRUCTURAL+component, blocker=needs_parameter_definition_for_channel_and_atr_windows
+
+6. [MEDIUM] Tokyo Open DXY Bias Session Effect
+   factor=STRUCTURAL, feasibility=SCREENABLE_WITH_DEFAULT, session=unspecified
+   assets=['6E', '6J', 'GC', 'MGC'] (['fx', 'gold'])
+   entry=['orb_breakout', 'pb_pullback'], filter=['NEW_OR_INFERRED'], exit=['NEW_OR_INFERRED']
+   role=STRUCTURAL+component, blocker=needs_precise_tokyo_session_open_definition_first_pullback_rule_and_intraday_DXY_proxy_series
+
+7. [MEDIUM] Opening-Range Breakout with Width Filter and Same-Day Flat Rule
+   factor=STRUCTURAL, feasibility=SCREENABLE_WITH_DEFAULT, session=unspecified
+   assets=['CL', 'GC', 'MCL', 'MGC'] (['energy', 'gold'])
+   entry=['orb_breakout'], filter=['NEW_OR_INFERRED'], exit=['NEW_OR_INFERRED']
+   role=STRUCTURAL+component, blocker=needs_validation_that_regular_session_window_maps_cleanly_to_target_non_equity_futures
+
+8. [MEDIUM] Afternoon VWAP Slope Confirmation for Late Session Trend
+   factor=STRUCTURAL, feasibility=SCREENABLE_WITH_DEFAULT, session=afternoon
+   assets=['CL', 'GC', 'MCL', 'MGC'] (['energy', 'gold'])
+   entry=['pb_pullback'], filter=['vwap_slope'], exit=['NEW_OR_INFERRED']
+   role=STRUCTURAL+component, blocker=needs_cumulative_delta_proxy_and_anchored_vwap_definition_for_intraday_futures
+
+9. [MEDIUM] Random entry time-stop baseline FX
+   factor=STRUCTURAL, feasibility=SCREENABLE_WITH_DEFAULT, session=unspecified
+   assets=['6A', '6B', '6E', '6J'] (['fx'])
+   entry=['NEW_OR_INFERRED'], filter=['NEW_OR_INFERRED'], exit=['time_stop']
+   role=STRUCTURAL+component, blocker=none
+
+10. [MEDIUM] Global Commodity Open Buffer Breakout Levels
+   factor=STRUCTURAL, feasibility=SCREENABLE_WITH_DEFAULT, session=unspecified
+   assets=['CL', 'MCL', 'NG'] (['energy'])
+   entry=['orb_breakout'], filter=['NEW_OR_INFERRED'], exit=['NEW_OR_INFERRED']
+   role=STRUCTURAL+component, blocker=needs_session_anchor_mapping_from_IST_description_into_CME_energy_session_timestamps
+
+11. [MEDIUM] Random entry time-stop baseline for FX carry pairs
+   factor=CARRY, feasibility=SCREENABLE_WITH_DEFAULT, session=unspecified
+   assets=['6A', '6N', '6S'] (['fx'])
+   entry=['NEW_OR_INFERRED'], filter=['NEW_OR_INFERRED'], exit=['time_stop']
+   role=CARRY+component, blocker=needs explicit carry proxy selection and a rule for mapping random-entry baselines to comparable carry-biased variants
+
+12. [MEDIUM] Donchian breakout with ATR stop for non-equity futures
+   factor=STRUCTURAL, feasibility=SCREENABLE_WITH_DEFAULT, session=unspecified
+   assets=['6E', 'CL', 'GC'] (['energy', 'fx', 'gold'])
+   entry=['donchian_breakout'], filter=['NEW_OR_INFERRED'], exit=['NEW_OR_INFERRED']
+   role=STRUCTURAL+component, blocker=needs contract-specific channel lengths, ATR multiple, and decision on whether pyramiding is allowed in intake tests
+
+13. [MEDIUM] RSI MA Distance Cap for Intraday FX Reversion
+   factor=STRUCTURAL, feasibility=SCREENABLE_WITH_DEFAULT, session=unspecified
+   assets=['6A', '6B', '6E'] (['fx'])
+   entry=['NEW_OR_INFERRED'], filter=['NEW_OR_INFERRED'], exit=['time_stop']
+   role=STRUCTURAL+component, blocker=none
+
+14. [MEDIUM] london to new york fx value holds only when preopen session agreement persists
+   factor=STRUCTURAL, feasibility=SCREENABLE_WITH_DEFAULT, session=london
+   assets=['6B', '6E', '6J'] (['fx'])
+   entry=['NEW_OR_INFERRED'], filter=['NEW_OR_INFERRED'], exit=['time_stop']
+   role=STRUCTURAL+component, blocker=none
+
+15. [MEDIUM] non-equity breakout requires bollinger bandwidth expansion from contraction
+   factor=VOLATILITY, feasibility=SCREENABLE_WITH_DEFAULT, session=unspecified
+   assets=['6E', 'CL', 'GC'] (['energy', 'fx', 'gold'])
+   entry=['NEW_OR_INFERRED'], filter=['NEW_OR_INFERRED'], exit=['time_stop']
+   role=VOLATILITY+component, blocker=none
+
+16. [MEDIUM] Dual-Thrust Afternoon Energy Release
+   factor=STRUCTURAL, feasibility=SCREENABLE_WITH_DEFAULT, session=afternoon
+   assets=['CL', 'MCL'] (['energy'])
+   entry=['orb_breakout'], filter=['NEW_OR_INFERRED'], exit=['NEW_OR_INFERRED']
+   role=STRUCTURAL+component, blocker=needs_dual_thrust_parameterization_and_cl_session_boundary_definition
+
+17. [MEDIUM] Support-bounce time-stop exit FX
+   factor=STRUCTURAL, feasibility=SCREENABLE_WITH_DEFAULT, session=unspecified
+   assets=['6B', '6E'] (['fx'])
+   entry=['NEW_OR_INFERRED'], filter=['NEW_OR_INFERRED'], exit=['time_stop']
+   role=STRUCTURAL+component, blocker=none
+
+18. [MEDIUM] Tokyo Session VWAP Bounce on JPY Futures
+   factor=STRUCTURAL, feasibility=SCREENABLE_WITH_DEFAULT, session=unspecified
+   assets=['6J'] (['fx'])
+   entry=['pb_pullback'], filter=['NEW_OR_INFERRED'], exit=['NEW_OR_INFERRED']
+   role=STRUCTURAL+component, blocker=needs_minute_level_6J_session_calendar_and_precise_tokyo_open_close_definition
+
+19. [MEDIUM] GBPUSD Bounce Exit Template
+   factor=STRUCTURAL, feasibility=SCREENABLE_WITH_DEFAULT, session=unspecified
+   assets=['6B'] (['fx'])
+   entry=['NEW_OR_INFERRED'], filter=['NEW_OR_INFERRED'], exit=['time_stop']
+   role=STRUCTURAL+component, blocker=needs_strategy_definition
+
+20. [MEDIUM] Tokyo Open Failed-Drive Reversal
+   factor=STRUCTURAL, feasibility=SCREENABLE_WITH_DEFAULT, session=unspecified
+   assets=['6J'] (['fx'])
+   entry=['orb_breakout'], filter=['NEW_OR_INFERRED'], exit=['NEW_OR_INFERRED']
+   role=STRUCTURAL+component, blocker=needs_tokyo_session_5_minute_6j_history_with_volume_baselines_and_clock_normalization
+
+21. [MEDIUM] Tokyo London Overlap Compression Break
+   factor=STRUCTURAL, feasibility=SCREENABLE_WITH_DEFAULT, session=london
+   assets=['6J'] (['fx'])
+   entry=['orb_breakout'], filter=['NEW_OR_INFERRED'], exit=['NEW_OR_INFERRED']
+   role=STRUCTURAL+component, blocker=needs_session_timezone_normalization_and_intraday_6j_history_covering_tokyo_hours
+
+22. [MEDIUM] Delayed Responder Managed Futures Filter
+   factor=STRUCTURAL, feasibility=NEEDS_HOST, session=unspecified
+   assets=['6E', '6J', 'CL', 'ES', 'GC', 'M2K', 'MCL', 'MES', 'MGC', 'MNQ', 'NQ', 'ZB', 'ZN'] (['energy', 'equity_index', 'fx', 'gold', 'rates'])
+   entry=['NEW_OR_INFERRED'], filter=['NEW_OR_INFERRED'], exit=['NEW_OR_INFERRED']
+   role=STRUCTURAL+component, blocker=needs_equity_drawdown_benchmark_and_base_trend_sleeve_definition
+
+23. [MEDIUM] Value-Confirmed Cross-Asset Momentum Filter
+   factor=VALUE, feasibility=NEEDS_HOST, session=unspecified
+   assets=['6E', '6J', 'CL', 'ES', 'GC', 'MCL', 'MES', 'MGC', 'MNQ', 'NQ', 'TY', 'ZN'] (['energy', 'equity_index', 'fx', 'gold', 'rates'])
+   entry=['NEW_OR_INFERRED'], filter=['NEW_OR_INFERRED'], exit=['NEW_OR_INFERRED']
+   role=VALUE+component, blocker=needs_asset_class_specific_value_proxy_map_and_signal_freeze_rules
+
+24. [MEDIUM] Cross-Asset Value Sleeve With Momentum-Conflict Veto
+   factor=VALUE, feasibility=NEEDS_HOST, session=unspecified
+   assets=['6B', '6E', '6J', 'CL', 'ES', 'GC', 'NG', 'NQ', 'SI', 'ZB', 'ZN'] (['energy', 'equity_index', 'fx', 'gold', 'metals', 'rates'])
+   entry=['NEW_OR_INFERRED'], filter=['NEW_OR_INFERRED'], exit=['NEW_OR_INFERRED']
+   role=VALUE+component, blocker=needs_public_value_proxy_definition_per_asset_bucket
+
+25. [MEDIUM] Carry-Momentum Agreement Gate for Cross-Asset Futures
+   factor=CARRY, feasibility=NEEDS_HOST, session=unspecified
+   assets=['6E', '6J', 'CL', 'ES', 'GC', 'NG', 'NQ', 'SI', 'ZB', 'ZN'] (['energy', 'equity_index', 'fx', 'gold', 'metals', 'rates'])
+   entry=['NEW_OR_INFERRED'], filter=['NEW_OR_INFERRED'], exit=['NEW_OR_INFERRED']
+   role=CARRY+component, blocker=needs_canonical_roll_yield_definition_and_weekly_signal_snapshot
+
+=== Immediately-screenable from top 25: 21 ===
+  - Partial profit ladder for non-equity trends [STRUCTURAL, MEDIUM]
+  - Time stop for threshold reversal failures [STRUCTURAL, MEDIUM]
+  - dual thrust opening range breakout for rates and commodities [STRUCTURAL, MEDIUM]
+  - Donchian channel breakout fragment for non-equity trends [STRUCTURAL, MEDIUM]
+  - atr stop plus donchian entry for commodity and rates trends [STRUCTURAL, MEDIUM]
+  - Tokyo Open DXY Bias Session Effect [STRUCTURAL, MEDIUM]
+  - Opening-Range Breakout with Width Filter and Same-Day Flat Rule [STRUCTURAL, MEDIUM]
+  - Afternoon VWAP Slope Confirmation for Late Session Trend [STRUCTURAL, MEDIUM]
+  - Random entry time-stop baseline FX [STRUCTURAL, MEDIUM]
+  - Global Commodity Open Buffer Breakout Levels [STRUCTURAL, MEDIUM]
+  - Random entry time-stop baseline for FX carry pairs [CARRY, MEDIUM]
+  - Donchian breakout with ATR stop for non-equity futures [STRUCTURAL, MEDIUM]
+
+Saved: docs/reports/forge_sprint/2026-05-28_phase4_candidate_queue.json
