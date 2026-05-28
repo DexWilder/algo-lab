@@ -92,8 +92,14 @@ def _metrics(trades_df, label, costs: dict = None, archetype_hint: str = None) -
                 "median": 0.0, "max_dd": 0.0, "max_single_pct": 0.0,
                 "win_rate": 0.0, "sharpe": float("nan"),
                 "cost_block": costs or {},
-                "archetype": "UNKNOWN", "gate_verdict": "DEFER",
-                "blocker_reason": "no trades produced"}
+                # Phase 1 upgrade keys with safe defaults (consistent shape)
+                "mean": 0.0, "win_rate_pct": 0.0, "cost_ratio_pct": None,
+                "top3_share_pct": 0.0, "top10_share_pct": 0.0,
+                "max_year_share_pct": 0.0, "n_years": 0, "years_positive": 0,
+                "h1_pf": float("nan"), "h2_pf": float("nan"),
+                "h1_median": 0.0, "h2_median": 0.0,
+                "archetype": "UNKNOWN", "gate_verdict": "KILL",
+                "blocker_reason": "no trades produced — strategy did not fire on this asset"}
 
     # Compute full upgraded screen (metrics + archetype + verdict + reason)
     full = _screen(trades_df, cost_block=costs, archetype_hint=archetype_hint)
