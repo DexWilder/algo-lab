@@ -69,34 +69,72 @@ def _load(asset: str) -> pd.DataFrame:
     return pd.read_csv(DATA_DIR / f"{asset}_5m.csv")
 
 
-def _metrics(trades_df, label, costs: dict = None) -> dict:
+def _metrics(trades_df, label, costs: dict = None, archetype_hint: str = None) -> dict:
     """Compute metrics for a Forge cheap-screen result.
 
     `costs` is the stats.costs block from engine/backtest.py — per FQL
     evidence law, every result must explicitly carry the cost assumptions
     that produced it. Reports surface this block so consumers can verify
     the result is decision-grade (cost_tier == "VALIDATED").
+
+    Phase 1 upgrade (2026-05-28): now emits the full intake gate set via
+    `research/forge_screen_metrics.py`. Legacy keys (label, n, net, pf,
+    median, max_dd, max_single_pct, win_rate, sharpe, cost_block) are
+    preserved for backward compatibility with downstream readers. New
+    keys added: mean, win_rate_pct, cost_ratio_pct, top3_share_pct,
+    top10_share_pct, max_year_share_pct, n_years, years_positive, h1_pf,
+    h2_pf, h1_median, h2_median, archetype, gate_verdict, blocker_reason.
     """
+    from research.forge_screen_metrics import screen as _screen
+
     if trades_df is None or trades_df.empty:
         return {"label": label, "n": 0, "net": 0.0, "pf": float("nan"),
                 "median": 0.0, "max_dd": 0.0, "max_single_pct": 0.0,
                 "win_rate": 0.0, "sharpe": float("nan"),
-                "cost_block": costs or {}}
+                "cost_block": costs or {},
+                "archetype": "UNKNOWN", "gate_verdict": "DEFER",
+                "blocker_reason": "no trades produced"}
+
+    # Compute full upgraded screen (metrics + archetype + verdict + reason)
+    full = _screen(trades_df, cost_block=costs, archetype_hint=archetype_hint)
+
+    # Sharpe (legacy) — kept for backward compat with old reports
     pnl = trades_df["pnl"].values
-    n = len(pnl); net = float(pnl.sum())
-    gp = pnl[pnl > 0].sum(); gl = abs(pnl[pnl < 0].sum())
-    pf = float(gp / gl) if gl > 0 else float("inf")
-    eq = np.cumsum(pnl)
-    max_dd = float((eq - np.maximum.accumulate(eq)).min())
-    abs_total = abs(pnl).sum()
-    max_single_pct = float(abs(pnl).max() / abs_total * 100) if abs_total > 0 else 0
+    n = len(pnl)
     std = float(np.std(pnl))
     sharpe = float(pnl.mean() / std * np.sqrt(n / 6)) if std > 0 else float("nan")
-    return {"label": label, "n": n, "net": net, "pf": pf,
-            "median": float(np.median(pnl)), "max_dd": max_dd,
-            "max_single_pct": max_single_pct,
-            "win_rate": float((pnl > 0).mean()), "sharpe": sharpe,
-            "cost_block": costs or {}}
+
+    # Merge legacy-shaped keys with full intake keys
+    out = {
+        "label": label,
+        # legacy keys (preserved)
+        "n": full["n"],
+        "net": full["net"],
+        "pf": full["pf"],
+        "median": full["median"],
+        "max_dd": full["max_dd"],
+        "max_single_pct": full["max_single_pct"],
+        "win_rate": float((pnl > 0).mean()),  # fraction (legacy)
+        "sharpe": sharpe,
+        "cost_block": costs or {},
+        # Phase 1 upgrade keys
+        "mean": full["mean"],
+        "win_rate_pct": full["win_rate_pct"],
+        "cost_ratio_pct": full["cost_ratio_pct"],
+        "top3_share_pct": full["top3_share_pct"],
+        "top10_share_pct": full["top10_share_pct"],
+        "max_year_share_pct": full["max_year_share_pct"],
+        "n_years": full["n_years"],
+        "years_positive": full["years_positive"],
+        "h1_pf": full["h1_pf"],
+        "h2_pf": full["h2_pf"],
+        "h1_median": full["h1_median"],
+        "h2_median": full["h2_median"],
+        "archetype": full["archetype"],
+        "gate_verdict": full["gate_verdict"],
+        "blocker_reason": full["blocker_reason"],
+    }
+    return out
 
 
 def _verdict(m: dict, archetype: str = "auto") -> str:
