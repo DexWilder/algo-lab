@@ -237,10 +237,23 @@ def entry_vwap_continuation(f, i, state, params):
 
 
 def entry_donchian_breakout(f, i, state, params):
-    """Donchian channel breakout: new N-bar high/low."""
+    """Donchian channel breakout: new N-bar high/low.
+
+    Bug fix 2026-05-28: previously compared `close[i]` to `dc_high_{ch_len}[i]`,
+    but the feature `dc_high_N[i]` includes the current bar's high in the rolling
+    max — so the breakout condition `close > dc_high[i]` was logically impossible
+    (the max of a window including high[i] is always >= high[i] >= close[i]).
+    Result: Donchian primitive produced 0 trades on every asset (Phase 5 + 6
+    diagnostic). Standard Donchian formulation compares to PRIOR window's
+    extreme, so we now read [i-1]. Guard against i == 0.
+    """
+    if i == 0:
+        return 0, 0, 0
     ch_len = params.get("channel_len", 20)
-    dc_h = f[f"dc_high_{ch_len}"][i] if f"dc_high_{ch_len}" in f else f["dc_high_20"][i]
-    dc_l = f[f"dc_low_{ch_len}"][i] if f"dc_low_{ch_len}" in f else f["dc_low_20"][i]
+    key_h = f"dc_high_{ch_len}" if f"dc_high_{ch_len}" in f else "dc_high_20"
+    key_l = f"dc_low_{ch_len}" if f"dc_low_{ch_len}" in f else "dc_low_20"
+    dc_h = f[key_h][i-1]
+    dc_l = f[key_l][i-1]
     if np.isnan(dc_h) or np.isnan(dc_l):
         return 0, 0, 0
     if f["close"][i] > dc_h and not state["long_traded_today"]:
