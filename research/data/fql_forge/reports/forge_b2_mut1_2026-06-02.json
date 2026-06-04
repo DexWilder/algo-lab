@@ -1,0 +1,44 @@
+[
+  {
+    "candidate": "XB-BB-EMA-MorningOnly-MGC-v2",
+    "asset": "MGC",
+    "gap": "Concentration mutation B2 \u2014 morning-only restriction on XB-BB-MGC to test if max-year normalizes",
+    "metrics": {
+      "label": "XB-BB-EMA-MorningOnly-MGC-v2",
+      "n": 497,
+      "net": 844.72,
+      "pf": 1.042,
+      "median": -20.24,
+      "max_dd": -4952.44,
+      "max_single_pct": 4.1,
+      "win_rate": 0.45472837022132795,
+      "sharpe": 0.10683232081626105,
+      "cost_block": {
+        "commission_per_side": 0.62,
+        "slippage_ticks": 1,
+        "tick_size": 0.1,
+        "total_commission": 616.28,
+        "total_slippage": 994.0,
+        "total_friction": 1610.28,
+        "cost_tier": "VALIDATED",
+        "symbol": "MGC"
+      },
+      "mean": 1.7,
+      "win_rate_pct": 45.5,
+      "cost_ratio_pct": 65.6,
+      "top3_share_pct": 378.4,
+      "top10_share_pct": 811.1,
+      "max_year_share_pct": 552.8,
+      "n_years": 8,
+      "years_positive": 3,
+      "h1_pf": 0.622,
+      "h2_pf": 1.376,
+      "h1_median": -23.24,
+      "h2_median": -6.24,
+      "archetype": "TAIL_ENGINE",
+      "gate_verdict": "KILL",
+      "blocker_reason": "cost ratio 65.6% > 50% (cost eats edge)"
+    },
+    "verdict": "WATCH"
+  }
+]

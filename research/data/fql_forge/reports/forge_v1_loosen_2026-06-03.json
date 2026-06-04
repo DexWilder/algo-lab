@@ -1,0 +1,114 @@
+{
+  "date": "2026-06-03",
+  "operator_approval": "OK V1 loosen 1.0\u03c3 (2026-06-03)",
+  "results": [
+    {
+      "variant": "1.5\u03c3 baseline",
+      "params": {
+        "sigma_threshold": 1.5,
+        "use_delta_gate": true,
+        "absolute_residual": false
+      },
+      "metrics": {
+        "n": 4,
+        "pf": 0.701,
+        "median": -294.74,
+        "net": -636.96,
+        "max_dd": -2128.72,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 3.024,
+        "h2_pf": 0.0,
+        "n_years": 3,
+        "years_positive": 1
+      },
+      "verdict": "KILL (insufficient-n)",
+      "signal_counts": {
+        "long": 1,
+        "short": 3,
+        "flat": 80
+      }
+    },
+    {
+      "variant": "1.0\u03c3 loosen",
+      "params": {
+        "sigma_threshold": 1.0,
+        "use_delta_gate": true,
+        "absolute_residual": false
+      },
+      "metrics": {
+        "n": 6,
+        "pf": 0.394,
+        "median": -395.24,
+        "net": -2297.44,
+        "max_dd": -3789.2,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.734,
+        "h2_pf": 0.0,
+        "n_years": 3,
+        "years_positive": 1
+      },
+      "verdict": "KILL (median negative)",
+      "signal_counts": {
+        "long": 2,
+        "short": 4,
+        "flat": 78
+      }
+    },
+    {
+      "variant": "1.0\u03c3 no \u0394-gate",
+      "params": {
+        "sigma_threshold": 1.0,
+        "use_delta_gate": false,
+        "absolute_residual": false
+      },
+      "metrics": {
+        "n": 8,
+        "pf": 0.109,
+        "median": -928.24,
+        "net": -12140.92,
+        "max_dd": -13632.68,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.241,
+        "h2_pf": 0.0,
+        "n_years": 3,
+        "years_positive": 1
+      },
+      "verdict": "KILL (median negative)",
+      "signal_counts": {
+        "long": 2,
+        "short": 8,
+        "flat": 74
+      }
+    },
+    {
+      "variant": "1.0\u03c3 |abs|",
+      "params": {
+        "sigma_threshold": 1.0,
+        "use_delta_gate": false,
+        "absolute_residual": true
+      },
+      "metrics": {
+        "n": 8,
+        "pf": 0.109,
+        "median": -928.24,
+        "net": -12140.92,
+        "max_dd": -13632.68,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.241,
+        "h2_pf": 0.0,
+        "n_years": 3,
+        "years_positive": 1
+      },
+      "verdict": "KILL (median negative)",
+      "signal_counts": {
+        "long": 2,
+        "short": 8,
+        "flat": 74
+      }
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "candidate": "XB-DC-EMA-Ladder-MCL",
+    "asset": "MCL",
+    "gap": "Donchian breakout \u00d7 proven trio \u2014 energy cross-asset (fills crude diversification)",
+    "metrics": {
+      "label": "XB-DC-EMA-Ladder-MCL",
+      "n": 1091,
+      "net": 937.16,
+      "pf": 1.036,
+      "median": -0.24,
+      "max_dd": -2022.4,
+      "max_single_pct": 1.0,
+      "win_rate": 0.49495875343721357,
+      "sharpe": 0.1676914525444711,
+      "cost_block": {
+        "commission_per_side": 0.62,
+        "slippage_ticks": 2,
+        "tick_size": 0.01,
+        "total_commission": 1352.84,
+        "total_slippage": 4364.0,
+        "total_friction": 5716.84,
+        "cost_tier": "VALIDATED",
+        "symbol": "MCL"
+      },
+      "mean": 0.86,
+      "win_rate_pct": 49.5,
+      "cost_ratio_pct": 85.9,
+      "top3_share_pct": 132.3,
+      "top10_share_pct": 348.0,
+      "max_year_share_pct": 127.3,
+      "n_years": 6,
+      "years_positive": 3,
+      "h1_pf": 1.126,
+      "h2_pf": 0.917,
+      "h1_median": -0.24,
+      "h2_median": -0.24,
+      "archetype": "PAYOFF_RATIO_WORKHORSE_FREQUENCY",
+      "gate_verdict": "KILL",
+      "blocker_reason": "cost ratio 85.9% > 50% (cost eats edge)"
+    },
+    "verdict": "KILL"
+  }
+]

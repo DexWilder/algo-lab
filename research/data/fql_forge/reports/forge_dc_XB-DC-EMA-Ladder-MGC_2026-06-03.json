@@ -1,0 +1,44 @@
+[
+  {
+    "candidate": "XB-DC-EMA-Ladder-MGC",
+    "asset": "MGC",
+    "gap": "Donchian breakout \u00d7 proven trio \u2014 metals workhorse extension",
+    "metrics": {
+      "label": "XB-DC-EMA-Ladder-MGC",
+      "n": 980,
+      "net": 5104.8,
+      "pf": 1.149,
+      "median": 1.76,
+      "max_dd": -4087.92,
+      "max_single_pct": 2.3,
+      "win_rate": 0.5102040816326531,
+      "sharpe": 0.45972401247406,
+      "cost_block": {
+        "commission_per_side": 0.62,
+        "slippage_ticks": 1,
+        "tick_size": 0.1,
+        "total_commission": 1215.2,
+        "total_slippage": 1960.0,
+        "total_friction": 3175.2,
+        "cost_tier": "VALIDATED",
+        "symbol": "MGC"
+      },
+      "mean": 5.21,
+      "win_rate_pct": 51.0,
+      "cost_ratio_pct": 38.3,
+      "top3_share_pct": 60.0,
+      "top10_share_pct": 128.7,
+      "max_year_share_pct": 51.3,
+      "n_years": 8,
+      "years_positive": 7,
+      "h1_pf": 1.391,
+      "h2_pf": 1.036,
+      "h1_median": 0.26,
+      "h2_median": 3.76,
+      "archetype": "WORKHORSE",
+      "gate_verdict": "MUTATE",
+      "blocker_reason": "PF 1.15 < workhorse gate 1.2; try exit/filter variant"
+    },
+    "verdict": "WATCH"
+  }
+]

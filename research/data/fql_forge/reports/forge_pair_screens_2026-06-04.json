@@ -1,0 +1,260 @@
+{
+  "date": "2026-06-04",
+  "operator_approvals": [
+    "#18 PAIR-B z-sweep",
+    "#19 signal-class adapter"
+  ],
+  "pair_b_zsweep": [
+    {
+      "z": 0.8,
+      "n": 3,
+      "pf": 3.457,
+      "median": 417.61,
+      "max_yr": 98.1,
+      "verdict": "KILL (insufficient-n)",
+      "yrs+": 2,
+      "n_yrs": 2
+    },
+    {
+      "z": 1.0,
+      "n": 0,
+      "pf": NaN,
+      "median": 0.0,
+      "max_yr": 0.0,
+      "verdict": "KILL (insufficient-n)",
+      "yrs+": 0,
+      "n_yrs": 0
+    },
+    {
+      "z": 1.2,
+      "n": 0,
+      "pf": NaN,
+      "median": 0.0,
+      "max_yr": 0.0,
+      "verdict": "KILL (insufficient-n)",
+      "yrs+": 0,
+      "n_yrs": 0
+    }
+  ],
+  "signal_class_candidates": [
+    {
+      "label": "ZN-ZB-curve-level_z",
+      "signal_class": "level_z",
+      "metrics": {
+        "label": "ZN-ZB-curve-level_z",
+        "n": 5,
+        "net": -455.5,
+        "pf": 0.75,
+        "median": -338.56,
+        "max_dd": -1485.66,
+        "max_single_pct": 30.2,
+        "win_rate": 0.4,
+        "sharpe": -0.12336944642876709,
+        "cost_block": {
+          "commission_per_side": 1.55,
+          "slippage_ticks": 2,
+          "tick_size": 0.015625,
+          "total_commission": 199.40175906919345,
+          "total_slippage": 299.1026386037901,
+          "total_friction": 498.5043976729836,
+          "cost_tier": "VALIDATED",
+          "symbol": "ZN/ZB"
+        },
+        "mean": -91.1,
+        "win_rate_pct": 40.0,
+        "cost_ratio_pct": 1159.3,
+        "top3_share_pct": 0.0,
+        "top10_share_pct": 0.0,
+        "max_year_share_pct": 0.0,
+        "n_years": 5,
+        "years_positive": 2,
+        "h1_pf": 1.336,
+        "h2_pf": 0.366,
+        "h1_median": 121.32,
+        "h2_median": -338.56,
+        "archetype": "UNKNOWN",
+        "gate_verdict": "KILL",
+        "blocker_reason": "PF 0.75 < 1.0 (not profitable)"
+      },
+      "temporal": {
+        "per_year": [
+          {
+            "year": 2021,
+            "n": 1,
+            "pf": Infinity,
+            "net": 965.2556043176846
+          },
+          {
+            "year": 2022,
+            "n": 1,
+            "pf": 0.0,
+            "net": -722.6204907678474
+          },
+          {
+            "year": 2023,
+            "n": 1,
+            "pf": 0.0,
+            "net": -763.0373135292689
+          },
+          {
+            "year": 2024,
+            "n": 1,
+            "pf": Infinity,
+            "net": 403.46224433320725
+          },
+          {
+            "year": 2025,
+            "n": 1,
+            "pf": 0.0,
+            "net": -338.5624824364466
+          }
+        ],
+        "yrs_pos": 2,
+        "n_yrs": 5,
+        "h1_pf": 1.3357711504859435,
+        "h2_pf": 0.36625119740469164
+      },
+      "verdict": "KILL (median negative)"
+    },
+    {
+      "label": "MGC-MCL-real-level_z",
+      "signal_class": "level_z",
+      "metrics": {
+        "label": "MGC-MCL-real-level_z",
+        "n": 3,
+        "net": -17967.03,
+        "pf": 0.213,
+        "median": 1162.9,
+        "max_dd": -22831.85,
+        "max_single_pct": 82.4,
+        "win_rate": 0.6666666666666666,
+        "sharpe": -0.35424281249144624,
+        "cost_block": {
+          "commission_per_side": 0.62,
+          "slippage_ticks": 2,
+          "tick_size": 0.01,
+          "total_commission": 11.664747946897847,
+          "total_slippage": 17.49712192034677,
+          "total_friction": 29.16186986724462,
+          "cost_tier": "VALIDATED",
+          "symbol": "MGC/MCL"
+        },
+        "mean": -5989.01,
+        "win_rate_pct": 66.7,
+        "cost_ratio_pct": null,
+        "top3_share_pct": 0.0,
+        "top10_share_pct": 0.0,
+        "max_year_share_pct": 0.0,
+        "n_years": 2,
+        "years_positive": 1,
+        "h1_pf": Infinity,
+        "h2_pf": 0.162,
+        "h1_median": 1162.9,
+        "h2_median": -9564.97,
+        "archetype": "UNKNOWN",
+        "gate_verdict": "KILL",
+        "blocker_reason": "PF 0.21 < 1.0 (not profitable)"
+      },
+      "temporal": {
+        "per_year": [
+          {
+            "year": 2022,
+            "n": 1,
+            "pf": Infinity,
+            "net": 1162.9038058193573
+          },
+          {
+            "year": 2023,
+            "n": 2,
+            "pf": 0.16213824122793286,
+            "net": -19129.93336031333
+          }
+        ],
+        "yrs_pos": 1,
+        "n_yrs": 2,
+        "h1_pf": Infinity,
+        "h2_pf": 0.16213824122793286
+      },
+      "verdict": "KILL (insufficient-n)"
+    },
+    {
+      "label": "MES-ZN-macro-fundamental_z",
+      "signal_class": "fundamental_z",
+      "metrics": {
+        "label": "MES-ZN-macro-fundamental_z",
+        "n": 7,
+        "net": -11653.12,
+        "pf": 0.415,
+        "median": -2548.92,
+        "max_dd": -14211.91,
+        "max_single_pct": 23.4,
+        "win_rate": 0.2857142857142857,
+        "sharpe": -0.43597010326732444,
+        "cost_block": {
+          "commission_per_side": 1.085,
+          "slippage_ticks": 1,
+          "tick_size": 0.015625,
+          "total_commission": 68.39434371400655,
+          "total_slippage": 102.59151557100982,
+          "total_friction": 170.98585928501637,
+          "cost_tier": "VALIDATED",
+          "symbol": "MES/ZN"
+        },
+        "mean": -1664.73,
+        "win_rate_pct": 28.6,
+        "cost_ratio_pct": null,
+        "top3_share_pct": 0.0,
+        "top10_share_pct": 0.0,
+        "max_year_share_pct": 0.0,
+        "n_years": 5,
+        "years_positive": 1,
+        "h1_pf": 1.253,
+        "h2_pf": 0.0,
+        "h1_median": 2558.78,
+        "h2_median": -2674.86,
+        "archetype": "UNKNOWN",
+        "gate_verdict": "KILL",
+        "blocker_reason": "PF 0.41 < 1.0 (not profitable)"
+      },
+      "temporal": {
+        "per_year": [
+          {
+            "year": 2020,
+            "n": 2,
+            "pf": 0.3883513417056868,
+            "net": -4030.0553752166834
+          },
+          {
+            "year": 2021,
+            "n": 1,
+            "pf": Infinity,
+            "net": 5699.658192819955
+          },
+          {
+            "year": 2023,
+            "n": 1,
+            "pf": 0.0,
+            "net": -2548.920846654925
+          },
+          {
+            "year": 2024,
+            "n": 2,
+            "pf": 0.0,
+            "net": -4562.220845058442
+          },
+          {
+            "year": 2025,
+            "n": 1,
+            "pf": 0.0,
+            "net": -6211.582282025409
+          }
+        ],
+        "yrs_pos": 1,
+        "n_yrs": 5,
+        "h1_pf": 1.2533985834416828,
+        "h2_pf": 0.0
+      },
+      "verdict": "KILL (median negative)"
+    }
+  ]
+}

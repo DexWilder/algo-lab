@@ -1,0 +1,260 @@
+{
+  "date": "2026-06-04",
+  "candidate": "EVT-NFP-MGC-Long-2h",
+  "operator_approval": "OK deep-screen NFP-MGC (#27)",
+  "baseline_metrics": {
+    "n": 84,
+    "pf": 2.264,
+    "median": 21.76,
+    "net": 8663.84,
+    "max_dd": -1652.08,
+    "max_year_share_pct": 27.8,
+    "top3_share_pct": 41.6,
+    "top10_share_pct": 106.6,
+    "h1_pf": 2.63,
+    "h2_pf": 2.09,
+    "win_rate_pct": 54.8,
+    "n_years": 8,
+    "years_positive": 8,
+    "cost_block": {
+      "commission_per_side": 0.62,
+      "slippage_ticks": 1,
+      "tick_size": 0.1,
+      "total_commission": 104.16,
+      "total_slippage": 168.0,
+      "total_friction": 272.16,
+      "cost_tier": "VALIDATED",
+      "symbol": "MGC"
+    }
+  },
+  "dim_A_cost_stress": {
+    "rows": [
+      {
+        "label": "baseline (1x cost, 1x slip)",
+        "n": 84,
+        "pf": 2.264,
+        "median": 21.76,
+        "net": 8663.84,
+        "max_yr": 27.8
+      },
+      {
+        "label": "1.5x cost",
+        "n": 84,
+        "pf": 2.252,
+        "median": 21.14,
+        "net": 8611.76,
+        "max_yr": 27.9
+      },
+      {
+        "label": "2x cost",
+        "n": 84,
+        "pf": 2.241,
+        "median": 20.52,
+        "net": 8559.68,
+        "max_yr": 28.0
+      },
+      {
+        "label": "3x cost",
+        "n": 84,
+        "pf": 2.217,
+        "median": 19.28,
+        "net": 8455.52,
+        "max_yr": 28.3
+      },
+      {
+        "label": "baseline + 2x slip",
+        "n": 84,
+        "pf": 2.226,
+        "median": 19.76,
+        "net": 8495.84,
+        "max_yr": 28.2
+      },
+      {
+        "label": "2x cost + 2x slip",
+        "n": 84,
+        "pf": 2.203,
+        "median": 18.52,
+        "net": 8391.68,
+        "max_yr": 28.5
+      }
+    ],
+    "survives_2x": true
+  },
+  "dim_B_calendar_fidelity": {
+    "verdict": "CALENDAR_VERIFIED",
+    "note": "97.9% rule-actual match; \u0394PF=-0.057 immaterial; 8/8 yrs+ preserved"
+  },
+  "dim_C_event_subtype": {
+    "verdict": "DATA_REQUIRED",
+    "note": "NFP surprise series (beat/miss/inline) not in repo; not pulled to avoid overbuilding"
+  },
+  "dim_D_temporal": {
+    "per_year": [
+      {
+        "year": 2019,
+        "n": 7,
+        "pf": 4.886071612129518,
+        "net": 907.3199999999999
+      },
+      {
+        "year": 2020,
+        "n": 12,
+        "pf": 4.9652482269503535,
+        "net": 1789.12
+      },
+      {
+        "year": 2021,
+        "n": 12,
+        "pf": 2.07290910557303,
+        "net": 532.1199999999999
+      },
+      {
+        "year": 2022,
+        "n": 12,
+        "pf": 1.291609153650563,
+        "net": 321.1199999999999
+      },
+      {
+        "year": 2023,
+        "n": 12,
+        "pf": 1.8385334466431953,
+        "net": 1105.12
+      },
+      {
+        "year": 2024,
+        "n": 12,
+        "pf": 1.9307245324132922,
+        "net": 1230.12
+      },
+      {
+        "year": 2025,
+        "n": 12,
+        "pf": 1.2287059285048791,
+        "net": 373.1199999999999
+      },
+      {
+        "year": 2026,
+        "n": 5,
+        "pf": 9.039700574789466,
+        "net": 2405.8
+      }
+    ],
+    "eras": [
+      {
+        "era": 1,
+        "n": 28,
+        "pf": 3.3548922618240953,
+        "net": 2780.2800000000007,
+        "start": "2019-06-30",
+        "end": "2021-09-03"
+      },
+      {
+        "era": 2,
+        "n": 28,
+        "pf": 1.9161513277555478,
+        "net": 2216.2799999999997,
+        "start": "2021-10-03",
+        "end": "2024-01-05"
+      },
+      {
+        "era": 3,
+        "n": 28,
+        "pf": 2.1275750531921442,
+        "net": 3667.2800000000007,
+        "start": "2024-02-02",
+        "end": "2026-05-01"
+      }
+    ],
+    "rolling12": {
+      "worst": 0.3126437356264373,
+      "pct_gt_1": 89.04109589041096,
+      "pct_gt_1p2": 84.93150684931507,
+      "n_windows": 73
+    }
+  },
+  "dim_E_trade_level": {
+    "win_rate_pct": 54.761904761904766,
+    "avg_win": 337.3034782608696,
+    "avg_loss": -180.31894736842102,
+    "top1_share_pct": 16.95275997710022,
+    "top3_share_pct": 41.60141461522835,
+    "top5_share_pct": 63.01824595098709,
+    "largest_loss": -789.24,
+    "max_consec_losses": 5,
+    "max_dd_duration_trades": 19
+  },
+  "dim_F_execution_sanity": {
+    "variants": [
+      {
+        "variant": "entry-+1bar/08:35",
+        "n": 84,
+        "pf": 2.264,
+        "median": 21.76
+      },
+      {
+        "variant": "entry-+2bars/08:40",
+        "n": 84,
+        "pf": 2.279,
+        "median": 20.26
+      },
+      {
+        "variant": "entry-+3bars/08:45",
+        "n": 84,
+        "pf": 2.174,
+        "median": 19.76
+      },
+      {
+        "variant": "entry-+6bars/09:00",
+        "n": 84,
+        "pf": 2.798,
+        "median": 54.26
+      },
+      {
+        "variant": "entry-+12bars/09:30",
+        "n": 84,
+        "pf": 2.981,
+        "median": 55.26
+      },
+      {
+        "variant": "exit-30min",
+        "n": 84,
+        "pf": 1.304,
+        "median": 3.76
+      },
+      {
+        "variant": "exit-1h",
+        "n": 84,
+        "pf": 1.699,
+        "median": 16.76
+      },
+      {
+        "variant": "exit-2h",
+        "n": 84,
+        "pf": 2.264,
+        "median": 21.76
+      },
+      {
+        "variant": "exit-4h",
+        "n": 84,
+        "pf": 2.83,
+        "median": 32.76
+      },
+      {
+        "variant": "exit-6h-eod",
+        "n": 84,
+        "pf": 3.185,
+        "median": 55.26
+      }
+    ],
+    "entry_delay_stable": true
+  },
+  "dim_G_cross_asset": {
+    "verdict": "UNAVAILABLE",
+    "note": "SI not in data/processed; cross-asset metals replicate cannot run. Does not block packet per operator directive."
+  },
+  "dim_H_regime_overlay": {
+    "error": "Invalid frequency: end. Failed to parse with error message: ValueError(\"Invalid frequency: end. Failed to parse with error message: KeyError('end').\")",
+    "vol_error": "Invalid frequency: end. Failed to parse with error message: ValueError(\"Invalid frequency: end. Failed to parse with error message: KeyError('end').\")"
+  },
+  "verdict": "PAPER_PACKET_DRAFT_CANDIDATE"
+}

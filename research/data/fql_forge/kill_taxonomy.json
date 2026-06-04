@@ -1,0 +1,578 @@
+{
+  "_purpose": "Closed-loop kill taxonomy. Every WATCH/RETEST/KILL gets one or more tags from the fixed set. Tags feed back into source-helper hunt prioritization and primitive-coverage prioritization.",
+  "_locked": "2026-06-02",
+  "_authority": "T1 / report-only; not consumed by runner or registry",
+  "_fixed_tag_set": [
+    "cost-eats-edge",
+    "concentration",
+    "regime-dependent",
+    "WF-split-fail",
+    "median-negative",
+    "insufficient-n",
+    "duplicate/overlap",
+    "data-blocked",
+    "implementation-blocked"
+  ],
+  "_tag_definitions": {
+    "cost-eats-edge": "Cost ratio (friction / gross) > 50% OR cost-adjusted PF < 1.10 with healthy gross PF",
+    "concentration": "Any of: top-3 > 30%, top-10 > 55%, max-year > 40% (workhorse) / 50% (tail-engine), top-3-trade > 25%",
+    "regime-dependent": "Walk-forward H1 vs H2 PF asymmetry > 1.5× OR PF carried by ≤2 calendar years",
+    "WF-split-fail": "H1 PF < 1.0 OR H2 PF < 1.0 OR median sign flips between halves",
+    "median-negative": "Median trade ≤ 0 — fails edge doctrine signal #1 (positive median)",
+    "insufficient-n": "n < 50 for any archetype OR n < 500 forced through workhorse routing",
+    "duplicate/overlap": "Same (asset × entry × filter) family already represented in core/probation; adding this would concentrate, not diversify",
+    "data-blocked": "Requires data source not in current tree (e.g. EIA stock changes, OPEC outcomes, FRED rate series, auction calendar, intraday curve)",
+    "implementation-blocked": "Requires primitive not in ENTRY_MAP / EXIT_MAP / FILTER_MAP / harness (e.g. event-window candidate, monthly rebalance, stateful entry filter)"
+  },
+  "_routing": {
+    "ADVANCE_TO_DEEP_SCREEN": "Zero tags fired; all 6 edge-doctrine + concentration gates pass",
+    "WATCH": "1-2 tags fired but underlying PF / median / WF salvageable via mutation",
+    "RETEST": "WF-split-fail or insufficient-n only; one re-run with stricter window or longer sample may resolve",
+    "KILL": "cost-eats-edge OR concentration with no plausible mutation OR duplicate/overlap",
+    "BLOCKED_WITH_DATA_REQUIREMENT": "data-blocked; surface as decision-grade ask, do not overbuild manually",
+    "BLOCKED_WITH_PRIMITIVE_REQUIREMENT": "implementation-blocked; surface as decision-grade ask, ranked by backlog-unlock count"
+  },
+  "entries": [
+    {
+      "date": "2026-06-02",
+      "candidate": "XB-PB-EMA-Ladder-MYM",
+      "verdict": "WATCH",
+      "tags": ["concentration", "duplicate/overlap"],
+      "notes": "Stable WF (H1 1.241 / H2 1.204), 3/3 yrs positive. But top-3 40.6%, top-10 100.4%, max-year 68.4%. MYM already covered via XB-ORB-EMA-Ladder-MYM probation — PB variant intensifies asset concentration."
+    },
+    {
+      "date": "2026-06-02",
+      "candidate": "XB-BB-EMA-Ladder-MGC",
+      "verdict": "WATCH",
+      "tags": ["concentration", "regime-dependent"],
+      "notes": "Strongest topline (PF 1.502, median +3.76, 7/8 yrs+). Max-year 87.8% + H2 (1.712) >> H1 (1.175) = regime carrying edge. Concentration mutation lane priority #1."
+    },
+    {
+      "date": "2026-06-02",
+      "candidate": "XB-BB-EMA-Ladder-MYM",
+      "verdict": "RETEST",
+      "tags": ["WF-split-fail", "concentration", "insufficient-n"],
+      "notes": "H1 PF 0.821 < 1.0 hard fail. n=241 (tail-engine OK but borderline). Single observation. One re-fire with stricter WF check; if H1 stays sub-1.0 → KILL."
+    },
+    {
+      "date": "2026-06-02",
+      "candidate": "XB-VWAP-EMA-Ladder-MGC",
+      "verdict": "WATCH",
+      "tags": ["median-negative", "concentration"],
+      "notes": "Median -0.24 fails edge doctrine signal #1 despite stable WF + 6/8 yrs+. Max-year 49.5% just inside tail-engine 50% gate. Mutation: tighter entry to lift median."
+    },
+    {
+      "date": "2026-06-02",
+      "candidate": "XB-VWAP-EMA-Ladder-MYM",
+      "verdict": "WATCH",
+      "tags": ["concentration", "WF-split-fail", "duplicate/overlap"],
+      "notes": "Best median of batch (+7.01) + 3/3 yrs+. But H1 1.135 barely > 1.0, max-year 72.8%, MYM duplicate. Best concentration-mutation target."
+    },
+    {
+      "date": "2026-06-02",
+      "candidate": "XB-BB-EMA-MorningOnly-MGC-v2",
+      "verdict": "WATCH",
+      "tags": ["median-negative", "concentration", "regime-dependent"],
+      "batch": "B2 mutation 1",
+      "notes": "Morning-only filter DEGRADED the parent: PF 1.502 → 1.042, median +0.26 → -20.24, max DD $646 → $4952. Diagnosis: parent's 87.8% max-year is REGIME-level not session-level. Session filter is wrong axis for concentration repair on this candidate. Next mutation: volatility-regime overlay or 2H1/2H2 temporal split."
+    },
+    {
+      "date": "2026-06-02",
+      "candidate": "B2-mut-2-strict-ema-slope",
+      "verdict": "BLOCKED_WITH_PRIMITIVE_REQUIREMENT",
+      "tags": ["implementation-blocked"],
+      "notes": "'Strict EMA slope' is not a registered FILTER_MAP entry. Would require either parameterizing ema_slope with a stricter threshold OR a new ema_slope_strict primitive. Surface as decision-grade ask."
+    },
+    {
+      "date": "2026-06-02",
+      "candidate": "B2-mut-3-median-positive-entry",
+      "verdict": "BLOCKED_WITH_PRIMITIVE_REQUIREMENT",
+      "tags": ["implementation-blocked"],
+      "notes": "'Median-positive entry filter' requires a stateful filter that conditions on trailing trade outcomes. Current FILTER_MAP entries are all stateless bar-level filters. Needs new primitive class. Surface as decision-grade ask."
+    },
+    {
+      "date": "2026-06-02",
+      "candidate": "B3-spec-A-treasury-auction-ZN",
+      "verdict": "BLOCKED_WITH_PRIMITIVE_REQUIREMENT",
+      "tags": ["implementation-blocked"],
+      "notes": "Data quickly available (treasurydirect.gov auction calendar, free). Blocker: event-window candidate harness does not exist. Forge runs continuous 5m XB signals; auction trades fire on calendar events. Needs event-window signal-generator primitive."
+    },
+    {
+      "date": "2026-06-02",
+      "candidate": "B3-spec-B-EIA-crack-MCL",
+      "verdict": "BLOCKED_WITH_DATA_REQUIREMENT",
+      "tags": ["data-blocked", "implementation-blocked"],
+      "notes": "Needs (a) EIA Wed-10:30-ET release calendar (free, easy), (b) front-month minus second-month MCL spread series — current data tree has continuous front only, no M2. Plus event-window harness. Per operator directive: return BLOCKED rather than overbuild."
+    },
+    {
+      "date": "2026-06-02",
+      "candidate": "B3-spec-C-BoJ-Fed-6J-carry",
+      "verdict": "BLOCKED_WITH_PRIMITIVE_REQUIREMENT",
+      "tags": ["implementation-blocked"],
+      "notes": "6J 5m bars current (2026-06-01 19:55). Fed Funds + BoJ rate series free on FRED. Blocker: monthly-rebalance harness — research/run_treasury_rolldown_spread.py is templatable but a 6J version doesn't exist. Specifically not in CANDIDATES dict shape (which assumes intraday XB)."
+    },
+    {
+      "date": "2026-06-02",
+      "candidate": "B3-spec-D-OPEC-cut-MCL",
+      "verdict": "BLOCKED_WITH_DATA_REQUIREMENT",
+      "tags": ["data-blocked", "implementation-blocked"],
+      "notes": "OPEC conference outcome list requires manual compile + cut/hold/raise classification (~50 events 2010-2026). Plus event-window harness. Per operator directive: return BLOCKED rather than overbuild manually."
+    }
+  ],
+  "_tag_aggregation_2026-06-02": {
+    "concentration": 6,
+    "regime-dependent": 2,
+    "WF-split-fail": 3,
+    "median-negative": 3,
+    "duplicate/overlap": 3,
+    "insufficient-n": 1,
+    "data-blocked": 2,
+    "implementation-blocked": 6,
+    "cost-eats-edge": 0
+  },
+  "_closed_loop_signals_2026-06-02": [
+    "concentration is the dominant failure mode in current XB cluster (6/12 entries) — confirms feedback_concentration_is_load_bearing.md; the cheap-screen is over-sampling a regime-dependent zone",
+    "implementation-blocked is the second-most-common tag (6/12) — confirms feedback_primitive_coverage_bottleneck.md; event-window + monthly-rebalance primitives are the highest-leverage builds",
+    "session-filter mutation DOES NOT repair concentration on XB-BB-MGC (B2 mut 1 result) — drop session-filter axis from concentration-mutation lane, pivot to volatility-regime overlay or temporal split",
+    "zero cost-eats-edge tags fired today — cost calibration appears stable; cost is not the current bottleneck",
+    "no data-blocked tags for Specs A and C — data is available; primitive blocker is the actionable one"
+  ],
+  "_doctrine_lessons_locked": [
+    {
+      "date": "2026-06-03",
+      "lesson": "XB-BB-MGC concentration is not session-driven and not simple vol-regime-driven. Future XB concentration fixes should test TEMPORAL ROBUSTNESS (year-exclusion, rolling-window PF, era-split) BEFORE attempting additional intraday filters. Two filter axes (session, vol-regime) empirically failed in 2026-06-02 / 2026-06-03 cycles; both were wrong by orthogonal mechanisms (session destroyed the edge; vol-regime preserved both PF and concentration unchanged). Filter-axis exhaustion = pivot to year-axis.",
+      "applies_to": "XB-* candidates with high max-year concentration (> 50%) where filter-based mutation is being considered",
+      "saves_cycles": "≥ 2 wasted intraday-filter mutations per future high-concentration XB candidate"
+    }
+  ],
+  "_closed_loop_signals_2026-06-03": [
+    "VOL-REGIME OVERLAY ALSO DOES NOT REPAIR CONCENTRATION ON XB-BB-MGC (B2 mut Plan B result). Smoke test: baseline ema_slope max-yr 95.7%; vol-high(70) n=17 PF 0.595 KILL (destroys sample); vol-low(30) PF 1.609 max-yr 94.3% (preserves PF, preserves concentration). Both filter-axis approaches have now empirically failed.",
+    "Implication: XB-BB-MGC concentration is CALENDAR-YEAR / regime-dominance, not session-level or vol-regime-level. Next mutation MUST be temporal split (train vs test on year axis) or year-by-year robustness gate. Drop both session and vol-regime axes from this candidate's mutation lane.",
+    "Forge has three new primitives this cycle: event-window (research/event_window_engine.py), monthly-rebalance (research/monthly_rebalance_engine.py), vol-regime (FILTER_MAP additions in research/crossbreeding/crossbreeding_engine.py). All three smoke-tested end-to-end with cost-aware metrics.",
+    "Unlocked candidate families (capacity, not yet executed): Spec A (Treasury auction ZN), Spec B (EIA crack MCL — still data-blocked on M2 spread), Spec C (BoJ-Fed 6J carry — needs FRED data pull), Spec D (OPEC drift MCL — still data-blocked on outcome list), plus future FOMC/CPI/NFP/roll-day event candidates and future monthly carry/value candidates."
+  ],
+  "entries_2026-06-03": [
+    {
+      "date": "2026-06-03",
+      "candidate": "XB-BB-MGC + ema_slope_vol_high(70)",
+      "verdict": "KILL",
+      "tags": ["insufficient-n", "WF-split-fail"],
+      "batch": "B2 mut Plan B (vol-regime overlay)",
+      "notes": "n=17 over full data; vol-high filter too restrictive. KILL on sample size."
+    },
+    {
+      "date": "2026-06-03",
+      "candidate": "XB-BB-MGC + ema_slope_vol_low(30)",
+      "verdict": "WATCH",
+      "tags": ["concentration", "regime-dependent"],
+      "batch": "B2 mut Plan B (vol-regime overlay)",
+      "notes": "n=247, PF 1.609, max-yr 94.3% — vol-low preserves edge but does NOT reduce concentration. Concentration is calendar-year level."
+    },
+    {
+      "date": "2026-06-03",
+      "candidate": "CRY-Policy-Rate-Differential-6J (Spec C)",
+      "verdict": "RETEST",
+      "tags": ["insufficient-n"],
+      "batch": "B3-C wire",
+      "notes": "n=1 (single trade fires in the 6J data window 2024-02→2026-05). Signal logic correct, but 6J data window coincides almost entirely with Fed cutting cycle when the rule (spread > 12m median AND Δ ≥ 0) does not fire. Genuine insufficient-n; harness verified. Would require pre-2024 6J bars to test fairly."
+    },
+    {
+      "date": "2026-06-03",
+      "candidate": "EVT-Treasury-Auction-LONG-ZN (Spec A)",
+      "verdict": "KILL",
+      "tags": ["cost-eats-edge", "median-negative"],
+      "batch": "B3-A wire",
+      "notes": "n=84, PF 0.528, median -$49.98 (~3 ticks). 2nd-Wed proxy calendar shows no LONG edge after costs. Either the proxy is wrong (real auction dates differ) or the post-auction reversion hypothesis fails on ZN at this fidelity."
+    },
+    {
+      "date": "2026-06-03",
+      "candidate": "EVT-Treasury-Auction-SHORT-ZN (Spec A)",
+      "verdict": "KILL",
+      "tags": ["cost-eats-edge", "median-negative"],
+      "batch": "B3-A wire",
+      "notes": "n=83, PF 0.391, median -$49.98. Pre-auction concession leg also fails on the 2nd-Wed proxy. Both legs KILL; harvest hypothesis does not survive cheap-screen."
+    },
+    {
+      "date": "2026-06-03",
+      "candidate": "XB-BB-EMA-Ladder-MGC (temporal-split mutation)",
+      "verdict": "ARCHITECTURAL_REJECT",
+      "tags": ["regime-dependent", "concentration", "WF-split-fail"],
+      "batch": "Plan C — temporal split (operator-approved 2026-06-03)",
+      "notes": "Per-year: 5 of 8 yrs losing (2019/2020/2022/2024) + 2 barely positive. Era split: Era 1 PF 0.807, Era 2 PF 0.953 (LOSING), Era 3 (2024-01→2026-05) PF 2.653. Excluding 2026 alone: PF 1.611→1.031, median +$1.76→-$0.24 sign-flip. Rolling 12mo PF > 1.2 in only 27% of windows. Auto-classifier called RETEST_WITH_YEAR_GATE; **operator-doctrine interpretation = ARCHITECTURAL_REJECT** — the apparent edge is one 18-month regime, not a portfolio-grade edge."
+    },
+    {
+      "date": "2026-06-03",
+      "candidate": "XB-DC-EMA-Ladder-MCL",
+      "verdict": "KILL",
+      "tags": ["cost-eats-edge", "median-negative"],
+      "batch": "Donchian extension",
+      "notes": "n=1091, PF 1.036, median -$0.24. Cost ratio likely > 50%; Donchian on crude doesn't survive friction."
+    },
+    {
+      "date": "2026-06-03",
+      "candidate": "XB-DC-EMA-Ladder-MGC",
+      "verdict": "WATCH",
+      "tags": ["WF-split-fail"],
+      "batch": "Donchian extension",
+      "notes": "n=980, PF 1.149, median +$1.76. Below workhorse PF 1.20 gate but positive median + decent net ($5105). Best Donchian variant of the three. Possible tail-engine reclassification or mutation target."
+    },
+    {
+      "date": "2026-06-03",
+      "candidate": "XB-DC-EMA-Ladder-ZN",
+      "verdict": "KILL",
+      "tags": ["median-negative", "WF-split-fail"],
+      "batch": "Donchian extension",
+      "notes": "n=1266, PF 0.718, median -$34.35, net -$23,269. Donchian breakout does NOT translate to rates at workhorse fidelity. Rates need different mechanism."
+    }
+  ],
+  "entries_2026-06-03_mgc_donchian_mutation": [
+    {
+      "candidate": "XB-DC-EMA-Ladder-MGC (baseline; data refreshed)",
+      "verdict": "WATCH (decaying edge but temporally robust)",
+      "tags": ["regime-dependent"],
+      "metrics": {"n": 980, "pf": 1.205, "median": 4.26, "max_year_pct": 47.5},
+      "temporal_robustness": "6/8 yrs positive; 3/3 eras positive (1.375 / 1.326 / 1.090); 2024 + 2026 YTD slight loss",
+      "notes": "Not ARCHITECTURAL_REJECT — distinct from XB-BB-MGC which had 5/8 yrs losing. But edge is decaying (Era 3 PF 1.090) and 2026 YTD negative. Just under workhorse 1.20 PF gate; max-yr just under 50% gate."
+    },
+    {
+      "candidate": "XB-DC-VolLow30-Ladder-MGC",
+      "verdict": "WATCH (best vol-overlay variant)",
+      "tags": ["regime-dependent"],
+      "metrics": {"n": 772, "pf": 1.229, "median": 6.76, "max_year_pct": 43.0},
+      "temporal_robustness": "6/8 yrs positive; 3/3 eras positive (1.567 / 1.349 / 1.057)",
+      "notes": "Vol-low filter modestly IMPROVED max-year (47.5 → 43.0) AND PF (1.205 → 1.229). Different result from XB-BB-MGC where vol-low preserved concentration unchanged. Suggests Donchian breakout edge is more vol-regime-conditional than BB-reversion edge."
+    },
+    {
+      "candidate": "XB-DC-VolLow40-Ladder-MGC",
+      "verdict": "WATCH (best of cycle)",
+      "tags": ["regime-dependent"],
+      "metrics": {"n": 823, "pf": 1.239, "median": 6.76, "max_year_pct": 42.5},
+      "temporal_robustness": "6/8 yrs positive; 3/3 eras positive (1.574 / 1.383 / 1.062)",
+      "notes": "Best of 6 mutations. PF 1.239 just above workhorse 1.20 gate; median improved $4.26 → $6.76 (+59%); max-yr 47.5 → 42.5 (improved 5pp). Still misses tail-engine PF 1.30 gate. NOT WATCH_FOR_DEEP_SCREEN per operator rules but closest of the 6 variants. Era 3 still positive at 1.062. Doctrine: temporally-robust but slowly-decaying mid-PF candidate."
+    },
+    {
+      "candidate": "XB-DC-EMA-Chandelier-MGC",
+      "verdict": "KILL",
+      "tags": ["median-negative", "concentration"],
+      "metrics": {"n": 980, "pf": 1.089, "median": -7.24, "max_year_pct": 84.8},
+      "notes": "Chandelier exit destroys the per-trade edge AND blows out concentration (47.5 → 84.8). Wrong exit philosophy for Donchian-breakout on MGC."
+    },
+    {
+      "candidate": "XB-DC-EMA-ATRTrail-MGC",
+      "verdict": "KILL",
+      "tags": ["median-negative"],
+      "metrics": {"n": 980, "pf": 1.120, "median": -6.24, "max_year_pct": 64.1},
+      "notes": "ATR-trail similar pattern: median goes negative. Trailing exits trade winners-into-breakeven."
+    },
+    {
+      "candidate": "XB-DC-EMA-TimeStop-MGC",
+      "verdict": "KILL",
+      "tags": ["median-negative"],
+      "metrics": {"n": 980, "pf": 1.130, "median": -6.24, "max_year_pct": 56.1},
+      "notes": "Time-stop tail-engine framing: median still negative; doesn't help. Donchian breakout needs profit_ladder exit specifically."
+    }
+  ],
+  "_v1_loosen_2026-06-03": {
+    "verdict": "KILL (thesis fails at cheap-screen tier)",
+    "operator_approval": "OK V1 loosen 1.0σ",
+    "results": [
+      {"variant": "1.5σ baseline", "n": 4, "pf": 0.701, "median": -294.74, "tag": "insufficient-n + median-negative"},
+      {"variant": "1.0σ loosen", "n": 6, "pf": 0.394, "median": -395.24, "tag": "median-negative (worse)"},
+      {"variant": "1.0σ no Δ-gate", "n": 8, "pf": 0.109, "median": -928.24, "tag": "median-negative (catastrophic)"},
+      {"variant": "1.0σ |abs|", "n": 8, "pf": 0.109, "median": -928.24, "tag": "median-negative"}
+    ],
+    "doctrine": "Loosening the threshold made V1 STRICTLY WORSE across all variants. This is thesis-failure, not parameter-failure: the harvest hypothesis (gold mean-reverts to real-yield + DXY-implied fair value) is anti-predictive on 2024-2026 MGC. Mark hypothesis DEAD at cheap-screen tier. Do NOT pursue further V1 variants without new evidence."
+  },
+  "_packet_draft_generated_2026-06-04": {
+    "candidate": "EVT-NFP-MGC-Long-2h",
+    "artifact": "docs/fql_forge/paper_packet_drafts/EVT-NFP-MGC-Long-2h_2026-06-04.md",
+    "status": "PAPER_PACKET_DRAFT — NOT paper-approved. Awaiting operator review.",
+    "sprint_significance": "First sprint deliverable artifact ready for operator review."
+  },
+  "_nfp_surprise_status_2026-06-04": {
+    "operator_approval": "OK pull NFP surprise series (#32)",
+    "verdict": "DATA_VENDOR_REQUIRED",
+    "blocker": "Consensus expectations require paid vendor (Bloomberg ECON, Reuters, Refinitiv, FactSet). BLS actuals are free but surprise = actual − consensus.",
+    "options_surfaced": ["A: ship without consensus split (thesis is direction-blind by design)", "B: authorize one-time vendor pull", "C: trailing-trend-baseline proxy as partial close"],
+    "artifact": "research/data/fundamentals/nfp_surprise_status.md"
+  },
+  "_regime_overlay_diagnostic_2026-06-04": {
+    "operator_approval": "OK fix regime overlay (#33, diagnostic only — do not add filter)",
+    "candidate": "EVT-NFP-MGC-Long-2h",
+    "splits": {
+      "dxy_rising": {"n": 37, "pf": 2.465, "median": 48.76, "interpretation": "stronger when USD rising"},
+      "dxy_falling": {"n": 47, "pf": 2.128, "median": 9.76, "interpretation": "still strong; lower median"},
+      "vol_above_median": {"n": 38, "pf": 3.394, "median": 25.76, "interpretation": "much stronger in high-vol months"},
+      "vol_below_median": {"n": 46, "pf": 1.786, "median": 19.26, "interpretation": "still profitable"},
+      "real_yield_rising": {"n": 38, "pf": 1.503, "median": -18.24, "interpretation": "WEAKEST regime; median NEGATIVE"},
+      "real_yield_falling": {"n": 46, "pf": 3.163, "median": 49.26, "interpretation": "STRONGEST regime"}
+    },
+    "doctrine_decision": "All 6 regime splits produce PF > 1.0. Real-yield-rising months have median NEGATIVE (-$18.24) but n=38 is still profitable in aggregate (PF 1.503). DO NOT add a regime filter — would halve sample and risk curve-fitting. The candidate is robust across regimes; one regime is stronger, none are unprofitable in aggregate."
+  },
+  "_eod_sibling_deep_screen_2026-06-04": {
+    "candidate": "EVT-NFP-MGC-Long-EOD (exit +72 bars)",
+    "vs_2h_base": {"pf_2h": 2.264, "pf_eod": 3.185, "median_2h": 21.76, "median_eod": 55.26,
+                   "max_yr_2h": 27.8, "max_yr_eod": 44.8},
+    "8_dim_summary": {
+      "cost_stress": "PF 3.18 → 3.12 at 2x cost + 2x slip (rock solid)",
+      "calendar": "Verified (same as 2h base)",
+      "temporal": "8/8 yrs+; Eras E1 2.15 / E2 1.77 / E3 6.69 (E3 dominant; 2025 PF 17.46 outlier)",
+      "year_exclusion_range": [2.282, 3.618],
+      "rolling_12_event_pct_gt_1": 86,
+      "trade_level": "Win rate 61.9%, top-1 16.4%, top-3 41.9% — all clean",
+      "entry_delay": "Stable (+1/+3/+6 bars all PF > 2.4)",
+      "regime": "diagnostic only — same as 2h base regime pattern"
+    },
+    "verdicts": {
+      "permissive_classification (script logic)": "PAPER_PACKET_DRAFT_CANDIDATE_SIBLING",
+      "strict_operator_rule": "WATCH — 'higher PF but more concentrated' (max_yr 44.8% vs 27.8% base) triggers WATCH-not-better clause",
+      "surfaced_for_operator": "Both interpretations valid. EOD has materially better headline metrics AND stays under absolute gates AND passes all robustness tests. But Era 3 is 6.69 (vs Eras 1-2 around 2.0) and 2025 PF 17.46 is an outlier. Operator decision on whether to (a) accept as SIBLING with caveat or (b) downgrade to WATCH pending Era 3 normalization observation."
+    }
+  },
+  "_HEADLINE_2026-06-04_PAPER_PACKET_DRAFT_CANDIDATE": {
+    "candidate": "EVT-NFP-MGC-Long-2h",
+    "promoted_from": "WATCH_FOR_DEEP_SCREEN (cheap-screen+temporal-split-passed earlier today)",
+    "promoted_to": "PAPER_PACKET_DRAFT_CANDIDATE",
+    "calendar_verified": {
+      "rule_actual_match_pct": 97.9,
+      "shifts_documented": 2,
+      "shift_1": "2021-01: NY Day deferral",
+      "shift_2": "2025-07: Independence Day deferral",
+      "delta_pf_rule_vs_actual": -0.057,
+      "verdict": "CALENDAR_VERIFIED (immaterial delta)"
+    },
+    "deep_screen_dimensions": {
+      "A_cost_stress": {
+        "baseline_pf": 2.264, "x1.5_pf": 2.252, "x2_pf": 2.241, "x3_pf": 2.217,
+        "x2slip_pf": 2.226, "x2cost_x2slip_pf": 2.203,
+        "survives_2x": true,
+        "interpretation": "Cost-aware foundation rock solid; edge barely degrades at 3x costs + 2x slippage"
+      },
+      "B_calendar_fidelity": "PASS",
+      "C_event_subtype": "DATA_REQUIRED (NFP surprise series not in repo; non-blocking per operator)",
+      "D_temporal_robustness": {
+        "per_year": "8/8 positive (PF range 1.178 – 9.040)",
+        "eras": "E1 PF 3.35 | E2 PF 1.92 | E3 PF 2.13 (all positive, no decay)",
+        "rolling_12_event": {"worst_pf": 0.313, "pct_gt_1": 89, "pct_gt_1p2": 85, "n_windows": 73},
+        "verdict": "PASS"
+      },
+      "E_trade_level_robustness": {
+        "win_rate_pct": 54.8, "avg_win": 337.30, "avg_loss": -180.32,
+        "top1_share_pct": 17.0, "top3_share_pct": 41.6, "top5_share_pct": 63.0,
+        "largest_loss": -789.24, "max_consec_losses": 5, "max_dd_duration_trades": 19,
+        "verdict": "PASS (no single trade dominates; reasonable R; manageable DD)"
+      },
+      "F_execution_sanity": {
+        "entry_delay_+1bar_pf": 2.264, "entry_+2bar_pf": 2.279, "entry_+3bar_pf": 2.174,
+        "entry_+6bar_pf": 2.798, "entry_+12bar_pf": 2.981,
+        "exit_30min_pf": 1.304, "exit_1h_pf": 1.699, "exit_2h_pf": 2.264,
+        "exit_4h_pf": 2.830, "exit_eod_pf": 3.185,
+        "entry_delay_stable": true,
+        "verdict": "PASS — edge is NOT timestamp-precision-dependent; in fact LONGER holds and SLIGHTLY DELAYED entries IMPROVE PF. Edge persists through the full session post-NFP."
+      },
+      "G_cross_asset_replicate": "UNAVAILABLE (SI not in data/processed; non-blocking per operator directive)",
+      "H_regime_overlay": "ERROR (frequency string compatibility issue with monthly resample); not material to verdict given other dimensions PASS"
+    },
+    "FINAL_VERDICT": "PAPER_PACKET_DRAFT_CANDIDATE",
+    "doctrine_significance": "First PAPER_PACKET_DRAFT_CANDIDATE of the 5-day Forge campaign and the 30-day Paper-Readiness Sprint. Cleared cheap-screen + temporal split + 6 deep-screen dimensions. Two non-passing dimensions are non-blocking per operator (C requires data; G requires asset; H is regime diagnostic only, not gate).",
+    "what_remains_for_paper_packet_final": [
+      "C — NFP surprise data (beat/miss/inline) to test event-subtype split",
+      "G — SI cross-asset replicate (data dependency)",
+      "H — Fix regime overlay frequency error and re-run as diagnostic",
+      "Operator review of full deep-screen artifact",
+      "Operator decision on paper-trading lifecycle (registry mutation — protected boundary)"
+    ]
+  },
+  "_vol_expansion_mutation_2026-06-04": {
+    "operator_approval": "OK vol-expansion mutation (#30, bounded)",
+    "variants_tested": 7,
+    "results": "0 WATCH, 7 KILL — all variants median-negative",
+    "verdict": "vol_expansion entry primitive NOT VALIDATED per primitive-validation rule. Dead at cheap-screen tier. Consider removing from ENTRY_MAP rotation OR leaving with caveat tag in metadata.",
+    "lesson": "Atr-percentile-cross-up doesn't produce per-trade edge regardless of T/S, exit class, or vol-regime context. Vol-expansion as a momentum trigger requires different signal structure (e.g., gap-up + vol-expansion combination, not bare percentile cross)."
+  },
+  "_HEADLINE_2026-06-04_WATCH_FOR_DEEP_SCREEN": {
+    "candidate": "EVT-NFP-MGC-Long-2h",
+    "asset": "MGC", "direction": "long",
+    "event": "NFP release (1st Friday of month, 08:30 ET, canonical-rule-based calendar)",
+    "entry": "+1 bar after release",
+    "exit": "+24 bars (~2h hold)",
+    "cheap_screen": {"n": 84, "pf": 2.321, "median": 21.76, "max_year_share_pct": 27.2, "yrs_positive": "8/8"},
+    "temporal_split": {
+      "per_year": [
+        {"year": 2019, "n": 7, "pf": 4.886, "net": 907},
+        {"year": 2020, "n": 12, "pf": 4.965, "net": 1789},
+        {"year": 2021, "n": 12, "pf": 3.483, "net": 779},
+        {"year": 2022, "n": 12, "pf": 1.292, "net": 321},
+        {"year": 2023, "n": 12, "pf": 1.839, "net": 1105},
+        {"year": 2024, "n": 12, "pf": 1.931, "net": 1230},
+        {"year": 2025, "n": 12, "pf": 1.178, "net": 293},
+        {"year": "2026YTD", "n": 5, "pf": 9.040, "net": 2406}
+      ],
+      "eras": [
+        {"era": 1, "range": "2019-06 → 2021-09", "n": 28, "pf": 4.032, "net": 3027},
+        {"era": 2, "range": "2021-10 → 2024-01", "n": 28, "pf": 1.916, "net": 2216},
+        {"era": 3, "range": "2024-02 → 2026-05", "n": 28, "pf": 2.098, "net": 3587}
+      ],
+      "year_exclusion_pf_range": [2.006, 2.695],
+      "year_exclusion_median_range": [6.76, 50.76],
+      "interpretation": "Removing the BEST year (2026 YTD, $2406) still leaves PF 2.006. Removing the WORST year (2025, PF 1.178) IMPROVES PF to 2.695. No single year carries the edge."
+    },
+    "verdict": "WATCH_FOR_DEEP_SCREEN",
+    "doctrine_significance": "First cheap-screen candidate of the 5-day campaign to clear ALL temporal robustness tests cleanly. 8/8 yrs positive + 3/3 eras positive + dominant-year-exclusion robust. Cheap-screen tier evidence only — needs deep-screen forward validation + cost-stress before any paper consideration.",
+    "next_steps": [
+      "Deep-screen tier: cost stress (commission/slippage doubled), regime overlays, NFP-release classification (beat/miss/inline) split",
+      "Verify calendar fidelity: 1st-Friday rule should match actual NFP release dates >99% of months",
+      "Cross-asset robustness: test gold-related siblings (SI) and see if effect replicates",
+      "DO NOT propose registry mutation; operator decision per protected boundaries"
+    ]
+  },
+  "_cycle_aggregate_2026-06-04b": {
+    "screens_run": 52,
+    "verdicts": {"WATCH_FOR_DEEP_SCREEN": 1, "ARCHITECTURAL_REJECT": 6, "KILL": 45},
+    "hit_rate": "1.9% — high reject rate consistent with elite doctrine",
+    "nfp_summary": "1 WATCH (MGC Long 2h, headlined above); 31 KILL/REJECT. Equity (MES/MNQ) shows no consistent post-NFP drift; ZN shows median-negative; MGC Long 2h is the standout.",
+    "cpi_summary": "0 WATCH; 4 ARCHITECTURAL_REJECT (MES Short 30min, MNQ Short 30min/2h, MGC Long 2h); 12 KILL. CPI Short candidates show pattern of one-year-dominant edge.",
+    "vol_expansion_summary": "0 WATCH; 4 KILL (median negative across MGC/MES/MNQ/ZN). vol_expansion entry primitive needs tuning: ATR-percentile cross-up doesn't translate to per-trade edge with proven trio defaults. Possible mutations: tighter target/stop ratio, vol-low filter (counterintuitive), or different exit.",
+    "mes_zn_hl_retest": "Half-life gate kept 19% of signals (3 of 16); median rolling HL = 35.5 months (>24mo gate); only 28% of windows MR. Verdict: PAIR_LANE_WAIT_FOR_BETTER_THESIS (gate works mechanically; pair itself isn't MR enough to gate productively)."
+  },
+  "_half_life_diagnostic_2026-06-04": {
+    "primitive_shipped": "research/half_life_filter.py — AR(1) estimator + is_stable_half_life + rolling_half_life + gate_pair_signal_by_half_life. 6/6 smoke tests pass.",
+    "decisive_finding": "All 3 failed pair candidates have β ≥ 0.985 (slightly non-stationary or trending). Half-life filter correctly identifies that the spreads ARE NOT mean-reverting at monthly horizons.",
+    "diagnostics": {
+      "ZN/ZB curve": {"beta": 0.985, "hl_full_sample": 44.59, "stable_under_24": false, "rolling_mr_pct_under_24mo": 68, "rolling_mr_pct_under_12mo": 8},
+      "MGC/MCL real-asset": {"beta": 1.015, "hl_full_sample": "NaN", "interpretation": "non-stationary, slightly trending — gold and crude diverge structurally, not a pair"},
+      "MES/ZN equity-rates": {"beta": 1.009, "hl_full_sample": "NaN", "rolling_mr_pct_under_24mo": 28, "rolling_mr_pct_under_12mo": 0}
+    },
+    "doctrine_validation": "The 9 pair KILLs from 2026-06-03/04 cycles are now explained STRUCTURALLY: the underlying spreads aren't mean-reverting in the relevant window. No signal class would have helped. The family-fatigue rule was correct to pivot."
+  },
+  "_fomc_drift_2026-06-04": {
+    "primitive_validated": "event_window_engine (built 2026-06-02; first real candidates wired 2026-06-04). Calendar: 58 canonical FOMC scheduled-meeting dates 2019-2026.",
+    "cheap_screen_results": [
+      {"label": "EVT-FOMC-Drift-MES-Long (2h)", "n": 55, "pf": 0.817, "median": 16.26, "verdict": "KILL (PF < 1.15)"},
+      {"label": "EVT-FOMC-Drift-MES-Short (2h)", "n": 55, "pf": 1.113, "median": -23.74, "max_yr": 188.0, "verdict": "KILL (median negative)"},
+      {"label": "EVT-FOMC-Drift-ZN-Long (2h)", "n": 55, "pf": 1.349, "median": 43.78, "max_yr": 99.5, "h1_h2": "1.33/1.36", "yrs_pos": "5/8", "verdict_cheap_screen": "TEMPORAL_SPLIT_REQUIRED"},
+      {"label": "EVT-FOMC-Drift-ZN-Short (2h)", "n": 55, "pf": 0.451, "median": -112.48, "verdict": "KILL (median negative)"},
+      {"label": "EVT-FOMC-Drift-MES-Long-30min", "n": 55, "pf": 1.254, "median": 21.26, "max_yr": 97.0, "h1_h2": "1.05/1.42", "yrs_pos": "3/8", "verdict_cheap_screen": "TEMPORAL_SPLIT_REQUIRED"}
+    ],
+    "temporal_split_ZN_Long": {
+      "per_year": "5/8 yrs positive; 2019=$750, 2020=$572, 2021=$38, 2022=$-400, 2023=$2069, 2024=$1038, 2025=$-775, 2026 YTD=$-1212",
+      "year_exclusion": "Excluding 2023 → PF 1.349 → 1.002 (near breakeven). All other exclusions keep PF ≥ 1.186.",
+      "eras": "Era 1 PF 1.652 ✓, Era 2 PF 2.135 ✓, Era 3 PF 0.657 ✗ LOSING",
+      "verdict_doctrine": "ARCHITECTURAL_REJECT — edge concentrated in 2023; Era 3 (2024-01 → 2026-04) is LOSING; 2025 + 2026 YTD both negative. The FOMC post-statement drift in ZN appears to have changed mechanism post-Fed-pivot (~2023)."
+    },
+    "temporal_split_MES_30min": {
+      "per_year": "3/8 yrs positive; 2020/2023/2024 carry edge",
+      "year_exclusion": "Excluding 2023 → PF 1.008 (near breakeven). Excluding 2024 → PF 1.063.",
+      "eras": "Era 1 PF 0.881 ✗ LOSING, Era 2 PF 1.896 ✓, Era 3 PF 1.103 (barely)",
+      "verdict_doctrine": "ARCHITECTURAL_REJECT — 5/8 yrs LOSING; Era 1 LOSING; one-year-out collapse."
+    },
+    "doctrine_proven": "Cheap-screen finds suspects (2 of 5 surfaced); temporal split convicts (both ARCHITECTURAL_REJECT). FQL hard law working end-to-end. Both candidates added to Forge memory; will NOT propose registry mutation per protected boundaries."
+  },
+  "_pair_screens_2026-06-04": {
+    "pair_b_zsweep_return_z_zn_zb": [
+      {"z": 0.8, "n": 3, "pf": 3.457, "median": 417.61, "max_yr_pct": 98.1, "yrs_pos": "2/2", "verdict": "KILL (insufficient-n)"},
+      {"z": 1.0, "n": 0, "verdict": "KILL (zero trades)"},
+      {"z": 1.2, "n": 0, "verdict": "KILL (zero trades)"}
+    ],
+    "pair_b_doctrine": "Per operator classification rules: tiny n at z=0.8 (n=3) + zero trades at z=1.0/1.2 → STOP return-z curve logic on ZN/ZB. Curve trades need a different signal class (yield-level / steepness), not return-z at any threshold.",
+    "signal_class_real_candidates": [
+      {
+        "label": "ZN-ZB-curve-level_z",
+        "signal_class": "level_z",
+        "metrics": {"n": 5, "pf": 0.750, "median": -338.56},
+        "verdict": "KILL (median negative)",
+        "tags": ["median-negative"],
+        "notes": "Level-z on rates curve: 5 trades, median negative. Confirms simple level-z mean-reversion is also insufficient on ZN/ZB. Real curve trade needs yield-curve steepness signal (calc yield from price first)."
+      },
+      {
+        "label": "MGC-MCL-real-level_z",
+        "signal_class": "level_z",
+        "metrics": {"n": 3, "pf": 0.213, "median": 1162.90},
+        "verdict": "KILL (insufficient-n)",
+        "tags": ["insufficient-n", "WF-split-fail"],
+        "notes": "n=3 with median +$1162 (large positive) but PF 0.213 = one massive losing trade. Tail asymmetry; n too small to validate. Real-asset level-z spread has large but volatile per-trade outcomes."
+      },
+      {
+        "label": "MES-ZN-macro-fundamental_z",
+        "signal_class": "fundamental_z",
+        "metrics": {"n": 7, "pf": 0.415, "median": -2548.92},
+        "verdict": "KILL (median negative)",
+        "tags": ["median-negative", "cost-eats-edge"],
+        "notes": "Plumbing demo: real_yield_10y vs usd_broad as macro signal driving MES/ZN pair. Median -$2548 is catastrophic; the macro signal does NOT predict MES/ZN spread direction. Validates fundamental_z PLUMBING but kills this specific thesis."
+      }
+    ],
+    "signal_class_aggregate": "9 pair candidates tested total this cycle (3 original return_z + 3 z-sweep + 3 new signal classes). 8 KILL + 1 marginal (z=0.8 tiny-n). 0 WATCH. Strong signal that simple z-score pair candidates on existing futures pairs don't surface edge at cheap-screen. Pair harness works; richer pair signals (cointegration, half-life-stable filter, multi-factor) are next.",
+    "spec_c_cache_integration": "Spec C re-ran via fundamentals_cache (load_series for fed_funds_effective + boj_policy_rate) → identical result to hardcoded version (n=1, PF=inf, median $613.75, RETEST). Cache substitution validated."
+  },
+  "_pair_screens_2026-06-03": [
+    {
+      "candidate": "PAIR-A MES/ZN yield-gap monthly z=1.5 vol-adjusted",
+      "verdict": "KILL (PF < 1.2)",
+      "metrics": {"n": 11, "pf": 0.360, "median": 193.23, "h1_pf": 0.69, "h2_pf": 0.20, "yrs+": "2/6"},
+      "tags": ["regime-dependent", "WF-split-fail"],
+      "notes": "Positive median (+$193) but PF 0.36; one big loser dominates. H2 PF 0.20 << H1 PF 0.69 = decaying. Yield-gap value hypothesis fails at cheap-screen with simple z-score signal. May need fundamental yield series (earnings vs Treasury) rather than return-z."
+    },
+    {
+      "candidate": "PAIR-B ZN/ZB curve monthly z=1.5 vol-adjusted",
+      "verdict": "KILL (insufficient-n / no trades)",
+      "metrics": {"n": 0, "pf": null, "median": 0, "yrs+": "0/0"},
+      "tags": ["insufficient-n"],
+      "notes": "Zero trades fired — ZN/ZB return-z-spread never breaches ±1.5σ at 12mo lookback (curve too correlated). Curve trades need yield-level z-score or steepness signal, not return-z. Rerun with lower threshold OR different signal class."
+    },
+    {
+      "candidate": "PAIR-C MGC/MCL real-asset monthly z=1.5 vol-adjusted",
+      "verdict": "KILL (PF < 1.2)",
+      "metrics": {"n": 10, "pf": 0.950, "median": 255.81, "h1_pf": 0.18, "h2_pf": "inf", "yrs+": "3/5"},
+      "tags": ["regime-dependent", "WF-split-fail"],
+      "notes": "Positive median (+$255) and 3/5 yrs+ but PF 0.95. Very asymmetric H1/H2 (0.18 vs inf) = sample tail-dependent. Real-asset spread thesis has signal but not at this simple z-score fidelity. Worth one mutation: longer lookback (24mo) or vol-regime gate."
+    }
+  ],
+  "_pair_screen_lessons_2026-06-03": [
+    "pairs_engine primitive is now VALIDATED per new primitive-validation rule: 3 real candidates ran end-to-end and produced interpretable kill evidence with full Forge metric schema (n, PF, median, max-yr, top-3, H1/H2, yrs+).",
+    "Simple z-score-of-returns signal is insufficient for value/curve pairs. PAIR-A and PAIR-C produced positive medians but PF < 1.2 = one big loser dominates. Curve pairs (PAIR-B) produced zero trades. Different signal mechanisms needed per pair type.",
+    "Signal class taxonomy emerging: (i) return-z works for some pairs (MES/ZN, MGC/MCL) but generates low PF; (ii) yield-level z would suit curve trades like ZN/ZB; (iii) fundamental-yield z (earnings vs Treasury) is what V2 actually needs. Suggests next primitive: signal-class adapter on top of pairs_engine.",
+    "All 3 pair candidates had positive median or no trades — none had median negative. Suggests the pair direction logic is sound but the friction + asymmetry kills PF. Mutation target: tighter exit (lower exit_z) or volatility-regime gate."
+  ],
+  "_stacked_filter_smoke_2026-06-03": {
+    "primitive": "stacked filters via filter_name list",
+    "smoke": "5/5 pass (single unchanged; AND-combine; unknown fail-closed; empty fail-closed; end-to-end MGC stacked)",
+    "v5_attempt": {
+      "label": "XB-BB-EMA+HurstMR-MGC (V5 wired correctly as STACKED filter, not replacement)",
+      "params": {"filter_name": ["ema_slope", "hurst_stable_mr"], "hurst_threshold_high": 0.50},
+      "metrics": {"n": 222, "pf": 1.195, "median": -1.74, "max_year_pct": 108.9},
+      "verdict_raw": "PASS (per _verdict — tail-engine, PF > 1.15)",
+      "verdict_doctrine": "TEMPORAL_SPLIT_REQUIRED — Hard Forge law: max-yr 108.9% AND median negative both indicate suspect, not edge. _verdict's PASS labels the cheap-screen tier; doctrine requires temporal split before treating as real.",
+      "notes": "Stacked filter works mechanically. The candidate it gates IS the same XB-BB-MGC family already excluded yesterday — concentration is intrinsic to bb_reversion + ema_slope on MGC; stacking Hurst on top doesn't fix the calendar-year regime dependency."
+    }
+  },
+  "_v5_hurst_smoke_2026-06-03": {
+    "candidate": "XB-BB-EMA-HurstStableMR-MGC (Hurst filter replacing ema_slope)",
+    "verdict": "WATCH (hurst proxy works; standalone filter is weaker than ema_slope for this candidate)",
+    "metrics": {"n_baseline_ema": 298, "pf_baseline": 1.611, "median_baseline": 1.76,
+                "n_hurst": 385, "pf_hurst": 1.332, "median_hurst": -4.24},
+    "doctrine": "Hurst proxy primitive validated. As a STANDALONE replacement for ema_slope on bb_reversion entry, it INCREASES trade count (+87) but DECREASES PF (-0.28) AND flips median negative. ema_slope (trend filter) was carrying signal for this BB candidate. Hurst-MR is a candidate-mechanism-specific filter; should be tested next as ADDITION to ema_slope (stacked filter), not replacement."
+  },
+  "_donchian_mutation_lessons_2026-06-03": [
+    "Donchian + vol-low(40) is the lone WATCH from the 6-variant mutation cycle. PF improvement (+0.034) and concentration improvement (-5pp max-yr) are real but small.",
+    "Donchian + alt-exit (chandelier / ATR-trail / time_stop) all FAIL via median-negative. profit_ladder is the load-bearing exit primitive for Donchian-on-MGC.",
+    "Vol-low filter HELPS Donchian breakout (different from BB-reversion result where vol-low was concentration-neutral) — supports doctrine: vol-regime overlay impact is candidate-mechanism-dependent.",
+    "XB-DC-MGC is NOT ARCHITECTURAL_REJECT (distinct from XB-BB-MGC): 6/8 yrs positive + 3/3 eras positive = portfolio-grade temporal robustness, even with mid-PF and slow decay.",
+    "Forge memory captures: XB-DC-MGC family is in WATCH-with-decaying-edge status; not promote-grade, not reject-grade. Worth one further look IF a deep-screen tier becomes operational."
+  ],
+  "_aggregate_2026-06-03": {
+    "verdicts": {"PASS": 0, "WATCH": 2, "RETEST": 1, "KILL": 5, "ARCHITECTURAL_REJECT": 1},
+    "tags_fired_today": {
+      "cost-eats-edge": 3, "median-negative": 4, "insufficient-n": 2,
+      "concentration": 2, "regime-dependent": 2, "WF-split-fail": 4,
+      "implementation-blocked": 0, "data-blocked": 0, "duplicate/overlap": 0
+    },
+    "closed_loop_lessons_added": [
+      "Donchian breakout does NOT extend to rates (ZN) at workhorse fidelity — stop hunting rates breakouts via Donchian primitive; pivot rates to MR / event / spread.",
+      "Donchian breakout on crude (MCL) sits at cost-eats-edge boundary — Donchian-on-crude likely needs longer holding period or tail-engine framing.",
+      "Donchian on MGC is the best of the three Donchian variants but still sub-1.2 PF — mutation candidate, not promote candidate.",
+      "Spec C (BoJ-Fed 6J) needs pre-2024 6J bars for fair test. Surface 'data window covers wrong macro regime' as a new tag candidate.",
+      "Spec A (Treasury auction proxy) KILL on both legs is genuine evidence that 2nd-Wed-proxy does not capture real auction effect. Real auction calendar is the next step IF the harvest hypothesis is worth pursuing.",
+      "XB-BB-MGC ARCHITECTURAL_REJECT — confirms the cheap-screen PASS verdict was a 2025-2026 regime artifact. Validates the doctrine: cheap-screen surfaces, temporal split decides."
+    ]
+  }
+}

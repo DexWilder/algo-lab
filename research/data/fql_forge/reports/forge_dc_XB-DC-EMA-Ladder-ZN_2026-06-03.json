@@ -1,0 +1,44 @@
+[
+  {
+    "candidate": "XB-DC-EMA-Ladder-ZN",
+    "asset": "ZN",
+    "gap": "Donchian breakout \u00d7 proven trio \u2014 rates extension (fills rates gap)",
+    "metrics": {
+      "label": "XB-DC-EMA-Ladder-ZN",
+      "n": 1266,
+      "net": -23268.85,
+      "pf": 0.718,
+      "median": -34.35,
+      "max_dd": -23726.43,
+      "max_single_pct": 0.7,
+      "win_rate": 0.36729857819905215,
+      "sharpe": -1.750707401350829,
+      "cost_block": {
+        "commission_per_side": 1.55,
+        "slippage_ticks": 1,
+        "tick_size": 0.015625,
+        "total_commission": 3924.6,
+        "total_slippage": 39562.5,
+        "total_friction": 43487.1,
+        "cost_tier": "VALIDATED",
+        "symbol": "ZN"
+      },
+      "mean": -18.38,
+      "win_rate_pct": 36.7,
+      "cost_ratio_pct": 215.1,
+      "top3_share_pct": 0.0,
+      "top10_share_pct": 0.0,
+      "max_year_share_pct": 0.0,
+      "n_years": 8,
+      "years_positive": 1,
+      "h1_pf": 0.786,
+      "h2_pf": 0.655,
+      "h1_median": -34.35,
+      "h2_median": -34.35,
+      "archetype": "UNKNOWN",
+      "gate_verdict": "KILL",
+      "blocker_reason": "PF 0.72 < 1.0 (not profitable)"
+    },
+    "verdict": "KILL"
+  }
+]

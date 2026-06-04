@@ -1,0 +1,449 @@
+{
+  "date": "2026-06-03",
+  "cycle": "MGC-Donchian mutation",
+  "operator_approval": "OK MGC-Donchian mutation (2026-06-03)",
+  "results": [
+    {
+      "axis": "baseline (last cycle)",
+      "label": "XB-DC-EMA-Ladder-MGC-baseline",
+      "params": {},
+      "metrics": {
+        "n": 980,
+        "pf": 1.205,
+        "median": 4.26,
+        "net": 7241.8,
+        "max_dd": -3558.92,
+        "win_rate_pct": 52.1,
+        "max_year_share_pct": 47.5,
+        "top3_share_pct": 42.3,
+        "top10_share_pct": 88.2,
+        "h1_pf": 1.412,
+        "h2_pf": 1.104,
+        "n_years": 8,
+        "years_positive": 6,
+        "archetype": "WORKHORSE",
+        "_archetype_routed": "workhorse",
+        "_verdict": "PASS",
+        "gate_verdict": "DEFER"
+      },
+      "verdict": "TEMPORAL_SPLIT_REQUIRED",
+      "notes": [
+        "PF + median OK but concentration still high \u2014 temporal split required"
+      ],
+      "temporal_split": {
+        "per_year": [
+          {
+            "year": 2019,
+            "n": 65,
+            "pf": 1.942912653466165,
+            "median": -4.24,
+            "net": 912.3999999999999
+          },
+          {
+            "year": 2020,
+            "n": 149,
+            "pf": 1.4062029537875178,
+            "median": -0.24,
+            "net": 1705.2399999999996
+          },
+          {
+            "year": 2021,
+            "n": 135,
+            "pf": 1.0584611668075856,
+            "median": 2.76,
+            "net": 193.59999999999974
+          },
+          {
+            "year": 2022,
+            "n": 140,
+            "pf": 1.6287559999485257,
+            "median": 5.76,
+            "net": 1954.3999999999994
+          },
+          {
+            "year": 2023,
+            "n": 137,
+            "pf": 1.233972476829984,
+            "median": 4.76,
+            "net": 733.1199999999998
+          },
+          {
+            "year": 2024,
+            "n": 147,
+            "pf": 0.9613699270155666,
+            "median": 0.76,
+            "net": -218.28000000000048
+          },
+          {
+            "year": 2025,
+            "n": 141,
+            "pf": 1.5619634789772028,
+            "median": 12.76,
+            "net": 3438.159999999999
+          },
+          {
+            "year": 2026,
+            "n": 66,
+            "pf": 0.8320046957328894,
+            "median": 31.759999999999998,
+            "net": -1476.8400000000006
+          }
+        ],
+        "eras": [
+          {
+            "era": 1,
+            "start": "2019-07-01",
+            "end": "2021-11-03",
+            "n": 326,
+            "pf": 1.3753920884685942,
+            "median": -0.74,
+            "net": 2905.759999999999
+          },
+          {
+            "era": 2,
+            "start": "2021-11-04",
+            "end": "2024-03-04",
+            "n": 327,
+            "pf": 1.3259061275717863,
+            "median": 4.76,
+            "net": 2565.5199999999986
+          },
+          {
+            "era": 3,
+            "start": "2024-03-05",
+            "end": "2026-06-01",
+            "n": 327,
+            "pf": 1.0900294925251701,
+            "median": 9.76,
+            "net": 1770.519999999998
+          }
+        ]
+      }
+    },
+    {
+      "axis": "vol-overlay (low-vol regimes only)",
+      "label": "XB-DC-VolLow30-Ladder-MGC",
+      "params": {
+        "vr_threshold": 30
+      },
+      "metrics": {
+        "n": 772,
+        "pf": 1.229,
+        "median": 6.76,
+        "net": 7009.72,
+        "max_dd": -3543.72,
+        "win_rate_pct": 54.8,
+        "max_year_share_pct": 43.0,
+        "top3_share_pct": 43.7,
+        "top10_share_pct": 91.2,
+        "h1_pf": 1.58,
+        "h2_pf": 1.07,
+        "n_years": 8,
+        "years_positive": 6,
+        "archetype": "WORKHORSE",
+        "_archetype_routed": "workhorse",
+        "_verdict": "PASS",
+        "gate_verdict": "DEFER"
+      },
+      "verdict": "TEMPORAL_SPLIT_REQUIRED",
+      "notes": [
+        "PF + median OK but concentration still high \u2014 temporal split required"
+      ],
+      "temporal_split": {
+        "per_year": [
+          {
+            "year": 2019,
+            "n": 52,
+            "pf": 2.960769845661931,
+            "median": 8.26,
+            "net": 1275.5199999999998
+          },
+          {
+            "year": 2020,
+            "n": 107,
+            "pf": 1.592540855934927,
+            "median": 7.76,
+            "net": 1917.3199999999995
+          },
+          {
+            "year": 2021,
+            "n": 100,
+            "pf": 1.1410843443770422,
+            "median": 5.76,
+            "net": 386.9999999999999
+          },
+          {
+            "year": 2022,
+            "n": 110,
+            "pf": 1.5717521987621783,
+            "median": 6.26,
+            "net": 1544.5999999999995
+          },
+          {
+            "year": 2023,
+            "n": 112,
+            "pf": 1.3577132044095936,
+            "median": 8.26,
+            "net": 998.1199999999997
+          },
+          {
+            "year": 2024,
+            "n": 126,
+            "pf": 0.9872948361415563,
+            "median": 3.76,
+            "net": -65.24000000000044
+          },
+          {
+            "year": 2025,
+            "n": 116,
+            "pf": 1.5354014053984923,
+            "median": 15.760000000000002,
+            "net": 3014.16
+          },
+          {
+            "year": 2026,
+            "n": 49,
+            "pf": 0.7339321202735837,
+            "median": -3.24,
+            "net": -2061.76
+          }
+        ],
+        "eras": [
+          {
+            "era": 1,
+            "start": "2019-07-01",
+            "end": "2021-12-23",
+            "n": 257,
+            "pf": 1.567135207084183,
+            "median": 6.76,
+            "net": 3681.319999999999
+          },
+          {
+            "era": 2,
+            "start": "2021-12-28",
+            "end": "2024-03-15",
+            "n": 257,
+            "pf": 1.3489516461335416,
+            "median": 6.76,
+            "net": 2337.3199999999993
+          },
+          {
+            "era": 3,
+            "start": "2024-03-20",
+            "end": "2026-06-01",
+            "n": 258,
+            "pf": 1.0568098702477875,
+            "median": 10.76,
+            "net": 991.079999999998
+          }
+        ]
+      }
+    },
+    {
+      "axis": "vol-overlay (broader low-vol)",
+      "label": "XB-DC-VolLow40-Ladder-MGC",
+      "params": {
+        "vr_threshold": 40
+      },
+      "metrics": {
+        "n": 823,
+        "pf": 1.239,
+        "median": 6.76,
+        "net": 7613.48,
+        "max_dd": -3867.92,
+        "win_rate_pct": 54.8,
+        "max_year_share_pct": 42.5,
+        "top3_share_pct": 40.2,
+        "top10_share_pct": 83.9,
+        "h1_pf": 1.591,
+        "h2_pf": 1.082,
+        "n_years": 8,
+        "years_positive": 6,
+        "archetype": "WORKHORSE",
+        "_archetype_routed": "workhorse",
+        "_verdict": "PASS",
+        "gate_verdict": "DEFER"
+      },
+      "verdict": "TEMPORAL_SPLIT_REQUIRED",
+      "notes": [
+        "PF + median OK but concentration still high \u2014 temporal split required"
+      ],
+      "temporal_split": {
+        "per_year": [
+          {
+            "year": 2019,
+            "n": 55,
+            "pf": 2.347883792950892,
+            "median": -0.24,
+            "net": 1096.7999999999997
+          },
+          {
+            "year": 2020,
+            "n": 119,
+            "pf": 1.6398656349349172,
+            "median": 5.76,
+            "net": 2133.4399999999996
+          },
+          {
+            "year": 2021,
+            "n": 103,
+            "pf": 1.2024502027146133,
+            "median": 6.76,
+            "net": 551.2799999999997
+          },
+          {
+            "year": 2022,
+            "n": 119,
+            "pf": 1.6323807071747343,
+            "median": 6.76,
+            "net": 1768.4399999999994
+          },
+          {
+            "year": 2023,
+            "n": 122,
+            "pf": 1.3270106429668647,
+            "median": 7.76,
+            "net": 953.7199999999993
+          },
+          {
+            "year": 2024,
+            "n": 132,
+            "pf": 0.9987260174695808,
+            "median": 4.26,
+            "net": -6.680000000000405
+          },
+          {
+            "year": 2025,
+            "n": 119,
+            "pf": 1.5694199856299575,
+            "median": 18.76,
+            "net": 3233.4400000000005
+          },
+          {
+            "year": 2026,
+            "n": 54,
+            "pf": 0.7457862402551553,
+            "median": 6.760000000000001,
+            "net": -2116.9600000000005
+          }
+        ],
+        "eras": [
+          {
+            "era": 1,
+            "start": "2019-07-01",
+            "end": "2021-12-16",
+            "n": 274,
+            "pf": 1.5743948953766083,
+            "median": 4.76,
+            "net": 3867.239999999999
+          },
+          {
+            "era": 2,
+            "start": "2021-12-23",
+            "end": "2024-03-12",
+            "n": 274,
+            "pf": 1.3833894434848792,
+            "median": 6.76,
+            "net": 2619.2399999999993
+          },
+          {
+            "era": 3,
+            "start": "2024-03-13",
+            "end": "2026-06-01",
+            "n": 275,
+            "pf": 1.0616900107068017,
+            "median": 12.76,
+            "net": 1126.9999999999977
+          }
+        ]
+      }
+    },
+    {
+      "axis": "alt-exit (chandelier trailing)",
+      "label": "XB-DC-EMA-Chandelier-MGC",
+      "params": {},
+      "metrics": {
+        "n": 980,
+        "pf": 1.089,
+        "median": -7.24,
+        "net": 2920.8,
+        "max_dd": -4053.56,
+        "win_rate_pct": 43.7,
+        "max_year_share_pct": 84.8,
+        "top3_share_pct": 100.6,
+        "top10_share_pct": 214.2,
+        "h1_pf": 1.346,
+        "h2_pf": 0.964,
+        "n_years": 8,
+        "years_positive": 6,
+        "archetype": "PAYOFF_RATIO_WORKHORSE_FREQUENCY",
+        "_archetype_routed": "workhorse",
+        "_verdict": "WATCH",
+        "gate_verdict": "KILL"
+      },
+      "verdict": "KILL",
+      "notes": [
+        "median flipped negative"
+      ],
+      "temporal_split": null
+    },
+    {
+      "axis": "alt-exit (ATR trail)",
+      "label": "XB-DC-EMA-ATRTrail-MGC",
+      "params": {},
+      "metrics": {
+        "n": 980,
+        "pf": 1.12,
+        "median": -6.24,
+        "net": 3809.8,
+        "max_dd": -3489.68,
+        "win_rate_pct": 44.2,
+        "max_year_share_pct": 64.1,
+        "top3_share_pct": 76.1,
+        "top10_share_pct": 157.4,
+        "h1_pf": 1.37,
+        "h2_pf": 0.991,
+        "n_years": 8,
+        "years_positive": 6,
+        "archetype": "PAYOFF_RATIO_WORKHORSE_FREQUENCY",
+        "_archetype_routed": "workhorse",
+        "_verdict": "WATCH",
+        "gate_verdict": "MUTATE"
+      },
+      "verdict": "KILL",
+      "notes": [
+        "median flipped negative"
+      ],
+      "temporal_split": null
+    },
+    {
+      "axis": "tail-engine framing (time_stop, fewer exits)",
+      "label": "XB-DC-EMA-TimeStop-MGC",
+      "params": {},
+      "metrics": {
+        "n": 980,
+        "pf": 1.13,
+        "median": -6.24,
+        "net": 4119.8,
+        "max_dd": -3458.76,
+        "win_rate_pct": 44.4,
+        "max_year_share_pct": 56.1,
+        "top3_share_pct": 70.4,
+        "top10_share_pct": 145.4,
+        "h1_pf": 1.391,
+        "h2_pf": 0.996,
+        "n_years": 8,
+        "years_positive": 6,
+        "archetype": "PAYOFF_RATIO_WORKHORSE_FREQUENCY",
+        "_archetype_routed": "workhorse",
+        "_verdict": "WATCH",
+        "gate_verdict": "MUTATE"
+      },
+      "verdict": "KILL",
+      "notes": [
+        "median flipped negative"
+      ],
+      "temporal_split": null
+    }
+  ]
+}

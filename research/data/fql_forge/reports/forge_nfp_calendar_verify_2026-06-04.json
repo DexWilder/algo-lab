@@ -1,0 +1,88 @@
+{
+  "date": "2026-06-04",
+  "operator_approval": "OK NFP cal verify (#28)",
+  "summary": {
+    "total_months": 96,
+    "rule_actual_matches": 94,
+    "pct_match": 97.91666666666667,
+    "shifts": [
+      {
+        "year": 2021,
+        "month": 1,
+        "rule_date": "2021-01-01",
+        "actual_date": "2021-01-08",
+        "shifted": true,
+        "shift_reason": "NY_DAY_DEFERRAL",
+        "good_friday_release": false
+      },
+      {
+        "year": 2025,
+        "month": 7,
+        "rule_date": "2025-07-04",
+        "actual_date": "2025-07-11",
+        "shifted": true,
+        "shift_reason": "INDEPENDENCE_DAY_DEFERRAL",
+        "good_friday_release": false
+      }
+    ],
+    "good_friday_releases": [
+      {
+        "year": 2021,
+        "month": 4,
+        "rule_date": "2021-04-02",
+        "actual_date": "2021-04-02",
+        "shifted": false,
+        "shift_reason": null,
+        "good_friday_release": true
+      },
+      {
+        "year": 2023,
+        "month": 4,
+        "rule_date": "2023-04-07",
+        "actual_date": "2023-04-07",
+        "shifted": false,
+        "shift_reason": null,
+        "good_friday_release": true
+      },
+      {
+        "year": 2026,
+        "month": 4,
+        "rule_date": "2026-04-03",
+        "actual_date": "2026-04-03",
+        "shifted": false,
+        "shift_reason": null,
+        "good_friday_release": true
+      }
+    ]
+  },
+  "candidate_sensitivity": {
+    "rule_calendar": {
+      "n": 84,
+      "pf": 2.321,
+      "median": 21.76,
+      "net": 8830.84,
+      "max_year_share_pct": 27.2,
+      "years_positive": 8,
+      "n_years": 8
+    },
+    "actual_calendar": {
+      "n": 84,
+      "pf": 2.264,
+      "median": 21.76,
+      "net": 8663.84,
+      "max_year_share_pct": 27.8,
+      "years_positive": 8,
+      "n_years": 8
+    },
+    "actual_minus_good_friday": {
+      "n": 81,
+      "pf": 2.14,
+      "median": 14.76,
+      "net": 7795.56,
+      "max_year_share_pct": 23.0
+    },
+    "delta_pf": -0.057000000000000384,
+    "delta_median": 0.0
+  },
+  "verdict": "CALENDAR_VERIFIED"
+}

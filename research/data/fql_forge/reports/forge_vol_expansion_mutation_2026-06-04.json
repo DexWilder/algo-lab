@@ -1,0 +1,185 @@
+{
+  "date": "2026-06-04",
+  "operator_approval": "OK vol-expansion mutation (#30, bounded)",
+  "results": [
+    {
+      "spec": {
+        "label": "VX-baseline (proven trio)",
+        "entry": "vol_expansion",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "params": {
+          "vx_high": 70
+        }
+      },
+      "metrics": {
+        "n": 210,
+        "pf": 1.204,
+        "median": -4.24,
+        "net": 673.6,
+        "max_dd": -774.4,
+        "max_year_share_pct": 120.6,
+        "top3_share_pct": 149.1,
+        "h1_pf": 1.307,
+        "h2_pf": 1.156,
+        "years_positive": 4,
+        "n_years": 8
+      },
+      "verdict": "KILL (median negative)"
+    },
+    {
+      "spec": {
+        "label": "VX-tighter-TS (stop 1.5 / target 2.5)",
+        "entry": "vol_expansion",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "params": {
+          "vx_high": 70,
+          "stop_mult": 1.5,
+          "target_mult": 2.5
+        }
+      },
+      "metrics": {
+        "n": 210,
+        "pf": 1.122,
+        "median": -4.24,
+        "net": 332.6,
+        "max_dd": -613.88,
+        "max_year_share_pct": 179.8,
+        "top3_share_pct": 240.9,
+        "h1_pf": 1.472,
+        "h2_pf": 0.963,
+        "years_positive": 4,
+        "n_years": 8
+      },
+      "verdict": "KILL (median negative)"
+    },
+    {
+      "spec": {
+        "label": "VX-atr-trail",
+        "entry": "vol_expansion",
+        "filter": "ema_slope",
+        "exit": "atr_trail",
+        "params": {
+          "vx_high": 70
+        }
+      },
+      "metrics": {
+        "n": 210,
+        "pf": 1.137,
+        "median": -6.24,
+        "net": 410.6,
+        "max_dd": -748.88,
+        "max_year_share_pct": 189.8,
+        "top3_share_pct": 199.3,
+        "h1_pf": 1.474,
+        "h2_pf": 0.991,
+        "years_positive": 4,
+        "n_years": 8
+      },
+      "verdict": "KILL (median negative)"
+    },
+    {
+      "spec": {
+        "label": "VX-chandelier",
+        "entry": "vol_expansion",
+        "filter": "ema_slope",
+        "exit": "chandelier",
+        "params": {
+          "vx_high": 70
+        }
+      },
+      "metrics": {
+        "n": 210,
+        "pf": 0.913,
+        "median": -7.24,
+        "net": -279.4,
+        "max_dd": -762.88,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.989,
+        "h2_pf": 0.879,
+        "years_positive": 2,
+        "n_years": 8
+      },
+      "verdict": "KILL (median negative)"
+    },
+    {
+      "spec": {
+        "label": "VX-time-stop",
+        "entry": "vol_expansion",
+        "filter": "ema_slope",
+        "exit": "time_stop",
+        "params": {
+          "vx_high": 70
+        }
+      },
+      "metrics": {
+        "n": 210,
+        "pf": 1.137,
+        "median": -6.24,
+        "net": 410.6,
+        "max_dd": -748.88,
+        "max_year_share_pct": 189.8,
+        "top3_share_pct": 199.3,
+        "h1_pf": 1.474,
+        "h2_pf": 0.991,
+        "years_positive": 4,
+        "n_years": 8
+      },
+      "verdict": "KILL (median negative)"
+    },
+    {
+      "spec": {
+        "label": "VX-vol-low-precondition",
+        "entry": "vol_expansion",
+        "filter": "ema_slope_vol_low",
+        "exit": "profit_ladder",
+        "params": {
+          "vx_high": 70,
+          "vr_threshold": 50
+        }
+      },
+      "metrics": {
+        "n": 0,
+        "pf": NaN,
+        "median": 0.0,
+        "net": 0.0,
+        "max_dd": 0.0,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": NaN,
+        "h2_pf": NaN,
+        "years_positive": 0,
+        "n_years": 0
+      },
+      "verdict": "KILL (n=0)"
+    },
+    {
+      "spec": {
+        "label": "VX-vol-high-confirm",
+        "entry": "vol_expansion",
+        "filter": "ema_slope_vol_high",
+        "exit": "profit_ladder",
+        "params": {
+          "vx_high": 70,
+          "vr_threshold": 50
+        }
+      },
+      "metrics": {
+        "n": 210,
+        "pf": 1.204,
+        "median": -4.24,
+        "net": 673.6,
+        "max_dd": -774.4,
+        "max_year_share_pct": 120.6,
+        "top3_share_pct": 149.1,
+        "h1_pf": 1.307,
+        "h2_pf": 1.156,
+        "years_positive": 4,
+        "n_years": 8
+      },
+      "verdict": "KILL (median negative)"
+    }
+  ]
+}

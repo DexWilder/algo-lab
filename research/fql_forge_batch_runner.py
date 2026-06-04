@@ -287,6 +287,17 @@ CANDIDATES = {
     # XB-BB-EMA-MorningOnly-MGC PRUNED 2026-05-05 after smoke test PF 0.989 KILL.
     # Evidence preserved in docs/fql_forge/tail_engine_smoke_2026-05-05.md.
     # Removed from runner pool to avoid wasting autonomous rotation slots.
+    #
+    # RE-INTRODUCED 2026-06-02 as Batch B2 concentration-mutation v2: underlying
+    # XB-BB-EMA-Ladder-MGC has shifted from May 5 conditions (today's fire
+    # PF 1.502 / max-year 87.8% — operator B2 ask is whether morning-only filter
+    # can reduce max-year). v2 label keeps the prior KILL evidence intact.
+    "XB-BB-EMA-MorningOnly-MGC-v2": {
+        "gap": "Concentration mutation B2 — morning-only restriction on XB-BB-MGC to test if max-year normalizes",
+        "asset": "MGC", "archetype": "tail",
+        "runner": lambda: _xb_general("MGC", "bb_reversion", "session_morning", "profit_ladder", "XB-BB-EMA-MorningOnly-MGC-v2"),
+        "baseline": "v1 PF 0.989 KILL (2026-05-05); v2 retest under 2026-06-02 PF 1.502 underlying",
+    },
     "XB-BB-EMA-AfternoonOnly-MGC": {
         "gap": "Sparse-session tail-engine — BB entry MGC, afternoon-restricted",
         "asset": "MGC", "archetype": "tail",
@@ -313,6 +324,29 @@ CANDIDATES = {
         "baseline": "XB-ORB-EMA-Ladder-MNQ profit_ladder PF 1.62",
     },
 
+    # ── Donchian breakout extension (added 2026-06-03) ───────────────────────
+    # Existing donchian_breakout entry primitive has zero current candidates.
+    # Hunt across crude / metals / rates per nonstop-Forge gap-aware mandate.
+    # Authority: standing autonomous-mode rule, no per-cycle approval needed.
+    "XB-DC-EMA-Ladder-MCL": {
+        "gap": "Donchian breakout × proven trio — energy cross-asset (fills crude diversification)",
+        "asset": "MCL", "archetype": "workhorse",
+        "runner": lambda: _xb_swap("MCL", "donchian_breakout", "XB-DC-EMA-Ladder-MCL"),
+        "baseline": "Donchian primitive previously unused in CANDIDATES; baseline TBD",
+    },
+    "XB-DC-EMA-Ladder-MGC": {
+        "gap": "Donchian breakout × proven trio — metals workhorse extension",
+        "asset": "MGC", "archetype": "workhorse",
+        "runner": lambda: _xb_swap("MGC", "donchian_breakout", "XB-DC-EMA-Ladder-MGC"),
+        "baseline": "Donchian primitive previously unused; baseline TBD",
+    },
+    "XB-DC-EMA-Ladder-ZN": {
+        "gap": "Donchian breakout × proven trio — rates extension (fills rates gap)",
+        "asset": "ZN", "archetype": "workhorse",
+        "runner": lambda: _xb_swap("ZN", "donchian_breakout", "XB-DC-EMA-Ladder-ZN"),
+        "baseline": "Donchian primitive previously unused; baseline TBD",
+    },
+
     # ── Cost-aware pool expansion batch (operator-approved 2026-05-20) ───────
     # VWAPPullback-MES-Long PRUNED 2026-05-20 after cost-aware cheap-screen:
     # net PF 0.847 (KILL) on 2501 trades, -$12,670 net PnL. The approximation
@@ -336,6 +370,52 @@ CANDIDATES = {
 }
 
 
+# ── Forge-level exclusion set (Forge memory, NOT registry truth) ─────────────
+# Candidates listed here are excluded from autonomous rotation but remain
+# definitionally in CANDIDATES so their lineage is preserved. They can still be
+# run manually via `--candidate <id>` for follow-up analysis. This is the
+# Forge-memory side of the Forge-vs-registry seam (locked 2026-06-03):
+# operator-protected registry truth is NOT mutated; only Forge rotation is.
+#
+# To add: include the candidate id with a date + verdict + one-line rationale.
+EXCLUDED_FROM_ROTATION = {
+    "XB-BB-EMA-Ladder-MGC": {
+        "date": "2026-06-03",
+        "verdict": "ARCHITECTURAL_REJECT",
+        "rationale": (
+            "Temporal-split mutation: 5 of 8 calendar years LOSING; era split "
+            "1+2 (5 yrs) PF 0.807/0.953 LOSING; Era 3 (2024-01→2026-05) PF "
+            "2.653 carries entire $4287 net. Excluding 2026 alone collapses "
+            "PF 1.611→1.031 AND flips median +$1.76→-$0.24. Rolling 12mo PF "
+            "> 1.2 in only 27% of windows. The cheap-screen PASS was a "
+            "2025-2026 regime artifact, not portfolio-grade edge."
+        ),
+    },
+    "EVT-FOMC-Drift-ZN-Long-2h": {
+        "date": "2026-06-04",
+        "verdict": "ARCHITECTURAL_REJECT",
+        "rationale": (
+            "Cheap-screen surfaced PF 1.349 / median +$43.78 / stable H1/H2 "
+            "(1.33/1.36) / 5-of-8 yrs positive. Temporal split convicted: "
+            "Era 3 (2024-01 → 2026-04) PF 0.657 LOSING; excluding 2023 alone "
+            "collapses PF to 1.002 (near breakeven); 2025 and 2026 YTD both "
+            "negative. FOMC post-statement drift on ZN appears to have "
+            "structurally changed post-Fed-pivot ~2023."
+        ),
+    },
+    "EVT-FOMC-Drift-MES-Long-30min": {
+        "date": "2026-06-04",
+        "verdict": "ARCHITECTURAL_REJECT",
+        "rationale": (
+            "Cheap-screen PF 1.254 / median +$21.26. Temporal split: 5 of 8 "
+            "yrs LOSING; Era 1 PF 0.881 LOSING; excluding 2023 → PF 1.008 "
+            "(near breakeven). Edge concentrated in 2020/2023/2024 only; "
+            "mechanism not robust over 8yrs."
+        ),
+    },
+}
+
+
 def _select_top(n: int):
     """Date-rotated selection: each day picks a different N-candidate window
     from the pool. Prevents the autonomous loop from re-testing the same
@@ -345,12 +425,15 @@ def _select_top(n: int):
     rotation and run a specific candidate.
     Future (Phase C+): rank by (gap priority, novelty, donor evidence, etc.)
     instead of date-cycle.
+
+    Excluded candidates (per EXCLUDED_FROM_ROTATION) are filtered out before
+    rotation indexing so the rotation window doesn't shrink and verdicts
+    don't leak back into the autonomous evidence pool.
     """
     from datetime import date as _date
-    items = list(CANDIDATES.items())
+    items = [(k, v) for k, v in CANDIDATES.items() if k not in EXCLUDED_FROM_ROTATION]
     if not items:
         return []
-    # Cycle: day 0 → items[0:n], day 1 → items[n:2n], etc., wrap on overflow
     days = (_date.today() - _date(2026, 5, 5)).days  # epoch = activation date
     offset = (days * n) % len(items)
     selected = items[offset:offset + n]

@@ -1,0 +1,283 @@
+{
+  "date": "2026-06-04",
+  "approvals": [
+    "#33 fix regime overlay",
+    "#34 NFP-MGC-EOD variant"
+  ],
+  "regime_overlay_2h_base": {
+    "dxy_rising": {
+      "n": 37,
+      "pf": 2.4651853132745405,
+      "median": 48.76,
+      "net": 4067.120000000001
+    },
+    "dxy_falling": {
+      "n": 47,
+      "pf": 2.1276752333009514,
+      "median": 9.76,
+      "net": 4596.72
+    },
+    "vol_above_median": {
+      "n": 38,
+      "pf": 3.394351546553619,
+      "median": 25.759999999999998,
+      "net": 4879.880000000001
+    },
+    "vol_below_median": {
+      "n": 46,
+      "pf": 1.7860258743176214,
+      "median": 19.26,
+      "net": 3783.960000000001
+    },
+    "real_yield_rising": {
+      "n": 38,
+      "pf": 1.5032292845975528,
+      "median": -18.24,
+      "net": 1866.8799999999997
+    },
+    "real_yield_falling": {
+      "n": 46,
+      "pf": 3.16303877389954,
+      "median": 49.26,
+      "net": 6796.960000000001
+    }
+  },
+  "eod_sibling_deep_screen": {
+    "baseline": {
+      "label": "EVT-NFP-MGC-Long-EOD",
+      "n": 84,
+      "net": 16778.84,
+      "pf": 3.185,
+      "median": 55.26,
+      "max_dd": -1768.2,
+      "max_single_pct": 8.5,
+      "win_rate": 0.6190476190476191,
+      "sharpe": 1.225760417739598,
+      "cost_block": {
+        "commission_per_side": 0.62,
+        "slippage_ticks": 1,
+        "tick_size": 0.1,
+        "total_commission": 104.16,
+        "total_slippage": 168.0,
+        "total_friction": 272.16,
+        "cost_tier": "VALIDATED",
+        "symbol": "MGC"
+      },
+      "mean": 199.75,
+      "win_rate_pct": 61.9,
+      "cost_ratio_pct": 1.6,
+      "top3_share_pct": 41.9,
+      "top10_share_pct": 86.3,
+      "max_year_share_pct": 44.8,
+      "n_years": 8,
+      "years_positive": 8,
+      "h1_pf": 2.046,
+      "h2_pf": 4.568,
+      "h1_median": 46.76,
+      "h2_median": 88.26,
+      "archetype": "TAIL_ENGINE",
+      "gate_verdict": "DEFER",
+      "blocker_reason": "max-year 44.8% > 40% gate"
+    },
+    "cost_rows": [
+      {
+        "label": "baseline",
+        "n": 84,
+        "pf": 3.185,
+        "median": 55.26,
+        "net": 16778.84
+      },
+      {
+        "label": "1.5x",
+        "n": 84,
+        "pf": 3.172,
+        "median": 54.64,
+        "net": 16726.76
+      },
+      {
+        "label": "2x",
+        "n": 84,
+        "pf": 3.16,
+        "median": 54.02,
+        "net": 16674.68
+      },
+      {
+        "label": "3x",
+        "n": 84,
+        "pf": 3.135,
+        "median": 52.78,
+        "net": 16570.52
+      },
+      {
+        "label": "2slip",
+        "n": 84,
+        "pf": 3.145,
+        "median": 53.26,
+        "net": 16610.84
+      },
+      {
+        "label": "2c2s",
+        "n": 84,
+        "pf": 3.12,
+        "median": 52.02,
+        "net": 16506.68
+      }
+    ],
+    "per_year": [
+      {
+        "year": 2019,
+        "n": 7,
+        "pf": 4.904098132143852,
+        "net": 1120.32
+      },
+      {
+        "year": 2020,
+        "n": 12,
+        "pf": 1.9682713828059857,
+        "net": 1765.12
+      },
+      {
+        "year": 2021,
+        "n": 12,
+        "pf": 2.3863764661606974,
+        "net": 884.1199999999999
+      },
+      {
+        "year": 2022,
+        "n": 12,
+        "pf": 1.6259350259350256,
+        "net": 917.1199999999999
+      },
+      {
+        "year": 2023,
+        "n": 12,
+        "pf": 1.3550773918010934,
+        "net": 522.1199999999999
+      },
+      {
+        "year": 2024,
+        "n": 12,
+        "pf": 3.4419693422940423,
+        "net": 2587.12
+      },
+      {
+        "year": 2025,
+        "n": 12,
+        "pf": 17.456734979856368,
+        "net": 7516.120000000001
+      },
+      {
+        "year": 2026,
+        "n": 5,
+        "pf": 4.047959438118195,
+        "net": 1466.8
+      }
+    ],
+    "eras": [
+      {
+        "era": 1,
+        "n": 28,
+        "pf": 2.145812406283211,
+        "net": 3148.2800000000007
+      },
+      {
+        "era": 2,
+        "n": 28,
+        "pf": 1.7713071085010428,
+        "net": 2264.2800000000007
+      },
+      {
+        "era": 3,
+        "n": 28,
+        "pf": 6.690537699008711,
+        "net": 11366.28
+      }
+    ],
+    "year_exclusion": [
+      {
+        "excluded": 2019,
+        "n": 77,
+        "pf": 3.117813495777498,
+        "median": 63.76
+      },
+      {
+        "excluded": 2020,
+        "n": 72,
+        "pf": 3.5630654930587324,
+        "median": 54.26
+      },
+      {
+        "excluded": 2021,
+        "n": 72,
+        "pf": 3.2568238354328294,
+        "median": 59.26
+      },
+      {
+        "excluded": 2022,
+        "n": 72,
+        "pf": 3.551970242040839,
+        "median": 55.26
+      },
+      {
+        "excluded": 2023,
+        "n": 72,
+        "pf": 3.617728139331168,
+        "median": 73.26
+      },
+      {
+        "excluded": 2024,
+        "n": 72,
+        "pf": 3.1433628746277122,
+        "median": 55.26
+      },
+      {
+        "excluded": 2025,
+        "n": 72,
+        "pf": 2.282221939213396,
+        "median": 46.76
+      },
+      {
+        "excluded": 2026,
+        "n": 79,
+        "pf": 3.1268376429277844,
+        "median": 52.76
+      }
+    ],
+    "rolling12": {
+      "worst": 0.44979436578506765,
+      "pct_gt_1": 86.3013698630137,
+      "pct_gt_1p2": 83.56164383561644
+    },
+    "trade_level": {
+      "win_rate": 61.904761904761905,
+      "top1_share": 16.370380789136792,
+      "top3_share": 41.93543772990267
+    },
+    "entry_delay": [
+      {
+        "entry": "+1bar",
+        "n": 84,
+        "pf": 3.185,
+        "median": 55.26
+      },
+      {
+        "entry": "+3bar",
+        "n": 84,
+        "pf": 2.674,
+        "median": 36.26
+      },
+      {
+        "entry": "+6bar",
+        "n": 84,
+        "pf": 2.407,
+        "median": 46.26
+      }
+    ],
+    "entry_stable": true,
+    "vs_2h_base": {
+      "pf_2h": 2.264,
+      "pf_eod": 3.185
+    },
+    "verdict": "PAPER_PACKET_DRAFT_CANDIDATE_SIBLING"
+  }
+}

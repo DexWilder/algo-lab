@@ -104,6 +104,42 @@ def compute_features(df: pd.DataFrame) -> dict:
         cum_vol += vol
         vwap[i] = cum_tp_vol / cum_vol
 
+    # ATR percentile rank (vol-regime gate, added 2026-06-02 per operator approval
+    # of the concentration-mutation Plan B build). 500-bar rolling window ≈ 40
+    # sessions of 5min data; long enough to define "high" vs "low" vol regimes
+    # without lagging multi-quarter shifts.
+    atr_series = pd.Series(atr)
+    atr_pctrank = atr_series.rolling(500, min_periods=100).apply(
+        lambda x: (x.iloc[-1] <= x).sum() / len(x) * 100, raw=False
+    ).values
+
+    # Hurst proxy via variance ratio (added 2026-06-03 per operator approval
+    # of the hurst_stable filter build). Computed on log-returns; rolling
+    # 256-bar window. H ≈ 0.5 = random walk; H < 0.5 = mean-reverting; H > 0.5
+    # = trending. Variance-ratio proxy: H_proxy = 1 + log(var(k-step) / (k * var(1-step))) / (2 log(k)).
+    # Cheap to compute (single pass per window) and stable enough for filter gating.
+    log_ret = np.log(close / np.roll(close, 1))
+    log_ret[0] = 0
+    def _hurst_window(arr):
+        arr = arr[~np.isnan(arr)]
+        if len(arr) < 50:
+            return np.nan
+        var1 = np.var(arr, ddof=0)
+        if var1 == 0:
+            return np.nan
+        # 4-step aggregated variance
+        k = 4
+        agg = np.add.reduceat(arr[:len(arr) - len(arr) % k],
+                              np.arange(0, len(arr) - len(arr) % k, k))
+        var_k = np.var(agg, ddof=0) if len(agg) > 1 else np.nan
+        if not np.isfinite(var_k) or var_k <= 0:
+            return np.nan
+        # H_proxy formula
+        return 0.5 + 0.5 * (np.log(var_k / (k * var1)) / np.log(k))
+    hurst = pd.Series(log_ret).rolling(256, min_periods=128).apply(
+        _hurst_window, raw=True
+    ).values
+
     # Donchian channels
     dc_high_20 = df["high"].rolling(20, min_periods=20).max().values
     dc_low_20 = df["low"].rolling(20, min_periods=20).min().values
@@ -157,7 +193,7 @@ def compute_features(df: pd.DataFrame) -> dict:
         "atr": atr,
         "ema8": ema8, "ema13": ema13, "ema20": ema20, "ema21": ema21, "ema50": ema50,
         "bb_upper": bb_upper, "bb_lower": bb_lower, "bb_mid": bb_mid,
-        "bw_pctrank": bw_pctrank, "rsi": rsi,
+        "bw_pctrank": bw_pctrank, "atr_pctrank": atr_pctrank, "hurst": hurst, "rsi": rsi,
         "vwap": vwap,
         "dc_high_20": dc_high_20, "dc_low_20": dc_low_20,
         "dc_high_30": dc_high_30, "dc_low_30": dc_low_30,
@@ -263,6 +299,45 @@ def entry_donchian_breakout(f, i, state, params):
     if f["close"][i] < dc_l and not state["short_traded_today"]:
         stop = f["close"][i] + f["atr"][i] * params.get("stop_mult", 2.5)
         target = f["close"][i] - f["atr"][i] * params.get("target_mult", 4.0)
+        return -1, stop, target
+    return 0, 0, 0
+
+
+def entry_vol_expansion(f, i, state, params):
+    """Vol-expansion entry (added 2026-06-04 per operator approval).
+
+    Fires when atr_pctrank crosses ABOVE `vx_high` from below (default 70) AND
+    a confirmation condition is met. Direction:
+      - LONG if close > ema20 AND close > prior bar close (vol expansion to the upside)
+      - SHORT if close < ema20 AND close < prior bar close (vol expansion to the downside)
+    Otherwise no entry.
+
+    Defaults are conservative; vx_high is configurable via params for sweep testing.
+    """
+    if i < 1:
+        return 0, 0, 0
+    pct = f["atr_pctrank"][i]
+    pct_prev = f["atr_pctrank"][i-1]
+    if np.isnan(pct) or np.isnan(pct_prev):
+        return 0, 0, 0
+    vx_high = params.get("vx_high", 70)
+    # Must cross UP through threshold (was below, now above)
+    if not (pct_prev < vx_high <= pct):
+        return 0, 0, 0
+    close, prev_close, ema20 = f["close"][i], f["close"][i-1], f["ema20"][i]
+    if np.isnan(ema20) or np.isnan(f["atr"][i]) or f["atr"][i] == 0:
+        return 0, 0, 0
+    # Long: above ema20 + bullish bar
+    if (not state["long_traded_today"]
+            and close > ema20 and close > prev_close):
+        stop = close - f["atr"][i] * params.get("stop_mult", 2.0)
+        target = close + f["atr"][i] * params.get("target_mult", 4.0)
+        return 1, stop, target
+    # Short: below ema20 + bearish bar
+    if (not state["short_traded_today"]
+            and close < ema20 and close < prev_close):
+        stop = close + f["atr"][i] * params.get("stop_mult", 2.0)
+        target = close - f["atr"][i] * params.get("target_mult", 4.0)
         return -1, stop, target
     return 0, 0, 0
 
@@ -519,6 +594,101 @@ def filter_session_morning(f, i, signal, params):
     return signal
 
 
+def filter_vol_regime(f, i, signal, params):
+    """Vol-regime gate via ATR percentile rank (added 2026-06-02).
+
+    Pass the signal only when atr_pctrank ∈ [vr_low_pct, vr_high_pct].
+    - vr_low_pct=70, vr_high_pct=100 → high-vol-only
+    - vr_low_pct=0,  vr_high_pct=30  → low-vol-only
+    - vr_low_pct=30, vr_high_pct=70  → mid-vol-only
+    Defaults pass everything (no-op), so registering this filter alone with no
+    params is safe — the filter only restricts when the params are set.
+    """
+    pct = f["atr_pctrank"][i]
+    if np.isnan(pct):
+        return 0
+    low = params.get("vr_low_pct", 0)
+    high = params.get("vr_high_pct", 100)
+    if pct < low or pct > high:
+        return 0
+    return signal
+
+
+def filter_ema_slope_vol_high(f, i, signal, params):
+    """Stacked filter: ema_slope AND atr_pctrank >= vr_threshold.
+    Composes the proven trio's trend gate with a vol-expansion gate; built for
+    the concentration-mutation Plan B lane (added 2026-06-02). Default
+    threshold 70th percentile."""
+    # Trend leg (same as filter_ema_slope)
+    if signal == 1 and f["bar_trend"][i] != 1:
+        return 0
+    if signal == -1 and f["bar_trend"][i] != -1:
+        return 0
+    # Vol leg
+    pct = f["atr_pctrank"][i]
+    if np.isnan(pct):
+        return 0
+    if pct < params.get("vr_threshold", 70):
+        return 0
+    return signal
+
+
+def filter_ema_slope_vol_low(f, i, signal, params):
+    """Stacked filter: ema_slope AND atr_pctrank <= vr_threshold.
+    Mirror of filter_ema_slope_vol_high — restricts to low-vol regimes (default
+    30th percentile). Useful for candidates whose edge concentrates in calm
+    periods rather than expansion."""
+    if signal == 1 and f["bar_trend"][i] != 1:
+        return 0
+    if signal == -1 and f["bar_trend"][i] != -1:
+        return 0
+    pct = f["atr_pctrank"][i]
+    if np.isnan(pct):
+        return 0
+    if pct > params.get("vr_threshold", 30):
+        return 0
+    return signal
+
+
+def filter_hurst_stable_mr(f, i, signal, params):
+    """Hurst-stability filter for mean-reverting candidates (added 2026-06-03).
+
+    Pass the signal only when the Hurst proxy is below `hurst_threshold_high`
+    (default 0.45), indicating mean-reverting behavior. Optionally requires
+    the prior window's hurst was ALSO < threshold ("stable MR regime", per
+    harvest note 2026-06-03_11). Defaults are conservative.
+    """
+    h = f["hurst"][i]
+    if np.isnan(h):
+        return 0
+    threshold_high = params.get("hurst_threshold_high", 0.45)
+    if h >= threshold_high:
+        return 0
+    # Optional stability check: require prior window also MR
+    if params.get("hurst_require_stable", False):
+        # Look back 128 bars (half the rolling window) — that's the prior estimate cycle
+        i_prev = max(i - 128, 0)
+        h_prev = f["hurst"][i_prev]
+        if np.isnan(h_prev) or h_prev >= threshold_high:
+            return 0
+    return signal
+
+
+def filter_hurst_stable_trend(f, i, signal, params):
+    """Hurst-stability filter for trend-following candidates.
+
+    Pass only when Hurst proxy > `hurst_threshold_low` (default 0.55),
+    indicating persistent/trending behavior. Mirror of MR gate.
+    """
+    h = f["hurst"][i]
+    if np.isnan(h):
+        return 0
+    threshold_low = params.get("hurst_threshold_low", 0.55)
+    if h <= threshold_low:
+        return 0
+    return signal
+
+
 def filter_session_afternoon(f, i, signal, params):
     """Afternoon session only (12:00-14:45)."""
     if f["hours"][i] < 12:
@@ -536,6 +706,7 @@ ENTRY_MAP = {
     "vwap_continuation": entry_vwap_continuation,
     "donchian_breakout": entry_donchian_breakout,
     "bb_reversion": entry_bb_reversion,
+    "vol_expansion": entry_vol_expansion,
 }
 
 EXIT_MAP = {
@@ -553,19 +724,79 @@ FILTER_MAP = {
     "bandwidth_squeeze": filter_bandwidth_squeeze,
     "session_morning": filter_session_morning,
     "session_afternoon": filter_session_afternoon,
+    # Vol-regime primitives (added 2026-06-02 per concentration-mutation Plan B)
+    "vol_regime": filter_vol_regime,
+    "ema_slope_vol_high": filter_ema_slope_vol_high,
+    "ema_slope_vol_low": filter_ema_slope_vol_low,
+    # Hurst-stability primitives (added 2026-06-03 per VALUE/MR unlock)
+    "hurst_stable_mr": filter_hurst_stable_mr,
+    "hurst_stable_trend": filter_hurst_stable_trend,
 }
 
 
+class UnknownFilterError(ValueError):
+    """Raised when filter_name references a primitive not in FILTER_MAP.
+    Fail-closed per FQL Evidence Law — see CLAUDE.md."""
+
+
+def _resolve_filter(filter_name):
+    """Resolve filter_name (str or list) into a single callable.
+
+    Single string: behaves identically to pre-2026-06-03 — returns the function
+    from FILTER_MAP.
+
+    List/tuple: returns an AND-combined composite. The composite calls each
+    member filter in declared order and short-circuits when any returns 0,
+    matching the per-bar gate semantics every existing filter uses. The
+    composite signature matches the single-filter signature (f, i, signal, params)
+    so callers don't change.
+
+    Fail-closed: any unknown filter name raises UnknownFilterError before any
+    signal generation begins (no silent skip).
+    """
+    if isinstance(filter_name, (list, tuple)):
+        names = list(filter_name)
+        if not names:
+            raise UnknownFilterError("filter_name is an empty list; specify at least one filter or 'none'")
+        unknown = [n for n in names if n not in FILTER_MAP]
+        if unknown:
+            raise UnknownFilterError(f"unknown filter(s): {unknown}; registered: {sorted(FILTER_MAP)}")
+        funcs = [FILTER_MAP[n] for n in names]
+
+        def composite(f, i, signal, params):
+            for fn in funcs:
+                signal = fn(f, i, signal, params)
+                if signal == 0:
+                    return 0
+            return signal
+        composite.__name__ = "filter_stack[" + "+".join(names) + "]"
+        composite._stack_names = names
+        return composite
+    # Single string
+    if filter_name not in FILTER_MAP:
+        raise UnknownFilterError(f"unknown filter {filter_name!r}; registered: {sorted(FILTER_MAP)}")
+    return FILTER_MAP[filter_name]
+
+
 def generate_crossbred_signals(df, entry_name, exit_name, filter_name, params=None):
-    """Generate signals from a crossbred strategy (entry + exit + filter)."""
+    """Generate signals from a crossbred strategy (entry + exit + filter[s]).
+
+    `filter_name` accepts either a single registered filter name (str) or an
+    ordered list of registered filter names (AND-combined). Unknown filter
+    names raise UnknownFilterError before any signal generation runs.
+    """
     df = df.copy()
     params = params or {}
     f = compute_features(df)
     n = f["n"]
 
+    if entry_name not in ENTRY_MAP:
+        raise UnknownFilterError(f"unknown entry {entry_name!r}; registered: {sorted(ENTRY_MAP)}")
+    if exit_name not in EXIT_MAP:
+        raise UnknownFilterError(f"unknown exit {exit_name!r}; registered: {sorted(EXIT_MAP)}")
     entry_fn = ENTRY_MAP[entry_name]
     exit_fn = EXIT_MAP[exit_name]
-    filter_fn = FILTER_MAP[filter_name]
+    filter_fn = _resolve_filter(filter_name)
 
     signals_arr = np.zeros(n, dtype=int)
     exit_sigs = np.zeros(n, dtype=int)
