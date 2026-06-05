@@ -1,0 +1,482 @@
+{
+  "date": "2026-06-04",
+  "approval": "OK continue daily hunt (#54)",
+  "doctrine_applied": "Era-3 regime-wall + Hard Forge laws + audit-gate-mandatory",
+  "results": [
+    {
+      "spec": {
+        "label": "DAILY-ORB-EMA-AtrTrail-MCL",
+        "asset": "MCL",
+        "entry": "orb_breakout",
+        "filter": "ema_slope",
+        "exit": "atr_trail",
+        "gap": "MCL ORB continuation, alt exit (atr_trail)"
+      },
+      "metrics": {
+        "n": 929,
+        "pf": 1.151,
+        "median": -8.24,
+        "net": 3333.04,
+        "max_dd": -1738.88,
+        "max_year_share_pct": 47.7,
+        "top3_share_pct": 31.2,
+        "top10_share_pct": 89.0,
+        "h1_pf": 1.252,
+        "h2_pf": 1.016,
+        "years_positive": 4,
+        "n_years": 6
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "spec": {
+        "label": "DAILY-ORB-EMA-Chandelier-MCL",
+        "asset": "MCL",
+        "entry": "orb_breakout",
+        "filter": "ema_slope",
+        "exit": "chandelier",
+        "gap": "MCL ORB continuation, alt exit (chandelier)"
+      },
+      "metrics": {
+        "n": 929,
+        "pf": 1.182,
+        "median": -9.24,
+        "net": 3978.04,
+        "max_dd": -1647.48,
+        "max_year_share_pct": 46.8,
+        "top3_share_pct": 26.1,
+        "top10_share_pct": 75.2,
+        "h1_pf": 1.255,
+        "h2_pf": 1.082,
+        "years_positive": 4,
+        "n_years": 6
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "spec": {
+        "label": "DAILY-ORB-EMA-TimeStop-MCL",
+        "asset": "MCL",
+        "entry": "orb_breakout",
+        "filter": "ema_slope",
+        "exit": "time_stop",
+        "gap": "MCL ORB continuation, alt exit (time_stop)"
+      },
+      "metrics": {
+        "n": 929,
+        "pf": 1.153,
+        "median": -7.24,
+        "net": 3368.04,
+        "max_dd": -1779.88,
+        "max_year_share_pct": 46.4,
+        "top3_share_pct": 30.8,
+        "top10_share_pct": 86.2,
+        "h1_pf": 1.234,
+        "h2_pf": 1.044,
+        "years_positive": 4,
+        "n_years": 6
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "spec": {
+        "label": "DAILY-VWAP-VolLow-MGC",
+        "asset": "MGC",
+        "entry": "vwap_continuation",
+        "filter": "ema_slope_vol_low",
+        "exit": "profit_ladder",
+        "params": {
+          "vr_threshold": 30
+        },
+        "gap": "MGC VWAP + low-vol overlay"
+      },
+      "metrics": {
+        "n": 281,
+        "pf": 1.388,
+        "median": -2.24,
+        "net": 3514.56,
+        "max_dd": -1029.16,
+        "max_year_share_pct": 50.9,
+        "top3_share_pct": 48.3,
+        "top10_share_pct": 120.7,
+        "h1_pf": 1.094,
+        "h2_pf": 1.576,
+        "years_positive": 6,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "spec": {
+        "label": "DAILY-PB-VolLow-MGC",
+        "asset": "MGC",
+        "entry": "pb_pullback",
+        "filter": "ema_slope_vol_low",
+        "exit": "profit_ladder",
+        "params": {
+          "vr_threshold": 30
+        },
+        "gap": "MGC low-vol trend rider (operator #5)"
+      },
+      "metrics": {
+        "n": 735,
+        "pf": 1.084,
+        "median": -2.24,
+        "net": 1822.6,
+        "max_dd": -1292.84,
+        "max_year_share_pct": 83.6,
+        "top3_share_pct": 95.3,
+        "top10_share_pct": 251.5,
+        "h1_pf": 1.0,
+        "h2_pf": 1.141,
+        "years_positive": 3,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "spec": {
+        "label": "DAILY-PB-VolHigh-MGC",
+        "asset": "MGC",
+        "entry": "pb_pullback",
+        "filter": "ema_slope_vol_high",
+        "exit": "profit_ladder",
+        "params": {
+          "vr_threshold": 70
+        },
+        "gap": "MGC high-vol trend rider counter-test"
+      },
+      "metrics": {
+        "n": 295,
+        "pf": 1.022,
+        "median": -2.24,
+        "net": 109.2,
+        "max_dd": -1769.92,
+        "max_year_share_pct": 604.8,
+        "top3_share_pct": 862.0,
+        "top10_share_pct": 2084.8,
+        "h1_pf": 1.383,
+        "h2_pf": 0.914,
+        "years_positive": 6,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "spec": {
+        "label": "DAILY-PB-VolLow-MNQ",
+        "asset": "MNQ",
+        "entry": "pb_pullback",
+        "filter": "ema_slope_vol_low",
+        "exit": "profit_ladder",
+        "params": {
+          "vr_threshold": 40
+        },
+        "gap": "MNQ pullback + low-vol overlay (alt to existing XB-PB-Ladder-MNQ)"
+      },
+      "metrics": {
+        "n": 1445,
+        "pf": 1.365,
+        "median": 3.26,
+        "net": 21204.7,
+        "max_dd": -1850.12,
+        "max_year_share_pct": 46.9,
+        "top3_share_pct": 12.8,
+        "top10_share_pct": 33.0,
+        "h1_pf": 1.141,
+        "h2_pf": 1.577,
+        "years_positive": 7,
+        "n_years": 8
+      },
+      "temporal_split": {
+        "per_year": [
+          {
+            "year": 2019,
+            "n": 106,
+            "pf": 0.7788599010203457,
+            "net": -361.9400000000001
+          },
+          {
+            "year": 2020,
+            "n": 207,
+            "pf": 1.2601494537795557,
+            "net": 2010.8199999999993
+          },
+          {
+            "year": 2021,
+            "n": 209,
+            "pf": 1.3455060348973207,
+            "net": 2327.8399999999992
+          },
+          {
+            "year": 2022,
+            "n": 210,
+            "pf": 1.040243818960124,
+            "net": 505.5999999999983
+          },
+          {
+            "year": 2023,
+            "n": 210,
+            "pf": 1.4159591251776382,
+            "net": 2763.099999999999
+          },
+          {
+            "year": 2024,
+            "n": 204,
+            "pf": 1.2771969128299758,
+            "net": 2385.539999999999
+          },
+          {
+            "year": 2025,
+            "n": 209,
+            "pf": 2.110241282554395,
+            "net": 9947.34
+          },
+          {
+            "year": 2026,
+            "n": 90,
+            "pf": 1.3069362612808137,
+            "net": 1626.3999999999992
+          }
+        ],
+        "eras": [
+          {
+            "era": 1,
+            "n": 481,
+            "pf": 1.2272686793124943,
+            "net": 3266.559999999998
+          },
+          {
+            "era": 2,
+            "n": 482,
+            "pf": 1.2328175821219531,
+            "net": 4984.819999999997
+          },
+          {
+            "era": 3,
+            "n": 482,
+            "pf": 1.578525802783537,
+            "net": 12953.319999999996
+          }
+        ],
+        "yrs_pos": 7,
+        "n_yrs": 8,
+        "era3_pf": 1.578525802783537
+      },
+      "cheap_verdict": "WATCH_FOR_DEEP_SCREEN",
+      "doctrine_verdict": "WATCH_FOR_DEEP_SCREEN"
+    },
+    {
+      "spec": {
+        "label": "DAILY-PB-EMA-Chandelier-MNQ",
+        "asset": "MNQ",
+        "entry": "pb_pullback",
+        "filter": "ema_slope",
+        "exit": "chandelier",
+        "gap": "MNQ pullback + alt exit (chandelier)"
+      },
+      "metrics": {
+        "n": 1483,
+        "pf": 1.382,
+        "median": -21.24,
+        "net": 24537.08,
+        "max_dd": -1730.1,
+        "max_year_share_pct": 35.7,
+        "top3_share_pct": 10.5,
+        "top10_share_pct": 30.3,
+        "h1_pf": 1.251,
+        "h2_pf": 1.5,
+        "years_positive": 7,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "spec": {
+        "label": "DAILY-BB-Morning-ZN",
+        "asset": "ZN",
+        "entry": "bb_reversion",
+        "filter": "session_morning",
+        "exit": "profit_ladder",
+        "gap": "ZN morning-only mean reversion (operator #7)"
+      },
+      "metrics": {
+        "n": 802,
+        "pf": 0.442,
+        "median": -49.98,
+        "net": -31361.5,
+        "max_dd": -31561.91,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "top10_share_pct": 0.0,
+        "h1_pf": 0.454,
+        "h2_pf": 0.43,
+        "years_positive": 0,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "spec": {
+        "label": "DAILY-BB-VolLow-ZN",
+        "asset": "ZN",
+        "entry": "bb_reversion",
+        "filter": "ema_slope_vol_low",
+        "exit": "profit_ladder",
+        "params": {
+          "vr_threshold": 30
+        },
+        "gap": "ZN MR + low-vol overlay"
+      },
+      "metrics": {
+        "n": 393,
+        "pf": 0.718,
+        "median": -34.35,
+        "net": -6327.8,
+        "max_dd": -6477.96,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "top10_share_pct": 0.0,
+        "h1_pf": 0.744,
+        "h2_pf": 0.695,
+        "years_positive": 1,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "spec": {
+        "label": "DAILY-VWAP-Chandelier-MES",
+        "asset": "MES",
+        "entry": "vwap_continuation",
+        "filter": "ema_slope",
+        "exit": "chandelier",
+        "gap": "MES VWAP + chandelier exit"
+      },
+      "metrics": {
+        "n": 888,
+        "pf": 1.082,
+        "median": -16.24,
+        "net": 2137.63,
+        "max_dd": -2209.66,
+        "max_year_share_pct": 113.2,
+        "top3_share_pct": 83.4,
+        "top10_share_pct": 198.6,
+        "h1_pf": 0.965,
+        "h2_pf": 1.212,
+        "years_positive": 4,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "spec": {
+        "label": "DAILY-ORB-Afternoon-MYM",
+        "asset": "MYM",
+        "entry": "orb_breakout",
+        "filter": "session_afternoon",
+        "exit": "profit_ladder",
+        "gap": "MYM afternoon ORB"
+      },
+      "metrics": {
+        "n": 550,
+        "pf": 1.006,
+        "median": 2.26,
+        "net": 97.0,
+        "max_dd": -2334.64,
+        "max_year_share_pct": 405.4,
+        "top3_share_pct": 1487.4,
+        "top10_share_pct": 3266.6,
+        "h1_pf": 1.174,
+        "h2_pf": 0.852,
+        "years_positive": 1,
+        "n_years": 3
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (PF<1.15)",
+      "doctrine_verdict": "KILL (PF<1.15)"
+    },
+    {
+      "spec": {
+        "label": "DAILY-ORB-Close-MYM",
+        "asset": "MYM",
+        "entry": "orb_breakout",
+        "filter": "session_close",
+        "exit": "profit_ladder",
+        "gap": "MYM close momentum (operator #4) \u2014 new session_close filter"
+      },
+      "metrics": {
+        "n": 444,
+        "pf": 0.891,
+        "median": -2.74,
+        "net": -995.56,
+        "max_dd": -1993.74,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "top10_share_pct": 0.0,
+        "h1_pf": 1.009,
+        "h2_pf": 0.776,
+        "years_positive": 1,
+        "n_years": 3
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "spec": {
+        "label": "DAILY-ORB-Close-MGC",
+        "asset": "MGC",
+        "entry": "orb_breakout",
+        "filter": "session_close",
+        "exit": "profit_ladder",
+        "gap": "MGC close momentum \u2014 new session_close filter"
+      },
+      "metrics": {
+        "n": 745,
+        "pf": 1.176,
+        "median": -2.24,
+        "net": 2679.2,
+        "max_dd": -3101.36,
+        "max_year_share_pct": 154.9,
+        "top3_share_pct": 110.6,
+        "top10_share_pct": 211.3,
+        "h1_pf": 0.86,
+        "h2_pf": 1.372,
+        "years_positive": 4,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    }
+  ],
+  "aggregate": {
+    "total": 14,
+    "watch_for_deep_screen": 1,
+    "watch_modest": 0,
+    "architectural_reject": 0,
+    "era3_regime_wall_failures": 0,
+    "kill": 13
+  }
+}

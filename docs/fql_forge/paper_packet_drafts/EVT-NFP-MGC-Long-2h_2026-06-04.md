@@ -1,18 +1,22 @@
 # Paper-Readiness Packet #1 — EVT-NFP-MGC-Long-2h
 
-> ## Status block (locked 2026-06-04 per operator decision #35)
+> ## Status block (UPDATED 2026-06-05 per operator decision #72 — **ACCEPTED**)
 >
 > | Field | Value |
 > |---|---|
-> | **Status** | **Paper-Readiness Packet #1 — Draft for Operator Review** |
-> | **Paper / live status** | **NOT APPROVED** |
+> | **Status** | **Paper-Readiness Packet #1 — ACCEPTED as formal sprint deliverable** |
+> | **Audit verdict** | **GREEN** (all 8 dimensions) |
+> | **Paper status** | **NOT paper-approved** |
+> | **Live status** | **NOT live-approved** |
 > | **Registry mutation** | **NONE** |
+> | **Scheduler change** | **NONE** |
+> | **Portfolio allocation change** | **NONE** |
 > | **NFP surprise vendor data** | Option A — ship without consensus split (direction-blind thesis) |
 > | **EOD sibling status** | WATCH_FOR_DEEP_SCREEN_CONTINUATION — NOT a second packet |
-> | **Next required action** | Operator review + decide next validation rung |
-> | **Sprint position** | Day 3 of 30; first formal Paper-Readiness Packet artifact |
+> | **Next status** | Ready for next validation rung / operator-controlled paper-readiness decision path |
+> | **Sprint position** | Day 4 of 30; first Paper-Readiness Packet accepted as sprint deliverable |
 > | **Authority** | T1 / Lane B / report-only |
-> | **Generated** | 2026-06-04 |
+> | **Accepted** | 2026-06-05 per operator decision #72 |
 >
 > The candidate has passed cheap-screen, temporal robustness, and the 8-dimension
 > deep-screen (with 2 dimensions marked non-blocking per operator directive).

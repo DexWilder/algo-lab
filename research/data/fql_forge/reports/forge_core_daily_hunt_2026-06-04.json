@@ -1,0 +1,528 @@
+{
+  "date": "2026-06-04",
+  "approval": "OK Core Daily Algo Hunt \u2014 strategic pivot to 70% daily core",
+  "doctrine_applied": "Era-3 regime-wall rule + Hard Forge laws + non-XB-duplicate preference",
+  "results": [
+    {
+      "spec": {
+        "label": "DAILY-VWAP-EMA-MNQ",
+        "asset": "MNQ",
+        "entry": "vwap_continuation",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "gap": "VWAP on MNQ (existing CANDIDATES has VWAP only on MES/MGC/MCL/MYM)"
+      },
+      "metrics": {
+        "n": 822,
+        "pf": 1.073,
+        "median": -2.24,
+        "net": 3276.22,
+        "max_dd": -5212.1,
+        "max_year_share_pct": 116.5,
+        "top3_share_pct": 66.0,
+        "top10_share_pct": 176.9,
+        "h1_pf": 0.806,
+        "h2_pf": 1.365,
+        "years_positive": 3,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "spec": {
+        "label": "DAILY-BB-EMA-ZN",
+        "asset": "ZN",
+        "entry": "bb_reversion",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "gap": "BB-reversion on rates (ZN) \u2014 never tested at this level"
+      },
+      "metrics": {
+        "n": 485,
+        "pf": 0.622,
+        "median": -34.35,
+        "net": -10378.69,
+        "max_dd": -10541.37,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "top10_share_pct": 0.0,
+        "h1_pf": 0.642,
+        "h2_pf": 0.604,
+        "years_positive": 0,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "spec": {
+        "label": "DAILY-BB-EMA-MCL-Crude-MR",
+        "asset": "MCL",
+        "entry": "bb_reversion",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "gap": "BB-reversion on crude (MCL) \u2014 already in CANDIDATES via XB-BB-MCL (PF 1.007 KILL prior); test as new exit context"
+      },
+      "metrics": {
+        "n": 468,
+        "pf": 0.889,
+        "median": -4.24,
+        "net": -1137.32,
+        "max_dd": -1402.8,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "top10_share_pct": 0.0,
+        "h1_pf": 0.817,
+        "h2_pf": 0.987,
+        "years_positive": 2,
+        "n_years": 6
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "spec": {
+        "label": "DAILY-BB-Hurst-MR-MGC",
+        "asset": "MGC",
+        "entry": "bb_reversion",
+        "filter": "hurst_stable_mr",
+        "exit": "profit_ladder",
+        "params": {
+          "hurst_threshold_high": 0.5
+        },
+        "gap": "BB-reversion + Hurst-MR-gate on gold (replaces ema_slope; new filter combo)"
+      },
+      "metrics": {
+        "n": 548,
+        "pf": 0.989,
+        "median": -9.74,
+        "net": -170.52,
+        "max_dd": -5842.28,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "top10_share_pct": 0.0,
+        "h1_pf": 0.447,
+        "h2_pf": 1.476,
+        "years_positive": 2,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "spec": {
+        "label": "DAILY-BB-Hurst-MR-MES",
+        "asset": "MES",
+        "entry": "bb_reversion",
+        "filter": "hurst_stable_mr",
+        "exit": "profit_ladder",
+        "params": {
+          "hurst_threshold_high": 0.5
+        },
+        "gap": "BB-reversion + Hurst-MR-gate on equity index"
+      },
+      "metrics": {
+        "n": 1297,
+        "pf": 0.758,
+        "median": -16.24,
+        "net": -8112.03,
+        "max_dd": -10101.97,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "top10_share_pct": 0.0,
+        "h1_pf": 0.75,
+        "h2_pf": 0.765,
+        "years_positive": 2,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "spec": {
+        "label": "DAILY-PB-Hurst-Trend-ZN",
+        "asset": "ZN",
+        "entry": "pb_pullback",
+        "filter": "hurst_stable_trend",
+        "exit": "profit_ladder",
+        "params": {
+          "hurst_threshold_low": 0.55
+        },
+        "gap": "PB-pullback + Hurst-trend-gate on rates"
+      },
+      "metrics": {
+        "n": 316,
+        "pf": 0.544,
+        "median": -65.6,
+        "net": -10057.77,
+        "max_dd": -10232.86,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "top10_share_pct": 0.0,
+        "h1_pf": 0.501,
+        "h2_pf": 0.591,
+        "years_positive": 0,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "spec": {
+        "label": "DAILY-PB-Hurst-Trend-MCL",
+        "asset": "MCL",
+        "entry": "pb_pullback",
+        "filter": "hurst_stable_trend",
+        "exit": "profit_ladder",
+        "params": {
+          "hurst_threshold_low": 0.55
+        },
+        "gap": "PB-pullback + Hurst-trend-gate on crude"
+      },
+      "metrics": {
+        "n": 714,
+        "pf": 0.776,
+        "median": -4.24,
+        "net": -3584.36,
+        "max_dd": -3863.72,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "top10_share_pct": 0.0,
+        "h1_pf": 0.809,
+        "h2_pf": 0.734,
+        "years_positive": 0,
+        "n_years": 6
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "spec": {
+        "label": "DAILY-ORB-Afternoon-MES",
+        "asset": "MES",
+        "entry": "orb_breakout",
+        "filter": "session_afternoon",
+        "exit": "profit_ladder",
+        "gap": "Afternoon ORB on MES (operator gap: afternoon coverage)"
+      },
+      "metrics": {
+        "n": 1803,
+        "pf": 0.967,
+        "median": -1.24,
+        "net": -2306.97,
+        "max_dd": -4785.37,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "top10_share_pct": 0.0,
+        "h1_pf": 0.925,
+        "h2_pf": 1.008,
+        "years_positive": 2,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "spec": {
+        "label": "DAILY-PB-EMA-6J",
+        "asset": "6J",
+        "entry": "pb_pullback",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "gap": "FX pullback (operator gap: FX session strategies)"
+      },
+      "metrics": {
+        "n": 323,
+        "pf": 0.968,
+        "median": -17.5,
+        "net": -558.75,
+        "max_dd": -3698.75,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "top10_share_pct": 0.0,
+        "h1_pf": 0.978,
+        "h2_pf": 0.956,
+        "years_positive": 2,
+        "n_years": 3
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "spec": {
+        "label": "DAILY-PB-EMA-6E",
+        "asset": "6E",
+        "entry": "pb_pullback",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "gap": "FX pullback EUR"
+      },
+      "metrics": {
+        "n": 379,
+        "pf": 0.845,
+        "median": -23.75,
+        "net": -3926.25,
+        "max_dd": -6103.75,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "top10_share_pct": 0.0,
+        "h1_pf": 0.889,
+        "h2_pf": 0.795,
+        "years_positive": 2,
+        "n_years": 3
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "spec": {
+        "label": "DAILY-ORB-EMA-6J",
+        "asset": "6J",
+        "entry": "orb_breakout",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "gap": "FX ORB JPY"
+      },
+      "metrics": {
+        "n": 329,
+        "pf": 1.221,
+        "median": 7.5,
+        "net": 5430.0,
+        "max_dd": -1661.25,
+        "max_year_share_pct": 73.2,
+        "top3_share_pct": 45.8,
+        "top10_share_pct": 126.3,
+        "h1_pf": 1.319,
+        "h2_pf": 1.128,
+        "years_positive": 2,
+        "n_years": 3
+      },
+      "temporal_split": {
+        "per_year": [
+          {
+            "year": 2024,
+            "n": 134,
+            "pf": 1.4495828029981614,
+            "net": 3973.75
+          },
+          {
+            "year": 2025,
+            "n": 141,
+            "pf": 1.1275569075841814,
+            "net": 1520.0
+          },
+          {
+            "year": 2026,
+            "n": 54,
+            "pf": 0.9832292009207497,
+            "net": -63.75
+          }
+        ],
+        "eras": [
+          {
+            "era": 1,
+            "n": 109,
+            "pf": 1.5607276618512573,
+            "net": 3930.0
+          },
+          {
+            "era": 2,
+            "n": 110,
+            "pf": 1.1273518494816333,
+            "net": 1243.75
+          },
+          {
+            "era": 3,
+            "n": 110,
+            "pf": 1.0329317269076306,
+            "net": 256.25
+          }
+        ],
+        "yrs_pos": 2,
+        "n_yrs": 3,
+        "era3_pf": 1.0329317269076306
+      },
+      "cheap_verdict": "TEMPORAL_SPLIT_REQUIRED",
+      "doctrine_verdict": "WATCH (passed temporal; modest)"
+    },
+    {
+      "spec": {
+        "label": "DAILY-DC-EMA-MNQ",
+        "asset": "MNQ",
+        "entry": "donchian_breakout",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "gap": "Donchian on MNQ (existing has MCL/MGC/ZN; MGC was WATCH-decaying)"
+      },
+      "metrics": {
+        "n": 1542,
+        "pf": 1.609,
+        "median": 21.76,
+        "net": 49415.42,
+        "max_dd": -2821.58,
+        "max_year_share_pct": 20.6,
+        "top3_share_pct": 9.1,
+        "top10_share_pct": 21.2,
+        "h1_pf": 1.441,
+        "h2_pf": 1.759,
+        "years_positive": 8,
+        "n_years": 8
+      },
+      "temporal_split": {
+        "per_year": [
+          {
+            "year": 2019,
+            "n": 114,
+            "pf": 1.1668013645605586,
+            "net": 392.1399999999996
+          },
+          {
+            "year": 2020,
+            "n": 230,
+            "pf": 1.2977602108036892,
+            "net": 3118.7999999999993
+          },
+          {
+            "year": 2021,
+            "n": 223,
+            "pf": 1.3491042618336933,
+            "net": 3810.4799999999996
+          },
+          {
+            "year": 2022,
+            "n": 216,
+            "pf": 1.6826626342426858,
+            "net": 10175.659999999998
+          },
+          {
+            "year": 2023,
+            "n": 220,
+            "pf": 1.646863648064987,
+            "net": 6332.199999999999
+          },
+          {
+            "year": 2024,
+            "n": 220,
+            "pf": 1.9508904295169007,
+            "net": 10037.2
+          },
+          {
+            "year": 2025,
+            "n": 223,
+            "pf": 1.6757230253984563,
+            "net": 10128.48
+          },
+          {
+            "year": 2026,
+            "n": 96,
+            "pf": 1.763862505143656,
+            "net": 5420.459999999999
+          }
+        ],
+        "eras": [
+          {
+            "era": 1,
+            "n": 514,
+            "pf": 1.268174570931418,
+            "net": 5597.639999999997
+          },
+          {
+            "era": 2,
+            "n": 514,
+            "pf": 1.6517366302072833,
+            "net": 18745.639999999996
+          },
+          {
+            "era": 3,
+            "n": 514,
+            "pf": 1.7974558653645527,
+            "net": 25072.139999999996
+          }
+        ],
+        "yrs_pos": 8,
+        "n_yrs": 8,
+        "era3_pf": 1.7974558653645527
+      },
+      "cheap_verdict": "WATCH_FOR_DEEP_SCREEN",
+      "doctrine_verdict": "WATCH_FOR_DEEP_SCREEN"
+    },
+    {
+      "spec": {
+        "label": "DAILY-DC-Hurst-Trend-MGC",
+        "asset": "MGC",
+        "entry": "donchian_breakout",
+        "filter": "hurst_stable_trend",
+        "exit": "profit_ladder",
+        "params": {
+          "hurst_threshold_low": 0.55
+        },
+        "gap": "Donchian + Hurst-trend on gold (mutation of XB-DC-MGC WATCH-decaying)"
+      },
+      "metrics": {
+        "n": 548,
+        "pf": 0.943,
+        "median": -4.24,
+        "net": -1361.52,
+        "max_dd": -5395.24,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "top10_share_pct": 0.0,
+        "h1_pf": 1.066,
+        "h2_pf": 0.888,
+        "years_positive": 4,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "spec": {
+        "label": "DAILY-PB-VolLow-Chandelier-MCL",
+        "asset": "MCL",
+        "entry": "pb_pullback",
+        "filter": "ema_slope_vol_low",
+        "exit": "chandelier",
+        "params": {
+          "vr_threshold": 30
+        },
+        "gap": "PB + vol-low + chandelier on crude (alt-exit combo)"
+      },
+      "metrics": {
+        "n": 1031,
+        "pf": 0.997,
+        "median": -16.24,
+        "net": -76.44,
+        "max_dd": -2426.28,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "top10_share_pct": 0.0,
+        "h1_pf": 1.066,
+        "h2_pf": 0.9,
+        "years_positive": 2,
+        "n_years": 6
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    }
+  ],
+  "aggregate": {
+    "total": 14,
+    "watch_for_deep_screen": 1,
+    "architectural_reject": 0,
+    "era3_regime_wall_failures": 0,
+    "kill": 12
+  }
+}

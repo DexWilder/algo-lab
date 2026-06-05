@@ -283,6 +283,656 @@
     ],
     "doctrine": "Loosening the threshold made V1 STRICTLY WORSE across all variants. This is thesis-failure, not parameter-failure: the harvest hypothesis (gold mean-reverts to real-yield + DXY-implied fair value) is anti-predictive on 2024-2026 MGC. Mark hypothesis DEAD at cheap-screen tier. Do NOT pursue further V1 variants without new evidence."
   },
+  "_HEADLINE_2026-06-05c_MCL_FAMILY_REVIEW": {
+    "operator_approval": "OK MCL family review (#81)",
+    "mcl_short_pl_vs_baseline": {
+      "verdict": "DUPLICATE_EXPOSURE_REJECT",
+      "daily_corr": 0.720,
+      "same_day_overlap_pct": 100.0,
+      "configs": {
+        "baseline_alone": {"total": 5971, "max_dd": -1736},
+        "short_pl_alone": {"total": 5756, "max_dd": -1057}
+      },
+      "note": "Short-PL has better pnl/DD ratio than baseline ($5756/$1057 vs $5971/$1736) but is structurally a SUBSET — 100% same-day overlap + corr 0.72 means it's the same trade stream with longs filtered out."
+    },
+    "mcl_short_fr2_vs_baseline": {
+      "verdict": "REPLACEMENT_CANDIDATE_LIKELY (B Sharpe >= 95% A AND DD <= 105% A AND PnL >= 90% A)",
+      "daily_corr": 0.676,
+      "same_day_overlap_pct": 100.0,
+      "configs": {
+        "baseline_alone": {"total": 5971, "max_dd": -1736},
+        "fr2_alone": {"total": 6736, "max_dd": -872}
+      },
+      "note": "FR2 alone has HIGHER total ($6736 vs $5971) AND LOWER DD ($872 vs $1736) than baseline. Replacement criterion met. Different exit (fixed_ratio R2 vs profit_ladder) on the same SHORT-only trade stream produces structurally better risk-adjusted profile."
+    },
+    "stress_break_even": {
+      "Short_PL": {
+        "1x": {"median": 7.76, "pf": 1.408},
+        "1.5x_1tick": {"median": 3.14, "pf": 1.237},
+        "2x_1tick": {"median": 2.52, "pf": 1.216},
+        "2x_2ticks": {"median": -1.48, "pf": 1.088, "BREAK_POINT": true},
+        "4x_2ticks": {"median": -3.96, "pf": 1.015},
+        "break_point_estimate": "between 2x cost + 1 tick and 2x cost + 2 ticks"
+      },
+      "Short_FR2": {
+        "1x": {"median": 3.76, "pf": 1.452},
+        "1.5x_1tick": {"median": -0.86, "pf": 1.286, "BREAK_POINT": true},
+        "2x_1tick": {"median": -1.48, "pf": 1.266},
+        "2x_2ticks": {"median": -5.48, "pf": 1.141},
+        "4x_2ticks": {"median": -7.96, "pf": 1.070},
+        "break_point_estimate": "between baseline and 1.5x cost + 1 tick (MORE fragile than PL despite higher headline PF)"
+      },
+      "key_insight": "FR2 is MORE cost-fragile than PL — counterintuitive given FR2 has higher headline PF. FR2's larger target distance means each trade depends more on hitting the full ratio; small cost increases shift the expected value much faster than PL's tiered exit. PL is robust to moderate cost stress (2x cost + 1 tick still positive); FR2 cannot tolerate any extra cost."
+    },
+    "final_classification": "Both candidates remain OBSERVATIONAL per strict-prop-stress rule (#84). Short-FR2 has REPLACEMENT_CANDIDATE_LIKELY family verdict but fails prop-stress at 1.5x cost + 1 tick; cannot promote to PAPER_PACKET tier. Operator may consider FR2 as future operator-led modification target for XB-ORB-EMA-Ladder-MCL if execution costs are confirmed within baseline range.",
+    "operator_decision_options": [
+      "A: Accept Short-FR2 as REPLACEMENT_CANDIDATE_INSIGHT — future modification target for XB-ORB-EMA-Ladder-MCL, pending execution-cost verification + walk-forward",
+      "B: Treat as OBSERVATIONAL only (no future action committed)",
+      "C: Investigate whether broker/prop costs would actually exceed 1.5x retail before deciding",
+      "D: Continue exploring other directions"
+    ]
+  },
+  "_diagnostic_batch_2026-06-05c": {
+    "operator_approval": "OK continue A and C; defer B (#83)",
+    "candidates_tested": 8,
+    "directional_asymmetry_patterns": {
+      "MGC_Donchian": "LONG > SHORT (DC-MGC-Long PF 1.272 WATCH vs DC-MGC-Short PF 1.104 KILL)",
+      "MCL_Donchian": "SHORT > LONG (DC-MCL-Long PF 1.026 KILL vs DC-MCL-Short PF 1.277-1.376 WATCH/WATCH_DEEP)",
+      "MGC_ORB_prior_evidence": "SHORT bias (PF 1.527 vs 1.362) but both work",
+      "MCL_ORB_prior_evidence": "SHORT-only edge (LONG dead, SHORT alive)",
+      "MGC_PriorDayBreak_prior_evidence": "LONG modest WATCH, SHORT KILL (asymmetric trap)",
+      "interpretation": "Directional asymmetry is asset-specific AND entry-type-specific. MGC has different asymmetries on ORB (short bias), Donchian (long bias), and PriorDayBreak (long bias). MCL is consistently SHORT-biased across both ORB and Donchian entries."
+    },
+    "results_summary": {
+      "DC-MGC-Long-PL": {"PF": 1.272, "median": 5.76, "yrs_pos": "5/8", "Era3": 1.16, "verdict": "WATCH (temporal) + KNIFE_EDGE", "tier": "OBSERVATIONAL"},
+      "DC-MGC-Short-PL": {"PF": 1.104, "verdict": "KILL"},
+      "DC-MGC-Short-FR2": {"PF": 1.195, "median": -3.24, "verdict": "KILL (median neg)"},
+      "DC-MCL-Long-PL": {"PF": 1.026, "verdict": "KILL"},
+      "DC-MCL-Short-PL": {"PF": 1.277, "median": 3.76, "yrs_pos": "5/6", "verdict": "WATCH + FAIL_STRESS", "tier": "OBSERVATIONAL"},
+      "DC-MCL-Short-FR2": {"PF": 1.376, "median": 0.26, "max_yr": 41.1, "yrs_pos": "5/6", "verdict": "WATCH_FOR_DEEP_SCREEN + FAIL_STRESS", "tier": "OBSERVATIONAL"},
+      "PDB-MGC-Long-FR2": {"PF": 1.351, "median": 0.76, "max_yr": 37.5, "yrs_pos": "6/8", "verdict": "WATCH_FOR_DEEP_SCREEN + FAIL_STRESS", "tier": "OBSERVATIONAL"},
+      "PDB-MGC-Long-FR3": {"PF": 1.444, "median": -0.24, "verdict": "KILL (median neg — asymmetric trap)"}
+    },
+    "tier_aggregate": "0 PAPER_PACKET / 0 PORTFOLIO_COMPLEMENT / 4 OBSERVATIONAL / 4 KILL",
+    "doctrine_signals": [
+      "Strict prop-stress works as designed: 4 candidates with passing cheap-screen + temporal robustness ALL fail prop-stress = none promoted",
+      "FR2 fixed-ratio variants are CONSISTENTLY MORE cost-fragile than profit_ladder variants — emerging pattern",
+      "MGC has LONG-biased Donchian + LONG-biased PriorDayBreak (1:0 vs SHORT)",
+      "MCL has SHORT-biased ORB + SHORT-biased Donchian (consistent across entry types)",
+      "Feature cache: 12 hits / 2 misses → 86% reuse rate on this cycle"
+    ]
+  },
+  "_HEADLINE_2026-06-05b_MCL_SHORT_ASYMMETRY": {
+    "headline": "MCL ORB has extreme SHORT-side directional asymmetry (LONG side dead; SHORT side carries entire edge)",
+    "operator_approval": "OK direction all (#79); feature-cache shipped (#80)",
+    "evidence": {
+      "MCL_ORB_long_only_prior_cycle": {"pf": 1.014, "verdict": "KILL"},
+      "MCL_ORB_short_PL_this_cycle": {"n": 469, "pf": 1.408, "median": 7.76, "max_year_pct": 30.2, "yrs_pos": "5/6"},
+      "MCL_ORB_short_FR2_this_cycle": {"n": 469, "pf": 1.452, "median": 3.76, "max_year_pct": 28.8, "yrs_pos": "6/6"}
+    },
+    "vs_MGC_pattern": "MGC ORB has SHORT-bias (PF 1.53 short vs 1.36 long; both directions profitable). MCL ORB has SHORT-ONLY edge (LONG completely dead at PF 1.01; SHORT carries entire edge at PF 1.41-1.45). More extreme directional asymmetry than MGC.",
+    "tier_classification": "OBSERVATIONAL — both MCL SHORT candidates FAIL prop-stress (2× cost + 2 tick slip collapses median). Cannot promote to PAPER_PACKET tier per locked doctrine.",
+    "operator_relevant_insight": {
+      "type": "Directional asymmetry insight for existing XB-ORB-EMA-Ladder-MCL workhorse",
+      "finding": "The existing both-direction XB-ORB-EMA-Ladder-MCL probation candidate has its LONG side as dead-weight dragging down its SHORT edge. Modifying to SHORT-only would: (a) preserve entire SHORT edge, (b) eliminate LONG drag, (c) but reduce sample size (~half).",
+      "constraints": "No registry mutation; no sizing change; no portfolio allocation change; future operator-led decision required; same constraint pattern as 2026-06-05 MGC short-bias insight (#78)."
+    },
+    "family_review_question": "If operator wants to evaluate MCL-Short as a REPLACEMENT_CANDIDATE for XB-ORB-EMA-Ladder-MCL (vs DUPLICATE_EXPOSURE_REJECT), would need family review. Different from MGC Short-PL because there the long+short trades both had edge — here long side is null."
+  },
+  "_non_mgc_orb_hunt_2026-06-05b": {
+    "operator_approval": "OK direction all (#79); feature-cache shipped (#80)",
+    "candidates_tested": 8,
+    "tier_classification": {"PAPER_PACKET": 0, "PORTFOLIO_COMPLEMENT": 0, "OBSERVATIONAL": 2, "KILL": 6},
+    "feature_cache_validation": {
+      "1st_compute_per_asset": "~80s",
+      "subsequent_compute_same_asset": "1-2s (warm cache)",
+      "total_runtime": "279s vs estimated 600+ without cache",
+      "cache_hits": 4, "cache_misses": 4
+    },
+    "observational_candidates": [
+      {"label": "P1-MCL-ORB-Short-PL", "metrics": {"n": 469, "pf": 1.408, "median": 7.76, "yrs_pos": "5/6"}, "stress": "FAIL_STRESS", "note": "Cleanest yrs+ for profit_ladder MCL Short"},
+      {"label": "P1-MCL-ORB-Short-FR2", "metrics": {"n": 469, "pf": 1.452, "median": 3.76, "yrs_pos": "6/6"}, "stress": "FAIL_STRESS", "note": "Perfect year-survival; lowest max-yr concentration"}
+    ],
+    "kills_summary": [
+      "P1-MGC-PriorDayBreak-Short: PF 1.017 with median +$10.26 — asymmetric P&L trap (per locked doctrine)",
+      "P2-MES-PB-Long: PF 0.980 median -$9.99",
+      "P2-MES-PB-Short: PF 1.194 median +$5.01 but only 3/8 yrs+ → ARCH_REJECT",
+      "P2-MES-PB-Both-FR2: PF 1.034 median -$22.49",
+      "P2-ZN-PB-Long: PF 0.531 median -$49.98 catastrophic; 0/8 yrs+",
+      "P2-ZN-PB-Short: PF 0.612 catastrophic"
+    ],
+    "closed_loop_lessons": [
+      "MCL ORB has directional asymmetry pattern: LONG dead (PF 1.01), SHORT alive (PF 1.41-1.45). Combine = mediocre.",
+      "MGC PriorDayBreak: LONG-only had modest WATCH (PF 1.452); SHORT-only KILL (PF 1.017 asymmetric trap). Same prior_day_break entry; opposite asymmetry to MGC ORB.",
+      "MES PB has NO directional edge (both Long and Short median negative).",
+      "ZN PB is structurally dead across all directions tested.",
+      "Pattern emerging: directional asymmetry exists on some metals/crude assets but NOT on equity index PB or rates PB.",
+      "Feature-cache (#80) works as designed; prop-stress now affordable on every WATCH."
+    ]
+  },
+  "_HEADLINE_2026-06-05_PACKET1_ACCEPTED": {
+    "candidate": "EVT-NFP-MGC-Long-2h",
+    "status_change": "PAPER-READINESS PACKET #1 — ACCEPTED as formal sprint deliverable",
+    "operator_decision": "#72 OK accept packet 1",
+    "audit_verdict": "GREEN",
+    "paper_live_status": "NOT approved; NOT registry mutation; NOT scheduler change; NOT portfolio allocation",
+    "next_status": "Ready for next validation rung / operator-controlled paper-readiness decision path",
+    "sprint_significance": "First Paper-Readiness Packet accepted as formal sprint deliverable. Sprint scoreboard: Paper-Readiness Packets accepted-for-review = 1; Paper/live approvals = 0."
+  },
+  "_HEADLINE_2026-06-05_SHORT_PL_SUBSET_FINDING": {
+    "candidate": "DIR-MGC-ORB-Short-PL",
+    "vs_baseline": "XB-ORB-EMA-Ladder-MGC (existing probation, both directions)",
+    "verdict": "DIRECTIONAL_WEIGHTING_VARIANT (effectively DUPLICATE_EXPOSURE_REJECT for packet purposes)",
+    "verdict_rationale": {
+      "trade_overlap": "100% of SHORT days are same-day as BASE days; 0 same-day pairs are different-direction; avg time separation = 0 minutes (literally simultaneous)",
+      "daily_pnl_correlation": 0.538,
+      "full_size_combined_total_pnl_increase": "$8337 → $12014 (+44%)",
+      "full_size_combined_max_dd_increase": "-$1022 → -$1912 (+87%) — DD grows nearly 2× the return increase",
+      "interpretation": "Short-only is a STRICT SUBSET of the baseline. The short trades in DIR-MGC-ORB-Short-PL ARE the same short trades that XB-ORB-EMA-Ladder-MGC takes — just with the long trades dropped. Running both at full size = double-weighting the short half of an existing strategy. Not a new candidate; a weighting variant."
+    },
+    "standalone_metrics_comparison": {
+      "baseline_both": {"n": 653, "pf": 1.420, "median": 5.76, "win_rate": 54.2, "sharpe": 1.88},
+      "short_only": {"n": 266, "pf": 1.527, "median": 8.76, "win_rate": 56.4, "sharpe": 1.52}
+    },
+    "key_insight_for_operator": "MGC ORB SHORT trades have materially higher per-trade quality than LONG trades (PF 1.527 vs implied ~1.32). This is INSIGHT about the existing XB-ORB-EMA-Ladder-MGC workhorse — could inform future weighting or position-sizing modifications to the existing probation candidate. But NOT a separate Packet #2 candidate.",
+    "implication_for_other_yesterday_candidates": "By analogy: FR-MGC-ORB-EMA-R2 and DIR-MGC-ORB-Long-PL are very likely the same kind of subset/weighting variants of the existing baseline (same entry, same filter, same asset). Long-only is the complement subset to short-only; R2 fixed-ratio is a same-entry-different-exit variant. Family-review on those two queued but the result is likely SUBSET/DUPLICATE for both.",
+    "honest_assessment": "The 75% hit rate from 2026-06-05 cycle was REAL in terms of cheap-screen + temporal robustness — those 6 WATCH candidates DO pass the technical gates. But family review reveals 5 of 6 are likely subsets/variants of the existing MGC workhorse. The plateau pivot revealed insight about existing portfolio, not 6 new packet candidates. Packet #2 still requires a non-MGC, non-XB-ORB, non-NFP candidate."
+  },
+  "_HEADLINE_2026-06-05_PLATEAU_BREAKTHROUGH": {
+    "summary": "Post-plateau pivot to fixed-ratio exits + directional splits produced 6 of 8 WATCH_FOR_DEEP_SCREEN candidates — best cycle of the campaign. Plateau-response rule (locked 2026-06-05) validated empirically.",
+    "operator_approvals": ["#69 B+C fixed-ratio + directional", "#70 Hurst deprioritized", "#71 A+B Packet #1 review + simple search dimensions"],
+    "cycle_aggregate": {"WATCH_FOR_DEEP_SCREEN": 6, "WATCH": 1, "KILL": 1, "hit_rate": "75% (vs ~7% prior cycles)"},
+    "headlines": [
+      {
+        "label": "DIR-MGC-ORB-Short-PL",
+        "spec": "orb_breakout + ema_slope + profit_ladder on MGC, SHORT only",
+        "metrics": {"n": 266, "pf": 1.527, "median": 8.76, "max_year_share_pct": 25.0, "yrs_pos": "7/8"},
+        "doctrine_significance": "MGC SHORT direction outperforms LONG (PF 1.527 vs 1.362) — first asset where directional bias diagnostic surfaced a strong asymmetric edge. Different exposure profile from existing XB-ORB-EMA-Ladder-MGC probation candidate (which trades both directions)."
+      },
+      {
+        "label": "FR-MGC-ORB-EMA-R2",
+        "spec": "orb_breakout + ema_slope + fixed_ratio(2.0) on MGC, both directions",
+        "metrics": {"n": 653, "pf": 1.515, "median": 5.76, "max_year_share_pct": 24.5, "yrs_pos": "7/8"},
+        "doctrine_significance": "Fixed-ratio 1:2 exit on MGC ORB competitive with profit_ladder default; cleanest concentration profile (24.5% max-yr) of this cycle"
+      },
+      {
+        "label": "DIR-MGC-ORB-Long-PL",
+        "spec": "orb_breakout + ema_slope + profit_ladder on MGC, LONG only",
+        "metrics": {"n": 387, "pf": 1.362, "median": 4.76, "max_year_share_pct": 37.9, "yrs_pos": "8/8"},
+        "doctrine_significance": "8/8 years positive (unanimous); long-only carves out the half that's most consistent year-by-year"
+      },
+      {
+        "label": "DIR-MGC-PriorDayBreak-Long",
+        "spec": "prior_day_break + ema_slope + profit_ladder on MGC, LONG only",
+        "metrics": {"n": 251, "pf": 1.452, "median": 3.76, "max_year_share_pct": 28.7, "yrs_pos": "6/8"},
+        "doctrine_significance": "Long-only of the PriorDayBreak family — improves PF from 1.278 (both directions) to 1.452 (long only). Long-only filtering helps the new prior-day primitive too."
+      },
+      {
+        "label": "FR-MYM-ORB-EMA-R2",
+        "spec": "orb_breakout + ema_slope + fixed_ratio(2.0) on MYM, both",
+        "metrics": {"n": 379, "pf": 1.616, "median": 10.26, "max_year_share_pct": 63.9, "yrs_pos": "3/3", "era3_pf": 1.68, "era3_delta_signal": "RECENT_IMPROVEMENT_SIGNAL"},
+        "doctrine_significance": "Strongest topline metrics of cycle (PF 1.616, median $10.26) — but only 3 years of MYM data + max-yr 63.9% concentration. RECENT_IMPROVEMENT_SIGNAL flagged. Cannot validate temporal robustness on 3-year sample. Treat as OBSERVATIONAL or WATCH pending data window extension."
+      },
+      {
+        "label": "FR-MGC-ORB-EMA-R3",
+        "spec": "orb_breakout + ema_slope + fixed_ratio(3.0) on MGC",
+        "metrics": {"n": 653, "pf": 1.515, "median": 4.76, "max_year_share_pct": 23.7, "yrs_pos": "7/8"},
+        "note": "PF identical to R2 variant — 1:3 doesn't improve over 1:2 on MGC ORB"
+      }
+    ],
+    "non_promotion": {
+      "FR-MCL-ORB-EMA-R2": "WATCH but PF 1.285 < 1.30 gate",
+      "DIR-MCL-ORB-Long-PL": "KILL — MCL long-only dead (PF 1.014, max-yr 474%); MCL needs both directions"
+    },
+    "critical_caveats_before_promotion": [
+      "ALL 6 WATCH candidates are based on MGC ORB (5 of 6) or MYM ORB. All MGC ORB variants share entry primitive with existing XB-ORB-EMA-Ladder-MGC probation candidate. Family-review MANDATORY before any deep-screen.",
+      "Prop-stress NOT yet applied (deferred to next cycle to avoid the Hurst-recompute bottleneck). All must pass prop-stress before classification as PAPER_PACKET tier.",
+      "Median is on the modest side ($3.76-$10.26) compared to NFP-MGC ($21.76). Some may turn out PORTFOLIO_COMPLEMENT or OBSERVATIONAL after audit dim C.",
+      "DIR-MGC-ORB-Short is the most novel — short-only is a genuinely different exposure profile vs the existing probation workhorse (which trades both directions). Most likely to be a non-duplicate.",
+      "FR-MYM has RECENT_IMPROVEMENT_SIGNAL but 3-year window is too short to deep-screen confidently."
+    ],
+    "next_required_steps": [
+      "Family-review on DIR-MGC-ORB-Short-PL vs XB-ORB-EMA-Ladder-MGC (likely PARALLEL_COMPLEMENT or COMPLEMENT given short-only nature)",
+      "Family-review on FR-MGC-ORB-EMA-R2 vs XB-ORB-EMA-Ladder-MGC (same entry+filter, different exit — likely DUPLICATE)",
+      "Family-review on DIR-MGC-ORB-Long-PL vs XB-ORB-EMA-Ladder-MGC (long-only subset — also likely DUPLICATE per VolLow30-MNQ precedent)",
+      "Prop-stress on whichever candidates pass family review",
+      "Evidence-integrity audit on whichever pass prop-stress"
+    ]
+  },
+  "_core_daily_hunt_round3_2026-06-04": {
+    "operator_approval": "OK continue (#66) + prop-stress upfront (#67) + Era-3 delta (#68)",
+    "candidates_tested": 14,
+    "tier_classification": {"PAPER_PACKET": 0, "PORTFOLIO_COMPLEMENT": 0, "OBSERVATIONAL": 3, "KILL": 11},
+    "doctrine_observation": "Prop-stress filter is meaningful — caught 2 candidates that would have been WATCH-modest. The new 3-tier classification is preventing weak-stress candidates from being treated as packet-grade.",
+    "observational_candidates": [
+      {
+        "label": "R3-MYM-PriorDayFade-EMA",
+        "metrics": {"n": 160, "pf": 1.666, "median": 5.76, "max_year_share_pct": 41.4,
+                    "yrs_pos": "3/3", "era3_pf": 1.82},
+        "cheap_screen_verdict": "WATCH_FOR_DEEP_SCREEN",
+        "prop_stress": "KNIFE_EDGE",
+        "classification": "OBSERVATIONAL",
+        "notes": "Strongest cheap-screen of the cycle (PF 1.666) and 3/3 yrs positive, but MYM has only 3 years of usable data + prop-stress KNIFE_EDGE. Preserve in memory; revisit when MYM data window extends."
+      },
+      {
+        "label": "R3-MCL-ORB-EMA-Profit-Ladder",
+        "metrics": {"n": 929, "pf": 1.201, "median": 6.76, "max_year_share_pct": 38.6, "yrs_pos": "5/6"},
+        "verdict": "WATCH but stress = FAIL_STRESS",
+        "classification": "OBSERVATIONAL",
+        "notes": "PF just below 1.30 gate AND fails prop-stress. Already exists in CANDIDATES rotation."
+      },
+      {
+        "label": "R3-MCL-ORB-VolLow",
+        "metrics": {"n": 913, "pf": 1.164, "median": 5.76, "max_year_share_pct": 41.8, "yrs_pos": "5/6"},
+        "verdict": "WATCH but stress = FAIL_STRESS",
+        "classification": "OBSERVATIONAL",
+        "notes": "Similar to baseline MCL ORB; vol-low overlay doesn't push through prop-stress."
+      }
+    ],
+    "kills_summary": [
+      "R3-MGC-VWAP-EMA: PF 1.285 with median -$0.24 — asymmetric P&L trap (per locked doctrine)",
+      "R3-MGC-VWAP-Hurst-Trend: PF 0.932 — Hurst-trend gate hurts VWAP",
+      "R3-MGC-PB-VolLow40: PF 1.097 median -$2.74",
+      "R3-MES-PriorDayFade-Morning: PF 0.808 median -$14.99 — morning-only fade doesn't work on MES",
+      "R3-MYM-PriorDayBreak-EMA: PF 1.324 only 2/3 yrs+ ARCHITECTURAL_REJECT (losing era)",
+      "R3-MCL-ORB-MorningOnly: PF 0.875 — morning-only doesn't work on MCL either",
+      "R3-ZN-BB-Morning-Hurst-MR: PF 0.392 0/8 yrs+ — rates MR with Hurst gate is dead",
+      "R3-MYM-ORB-Close: PF 0.891 — close momentum dead on MYM",
+      "R3-6E-PB-EMA: PF 0.845 median -$23.75 — FX pullback dead",
+      "R3-6E-PriorDayBreak: PF 1.074 median -$14.38 — FX prior-day dead",
+      "R3-MGC-PriorDayBreak-HurstTrend: PF 0.597 — Hurst-trend filter hurts MGC prior-day"
+    ],
+    "closed_loop_lessons": [
+      "Prop-stress filter (#67) is now mandatory and works: caught 2 WATCH candidates that would otherwise have moved to family review.",
+      "MYM data window (3 years) is the bottleneck for MYM-family candidates. Cannot validate temporal robustness with < 5 years.",
+      "FX (6E) similar limitation — both candidates KILLed due to median negative on limited 3-year window.",
+      "Hurst-MR and Hurst-Trend filters consistently DEGRADE candidates rather than enhance them. The Hurst proxy may not align with workhorse-class entries; consider deprecating or using only as ranking input.",
+      "Asymmetric P&L trap (#63) repeats on MGC VWAP — confirms doctrine is needed.",
+      "Morning-only and afternoon-only filters DEGRADE most candidates relative to all-day baseline. Session restrictions are not unlocking new edge; deprioritize."
+    ]
+  },
+  "_HEADLINE_2026-06-04_PBVOLLOW_MNQ_AUDIT_YELLOW": {
+    "candidate": "DAILY-PB-VolLow-MNQ",
+    "overall_audit": "YELLOW",
+    "classification": "PORTFOLIO_COMPLEMENT_CANDIDATE (audit YELLOW due weak median per dim C; portfolio contribution strong per G)",
+    "audit_summary": {
+      "A_cost_source": "GREEN — MNQ VALIDATED tier from asset_config; round-trip $2.24/trade",
+      "B_cost_stress": "GREEN literally — but knife-edge: at 2x cost + 2 tick slip, median collapses from $3.26 → $0.02 (essentially zero). PF drops 1.365 → 1.273",
+      "C_edge_quality": "YELLOW — net median $3.26 (very weak); win rate 51.07%; R = 1.31; 48.93% of trades net ≤ 0; max consec losses 8; max DD duration 133 trades; gross median only $5.50 — costs eat $2.24 round-trip = 41% of gross median",
+      "D_lookahead": "GREEN",
+      "E_calendar": "GREEN (continuous-bar candidate)",
+      "F_survivorship": "GREEN — full 2528-day span",
+      "G_duplicate_portfolio": "PARALLEL_COMPLEMENT (daily corr 0.43; losing-day overlap 16%); full-size combined $70,265 vs ORB alone $49,060",
+      "H_temporal": "GREEN — 7/8 yrs+, Era 3 PF 1.58, Era 3 median $13.26 (much better than overall $3.26)"
+    },
+    "concerning_observations": [
+      "Trade-level quality is WEAK: 51% win rate, R only 1.31, 49% of trades net ≤ 0. Half the trades are losers or breakeven.",
+      "Cost stress shows knife-edge: 2x cost + 2 tick slip → median $0.02. Real prop firms often charge 1.5-2x retail commissions; this candidate has very little margin.",
+      "Max DD duration 133 trades (~3-4 months) is long for a workhorse.",
+      "Era 3 median $13.26 IS materially better than overall — suggests recent improvement. But forward sample is small."
+    ],
+    "operator_decision_options": [
+      "A: Accept YELLOW as PORTFOLIO_COMPLEMENT_CANDIDATE (not packet-grade standalone, but useful in combination with ORB-MNQ; do not promote to packet draft)",
+      "B: Reject — cost stress knife-edge + weak median means it can't be trusted even as complement",
+      "C: Treat as research/observational only — keep in Forge memory; revisit if Era 3 trend continues",
+      "D: Combine with prop-firm cost stress (4x retail) before accepting"
+    ]
+  },
+  "_priorday_break_mgc_mutation_2026-06-04": {
+    "operator_approval": "OK mutate PriorDay-Break-MGC (#62, bounded)",
+    "baseline": {"pf": 1.278, "median": 6.76, "max_year_share_pct": 32.6, "yrs_pos": 7, "n_yrs": 8, "era3_pf": "approx 1.30"},
+    "mutations_tested": 8,
+    "aggregate": {"WATCH_FOR_DEEP_SCREEN": 0, "WATCH": 3, "KILL_REJECT": 5},
+    "best_mutation": {
+      "label": "PriorDay-Break-MGC-VolLow40",
+      "metrics": {"n": 386, "pf": 1.281, "median": 7.26, "max_year_share_pct": 33.4,
+                  "yrs_pos": "7/8", "era3_pf": 1.32},
+      "improvement_vs_baseline": {"d_pf": 0.003, "d_median": 0.50},
+      "verdict": "WATCH (improves PF + median marginally; preserves yrs/max-yr; still below 1.30 STRONG gate)"
+    },
+    "second_best": {
+      "label": "PriorDay-Break-MGC-Stop2.5T4",
+      "metrics": {"pf": 1.285, "median": 7.76, "max_year_share_pct": 32.0,
+                  "yrs_pos": "6/8"},
+      "concern": "yrs+ dropped from 7/8 to 6/8 — preserves the operator's rule"
+    },
+    "fails": [
+      "Morning-only: PF 0.984 KILL (median neg) — morning-only doesn't work alone",
+      "Afternoon-only: PF 0.722 KILL — afternoon-only is structurally weak",
+      "VolHigh70: only n=21 (filter too restrictive)",
+      "VolLow30: max-yr 40.2% just over gate",
+      "Stop1.5T4: max-yr 52.4% reject"
+    ],
+    "outcome": "Mutation cycle did NOT upgrade baseline meaningfully. Best mutation (VolLow40) gives +0.003 PF, +$0.50 median. Not enough to push past 1.30 STRONG gate per operator's hard rule. **Baseline PriorDay-Break-MGC stays at WATCH (modest); no promotion. Stop here; mark family as marginal; continue Core Daily Hunt elsewhere.**"
+  },
+  "_HEADLINE_2026-06-04_PBVOLLOW_MNQ_PARALLEL_COMPLEMENT": {
+    "candidate": "DAILY-PB-VolLow-MNQ",
+    "vs_baseline": "XB-ORB-EMA-Ladder-MNQ",
+    "verdict": "PARALLEL_COMPLEMENT_CANDIDATE (surprise — NOT DUPLICATE)",
+    "family_review_metrics": {
+      "daily_pnl_correlation": 0.426,
+      "weekly_pnl_correlation": 0.335,
+      "drawdown_overlap_pct": 66.8,
+      "losing_day_overlap_pct": 16.1,
+      "same_day_overlap_a": 94.2,
+      "same_day_overlap_b": 79.2,
+      "avg_time_separation_min": 62.2
+    },
+    "portfolio_configs": {
+      "A_orb_alone": {"total": 49060, "max_dd": -2331, "prop_breach": false},
+      "B_pb_vollow_alone": {"total": 21205, "max_dd": -1850, "prop_breach": false},
+      "C_both_full_size": {"total": 70265, "max_dd": -2638, "prop_breach": false},
+      "D_both_half_size": {"total": 35132, "max_dd": -1319, "prop_breach": false},
+      "E_controller": {"total": 15469, "max_dd": -2672, "prop_breach": false, "note": "controller is WORSE than either alone"}
+    },
+    "verdict_rationale": "Full-size combined total $70,265 vs ORB alone $49,060 (+43% return) with DD only -$2,638 vs -$2,331 (+13% worse). Daily corr 0.43 (well below 0.65 DUPLICATE threshold). Losing days overlap only 16%. PB-VolLow loses on different days than ORB.",
+    "OPERATOR_DECISION_REQUIRED": "Standalone median is +$3.26 — passes the literal positive-median gate but is VERY WEAK compared to ORB ($42.76) and NFP-MGC ($21.76). Per operator's #57 directive: 'pay special attention to weak net median.' Family review PASSES (COMPLEMENT) but edge-quality (audit dim C) will flag weak median. This is exactly the case the doctrine warned about — strong portfolio contribution metrics paired with weak per-trade edge.",
+    "options_surfaced_for_operator": [
+      "A: Authorize evidence-integrity audit + deep-screen as Packet #2 candidate (treat weak median as acceptable given COMPLEMENT verdict and portfolio improvement)",
+      "B: Treat as 'portfolio addition' not 'Packet #2' — useful in combination with ORB but not standalone-packet-grade",
+      "C: Reject and continue pure non-MNQ Packet #2 hunt — the weak median means it can't be trusted as a stand-alone draft",
+      "D: Run audit first (YELLOW expected); operator accepts or rejects YELLOW"
+    ]
+  },
+  "_HEADLINE_2026-06-04_PRIORDAY_BREAK_MGC_WATCH_MODEST": {
+    "candidate": "NONMNQ-PriorDay-Break-MGC",
+    "metrics": {"n": 403, "pf": 1.278, "median": 6.76, "max_year_share_pct": 32.6,
+                "years_positive": "7/8"},
+    "verdict": "WATCH (modest — PF just under 1.30 STRONG gate but otherwise clean)",
+    "significance": "First non-MNQ, non-event candidate to pass cheap-screen with positive median + 7/8 yrs+ in many cycles. New prior_day_break primitive validated via real candidate per primitive-validation rule.",
+    "next_step_options": [
+      "A: Run mutation cycle with alt filters (vol-low, vol-high) to try to push PF over 1.30",
+      "B: Run mutation cycle with stop_mult/target_mult tweaks",
+      "C: Accept as WATCH-modest and defer; keep in rotation for further data",
+      "D: Stop here; mark family as marginal, continue Packet #2 hunt elsewhere"
+    ]
+  },
+  "_non_mnq_daily_hunt_2026-06-04": {
+    "operator_approval": "OK pivot off MNQ + continue non-MNQ daily hunt (#58, #60)",
+    "candidates_tested": 12,
+    "aggregate": {"WATCH_FOR_DEEP_SCREEN": 0, "WATCH_MODEST": 1, "ARCHITECTURAL_REJECT": 1, "KILL": 10},
+    "new_primitive_validated": "prior_day_break + prior_day_fade entries + prev_day_high/low/close features (4 smoke tests pass)",
+    "asymmetry_trap_repeats": [
+      "NONMNQ-VWAP-VolLow-MGC PF 1.388 median -$2.24",
+      "NONMNQ-PriorDay-Fade-MGC PF 1.283 median -$6.24",
+      "NONMNQ-PriorDay-Fade-MES PF 1.262 median -$2.49",
+      "NONMNQ-PriorDay-Break-MES PF 1.095 median -$4.99 (less extreme)"
+    ],
+    "lesson": "Chandelier-asymmetry pattern from prior cycle also appears in: VWAP+VolLow, PriorDay-Fade. The asymmetry trap is mechanism-class-wide, not exit-specific. Any candidate with PF > 1.2 and median < 0 fits the pattern.",
+    "kills_summary": {
+      "NONMNQ-PB-EMA-MGC-baseline": "PF 1.065, max-yr 123% concentration",
+      "NONMNQ-PB-EMA-MCL": "PF 0.889, 1/6 yrs+",
+      "NONMNQ-PB-VolLow-MCL": "PF 0.905",
+      "NONMNQ-PriorDay-Break-MCL": "PF 0.946, MCL doesn't break prior-day cleanly",
+      "NONMNQ-PB-VolLow-MYM": "PF 1.189, median -$0.74",
+      "NONMNQ-PriorDay-Fade-ZN": "PF 0.685, range-fade on rates doesn't work"
+    },
+    "architectural_reject": "NONMNQ-PriorDay-Break-MYM PF 1.324 BUT only 3 years of data → losing era. MYM has shorter data window."
+  },
+  "_core_daily_hunt_round2_2026-06-04": {
+    "operator_approval": "OK continue daily hunt (#54)",
+    "candidates_tested": 14,
+    "aggregate": {"WATCH_FOR_DEEP_SCREEN": 1, "WATCH_MODEST": 0, "ARCHITECTURAL_REJECT": 0, "KILL": 13},
+    "headline_with_caveats": {
+      "candidate": "DAILY-PB-VolLow-MNQ",
+      "spec": "pb_pullback + ema_slope_vol_low(40) + profit_ladder on MNQ",
+      "metrics": {"n": 1445, "pf": 1.365, "median": 3.26, "max_year_share_pct": 46.9,
+                  "years_positive": "7/8", "era_3_pf": 1.58},
+      "verdict": "WATCH_FOR_DEEP_SCREEN — but with caveats; family-review required AND audit gate mandatory before deep-screen",
+      "caveats": [
+        "MEDIAN IS LOW ($3.26 vs NFP-MGC $21.76 vs ORB-MNQ $42.76). Marginally packet-grade per edge-quality gate.",
+        "SAME FAMILY-OVERLAP RISK as DC-MNQ — vol-low filter on MNQ workhorse asset. The prior VolLow30-MNQ family review caught this exact trap (daily corr 1.00, DUPLICATE_EXPOSURE_REJECT).",
+        "Different entry (pb_pullback vs orb_breakout) is what made DC-MNQ pass standalone but fail family review (corr 0.72). PB + vol-low on MNQ likely has similar correlation pattern with XB-ORB-EMA-Ladder-MNQ.",
+        "Max-year 46.9% is close to 50% gate."
+      ],
+      "required_next_steps": [
+        "1. Family-review vs XB-ORB-EMA-Ladder-MNQ (the persistent baseline)",
+        "2. If family-review NOT duplicate, run evidence-integrity audit (mandatory per operator #55)",
+        "3. Only after both pass → deep-screen as Packet #2 candidate",
+        "4. If DUPLICATE again → confirms vol-low overlay class is duplicate of ORB workhorse and the family is saturated"
+      ]
+    },
+    "kills_summary": {
+      "DAILY-ORB-EMA-AtrTrail-MCL": "PF 1.151, median -$8.24 — chandelier-class asymmetry trap",
+      "DAILY-ORB-EMA-Chandelier-MCL": "PF 1.182, median -$9.24 — same asymmetry",
+      "DAILY-ORB-EMA-TimeStop-MCL": "PF 1.153, median -$7.24",
+      "DAILY-VWAP-VolLow-MGC": "PF 1.388, median -$2.24 — high PF / negative median (asymmetric P&L; not packet-grade per audit)",
+      "DAILY-PB-VolLow-MGC": "PF 1.084, max-yr 84% concentration",
+      "DAILY-PB-VolHigh-MGC": "PF 1.022, max-yr 605% (very few trades dominate)",
+      "DAILY-PB-EMA-Chandelier-MNQ": "PF 1.382, median -$21.24 — strongest example of chandelier asymmetry trap",
+      "DAILY-BB-Morning-ZN": "PF 0.442, 0/8 yrs+ — ZN morning MR structurally dead",
+      "DAILY-BB-VolLow-ZN": "PF 0.718, 1/8 yrs+ — same",
+      "DAILY-VWAP-Chandelier-MES": "PF 1.082, median -$16.24",
+      "DAILY-ORB-Afternoon-MYM": "PF 1.006, 1/3 yrs+",
+      "DAILY-ORB-Close-MYM": "PF 0.891 — new session_close filter doesn't unlock MYM close momentum",
+      "DAILY-ORB-Close-MGC": "PF 1.176, median -$2.24 — session_close on gold also no edge"
+    },
+    "closed_loop_lessons": [
+      "CHANDELIER / ATR-TRAIL EXITS ARE A SYSTEMATIC TRAP: 4 of 5 alt-exit candidates produced PF > 1.15 BUT MEDIAN NEGATIVE. Classic asymmetric-P&L pattern (few big wins offset many small losses). Per audit doctrine, candidates with negative net median are NOT packet-grade regardless of PF. Don't promote on PF alone.",
+      "BB-reversion on ZN is STRUCTURALLY DEAD across all variants (morning, vol-low, baseline). Rates MR family failed family-fatigue rule; pause unless new discriminator.",
+      "session_close filter shipped but didn't unlock MYM or MGC close momentum. New primitive validated mechanically but candidates KILLed.",
+      "MNQ workhorse cluster is saturated: 3rd straight cycle of cheap-screen WATCH candidates on MNQ that need family review against existing XB-ORB-EMA-Ladder-MNQ. Operator should know: future MNQ vol-low / PB / DC variants are very likely to be DUPLICATE per the new doctrine."
+    ]
+  },
+  "_HEADLINE_2026-06-04_DC_MNQ_DUPLICATE_REJECT": {
+    "candidate": "DAILY-DC-EMA-MNQ",
+    "vs": "XB-ORB-EMA-Ladder-MNQ (existing probation workhorse)",
+    "verdict": "DUPLICATE_EXPOSURE_REJECT",
+    "rationale": {
+      "daily_pnl_correlation": 0.72,
+      "same_day_overlap_pct": "97/77",
+      "full_size_combined_max_dd": -4590,
+      "prop_threshold_4k": "BREACH at full size",
+      "controller_mode_worse_than_either_alone": True
+    },
+    "standalone_comparison": {
+      "XB-ORB-EMA-Ladder-MNQ": {"n": 1215, "pf": 1.603, "median": 42.76, "win_rate_pct": 60.3, "sharpe_est": 2.65, "max_dd": -2295},
+      "DAILY-DC-EMA-MNQ":       {"n": 1542, "pf": 1.609, "median": 21.76, "win_rate_pct": 57.1, "sharpe_est": 2.60, "max_dd": -2821}
+    },
+    "key_finding": "ORB-MNQ has MEDIAN $42.76 vs DC-MNQ's $21.76 — almost 2x. ORB also has higher win rate and Sharpe and lower DD. The two are highly correlated (0.72) AND ORB is structurally stronger. DC-MNQ is not a Packet #2 candidate.",
+    "doctrine_significance": "Family review caught the trap that standalone PF (DC 1.609 vs ORB 1.603) suggested similarity but median ($21.76 vs $42.76) and correlation (0.72) reveal DC is a strictly inferior duplicate. The existing XB-ORB-EMA-Ladder-MNQ probation candidate is the cleaner stream of this edge.",
+    "added_to": "EXCLUDED_FROM_ROTATION will NOT be added — DAILY-DC-EMA-MNQ is not in CANDIDATES rotation (it was a one-off Core Daily Hunt result). XB-ORB-EMA-Ladder-MNQ stays as-is in registry."
+  },
+  "_evidence_integrity_audit_2026-06-04": {
+    "operator_directive": "Mandatory hard checkpoint — no candidate trusted beyond draft/review without GREEN audit",
+    "overall_verdict": "GREEN",
+    "subjects": ["EVT-NFP-MGC-Long-2h", "DAILY-DC-EMA-MNQ", "XB-ORB-EMA-Ladder-MNQ"],
+    "summary_per_dim": {
+      "A_cost_sources": "GREEN — both MGC and MNQ VALIDATED tier from engine/asset_config.py; no defaults",
+      "B_cost_stress": "GREEN — all 3 candidates survive 2x cost + 1 tick slip with PF > 1.5 and net median positive",
+      "C_edge_quality": "GREEN — all 3 net median positive at baseline; NFP-MGC top-1 share 17%, DC-MNQ top-1 share 3.5%, ORB-MNQ top-1 share 3.5%",
+      "D_lookahead": "GREEN — event_window_engine entry strictly after event; XB-engine Donchian bug-fixed 2026-05-28",
+      "E_calendar": "GREEN — NFP calendar verified 97.9% match",
+      "F_survivorship": "GREEN — MGC and MNQ both span 2019-2026 (2528 days); 1-2 big jumps each (roll noise)",
+      "G_duplicate_exposure": "DUPLICATE caught on DC-MNQ vs ORB-MNQ (verdict above); not applied to NFP-MGC (event-window, no similar candidate)",
+      "H_artifact": "docs/reports/evidence_integrity/2026-06-04_forge_cost_integrity_audit.md"
+    },
+    "headline_finding": "EVT-NFP-MGC-Long-2h passes the evidence-integrity hard checkpoint with NO blocking issues. Cost-aware, lookahead-clean, calendar-verified, survivorship-clean. Remains Paper-Readiness Packet #1 draft for operator review. Note: this is the FIRST formal cost-and-evidence audit since the 2026-05-19 cost-default incident that triggered the evidence-integrity failsafe doctrine.",
+    "secondary_finding": "ORB-MNQ standalone metrics (median $42.76, 60.3% win rate) are MEANINGFULLY STRONGER than DC-MNQ ($21.76, 57.1%). The existing probation workhorse is the cleaner version of this edge — DC-MNQ adds no value."
+  },
+  "_HEADLINE_2026-06-04_CORE_DAILY_HUNT_WATCH": {
+    "candidate": "DAILY-DC-EMA-MNQ",
+    "promotion_status": "WATCH_FOR_DEEP_SCREEN — pending family-review vs XB-ORB-EMA-Ladder-MNQ (existing probation workhorse) before deep-screen approval",
+    "metrics": {
+      "n": 1542, "pf": 1.609, "median": 21.76,
+      "max_year_share_pct": 20.6,
+      "years_positive": "8/8",
+      "era_3_pf": 1.80, "era_2_pf": "TBD via deep-screen", "era_1_pf": "TBD",
+      "max_dd": "TBD",
+      "win_rate_pct": "TBD"
+    },
+    "spec": {
+      "asset": "MNQ", "entry": "donchian_breakout",
+      "filter": "ema_slope", "exit": "profit_ladder", "params": {},
+      "rationale": "Donchian on MNQ (existing Donchian extensions covered MCL/MGC/ZN, all KILL or WATCH-decaying). MNQ variant materially outperforms: PF 1.609 vs MCL 1.036 / MGC 1.149 / ZN 0.718."
+    },
+    "doctrine_significance": "First non-event, non-NFP-MGC candidate to pass cheap-screen + temporal robustness + Era-3 regime-wall in the campaign. n=1542 (1.5× NFP-MGC sample), workhorse archetype, daily trade flow.",
+    "family_review_required_before_deep_screen": {
+      "compare_to": "XB-ORB-EMA-Ladder-MNQ (existing probation workhorse)",
+      "tests": [
+        "trade overlap (same-day, same-direction)",
+        "daily PnL correlation",
+        "drawdown overlap",
+        "combined portfolio configurations (Ladder alone, DC alone, both full, both half, controller)",
+        "prop survivability"
+      ],
+      "verdict_buckets": ["REPLACEMENT", "PARALLEL_COMPLEMENT", "BLENDED_WORKHORSE", "CONTROLLER_VARIANT", "DUPLICATE_EXPOSURE_REJECT"]
+    },
+    "next_required_action": "Operator approves family-review run before deep-screen"
+  },
+  "_core_daily_hunt_2026-06-04": {
+    "operator_approval": "OK Core Daily Algo Hunt — strategic pivot to 70% daily core",
+    "candidates_tested": 14,
+    "aggregate": {"WATCH_FOR_DEEP_SCREEN": 1, "WATCH": 1, "KILL": 12, "ARCHITECTURAL_REJECT": 0},
+    "headline": "DAILY-DC-EMA-MNQ (see _HEADLINE_ above)",
+    "secondary_watch": {
+      "candidate": "DAILY-ORB-EMA-6J",
+      "n": 329, "pf": 1.221, "median": 7.50, "era_3_pf": 1.03,
+      "verdict": "WATCH (modest, FX with limited data window 2024-02+; passes temporal but marginal)"
+    },
+    "kills_summary": {
+      "DAILY-VWAP-EMA-MNQ": "median neg, max-yr 116% concentration",
+      "DAILY-BB-EMA-ZN": "PF 0.622, median -$34, 0/8 yrs+",
+      "DAILY-BB-EMA-MCL": "PF 0.889, median neg",
+      "DAILY-BB-Hurst-MR-MGC": "PF 0.989, median neg — Hurst-MR gate didn't unlock",
+      "DAILY-BB-Hurst-MR-MES": "PF 0.758, median -$16, 2/8 yrs+",
+      "DAILY-PB-Hurst-Trend-ZN": "PF 0.544, median -$65 catastrophic",
+      "DAILY-PB-Hurst-Trend-MCL": "PF 0.776, 0/6 yrs+",
+      "DAILY-ORB-Afternoon-MES": "PF 0.967, afternoon ORB no edge on MES",
+      "DAILY-PB-EMA-6J": "PF 0.968, FX limited data",
+      "DAILY-PB-EMA-6E": "PF 0.845",
+      "DAILY-DC-Hurst-Trend-MGC": "Hurst-trend gate didn't unlock Donchian on gold",
+      "DAILY-PB-VolLow-Chandelier-MCL": "PF 0.997, alt-exit didn't help"
+    },
+    "closed_loop_lessons": [
+      "BB-reversion family is WEAK across rates/crude/gold/equity at simple-default fidelity (4/4 KILL). Not just Era-3 — full-sample median negative.",
+      "Hurst-MR / Hurst-trend filters did NOT unlock signal on any tested candidate this cycle — primitives are validated but the underlying entries (BB/PB/DC) don't benefit from these specific gates.",
+      "FX (6J/6E) has limited data window (2024-02+) reducing n and Era-3 testability. 1 of 3 FX candidates (6J ORB) passes basic gates marginally.",
+      "Afternoon ORB on MES doesn't work; only MNQ-VolLow30 had improvement (which was DUPLICATE).",
+      "Donchian primitive shows clear asset-specificity: MCL KILL, MGC WATCH-decaying, ZN KILL, **MNQ STRONG**. Asset-Donchian fit varies dramatically; MNQ benefits from larger range / cleaner trending."
+    ]
+  },
+  "_event_conditioned_retest_2026-06-04": {
+    "operator_approval": "OK event-conditioned filter (#43); retest 2-3 paused families",
+    "primitive_shipped": "research/event_conditioned_filter.py — 9 features (pre-5/12-bar return+dir, event-bar range/atr-mult, post-1-bar dir/range, atr-pctrank-at-event) + 7 filter modes (fade_pre, follow_pre, expansion, compression, post_event_confirm, vol_above, vol_below) + AND-combine + fail-closed validation. 7/7 smoke tests pass.",
+    "families_retested": 3,
+    "candidates_tested": 42,
+    "aggregate": {"WATCH_FOR_DEEP_SCREEN": 0, "ARCHITECTURAL_REJECT": 8, "KILL": 34},
+    "notable_metric_modifications": [
+      "fade_pre_5bar on CPI-MES: baseline KILL (median neg) → PF 1.265 + median +$1.26 (but losing era)",
+      "require_vol_above_70 on CPI-MES-Long: baseline KILL → PF 1.219 + 6/8 yrs+ (but 174% max-yr concentration → ARCH_REJECT)",
+      "require_vol_above_70 on CPI-MGC: PF 1.209 → 1.292 + median +$18.76 (still losing era)",
+      "require_compression on CPI-MES-Short: PF inf at n=4 — suggestive but too small",
+      "require_expansion on Russell-MES-Long: baseline KILL → PF 1.310 at n=8 (too small)"
+    ],
+    "doctrine_conclusion": "Event-conditioned filter primitive is MECHANICALLY VALIDATED — it correctly modifies cheap-screen results and surfaces previously-hidden signal patterns. BUT the underlying microstructure-event candidates still don't survive Era 3 (2024+). 8 of 8 ARCH_REJECTs have 'losing era' as the kill reason. Consistent with FOMC-ZN finding: rate-policy regime changed ~2023, breaking event-conditioned momentum/reversion strategies on equity index.",
+    "honest_assessment": "NFP-MGC is genuinely rare: it works in Era 3 (2026 YTD PF 9.04!) while FOMC, CPI, Russell, and OpEx all show Era 3 weakness. The event-conditioned filter doesn't fix this — the underlying mechanism in current macro regime is asset-specific (gold↔dollar response to macro data), not generalizable to equity index. Discriminator was right to build (per #43); broad equity-index event-window family should be paused regardless of conditioning until the macro regime shifts.",
+    "next_direction_per_44": "Per operator #44 priority order: (1) non-equity commodity-specific events (USDA WASDE has clean monthly calendar), (2) overnight/Asia-London FX with HL or regime gate, (3) commodity calendar spreads with HL gate, (4) cross-asset HL pairs (GC/SI, ZN/ZF)."
+  },
+  "_mnq_family_review_2026-06-04": {
+    "operator_approval": "OK family-review (#39 clarification)",
+    "candidate_under_review": "XB-ORB-EMA-VolLow30-MNQ",
+    "existing_baseline": "XB-ORB-EMA-Ladder-MNQ (probation; already in cohort)",
+    "trade_overlap": {
+      "n_baseline": 1500,
+      "n_vollow30": 1165,
+      "same_day_pct_of_baseline": 96,
+      "same_day_pct_of_vollow30": 100,
+      "same_direction_overlap": "near 100%",
+      "interpretation": "VolLow30 is a subset of baseline — fires on subset of baseline trading days, always same direction"
+    },
+    "pnl_correlation": {
+      "daily_corr": 1.00,
+      "interpretation": "Daily PnL correlation is essentially 1.00 — VolLow30 PnL stream is a sub-sample of baseline PnL stream"
+    },
+    "portfolio_configurations": {
+      "A_baseline_alone": {"total_pnl": 48890, "max_dd": -2331, "sharpe": 2.67, "prop_breach": false},
+      "B_vollow30_alone": {"total_pnl": 48717, "max_dd": -2331, "sharpe": 2.68, "prop_breach": false, "note": "identical metrics to baseline alone"},
+      "C_both_full_size": {"total_pnl": 97777, "max_dd": -4663, "sharpe": 2.67, "prop_breach": true, "interpretation": "doubling exposure via concurrent positions — total doubles, DD doubles, BREACHES $4k prop threshold"},
+      "D_both_half_size": {"total_pnl": 48888, "max_dd": -2331, "sharpe": 2.67, "prop_breach": false, "interpretation": "identical to either alone — half + half just averages"},
+      "E_controller_variant": {"total_pnl": 48584, "max_dd": -2331, "sharpe": 2.66, "prop_breach": false, "interpretation": "identical to either alone — controller picks one of two perfectly-correlated streams"}
+    },
+    "verdict": "DUPLICATE_EXPOSURE_REJECT",
+    "notes_per_classifier": [
+      "daily corr 1.00 > 0.65 (catastrophic)",
+      "DD stacks -$4663 > max(base,new) × 1.30",
+      "overlap day pct 96/100"
+    ],
+    "doctrine_significance": "VolLow30 is NOT a new candidate. It is a sub-sample of XB-ORB-EMA-Ladder-MNQ baseline. The 'improved' max-year concentration (20.2%) was a sampling artifact, not real diversification. Running both at full-size double-counts exposure AND breaches prop threshold. EVT-NFP-MGC-Long-2h remains the sole genuine paper-packet candidate of the campaign.",
+    "closed_loop_lesson": "Vol-low filter on an existing intraday workhorse REDUCES sample but does NOT create new edge. Standalone metrics improvements (PF + max-yr) can mask a DUPLICATE_EXPOSURE_REJECT verdict when the filter is a SUBSET of the parent's trades. Family-review is essential before treating any filter-overlay variant as a 'new candidate.'"
+  },
+  "_uncorrelated_hunt_2026-06-04": {
+    "operator_approval": "OK STRUCTURAL hunt + diversification (#38, #41)",
+    "families_tested": 7,
+    "candidates_tested": 48,
+    "aggregate": {"WATCH_FOR_DEEP_SCREEN": 0, "WATCH": 0, "ARCHITECTURAL_REJECT": 3, "KILL": 45},
+    "families_killed_this_cycle": [
+      "OpEx close (3rd Fri 16:00 ET) — all 8 KILL across MES/MNQ × long/short × 30min/2h",
+      "OpEx morning (3rd Fri 09:35 ET) — all 8 KILL",
+      "Russell rebalance (Mar/Jun/Sep/Dec last Fri) — 7 KILL + 1 ARCH_REJECT (n=28 too small + losing era)",
+      "Month-end (last bus day 15:30 ET) — all 8 KILL",
+      "First-of-month (first bus day 09:35 ET) — 7 KILL + 1 ARCH_REJECT (losing era)",
+      "Fed minutes (FOMC + 21d 14:00 ET) — all 8 KILL"
+    ],
+    "doctrine_significance": "Per family-fatigue rule: 7 microstructure-event families simultaneously KILLed in one cycle = strong evidence that simple +1-bar entry / 30min-2h exit on equity-index calendar events DOESN'T have edge. EVT-NFP-MGC-Long-2h is genuinely rare — it survives where the other 7 don't.",
+    "what_might_unlock_these_families": [
+      "Surprise-direction conditioning (needs vendor data; deferred per #37 Option A)",
+      "Volatility-regime conditioning AT event time (entry-bar features, not all-day vol)",
+      "Prior-N-bar momentum conditioning (only fire LONG if pre-event was down, etc.)",
+      "Volume / range-anomaly conditioning on entry bar",
+      "All four require new event-conditioned filter primitives that look at entry-bar features, not bar-by-bar features"
+    ],
+    "closed_loop_lessons": [
+      "Equity-index microstructure events (OpEx, Russell, month-end, first-of-month, Fed minutes) do NOT have post-release directional drift on MES/MNQ at simple-entry fidelity. Different mechanism from NFP-MGC.",
+      "Russell rebalance has surprising MNQ-Short n=28 PF 1.475 but losing era → ARCH_REJECT. Sample size + temporal robustness both insufficient.",
+      "Multiple short-direction candidates produced PF > 1.1 with median negative — momentum continues post-event, doesn't reverse.",
+      "NFP-MGC's edge is likely from gold's negative-correlation-to-dollar response to macro data, not from a generic 'post-release drift' pattern. The mechanism is asset-specific, not event-class-specific."
+    ]
+  },
+  "_structural_hunt_2026-06-04": {
+    "operator_approval": "OK STRUCTURAL hunt (#38) — diversification track",
+    "candidates_tested": 10,
+    "aggregate": {"WATCH_FOR_DEEP_SCREEN": 1, "WATCH": 1, "KILL": 8, "ARCHITECTURAL_REJECT": 0},
+    "kills": {
+      "EVT-EIA-MCL-Long-2h": {"n": 256, "pf": 0.844, "median": -0.74, "interpretation": "MCL response to weekly EIA Petroleum Status (Wed 10:30 ET) shows no post-release drift. Different event mechanism than NFP."},
+      "EVT-EIA-MCL-Short-2h": {"n": 256, "pf": 0.874, "median": -9.74, "interpretation": "Symmetric KILL; no short-side edge either"},
+      "EVT-EIA-MCL-Long-30min": {"n": 256, "pf": 0.931, "median": -1.24},
+      "EVT-EIA-MCL-Long-4h": {"n": 256, "pf": 0.778, "median": -4.24},
+      "STR-CL-Settle-Long-30min": {"n": 1275, "pf": 0.602, "median": -4.24, "interpretation": "NYMEX settlement-window reversion thesis fails; momentum continues through 14:30"},
+      "STR-CL-Settle-Long-1h": {"n": 1275, "pf": 0.726, "median": -3.24},
+      "STR-CL-Settle-Short-30min": {"n": 1275, "pf": 0.411, "median": -6.24, "interpretation": "Catastrophic; settlement-impulse-fade hypothesis dead"},
+      "STR-CL-Settle-Short-1h": {"n": 1275, "pf": 0.496, "median": -7.24},
+      "XB-ORB-EMA-afternoon-only-MNQ": {"n": 1703, "pf": 1.044, "median": 6.26, "max_yr_pct": 85.0, "interpretation": "Afternoon-only ORB on MNQ slightly profitable per-trade but PF below 1.15 gate AND concentration 85% max-yr"}
+    },
+    "watch_for_deep_screen": {
+      "label": "XB-ORB-EMA-VolLow30-MNQ",
+      "n": 1165, "pf": 1.613, "median": 44.26, "max_year_share_pct": 20.2,
+      "temporal_split": {
+        "per_year": "8/8 positive (PF range 1.132 → 2.557)",
+        "eras": "E1 1.249 / E2 1.701 / E3 1.787 (INCREASING, not concentrated)",
+        "year_exclusion_range": [1.558, 1.663],
+        "year_exclusion_deltas": "all |Δ| < 0.06 — no single year carries edge",
+        "verdict": "TEMPORAL_ROBUSTNESS_PASSED"
+      },
+      "doctrine_classification": "WATCH_FOR_DEEP_SCREEN — passes all temporal robustness tests cleanly. Materially better concentration (max-yr 20.2%) than NFP-MGC (27.2%).",
+      "diversification_assessment": {
+        "vs_EVT-NFP-MGC-Long-2h": "DIVERSIFIED — different asset (MNQ vs MGC), different mechanism (intraday workhorse vs event-window), different time-of-day (continuous intraday vs post-NFP morning).",
+        "vs_existing_portfolio": "OVERLAPPING — XB-ORB-EMA-Ladder-MNQ is already in probation cohort. This is a vol-low-overlay mutation of the existing workhorse, not a fundamentally new family. Vol-low filter materially improves concentration (max-yr 20.2% vs typical XB-ORB family ~50%+) but is still XB-ORB-EMA-Ladder family.",
+        "honest_status": "WATCH_FOR_DEEP_SCREEN as a refined sibling of an existing probation candidate. Operator decision on whether to (a) deep-screen as Packet #2 candidate, (b) treat as probation-cohort refinement, or (c) classify as workhorse-family enhancement requiring family-level review."
+      }
+    },
+    "non_overlapping_families_that_KILLed_this_cycle": [
+      "EIA-MCL event-window (different event family) — no edge at 10:30 ET fidelity",
+      "CL settlement-window mean-reversion (microstructure) — momentum continues through settlement",
+      "MNQ afternoon-only ORB without vol filter — sub-1.15 PF + 85% max-yr concentration"
+    ],
+    "closed_loop_signals": [
+      "EIA mechanism is fundamentally different from NFP — weekly inventory data has less predictable post-release drift on MCL. Closes the EIA-event-window family for now.",
+      "NYMEX settlement-impulse-fade thesis is DEAD at cheap-screen tier — both long and short directions catastrophic KILL. Original harvest hypothesis (Crude Settlement Wash Reversion) does not survive cost-aware backtest.",
+      "Vol-low filter on intraday ORB is HIGHLY effective for concentration management on MNQ — but the candidate is a refinement of existing probation, not a new family.",
+      "Genuinely uncorrelated NEW family candidates need more primitive coverage (intraday volume features, order-flow proxies, settlement-window microstructure) — current primitive stack works for event-window + XB intraday + monthly rebalance + pairs, but doesn't catch session-microstructure cleanly."
+    ]
+  },
   "_packet_draft_generated_2026-06-04": {
     "candidate": "EVT-NFP-MGC-Long-2h",
     "artifact": "docs/fql_forge/paper_packet_drafts/EVT-NFP-MGC-Long-2h_2026-06-04.md",

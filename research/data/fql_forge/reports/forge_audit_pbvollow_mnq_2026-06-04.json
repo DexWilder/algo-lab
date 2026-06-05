@@ -1,0 +1,256 @@
+{
+  "date": "2026-06-04",
+  "overall_verdict": "YELLOW",
+  "classification": "PORTFOLIO_COMPLEMENT_CANDIDATE (audit YELLOW due weak median per dim C; portfolio contribution strong per G; operator decides)",
+  "issues": [
+    [
+      "YELLOW",
+      "C: YELLOW (median positive but very weak < $5)"
+    ]
+  ],
+  "A": {
+    "symbol": "MNQ",
+    "asset_config_present": true,
+    "point_value": 2.0,
+    "commission_per_side": 0.62,
+    "slippage_ticks": 1,
+    "tick_size": 0.25,
+    "cost_tier": "VALIDATED",
+    "missing_or_default": false,
+    "round_trip_cost": 2.24,
+    "verdict": "GREEN"
+  },
+  "B": {
+    "rows": [
+      {
+        "stress": "1x baseline",
+        "n": 1445,
+        "pf": 1.365,
+        "net_median": 3.26,
+        "net_pnl": 21204.7,
+        "max_dd": -1850.12,
+        "max_year_share_pct": 46.9
+      },
+      {
+        "stress": "1.5x cost",
+        "n": 1445,
+        "pf": 1.346,
+        "net_median": 2.64,
+        "net_pnl": 20308.8,
+        "max_dd": -1889.18,
+        "max_year_share_pct": 48.3
+      },
+      {
+        "stress": "2x cost",
+        "n": 1445,
+        "pf": 1.329,
+        "net_median": 2.02,
+        "net_pnl": 19412.9,
+        "max_dd": -1928.24,
+        "max_year_share_pct": 49.9
+      },
+      {
+        "stress": "3x cost",
+        "n": 1445,
+        "pf": 1.294,
+        "net_median": 0.78,
+        "net_pnl": 17621.1,
+        "max_dd": -2006.36,
+        "max_year_share_pct": 53.5
+      },
+      {
+        "stress": "+1 tick slip",
+        "n": 1445,
+        "pf": 1.336,
+        "net_median": 2.26,
+        "net_pnl": 19759.7,
+        "max_dd": -1913.12,
+        "max_year_share_pct": 49.3
+      },
+      {
+        "stress": "+2 tick slip",
+        "n": 1445,
+        "pf": 1.307,
+        "net_median": 1.26,
+        "net_pnl": 18314.7,
+        "max_dd": -1976.12,
+        "max_year_share_pct": 52.0
+      },
+      {
+        "stress": "2x cost + 1 tick slip",
+        "n": 1445,
+        "pf": 1.301,
+        "net_median": 1.02,
+        "net_pnl": 17967.9,
+        "max_dd": -1991.24,
+        "max_year_share_pct": 52.8
+      },
+      {
+        "stress": "2x cost + 2 tick slip",
+        "n": 1445,
+        "pf": 1.273,
+        "net_median": 0.02,
+        "net_pnl": 16522.9,
+        "max_dd": -2054.24,
+        "max_year_share_pct": 56.1
+      }
+    ],
+    "median_collapse": false,
+    "verdict": "GREEN"
+  },
+  "C": {
+    "metrics": {
+      "n": 1445,
+      "win_rate_pct": 51.0726643598616,
+      "gross_median": 5.5,
+      "net_median": 3.26,
+      "avg_win": 107.55945799457993,
+      "avg_loss": -82.28314002828856,
+      "largest_win": 1094.76,
+      "largest_loss": -421.24,
+      "top1_share_pct": 5.162817677213073,
+      "top3_share_pct": 12.76028427659906,
+      "top5_share_pct": 19.310813168778626,
+      "pct_trades_net_le_zero": 48.92733564013841,
+      "max_consec_losses": 8,
+      "max_dd_duration_trades": 133,
+      "rt_cost_per_trade": 2.24
+    },
+    "verdict": "YELLOW (median positive but very weak < $5)"
+  },
+  "D": {
+    "candidate_class": "XB (crossbreeding_engine)",
+    "entry_logic": "pb_pullback uses bar i features (ema, atr) computed up to i",
+    "exit_logic": "profit_ladder uses bar i + state from prior bars",
+    "indicator_shifting": "donchian bug-fixed 2026-05-28; pb_pullback uses no prior-shifted indicators",
+    "no_future_bars": true,
+    "verdict": "GREEN"
+  },
+  "E": {
+    "calendar_source": "N/A \u2014 continuous-bar candidate",
+    "verdict": "GREEN"
+  },
+  "F": {
+    "symbol": "MNQ",
+    "available": true,
+    "first_bar": "2019-06-30 20:00:00",
+    "last_bar": "2026-06-02 19:55:00",
+    "span_days": 2528,
+    "n_bars": 485536,
+    "big_jumps_gt_5pct": 1,
+    "data_window_caveat": "FULL \u2014 2019-2020+",
+    "verdict": "GREEN"
+  },
+  "G": {
+    "verdict": "PARALLEL_COMPLEMENT_CANDIDATE",
+    "key_summary": {
+      "daily_corr": 0.4255987566178796,
+      "drawdown_overlap_pct": 66.7986798679868,
+      "losing_day_overlap_pct": 16.105610561056103
+    },
+    "portfolio_metrics_full_size": {
+      "label": "Both full",
+      "n_days": 1515,
+      "total_pnl": 70264.59999999999,
+      "annual_pnl_est": 11687.577029702969,
+      "annual_vol_est": 4729.212787721096,
+      "sharpe_est": 2.471357825143443,
+      "max_drawdown": -2638.2200000000003,
+      "worst_day": -1155.98,
+      "max_consecutive_losing_days": 7,
+      "worst_rolling_60d_pf": 0.7042464951784851,
+      "pct_rolling_60d_pf_gt_1": 93.68131868131869,
+      "prop_threshold": -4000,
+      "prop_breach": false,
+      "days_to_first_breach": null
+    }
+  },
+  "H_temporal": {
+    "per_year": [
+      {
+        "year": 2019,
+        "n": 106,
+        "pf": 0.7788599010203457,
+        "median": -0.74,
+        "net": -361.9400000000001
+      },
+      {
+        "year": 2020,
+        "n": 207,
+        "pf": 1.2601494537795557,
+        "median": 1.26,
+        "net": 2010.8199999999993
+      },
+      {
+        "year": 2021,
+        "n": 209,
+        "pf": 1.3455060348973207,
+        "median": 4.76,
+        "net": 2327.8399999999992
+      },
+      {
+        "year": 2022,
+        "n": 210,
+        "pf": 1.040243818960124,
+        "median": -20.24,
+        "net": 505.5999999999983
+      },
+      {
+        "year": 2023,
+        "n": 210,
+        "pf": 1.4159591251776382,
+        "median": 2.26,
+        "net": 2763.099999999999
+      },
+      {
+        "year": 2024,
+        "n": 204,
+        "pf": 1.2771969128299758,
+        "median": -7.24,
+        "net": 2385.539999999999
+      },
+      {
+        "year": 2025,
+        "n": 209,
+        "pf": 2.110241282554395,
+        "median": 23.76,
+        "net": 9947.34
+      },
+      {
+        "year": 2026,
+        "n": 90,
+        "pf": 1.3069362612808137,
+        "median": 20.76,
+        "net": 1626.3999999999992
+      }
+    ],
+    "eras": [
+      {
+        "era": 1,
+        "n": 481,
+        "pf": 1.2272686793124943,
+        "median": 0.76,
+        "net": 3266.559999999998
+      },
+      {
+        "era": 2,
+        "n": 482,
+        "pf": 1.2328175821219531,
+        "median": -1.2400000000000002,
+        "net": 4984.819999999997
+      },
+      {
+        "era": 3,
+        "n": 482,
+        "pf": 1.578525802783537,
+        "median": 13.26,
+        "net": 12953.319999999996
+      }
+    ],
+    "yrs_pos": 7,
+    "n_yrs": 8,
+    "era_3_pf": 1.578525802783537,
+    "era_3_median": 13.26,
+    "verdict": "GREEN"
+  }
+}

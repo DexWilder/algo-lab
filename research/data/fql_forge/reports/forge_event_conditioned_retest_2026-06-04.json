@@ -1,0 +1,1496 @@
+{
+  "date": "2026-06-04",
+  "approval": "OK event-conditioned filter (#43); retest 2-3 paused families",
+  "results": [
+    {
+      "family": "Russell-rebalance-MES-Long",
+      "variant": "baseline (no filter)",
+      "event_filter": null,
+      "event_filter_params": null,
+      "metrics": {
+        "n": 28,
+        "pf": 0.823,
+        "median": 10.01,
+        "net": -125.97,
+        "max_year_share_pct": 0.0,
+        "h1_pf": 0.732,
+        "h2_pf": 0.937,
+        "years_positive": 4,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (PF<1.15)",
+      "doctrine_verdict": "KILL (PF<1.15)"
+    },
+    {
+      "family": "Russell-rebalance-MES-Long",
+      "variant": "fade_pre_5bar",
+      "event_filter": "fade_pre_event_move",
+      "event_filter_params": {
+        "prior_bars": 5,
+        "threshold_pct": 0.001
+      },
+      "metrics": {
+        "n": 19,
+        "pf": 0.798,
+        "median": 15.01,
+        "net": -109.81,
+        "max_year_share_pct": 0.0,
+        "h1_pf": 1.415,
+        "h2_pf": 0.358,
+        "years_positive": 3,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (PF<1.15)",
+      "doctrine_verdict": "KILL (PF<1.15)"
+    },
+    {
+      "family": "Russell-rebalance-MES-Long",
+      "variant": "follow_pre_5bar",
+      "event_filter": "follow_pre_event_move",
+      "event_filter_params": {
+        "prior_bars": 5,
+        "threshold_pct": 0.001
+      },
+      "metrics": {
+        "n": 19,
+        "pf": 0.938,
+        "median": -22.49,
+        "net": -32.31,
+        "max_year_share_pct": 0.0,
+        "h1_pf": 0.567,
+        "h2_pf": 1.852,
+        "years_positive": 4,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "Russell-rebalance-MES-Long",
+      "variant": "require_expansion_1.5x",
+      "event_filter": "require_event_bar_expansion",
+      "event_filter_params": {
+        "expansion_threshold": 1.5
+      },
+      "metrics": {
+        "n": 8,
+        "pf": 1.31,
+        "median": 10.01,
+        "net": 48.83,
+        "max_year_share_pct": 199.7,
+        "h1_pf": 7.616,
+        "h2_pf": 0.26,
+        "years_positive": 6,
+        "n_years": 8
+      },
+      "temporal_split": {
+        "per_year": [
+          {
+            "year": 2019,
+            "n": 1,
+            "pf": Infinity,
+            "net": 8.76
+          },
+          {
+            "year": 2020,
+            "n": 1,
+            "pf": Infinity,
+            "net": 97.51
+          },
+          {
+            "year": 2021,
+            "n": 1,
+            "pf": Infinity,
+            "net": 65.01
+          },
+          {
+            "year": 2022,
+            "n": 1,
+            "pf": 0.0,
+            "net": -22.49
+          },
+          {
+            "year": 2023,
+            "n": 1,
+            "pf": Infinity,
+            "net": 5.01
+          },
+          {
+            "year": 2024,
+            "n": 1,
+            "pf": Infinity,
+            "net": 18.76
+          },
+          {
+            "year": 2025,
+            "n": 1,
+            "pf": Infinity,
+            "net": 11.26
+          },
+          {
+            "year": 2026,
+            "n": 1,
+            "pf": 0.0,
+            "net": -134.99
+          }
+        ],
+        "eras": [
+          {
+            "era": 1,
+            "n": 2,
+            "pf": Infinity,
+            "net": 106.27000000000001
+          },
+          {
+            "era": 2,
+            "n": 3,
+            "pf": 3.1133837261004897,
+            "net": 47.53000000000001
+          },
+          {
+            "era": 3,
+            "n": 3,
+            "pf": 0.22238684346988666,
+            "net": -104.97
+          }
+        ],
+        "yrs_pos": 6,
+        "n_yrs": 8
+      },
+      "cheap_verdict": "TEMPORAL_SPLIT_REQUIRED",
+      "doctrine_verdict": "ARCHITECTURAL_REJECT (losing era)"
+    },
+    {
+      "family": "Russell-rebalance-MES-Long",
+      "variant": "require_compression_0.7x",
+      "event_filter": "require_event_bar_compression",
+      "event_filter_params": {
+        "compression_threshold": 0.7
+      },
+      "metrics": {
+        "n": 4,
+        "pf": 0.192,
+        "median": -33.74,
+        "net": -94.96,
+        "max_year_share_pct": 0.0,
+        "h1_pf": 0.45,
+        "h2_pf": 0.0,
+        "years_positive": 1,
+        "n_years": 4
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (n=4 too small)",
+      "doctrine_verdict": "KILL (n=4 too small)"
+    },
+    {
+      "family": "Russell-rebalance-MES-Long",
+      "variant": "require_vol_above_70",
+      "event_filter": "require_vol_above_percentile",
+      "event_filter_params": {
+        "vol_threshold": 70
+      },
+      "metrics": {
+        "n": 24,
+        "pf": 0.805,
+        "median": 10.01,
+        "net": -132.26,
+        "max_year_share_pct": 0.0,
+        "h1_pf": 0.797,
+        "h2_pf": 0.815,
+        "years_positive": 4,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (PF<1.15)",
+      "doctrine_verdict": "KILL (PF<1.15)"
+    },
+    {
+      "family": "Russell-rebalance-MES-Long",
+      "variant": "require_vol_below_30",
+      "event_filter": "require_vol_below_percentile",
+      "event_filter_params": {
+        "vol_threshold": 30
+      },
+      "metrics": {
+        "n": 0,
+        "pf": NaN,
+        "median": 0.0,
+        "net": 0.0,
+        "max_year_share_pct": 0.0,
+        "h1_pf": NaN,
+        "h2_pf": NaN,
+        "years_positive": 0,
+        "n_years": 0
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (n=0 too small)",
+      "doctrine_verdict": "KILL (n=0 too small)"
+    },
+    {
+      "family": "Russell-rebalance-MES-Short",
+      "variant": "baseline (no filter)",
+      "event_filter": null,
+      "event_filter_params": null,
+      "metrics": {
+        "n": 28,
+        "pf": 0.882,
+        "median": -17.49,
+        "net": -83.47,
+        "max_year_share_pct": 0.0,
+        "h1_pf": 1.004,
+        "h2_pf": 0.769,
+        "years_positive": 3,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "Russell-rebalance-MES-Short",
+      "variant": "fade_pre_5bar",
+      "event_filter": "fade_pre_event_move",
+      "event_filter_params": {
+        "prior_bars": 5,
+        "threshold_pct": 0.001
+      },
+      "metrics": {
+        "n": 19,
+        "pf": 0.798,
+        "median": 15.01,
+        "net": -109.81,
+        "max_year_share_pct": 0.0,
+        "h1_pf": 1.415,
+        "h2_pf": 0.358,
+        "years_positive": 3,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (PF<1.15)",
+      "doctrine_verdict": "KILL (PF<1.15)"
+    },
+    {
+      "family": "Russell-rebalance-MES-Short",
+      "variant": "follow_pre_5bar",
+      "event_filter": "follow_pre_event_move",
+      "event_filter_params": {
+        "prior_bars": 5,
+        "threshold_pct": 0.001
+      },
+      "metrics": {
+        "n": 19,
+        "pf": 0.938,
+        "median": -22.49,
+        "net": -32.31,
+        "max_year_share_pct": 0.0,
+        "h1_pf": 0.567,
+        "h2_pf": 1.852,
+        "years_positive": 4,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "Russell-rebalance-MES-Short",
+      "variant": "require_expansion_1.5x",
+      "event_filter": "require_event_bar_expansion",
+      "event_filter_params": {
+        "expansion_threshold": 1.5
+      },
+      "metrics": {
+        "n": 8,
+        "pf": 0.567,
+        "median": -17.49,
+        "net": -108.67,
+        "max_year_share_pct": 0.0,
+        "h1_pf": 0.077,
+        "h2_pf": 2.219,
+        "years_positive": 2,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "Russell-rebalance-MES-Short",
+      "variant": "require_compression_0.7x",
+      "event_filter": "require_event_bar_compression",
+      "event_filter_params": {
+        "compression_threshold": 0.7
+      },
+      "metrics": {
+        "n": 4,
+        "pf": 3.169,
+        "median": 26.26,
+        "net": 65.04,
+        "max_year_share_pct": 65.4,
+        "h1_pf": 1.417,
+        "h2_pf": Infinity,
+        "years_positive": 3,
+        "n_years": 4
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (n=4 too small)",
+      "doctrine_verdict": "KILL (n=4 too small)"
+    },
+    {
+      "family": "Russell-rebalance-MES-Short",
+      "variant": "require_vol_above_70",
+      "event_filter": "require_vol_above_percentile",
+      "event_filter_params": {
+        "vol_threshold": 70
+      },
+      "metrics": {
+        "n": 24,
+        "pf": 0.928,
+        "median": -17.49,
+        "net": -47.26,
+        "max_year_share_pct": 0.0,
+        "h1_pf": 0.953,
+        "h2_pf": 0.901,
+        "years_positive": 2,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "Russell-rebalance-MES-Short",
+      "variant": "require_vol_below_30",
+      "event_filter": "require_vol_below_percentile",
+      "event_filter_params": {
+        "vol_threshold": 30
+      },
+      "metrics": {
+        "n": 0,
+        "pf": NaN,
+        "median": 0.0,
+        "net": 0.0,
+        "max_year_share_pct": 0.0,
+        "h1_pf": NaN,
+        "h2_pf": NaN,
+        "years_positive": 0,
+        "n_years": 0
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (n=0 too small)",
+      "doctrine_verdict": "KILL (n=0 too small)"
+    },
+    {
+      "family": "CPI-MES-Long",
+      "variant": "baseline (no filter)",
+      "event_filter": null,
+      "event_filter_params": null,
+      "metrics": {
+        "n": 84,
+        "pf": 0.732,
+        "median": -11.24,
+        "net": -1054.16,
+        "max_year_share_pct": 0.0,
+        "h1_pf": 0.532,
+        "h2_pf": 0.982,
+        "years_positive": 3,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "CPI-MES-Long",
+      "variant": "fade_pre_5bar",
+      "event_filter": "fade_pre_event_move",
+      "event_filter_params": {
+        "prior_bars": 5,
+        "threshold_pct": 0.001
+      },
+      "metrics": {
+        "n": 16,
+        "pf": 1.265,
+        "median": 1.26,
+        "net": 253.91,
+        "max_year_share_pct": 155.1,
+        "h1_pf": 2.141,
+        "h2_pf": 0.787,
+        "years_positive": 5,
+        "n_years": 7
+      },
+      "temporal_split": {
+        "per_year": [
+          {
+            "year": 2020,
+            "n": 2,
+            "pf": 0.4483757500517277,
+            "net": -79.98
+          },
+          {
+            "year": 2021,
+            "n": 4,
+            "pf": 3.2831052875695734,
+            "net": 393.78999999999996
+          },
+          {
+            "year": 2022,
+            "n": 3,
+            "pf": 1.10331842786538,
+            "net": 8.780000000000008
+          },
+          {
+            "year": 2023,
+            "n": 1,
+            "pf": Infinity,
+            "net": 142.51
+          },
+          {
+            "year": 2024,
+            "n": 1,
+            "pf": Infinity,
+            "net": 88.76
+          },
+          {
+            "year": 2025,
+            "n": 3,
+            "pf": 2.711022212864512,
+            "net": 162.53
+          },
+          {
+            "year": 2026,
+            "n": 2,
+            "pf": 0.0,
+            "net": -462.48
+          }
+        ],
+        "eras": [
+          {
+            "era": 1,
+            "n": 5,
+            "pf": 1.1064667527640406,
+            "net": 33.80000000000001
+          },
+          {
+            "era": 2,
+            "n": 5,
+            "pf": 6.075311838079547,
+            "net": 431.29999999999995
+          },
+          {
+            "era": 3,
+            "n": 6,
+            "pf": 0.6211634706800365,
+            "net": -211.19000000000003
+          }
+        ],
+        "yrs_pos": 5,
+        "n_yrs": 7
+      },
+      "cheap_verdict": "TEMPORAL_SPLIT_REQUIRED",
+      "doctrine_verdict": "ARCHITECTURAL_REJECT (losing era)"
+    },
+    {
+      "family": "CPI-MES-Long",
+      "variant": "follow_pre_5bar",
+      "event_filter": "follow_pre_event_move",
+      "event_filter_params": {
+        "prior_bars": 5,
+        "threshold_pct": 0.001
+      },
+      "metrics": {
+        "n": 16,
+        "pf": 0.707,
+        "median": -8.74,
+        "net": -373.59,
+        "max_year_share_pct": 0.0,
+        "h1_pf": 0.409,
+        "h2_pf": 1.14,
+        "years_positive": 2,
+        "n_years": 7
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "CPI-MES-Long",
+      "variant": "require_expansion_1.5x",
+      "event_filter": "require_event_bar_expansion",
+      "event_filter_params": {
+        "expansion_threshold": 1.5
+      },
+      "metrics": {
+        "n": 29,
+        "pf": 0.751,
+        "median": -16.24,
+        "net": -330.96,
+        "max_year_share_pct": 0.0,
+        "h1_pf": 1.121,
+        "h2_pf": 0.589,
+        "years_positive": 2,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "CPI-MES-Long",
+      "variant": "require_compression_0.7x",
+      "event_filter": "require_event_bar_compression",
+      "event_filter_params": {
+        "compression_threshold": 0.7
+      },
+      "metrics": {
+        "n": 4,
+        "pf": 0.0,
+        "median": -58.11,
+        "net": -291.21,
+        "max_year_share_pct": 0.0,
+        "h1_pf": 0.0,
+        "h2_pf": 0.0,
+        "years_positive": 0,
+        "n_years": 4
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (n=4 too small)",
+      "doctrine_verdict": "KILL (n=4 too small)"
+    },
+    {
+      "family": "CPI-MES-Long",
+      "variant": "require_vol_above_70",
+      "event_filter": "require_vol_above_percentile",
+      "event_filter_params": {
+        "vol_threshold": 70
+      },
+      "metrics": {
+        "n": 16,
+        "pf": 1.219,
+        "median": 15.01,
+        "net": 161.41,
+        "max_year_share_pct": 174.3,
+        "h1_pf": 1.417,
+        "h2_pf": 1.11,
+        "years_positive": 6,
+        "n_years": 8
+      },
+      "temporal_split": {
+        "per_year": [
+          {
+            "year": 2019,
+            "n": 1,
+            "pf": Infinity,
+            "net": 6.26
+          },
+          {
+            "year": 2020,
+            "n": 1,
+            "pf": Infinity,
+            "net": 92.51
+          },
+          {
+            "year": 2021,
+            "n": 4,
+            "pf": 0.4428053506688337,
+            "net": -133.70999999999998
+          },
+          {
+            "year": 2022,
+            "n": 3,
+            "pf": 14.242937853107344,
+            "net": 281.28
+          },
+          {
+            "year": 2023,
+            "n": 1,
+            "pf": Infinity,
+            "net": 71.26
+          },
+          {
+            "year": 2024,
+            "n": 1,
+            "pf": Infinity,
+            "net": 46.26
+          },
+          {
+            "year": 2025,
+            "n": 3,
+            "pf": 0.08680086216344574,
+            "net": -249.97000000000003
+          },
+          {
+            "year": 2026,
+            "n": 2,
+            "pf": 1.2332384411504858,
+            "net": 47.51999999999998
+          }
+        ],
+        "eras": [
+          {
+            "era": 1,
+            "n": 5,
+            "pf": 1.6739875898105816,
+            "net": 82.55000000000003
+          },
+          {
+            "era": 2,
+            "n": 5,
+            "pf": 2.69429827722915,
+            "net": 235.05
+          },
+          {
+            "era": 3,
+            "n": 6,
+            "pf": 0.672879971516535,
+            "net": -156.19000000000005
+          }
+        ],
+        "yrs_pos": 6,
+        "n_yrs": 8
+      },
+      "cheap_verdict": "TEMPORAL_SPLIT_REQUIRED",
+      "doctrine_verdict": "ARCHITECTURAL_REJECT (losing era)"
+    },
+    {
+      "family": "CPI-MES-Long",
+      "variant": "require_vol_below_30",
+      "event_filter": "require_vol_below_percentile",
+      "event_filter_params": {
+        "vol_threshold": 30
+      },
+      "metrics": {
+        "n": 11,
+        "pf": 0.289,
+        "median": -77.49,
+        "net": -522.39,
+        "max_year_share_pct": 0.0,
+        "h1_pf": 0.0,
+        "h2_pf": 0.787,
+        "years_positive": 2,
+        "n_years": 6
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "CPI-MES-Short",
+      "variant": "baseline (no filter)",
+      "event_filter": null,
+      "event_filter_params": null,
+      "metrics": {
+        "n": 84,
+        "pf": 1.135,
+        "median": 3.76,
+        "net": 425.84,
+        "max_year_share_pct": 174.4,
+        "h1_pf": 1.55,
+        "h2_pf": 0.849,
+        "years_positive": 5,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (PF<1.15)",
+      "doctrine_verdict": "KILL (PF<1.15)"
+    },
+    {
+      "family": "CPI-MES-Short",
+      "variant": "fade_pre_5bar",
+      "event_filter": "fade_pre_event_move",
+      "event_filter_params": {
+        "prior_bars": 5,
+        "threshold_pct": 0.001
+      },
+      "metrics": {
+        "n": 16,
+        "pf": 1.265,
+        "median": 1.26,
+        "net": 253.91,
+        "max_year_share_pct": 155.1,
+        "h1_pf": 2.141,
+        "h2_pf": 0.787,
+        "years_positive": 5,
+        "n_years": 7
+      },
+      "temporal_split": {
+        "per_year": [
+          {
+            "year": 2020,
+            "n": 2,
+            "pf": 0.4483757500517277,
+            "net": -79.98
+          },
+          {
+            "year": 2021,
+            "n": 4,
+            "pf": 3.2831052875695734,
+            "net": 393.78999999999996
+          },
+          {
+            "year": 2022,
+            "n": 3,
+            "pf": 1.10331842786538,
+            "net": 8.780000000000008
+          },
+          {
+            "year": 2023,
+            "n": 1,
+            "pf": Infinity,
+            "net": 142.51
+          },
+          {
+            "year": 2024,
+            "n": 1,
+            "pf": Infinity,
+            "net": 88.76
+          },
+          {
+            "year": 2025,
+            "n": 3,
+            "pf": 2.711022212864512,
+            "net": 162.53
+          },
+          {
+            "year": 2026,
+            "n": 2,
+            "pf": 0.0,
+            "net": -462.48
+          }
+        ],
+        "eras": [
+          {
+            "era": 1,
+            "n": 5,
+            "pf": 1.1064667527640406,
+            "net": 33.80000000000001
+          },
+          {
+            "era": 2,
+            "n": 5,
+            "pf": 6.075311838079547,
+            "net": 431.29999999999995
+          },
+          {
+            "era": 3,
+            "n": 6,
+            "pf": 0.6211634706800365,
+            "net": -211.19000000000003
+          }
+        ],
+        "yrs_pos": 5,
+        "n_yrs": 7
+      },
+      "cheap_verdict": "TEMPORAL_SPLIT_REQUIRED",
+      "doctrine_verdict": "ARCHITECTURAL_REJECT (losing era)"
+    },
+    {
+      "family": "CPI-MES-Short",
+      "variant": "follow_pre_5bar",
+      "event_filter": "follow_pre_event_move",
+      "event_filter_params": {
+        "prior_bars": 5,
+        "threshold_pct": 0.001
+      },
+      "metrics": {
+        "n": 16,
+        "pf": 0.707,
+        "median": -8.74,
+        "net": -373.59,
+        "max_year_share_pct": 0.0,
+        "h1_pf": 0.409,
+        "h2_pf": 1.14,
+        "years_positive": 2,
+        "n_years": 7
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "CPI-MES-Short",
+      "variant": "require_expansion_1.5x",
+      "event_filter": "require_event_bar_expansion",
+      "event_filter_params": {
+        "expansion_threshold": 1.5
+      },
+      "metrics": {
+        "n": 29,
+        "pf": 1.104,
+        "median": 8.76,
+        "net": 114.04,
+        "max_year_share_pct": 202.8,
+        "h1_pf": 0.691,
+        "h2_pf": 1.448,
+        "years_positive": 4,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (PF<1.15)",
+      "doctrine_verdict": "KILL (PF<1.15)"
+    },
+    {
+      "family": "CPI-MES-Short",
+      "variant": "require_compression_0.7x",
+      "event_filter": "require_event_bar_compression",
+      "event_filter_params": {
+        "compression_threshold": 0.7
+      },
+      "metrics": {
+        "n": 4,
+        "pf": Infinity,
+        "median": 50.64,
+        "net": 261.29,
+        "max_year_share_pct": 60.8,
+        "h1_pf": Infinity,
+        "h2_pf": Infinity,
+        "years_positive": 4,
+        "n_years": 4
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (n=4 too small)",
+      "doctrine_verdict": "KILL (n=4 too small)"
+    },
+    {
+      "family": "CPI-MES-Short",
+      "variant": "require_vol_above_70",
+      "event_filter": "require_vol_above_percentile",
+      "event_filter_params": {
+        "vol_threshold": 70
+      },
+      "metrics": {
+        "n": 16,
+        "pf": 0.709,
+        "median": -22.49,
+        "net": -281.09,
+        "max_year_share_pct": 0.0,
+        "h1_pf": 0.578,
+        "h2_pf": 0.802,
+        "years_positive": 2,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "CPI-MES-Short",
+      "variant": "require_vol_below_30",
+      "event_filter": "require_vol_below_percentile",
+      "event_filter_params": {
+        "vol_threshold": 30
+      },
+      "metrics": {
+        "n": 11,
+        "pf": 2.935,
+        "median": 70.01,
+        "net": 440.11,
+        "max_year_share_pct": 89.2,
+        "h1_pf": Infinity,
+        "h2_pf": 1.055,
+        "years_positive": 4,
+        "n_years": 6
+      },
+      "temporal_split": {
+        "per_year": [
+          {
+            "year": 2019,
+            "n": 1,
+            "pf": Infinity,
+            "net": 36.26
+          },
+          {
+            "year": 2020,
+            "n": 5,
+            "pf": Infinity,
+            "net": 392.54999999999995
+          },
+          {
+            "year": 2023,
+            "n": 1,
+            "pf": Infinity,
+            "net": 76.26
+          },
+          {
+            "year": 2024,
+            "n": 2,
+            "pf": 0.16692598355190041,
+            "net": -37.480000000000004
+          },
+          {
+            "year": 2025,
+            "n": 1,
+            "pf": 0.0,
+            "net": -182.49
+          },
+          {
+            "year": 2026,
+            "n": 1,
+            "pf": Infinity,
+            "net": 155.01
+          }
+        ],
+        "eras": [
+          {
+            "era": 1,
+            "n": 3,
+            "pf": Infinity,
+            "net": 243.78
+          },
+          {
+            "era": 2,
+            "n": 4,
+            "pf": Infinity,
+            "net": 261.29
+          },
+          {
+            "era": 3,
+            "n": 4,
+            "pf": 0.7144364339722172,
+            "net": -64.96000000000004
+          }
+        ],
+        "yrs_pos": 4,
+        "n_yrs": 6
+      },
+      "cheap_verdict": "TEMPORAL_SPLIT_REQUIRED",
+      "doctrine_verdict": "ARCHITECTURAL_REJECT (losing era)"
+    },
+    {
+      "family": "CPI-MGC-Long",
+      "variant": "baseline (no filter)",
+      "event_filter": null,
+      "event_filter_params": null,
+      "metrics": {
+        "n": 84,
+        "pf": 1.209,
+        "median": 13.76,
+        "net": 1655.84,
+        "max_year_share_pct": 71.2,
+        "h1_pf": 3.196,
+        "h2_pf": 0.861,
+        "years_positive": 6,
+        "n_years": 8
+      },
+      "temporal_split": {
+        "per_year": [
+          {
+            "year": 2019,
+            "n": 7,
+            "pf": 13.980601357904945,
+            "net": 535.3199999999999
+          },
+          {
+            "year": 2020,
+            "n": 12,
+            "pf": 3.851473477406679,
+            "net": 1161.12
+          },
+          {
+            "year": 2021,
+            "n": 12,
+            "pf": 16.831364124597208,
+            "net": 1179.12
+          },
+          {
+            "year": 2022,
+            "n": 12,
+            "pf": 0.5363295880149812,
+            "net": -321.88000000000005
+          },
+          {
+            "year": 2023,
+            "n": 12,
+            "pf": 1.8437499999999998,
+            "net": 582.1199999999999
+          },
+          {
+            "year": 2024,
+            "n": 12,
+            "pf": 1.4701925233046096,
+            "net": 587.1199999999999
+          },
+          {
+            "year": 2025,
+            "n": 12,
+            "pf": 1.1078487845822156,
+            "net": 262.1199999999999
+          },
+          {
+            "year": 2026,
+            "n": 5,
+            "pf": 0.0,
+            "net": -2329.2
+          }
+        ],
+        "eras": [
+          {
+            "era": 1,
+            "n": 28,
+            "pf": 6.068232234376196,
+            "net": 2650.2800000000007
+          },
+          {
+            "era": 2,
+            "n": 28,
+            "pf": 1.2082773239582254,
+            "net": 322.27999999999986
+          },
+          {
+            "era": 3,
+            "n": 28,
+            "pf": 0.7747302004420813,
+            "net": -1316.7200000000003
+          }
+        ],
+        "yrs_pos": 6,
+        "n_yrs": 8
+      },
+      "cheap_verdict": "TEMPORAL_SPLIT_REQUIRED",
+      "doctrine_verdict": "ARCHITECTURAL_REJECT (losing era)"
+    },
+    {
+      "family": "CPI-MGC-Long",
+      "variant": "fade_pre_5bar",
+      "event_filter": "fade_pre_event_move",
+      "event_filter_params": {
+        "prior_bars": 5,
+        "threshold_pct": 0.001
+      },
+      "metrics": {
+        "n": 62,
+        "pf": 0.668,
+        "median": -5.74,
+        "net": -2583.88,
+        "max_year_share_pct": 0.0,
+        "h1_pf": 0.611,
+        "h2_pf": 0.692,
+        "years_positive": 2,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "CPI-MGC-Long",
+      "variant": "follow_pre_5bar",
+      "event_filter": "follow_pre_event_move",
+      "event_filter_params": {
+        "prior_bars": 5,
+        "threshold_pct": 0.001
+      },
+      "metrics": {
+        "n": 62,
+        "pf": 1.404,
+        "median": -0.74,
+        "net": 2182.12,
+        "max_year_share_pct": 67.0,
+        "h1_pf": 1.461,
+        "h2_pf": 1.382,
+        "years_positive": 6,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "CPI-MGC-Long",
+      "variant": "require_expansion_1.5x",
+      "event_filter": "require_event_bar_expansion",
+      "event_filter_params": {
+        "expansion_threshold": 1.5
+      },
+      "metrics": {
+        "n": 24,
+        "pf": 1.327,
+        "median": -3.24,
+        "net": 244.24,
+        "max_year_share_pct": 102.8,
+        "h1_pf": 4.818,
+        "h2_pf": 0.514,
+        "years_positive": 5,
+        "n_years": 7
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "CPI-MGC-Long",
+      "variant": "require_compression_0.7x",
+      "event_filter": "require_event_bar_compression",
+      "event_filter_params": {
+        "compression_threshold": 0.7
+      },
+      "metrics": {
+        "n": 43,
+        "pf": 1.272,
+        "median": 22.76,
+        "net": 1702.68,
+        "max_year_share_pct": 57.9,
+        "h1_pf": 2.714,
+        "h2_pf": 0.985,
+        "years_positive": 6,
+        "n_years": 8
+      },
+      "temporal_split": {
+        "per_year": [
+          {
+            "year": 2019,
+            "n": 4,
+            "pf": 11.185257032007758,
+            "net": 420.03999999999996
+          },
+          {
+            "year": 2020,
+            "n": 7,
+            "pf": 3.6677485664827434,
+            "net": 986.3199999999999
+          },
+          {
+            "year": 2021,
+            "n": 6,
+            "pf": Infinity,
+            "net": 910.56
+          },
+          {
+            "year": 2022,
+            "n": 6,
+            "pf": 0.19749669033578046,
+            "net": -533.44
+          },
+          {
+            "year": 2023,
+            "n": 6,
+            "pf": 2.1275859474911605,
+            "net": 599.56
+          },
+          {
+            "year": 2024,
+            "n": 6,
+            "pf": 1.8579615227179695,
+            "net": 754.56
+          },
+          {
+            "year": 2025,
+            "n": 6,
+            "pf": 1.049374481739193,
+            "net": 109.55999999999995
+          },
+          {
+            "year": 2026,
+            "n": 2,
+            "pf": 0.0,
+            "net": -1544.48
+          }
+        ],
+        "eras": [
+          {
+            "era": 1,
+            "n": 14,
+            "pf": 5.427778859256375,
+            "net": 1819.6399999999999
+          },
+          {
+            "era": 2,
+            "n": 14,
+            "pf": 0.9930126040587074,
+            "net": -8.360000000000127
+          },
+          {
+            "era": 3,
+            "n": 15,
+            "pf": 0.9766095474399732,
+            "net": -108.60000000000014
+          }
+        ],
+        "yrs_pos": 6,
+        "n_yrs": 8
+      },
+      "cheap_verdict": "TEMPORAL_SPLIT_REQUIRED",
+      "doctrine_verdict": "ARCHITECTURAL_REJECT (losing era)"
+    },
+    {
+      "family": "CPI-MGC-Long",
+      "variant": "require_vol_above_70",
+      "event_filter": "require_vol_above_percentile",
+      "event_filter_params": {
+        "vol_threshold": 70
+      },
+      "metrics": {
+        "n": 74,
+        "pf": 1.292,
+        "median": 18.76,
+        "net": 2077.24,
+        "max_year_share_pct": 56.8,
+        "h1_pf": 3.127,
+        "h2_pf": 0.929,
+        "years_positive": 6,
+        "n_years": 8
+      },
+      "temporal_split": {
+        "per_year": [
+          {
+            "year": 2019,
+            "n": 6,
+            "pf": 13.889427740058194,
+            "net": 531.56
+          },
+          {
+            "year": 2020,
+            "n": 11,
+            "pf": 3.79803536345776,
+            "net": 1139.36
+          },
+          {
+            "year": 2021,
+            "n": 12,
+            "pf": 16.831364124597208,
+            "net": 1179.12
+          },
+          {
+            "year": 2022,
+            "n": 12,
+            "pf": 0.5363295880149812,
+            "net": -321.88000000000005
+          },
+          {
+            "year": 2023,
+            "n": 11,
+            "pf": 1.6397263450834878,
+            "net": 441.3599999999999
+          },
+          {
+            "year": 2024,
+            "n": 10,
+            "pf": 1.3612008930058976,
+            "net": 433.5999999999999
+          },
+          {
+            "year": 2025,
+            "n": 9,
+            "pf": 1.2076828784655875,
+            "net": 460.8399999999999
+          },
+          {
+            "year": 2026,
+            "n": 3,
+            "pf": 0.0,
+            "net": -1786.72
+          }
+        ],
+        "eras": [
+          {
+            "era": 1,
+            "n": 24,
+            "pf": 6.289034196341786,
+            "net": 2394.24
+          },
+          {
+            "era": 2,
+            "n": 25,
+            "pf": 0.8276742404901709,
+            "net": -243.00000000000017
+          },
+          {
+            "era": 3,
+            "n": 25,
+            "pf": 0.9859057283691025,
+            "net": -74.00000000000068
+          }
+        ],
+        "yrs_pos": 6,
+        "n_yrs": 8
+      },
+      "cheap_verdict": "TEMPORAL_SPLIT_REQUIRED",
+      "doctrine_verdict": "ARCHITECTURAL_REJECT (losing era)"
+    },
+    {
+      "family": "CPI-MGC-Long",
+      "variant": "require_vol_below_30",
+      "event_filter": "require_vol_below_percentile",
+      "event_filter_params": {
+        "vol_threshold": 30
+      },
+      "metrics": {
+        "n": 1,
+        "pf": 0.0,
+        "median": -9.24,
+        "net": -9.24,
+        "max_year_share_pct": 0.0,
+        "h1_pf": Infinity,
+        "h2_pf": 0.0,
+        "years_positive": 0,
+        "n_years": 1
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (n=1 too small)",
+      "doctrine_verdict": "KILL (n=1 too small)"
+    },
+    {
+      "family": "CPI-MGC-Short",
+      "variant": "baseline (no filter)",
+      "event_filter": null,
+      "event_filter_params": null,
+      "metrics": {
+        "n": 84,
+        "pf": 0.777,
+        "median": -20.24,
+        "net": -2200.16,
+        "max_year_share_pct": 0.0,
+        "h1_pf": 0.279,
+        "h2_pf": 1.112,
+        "years_positive": 2,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "CPI-MGC-Short",
+      "variant": "fade_pre_5bar",
+      "event_filter": "fade_pre_event_move",
+      "event_filter_params": {
+        "prior_bars": 5,
+        "threshold_pct": 0.001
+      },
+      "metrics": {
+        "n": 62,
+        "pf": 0.668,
+        "median": -5.74,
+        "net": -2583.88,
+        "max_year_share_pct": 0.0,
+        "h1_pf": 0.611,
+        "h2_pf": 0.692,
+        "years_positive": 2,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "CPI-MGC-Short",
+      "variant": "follow_pre_5bar",
+      "event_filter": "follow_pre_event_move",
+      "event_filter_params": {
+        "prior_bars": 5,
+        "threshold_pct": 0.001
+      },
+      "metrics": {
+        "n": 62,
+        "pf": 1.404,
+        "median": -0.74,
+        "net": 2182.12,
+        "max_year_share_pct": 67.0,
+        "h1_pf": 1.461,
+        "h2_pf": 1.382,
+        "years_positive": 6,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "CPI-MGC-Short",
+      "variant": "require_expansion_1.5x",
+      "event_filter": "require_event_bar_expansion",
+      "event_filter_params": {
+        "expansion_threshold": 1.5
+      },
+      "metrics": {
+        "n": 24,
+        "pf": 0.626,
+        "median": -3.24,
+        "net": -399.76,
+        "max_year_share_pct": 0.0,
+        "h1_pf": 0.159,
+        "h2_pf": 1.643,
+        "years_positive": 2,
+        "n_years": 7
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "CPI-MGC-Short",
+      "variant": "require_compression_0.7x",
+      "event_filter": "require_event_bar_compression",
+      "event_filter_params": {
+        "compression_threshold": 0.7
+      },
+      "metrics": {
+        "n": 43,
+        "pf": 0.756,
+        "median": -29.24,
+        "net": -1981.32,
+        "max_year_share_pct": 0.0,
+        "h1_pf": 0.343,
+        "h2_pf": 0.987,
+        "years_positive": 2,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "CPI-MGC-Short",
+      "variant": "require_vol_above_70",
+      "event_filter": "require_vol_above_percentile",
+      "event_filter_params": {
+        "vol_threshold": 70
+      },
+      "metrics": {
+        "n": 74,
+        "pf": 0.73,
+        "median": -25.24,
+        "net": -2556.76,
+        "max_year_share_pct": 0.0,
+        "h1_pf": 0.288,
+        "h2_pf": 1.032,
+        "years_positive": 2,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "CPI-MGC-Short",
+      "variant": "require_vol_below_30",
+      "event_filter": "require_vol_below_percentile",
+      "event_filter_params": {
+        "vol_threshold": 30
+      },
+      "metrics": {
+        "n": 1,
+        "pf": Infinity,
+        "median": 2.76,
+        "net": 2.76,
+        "max_year_share_pct": 100.0,
+        "h1_pf": Infinity,
+        "h2_pf": Infinity,
+        "years_positive": 1,
+        "n_years": 1
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (n=1 too small)",
+      "doctrine_verdict": "KILL (n=1 too small)"
+    }
+  ],
+  "aggregate": {
+    "total": 42,
+    "watch_for_deep_screen": 0,
+    "architectural_reject": 8,
+    "kill": 34
+  }
+}

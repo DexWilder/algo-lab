@@ -1,0 +1,141 @@
+{
+  "date": "2026-06-05",
+  "approval": "OK family-review top 3, Short-PL priority (#73)",
+  "candidates": {
+    "baseline": "XB-ORB-EMA-Ladder-MGC (both directions, profit_ladder)",
+    "new": "DIR-MGC-ORB-Short-PL (short-only, profit_ladder)"
+  },
+  "standalone": {
+    "baseline": {
+      "label": "XB-ORB-EMA-Ladder-MGC (both)",
+      "n": 653,
+      "pf": 1.4200615082004213,
+      "median": 5.76,
+      "net_pnl": 8337.279999999999,
+      "max_dd_trade_equity": -1022.4799999999886,
+      "win_rate_pct": 54.211332312404295,
+      "avg_win": 79.61875706214688,
+      "avg_loss": -66.38046822742476
+    },
+    "short": {
+      "label": "DIR-MGC-ORB-Short-PL",
+      "n": 266,
+      "pf": 1.5265240898989667,
+      "median": 8.76,
+      "net_pnl": 3677.16,
+      "max_dd_trade_equity": -934.1600000000003,
+      "win_rate_pct": 56.390977443609025,
+      "avg_win": 71.07333333333334,
+      "avg_loss": -60.20551724137931
+    }
+  },
+  "trade_overlap": {
+    "n_trades_a": 653,
+    "n_trades_b": 266,
+    "trading_days_a": 653,
+    "trading_days_b": 266,
+    "same_day_count": 266,
+    "only_a_days": 387,
+    "only_b_days": 0,
+    "same_day_pct_of_a": 40.73506891271057,
+    "same_day_pct_of_b": 100.0,
+    "same_direction_days": 266,
+    "opposite_direction_days": 0,
+    "avg_time_separation_minutes_same_day": 0.0
+  },
+  "pnl_correlation": {
+    "daily_corr": 0.5382566417363073,
+    "weekly_corr": 0.5247336462819157,
+    "drawdown_overlap_pct_of_days": 66.9218989280245,
+    "losing_day_overlap_pct": 17.76416539050536,
+    "losing_day_pct_a": 45.78866768759571,
+    "losing_day_pct_b": 17.76416539050536,
+    "n_common_days": 653
+  },
+  "configurations": {
+    "A_baseline_alone": {
+      "label": "Baseline (both) alone",
+      "n_days": 653,
+      "total_pnl": 8337.279999999999,
+      "annual_pnl_est": 3217.4495558958647,
+      "annual_vol_est": 1711.2095291598441,
+      "sharpe_est": 1.8802195178725671,
+      "max_drawdown": -1022.4799999999886,
+      "worst_day": -526.24,
+      "max_consecutive_losing_days": 8,
+      "worst_rolling_60d_pf": 0.5238204727306172,
+      "pct_rolling_60d_pf_gt_1": 87.20538720538721,
+      "prop_threshold": -4000,
+      "prop_breach": false,
+      "days_to_first_breach": null
+    },
+    "B_short_only_alone": {
+      "label": "Short-only alone",
+      "n_days": 653,
+      "total_pnl": 3677.16,
+      "annual_pnl_est": 1419.057151607963,
+      "annual_vol_est": 931.9530629189641,
+      "sharpe_est": 1.5226701945303378,
+      "max_drawdown": -934.1600000000003,
+      "worst_day": -318.24,
+      "max_consecutive_losing_days": 6,
+      "worst_rolling_60d_pf": 0.35464497752153473,
+      "pct_rolling_60d_pf_gt_1": 82.32323232323232,
+      "prop_threshold": -4000,
+      "prop_breach": false,
+      "days_to_first_breach": null
+    },
+    "C_both_full_size": {
+      "label": "Both at full size",
+      "n_days": 653,
+      "total_pnl": 12014.439999999997,
+      "annual_pnl_est": 4636.506707503827,
+      "annual_vol_est": 2348.097609300801,
+      "sharpe_est": 1.9745800554196087,
+      "max_drawdown": -1912.1999999999925,
+      "worst_day": -636.48,
+      "max_consecutive_losing_days": 8,
+      "worst_rolling_60d_pf": 0.4559485619088269,
+      "pct_rolling_60d_pf_gt_1": 87.54208754208754,
+      "prop_threshold": -4000,
+      "prop_breach": false,
+      "days_to_first_breach": null
+    },
+    "D_both_half_size": {
+      "label": "Both at half size",
+      "n_days": 653,
+      "total_pnl": 6007.219999999998,
+      "annual_pnl_est": 2318.2533537519134,
+      "annual_vol_est": 1174.0488046504006,
+      "sharpe_est": 1.9745800554196087,
+      "max_drawdown": -956.0999999999963,
+      "worst_day": -318.24,
+      "max_consecutive_losing_days": 8,
+      "worst_rolling_60d_pf": 0.4559485619088269,
+      "pct_rolling_60d_pf_gt_1": 87.54208754208754,
+      "prop_threshold": -4000,
+      "prop_breach": false,
+      "days_to_first_breach": null
+    },
+    "E_controller_short_when_fires": {
+      "label": "Short when fires else baseline",
+      "n_days": 653,
+      "total_pnl": 8337.279999999999,
+      "annual_pnl_est": 3217.4495558958647,
+      "annual_vol_est": 1711.2095291598441,
+      "sharpe_est": 1.8802195178725671,
+      "max_drawdown": -1022.4799999999886,
+      "worst_day": -526.24,
+      "max_consecutive_losing_days": 8,
+      "worst_rolling_60d_pf": 0.5238204727306172,
+      "pct_rolling_60d_pf_gt_1": 87.20538720538721,
+      "prop_threshold": -4000,
+      "prop_breach": false,
+      "days_to_first_breach": null
+    }
+  },
+  "verdict": "INCONCLUSIVE / WATCH_FOR_LONGER_OBSERVATION",
+  "notes": [
+    "no single category dominates; manual operator inspection recommended"
+  ]
+}

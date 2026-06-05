@@ -36,8 +36,54 @@ OUTPUT_DIR = Path(__file__).resolve().parent
 # PART 1: FEATURE COMPUTATION
 # ═══════════════════════════════════════════════════════════════════════════
 
+# Feature cache (added 2026-06-05 per operator approval #80; minimum-viable
+# in-memory memoization). Keyed by (n_bars, first_datetime, last_datetime) so
+# the same data file produces the same key even when read via pd.read_csv in
+# different scripts. Cache hit/miss logged for diagnostic visibility. Fail-
+# closed: if any key field is unavailable, skip cache and recompute.
+_FEATURE_CACHE: dict[tuple, dict] = {}
+_FEATURE_CACHE_HITS = 0
+_FEATURE_CACHE_MISSES = 0
+
+
+def _feature_cache_key(df: pd.DataFrame):
+    try:
+        first_dt = str(df["datetime"].iloc[0])
+        last_dt = str(df["datetime"].iloc[-1])
+        return (len(df), first_dt, last_dt)
+    except Exception:
+        return None
+
+
+def feature_cache_stats() -> dict:
+    return {
+        "hits": _FEATURE_CACHE_HITS,
+        "misses": _FEATURE_CACHE_MISSES,
+        "cached_keys": len(_FEATURE_CACHE),
+    }
+
+
+def feature_cache_clear():
+    global _FEATURE_CACHE_HITS, _FEATURE_CACHE_MISSES
+    _FEATURE_CACHE.clear()
+    _FEATURE_CACHE_HITS = 0
+    _FEATURE_CACHE_MISSES = 0
+
+
 def compute_features(df: pd.DataFrame) -> dict:
-    """Pre-compute all indicators any component might need."""
+    """Pre-compute all indicators any component might need.
+
+    Includes in-memory cache (added 2026-06-05 per #80): same data file →
+    reuse computed features across multiple backtests in a single Python
+    session. Critical for prop-stress sweeps that re-run backtests with
+    only cost/slippage params changed."""
+    global _FEATURE_CACHE_HITS, _FEATURE_CACHE_MISSES
+    key = _feature_cache_key(df)
+    if key is not None and key in _FEATURE_CACHE:
+        _FEATURE_CACHE_HITS += 1
+        return _FEATURE_CACHE[key]
+    _FEATURE_CACHE_MISSES += 1
+    # ── original feature computation begins below ────────────────────────────
     dt = pd.to_datetime(df["datetime"])
     n = len(df)
 
@@ -113,6 +159,22 @@ def compute_features(df: pd.DataFrame) -> dict:
         lambda x: (x.iloc[-1] <= x).sum() / len(x) * 100, raw=False
     ).values
 
+    # Prior-day high/low/close (added 2026-06-04 — Core Daily Hunt unlock).
+    # For each bar, look up the previous trading day's session extremes. Fail-
+    # closed: NaN for the first day. Computed once and cached per bar via
+    # date-aligned lookup.
+    df_pd = df.copy()
+    df_pd["_date"] = dates
+    daily_high = df_pd.groupby("_date")["high"].max()
+    daily_low = df_pd.groupby("_date")["low"].min()
+    daily_close = df_pd.groupby("_date")["close"].last()
+    prev_high_map = daily_high.shift(1).to_dict()
+    prev_low_map = daily_low.shift(1).to_dict()
+    prev_close_map = daily_close.shift(1).to_dict()
+    prev_day_high = np.array([prev_high_map.get(d, np.nan) for d in dates])
+    prev_day_low = np.array([prev_low_map.get(d, np.nan) for d in dates])
+    prev_day_close = np.array([prev_close_map.get(d, np.nan) for d in dates])
+
     # Hurst proxy via variance ratio (added 2026-06-03 per operator approval
     # of the hurst_stable filter build). Computed on log-returns; rolling
     # 256-bar window. H ≈ 0.5 = random walk; H < 0.5 = mean-reverting; H > 0.5
@@ -187,13 +249,14 @@ def compute_features(df: pd.DataFrame) -> dict:
         or_high[i] = cur_or_h
         or_low[i] = cur_or_l
 
-    return {
+    features = {
         "close": close, "high": high, "low": low, "open": opn, "volume": volume,
         "dates": dates, "times": times, "hours": hours, "n": n,
         "atr": atr,
         "ema8": ema8, "ema13": ema13, "ema20": ema20, "ema21": ema21, "ema50": ema50,
         "bb_upper": bb_upper, "bb_lower": bb_lower, "bb_mid": bb_mid,
         "bw_pctrank": bw_pctrank, "atr_pctrank": atr_pctrank, "hurst": hurst, "rsi": rsi,
+        "prev_day_high": prev_day_high, "prev_day_low": prev_day_low, "prev_day_close": prev_day_close,
         "vwap": vwap,
         "dc_high_20": dc_high_20, "dc_low_20": dc_low_20,
         "dc_high_30": dc_high_30, "dc_low_30": dc_low_30,
@@ -201,6 +264,9 @@ def compute_features(df: pd.DataFrame) -> dict:
         "in_session": in_session, "entry_ok": entry_ok, "flatten_time": flatten_time,
         "or_high": or_high, "or_low": or_low, "or_complete": or_complete,
     }
+    if key is not None:
+        _FEATURE_CACHE[key] = features
+    return features
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -300,6 +366,59 @@ def entry_donchian_breakout(f, i, state, params):
         stop = f["close"][i] + f["atr"][i] * params.get("stop_mult", 2.5)
         target = f["close"][i] - f["atr"][i] * params.get("target_mult", 4.0)
         return -1, stop, target
+    return 0, 0, 0
+
+
+def entry_prior_day_break(f, i, state, params):
+    """Prior-day high/low breakout (added 2026-06-04 Core Daily Hunt unlock).
+    LONG when close > prev_day_high; SHORT when close < prev_day_low.
+    Fail-closed on missing prev-day data."""
+    if i == 0:
+        return 0, 0, 0
+    ph = f["prev_day_high"][i]
+    pl = f["prev_day_low"][i]
+    if np.isnan(ph) or np.isnan(pl) or np.isnan(f["atr"][i]) or f["atr"][i] == 0:
+        return 0, 0, 0
+    close = f["close"][i]
+    prev_close = f["close"][i-1]
+    # Long: close breaks above prev high; require fresh break (prev bar was at-or-below)
+    if (not state["long_traded_today"]
+            and close > ph and prev_close <= ph):
+        stop = close - f["atr"][i] * params.get("stop_mult", 2.0)
+        target = close + f["atr"][i] * params.get("target_mult", 4.0)
+        return 1, stop, target
+    if (not state["short_traded_today"]
+            and close < pl and prev_close >= pl):
+        stop = close + f["atr"][i] * params.get("stop_mult", 2.0)
+        target = close - f["atr"][i] * params.get("target_mult", 4.0)
+        return -1, stop, target
+    return 0, 0, 0
+
+
+def entry_prior_day_fade(f, i, state, params):
+    """Prior-day high/low fade (reversion). Fires when price overshoots prev
+    high/low then closes back inside. LONG on close back above prev high after
+    overshoot below (rare); SHORT on close back below prev low after overshoot
+    above (rare). v1: simplified — fades a break-then-reject in same bar."""
+    if i == 0:
+        return 0, 0, 0
+    ph = f["prev_day_high"][i]
+    pl = f["prev_day_low"][i]
+    if np.isnan(ph) or np.isnan(pl) or np.isnan(f["atr"][i]) or f["atr"][i] == 0:
+        return 0, 0, 0
+    high = f["high"][i]; low = f["low"][i]; close = f["close"][i]
+    # Short fade: bar pierced above prev high but closed below it
+    if (not state["short_traded_today"]
+            and high > ph and close < ph):
+        stop = close + f["atr"][i] * params.get("stop_mult", 1.5)
+        target = close - f["atr"][i] * params.get("target_mult", 2.5)
+        return -1, stop, target
+    # Long fade: bar pierced below prev low but closed above it
+    if (not state["long_traded_today"]
+            and low < pl and close > pl):
+        stop = close - f["atr"][i] * params.get("stop_mult", 1.5)
+        target = close + f["atr"][i] * params.get("target_mult", 2.5)
+        return 1, stop, target
     return 0, 0, 0
 
 
@@ -550,6 +669,33 @@ def exit_time_stop(f, i, state, params):
     return exit_atr_trail(f, i, state, params)
 
 
+def exit_fixed_ratio(f, i, state, params):
+    """Fixed R-ratio exit (added 2026-06-05 per operator approval #69).
+
+    Exits at `ratio × initial_risk` in profit direction OR at initial stop.
+    No trailing; clean fixed-target / fixed-stop. Good for testing reward-risk
+    ratios as a direct lever (1:1, 1:2, 1:3 etc.).
+    """
+    pos = state["position"]
+    ratio = params.get("ratio", 2.0)
+    risk = state["initial_risk"]
+    entry = state["entry_price"]
+    stop = state["trailing_stop"]
+    if pos == 1:
+        target = entry + ratio * risk
+        if f["low"][i] <= stop:
+            return 1
+        if f["high"][i] >= target:
+            return 1
+    elif pos == -1:
+        target = entry - ratio * risk
+        if f["high"][i] >= stop:
+            return -1
+        if f["low"][i] <= target:
+            return -1
+    return 0
+
+
 # ═══════════════════════════════════════════════════════════════════════════
 # PART 4: FILTER COMPONENTS
 # ═══════════════════════════════════════════════════════════════════════════
@@ -696,6 +842,15 @@ def filter_session_afternoon(f, i, signal, params):
     return signal
 
 
+def filter_session_close(f, i, signal, params):
+    """Close-window session only (last ~75min of regular session: 14:30-15:45 ET).
+    Operator gap-fill 2026-06-04 — close-momentum candidates."""
+    h = f["hours"][i]
+    if h < 14:
+        return 0
+    return signal
+
+
 # ═══════════════════════════════════════════════════════════════════════════
 # PART 5: GENERIC SIGNAL GENERATOR
 # ═══════════════════════════════════════════════════════════════════════════
@@ -707,11 +862,14 @@ ENTRY_MAP = {
     "donchian_breakout": entry_donchian_breakout,
     "bb_reversion": entry_bb_reversion,
     "vol_expansion": entry_vol_expansion,
+    "prior_day_break": entry_prior_day_break,
+    "prior_day_fade": entry_prior_day_fade,
 }
 
 EXIT_MAP = {
     "atr_trail": exit_atr_trail,
     "profit_ladder": exit_profit_ladder,
+    "fixed_ratio": exit_fixed_ratio,
     "midline_target": exit_midline_target,
     "chandelier": exit_chandelier,
     "time_stop": exit_time_stop,
@@ -731,6 +889,8 @@ FILTER_MAP = {
     # Hurst-stability primitives (added 2026-06-03 per VALUE/MR unlock)
     "hurst_stable_mr": filter_hurst_stable_mr,
     "hurst_stable_trend": filter_hurst_stable_trend,
+    # Session-close window (added 2026-06-04 per Core Daily Hunt gap)
+    "session_close": filter_session_close,
 }
 
 

@@ -1,0 +1,1306 @@
+{
+  "date": "2026-06-04",
+  "approval": "OK STRUCTURAL hunt + diversification (#38, #41)",
+  "results": [
+    {
+      "family": "OpEx close",
+      "label": "EVT-OpEx-close-MES-L-30min",
+      "asset": "MES",
+      "direction": "long",
+      "exit_bars": 6,
+      "metrics": {
+        "n": 84,
+        "pf": 1.139,
+        "median": -1.24,
+        "net": 75.84,
+        "max_year_share_pct": 75.9,
+        "top3_share_pct": 280.2,
+        "h1_pf": 0.96,
+        "h2_pf": 1.425,
+        "years_positive": 5,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "OpEx close",
+      "label": "EVT-OpEx-close-MES-L-2h",
+      "asset": "MES",
+      "direction": "long",
+      "exit_bars": 24,
+      "metrics": {
+        "n": 84,
+        "pf": 1.024,
+        "median": 10.01,
+        "net": 53.34,
+        "max_year_share_pct": 597.8,
+        "top3_share_pct": 827.3,
+        "h1_pf": 1.371,
+        "h2_pf": 0.763,
+        "years_positive": 5,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (PF<1.15)",
+      "doctrine_verdict": "KILL (PF<1.15)"
+    },
+    {
+      "family": "OpEx close",
+      "label": "EVT-OpEx-close-MES-S-30min",
+      "asset": "MES",
+      "direction": "short",
+      "exit_bars": 6,
+      "metrics": {
+        "n": 84,
+        "pf": 0.281,
+        "median": -6.24,
+        "net": -704.16,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.401,
+        "h2_pf": 0.155,
+        "years_positive": 0,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "OpEx close",
+      "label": "EVT-OpEx-close-MES-S-2h",
+      "asset": "MES",
+      "direction": "short",
+      "exit_bars": 24,
+      "metrics": {
+        "n": 84,
+        "pf": 0.745,
+        "median": -17.49,
+        "net": -681.66,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.556,
+        "h2_pf": 0.99,
+        "years_positive": 1,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "OpEx close",
+      "label": "EVT-OpEx-close-MNQ-L-30min",
+      "asset": "MNQ",
+      "direction": "long",
+      "exit_bars": 6,
+      "metrics": {
+        "n": 84,
+        "pf": 1.536,
+        "median": -0.24,
+        "net": 391.84,
+        "max_year_share_pct": 47.0,
+        "top3_share_pct": 90.3,
+        "h1_pf": 1.157,
+        "h2_pf": 2.029,
+        "years_positive": 5,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "OpEx close",
+      "label": "EVT-OpEx-close-MNQ-L-2h",
+      "asset": "MNQ",
+      "direction": "long",
+      "exit_bars": 24,
+      "metrics": {
+        "n": 84,
+        "pf": 1.15,
+        "median": 26.51,
+        "net": 569.34,
+        "max_year_share_pct": 148.6,
+        "top3_share_pct": 137.0,
+        "h1_pf": 1.306,
+        "h2_pf": 1.026,
+        "years_positive": 5,
+        "n_years": 8
+      },
+      "temporal_split": {
+        "per_year": [
+          {
+            "year": 2019,
+            "n": 7,
+            "pf": 2.0117141741507227,
+            "net": 51.820000000000014
+          },
+          {
+            "year": 2020,
+            "n": 12,
+            "pf": 1.9127921218950563,
+            "net": 372.61999999999995
+          },
+          {
+            "year": 2021,
+            "n": 12,
+            "pf": 0.7259834091517259,
+            "net": -122.88000000000002
+          },
+          {
+            "year": 2022,
+            "n": 12,
+            "pf": 1.3099068804966372,
+            "net": 239.6199999999999
+          },
+          {
+            "year": 2023,
+            "n": 12,
+            "pf": 0.6259237068104655,
+            "net": -112.37999999999997
+          },
+          {
+            "year": 2024,
+            "n": 12,
+            "pf": 6.486447931526391,
+            "net": 846.1199999999999
+          },
+          {
+            "year": 2025,
+            "n": 12,
+            "pf": 2.64965486024669,
+            "net": 583.12
+          },
+          {
+            "year": 2026,
+            "n": 5,
+            "pf": 0.022942318190089163,
+            "net": -1288.7
+          }
+        ],
+        "eras": [
+          {
+            "era": 1,
+            "n": 28,
+            "pf": 1.8608290488431871,
+            "net": 535.78,
+            "start": "2019-06-30",
+            "end": "2021-09-19"
+          },
+          {
+            "era": 2,
+            "n": 28,
+            "pf": 0.9637848576263702,
+            "net": -49.22000000000015,
+            "start": "2021-10-15",
+            "end": "2024-01-19"
+          },
+          {
+            "era": 3,
+            "n": 28,
+            "pf": 1.045317683641181,
+            "net": 82.77999999999997,
+            "start": "2024-02-16",
+            "end": "2026-05-15"
+          }
+        ],
+        "yrs_pos": 5,
+        "n_yrs": 8
+      },
+      "cheap_verdict": "TEMPORAL_SPLIT_REQUIRED",
+      "doctrine_verdict": "ARCHITECTURAL_REJECT (losing era)"
+    },
+    {
+      "family": "OpEx close",
+      "label": "EVT-OpEx-close-MNQ-S-30min",
+      "asset": "MNQ",
+      "direction": "short",
+      "exit_bars": 6,
+      "metrics": {
+        "n": 84,
+        "pf": 0.42,
+        "median": -4.24,
+        "net": -768.16,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.56,
+        "h2_pf": 0.313,
+        "years_positive": 2,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "OpEx close",
+      "label": "EVT-OpEx-close-MNQ-S-2h",
+      "asset": "MNQ",
+      "direction": "short",
+      "exit_bars": 24,
+      "metrics": {
+        "n": 84,
+        "pf": 0.795,
+        "median": -30.99,
+        "net": -945.66,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.696,
+        "h2_pf": 0.894,
+        "years_positive": 3,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "OpEx morning",
+      "label": "EVT-OpEx-morning-MES-L-30min",
+      "asset": "MES",
+      "direction": "long",
+      "exit_bars": 6,
+      "metrics": {
+        "n": 84,
+        "pf": 0.936,
+        "median": -4.37,
+        "net": -106.66,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.731,
+        "h2_pf": 1.206,
+        "years_positive": 3,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "OpEx morning",
+      "label": "EVT-OpEx-morning-MES-L-2h",
+      "asset": "MES",
+      "direction": "long",
+      "exit_bars": 24,
+      "metrics": {
+        "n": 84,
+        "pf": 0.962,
+        "median": 6.88,
+        "net": -96.66,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.741,
+        "h2_pf": 1.2,
+        "years_positive": 4,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (PF<1.15)",
+      "doctrine_verdict": "KILL (PF<1.15)"
+    },
+    {
+      "family": "OpEx morning",
+      "label": "EVT-OpEx-morning-MES-S-30min",
+      "asset": "MES",
+      "direction": "short",
+      "exit_bars": 6,
+      "metrics": {
+        "n": 84,
+        "pf": 0.718,
+        "median": -3.12,
+        "net": -521.66,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.927,
+        "h2_pf": 0.548,
+        "years_positive": 3,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "OpEx morning",
+      "label": "EVT-OpEx-morning-MES-S-2h",
+      "asset": "MES",
+      "direction": "short",
+      "exit_bars": 24,
+      "metrics": {
+        "n": 84,
+        "pf": 0.813,
+        "median": -14.37,
+        "net": -531.66,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 1.026,
+        "h2_pf": 0.666,
+        "years_positive": 4,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "OpEx morning",
+      "label": "EVT-OpEx-morning-MNQ-L-30min",
+      "asset": "MNQ",
+      "direction": "long",
+      "exit_bars": 6,
+      "metrics": {
+        "n": 84,
+        "pf": 0.867,
+        "median": 2.76,
+        "net": -406.16,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.793,
+        "h2_pf": 0.927,
+        "years_positive": 3,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (PF<1.15)",
+      "doctrine_verdict": "KILL (PF<1.15)"
+    },
+    {
+      "family": "OpEx morning",
+      "label": "EVT-OpEx-morning-MNQ-L-2h",
+      "asset": "MNQ",
+      "direction": "long",
+      "exit_bars": 24,
+      "metrics": {
+        "n": 84,
+        "pf": 0.722,
+        "median": 17.51,
+        "net": -1472.66,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.593,
+        "h2_pf": 0.839,
+        "years_positive": 3,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (PF<1.15)",
+      "doctrine_verdict": "KILL (PF<1.15)"
+    },
+    {
+      "family": "OpEx morning",
+      "label": "EVT-OpEx-morning-MNQ-S-30min",
+      "asset": "MNQ",
+      "direction": "short",
+      "exit_bars": 6,
+      "metrics": {
+        "n": 84,
+        "pf": 1.01,
+        "median": -7.24,
+        "net": 29.84,
+        "max_year_share_pct": 1416.3,
+        "top3_share_pct": 2251.3,
+        "h1_pf": 1.08,
+        "h2_pf": 0.96,
+        "years_positive": 5,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "OpEx morning",
+      "label": "EVT-OpEx-morning-MNQ-S-2h",
+      "asset": "MNQ",
+      "direction": "short",
+      "exit_bars": 24,
+      "metrics": {
+        "n": 84,
+        "pf": 1.271,
+        "median": -21.99,
+        "net": 1096.34,
+        "max_year_share_pct": 74.2,
+        "top3_share_pct": 117.3,
+        "h1_pf": 1.524,
+        "h2_pf": 1.107,
+        "years_positive": 5,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "Russell rebalance (Mar/Jun/Sep/Dec)",
+      "label": "EVT-Russell-rebalance-(Mar/J-MES-L-30min",
+      "asset": "MES",
+      "direction": "long",
+      "exit_bars": 6,
+      "metrics": {
+        "n": 28,
+        "pf": 0.593,
+        "median": -5.62,
+        "net": -102.22,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.915,
+        "h2_pf": 0.24,
+        "years_positive": 2,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "Russell rebalance (Mar/Jun/Sep/Dec)",
+      "label": "EVT-Russell-rebalance-(Mar/J-MES-L-2h",
+      "asset": "MES",
+      "direction": "long",
+      "exit_bars": 24,
+      "metrics": {
+        "n": 28,
+        "pf": 0.823,
+        "median": 10.01,
+        "net": -125.97,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.732,
+        "h2_pf": 0.937,
+        "years_positive": 4,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (PF<1.15)",
+      "doctrine_verdict": "KILL (PF<1.15)"
+    },
+    {
+      "family": "Russell rebalance (Mar/Jun/Sep/Dec)",
+      "label": "EVT-Russell-rebalance-(Mar/J-MES-S-30min",
+      "asset": "MES",
+      "direction": "short",
+      "exit_bars": 6,
+      "metrics": {
+        "n": 28,
+        "pf": 0.548,
+        "median": -1.87,
+        "net": -107.22,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.445,
+        "h2_pf": 0.802,
+        "years_positive": 4,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "Russell rebalance (Mar/Jun/Sep/Dec)",
+      "label": "EVT-Russell-rebalance-(Mar/J-MES-S-2h",
+      "asset": "MES",
+      "direction": "short",
+      "exit_bars": 24,
+      "metrics": {
+        "n": 28,
+        "pf": 0.882,
+        "median": -17.49,
+        "net": -83.47,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 1.004,
+        "h2_pf": 0.769,
+        "years_positive": 3,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "Russell rebalance (Mar/Jun/Sep/Dec)",
+      "label": "EVT-Russell-rebalance-(Mar/J-MNQ-L-30min",
+      "asset": "MNQ",
+      "direction": "long",
+      "exit_bars": 6,
+      "metrics": {
+        "n": 28,
+        "pf": 0.435,
+        "median": -12.74,
+        "net": -236.72,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.78,
+        "h2_pf": 0.168,
+        "years_positive": 2,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "Russell rebalance (Mar/Jun/Sep/Dec)",
+      "label": "EVT-Russell-rebalance-(Mar/J-MNQ-L-2h",
+      "asset": "MNQ",
+      "direction": "long",
+      "exit_bars": 24,
+      "metrics": {
+        "n": 28,
+        "pf": 0.743,
+        "median": 12.51,
+        "net": -304.72,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.641,
+        "h2_pf": 0.837,
+        "years_positive": 4,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (PF<1.15)",
+      "doctrine_verdict": "KILL (PF<1.15)"
+    },
+    {
+      "family": "Russell rebalance (Mar/Jun/Sep/Dec)",
+      "label": "EVT-Russell-rebalance-(Mar/J-MNQ-S-30min",
+      "asset": "MNQ",
+      "direction": "short",
+      "exit_bars": 6,
+      "metrics": {
+        "n": 28,
+        "pf": 1.475,
+        "median": 8.26,
+        "net": 111.28,
+        "max_year_share_pct": 54.9,
+        "top3_share_pct": 136.8,
+        "h1_pf": 0.874,
+        "h2_pf": 3.326,
+        "years_positive": 5,
+        "n_years": 8
+      },
+      "temporal_split": {
+        "per_year": [
+          {
+            "year": 2019,
+            "n": 3,
+            "pf": 1.8778877887788779,
+            "net": 21.28
+          },
+          {
+            "year": 2020,
+            "n": 4,
+            "pf": 0.2867513611615245,
+            "net": -86.46
+          },
+          {
+            "year": 2021,
+            "n": 4,
+            "pf": 0.33983286908078,
+            "net": -18.96
+          },
+          {
+            "year": 2022,
+            "n": 4,
+            "pf": 2.8076588337684947,
+            "net": 41.540000000000006
+          },
+          {
+            "year": 2023,
+            "n": 4,
+            "pf": 0.7011340893929286,
+            "net": -8.959999999999999
+          },
+          {
+            "year": 2024,
+            "n": 4,
+            "pf": Infinity,
+            "net": 49.04
+          },
+          {
+            "year": 2025,
+            "n": 4,
+            "pf": 9.430939226519337,
+            "net": 61.03999999999999
+          },
+          {
+            "year": 2026,
+            "n": 1,
+            "pf": Infinity,
+            "net": 52.76
+          }
+        ],
+        "eras": [
+          {
+            "era": 1,
+            "n": 9,
+            "pf": 0.47945532728141427,
+            "net": -87.15999999999998,
+            "start": "2019-06-30",
+            "end": "2021-06-25"
+          },
+          {
+            "era": 2,
+            "n": 9,
+            "pf": 1.4663316582914574,
+            "net": 27.84,
+            "start": "2021-09-24",
+            "end": "2023-09-29"
+          },
+          {
+            "era": 3,
+            "n": 10,
+            "pf": 24.56353591160221,
+            "net": 170.6,
+            "start": "2023-12-29",
+            "end": "2026-03-27"
+          }
+        ],
+        "yrs_pos": 5,
+        "n_yrs": 8
+      },
+      "cheap_verdict": "TEMPORAL_SPLIT_REQUIRED",
+      "doctrine_verdict": "ARCHITECTURAL_REJECT (losing era)"
+    },
+    {
+      "family": "Russell rebalance (Mar/Jun/Sep/Dec)",
+      "label": "EVT-Russell-rebalance-(Mar/J-MNQ-S-2h",
+      "asset": "MNQ",
+      "direction": "short",
+      "exit_bars": 24,
+      "metrics": {
+        "n": 28,
+        "pf": 1.189,
+        "median": -16.99,
+        "net": 179.28,
+        "max_year_share_pct": 117.6,
+        "top3_share_pct": 352.4,
+        "h1_pf": 1.362,
+        "h2_pf": 1.068,
+        "years_positive": 3,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "Month-end (15:30 ET last bus day)",
+      "label": "EVT-Month-end-(15:30-ET-last-MES-L-30min",
+      "asset": "MES",
+      "direction": "long",
+      "exit_bars": 6,
+      "metrics": {
+        "n": 84,
+        "pf": 1.199,
+        "median": -1.87,
+        "net": 443.34,
+        "max_year_share_pct": 73.3,
+        "top3_share_pct": 171.7,
+        "h1_pf": 0.839,
+        "h2_pf": 1.718,
+        "years_positive": 5,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "Month-end (15:30 ET last bus day)",
+      "label": "EVT-Month-end-(15:30-ET-last-MES-L-2h",
+      "asset": "MES",
+      "direction": "long",
+      "exit_bars": 24,
+      "metrics": {
+        "n": 84,
+        "pf": 0.893,
+        "median": 8.13,
+        "net": -397.91,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.761,
+        "h2_pf": 1.03,
+        "years_positive": 3,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (PF<1.15)",
+      "doctrine_verdict": "KILL (PF<1.15)"
+    },
+    {
+      "family": "Month-end (15:30 ET last bus day)",
+      "label": "EVT-Month-end-(15:30-ET-last-MES-S-30min",
+      "asset": "MES",
+      "direction": "short",
+      "exit_bars": 6,
+      "metrics": {
+        "n": 84,
+        "pf": 0.641,
+        "median": -5.62,
+        "net": -1071.66,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.918,
+        "h2_pf": 0.439,
+        "years_positive": 2,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "Month-end (15:30 ET last bus day)",
+      "label": "EVT-Month-end-(15:30-ET-last-MES-S-2h",
+      "asset": "MES",
+      "direction": "short",
+      "exit_bars": 24,
+      "metrics": {
+        "n": 84,
+        "pf": 0.937,
+        "median": -15.61,
+        "net": -230.41,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 1.085,
+        "h2_pf": 0.818,
+        "years_positive": 4,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "Month-end (15:30 ET last bus day)",
+      "label": "EVT-Month-end-(15:30-ET-last-MNQ-L-30min",
+      "asset": "MNQ",
+      "direction": "long",
+      "exit_bars": 6,
+      "metrics": {
+        "n": 84,
+        "pf": 1.311,
+        "median": -6.74,
+        "net": 996.34,
+        "max_year_share_pct": 44.0,
+        "top3_share_pct": 122.4,
+        "h1_pf": 0.939,
+        "h2_pf": 1.805,
+        "years_positive": 5,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "Month-end (15:30 ET last bus day)",
+      "label": "EVT-Month-end-(15:30-ET-last-MNQ-L-2h",
+      "asset": "MNQ",
+      "direction": "long",
+      "exit_bars": 24,
+      "metrics": {
+        "n": 84,
+        "pf": 0.919,
+        "median": 9.51,
+        "net": -469.66,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.774,
+        "h2_pf": 1.042,
+        "years_positive": 3,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (PF<1.15)",
+      "doctrine_verdict": "KILL (PF<1.15)"
+    },
+    {
+      "family": "Month-end (15:30 ET last bus day)",
+      "label": "EVT-Month-end-(15:30-ET-last-MNQ-S-30min",
+      "asset": "MNQ",
+      "direction": "short",
+      "exit_bars": 6,
+      "metrics": {
+        "n": 84,
+        "pf": 0.686,
+        "median": 2.26,
+        "net": -1372.66,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.958,
+        "h2_pf": 0.496,
+        "years_positive": 1,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (PF<1.15)",
+      "doctrine_verdict": "KILL (PF<1.15)"
+    },
+    {
+      "family": "Month-end (15:30 ET last bus day)",
+      "label": "EVT-Month-end-(15:30-ET-last-MNQ-S-2h",
+      "asset": "MNQ",
+      "direction": "short",
+      "exit_bars": 24,
+      "metrics": {
+        "n": 84,
+        "pf": 1.017,
+        "median": -13.99,
+        "net": 93.34,
+        "max_year_share_pct": 338.1,
+        "top3_share_pct": 1818.4,
+        "h1_pf": 1.191,
+        "h2_pf": 0.906,
+        "years_positive": 4,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "First-of-month (09:35 ET)",
+      "label": "EVT-First-of-month-(09:35-ET-MES-L-30min",
+      "asset": "MES",
+      "direction": "long",
+      "exit_bars": 6,
+      "metrics": {
+        "n": 85,
+        "pf": 0.587,
+        "median": -1.24,
+        "net": -1162.9,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.615,
+        "h2_pf": 0.564,
+        "years_positive": 2,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "First-of-month (09:35 ET)",
+      "label": "EVT-First-of-month-(09:35-ET-MES-L-2h",
+      "asset": "MES",
+      "direction": "long",
+      "exit_bars": 24,
+      "metrics": {
+        "n": 85,
+        "pf": 0.967,
+        "median": -1.24,
+        "net": -122.9,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.751,
+        "h2_pf": 1.224,
+        "years_positive": 4,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "First-of-month (09:35 ET)",
+      "label": "EVT-First-of-month-(09:35-ET-MES-S-30min",
+      "asset": "MES",
+      "direction": "short",
+      "exit_bars": 6,
+      "metrics": {
+        "n": 85,
+        "pf": 1.264,
+        "median": -6.24,
+        "net": 527.1,
+        "max_year_share_pct": 106.5,
+        "top3_share_pct": 93.7,
+        "h1_pf": 1.181,
+        "h2_pf": 1.342,
+        "years_positive": 4,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "First-of-month (09:35 ET)",
+      "label": "EVT-First-of-month-(09:35-ET-MES-S-2h",
+      "asset": "MES",
+      "direction": "short",
+      "exit_bars": 24,
+      "metrics": {
+        "n": 85,
+        "pf": 0.871,
+        "median": -6.24,
+        "net": -512.9,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 1.116,
+        "h2_pf": 0.691,
+        "years_positive": 3,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "First-of-month (09:35 ET)",
+      "label": "EVT-First-of-month-(09:35-ET-MNQ-L-30min",
+      "asset": "MNQ",
+      "direction": "long",
+      "exit_bars": 6,
+      "metrics": {
+        "n": 85,
+        "pf": 0.659,
+        "median": -7.74,
+        "net": -1570.4,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.701,
+        "h2_pf": 0.632,
+        "years_positive": 3,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "First-of-month (09:35 ET)",
+      "label": "EVT-First-of-month-(09:35-ET-MNQ-L-2h",
+      "asset": "MNQ",
+      "direction": "long",
+      "exit_bars": 24,
+      "metrics": {
+        "n": 85,
+        "pf": 1.047,
+        "median": 13.26,
+        "net": 311.6,
+        "max_year_share_pct": 510.6,
+        "top3_share_pct": 348.8,
+        "h1_pf": 0.838,
+        "h2_pf": 1.234,
+        "years_positive": 4,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (PF<1.15)",
+      "doctrine_verdict": "KILL (PF<1.15)"
+    },
+    {
+      "family": "First-of-month (09:35 ET)",
+      "label": "EVT-First-of-month-(09:35-ET-MNQ-S-30min",
+      "asset": "MNQ",
+      "direction": "short",
+      "exit_bars": 6,
+      "metrics": {
+        "n": 85,
+        "pf": 1.37,
+        "median": 3.26,
+        "net": 1189.6,
+        "max_year_share_pct": 70.3,
+        "top3_share_pct": 79.6,
+        "h1_pf": 1.26,
+        "h2_pf": 1.452,
+        "years_positive": 5,
+        "n_years": 8
+      },
+      "temporal_split": {
+        "per_year": [
+          {
+            "year": 2019,
+            "n": 7,
+            "pf": 1.8659087596560266,
+            "net": 118.82
+          },
+          {
+            "year": 2020,
+            "n": 12,
+            "pf": 0.29864074253288175,
+            "net": -318.88
+          },
+          {
+            "year": 2021,
+            "n": 12,
+            "pf": 0.7933196152557782,
+            "net": -86.38
+          },
+          {
+            "year": 2022,
+            "n": 12,
+            "pf": 3.296575001383278,
+            "net": 830.1199999999999
+          },
+          {
+            "year": 2023,
+            "n": 12,
+            "pf": 1.9756122140481711,
+            "net": 193.61999999999998
+          },
+          {
+            "year": 2024,
+            "n": 12,
+            "pf": 1.8761412187991904,
+            "net": 389.6199999999999
+          },
+          {
+            "year": 2025,
+            "n": 12,
+            "pf": 3.7034834873650877,
+            "net": 836.6199999999999
+          },
+          {
+            "year": 2026,
+            "n": 6,
+            "pf": 0.1315754039497307,
+            "net": -773.94
+          }
+        ],
+        "eras": [
+          {
+            "era": 1,
+            "n": 28,
+            "pf": 0.7198726693951796,
+            "net": -258.72,
+            "start": "2019-06-30",
+            "end": "2021-09-01"
+          },
+          {
+            "era": 2,
+            "n": 28,
+            "pf": 2.467959122332431,
+            "net": 976.7799999999997,
+            "start": "2021-10-01",
+            "end": "2024-01-01"
+          },
+          {
+            "era": 3,
+            "n": 29,
+            "pf": 1.2899785993653603,
+            "net": 471.53999999999974,
+            "start": "2024-02-01",
+            "end": "2026-06-01"
+          }
+        ],
+        "yrs_pos": 5,
+        "n_yrs": 8
+      },
+      "cheap_verdict": "TEMPORAL_SPLIT_REQUIRED",
+      "doctrine_verdict": "ARCHITECTURAL_REJECT (losing era)"
+    },
+    {
+      "family": "First-of-month (09:35 ET)",
+      "label": "EVT-First-of-month-(09:35-ET-MNQ-S-2h",
+      "asset": "MNQ",
+      "direction": "short",
+      "exit_bars": 24,
+      "metrics": {
+        "n": 85,
+        "pf": 0.904,
+        "median": -17.74,
+        "net": -692.4,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 1.118,
+        "h2_pf": 0.772,
+        "years_positive": 4,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "Fed minutes (FOMC + 21d)",
+      "label": "EVT-Fed-minutes-(FOMC-+-21d)-MES-L-30min",
+      "asset": "MES",
+      "direction": "long",
+      "exit_bars": 6,
+      "metrics": {
+        "n": 56,
+        "pf": 0.609,
+        "median": -3.74,
+        "net": -601.94,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.905,
+        "h2_pf": 0.424,
+        "years_positive": 1,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "Fed minutes (FOMC + 21d)",
+      "label": "EVT-Fed-minutes-(FOMC-+-21d)-MES-L-2h",
+      "asset": "MES",
+      "direction": "long",
+      "exit_bars": 24,
+      "metrics": {
+        "n": 56,
+        "pf": 0.929,
+        "median": 2.51,
+        "net": -139.44,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.689,
+        "h2_pf": 1.193,
+        "years_positive": 2,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (PF<1.15)",
+      "doctrine_verdict": "KILL (PF<1.15)"
+    },
+    {
+      "family": "Fed minutes (FOMC + 21d)",
+      "label": "EVT-Fed-minutes-(FOMC-+-21d)-MES-S-30min",
+      "asset": "MES",
+      "direction": "short",
+      "exit_bars": 6,
+      "metrics": {
+        "n": 56,
+        "pf": 1.16,
+        "median": -3.74,
+        "net": 183.06,
+        "max_year_share_pct": 110.0,
+        "top3_share_pct": 185.7,
+        "h1_pf": 0.759,
+        "h2_pf": 1.665,
+        "years_positive": 5,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "Fed minutes (FOMC + 21d)",
+      "label": "EVT-Fed-minutes-(FOMC-+-21d)-MES-S-2h",
+      "asset": "MES",
+      "direction": "short",
+      "exit_bars": 24,
+      "metrics": {
+        "n": 56,
+        "pf": 0.862,
+        "median": -9.99,
+        "net": -279.44,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 1.134,
+        "h2_pf": 0.681,
+        "years_positive": 4,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "Fed minutes (FOMC + 21d)",
+      "label": "EVT-Fed-minutes-(FOMC-+-21d)-MNQ-L-30min",
+      "asset": "MNQ",
+      "direction": "long",
+      "exit_bars": 6,
+      "metrics": {
+        "n": 56,
+        "pf": 0.682,
+        "median": -0.49,
+        "net": -758.44,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.977,
+        "h2_pf": 0.515,
+        "years_positive": 2,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "Fed minutes (FOMC + 21d)",
+      "label": "EVT-Fed-minutes-(FOMC-+-21d)-MNQ-L-2h",
+      "asset": "MNQ",
+      "direction": "long",
+      "exit_bars": 24,
+      "metrics": {
+        "n": 56,
+        "pf": 0.967,
+        "median": -8.49,
+        "net": -108.44,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.686,
+        "h2_pf": 1.224,
+        "years_positive": 3,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "Fed minutes (FOMC + 21d)",
+      "label": "EVT-Fed-minutes-(FOMC-+-21d)-MNQ-S-30min",
+      "asset": "MNQ",
+      "direction": "short",
+      "exit_bars": 6,
+      "metrics": {
+        "n": 56,
+        "pf": 1.289,
+        "median": -3.99,
+        "net": 507.56,
+        "max_year_share_pct": 62.4,
+        "top3_share_pct": 109.0,
+        "h1_pf": 0.883,
+        "h2_pf": 1.719,
+        "years_positive": 5,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (median neg)",
+      "doctrine_verdict": "KILL (median neg)"
+    },
+    {
+      "family": "Fed minutes (FOMC + 21d)",
+      "label": "EVT-Fed-minutes-(FOMC-+-21d)-MNQ-S-2h",
+      "asset": "MNQ",
+      "direction": "short",
+      "exit_bars": 24,
+      "metrics": {
+        "n": 56,
+        "pf": 0.957,
+        "median": 4.01,
+        "net": -142.44,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 1.324,
+        "h2_pf": 0.765,
+        "years_positive": 5,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "cheap_verdict": "KILL (PF<1.15)",
+      "doctrine_verdict": "KILL (PF<1.15)"
+    }
+  ],
+  "aggregate": {
+    "total": 48,
+    "watch_for_deep_screen": 0,
+    "watch_modest": 0,
+    "architectural_reject": 3,
+    "kill": 45
+  }
+}

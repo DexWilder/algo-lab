@@ -1,0 +1,355 @@
+{
+  "date": "2026-06-05",
+  "approval": "OK direction B+C (#69), Hurst deprioritized (#70)",
+  "results": [
+    {
+      "spec": {
+        "label": "FR-MGC-ORB-EMA-R2",
+        "asset": "MGC",
+        "entry": "orb_breakout",
+        "filter": "ema_slope",
+        "exit": "fixed_ratio",
+        "params": {
+          "ratio": 2.0
+        },
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 653,
+        "pf": 1.515,
+        "median": 5.76,
+        "net": 10467.28,
+        "max_dd": -1001.48,
+        "max_year_share_pct": 24.5,
+        "top3_share_pct": 22.5,
+        "h1_pf": 1.419,
+        "h2_pf": 1.575,
+        "years_positive": 7,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "WATCH_FOR_DEEP_SCREEN",
+      "era3_delta": null
+    },
+    {
+      "spec": {
+        "label": "FR-MGC-ORB-EMA-R3",
+        "asset": "MGC",
+        "entry": "orb_breakout",
+        "filter": "ema_slope",
+        "exit": "fixed_ratio",
+        "params": {
+          "ratio": 3.0
+        },
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 653,
+        "pf": 1.515,
+        "median": 4.76,
+        "net": 10468.28,
+        "max_dd": -1010.48,
+        "max_year_share_pct": 23.7,
+        "top3_share_pct": 22.9,
+        "h1_pf": 1.397,
+        "h2_pf": 1.589,
+        "years_positive": 7,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "WATCH_FOR_DEEP_SCREEN",
+      "era3_delta": null
+    },
+    {
+      "spec": {
+        "label": "FR-MCL-ORB-EMA-R2",
+        "asset": "MCL",
+        "entry": "orb_breakout",
+        "filter": "ema_slope",
+        "exit": "fixed_ratio",
+        "params": {
+          "ratio": 2.0
+        },
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 930,
+        "pf": 1.285,
+        "median": 3.76,
+        "net": 8720.8,
+        "max_dd": -1532.0,
+        "max_year_share_pct": 36.6,
+        "top3_share_pct": 13.9,
+        "h1_pf": 1.405,
+        "h2_pf": 1.138,
+        "years_positive": 5,
+        "n_years": 6
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "WATCH",
+      "era3_delta": null
+    },
+    {
+      "spec": {
+        "label": "FR-MYM-ORB-EMA-R2",
+        "asset": "MYM",
+        "entry": "orb_breakout",
+        "filter": "ema_slope",
+        "exit": "fixed_ratio",
+        "params": {
+          "ratio": 2.0
+        },
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 379,
+        "pf": 1.616,
+        "median": 10.26,
+        "net": 7565.04,
+        "max_dd": -800.82,
+        "max_year_share_pct": 63.9,
+        "top3_share_pct": 23.2,
+        "h1_pf": 1.624,
+        "h2_pf": 1.608,
+        "years_positive": 3,
+        "n_years": 3
+      },
+      "temporal_split": {
+        "per_year": [
+          {
+            "year": 2024,
+            "n": 140,
+            "pf": 1.2948888276138675,
+            "median": 0.26,
+            "net": 1176.3999999999996
+          },
+          {
+            "year": 2025,
+            "n": 167,
+            "pf": 1.8304379807923663,
+            "median": 20.26,
+            "net": 4831.919999999999
+          },
+          {
+            "year": 2026,
+            "n": 72,
+            "pf": 1.6275932689904298,
+            "median": 29.76,
+            "net": 1556.7199999999993
+          }
+        ],
+        "eras": [
+          {
+            "era": 1,
+            "n": 126,
+            "pf": 1.2536249186021273,
+            "median": -2.99,
+            "net": 934.7599999999995
+          },
+          {
+            "era": 2,
+            "n": 126,
+            "pf": 1.8650034995541667,
+            "median": 19.51,
+            "net": 3608.76
+          },
+          {
+            "era": 3,
+            "n": 127,
+            "pf": 1.6819478549761666,
+            "median": 22.26,
+            "net": 3021.520000000001
+          }
+        ],
+        "yrs_pos": 3,
+        "n_yrs": 3,
+        "era3_pf": 1.6819478549761666,
+        "era3_median": 22.26
+      },
+      "doctrine_verdict": "WATCH_FOR_DEEP_SCREEN (temporal+Era3)",
+      "era3_delta": "RECENT_IMPROVEMENT_SIGNAL"
+    },
+    {
+      "spec": {
+        "label": "DIR-MGC-ORB-Long-PL",
+        "asset": "MGC",
+        "entry": "orb_breakout",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "long"
+      },
+      "metrics": {
+        "n": 387,
+        "pf": 1.362,
+        "median": 4.76,
+        "net": 4660.12,
+        "max_dd": -1015.96,
+        "max_year_share_pct": 37.9,
+        "top3_share_pct": 36.5,
+        "h1_pf": 1.512,
+        "h2_pf": 1.282,
+        "years_positive": 8,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "WATCH_FOR_DEEP_SCREEN",
+      "era3_delta": null
+    },
+    {
+      "spec": {
+        "label": "DIR-MGC-ORB-Short-PL",
+        "asset": "MGC",
+        "entry": "orb_breakout",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "short"
+      },
+      "metrics": {
+        "n": 266,
+        "pf": 1.527,
+        "median": 8.76,
+        "net": 3677.16,
+        "max_dd": -934.16,
+        "max_year_share_pct": 25.0,
+        "top3_share_pct": 31.5,
+        "h1_pf": 1.468,
+        "h2_pf": 1.578,
+        "years_positive": 7,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "WATCH_FOR_DEEP_SCREEN",
+      "era3_delta": null
+    },
+    {
+      "spec": {
+        "label": "DIR-MCL-ORB-Long-PL",
+        "asset": "MCL",
+        "entry": "orb_breakout",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "long"
+      },
+      "metrics": {
+        "n": 461,
+        "pf": 1.014,
+        "median": 4.76,
+        "net": 214.36,
+        "max_dd": -1596.88,
+        "max_year_share_pct": 473.9,
+        "top3_share_pct": 429.8,
+        "h1_pf": 1.163,
+        "h2_pf": 0.86,
+        "years_positive": 4,
+        "n_years": 6
+      },
+      "temporal_split": {
+        "per_year": [
+          {
+            "year": 2021,
+            "n": 47,
+            "pf": 1.1908808573086243,
+            "median": 14.76,
+            "net": 223.71999999999997
+          },
+          {
+            "year": 2022,
+            "n": 88,
+            "pf": 1.2532785495597023,
+            "median": 22.26,
+            "net": 1015.8799999999993
+          },
+          {
+            "year": 2023,
+            "n": 90,
+            "pf": 1.0049094134042824,
+            "median": -3.24,
+            "net": 12.399999999999768
+          },
+          {
+            "year": 2024,
+            "n": 104,
+            "pf": 0.9273081579025065,
+            "median": 3.26,
+            "net": -196.96000000000026
+          },
+          {
+            "year": 2025,
+            "n": 71,
+            "pf": 1.4293292662710124,
+            "median": 8.76,
+            "net": 517.9599999999998
+          },
+          {
+            "year": 2026,
+            "n": 61,
+            "pf": 0.6457188155163603,
+            "median": -13.24,
+            "net": -1358.6400000000003
+          }
+        ],
+        "eras": [
+          {
+            "era": 1,
+            "n": 153,
+            "pf": 1.2936307610438733,
+            "median": 15.76,
+            "net": 1633.2799999999993
+          },
+          {
+            "era": 2,
+            "n": 154,
+            "pf": 0.9366356011183602,
+            "median": 2.26,
+            "net": -271.96000000000015
+          },
+          {
+            "era": 3,
+            "n": 154,
+            "pf": 0.7953771827789713,
+            "median": 1.7599999999999998,
+            "net": -1146.9600000000003
+          }
+        ],
+        "yrs_pos": 4,
+        "n_yrs": 6,
+        "era3_pf": 0.7953771827789713,
+        "era3_median": 1.7599999999999998
+      },
+      "doctrine_verdict": "KILL (PF<1.15)",
+      "era3_delta": null
+    },
+    {
+      "spec": {
+        "label": "DIR-MGC-PriorDayBreak-Long",
+        "asset": "MGC",
+        "entry": "prior_day_break",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "long"
+      },
+      "metrics": {
+        "n": 251,
+        "pf": 1.452,
+        "median": 3.76,
+        "net": 4588.76,
+        "max_dd": -1170.6,
+        "max_year_share_pct": 28.7,
+        "top3_share_pct": 55.1,
+        "h1_pf": 1.352,
+        "h2_pf": 1.518,
+        "years_positive": 6,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "WATCH_FOR_DEEP_SCREEN",
+      "era3_delta": null
+    }
+  ],
+  "aggregate": {
+    "watch_for_deep_screen": 6,
+    "watch_modest": 0,
+    "architectural_reject": 0,
+    "kill": 1
+  }
+}

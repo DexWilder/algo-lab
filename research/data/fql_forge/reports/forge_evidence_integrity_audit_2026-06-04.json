@@ -1,0 +1,455 @@
+{
+  "date": "2026-06-04",
+  "operator_directive": "Evidence-integrity mandatory hard checkpoint (2026-06-04)",
+  "overall_verdict": "GREEN",
+  "issues": [],
+  "A_cost_sources": {
+    "MGC": {
+      "symbol": "MGC",
+      "asset_config_present": true,
+      "point_value": 10.0,
+      "commission_per_side": 0.62,
+      "slippage_ticks": 1,
+      "tick_size": 0.1,
+      "cost_tier": "VALIDATED",
+      "source": "engine/asset_config.py via get_cost_params",
+      "missing_or_default": false,
+      "round_trip_cost_estimate": 3.24
+    },
+    "MNQ": {
+      "symbol": "MNQ",
+      "asset_config_present": true,
+      "point_value": 2.0,
+      "commission_per_side": 0.62,
+      "slippage_ticks": 1,
+      "tick_size": 0.25,
+      "cost_tier": "VALIDATED",
+      "source": "engine/asset_config.py via get_cost_params",
+      "missing_or_default": false,
+      "round_trip_cost_estimate": 2.24
+    }
+  },
+  "B_cost_stress": {
+    "EVT-NFP-MGC-Long-2h": [
+      {
+        "stress": "1x baseline",
+        "commission_mult": 1.0,
+        "slippage_mult": 1.0,
+        "n": 84,
+        "pf": 2.264,
+        "net_median": 21.76,
+        "gross_median": 25.0,
+        "net_pnl": 8663.84,
+        "max_dd": -1652.08,
+        "max_year_share_pct": 27.8,
+        "cost_tier": "VALIDATED"
+      },
+      {
+        "stress": "1.5x cost",
+        "commission_mult": 1.5,
+        "slippage_mult": 1.0,
+        "n": 84,
+        "pf": 2.252,
+        "net_median": 21.14,
+        "gross_median": 25.0,
+        "net_pnl": 8611.76,
+        "max_dd": -1662.62,
+        "max_year_share_pct": 27.9,
+        "cost_tier": "VALIDATED"
+      },
+      {
+        "stress": "2x cost",
+        "commission_mult": 2.0,
+        "slippage_mult": 1.0,
+        "n": 84,
+        "pf": 2.241,
+        "net_median": 20.52,
+        "gross_median": 25.0,
+        "net_pnl": 8559.68,
+        "max_dd": -1673.16,
+        "max_year_share_pct": 28.0,
+        "cost_tier": "VALIDATED"
+      },
+      {
+        "stress": "3x cost",
+        "commission_mult": 3.0,
+        "slippage_mult": 1.0,
+        "n": 84,
+        "pf": 2.217,
+        "net_median": 19.28,
+        "gross_median": 25.0,
+        "net_pnl": 8455.52,
+        "max_dd": -1694.24,
+        "max_year_share_pct": 28.3,
+        "cost_tier": "VALIDATED"
+      },
+      {
+        "stress": "+1 tick slip",
+        "commission_mult": 1.0,
+        "slippage_mult": 2.0,
+        "n": 84,
+        "pf": 2.226,
+        "net_median": 19.76,
+        "gross_median": 25.0,
+        "net_pnl": 8495.84,
+        "max_dd": -1686.08,
+        "max_year_share_pct": 28.2,
+        "cost_tier": "VALIDATED"
+      },
+      {
+        "stress": "+2 tick slip",
+        "commission_mult": 1.0,
+        "slippage_mult": 3.0,
+        "n": 84,
+        "pf": 2.189,
+        "net_median": 17.76,
+        "gross_median": 25.0,
+        "net_pnl": 8327.84,
+        "max_dd": -1720.08,
+        "max_year_share_pct": 28.6,
+        "cost_tier": "VALIDATED"
+      },
+      {
+        "stress": "2x cost + 1 tick slip",
+        "commission_mult": 2.0,
+        "slippage_mult": 2.0,
+        "n": 84,
+        "pf": 2.203,
+        "net_median": 18.52,
+        "gross_median": 25.0,
+        "net_pnl": 8391.68,
+        "max_dd": -1707.16,
+        "max_year_share_pct": 28.5,
+        "cost_tier": "VALIDATED"
+      }
+    ],
+    "DAILY-DC-EMA-MNQ": [
+      {
+        "stress": "1x baseline",
+        "commission_mult": 1.0,
+        "slippage_mult": 1.0,
+        "n": 1542,
+        "pf": 1.609,
+        "net_median": 21.76,
+        "gross_median": 24.0,
+        "net_pnl": 49415.42,
+        "max_dd": -2821.58,
+        "max_year_share_pct": 20.6,
+        "cost_tier": "VALIDATED"
+      },
+      {
+        "stress": "1.5x cost",
+        "commission_mult": 1.5,
+        "slippage_mult": 1.0,
+        "n": 1542,
+        "pf": 1.595,
+        "net_median": 21.14,
+        "gross_median": 24.0,
+        "net_pnl": 48459.38,
+        "max_dd": -2832.12,
+        "max_year_share_pct": 20.7,
+        "cost_tier": "VALIDATED"
+      },
+      {
+        "stress": "2x cost",
+        "commission_mult": 2.0,
+        "slippage_mult": 1.0,
+        "n": 1542,
+        "pf": 1.58,
+        "net_median": 20.52,
+        "gross_median": 24.0,
+        "net_pnl": 47503.34,
+        "max_dd": -2842.66,
+        "max_year_share_pct": 20.9,
+        "cost_tier": "VALIDATED"
+      },
+      {
+        "stress": "3x cost",
+        "commission_mult": 3.0,
+        "slippage_mult": 1.0,
+        "n": 1542,
+        "pf": 1.551,
+        "net_median": 19.28,
+        "gross_median": 24.0,
+        "net_pnl": 45591.26,
+        "max_dd": -2863.74,
+        "max_year_share_pct": 21.1,
+        "cost_tier": "VALIDATED"
+      },
+      {
+        "stress": "+1 tick slip",
+        "commission_mult": 1.0,
+        "slippage_mult": 2.0,
+        "n": 1542,
+        "pf": 1.586,
+        "net_median": 20.76,
+        "gross_median": 24.0,
+        "net_pnl": 47873.42,
+        "max_dd": -2838.58,
+        "max_year_share_pct": 20.8,
+        "cost_tier": "VALIDATED"
+      },
+      {
+        "stress": "+2 tick slip",
+        "commission_mult": 1.0,
+        "slippage_mult": 3.0,
+        "n": 1542,
+        "pf": 1.562,
+        "net_median": 19.76,
+        "gross_median": 24.0,
+        "net_pnl": 46331.42,
+        "max_dd": -2855.58,
+        "max_year_share_pct": 21.0,
+        "cost_tier": "VALIDATED"
+      },
+      {
+        "stress": "2x cost + 1 tick slip",
+        "commission_mult": 2.0,
+        "slippage_mult": 2.0,
+        "n": 1542,
+        "pf": 1.557,
+        "net_median": 19.52,
+        "gross_median": 24.0,
+        "net_pnl": 45961.34,
+        "max_dd": -2859.66,
+        "max_year_share_pct": 21.1,
+        "cost_tier": "VALIDATED"
+      }
+    ],
+    "XB-ORB-EMA-Ladder-MNQ": [
+      {
+        "stress": "1x baseline",
+        "commission_mult": 1.0,
+        "slippage_mult": 1.0,
+        "n": 1215,
+        "pf": 1.603,
+        "net_median": 42.76,
+        "gross_median": 45.0,
+        "net_pnl": 49059.9,
+        "max_dd": -2331.4,
+        "max_year_share_pct": 21.1,
+        "cost_tier": "VALIDATED"
+      },
+      {
+        "stress": "1.5x cost",
+        "commission_mult": 1.5,
+        "slippage_mult": 1.0,
+        "n": 1215,
+        "pf": 1.591,
+        "net_median": 42.14,
+        "gross_median": 45.0,
+        "net_pnl": 48306.6,
+        "max_dd": -2337.6,
+        "max_year_share_pct": 21.2,
+        "cost_tier": "VALIDATED"
+      },
+      {
+        "stress": "2x cost",
+        "commission_mult": 2.0,
+        "slippage_mult": 1.0,
+        "n": 1215,
+        "pf": 1.58,
+        "net_median": 41.52,
+        "gross_median": 45.0,
+        "net_pnl": 47553.3,
+        "max_dd": -2343.8,
+        "max_year_share_pct": 21.3,
+        "cost_tier": "VALIDATED"
+      },
+      {
+        "stress": "3x cost",
+        "commission_mult": 3.0,
+        "slippage_mult": 1.0,
+        "n": 1215,
+        "pf": 1.557,
+        "net_median": 40.28,
+        "gross_median": 45.0,
+        "net_pnl": 46046.7,
+        "max_dd": -2356.2,
+        "max_year_share_pct": 21.5,
+        "cost_tier": "VALIDATED"
+      },
+      {
+        "stress": "+1 tick slip",
+        "commission_mult": 1.0,
+        "slippage_mult": 2.0,
+        "n": 1215,
+        "pf": 1.584,
+        "net_median": 41.76,
+        "gross_median": 45.0,
+        "net_pnl": 47844.9,
+        "max_dd": -2341.4,
+        "max_year_share_pct": 21.2,
+        "cost_tier": "VALIDATED"
+      },
+      {
+        "stress": "+2 tick slip",
+        "commission_mult": 1.0,
+        "slippage_mult": 3.0,
+        "n": 1215,
+        "pf": 1.566,
+        "net_median": 40.76,
+        "gross_median": 45.0,
+        "net_pnl": 46629.9,
+        "max_dd": -2351.4,
+        "max_year_share_pct": 21.4,
+        "cost_tier": "VALIDATED"
+      },
+      {
+        "stress": "2x cost + 1 tick slip",
+        "commission_mult": 2.0,
+        "slippage_mult": 2.0,
+        "n": 1215,
+        "pf": 1.562,
+        "net_median": 40.52,
+        "gross_median": 45.0,
+        "net_pnl": 46338.3,
+        "max_dd": -2353.8,
+        "max_year_share_pct": 21.4,
+        "cost_tier": "VALIDATED"
+      }
+    ]
+  },
+  "C_edge_quality": {
+    "NFP-MGC": {
+      "n": 84,
+      "win_rate_pct": 54.761904761904766,
+      "gross_median": 25.0,
+      "net_median": 21.76,
+      "avg_win": 337.3034782608696,
+      "avg_loss": -180.31894736842102,
+      "largest_win": 1468.76,
+      "largest_loss": -789.24,
+      "top1_share_pct": 16.95275997710022,
+      "top3_share_pct": 41.60141461522835,
+      "top5_share_pct": 63.01824595098709,
+      "pct_trades_net_le_zero": 45.23809523809524,
+      "rt_cost_per_trade": 3.24
+    },
+    "DC-MNQ": {
+      "n": 1542,
+      "win_rate_pct": 57.068741893644614,
+      "gross_median": 24.0,
+      "net_median": 21.76,
+      "avg_win": 148.2855681818182,
+      "avg_loss": -122.47111782477342,
+      "largest_win": 1724.26,
+      "largest_loss": -515.24,
+      "top1_share_pct": 3.4893156832421957,
+      "top3_share_pct": 9.079716412407304,
+      "top5_share_pct": 12.882213689573016,
+      "pct_trades_net_le_zero": 42.93125810635538,
+      "rt_cost_per_trade": 2.24
+    },
+    "ORB-MNQ": {
+      "n": 1215,
+      "win_rate_pct": 60.32921810699589,
+      "gross_median": 45.0,
+      "net_median": 42.76,
+      "avg_win": 177.98442019099588,
+      "avg_loss": -168.88522821576763,
+      "largest_win": 1724.26,
+      "largest_loss": -849.74,
+      "top1_share_pct": 3.5146015381197273,
+      "top3_share_pct": 9.781471221914437,
+      "top5_share_pct": 14.724449091824486,
+      "pct_trades_net_le_zero": 39.67078189300411,
+      "rt_cost_per_trade": 2.24
+    }
+  },
+  "D_lookahead": {
+    "findings": [
+      {
+        "candidate_class": "EVT (event_window_engine)",
+        "entry_logic": "first bar with datetime >= event_dt + entry_offset_bars",
+        "exit_logic": "entry_idx + exit_offset_bars (fixed future bars)",
+        "indicator_shifting": "N/A \u2014 no indicators used in event-window signal",
+        "no_future_bars": true,
+        "event_timing_realism": "NFP at 08:30 ET; entry +1 bar = 08:35 bar OPEN. Deep-screen confirmed entry-delay +1/+2/+3/+6/+12 bars all PF > 2.1. Realistic post-release execution; no same-bar fill assumption.",
+        "verdict": "GREEN (entry strictly after event; exit strictly forward)"
+      },
+      {
+        "candidate_class": "XB (crossbreeding_engine)",
+        "entry_logic": "iterate bars 1..n; entry signal uses bar i features (close, ema, atr) computed up to i",
+        "exit_logic": "exit signal uses bar i features + state from prior bars",
+        "indicator_shifting": "donchian_breakout was bug-fixed 2026-05-28 to use [i-1] (prior window) for dc_high/dc_low \u2014 verified no lookahead in current code.",
+        "no_future_bars": true,
+        "atr_compute": "rolling 14-bar TR; uses bars up to i, not i+1",
+        "verdict": "GREEN (verified after 2026-05-28 Donchian bug fix)"
+      }
+    ]
+  },
+  "E_calendar": {
+    "EVT-NFP-MGC-Long-2h": {
+      "calendar_source": "research/forge_nfp_calendar_verify.py \u2014 canonical 1st-Friday rule with documented BLS holiday shifts",
+      "rule_vs_actual_match_pct": 97.9,
+      "documented_shifts": [
+        {
+          "date": "2021-01",
+          "rule": "2021-01-01",
+          "actual": "2021-01-08",
+          "reason": "New Year's Day deferral"
+        },
+        {
+          "date": "2025-07",
+          "rule": "2025-07-04",
+          "actual": "2025-07-11",
+          "reason": "Independence Day deferral"
+        }
+      ],
+      "good_friday_overlaps": [
+        {
+          "date": "2021-04-02",
+          "note": "futures open; equities closed"
+        },
+        {
+          "date": "2023-04-07",
+          "note": "futures open; equities closed"
+        },
+        {
+          "date": "2026-04-03",
+          "note": "futures open; equities closed"
+        }
+      ],
+      "delta_metrics_rule_vs_actual": {
+        "delta_pf": -0.057,
+        "delta_median": 0.0
+      },
+      "verdict": "GREEN (calendar verified; immaterial delta; shifts documented)"
+    },
+    "DAILY-DC-EMA-MNQ": {
+      "calendar_source": "N/A \u2014 continuous-bar candidate, no event calendar",
+      "verdict": "GREEN (no calendar dependency)"
+    },
+    "XB-ORB-EMA-Ladder-MNQ": {
+      "calendar_source": "N/A \u2014 continuous-bar candidate",
+      "verdict": "GREEN (no calendar dependency)"
+    }
+  },
+  "F_survivorship": {
+    "MGC": {
+      "available": true,
+      "first_bar": "2019-06-30 20:00:00",
+      "last_bar": "2026-06-02 14:50:00",
+      "span_days": 2528,
+      "n_bars": 256205,
+      "big_jumps_gt_5pct": 2,
+      "data_window_caveat": "FULL \u2014 2019-2020+",
+      "construction": "continuous front-month futures (micro contracts where available)",
+      "roll_handling": "Databento continuous adjustment (assumed)",
+      "verdict": "GREEN"
+    },
+    "MNQ": {
+      "available": true,
+      "first_bar": "2019-06-30 20:00:00",
+      "last_bar": "2026-06-02 19:55:00",
+      "span_days": 2528,
+      "n_bars": 485536,
+      "big_jumps_gt_5pct": 1,
+      "data_window_caveat": "FULL \u2014 2019-2020+",
+      "construction": "continuous front-month futures (micro contracts where available)",
+      "roll_handling": "Databento continuous adjustment (assumed)",
+      "verdict": "GREEN"
+    }
+  }
+}

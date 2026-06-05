@@ -1,0 +1,651 @@
+{
+  "date": "2026-06-04",
+  "approval": "OK continue Core Daily Hunt elsewhere (#66) + prop-stress upfront (#67) + Era-3 delta signal (#68)",
+  "tier_classification": {
+    "PAPER_PACKET": 0,
+    "PORTFOLIO_COMPLEMENT": 0,
+    "OBSERVATIONAL": 3,
+    "KILL": 11
+  },
+  "results": [
+    {
+      "spec": {
+        "label": "R3-MGC-VWAP-EMA",
+        "asset": "MGC",
+        "entry": "vwap_continuation",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "gap": "MGC VWAP reclaim/rejection \u2014 baseline (operator #1)"
+      },
+      "metrics": {
+        "n": 381,
+        "pf": 1.285,
+        "median": -0.24,
+        "net": 3613.56,
+        "max_dd": -1869.64,
+        "max_year_share_pct": 49.5,
+        "top3_share_pct": 58.9,
+        "h1_pf": 1.254,
+        "h2_pf": 1.3,
+        "years_positive": 6,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta_signal": null,
+      "prop_stress": null
+    },
+    {
+      "spec": {
+        "label": "R3-MGC-VWAP-Hurst-Trend",
+        "asset": "MGC",
+        "entry": "vwap_continuation",
+        "filter": "hurst_stable_trend",
+        "exit": "profit_ladder",
+        "params": {
+          "hurst_threshold_low": 0.55
+        },
+        "gap": "MGC VWAP + Hurst-trend gate"
+      },
+      "metrics": {
+        "n": 145,
+        "pf": 0.932,
+        "median": -9.24,
+        "net": -294.8,
+        "max_dd": -2118.28,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.471,
+        "h2_pf": 1.391,
+        "years_positive": 3,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta_signal": null,
+      "prop_stress": null
+    },
+    {
+      "spec": {
+        "label": "R3-MGC-PB-VolLow40",
+        "asset": "MGC",
+        "entry": "pb_pullback",
+        "filter": "ema_slope_vol_low",
+        "exit": "profit_ladder",
+        "params": {
+          "vr_threshold": 40
+        },
+        "gap": "MGC low-vol trend rider (operator #2)"
+      },
+      "metrics": {
+        "n": 782,
+        "pf": 1.097,
+        "median": -2.74,
+        "net": 2202.32,
+        "max_dd": -1369.04,
+        "max_year_share_pct": 71.6,
+        "top3_share_pct": 95.2,
+        "h1_pf": 0.997,
+        "h2_pf": 1.163,
+        "years_positive": 3,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta_signal": null,
+      "prop_stress": null
+    },
+    {
+      "spec": {
+        "label": "R3-MES-PriorDayFade-Morning",
+        "asset": "MES",
+        "entry": "prior_day_fade",
+        "filter": "session_morning",
+        "exit": "profit_ladder",
+        "gap": "MES prior-day fade in morning session (operator #3)"
+      },
+      "metrics": {
+        "n": 840,
+        "pf": 0.808,
+        "median": -14.99,
+        "net": -4564.1,
+        "max_dd": -4842.11,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.828,
+        "h2_pf": 0.791,
+        "years_positive": 2,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta_signal": null,
+      "prop_stress": null
+    },
+    {
+      "spec": {
+        "label": "R3-MYM-PriorDayBreak-EMA",
+        "asset": "MYM",
+        "entry": "prior_day_break",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "gap": "MYM prior-day breakout (operator #3)"
+      },
+      "metrics": {
+        "n": 218,
+        "pf": 1.324,
+        "median": 0.76,
+        "net": 1749.18,
+        "max_dd": -765.88,
+        "max_year_share_pct": 67.7,
+        "top3_share_pct": 48.3,
+        "h1_pf": 1.115,
+        "h2_pf": 1.528,
+        "years_positive": 2,
+        "n_years": 3
+      },
+      "temporal_split": {
+        "per_year": [
+          {
+            "year": 2024,
+            "n": 90,
+            "pf": 0.8985558647532786,
+            "median": -19.24,
+            "net": -223.10000000000014
+          },
+          {
+            "year": 2025,
+            "n": 90,
+            "pf": 1.5372451895599164,
+            "median": 8.26,
+            "net": 1184.3999999999996
+          },
+          {
+            "year": 2026,
+            "n": 38,
+            "pf": 1.7957580042419956,
+            "median": 11.01,
+            "net": 787.8799999999999
+          }
+        ],
+        "eras": [
+          {
+            "era": 1,
+            "n": 72,
+            "pf": 0.796789001047307,
+            "median": -19.24,
+            "net": -364.7800000000001
+          },
+          {
+            "era": 2,
+            "n": 73,
+            "pf": 1.5586991832455914,
+            "median": 5.76,
+            "net": 969.9799999999998
+          },
+          {
+            "era": 3,
+            "n": 73,
+            "pf": 1.6141515005100127,
+            "median": 9.26,
+            "net": 1143.9799999999998
+          }
+        ],
+        "yrs_pos": 2,
+        "n_yrs": 3,
+        "era3_pf": 1.6141515005100127,
+        "era3_median": 9.26
+      },
+      "doctrine_verdict": "ARCHITECTURAL_REJECT (losing era)",
+      "era3_delta_signal": null,
+      "prop_stress": null
+    },
+    {
+      "spec": {
+        "label": "R3-MYM-PriorDayFade-EMA",
+        "asset": "MYM",
+        "entry": "prior_day_fade",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "gap": "MYM prior-day fade"
+      },
+      "metrics": {
+        "n": 160,
+        "pf": 1.666,
+        "median": 5.76,
+        "net": 1918.6,
+        "max_dd": -461.74,
+        "max_year_share_pct": 41.4,
+        "top3_share_pct": 40.3,
+        "h1_pf": 1.481,
+        "h2_pf": 1.812,
+        "years_positive": 3,
+        "n_years": 3
+      },
+      "temporal_split": {
+        "per_year": [
+          {
+            "year": 2024,
+            "n": 63,
+            "pf": 2.024731515902519,
+            "median": 7.76,
+            "net": 793.8799999999999
+          },
+          {
+            "year": 2025,
+            "n": 74,
+            "pf": 1.2410056092129238,
+            "median": -0.24,
+            "net": 404.7399999999998
+          },
+          {
+            "year": 2026,
+            "n": 23,
+            "pf": 2.688429248159092,
+            "median": 17.26,
+            "net": 719.9799999999999
+          }
+        ],
+        "eras": [
+          {
+            "era": 1,
+            "n": 53,
+            "pf": 2.084016591106395,
+            "median": 7.76,
+            "net": 674.28
+          },
+          {
+            "era": 2,
+            "n": 53,
+            "pf": 1.3174948496085703,
+            "median": 3.76,
+            "net": 385.27999999999986
+          },
+          {
+            "era": 3,
+            "n": 54,
+            "pf": 1.822047846889952,
+            "median": 4.51,
+            "net": 859.0399999999998
+          }
+        ],
+        "yrs_pos": 3,
+        "n_yrs": 3,
+        "era3_pf": 1.822047846889952,
+        "era3_median": 4.51
+      },
+      "doctrine_verdict": "WATCH_FOR_DEEP_SCREEN",
+      "era3_delta_signal": null,
+      "prop_stress": {
+        "label": "R3-MYM-PriorDayFade-EMA",
+        "rows": [
+          {
+            "stress": "baseline (1x)",
+            "commission_mult": 1.0,
+            "slippage_mult": 1.0,
+            "n": 160,
+            "pf": 1.666,
+            "net_median": 5.76,
+            "net_pnl": 1918.6,
+            "max_dd": -461.74
+          },
+          {
+            "stress": "2x cost + 1 tick slip",
+            "commission_mult": 2.0,
+            "slippage_mult": 2.0,
+            "n": 160,
+            "pf": 1.449,
+            "net_median": 2.52,
+            "net_pnl": 1400.2,
+            "max_dd": -560.2
+          },
+          {
+            "stress": "2x cost + 2 ticks slip",
+            "commission_mult": 2.0,
+            "slippage_mult": 3.0,
+            "n": 160,
+            "pf": 1.33,
+            "net_median": 0.52,
+            "net_pnl": 1080.2,
+            "max_dd": -640.2
+          },
+          {
+            "stress": "4x cost + 2 ticks slip",
+            "commission_mult": 4.0,
+            "slippage_mult": 3.0,
+            "n": 160,
+            "pf": 1.197,
+            "net_median": -1.96,
+            "net_pnl": 683.4,
+            "max_dd": -739.4
+          }
+        ],
+        "verdict": "KNIFE_EDGE (median collapses near 0 at moderate stress)",
+        "headline_reason": "At 2x cost + 2 ticks slip: median $0.52 (< $1.00 threshold)",
+        "moderate_median": 0.52,
+        "extreme_median": -1.96
+      }
+    },
+    {
+      "spec": {
+        "label": "R3-MCL-ORB-EMA-Profit-Ladder",
+        "asset": "MCL",
+        "entry": "orb_breakout",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "gap": "MCL ORB with profit_ladder exit \u2014 already in CANDIDATES as XB-ORB-EMA-Ladder-MCL"
+      },
+      "metrics": {
+        "n": 929,
+        "pf": 1.201,
+        "median": 6.76,
+        "net": 5932.04,
+        "max_dd": -1736.44,
+        "max_year_share_pct": 38.6,
+        "top3_share_pct": 20.8,
+        "h1_pf": 1.353,
+        "h2_pf": 1.018,
+        "years_positive": 5,
+        "n_years": 6
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "WATCH",
+      "era3_delta_signal": null,
+      "prop_stress": {
+        "label": "R3-MCL-ORB-EMA-Profit-Ladder",
+        "rows": [
+          {
+            "stress": "baseline (1x)",
+            "commission_mult": 1.0,
+            "slippage_mult": 1.0,
+            "n": 929,
+            "pf": 1.201,
+            "net_median": 6.76,
+            "net_pnl": 5932.04,
+            "max_dd": -1736.44
+          },
+          {
+            "stress": "2x cost + 1 tick slip",
+            "commission_mult": 2.0,
+            "slippage_mult": 2.0,
+            "n": 929,
+            "pf": 1.033,
+            "net_median": 1.52,
+            "net_pnl": 1064.08,
+            "max_dd": -2752.88
+          },
+          {
+            "stress": "2x cost + 2 ticks slip",
+            "commission_mult": 2.0,
+            "slippage_mult": 3.0,
+            "n": 929,
+            "pf": 0.922,
+            "net_median": -2.48,
+            "net_pnl": -2651.92,
+            "max_dd": -5006.44
+          },
+          {
+            "stress": "4x cost + 2 ticks slip",
+            "commission_mult": 4.0,
+            "slippage_mult": 3.0,
+            "n": 929,
+            "pf": 0.858,
+            "net_median": -4.96,
+            "net_pnl": -4955.84,
+            "max_dd": -6873.88
+          }
+        ],
+        "verdict": "FAIL_STRESS (median \u2264 0 at 2x cost + 2 ticks)",
+        "headline_reason": "At 2x cost + 2 ticks slip: median $-2.48 (\u2264 0)",
+        "moderate_median": -2.48,
+        "extreme_median": -4.96
+      }
+    },
+    {
+      "spec": {
+        "label": "R3-MCL-ORB-MorningOnly",
+        "asset": "MCL",
+        "entry": "orb_breakout",
+        "filter": "session_morning",
+        "exit": "profit_ladder",
+        "gap": "MCL morning ORB"
+      },
+      "metrics": {
+        "n": 1425,
+        "pf": 0.875,
+        "median": -6.24,
+        "net": -6894.0,
+        "max_dd": -9995.52,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 1.006,
+        "h2_pf": 0.719,
+        "years_positive": 2,
+        "n_years": 6
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta_signal": null,
+      "prop_stress": null
+    },
+    {
+      "spec": {
+        "label": "R3-MCL-ORB-VolLow",
+        "asset": "MCL",
+        "entry": "orb_breakout",
+        "filter": "ema_slope_vol_low",
+        "exit": "profit_ladder",
+        "params": {
+          "vr_threshold": 30
+        },
+        "gap": "MCL ORB + low-vol overlay"
+      },
+      "metrics": {
+        "n": 913,
+        "pf": 1.164,
+        "median": 5.76,
+        "net": 4860.88,
+        "max_dd": -2193.2,
+        "max_year_share_pct": 41.8,
+        "top3_share_pct": 25.4,
+        "h1_pf": 1.331,
+        "h2_pf": 0.964,
+        "years_positive": 5,
+        "n_years": 6
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "WATCH",
+      "era3_delta_signal": null,
+      "prop_stress": {
+        "label": "R3-MCL-ORB-VolLow",
+        "rows": [
+          {
+            "stress": "baseline (1x)",
+            "commission_mult": 1.0,
+            "slippage_mult": 1.0,
+            "n": 913,
+            "pf": 1.164,
+            "net_median": 5.76,
+            "net_pnl": 4860.88,
+            "max_dd": -2193.2
+          },
+          {
+            "stress": "2x cost + 1 tick slip",
+            "commission_mult": 2.0,
+            "slippage_mult": 2.0,
+            "n": 913,
+            "pf": 1.002,
+            "net_median": 0.52,
+            "net_pnl": 76.76,
+            "max_dd": -3312.04
+          },
+          {
+            "stress": "2x cost + 2 ticks slip",
+            "commission_mult": 2.0,
+            "slippage_mult": 3.0,
+            "n": 913,
+            "pf": 0.894,
+            "net_median": -3.48,
+            "net_pnl": -3575.24,
+            "max_dd": -5706.2
+          },
+          {
+            "stress": "4x cost + 2 ticks slip",
+            "commission_mult": 4.0,
+            "slippage_mult": 3.0,
+            "n": 913,
+            "pf": 0.833,
+            "net_median": -5.96,
+            "net_pnl": -5839.48,
+            "max_dd": -7541.4
+          }
+        ],
+        "verdict": "FAIL_STRESS (median \u2264 0 at 2x cost + 2 ticks)",
+        "headline_reason": "At 2x cost + 2 ticks slip: median $-3.48 (\u2264 0)",
+        "moderate_median": -3.48,
+        "extreme_median": -5.96
+      }
+    },
+    {
+      "spec": {
+        "label": "R3-ZN-BB-Morning-Hurst-MR",
+        "asset": "ZN",
+        "entry": "bb_reversion",
+        "filter": "hurst_stable_mr",
+        "exit": "profit_ladder",
+        "params": {
+          "hurst_threshold_high": 0.45
+        },
+        "gap": "ZN MR + Hurst-MR discriminator (operator #5)"
+      },
+      "metrics": {
+        "n": 872,
+        "pf": 0.392,
+        "median": -49.98,
+        "net": -31875.49,
+        "max_dd": -31919.51,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.445,
+        "h2_pf": 0.339,
+        "years_positive": 0,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta_signal": null,
+      "prop_stress": null
+    },
+    {
+      "spec": {
+        "label": "R3-MYM-ORB-Close",
+        "asset": "MYM",
+        "entry": "orb_breakout",
+        "filter": "session_close",
+        "exit": "profit_ladder",
+        "gap": "MYM close momentum"
+      },
+      "metrics": {
+        "n": 444,
+        "pf": 0.891,
+        "median": -2.74,
+        "net": -995.56,
+        "max_dd": -1993.74,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 1.009,
+        "h2_pf": 0.776,
+        "years_positive": 1,
+        "n_years": 3
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta_signal": null,
+      "prop_stress": null
+    },
+    {
+      "spec": {
+        "label": "R3-6E-PB-EMA",
+        "asset": "6E",
+        "entry": "pb_pullback",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "gap": "FX 6E pullback (session handoff implicit)"
+      },
+      "metrics": {
+        "n": 379,
+        "pf": 0.845,
+        "median": -23.75,
+        "net": -3926.25,
+        "max_dd": -6103.75,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.889,
+        "h2_pf": 0.795,
+        "years_positive": 2,
+        "n_years": 3
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta_signal": null,
+      "prop_stress": null
+    },
+    {
+      "spec": {
+        "label": "R3-6E-PriorDayBreak",
+        "asset": "6E",
+        "entry": "prior_day_break",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "gap": "6E prior-day breakout"
+      },
+      "metrics": {
+        "n": 166,
+        "pf": 1.074,
+        "median": -14.38,
+        "net": 845.0,
+        "max_dd": -1461.25,
+        "max_year_share_pct": 95.6,
+        "top3_share_pct": 284.5,
+        "h1_pf": 1.014,
+        "h2_pf": 1.125,
+        "years_positive": 2,
+        "n_years": 3
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta_signal": null,
+      "prop_stress": null
+    },
+    {
+      "spec": {
+        "label": "R3-MGC-PriorDayBreak-HurstTrend",
+        "asset": "MGC",
+        "entry": "prior_day_break",
+        "filter": "hurst_stable_trend",
+        "exit": "profit_ladder",
+        "params": {
+          "hurst_threshold_low": 0.55
+        },
+        "gap": "MGC prior-day break + Hurst-trend filter (new combo)"
+      },
+      "metrics": {
+        "n": 157,
+        "pf": 0.597,
+        "median": 2.76,
+        "net": -3710.68,
+        "max_dd": -5173.36,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 1.612,
+        "h2_pf": 0.387,
+        "years_positive": 3,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (PF<1.15)",
+      "era3_delta_signal": null,
+      "prop_stress": null
+    }
+  ]
+}

@@ -1,0 +1,307 @@
+{
+  "date": "2026-06-04",
+  "approval": "OK MNQ family review (#48)",
+  "candidates": {
+    "existing_probation": "XB-ORB-EMA-Ladder-MNQ",
+    "new_candidate": "DAILY-DC-EMA-MNQ"
+  },
+  "standalone": {
+    "orb": {
+      "label": "XB-ORB-EMA-Ladder-MNQ",
+      "n": 1215,
+      "pf": 1.6026816316121286,
+      "median": 42.76,
+      "net_pnl": 49059.899999999994,
+      "max_dd_trade_equity": -2331.399999999987,
+      "win_rate_pct": 60.32921810699589,
+      "avg_win": 177.98442019099588,
+      "avg_loss": -168.88522821576763
+    },
+    "dc": {
+      "label": "DAILY-DC-EMA-MNQ",
+      "n": 1542,
+      "pf": 1.6094959437998084,
+      "median": 21.76,
+      "net_pnl": 49415.419999999984,
+      "max_dd_trade_equity": -2821.58,
+      "win_rate_pct": 57.068741893644614,
+      "avg_win": 148.2855681818182,
+      "avg_loss": -122.47111782477342
+    },
+    "orb_temporal": {
+      "per_year": [
+        {
+          "year": 2019,
+          "n": 84,
+          "pf": 1.0545999235494397,
+          "net": 122.84000000000003
+        },
+        {
+          "year": 2020,
+          "n": 176,
+          "pf": 1.2467614334189798,
+          "net": 2575.7599999999984
+        },
+        {
+          "year": 2021,
+          "n": 171,
+          "pf": 1.331142803706787,
+          "net": 3611.959999999999
+        },
+        {
+          "year": 2022,
+          "n": 174,
+          "pf": 1.5757680213563752,
+          "net": 9019.74
+        },
+        {
+          "year": 2023,
+          "n": 178,
+          "pf": 1.9912294378137112,
+          "net": 8519.279999999999
+        },
+        {
+          "year": 2024,
+          "n": 181,
+          "pf": 1.5990839890663875,
+          "net": 8026.0599999999995
+        },
+        {
+          "year": 2025,
+          "n": 180,
+          "pf": 1.6643696865464057,
+          "net": 10337.3
+        },
+        {
+          "year": 2026,
+          "n": 71,
+          "pf": 2.4917059184927304,
+          "net": 6846.960000000001
+        }
+      ],
+      "eras": [
+        {
+          "era": 1,
+          "n": 405,
+          "pf": 1.2475207096425975,
+          "net": 5273.799999999997
+        },
+        {
+          "era": 2,
+          "n": 405,
+          "pf": 1.6619747049200517,
+          "net": 18816.299999999996
+        },
+        {
+          "era": 3,
+          "n": 405,
+          "pf": 1.7883951845939337,
+          "net": 24969.800000000003
+        }
+      ],
+      "yrs_pos": 8,
+      "n_yrs": 8
+    },
+    "dc_temporal": {
+      "per_year": [
+        {
+          "year": 2019,
+          "n": 114,
+          "pf": 1.1668013645605586,
+          "net": 392.1399999999996
+        },
+        {
+          "year": 2020,
+          "n": 230,
+          "pf": 1.2977602108036892,
+          "net": 3118.7999999999993
+        },
+        {
+          "year": 2021,
+          "n": 223,
+          "pf": 1.3491042618336933,
+          "net": 3810.4799999999996
+        },
+        {
+          "year": 2022,
+          "n": 216,
+          "pf": 1.6826626342426858,
+          "net": 10175.659999999998
+        },
+        {
+          "year": 2023,
+          "n": 220,
+          "pf": 1.646863648064987,
+          "net": 6332.199999999999
+        },
+        {
+          "year": 2024,
+          "n": 220,
+          "pf": 1.9508904295169007,
+          "net": 10037.2
+        },
+        {
+          "year": 2025,
+          "n": 223,
+          "pf": 1.6757230253984563,
+          "net": 10128.48
+        },
+        {
+          "year": 2026,
+          "n": 96,
+          "pf": 1.763862505143656,
+          "net": 5420.459999999999
+        }
+      ],
+      "eras": [
+        {
+          "era": 1,
+          "n": 514,
+          "pf": 1.268174570931418,
+          "net": 5597.639999999997
+        },
+        {
+          "era": 2,
+          "n": 514,
+          "pf": 1.6517366302072833,
+          "net": 18745.639999999996
+        },
+        {
+          "era": 3,
+          "n": 514,
+          "pf": 1.7974558653645527,
+          "net": 25072.139999999996
+        }
+      ],
+      "yrs_pos": 8,
+      "n_yrs": 8
+    }
+  },
+  "trade_overlap": {
+    "n_trades_a": 1215,
+    "n_trades_b": 1542,
+    "trading_days_a": 1215,
+    "trading_days_b": 1542,
+    "same_day_count": 1184,
+    "only_a_days": 31,
+    "only_b_days": 358,
+    "same_day_pct_of_a": 97.4485596707819,
+    "same_day_pct_of_b": 76.7833981841764,
+    "same_direction_days": 1184,
+    "opposite_direction_days": 0,
+    "avg_time_separation_minutes_same_day": 25.22381756756757
+  },
+  "pnl_correlation": {
+    "daily_corr": 0.7203557765228542,
+    "weekly_corr": 0.7195603626764935,
+    "drawdown_overlap_pct_of_days": 65.09853782581055,
+    "losing_day_overlap_pct": 20.025429116338206,
+    "losing_day_pct_a": 30.64208518753973,
+    "losing_day_pct_b": 42.08518753973299,
+    "n_common_days": 1573
+  },
+  "configurations": {
+    "A_orb_baseline_alone": {
+      "label": "ORB alone (existing probation)",
+      "n_days": 1573,
+      "total_pnl": 49059.899999999994,
+      "annual_pnl_est": 7859.564399237125,
+      "annual_vol_est": 3371.1972816784396,
+      "sharpe_est": 2.3313866684550817,
+      "max_drawdown": -2331.399999999987,
+      "worst_day": -849.74,
+      "max_consecutive_losing_days": 5,
+      "worst_rolling_60d_pf": 0.6358409808117814,
+      "pct_rolling_60d_pf_gt_1": 90.68692206076618,
+      "prop_threshold": -4000,
+      "prop_breach": false,
+      "days_to_first_breach": null
+    },
+    "B_dc_new_alone": {
+      "label": "DC alone (new candidate)",
+      "n_days": 1573,
+      "total_pnl": 49415.41999999999,
+      "annual_pnl_est": 7916.51992371265,
+      "annual_vol_est": 3046.019384263086,
+      "sharpe_est": 2.598972273325788,
+      "max_drawdown": -2821.58,
+      "worst_day": -515.24,
+      "max_consecutive_losing_days": 7,
+      "worst_rolling_60d_pf": 0.5423862230718566,
+      "pct_rolling_60d_pf_gt_1": 90.09247027741083,
+      "prop_threshold": -4000,
+      "prop_breach": false,
+      "days_to_first_breach": null
+    },
+    "C_both_full_size": {
+      "label": "Both at full size",
+      "n_days": 1573,
+      "total_pnl": 98475.31999999998,
+      "annual_pnl_est": 15776.084322949773,
+      "annual_vol_est": 5952.939308877995,
+      "sharpe_est": 2.6501335734133726,
+      "max_drawdown": -4590.460000000001,
+      "worst_day": -1275.48,
+      "max_consecutive_losing_days": 8,
+      "worst_rolling_60d_pf": 0.5947443309854621,
+      "pct_rolling_60d_pf_gt_1": 91.14927344782035,
+      "prop_threshold": -4000,
+      "prop_breach": true,
+      "days_to_first_breach": 267
+    },
+    "D_both_half_size": {
+      "label": "Both at half size",
+      "n_days": 1573,
+      "total_pnl": 49237.65999999999,
+      "annual_pnl_est": 7888.042161474887,
+      "annual_vol_est": 2976.4696544389976,
+      "sharpe_est": 2.6501335734133726,
+      "max_drawdown": -2295.2300000000005,
+      "worst_day": -637.74,
+      "max_consecutive_losing_days": 8,
+      "worst_rolling_60d_pf": 0.5947443309854621,
+      "pct_rolling_60d_pf_gt_1": 91.14927344782035,
+      "prop_threshold": -4000,
+      "prop_breach": false,
+      "days_to_first_breach": null
+    },
+    "E_controller_dc_when_fires": {
+      "label": "DC when fires else ORB",
+      "n_days": 1573,
+      "total_pnl": 44906.47999999999,
+      "annual_pnl_est": 7194.172256834073,
+      "annual_vol_est": 3103.1464192392878,
+      "sharpe_est": 2.318347665527709,
+      "max_drawdown": -2821.58,
+      "worst_day": -849.74,
+      "max_consecutive_losing_days": 7,
+      "worst_rolling_60d_pf": 0.5395346607433922,
+      "pct_rolling_60d_pf_gt_1": 87.97886393659181,
+      "prop_threshold": -4000,
+      "prop_breach": false,
+      "days_to_first_breach": null
+    },
+    "F_replacement_dc_only": {
+      "label": "DC replaces ORB",
+      "n_days": 1573,
+      "total_pnl": 49415.41999999999,
+      "annual_pnl_est": 7916.51992371265,
+      "annual_vol_est": 3046.019384263086,
+      "sharpe_est": 2.598972273325788,
+      "max_drawdown": -2821.58,
+      "worst_day": -515.24,
+      "max_consecutive_losing_days": 7,
+      "worst_rolling_60d_pf": 0.5423862230718566,
+      "pct_rolling_60d_pf_gt_1": 90.09247027741083,
+      "prop_threshold": -4000,
+      "prop_breach": false,
+      "days_to_first_breach": null
+    }
+  },
+  "verdict": "DUPLICATE_EXPOSURE_REJECT",
+  "notes": [
+    "daily corr 0.72 > 0.65",
+    "DD stacks -4590 > max(base,new)*1.30",
+    "overlap day pct 97/77"
+  ]
+}

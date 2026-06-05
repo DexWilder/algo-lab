@@ -1,0 +1,112 @@
+{
+  "verdict": "PARALLEL_COMPLEMENT_CANDIDATE",
+  "notes": [
+    "full-size total 70265 > 1.10\u00d7 max(base,new)",
+    "full-size DD -2638 within 1.15\u00d7 of max alone"
+  ],
+  "overlap": {
+    "n_trades_a": 1215,
+    "n_trades_b": 1445,
+    "trading_days_a": 1215,
+    "trading_days_b": 1445,
+    "same_day_count": 1145,
+    "only_a_days": 70,
+    "only_b_days": 300,
+    "same_day_pct_of_a": 94.23868312757202,
+    "same_day_pct_of_b": 79.23875432525952,
+    "same_direction_days": 1145,
+    "opposite_direction_days": 0,
+    "avg_time_separation_minutes_same_day": 62.24454148471616
+  },
+  "correlation": {
+    "daily_corr": 0.4255987566178796,
+    "weekly_corr": 0.3354730107158209,
+    "drawdown_overlap_pct_of_days": 66.7986798679868,
+    "losing_day_overlap_pct": 16.105610561056103,
+    "losing_day_pct_a": 31.815181518151814,
+    "losing_day_pct_b": 46.666666666666664,
+    "n_common_days": 1515
+  },
+  "configs": {
+    "A_orb_alone": {
+      "label": "ORB alone",
+      "n_days": 1515,
+      "total_pnl": 49059.899999999994,
+      "annual_pnl_est": 8160.458613861385,
+      "annual_vol_est": 3433.7447301521947,
+      "sharpe_est": 2.3765478377595315,
+      "max_drawdown": -2331.399999999987,
+      "worst_day": -849.74,
+      "max_consecutive_losing_days": 5,
+      "worst_rolling_60d_pf": 0.6377351288304527,
+      "pct_rolling_60d_pf_gt_1": 91.27747252747253,
+      "prop_threshold": -4000,
+      "prop_breach": false,
+      "days_to_first_breach": null
+    },
+    "B_pb_vollow_alone": {
+      "label": "PB-VolLow alone",
+      "n_days": 1515,
+      "total_pnl": 21204.69999999999,
+      "annual_pnl_est": 3527.1184158415826,
+      "annual_vol_est": 2103.7860050209,
+      "sharpe_est": 1.6765576001664402,
+      "max_drawdown": -1850.1199999999862,
+      "worst_day": -421.24,
+      "max_consecutive_losing_days": 8,
+      "worst_rolling_60d_pf": 0.5744373112740744,
+      "pct_rolling_60d_pf_gt_1": 78.09065934065934,
+      "prop_threshold": -4000,
+      "prop_breach": false,
+      "days_to_first_breach": null
+    },
+    "C_both_full": {
+      "label": "Both full",
+      "n_days": 1515,
+      "total_pnl": 70264.59999999999,
+      "annual_pnl_est": 11687.577029702969,
+      "annual_vol_est": 4729.212787721096,
+      "sharpe_est": 2.471357825143443,
+      "max_drawdown": -2638.2200000000003,
+      "worst_day": -1155.98,
+      "max_consecutive_losing_days": 7,
+      "worst_rolling_60d_pf": 0.7042464951784851,
+      "pct_rolling_60d_pf_gt_1": 93.68131868131869,
+      "prop_threshold": -4000,
+      "prop_breach": false,
+      "days_to_first_breach": null
+    },
+    "D_both_half": {
+      "label": "Both half",
+      "n_days": 1515,
+      "total_pnl": 35132.299999999996,
+      "annual_pnl_est": 5843.788514851484,
+      "annual_vol_est": 2364.606393860548,
+      "sharpe_est": 2.471357825143443,
+      "max_drawdown": -1319.1100000000001,
+      "worst_day": -577.99,
+      "max_consecutive_losing_days": 7,
+      "worst_rolling_60d_pf": 0.7042464951784851,
+      "pct_rolling_60d_pf_gt_1": 93.68131868131869,
+      "prop_threshold": -4000,
+      "prop_breach": false,
+      "days_to_first_breach": null
+    },
+    "E_controller": {
+      "label": "Controller",
+      "n_days": 1515,
+      "total_pnl": 15469.399999999992,
+      "annual_pnl_est": 2573.127920792078,
+      "annual_vol_est": 2259.1497874378865,
+      "sharpe_est": 1.1389806621500187,
+      "max_drawdown": -2672.279999999997,
+      "worst_day": -519.24,
+      "max_consecutive_losing_days": 8,
+      "worst_rolling_60d_pf": 0.5187872041357322,
+      "pct_rolling_60d_pf_gt_1": 67.6510989010989,
+      "prop_threshold": -4000,
+      "prop_breach": false,
+      "days_to_first_breach": null
+    }
+  }
+}
