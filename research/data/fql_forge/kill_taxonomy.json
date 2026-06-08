@@ -2795,5 +2795,119 @@
       "implementation-blocked"
     ],
     "disposition": "0 PAPER_PACKET. 0 OBSERVATIONAL. 5 KILL by sample-collapse. Primitive code shipped and tested. First-batch parameters need operator-approved retry OR primitive moves to ARCHIVED."
+  },
+  "_HEADLINE_2026-06-08k_VRC_ARCHIVED_after_retry": {
+    "headline": "VRC bounded retry (transition_window=30): mechanism now fires (n=79 across 5 assets) but ALL KILL with uniform anti-edges (PFs 0.30-0.80). Different failure mode from first batch \u2014 not parameter conflict, no actual edge in the regime-shift moment.",
+    "date": "2026-06-08",
+    "operator_approval": "OK A #109 (Option A \u2014 widen transition window only)",
+    "param_change": "transition_window_bars: 5 \u2192 30",
+    "result_by_asset": {
+      "VRC30-MGC-Both-PL": {
+        "n": 14,
+        "pf": 0.418,
+        "median": -21.74,
+        "verdict": "KILL"
+      },
+      "VRC30-MCL-Both-PL": {
+        "n": 29,
+        "pf": 0.799,
+        "median": -0.24,
+        "verdict": "KILL"
+      },
+      "VRC30-MES-Both-PL": {
+        "n": 24,
+        "pf": 0.302,
+        "median": -27.49,
+        "verdict": "KILL"
+      },
+      "VRC30-MYM-Both-PL": {
+        "n": 4,
+        "pf": 0.415,
+        "median": -11.49,
+        "verdict": "KILL"
+      },
+      "VRC30-MNQ-Both-PL": {
+        "n": 8,
+        "pf": 0.727,
+        "median": -16.49,
+        "verdict": "KILL"
+      }
+    },
+    "interpretation": "Mechanism is structurally anti-edge: vol-of-vol regime SHIFT moment + ema_slope direction = consistently entering AFTER the move, against the inevitable fade. PFs all below 1.0 with negative medians across every tested asset. This is a real mechanism finding (no edge in the chosen trigger semantics), not a build flaw.",
+    "comparison_to_RCB": "RCB primitive fired plenty (single-bar trigger, lots of signals) but margin was too thin for prop-stress. VRC fires less (regime-shift is rarer) and is structurally directional-wrong. Both classified non-packet-grade but for different reasons.",
+    "final_classification": "ARCHIVED for active hunt. Primitive remains in ENTRY_MAP for future thesis-driven research if a regime-shift hypothesis emerges with different direction logic (e.g., FADE the regime shift rather than FOLLOW it).",
+    "doctrine_lesson": "Vol-regime-SHIFT moment is a structurally anti-edge entry point for momentum direction. The shift itself absorbs the move; entering AT the shift catches the fade.",
+    "next_action": "Per #110: immediately rotate to Source Mining Mode. VRC concluded.",
+    "tags": [
+      "median-negative",
+      "regime-dependent"
+    ],
+    "disposition": "0 PAPER_PACKET. 0 OBSERVATIONAL. 5 KILL. ARCHIVED with mechanism-evidence."
+  },
+  "_HEADLINE_2026-06-08l_SOURCE_MINING_BATCH1_WIPEOUT_existing_primitives_exhausted": {
+    "headline": "Source Mining Batch 1: 5 RUNNABLE_NOW candidates, 0 UPGRADE / 0 OBSERVATIONAL / 5 KILL. CONFIRMS existing primitive set is structurally exhausted for active Packet #2 hunt.",
+    "date": "2026-06-08",
+    "operator_approval": "OK A #110 (rotate immediately to Source Mining after VRC failure)",
+    "results": {
+      "SM1-BB-MES-HurstMR-PL": {
+        "n": 892,
+        "pf": 0.794,
+        "median": -14.99,
+        "verdict": "KILL median neg",
+        "notable": "FIRST hurst_stable_mr deployment \u2014 ANTI-EDGE"
+      },
+      "SM1-BB-MNQ-HurstMR-PL": {
+        "n": 816,
+        "pf": 0.885,
+        "median": -25.24,
+        "verdict": "KILL median neg",
+        "notable": "hurst_stable_mr + bb_reversion = ANTI-EDGE on MNQ too"
+      },
+      "SM1-VolExp-MES-MorningSession-PL": {
+        "n": 17,
+        "pf": 0.68,
+        "median": -12.49,
+        "verdict": "KILL n=17 (rare event + filter further restricts)"
+      },
+      "SM1-VWAP-MES-MorningSession-PL": {
+        "n": 1190,
+        "pf": 0.884,
+        "median": -14.99,
+        "verdict": "KILL median neg"
+      },
+      "SM1-PDF-MNQ-PL": {
+        "n": 414,
+        "pf": 1.081,
+        "median": 1.01,
+        "verdict": "KILL PF<1.15",
+        "notable": "Marginal signal but 101.4% max-yr concentration"
+      }
+    },
+    "critical_findings": [
+      "hurst_stable_mr filter deployed for FIRST TIME after being built 06-03; produces ANTI-EDGE when combined with bb_reversion on MES and MNQ. Filter has structural mismatch with MR entry semantics.",
+      "Morning-session continuation strategies (VWAP, vol_expansion) on equity micros produce uniformly negative edges in this filter+entry combination.",
+      "PDF-MNQ has small positive median ($1.01) but 101.4% max-year concentration \u2014 one year carries entire signal, other years lose.",
+      "Source Mining cycle confirms existing primitive set is structurally exhausted: across all reasonable RUNNABLE_NOW combinations remaining, no productive edge surfaces."
+    ],
+    "saturated_path_inventory": {
+      "ORB family + directional": "EXHAUSTED (5-asset diagnostic)",
+      "Non-ORB existing primitives \u00d7 MCL/MGC": "SATURATED (08c wipeout)",
+      "Rates/FX \u00d7 existing primitives": "SATURATED (08d wipeout)",
+      "Crude \u00d7 calendar-time event": "PAUSED (08f + 08h saturation)",
+      "Range compression mechanism (RCB)": "RESEARCH_ONLY (concentration intrinsic)",
+      "Vol-regime-shift mechanism (VRC)": "ARCHIVED (mechanism anti-edge)",
+      "Source Mining Batch 1": "WIPEOUT (existing primitives exhausted)"
+    },
+    "next_step_options_remaining": [
+      "Build NEEDS_PRIMITIVE (Bollinger-Keltner squeeze / gap-fill trigger / microstructure proxy)",
+      "Open NEEDS_DATA (Treasury auction / WASDE / surprise-conditioned crude / COT-shift)",
+      "Revise sprint scope (Packet #2 = portfolio-complement classification not paper-packet)"
+    ],
+    "recommended_next_primitive_if_operator_chooses_A": "Bollinger-Keltner squeeze: well-validated theoretical basis, easy compute (Keltner = EMA + ATR bands), testable across all assets. Different mechanism from RCB (Bollinger pctrank-based) and VRC (vol-of-vol). Estimated 4-6h build.",
+    "tags": [
+      "cost-eats-edge",
+      "median-negative"
+    ],
+    "disposition": "0 PAPER_PACKET. 0 OBSERVATIONAL. 5 KILL. Source Mining confirmed existing primitive set exhausted. Operator decision required: new primitive build, new data unlock, or sprint scope revision."
   }
 }

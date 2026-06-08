@@ -1,0 +1,158 @@
+{
+  "date": "2026-06-08",
+  "purpose": "Source Mining Batch 1 (post-VRC-archive rotation per #110)",
+  "boundaries": "report-only Lane B; RUNNABLE_NOW only; no new primitive; no data unlock",
+  "notable": "FIRST deployment of hurst_stable_mr filter (built 06-03, never used in cycles)",
+  "tier_classification": {
+    "UPGRADE_CANDIDATE": 0,
+    "OBSERVATIONAL": 0,
+    "KILL": 5
+  },
+  "results": [
+    {
+      "spec": {
+        "label": "SM1-BB-MES-HurstMR-PL",
+        "asset": "MES",
+        "entry": "bb_reversion",
+        "filter": "hurst_stable_mr",
+        "exit": "profit_ladder",
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 892,
+        "pf": 0.794,
+        "median": -14.99,
+        "net": -4731.08,
+        "max_dd": -6008.8,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.749,
+        "h2_pf": 0.832,
+        "years_positive": 1,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 151.8105731010437
+    },
+    {
+      "spec": {
+        "label": "SM1-BB-MNQ-HurstMR-PL",
+        "asset": "MNQ",
+        "entry": "bb_reversion",
+        "filter": "hurst_stable_mr",
+        "exit": "profit_ladder",
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 816,
+        "pf": 0.885,
+        "median": -25.24,
+        "net": -4015.34,
+        "max_dd": -5932.66,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.823,
+        "h2_pf": 0.938,
+        "years_positive": 3,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 144.39787483215332
+    },
+    {
+      "spec": {
+        "label": "SM1-VolExp-MES-MorningSession-PL",
+        "asset": "MES",
+        "entry": "vol_expansion",
+        "filter": "session_morning",
+        "exit": "profit_ladder",
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 17,
+        "pf": 0.68,
+        "median": -12.49,
+        "net": -128.58,
+        "max_dd": -264.95,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 2.941,
+        "h2_pf": 0.275,
+        "years_positive": 2,
+        "n_years": 7
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (n=17)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 1.6740150451660156
+    },
+    {
+      "spec": {
+        "label": "SM1-VWAP-MES-MorningSession-PL",
+        "asset": "MES",
+        "entry": "vwap_continuation",
+        "filter": "session_morning",
+        "exit": "profit_ladder",
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 1190,
+        "pf": 0.884,
+        "median": -14.99,
+        "net": -4769.35,
+        "max_dd": -9709.94,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.707,
+        "h2_pf": 1.082,
+        "years_positive": 2,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 2.1832361221313477
+    },
+    {
+      "spec": {
+        "label": "SM1-PDF-MNQ-PL",
+        "asset": "MNQ",
+        "entry": "prior_day_fade",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 414,
+        "pf": 1.081,
+        "median": 1.01,
+        "net": 1448.64,
+        "max_dd": -2016.78,
+        "max_year_share_pct": 101.4,
+        "top3_share_pct": 128.2,
+        "h1_pf": 1.091,
+        "h2_pf": 1.073,
+        "years_positive": 4,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (PF<1.15)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 2.1164538860321045
+    }
+  ],
+  "feature_cache_stats_final": {
+    "hits": 3,
+    "misses": 2,
+    "cached_keys": 2
+  }
+}

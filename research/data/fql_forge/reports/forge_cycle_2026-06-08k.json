@@ -1,0 +1,175 @@
+{
+  "date": "2026-06-08",
+  "purpose": "VRC bounded retry with transition_window_bars=30 (#109 Option A)",
+  "boundaries": "report-only Lane B; ONE retry only",
+  "param_change": "transition_window_bars: 5 \u2192 30",
+  "total_signals": 79,
+  "tier_classification": {
+    "UPGRADE_CANDIDATE": 0,
+    "OBSERVATIONAL": 0,
+    "KILL": 5
+  },
+  "final_vrc_classification": "VRC FIRES BUT KILLS \u2014 primitive ARCHIVE (does not produce viable workhorse candidates).",
+  "results": [
+    {
+      "spec": {
+        "label": "VRC30-MGC-Both-PL",
+        "asset": "MGC",
+        "entry": "volatility_regime_compound",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "both",
+        "params": {
+          "transition_window_bars": 30
+        }
+      },
+      "metrics": {
+        "n": 14,
+        "pf": 0.418,
+        "median": -21.74,
+        "net": -494.36,
+        "max_dd": -620.96,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.255,
+        "h2_pf": 0.479,
+        "years_positive": 3,
+        "n_years": 7
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (n=14)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 49.08258104324341
+    },
+    {
+      "spec": {
+        "label": "VRC30-MCL-Both-PL",
+        "asset": "MCL",
+        "entry": "volatility_regime_compound",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "both",
+        "params": {
+          "transition_window_bars": 30
+        }
+      },
+      "metrics": {
+        "n": 29,
+        "pf": 0.799,
+        "median": -0.24,
+        "net": -178.96,
+        "max_dd": -327.76,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.718,
+        "h2_pf": 0.872,
+        "years_positive": 2,
+        "n_years": 6
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (n=29)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 81.39972591400146
+    },
+    {
+      "spec": {
+        "label": "VRC30-MES-Both-PL",
+        "asset": "MES",
+        "entry": "volatility_regime_compound",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "both",
+        "params": {
+          "transition_window_bars": 30
+        }
+      },
+      "metrics": {
+        "n": 24,
+        "pf": 0.302,
+        "median": -27.49,
+        "net": -786.01,
+        "max_dd": -747.27,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.16,
+        "h2_pf": 0.579,
+        "years_positive": 1,
+        "n_years": 7
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (n=24)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 224.72173810005188
+    },
+    {
+      "spec": {
+        "label": "VRC30-MYM-Both-PL",
+        "asset": "MYM",
+        "entry": "volatility_regime_compound",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "both",
+        "params": {
+          "transition_window_bars": 30
+        }
+      },
+      "metrics": {
+        "n": 4,
+        "pf": 0.415,
+        "median": -11.49,
+        "net": -49.46,
+        "max_dd": -53.74,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.0,
+        "h2_pf": Infinity,
+        "years_positive": 0,
+        "n_years": 2
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (n=4)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 85.41250610351562
+    },
+    {
+      "spec": {
+        "label": "VRC30-MNQ-Both-PL",
+        "asset": "MNQ",
+        "entry": "volatility_regime_compound",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "both",
+        "params": {
+          "transition_window_bars": 30
+        }
+      },
+      "metrics": {
+        "n": 8,
+        "pf": 0.727,
+        "median": -16.49,
+        "net": -144.42,
+        "max_dd": -452.46,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.481,
+        "h2_pf": 0.876,
+        "years_positive": 1,
+        "n_years": 4
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (n=8)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 203.25108289718628
+    }
+  ],
+  "feature_cache_stats_final": {
+    "hits": 0,
+    "misses": 5,
+    "cached_keys": 5
+  }
+}
