@@ -228,6 +228,21 @@ def compute_features(df: pd.DataFrame) -> dict:
         lambda x: (x.iloc[-1] <= x).sum() / len(x) * 100, raw=False
     ).values
 
+    # Keltner channels + BB-KC squeeze state (added 2026-06-08 per operator decision #111
+    # Hybrid D-A-3). Bollinger-Keltner squeeze is BB inside KC; release fires when
+    # squeeze ends. Used by entry_bb_keltner_squeeze.
+    # KC = EMA20 +/- 1.5*ATR (standard TTM squeeze convention).
+    kc_mult = 1.5
+    kc_upper = ema20 + kc_mult * atr
+    kc_lower = ema20 - kc_mult * atr
+    # Squeeze active when BB is inside KC
+    squeeze_on = (bb_upper < kc_upper) & (bb_lower > kc_lower)
+    # NaN-aware: if any of BB/KC inputs NaN, squeeze undefined → False
+    squeeze_on = squeeze_on & ~(
+        np.isnan(bb_upper) | np.isnan(bb_lower)
+        | np.isnan(kc_upper) | np.isnan(kc_lower)
+    )
+
     # Daily EMA slope (for macro trend filter)
     df_temp = df.copy()
     df_temp["_date"] = dates
@@ -277,6 +292,7 @@ def compute_features(df: pd.DataFrame) -> dict:
         "bb_upper": bb_upper, "bb_lower": bb_lower, "bb_mid": bb_mid,
         "bw_pctrank": bw_pctrank, "atr_pctrank": atr_pctrank, "range_20_pctrank": range_20_pctrank,
         "vol_of_vol": vol_of_vol, "vol_of_vol_pctrank": vol_of_vol_pctrank,
+        "kc_upper": kc_upper, "kc_lower": kc_lower, "squeeze_on": squeeze_on,
         "hurst": hurst, "rsi": rsi,
         "prev_day_high": prev_day_high, "prev_day_low": prev_day_low, "prev_day_close": prev_day_close,
         "vwap": vwap,
@@ -479,6 +495,70 @@ def entry_vol_expansion(f, i, state, params):
             and close < ema20 and close < prev_close):
         stop = close + f["atr"][i] * params.get("stop_mult", 2.0)
         target = close - f["atr"][i] * params.get("target_mult", 4.0)
+        return -1, stop, target
+    return 0, 0, 0
+
+
+def entry_bb_keltner_squeeze(f, i, state, params):
+    """Bollinger-Keltner squeeze release (added 2026-06-08 per operator decision #111).
+
+    Mechanism: when the Bollinger bands are inside the Keltner channels
+    ("squeeze on"), volatility is contracted. When the squeeze releases
+    (BB expands back outside KC), historical research suggests a strong
+    directional move often follows. Enter at the release in the direction
+    of the momentum signal (ema20 slope: rising = long, falling = short).
+
+    Different from RCB and VRC:
+      - RCB: single-bar compression-then-break (Bollinger range pctrank)
+      - VRC: regime-shift in vol-of-vol (now archived)
+      - BB-KC squeeze: structural compression of BB inside KC, release fires
+        the entry. Classic TTM-squeeze methodology.
+
+    Fail-closed:
+      - i < 1: no signal
+      - NaN in squeeze_on (i or i-1): no signal
+      - NaN in ATR / ema20: no signal
+      - Zero ATR: no signal
+
+    Params (all optional with conservative defaults):
+      min_squeeze_bars: 3      — squeeze must have been on for >= this many bars
+      stop_mult: 1.5           — ATR multiplier for stop
+      target_mult: 3.0         — ATR multiplier for target
+    """
+    if i < 1:
+        return 0, 0, 0
+    sq_now = f["squeeze_on"][i]
+    sq_prev = f["squeeze_on"][i-1]
+    if np.isnan(sq_now) or np.isnan(sq_prev):
+        return 0, 0, 0
+    # Release condition: was on, now off
+    if not (sq_prev and not sq_now):
+        return 0, 0, 0
+    # Verify sufficient squeeze history
+    min_bars = params.get("min_squeeze_bars", 3)
+    bars_back = min(i, min_bars)
+    count_on = 0
+    for j in range(i - bars_back, i):
+        sj = f["squeeze_on"][j]
+        if not np.isnan(sj) and sj:
+            count_on += 1
+    if count_on < min_bars:
+        return 0, 0, 0
+    close = f["close"][i]
+    if np.isnan(f["atr"][i]) or f["atr"][i] == 0:
+        return 0, 0, 0
+    if np.isnan(f["ema20"][i]):
+        return 0, 0, 0
+    # Direction by ema20 slope (price vs ema20)
+    if (not state["long_traded_today"]
+            and close > f["ema20"][i]):
+        stop = close - f["atr"][i] * params.get("stop_mult", 1.5)
+        target = close + f["atr"][i] * params.get("target_mult", 3.0)
+        return 1, stop, target
+    if (not state["short_traded_today"]
+            and close < f["ema20"][i]):
+        stop = close + f["atr"][i] * params.get("stop_mult", 1.5)
+        target = close - f["atr"][i] * params.get("target_mult", 3.0)
         return -1, stop, target
     return 0, 0, 0
 
@@ -1005,6 +1085,7 @@ ENTRY_MAP = {
     "prior_day_fade": entry_prior_day_fade,
     "range_compression_break": entry_range_compression_break,
     "volatility_regime_compound": entry_volatility_regime_compound,
+    "bb_keltner_squeeze": entry_bb_keltner_squeeze,
 }
 
 EXIT_MAP = {

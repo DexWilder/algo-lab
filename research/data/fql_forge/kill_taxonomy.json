@@ -2909,5 +2909,66 @@
       "median-negative"
     ],
     "disposition": "0 PAPER_PACKET. 0 OBSERVATIONAL. 5 KILL. Source Mining confirmed existing primitive set exhausted. Operator decision required: new primitive build, new data unlock, or sprint scope revision."
+  },
+  "_HEADLINE_2026-06-08m_BBKC_FIRST_BATCH_thin_signal_no_packet": {
+    "headline": "bb_keltner_squeeze first batch: 0 UPGRADE / 1 OBSERVATIONAL / 5 KILL. BBKC-MNQ-Both-PL (PF 1.206, median $2.76, max-yr 44.9% clean) is the cleanest candidate but FAIL_STRESS. Same pattern as RCB.",
+    "date": "2026-06-08",
+    "operator_approval": "OK 111-A (build BB-Keltner squeeze)",
+    "primitive_shipped": true,
+    "smoke_tests": "8/8 PASS",
+    "results": {
+      "BBKC-MGC-Both-PL": {
+        "n": 317,
+        "pf": 0.836,
+        "median": -4.24,
+        "verdict": "KILL median neg"
+      },
+      "BBKC-MCL-Both-PL": {
+        "n": 514,
+        "pf": 0.958,
+        "median": -1.74,
+        "verdict": "KILL median neg"
+      },
+      "BBKC-MES-Both-PL": {
+        "n": 852,
+        "pf": 1.12,
+        "median": 0.01,
+        "verdict": "KILL PF<1.15",
+        "notable": "Median ~$0 = zero edge"
+      },
+      "BBKC-MYM-Both-PL": {
+        "n": 252,
+        "pf": 1.36,
+        "median": 1.01,
+        "max_yr": 55.6,
+        "era3_med": -19.24,
+        "verdict": "ARCHITECTURAL_REJECT losing era"
+      },
+      "BBKC-MNQ-Both-PL": {
+        "n": 837,
+        "pf": 1.206,
+        "median": 2.76,
+        "max_yr": 44.9,
+        "yrs_pos": "6/8",
+        "verdict": "WATCH + FAIL_STRESS \u2192 OBSERVATIONAL"
+      },
+      "BBKC-ZN-Both-PL": {
+        "n": 624,
+        "pf": 0.519,
+        "median": -34.35,
+        "verdict": "KILL median neg"
+      }
+    },
+    "doctrine_significance": "BB-Keltner squeeze produces signal on equity micros (MNQ, MES, MYM) but consistently fails prop-stress. Commodities (MGC, MCL) and rates (ZN) show no edge from this mechanism. BBKC-MNQ is the cleanest candidate but margin too thin for cost-stress survival. Same pattern as RCB: productive primitive but not packet-grade.",
+    "final_primitive_classification": "PRODUCTIVE BUT NOT PACKET-GRADE \u2014 RESEARCH_ONLY for active hunt (matches RCB classification pattern). Could be reopened with different filter (e.g., session_morning to reduce intraday noise) if operator approves.",
+    "cumulative_primitive_outcomes": {
+      "range_compression_break (RCB)": "RESEARCH_ONLY (concentration intrinsic, 71.6% max-yr)",
+      "volatility_regime_compound (VRC)": "ARCHIVED (mechanism anti-edge after retry)",
+      "bb_keltner_squeeze (BBKC)": "RESEARCH_ONLY (thin signal, FAIL_STRESS)"
+    },
+    "tags": [
+      "cost-eats-edge"
+    ],
+    "disposition": "0 PAPER_PACKET. 1 OBSERVATIONAL (BBKC-MNQ FAIL_STRESS). 5 KILL. Per #111 directive: immediately produce Source Mining Packet 2."
   }
 }

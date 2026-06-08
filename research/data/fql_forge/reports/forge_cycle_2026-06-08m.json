@@ -1,0 +1,284 @@
+{
+  "date": "2026-06-08",
+  "purpose": "bb_keltner_squeeze first batch (#111-A Hybrid D-A-3)",
+  "boundaries": "report-only Lane B",
+  "tier_classification": {
+    "UPGRADE_CANDIDATE": 0,
+    "OBSERVATIONAL": 1,
+    "KILL": 5
+  },
+  "results": [
+    {
+      "spec": {
+        "label": "BBKC-MGC-Both-PL",
+        "asset": "MGC",
+        "entry": "bb_keltner_squeeze",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 317,
+        "pf": 0.836,
+        "median": -4.24,
+        "net": -1118.08,
+        "max_dd": -1842.6,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.763,
+        "h2_pf": 0.878,
+        "years_positive": 2,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 45.70002031326294
+    },
+    {
+      "spec": {
+        "label": "BBKC-MCL-Both-PL",
+        "asset": "MCL",
+        "entry": "bb_keltner_squeeze",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 514,
+        "pf": 0.958,
+        "median": -1.74,
+        "net": -365.36,
+        "max_dd": -1546.64,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.932,
+        "h2_pf": 0.997,
+        "years_positive": 2,
+        "n_years": 6
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 61.844165086746216
+    },
+    {
+      "spec": {
+        "label": "BBKC-MES-Both-PL",
+        "asset": "MES",
+        "entry": "bb_keltner_squeeze",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 852,
+        "pf": 1.12,
+        "median": 0.01,
+        "net": 2077.27,
+        "max_dd": -1027.14,
+        "max_year_share_pct": 62.6,
+        "top3_share_pct": 61.9,
+        "h1_pf": 1.226,
+        "h2_pf": 1.034,
+        "years_positive": 6,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (PF<1.15)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 98.70883202552795
+    },
+    {
+      "spec": {
+        "label": "BBKC-MYM-Both-PL",
+        "asset": "MYM",
+        "entry": "bb_keltner_squeeze",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 252,
+        "pf": 1.36,
+        "median": 1.01,
+        "net": 1574.52,
+        "max_dd": -791.24,
+        "max_year_share_pct": 55.6,
+        "top3_share_pct": 42.9,
+        "h1_pf": 1.649,
+        "h2_pf": 1.16,
+        "years_positive": 2,
+        "n_years": 3
+      },
+      "temporal_split": {
+        "per_year": [
+          {
+            "year": 2024,
+            "n": 86,
+            "pf": 1.9543104216813763,
+            "median": 3.76,
+            "net": 856.36
+          },
+          {
+            "year": 2025,
+            "n": 111,
+            "pf": 1.4527089262613198,
+            "median": 2.26,
+            "net": 874.8599999999997
+          },
+          {
+            "year": 2026,
+            "n": 55,
+            "pf": 0.8988484081695887,
+            "median": -20.74,
+            "net": -156.70000000000013
+          }
+        ],
+        "eras": [
+          {
+            "era": 1,
+            "n": 84,
+            "pf": 2.0550282406430895,
+            "median": 4.51,
+            "net": 900.34
+          },
+          {
+            "era": 2,
+            "n": 84,
+            "pf": 1.5541247920358177,
+            "median": 2.01,
+            "net": 819.3399999999998
+          },
+          {
+            "era": 3,
+            "n": 84,
+            "pf": 0.9290871608484528,
+            "median": -19.24,
+            "net": -145.16000000000008
+          }
+        ],
+        "yrs_pos": 2,
+        "n_yrs": 3,
+        "era3_pf": 0.9290871608484528,
+        "era3_median": -19.24
+      },
+      "doctrine_verdict": "ARCHITECTURAL_REJECT (losing era)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 33.40694522857666
+    },
+    {
+      "spec": {
+        "label": "BBKC-MNQ-Both-PL",
+        "asset": "MNQ",
+        "entry": "bb_keltner_squeeze",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 837,
+        "pf": 1.206,
+        "median": 2.76,
+        "net": 6798.62,
+        "max_dd": -2457.92,
+        "max_year_share_pct": 44.9,
+        "top3_share_pct": 46.4,
+        "h1_pf": 1.171,
+        "h2_pf": 1.237,
+        "years_positive": 6,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "WATCH",
+      "era3_delta": null,
+      "prop_stress": {
+        "label": "BBKC-MNQ-Both-PL",
+        "rows": [
+          {
+            "stress": "baseline (1x)",
+            "commission_mult": 1.0,
+            "slippage_mult": 1.0,
+            "n": 837,
+            "pf": 1.206,
+            "net_median": 2.76,
+            "net_pnl": 6798.62,
+            "max_dd": -2457.92
+          },
+          {
+            "stress": "2x cost + 1 tick slip",
+            "commission_mult": 2.0,
+            "slippage_mult": 2.0,
+            "n": 837,
+            "pf": 1.145,
+            "net_median": 0.52,
+            "net_pnl": 4923.74,
+            "max_dd": -2923.84
+          },
+          {
+            "stress": "2x cost + 2 ticks slip",
+            "commission_mult": 2.0,
+            "slippage_mult": 3.0,
+            "n": 837,
+            "pf": 1.119,
+            "net_median": -0.48,
+            "net_pnl": 4086.74,
+            "max_dd": -3131.84
+          },
+          {
+            "stress": "4x cost + 2 ticks slip",
+            "commission_mult": 4.0,
+            "slippage_mult": 3.0,
+            "n": 837,
+            "pf": 1.057,
+            "net_median": -2.96,
+            "net_pnl": 2010.98,
+            "max_dd": -3647.68
+          }
+        ],
+        "verdict": "FAIL_STRESS (median \u2264 0 at 2x cost + 2 ticks)",
+        "headline_reason": "At 2x cost + 2 ticks slip: median $-0.48 (\u2264 0)",
+        "moderate_median": -0.48,
+        "extreme_median": -2.96
+      },
+      "elapsed_seconds": 102.57173681259155
+    },
+    {
+      "spec": {
+        "label": "BBKC-ZN-Both-PL",
+        "asset": "ZN",
+        "entry": "bb_keltner_squeeze",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 624,
+        "pf": 0.519,
+        "median": -34.35,
+        "net": -14809.75,
+        "max_dd": -14935.36,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.554,
+        "h2_pf": 0.48,
+        "years_positive": 0,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 134.8582410812378
+    }
+  ],
+  "feature_cache_stats_final": {
+    "hits": 0,
+    "misses": 6,
+    "cached_keys": 6
+  }
+}
