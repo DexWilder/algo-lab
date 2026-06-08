@@ -1,0 +1,1017 @@
+{
+  "date": "2026-06-08",
+  "approvals": "OK run MNQ (#89), OK n+5 (#90)",
+  "boundaries": "report-only Lane B; no registry/portfolio/scheduler/promotion mutation",
+  "track_A_mnq_diagnostic": {
+    "results": [
+      {
+        "spec": {
+          "label": "DIR-MNQ-ORB-Long-PL",
+          "asset": "MNQ",
+          "entry": "orb_breakout",
+          "filter": "ema_slope",
+          "exit": "profit_ladder",
+          "mode": "long"
+        },
+        "metrics": {
+          "n": 811,
+          "pf": 1.726,
+          "median": 41.76,
+          "net": 29652.36,
+          "max_dd": -2198.06,
+          "max_year_share_pct": 24.0,
+          "top3_share_pct": 9.9,
+          "h1_pf": 1.644,
+          "h2_pf": 1.787,
+          "years_positive": 7,
+          "n_years": 8
+        },
+        "temporal_split": null,
+        "doctrine_verdict": "WATCH_FOR_DEEP_SCREEN",
+        "era3_delta": null,
+        "prop_stress": {
+          "label": "DIR-MNQ-ORB-Long-PL",
+          "rows": [
+            {
+              "stress": "baseline (1x)",
+              "commission_mult": 1.0,
+              "slippage_mult": 1.0,
+              "n": 811,
+              "pf": 1.726,
+              "net_median": 41.76,
+              "net_pnl": 29652.36,
+              "max_dd": -2198.06
+            },
+            {
+              "stress": "2x cost + 1 tick slip",
+              "commission_mult": 2.0,
+              "slippage_mult": 2.0,
+              "n": 811,
+              "pf": 1.67,
+              "net_median": 39.52,
+              "net_pnl": 27835.72,
+              "max_dd": -2240.62
+            },
+            {
+              "stress": "2x cost + 2 ticks slip",
+              "commission_mult": 2.0,
+              "slippage_mult": 3.0,
+              "n": 811,
+              "pf": 1.646,
+              "net_median": 38.52,
+              "net_pnl": 27024.72,
+              "max_dd": -2259.62
+            },
+            {
+              "stress": "4x cost + 2 ticks slip",
+              "commission_mult": 4.0,
+              "slippage_mult": 3.0,
+              "n": 811,
+              "pf": 1.586,
+              "net_median": 36.04,
+              "net_pnl": 25013.44,
+              "max_dd": -2306.74
+            }
+          ],
+          "verdict": "PASS_STRESS",
+          "headline_reason": "Survives 4x cost + 2 ticks: median $36.04, PF 1.586",
+          "moderate_median": 38.52,
+          "extreme_median": 36.04
+        },
+        "elapsed_seconds": 406.18975925445557
+      },
+      {
+        "spec": {
+          "label": "DIR-MNQ-ORB-Short-PL",
+          "asset": "MNQ",
+          "entry": "orb_breakout",
+          "filter": "ema_slope",
+          "exit": "profit_ladder",
+          "mode": "short"
+        },
+        "metrics": {
+          "n": 405,
+          "pf": 1.489,
+          "median": 46.26,
+          "net": 19842.3,
+          "max_dd": -2331.4,
+          "max_year_share_pct": 29.9,
+          "top3_share_pct": 24.1,
+          "h1_pf": 1.179,
+          "h2_pf": 1.864,
+          "years_positive": 7,
+          "n_years": 8
+        },
+        "temporal_split": null,
+        "doctrine_verdict": "WATCH_FOR_DEEP_SCREEN",
+        "era3_delta": null,
+        "prop_stress": {
+          "label": "DIR-MNQ-ORB-Short-PL",
+          "rows": [
+            {
+              "stress": "baseline (1x)",
+              "commission_mult": 1.0,
+              "slippage_mult": 1.0,
+              "n": 405,
+              "pf": 1.489,
+              "net_median": 46.26,
+              "net_pnl": 19842.3,
+              "max_dd": -2331.4
+            },
+            {
+              "stress": "2x cost + 1 tick slip",
+              "commission_mult": 2.0,
+              "slippage_mult": 2.0,
+              "n": 405,
+              "pf": 1.462,
+              "net_median": 44.02,
+              "net_pnl": 18935.1,
+              "max_dd": -2353.8
+            },
+            {
+              "stress": "2x cost + 2 ticks slip",
+              "commission_mult": 2.0,
+              "slippage_mult": 3.0,
+              "n": 405,
+              "pf": 1.451,
+              "net_median": 43.02,
+              "net_pnl": 18530.1,
+              "max_dd": -2363.8
+            },
+            {
+              "stress": "4x cost + 2 ticks slip",
+              "commission_mult": 4.0,
+              "slippage_mult": 3.0,
+              "n": 405,
+              "pf": 1.422,
+              "net_median": 40.54,
+              "net_pnl": 17525.7,
+              "max_dd": -2388.6
+            }
+          ],
+          "verdict": "PASS_STRESS",
+          "headline_reason": "Survives 4x cost + 2 ticks: median $40.54, PF 1.422",
+          "moderate_median": 43.02,
+          "extreme_median": 40.54
+        },
+        "elapsed_seconds": 9.457067012786865
+      }
+    ],
+    "mnq_long_vs_both_family_review": {
+      "split_n_trades": 811,
+      "baseline_n_trades": 1216,
+      "split_net": 29652.359999999997,
+      "baseline_net": 49494.65999999999,
+      "split_pf": 1.72633950595208,
+      "split_median": 41.76,
+      "n_days_split": 811,
+      "n_days_baseline": 1216,
+      "n_days_overlap": 811,
+      "overlap_pct_of_split": 100.0,
+      "daily_pnl_corr": 0.6037177780966906
+    },
+    "mnq_short_vs_both_family_review": {
+      "split_n_trades": 405,
+      "baseline_n_trades": 1216,
+      "split_net": 19842.300000000003,
+      "baseline_net": 49494.65999999999,
+      "split_pf": 1.488987956617207,
+      "split_median": 46.26,
+      "n_days_split": 405,
+      "n_days_baseline": 1216,
+      "n_days_overlap": 405,
+      "overlap_pct_of_split": 100.0,
+      "daily_pnl_corr": 0.7886799251080038
+    },
+    "classification": "DIRECTIONAL_INSIGHT_DIAGNOSTIC_ONLY (per #89; subsets of existing probation)"
+  },
+  "track_B_fragility_n_extended": {
+    "prior_n5": [
+      {
+        "pair_label": "MCL-orb-short",
+        "pl_break_even_rung": "2x cost + 2 ticks slip",
+        "fr2_break_even_rung": "1.5x cost + 1 tick slip",
+        "delta_rungs": 2,
+        "winner": "PL"
+      },
+      {
+        "pair_label": "MGC-orb-short",
+        "pl_break_even_rung": "beyond",
+        "fr2_break_even_rung": "beyond",
+        "delta_rungs": 0,
+        "winner": "TIED"
+      },
+      {
+        "pair_label": "MGC-orb-long",
+        "pl_break_even_rung": "2x cost + 2 ticks slip",
+        "fr2_break_even_rung": "2x cost + 2 ticks slip",
+        "delta_rungs": 0,
+        "winner": "TIED"
+      },
+      {
+        "pair_label": "MGC-prior_day_break-long",
+        "pl_break_even_rung": "2x cost + 2 ticks slip",
+        "fr2_break_even_rung": "1.5x cost + 1 tick slip",
+        "delta_rungs": 2,
+        "winner": "PL"
+      },
+      {
+        "pair_label": "MCL-donchian_breakout-short",
+        "pl_break_even_rung": "1.5x cost + 1 tick slip",
+        "fr2_break_even_rung": "1x baseline",
+        "delta_rungs": 1,
+        "winner": "PL"
+      }
+    ],
+    "new_n5": [
+      {
+        "pair_label": "MES-orb_breakout-long",
+        "pl_spec": {
+          "label": "FRAG-MES-ORB-Long-PL",
+          "asset": "MES",
+          "entry": "orb_breakout",
+          "filter": "ema_slope",
+          "exit": "profit_ladder",
+          "mode": "long"
+        },
+        "fr2_spec": {
+          "label": "FRAG-MES-ORB-Long-FR2",
+          "asset": "MES",
+          "entry": "orb_breakout",
+          "filter": "ema_slope",
+          "exit": "fixed_ratio",
+          "params": {
+            "ratio": 2.0
+          },
+          "mode": "long"
+        },
+        "pl_rows": [
+          {
+            "rung": "1x baseline",
+            "commission_mult": 1.0,
+            "slippage_mult": 1.0,
+            "n": 854,
+            "pf": 1.394,
+            "median": 12.51,
+            "win_rate": 0.5597189695550351,
+            "avg_win": 76.86930962343096,
+            "avg_loss": -70.07976063829788
+          },
+          {
+            "rung": "1.5x cost + 1 tick slip",
+            "commission_mult": 1.5,
+            "slippage_mult": 2.0,
+            "n": 854,
+            "pf": 1.28,
+            "median": 9.39,
+            "win_rate": 0.5398126463700235,
+            "avg_win": 76.54021691973968,
+            "avg_loss": -70.11699745547075
+          },
+          {
+            "rung": "2x cost + 1 tick slip",
+            "commission_mult": 2.0,
+            "slippage_mult": 2.0,
+            "n": 854,
+            "pf": 1.259,
+            "median": 8.77,
+            "win_rate": 0.5398126463700235,
+            "avg_win": 75.9202169197397,
+            "avg_loss": -70.73699745547074
+          },
+          {
+            "rung": "2x cost + 2 ticks slip",
+            "commission_mult": 2.0,
+            "slippage_mult": 3.0,
+            "n": 854,
+            "pf": 1.176,
+            "median": 6.27,
+            "win_rate": 0.5304449648711944,
+            "avg_win": 74.74958057395143,
+            "avg_loss": -71.81291770573566
+          },
+          {
+            "rung": "4x cost + 2 ticks slip",
+            "commission_mult": 4.0,
+            "slippage_mult": 3.0,
+            "n": 854,
+            "pf": 1.099,
+            "median": 3.79,
+            "win_rate": 0.5245901639344263,
+            "avg_win": 73.10082589285715,
+            "avg_loss": -73.40519704433497
+          }
+        ],
+        "fr2_rows": [
+          {
+            "rung": "1x baseline",
+            "commission_mult": 1.0,
+            "slippage_mult": 1.0,
+            "n": 854,
+            "pf": 1.442,
+            "median": 12.51,
+            "win_rate": 0.5550351288056206,
+            "avg_win": 81.86917721518988,
+            "avg_loss": -70.80250000000001
+          },
+          {
+            "rung": "1.5x cost + 1 tick slip",
+            "commission_mult": 1.5,
+            "slippage_mult": 2.0,
+            "n": 854,
+            "pf": 1.328,
+            "median": 9.39,
+            "win_rate": 0.5374707259953162,
+            "avg_win": 81.3916339869281,
+            "avg_loss": -71.1954430379747
+          },
+          {
+            "rung": "2x cost + 1 tick slip",
+            "commission_mult": 2.0,
+            "slippage_mult": 2.0,
+            "n": 854,
+            "pf": 1.307,
+            "median": 8.77,
+            "win_rate": 0.5374707259953162,
+            "avg_win": 80.7716339869281,
+            "avg_loss": -71.81544303797467
+          },
+          {
+            "rung": "2x cost + 2 ticks slip",
+            "commission_mult": 2.0,
+            "slippage_mult": 3.0,
+            "n": 854,
+            "pf": 1.224,
+            "median": 6.27,
+            "win_rate": 0.5292740046838408,
+            "avg_win": 79.51115044247786,
+            "avg_loss": -73.05213930348259
+          },
+          {
+            "rung": "4x cost + 2 ticks slip",
+            "commission_mult": 4.0,
+            "slippage_mult": 3.0,
+            "n": 854,
+            "pf": 1.147,
+            "median": 3.79,
+            "win_rate": 0.5245901639344263,
+            "avg_win": 77.73810267857142,
+            "avg_loss": -74.80913793103447
+          }
+        ],
+        "pl_break_even_rung": "beyond",
+        "fr2_break_even_rung": "beyond",
+        "rung_gap_pl_vs_fr2": 0,
+        "winner": "TIED",
+        "elapsed_seconds": 339.03498816490173
+      },
+      {
+        "pair_label": "MYM-orb_breakout-both",
+        "pl_spec": {
+          "label": "FRAG-MYM-ORB-Both-PL",
+          "asset": "MYM",
+          "entry": "orb_breakout",
+          "filter": "ema_slope",
+          "exit": "profit_ladder",
+          "mode": "both"
+        },
+        "fr2_spec": {
+          "label": "FRAG-MYM-ORB-Both-FR2",
+          "asset": "MYM",
+          "entry": "orb_breakout",
+          "filter": "ema_slope",
+          "exit": "fixed_ratio",
+          "params": {
+            "ratio": 2.0
+          },
+          "mode": "both"
+        },
+        "pl_rows": [
+          {
+            "rung": "1x baseline",
+            "commission_mult": 1.0,
+            "slippage_mult": 1.0,
+            "n": 380,
+            "pf": 1.573,
+            "median": 13.76,
+            "win_rate": 0.5631578947368421,
+            "avg_win": 89.12214953271028,
+            "avg_loss": -73.04421686746988
+          },
+          {
+            "rung": "1.5x cost + 1 tick slip",
+            "commission_mult": 1.5,
+            "slippage_mult": 2.0,
+            "n": 380,
+            "pf": 1.474,
+            "median": 11.14,
+            "win_rate": 0.5552631578947368,
+            "avg_win": 87.76322274881515,
+            "avg_loss": -74.36
+          },
+          {
+            "rung": "2x cost + 1 tick slip",
+            "commission_mult": 2.0,
+            "slippage_mult": 2.0,
+            "n": 380,
+            "pf": 1.451,
+            "median": 10.52,
+            "win_rate": 0.5552631578947368,
+            "avg_win": 87.14322274881515,
+            "avg_loss": -74.97999999999999
+          },
+          {
+            "rung": "2x cost + 2 ticks slip",
+            "commission_mult": 2.0,
+            "slippage_mult": 3.0,
+            "n": 380,
+            "pf": 1.381,
+            "median": 8.52,
+            "win_rate": 0.5473684210526316,
+            "avg_win": 86.38778846153845,
+            "avg_loss": -75.65732558139534
+          },
+          {
+            "rung": "4x cost + 2 ticks slip",
+            "commission_mult": 4.0,
+            "slippage_mult": 3.0,
+            "n": 380,
+            "pf": 1.298,
+            "median": 6.04,
+            "win_rate": 0.5342105263157895,
+            "avg_win": 86.01536945812809,
+            "avg_loss": -75.97694915254237
+          }
+        ],
+        "fr2_rows": [
+          {
+            "rung": "1x baseline",
+            "commission_mult": 1.0,
+            "slippage_mult": 1.0,
+            "n": 380,
+            "pf": 1.623,
+            "median": 10.26,
+            "win_rate": 0.5473684210526316,
+            "avg_win": 95.86336538461539,
+            "avg_loss": -71.44348837209303
+          },
+          {
+            "rung": "1.5x cost + 1 tick slip",
+            "commission_mult": 1.5,
+            "slippage_mult": 2.0,
+            "n": 380,
+            "pf": 1.522,
+            "median": 7.64,
+            "win_rate": 0.5394736842105263,
+            "avg_win": 94.63999999999999,
+            "avg_loss": -72.83142857142857
+          },
+          {
+            "rung": "2x cost + 1 tick slip",
+            "commission_mult": 2.0,
+            "slippage_mult": 2.0,
+            "n": 380,
+            "pf": 1.499,
+            "median": 7.02,
+            "win_rate": 0.5394736842105263,
+            "avg_win": 94.02,
+            "avg_loss": -73.45142857142855
+          },
+          {
+            "rung": "2x cost + 2 ticks slip",
+            "commission_mult": 2.0,
+            "slippage_mult": 3.0,
+            "n": 380,
+            "pf": 1.429,
+            "median": 5.02,
+            "win_rate": 0.5289473684210526,
+            "avg_win": 93.87572139303481,
+            "avg_loss": -73.79284916201117
+          },
+          {
+            "rung": "4x cost + 2 ticks slip",
+            "commission_mult": 4.0,
+            "slippage_mult": 3.0,
+            "n": 380,
+            "pf": 1.345,
+            "median": 2.54,
+            "win_rate": 0.5157894736842106,
+            "avg_win": 93.77979591836737,
+            "avg_loss": -74.25619565217391
+          }
+        ],
+        "pl_break_even_rung": "beyond",
+        "fr2_break_even_rung": "beyond",
+        "rung_gap_pl_vs_fr2": 0,
+        "winner": "TIED",
+        "elapsed_seconds": 102.92718315124512
+      },
+      {
+        "pair_label": "MGC-donchian_breakout-long",
+        "pl_spec": {
+          "label": "FRAG-DC-MGC-Long-PL",
+          "asset": "MGC",
+          "entry": "donchian_breakout",
+          "filter": "ema_slope",
+          "exit": "profit_ladder",
+          "mode": "long"
+        },
+        "fr2_spec": {
+          "label": "FRAG-DC-MGC-Long-FR2",
+          "asset": "MGC",
+          "entry": "donchian_breakout",
+          "filter": "ema_slope",
+          "exit": "fixed_ratio",
+          "params": {
+            "ratio": 2.0
+          },
+          "mode": "long"
+        },
+        "pl_rows": [
+          {
+            "rung": "1x baseline",
+            "commission_mult": 1.0,
+            "slippage_mult": 1.0,
+            "n": 586,
+            "pf": 1.272,
+            "median": 5.76,
+            "win_rate": 0.5324232081911263,
+            "avg_win": 90.30487179487179,
+            "avg_loss": -80.83489051094891
+          },
+          {
+            "rung": "1.5x cost + 1 tick slip",
+            "commission_mult": 1.5,
+            "slippage_mult": 2.0,
+            "n": 586,
+            "pf": 1.196,
+            "median": 3.14,
+            "win_rate": 0.5255972696245734,
+            "avg_win": 88.83805194805193,
+            "avg_loss": -82.27007194244608
+          },
+          {
+            "rung": "2x cost + 1 tick slip",
+            "commission_mult": 2.0,
+            "slippage_mult": 2.0,
+            "n": 586,
+            "pf": 1.179,
+            "median": 2.52,
+            "win_rate": 0.5170648464163823,
+            "avg_win": 89.68171617161715,
+            "avg_loss": -81.4340636042403
+          },
+          {
+            "rung": "2x cost + 2 ticks slip",
+            "commission_mult": 2.0,
+            "slippage_mult": 3.0,
+            "n": 586,
+            "pf": 1.125,
+            "median": 0.52,
+            "win_rate": 0.5017064846416383,
+            "avg_win": 90.39074829931972,
+            "avg_loss": -80.88753424657536
+          },
+          {
+            "rung": "4x cost + 2 ticks slip",
+            "commission_mult": 4.0,
+            "slippage_mult": 3.0,
+            "n": 586,
+            "pf": 1.062,
+            "median": -1.96,
+            "win_rate": 0.4863481228668942,
+            "avg_win": 90.72771929824562,
+            "avg_loss": -80.913488372093
+          }
+        ],
+        "fr2_rows": [
+          {
+            "rung": "1x baseline",
+            "commission_mult": 1.0,
+            "slippage_mult": 1.0,
+            "n": 586,
+            "pf": 1.239,
+            "median": 2.76,
+            "win_rate": 0.5119453924914675,
+            "avg_win": 94.74,
+            "avg_loss": -80.17706293706293
+          },
+          {
+            "rung": "1.5x cost + 1 tick slip",
+            "commission_mult": 1.5,
+            "slippage_mult": 2.0,
+            "n": 586,
+            "pf": 1.167,
+            "median": 0.14,
+            "win_rate": 0.5051194539249146,
+            "avg_win": 93.38324324324324,
+            "avg_loss": -81.67379310344829
+          },
+          {
+            "rung": "2x cost + 1 tick slip",
+            "commission_mult": 2.0,
+            "slippage_mult": 2.0,
+            "n": 586,
+            "pf": 1.151,
+            "median": -0.48,
+            "win_rate": 0.49658703071672355,
+            "avg_win": 94.36536082474225,
+            "avg_loss": -80.9071186440678
+          },
+          {
+            "rung": "2x cost + 2 ticks slip",
+            "commission_mult": 2.0,
+            "slippage_mult": 3.0,
+            "n": 586,
+            "pf": 1.099,
+            "median": -2.48,
+            "win_rate": 0.4880546075085324,
+            "avg_win": 93.99902097902097,
+            "avg_loss": -81.54333333333334
+          },
+          {
+            "rung": "4x cost + 2 ticks slip",
+            "commission_mult": 4.0,
+            "slippage_mult": 3.0,
+            "n": 586,
+            "pf": 1.038,
+            "median": -4.96,
+            "win_rate": 0.47440273037542663,
+            "avg_win": 94.18388489208634,
+            "avg_loss": -81.86909090909089
+          }
+        ],
+        "pl_break_even_rung": "4x cost + 2 ticks slip",
+        "fr2_break_even_rung": "2x cost + 1 tick slip",
+        "rung_gap_pl_vs_fr2": 2,
+        "winner": "PL",
+        "elapsed_seconds": 175.4523220062256
+      },
+      {
+        "pair_label": "MGC-prior_day_break-short",
+        "pl_spec": {
+          "label": "FRAG-PDB-MGC-Short-PL",
+          "asset": "MGC",
+          "entry": "prior_day_break",
+          "filter": "ema_slope",
+          "exit": "profit_ladder",
+          "mode": "short"
+        },
+        "fr2_spec": {
+          "label": "FRAG-PDB-MGC-Short-FR2",
+          "asset": "MGC",
+          "entry": "prior_day_break",
+          "filter": "ema_slope",
+          "exit": "fixed_ratio",
+          "params": {
+            "ratio": 2.0
+          },
+          "mode": "short"
+        },
+        "pl_rows": [
+          {
+            "rung": "1x baseline",
+            "commission_mult": 1.0,
+            "slippage_mult": 1.0,
+            "n": 152,
+            "pf": 1.017,
+            "median": 10.26,
+            "win_rate": 0.5657894736842105,
+            "avg_win": 80.27162790697675,
+            "avg_loss": -102.83090909090909
+          },
+          {
+            "rung": "1.5x cost + 1 tick slip",
+            "commission_mult": 1.5,
+            "slippage_mult": 2.0,
+            "n": 152,
+            "pf": 0.96,
+            "median": 7.64,
+            "win_rate": 0.5592105263157895,
+            "avg_win": 78.57529411764706,
+            "avg_loss": -103.88985074626865
+          },
+          {
+            "rung": "2x cost + 1 tick slip",
+            "commission_mult": 2.0,
+            "slippage_mult": 2.0,
+            "n": 152,
+            "pf": 0.946,
+            "median": 7.02,
+            "win_rate": 0.5592105263157895,
+            "avg_win": 77.95529411764707,
+            "avg_loss": -104.50985074626865
+          },
+          {
+            "rung": "2x cost + 2 ticks slip",
+            "commission_mult": 2.0,
+            "slippage_mult": 3.0,
+            "n": 152,
+            "pf": 0.905,
+            "median": 5.02,
+            "win_rate": 0.5394736842105263,
+            "avg_win": 78.75170731707317,
+            "avg_loss": -101.96571428571427
+          },
+          {
+            "rung": "4x cost + 2 ticks slip",
+            "commission_mult": 4.0,
+            "slippage_mult": 3.0,
+            "n": 152,
+            "pf": 0.855,
+            "median": 2.54,
+            "win_rate": 0.5263157894736842,
+            "avg_win": 78.21499999999999,
+            "avg_loss": -101.58499999999998
+          }
+        ],
+        "fr2_rows": [
+          {
+            "rung": "1x baseline",
+            "commission_mult": 1.0,
+            "slippage_mult": 1.0,
+            "n": 152,
+            "pf": 1.03,
+            "median": 11.26,
+            "win_rate": 0.5394736842105263,
+            "avg_win": 88.06487804878049,
+            "avg_loss": -100.13999999999999
+          },
+          {
+            "rung": "1.5x cost + 1 tick slip",
+            "commission_mult": 1.5,
+            "slippage_mult": 2.0,
+            "n": 152,
+            "pf": 0.974,
+            "median": 8.64,
+            "win_rate": 0.5394736842105263,
+            "avg_win": 85.44487804878048,
+            "avg_loss": -102.75999999999999
+          },
+          {
+            "rung": "2x cost + 1 tick slip",
+            "commission_mult": 2.0,
+            "slippage_mult": 2.0,
+            "n": 152,
+            "pf": 0.961,
+            "median": 8.02,
+            "win_rate": 0.5394736842105263,
+            "avg_win": 84.82487804878048,
+            "avg_loss": -103.37999999999998
+          },
+          {
+            "rung": "2x cost + 2 ticks slip",
+            "commission_mult": 2.0,
+            "slippage_mult": 3.0,
+            "n": 152,
+            "pf": 0.921,
+            "median": 6.02,
+            "win_rate": 0.5328947368421053,
+            "avg_win": 83.85333333333332,
+            "avg_loss": -103.90253521126758
+          },
+          {
+            "rung": "4x cost + 2 ticks slip",
+            "commission_mult": 4.0,
+            "slippage_mult": 3.0,
+            "n": 152,
+            "pf": 0.873,
+            "median": 3.54,
+            "win_rate": 0.5197368421052632,
+            "avg_win": 83.47037974683543,
+            "avg_loss": -103.50794520547944
+          }
+        ],
+        "pl_break_even_rung": "beyond",
+        "fr2_break_even_rung": "beyond",
+        "rung_gap_pl_vs_fr2": 0,
+        "winner": "TIED",
+        "elapsed_seconds": 12.548367977142334
+      },
+      {
+        "pair_label": "MGC-orb_breakout-both",
+        "pl_spec": {
+          "label": "FRAG-MGC-ORB-Both-PL",
+          "asset": "MGC",
+          "entry": "orb_breakout",
+          "filter": "ema_slope",
+          "exit": "profit_ladder",
+          "mode": "both"
+        },
+        "fr2_spec": {
+          "label": "FRAG-MGC-ORB-Both-FR2",
+          "asset": "MGC",
+          "entry": "orb_breakout",
+          "filter": "ema_slope",
+          "exit": "fixed_ratio",
+          "params": {
+            "ratio": 2.0
+          },
+          "mode": "both"
+        },
+        "pl_rows": [
+          {
+            "rung": "1x baseline",
+            "commission_mult": 1.0,
+            "slippage_mult": 1.0,
+            "n": 654,
+            "pf": 1.42,
+            "median": 5.76,
+            "win_rate": 0.5428134556574924,
+            "avg_win": 79.41633802816901,
+            "avg_loss": -66.38046822742476
+          },
+          {
+            "rung": "1.5x cost + 1 tick slip",
+            "commission_mult": 1.5,
+            "slippage_mult": 2.0,
+            "n": 654,
+            "pf": 1.321,
+            "median": 3.14,
+            "win_rate": 0.5321100917431193,
+            "avg_win": 78.37563218390802,
+            "avg_loss": -67.4613071895425
+          },
+          {
+            "rung": "2x cost + 1 tick slip",
+            "commission_mult": 2.0,
+            "slippage_mult": 2.0,
+            "n": 654,
+            "pf": 1.299,
+            "median": 2.52,
+            "win_rate": 0.5290519877675841,
+            "avg_win": 78.2078612716763,
+            "avg_loss": -67.64233766233768
+          },
+          {
+            "rung": "2x cost + 2 ticks slip",
+            "commission_mult": 2.0,
+            "slippage_mult": 3.0,
+            "n": 654,
+            "pf": 1.229,
+            "median": 0.52,
+            "win_rate": 0.5091743119266054,
+            "avg_win": 79.23171171171171,
+            "avg_loss": -66.87252336448599
+          },
+          {
+            "rung": "4x cost + 2 ticks slip",
+            "commission_mult": 4.0,
+            "slippage_mult": 3.0,
+            "n": 654,
+            "pf": 1.148,
+            "median": -1.96,
+            "win_rate": 0.4923547400611621,
+            "avg_win": 79.428198757764,
+            "avg_loss": -67.10759036144576
+          }
+        ],
+        "fr2_rows": [
+          {
+            "rung": "1x baseline",
+            "commission_mult": 1.0,
+            "slippage_mult": 1.0,
+            "n": 654,
+            "pf": 1.515,
+            "median": 5.76,
+            "win_rate": 0.5321100917431193,
+            "avg_win": 88.49563218390803,
+            "avg_loss": -66.40993464052288
+          },
+          {
+            "rung": "1.5x cost + 1 tick slip",
+            "commission_mult": 1.5,
+            "slippage_mult": 2.0,
+            "n": 654,
+            "pf": 1.415,
+            "median": 3.14,
+            "win_rate": 0.5229357798165137,
+            "avg_win": 87.41485380116957,
+            "avg_loss": -67.73820512820514
+          },
+          {
+            "rung": "2x cost + 1 tick slip",
+            "commission_mult": 2.0,
+            "slippage_mult": 2.0,
+            "n": 654,
+            "pf": 1.392,
+            "median": 2.52,
+            "win_rate": 0.5198776758409785,
+            "avg_win": 87.30823529411765,
+            "avg_loss": -67.92585987261147
+          },
+          {
+            "rung": "2x cost + 2 ticks slip",
+            "commission_mult": 2.0,
+            "slippage_mult": 3.0,
+            "n": 654,
+            "pf": 1.321,
+            "median": 0.52,
+            "win_rate": 0.5015290519877675,
+            "avg_win": 88.47426829268294,
+            "avg_loss": -67.39717791411044
+          },
+          {
+            "rung": "4x cost + 2 ticks slip",
+            "commission_mult": 4.0,
+            "slippage_mult": 3.0,
+            "n": 654,
+            "pf": 1.238,
+            "median": -1.96,
+            "win_rate": 0.48623853211009177,
+            "avg_win": 88.7506918238994,
+            "avg_loss": -67.84690476190475
+          }
+        ],
+        "pl_break_even_rung": "4x cost + 2 ticks slip",
+        "fr2_break_even_rung": "4x cost + 2 ticks slip",
+        "rung_gap_pl_vs_fr2": 0,
+        "winner": "TIED",
+        "elapsed_seconds": 10.954116106033325
+      }
+    ],
+    "all_pairs_summary": [
+      {
+        "pair_label": "MCL-orb-short",
+        "pl_break_even_rung": "2x cost + 2 ticks slip",
+        "fr2_break_even_rung": "1.5x cost + 1 tick slip",
+        "delta_rungs": 2,
+        "winner": "PL"
+      },
+      {
+        "pair_label": "MGC-orb-short",
+        "pl_break_even_rung": "beyond",
+        "fr2_break_even_rung": "beyond",
+        "delta_rungs": 0,
+        "winner": "TIED"
+      },
+      {
+        "pair_label": "MGC-orb-long",
+        "pl_break_even_rung": "2x cost + 2 ticks slip",
+        "fr2_break_even_rung": "2x cost + 2 ticks slip",
+        "delta_rungs": 0,
+        "winner": "TIED"
+      },
+      {
+        "pair_label": "MGC-prior_day_break-long",
+        "pl_break_even_rung": "2x cost + 2 ticks slip",
+        "fr2_break_even_rung": "1.5x cost + 1 tick slip",
+        "delta_rungs": 2,
+        "winner": "PL"
+      },
+      {
+        "pair_label": "MCL-donchian_breakout-short",
+        "pl_break_even_rung": "1.5x cost + 1 tick slip",
+        "fr2_break_even_rung": "1x baseline",
+        "delta_rungs": 1,
+        "winner": "PL"
+      },
+      {
+        "pair_label": "MES-orb_breakout-long",
+        "pl_break_even_rung": "beyond",
+        "fr2_break_even_rung": "beyond",
+        "delta_rungs": 0,
+        "winner": "TIED"
+      },
+      {
+        "pair_label": "MYM-orb_breakout-both",
+        "pl_break_even_rung": "beyond",
+        "fr2_break_even_rung": "beyond",
+        "delta_rungs": 0,
+        "winner": "TIED"
+      },
+      {
+        "pair_label": "MGC-donchian_breakout-long",
+        "pl_break_even_rung": "4x cost + 2 ticks slip",
+        "fr2_break_even_rung": "2x cost + 1 tick slip",
+        "delta_rungs": 2,
+        "winner": "PL"
+      },
+      {
+        "pair_label": "MGC-prior_day_break-short",
+        "pl_break_even_rung": "beyond",
+        "fr2_break_even_rung": "beyond",
+        "delta_rungs": 0,
+        "winner": "TIED"
+      },
+      {
+        "pair_label": "MGC-orb_breakout-both",
+        "pl_break_even_rung": "4x cost + 2 ticks slip",
+        "fr2_break_even_rung": "4x cost + 2 ticks slip",
+        "delta_rungs": 0,
+        "winner": "TIED"
+      }
+    ],
+    "pl_wins": 4,
+    "fr2_wins": 0,
+    "ties": 6,
+    "pl_or_tied_of_n": "10/10",
+    "codify": true,
+    "codification_rule": "\u22658 PL_or_tied AND 0 FR2_wins \u2192 codify"
+  },
+  "feature_cache_stats_final": {
+    "hits": 10,
+    "misses": 4,
+    "cached_keys": 4
+  }
+}

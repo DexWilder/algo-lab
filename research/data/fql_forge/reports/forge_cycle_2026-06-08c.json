@@ -1,0 +1,827 @@
+{
+  "date": "2026-06-08",
+  "purpose": "Non-ORB Packet #2 hunt \u2014 pivot away from ORB-family diagnostics",
+  "boundaries": "report-only Lane B; no registry/portfolio/scheduler/promotion mutation",
+  "tier_classification": {
+    "PAPER_PACKET": 0,
+    "OBSERVATIONAL": 1,
+    "KILL": 17
+  },
+  "results": [
+    {
+      "spec": {
+        "label": "P2H-PB-MCL-Long-PL",
+        "asset": "MCL",
+        "entry": "pb_pullback",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "long"
+      },
+      "metrics": {
+        "n": 539,
+        "pf": 0.861,
+        "median": -1.24,
+        "net": -1490.36,
+        "max_dd": -2011.4,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.829,
+        "h2_pf": 0.901,
+        "years_positive": 2,
+        "n_years": 6
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 149.95908403396606
+    },
+    {
+      "spec": {
+        "label": "P2H-PB-MCL-Short-PL",
+        "asset": "MCL",
+        "entry": "pb_pullback",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "short"
+      },
+      "metrics": {
+        "n": 542,
+        "pf": 0.907,
+        "median": -9.24,
+        "net": -1149.08,
+        "max_dd": -2006.24,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.932,
+        "h2_pf": 0.868,
+        "years_positive": 1,
+        "n_years": 6
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 2.4861199855804443
+    },
+    {
+      "spec": {
+        "label": "P2H-PB-MGC-Long-PL",
+        "asset": "MGC",
+        "entry": "pb_pullback",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "long"
+      },
+      "metrics": {
+        "n": 507,
+        "pf": 1.222,
+        "median": -0.24,
+        "net": 3169.32,
+        "max_dd": -1853.48,
+        "max_year_share_pct": 61.4,
+        "top3_share_pct": 71.6,
+        "h1_pf": 0.978,
+        "h2_pf": 1.374,
+        "years_positive": 4,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (asymmetric trap: PF>1.2, median<0)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 140.0094039440155
+    },
+    {
+      "spec": {
+        "label": "P2H-PB-MGC-Short-PL",
+        "asset": "MGC",
+        "entry": "pb_pullback",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "short"
+      },
+      "metrics": {
+        "n": 365,
+        "pf": 0.913,
+        "median": -5.24,
+        "net": -1000.6,
+        "max_dd": -2398.6,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 1.23,
+        "h2_pf": 0.755,
+        "years_positive": 4,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 1.2898387908935547
+    },
+    {
+      "spec": {
+        "label": "P2H-BB-MCL-Long-PL",
+        "asset": "MCL",
+        "entry": "bb_reversion",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "long"
+      },
+      "metrics": {
+        "n": 225,
+        "pf": 0.837,
+        "median": -4.24,
+        "net": -839.0,
+        "max_dd": -926.88,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.77,
+        "h2_pf": 0.911,
+        "years_positive": 2,
+        "n_years": 6
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 2.0869781970977783
+    },
+    {
+      "spec": {
+        "label": "P2H-BB-MCL-Short-PL",
+        "asset": "MCL",
+        "entry": "bb_reversion",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "short"
+      },
+      "metrics": {
+        "n": 243,
+        "pf": 0.942,
+        "median": -3.24,
+        "net": -298.32,
+        "max_dd": -797.44,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.802,
+        "h2_pf": 1.176,
+        "years_positive": 3,
+        "n_years": 6
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 2.2809667587280273
+    },
+    {
+      "spec": {
+        "label": "P2H-BB-MGC-Long-PL",
+        "asset": "MGC",
+        "entry": "bb_reversion",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "long"
+      },
+      "metrics": {
+        "n": 168,
+        "pf": 1.558,
+        "median": -2.24,
+        "net": 2432.68,
+        "max_dd": -1183.36,
+        "max_year_share_pct": 116.7,
+        "top3_share_pct": 107.9,
+        "h1_pf": 0.648,
+        "h2_pf": 2.465,
+        "years_positive": 4,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (asymmetric trap: PF>1.2, median<0)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 1.5447988510131836
+    },
+    {
+      "spec": {
+        "label": "P2H-BB-MGC-Short-PL",
+        "asset": "MGC",
+        "entry": "bb_reversion",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "short"
+      },
+      "metrics": {
+        "n": 130,
+        "pf": 1.697,
+        "median": 6.26,
+        "net": 1854.8,
+        "max_dd": -503.04,
+        "max_year_share_pct": 68.2,
+        "top3_share_pct": 95.0,
+        "h1_pf": 1.004,
+        "h2_pf": 2.24,
+        "years_positive": 6,
+        "n_years": 8
+      },
+      "temporal_split": {
+        "per_year": [
+          {
+            "year": 2019,
+            "n": 12,
+            "pf": 2.4488916256157633,
+            "median": 9.76,
+            "net": 94.12
+          },
+          {
+            "year": 2020,
+            "n": 15,
+            "pf": 0.9719597449489128,
+            "median": 3.76,
+            "net": -14.600000000000023
+          },
+          {
+            "year": 2021,
+            "n": 24,
+            "pf": 1.0758733624454144,
+            "median": -2.24,
+            "net": 22.24000000000001
+          },
+          {
+            "year": 2022,
+            "n": 31,
+            "pf": 1.0812672176308542,
+            "median": -2.24,
+            "net": 49.55999999999999
+          },
+          {
+            "year": 2023,
+            "n": 12,
+            "pf": 2.9969731365872114,
+            "median": 23.76,
+            "net": 211.12
+          },
+          {
+            "year": 2024,
+            "n": 14,
+            "pf": 0.5220541902961563,
+            "median": -23.24,
+            "net": -121.36
+          },
+          {
+            "year": 2025,
+            "n": 12,
+            "pf": 2.611965178736803,
+            "median": 51.76,
+            "net": 348.12
+          },
+          {
+            "year": 2026,
+            "n": 10,
+            "pf": 3.123632458554265,
+            "median": 53.26,
+            "net": 1265.6
+          }
+        ],
+        "eras": [
+          {
+            "era": 1,
+            "n": 43,
+            "pf": 0.8982492963793347,
+            "median": -3.24,
+            "net": -85.32000000000006
+          },
+          {
+            "era": 2,
+            "n": 43,
+            "pf": 1.310187475947001,
+            "median": 7.76,
+            "net": 225.68
+          },
+          {
+            "era": 3,
+            "n": 44,
+            "pf": 2.5670152091254756,
+            "median": 15.760000000000002,
+            "net": 1714.44
+          }
+        ],
+        "yrs_pos": 6,
+        "n_yrs": 8,
+        "era3_pf": 2.5670152091254756,
+        "era3_median": 15.760000000000002
+      },
+      "doctrine_verdict": "ARCHITECTURAL_REJECT (losing era)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 2.270228862762451
+    },
+    {
+      "spec": {
+        "label": "P2H-VWAP-MCL-Long-PL",
+        "asset": "MCL",
+        "entry": "vwap_continuation",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "long"
+      },
+      "metrics": {
+        "n": 240,
+        "pf": 1.024,
+        "median": -0.74,
+        "net": 142.4,
+        "max_dd": -1344.84,
+        "max_year_share_pct": 378.0,
+        "top3_share_pct": 599.9,
+        "h1_pf": 0.868,
+        "h2_pf": 1.254,
+        "years_positive": 4,
+        "n_years": 6
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 7.1077940464019775
+    },
+    {
+      "spec": {
+        "label": "P2H-VWAP-MCL-Short-PL",
+        "asset": "MCL",
+        "entry": "vwap_continuation",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "short"
+      },
+      "metrics": {
+        "n": 272,
+        "pf": 1.146,
+        "median": -0.74,
+        "net": 995.72,
+        "max_dd": -1186.24,
+        "max_year_share_pct": 90.5,
+        "top3_share_pct": 114.2,
+        "h1_pf": 0.942,
+        "h2_pf": 1.595,
+        "years_positive": 4,
+        "n_years": 6
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 3.4431369304656982
+    },
+    {
+      "spec": {
+        "label": "P2H-VWAP-MGC-Long-PL",
+        "asset": "MGC",
+        "entry": "vwap_continuation",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "long"
+      },
+      "metrics": {
+        "n": 227,
+        "pf": 1.242,
+        "median": -1.24,
+        "net": 2078.52,
+        "max_dd": -1411.24,
+        "max_year_share_pct": 38.7,
+        "top3_share_pct": 100.5,
+        "h1_pf": 1.149,
+        "h2_pf": 1.28,
+        "years_positive": 6,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (asymmetric trap: PF>1.2, median<0)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 5.665085077285767
+    },
+    {
+      "spec": {
+        "label": "P2H-VWAP-MGC-Short-PL",
+        "asset": "MGC",
+        "entry": "vwap_continuation",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "short"
+      },
+      "metrics": {
+        "n": 154,
+        "pf": 1.374,
+        "median": 2.76,
+        "net": 1535.04,
+        "max_dd": -860.16,
+        "max_year_share_pct": 72.1,
+        "top3_share_pct": 82.6,
+        "h1_pf": 1.285,
+        "h2_pf": 1.446,
+        "years_positive": 6,
+        "n_years": 8
+      },
+      "temporal_split": {
+        "per_year": [
+          {
+            "year": 2019,
+            "n": 10,
+            "pf": 1.8388908388908387,
+            "median": 8.76,
+            "net": 95.6
+          },
+          {
+            "year": 2020,
+            "n": 21,
+            "pf": 3.334084707557243,
+            "median": 16.76,
+            "net": 786.9599999999999
+          },
+          {
+            "year": 2021,
+            "n": 25,
+            "pf": 0.4085848854634982,
+            "median": -14.24,
+            "net": -442.0
+          },
+          {
+            "year": 2022,
+            "n": 35,
+            "pf": 1.0996352637665687,
+            "median": -3.24,
+            "net": 89.59999999999998
+          },
+          {
+            "year": 2023,
+            "n": 14,
+            "pf": 1.3607445008460235,
+            "median": 4.76,
+            "net": 42.63999999999999
+          },
+          {
+            "year": 2024,
+            "n": 19,
+            "pf": 0.5565343955875595,
+            "median": 2.76,
+            "net": -231.56
+          },
+          {
+            "year": 2025,
+            "n": 14,
+            "pf": 6.399297423887588,
+            "median": 18.76,
+            "net": 1106.6399999999999
+          },
+          {
+            "year": 2026,
+            "n": 16,
+            "pf": 1.0750292679567521,
+            "median": 9.26,
+            "net": 87.15999999999985
+          }
+        ],
+        "eras": [
+          {
+            "era": 1,
+            "n": 51,
+            "pf": 1.6274461538461538,
+            "median": 1.76,
+            "net": 611.7599999999998
+          },
+          {
+            "era": 2,
+            "n": 51,
+            "pf": 0.9720197430784816,
+            "median": -2.24,
+            "net": -34.240000000000066
+          },
+          {
+            "era": 3,
+            "n": 52,
+            "pf": 1.5023609158254816,
+            "median": 9.26,
+            "net": 957.52
+          }
+        ],
+        "yrs_pos": 6,
+        "n_yrs": 8,
+        "era3_pf": 1.5023609158254816,
+        "era3_median": 9.26
+      },
+      "doctrine_verdict": "ARCHITECTURAL_REJECT (losing era)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 3.747750759124756
+    },
+    {
+      "spec": {
+        "label": "P2H-PDF-MGC-Long-PL",
+        "asset": "MGC",
+        "entry": "prior_day_fade",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "long"
+      },
+      "metrics": {
+        "n": 115,
+        "pf": 1.131,
+        "median": -9.24,
+        "net": 356.4,
+        "max_dd": -584.12,
+        "max_year_share_pct": 141.3,
+        "top3_share_pct": 291.9,
+        "h1_pf": 0.632,
+        "h2_pf": 1.478,
+        "years_positive": 2,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 3.81317400932312
+    },
+    {
+      "spec": {
+        "label": "P2H-PDF-MGC-Short-PL",
+        "asset": "MGC",
+        "entry": "prior_day_fade",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "short"
+      },
+      "metrics": {
+        "n": 72,
+        "pf": 1.544,
+        "median": 1.76,
+        "net": 861.72,
+        "max_dd": -254.2,
+        "max_year_share_pct": 60.9,
+        "top3_share_pct": 71.3,
+        "h1_pf": 2.296,
+        "h2_pf": 1.17,
+        "years_positive": 4,
+        "n_years": 8
+      },
+      "temporal_split": {
+        "per_year": [
+          {
+            "year": 2019,
+            "n": 6,
+            "pf": 0.9722601182355617,
+            "median": -19.24,
+            "net": -2.4400000000000013
+          },
+          {
+            "year": 2020,
+            "n": 7,
+            "pf": 4.48686621869273,
+            "median": 21.76,
+            "net": 228.31999999999994
+          },
+          {
+            "year": 2021,
+            "n": 14,
+            "pf": 4.695688926458157,
+            "median": 42.76,
+            "net": 524.6399999999999
+          },
+          {
+            "year": 2022,
+            "n": 14,
+            "pf": 1.2199931995919757,
+            "median": -29.240000000000002,
+            "net": 77.64
+          },
+          {
+            "year": 2023,
+            "n": 10,
+            "pf": 0.7128894318875992,
+            "median": -14.739999999999998,
+            "net": -56.39999999999999
+          },
+          {
+            "year": 2024,
+            "n": 9,
+            "pf": 0.2839954597048808,
+            "median": -12.24,
+            "net": -126.15999999999998
+          },
+          {
+            "year": 2025,
+            "n": 6,
+            "pf": 0.8495037472149078,
+            "median": -74.74,
+            "net": -59.440000000000026
+          },
+          {
+            "year": 2026,
+            "n": 6,
+            "pf": 2.6453307857654647,
+            "median": 53.76,
+            "net": 275.55999999999995
+          }
+        ],
+        "eras": [
+          {
+            "era": 1,
+            "n": 24,
+            "pf": 2.713744075829383,
+            "median": 19.26,
+            "net": 506.23999999999995
+          },
+          {
+            "era": 2,
+            "n": 24,
+            "pf": 1.5403867079601574,
+            "median": -1.7400000000000002,
+            "net": 258.2399999999999
+          },
+          {
+            "era": 3,
+            "n": 24,
+            "pf": 1.1200316002567519,
+            "median": -19.74,
+            "net": 97.24000000000004
+          }
+        ],
+        "yrs_pos": 4,
+        "n_yrs": 8,
+        "era3_pf": 1.1200316002567519,
+        "era3_median": -19.74
+      },
+      "doctrine_verdict": "WATCH (temporal)",
+      "era3_delta": "CURRENT_REGIME_WARNING",
+      "prop_stress": {
+        "label": "P2H-PDF-MGC-Short-PL",
+        "rows": [
+          {
+            "stress": "baseline (1x)",
+            "commission_mult": 1.0,
+            "slippage_mult": 1.0,
+            "n": 72,
+            "pf": 1.544,
+            "net_median": 1.76,
+            "net_pnl": 861.72,
+            "max_dd": -254.2
+          },
+          {
+            "stress": "2x cost + 1 tick slip",
+            "commission_mult": 2.0,
+            "slippage_mult": 2.0,
+            "n": 72,
+            "pf": 1.37,
+            "net_median": -1.48,
+            "net_pnl": 628.44,
+            "max_dd": -324.56
+          },
+          {
+            "stress": "2x cost + 2 ticks slip",
+            "commission_mult": 2.0,
+            "slippage_mult": 3.0,
+            "n": 72,
+            "pf": 1.273,
+            "net_median": -3.48,
+            "net_pnl": 484.44,
+            "max_dd": -373.0
+          },
+          {
+            "stress": "4x cost + 2 ticks slip",
+            "commission_mult": 4.0,
+            "slippage_mult": 3.0,
+            "n": 72,
+            "pf": 1.164,
+            "net_median": -5.96,
+            "net_pnl": 305.88,
+            "max_dd": -465.44
+          }
+        ],
+        "verdict": "FAIL_STRESS (median \u2264 0 at 2x cost + 2 ticks)",
+        "headline_reason": "At 2x cost + 2 ticks slip: median $-3.48 (\u2264 0)",
+        "moderate_median": -3.48,
+        "extreme_median": -5.96
+      },
+      "elapsed_seconds": 5.4537928104400635
+    },
+    {
+      "spec": {
+        "label": "P2H-DC-CLOSE-MGC-Long-PL",
+        "asset": "MGC",
+        "entry": "donchian_breakout",
+        "filter": "session_close",
+        "exit": "profit_ladder",
+        "mode": "long"
+      },
+      "metrics": {
+        "n": 249,
+        "pf": 0.931,
+        "median": -10.24,
+        "net": -427.76,
+        "max_dd": -2306.56,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.62,
+        "h2_pf": 1.101,
+        "years_positive": 2,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 1.8194899559020996
+    },
+    {
+      "spec": {
+        "label": "P2H-DC-CLOSE-MGC-Short-PL",
+        "asset": "MGC",
+        "entry": "donchian_breakout",
+        "filter": "session_close",
+        "exit": "profit_ladder",
+        "mode": "short"
+      },
+      "metrics": {
+        "n": 204,
+        "pf": 1.011,
+        "median": -7.24,
+        "net": 47.04,
+        "max_dd": -1118.88,
+        "max_year_share_pct": 832.3,
+        "top3_share_pct": 2959.8,
+        "h1_pf": 0.87,
+        "h2_pf": 1.094,
+        "years_positive": 3,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 2.1715221405029297
+    },
+    {
+      "spec": {
+        "label": "P2H-DC-CLOSE-MCL-Long-PL",
+        "asset": "MCL",
+        "entry": "donchian_breakout",
+        "filter": "session_close",
+        "exit": "profit_ladder",
+        "mode": "long"
+      },
+      "metrics": {
+        "n": 344,
+        "pf": 0.548,
+        "median": -3.74,
+        "net": -2880.56,
+        "max_dd": -3053.88,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.695,
+        "h2_pf": 0.387,
+        "years_positive": 0,
+        "n_years": 6
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 2.4576010704040527
+    },
+    {
+      "spec": {
+        "label": "P2H-DC-CLOSE-MCL-Short-PL",
+        "asset": "MCL",
+        "entry": "donchian_breakout",
+        "filter": "session_close",
+        "exit": "profit_ladder",
+        "mode": "short"
+      },
+      "metrics": {
+        "n": 383,
+        "pf": 0.604,
+        "median": -10.24,
+        "net": -2967.92,
+        "max_dd": -3184.0,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.803,
+        "h2_pf": 0.407,
+        "years_positive": 1,
+        "n_years": 6
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 2.3881888389587402
+    }
+  ],
+  "feature_cache_stats_final": {
+    "hits": 16,
+    "misses": 2,
+    "cached_keys": 2
+  }
+}

@@ -1,0 +1,409 @@
+{
+  "date": "2026-06-08",
+  "purpose": "Rates-afternoon + FX session-handoff Packet #2 hunt",
+  "boundaries": "report-only Lane B; no registry/portfolio/scheduler/promotion mutation",
+  "tier_classification": {
+    "PAPER_PACKET": 0,
+    "OBSERVATIONAL": 0,
+    "KILL": 14
+  },
+  "results": [
+    {
+      "spec": {
+        "label": "P2H-AFT-PB-ZN-Long-PL",
+        "asset": "ZN",
+        "entry": "pb_pullback",
+        "filter": "session_afternoon",
+        "exit": "profit_ladder",
+        "mode": "long"
+      },
+      "metrics": {
+        "n": 935,
+        "pf": 0.325,
+        "median": -49.98,
+        "net": -35430.09,
+        "max_dd": -35364.49,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.28,
+        "h2_pf": 0.372,
+        "years_positive": 0,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 198.62736201286316
+    },
+    {
+      "spec": {
+        "label": "P2H-AFT-PB-ZN-Short-PL",
+        "asset": "ZN",
+        "entry": "pb_pullback",
+        "filter": "session_afternoon",
+        "exit": "profit_ladder",
+        "mode": "short"
+      },
+      "metrics": {
+        "n": 882,
+        "pf": 0.441,
+        "median": -34.35,
+        "net": -25719.05,
+        "max_dd": -25665.97,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.518,
+        "h2_pf": 0.369,
+        "years_positive": 0,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 8.14282512664795
+    },
+    {
+      "spec": {
+        "label": "P2H-AFT-BB-ZN-Long-PL",
+        "asset": "ZN",
+        "entry": "bb_reversion",
+        "filter": "session_afternoon",
+        "exit": "profit_ladder",
+        "mode": "long"
+      },
+      "metrics": {
+        "n": 304,
+        "pf": 0.356,
+        "median": -49.98,
+        "net": -11145.58,
+        "max_dd": -11136.4,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.253,
+        "h2_pf": 0.485,
+        "years_positive": 0,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 2.7788491249084473
+    },
+    {
+      "spec": {
+        "label": "P2H-AFT-BB-ZN-Short-PL",
+        "asset": "ZN",
+        "entry": "bb_reversion",
+        "filter": "session_afternoon",
+        "exit": "profit_ladder",
+        "mode": "short"
+      },
+      "metrics": {
+        "n": 350,
+        "pf": 0.45,
+        "median": -34.35,
+        "net": -9663.36,
+        "max_dd": -9675.88,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.564,
+        "h2_pf": 0.342,
+        "years_positive": 0,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 2.843549966812134
+    },
+    {
+      "spec": {
+        "label": "P2H-AFT-BB-ZF-Long-PL",
+        "asset": "ZF",
+        "entry": "bb_reversion",
+        "filter": "session_afternoon",
+        "exit": "profit_ladder",
+        "mode": "long"
+      },
+      "metrics": {
+        "n": 273,
+        "pf": 0.35,
+        "median": -26.54,
+        "net": -5830.95,
+        "max_dd": -5840.49,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.23,
+        "h2_pf": 0.481,
+        "years_positive": 0,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 175.46346068382263
+    },
+    {
+      "spec": {
+        "label": "P2H-AFT-BB-ZF-Short-PL",
+        "asset": "ZF",
+        "entry": "bb_reversion",
+        "filter": "session_afternoon",
+        "exit": "profit_ladder",
+        "mode": "short"
+      },
+      "metrics": {
+        "n": 297,
+        "pf": 0.573,
+        "median": -18.73,
+        "net": -3311.4,
+        "max_dd": -3327.14,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.5,
+        "h2_pf": 0.637,
+        "years_positive": 1,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 1.8092701435089111
+    },
+    {
+      "spec": {
+        "label": "P2H-CLOSE-PB-6E-Long-PL",
+        "asset": "6E",
+        "entry": "pb_pullback",
+        "filter": "session_close",
+        "exit": "profit_ladder",
+        "mode": "long"
+      },
+      "metrics": {
+        "n": 132,
+        "pf": 0.317,
+        "median": -51.88,
+        "net": -5335.0,
+        "max_dd": -5570.0,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.408,
+        "h2_pf": 0.237,
+        "years_positive": 0,
+        "n_years": 3
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 41.550390005111694
+    },
+    {
+      "spec": {
+        "label": "P2H-CLOSE-PB-6E-Short-PL",
+        "asset": "6E",
+        "entry": "pb_pullback",
+        "filter": "session_close",
+        "exit": "profit_ladder",
+        "mode": "short"
+      },
+      "metrics": {
+        "n": 112,
+        "pf": 0.65,
+        "median": -26.88,
+        "net": -1897.5,
+        "max_dd": -2680.0,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.509,
+        "h2_pf": 0.793,
+        "years_positive": 1,
+        "n_years": 3
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 1.0400278568267822
+    },
+    {
+      "spec": {
+        "label": "P2H-CLOSE-PB-6J-Long-PL",
+        "asset": "6J",
+        "entry": "pb_pullback",
+        "filter": "session_close",
+        "exit": "profit_ladder",
+        "mode": "long"
+      },
+      "metrics": {
+        "n": 86,
+        "pf": 0.446,
+        "median": -39.38,
+        "net": -2148.75,
+        "max_dd": -2192.5,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.51,
+        "h2_pf": 0.369,
+        "years_positive": 0,
+        "n_years": 3
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 38.746265172958374
+    },
+    {
+      "spec": {
+        "label": "P2H-CLOSE-PB-6J-Short-PL",
+        "asset": "6J",
+        "entry": "pb_pullback",
+        "filter": "session_close",
+        "exit": "profit_ladder",
+        "mode": "short"
+      },
+      "metrics": {
+        "n": 91,
+        "pf": 1.084,
+        "median": -23.75,
+        "net": 207.5,
+        "max_dd": -1092.5,
+        "max_year_share_pct": 138.0,
+        "top3_share_pct": 604.2,
+        "h1_pf": 1.095,
+        "h2_pf": 1.069,
+        "years_positive": 2,
+        "n_years": 3
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 0.4471879005432129
+    },
+    {
+      "spec": {
+        "label": "P2H-CLOSE-BB-6E-Long-PL",
+        "asset": "6E",
+        "entry": "bb_reversion",
+        "filter": "session_close",
+        "exit": "profit_ladder",
+        "mode": "long"
+      },
+      "metrics": {
+        "n": 23,
+        "pf": 0.743,
+        "median": -36.25,
+        "net": -333.75,
+        "max_dd": -421.25,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.677,
+        "h2_pf": 0.867,
+        "years_positive": 2,
+        "n_years": 3
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (n=23)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 0.4443690776824951
+    },
+    {
+      "spec": {
+        "label": "P2H-CLOSE-BB-6J-Long-PL",
+        "asset": "6J",
+        "entry": "bb_reversion",
+        "filter": "session_close",
+        "exit": "profit_ladder",
+        "mode": "long"
+      },
+      "metrics": {
+        "n": 22,
+        "pf": 0.848,
+        "median": -33.12,
+        "net": -160.0,
+        "max_dd": -603.75,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 1.751,
+        "h2_pf": 0.254,
+        "years_positive": 1,
+        "n_years": 3
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (n=22)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 0.40288519859313965
+    },
+    {
+      "spec": {
+        "label": "P2H-MORN-DC-6E-Long-PL",
+        "asset": "6E",
+        "entry": "donchian_breakout",
+        "filter": "session_morning",
+        "exit": "profit_ladder",
+        "mode": "long"
+      },
+      "metrics": {
+        "n": 279,
+        "pf": 0.752,
+        "median": -55.0,
+        "net": -7145.0,
+        "max_dd": -8473.75,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.685,
+        "h2_pf": 0.826,
+        "years_positive": 0,
+        "n_years": 3
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 0.430743932723999
+    },
+    {
+      "spec": {
+        "label": "P2H-MORN-DC-6E-Short-PL",
+        "asset": "6E",
+        "entry": "donchian_breakout",
+        "filter": "session_morning",
+        "exit": "profit_ladder",
+        "mode": "short"
+      },
+      "metrics": {
+        "n": 267,
+        "pf": 0.787,
+        "median": -48.75,
+        "net": -5641.25,
+        "max_dd": -8292.5,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.726,
+        "h2_pf": 0.852,
+        "years_positive": 1,
+        "n_years": 3
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 0.4074890613555908
+    }
+  ],
+  "feature_cache_stats_final": {
+    "hits": 10,
+    "misses": 4,
+    "cached_keys": 4
+  }
+}

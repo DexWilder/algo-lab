@@ -2253,5 +2253,165 @@
       "observational_total": "~15",
       "boundaries_held": true
     }
+  },
+  "_HEADLINE_2026-06-08b_MNQ_LONG_BIAS_ASYMMETRY": {
+    "headline": "MNQ ORB directional split: LONG > SHORT (PF 1.726 vs 1.489). FIRST asset showing LONG-bias asymmetry. Cross-asset matrix now complete for 5 assets.",
+    "date": "2026-06-08",
+    "operator_approval": "OK run MNQ (#89)",
+    "candidates": {
+      "MNQ-both (existing probation)": {
+        "n": 1216,
+        "pf": 1.608,
+        "median": 42.76,
+        "net": 49495
+      },
+      "DIR-MNQ-ORB-Long-PL": {
+        "n": 811,
+        "pf": 1.726,
+        "median": 41.76,
+        "verdict": "DIRECTIONAL_INSIGHT_OF_EXISTING_PROBATION",
+        "stress": "PASS"
+      },
+      "DIR-MNQ-ORB-Short-PL": {
+        "n": 405,
+        "pf": 1.489,
+        "median": 46.26,
+        "verdict": "DIRECTIONAL_INSIGHT_OF_EXISTING_PROBATION",
+        "stress": "PASS"
+      }
+    },
+    "family_review": {
+      "MNQ-long_vs_both": {
+        "corr": 0.604,
+        "day_overlap_pct": 100.0
+      },
+      "MNQ-short_vs_both": {
+        "corr": 0.789,
+        "day_overlap_pct": 100.0
+      }
+    },
+    "cross_asset_directional_asymmetry_matrix_complete": {
+      "MGC": "Good + Better (SHORT slightly stronger; 1.362 vs 1.527)",
+      "MCL": "Null + Alive (LONG dead 1.014; SHORT alive 1.41-1.45)",
+      "MYM": "Symmetric (1.568 vs 1.578)",
+      "MES": "Symmetric-leaning (1.394 vs 1.482, SHORT slightly stronger)",
+      "MNQ": "Good + Better LONG-BIAS (LONG 1.726 stronger than SHORT 1.489) \u2014 only asset with this pattern"
+    },
+    "doctrine_significance": "Cross-asset directional asymmetry is asset-specific. Each asset must be characterized independently. MCL/MGC modification template (remove LONG / sizing-modifier) does NOT transfer to MNQ. ORB-family directional diagnostic CONCLUDED.",
+    "tags": [
+      "duplicate/overlap"
+    ],
+    "disposition": "DIRECTIONAL_INSIGHT_ONLY \u2014 no new candidate; existing MNQ probation validated as both-direction. Insight doc: research/data/fql_forge/mnq_orb_directional_long_bias_insight.md"
+  },
+  "_HEADLINE_2026-06-08b_PL_DEFAULT_CODIFIED": {
+    "headline": "FQL doctrine codified: profit_ladder is the daily-workhorse default exit; fixed_ratio thesis-specific only. Codification threshold met (PL_or_tied=10/10, FR2_wins=0).",
+    "date": "2026-06-08",
+    "operator_approval": "OK n+5 (#90); operator rule = codify if PL_or_tied >= 8 AND FR2_wins = 0",
+    "n_pairs_total": 10,
+    "pl_wins": 4,
+    "fr2_wins": 0,
+    "ties": 6,
+    "pl_or_tied": "10/10",
+    "fr2_wins_pct": "0%",
+    "codify": true,
+    "rule": "Use profit_ladder as the default exit for daily-workhorse candidates (trades-per-year >= 100, intraday or daily). Use fixed_ratio only when thesis explicitly requires full-target capture.",
+    "scope": "Daily-workhorse archetype only. Not universal. Tail-engine, sparse-event, carry-spread NOT in scope.",
+    "counter_example_clause": "Revoke if FR2 ever shows strictly more cost-robustness in a future n=5 study.",
+    "doctrine_artifact": "docs/fql_forge/exit_design_pl_workhorse_default.md",
+    "tags": [
+      "cost-eats-edge"
+    ]
+  },
+  "_aggregate_2026-06-08b": {
+    "date": "2026-06-08",
+    "cycle_label": "Cycle 2026-06-08b",
+    "operator_approvals": [
+      "#89 OK run MNQ",
+      "#90 OK n+5 codify-if-met"
+    ],
+    "track_A_mnq_diagnostic": {
+      "candidates_run": 2,
+      "PAPER_PACKET": 0,
+      "DIRECTIONAL_INSIGHT": 2,
+      "details": "MNQ Long+Short both PASS_STRESS; subsets of existing probation (100% day-overlap); MNQ ORB has LONG bias (only such asset)"
+    },
+    "track_B_pl_vs_fr2_n10": {
+      "new_pairs": 5,
+      "cumulative_pairs": 10,
+      "PL_wins": 4,
+      "FR2_wins": 0,
+      "TIED": 6,
+      "PL_or_tied": "10/10",
+      "codification_decision": "CODIFY",
+      "doctrine_locked": "docs/fql_forge/exit_design_pl_workhorse_default.md"
+    },
+    "diagnostic_phase_status": "ORB-family directional diagnostic COMPLETE for 5 assets (MGC/MCL/MYM/MES/MNQ). PL/FR2 codified. PIVOTING to non-ORB Packet #2 hunt next cycle (08c).",
+    "cumulative_campaign_state": {
+      "paper_packets_accepted": 1,
+      "portfolio_complement_candidates": 2,
+      "directional_insights_documented": 5,
+      "new_doctrines_codified": 1,
+      "observational_total": "~15",
+      "boundaries_held": true
+    }
+  },
+  "_HEADLINE_2026-06-08c_NON_ORB_MCL_MGC_WIPEOUT": {
+    "headline": "Non-ORB Packet #2 hunt on MCL/MGC: 0 PAPER_PACKET / 1 OBSERVATIONAL / 17 KILL. ORB+EMA+PL family captures dominant commodity edge; alternative mechanisms do not compete.",
+    "date": "2026-06-08",
+    "operator_directive": "Pivot Packet #2 hunt to non-ORB edge families",
+    "categories_tested": {
+      "pb_pullback_MCL_MGC": "4 KILL",
+      "bb_reversion_MCL_MGC": "4 KILL (incl. 1 ARCHITECTURAL_REJECT BB-MGC-Short losing-era)",
+      "vwap_continuation_MCL_MGC": "4 KILL (incl. 1 ARCHITECTURAL_REJECT VWAP-MGC-Short losing-era)",
+      "prior_day_fade_MGC": "1 KILL + 1 OBSERVATIONAL (PDF-MGC-Short FAIL_STRESS + CURRENT_REGIME_WARNING)",
+      "donchian_session_close_MCL_MGC": "4 KILL"
+    },
+    "architectural_rejects_caught": [
+      "BB-MGC-Short: PF 1.697, median $6.26, but losing era in middle",
+      "VWAP-MGC-Short: PF 1.374, median $2.76, but losing era in middle"
+    ],
+    "doctrine_significance": "Confirms commodity micros are ORB-family monocultures under current primitive set. Packet #2 must come from rates / FX / equity-afternoon sessions, or from new entry primitives. Temporal-split + losing-era guardrail caught 2 attractive-looking candidates correctly.",
+    "asset_family_saturation_hypothesis_proposed": "When 5+ non-overlapping entry-family combinations on a single asset all KILL under the same gates, the asset is saturated by the existing probation strategy. Future hunts require either new primitive types or new asset/session/regime mutations. NOT YET CODIFIED \u2014 needs one more pattern repetition.",
+    "tags": [
+      "median-negative",
+      "cost-eats-edge"
+    ],
+    "disposition": "0 PAPER_PACKET. 1 OBSERVATIONAL (FAIL_STRESS). 17 KILL. Pivoting to rates-afternoon + FX session-handoff in cycle 08d (running). Insight doc: research/data/fql_forge/non_orb_mcl_mgc_wipeout_insight.md"
+  },
+  "_HEADLINE_2026-06-08d_RATES_FX_WIPEOUT": {
+    "headline": "Rates-afternoon + FX session-handoff Packet #2 hunt: 0 PAPER_PACKET / 0 OBSERVATIONAL / 14 KILL. PFs 0.32-1.08, all median-negative. Strong anti-edges.",
+    "date": "2026-06-08",
+    "operator_directive": "Continue Packet #2 hunt to non-ORB edge families",
+    "categories_tested": {
+      "ZN/ZF_afternoon_pb_pullback": "4 KILL (PFs 0.33-0.57, medians -$26 to -$50)",
+      "ZN/ZF_afternoon_bb_reversion": "2 KILL (PFs 0.45-0.57, medians -$19 to -$34)",
+      "6E/6J_close_pb_pullback": "4 KILL (PFs 0.32-1.08, medians -$24 to -$52)",
+      "6E/6J_close_bb_reversion": "2 KILL (n=22-23 below sample threshold)",
+      "6E_morning_donchian": "2 KILL (PFs 0.75-0.79, medians -$49 to -$55)"
+    },
+    "doctrine_significance": "Combined with 08c, Forge has tested 32 non-ORB candidates across 2 cycles with 0 PAPER_PACKET surviving. Pattern is consistent: existing entry primitives (pb_pullback, bb_reversion, vwap_continuation, prior_day_fade, donchian + session filters) do NOT generate workhorse-grade edges on commodities, rates, or FX. ORB-family appears to be the only existing-primitive combination that works at workhorse scale on intraday futures.",
+    "asset_family_saturation_pattern_confirmed": "08c (commodity) + 08d (rates+FX) = 2 wipeout cycles. Saturation hypothesis from 08c now has 2 supporting datapoints. Recommendation to operator: stop ORB-family non-ORB-entry exploration of existing primitives on intraday futures; pivot Packet #2 hunt to (a) event-window/sparse archetypes (tail-engine path), or (b) new entry primitives, or (c) accept that Packet #2 requires research breakthrough not yet available.",
+    "tags": [
+      "median-negative",
+      "cost-eats-edge"
+    ],
+    "disposition": "0 PAPER_PACKET. 0 OBSERVATIONAL. 14 KILL. Two-cycle wipeout = blocker pattern. Surfacing to operator for direction decision."
+  },
+  "_aggregate_2026-06-08c_d": {
+    "date": "2026-06-08",
+    "cycle_labels": [
+      "Cycle 2026-06-08c (non-ORB commodity)",
+      "Cycle 2026-06-08d (rates-afternoon + FX session-handoff)"
+    ],
+    "operator_directive": "Pivot Packet #2 hunt to non-ORB edge families",
+    "cumulative": {
+      "candidates_tested": 32,
+      "PAPER_PACKET": 0,
+      "OBSERVATIONAL": 1,
+      "KILL": 31,
+      "ARCHITECTURAL_REJECTS": 2
+    },
+    "diagnostic_phase_status": "Non-ORB Packet #2 hunt across existing primitives = EXHAUSTED on commodity / rates / FX. 32-of-32 candidates failed. Asset-family saturation hypothesis confirmed at n=2 datapoints. Operator decision required for next direction: event-window expansion, new primitive build, or research-only pause.",
+    "boundaries_held": true
   }
 }
