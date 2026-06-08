@@ -1,0 +1,887 @@
+{
+  "date": "2026-06-08",
+  "purpose": "RCB tighter-compression mutation on 4 WATCH (#96 + #97)",
+  "boundaries": "report-only Lane B; no registry/portfolio/scheduler/promotion mutation",
+  "strict_upgrade_gates": "median >= $2 AND PASS_STRESS AND max-yr <= 50% AND no current-regime warning",
+  "tier_classification": {
+    "UPGRADE_CANDIDATE": 0,
+    "OBSERVATIONAL": 6,
+    "KILL": 5
+  },
+  "results": [
+    {
+      "spec": {
+        "label": "RCB15-MGC-Short-PL",
+        "asset": "MGC",
+        "entry": "range_compression_break",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "params": {
+          "compression_pct_max": 15
+        },
+        "mode": "short"
+      },
+      "metrics": {
+        "n": 162,
+        "pf": 1.203,
+        "median": 2.26,
+        "net": 923.12,
+        "max_dd": -693.28,
+        "max_year_share_pct": 64.4,
+        "top3_share_pct": 134.2,
+        "h1_pf": 1.147,
+        "h2_pf": 1.257,
+        "years_positive": 5,
+        "n_years": 8
+      },
+      "temporal_split": {
+        "per_year": [
+          {
+            "year": 2019,
+            "n": 15,
+            "pf": 1.505952380952381,
+            "median": -16.24,
+            "net": 122.39999999999999
+          },
+          {
+            "year": 2020,
+            "n": 20,
+            "pf": 1.6705945848700186,
+            "median": 5.76,
+            "net": 298.19999999999993
+          },
+          {
+            "year": 2021,
+            "n": 30,
+            "pf": 1.47329405056073,
+            "median": -8.74,
+            "net": 298.7999999999999
+          },
+          {
+            "year": 2022,
+            "n": 29,
+            "pf": 0.6481243301178992,
+            "median": -19.24,
+            "net": -393.96000000000004
+          },
+          {
+            "year": 2023,
+            "n": 23,
+            "pf": 0.7878594249201275,
+            "median": 4.76,
+            "net": -119.52000000000005
+          },
+          {
+            "year": 2024,
+            "n": 20,
+            "pf": 1.5942063397839246,
+            "median": 7.26,
+            "net": 200.19999999999993
+          },
+          {
+            "year": 2025,
+            "n": 15,
+            "pf": 2.310868031051517,
+            "median": 18.76,
+            "net": 594.3999999999999
+          },
+          {
+            "year": 2026,
+            "n": 10,
+            "pf": 0.8977812995245641,
+            "median": 27.76,
+            "net": -77.40000000000009
+          }
+        ],
+        "eras": [
+          {
+            "era": 1,
+            "n": 54,
+            "pf": 1.771756007393715,
+            "median": 2.26,
+            "net": 835.0399999999998
+          },
+          {
+            "era": 2,
+            "n": 54,
+            "pf": 0.6386111927864353,
+            "median": -0.7400000000000001,
+            "net": -589.96
+          },
+          {
+            "era": 3,
+            "n": 54,
+            "pf": 1.3697055616139584,
+            "median": 7.26,
+            "net": 678.0399999999997
+          }
+        ],
+        "yrs_pos": 5,
+        "n_yrs": 8,
+        "era3_pf": 1.3697055616139584,
+        "era3_median": 7.26
+      },
+      "doctrine_verdict": "ARCHITECTURAL_REJECT (losing era)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 47.804227113723755
+    },
+    {
+      "spec": {
+        "label": "RCB15-MGC-Both-PL",
+        "asset": "MGC",
+        "entry": "range_compression_break",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "params": {
+          "compression_pct_max": 15
+        },
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 420,
+        "pf": 1.248,
+        "median": 0.76,
+        "net": 3561.2,
+        "max_dd": -1336.72,
+        "max_year_share_pct": 38.3,
+        "top3_share_pct": 86.0,
+        "h1_pf": 1.378,
+        "h2_pf": 1.179,
+        "years_positive": 6,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "WATCH",
+      "era3_delta": null,
+      "prop_stress": {
+        "label": "RCB15-MGC-Both-PL",
+        "rows": [
+          {
+            "stress": "baseline (1x)",
+            "commission_mult": 1.0,
+            "slippage_mult": 1.0,
+            "n": 420,
+            "pf": 1.248,
+            "net_median": 0.76,
+            "net_pnl": 3561.2,
+            "max_dd": -1336.72
+          },
+          {
+            "stress": "2x cost + 1 tick slip",
+            "commission_mult": 2.0,
+            "slippage_mult": 2.0,
+            "n": 420,
+            "pf": 1.146,
+            "net_median": -2.48,
+            "net_pnl": 2200.4,
+            "max_dd": -1925.2
+          },
+          {
+            "stress": "2x cost + 2 ticks slip",
+            "commission_mult": 2.0,
+            "slippage_mult": 3.0,
+            "n": 420,
+            "pf": 1.088,
+            "net_median": -4.48,
+            "net_pnl": 1360.4,
+            "max_dd": -2396.96
+          },
+          {
+            "stress": "4x cost + 2 ticks slip",
+            "commission_mult": 4.0,
+            "slippage_mult": 3.0,
+            "n": 420,
+            "pf": 1.02,
+            "net_median": -6.96,
+            "net_pnl": 318.8,
+            "max_dd": -3083.92
+          }
+        ],
+        "verdict": "FAIL_STRESS (median \u2264 0 at 2x cost + 2 ticks)",
+        "headline_reason": "At 2x cost + 2 ticks slip: median $-4.48 (\u2264 0)",
+        "moderate_median": -4.48,
+        "extreme_median": -6.96
+      },
+      "elapsed_seconds": 1.308257818222046
+    },
+    {
+      "spec": {
+        "label": "RCB15-MES-Both-PL",
+        "asset": "MES",
+        "entry": "range_compression_break",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "params": {
+          "compression_pct_max": 15
+        },
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 947,
+        "pf": 1.153,
+        "median": 2.51,
+        "net": 3691.97,
+        "max_dd": -1806.5,
+        "max_year_share_pct": 39.8,
+        "top3_share_pct": 47.3,
+        "h1_pf": 1.171,
+        "h2_pf": 1.135,
+        "years_positive": 6,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "WATCH",
+      "era3_delta": null,
+      "prop_stress": {
+        "label": "RCB15-MES-Both-PL",
+        "rows": [
+          {
+            "stress": "baseline (1x)",
+            "commission_mult": 1.0,
+            "slippage_mult": 1.0,
+            "n": 947,
+            "pf": 1.153,
+            "net_median": 2.51,
+            "net_pnl": 3691.97,
+            "max_dd": -1806.5
+          },
+          {
+            "stress": "2x cost + 1 tick slip",
+            "commission_mult": 2.0,
+            "slippage_mult": 2.0,
+            "n": 947,
+            "pf": 1.006,
+            "net_median": -1.23,
+            "net_pnl": 150.19,
+            "max_dd": -2187.68
+          },
+          {
+            "stress": "2x cost + 2 ticks slip",
+            "commission_mult": 2.0,
+            "slippage_mult": 3.0,
+            "n": 947,
+            "pf": 0.918,
+            "net_median": -3.73,
+            "net_pnl": -2217.31,
+            "max_dd": -3164.8
+          },
+          {
+            "stress": "4x cost + 2 ticks slip",
+            "commission_mult": 4.0,
+            "slippage_mult": 3.0,
+            "n": 947,
+            "pf": 0.84,
+            "net_median": -6.21,
+            "net_pnl": -4565.87,
+            "max_dd": -5103.32
+          }
+        ],
+        "verdict": "FAIL_STRESS (median \u2264 0 at 2x cost + 2 ticks)",
+        "headline_reason": "At 2x cost + 2 ticks slip: median $-3.73 (\u2264 0)",
+        "moderate_median": -3.73,
+        "extreme_median": -6.21
+      },
+      "elapsed_seconds": 130.5049660205841
+    },
+    {
+      "spec": {
+        "label": "RCB15-MYM-Both-PL",
+        "asset": "MYM",
+        "entry": "range_compression_break",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "params": {
+          "compression_pct_max": 15
+        },
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 319,
+        "pf": 1.524,
+        "median": 1.26,
+        "net": 3132.44,
+        "max_dd": -418.54,
+        "max_year_share_pct": 70.4,
+        "top3_share_pct": 28.6,
+        "h1_pf": 1.475,
+        "h2_pf": 1.56,
+        "years_positive": 3,
+        "n_years": 3
+      },
+      "temporal_split": {
+        "per_year": [
+          {
+            "year": 2024,
+            "n": 115,
+            "pf": 1.1963566554681466,
+            "median": -0.24,
+            "net": 376.39999999999975
+          },
+          {
+            "year": 2025,
+            "n": 149,
+            "pf": 1.8287696459039555,
+            "median": 11.76,
+            "net": 2205.24
+          },
+          {
+            "year": 2026,
+            "n": 55,
+            "pf": 1.3933049612978778,
+            "median": -9.24,
+            "net": 550.7999999999997
+          }
+        ],
+        "eras": [
+          {
+            "era": 1,
+            "n": 106,
+            "pf": 1.2196384150675195,
+            "median": -0.49,
+            "net": 395.55999999999983
+          },
+          {
+            "era": 2,
+            "n": 106,
+            "pf": 1.852143305798836,
+            "median": 12.51,
+            "net": 1438.0599999999997
+          },
+          {
+            "era": 3,
+            "n": 107,
+            "pf": 1.5216815012371068,
+            "median": -7.24,
+            "net": 1298.8199999999995
+          }
+        ],
+        "yrs_pos": 3,
+        "n_yrs": 3,
+        "era3_pf": 1.5216815012371068,
+        "era3_median": -7.24
+      },
+      "doctrine_verdict": "WATCH_FOR_DEEP_SCREEN (temporal+Era3)",
+      "era3_delta": "CURRENT_REGIME_WARNING",
+      "prop_stress": {
+        "label": "RCB15-MYM-Both-PL",
+        "rows": [
+          {
+            "stress": "baseline (1x)",
+            "commission_mult": 1.0,
+            "slippage_mult": 1.0,
+            "n": 319,
+            "pf": 1.524,
+            "net_median": 1.26,
+            "net_pnl": 3132.44,
+            "max_dd": -418.54
+          },
+          {
+            "stress": "2x cost + 1 tick slip",
+            "commission_mult": 2.0,
+            "slippage_mult": 2.0,
+            "n": 319,
+            "pf": 1.323,
+            "net_median": -1.98,
+            "net_pnl": 2098.88,
+            "max_dd": -486.58
+          },
+          {
+            "stress": "2x cost + 2 ticks slip",
+            "commission_mult": 2.0,
+            "slippage_mult": 3.0,
+            "n": 319,
+            "pf": 1.214,
+            "net_median": -3.98,
+            "net_pnl": 1460.88,
+            "max_dd": -528.58
+          },
+          {
+            "stress": "4x cost + 2 ticks slip",
+            "commission_mult": 4.0,
+            "slippage_mult": 3.0,
+            "n": 319,
+            "pf": 1.092,
+            "net_median": -6.46,
+            "net_pnl": 669.76,
+            "max_dd": -580.66
+          }
+        ],
+        "verdict": "FAIL_STRESS (median \u2264 0 at 2x cost + 2 ticks)",
+        "headline_reason": "At 2x cost + 2 ticks slip: median $-3.98 (\u2264 0)",
+        "moderate_median": -3.98,
+        "extreme_median": -6.46
+      },
+      "elapsed_seconds": 44.51990485191345
+    },
+    {
+      "spec": {
+        "label": "RCB10-MGC-Short-PL",
+        "asset": "MGC",
+        "entry": "range_compression_break",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "params": {
+          "compression_pct_max": 10
+        },
+        "mode": "short"
+      },
+      "metrics": {
+        "n": 146,
+        "pf": 1.27,
+        "median": 3.26,
+        "net": 1120.96,
+        "max_dd": -921.6,
+        "max_year_share_pct": 46.9,
+        "top3_share_pct": 110.0,
+        "h1_pf": 1.165,
+        "h2_pf": 1.362,
+        "years_positive": 6,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "WATCH",
+      "era3_delta": null,
+      "prop_stress": {
+        "label": "RCB10-MGC-Short-PL",
+        "rows": [
+          {
+            "stress": "baseline (1x)",
+            "commission_mult": 1.0,
+            "slippage_mult": 1.0,
+            "n": 146,
+            "pf": 1.27,
+            "net_median": 3.26,
+            "net_pnl": 1120.96,
+            "max_dd": -921.6
+          },
+          {
+            "stress": "2x cost + 1 tick slip",
+            "commission_mult": 2.0,
+            "slippage_mult": 2.0,
+            "n": 146,
+            "pf": 1.148,
+            "net_median": 0.02,
+            "net_pnl": 647.92,
+            "max_dd": -1132.2
+          },
+          {
+            "stress": "2x cost + 2 ticks slip",
+            "commission_mult": 2.0,
+            "slippage_mult": 3.0,
+            "n": 146,
+            "pf": 1.078,
+            "net_median": -1.98,
+            "net_pnl": 355.92,
+            "max_dd": -1262.2
+          },
+          {
+            "stress": "4x cost + 2 ticks slip",
+            "commission_mult": 4.0,
+            "slippage_mult": 3.0,
+            "n": 146,
+            "pf": 0.999,
+            "net_median": -4.46,
+            "net_pnl": -6.16,
+            "max_dd": -1423.4
+          }
+        ],
+        "verdict": "FAIL_STRESS (median \u2264 0 at 2x cost + 2 ticks)",
+        "headline_reason": "At 2x cost + 2 ticks slip: median $-1.98 (\u2264 0)",
+        "moderate_median": -1.98,
+        "extreme_median": -4.46
+      },
+      "elapsed_seconds": 2.0676357746124268
+    },
+    {
+      "spec": {
+        "label": "RCB10-MGC-Both-PL",
+        "asset": "MGC",
+        "entry": "range_compression_break",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "params": {
+          "compression_pct_max": 10
+        },
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 358,
+        "pf": 1.14,
+        "median": -1.24,
+        "net": 1820.08,
+        "max_dd": -1733.44,
+        "max_year_share_pct": 64.4,
+        "top3_share_pct": 130.0,
+        "h1_pf": 1.314,
+        "h2_pf": 1.051,
+        "years_positive": 6,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 0.908879280090332
+    },
+    {
+      "spec": {
+        "label": "RCB10-MES-Both-PL",
+        "asset": "MES",
+        "entry": "range_compression_break",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "params": {
+          "compression_pct_max": 10
+        },
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 869,
+        "pf": 1.103,
+        "median": 1.26,
+        "net": 2291.19,
+        "max_dd": -1508.23,
+        "max_year_share_pct": 53.7,
+        "top3_share_pct": 57.3,
+        "h1_pf": 1.139,
+        "h2_pf": 1.066,
+        "years_positive": 5,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (PF<1.15)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 1.773827075958252
+    },
+    {
+      "spec": {
+        "label": "RCB10-MYM-Both-PL",
+        "asset": "MYM",
+        "entry": "range_compression_break",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "params": {
+          "compression_pct_max": 10
+        },
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 302,
+        "pf": 1.321,
+        "median": 1.01,
+        "net": 1905.02,
+        "max_dd": -627.28,
+        "max_year_share_pct": 68.4,
+        "top3_share_pct": 46.7,
+        "h1_pf": 1.437,
+        "h2_pf": 1.232,
+        "years_positive": 3,
+        "n_years": 3
+      },
+      "temporal_split": {
+        "per_year": [
+          {
+            "year": 2024,
+            "n": 112,
+            "pf": 1.2318740626402616,
+            "median": 0.010000000000000009,
+            "net": 423.6199999999997
+          },
+          {
+            "year": 2025,
+            "n": 140,
+            "pf": 1.4645118507743653,
+            "median": 8.01,
+            "net": 1302.8999999999996
+          },
+          {
+            "year": 2026,
+            "n": 50,
+            "pf": 1.1369159021875863,
+            "median": -8.74,
+            "net": 178.4999999999999
+          }
+        ],
+        "eras": [
+          {
+            "era": 1,
+            "n": 100,
+            "pf": 1.2499999999999998,
+            "median": 0.010000000000000009,
+            "net": 422.9999999999998
+          },
+          {
+            "era": 2,
+            "n": 101,
+            "pf": 1.534165318542486,
+            "median": 8.26,
+            "net": 970.76
+          },
+          {
+            "era": 3,
+            "n": 101,
+            "pf": 1.210724589893662,
+            "median": -8.24,
+            "net": 511.25999999999976
+          }
+        ],
+        "yrs_pos": 3,
+        "n_yrs": 3,
+        "era3_pf": 1.210724589893662,
+        "era3_median": -8.24
+      },
+      "doctrine_verdict": "WATCH_FOR_DEEP_SCREEN (temporal+Era3)",
+      "era3_delta": "CURRENT_REGIME_WARNING",
+      "prop_stress": {
+        "label": "RCB10-MYM-Both-PL",
+        "rows": [
+          {
+            "stress": "baseline (1x)",
+            "commission_mult": 1.0,
+            "slippage_mult": 1.0,
+            "n": 302,
+            "pf": 1.321,
+            "net_median": 1.01,
+            "net_pnl": 1905.02,
+            "max_dd": -627.28
+          },
+          {
+            "stress": "2x cost + 1 tick slip",
+            "commission_mult": 2.0,
+            "slippage_mult": 2.0,
+            "n": 302,
+            "pf": 1.144,
+            "net_median": -2.23,
+            "net_pnl": 926.54,
+            "max_dd": -698.56
+          },
+          {
+            "stress": "2x cost + 2 ticks slip",
+            "commission_mult": 2.0,
+            "slippage_mult": 3.0,
+            "n": 302,
+            "pf": 1.048,
+            "net_median": -4.23,
+            "net_pnl": 322.54,
+            "max_dd": -748.48
+          },
+          {
+            "stress": "4x cost + 2 ticks slip",
+            "commission_mult": 4.0,
+            "slippage_mult": 3.0,
+            "n": 302,
+            "pf": 0.94,
+            "net_median": -6.71,
+            "net_pnl": -426.42,
+            "max_dd": -812.96
+          }
+        ],
+        "verdict": "FAIL_STRESS (median \u2264 0 at 2x cost + 2 ticks)",
+        "headline_reason": "At 2x cost + 2 ticks slip: median $-4.23 (\u2264 0)",
+        "moderate_median": -4.23,
+        "extreme_median": -6.71
+      },
+      "elapsed_seconds": 1.1865971088409424
+    },
+    {
+      "spec": {
+        "label": "RCB15-MYM-Both-FR2",
+        "asset": "MYM",
+        "entry": "range_compression_break",
+        "filter": "ema_slope",
+        "exit": "fixed_ratio",
+        "params": {
+          "compression_pct_max": 15,
+          "ratio": 2.0
+        },
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 319,
+        "pf": 1.425,
+        "median": -20.24,
+        "net": 3191.44,
+        "max_dd": -418.18,
+        "max_year_share_pct": 56.9,
+        "top3_share_pct": 19.5,
+        "h1_pf": 1.568,
+        "h2_pf": 1.308,
+        "years_positive": 3,
+        "n_years": 3
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (asymmetric trap: PF>1.2, median<0)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 0.512202262878418
+    },
+    {
+      "spec": {
+        "label": "RCB15-MYM-Long-PL",
+        "asset": "MYM",
+        "entry": "range_compression_break",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "params": {
+          "compression_pct_max": 15
+        },
+        "mode": "long"
+      },
+      "metrics": {
+        "n": 193,
+        "pf": 1.238,
+        "median": -2.24,
+        "net": 932.18,
+        "max_dd": -472.82,
+        "max_year_share_pct": 67.6,
+        "top3_share_pct": 78.4,
+        "h1_pf": 1.177,
+        "h2_pf": 1.294,
+        "years_positive": 3,
+        "n_years": 3
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (asymmetric trap: PF>1.2, median<0)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 0.5917229652404785
+    },
+    {
+      "spec": {
+        "label": "RCB15-MYM-Short-PL",
+        "asset": "MYM",
+        "entry": "range_compression_break",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "params": {
+          "compression_pct_max": 15
+        },
+        "mode": "short"
+      },
+      "metrics": {
+        "n": 126,
+        "pf": 2.07,
+        "median": 8.51,
+        "net": 2200.26,
+        "max_dd": -340.2,
+        "max_year_share_pct": 71.6,
+        "top3_share_pct": 40.6,
+        "h1_pf": 1.686,
+        "h2_pf": 2.31,
+        "years_positive": 3,
+        "n_years": 3
+      },
+      "temporal_split": {
+        "per_year": [
+          {
+            "year": 2024,
+            "n": 53,
+            "pf": 1.354551881661953,
+            "median": 4.26,
+            "net": 260.78
+          },
+          {
+            "year": 2025,
+            "n": 50,
+            "pf": 3.3969684056735865,
+            "median": 19.01,
+            "net": 1575.0
+          },
+          {
+            "year": 2026,
+            "n": 23,
+            "pf": 1.5492299810132304,
+            "median": -16.24,
+            "net": 364.4799999999998
+          }
+        ],
+        "eras": [
+          {
+            "era": 1,
+            "n": 42,
+            "pf": 1.5453202308960965,
+            "median": 8.01,
+            "net": 317.42
+          },
+          {
+            "era": 2,
+            "n": 42,
+            "pf": 3.1095241981555537,
+            "median": 19.01,
+            "net": 1033.92
+          },
+          {
+            "era": 3,
+            "n": 42,
+            "pf": 1.8627060425601103,
+            "median": -4.24,
+            "net": 848.9199999999998
+          }
+        ],
+        "yrs_pos": 3,
+        "n_yrs": 3,
+        "era3_pf": 1.8627060425601103,
+        "era3_median": -4.24
+      },
+      "doctrine_verdict": "WATCH_FOR_DEEP_SCREEN (temporal+Era3)",
+      "era3_delta": "CURRENT_REGIME_WARNING",
+      "prop_stress": {
+        "label": "RCB15-MYM-Short-PL",
+        "rows": [
+          {
+            "stress": "baseline (1x)",
+            "commission_mult": 1.0,
+            "slippage_mult": 1.0,
+            "n": 126,
+            "pf": 2.07,
+            "net_median": 8.51,
+            "net_pnl": 2200.26,
+            "max_dd": -340.2
+          },
+          {
+            "stress": "2x cost + 1 tick slip",
+            "commission_mult": 2.0,
+            "slippage_mult": 2.0,
+            "n": 126,
+            "pf": 1.802,
+            "net_median": 5.27,
+            "net_pnl": 1792.02,
+            "max_dd": -356.4
+          },
+          {
+            "stress": "2x cost + 2 ticks slip",
+            "commission_mult": 2.0,
+            "slippage_mult": 3.0,
+            "n": 126,
+            "pf": 1.655,
+            "net_median": 3.27,
+            "net_pnl": 1540.02,
+            "max_dd": -366.4
+          },
+          {
+            "stress": "4x cost + 2 ticks slip",
+            "commission_mult": 4.0,
+            "slippage_mult": 3.0,
+            "n": 126,
+            "pf": 1.491,
+            "net_median": 0.79,
+            "net_pnl": 1227.54,
+            "max_dd": -378.8
+          }
+        ],
+        "verdict": "PASS_STRESS",
+        "headline_reason": "Survives 4x cost + 2 ticks: median $0.79, PF 1.491",
+        "moderate_median": 3.27,
+        "extreme_median": 0.79
+      },
+      "elapsed_seconds": 1.1600220203399658
+    }
+  ],
+  "feature_cache_stats_final": {
+    "hits": 8,
+    "misses": 3,
+    "cached_keys": 3
+  }
+}

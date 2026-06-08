@@ -2528,5 +2528,145 @@
       "cost-eats-edge"
     ],
     "disposition": "0 PAPER_PACKET. 4 OBSERVATIONAL (FAIL_STRESS). 7 KILL. Mechanism validated as productive new primitive; first-form does not reach packet-grade. Need operator direction on mutation cycle vs accept-as-is."
+  },
+  "_HEADLINE_2026-06-08h_EIA_MCL_FAIL": {
+    "headline": "EIA-Wed-MCL event-window screen: 5 KILL. Calendar-timing-only event signal does NOT produce edge on crude. Same failure pattern as NFP-MCL.",
+    "date": "2026-06-08",
+    "operator_approval": "OK A \u2014 EIA calendar approved (#99)",
+    "calendar_v1": "418 events 2019-2026 (rule-based: Wed 10:30 ET; Thu 11:00 ET on Mon-Wed holiday weeks)",
+    "candidates": {
+      "EIA-MCL-Long-2h": {
+        "n": 257,
+        "pf": 0.779,
+        "median": -4.24,
+        "verdict": "KILL"
+      },
+      "EIA-MCL-Short-2h": {
+        "n": 257,
+        "pf": 0.95,
+        "median": -6.24,
+        "verdict": "KILL"
+      },
+      "EIA-MCL-Long-1h": {
+        "n": 257,
+        "pf": 0.837,
+        "median": -6.24,
+        "verdict": "KILL"
+      },
+      "EIA-MCL-Long-4h": {
+        "n": 257,
+        "pf": 0.747,
+        "median": -9.24,
+        "verdict": "KILL"
+      },
+      "EIA-MCL-Long-EOD": {
+        "n": 257,
+        "pf": 0.784,
+        "median": -8.24,
+        "verdict": "KILL"
+      }
+    },
+    "doctrine_significance": "Two failed event-template extensions on crude (NFP-MCL + EIA-MCL) with same failure mode: positive headline event but no fixed-window directional edge. Crude appears to require surprise-conditioned signal construction (price vs consensus) rather than calendar-time event-window following. This is a generalizable closed-loop finding: 'crude needs surprise data for event-driven edge, not calendar timing.'",
+    "next_actions": [
+      "Do NOT spend cycles on more calendar-timing-only event templates on crude",
+      "Crude event edges require surprise/expectation data (DATA_REQUIRED) \u2014 out of scope per operator decision to limit data unlocks",
+      "Existing OBSERVATIONAL crude candidates (RCB-MCL family, MCL Short-FR2 pending prop-cost) are still the practical crude exploration path"
+    ],
+    "calendar_audit_pending": "11 Christmas-week EIA calendar entries flagged for manual eia.gov cross-check; not blocking (current screen would be unaffected since all KILL)",
+    "tags": [
+      "median-negative"
+    ],
+    "disposition": "5 KILL. EIA-Wed-MCL family retired same way as NFP-MCL. Calendar shipped (418 entries) and available for future operator-approved surprise-conditioned variants if data unlocks."
+  },
+  "_HEADLINE_2026-06-08g_RCB_MUTATION_FIRST_PASS_STRESS_BUT_CONCENTRATED": {
+    "headline": "RCB tighter-compression mutation produced FIRST PASS_STRESS candidate (RCB15-MYM-Short-PL: PF 2.070, median $8.51) \u2014 but 71.6% max-year concentration + Era3 median negative blocks packet classification.",
+    "date": "2026-06-08",
+    "operator_approval": "OK A #96 (bounded MYM mutation) + #97 (4 WATCH tighter compression)",
+    "tier_summary": "UPGRADE_CANDIDATE=0, OBSERVATIONAL=6, KILL=5",
+    "first_pass_stress_candidate": {
+      "label": "RCB15-MYM-Short-PL",
+      "params": "compression_pct_max=15, profit_ladder exit, MYM short-only",
+      "baseline_metrics": {
+        "n": 126,
+        "pf": 2.07,
+        "median": 8.51,
+        "max_year_share_pct": 71.6,
+        "yrs_pos": "3/3"
+      },
+      "prop_stress_rows": {
+        "baseline": "median $8.51 PF 2.07",
+        "2x_cost_1tick": "median $5.27 PF 1.80",
+        "2x_cost_2ticks": "median $3.27 PF 1.66",
+        "4x_cost_2ticks": "median $0.79 PF 1.49"
+      },
+      "prop_stress_verdict": "PASS_STRESS \u2014 survives 4x cost + 2 ticks with median > 0",
+      "per_year_breakdown": {
+        "2024": {
+          "n": 53,
+          "pf": 1.355,
+          "median": 4.26,
+          "net": 261
+        },
+        "2025": {
+          "n": 50,
+          "pf": 3.397,
+          "median": 19.01,
+          "net": 1575
+        },
+        "2026_partial_6mo": {
+          "n": 23,
+          "pf": 1.549,
+          "median": -16.24,
+          "net": 364
+        }
+      },
+      "era_breakdown": {
+        "Era1_oldest": {
+          "n": 42,
+          "pf": 1.545,
+          "median": 8.01,
+          "net": 317
+        },
+        "Era2": {
+          "n": 42,
+          "pf": 3.11,
+          "median": 19.01,
+          "net": 1034
+        },
+        "Era3_most_recent": {
+          "n": 42,
+          "pf": 1.863,
+          "median": -4.24,
+          "net": 849
+        }
+      },
+      "STRICT_GATE_BLOCKERS": [
+        "max_year_share_pct=71.6% (fails <=50% gate)",
+        "Era3 median NEGATIVE (-$4.24) despite PF 1.86 \u2014 same asymmetric-P&L pattern that doctrine flags as NEVER packet-grade",
+        "2026 partial-year shows negative median (-$16.24) \u2014 current-regime weakness real",
+        "Only 3 years of data (MYM data window) \u2014 short history"
+      ],
+      "research_value": "Demonstrates RCB primitive can produce PASS_STRESS edges in specific conditions. The mechanism (vol-contraction-then-expansion) captures regime-shift years exceptionally well (2025 had massive vol expansion \u2192 PF 3.4). But steady-trend years (2024, 2026 partial) show much weaker or negative edge. This is a known property of vol-regime-conditioned mechanisms.",
+      "classification": "OBSERVATIONAL (per strict #96 gates) \u2014 not promotable to PAPER_PACKET_CANDIDATE due to concentration + asymmetric-P&L-in-recent-regime"
+    },
+    "other_RCB_mutation_findings": {
+      "RCB15-MGC-Short-PL": "ARCHITECTURAL_REJECT (losing era) \u2014 tightening exposed era weakness that the default-30 setting masked",
+      "RCB15-MES-Both-PL": "median improved $1.26\u2192$2.51 (compression tightening helped); still FAIL_STRESS",
+      "RCB10-MGC-Both-PL": "KILL \u2014 over-tightening to 10 turned median negative",
+      "RCB10-MES-Both-PL": "KILL \u2014 over-tightening dropped PF below 1.15 threshold",
+      "RCB15-MYM-Both-FR2": "KILL asymmetric trap \u2014 FR2 exit ($-20 median) confirms PL-default doctrine; FR2 catastrophically wrong for MYM",
+      "RCB15-MYM-Long-PL": "KILL asymmetric trap \u2014 MYM compression-break edge is SHORT-only on MYM"
+    },
+    "doctrine_significance": "First PASS_STRESS from new primitive validates Hybrid D pivot. But concentration + asymmetric-P&L-recent-regime rules correctly block packet classification. Mutation cycle WORKED (revealed direction asymmetry + exit-design confirmation + concentration risk) \u2014 even though no packet emerged. Closed-loop discipline maintained.",
+    "next_actions_options": [
+      "ACCEPT_OBSERVATIONAL: classify RCB15-MYM-Short-PL as OBSERVATIONAL with research value, move on (recommended)",
+      "MUTATION_2: extend MYM data window if possible (research_quality), or try direction-conditioning with intraday filters",
+      "DEEP_INVESTIGATE: investigate whether the 2025 outlier represents repeatable regime-shift capture or one-off"
+    ],
+    "tags": [
+      "concentration",
+      "regime-dependent"
+    ],
+    "disposition": "OBSERVATIONAL \u00d7 1 with notable PASS_STRESS evidence. 5 OBSERVATIONAL other (lesser candidates). 5 KILL. No PAPER_PACKET. Operator decision on disposition #100 pending."
   }
 }

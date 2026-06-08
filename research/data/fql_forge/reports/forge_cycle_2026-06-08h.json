@@ -1,0 +1,95 @@
+{
+  "date": "2026-06-08",
+  "purpose": "EIA-Wed-MCL event-window first screen \u2014 Hybrid D-B data unlock",
+  "operator_approval": "OK A \u2014 EIA calendar approved (#99)",
+  "calendar_source": "research/forge_eia_crude_calendar.py (v1 rule-based)",
+  "calendar_audit_status": "11 Christmas-week entries flagged for manual cross-check vs eia.gov archives; not blocking for first screen",
+  "boundaries": "report-only Lane B",
+  "tier": {
+    "PAPER_PACKET": 0,
+    "OBSERVATIONAL": 0,
+    "KILL": 5
+  },
+  "results": [
+    {
+      "label": "EIA-MCL-Long-2h",
+      "asset": "MCL",
+      "direction": "long",
+      "exit_bars": 24,
+      "metrics": {
+        "n": 257,
+        "pf": 0.779,
+        "median": -4.24,
+        "net": -2231.68,
+        "max_dd": -2738.96
+      },
+      "verdict": "KILL (median neg)",
+      "stress": null,
+      "elapsed_seconds": 1.2618598937988281
+    },
+    {
+      "label": "EIA-MCL-Short-2h",
+      "asset": "MCL",
+      "direction": "short",
+      "exit_bars": 24,
+      "metrics": {
+        "n": 257,
+        "pf": 0.95,
+        "median": -6.24,
+        "net": -461.68,
+        "max_dd": -2477.2
+      },
+      "verdict": "KILL (median neg)",
+      "stress": null,
+      "elapsed_seconds": 1.6852478981018066
+    },
+    {
+      "label": "EIA-MCL-Long-1h",
+      "asset": "MCL",
+      "direction": "long",
+      "exit_bars": 12,
+      "metrics": {
+        "n": 257,
+        "pf": 0.837,
+        "median": -6.24,
+        "net": -1114.68,
+        "max_dd": -1373.04
+      },
+      "verdict": "KILL (median neg)",
+      "stress": null,
+      "elapsed_seconds": 1.9431869983673096
+    },
+    {
+      "label": "EIA-MCL-Long-4h",
+      "asset": "MCL",
+      "direction": "long",
+      "exit_bars": 48,
+      "metrics": {
+        "n": 257,
+        "pf": 0.747,
+        "median": -9.24,
+        "net": -3291.68,
+        "max_dd": -3733.68
+      },
+      "verdict": "KILL (median neg)",
+      "stress": null,
+      "elapsed_seconds": 1.609562873840332
+    },
+    {
+      "label": "EIA-MCL-Long-EOD",
+      "asset": "MCL",
+      "direction": "long",
+      "exit_bars": 72,
+      "metrics": {
+        "n": 257,
+        "pf": 0.784,
+        "median": -8.24,
+        "net": -2844.68,
+        "max_dd": -4119.6
+      },
+      "verdict": "KILL (median neg)",
+      "stress": null,
+      "elapsed_seconds": 1.1765308380126953
+    }
+  ]
+}
