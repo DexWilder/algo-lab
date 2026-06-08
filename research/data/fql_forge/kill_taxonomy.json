@@ -2413,5 +2413,120 @@
     },
     "diagnostic_phase_status": "Non-ORB Packet #2 hunt across existing primitives = EXHAUSTED on commodity / rates / FX. 32-of-32 candidates failed. Asset-family saturation hypothesis confirmed at n=2 datapoints. Operator decision required for next direction: event-window expansion, new primitive build, or research-only pause.",
     "boundaries_held": true
+  },
+  "_HEADLINE_2026-06-08f_NFP_MCL_TEMPLATE_FAIL": {
+    "headline": "NFP event-window template does NOT transfer from MGC to MCL. Best variant (NFP-MCL-Long-2h): PF 0.994, median +$9.76 \u2014 hint of signal but sub-edge.",
+    "date": "2026-06-08",
+    "operator_approval": "OK D Hybrid D-B (#94)",
+    "candidates": {
+      "NFP-MCL-Long-2h": {
+        "n": 59,
+        "pf": 0.994,
+        "median": 9.76,
+        "verdict": "KILL (PF<1.15)"
+      },
+      "NFP-MCL-Short-2h": {
+        "n": 59,
+        "pf": 0.758,
+        "median": -20.24,
+        "verdict": "KILL (median neg)"
+      },
+      "NFP-MCL-Long-1h": {
+        "n": 59,
+        "pf": 0.982,
+        "median": 3.76,
+        "verdict": "KILL (PF<1.15)"
+      },
+      "NFP-MCL-Long-4h": {
+        "n": 59,
+        "pf": 0.994,
+        "median": -8.24,
+        "verdict": "KILL (median neg)"
+      },
+      "NFP-MCL-Long-EOD": {
+        "n": 59,
+        "pf": 0.835,
+        "median": -16.24,
+        "verdict": "KILL (median neg)"
+      }
+    },
+    "doctrine_significance": "Event-template asset-transfer is NOT automatic. NFP-MGC works because of strong USD/metals coupling at 2h window; same template on crude shows hint of signal (positive median on 2h Long) but tail-risk (large losers) drives PF below threshold. Reinforces 'asset-specific edge' doctrine \u2014 also seen in cross-asset ORB directional asymmetry matrix.",
+    "transfer_failure_mode": "Tail-asymmetry: median positive but PF<1.15 means worst-quartile losses exceed best-quartile wins in dollar terms. Reading 09: post-NFP crude moves are intermittently large-and-wrong vs metals which move smaller-and-consistent-direction.",
+    "next_actions": [
+      "Do NOT spend more cycles on NFP-MCL variants \u2014 template tested across 4 holding windows, all fail same way",
+      "Other NFP-asset extensions (MES/MYM equity) NOT approved per equity-index sweep restriction",
+      "Could try EIA-Wed-MCL (different event class, native to crude) \u2014 pending operator decision on EIA calendar build"
+    ],
+    "tags": [
+      "median-negative",
+      "regime-dependent"
+    ],
+    "disposition": "5 KILL. NFP-MCL family will not produce Packet #2. Hybrid D-B leg returns 0 packet candidates from NFP expansion. Pivot D-B exploration to EIA (DATA_REQUIRED) or wait for D-A (range_compression_break) result."
+  },
+  "_HEADLINE_2026-06-08e_RANGE_COMPRESSION_BREAK_FIRST_BATCH": {
+    "headline": "range_compression_break primitive: 0 PAPER_PACKET / 4 OBSERVATIONAL (all FAIL_STRESS) / 7 KILL. New mechanism produces edge signal but margin too thin for prop-stress at conservative-bias backtest costs.",
+    "date": "2026-06-08",
+    "operator_approval": "OK D Hybrid D-A (#94) \u2014 new primitive built, tested, deployed in first batch",
+    "watch_candidates": {
+      "RCB-MGC-Short-PL": {
+        "n": 222,
+        "pf": 1.165,
+        "median": 3.26,
+        "yrs_pos": "4/8",
+        "stress": "FAIL_STRESS"
+      },
+      "RCB-MGC-Both-PL": {
+        "n": 589,
+        "pf": 1.173,
+        "median": 0.76,
+        "yrs_pos": "7/8",
+        "stress": "FAIL_STRESS"
+      },
+      "RCB-MES-Both-PL": {
+        "n": 1211,
+        "pf": 1.21,
+        "median": 1.26,
+        "yrs_pos": "5/8",
+        "stress": "FAIL_STRESS"
+      },
+      "RCB-MYM-Both-PL": {
+        "n": 395,
+        "pf": 1.462,
+        "median": 0.76,
+        "yrs_pos": "3/3",
+        "era3_pf": 1.49,
+        "verdict": "WATCH_FOR_DEEP_SCREEN (temporal+Era3)",
+        "delta": "CURRENT_REGIME_WARNING",
+        "stress": "FAIL_STRESS",
+        "notes": "Highest-conviction WATCH but FAIL_STRESS"
+      }
+    },
+    "kill_candidates": {
+      "RCB-MGC-Long-PL": "KILL (median neg, $-1.24)",
+      "RCB-MCL-Long-PL": "KILL (median neg, $-1.24)",
+      "RCB-MCL-Short-PL": "KILL (median neg, $-3.24)",
+      "RCB-MCL-Both-PL": "KILL (median neg, $-2.74)",
+      "RCB-ZN-Both-PL": "KILL (median neg, $-18.73, PF 0.683)",
+      "RCB-6E-Both-PL": "KILL (asymmetric trap PF 1.202 median $-5)",
+      "RCB-6J-Both-PL": "KILL (median neg)"
+    },
+    "doctrine_significance": "Confirms 08c+08d saturation hypothesis was correct: existing primitive set was indeed exhausted. New primitive immediately produces 4 WATCH candidates that older primitives could not. BUT margin is thin \u2014 none survive prop-stress. The mechanism (vol-contraction-then-expansion) finds genuine edge structure on equity-indices (MES, MYM) and partial edge on metals short-side (MGC). DOES NOT work on commodities (MCL), rates (ZN), or FX (6E/6J).",
+    "asymmetry_pattern_in_RCB": {
+      "MGC": "Short side hint (PF 1.165, median $3.26); Long side no signal",
+      "MCL": "No signal in any direction",
+      "MES": "Both-direction hint (PF 1.21, median $1.26, n=1211)",
+      "MYM": "STRONGEST candidate (PF 1.462, 3/3 yrs+, Era3 PF 1.49)",
+      "ZN/6E/6J": "Anti-signal or no signal"
+    },
+    "next_actions_options": [
+      "MUTATION_CYCLE: tighter compression threshold (15-20 vs 30) on the 4 WATCH; goal = stronger setup selection, expand margin to survive prop-stress",
+      "EXIT_DESIGN_TEST: try FR2 on MYM-RCB-Both as PL alternative (n=395/yr \u2248 tail-engine, FR2 thesis-specific permitted)",
+      "COMPRESSION_DEFINITION_TEST: try ATR-pctrank-based compression instead of range-based",
+      "ACCEPT: primitive does not reach packet-grade in first form; queue for later mutation cycles when bandwidth"
+    ],
+    "tags": [
+      "cost-eats-edge"
+    ],
+    "disposition": "0 PAPER_PACKET. 4 OBSERVATIONAL (FAIL_STRESS). 7 KILL. Mechanism validated as productive new primitive; first-form does not reach packet-grade. Need operator direction on mutation cycle vs accept-as-is."
   }
 }

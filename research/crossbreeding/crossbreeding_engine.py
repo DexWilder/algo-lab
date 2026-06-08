@@ -208,6 +208,15 @@ def compute_features(df: pd.DataFrame) -> dict:
     dc_high_30 = df["high"].rolling(30, min_periods=30).max().values
     dc_low_30 = df["low"].rolling(30, min_periods=30).min().values
 
+    # Range-compression pctrank (added 2026-06-08 per operator decision #94 Hybrid D-A).
+    # Normalized 20-bar trading range divided by close, percentile-ranked over 100 bars.
+    # Used by entry_range_compression_break to detect post-compression breakout setups.
+    # Low pctrank = current range is tight relative to its recent history = "coiled".
+    range_20 = (pd.Series(dc_high_20) - pd.Series(dc_low_20)) / pd.Series(close)
+    range_20_pctrank = range_20.rolling(100, min_periods=50).apply(
+        lambda x: (x.iloc[-1] <= x).sum() / len(x) * 100, raw=False
+    ).values
+
     # Daily EMA slope (for macro trend filter)
     df_temp = df.copy()
     df_temp["_date"] = dates
@@ -255,7 +264,8 @@ def compute_features(df: pd.DataFrame) -> dict:
         "atr": atr,
         "ema8": ema8, "ema13": ema13, "ema20": ema20, "ema21": ema21, "ema50": ema50,
         "bb_upper": bb_upper, "bb_lower": bb_lower, "bb_mid": bb_mid,
-        "bw_pctrank": bw_pctrank, "atr_pctrank": atr_pctrank, "hurst": hurst, "rsi": rsi,
+        "bw_pctrank": bw_pctrank, "atr_pctrank": atr_pctrank, "range_20_pctrank": range_20_pctrank,
+        "hurst": hurst, "rsi": rsi,
         "prev_day_high": prev_day_high, "prev_day_low": prev_day_low, "prev_day_close": prev_day_close,
         "vwap": vwap,
         "dc_high_20": dc_high_20, "dc_low_20": dc_low_20,
@@ -457,6 +467,58 @@ def entry_vol_expansion(f, i, state, params):
             and close < ema20 and close < prev_close):
         stop = close + f["atr"][i] * params.get("stop_mult", 2.0)
         target = close - f["atr"][i] * params.get("target_mult", 4.0)
+        return -1, stop, target
+    return 0, 0, 0
+
+
+def entry_range_compression_break(f, i, state, params):
+    """Range-compression break (added 2026-06-08 per operator decision #94 Hybrid D-A).
+
+    Mechanism: the 20-bar trading range was in a low percentile of its own
+    100-bar history ("compression" / "coiled") on the prior bar, and the
+    current bar closes outside the prior bar's 20-bar range ("break" /
+    "expansion"). Captures the post-volatility-contraction breakout pattern
+    often called "squeeze break" or "coil expansion".
+
+    This is a tail-frequency signal — fires rarely (only after compression)
+    rather than at every session open like ORB. Designed to test a
+    DIFFERENT market condition than the existing primitive set, which the
+    08c+08d wipeout proved is exhausted for non-ORB workhorse discovery.
+
+    Fail-closed: NaN in `range_20_pctrank` (early bars before 50-bar warm-up)
+    or NaN in `dc_high_20` / `dc_low_20` → no signal. Zero ATR → no signal.
+
+    Params (all optional with conservative defaults):
+      compression_pct_max: 30  — max percentile to qualify as compressed
+      stop_mult: 1.5            — ATR multiplier for stop
+      target_mult: 3.0          — ATR multiplier for target
+    """
+    if i < 1:
+        return 0, 0, 0
+    compression_max_pct = params.get("compression_pct_max", 30)
+    pct_prev = f["range_20_pctrank"][i-1]
+    # Fail-closed: must have a valid prior-bar compression measurement
+    if np.isnan(pct_prev) or pct_prev > compression_max_pct:
+        return 0, 0, 0
+    # Break check: close[i] vs prior bar's 20-bar range
+    range_h = f["dc_high_20"][i-1]
+    range_l = f["dc_low_20"][i-1]
+    if np.isnan(range_h) or np.isnan(range_l):
+        return 0, 0, 0
+    close = f["close"][i]
+    if np.isnan(f["atr"][i]) or f["atr"][i] == 0:
+        return 0, 0, 0
+    # LONG: close breaks above prior 20-bar high
+    if (not state["long_traded_today"]
+            and close > range_h):
+        stop = close - f["atr"][i] * params.get("stop_mult", 1.5)
+        target = close + f["atr"][i] * params.get("target_mult", 3.0)
+        return 1, stop, target
+    # SHORT: close breaks below prior 20-bar low
+    if (not state["short_traded_today"]
+            and close < range_l):
+        stop = close + f["atr"][i] * params.get("stop_mult", 1.5)
+        target = close - f["atr"][i] * params.get("target_mult", 3.0)
         return -1, stop, target
     return 0, 0, 0
 
@@ -864,6 +926,7 @@ ENTRY_MAP = {
     "vol_expansion": entry_vol_expansion,
     "prior_day_break": entry_prior_day_break,
     "prior_day_fade": entry_prior_day_fade,
+    "range_compression_break": entry_range_compression_break,
 }
 
 EXIT_MAP = {

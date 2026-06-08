@@ -1,0 +1,94 @@
+{
+  "date": "2026-06-08",
+  "purpose": "NFP event-window expansion to MCL \u2014 Hybrid D-B leg restart of sparse/tail/event hunt",
+  "operator_approval": "OK D Hybrid (#94)",
+  "boundaries": "report-only Lane B",
+  "calendar": "verified NFP calendar (2019-2026), 1st-Friday rule with shifts",
+  "tier": {
+    "PAPER_PACKET": 0,
+    "OBSERVATIONAL": 0,
+    "KILL": 5
+  },
+  "results": [
+    {
+      "label": "NFP-MCL-Long-2h",
+      "asset": "MCL",
+      "direction": "long",
+      "exit_bars": 24,
+      "metrics": {
+        "n": 59,
+        "pf": 0.994,
+        "median": 9.76,
+        "net": -12.16,
+        "max_dd": -832.44
+      },
+      "verdict": "KILL (PF<1.15)",
+      "stress": null,
+      "elapsed_seconds": 1.3628919124603271
+    },
+    {
+      "label": "NFP-MCL-Short-2h",
+      "asset": "MCL",
+      "direction": "short",
+      "exit_bars": 24,
+      "metrics": {
+        "n": 59,
+        "pf": 0.758,
+        "median": -20.24,
+        "net": -606.16,
+        "max_dd": -1299.04
+      },
+      "verdict": "KILL (median neg)",
+      "stress": null,
+      "elapsed_seconds": 1.10475492477417
+    },
+    {
+      "label": "NFP-MCL-Long-1h",
+      "asset": "MCL",
+      "direction": "long",
+      "exit_bars": 12,
+      "metrics": {
+        "n": 59,
+        "pf": 0.982,
+        "median": 3.76,
+        "net": -26.16,
+        "max_dd": -395.36
+      },
+      "verdict": "KILL (PF<1.15)",
+      "stress": null,
+      "elapsed_seconds": 1.1098830699920654
+    },
+    {
+      "label": "NFP-MCL-Long-4h",
+      "asset": "MCL",
+      "direction": "long",
+      "exit_bars": 48,
+      "metrics": {
+        "n": 59,
+        "pf": 0.994,
+        "median": -8.24,
+        "net": -17.16,
+        "max_dd": -909.52
+      },
+      "verdict": "KILL (median neg)",
+      "stress": null,
+      "elapsed_seconds": 1.0849411487579346
+    },
+    {
+      "label": "NFP-MCL-Long-EOD",
+      "asset": "MCL",
+      "direction": "long",
+      "exit_bars": 72,
+      "metrics": {
+        "n": 59,
+        "pf": 0.835,
+        "median": -16.24,
+        "net": -601.16,
+        "max_dd": -1334.52
+      },
+      "verdict": "KILL (median neg)",
+      "stress": null,
+      "elapsed_seconds": 1.4973399639129639
+    }
+  ]
+}
