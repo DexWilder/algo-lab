@@ -1,0 +1,66 @@
+{
+  "date": "2026-06-08",
+  "purpose": "Family review for Track B WATCH candidates before classification",
+  "results": {
+    "MES_Long_vs_MNQ_both": {
+      "overlap": {
+        "n_days_a": 854,
+        "n_days_b": 1216,
+        "n_days_overlap": 723,
+        "overlap_pct_of_a": 84.66042154566745,
+        "overlap_pct_of_b": 59.45723684210527
+      },
+      "pnl_correlation": {
+        "n_aligned_days": 1347,
+        "pearson_corr": 0.4176385975668035,
+        "both_traded_days": 723
+      },
+      "classification": "PORTFOLIO_COMPLEMENT_CANDIDATE (low-moderate corr)"
+    },
+    "MES_Short_vs_MNQ_both": {
+      "overlap": {
+        "n_days_a": 393,
+        "n_days_b": 1216,
+        "n_days_overlap": 348,
+        "overlap_pct_of_a": 88.54961832061069,
+        "overlap_pct_of_b": 28.618421052631575
+      },
+      "pnl_correlation": {
+        "n_aligned_days": 1261,
+        "pearson_corr": 0.6158290560681599,
+        "both_traded_days": 348
+      },
+      "classification": "PORTFOLIO_COMPLEMENT_CANDIDATE (moderate corr \u2014 diversification value bounded)"
+    },
+    "MYM_Long_vs_MYM_both": {
+      "overlap": {
+        "n_days_a": 238,
+        "n_days_b": 380,
+        "n_days_overlap": 238,
+        "overlap_pct_of_a": 100.0,
+        "overlap_pct_of_b": 62.63157894736842
+      },
+      "pnl_correlation": {
+        "n_aligned_days": 380,
+        "pearson_corr": 0.6411591605362501,
+        "both_traded_days": 238
+      },
+      "classification": "DIRECTIONAL_INSIGHT_OF_EXISTING_PROBATION (not a new candidate)"
+    },
+    "MYM_Short_vs_MYM_both": {
+      "overlap": {
+        "n_days_a": 142,
+        "n_days_b": 380,
+        "n_days_overlap": 142,
+        "overlap_pct_of_a": 100.0,
+        "overlap_pct_of_b": 37.368421052631575
+      },
+      "pnl_correlation": {
+        "n_aligned_days": 380,
+        "pearson_corr": 0.7584007245417409,
+        "both_traded_days": 142
+      },
+      "classification": "DIRECTIONAL_INSIGHT_OF_EXISTING_PROBATION (not a new candidate)"
+    }
+  }
+}
