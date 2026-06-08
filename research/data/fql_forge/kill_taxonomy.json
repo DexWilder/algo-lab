@@ -2748,5 +2748,52 @@
     "cumulative_kill_taxonomy_keys": 70,
     "boundaries_held": true,
     "strategic_state": "Search basis is converging. Current primitive set + existing filters cannot produce Packet #2 without architectural expansion. Day 10 of 30 sprint. Need operator direction on: (a) new primitive build, (b) new data unlock, (c) accept current limits and revise sprint scope."
+  },
+  "_HEADLINE_2026-06-08j_VRC_FIRST_BATCH_PARAMETER_CONFLICT": {
+    "headline": "volatility_regime_compound primitive built, tested (8/8 smoke), but first batch fires almost never (n=0/0/3/0/0 across MGC/MCL/MES/MYM/MNQ). DESIGN FLAW: 5-bar transition window incompatible with 240-bar pctrank update rate.",
+    "date": "2026-06-08",
+    "operator_approval": "OK A #106 (Hybrid D-A-2 \u2014 build VRC)",
+    "primitive_shipped": true,
+    "smoke_tests": "8/8 PASS",
+    "first_batch": {
+      "VRC-MGC-Both-PL": {
+        "n": 0,
+        "verdict": "KILL (n=0 \u2014 no signals fired)"
+      },
+      "VRC-MCL-Both-PL": {
+        "n": 0,
+        "verdict": "KILL (n=0)"
+      },
+      "VRC-MES-Both-PL": {
+        "n": 3,
+        "pf": 0.0,
+        "median": -83.74,
+        "verdict": "KILL (n=3)"
+      },
+      "VRC-MYM-Both-PL": {
+        "n": 0,
+        "verdict": "KILL (n=0)"
+      },
+      "VRC-MNQ-Both-PL": {
+        "n": 0,
+        "verdict": "KILL (n=0)"
+      }
+    },
+    "mechanism_design_analysis": {
+      "primitive_logic": "vol-of-vol percentile rank crosses from LOW (<=25) to HIGH (>=75) within 5-bar transition window",
+      "design_conflict": "vol_of_vol_pctrank uses 240-bar rolling window. A 50-percentile-point swing (25 \u2192 75) within 5 bars requires extremely sharp vol regime shift \u2014 much faster than the underlying 240-bar rank can update for. The two timescales are incompatible.",
+      "consequence": "The primitive almost never fires on real market data. n=0 is a parameter conflict, NOT a no-edge verdict from the market.",
+      "fix_options": [
+        "Widen transition_window_bars (e.g., 30-60) \u2014 matches pctrank update timescale",
+        "Tighten pctrank window (e.g., 60-bar instead of 240) \u2014 faster updates but noisier",
+        "Relax thresholds (e.g., 35 / 65 instead of 25 / 75) \u2014 more triggers but less regime-shift specificity"
+      ]
+    },
+    "honest_classification": "PRIMITIVE_BUILT_BUT_FIRST_PARAMS_INVALID \u2014 distinct from RCB's 'productive but not packet-grade' classification. RCB fired plenty; VRC almost never fires.",
+    "operator_decision_needed": "Per #106 'do not rescue-loop unless close and passes stress' \u2014 but n=0 isn't a market verdict. Operator must decide whether ONE bounded parameter retry is in scope, or classify VRC as ARCHIVED and move on.",
+    "tags": [
+      "implementation-blocked"
+    ],
+    "disposition": "0 PAPER_PACKET. 0 OBSERVATIONAL. 5 KILL by sample-collapse. Primitive code shipped and tested. First-batch parameters need operator-approved retry OR primitive moves to ARCHIVED."
   }
 }

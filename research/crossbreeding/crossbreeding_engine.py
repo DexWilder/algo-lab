@@ -217,6 +217,17 @@ def compute_features(df: pd.DataFrame) -> dict:
         lambda x: (x.iloc[-1] <= x).sum() / len(x) * 100, raw=False
     ).values
 
+    # Vol-of-vol regime (added 2026-06-08 per operator decision #106 Hybrid D-A-2).
+    # Captures vol-regime-SHIFT moments rather than static low-vol setups (which RCB does).
+    # vol_of_vol = 60-bar rolling stdev of ATR; pctrank over 240-bar window.
+    # Used by entry_volatility_regime_compound to detect regime transitions.
+    atr_s = pd.Series(atr)
+    vol_of_vol = atr_s.rolling(60, min_periods=30).std().values
+    vol_of_vol_s = pd.Series(vol_of_vol)
+    vol_of_vol_pctrank = vol_of_vol_s.rolling(240, min_periods=120).apply(
+        lambda x: (x.iloc[-1] <= x).sum() / len(x) * 100, raw=False
+    ).values
+
     # Daily EMA slope (for macro trend filter)
     df_temp = df.copy()
     df_temp["_date"] = dates
@@ -265,6 +276,7 @@ def compute_features(df: pd.DataFrame) -> dict:
         "ema8": ema8, "ema13": ema13, "ema20": ema20, "ema21": ema21, "ema50": ema50,
         "bb_upper": bb_upper, "bb_lower": bb_lower, "bb_mid": bb_mid,
         "bw_pctrank": bw_pctrank, "atr_pctrank": atr_pctrank, "range_20_pctrank": range_20_pctrank,
+        "vol_of_vol": vol_of_vol, "vol_of_vol_pctrank": vol_of_vol_pctrank,
         "hurst": hurst, "rsi": rsi,
         "prev_day_high": prev_day_high, "prev_day_low": prev_day_low, "prev_day_close": prev_day_close,
         "vwap": vwap,
@@ -467,6 +479,71 @@ def entry_vol_expansion(f, i, state, params):
             and close < ema20 and close < prev_close):
         stop = close + f["atr"][i] * params.get("stop_mult", 2.0)
         target = close - f["atr"][i] * params.get("target_mult", 4.0)
+        return -1, stop, target
+    return 0, 0, 0
+
+
+def entry_volatility_regime_compound(f, i, state, params):
+    """Vol-regime-compound entry (added 2026-06-08 per operator decision #106 Hybrid D-A-2).
+
+    Mechanism: rolling stdev of ATR (vol-of-vol) was in LOW percentile of its
+    own history within the last `transition_window_bars` bars, AND is now in
+    HIGH percentile. Captures the regime-SHIFT moment — when the market
+    transitions from quiet vol environment to expanding vol environment.
+
+    This is different from `range_compression_break`:
+      - RCB: single-bar compression trigger (low-vol → break in next bar)
+      - vol_regime_compound: regime transition (sustained vol shift, multi-bar)
+
+    Direction is detected via ema21 vs ema50 (matching pb_pullback convention).
+    Compatible with all filters via composition (filter applied on top).
+
+    Fail-closed:
+      - i < 1 or NaN in vol_of_vol_pctrank → no signal
+      - Zero ATR → no signal
+      - Missing ema21/ema50 → no signal
+
+    Params (all optional with conservative defaults):
+      regime_low_pct_max: 25        — max percentile defining "low vol regime"
+      regime_high_pct_min: 75       — min percentile defining "high vol regime"
+      transition_window_bars: 5     — bars back to look for low-vol baseline
+      stop_mult: 1.5                — ATR multiplier for stop
+      target_mult: 3.0              — ATR multiplier for target
+    """
+    if i < 1:
+        return 0, 0, 0
+    low_pct_max = params.get("regime_low_pct_max", 25)
+    high_pct_min = params.get("regime_high_pct_min", 75)
+    transition_window = params.get("transition_window_bars", 5)
+    pct_now = f["vol_of_vol_pctrank"][i]
+    # Fail-closed: must have a valid current-bar vol-regime measurement
+    if np.isnan(pct_now) or pct_now < high_pct_min:
+        return 0, 0, 0
+    # Look back transition_window bars for a low-vol regime baseline
+    was_low = False
+    start = max(0, i - transition_window)
+    for j in range(start, i):
+        pct_j = f["vol_of_vol_pctrank"][j]
+        if not np.isnan(pct_j) and pct_j <= low_pct_max:
+            was_low = True
+            break
+    if not was_low:
+        return 0, 0, 0
+    close = f["close"][i]
+    if np.isnan(f["atr"][i]) or f["atr"][i] == 0:
+        return 0, 0, 0
+    if np.isnan(f["ema21"][i]) or np.isnan(f["ema50"][i]):
+        return 0, 0, 0
+    # Direction by ema21 vs ema50 (matching pb_pullback convention)
+    if (not state["long_traded_today"]
+            and f["ema21"][i] > f["ema50"][i]):
+        stop = close - f["atr"][i] * params.get("stop_mult", 1.5)
+        target = close + f["atr"][i] * params.get("target_mult", 3.0)
+        return 1, stop, target
+    if (not state["short_traded_today"]
+            and f["ema21"][i] < f["ema50"][i]):
+        stop = close + f["atr"][i] * params.get("stop_mult", 1.5)
+        target = close - f["atr"][i] * params.get("target_mult", 3.0)
         return -1, stop, target
     return 0, 0, 0
 
@@ -927,6 +1004,7 @@ ENTRY_MAP = {
     "prior_day_break": entry_prior_day_break,
     "prior_day_fade": entry_prior_day_fade,
     "range_compression_break": entry_range_compression_break,
+    "volatility_regime_compound": entry_volatility_regime_compound,
 }
 
 EXIT_MAP = {

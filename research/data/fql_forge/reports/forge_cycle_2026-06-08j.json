@@ -1,0 +1,158 @@
+{
+  "date": "2026-06-08",
+  "purpose": "volatility_regime_compound first batch (#106 Hybrid D-A-2)",
+  "boundaries": "report-only Lane B",
+  "strict_upgrade_gates": "median >= $2 AND PASS_STRESS AND max-yr <= 50% AND Era3 median >= 0 AND n >= 50",
+  "tier_classification": {
+    "UPGRADE_CANDIDATE": 0,
+    "OBSERVATIONAL": 0,
+    "KILL": 5
+  },
+  "results": [
+    {
+      "spec": {
+        "label": "VRC-MGC-Both-PL",
+        "asset": "MGC",
+        "entry": "volatility_regime_compound",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 0,
+        "pf": NaN,
+        "median": 0.0,
+        "net": 0.0,
+        "max_dd": 0.0,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": NaN,
+        "h2_pf": NaN,
+        "years_positive": 0,
+        "n_years": 0
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (n=0)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 48.4448778629303
+    },
+    {
+      "spec": {
+        "label": "VRC-MCL-Both-PL",
+        "asset": "MCL",
+        "entry": "volatility_regime_compound",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 0,
+        "pf": NaN,
+        "median": 0.0,
+        "net": 0.0,
+        "max_dd": 0.0,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": NaN,
+        "h2_pf": NaN,
+        "years_positive": 0,
+        "n_years": 0
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (n=0)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 117.26889610290527
+    },
+    {
+      "spec": {
+        "label": "VRC-MES-Both-PL",
+        "asset": "MES",
+        "entry": "volatility_regime_compound",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 3,
+        "pf": 0.0,
+        "median": -83.74,
+        "net": -189.97,
+        "max_dd": -94.98,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.0,
+        "h2_pf": 0.0,
+        "years_positive": 0,
+        "n_years": 2
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (n=3)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 240.8131387233734
+    },
+    {
+      "spec": {
+        "label": "VRC-MYM-Both-PL",
+        "asset": "MYM",
+        "entry": "volatility_regime_compound",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 0,
+        "pf": NaN,
+        "median": 0.0,
+        "net": 0.0,
+        "max_dd": 0.0,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": NaN,
+        "h2_pf": NaN,
+        "years_positive": 0,
+        "n_years": 0
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (n=0)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 78.5067310333252
+    },
+    {
+      "spec": {
+        "label": "VRC-MNQ-Both-PL",
+        "asset": "MNQ",
+        "entry": "volatility_regime_compound",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 0,
+        "pf": NaN,
+        "median": 0.0,
+        "net": 0.0,
+        "max_dd": 0.0,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": NaN,
+        "h2_pf": NaN,
+        "years_positive": 0,
+        "n_years": 0
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (n=0)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 255.89545965194702
+    }
+  ],
+  "feature_cache_stats_final": {
+    "hits": 0,
+    "misses": 5,
+    "cached_keys": 5
+  }
+}
