@@ -36,6 +36,7 @@ If failures are explained by these gates, saturation kicks in. If failures are m
 | ZN/ZF × afternoon (pb_pullback, bb_reversion) × profit_ladder | 1 (08d: 6 candidates) | **PAUSED** |
 | 6E/6J × session-close/morning (pb_pullback, bb_reversion, donchian_breakout) × profit_ladder | 1 (08d: 8 candidates) | **PAUSED** |
 | MNQ/MES/MYM × ORB-family × directional-split | 4+ cycles concluded | **DIAGNOSTIC COMPLETE** (per separate ORB directional asymmetry diagnostic) |
+| MCL × calendar-time event-window × existing event primitive | 2 (08f NFP-MCL: 5 KILL; 08h EIA-MCL: 5 KILL) | **PAUSED 2026-06-08 per #101** |
 
 **Note:** Aggregated, 08c + 08d constitute the saturation trigger for the broader "non-ORB workhorse hunt with existing primitives" search basis on commodity / rates / FX intraday futures. The hunt is paused until the unlock criteria are met.
 
@@ -58,10 +59,13 @@ If a future cycle uses a saturated combination AND finds a genuine packet-grade 
 
 | Unlock criterion | Status (2026-06-08) | Notes |
 |---|---|---|
-| New entry primitive: range_compression_break | **IN PROGRESS** (cycle 08e, per operator decision #94 Hybrid D) | Targets vol-contraction-then-expansion mechanism |
-| New data source | none in flight | Treasury auction calendar still DATA_REQUIRED |
-| New asset / session | none in flight | Event-window NFP template restart targeted at metals/commodities (Hybrid D leg B) |
-| New economic thesis | none in flight | Saturation rule does NOT block thesis-driven sparse-event candidates |
+| New entry primitive: range_compression_break | **SHIPPED 2026-06-08** (08e/08g) | Productive but not packet-grade: first PASS_STRESS blocked by concentration |
+| EIA-Wed-MCL crude inventory calendar | **SHIPPED 2026-06-08** (08h) | First screen wiped out 5/5; calendar reserved for future surprise-conditioned variants |
+| Surprise-conditioned crude event signals (EIA print vs consensus) | DATA_REQUIRED | Required to revive crude × calendar-time × event family per #101 |
+| Treasury auction calendar | DATA_REQUIRED | Deferred per #99 (one bounded data unlock at a time) |
+| Grain asset onboarding (WASDE candidates) | DATA_REQUIRED | Deferred per #99 |
+| COT-shift CFTC ingestion | DATA_REQUIRED | Deferred per #99 |
+| Vol-regime overlay investigation on RCB candidates | **IN PROGRESS** (08i per #102) | Uses existing vol_regime filters, no new primitive build |
 
 ## Source artifacts
 

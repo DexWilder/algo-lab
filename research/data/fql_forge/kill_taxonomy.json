@@ -2668,5 +2668,85 @@
       "regime-dependent"
     ],
     "disposition": "OBSERVATIONAL \u00d7 1 with notable PASS_STRESS evidence. 5 OBSERVATIONAL other (lesser candidates). 5 KILL. No PAPER_PACKET. Operator decision on disposition #100 pending."
+  },
+  "_HEADLINE_2026-06-08i_VOL_REGIME_OVERLAY_DOES_NOT_RESCUE_RCB": {
+    "headline": "Vol-regime overlay investigation: 0 UPGRADE / 1 OBSERVATIONAL / 8 KILL. RCB concentration is MECHANISM-INTRINSIC, not filter-selectable. VolLo is redundant with compression (compression IS low-vol). VolHi mechanically incompatible (zeros out signal).",
+    "date": "2026-06-08",
+    "operator_approval": "OK A #102 (bounded vol-regime overlay; existing filters only; no new primitive)",
+    "structural_finding": {
+      "VolHi_compatibility": "RCB + VolHi yields n=0 on all 3 assets \u2014 compression-break is BY DEFINITION a low-vol setup; high-vol filter is mechanically incompatible",
+      "VolLo_vs_baseline": "RCB + VolLo produces near-identical metrics to baseline RCB \u2014 VolLo is REDUNDANT with the compression mechanism itself (compression IS low-vol)",
+      "VolBand_30_70": "Produces tiny fragmented samples (n=9, 92, 14); not productive"
+    },
+    "comparison": {
+      "RCB15-MYM-Short-PL (08g baseline)": {
+        "n": 126,
+        "pf": 2.07,
+        "median": 8.51,
+        "max_yr": 71.6,
+        "era3_med": -4.24
+      },
+      "RCB15-MYM-Short-VolLo-PL (08i overlay)": {
+        "n": 125,
+        "pf": 2.073,
+        "median": 8.76,
+        "max_yr": 70.8,
+        "era3_med": -4.24
+      },
+      "delta": "Identical metrics. Vol filter adds nothing. Concentration is intrinsic."
+    },
+    "doctrine_significance": "Tested whether existing vol-regime infrastructure could rescue the most promising RCB candidate. Result: vol-regime conditioning DOES NOT help. Concentration + Era3 weakness are properties of the underlying mechanism + asset + sample, not of filter selection. Definitively closes the 'rescue RCB-MYM-Short via vol overlay' hypothesis. Per #102: classify OBSERVATIONAL and move on \u2014 done.",
+    "strategic_implications": [
+      "RCB primitive moves to RESEARCH_ONLY for active Packet #2 hunt: produces real signal but no path to packet via current filter set",
+      "RCB available for FUTURE thesis-driven hunts (e.g., regime-shift-specific deployment if 2025-style condition repeats)",
+      "Packet #2 search basis is narrowing: ORB exhausted, non-ORB existing-primitives exhausted, RCB-with-vol exhausted, crude-event paused",
+      "Next operator direction needed: build another new primitive, build new data source, or accept current factory limits"
+    ],
+    "other_findings": {
+      "RCB15-MGC-Short-VolLo": "ARCHITECTURAL_REJECT (losing era) \u2014 same era weakness as 08g vanilla; vol filter doesn't help",
+      "RCB15-MES-Both-VolLo": "KILL (PF 1.146, just under 1.15 threshold) \u2014 marginal improvement still sub-edge",
+      "Era-3 weakness pattern across 3 RCB cycles": "MGC compression-break has structural era weakness regardless of compression threshold or vol overlay"
+    },
+    "tags": [
+      "concentration",
+      "regime-dependent"
+    ],
+    "disposition": "1 OBSERVATIONAL (essentially identical to 08g baseline). 8 KILL. RCB-MYM-Short final classification: OBSERVATIONAL with research value. RCB primitive: RESEARCH_ONLY for active hunt. No path forward without new primitive or new data."
+  },
+  "_aggregate_2026-06-08_FULL_DAY": {
+    "date": "2026-06-08",
+    "cycles_completed": [
+      "08a",
+      "08b",
+      "08c",
+      "08d",
+      "08e",
+      "08f",
+      "08g",
+      "08h",
+      "08i"
+    ],
+    "operator_decisions_executed": [
+      "#85 through #102 (18 decisions)"
+    ],
+    "doctrines_codified_today": [
+      "PL-workhorse-default (#91)",
+      "asset-family-saturation (#95)"
+    ],
+    "primitives_shipped_today": [
+      "range_compression_break (#94)",
+      "EIA-Wed-MCL calendar (#99)"
+    ],
+    "packets_accepted": 1,
+    "candidates_tested": "~85 across all cycles",
+    "PAPER_PACKET_produced": 0,
+    "PASS_STRESS_produced": 1,
+    "PASS_STRESS_promoted": 0,
+    "saturated_families_paused": 5,
+    "directional_insights_documented": 5,
+    "closed_loop_wipeouts_preserved": 7,
+    "cumulative_kill_taxonomy_keys": 70,
+    "boundaries_held": true,
+    "strategic_state": "Search basis is converging. Current primitive set + existing filters cannot produce Packet #2 without architectural expansion. Day 10 of 30 sprint. Need operator direction on: (a) new primitive build, (b) new data unlock, (c) accept current limits and revise sprint scope."
   }
 }
