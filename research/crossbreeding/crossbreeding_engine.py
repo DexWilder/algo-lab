@@ -499,6 +499,76 @@ def entry_vol_expansion(f, i, state, params):
     return 0, 0, 0
 
 
+def entry_gap_fill_trigger(f, i, state, params):
+    """Gap-fill fade entry (added 2026-06-09 per operator decision #116).
+
+    Mechanism: at the open of the RTH session, if price has gapped beyond
+    `min_gap_atr` × ATR from the prior session close, enter in the FADE
+    direction (toward prior close):
+      - Gap UP → SHORT toward prev_day_close
+      - Gap DOWN → LONG toward prev_day_close
+
+    Different from range_compression_break / bb_keltner_squeeze (which are
+    intraday vol-contraction-then-expansion mechanisms) — gap_fill is a
+    structural overnight repricing mean-reversion mechanism. Should fire
+    rarely (only on large gaps in first N bars of session).
+
+    Fail-closed:
+      - i < 1: no signal
+      - Not in session (or not within first N session bars): no signal
+      - NaN prev_day_close / ATR: no signal
+      - Zero ATR: no signal
+      - Gap < threshold: no signal
+
+    Params (all optional, conservative defaults):
+      min_gap_atr: 0.5         — minimum gap as multiple of ATR
+      session_open_bars: 3     — fire within first N bars of session only
+      stop_mult: 1.5           — ATR multiplier for stop
+      target_to_close: True    — target = prev_day_close (natural fade target)
+      target_mult: 3.0         — used only if target_to_close = False
+    """
+    if i < 1:
+        return 0, 0, 0
+    if not f["in_session"][i]:
+        return 0, 0, 0
+    # Count consecutive in_session bars ending at i (= bars into session)
+    session_open_bars = params.get("session_open_bars", 3)
+    n_consecutive = 0
+    j = i
+    while j >= 0 and f["in_session"][j]:
+        n_consecutive += 1
+        j -= 1
+        if n_consecutive > session_open_bars:
+            return 0, 0, 0
+    if n_consecutive == 0:
+        return 0, 0, 0
+    prev_close = f["prev_day_close"][i]
+    if np.isnan(prev_close):
+        return 0, 0, 0
+    close = f["close"][i]
+    atr_i = f["atr"][i]
+    if np.isnan(atr_i) or atr_i == 0:
+        return 0, 0, 0
+    gap = close - prev_close
+    min_gap_dollar = params.get("min_gap_atr", 0.5) * atr_i
+    if abs(gap) < min_gap_dollar:
+        return 0, 0, 0
+    target_to_close = params.get("target_to_close", True)
+    # Gap UP → fade short
+    if gap > 0:
+        if state["short_traded_today"]:
+            return 0, 0, 0
+        stop = close + atr_i * params.get("stop_mult", 1.5)
+        target = prev_close if target_to_close else (close - atr_i * params.get("target_mult", 3.0))
+        return -1, stop, target
+    # Gap DOWN → fade long
+    if state["long_traded_today"]:
+        return 0, 0, 0
+    stop = close - atr_i * params.get("stop_mult", 1.5)
+    target = prev_close if target_to_close else (close + atr_i * params.get("target_mult", 3.0))
+    return 1, stop, target
+
+
 def entry_bb_keltner_squeeze(f, i, state, params):
     """Bollinger-Keltner squeeze release (added 2026-06-08 per operator decision #111).
 
@@ -1086,6 +1156,7 @@ ENTRY_MAP = {
     "range_compression_break": entry_range_compression_break,
     "volatility_regime_compound": entry_volatility_regime_compound,
     "bb_keltner_squeeze": entry_bb_keltner_squeeze,
+    "gap_fill_trigger": entry_gap_fill_trigger,
 }
 
 EXIT_MAP = {

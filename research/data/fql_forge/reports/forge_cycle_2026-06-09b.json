@@ -1,0 +1,185 @@
+{
+  "date": "2026-06-09",
+  "purpose": "gap_fill_trigger first batch (#116)",
+  "boundaries": "report-only Lane B",
+  "tier_classification": {
+    "UPGRADE_CANDIDATE": 0,
+    "OBSERVATIONAL": 0,
+    "KILL": 6
+  },
+  "results": [
+    {
+      "spec": {
+        "label": "GAP-MES-Both-PL",
+        "asset": "MES",
+        "entry": "gap_fill_trigger",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 0,
+        "pf": NaN,
+        "median": 0.0,
+        "net": 0.0,
+        "max_dd": 0.0,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": NaN,
+        "h2_pf": NaN,
+        "years_positive": 0,
+        "n_years": 0
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (n=0)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 90.80697894096375
+    },
+    {
+      "spec": {
+        "label": "GAP-MNQ-Both-PL",
+        "asset": "MNQ",
+        "entry": "gap_fill_trigger",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 0,
+        "pf": NaN,
+        "median": 0.0,
+        "net": 0.0,
+        "max_dd": 0.0,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": NaN,
+        "h2_pf": NaN,
+        "years_positive": 0,
+        "n_years": 0
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (n=0)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 109.36842274665833
+    },
+    {
+      "spec": {
+        "label": "GAP-MYM-Both-PL",
+        "asset": "MYM",
+        "entry": "gap_fill_trigger",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 0,
+        "pf": NaN,
+        "median": 0.0,
+        "net": 0.0,
+        "max_dd": 0.0,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": NaN,
+        "h2_pf": NaN,
+        "years_positive": 0,
+        "n_years": 0
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (n=0)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 34.300133228302
+    },
+    {
+      "spec": {
+        "label": "GAP-MGC-Both-PL",
+        "asset": "MGC",
+        "entry": "gap_fill_trigger",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 164,
+        "pf": 1.081,
+        "median": -5.74,
+        "net": 903.64,
+        "max_dd": -2707.68,
+        "max_year_share_pct": 142.8,
+        "top3_share_pct": 257.0,
+        "h1_pf": 0.824,
+        "h2_pf": 1.212,
+        "years_positive": 4,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 59.907394886016846
+    },
+    {
+      "spec": {
+        "label": "GAP-MCL-Both-PL",
+        "asset": "MCL",
+        "entry": "gap_fill_trigger",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 0,
+        "pf": NaN,
+        "median": 0.0,
+        "net": 0.0,
+        "max_dd": 0.0,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": NaN,
+        "h2_pf": NaN,
+        "years_positive": 0,
+        "n_years": 0
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (n=0)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 76.87649488449097
+    },
+    {
+      "spec": {
+        "label": "GAP-ZN-Both-PL",
+        "asset": "ZN",
+        "entry": "gap_fill_trigger",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 115,
+        "pf": 1.069,
+        "median": -49.98,
+        "net": 721.63,
+        "max_dd": -3074.79,
+        "max_year_share_pct": 439.2,
+        "top3_share_pct": 451.2,
+        "h1_pf": 0.573,
+        "h2_pf": 1.78,
+        "years_positive": 4,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 96.17617082595825
+    }
+  ],
+  "feature_cache_stats_final": {
+    "hits": 0,
+    "misses": 6,
+    "cached_keys": 6
+  }
+}

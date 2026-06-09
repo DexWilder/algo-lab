@@ -3025,5 +3025,60 @@
       "cost-eats-edge"
     ],
     "disposition": "0 PAPER_PACKET. 0 OBSERVATIONAL. 5 KILL. SMP-2 Tier 1 RUNNABLE_NOW exhausted. Rotate to next safe fallback (Day-17 scaffold update + extend Source Mining catalog with closed-loop finding)."
+  },
+  "_HEADLINE_2026-06-09b_gap_fill_filter_mismatch": {
+    "headline": "gap_fill_trigger first batch: 0/0/6 KILL. CRITICAL: ema_slope filter is structurally incompatible with FADE mechanism (gap UP requires SHORT in uptrend; gap DOWN requires LONG in downtrend \u2014 opposite of trend filter logic). n=0 on 4 of 6 assets.",
+    "date": "2026-06-09",
+    "operator_approval": "OK #116 (build gap_fill_trigger)",
+    "primitive_shipped": true,
+    "smoke_tests": "10/10 PASS",
+    "results": {
+      "GAP-MES-Both-PL": {
+        "n": 0,
+        "verdict": "KILL n=0 \u2014 filter blocks all setups"
+      },
+      "GAP-MNQ-Both-PL": {
+        "n": 0,
+        "verdict": "KILL n=0"
+      },
+      "GAP-MYM-Both-PL": {
+        "n": 0,
+        "verdict": "KILL n=0"
+      },
+      "GAP-MGC-Both-PL": {
+        "n": 164,
+        "pf": 1.081,
+        "median": -5.74,
+        "max_yr": 142.8,
+        "verdict": "KILL median neg + extreme concentration"
+      },
+      "GAP-MCL-Both-PL": {
+        "n": 0,
+        "verdict": "KILL n=0"
+      },
+      "GAP-ZN-Both-PL": {
+        "n": 115,
+        "pf": 1.069,
+        "median": -49.98,
+        "max_yr": 439.2,
+        "verdict": "KILL median neg + extreme concentration"
+      }
+    },
+    "structural_finding": "ema_slope filter requires ema20 > ema50 for LONG entry and ema20 < ema50 for SHORT entry. gap_fill_trigger FADES gaps: gap UP \u2192 SHORT (typically in uptrend, ema20 > ema50 \u2192 BLOCKED); gap DOWN \u2192 LONG (typically in downtrend, ema20 < ema50 \u2192 BLOCKED). The filter is structurally incompatible with FADE direction logic.",
+    "mechanism_correctness_unresolved": "Primitive built correctly per spec; smoke tests pass. But ema_slope filter blocks the mechanism almost entirely. MGC and ZN fire but with extreme concentration (one year carries entire P&L, others lose) \u2014 suggests the rare cases where filter ALLOWS the fade are regime-specific outliers.",
+    "honest_classification": "RESEARCH_ONLY \u2014 primitive viable but requires different filter (e.g., filter=none, or session_morning, or a FADE-specific direction filter that aligns with gap direction). NOT archive: the mechanism may have edge under different filter; the test was structurally biased against it.",
+    "cumulative_new_primitive_pattern": {
+      "RCB": "RESEARCH_ONLY (concentration intrinsic)",
+      "VRC": "ARCHIVED (mechanism anti-edge)",
+      "BBKC": "RESEARCH_ONLY (thin signal FAIL_STRESS)",
+      "gap_fill_trigger": "RESEARCH_ONLY (filter mismatch identified; needs filter-aligned retry to fairly classify)"
+    },
+    "cumulative_count": "4 new mechanism primitives built this campaign. 0 PAPER_PACKET produced. 1 near-miss (BBKC-MNQ) blocked by cost-fragility.",
+    "next_action_per_116_rule": "If all KILL: archive or research-only and feed result into source mining. Classifying RESEARCH_ONLY (not archive) because filter mismatch is a known correctable issue. Source mining now has a new lesson: filter-mechanism compatibility check needed BEFORE primitive build.",
+    "tags": [
+      "implementation-blocked",
+      "median-negative"
+    ],
+    "disposition": "0 PAPER_PACKET. 0 OBSERVATIONAL. 6 KILL. Primitive RESEARCH_ONLY with filter-mismatch closed-loop finding."
   }
 }
