@@ -2970,5 +2970,60 @@
       "cost-eats-edge"
     ],
     "disposition": "0 PAPER_PACKET. 1 OBSERVATIONAL (BBKC-MNQ FAIL_STRESS). 5 KILL. Per #111 directive: immediately produce Source Mining Packet 2."
+  },
+  "_HEADLINE_2026-06-09a_SMP2_TIER1_WIPEOUT_hurst_trend_anti_edge": {
+    "headline": "SMP-2 Tier 1 RUNNABLE_NOW: 5/5 KILL. First-ever hurst_stable_trend deployment is ANTI-EDGE on DC and ORB entries \u2014 same pattern as hurst_stable_mr (08l). Both hurst filters now confirmed non-productive with existing entries.",
+    "date": "2026-06-09",
+    "operator_approval": "OK 112-E part A \u2014 run SMP-2 Tier 1 batch",
+    "results": {
+      "SM2-DC-MES-HurstTrend-PL": {
+        "n": 1141,
+        "pf": 0.997,
+        "median": -1.24,
+        "verdict": "KILL median neg (essentially flat/anti-edge)"
+      },
+      "SM2-DC-MNQ-HurstTrend-PL": {
+        "n": 1253,
+        "pf": 1.086,
+        "median": -4.24,
+        "max_yr": 116.8,
+        "verdict": "KILL median neg + extreme concentration"
+      },
+      "SM2-ORB-MGC-HurstTrend-PL": {
+        "n": 501,
+        "pf": 1.097,
+        "median": -1.24,
+        "verdict": "KILL median neg"
+      },
+      "SM2-VolExp-MYM-PL": {
+        "n": 1,
+        "verdict": "KILL n=1 (vol_expansion + MYM sample collapse)"
+      },
+      "SM2-VolExp-MCL-PL": {
+        "n": 28,
+        "pf": 1.291,
+        "median": -4.74,
+        "verdict": "KILL n=28 + asymmetric trap pattern (PF>1.2 + median<0)"
+      }
+    },
+    "critical_findings": [
+      "hurst_stable_trend filter deployed for FIRST TIME after being built 06-03. Tested with donchian_breakout on MES + MNQ and orb_breakout on MGC. ALL three produced sub-edge results (PFs 0.997-1.097, all median negative).",
+      "Both hurst filter primitives are now confirmed non-productive with existing entry primitives: hurst_stable_mr + bb_reversion \u2192 anti-edge (08l), hurst_stable_trend + DC/ORB \u2192 anti-edge (09a).",
+      "vol_expansion entry: fires barely-or-never on MYM (n=1) and produces asymmetric-trap pattern on MCL (PF 1.29, median -$4.74) \u2014 confirms vol_expansion is structurally lossy across most asset/filter combinations.",
+      "The 'productive primitive not yet deployed' theory (hurst filters being a hidden gap) is now FALSIFIED \u2014 both filters tested, both anti-edge."
+    ],
+    "cumulative_new_mechanism_pattern": {
+      "RCB (range_compression_break)": "0 PASS_STRESS, 4 OBSERVATIONAL FAIL_STRESS, 7 KILL (best: PF 1.46 with concentration)",
+      "VRC (volatility_regime_compound)": "0 fire \u2192 5 KILL after retry; ARCHIVED",
+      "BBKC (bb_keltner_squeeze)": "0 PASS_STRESS, 1 OBSERVATIONAL (BBKC-MNQ best near-miss PF 1.21 median $2.76), 5 KILL",
+      "Hurst-MR + bb_reversion (08l)": "5 KILL; filter mismatch confirmed",
+      "Hurst-Trend + DC/ORB (09a)": "5 KILL; second filter mismatch"
+    },
+    "cost_fragility_hypothesis_strengthening": "BBKC-MNQ remains the only near-miss with clear cost-fragility signature (PF 1.21, median $2.76, max-yr 44.9% clean, n=837; break-even ~$3.00 RT vs conservative-bias $2.24 RT). With 8 new-mechanism cycles + 0 PAPER_PACKET, the highest-leverage unlock is verified prop-firm cost data per #112-C. Template ready for operator at docs/reports/prop_cost_verification/prop_cost_unlock_template_OPERATOR_TO_FILL.md.",
+    "tags": [
+      "median-negative",
+      "cost-eats-edge"
+    ],
+    "disposition": "0 PAPER_PACKET. 0 OBSERVATIONAL. 5 KILL. SMP-2 Tier 1 RUNNABLE_NOW exhausted. Rotate to next safe fallback (Day-17 scaffold update + extend Source Mining catalog with closed-loop finding)."
   }
 }

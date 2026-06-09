@@ -1,0 +1,158 @@
+{
+  "date": "2026-06-09",
+  "purpose": "SMP-2 Tier 1 RUNNABLE_NOW batch (#112-E part A)",
+  "boundaries": "report-only Lane B",
+  "notable": "FIRST deployment of hurst_stable_trend filter (built 06-03)",
+  "tier_classification": {
+    "UPGRADE_CANDIDATE": 0,
+    "OBSERVATIONAL": 0,
+    "KILL": 5
+  },
+  "results": [
+    {
+      "spec": {
+        "label": "SM2-DC-MES-HurstTrend-PL",
+        "asset": "MES",
+        "entry": "donchian_breakout",
+        "filter": "hurst_stable_trend",
+        "exit": "profit_ladder",
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 1141,
+        "pf": 0.997,
+        "median": -1.24,
+        "net": -133.59,
+        "max_dd": -3074.82,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 1.008,
+        "h2_pf": 0.987,
+        "years_positive": 4,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 146.87795901298523
+    },
+    {
+      "spec": {
+        "label": "SM2-DC-MNQ-HurstTrend-PL",
+        "asset": "MNQ",
+        "entry": "donchian_breakout",
+        "filter": "hurst_stable_trend",
+        "exit": "profit_ladder",
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 1253,
+        "pf": 1.086,
+        "median": -4.24,
+        "net": 7230.78,
+        "max_dd": -4292.36,
+        "max_year_share_pct": 116.8,
+        "top3_share_pct": 57.8,
+        "h1_pf": 1.193,
+        "h2_pf": 1.001,
+        "years_positive": 5,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 166.93206977844238
+    },
+    {
+      "spec": {
+        "label": "SM2-ORB-MGC-HurstTrend-PL",
+        "asset": "MGC",
+        "entry": "orb_breakout",
+        "filter": "hurst_stable_trend",
+        "exit": "profit_ladder",
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 501,
+        "pf": 1.097,
+        "median": -1.24,
+        "net": 1848.76,
+        "max_dd": -1398.64,
+        "max_year_share_pct": 63.6,
+        "top3_share_pct": 109.7,
+        "h1_pf": 1.13,
+        "h2_pf": 1.08,
+        "years_positive": 4,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 92.65045309066772
+    },
+    {
+      "spec": {
+        "label": "SM2-VolExp-MYM-PL",
+        "asset": "MYM",
+        "entry": "vol_expansion",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 1,
+        "pf": 0.0,
+        "median": -4.24,
+        "net": -4.24,
+        "max_dd": 0.0,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": Infinity,
+        "h2_pf": 0.0,
+        "years_positive": 0,
+        "n_years": 1
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (n=1)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 58.83623003959656
+    },
+    {
+      "spec": {
+        "label": "SM2-VolExp-MCL-PL",
+        "asset": "MCL",
+        "entry": "vol_expansion",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 28,
+        "pf": 1.291,
+        "median": -4.74,
+        "net": 174.28,
+        "max_dd": -263.6,
+        "max_year_share_pct": 70.4,
+        "top3_share_pct": 304.8,
+        "h1_pf": 1.295,
+        "h2_pf": 1.287,
+        "years_positive": 3,
+        "n_years": 6
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (n=28)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 120.71024203300476
+    }
+  ],
+  "feature_cache_stats_final": {
+    "hits": 0,
+    "misses": 5,
+    "cached_keys": 5
+  }
+}
