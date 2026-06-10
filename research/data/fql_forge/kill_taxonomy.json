@@ -4111,5 +4111,125 @@
       "regime-dependent"
     ],
     "disposition": "BBKC-MNQ promoted to CONDITIONAL PAPER_PACKET_CANDIDATE. ARF2-MNQ-cont downgraded to OBSERVATIONAL. Report: docs/fql_forge/conditional_prepacket_verification_2026-06-10.md"
+  },
+  "_HEADLINE_2026-06-10j_BBKC_MNQ_family_review_reveals_PORTFOLIO_COMPLEMENT": {
+    "headline": "BBKC-MNQ vs XB-ORB-EMA-Ladder-MNQ family review: corr 0.394, day-overlap 78.7%. BBKC-MNQ is PORTFOLIO_COMPLEMENT to existing MNQ probation, not standalone Packet #2 candidate. Honest reclassification: CONDITIONAL PORTFOLIO_COMPLEMENT_CANDIDATE \u2014 COST DATA REQUIRED.",
+    "date": "2026-06-10",
+    "operator_approval": "OK 152 BBKC audit prep work",
+    "family_review_finding": {
+      "BBKC-MNQ_baseline": {
+        "n": 837,
+        "pf": 1.206,
+        "median": 2.76
+      },
+      "XB-ORB-EMA-Ladder-MNQ_baseline": {
+        "n": 1217,
+        "pf": 1.623,
+        "median": 42.76,
+        "status": "Live probation since 2026-04-06"
+      },
+      "day_overlap": "659/837 = 78.7% of BBKC days overlap with XB-ORB-MNQ days",
+      "daily_pnl_correlation": 0.394,
+      "classification_per_doctrine": "PORTFOLIO_COMPLEMENT (low-moderate corr 0.3-0.5)"
+    },
+    "honest_reclassification": {
+      "previous": "CONDITIONAL PAPER_PACKET_CANDIDATE \u2014 cost data required",
+      "corrected": "CONDITIONAL PORTFOLIO_COMPLEMENT_CANDIDATE \u2014 cost data required",
+      "reason": "Family review vs existing MNQ probation strategy (XB-ORB-EMA-Ladder-MNQ, live forward since 2026-04-06) shows substantial overlap (78.7%) + low-moderate correlation (0.394). Per FQL doctrine, independent edges = paper packets; family-overlap edges = portfolio complements.",
+      "implication": "Even with cost-data unlock, BBKC-MNQ would not be Packet #2. It would be a portfolio sleeve addition to existing MNQ probation. Still requires operator decision on portfolio composition."
+    },
+    "comparison_to_MES_PORTFOLIO_COMPLEMENT_precedent": {
+      "DIR-MES-ORB-Long-PL_corr_to_MNQ": 0.42,
+      "DIR-MES-ORB-Short-PL_corr_to_MNQ": 0.62,
+      "BBKC-MNQ-Both-PL_corr_to_XB-ORB-MNQ": 0.394,
+      "interpretation": "BBKC-MNQ is LESS correlated to MNQ probation than MES ORB siblings are to MNQ probation. Borderline but still within PORTFOLIO_COMPLEMENT range per doctrine (>0.30)."
+    },
+    "cost_data_value": "Cost data is still useful \u2014 would unlock BBKC-MNQ to OBSERVATIONAL portfolio sleeve (similar to MES siblings) pending operator portfolio-construction review. But not Packet #2.",
+    "sprint_implication": "No clean Packet #2 candidate currently exists. Need to keep searching broadly. BBKC-MNQ remains useful research evidence and potential portfolio addition; CPI-MGC archived; ARF2 downgraded; original 5 mechanism families all classified.",
+    "tags": [
+      "duplicate/overlap"
+    ],
+    "disposition": "BBKC-MNQ reclassified to CONDITIONAL PORTFOLIO_COMPLEMENT_CANDIDATE \u2014 cost data still required for verification. Not Packet #2. Sprint search must continue broadly for new independent edge."
+  },
+  "_HEADLINE_2026-06-10k_data_gap_audit_8_assets_MES_MNQ_ZN_event_ready": {
+    "headline": "Data-gap audit across 8 primary assets. MES/MNQ are CLEAN_EVENT_READY for CPI (91.1% clean); ZN CLEAN for CPI (90.0%); MGC remains USABLE_WITH_WARN; MYM/MCL/6E/6J DATA_REQUIRED. Unlocks CPI-equity-index, CPI-rates, CPI-cross-asset directions.",
+    "date": "2026-06-10",
+    "operator_approval": "OK 152 phase 2 data-gap audit",
+    "summary_table": {
+      "MGC": {
+        "NFP_clean_pct": 70.8,
+        "CPI_clean_pct": 67.8,
+        "NFP_label": "CLEAN_EVENT_USABLE_WITH_WARN",
+        "CPI_label": "EVENT_DATA_GAPPED",
+        "data_span": "2019-06-30 to 2026-06-08"
+      },
+      "MES": {
+        "NFP_clean_pct": 87.5,
+        "CPI_clean_pct": 91.1,
+        "NFP_label": "CLEAN_EVENT_USABLE_WITH_WARN",
+        "CPI_label": "CLEAN_EVENT_READY",
+        "data_span": "2019-06-30 to 2026-06-08"
+      },
+      "MNQ": {
+        "NFP_clean_pct": 87.5,
+        "CPI_clean_pct": 91.1,
+        "NFP_label": "CLEAN_EVENT_USABLE_WITH_WARN",
+        "CPI_label": "CLEAN_EVENT_READY",
+        "data_span": "2019-06-30 to 2026-06-08"
+      },
+      "MYM": {
+        "NFP_clean_pct": 29.2,
+        "CPI_clean_pct": 30.0,
+        "NFP_label": "DATA_REQUIRED",
+        "CPI_label": "DATA_REQUIRED",
+        "data_span": "2024-02-29 to 2026-06-08 (2 years only)"
+      },
+      "MCL": {
+        "NFP_clean_pct": 59.4,
+        "CPI_clean_pct": 65.6,
+        "NFP_label": "DATA_REQUIRED",
+        "CPI_label": "DATA_REQUIRED",
+        "data_span": "2021-07-11 to 2026-06-08 (4.5 years; 30-31 events excluded)"
+      },
+      "ZN": {
+        "NFP_clean_pct": 87.5,
+        "CPI_clean_pct": 90.0,
+        "NFP_label": "CLEAN_EVENT_USABLE_WITH_WARN",
+        "CPI_label": "CLEAN_EVENT_READY",
+        "data_span": "2019-06-30 to 2026-06-08"
+      },
+      "6E": {
+        "NFP_clean_pct": 29.2,
+        "CPI_clean_pct": 30.0,
+        "NFP_label": "DATA_REQUIRED",
+        "CPI_label": "DATA_REQUIRED",
+        "data_span": "2024-02-29 to 2026-06-08 (2 years only)"
+      },
+      "6J": {
+        "NFP_clean_pct": 26.0,
+        "CPI_clean_pct": 30.0,
+        "NFP_label": "DATA_REQUIRED",
+        "CPI_label": "DATA_REQUIRED",
+        "data_span": "2024-02-29 to 2026-06-08 (2 years only)"
+      }
+    },
+    "newly_unlocked_search_directions": [
+      "CPI-MES (Long/Short 2h variant) \u2014 CLEAN_EVENT_READY at 91.1%",
+      "CPI-MNQ (Long/Short 2h variant) \u2014 CLEAN_EVENT_READY at 91.1%",
+      "CPI-ZN (Long/Short 2h variant) \u2014 CLEAN_EVENT_READY at 90.0%; rates-specific thesis",
+      "NFP-MES / NFP-MNQ \u2014 USABLE_WITH_WARN at 87.5%",
+      "NFP-ZN \u2014 USABLE_WITH_WARN at 87.5%; rates-specific",
+      "Multi-asset event family on cross-asset event-windows (MES+MNQ+ZN) \u2014 all clean enough for joint analysis"
+    ],
+    "remaining_data_blocks": [
+      "MYM/6E/6J data only since 2024-02-29 \u2014 would need 2019-2023 extension for full backtest",
+      "MCL data since 2021-07-11 \u2014 31 NFP + 30 CPI events excluded as pre-data",
+      "MGC CPI coverage 67.8% \u2014 known gap; documented"
+    ],
+    "doctrine_compliance": "Each candidate using these assets must apply clean-events filter per #146 + report contamination table per audit doctrine.",
+    "tags": [
+      "data-blocked"
+    ],
+    "disposition": "8-asset audit complete. 3 assets CLEAN_EVENT_READY for CPI (MES/MNQ/ZN). 4 assets DATA_REQUIRED. MGC documented. Operator now has clear picture for future event-window candidate selection."
   }
 }

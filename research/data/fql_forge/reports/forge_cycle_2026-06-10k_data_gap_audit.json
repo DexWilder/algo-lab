@@ -1,0 +1,328 @@
+{
+  "date": "2026-06-10",
+  "purpose": "Data-gap audit across 8 primary assets (per #146 doctrine + #152 phase 2)",
+  "boundaries": "report-only Lane B",
+  "calendars_used": "NFP verified + CPI verified (Forge-recall)",
+  "results": {
+    "MGC": {
+      "asset": "MGC",
+      "data_span": {
+        "start": "2019-06-30 20:00:00",
+        "end": "2026-06-08 11:50:00"
+      },
+      "n_bars": 256262,
+      "bar_continuity": {
+        "n_5min_intervals": 244855,
+        "n_gt_10min_gaps": 7395,
+        "n_gt_2h_gaps": 1967,
+        "n_gt_1d_gaps": 473
+      },
+      "NFP_coverage": {
+        "calendar": "NFP",
+        "total_events": 96,
+        "exact_match": 57,
+        "gap_lt_1h": 11,
+        "gap_1h_to_1d": 10,
+        "gap_gt_1d": 12,
+        "pre_data_start_excluded": 6,
+        "clean_events": 68,
+        "clean_pct": 70.83333333333334
+      },
+      "CPI_coverage": {
+        "calendar": "CPI",
+        "total_events": 90,
+        "exact_match": 52,
+        "gap_lt_1h": 9,
+        "gap_1h_to_1d": 15,
+        "gap_gt_1d": 8,
+        "pre_data_start_excluded": 6,
+        "clean_events": 61,
+        "clean_pct": 67.77777777777779
+      },
+      "eligibility": {
+        "NFP_event_window": "CLEAN_EVENT_USABLE_WITH_WARN",
+        "CPI_event_window": "EVENT_DATA_GAPPED"
+      }
+    },
+    "MES": {
+      "asset": "MES",
+      "data_span": {
+        "start": "2019-06-30 20:00:00",
+        "end": "2026-06-08 19:55:00"
+      },
+      "n_bars": 486739,
+      "bar_continuity": {
+        "n_5min_intervals": 484294,
+        "n_gt_10min_gaps": 2339,
+        "n_gt_2h_gaps": 420,
+        "n_gt_1d_gaps": 369
+      },
+      "NFP_coverage": {
+        "calendar": "NFP",
+        "total_events": 96,
+        "exact_match": 84,
+        "gap_lt_1h": 0,
+        "gap_1h_to_1d": 0,
+        "gap_gt_1d": 6,
+        "pre_data_start_excluded": 6,
+        "clean_events": 84,
+        "clean_pct": 87.5
+      },
+      "CPI_coverage": {
+        "calendar": "CPI",
+        "total_events": 90,
+        "exact_match": 82,
+        "gap_lt_1h": 0,
+        "gap_1h_to_1d": 0,
+        "gap_gt_1d": 2,
+        "pre_data_start_excluded": 6,
+        "clean_events": 82,
+        "clean_pct": 91.11111111111111
+      },
+      "eligibility": {
+        "NFP_event_window": "CLEAN_EVENT_USABLE_WITH_WARN",
+        "CPI_event_window": "CLEAN_EVENT_READY"
+      }
+    },
+    "MNQ": {
+      "asset": "MNQ",
+      "data_span": {
+        "start": "2019-06-30 20:00:00",
+        "end": "2026-06-08 19:55:00"
+      },
+      "n_bars": 486616,
+      "bar_continuity": {
+        "n_5min_intervals": 484133,
+        "n_gt_10min_gaps": 2371,
+        "n_gt_2h_gaps": 420,
+        "n_gt_1d_gaps": 369
+      },
+      "NFP_coverage": {
+        "calendar": "NFP",
+        "total_events": 96,
+        "exact_match": 84,
+        "gap_lt_1h": 0,
+        "gap_1h_to_1d": 0,
+        "gap_gt_1d": 6,
+        "pre_data_start_excluded": 6,
+        "clean_events": 84,
+        "clean_pct": 87.5
+      },
+      "CPI_coverage": {
+        "calendar": "CPI",
+        "total_events": 90,
+        "exact_match": 82,
+        "gap_lt_1h": 0,
+        "gap_1h_to_1d": 0,
+        "gap_gt_1d": 2,
+        "pre_data_start_excluded": 6,
+        "clean_events": 82,
+        "clean_pct": 91.11111111111111
+      },
+      "eligibility": {
+        "NFP_event_window": "CLEAN_EVENT_USABLE_WITH_WARN",
+        "CPI_event_window": "CLEAN_EVENT_READY"
+      }
+    },
+    "MYM": {
+      "asset": "MYM",
+      "data_span": {
+        "start": "2024-02-29 19:00:00",
+        "end": "2026-06-08 19:55:00"
+      },
+      "n_bars": 159066,
+      "bar_continuity": {
+        "n_5min_intervals": 158097,
+        "n_gt_10min_gaps": 655,
+        "n_gt_2h_gaps": 141,
+        "n_gt_1d_gaps": 123
+      },
+      "NFP_coverage": {
+        "calendar": "NFP",
+        "total_events": 96,
+        "exact_match": 28,
+        "gap_lt_1h": 0,
+        "gap_1h_to_1d": 0,
+        "gap_gt_1d": 6,
+        "pre_data_start_excluded": 62,
+        "clean_events": 28,
+        "clean_pct": 29.166666666666668
+      },
+      "CPI_coverage": {
+        "calendar": "CPI",
+        "total_events": 90,
+        "exact_match": 27,
+        "gap_lt_1h": 0,
+        "gap_1h_to_1d": 0,
+        "gap_gt_1d": 1,
+        "pre_data_start_excluded": 62,
+        "clean_events": 27,
+        "clean_pct": 30.0
+      },
+      "eligibility": {
+        "NFP_event_window": "DATA_REQUIRED (pre-data-start exclusions: 62)",
+        "CPI_event_window": "DATA_REQUIRED (pre-data-start exclusions: 62)"
+      }
+    },
+    "MCL": {
+      "asset": "MCL",
+      "data_span": {
+        "start": "2021-07-11 18:05:00",
+        "end": "2026-06-08 19:55:00"
+      },
+      "n_bars": 343370,
+      "bar_continuity": {
+        "n_5min_intervals": 340833,
+        "n_gt_10min_gaps": 1501,
+        "n_gt_2h_gaps": 337,
+        "n_gt_1d_gaps": 261
+      },
+      "NFP_coverage": {
+        "calendar": "NFP",
+        "total_events": 96,
+        "exact_match": 57,
+        "gap_lt_1h": 0,
+        "gap_1h_to_1d": 0,
+        "gap_gt_1d": 8,
+        "pre_data_start_excluded": 31,
+        "clean_events": 57,
+        "clean_pct": 59.375
+      },
+      "CPI_coverage": {
+        "calendar": "CPI",
+        "total_events": 90,
+        "exact_match": 59,
+        "gap_lt_1h": 0,
+        "gap_1h_to_1d": 0,
+        "gap_gt_1d": 1,
+        "pre_data_start_excluded": 30,
+        "clean_events": 59,
+        "clean_pct": 65.55555555555556
+      },
+      "eligibility": {
+        "NFP_event_window": "DATA_REQUIRED (pre-data-start exclusions: 31)",
+        "CPI_event_window": "DATA_REQUIRED (pre-data-start exclusions: 30)"
+      }
+    },
+    "ZN": {
+      "asset": "ZN",
+      "data_span": {
+        "start": "2019-06-30 20:00:00",
+        "end": "2026-06-08 18:00:00"
+      },
+      "n_bars": 408860,
+      "bar_continuity": {
+        "n_5min_intervals": 395544,
+        "n_gt_10min_gaps": 8606,
+        "n_gt_2h_gaps": 1158,
+        "n_gt_1d_gaps": 369
+      },
+      "NFP_coverage": {
+        "calendar": "NFP",
+        "total_events": 96,
+        "exact_match": 84,
+        "gap_lt_1h": 0,
+        "gap_1h_to_1d": 0,
+        "gap_gt_1d": 6,
+        "pre_data_start_excluded": 6,
+        "clean_events": 84,
+        "clean_pct": 87.5
+      },
+      "CPI_coverage": {
+        "calendar": "CPI",
+        "total_events": 90,
+        "exact_match": 77,
+        "gap_lt_1h": 4,
+        "gap_1h_to_1d": 1,
+        "gap_gt_1d": 2,
+        "pre_data_start_excluded": 6,
+        "clean_events": 81,
+        "clean_pct": 90.0
+      },
+      "eligibility": {
+        "NFP_event_window": "CLEAN_EVENT_USABLE_WITH_WARN",
+        "CPI_event_window": "CLEAN_EVENT_READY"
+      }
+    },
+    "6E": {
+      "asset": "6E",
+      "data_span": {
+        "start": "2024-02-29 19:00:00",
+        "end": "2026-06-08 19:55:00"
+      },
+      "n_bars": 85383,
+      "bar_continuity": {
+        "n_5min_intervals": 67790,
+        "n_gt_10min_gaps": 11288,
+        "n_gt_2h_gaps": 531,
+        "n_gt_1d_gaps": 123
+      },
+      "NFP_coverage": {
+        "calendar": "NFP",
+        "total_events": 96,
+        "exact_match": 24,
+        "gap_lt_1h": 4,
+        "gap_1h_to_1d": 0,
+        "gap_gt_1d": 6,
+        "pre_data_start_excluded": 62,
+        "clean_events": 28,
+        "clean_pct": 29.166666666666668
+      },
+      "CPI_coverage": {
+        "calendar": "CPI",
+        "total_events": 90,
+        "exact_match": 22,
+        "gap_lt_1h": 5,
+        "gap_1h_to_1d": 0,
+        "gap_gt_1d": 1,
+        "pre_data_start_excluded": 62,
+        "clean_events": 27,
+        "clean_pct": 30.0
+      },
+      "eligibility": {
+        "NFP_event_window": "DATA_REQUIRED (pre-data-start exclusions: 62)",
+        "CPI_event_window": "DATA_REQUIRED (pre-data-start exclusions: 62)"
+      }
+    },
+    "6J": {
+      "asset": "6J",
+      "data_span": {
+        "start": "2024-02-29 19:00:00",
+        "end": "2026-06-08 19:55:00"
+      },
+      "n_bars": 75826,
+      "bar_continuity": {
+        "n_5min_intervals": 60798,
+        "n_gt_10min_gaps": 10690,
+        "n_gt_2h_gaps": 703,
+        "n_gt_1d_gaps": 123
+      },
+      "NFP_coverage": {
+        "calendar": "NFP",
+        "total_events": 96,
+        "exact_match": 20,
+        "gap_lt_1h": 5,
+        "gap_1h_to_1d": 3,
+        "gap_gt_1d": 6,
+        "pre_data_start_excluded": 62,
+        "clean_events": 25,
+        "clean_pct": 26.041666666666668
+      },
+      "CPI_coverage": {
+        "calendar": "CPI",
+        "total_events": 90,
+        "exact_match": 23,
+        "gap_lt_1h": 4,
+        "gap_1h_to_1d": 0,
+        "gap_gt_1d": 1,
+        "pre_data_start_excluded": 62,
+        "clean_events": 27,
+        "clean_pct": 30.0
+      },
+      "eligibility": {
+        "NFP_event_window": "DATA_REQUIRED (pre-data-start exclusions: 62)",
+        "CPI_event_window": "DATA_REQUIRED (pre-data-start exclusions: 62)"
+      }
+    }
+  }
+}

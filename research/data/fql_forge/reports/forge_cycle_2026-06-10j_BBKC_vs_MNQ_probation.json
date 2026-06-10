@@ -1,0 +1,24 @@
+{
+  "date": "2026-06-10",
+  "purpose": "BBKC-MNQ vs XB-ORB-EMA-Ladder-MNQ duplicate exposure family review",
+  "BBKC-MNQ_baseline": {
+    "n": 837,
+    "pf": 1.206,
+    "median": 2.76
+  },
+  "XB-ORB-MNQ_baseline": {
+    "n": 1217,
+    "pf": 1.623,
+    "median": 42.76
+  },
+  "family_review": {
+    "n_days_a": 837,
+    "n_days_b": 1217,
+    "n_days_overlap": 659,
+    "overlap_pct_of_a": 78.73357228195937,
+    "overlap_pct_of_b": 54.14954806902219,
+    "daily_pnl_corr": 0.3938694284027392,
+    "both_traded_days": 659,
+    "classification": "PORTFOLIO_COMPLEMENT (low-moderate corr)"
+  }
+}
