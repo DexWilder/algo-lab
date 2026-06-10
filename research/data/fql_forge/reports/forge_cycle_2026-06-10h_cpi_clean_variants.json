@@ -1,0 +1,304 @@
+{
+  "date": "2026-06-10",
+  "purpose": "CPI-MGC clean-events variant investigation (#144 bounded)",
+  "boundaries": "report-only Lane B; no discretion exceptions to strict gates",
+  "clean_event_filter": "gap < 1h (per #146 doctrine)",
+  "clean_events_count": 58,
+  "contaminated_excluded": 32,
+  "variants": [
+    {
+      "label": "CPI-MGC-Long-2h-CLEAN",
+      "exit_bars": 24,
+      "metrics": {
+        "n": 58,
+        "pf": 1.755,
+        "median": 4.76,
+        "net": 2950.08,
+        "max_dd": -2038.2
+      },
+      "max_yr_share_pct": 53.75583035036339,
+      "temporal_split": {
+        "per_year": [
+          {
+            "year": 2019,
+            "n": 4,
+            "pf": 0.017713605239654658,
+            "median": -54.739999999999995,
+            "net": -263.96000000000004
+          },
+          {
+            "year": 2020,
+            "n": 7,
+            "pf": 0.6354436073316091,
+            "median": 15.76,
+            "net": -129.68
+          },
+          {
+            "year": 2021,
+            "n": 8,
+            "pf": 0.24618306114698066,
+            "median": -10.74,
+            "net": -793.9200000000001
+          },
+          {
+            "year": 2022,
+            "n": 7,
+            "pf": 1.5128271572946357,
+            "median": 4.76,
+            "net": 158.31999999999994
+          },
+          {
+            "year": 2023,
+            "n": 10,
+            "pf": 1.2507440476190474,
+            "median": 12.76,
+            "net": 269.5999999999999
+          },
+          {
+            "year": 2024,
+            "n": 9,
+            "pf": 5.6923896319091005,
+            "median": 9.76,
+            "net": 1585.84
+          },
+          {
+            "year": 2025,
+            "n": 9,
+            "pf": 4.478982691628399,
+            "median": 10.76,
+            "net": 1575.84
+          },
+          {
+            "year": 2026,
+            "n": 4,
+            "pf": 11.103982300884955,
+            "median": 74.26,
+            "net": 548.04
+          }
+        ],
+        "eras": [
+          {
+            "era": 1,
+            "n": 19,
+            "pf": 0.292124651295868,
+            "median": -15.24,
+            "net": -1187.5600000000002
+          },
+          {
+            "era": 2,
+            "n": 19,
+            "pf": 1.498179085496271,
+            "median": 9.76,
+            "net": 689.4399999999998
+          },
+          {
+            "era": 3,
+            "n": 20,
+            "pf": 5.079937526622178,
+            "median": 15.760000000000002,
+            "net": 3448.2000000000007
+          }
+        ],
+        "yrs_pos": 5,
+        "n_yrs": 8,
+        "era3_pf": 5.079937526622178,
+        "era3_median": 15.760000000000002
+      },
+      "stress": {
+        "rows": [
+          {
+            "stress": "baseline (1x)",
+            "n": 58,
+            "pf": 1.755,
+            "median": 4.76
+          },
+          {
+            "stress": "2x cost + 1 tick slip",
+            "n": 58,
+            "pf": 1.691,
+            "median": 1.52
+          },
+          {
+            "stress": "2x cost + 2 ticks slip",
+            "n": 58,
+            "pf": 1.653,
+            "median": -0.48
+          },
+          {
+            "stress": "4x cost + 2 ticks slip",
+            "n": 58,
+            "pf": 1.606,
+            "median": -2.96
+          }
+        ],
+        "verdict": "FAIL_STRESS"
+      },
+      "family_review": {
+        "n_days_overlap": 0,
+        "overlap_pct_of_a": 0.0,
+        "daily_pnl_corr": -0.021469496790325348
+      },
+      "gates": {
+        "positive_median": true,
+        "max_yr_50_pct": false,
+        "PASS_STRESS": false,
+        "yrs_pos_50_pct": true,
+        "era3_positive_pf": true,
+        "era3_positive_median": true,
+        "all_passed": false
+      },
+      "verdict": "FAILS strict gates"
+    },
+    {
+      "label": "CPI-MGC-Long-EOD-CLEAN",
+      "exit_bars": 72,
+      "metrics": {
+        "n": 58,
+        "pf": 1.249,
+        "median": 3.26,
+        "net": 1790.08,
+        "max_dd": -2564.2
+      },
+      "max_yr_share_pct": 161.0453164104398,
+      "temporal_split": {
+        "per_year": [
+          {
+            "year": 2019,
+            "n": 4,
+            "pf": 0.03711696158826068,
+            "median": -67.24,
+            "net": -356.96000000000004
+          },
+          {
+            "year": 2020,
+            "n": 7,
+            "pf": 0.3177731673582296,
+            "median": 17.76,
+            "net": -315.68000000000006
+          },
+          {
+            "year": 2021,
+            "n": 8,
+            "pf": 0.10953695836873406,
+            "median": -40.74,
+            "net": -1676.92
+          },
+          {
+            "year": 2022,
+            "n": 7,
+            "pf": 3.1612505141916905,
+            "median": 56.76,
+            "net": 420.31999999999994
+          },
+          {
+            "year": 2023,
+            "n": 10,
+            "pf": 2.146745185420977,
+            "median": 11.76,
+            "net": 864.5999999999999
+          },
+          {
+            "year": 2024,
+            "n": 9,
+            "pf": 3.375607575842226,
+            "median": 51.76,
+            "net": 1700.84
+          },
+          {
+            "year": 2025,
+            "n": 9,
+            "pf": 4.0371260008428145,
+            "median": -20.24,
+            "net": 2882.84
+          },
+          {
+            "year": 2026,
+            "n": 4,
+            "pf": 0.06376711141916479,
+            "median": -85.74000000000001,
+            "net": -1728.96
+          }
+        ],
+        "eras": [
+          {
+            "era": 1,
+            "n": 19,
+            "pf": 0.13512279875139882,
+            "median": -39.24,
+            "net": -2349.5599999999995
+          },
+          {
+            "era": 2,
+            "n": 19,
+            "pf": 2.8047745568465716,
+            "median": 12.76,
+            "net": 1820.4399999999998
+          },
+          {
+            "era": 3,
+            "n": 20,
+            "pf": 1.6719124821823828,
+            "median": -10.739999999999998,
+            "net": 2319.2000000000007
+          }
+        ],
+        "yrs_pos": 4,
+        "n_yrs": 8,
+        "era3_pf": 1.6719124821823828,
+        "era3_median": -10.739999999999998
+      },
+      "stress": {
+        "rows": [
+          {
+            "stress": "baseline (1x)",
+            "n": 58,
+            "pf": 1.249,
+            "median": 3.26
+          },
+          {
+            "stress": "2x cost + 1 tick slip",
+            "n": 58,
+            "pf": 1.22,
+            "median": 0.02
+          },
+          {
+            "stress": "2x cost + 2 ticks slip",
+            "n": 58,
+            "pf": 1.203,
+            "median": -1.98
+          },
+          {
+            "stress": "4x cost + 2 ticks slip",
+            "n": 58,
+            "pf": 1.181,
+            "median": -4.46
+          }
+        ],
+        "verdict": "FAIL_STRESS"
+      },
+      "family_review": {
+        "n_days_overlap": 0,
+        "overlap_pct_of_a": 0.0,
+        "daily_pnl_corr": -0.0069955396242682155
+      },
+      "gates": {
+        "positive_median": true,
+        "max_yr_50_pct": false,
+        "PASS_STRESS": false,
+        "yrs_pos_50_pct": true,
+        "era3_positive_pf": true,
+        "era3_positive_median": false,
+        "all_passed": false
+      },
+      "verdict": "FAILS strict gates"
+    }
+  ],
+  "observational_recent_era_2022plus": {
+    "n": 39,
+    "pf": 2.856,
+    "median": 10.76,
+    "net": 4137.64,
+    "note": "OBSERVATIONAL ONLY \u2014 not packet candidate per #144"
+  },
+  "final_disposition": "ARCHIVED unless any variant ALL GATES PASS"
+}

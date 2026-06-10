@@ -1,6 +1,24 @@
 # Paper-Readiness Packet #1 — EVT-NFP-MGC-Long-2h
 
-> ## Status block (UPDATED 2026-06-05 per operator decision #72 — **ACCEPTED**)
+> ## AMENDMENT (2026-06-10 per operator decision #145)
+>
+> **Clean-events re-verification performed after MGC data-gap discovery during CPI-MGC audit (cycle 10g).**
+>
+> Original audit (2026-06-05) used contaminated MGC event alignment. After discovering MGC 5-min data has multi-day gaps at 12 of 96 NFP timestamps (all pre-2019-06-30 + mid-history vendor outages), Packet #1 was re-verified on clean events (gap < 1h only).
+>
+> | Metric | Original (contaminated) | **Clean re-verification (62 events)** | Δ |
+> |---|---:|---:|---:|
+> | n | 84 | 62 | -22 |
+> | PF | 2.264 | **2.393** | **+0.129** ↑ |
+> | Median | $21.76 | $14.26 | -$7.50 |
+> | Max-year share | (audit GREEN) | **34.3%** | ✓ still <50% gate |
+> | Years positive | (audit GREEN) | **8/8** | ✓ all years still positive |
+>
+> **Verdict: Packet #1 ACCEPTANCE HOLDS. Clean-events re-run STRENGTHENS the candidate** (PF improves from 2.26 to 2.39). The data contamination was DILUTING Packet #1's edge, not creating false edge.
+>
+> No paper/live approval is implied by this amendment. Packet #1 remains ACCEPTED but NOT paper/live approved.
+
+## Status block (UPDATED 2026-06-05 per operator decision #72 — **ACCEPTED**; AMENDED 2026-06-10 per #145)
 >
 > | Field | Value |
 > |---|---|

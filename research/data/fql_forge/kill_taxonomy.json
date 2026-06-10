@@ -4000,5 +4000,60 @@
       "concentration"
     ],
     "disposition": "CPI-MGC-Long-2h: clean re-run FAILS concentration gate. Operator decision needed: archive or recent-era-discretion review. Packet #1: clean re-run STRENGTHENS metrics, acceptance holds. Data integrity issue documented as systemic concern for event_window family on MGC."
+  },
+  "_HEADLINE_2026-06-10h_CPI_MGC_ARCHIVED_after_clean_variant_investigation": {
+    "headline": "CPI-MGC clean-variant investigation (cycle 10h): NO variant passes strict gates. ARCHIVED per #144. Recent-era 2022+ subsample preserved as OBSERVATIONAL ONLY.",
+    "date": "2026-06-10",
+    "operator_decisions_executed": [
+      "#144 hybrid A/C",
+      "#145 amend Packet #1",
+      "#146 codify clean-events doctrine",
+      "#147 mark individual dims"
+    ],
+    "investigation_results": {
+      "CPI-MGC-Long-2h-CLEAN": {
+        "n": 58,
+        "pf": 1.755,
+        "median": 4.76,
+        "max_yr_share": 53.8,
+        "yrs_pos": "5/8",
+        "era3_pf": 5.08,
+        "era3_median": 15.76,
+        "stress": "FAIL_STRESS",
+        "gates": "positive_median \u2713, max_yr \u2717 (53.8% > 50%), PASS_STRESS \u2717 (FAIL), yrs_pos \u2713, era3_pf \u2713, era3_median \u2713",
+        "verdict": "FAILS strict gates: concentration + stress"
+      },
+      "CPI-MGC-Long-EOD-CLEAN": {
+        "n": 58,
+        "pf": 1.249,
+        "median": 3.26,
+        "max_yr_share": 161.0,
+        "yrs_pos": "4/8",
+        "era3_pf": 1.67,
+        "era3_median": -10.74,
+        "stress": "FAIL_STRESS",
+        "verdict": "FAILS strict gates: extreme concentration, negative Era3 median, FAIL_STRESS"
+      }
+    },
+    "recent_era_observational": {
+      "label": "CPI-MGC-Long-2h-CLEAN-2022plus-OBSERVATIONAL",
+      "n": 39,
+      "pf": 2.856,
+      "median": 10.76,
+      "net": 4137.64,
+      "note": "OBSERVATIONAL ONLY per #144 \u2014 preserves research finding that post-2022 CPI-MGC is strong but not packet-grade under full-sample gates. NOT a packet candidate."
+    },
+    "final_classification": "CPI-MGC = ARCHIVED as PAPER_PACKET_CANDIDATE; REOPENABLE_WITH_CLEAN_VARIANT if (a) official calendar arrives AND new variant passes ALL strict gates, OR (b) MGC data gaps resolved, OR (c) new thesis variant addresses concentration, OR (d) operator override.",
+    "doctrine_outcomes": {
+      "Packet_1_amendment_per_145": "Amendment added to packet doc: clean-events re-verification STRENGTHENS Packet #1 (PF 2.26\u21922.39, max-yr 34.3%, 8/8 yrs+). Acceptance HOLDS. No paper/live implied.",
+      "event_window_clean_events_doctrine_per_146": "Codified: docs/fql_forge/event_window_clean_events_rule.md + memory feedback_event_window_clean_events_rule.md. All future event-window candidates must use clean-events filter + strict gates evaluated on clean metrics.",
+      "individual_audit_dim_verdicts_per_147": "Dims 1, 7, 8 = GREEN. Dim 4 = no lookahead + data-integrity caveat documented. Dim 5 = BLOCKED DATA_REQUIRED. Dims 2/3 must be re-evaluated only on clean data (which now shows fail). Overall audit = NOT GREEN, BLOCKED."
+    },
+    "sprint_impact": "CPI-MGC candidate downgraded from PAPER_PACKET_CANDIDATE \u2192 ARCHIVED. Packet #1 strengthened (cleanly re-verified). System discipline improved \u2014 concentration gate held, no operator discretion exception granted. Audit process did its job.",
+    "tags": [
+      "concentration",
+      "data-blocked"
+    ],
+    "disposition": "ARCHIVED per strict-gate discipline. Packet #1 acceptance holds with amendment. Data-integrity doctrine codified. Audit process strengthened."
   }
 }

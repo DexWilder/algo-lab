@@ -1,21 +1,39 @@
 # Paper-Readiness Packet #2 — CPI-MGC-Long-2h — DRAFT SHELL
 
-> ## Status block
+> ## Status block (UPDATED 2026-06-10 per operator decisions #144-147)
 >
 > | Field | Value |
 > |---|---|
-> | **Status** | **DRAFT SHELL** — PAPER_PACKET_CANDIDATE pending official BLS calendar verification + 8-dim audit |
-> | **Operator decision** | Variant switch from Long-1h → Long-2h **ACCEPTED** per #139 |
-> | **Calendar status** | **DATA_REQUIRED** per #140-C: machine-fetch of bls.gov returned HTTP 403; web archive blocked. Awaiting operator-supplied official BLS calendar (export / PDF / screenshot). Forge-recall calendar is NOT production-grade per #140. |
-> | **Audit status** | Non-calendar dimensions running per #141; calendar dim cannot go GREEN until #140 resolved |
+> | **Status** | **ARCHIVED as PAPER_PACKET_CANDIDATE — REOPENABLE_WITH_CLEAN_VARIANT** |
+> | **Disposition** | Per #144 hybrid A/C: archived because clean-events re-run fails strict concentration + stress gates. NO operator discretion exception applied. |
+> | **Clean-events variant investigation (cycle 10h)** | NO variant passes strict gates: Long-2h clean (53.8% max-yr, FAIL_STRESS), Long-EOD clean (161% max-yr, Era3 median negative, FAIL_STRESS) |
+> | **Recent-era OBSERVATIONAL note** | 2022+ subsample (n=39): PF 2.856, median $10.76, net $4137. OBSERVATIONAL ONLY per #144. NOT a packet candidate. |
+> | **Calendar status** | DATA_REQUIRED per #140-C (BLS machine-fetch blocked; operator submission still pending) |
+> | **Audit status** | Individual dims marked; OVERALL AUDIT = NOT GREEN; BLOCKED on calendar dim + strict-gate failure |
 > | **Paper status** | NOT paper-approved |
 > | **Live status** | NOT live-approved |
-> | **Registry mutation** | NONE proposed |
-> | **Scheduler change** | NONE proposed |
-> | **Portfolio allocation change** | NONE proposed |
 > | **Sprint position** | Day 13 of 30 |
 > | **Authority** | T1 / Lane B / report-only |
-> | **Source artifacts** | `research/forge_cycle_2026-06-10d.py` (rule-based v1), `research/forge_cycle_2026-06-10f_cpi_mgc_verified_calendar.py` (Forge-recall verified re-run) |
+>
+> **Individual audit dimension verdicts (per #147):**
+>
+> | Dim | Verdict |
+> |---:|---|
+> | 1 — Cost source | GREEN |
+> | 2 — Cost stress | EVIDENCE COLLECTED on contaminated data; FAIL_STRESS on clean data |
+> | 3 — Edge quality | Documented; FAILS gates on clean data |
+> | 4 — Lookahead | NO ACTUAL LOOKAHEAD — but surfaced data integrity issue (now codified into doctrine per #146) |
+> | 5 — Calendar | BLOCKED — DATA_REQUIRED per #140 |
+> | 6 — Survivorship | N/A (single instrument) |
+> | 7 — Duplicate/family | GREEN — independent of NFP-MGC (corr -0.021 on clean) |
+> | 8 — Artifact stability | GREEN — deterministic re-run, hash-matched |
+> | **OVERALL** | **NOT GREEN** — BLOCKED on #5 AND failing concentration + stress gates on clean data |
+>
+> **REOPEN criteria** (any of these):
+> 1. Official BLS calendar arrives AND a new bounded re-run on clean events passes ALL strict gates
+> 2. MGC data gaps are resolved (operator-approved data unlock; deferred per #146-A)
+> 3. New thesis-specific variant proposed that addresses concentration concern without curve-fitting
+> 4. Explicit operator override
 
 ---
 
