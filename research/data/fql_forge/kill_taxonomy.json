@@ -3199,7 +3199,8 @@
       "median-negative",
       "cost-eats-edge"
     ],
-    "disposition": "0 PAPER_PACKET. 0 OBSERVATIONAL. 5 KILL. stop_run_reversal ARCHIVED. 5/5 new primitives this campaign now classified. Operator decision needed: continue with opening_drive_continuation (SMP-3 Tier 2 last remaining), pivot to NEEDS_DATA, or wait for prop-cost unlock."
+    "disposition": "0 PAPER_PACKET. 0 OBSERVATIONAL. 5 KILL. stop_run_reversal ARCHIVED. 5/5 new primitives this campaign now classified. Operator decision needed: continue with opening_drive_continuation (SMP-3 Tier 2 last remaining), pivot to NEEDS_DATA, or wait for prop-cost unlock.",
+    "operator_decision_125": "OK A \u2014 ARCHIVED with REOPENABLE_WITH_NEW_THESIS label. Reopen criteria: multi-bar failure/reclaim logic, session liquidity levels, prior high/low sweep handling, confirmation after failed breakout, possibly volume/range context. Do not run quick retry unless mechanism redesigned."
   },
   "_HEADLINE_2026-06-09e_break_even_analysis_reveals_higher_BBKC_tolerance": {
     "headline": "Break-even cost analysis on 8 OBSERVATIONAL candidates. BBKC-MNQ tolerance is HIGHER than previously estimated: break-even RT $5.00 (margin $2.76 above $2.24 base), not $3.00 from prior coarse stress estimate. 4 candidates very cost-robust (beyond 4x); 4 measurable break-even RT $4-$6.25.",
@@ -3283,6 +3284,30 @@
     "corrected_unlock_threshold": "$5.00 RT (linear-interpolated exact break-even); for $1 safety buffer, target verified RT \u2264 $4.00",
     "implication_for_4_cost_robust_candidates": "MCL \u00d7 2 already in DATA_REQUIRED queue pending #85. MES PORTFOLIO_COMPLEMENT \u00d7 2 blocked by family overlap (cost unlock would not change family classification). The cost unlock primarily benefits BBKC-MNQ.",
     "tags": [],
-    "disposition": "ACTIONABLE: BBKC-MNQ unlock probability higher than previously estimated. Recommend operator prop-cost data submission as #1 priority \u2014 break-even buffer of $2.76 means even imprecise rate sheets likely place verified RT in unlock range."
+    "disposition": "ACTIONABLE: BBKC-MNQ unlock probability higher than previously estimated. Recommend operator prop-cost data submission as #1 priority \u2014 break-even buffer of $2.76 means even imprecise rate sheets likely place verified RT in unlock range.",
+    "operator_correction_124": "BBKC-MNQ-Both-PL = CONDITIONAL PRE-PACKET / OBSERVATIONAL pending verified prop-cost data. NOT promoted. NOT Packet #2. May proceed to family review + 8-dim audit ONLY if verified MNQ round-trip cost is within empirical unlock range. Do not claim unlock until template is filled with verified numbers."
+  },
+  "_HEADLINE_2026-06-10_next_search_basis_selection_note": {
+    "headline": "Per #126: produced next-search-basis selection note comparing 7 candidates \u00d7 6 criteria. Recommends Candidate #2 (continuation/fade after abnormal range day) as bounded next-build.",
+    "date": "2026-06-10",
+    "operator_correction_locked": "BBKC-MNQ is conditional pre-packet, not promoted. Continue broad search while cost data pending.",
+    "selection_summary": {
+      "primary_recommendation": "#2 continuation/fade after abnormal range day \u2014 HIGH novelty, MOD sample, HIGH cost-margin, HIGH non-duplicate, minimal infra (~2-3h build)",
+      "secondary_options": [
+        "#3 overnight range breakout/fade \u2014 strong but needs new feature",
+        "#6 macro/metals-specific event variants (CPI-MGC, FOMC-MGC, PPI-MGC) \u2014 HIGH cost-margin from event archetype, but operator constraint on equity-index sweeps may extend to metals"
+      ],
+      "not_recommended": [
+        "#1 opening_drive_continuation \u2014 duplicate risk with ORB family",
+        "#4 liquidation reversal redesign \u2014 per operator, only redesign if mechanism rebuilt",
+        "#5 session_close/settlement \u2014 high freq \u2192 small per-trade likely",
+        "#7 rates-native curve/carry \u2014 significant infrastructure cost"
+      ]
+    },
+    "filter_pre_flight_for_recommended": "Thesis is bidirectional (continuation OR fade); first batch tests both modes with filter=none per #120 rule.",
+    "expected_first_batch": "8 candidates (MES/MNQ/MGC/MCL \u00d7 continuation/fade \u00d7 none \u00d7 PL). Approx 400 abnormal-range candidates per asset over 8 years.",
+    "doctrine_compliance": "Saturation narrow rule applies \u2014 abnormal-range mechanism does NOT overlap with any saturated tuple. Filter pre-flight rule applies \u2014 filter=none for bidirectional thesis. PL-default rule applies. Cost-fragility hypothesis: sparse-event archetype typically produces larger per-trade margin than continuous workhorse.",
+    "tags": [],
+    "disposition": "AWAITING OPERATOR APPROVAL on recommendation. If approved, build proceeds within ~3h elapsed (feature + entry primitive + smoke tests + first batch)."
   }
 }
