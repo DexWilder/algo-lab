@@ -1,0 +1,390 @@
+{
+  "date": "2026-06-10",
+  "purpose": "abnormal_range_followup first batch (#127)",
+  "boundaries": "report-only Lane B",
+  "filter_pre_flight": "bidirectional thesis \u2192 filter=none per #120",
+  "tier_classification": {
+    "UPGRADE_CANDIDATE": 0,
+    "OBSERVATIONAL": 0,
+    "KILL": 12
+  },
+  "results": [
+    {
+      "spec": {
+        "label": "ARF-MES-cont-PL",
+        "asset": "MES",
+        "entry": "abnormal_range_followup",
+        "filter": "none",
+        "exit": "profit_ladder",
+        "params": {
+          "mode": "continuation"
+        },
+        "backtest_mode": "both"
+      },
+      "metrics": {
+        "n": 0,
+        "pf": NaN,
+        "median": 0.0,
+        "net": 0.0,
+        "max_dd": 0.0,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": NaN,
+        "h2_pf": NaN,
+        "years_positive": 0,
+        "n_years": 0
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (n=0)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 90.30258202552795
+    },
+    {
+      "spec": {
+        "label": "ARF-MES-fade-PL",
+        "asset": "MES",
+        "entry": "abnormal_range_followup",
+        "filter": "none",
+        "exit": "profit_ladder",
+        "params": {
+          "mode": "fade"
+        },
+        "backtest_mode": "both"
+      },
+      "metrics": {
+        "n": 0,
+        "pf": NaN,
+        "median": 0.0,
+        "net": 0.0,
+        "max_dd": 0.0,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": NaN,
+        "h2_pf": NaN,
+        "years_positive": 0,
+        "n_years": 0
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (n=0)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 0.7145819664001465
+    },
+    {
+      "spec": {
+        "label": "ARF-MNQ-cont-PL",
+        "asset": "MNQ",
+        "entry": "abnormal_range_followup",
+        "filter": "none",
+        "exit": "profit_ladder",
+        "params": {
+          "mode": "continuation"
+        },
+        "backtest_mode": "both"
+      },
+      "metrics": {
+        "n": 0,
+        "pf": NaN,
+        "median": 0.0,
+        "net": 0.0,
+        "max_dd": 0.0,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": NaN,
+        "h2_pf": NaN,
+        "years_positive": 0,
+        "n_years": 0
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (n=0)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 101.58331203460693
+    },
+    {
+      "spec": {
+        "label": "ARF-MNQ-fade-PL",
+        "asset": "MNQ",
+        "entry": "abnormal_range_followup",
+        "filter": "none",
+        "exit": "profit_ladder",
+        "params": {
+          "mode": "fade"
+        },
+        "backtest_mode": "both"
+      },
+      "metrics": {
+        "n": 0,
+        "pf": NaN,
+        "median": 0.0,
+        "net": 0.0,
+        "max_dd": 0.0,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": NaN,
+        "h2_pf": NaN,
+        "years_positive": 0,
+        "n_years": 0
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (n=0)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 0.903048038482666
+    },
+    {
+      "spec": {
+        "label": "ARF-MGC-cont-PL",
+        "asset": "MGC",
+        "entry": "abnormal_range_followup",
+        "filter": "none",
+        "exit": "profit_ladder",
+        "params": {
+          "mode": "continuation"
+        },
+        "backtest_mode": "both"
+      },
+      "metrics": {
+        "n": 130,
+        "pf": 0.58,
+        "median": -0.24,
+        "net": -4506.2,
+        "max_dd": -6180.92,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 1.481,
+        "h2_pf": 0.318,
+        "years_positive": 3,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 52.625166177749634
+    },
+    {
+      "spec": {
+        "label": "ARF-MGC-fade-PL",
+        "asset": "MGC",
+        "entry": "abnormal_range_followup",
+        "filter": "none",
+        "exit": "profit_ladder",
+        "params": {
+          "mode": "fade"
+        },
+        "backtest_mode": "both"
+      },
+      "metrics": {
+        "n": 130,
+        "pf": 1.468,
+        "median": -18.74,
+        "net": 3563.8,
+        "max_dd": -2680.4,
+        "max_year_share_pct": 114.6,
+        "top3_share_pct": 97.9,
+        "h1_pf": 0.62,
+        "h2_pf": 2.252,
+        "years_positive": 3,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (asymmetric trap: PF>1.2, median<0)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 0.40966129302978516
+    },
+    {
+      "spec": {
+        "label": "ARF-MCL-cont-PL",
+        "asset": "MCL",
+        "entry": "abnormal_range_followup",
+        "filter": "none",
+        "exit": "profit_ladder",
+        "params": {
+          "mode": "continuation"
+        },
+        "backtest_mode": "both"
+      },
+      "metrics": {
+        "n": 0,
+        "pf": NaN,
+        "median": 0.0,
+        "net": 0.0,
+        "max_dd": 0.0,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": NaN,
+        "h2_pf": NaN,
+        "years_positive": 0,
+        "n_years": 0
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (n=0)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 62.86393117904663
+    },
+    {
+      "spec": {
+        "label": "ARF-MCL-fade-PL",
+        "asset": "MCL",
+        "entry": "abnormal_range_followup",
+        "filter": "none",
+        "exit": "profit_ladder",
+        "params": {
+          "mode": "fade"
+        },
+        "backtest_mode": "both"
+      },
+      "metrics": {
+        "n": 0,
+        "pf": NaN,
+        "median": 0.0,
+        "net": 0.0,
+        "max_dd": 0.0,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": NaN,
+        "h2_pf": NaN,
+        "years_positive": 0,
+        "n_years": 0
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (n=0)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 0.4916830062866211
+    },
+    {
+      "spec": {
+        "label": "ARF-MYM-cont-PL",
+        "asset": "MYM",
+        "entry": "abnormal_range_followup",
+        "filter": "none",
+        "exit": "profit_ladder",
+        "params": {
+          "mode": "continuation"
+        },
+        "backtest_mode": "both"
+      },
+      "metrics": {
+        "n": 0,
+        "pf": NaN,
+        "median": 0.0,
+        "net": 0.0,
+        "max_dd": 0.0,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": NaN,
+        "h2_pf": NaN,
+        "years_positive": 0,
+        "n_years": 0
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (n=0)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 30.109855890274048
+    },
+    {
+      "spec": {
+        "label": "ARF-MYM-fade-PL",
+        "asset": "MYM",
+        "entry": "abnormal_range_followup",
+        "filter": "none",
+        "exit": "profit_ladder",
+        "params": {
+          "mode": "fade"
+        },
+        "backtest_mode": "both"
+      },
+      "metrics": {
+        "n": 0,
+        "pf": NaN,
+        "median": 0.0,
+        "net": 0.0,
+        "max_dd": 0.0,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": NaN,
+        "h2_pf": NaN,
+        "years_positive": 0,
+        "n_years": 0
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (n=0)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 0.2290968894958496
+    },
+    {
+      "spec": {
+        "label": "ARF-ZN-cont-PL",
+        "asset": "ZN",
+        "entry": "abnormal_range_followup",
+        "filter": "none",
+        "exit": "profit_ladder",
+        "params": {
+          "mode": "continuation"
+        },
+        "backtest_mode": "both"
+      },
+      "metrics": {
+        "n": 74,
+        "pf": 0.613,
+        "median": -34.35,
+        "net": -2260.68,
+        "max_dd": -2482.66,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.396,
+        "h2_pf": 0.861,
+        "years_positive": 2,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 78.40945100784302
+    },
+    {
+      "spec": {
+        "label": "ARF-ZN-fade-PL",
+        "asset": "ZN",
+        "entry": "abnormal_range_followup",
+        "filter": "none",
+        "exit": "profit_ladder",
+        "params": {
+          "mode": "fade"
+        },
+        "backtest_mode": "both"
+      },
+      "metrics": {
+        "n": 74,
+        "pf": 0.446,
+        "median": -49.98,
+        "net": -3713.8,
+        "max_dd": -4379.59,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.422,
+        "h2_pf": 0.47,
+        "years_positive": 2,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 0.7233080863952637
+    }
+  ],
+  "feature_cache_stats_final": {
+    "hits": 6,
+    "misses": 6,
+    "cached_keys": 6
+  }
+}

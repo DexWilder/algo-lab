@@ -175,6 +175,22 @@ def compute_features(df: pd.DataFrame) -> dict:
     prev_day_low = np.array([prev_low_map.get(d, np.nan) for d in dates])
     prev_day_close = np.array([prev_close_map.get(d, np.nan) for d in dates])
 
+    # Prev-day range stats (added 2026-06-10 per operator decision #127).
+    # Used by entry_abnormal_range_followup: detects when prior trading day
+    # had an abnormally large range (top quintile of 60-day distribution).
+    daily_range = daily_high - daily_low
+    daily_midpoint = (daily_high + daily_low) / 2
+    daily_range_pctrank = daily_range.rolling(60, min_periods=30).apply(
+        lambda x: (x.iloc[-1] <= x).sum() / len(x) * 100, raw=False
+    )
+    prev_range_map = daily_range.shift(1).to_dict()
+    prev_midpoint_map = daily_midpoint.shift(1).to_dict()
+    prev_pctrank_map = daily_range_pctrank.shift(1).to_dict()
+    prev_day_range = np.array([prev_range_map.get(d, np.nan) for d in dates])
+    prev_day_midpoint = np.array([prev_midpoint_map.get(d, np.nan) for d in dates])
+    prev_day_range_pctrank_60 = np.array(
+        [prev_pctrank_map.get(d, np.nan) for d in dates])
+
     # Hurst proxy via variance ratio (added 2026-06-03 per operator approval
     # of the hurst_stable filter build). Computed on log-returns; rolling
     # 256-bar window. H ≈ 0.5 = random walk; H < 0.5 = mean-reverting; H > 0.5
@@ -295,6 +311,8 @@ def compute_features(df: pd.DataFrame) -> dict:
         "kc_upper": kc_upper, "kc_lower": kc_lower, "squeeze_on": squeeze_on,
         "hurst": hurst, "rsi": rsi,
         "prev_day_high": prev_day_high, "prev_day_low": prev_day_low, "prev_day_close": prev_day_close,
+        "prev_day_range": prev_day_range, "prev_day_midpoint": prev_day_midpoint,
+        "prev_day_range_pctrank_60": prev_day_range_pctrank_60,
         "vwap": vwap,
         "dc_high_20": dc_high_20, "dc_low_20": dc_low_20,
         "dc_high_30": dc_high_30, "dc_low_30": dc_low_30,
@@ -495,6 +513,96 @@ def entry_vol_expansion(f, i, state, params):
             and close < ema20 and close < prev_close):
         stop = close + f["atr"][i] * params.get("stop_mult", 2.0)
         target = close - f["atr"][i] * params.get("target_mult", 4.0)
+        return -1, stop, target
+    return 0, 0, 0
+
+
+def entry_abnormal_range_followup(f, i, state, params):
+    """Abnormal-range-day follow-up entry (added 2026-06-10 per operator decision #127).
+
+    Mechanism: at the open of session N+1, if PRIOR DAY's total range (high-low)
+    was abnormally large (top quintile of 60-day distribution, pctrank >= 80),
+    enter a position aligned with prior-day direction (continuation mode) or
+    against it (fade mode).
+
+    Prior-day direction is determined by close vs midpoint of prior-day range:
+      - close above midpoint = bullish day
+      - close below midpoint = bearish day
+
+    Continuation mode trades in the direction of yesterday's close:
+      - bullish abnormal day → LONG today
+      - bearish abnormal day → SHORT today
+
+    Fade mode trades against:
+      - bullish abnormal day → SHORT today
+      - bearish abnormal day → LONG today
+
+    Different from all 5 tested mechanism families (compression, vol-regime,
+    squeeze, gap-fade, sweep-reversal) — operates on DAILY range pctrank and
+    triggers on FOLLOWING day's session open.
+
+    Fail-closed:
+      - i < 1: no signal
+      - Not in session, or beyond session_open_bars from start: no signal
+      - NaN in prev_day_range_pctrank_60, prev_day_close, or prev_day_midpoint: no signal
+      - pctrank < threshold (not abnormal): no signal
+      - Zero ATR: no signal
+      - Unknown mode: no signal
+
+    Params (all optional, conservative defaults):
+      mode: "continuation" or "fade" (default "continuation")
+      pctrank_threshold: 80          — top quintile of 60-day range distribution
+      session_open_bars: 3           — fire within first N bars of session
+      stop_mult: 1.5                 — ATR multiplier for stop
+      target_mult: 3.0               — ATR multiplier for target
+    """
+    if i < 1:
+        return 0, 0, 0
+    if not f["in_session"][i]:
+        return 0, 0, 0
+    # Count consecutive in_session bars ending at i; must be early
+    session_open_bars = params.get("session_open_bars", 3)
+    n_consecutive = 0
+    j = i
+    while j >= 0 and f["in_session"][j]:
+        n_consecutive += 1
+        j -= 1
+        if n_consecutive > session_open_bars:
+            return 0, 0, 0
+    if n_consecutive == 0:
+        return 0, 0, 0
+    pctrank = f["prev_day_range_pctrank_60"][i]
+    prev_close = f["prev_day_close"][i]
+    prev_mid = f["prev_day_midpoint"][i]
+    if np.isnan(pctrank) or np.isnan(prev_close) or np.isnan(prev_mid):
+        return 0, 0, 0
+    threshold = params.get("pctrank_threshold", 80)
+    if pctrank < threshold:
+        return 0, 0, 0
+    yesterday_bullish = prev_close > prev_mid
+    yesterday_bearish = prev_close < prev_mid
+    if not (yesterday_bullish or yesterday_bearish):
+        return 0, 0, 0
+    mode = params.get("mode", "continuation")
+    if mode == "continuation":
+        long_signal = yesterday_bullish
+        short_signal = yesterday_bearish
+    elif mode == "fade":
+        long_signal = yesterday_bearish
+        short_signal = yesterday_bullish
+    else:
+        return 0, 0, 0
+    close = f["close"][i]
+    atr_i = f["atr"][i]
+    if np.isnan(atr_i) or atr_i == 0:
+        return 0, 0, 0
+    if long_signal and not state["long_traded_today"]:
+        stop = close - atr_i * params.get("stop_mult", 1.5)
+        target = close + atr_i * params.get("target_mult", 3.0)
+        return 1, stop, target
+    if short_signal and not state["short_traded_today"]:
+        stop = close + atr_i * params.get("stop_mult", 1.5)
+        target = close - atr_i * params.get("target_mult", 3.0)
         return -1, stop, target
     return 0, 0, 0
 
@@ -1218,6 +1326,7 @@ ENTRY_MAP = {
     "bb_keltner_squeeze": entry_bb_keltner_squeeze,
     "gap_fill_trigger": entry_gap_fill_trigger,
     "stop_run_reversal": entry_stop_run_reversal,
+    "abnormal_range_followup": entry_abnormal_range_followup,
 }
 
 EXIT_MAP = {

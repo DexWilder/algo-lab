@@ -3309,5 +3309,101 @@
     "doctrine_compliance": "Saturation narrow rule applies \u2014 abnormal-range mechanism does NOT overlap with any saturated tuple. Filter pre-flight rule applies \u2014 filter=none for bidirectional thesis. PL-default rule applies. Cost-fragility hypothesis: sparse-event archetype typically produces larger per-trade margin than continuous workhorse.",
     "tags": [],
     "disposition": "AWAITING OPERATOR APPROVAL on recommendation. If approved, build proceeds within ~3h elapsed (feature + entry primitive + smoke tests + first batch)."
+  },
+  "_HEADLINE_2026-06-10a_abnormal_range_archived_anti_edge_in_fair_test": {
+    "headline": "abnormal_range_followup first batch: 12/12 KILL. Fair-test fires on MGC (n=130) and ZN (n=74) \u2014 both anti-edge with classic asymmetric trap on MGC fade (PF 1.47 + median -$18.74). n=0 on MES/MNQ/MCL/MYM (same data-asymmetry pattern as gap_fill 09c). ARCHIVED + REOPENABLE_WITH_NEW_THESIS.",
+    "date": "2026-06-10",
+    "operator_approval": "OK 127 build abnormal_range_followup with bidirectional thesis (continuation + fade) and filter=none per #120 pre-flight",
+    "primitive_shipped": true,
+    "smoke_tests": "11/11 PASS",
+    "results": {
+      "ARF-MES-cont-PL": {
+        "n": 0,
+        "verdict": "KILL n=0 (same data-asymmetry as 09c)"
+      },
+      "ARF-MES-fade-PL": {
+        "n": 0,
+        "verdict": "KILL n=0"
+      },
+      "ARF-MNQ-cont-PL": {
+        "n": 0,
+        "verdict": "KILL n=0"
+      },
+      "ARF-MNQ-fade-PL": {
+        "n": 0,
+        "verdict": "KILL n=0"
+      },
+      "ARF-MGC-cont-PL": {
+        "n": 130,
+        "pf": 0.58,
+        "median": -0.24,
+        "verdict": "KILL median neg (FAIR TEST)"
+      },
+      "ARF-MGC-fade-PL": {
+        "n": 130,
+        "pf": 1.468,
+        "median": -18.74,
+        "max_yr": 114.6,
+        "verdict": "KILL asymmetric trap (PF>1.2 median<0) \u2014 doctrine NEVER packet-grade"
+      },
+      "ARF-MCL-cont-PL": {
+        "n": 0,
+        "verdict": "KILL n=0"
+      },
+      "ARF-MCL-fade-PL": {
+        "n": 0,
+        "verdict": "KILL n=0"
+      },
+      "ARF-MYM-cont-PL": {
+        "n": 0,
+        "verdict": "KILL n=0"
+      },
+      "ARF-MYM-fade-PL": {
+        "n": 0,
+        "verdict": "KILL n=0"
+      },
+      "ARF-ZN-cont-PL": {
+        "n": 74,
+        "pf": 0.613,
+        "median": -34.35,
+        "verdict": "KILL median neg (FAIR TEST on rates)"
+      },
+      "ARF-ZN-fade-PL": {
+        "n": 74,
+        "pf": 0.446,
+        "median": -49.98,
+        "verdict": "KILL median neg"
+      }
+    },
+    "fair_test_assets": [
+      "MGC (n=130)",
+      "ZN (n=74)"
+    ],
+    "fair_test_verdicts": "Both anti-edge in both modes. MGC-fade hits the classic asymmetric trap pattern (PF 1.47 with median -$18.74) \u2014 high-PF outliers + many small losses. 60-day pctrank threshold of 80 may be too low or the post-abnormal-day direction signal may be too noisy.",
+    "data_asymmetry_pattern_repeat": "Same n=0 pattern on MES/MNQ/MCL/MYM as gap_fill cycle 09c. Both primitives use in_session detection + session_open_bars window. MGC and ZN fire adequately. Suggests in_session edge-case interaction (e.g., session-open bar detection) varies by asset's time-of-day distribution. Worth a separate investigation; not blocking ARCHIVED classification given fair-test verdict on assets where mechanism does fire.",
+    "narrow_saturation_tuple": "(MES/MNQ/MGC/MCL/MYM/ZN \u00d7 abnormal-range follow-up \u00d7 abnormal_range_followup \u00d7 none \u00d7 PL \u00d7 intraday \u00d7 60-day pctrank \u00d7 prev-day-close-vs-midpoint direction)",
+    "REOPEN_criteria": [
+      "Different pctrank window (30-day, 120-day, or daily-bar timescale)",
+      "Different threshold (90% instead of 80%)",
+      "Different direction proxy (prev-day VWAP instead of midpoint)",
+      "Different exit target (prev_day_midpoint instead of ATR-multiplied)",
+      "Different holding period (full RTH instead of bar-level)",
+      "Session-specific (9:30 only, not first 3 bars)",
+      "Event-window cross (abnormal day FOLLOWING a known macro event)",
+      "Data-asymmetry root cause fix (investigate in_session edge cases on MES/MNQ/MCL/MYM)"
+    ],
+    "cumulative_new_primitive_scoreboard": {
+      "RCB": "RESEARCH_ONLY (concentration intrinsic)",
+      "VRC": "ARCHIVED (mechanism anti-edge)",
+      "BBKC": "RESEARCH_ONLY \u2192 CONDITIONAL PRE-PACKET (BBKC-MNQ pending prop-cost)",
+      "gap_fill_trigger": "ARCHIVED + REOPENABLE_WITH_NEW_THESIS",
+      "stop_run_reversal": "ARCHIVED + REOPENABLE_WITH_NEW_THESIS",
+      "abnormal_range_followup": "ARCHIVED + REOPENABLE_WITH_NEW_THESIS (today)"
+    },
+    "cumulative_count": "6 new mechanism primitives this campaign. 0 PAPER_PACKET. 1 conditional pre-packet (BBKC-MNQ). Cost-fragility hypothesis remains empirically maximally strong.",
+    "tags": [
+      "median-negative"
+    ],
+    "disposition": "0 PAPER_PACKET. 0 OBSERVATIONAL. 12 KILL. Primitive ARCHIVED + REOPENABLE. Per operator #128 next safe fallback: metals-specific event spec shortlist (CPI-MGC / FOMC-MGC / PPI-MGC). Operator constraint clarification needed before launch: confirm metals-specific events permitted vs equity-index sweep ban."
   }
 }
