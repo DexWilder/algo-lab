@@ -1,0 +1,1008 @@
+{
+  "date": "2026-06-09",
+  "purpose": "Break-even cost analysis on OBSERVATIONAL inventory (cost-fragility hypothesis empirical mapping)",
+  "boundaries": "report-only Lane B; no asset_config change; no cost-assumption change",
+  "method": "Sweep commission multiplier 0.25x-4.0x at base slippage; linear interp between adjacent samples to find median=0",
+  "results": [
+    {
+      "spec": {
+        "label": "MCL-Short-PL (XB-ORB)",
+        "asset": "MCL",
+        "entry": "orb_breakout",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "short"
+      },
+      "base_rt_cost_dollar": 5.24,
+      "base_median": 7.76,
+      "base_pf": 1.4,
+      "base_n": 471,
+      "break_even_rt_dollar": null,
+      "break_even_cost_mult": null,
+      "samples": [
+        {
+          "cost_mult": 0.25,
+          "commission_per_side": 0.155,
+          "slippage_ticks": 2,
+          "rt_cost_dollar": 4.31,
+          "n": 471,
+          "pf": 1.437,
+          "median": 8.69,
+          "net": 6138.99
+        },
+        {
+          "cost_mult": 0.5,
+          "commission_per_side": 0.31,
+          "slippage_ticks": 2,
+          "rt_cost_dollar": 4.62,
+          "n": 471,
+          "pf": 1.424,
+          "median": 8.38,
+          "net": 5992.98
+        },
+        {
+          "cost_mult": 0.75,
+          "commission_per_side": 0.46499999999999997,
+          "slippage_ticks": 2,
+          "rt_cost_dollar": 4.93,
+          "n": 471,
+          "pf": 1.412,
+          "median": 8.07,
+          "net": 5846.97
+        },
+        {
+          "cost_mult": 1.0,
+          "commission_per_side": 0.62,
+          "slippage_ticks": 2,
+          "rt_cost_dollar": 5.24,
+          "n": 471,
+          "pf": 1.4,
+          "median": 7.76,
+          "net": 5700.96
+        },
+        {
+          "cost_mult": 1.25,
+          "commission_per_side": 0.775,
+          "slippage_ticks": 2,
+          "rt_cost_dollar": 5.55,
+          "n": 471,
+          "pf": 1.388,
+          "median": 7.45,
+          "net": 5554.95
+        },
+        {
+          "cost_mult": 1.5,
+          "commission_per_side": 0.9299999999999999,
+          "slippage_ticks": 2,
+          "rt_cost_dollar": 5.859999999999999,
+          "n": 471,
+          "pf": 1.376,
+          "median": 7.14,
+          "net": 5408.94
+        },
+        {
+          "cost_mult": 2.0,
+          "commission_per_side": 1.24,
+          "slippage_ticks": 2,
+          "rt_cost_dollar": 6.48,
+          "n": 471,
+          "pf": 1.352,
+          "median": 6.52,
+          "net": 5116.92
+        },
+        {
+          "cost_mult": 2.5,
+          "commission_per_side": 1.55,
+          "slippage_ticks": 2,
+          "rt_cost_dollar": 7.1,
+          "n": 471,
+          "pf": 1.329,
+          "median": 5.9,
+          "net": 4824.9
+        },
+        {
+          "cost_mult": 3.0,
+          "commission_per_side": 1.8599999999999999,
+          "slippage_ticks": 2,
+          "rt_cost_dollar": 7.72,
+          "n": 471,
+          "pf": 1.306,
+          "median": 5.28,
+          "net": 4532.88
+        },
+        {
+          "cost_mult": 4.0,
+          "commission_per_side": 2.48,
+          "slippage_ticks": 2,
+          "rt_cost_dollar": 8.96,
+          "n": 471,
+          "pf": 1.262,
+          "median": 4.04,
+          "net": 3948.84
+        }
+      ]
+    },
+    {
+      "spec": {
+        "label": "MCL-Short-FR2 (XB-ORB)",
+        "asset": "MCL",
+        "entry": "orb_breakout",
+        "filter": "ema_slope",
+        "exit": "fixed_ratio",
+        "params": {
+          "ratio": 2.0
+        },
+        "mode": "short"
+      },
+      "base_rt_cost_dollar": 5.24,
+      "base_median": 3.76,
+      "base_pf": 1.444,
+      "base_n": 471,
+      "break_even_rt_dollar": null,
+      "break_even_cost_mult": null,
+      "samples": [
+        {
+          "cost_mult": 0.25,
+          "commission_per_side": 0.155,
+          "slippage_ticks": 2,
+          "rt_cost_dollar": 4.31,
+          "n": 471,
+          "pf": 1.48,
+          "median": 4.69,
+          "net": 7118.99
+        },
+        {
+          "cost_mult": 0.5,
+          "commission_per_side": 0.31,
+          "slippage_ticks": 2,
+          "rt_cost_dollar": 4.62,
+          "n": 471,
+          "pf": 1.468,
+          "median": 4.38,
+          "net": 6972.98
+        },
+        {
+          "cost_mult": 0.75,
+          "commission_per_side": 0.46499999999999997,
+          "slippage_ticks": 2,
+          "rt_cost_dollar": 4.93,
+          "n": 471,
+          "pf": 1.456,
+          "median": 4.07,
+          "net": 6826.97
+        },
+        {
+          "cost_mult": 1.0,
+          "commission_per_side": 0.62,
+          "slippage_ticks": 2,
+          "rt_cost_dollar": 5.24,
+          "n": 471,
+          "pf": 1.444,
+          "median": 3.76,
+          "net": 6680.96
+        },
+        {
+          "cost_mult": 1.25,
+          "commission_per_side": 0.775,
+          "slippage_ticks": 2,
+          "rt_cost_dollar": 5.55,
+          "n": 471,
+          "pf": 1.432,
+          "median": 3.45,
+          "net": 6534.95
+        },
+        {
+          "cost_mult": 1.5,
+          "commission_per_side": 0.9299999999999999,
+          "slippage_ticks": 2,
+          "rt_cost_dollar": 5.859999999999999,
+          "n": 471,
+          "pf": 1.421,
+          "median": 3.14,
+          "net": 6388.94
+        },
+        {
+          "cost_mult": 2.0,
+          "commission_per_side": 1.24,
+          "slippage_ticks": 2,
+          "rt_cost_dollar": 6.48,
+          "n": 471,
+          "pf": 1.398,
+          "median": 2.52,
+          "net": 6096.92
+        },
+        {
+          "cost_mult": 2.5,
+          "commission_per_side": 1.55,
+          "slippage_ticks": 2,
+          "rt_cost_dollar": 7.1,
+          "n": 471,
+          "pf": 1.375,
+          "median": 1.9,
+          "net": 5804.9
+        },
+        {
+          "cost_mult": 3.0,
+          "commission_per_side": 1.8599999999999999,
+          "slippage_ticks": 2,
+          "rt_cost_dollar": 7.72,
+          "n": 471,
+          "pf": 1.353,
+          "median": 1.28,
+          "net": 5512.88
+        },
+        {
+          "cost_mult": 4.0,
+          "commission_per_side": 2.48,
+          "slippage_ticks": 2,
+          "rt_cost_dollar": 8.96,
+          "n": 471,
+          "pf": 1.31,
+          "median": 0.04,
+          "net": 4928.84
+        }
+      ]
+    },
+    {
+      "spec": {
+        "label": "BBKC-MNQ-Both-PL",
+        "asset": "MNQ",
+        "entry": "bb_keltner_squeeze",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "both"
+      },
+      "base_rt_cost_dollar": 2.24,
+      "base_median": 2.76,
+      "base_pf": 1.206,
+      "base_n": 837,
+      "break_even_rt_dollar": 5.0,
+      "break_even_cost_mult": 3.225806451612903,
+      "samples": [
+        {
+          "cost_mult": 0.25,
+          "commission_per_side": 0.155,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 1.31,
+          "n": 837,
+          "pf": 1.233,
+          "median": 3.69,
+          "net": 7577.03
+        },
+        {
+          "cost_mult": 0.5,
+          "commission_per_side": 0.31,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 1.62,
+          "n": 837,
+          "pf": 1.224,
+          "median": 3.38,
+          "net": 7317.56
+        },
+        {
+          "cost_mult": 0.75,
+          "commission_per_side": 0.46499999999999997,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 1.93,
+          "n": 837,
+          "pf": 1.215,
+          "median": 3.07,
+          "net": 7058.09
+        },
+        {
+          "cost_mult": 1.0,
+          "commission_per_side": 0.62,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 2.24,
+          "n": 837,
+          "pf": 1.206,
+          "median": 2.76,
+          "net": 6798.62
+        },
+        {
+          "cost_mult": 1.25,
+          "commission_per_side": 0.775,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 2.55,
+          "n": 837,
+          "pf": 1.198,
+          "median": 2.45,
+          "net": 6539.15
+        },
+        {
+          "cost_mult": 1.5,
+          "commission_per_side": 0.9299999999999999,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 2.86,
+          "n": 837,
+          "pf": 1.189,
+          "median": 2.14,
+          "net": 6279.68
+        },
+        {
+          "cost_mult": 2.0,
+          "commission_per_side": 1.24,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 3.48,
+          "n": 837,
+          "pf": 1.172,
+          "median": 1.52,
+          "net": 5760.74
+        },
+        {
+          "cost_mult": 2.5,
+          "commission_per_side": 1.55,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 4.1,
+          "n": 837,
+          "pf": 1.156,
+          "median": 0.9,
+          "net": 5241.8
+        },
+        {
+          "cost_mult": 3.0,
+          "commission_per_side": 1.8599999999999999,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 4.72,
+          "n": 837,
+          "pf": 1.139,
+          "median": 0.28,
+          "net": 4722.86
+        },
+        {
+          "cost_mult": 4.0,
+          "commission_per_side": 2.48,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 5.96,
+          "n": 837,
+          "pf": 1.107,
+          "median": -0.96,
+          "net": 3684.98
+        }
+      ]
+    },
+    {
+      "spec": {
+        "label": "RCB-MES-Both-PL",
+        "asset": "MES",
+        "entry": "range_compression_break",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "both"
+      },
+      "base_rt_cost_dollar": 3.74,
+      "base_median": 1.26,
+      "base_pf": 1.206,
+      "base_n": 1212,
+      "break_even_rt_dollar": 5.0,
+      "break_even_cost_mult": 2.0161290322580645,
+      "samples": [
+        {
+          "cost_mult": 0.25,
+          "commission_per_side": 0.155,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 2.81,
+          "n": 1212,
+          "pf": 1.25,
+          "median": 2.19,
+          "net": 7114.28
+        },
+        {
+          "cost_mult": 0.5,
+          "commission_per_side": 0.31,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 3.12,
+          "n": 1212,
+          "pf": 1.235,
+          "median": 1.88,
+          "net": 6738.56
+        },
+        {
+          "cost_mult": 0.75,
+          "commission_per_side": 0.46499999999999997,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 3.4299999999999997,
+          "n": 1212,
+          "pf": 1.221,
+          "median": 1.57,
+          "net": 6362.84
+        },
+        {
+          "cost_mult": 1.0,
+          "commission_per_side": 0.62,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 3.74,
+          "n": 1212,
+          "pf": 1.206,
+          "median": 1.26,
+          "net": 5987.12
+        },
+        {
+          "cost_mult": 1.25,
+          "commission_per_side": 0.775,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 4.05,
+          "n": 1212,
+          "pf": 1.192,
+          "median": 0.95,
+          "net": 5611.4
+        },
+        {
+          "cost_mult": 1.5,
+          "commission_per_side": 0.9299999999999999,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 4.359999999999999,
+          "n": 1212,
+          "pf": 1.178,
+          "median": 0.64,
+          "net": 5235.68
+        },
+        {
+          "cost_mult": 2.0,
+          "commission_per_side": 1.24,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 4.98,
+          "n": 1212,
+          "pf": 1.151,
+          "median": 0.02,
+          "net": 4484.24
+        },
+        {
+          "cost_mult": 2.5,
+          "commission_per_side": 1.55,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 5.6,
+          "n": 1212,
+          "pf": 1.124,
+          "median": -0.6,
+          "net": 3732.8
+        },
+        {
+          "cost_mult": 3.0,
+          "commission_per_side": 1.8599999999999999,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 6.22,
+          "n": 1212,
+          "pf": 1.098,
+          "median": -1.22,
+          "net": 2981.36
+        },
+        {
+          "cost_mult": 4.0,
+          "commission_per_side": 2.48,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 7.46,
+          "n": 1212,
+          "pf": 1.047,
+          "median": -2.46,
+          "net": 1478.48
+        }
+      ]
+    },
+    {
+      "spec": {
+        "label": "RCB-MGC-Both-PL",
+        "asset": "MGC",
+        "entry": "range_compression_break",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "both"
+      },
+      "base_rt_cost_dollar": 3.24,
+      "base_median": 0.76,
+      "base_pf": 1.203,
+      "base_n": 590,
+      "break_even_rt_dollar": 4.0,
+      "break_even_cost_mult": 1.6129032258064515,
+      "samples": [
+        {
+          "cost_mult": 0.25,
+          "commission_per_side": 0.155,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 2.31,
+          "n": 590,
+          "pf": 1.234,
+          "median": 1.69,
+          "net": 4518.1
+        },
+        {
+          "cost_mult": 0.5,
+          "commission_per_side": 0.31,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 2.62,
+          "n": 590,
+          "pf": 1.224,
+          "median": 1.38,
+          "net": 4335.2
+        },
+        {
+          "cost_mult": 0.75,
+          "commission_per_side": 0.46499999999999997,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 2.9299999999999997,
+          "n": 590,
+          "pf": 1.213,
+          "median": 1.07,
+          "net": 4152.3
+        },
+        {
+          "cost_mult": 1.0,
+          "commission_per_side": 0.62,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 3.24,
+          "n": 590,
+          "pf": 1.203,
+          "median": 0.76,
+          "net": 3969.4
+        },
+        {
+          "cost_mult": 1.25,
+          "commission_per_side": 0.775,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 3.55,
+          "n": 590,
+          "pf": 1.193,
+          "median": 0.45,
+          "net": 3786.5
+        },
+        {
+          "cost_mult": 1.5,
+          "commission_per_side": 0.9299999999999999,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 3.86,
+          "n": 590,
+          "pf": 1.182,
+          "median": 0.14,
+          "net": 3603.6
+        },
+        {
+          "cost_mult": 2.0,
+          "commission_per_side": 1.24,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 4.48,
+          "n": 590,
+          "pf": 1.162,
+          "median": -0.48,
+          "net": 3237.8
+        },
+        {
+          "cost_mult": 2.5,
+          "commission_per_side": 1.55,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 5.1,
+          "n": 590,
+          "pf": 1.143,
+          "median": -1.1,
+          "net": 2872.0
+        },
+        {
+          "cost_mult": 3.0,
+          "commission_per_side": 1.8599999999999999,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 5.72,
+          "n": 590,
+          "pf": 1.123,
+          "median": -1.72,
+          "net": 2506.2
+        },
+        {
+          "cost_mult": 4.0,
+          "commission_per_side": 2.48,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 6.96,
+          "n": 590,
+          "pf": 1.086,
+          "median": -2.96,
+          "net": 1774.6
+        }
+      ]
+    },
+    {
+      "spec": {
+        "label": "RCB15-MES-Both-PL",
+        "asset": "MES",
+        "entry": "range_compression_break",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "params": {
+          "compression_pct_max": 15
+        },
+        "mode": "both"
+      },
+      "base_rt_cost_dollar": 3.74,
+      "base_median": 2.51,
+      "base_pf": 1.149,
+      "base_n": 948,
+      "break_even_rt_dollar": 6.25,
+      "break_even_cost_mult": 3.024193548387097,
+      "samples": [
+        {
+          "cost_mult": 0.25,
+          "commission_per_side": 0.155,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 2.81,
+          "n": 948,
+          "pf": 1.189,
+          "median": 3.44,
+          "net": 4496.12
+        },
+        {
+          "cost_mult": 0.5,
+          "commission_per_side": 0.31,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 3.12,
+          "n": 948,
+          "pf": 1.175,
+          "median": 3.13,
+          "net": 4202.24
+        },
+        {
+          "cost_mult": 0.75,
+          "commission_per_side": 0.46499999999999997,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 3.4299999999999997,
+          "n": 948,
+          "pf": 1.162,
+          "median": 2.82,
+          "net": 3908.36
+        },
+        {
+          "cost_mult": 1.0,
+          "commission_per_side": 0.62,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 3.74,
+          "n": 948,
+          "pf": 1.149,
+          "median": 2.51,
+          "net": 3614.48
+        },
+        {
+          "cost_mult": 1.25,
+          "commission_per_side": 0.775,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 4.05,
+          "n": 948,
+          "pf": 1.136,
+          "median": 2.2,
+          "net": 3320.6
+        },
+        {
+          "cost_mult": 1.5,
+          "commission_per_side": 0.9299999999999999,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 4.359999999999999,
+          "n": 948,
+          "pf": 1.123,
+          "median": 1.89,
+          "net": 3026.72
+        },
+        {
+          "cost_mult": 2.0,
+          "commission_per_side": 1.24,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 4.98,
+          "n": 948,
+          "pf": 1.098,
+          "median": 1.27,
+          "net": 2438.96
+        },
+        {
+          "cost_mult": 2.5,
+          "commission_per_side": 1.55,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 5.6,
+          "n": 948,
+          "pf": 1.074,
+          "median": 0.65,
+          "net": 1851.2
+        },
+        {
+          "cost_mult": 3.0,
+          "commission_per_side": 1.8599999999999999,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 6.22,
+          "n": 948,
+          "pf": 1.05,
+          "median": 0.03,
+          "net": 1263.44
+        },
+        {
+          "cost_mult": 4.0,
+          "commission_per_side": 2.48,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 7.46,
+          "n": 948,
+          "pf": 1.003,
+          "median": -1.21,
+          "net": 87.92
+        }
+      ]
+    },
+    {
+      "spec": {
+        "label": "DIR-MES-ORB-Short-PL",
+        "asset": "MES",
+        "entry": "orb_breakout",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "short"
+      },
+      "base_rt_cost_dollar": 3.74,
+      "base_median": 30.01,
+      "base_pf": 1.506,
+      "base_n": 395,
+      "break_even_rt_dollar": null,
+      "break_even_cost_mult": null,
+      "samples": [
+        {
+          "cost_mult": 0.25,
+          "commission_per_side": 0.155,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 2.81,
+          "n": 395,
+          "pf": 1.525,
+          "median": 30.94,
+          "net": 12440.05
+        },
+        {
+          "cost_mult": 0.5,
+          "commission_per_side": 0.31,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 3.12,
+          "n": 395,
+          "pf": 1.519,
+          "median": 30.63,
+          "net": 12317.6
+        },
+        {
+          "cost_mult": 0.75,
+          "commission_per_side": 0.46499999999999997,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 3.4299999999999997,
+          "n": 395,
+          "pf": 1.512,
+          "median": 30.32,
+          "net": 12195.15
+        },
+        {
+          "cost_mult": 1.0,
+          "commission_per_side": 0.62,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 3.74,
+          "n": 395,
+          "pf": 1.506,
+          "median": 30.01,
+          "net": 12072.7
+        },
+        {
+          "cost_mult": 1.25,
+          "commission_per_side": 0.775,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 4.05,
+          "n": 395,
+          "pf": 1.5,
+          "median": 29.7,
+          "net": 11950.25
+        },
+        {
+          "cost_mult": 1.5,
+          "commission_per_side": 0.9299999999999999,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 4.359999999999999,
+          "n": 395,
+          "pf": 1.493,
+          "median": 29.39,
+          "net": 11827.8
+        },
+        {
+          "cost_mult": 2.0,
+          "commission_per_side": 1.24,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 4.98,
+          "n": 395,
+          "pf": 1.481,
+          "median": 28.77,
+          "net": 11582.9
+        },
+        {
+          "cost_mult": 2.5,
+          "commission_per_side": 1.55,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 5.6,
+          "n": 395,
+          "pf": 1.469,
+          "median": 28.15,
+          "net": 11338.0
+        },
+        {
+          "cost_mult": 3.0,
+          "commission_per_side": 1.8599999999999999,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 6.22,
+          "n": 395,
+          "pf": 1.457,
+          "median": 27.53,
+          "net": 11093.1
+        },
+        {
+          "cost_mult": 4.0,
+          "commission_per_side": 2.48,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 7.46,
+          "n": 395,
+          "pf": 1.433,
+          "median": 26.29,
+          "net": 10603.3
+        }
+      ]
+    },
+    {
+      "spec": {
+        "label": "DIR-MES-ORB-Long-PL",
+        "asset": "MES",
+        "entry": "orb_breakout",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "long"
+      },
+      "base_rt_cost_dollar": 3.74,
+      "base_median": 12.51,
+      "base_pf": 1.394,
+      "base_n": 854,
+      "break_even_rt_dollar": null,
+      "break_even_cost_mult": null,
+      "samples": [
+        {
+          "cost_mult": 0.25,
+          "commission_per_side": 0.155,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 2.81,
+          "n": 854,
+          "pf": 1.43,
+          "median": 13.44,
+          "net": 11187.76
+        },
+        {
+          "cost_mult": 0.5,
+          "commission_per_side": 0.31,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 3.12,
+          "n": 854,
+          "pf": 1.418,
+          "median": 13.13,
+          "net": 10923.02
+        },
+        {
+          "cost_mult": 0.75,
+          "commission_per_side": 0.46499999999999997,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 3.4299999999999997,
+          "n": 854,
+          "pf": 1.406,
+          "median": 12.82,
+          "net": 10658.28
+        },
+        {
+          "cost_mult": 1.0,
+          "commission_per_side": 0.62,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 3.74,
+          "n": 854,
+          "pf": 1.394,
+          "median": 12.51,
+          "net": 10393.54
+        },
+        {
+          "cost_mult": 1.25,
+          "commission_per_side": 0.775,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 4.05,
+          "n": 854,
+          "pf": 1.383,
+          "median": 12.2,
+          "net": 10128.8
+        },
+        {
+          "cost_mult": 1.5,
+          "commission_per_side": 0.9299999999999999,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 4.359999999999999,
+          "n": 854,
+          "pf": 1.371,
+          "median": 11.89,
+          "net": 9864.06
+        },
+        {
+          "cost_mult": 2.0,
+          "commission_per_side": 1.24,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 4.98,
+          "n": 854,
+          "pf": 1.348,
+          "median": 11.27,
+          "net": 9334.58
+        },
+        {
+          "cost_mult": 2.5,
+          "commission_per_side": 1.55,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 5.6,
+          "n": 854,
+          "pf": 1.325,
+          "median": 10.65,
+          "net": 8805.1
+        },
+        {
+          "cost_mult": 3.0,
+          "commission_per_side": 1.8599999999999999,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 6.22,
+          "n": 854,
+          "pf": 1.303,
+          "median": 10.03,
+          "net": 8275.62
+        },
+        {
+          "cost_mult": 4.0,
+          "commission_per_side": 2.48,
+          "slippage_ticks": 1,
+          "rt_cost_dollar": 7.46,
+          "n": 854,
+          "pf": 1.26,
+          "median": 8.79,
+          "net": 7216.66
+        }
+      ]
+    }
+  ],
+  "cost_sensitivity_ranking": [
+    {
+      "margin_dollar": 0.7599999999999998,
+      "label": "RCB-MGC-Both-PL",
+      "base_rt": 3.24,
+      "break_even_rt": 4.0
+    },
+    {
+      "margin_dollar": 1.2599999999999998,
+      "label": "RCB-MES-Both-PL",
+      "base_rt": 3.74,
+      "break_even_rt": 5.0
+    },
+    {
+      "margin_dollar": 2.51,
+      "label": "RCB15-MES-Both-PL",
+      "base_rt": 3.74,
+      "break_even_rt": 6.25
+    },
+    {
+      "margin_dollar": 2.76,
+      "label": "BBKC-MNQ-Both-PL",
+      "base_rt": 2.24,
+      "break_even_rt": 5.0
+    },
+    {
+      "margin_dollar": null,
+      "label": "MCL-Short-PL (XB-ORB)",
+      "base_rt": 5.24,
+      "break_even_rt": null
+    },
+    {
+      "margin_dollar": null,
+      "label": "MCL-Short-FR2 (XB-ORB)",
+      "base_rt": 5.24,
+      "break_even_rt": null
+    },
+    {
+      "margin_dollar": null,
+      "label": "DIR-MES-ORB-Short-PL",
+      "base_rt": 3.74,
+      "break_even_rt": null
+    },
+    {
+      "margin_dollar": null,
+      "label": "DIR-MES-ORB-Long-PL",
+      "base_rt": 3.74,
+      "break_even_rt": null
+    }
+  ]
+}

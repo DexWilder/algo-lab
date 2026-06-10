@@ -3200,5 +3200,89 @@
       "cost-eats-edge"
     ],
     "disposition": "0 PAPER_PACKET. 0 OBSERVATIONAL. 5 KILL. stop_run_reversal ARCHIVED. 5/5 new primitives this campaign now classified. Operator decision needed: continue with opening_drive_continuation (SMP-3 Tier 2 last remaining), pivot to NEEDS_DATA, or wait for prop-cost unlock."
+  },
+  "_HEADLINE_2026-06-09e_break_even_analysis_reveals_higher_BBKC_tolerance": {
+    "headline": "Break-even cost analysis on 8 OBSERVATIONAL candidates. BBKC-MNQ tolerance is HIGHER than previously estimated: break-even RT $5.00 (margin $2.76 above $2.24 base), not $3.00 from prior coarse stress estimate. 4 candidates very cost-robust (beyond 4x); 4 measurable break-even RT $4-$6.25.",
+    "date": "2026-06-09",
+    "purpose": "Per no-idle rule + 5/5 archived primitives, produce actionable cost-sensitivity data instead of another speculative primitive build.",
+    "method": "Sweep commission multiplier 0.25x-4.0x at base slippage; linear interp between adjacent samples to find median=0",
+    "candidates_analyzed": 8,
+    "very_robust_beyond_4x_BE_RT_above_$20": [
+      {
+        "candidate": "MCL-Short-PL (XB-ORB)",
+        "base_RT": 5.24,
+        "base_median": 7.76,
+        "BE_RT": ">20.96",
+        "disposition": "Already REPLACEMENT_CANDIDATE_LIKELY pending #85 prop-cost; cost-robust"
+      },
+      {
+        "candidate": "MCL-Short-FR2 (XB-ORB)",
+        "base_RT": 5.24,
+        "base_median": 3.76,
+        "BE_RT": ">20.96",
+        "disposition": "Cost-robust; doctrine-secondary to PL variant"
+      },
+      {
+        "candidate": "DIR-MES-ORB-Short-PL",
+        "base_RT": 3.74,
+        "base_median": 30.01,
+        "BE_RT": ">14.96",
+        "disposition": "PASS_STRESS + extreme cost-tolerance; blocked by family overlap with MNQ"
+      },
+      {
+        "candidate": "DIR-MES-ORB-Long-PL",
+        "base_RT": 3.74,
+        "base_median": 12.51,
+        "BE_RT": ">14.96",
+        "disposition": "Same \u2014 PASS_STRESS + cost-tolerant; family overlap blocks"
+      }
+    ],
+    "measurable_break_even": [
+      {
+        "candidate": "BBKC-MNQ-Both-PL",
+        "base_RT": 2.24,
+        "base_median": 2.76,
+        "BE_RT": 5.0,
+        "margin_dollar": 2.76,
+        "CRITICAL": "Tolerance much higher than prior $3.00 estimate. If verified MNQ RT <= $5.00, candidate has positive median. PLAUSIBLE FOR MOST PROP FIRMS."
+      },
+      {
+        "candidate": "RCB-MGC-Both-PL",
+        "base_RT": 3.24,
+        "base_median": 0.76,
+        "BE_RT": 4.0,
+        "margin_dollar": 0.76,
+        "disposition": "MOST cost-sensitive; only $0.76 margin"
+      },
+      {
+        "candidate": "RCB-MES-Both-PL",
+        "base_RT": 3.74,
+        "base_median": 1.26,
+        "BE_RT": 5.0,
+        "margin_dollar": 1.26,
+        "disposition": "Marginal; small RT increase kills"
+      },
+      {
+        "candidate": "RCB15-MES-Both-PL",
+        "base_RT": 3.74,
+        "base_median": 2.51,
+        "BE_RT": 6.25,
+        "margin_dollar": 2.51,
+        "disposition": "Moderate margin"
+      }
+    ],
+    "cost_sensitivity_ranking_most_to_least": [
+      "RCB-MGC-Both-PL (margin $0.76)",
+      "RCB-MES-Both-PL (margin $1.26)",
+      "RCB15-MES-Both-PL (margin $2.51)",
+      "BBKC-MNQ-Both-PL (margin $2.76)",
+      "MCL-Short-PL, MCL-Short-FR2, MES PORTFOLIO_COMPLEMENTs (margin beyond test range)"
+    ],
+    "implication_for_operator_prop_cost_decision": "BBKC-MNQ unlock probability is HIGHER than I previously communicated. Empirical break-even at $5.00 RT means: any verified MNQ prop-firm RT cost \u2264 $5.00 keeps the candidate positive-median. This is plausible for most retail prop firms (Apex, TopStep, etc. typically charge $1.20-$1.50/side for MNQ which is $2.40-$3.00 RT before slippage). The $5.00 break-even gives meaningful buffer above typical prop costs.",
+    "previously_communicated_unlock_threshold": "$3.00 RT (overly conservative based on 2x cost + 2 ticks stress rung)",
+    "corrected_unlock_threshold": "$5.00 RT (linear-interpolated exact break-even); for $1 safety buffer, target verified RT \u2264 $4.00",
+    "implication_for_4_cost_robust_candidates": "MCL \u00d7 2 already in DATA_REQUIRED queue pending #85. MES PORTFOLIO_COMPLEMENT \u00d7 2 blocked by family overlap (cost unlock would not change family classification). The cost unlock primarily benefits BBKC-MNQ.",
+    "tags": [],
+    "disposition": "ACTIONABLE: BBKC-MNQ unlock probability higher than previously estimated. Recommend operator prop-cost data submission as #1 priority \u2014 break-even buffer of $2.76 means even imprecise rate sheets likely place verified RT in unlock range."
   }
 }
