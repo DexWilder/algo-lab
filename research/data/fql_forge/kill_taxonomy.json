@@ -3143,5 +3143,62 @@
       "median-negative"
     ],
     "disposition": "0 PAPER_PACKET. 0 OBSERVATIONAL. 6 KILL. gap_fill_trigger ARCHIVED for active hunt. Per #118: proceed to build stop_run_reversal next per SMP-3 spec."
+  },
+  "_HEADLINE_2026-06-09d_stop_run_archived_fair_test_anti_edge": {
+    "headline": "stop_run_reversal first batch: 5/5 KILL with FAIR FIRE (n=800-2530 per asset). All anti-edge (PFs 0.83-1.04, medians -$6 to -$19). Mechanism produces signal widely but post-sweep+reclaim outcome is CONTINUATION not REVERSAL at bar-level resolution. ARCHIVED.",
+    "date": "2026-06-09",
+    "operator_approval": "OK build stop_run_reversal (#118 chain + SMP-3)",
+    "primitive_shipped": true,
+    "smoke_tests": "10/10 PASS including filter pre-flight #120 compatibility",
+    "filter_used": "none (per #120 pre-flight: reversal thesis incompatible with ema_slope)",
+    "results": {
+      "SRR-MGC-Both-PL": {
+        "n": 1215,
+        "pf": 1.042,
+        "median": -9.24,
+        "max_yr": 479.7,
+        "verdict": "KILL median neg + extreme concentration"
+      },
+      "SRR-MCL-Both-PL": {
+        "n": 1758,
+        "pf": 0.834,
+        "median": -11.24,
+        "verdict": "KILL median neg"
+      },
+      "SRR-MES-Both-PL": {
+        "n": 2487,
+        "pf": 0.951,
+        "median": -11.24,
+        "verdict": "KILL median neg"
+      },
+      "SRR-MYM-Both-PL": {
+        "n": 814,
+        "pf": 0.978,
+        "median": -6.24,
+        "verdict": "KILL median neg"
+      },
+      "SRR-MNQ-Both-PL": {
+        "n": 2530,
+        "pf": 0.957,
+        "median": -18.74,
+        "verdict": "KILL median neg"
+      }
+    },
+    "mechanism_interpretation": "Single-bar sweep+reclaim at 5-min resolution captures the PATTERN but produces SYSTEMATICALLY LOSING entries. The thesis (sweep+reclaim \u2192 reversal) is NOT validated empirically at this granularity. Post-sweep+reclaim outcome is more often CONTINUATION (the sweep is the START of the move, not the end). Either the bar-level signal is too eager, OR the 5-min resolution is too noisy to distinguish true exhaustion sweeps from sweep-then-continue moves.",
+    "final_classification": "ARCHIVED \u2014 fair test with mechanism firing widely produces uniform anti-edge. Per narrow-scope doctrine, the SPECIFIC tuple (MGC/MCL/MES/MYM/MNQ \u00d7 reversal \u00d7 stop_run_reversal \u00d7 none \u00d7 PL \u00d7 intraday 5min \u00d7 20-bar swing basis) is REOPENABLE_WITH_NEW_THESIS only with: (a) multi-bar reversal confirmation window, (b) session-high/low instead of 20-bar swing, (c) higher-resolution data, (d) time-of-day specific (e.g., morning-only sweeps), (e) different sweep magnitude threshold.",
+    "cumulative_new_primitive_scoreboard": {
+      "RCB (range_compression_break)": "RESEARCH_ONLY (concentration intrinsic; first PASS_STRESS but blocked by 71.6% max-yr)",
+      "VRC (volatility_regime_compound)": "ARCHIVED (mechanism anti-edge)",
+      "BBKC (bb_keltner_squeeze)": "RESEARCH_ONLY (thin signal; BBKC-MNQ cost-sensitive near-miss \u2014 only true near-miss in 5 attempts)",
+      "gap_fill_trigger": "ARCHIVED (mechanism does not produce edge in fair test)",
+      "stop_run_reversal": "ARCHIVED (mechanism fires widely but produces anti-edge at bar-level resolution)"
+    },
+    "five_mechanism_families_summary": "RCB / VRC / BBKC / gap_fill / stop_run \u2014 all 5 classified ARCHIVED or RESEARCH_ONLY. 0 PAPER_PACKET produced. 1 cost-sensitive near-miss (BBKC-MNQ). Cumulative evidence: existing primitive set + intraday 5-min data + conservative-bias costs cannot produce PASS_STRESS Packet #2 candidate.",
+    "cost_fragility_hypothesis_status": "EMPIRICALLY MAXIMUM STRENGTH. After 5 mechanism families with diverse signal-construction (compression, vol-regime, squeeze, gap-fade, sweep-reversal), only 1 candidate (BBKC-MNQ-Both-PL) reaches positive median with clean concentration but FAIL_STRESS at conservative-bias costs. Verified prop-firm rate sheet is the most leveraged single intervention remaining.",
+    "tags": [
+      "median-negative",
+      "cost-eats-edge"
+    ],
+    "disposition": "0 PAPER_PACKET. 0 OBSERVATIONAL. 5 KILL. stop_run_reversal ARCHIVED. 5/5 new primitives this campaign now classified. Operator decision needed: continue with opening_drive_continuation (SMP-3 Tier 2 last remaining), pivot to NEEDS_DATA, or wait for prop-cost unlock."
   }
 }

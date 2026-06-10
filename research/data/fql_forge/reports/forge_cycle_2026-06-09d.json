@@ -1,0 +1,158 @@
+{
+  "date": "2026-06-09",
+  "purpose": "stop_run_reversal first batch (#118 chain + SMP-3)",
+  "boundaries": "report-only Lane B",
+  "filter_pre_flight": "reversal thesis \u2192 filter=none (per #120 rule)",
+  "tier_classification": {
+    "UPGRADE_CANDIDATE": 0,
+    "OBSERVATIONAL": 0,
+    "KILL": 5
+  },
+  "results": [
+    {
+      "spec": {
+        "label": "SRR-MGC-Both-PL",
+        "asset": "MGC",
+        "entry": "stop_run_reversal",
+        "filter": "none",
+        "exit": "profit_ladder",
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 1215,
+        "pf": 1.042,
+        "median": -9.24,
+        "net": 1676.4,
+        "max_dd": -7829.0,
+        "max_year_share_pct": 479.7,
+        "top3_share_pct": 194.9,
+        "h1_pf": 0.69,
+        "h2_pf": 1.296,
+        "years_positive": 2,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 45.3429172039032
+    },
+    {
+      "spec": {
+        "label": "SRR-MCL-Both-PL",
+        "asset": "MCL",
+        "entry": "stop_run_reversal",
+        "filter": "none",
+        "exit": "profit_ladder",
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 1758,
+        "pf": 0.834,
+        "median": -11.24,
+        "net": -8415.92,
+        "max_dd": -9998.6,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.798,
+        "h2_pf": 0.886,
+        "years_positive": 1,
+        "n_years": 6
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 60.16662311553955
+    },
+    {
+      "spec": {
+        "label": "SRR-MES-Both-PL",
+        "asset": "MES",
+        "entry": "stop_run_reversal",
+        "filter": "none",
+        "exit": "profit_ladder",
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 2487,
+        "pf": 0.951,
+        "median": -11.24,
+        "net": -4203.88,
+        "max_dd": -8916.85,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 1.014,
+        "h2_pf": 0.896,
+        "years_positive": 3,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 85.2471821308136
+    },
+    {
+      "spec": {
+        "label": "SRR-MYM-Both-PL",
+        "asset": "MYM",
+        "entry": "stop_run_reversal",
+        "filter": "none",
+        "exit": "profit_ladder",
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 814,
+        "pf": 0.978,
+        "median": -6.24,
+        "net": -496.86,
+        "max_dd": -1693.28,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.98,
+        "h2_pf": 0.977,
+        "years_positive": 1,
+        "n_years": 3
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 27.894831895828247
+    },
+    {
+      "spec": {
+        "label": "SRR-MNQ-Both-PL",
+        "asset": "MNQ",
+        "entry": "stop_run_reversal",
+        "filter": "none",
+        "exit": "profit_ladder",
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 2530,
+        "pf": 0.957,
+        "median": -18.74,
+        "net": -6776.2,
+        "max_dd": -14735.28,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.93,
+        "h2_pf": 0.978,
+        "years_positive": 3,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 85.36894416809082
+    }
+  ],
+  "feature_cache_stats_final": {
+    "hits": 0,
+    "misses": 5,
+    "cached_keys": 5
+  }
+}
