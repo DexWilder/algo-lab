@@ -3712,5 +3712,155 @@
     },
     "tags": [],
     "disposition": "STRONGEST PAPER_PACKET CANDIDATE since Packet #1: CPI-MGC-Long-1h. Pending: calendar audit (~2-4h verification of CPI release dates vs bls.gov) + 8-dim audit + operator decision. If audit GREEN, this is potentially Packet #2."
+  },
+  "_HEADLINE_2026-06-10f_CPI_MGC_verified_calendar_changes_best_candidate": {
+    "headline": "VERIFIED CALENDAR AUDIT (#136-138) catches false positive on Long-1h, surfaces Long-2h as new best candidate. Rule-based '2nd Tuesday' matched only ~50% of actual BLS CPI dates. Long-1h: PF 1.87 \u2192 1.12 with FAIL_STRESS. Long-2h: PF 1.87 \u2192 1.57 with PASS_STRESS + cleaner concentration.",
+    "date": "2026-06-10",
+    "operator_approval": "OK 136 (calendar audit) + 137 (verified before 8-dim) + 138 (PAPER_PACKET_CANDIDATE pending)",
+    "calendar_comparison": {
+      "rule_2nd_tuesday": {
+        "events": 96,
+        "match_pct": "~50%"
+      },
+      "verified_BLS_records": {
+        "events": 90,
+        "source": "BLS public release records, operator-verifiable against bls.gov"
+      },
+      "match_breakdown": "Many actual BLS releases on Wednesday or Thursday, not 2nd Tuesday. Delta distribution shows +1, +2, +3 day shifts dominant."
+    },
+    "head_to_head_results": {
+      "CPI-MGC-Long-1h": {
+        "rule_based": {
+          "pf": 1.872,
+          "median": 8.26,
+          "max_yr": 41.6,
+          "stress": "PASS_STRESS",
+          "verdict": "WAS BEST"
+        },
+        "verified": {
+          "pf": 1.118,
+          "median": -13.24,
+          "max_yr": 111.1,
+          "era3_pf": 0.83,
+          "era3_median": -48.24,
+          "stress": "FAIL_STRESS",
+          "verdict": "COLLAPSED"
+        },
+        "interpretation": "Rule-based 1h variant was a calendar-artifact false positive. Wrong dates entered, mostly wrong, but n=84 was the same. Verified dates expose the true mechanism: 1h hold on actual CPI release dates does NOT produce edge."
+      },
+      "CPI-MGC-Long-2h": {
+        "rule_based": {
+          "pf": 1.871,
+          "median": 8.26,
+          "max_yr": 45.7,
+          "stress": "PASS_STRESS",
+          "verdict": "WAS SECONDARY"
+        },
+        "verified": {
+          "pf": 1.569,
+          "median": 13.26,
+          "max_yr": 33.5,
+          "yrs_pos": "6/8",
+          "era3_pf": 1.47,
+          "era3_median": 15.76,
+          "stress": "PASS_STRESS",
+          "verdict": "NEW BEST CANDIDATE"
+        },
+        "interpretation": "2h hold mechanism HOLDS on verified calendar. PF lower (1.87\u21921.57) but median HIGHER ($8.26\u2192$13.26 = +60% per trade). Concentration BETTER (45.7%\u219233.5%). All gates PASS.",
+        "per_year_verified": [
+          {
+            "year": 2019,
+            "n": 7,
+            "pf": 2.92,
+            "median": 3.76,
+            "net": 515
+          },
+          {
+            "year": 2020,
+            "n": 12,
+            "pf": 2.03,
+            "median": 24.76,
+            "net": 724
+          },
+          {
+            "year": 2021,
+            "n": 12,
+            "pf": 1.35,
+            "median": 20.26,
+            "net": 371
+          },
+          {
+            "year": 2022,
+            "n": 12,
+            "pf": 0.82,
+            "median": -14.24,
+            "net": -267
+          },
+          {
+            "year": 2023,
+            "n": 12,
+            "pf": 2.62,
+            "median": 64.26,
+            "net": 1737
+          },
+          {
+            "year": 2024,
+            "n": 12,
+            "pf": 1.88,
+            "median": 2.26,
+            "net": 1240
+          },
+          {
+            "year": 2025,
+            "n": 12,
+            "pf": 1.74,
+            "median": 15.76,
+            "net": 1854
+          },
+          {
+            "year": 2026,
+            "n": 5,
+            "pf": 0.48,
+            "median": 73.76,
+            "net": -645
+          }
+        ],
+        "2026_partial_interpretation": "PF 0.48 net -$645 but median +$73.76 \u2014 bimodal: most trades positive, few large losses. Modest 2026 warning but not catastrophic.",
+        "family_review_vs_NFP-MGC": {
+          "corr": -0.017,
+          "day_overlap": "1/84 (1.2%)"
+        }
+      },
+      "CPI-MGC-Long-EOD": {
+        "rule_based": {
+          "pf": 1.639,
+          "median": 35.76,
+          "max_yr": 48.0,
+          "stress": "PASS_STRESS"
+        },
+        "verified": {
+          "pf": 1.2,
+          "median": 11.76,
+          "max_yr": 84.9,
+          "era3_pf": 1.0,
+          "era3_median": -10.74,
+          "stress": "PASS_STRESS",
+          "verdict": "WEAKER \u2014 concentration fails 50% gate; Era3 borderline"
+        },
+        "interpretation": "Calendar correction reveals EOD candidate is much weaker than rule-based showed. Concentration 84.9% (FAILS gate). Era3 just at 1.00. Not a viable candidate."
+      }
+    },
+    "operator_decision_required_per_138": {
+      "issue": "Per #138 explicit rule: 'If actual-calendar audit weakens 1h but another CPI variant survives better: surface that as an operator decision. Do not auto-switch variants without documenting why.'",
+      "question": "Forge surfaces CPI-MGC-Long-2h (verified calendar) as the new best candidate. Operator must decide: A) accept variant switch to Long-2h, B) reject Long-2h because not the originally-flagged variant, C) require additional cycle work before accepting either",
+      "honest_disclosure": "Verified Long-2h is not just a different variant of the originally-claimed packet \u2014 it has DIFFERENT METRICS. Per-trade median IMPROVED ($8.26 \u2192 $13.26). PF slightly lower (1.87 \u2192 1.57). Concentration improved (45.7% \u2192 33.5%). The mechanism transfers to verified dates with a 2h hold but not 1h hold."
+    },
+    "remaining_audit_gates_if_2h_accepted": [
+      "Calendar audit: DONE (verified BLS dates compiled and reproducible)",
+      "8-dim evidence-integrity audit: PENDING per #137 order (do after verified calendar re-run)",
+      "Operator decision on variant switch: PENDING per #138"
+    ],
+    "tags": [],
+    "disposition": "Long-1h: ARCHIVED (rule-based false positive). Long-2h: NEW BEST CANDIDATE on verified calendar \u2014 pending operator variant-switch decision + 8-dim audit. Long-EOD: weakened to OBSERVATIONAL (concentration fail)."
   }
 }
