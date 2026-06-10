@@ -1,8 +1,29 @@
 # Asset-Family Saturation Rule — Forge Search Pruning Doctrine
 
-> **Status:** CODIFIED FQL doctrine. Locked 2026-06-08 per operator decision #95.
+> **Status:** CODIFIED FQL doctrine. Locked 2026-06-08 per operator decision #95; **narrow-scope correction locked 2026-06-09** per operator strategic correction.
 > **Authority:** Lane B research heuristic; prunes Forge hunt prioritization. Does NOT mutate registry, scheduler, or runtime.
 > **Trigger to codify:** Two consecutive focused cycles (08c commodity / 08d rates+FX) wiped out 32 non-ORB candidates with 0 packet-grade. Pattern explained by standard gates (median-negative, asymmetric trap, ARCHITECTURAL_REJECT).
+
+## Strategic correction (2026-06-09) — SATURATION IS NARROW, NOT GLOBAL
+
+**Saturation does NOT make any asset, broad family, or market "off limits."** A path is saturated only at the specific tuple of:
+
+> `(asset, thesis, primitive, filter, exit, holding_period, data_basis)`
+
+**A saturated path becomes REOPENABLE_WITH_NEW_THESIS when ANY of these change:**
+
+1. New thesis (e.g., shift from momentum to fade on same asset)
+2. New primitive (new entry/exit/filter mechanism)
+3. New filter logic (different gating)
+4. New session window (different time-of-day)
+5. New holding period (different exit timing)
+6. New event/data source (different signal trigger)
+7. New asset expression (different contract series, micros vs full size)
+8. New portfolio role (workhorse vs tail-engine vs hedge)
+
+**Label REOPENABLE_WITH_NEW_THESIS** is the default disposition. PERMANENT_ARCHIVE is reserved for primitives that are mechanism-anti-edge regardless of pairing (e.g., VRC fade direction is the wrong side of the regime shift).
+
+**The intent:** keep Forge from overfitting on dead exact-setups, NOT from exploring everywhere. Forge should be SEARCHING wide; saturation only stops repetition of an exact failed (asset, thesis, primitive, filter, exit, holding, data) tuple.
 
 ## Rule
 
@@ -28,24 +49,18 @@
 
 If failures are explained by these gates, saturation kicks in. If failures are mixed (e.g., one ERROR, one data-pipeline issue, etc.), the cycle does NOT count toward the saturation threshold — re-run with the issue fixed first.
 
-## Currently saturated families (as of 2026-06-08)
+## Legacy `Currently saturated families` table (superseded — see corrected table at top of doc)
 
-| (asset, family, primitive set) | Cycles | Verdict |
-|---|---|---|
-| MCL/MGC × non-ORB entries (pb_pullback, bb_reversion, vwap_continuation, prior_day_fade) × ema_slope × profit_ladder | 1 (08c: 18 candidates) | **PAUSED** |
-| ZN/ZF × afternoon (pb_pullback, bb_reversion) × profit_ladder | 1 (08d: 6 candidates) | **PAUSED** |
-| 6E/6J × session-close/morning (pb_pullback, bb_reversion, donchian_breakout) × profit_ladder | 1 (08d: 8 candidates) | **PAUSED** |
-| MNQ/MES/MYM × ORB-family × directional-split | 4+ cycles concluded | **DIAGNOSTIC COMPLETE** (per separate ORB directional asymmetry diagnostic) |
-| MCL × calendar-time event-window × existing event primitive | 2 (08f NFP-MCL: 5 KILL; 08h EIA-MCL: 5 KILL) | **PAUSED 2026-06-08 per #101** |
-
-**Note:** Aggregated, 08c + 08d constitute the saturation trigger for the broader "non-ORB workhorse hunt with existing primitives" search basis on commodity / rates / FX intraday futures. The hunt is paused until the unlock criteria are met.
+This earlier framing implied broader pauses than the corrected narrow-tuple scope (locked 2026-06-09). The authoritative table is the **Currently saturated tuples** section near the top — all entries default to REOPENABLE_WITH_NEW_THESIS.
 
 ## How to apply
 
-When designing future hunt cycles, check this doctrine doc:
-1. Read the "Currently saturated families" table.
-2. If the proposed cycle reuses a saturated combination, **do not run it** without (a) adding a new primitive, (b) loading a new data source, (c) explicit operator override.
-3. When a new primitive is built, the saturation flag for any family containing that primitive is automatically lifted for the NEXT cycle.
+When designing future hunt cycles:
+1. Read the **Currently saturated tuples** table (top of doc, post-2026-06-09 narrow scope).
+2. If the proposed cycle reuses an EXACT saturated tuple (same asset + thesis + primitive + filter + exit + holding + data), **skip the exact repeat**.
+3. If the proposed cycle DIFFERS from the saturated tuple in ANY dimension (new thesis, new filter, new holding period, new event basis, etc.), it is in scope — RUN IT.
+4. When a new primitive is built, the saturation label for any tuple containing that primitive is automatically lifted for the NEXT cycle.
+5. Default disposition for failed tuples is REOPENABLE_WITH_NEW_THESIS. PERMANENT_ARCHIVE only for mechanism-anti-edge primitives (e.g., VRC).
 
 ## Rationale
 

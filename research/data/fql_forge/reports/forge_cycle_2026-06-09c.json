@@ -1,0 +1,188 @@
+{
+  "date": "2026-06-09",
+  "purpose": "gap_fill_trigger filter=none retry (#118 fair mechanism test)",
+  "boundaries": "report-only Lane B; ONE retry only",
+  "param_change": "filter: ema_slope \u2192 none",
+  "total_signals": 687,
+  "tier_classification": {
+    "UPGRADE_CANDIDATE": 0,
+    "OBSERVATIONAL": 0,
+    "KILL": 6
+  },
+  "final_classification": "all KILL \u2014 gap_fill_trigger ARCHIVED (mechanism does not produce edge with fair test).",
+  "results": [
+    {
+      "spec": {
+        "label": "GAPN-MES-Both-PL",
+        "asset": "MES",
+        "entry": "gap_fill_trigger",
+        "filter": "none",
+        "exit": "profit_ladder",
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 3,
+        "pf": Infinity,
+        "median": 286.26,
+        "net": 825.03,
+        "max_dd": 0.0,
+        "max_year_share_pct": 100.0,
+        "top3_share_pct": 100.0,
+        "h1_pf": Infinity,
+        "h2_pf": Infinity,
+        "years_positive": 1,
+        "n_years": 1
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (n=3)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 95.28625106811523
+    },
+    {
+      "spec": {
+        "label": "GAPN-MNQ-Both-PL",
+        "asset": "MNQ",
+        "entry": "gap_fill_trigger",
+        "filter": "none",
+        "exit": "profit_ladder",
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 3,
+        "pf": Infinity,
+        "median": 319.26,
+        "net": 919.28,
+        "max_dd": 0.0,
+        "max_year_share_pct": 100.0,
+        "top3_share_pct": 100.0,
+        "h1_pf": Infinity,
+        "h2_pf": Infinity,
+        "years_positive": 1,
+        "n_years": 1
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (n=3)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 108.62858009338379
+    },
+    {
+      "spec": {
+        "label": "GAPN-MYM-Both-PL",
+        "asset": "MYM",
+        "entry": "gap_fill_trigger",
+        "filter": "none",
+        "exit": "profit_ladder",
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 0,
+        "pf": NaN,
+        "median": 0.0,
+        "net": 0.0,
+        "max_dd": 0.0,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": NaN,
+        "h2_pf": NaN,
+        "years_positive": 0,
+        "n_years": 0
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (n=0)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 41.301389932632446
+    },
+    {
+      "spec": {
+        "label": "GAPN-MGC-Both-PL",
+        "asset": "MGC",
+        "entry": "gap_fill_trigger",
+        "filter": "none",
+        "exit": "profit_ladder",
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 428,
+        "pf": 0.825,
+        "median": -15.24,
+        "net": -6009.72,
+        "max_dd": -11379.48,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.644,
+        "h2_pf": 0.919,
+        "years_positive": 2,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 70.01864910125732
+    },
+    {
+      "spec": {
+        "label": "GAPN-MCL-Both-PL",
+        "asset": "MCL",
+        "entry": "gap_fill_trigger",
+        "filter": "none",
+        "exit": "profit_ladder",
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 2,
+        "pf": 2.16,
+        "median": 37.26,
+        "net": 74.52,
+        "max_dd": 0.0,
+        "max_year_share_pct": 186.2,
+        "top3_share_pct": 100.0,
+        "h1_pf": 0.0,
+        "h2_pf": Infinity,
+        "years_positive": 1,
+        "n_years": 2
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (n=2)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 95.28006792068481
+    },
+    {
+      "spec": {
+        "label": "GAPN-ZN-Both-PL",
+        "asset": "ZN",
+        "entry": "gap_fill_trigger",
+        "filter": "none",
+        "exit": "profit_ladder",
+        "mode": "both"
+      },
+      "metrics": {
+        "n": 251,
+        "pf": 0.66,
+        "median": -49.98,
+        "net": -9746.94,
+        "max_dd": -9918.93,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.502,
+        "h2_pf": 0.858,
+        "years_positive": 2,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 73.84713697433472
+    }
+  ],
+  "feature_cache_stats_final": {
+    "hits": 0,
+    "misses": 6,
+    "cached_keys": 6
+  }
+}

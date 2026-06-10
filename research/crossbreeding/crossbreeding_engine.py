@@ -499,6 +499,66 @@ def entry_vol_expansion(f, i, state, params):
     return 0, 0, 0
 
 
+def entry_stop_run_reversal(f, i, state, params):
+    """Stop-run reversal entry (added 2026-06-09 per operator decision #118 chain + SMP-3).
+
+    Mechanism: detects liquidity sweeps + reversals. When price sweeps through
+    prior N-bar swing high (or low) AND reclaims the level within the same bar
+    (close back below swept high / above swept low), enter in REVERSAL direction.
+
+    Sweep-up + reclaim → SHORT (against the failed breakout)
+    Sweep-down + reclaim → LONG (against the failed breakdown)
+
+    Different from RCB/VRC/BBKC/gap_fill — targets the "stop-hunting" pattern
+    documented in market microstructure literature: institutional flows often
+    push price beyond visible stops, then reverse once the liquidity is swept.
+
+    Filter pre-flight check (#120):
+    - Thesis: reversal (against the direction of the sweep)
+    - ema_slope INCOMPATIBLE — filter rejects against-trend trades, but
+      reversal entries are by construction against the prior move
+    - First batch should use filter=none, vol_regime high, or session_morning
+
+    Fail-closed:
+      - i < 1: no signal
+      - NaN in dc_high_20[i-1] or dc_low_20[i-1]: no signal
+      - Zero ATR: no signal
+
+    Params (all optional, conservative defaults):
+      sweep_buffer: 0.0          — extra threshold beyond dc level (in ATR units)
+      stop_mult: 1.5             — ATR multiplier for stop
+      target_mult: 3.0           — ATR multiplier for target
+    """
+    if i < 1:
+        return 0, 0, 0
+    swing_h = f["dc_high_20"][i-1]
+    swing_l = f["dc_low_20"][i-1]
+    if np.isnan(swing_h) or np.isnan(swing_l):
+        return 0, 0, 0
+    high_i = f["high"][i]
+    low_i = f["low"][i]
+    close_i = f["close"][i]
+    atr_i = f["atr"][i]
+    if np.isnan(atr_i) or atr_i == 0:
+        return 0, 0, 0
+    sweep_buffer = params.get("sweep_buffer", 0.0)
+    sweep_h = swing_h + sweep_buffer * atr_i
+    sweep_l = swing_l - sweep_buffer * atr_i
+    # Sweep-up + reclaim → SHORT
+    if (high_i > sweep_h and close_i < swing_h
+            and not state["short_traded_today"]):
+        stop = high_i + atr_i * params.get("stop_mult", 1.5)
+        target = close_i - atr_i * params.get("target_mult", 3.0)
+        return -1, stop, target
+    # Sweep-down + reclaim → LONG
+    if (low_i < sweep_l and close_i > swing_l
+            and not state["long_traded_today"]):
+        stop = low_i - atr_i * params.get("stop_mult", 1.5)
+        target = close_i + atr_i * params.get("target_mult", 3.0)
+        return 1, stop, target
+    return 0, 0, 0
+
+
 def entry_gap_fill_trigger(f, i, state, params):
     """Gap-fill fade entry (added 2026-06-09 per operator decision #116).
 
@@ -1157,6 +1217,7 @@ ENTRY_MAP = {
     "volatility_regime_compound": entry_volatility_regime_compound,
     "bb_keltner_squeeze": entry_bb_keltner_squeeze,
     "gap_fill_trigger": entry_gap_fill_trigger,
+    "stop_run_reversal": entry_stop_run_reversal,
 }
 
 EXIT_MAP = {

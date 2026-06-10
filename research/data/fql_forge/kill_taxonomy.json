@@ -3080,5 +3080,68 @@
       "median-negative"
     ],
     "disposition": "0 PAPER_PACKET. 0 OBSERVATIONAL. 6 KILL. Primitive RESEARCH_ONLY with filter-mismatch closed-loop finding."
+  },
+  "_HEADLINE_2026-06-09c_gap_fill_archived_after_retry": {
+    "headline": "gap_fill_trigger filter=none retry: 6/6 KILL. Fair-test confirms ARCHIVED. Where mechanism fires meaningfully (MGC n=428, ZN n=251): consistent anti-edge (PFs 0.66-0.83). Where barely fires (MES/MNQ/MYM/MCL n=0-3): can't evaluate but doesn't suggest hidden edge.",
+    "date": "2026-06-09",
+    "operator_approval": "OK 118-A (ONE bounded retry with filter=none)",
+    "param_change": "filter: ema_slope \u2192 none",
+    "results": {
+      "GAPN-MES-Both-PL": {
+        "n": 3,
+        "pf": Infinity,
+        "median": 286.26,
+        "verdict": "KILL n=3 (sample-too-small for fair eval; 3 winning trades over 8 years)"
+      },
+      "GAPN-MNQ-Both-PL": {
+        "n": 3,
+        "pf": Infinity,
+        "median": 319.26,
+        "verdict": "KILL n=3 (same)"
+      },
+      "GAPN-MYM-Both-PL": {
+        "n": 0,
+        "verdict": "KILL n=0 (mechanism does not fire on MYM under default parameters)"
+      },
+      "GAPN-MGC-Both-PL": {
+        "n": 428,
+        "pf": 0.825,
+        "median": -15.24,
+        "verdict": "KILL median neg (FAIR TEST \u2014 n=428 over 8yrs)"
+      },
+      "GAPN-MCL-Both-PL": {
+        "n": 2,
+        "verdict": "KILL n=2 (barely fires)"
+      },
+      "GAPN-ZN-Both-PL": {
+        "n": 251,
+        "pf": 0.66,
+        "median": -49.98,
+        "verdict": "KILL median neg (FAIR TEST \u2014 n=251 over 8yrs)"
+      }
+    },
+    "fair_test_assets": [
+      "MGC (n=428)",
+      "ZN (n=251)"
+    ],
+    "fair_test_verdicts": "Both anti-edge. MGC PF 0.83 / median -$15.24. ZN PF 0.66 / median -$50.",
+    "sparse_fire_assets": [
+      "MES (n=3)",
+      "MNQ (n=3)",
+      "MYM (n=0)",
+      "MCL (n=2)"
+    ],
+    "sparse_fire_interpretation": "On equity micros and MCL, mechanism barely fires at default thresholds (0.5*ATR gap, first 3 session bars). Could indicate: (a) parameters too strict for these instruments, OR (b) gap-fill pattern not naturally occurring on these assets at chosen thresholds. The 3 winning trades on MES/MNQ are sample artifacts (PF=inf, 1 year only), not viable evidence.",
+    "final_classification": "ARCHIVED \u2014 gap_fill_trigger does not produce edge in fair test. Per narrow-scope saturation rule (#95 corrected 2026-06-09), this is the SPECIFIC tuple that's archived: (MES/MNQ/MYM/MGC/MCL/ZN \u00d7 gap-fade \u00d7 gap_fill_trigger \u00d7 any filter \u00d7 PL \u00d7 intraday \u00d7 prev_day_close basis). REOPENABLE_WITH_NEW_THESIS if: different gap definition (e.g., FOMC-day gaps, OPEX gaps), different threshold, different holding period, or session-specific variant.",
+    "cumulative_new_primitive_scoreboard": {
+      "RCB": "RESEARCH_ONLY (concentration intrinsic)",
+      "VRC": "ARCHIVED (mechanism anti-edge)",
+      "BBKC": "RESEARCH_ONLY (thin signal; cost-sensitive near-miss)",
+      "gap_fill_trigger": "ARCHIVED (mechanism does not produce edge in fair test)"
+    },
+    "tags": [
+      "median-negative"
+    ],
+    "disposition": "0 PAPER_PACKET. 0 OBSERVATIONAL. 6 KILL. gap_fill_trigger ARCHIVED for active hunt. Per #118: proceed to build stop_run_reversal next per SMP-3 spec."
   }
 }
