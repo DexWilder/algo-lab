@@ -4055,5 +4055,61 @@
       "data-blocked"
     ],
     "disposition": "ARCHIVED per strict-gate discipline. Packet #1 acceptance holds with amendment. Data-integrity doctrine codified. Audit process strengthened."
+  },
+  "_HEADLINE_2026-06-10i_conditional_prepacket_verification_BBKC_promoted_ARF2_downgraded": {
+    "headline": "Full non-cost audit on 2 cost-sensitive candidates. BBKC-MNQ confirmed CONDITIONAL PAPER_PACKET_CANDIDATE (all 9 non-cost gates pass; needs verified RT \u2264 $5.00). ARF2-MNQ-cont DOWNGRADED to OBSERVATIONAL (fails Era 3 PF gate \u2014 cost was never the blocker).",
+    "date": "2026-06-10",
+    "operator_correction": "Do not let candidates sit passive. Verify everything except prop-cost.",
+    "audit_method": "Full 9-gate non-cost audit + stress + break-even + family review + lookahead + artifact stability + data integrity",
+    "BBKC-MNQ-Both-PL_classification": {
+      "verdict": "CONDITIONAL PAPER_PACKET_CANDIDATE",
+      "all_non_cost_gates_pass": true,
+      "baseline_metrics": {
+        "n": 837,
+        "pf": 1.206,
+        "median": 2.76,
+        "max_yr": 44.9,
+        "yrs_pos": "6/8"
+      },
+      "break_even_RT_usd": 5.0,
+      "current_baseline_RT_usd": 2.24,
+      "needed_verified_RT_for_unlock_usd": "\u2264 $5.00 (safety buffer target \u2264 $4.00)",
+      "family_overlap": {
+        "vs_Packet_1": "corr -0.001 (zero)",
+        "vs_ARF2": "corr -0.011"
+      },
+      "lookahead": "PASS \u2014 standard FQL convention",
+      "artifact_stability": "PASS \u2014 deterministic (hash 29e8093b537b6a1e)",
+      "next_action": "Operator submits verified MNQ RT cost (template in conditional_prepacket_verification_2026-06-10.md)"
+    },
+    "ARF2-MNQ-cont-PL_DOWNGRADED_classification": {
+      "verdict": "OBSERVATIONAL (DOWNGRADED from 'CONDITIONAL PRE-PACKET')",
+      "reason": "Era 3 PF < 1.0 \u2014 most recent regime is LOSING. The earlier 'CONDITIONAL PRE-PACKET pending prop-cost' classification was incorrect; cost was never the actual blocker.",
+      "non_cost_gates": {
+        "positive_median": true,
+        "PF_>=_1.15": true,
+        "max_yr_<=_50pct": true,
+        "yrs_pos_>=_50pct": true,
+        "Era3_PF_>=_1.0": false,
+        "Era3_median_>=_0": true,
+        "artifact_deterministic": true,
+        "no_lookahead": true,
+        "data_integrity_clean": true
+      },
+      "cost_robustness": "EXCELLENT \u2014 break-even beyond 4\u00d7 cost test range (not the blocker)",
+      "reopen_criteria": "Recent regime improves (Era 3 PF >= 1.0), new thesis-specific variant addresses Era 3 weakness, or explicit operator override"
+    },
+    "cross_candidate_family_review": {
+      "BBKC_vs_ARF2_corr": -0.011,
+      "BBKC_vs_Packet1_NFP_corr": -0.001,
+      "ARF2_vs_Packet1_NFP_corr": -0.02,
+      "implication": "Both candidates independent of Packet #1. BBKC and ARF2 share trading days but PnL is uncorrelated \u2014 different mechanisms."
+    },
+    "operator_action": "Cost data submission focused on BBKC-MNQ (the one candidate where cost is the only remaining blocker). ARF2 is no longer a cost-data candidate.",
+    "doctrine_outcome": "Audit discipline preserved. ARF2 honestly downgraded. BBKC confirmed legitimately conditional. Operator's cost-data submission won't be wasted on an unfit candidate.",
+    "tags": [
+      "regime-dependent"
+    ],
+    "disposition": "BBKC-MNQ promoted to CONDITIONAL PAPER_PACKET_CANDIDATE. ARF2-MNQ-cont downgraded to OBSERVATIONAL. Report: docs/fql_forge/conditional_prepacket_verification_2026-06-10.md"
   }
 }

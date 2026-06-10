@@ -1,0 +1,597 @@
+{
+  "date": "2026-06-10",
+  "purpose": "Full conditional pre-packet audit on 2 cost-sensitive candidates",
+  "boundaries": "report-only Lane B; no asset_config change; no prop-rate assumptions",
+  "candidates": {
+    "BBKC-MNQ-Both-PL": {
+      "spec": {
+        "label": "BBKC-MNQ-Both-PL",
+        "asset": "MNQ",
+        "entry": "bb_keltner_squeeze",
+        "filter": "ema_slope",
+        "exit": "profit_ladder",
+        "mode": "both",
+        "params": {}
+      },
+      "baseline_metrics": {
+        "n": 837,
+        "pf": 1.2064415551605379,
+        "median": 2.76,
+        "mean": 8.122604540023891,
+        "win_rate": 0.5125448028673835,
+        "avg_win": 92.61314685314686,
+        "avg_loss": -80.71671568627451,
+        "expectancy": 8.122604540023893,
+        "max_dd_proxy": -32932.42000000024,
+        "n_wins": 429,
+        "n_losses": 408,
+        "largest_5_wins": [
+          642.76,
+          659.76,
+          723.76,
+          734.76,
+          1694.26
+        ],
+        "largest_5_losses": [
+          -398.74,
+          -350.24,
+          -344.24,
+          -273.74,
+          -271.74
+        ]
+      },
+      "temporal_split": {
+        "per_year": [
+          {
+            "year": 2019,
+            "n": 56,
+            "pf": 1.404741532976827,
+            "median": 1.76,
+            "net": 227.06000000000006
+          },
+          {
+            "year": 2020,
+            "n": 112,
+            "pf": 0.8145629920329087,
+            "median": -17.49,
+            "net": -784.3800000000005
+          },
+          {
+            "year": 2021,
+            "n": 111,
+            "pf": 1.1496222486782937,
+            "median": -5.74,
+            "net": 530.3599999999996
+          },
+          {
+            "year": 2022,
+            "n": 123,
+            "pf": 1.419081634340328,
+            "median": 26.26,
+            "net": 2534.4799999999996
+          },
+          {
+            "year": 2023,
+            "n": 125,
+            "pf": 1.066653397703235,
+            "median": -11.74,
+            "net": 287.9999999999992
+          },
+          {
+            "year": 2024,
+            "n": 121,
+            "pf": 0.8438339672680324,
+            "median": -18.24,
+            "net": -716.0400000000003
+          },
+          {
+            "year": 2025,
+            "n": 135,
+            "pf": 1.4591580246541944,
+            "median": 11.26,
+            "net": 3050.5999999999995
+          },
+          {
+            "year": 2026,
+            "n": 54,
+            "pf": 1.556313515243659,
+            "median": 30.259999999999998,
+            "net": 1668.5399999999995
+          }
+        ],
+        "eras": [
+          {
+            "era": 1,
+            "n": 279,
+            "pf": 0.9967656642145217,
+            "median": -2.74,
+            "net": -26.960000000000832
+          },
+          {
+            "era": 2,
+            "n": 279,
+            "pf": 1.2363692124355963,
+            "median": 8.26,
+            "net": 2697.539999999999
+          },
+          {
+            "era": 3,
+            "n": 279,
+            "pf": 1.313098905833079,
+            "median": 6.76,
+            "net": 4128.04
+          }
+        ],
+        "yrs_pos": 6,
+        "n_yrs": 8,
+        "era3_pf": 1.313098905833079,
+        "era3_median": 6.76,
+        "max_yr_share_pct": 44.870870853202575
+      },
+      "stress_ladder": {
+        "rows": [
+          {
+            "stress": "baseline (1x)",
+            "n": 837,
+            "pf": 1.206,
+            "median": 2.76
+          },
+          {
+            "stress": "1.5x cost + 1 tick slip",
+            "n": 837,
+            "pf": 1.162,
+            "median": 1.14
+          },
+          {
+            "stress": "2x cost + 1 tick slip",
+            "n": 837,
+            "pf": 1.145,
+            "median": 0.52
+          },
+          {
+            "stress": "2x cost + 2 ticks slip",
+            "n": 837,
+            "pf": 1.119,
+            "median": -0.48
+          },
+          {
+            "stress": "4x cost + 2 ticks slip",
+            "n": 837,
+            "pf": 1.057,
+            "median": -2.96
+          }
+        ],
+        "verdict": "FAIL_STRESS"
+      },
+      "break_even": {
+        "samples": [
+          {
+            "cost_mult": 0.25,
+            "rt_cost_usd": 1.31,
+            "n": 837,
+            "pf": 1.233,
+            "median": 3.69
+          },
+          {
+            "cost_mult": 0.5,
+            "rt_cost_usd": 1.62,
+            "n": 837,
+            "pf": 1.224,
+            "median": 3.38
+          },
+          {
+            "cost_mult": 0.75,
+            "rt_cost_usd": 1.93,
+            "n": 837,
+            "pf": 1.215,
+            "median": 3.07
+          },
+          {
+            "cost_mult": 1.0,
+            "rt_cost_usd": 2.24,
+            "n": 837,
+            "pf": 1.206,
+            "median": 2.76
+          },
+          {
+            "cost_mult": 1.5,
+            "rt_cost_usd": 2.86,
+            "n": 837,
+            "pf": 1.189,
+            "median": 2.14
+          },
+          {
+            "cost_mult": 2.0,
+            "rt_cost_usd": 3.48,
+            "n": 837,
+            "pf": 1.172,
+            "median": 1.52
+          },
+          {
+            "cost_mult": 2.5,
+            "rt_cost_usd": 4.1,
+            "n": 837,
+            "pf": 1.156,
+            "median": 0.9
+          },
+          {
+            "cost_mult": 3.0,
+            "rt_cost_usd": 4.72,
+            "n": 837,
+            "pf": 1.139,
+            "median": 0.28
+          },
+          {
+            "cost_mult": 4.0,
+            "rt_cost_usd": 5.96,
+            "n": 837,
+            "pf": 1.107,
+            "median": -0.96
+          }
+        ],
+        "base_rt_cost_usd": 2.24,
+        "break_even_rt_cost_usd": 5.0,
+        "margin_above_baseline_usd": 2.76
+      },
+      "lookahead": {
+        "n_long_entries": 586,
+        "n_short_entries": 251,
+        "convention": "Backtest fills at NEXT bar's OPEN per engine/backtest.py \u2014 entry decision uses CURRENT bar's close (no future data).",
+        "verdict": "PASS \u2014 standard FQL execution convention with no lookahead"
+      },
+      "data_integrity": {
+        "asset": "MNQ",
+        "span_start": "2019-06-30 20:00:00",
+        "span_end": "2026-06-08 19:55:00",
+        "n_bars": 486616,
+        "n_5min_intervals": 484133,
+        "n_intra_day_gaps_gt_10min": 2371,
+        "n_overnight_gaps_gt_2h": 420,
+        "verdict": "PASS \u2014 continuous intraday strategy uses full bar stream; gap pattern consistent with 23h futures session"
+      },
+      "artifact_stability": {
+        "run1_metrics": {
+          "n": 837,
+          "pf": 1.206,
+          "median": 2.76
+        },
+        "run2_metrics": {
+          "n": 837,
+          "pf": 1.206,
+          "median": 2.76
+        },
+        "hash_run1": "29e8093b537b6a1e",
+        "hash_run2": "29e8093b537b6a1e",
+        "deterministic": true,
+        "verdict": "PASS"
+      }
+    },
+    "ARF2-MNQ-cont-PL": {
+      "spec": {
+        "label": "ARF2-MNQ-cont-PL",
+        "asset": "MNQ",
+        "entry": "abnormal_range_followup",
+        "filter": "none",
+        "exit": "profit_ladder",
+        "mode": "both",
+        "params": {
+          "mode": "continuation"
+        }
+      },
+      "baseline_metrics": {
+        "n": 407,
+        "pf": 1.1786042206201965,
+        "median": 4.26,
+        "mean": 5.8595085995085965,
+        "win_rate": 0.5184275184275184,
+        "avg_win": 74.58464454976303,
+        "avg_loss": -68.12520408163266,
+        "expectancy": 5.859508599508594,
+        "max_dd_proxy": -13352.539999999968,
+        "n_wins": 211,
+        "n_losses": 196,
+        "largest_5_wins": [
+          275.76,
+          280.26,
+          333.26,
+          395.26,
+          401.76
+        ],
+        "largest_5_losses": [
+          -235.24,
+          -230.74,
+          -207.74,
+          -199.24,
+          -192.24
+        ]
+      },
+      "temporal_split": {
+        "per_year": [
+          {
+            "year": 2019,
+            "n": 31,
+            "pf": 1.2010268800966473,
+            "median": 0.26,
+            "net": 66.56000000000002
+          },
+          {
+            "year": 2020,
+            "n": 52,
+            "pf": 1.8009183487906895,
+            "median": 15.760000000000002,
+            "net": 1057.02
+          },
+          {
+            "year": 2021,
+            "n": 56,
+            "pf": 1.8402945343026609,
+            "median": 4.76,
+            "net": 1079.56
+          },
+          {
+            "year": 2022,
+            "n": 61,
+            "pf": 0.7656370869709361,
+            "median": -6.24,
+            "net": -678.6400000000001
+          },
+          {
+            "year": 2023,
+            "n": 64,
+            "pf": 1.6042944098822898,
+            "median": 22.26,
+            "net": 1080.1399999999999
+          },
+          {
+            "year": 2024,
+            "n": 61,
+            "pf": 1.073250071991553,
+            "median": 3.26,
+            "net": 137.36
+          },
+          {
+            "year": 2025,
+            "n": 61,
+            "pf": 0.9088580942852449,
+            "median": -4.74,
+            "net": -244.14000000000033
+          },
+          {
+            "year": 2026,
+            "n": 21,
+            "pf": 0.9041968947047258,
+            "median": 25.26,
+            "net": -113.04000000000002
+          }
+        ],
+        "eras": [
+          {
+            "era": 1,
+            "n": 135,
+            "pf": 1.7460481025883228,
+            "median": 5.26,
+            "net": 2085.1
+          },
+          {
+            "era": 2,
+            "n": 136,
+            "pf": 1.0931715897565923,
+            "median": 0.76,
+            "net": 470.35999999999956
+          },
+          {
+            "era": 3,
+            "n": 136,
+            "pf": 0.9690272554343878,
+            "median": 4.76,
+            "net": -170.64000000000033
+          }
+        ],
+        "yrs_pos": 5,
+        "n_yrs": 8,
+        "era3_pf": 0.9690272554343878,
+        "era3_median": 4.76,
+        "max_yr_share_pct": 45.29230717622295
+      },
+      "stress_ladder": {
+        "rows": [
+          {
+            "stress": "baseline (1x)",
+            "n": 407,
+            "pf": 1.179,
+            "median": 4.26
+          },
+          {
+            "stress": "1.5x cost + 1 tick slip",
+            "n": 407,
+            "pf": 1.126,
+            "median": 2.64
+          },
+          {
+            "stress": "2x cost + 1 tick slip",
+            "n": 407,
+            "pf": 1.107,
+            "median": 2.02
+          },
+          {
+            "stress": "2x cost + 2 ticks slip",
+            "n": 407,
+            "pf": 1.076,
+            "median": 1.02
+          },
+          {
+            "stress": "4x cost + 2 ticks slip",
+            "n": 407,
+            "pf": 1.004,
+            "median": -1.46
+          }
+        ],
+        "verdict": "KNIFE_EDGE (4x)"
+      },
+      "break_even": {
+        "samples": [
+          {
+            "cost_mult": 0.25,
+            "rt_cost_usd": 1.31,
+            "n": 407,
+            "pf": 1.21,
+            "median": 5.19
+          },
+          {
+            "cost_mult": 0.5,
+            "rt_cost_usd": 1.62,
+            "n": 407,
+            "pf": 1.199,
+            "median": 4.88
+          },
+          {
+            "cost_mult": 0.75,
+            "rt_cost_usd": 1.93,
+            "n": 407,
+            "pf": 1.189,
+            "median": 4.57
+          },
+          {
+            "cost_mult": 1.0,
+            "rt_cost_usd": 2.24,
+            "n": 407,
+            "pf": 1.179,
+            "median": 4.26
+          },
+          {
+            "cost_mult": 1.5,
+            "rt_cost_usd": 2.86,
+            "n": 407,
+            "pf": 1.158,
+            "median": 3.64
+          },
+          {
+            "cost_mult": 2.0,
+            "rt_cost_usd": 3.48,
+            "n": 407,
+            "pf": 1.138,
+            "median": 3.02
+          },
+          {
+            "cost_mult": 2.5,
+            "rt_cost_usd": 4.1,
+            "n": 407,
+            "pf": 1.119,
+            "median": 2.4
+          },
+          {
+            "cost_mult": 3.0,
+            "rt_cost_usd": 4.72,
+            "n": 407,
+            "pf": 1.099,
+            "median": 1.78
+          },
+          {
+            "cost_mult": 4.0,
+            "rt_cost_usd": 5.96,
+            "n": 407,
+            "pf": 1.062,
+            "median": 0.54
+          }
+        ],
+        "base_rt_cost_usd": 2.24,
+        "break_even_rt_cost_usd": null,
+        "margin_above_baseline_usd": null
+      },
+      "lookahead": {
+        "n_long_entries": 238,
+        "n_short_entries": 169,
+        "convention": "Backtest fills at NEXT bar's OPEN per engine/backtest.py \u2014 entry decision uses CURRENT bar's close (no future data).",
+        "verdict": "PASS \u2014 standard FQL execution convention with no lookahead"
+      },
+      "data_integrity": {
+        "asset": "MNQ",
+        "span_start": "2019-06-30 20:00:00",
+        "span_end": "2026-06-08 19:55:00",
+        "n_bars": 486616,
+        "n_5min_intervals": 484133,
+        "n_intra_day_gaps_gt_10min": 2371,
+        "n_overnight_gaps_gt_2h": 420,
+        "verdict": "PASS \u2014 continuous intraday strategy uses full bar stream; gap pattern consistent with 23h futures session"
+      },
+      "artifact_stability": {
+        "run1_metrics": {
+          "n": 407,
+          "pf": 1.179,
+          "median": 4.26
+        },
+        "run2_metrics": {
+          "n": 407,
+          "pf": 1.179,
+          "median": 4.26
+        },
+        "hash_run1": "55a0d6df552948b0",
+        "hash_run2": "55a0d6df552948b0",
+        "deterministic": true,
+        "verdict": "PASS"
+      }
+    }
+  },
+  "cross_candidate_family_review": {
+    "BBKC_vs_ARF2": {
+      "n_days_a": 837,
+      "n_days_b": 407,
+      "n_days_overlap": 199,
+      "overlap_pct_of_a": 23.775388291517324,
+      "overlap_pct_of_b": 48.894348894348894,
+      "daily_pnl_corr": -0.011408344237946939
+    },
+    "BBKC_vs_Packet1_NFP": {
+      "n_days_a": 837,
+      "n_days_b": 62,
+      "n_days_overlap": 25,
+      "overlap_pct_of_a": 2.986857825567503,
+      "overlap_pct_of_b": 40.32258064516129,
+      "daily_pnl_corr": -0.0008816978019958299
+    },
+    "ARF2_vs_Packet1_NFP": {
+      "n_days_a": 407,
+      "n_days_b": 62,
+      "n_days_overlap": 4,
+      "overlap_pct_of_a": 0.9828009828009828,
+      "overlap_pct_of_b": 6.451612903225806,
+      "daily_pnl_corr": -0.02032307464256488
+    }
+  },
+  "classifications": {
+    "BBKC-MNQ-Both-PL": {
+      "non_cost_gates": {
+        "positive_median": true,
+        "PF_>=_1.15": true,
+        "max_yr_<=_50pct": true,
+        "yrs_pos_>=_50pct": true,
+        "Era3_PF_>=_1.0": true,
+        "Era3_median_>=_0": true,
+        "artifact_deterministic": true,
+        "no_lookahead": true,
+        "data_integrity_clean": true
+      },
+      "all_non_cost_pass": true,
+      "break_even_rt_usd": 5.0,
+      "base_rt_usd": 2.24,
+      "classification": "CONDITIONAL PAPER_PACKET_CANDIDATE \u2014 cost data required: verified RT must be \u2264 $5.00 (safety buffer: target \u2264 $4.00)"
+    },
+    "ARF2-MNQ-cont-PL": {
+      "non_cost_gates": {
+        "positive_median": true,
+        "PF_>=_1.15": true,
+        "max_yr_<=_50pct": true,
+        "yrs_pos_>=_50pct": true,
+        "Era3_PF_>=_1.0": false,
+        "Era3_median_>=_0": true,
+        "artifact_deterministic": true,
+        "no_lookahead": true,
+        "data_integrity_clean": true
+      },
+      "all_non_cost_pass": false,
+      "break_even_rt_usd": null,
+      "base_rt_usd": 2.24,
+      "classification": "NOT QUALIFIED \u2014 fails non-cost gates: Era3_PF_>=_1.0"
+    }
+  }
+}
