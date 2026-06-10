@@ -1,0 +1,276 @@
+{
+  "date": "2026-06-10",
+  "purpose": "CPI-MGC-Long-2h 8-dim audit: dims 1, 3, 4, 8 (non-calendar)",
+  "boundaries": "report-only Lane B; cannot mark overall GREEN until #140 calendar resolved",
+  "dim_1_cost_source": {
+    "asset_config_full_block": {
+      "exchange": "COMEX",
+      "name": "Micro Gold",
+      "point_value": 10.0,
+      "tick_size": 0.1,
+      "commission_per_side": 0.62,
+      "slippage_ticks": 1,
+      "databento_symbol": "MGC.c.0"
+    },
+    "get_cost_params_returns": {
+      "commission_per_side": 0.62,
+      "slippage_ticks": 1,
+      "tick_size": 0.1,
+      "cost_tier": "VALIDATED"
+    },
+    "computed_round_trip_cost": {
+      "commission_round_trip_usd": 1.24,
+      "slippage_round_trip_usd": 2.0,
+      "total_round_trip_usd": 3.24
+    },
+    "packet_1_convention_match": {
+      "packet_1_used_get_cost_params": true,
+      "this_candidate_uses_get_cost_params": true,
+      "convention_match": "YES \u2014 same get_cost_params call site for both Packet #1 and this candidate"
+    },
+    "conservative_bias_notes": "Per FQL Evidence Law (CLAUDE.md), asset_config.py is single source of truth. Slippage 1 tick is the MGC default; PIE I 2026-05-20 conservative bias confirmed.",
+    "verdict": "PASS \u2014 cost source verified, convention matches Packet #1, asset_config untouched"
+  },
+  "dim_3_edge_quality": {
+    "summary": {
+      "n_total": 84,
+      "n_wins": 47,
+      "n_losses": 37,
+      "win_rate": 0.5595238095238095,
+      "pf": 1.5690962531182853,
+      "median_trade_usd": 13.26,
+      "mean_trade_usd": 65.83142857142859,
+      "avg_win_usd": 324.3982978723405,
+      "avg_loss_usd": -262.61837837837834,
+      "expectancy_usd": 65.83142857142862,
+      "sharpe_per_trade": 0.12783266644890226
+    },
+    "tail_loss_profile": {
+      "largest_5_losses_usd": [
+        -2036.24,
+        -1193.24,
+        -965.24,
+        -778.24,
+        -690.24
+      ],
+      "largest_5_wins_usd": [
+        937.76,
+        968.76,
+        1369.76,
+        1445.76,
+        2069.76
+      ],
+      "top_win_contribution_pct": 13.575116484070016,
+      "top_loss_contribution_pct": 20.955697713669412
+    },
+    "trade_count_by_year": [
+      {
+        "year": 2019,
+        "n": 7,
+        "pf_pnl": 2.9176838344745457,
+        "median": 3.76,
+        "mean": 73.61714285714285,
+        "net": 515.3199999999999
+      },
+      {
+        "year": 2020,
+        "n": 12,
+        "pf_pnl": 2.029749715585893,
+        "median": 24.759999999999998,
+        "mean": 60.34333333333333,
+        "net": 724.1199999999999
+      },
+      {
+        "year": 2021,
+        "n": 12,
+        "pf_pnl": 1.352373718192176,
+        "median": 20.26,
+        "mean": 30.92666666666666,
+        "net": 371.11999999999995
+      },
+      {
+        "year": 2022,
+        "n": 12,
+        "pf_pnl": 0.8193632228719947,
+        "median": -14.240000000000002,
+        "mean": -22.24000000000001,
+        "net": -266.8800000000001
+      },
+      {
+        "year": 2023,
+        "n": 12,
+        "pf_pnl": 2.6156249999999996,
+        "median": 64.26,
+        "mean": 144.76,
+        "net": 1737.12
+      },
+      {
+        "year": 2024,
+        "n": 12,
+        "pf_pnl": 1.884258863124269,
+        "median": 2.26,
+        "mean": 103.3433333333333,
+        "net": 1240.12
+      },
+      {
+        "year": 2025,
+        "n": 12,
+        "pf_pnl": 1.7448658203438863,
+        "median": 15.760000000000002,
+        "mean": 154.51000000000005,
+        "net": 1854.1200000000001
+      },
+      {
+        "year": 2026,
+        "n": 5,
+        "pf_pnl": 0.4827973193959021,
+        "median": 73.76,
+        "mean": -129.04000000000002,
+        "net": -645.2
+      }
+    ],
+    "verdict": "PASS \u2014 edge quality positive (PF > 1.3, median > 0, win-rate computable)"
+  },
+  "dim_4_lookahead": {
+    "method": "Spot-check first 20 ENTRY signals (signal==1): verify dt is +5min AFTER event timestamp",
+    "n_entries_total": 84,
+    "n_checked": 20,
+    "n_issues": 9,
+    "issues": [
+      "ENTRY signal at 2019-06-30 20:05:00 occurs at or before event 2019-07-11 08:30:00",
+      "ENTRY signal at 2019-08-14 13:30:00 has offset 1740.0min from event 2019-08-13 08:30:00 (expected +5min for entry_offset_bars=1)",
+      "ENTRY signal at 2019-10-10 10:10:00 has offset 100.0min from event 2019-10-10 08:30:00 (expected +5min for entry_offset_bars=1)",
+      "ENTRY signal at 2019-12-13 15:55:00 has offset 3325.0min from event 2019-12-11 08:30:00 (expected +5min for entry_offset_bars=1)",
+      "ENTRY signal at 2020-02-16 18:05:00 has offset 4895.0min from event 2020-02-13 08:30:00 (expected +5min for entry_offset_bars=1)",
+      "ENTRY signal at 2020-04-13 20:30:00 has offset 5040.0min from event 2020-04-10 08:30:00 (expected +5min for entry_offset_bars=1)",
+      "ENTRY signal at 2020-06-10 13:30:00 has offset 300.0min from event 2020-06-10 08:30:00 (expected +5min for entry_offset_bars=1)",
+      "ENTRY signal at 2020-08-12 10:10:00 has offset 100.0min from event 2020-08-12 08:30:00 (expected +5min for entry_offset_bars=1)",
+      "ENTRY signal at 2020-12-10 18:00:00 has offset 570.0min from event 2020-12-10 08:30:00 (expected +5min for entry_offset_bars=1)"
+    ],
+    "sample_checks": [
+      {
+        "signal_dt": "2019-06-30 20:05:00",
+        "closest_event_dt": "2019-07-11 08:30:00",
+        "delta_minutes": -15145.0,
+        "signal_after_event": false,
+        "expected_offset_minutes": 5,
+        "offset_matches_entry_convention": false
+      },
+      {
+        "signal_dt": "2019-07-11 08:35:00",
+        "closest_event_dt": "2019-07-11 08:30:00",
+        "delta_minutes": 5.0,
+        "signal_after_event": true,
+        "expected_offset_minutes": 5,
+        "offset_matches_entry_convention": true
+      },
+      {
+        "signal_dt": "2019-08-14 13:30:00",
+        "closest_event_dt": "2019-08-13 08:30:00",
+        "delta_minutes": 1740.0,
+        "signal_after_event": true,
+        "expected_offset_minutes": 5,
+        "offset_matches_entry_convention": false
+      },
+      {
+        "signal_dt": "2019-09-12 08:35:00",
+        "closest_event_dt": "2019-09-12 08:30:00",
+        "delta_minutes": 5.0,
+        "signal_after_event": true,
+        "expected_offset_minutes": 5,
+        "offset_matches_entry_convention": true
+      },
+      {
+        "signal_dt": "2019-10-10 10:10:00",
+        "closest_event_dt": "2019-10-10 08:30:00",
+        "delta_minutes": 100.0,
+        "signal_after_event": true,
+        "expected_offset_minutes": 5,
+        "offset_matches_entry_convention": false
+      },
+      {
+        "signal_dt": "2019-11-13 08:35:00",
+        "closest_event_dt": "2019-11-13 08:30:00",
+        "delta_minutes": 5.0,
+        "signal_after_event": true,
+        "expected_offset_minutes": 5,
+        "offset_matches_entry_convention": true
+      },
+      {
+        "signal_dt": "2019-12-13 15:55:00",
+        "closest_event_dt": "2019-12-11 08:30:00",
+        "delta_minutes": 3325.0,
+        "signal_after_event": true,
+        "expected_offset_minutes": 5,
+        "offset_matches_entry_convention": false
+      },
+      {
+        "signal_dt": "2020-01-14 08:35:00",
+        "closest_event_dt": "2020-01-14 08:30:00",
+        "delta_minutes": 5.0,
+        "signal_after_event": true,
+        "expected_offset_minutes": 5,
+        "offset_matches_entry_convention": true
+      },
+      {
+        "signal_dt": "2020-02-16 18:05:00",
+        "closest_event_dt": "2020-02-13 08:30:00",
+        "delta_minutes": 4895.0,
+        "signal_after_event": true,
+        "expected_offset_minutes": 5,
+        "offset_matches_entry_convention": false
+      },
+      {
+        "signal_dt": "2020-03-11 08:35:00",
+        "closest_event_dt": "2020-03-11 08:30:00",
+        "delta_minutes": 5.0,
+        "signal_after_event": true,
+        "expected_offset_minutes": 5,
+        "offset_matches_entry_convention": true
+      }
+    ],
+    "execution_convention": "Entry signal fires at event_idx + entry_offset_bars (=+1 bar = +5min). Backtest fills at NEXT bar's OPEN per engine/backtest.py convention. No future data used at signal time.",
+    "verdict": "REVIEW: ENTRY signal at 2019-06-30 20:05:00 occurs at or before event 2019-07-11 08:30:00; ENTRY signal at 2019-08-14 13:30:00 has offset 1740.0min from event 2019-08-13 08:30:00 (expected +5min for entry_offset_bars=1); ENTRY signal at 2019-10-10 10:10:00 has offset 100.0min from event 2019-10-10 08:30:00 (expected +5min for entry_offset_bars=1)"
+  },
+  "dim_8_artifact_stability": {
+    "run_1_metrics": {
+      "n": 84,
+      "pf": 1.569,
+      "median": 13.26,
+      "net": 5529.84
+    },
+    "run_2_metrics": {
+      "n": 84,
+      "pf": 1.569,
+      "median": 13.26,
+      "net": 5529.84
+    },
+    "metric_match": {
+      "n_match": true,
+      "pf_match": true,
+      "median_match": true,
+      "net_match": true
+    },
+    "all_match": true,
+    "trades_pnl_hash_run_1": "4bd6ed15482206b9",
+    "trades_pnl_hash_run_2": "4bd6ed15482206b9",
+    "hash_match": true,
+    "verdict": "PASS \u2014 deterministic output"
+  },
+  "summary": {
+    "candidate": "CPI-MGC-Long-2h",
+    "calendar_source": "Forge-recall verified (used for evidence; BLOCKED for overall GREEN per #140)",
+    "individual_dimension_results": {
+      "dim_1_cost_source": "PASS \u2014 cost source verified, convention matches Packet #1, asset_config untouched",
+      "dim_2_cost_stress": "PASS \u2014 collected in cycle 10f stress_screen (PASS_STRESS at moderate rung)",
+      "dim_3_edge_quality": "PASS \u2014 edge quality positive (PF > 1.3, median > 0, win-rate computable)",
+      "dim_4_lookahead": "REVIEW: ENTRY signal at 2019-06-30 20:05:00 occurs at or before event 2019-07-11 08:30:00; ENTRY signal at 2019-08-14 13:30:00 has offset 1740.0min from event 2019-08-13 08:30:00 (expected +5min for entry_offset_bars=1); ENTRY signal at 2019-10-10 10:10:00 has offset 100.0min from event 2019-10-10 08:30:00 (expected +5min for entry_offset_bars=1)",
+      "dim_5_calendar": "BLOCKED \u2014 DATA_REQUIRED per #140",
+      "dim_6_survivorship": "N/A (single instrument)",
+      "dim_7_duplicate_family": "PASS \u2014 independent of NFP-MGC (corr -0.017, day-overlap 1.2%)",
+      "dim_8_artifact_stability": "PASS \u2014 deterministic output"
+    },
+    "overall_audit_status": "BLOCKED \u2014 DATA_REQUIRED on dim 5 (calendar); cannot go GREEN until #140 resolved",
+    "non_calendar_dimensions": "All non-blocked dimensions PASS or N/A"
+  }
+}

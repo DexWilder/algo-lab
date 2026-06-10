@@ -3915,5 +3915,90 @@
       "data-blocked"
     ],
     "disposition": "CPI-MGC-Long-2h = DRAFT SHELL PAPER_PACKET_CANDIDATE. Cannot proceed to ACCEPTED packet without #140 calendar verification. Long-1h archived. Long-4h archived. Long-EOD secondary-only."
+  },
+  "_HEADLINE_2026-06-10g_audit_finds_data_integrity_issue_affecting_BOTH_candidates": {
+    "headline": "8-dim audit dims 1/3/4/8 on CPI-MGC-Long-2h. Dim 4 (lookahead check) SURFACED data-integrity issue: MGC 5-min data has 33 of 90 CPI event timestamps with >1h gaps (13 with >1d gaps). Clean re-run shows CPI-MGC-Long-2h FAILS concentration gate (50.9% max-yr). RETROACTIVE: same data issue affects Packet #1 NFP-MGC, but clean re-run actually STRENGTHENS Packet #1 (PF 2.26\u21922.39, max-yr 34.3% still clean).",
+    "date": "2026-06-10",
+    "operator_approval": "OK #143 audit dims 1/3/4/8",
+    "individual_dim_results": {
+      "dim_1_cost_source": "PASS \u2014 asset_config.MGC values verified, same convention as Packet #1, untouched",
+      "dim_2_cost_stress": "PASS_STRESS evidence collected (on contaminated data; needs re-test on clean events)",
+      "dim_3_edge_quality": "REVIEW \u2014 clean data shows different edge profile than contaminated",
+      "dim_4_lookahead": "NO ACTUAL LOOKAHEAD detected; but data integrity issue surfaced \u2014 many CPI event timestamps have multi-day gaps in MGC 5-min data, causing engine to fall back to wrong bars",
+      "dim_5_calendar": "BLOCKED \u2014 DATA_REQUIRED per #140",
+      "dim_6_survivorship": "N/A (single instrument)",
+      "dim_7_duplicate_family": "PASS \u2014 independent of NFP-MGC (corr -0.017, day-overlap 1.2% on contaminated; need re-verify on clean)",
+      "dim_8_artifact_stability": "PASS \u2014 deterministic output (hash-matched re-run)"
+    },
+    "data_integrity_finding": {
+      "issue": "MGC 5-min data has multi-day gaps at many event timestamps",
+      "CPI_event_breakdown": "90 total; 57 exact match (63%); 9 gap <1h; 15 gap 1h-1d; 13 gap >1d (data outage)",
+      "NFP_event_breakdown": "96 total; 57 exact match (59%); 11 gap <1h; 10 gap 1h-1d; 12 gap >1d",
+      "root_cause": "MGC 5-min data file appears to start ~2019-06-30; pre-data-start events (6 CPI + 6 NFP) fall back to first available bar. Additional 7 CPI + 6 NFP events have mid-history gaps suggesting data vendor outages on those specific days.",
+      "scope": "Affects entire event_window family of strategies on MGC. Likely affects any event-conditioned candidate using this data file."
+    },
+    "CPI-MGC-Long-2h_CLEAN_vs_CONTAMINATED": {
+      "contaminated_90_events": {
+        "n": 84,
+        "pf": 1.569,
+        "median": 13.26,
+        "max_yr": 33.5,
+        "yrs_pos": "6/8"
+      },
+      "clean_57_events_only": {
+        "n": 57,
+        "pf": 1.833,
+        "median": 4.76,
+        "max_yr_share_pct": 50.9,
+        "yrs_pos": "5/8",
+        "net": 3116
+      },
+      "deltas": {
+        "\u0394n": -27,
+        "\u0394PF": "+0.264",
+        "\u0394median": "-$8.50",
+        "\u0394max_yr_share": "+17.4pp (FAILS 50% gate on clean)"
+      },
+      "per_year_clean": {
+        "2019": "n=4, PF 0.02 (very small), net -$264",
+        "2020": "n=7, PF 0.64, net -$130",
+        "2021": "n=8, PF 0.25, net -$794",
+        "2022": "n=7, PF 1.51, net +$158",
+        "2023": "n=9, PF 1.48, net +$436",
+        "2024": "n=9, PF 5.69 (excellent), net +$1586",
+        "2025": "n=9, PF 4.48 (excellent), net +$1576",
+        "2026": "n=4, PF 11.10 (small sample), net +$548"
+      },
+      "interpretation": "Clean data reveals: 2019-2021 was a LOSING era (3 negative years), 2022-2026 is a strong era (5 positive). Recent edge is exceptionally strong but the candidate as-defined FAILS concentration gate (50.9% vs 50% limit) on clean data.",
+      "current_classification": "FAILS strict 50% concentration gate on clean data. ARCHIVE? Or operator-discretion review of recent-era strength?"
+    },
+    "RETROACTIVE_Packet_1_re_audit": {
+      "concern": "Same data integrity issue affects Packet #1 NFP-MGC-Long-2h",
+      "original_audit_GREEN_metrics": {
+        "n": 84,
+        "pf": 2.264,
+        "median": 21.76
+      },
+      "clean_re_run_metrics": {
+        "n": 62,
+        "pf": 2.393,
+        "median": 14.26,
+        "max_yr_share_pct": 34.3,
+        "yrs_pos": "8/8",
+        "net": 5382
+      },
+      "deltas": {
+        "\u0394n": -22,
+        "\u0394PF": "+0.129 (STRENGTHENS)",
+        "\u0394max_yr": "n/a stayed clean"
+      },
+      "verdict": "Packet #1 ACCEPTANCE HOLDS \u2014 clean re-run shows Packet #1 is actually STRONGER (PF 2.39 vs 2.26), max-yr still passes 34.3%, all 8 yrs positive. Data contamination was DILUTING Packet #1 edge.",
+      "operator_decision_options": "A: accept Packet #1 still GREEN (no change needed); B: re-audit Packet #1 formally with clean events; C: amend Packet #1 record to note data-cleanup re-verification"
+    },
+    "tags": [
+      "data-blocked",
+      "concentration"
+    ],
+    "disposition": "CPI-MGC-Long-2h: clean re-run FAILS concentration gate. Operator decision needed: archive or recent-era-discretion review. Packet #1: clean re-run STRENGTHENS metrics, acceptance holds. Data integrity issue documented as systemic concern for event_window family on MGC."
   }
 }
