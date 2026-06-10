@@ -3862,5 +3862,58 @@
     ],
     "tags": [],
     "disposition": "Long-1h: ARCHIVED (rule-based false positive). Long-2h: NEW BEST CANDIDATE on verified calendar \u2014 pending operator variant-switch decision + 8-dim audit. Long-EOD: weakened to OBSERVATIONAL (concentration fail)."
+  },
+  "_HEADLINE_2026-06-10_CPI_MGC_classification_after_calendar_audit": {
+    "headline": "CPI-MGC variant switch ACCEPTED per #139 (Long-2h). Calendar = DATA_REQUIRED per #140-C (machine-fetch failed; Forge-recall not production-grade). Audit prep proceeds per #141 on non-calendar dimensions.",
+    "date": "2026-06-10",
+    "operator_decisions": [
+      "#139 OK A (variant switch to Long-2h)",
+      "#140 OK C (require official BLS calendar)",
+      "#141 OK proceed audit prep, calendar is hard gate"
+    ],
+    "machine_fetch_attempts": [
+      {
+        "url": "bls.gov/schedule/news_release/cpi.htm",
+        "result": "HTTP 403 Forbidden"
+      },
+      {
+        "url": "bls.gov/cpi/news.htm",
+        "result": "HTTP 403"
+      },
+      {
+        "url": "download.bls.gov/pub/time.series/cu/cu.txt",
+        "result": "HTTP 403"
+      },
+      {
+        "url": "web.archive.org/web/.../bls.gov/...",
+        "result": "blocked by harness"
+      },
+      {
+        "url": "federalreserve.gov/monetarypolicy/fomccalendars.htm",
+        "result": "SUCCESS (Fed site works for FOMC dates if needed for future event candidates)"
+      }
+    ],
+    "calendar_status": "DATA_REQUIRED \u2014 operator must submit official BLS calendar (CSV/PDF/screenshot) or authenticate API access before any GREEN audit",
+    "classifications_locked": {
+      "CPI-MGC-Long-1h": "ARCHIVED \u2014 calendar-artifact false positive on rule-based calendar; PF collapsed from 1.87 to 1.12 on verified Forge-recall calendar",
+      "CPI-MGC-Long-2h": "PAPER_PACKET_CANDIDATE \u2014 pending official BLS calendar verification (#140) + 8-dim audit. Currently surviving on Forge-recall verified calendar: PF 1.569, median $13.26, max-yr 33.5%, 6/8 yrs+, Era3 PF 1.47, PASS_STRESS, family-review-independent of NFP-MGC.",
+      "CPI-MGC-Long-4h": "ARCHIVED \u2014 concentration 52.5% fails 50% gate even on rule-based (and 74% on verified)",
+      "CPI-MGC-Long-EOD": "SECONDARY/REFERENCE ONLY per #139 \u2014 not a packet candidate. Concentration 84.9% on verified."
+    },
+    "audit_dimensions_in_progress_per_141": {
+      "dim_1_cost_source": "in progress (verify asset_config.MGC values)",
+      "dim_2_cost_stress": "evidence collected (PASS_STRESS on verified Forge-recall)",
+      "dim_3_edge_quality": "in progress",
+      "dim_4_lookahead": "in progress",
+      "dim_5_calendar": "BLOCKED \u2014 DATA_REQUIRED per #140",
+      "dim_6_survivorship": "N/A (single instrument)",
+      "dim_7_duplicate_family": "COMPLETE \u2014 independent of NFP-MGC (corr -0.017)",
+      "dim_8_artifact_stability": "in progress"
+    },
+    "paper_packet_draft_shell_created": "docs/fql_forge/paper_packet_drafts/CPI-MGC-Long-2h_DRAFT_SHELL.md",
+    "tags": [
+      "data-blocked"
+    ],
+    "disposition": "CPI-MGC-Long-2h = DRAFT SHELL PAPER_PACKET_CANDIDATE. Cannot proceed to ACCEPTED packet without #140 calendar verification. Long-1h archived. Long-4h archived. Long-EOD secondary-only."
   }
 }
