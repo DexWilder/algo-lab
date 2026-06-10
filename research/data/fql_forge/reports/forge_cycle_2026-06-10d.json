@@ -1,0 +1,246 @@
+{
+  "date": "2026-06-10",
+  "purpose": "CPI-MGC event-window first batch (#132 metals-specific events)",
+  "operator_approval": "OK 128 metals-specific permitted + OK 132 proceed to CPI-MGC",
+  "calendar_source": "research/forge_cpi_calendar.py (v1 rule-based; audit required)",
+  "calendar_caveat": "Uses 2nd Tuesday rule; actual BLS releases sometimes shift to Wednesday or Thursday. ~80% expected accuracy. Cross-check required for any promotion.",
+  "boundaries": "report-only Lane B",
+  "tier": {
+    "PAPER_PACKET": 4,
+    "OBSERVATIONAL": 0,
+    "KILL": 1
+  },
+  "results": [
+    {
+      "label": "CPI-MGC-Long-2h",
+      "direction": "long",
+      "exit_bars": 24,
+      "metrics": {
+        "n": 84,
+        "pf": 1.871,
+        "median": 8.26,
+        "net": 7685.84,
+        "max_dd": -2085.36
+      },
+      "verdict": "WATCH_FOR_DEEP_SCREEN",
+      "stress": {
+        "rows": [
+          {
+            "stress": "baseline (1x)",
+            "n": 84,
+            "pf": 1.871,
+            "median": 8.26,
+            "net": 7685.84
+          },
+          {
+            "stress": "1.5x cost + 1 tick slip",
+            "n": 84,
+            "pf": 1.836,
+            "median": 5.64,
+            "net": 7465.76
+          },
+          {
+            "stress": "2x cost + 1 tick slip",
+            "n": 84,
+            "pf": 1.828,
+            "median": 5.02,
+            "net": 7413.68
+          },
+          {
+            "stress": "2x cost + 2 ticks slip",
+            "n": 84,
+            "pf": 1.801,
+            "median": 3.02,
+            "net": 7245.68
+          },
+          {
+            "stress": "4x cost + 2 ticks slip",
+            "n": 84,
+            "pf": 1.769,
+            "median": 0.54,
+            "net": 7037.36
+          }
+        ],
+        "verdict": "PASS_STRESS"
+      },
+      "elapsed_seconds": 5.239393949508667
+    },
+    {
+      "label": "CPI-MGC-Short-2h",
+      "direction": "short",
+      "exit_bars": 24,
+      "metrics": {
+        "n": 84,
+        "pf": 0.51,
+        "median": -14.74,
+        "net": -8230.16,
+        "max_dd": -9375.64
+      },
+      "verdict": "KILL (median neg)",
+      "stress": null,
+      "elapsed_seconds": 0.8307769298553467
+    },
+    {
+      "label": "CPI-MGC-Long-1h",
+      "direction": "long",
+      "exit_bars": 12,
+      "metrics": {
+        "n": 84,
+        "pf": 1.872,
+        "median": 8.26,
+        "net": 4962.84,
+        "max_dd": -1644.32
+      },
+      "verdict": "WATCH_FOR_DEEP_SCREEN",
+      "stress": {
+        "rows": [
+          {
+            "stress": "baseline (1x)",
+            "n": 84,
+            "pf": 1.872,
+            "median": 8.26,
+            "net": 4962.84
+          },
+          {
+            "stress": "1.5x cost + 1 tick slip",
+            "n": 84,
+            "pf": 1.819,
+            "median": 5.64,
+            "net": 4742.76
+          },
+          {
+            "stress": "2x cost + 1 tick slip",
+            "n": 84,
+            "pf": 1.806,
+            "median": 5.02,
+            "net": 4690.68
+          },
+          {
+            "stress": "2x cost + 2 ticks slip",
+            "n": 84,
+            "pf": 1.766,
+            "median": 3.02,
+            "net": 4522.68
+          },
+          {
+            "stress": "4x cost + 2 ticks slip",
+            "n": 84,
+            "pf": 1.718,
+            "median": 0.54,
+            "net": 4314.36
+          }
+        ],
+        "verdict": "PASS_STRESS"
+      },
+      "elapsed_seconds": 3.984367847442627
+    },
+    {
+      "label": "CPI-MGC-Long-4h",
+      "direction": "long",
+      "exit_bars": 48,
+      "metrics": {
+        "n": 84,
+        "pf": 1.496,
+        "median": 17.26,
+        "net": 6335.84,
+        "max_dd": -5332.92
+      },
+      "verdict": "WATCH_FOR_DEEP_SCREEN",
+      "stress": {
+        "rows": [
+          {
+            "stress": "baseline (1x)",
+            "n": 84,
+            "pf": 1.496,
+            "median": 17.26,
+            "net": 6335.84
+          },
+          {
+            "stress": "1.5x cost + 1 tick slip",
+            "n": 84,
+            "pf": 1.475,
+            "median": 14.64,
+            "net": 6115.76
+          },
+          {
+            "stress": "2x cost + 1 tick slip",
+            "n": 84,
+            "pf": 1.47,
+            "median": 14.02,
+            "net": 6063.68
+          },
+          {
+            "stress": "2x cost + 2 ticks slip",
+            "n": 84,
+            "pf": 1.454,
+            "median": 12.02,
+            "net": 5895.68
+          },
+          {
+            "stress": "4x cost + 2 ticks slip",
+            "n": 84,
+            "pf": 1.435,
+            "median": 9.54,
+            "net": 5687.36
+          }
+        ],
+        "verdict": "PASS_STRESS"
+      },
+      "elapsed_seconds": 2.8450210094451904
+    },
+    {
+      "label": "CPI-MGC-Long-EOD",
+      "direction": "long",
+      "exit_bars": 72,
+      "metrics": {
+        "n": 84,
+        "pf": 1.639,
+        "median": 35.76,
+        "net": 8076.84,
+        "max_dd": -3799.72
+      },
+      "verdict": "WATCH_FOR_DEEP_SCREEN",
+      "stress": {
+        "rows": [
+          {
+            "stress": "baseline (1x)",
+            "n": 84,
+            "pf": 1.639,
+            "median": 35.76,
+            "net": 8076.84
+          },
+          {
+            "stress": "1.5x cost + 1 tick slip",
+            "n": 84,
+            "pf": 1.617,
+            "median": 33.14,
+            "net": 7856.76
+          },
+          {
+            "stress": "2x cost + 1 tick slip",
+            "n": 84,
+            "pf": 1.612,
+            "median": 32.52,
+            "net": 7804.68
+          },
+          {
+            "stress": "2x cost + 2 ticks slip",
+            "n": 84,
+            "pf": 1.596,
+            "median": 30.52,
+            "net": 7636.68
+          },
+          {
+            "stress": "4x cost + 2 ticks slip",
+            "n": 84,
+            "pf": 1.576,
+            "median": 28.04,
+            "net": 7428.36
+          }
+        ],
+        "verdict": "PASS_STRESS"
+      },
+      "elapsed_seconds": 2.795093059539795
+    }
+  ]
+}

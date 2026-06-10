@@ -3581,5 +3581,136 @@
       "implementation-blocked"
     ],
     "disposition": "Doctrine empirically validated. Filter pre-flight rule is now stronger. Bug discovery saved a real OBSERVATIONAL candidate (ARF2-MNQ-cont-PL)."
+  },
+  "_HEADLINE_2026-06-10d_CPI_MGC_first_batch_4_PAPER_PACKET": {
+    "headline": "CPI-MGC first batch: 4/0/1. ALL Long variants PASS_STRESS with strong PF (1.50-1.87) + positive median ($8.26-$35.76). First new PAPER_PACKET candidates since Packet #1 (Day 6). Calendar rule-based; AUDIT REQUIRED.",
+    "date": "2026-06-10",
+    "operator_approval": "OK #128 metals-specific permitted + #132 proceed to CPI-MGC",
+    "calendar_status": "RULE-BASED (2nd Tuesday at 8:30 ET); AUDIT REQUIRED before production",
+    "first_batch_results": {
+      "CPI-MGC-Long-2h": {
+        "n": 84,
+        "pf": 1.871,
+        "median": 8.26,
+        "stress": "PASS_STRESS",
+        "verdict": "WATCH_FOR_DEEP_SCREEN"
+      },
+      "CPI-MGC-Short-2h": {
+        "n": 84,
+        "pf": 0.51,
+        "median": -14.74,
+        "verdict": "KILL median neg"
+      },
+      "CPI-MGC-Long-1h": {
+        "n": 84,
+        "pf": 1.872,
+        "median": 8.26,
+        "stress": "PASS_STRESS",
+        "verdict": "WATCH_FOR_DEEP_SCREEN"
+      },
+      "CPI-MGC-Long-4h": {
+        "n": 84,
+        "pf": 1.496,
+        "median": 17.26,
+        "stress": "PASS_STRESS",
+        "verdict": "WATCH_FOR_DEEP_SCREEN"
+      },
+      "CPI-MGC-Long-EOD": {
+        "n": 84,
+        "pf": 1.639,
+        "median": 35.76,
+        "stress": "PASS_STRESS",
+        "verdict": "WATCH_FOR_DEEP_SCREEN"
+      }
+    },
+    "tags": [],
+    "disposition": "4 PAPER_PACKET candidates at cheap-screen level. Deep-screen completed (10e). Per #128: requires calendar audit + 8-dim audit + operator decision before any promotion."
+  },
+  "_HEADLINE_2026-06-10e_CPI_MGC_deep_screen_3_survivors_independent_of_NFP": {
+    "headline": "CPI-MGC deep-screen: family review vs Packet #1 NFP-MGC shows GENUINE INDEPENDENCE (corr -0.008 to 0.055; day-overlap 2.4%). 3 of 4 variants pass strict concentration gate. CPI-MGC-Long-1h is the strongest candidate (cleanest concentration 41.6%, strongest Era3 PF 2.64, positive 2026 partial year).",
+    "date": "2026-06-10",
+    "operator_approval": "OK 128 + 132 (mandatory deep-screen before packet classification)",
+    "candidates_after_deep_screen": {
+      "CPI-MGC-Long-1h": {
+        "RANK": "BEST CANDIDATE",
+        "n": 84,
+        "pf": 1.872,
+        "median": 8.26,
+        "max_yr_share_pct": 41.6,
+        "concentration_gate": "PASS (<=50%)",
+        "yrs_pos": "6/8 (75%)",
+        "era1_pf": 1.11,
+        "era2_pf": 1.73,
+        "era3_pf": 2.64,
+        "era3_median": 57.26,
+        "delta_signal": "RECENT_IMPROVEMENT_SIGNAL (Era3 strongest of all eras)",
+        "2026_partial": "PF 3.20 median $23.76 net +$733 (POSITIVE in current year)",
+        "corr_to_NFP-MGC": -0.008,
+        "day_overlap_with_NFP": "2/84 (2.4% \u2014 essentially independent)",
+        "verdict": "STRONGEST PAPER_PACKET_CANDIDATE \u2014 pending calendar audit + 8-dim audit"
+      },
+      "CPI-MGC-Long-2h": {
+        "RANK": "STRONG SECONDARY (matches Packet #1 template hold time)",
+        "n": 84,
+        "pf": 1.871,
+        "median": 8.26,
+        "max_yr_share_pct": 45.7,
+        "concentration_gate": "PASS",
+        "yrs_pos": "6/8",
+        "era3_pf": 2.14,
+        "era3_median": 36.26,
+        "2026_partial": "PF 0.79 median -$54.24 net -$254 (slightly negative current year \u2014 minor warning)",
+        "corr_to_NFP-MGC": 0.042,
+        "verdict": "STRONG SECONDARY \u2014 pending audit"
+      },
+      "CPI-MGC-Long-EOD": {
+        "RANK": "HIGHEST MEDIAN (but larger 2026 drawdown)",
+        "n": 84,
+        "pf": 1.639,
+        "median": 35.76,
+        "max_yr_share_pct": 48.0,
+        "concentration_gate": "PASS (barely)",
+        "yrs_pos": "6/8",
+        "era3_pf": 1.55,
+        "era3_median": 56.26,
+        "2026_partial": "PF 0.04 net -$2182 (CRITICAL \u2014 large negative in current year)",
+        "corr_to_NFP-MGC": 0.047,
+        "verdict": "INTERESTING BUT 2026 RED FLAG \u2014 pending operator decision"
+      },
+      "CPI-MGC-Long-4h": {
+        "RANK": "FAILS CONCENTRATION GATE",
+        "n": 84,
+        "pf": 1.496,
+        "median": 17.26,
+        "max_yr_share_pct": 52.5,
+        "concentration_gate": "FAIL (>50%)",
+        "verdict": "ARCHITECTURAL_REJECT \u2014 concentration disqualifies"
+      }
+    },
+    "key_findings": [
+      "Family review CONFIRMS genuine independence from Packet #1. Day overlap 2/84 (2.4%) and daily-PnL correlation < 0.06 across all variants. CPI and NFP are different events on different days; signal independence is genuine.",
+      "CPI-MGC-Long-1h is the strongest candidate: cleanest concentration (41.6%), strongest Era3 (PF 2.64 vs full-sample 1.87 = RECENT_IMPROVEMENT_SIGNAL), positive 2026 partial year (+$733), essentially zero correlation to NFP.",
+      "CPI-MGC-Long-2h is a strong secondary (matches Packet #1 template hold time of 2h; minor 2026 warning -$254 partial).",
+      "CPI-MGC-Long-EOD has highest median ($35.76) but problematic 2026 partial year (-$2182).",
+      "CPI-MGC-Long-4h fails concentration gate (52.5% > 50%)."
+    ],
+    "remaining_audit_gates": [
+      "Calendar audit: current calendar is RULE-BASED (2nd Tuesday at 8:30 ET). Need cross-check with bls.gov historical CPI release dates to confirm 80%+ accuracy. Some actual releases land on Wednesday or Thursday.",
+      "8-dim evidence-integrity audit: cost source, cost stress, edge quality, lookahead, calendar, survivorship, duplicate exposure, output artifact stability.",
+      "Operator decision on promotion path."
+    ],
+    "doctrine_compliance": {
+      "family_review_required": "DONE \u2014 confirmed near-zero correlation with NFP-MGC",
+      "concentration_gate": "3 of 4 PASS (Long-1h, Long-2h, Long-EOD); Long-4h FAILS",
+      "temporal_split_done": "DONE \u2014 6/8 yrs+ across all 4 variants",
+      "era_check_done": "DONE \u2014 Era3 positive for 3 of 4 (Long-4h Era3 1.23 borderline)",
+      "median_quality": "All 4 positive median",
+      "PASS_STRESS_done": "DONE \u2014 all 4 PASS_STRESS at standard rungs",
+      "calendar_audit": "PENDING (rule-based v1)",
+      "8_dim_audit": "PENDING",
+      "operator_approval_for_packet_status": "PENDING"
+    },
+    "tags": [],
+    "disposition": "STRONGEST PAPER_PACKET CANDIDATE since Packet #1: CPI-MGC-Long-1h. Pending: calendar audit (~2-4h verification of CPI release dates vs bls.gov) + 8-dim audit + operator decision. If audit GREEN, this is potentially Packet #2."
   }
 }
