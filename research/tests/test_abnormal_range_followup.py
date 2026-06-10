@@ -81,9 +81,9 @@ def test_entry_no_signal_outside_session():
     features = compute_features(df)
     state = {"long_traded_today": False, "short_traded_today": False, "position": 0}
     for i in range(1, len(df)):
-        if not features["in_session"][i]:
+        if not features["entry_ok"][i]:
             d, _, _ = entry_abnormal_range_followup(features, i, state, {})
-            assert d == 0, f"Outside session i={i} must not fire"
+            assert d == 0, f"Outside entry_ok window i={i} must not fire"
             return
 
 
@@ -108,7 +108,7 @@ def test_entry_no_signal_when_range_not_abnormal():
     state = {"long_traded_today": False, "short_traded_today": False, "position": 0}
     # Find a session-opening bar with low pctrank
     for i in range(1500, len(df)):
-        if not feat_copy["in_session"][i] or feat_copy["in_session"][i-1]:
+        if not feat_copy["entry_ok"][i] or feat_copy["entry_ok"][i-1]:
             continue
         pctrank = feat_copy["prev_day_range_pctrank_60"][i]
         if np.isnan(pctrank) or pctrank >= 80:
@@ -128,7 +128,7 @@ def test_entry_fires_continuation_long_after_abnormal_bullish():
     # Find first session-opening bar after the abnormal day
     fired = 0
     for i in range(2000, len(df)):
-        if not feat_copy["in_session"][i] or feat_copy["in_session"][i-1]:
+        if not feat_copy["entry_ok"][i] or feat_copy["entry_ok"][i-1]:
             continue
         pctrank = feat_copy["prev_day_range_pctrank_60"][i]
         prev_close = feat_copy["prev_day_close"][i]
@@ -157,7 +157,7 @@ def test_entry_fires_fade_short_after_abnormal_bullish():
     state = {"long_traded_today": False, "short_traded_today": False, "position": 0}
     fired = 0
     for i in range(2000, len(df)):
-        if not feat_copy["in_session"][i] or feat_copy["in_session"][i-1]:
+        if not feat_copy["entry_ok"][i] or feat_copy["entry_ok"][i-1]:
             continue
         pctrank = feat_copy["prev_day_range_pctrank_60"][i]
         prev_close = feat_copy["prev_day_close"][i]
@@ -184,7 +184,7 @@ def test_long_traded_today_guard():
                  for k, v in features.items()}
     state = {"long_traded_today": True, "short_traded_today": False, "position": 0}
     for i in range(2000, len(df)):
-        if not feat_copy["in_session"][i] or feat_copy["in_session"][i-1]:
+        if not feat_copy["entry_ok"][i] or feat_copy["entry_ok"][i-1]:
             continue
         pctrank = feat_copy["prev_day_range_pctrank_60"][i]
         if np.isnan(pctrank) or pctrank < 80:
@@ -218,7 +218,7 @@ def test_no_signal_with_zero_atr():
                  for k, v in features.items()}
     state = {"long_traded_today": False, "short_traded_today": False, "position": 0}
     for i in range(2000, len(df)):
-        if not feat_copy["in_session"][i] or feat_copy["in_session"][i-1]:
+        if not feat_copy["entry_ok"][i] or feat_copy["entry_ok"][i-1]:
             continue
         pctrank = feat_copy["prev_day_range_pctrank_60"][i]
         if np.isnan(pctrank) or pctrank < 80:
@@ -239,7 +239,7 @@ def test_unknown_mode_no_signal():
                  for k, v in features.items()}
     state = {"long_traded_today": False, "short_traded_today": False, "position": 0}
     for i in range(2000, len(df)):
-        if not feat_copy["in_session"][i] or feat_copy["in_session"][i-1]:
+        if not feat_copy["entry_ok"][i] or feat_copy["entry_ok"][i-1]:
             continue
         pctrank = feat_copy["prev_day_range_pctrank_60"][i]
         if np.isnan(pctrank) or pctrank < 80:

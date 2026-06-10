@@ -82,9 +82,9 @@ def test_entry_fires_on_gap_up_short_fade():
     n = len(df)
     fired = 0
     for i in range(20, n):
-        if not features["in_session"][i]:
+        if not features["entry_ok"][i]:
             continue
-        if i == 0 or features["in_session"][i-1]:
+        if i == 0 or features["entry_ok"][i-1]:
             continue  # not session-opening bar
         # i is session-open bar; check gap
         prev_close = features["prev_day_close"][i]
@@ -115,9 +115,9 @@ def test_entry_fires_on_gap_down_long_fade():
     n = len(df)
     fired = 0
     for i in range(20, n):
-        if not features["in_session"][i]:
+        if not features["entry_ok"][i]:
             continue
-        if i == 0 or features["in_session"][i-1]:
+        if i == 0 or features["entry_ok"][i-1]:
             continue
         prev_close = features["prev_day_close"][i]
         if np.isnan(prev_close):
@@ -144,9 +144,9 @@ def test_long_traded_today_guard():
     state = {"long_traded_today": True, "short_traded_today": False, "position": 0}
     n = len(df)
     for i in range(20, n):
-        if not features["in_session"][i]:
+        if not features["entry_ok"][i]:
             continue
-        if i == 0 or features["in_session"][i-1]:
+        if i == 0 or features["entry_ok"][i-1]:
             continue
         prev_close = features["prev_day_close"][i]
         if np.isnan(prev_close):
@@ -169,9 +169,9 @@ def test_no_signal_when_gap_too_small():
     n = len(df)
     # Find a session-opening bar with valid prev_close and ATR
     for i in range(20, n):
-        if not feat_copy["in_session"][i]:
+        if not feat_copy["entry_ok"][i]:
             continue
-        if i == 0 or feat_copy["in_session"][i-1]:
+        if i == 0 or feat_copy["entry_ok"][i-1]:
             continue
         prev_close = feat_copy["prev_day_close"][i]
         atr_i = feat_copy["atr"][i]
@@ -226,9 +226,9 @@ def test_no_signal_with_zero_atr():
     state = {"long_traded_today": False, "short_traded_today": False, "position": 0}
     n = len(df)
     for i in range(20, n):
-        if not feat_copy["in_session"][i]:
+        if not feat_copy["entry_ok"][i]:
             continue
-        if i == 0 or feat_copy["in_session"][i-1]:
+        if i == 0 or feat_copy["entry_ok"][i-1]:
             continue
         feat_copy["atr"][i] = 0.0
         d, _, _ = entry_gap_fill_trigger(feat_copy, i, state, {})

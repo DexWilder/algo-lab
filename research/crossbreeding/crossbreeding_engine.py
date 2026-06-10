@@ -558,13 +558,17 @@ def entry_abnormal_range_followup(f, i, state, params):
     """
     if i < 1:
         return 0, 0, 0
-    if not f["in_session"][i]:
+    # Bug fix 2026-06-10 per #130: use entry_ok instead of in_session.
+    # entry_ok = in_session & times >= 09:45; the signal generator filters
+    # at the entry_ok layer so any "first N session bars" detection that
+    # uses in_session before 09:45 will be silently blocked.
+    if not f["entry_ok"][i]:
         return 0, 0, 0
-    # Count consecutive in_session bars ending at i; must be early
+    # Count consecutive entry_ok bars ending at i; must be early
     session_open_bars = params.get("session_open_bars", 3)
     n_consecutive = 0
     j = i
-    while j >= 0 and f["in_session"][j]:
+    while j >= 0 and f["entry_ok"][j]:
         n_consecutive += 1
         j -= 1
         if n_consecutive > session_open_bars:
@@ -697,13 +701,17 @@ def entry_gap_fill_trigger(f, i, state, params):
     """
     if i < 1:
         return 0, 0, 0
-    if not f["in_session"][i]:
+    # Bug fix 2026-06-10 per #131: use entry_ok instead of in_session.
+    # entry_ok = in_session & times >= 09:45; the signal generator filters
+    # at the entry_ok layer so any "first N session bars" detection that
+    # uses in_session before 09:45 will be silently blocked.
+    if not f["entry_ok"][i]:
         return 0, 0, 0
-    # Count consecutive in_session bars ending at i (= bars into session)
+    # Count consecutive entry_ok bars ending at i (= bars into entry window)
     session_open_bars = params.get("session_open_bars", 3)
     n_consecutive = 0
     j = i
-    while j >= 0 and f["in_session"][j]:
+    while j >= 0 and f["entry_ok"][j]:
         n_consecutive += 1
         j -= 1
         if n_consecutive > session_open_bars:

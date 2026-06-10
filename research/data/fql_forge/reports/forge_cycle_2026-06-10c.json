@@ -1,0 +1,186 @@
+{
+  "date": "2026-06-10",
+  "purpose": "gap_fill_trigger bug-fixed retry (#131)",
+  "boundaries": "report-only Lane B; ONE retry only",
+  "fix": "crossbreeding_engine entry uses entry_ok instead of in_session",
+  "tier_classification": {
+    "UPGRADE_CANDIDATE": 0,
+    "OBSERVATIONAL": 0,
+    "KILL": 6
+  },
+  "results": [
+    {
+      "spec": {
+        "label": "GAPN2-MES-Both-PL",
+        "asset": "MES",
+        "entry": "gap_fill_trigger",
+        "filter": "none",
+        "exit": "profit_ladder",
+        "backtest_mode": "both"
+      },
+      "metrics": {
+        "n": 1734,
+        "pf": 0.93,
+        "median": -4.99,
+        "net": -2817.66,
+        "max_dd": -5455.92,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.849,
+        "h2_pf": 1.009,
+        "years_positive": 3,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 241.56489825248718
+    },
+    {
+      "spec": {
+        "label": "GAPN2-MNQ-Both-PL",
+        "asset": "MNQ",
+        "entry": "gap_fill_trigger",
+        "filter": "none",
+        "exit": "profit_ladder",
+        "backtest_mode": "both"
+      },
+      "metrics": {
+        "n": 1748,
+        "pf": 0.946,
+        "median": -6.24,
+        "net": -3945.52,
+        "max_dd": -6996.08,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.913,
+        "h2_pf": 0.974,
+        "years_positive": 1,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 221.52556991577148
+    },
+    {
+      "spec": {
+        "label": "GAPN2-MGC-Both-PL",
+        "asset": "MGC",
+        "entry": "gap_fill_trigger",
+        "filter": "none",
+        "exit": "profit_ladder",
+        "backtest_mode": "both"
+      },
+      "metrics": {
+        "n": 1370,
+        "pf": 0.855,
+        "median": -9.24,
+        "net": -8916.8,
+        "max_dd": -15617.84,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.735,
+        "h2_pf": 0.92,
+        "years_positive": 1,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 120.24140000343323
+    },
+    {
+      "spec": {
+        "label": "GAPN2-MCL-Both-PL",
+        "asset": "MCL",
+        "entry": "gap_fill_trigger",
+        "filter": "none",
+        "exit": "profit_ladder",
+        "backtest_mode": "both"
+      },
+      "metrics": {
+        "n": 1238,
+        "pf": 0.812,
+        "median": -9.24,
+        "net": -5070.12,
+        "max_dd": -5683.12,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.851,
+        "h2_pf": 0.761,
+        "years_positive": 1,
+        "n_years": 6
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 143.48049807548523
+    },
+    {
+      "spec": {
+        "label": "GAPN2-MYM-Both-PL",
+        "asset": "MYM",
+        "entry": "gap_fill_trigger",
+        "filter": "none",
+        "exit": "profit_ladder",
+        "backtest_mode": "both"
+      },
+      "metrics": {
+        "n": 568,
+        "pf": 0.997,
+        "median": -6.99,
+        "net": -41.82,
+        "max_dd": -1810.5,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.925,
+        "h2_pf": 1.066,
+        "years_positive": 1,
+        "n_years": 3
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 39.53907608985901
+    },
+    {
+      "spec": {
+        "label": "GAPN2-ZN-Both-PL",
+        "asset": "ZN",
+        "entry": "gap_fill_trigger",
+        "filter": "none",
+        "exit": "profit_ladder",
+        "backtest_mode": "both"
+      },
+      "metrics": {
+        "n": 1741,
+        "pf": 0.58,
+        "median": -34.35,
+        "net": -52085.08,
+        "max_dd": -52391.5,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "h1_pf": 0.523,
+        "h2_pf": 0.635,
+        "years_positive": 0,
+        "n_years": 8
+      },
+      "temporal_split": null,
+      "doctrine_verdict": "KILL (median neg)",
+      "era3_delta": null,
+      "prop_stress": null,
+      "elapsed_seconds": 174.2859010696411
+    }
+  ],
+  "feature_cache_stats_final": {
+    "hits": 0,
+    "misses": 6,
+    "cached_keys": 6
+  }
+}

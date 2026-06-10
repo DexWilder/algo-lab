@@ -3405,5 +3405,181 @@
       "median-negative"
     ],
     "disposition": "0 PAPER_PACKET. 0 OBSERVATIONAL. 12 KILL. Primitive ARCHIVED + REOPENABLE. Per operator #128 next safe fallback: metals-specific event spec shortlist (CPI-MGC / FOMC-MGC / PPI-MGC). Operator constraint clarification needed before launch: confirm metals-specific events permitted vs equity-index sweep ban."
+  },
+  "_HEADLINE_2026-06-10b_abnormal_range_bugfix_retry_reveals_observational_near_miss": {
+    "headline": "abnormal_range_followup BUG-FIXED RETRY: bug fix surfaced ARF2-MNQ-cont-PL (PF 1.179, median +$4.26, max-yr 45.3% CLEAN, 5/8 yrs+, KNIFE_EDGE stress) \u2014 a real OBSERVATIONAL near-miss completely hidden by the entry_ok bug.",
+    "date": "2026-06-10",
+    "operator_approval": "OK 130-A (ONE bounded bug-fixed retry)",
+    "fix": "Entry function now uses entry_ok instead of in_session for session-open detection.",
+    "results": {
+      "ARF2-MES-cont-PL": {
+        "n": 431,
+        "pf": 1.113,
+        "median": 0.01,
+        "max_yr": 86.0,
+        "verdict": "KILL PF<1.15"
+      },
+      "ARF2-MES-fade-PL": {
+        "n": 431,
+        "pf": 0.682,
+        "median": -11.24,
+        "verdict": "KILL median neg"
+      },
+      "ARF2-MNQ-cont-PL": {
+        "n": 407,
+        "pf": 1.179,
+        "median": 4.26,
+        "max_yr": 45.3,
+        "yrs_pos": "5/8",
+        "verdict": "WATCH + KNIFE_EDGE stress \u2192 OBSERVATIONAL",
+        "NOTE": "CLOSEST near-miss from this primitive family \u2014 clean concentration + positive median; KNIFE_EDGE means median collapses near 0 at moderate stress"
+      },
+      "ARF2-MNQ-fade-PL": {
+        "n": 407,
+        "pf": 0.834,
+        "median": -17.74,
+        "verdict": "KILL median neg"
+      },
+      "ARF2-MGC-cont-PL": {
+        "n": 201,
+        "pf": 0.631,
+        "median": -7.24,
+        "verdict": "KILL median neg"
+      },
+      "ARF2-MGC-fade-PL": {
+        "n": 201,
+        "pf": 1.407,
+        "median": -12.24,
+        "verdict": "KILL asymmetric trap"
+      },
+      "ARF2-MCL-cont-PL": {
+        "n": 302,
+        "pf": 0.807,
+        "median": -6.24,
+        "verdict": "KILL median neg"
+      },
+      "ARF2-MCL-fade-PL": {
+        "n": 302,
+        "pf": 0.802,
+        "median": -13.24,
+        "verdict": "KILL median neg"
+      },
+      "ARF2-MYM-cont-PL": {
+        "n": 127,
+        "pf": 0.815,
+        "median": -9.74,
+        "verdict": "KILL median neg"
+      },
+      "ARF2-MYM-fade-PL": {
+        "n": 127,
+        "pf": 0.79,
+        "median": -6.74,
+        "verdict": "KILL median neg"
+      },
+      "ARF2-ZN-cont-PL": {
+        "n": 414,
+        "pf": 0.515,
+        "median": -34.35,
+        "verdict": "KILL median neg"
+      },
+      "ARF2-ZN-fade-PL": {
+        "n": 414,
+        "pf": 0.352,
+        "median": -65.6,
+        "verdict": "KILL median neg"
+      }
+    },
+    "honest_corrections": [
+      "Original cycle 10a was INVALID EVIDENCE on equity micros + MCL due to entry_ok bug. The bug-fixed retry produces fair-test outcomes.",
+      "ARF2-MNQ-cont-PL is a real OBSERVATIONAL near-miss that would have been completely missed without the bug-fix retry. Operator's insistence on retry was the correct call.",
+      "Saturation should not have applied to the buggy result. The narrow-scope doctrine is right: invalid evidence does not count as fair test."
+    ],
+    "ARF2-MNQ-cont-PL_detailed_evidence": {
+      "asset": "MNQ (Micro E-mini Nasdaq)",
+      "mechanism": "abnormal_range_followup, continuation mode",
+      "trigger": "Prior trading day's range was top quintile of 60-day distribution, prev_day_close > prev_day_midpoint",
+      "entry": "first 3 entry_ok bars of next session (09:45-09:55 ET)",
+      "n": 407,
+      "pf": 1.179,
+      "median": 4.26,
+      "max_yr": 45.3,
+      "yrs_pos": "5/8",
+      "stress": "KNIFE_EDGE \u2014 median collapses near 0 at 2x cost + 2 ticks",
+      "classification": "OBSERVATIONAL (cost-sensitive, similar profile to BBKC-MNQ but slightly weaker)",
+      "operator_decision_options": [
+        "A: Accept OBSERVATIONAL classification, add to cost-sensitive inventory",
+        "B: Run finer-grained prop-stress break-even analysis to find exact unlock cost",
+        "C: Run mutation cycle (different pctrank threshold or different direction proxy)",
+        "D: Combine with existing BBKC-MNQ in 2nd conditional pre-packet under operator prop-cost data"
+      ]
+    },
+    "tags": [
+      "cost-eats-edge"
+    ],
+    "disposition": "1 OBSERVATIONAL near-miss + 11 KILL. abnormal_range_followup \u2192 OBSERVATIONAL inventory expanded. Cumulative: 2 cost-sensitive near-misses (BBKC-MNQ + ARF2-MNQ-cont). Per #132: proceed to CPI-MGC build."
+  },
+  "_HEADLINE_2026-06-10c_gap_fill_bugfix_retry_archived_definitively": {
+    "headline": "gap_fill_trigger BUG-FIXED RETRY: 6/6 KILL with fair fire (n=568-1748 across all assets). Uniform anti-edge (PFs 0.58-0.99). Mechanism does NOT produce edge. ARCHIVED definitively.",
+    "date": "2026-06-10",
+    "operator_approval": "OK 131-A (ONE bounded bug-fixed retry)",
+    "fix": "Entry function now uses entry_ok instead of in_session for session-open detection.",
+    "results": {
+      "GAPN2-MES-Both-PL": {
+        "n": 1734,
+        "pf": 0.93,
+        "median": -4.99,
+        "verdict": "KILL median neg"
+      },
+      "GAPN2-MNQ-Both-PL": {
+        "n": 1748,
+        "pf": 0.946,
+        "median": -6.24,
+        "verdict": "KILL median neg"
+      },
+      "GAPN2-MGC-Both-PL": {
+        "n": 1370,
+        "pf": 0.855,
+        "median": -9.24,
+        "verdict": "KILL median neg"
+      },
+      "GAPN2-MCL-Both-PL": {
+        "n": 1238,
+        "pf": 0.812,
+        "median": -9.24,
+        "verdict": "KILL median neg"
+      },
+      "GAPN2-MYM-Both-PL": {
+        "n": 568,
+        "pf": 0.997,
+        "median": -6.99,
+        "verdict": "KILL median neg"
+      },
+      "GAPN2-ZN-Both-PL": {
+        "n": 1741,
+        "pf": 0.58,
+        "median": -34.35,
+        "verdict": "KILL median neg"
+      }
+    },
+    "interpretation": "All 6 assets fire substantially (568-1748 trades) with the bug fix. All produce anti-edge results. Mechanism (gap fade at session open) does NOT have a real edge across equity micros, metals, energy, or rates. The earlier anti-edge result on MGC and ZN was a real verdict; the bug-suppressed equity micros now confirm the same pattern.",
+    "final_classification": "ARCHIVED \u2014 fair test confirms mechanism produces no edge. REOPENABLE_WITH_NEW_THESIS only with materially different gap definition (e.g., FOMC-day gaps, OPEX gaps, event-conditioned gaps).",
+    "tags": [
+      "median-negative"
+    ],
+    "disposition": "0 PAPER_PACKET. 0 OBSERVATIONAL. 6 KILL. gap_fill_trigger DEFINITIVELY ARCHIVED."
+  },
+  "_lesson_2026-06-10_bug_fix_retries_validate_narrow_saturation_doctrine": {
+    "headline": "Bug-fix retries empirically validated the narrow-scope saturation doctrine: buggy results should NOT count as fair-test saturation evidence.",
+    "date": "2026-06-10",
+    "evidence": {
+      "abnormal_range": "Buggy 10a: 0/0/12 KILL (looked archived). Bug-fixed 10b: 0/1/11 with real OBSERVATIONAL near-miss surfaced.",
+      "gap_fill": "Buggy 09b: 0/0/6 with 4 of 6 n=0. Bug-fixed retry 10c (after harness fix): 0/0/6 with all assets firing 568-1748 trades. Verdict CONFIRMED anti-edge."
+    },
+    "doctrine_validation": "Operator's insistence (#130, #131) on bug-fixed retries was correct. The original results were invalid evidence \u2014 not because the gates were wrong, but because the harness silently filtered out the intended signals. Saturation should not apply to invalid evidence.",
+    "actionable_lesson": "When n=0 patterns appear across multiple assets, ALWAYS check harness compatibility BEFORE classifying as archived. The filter pre-flight rule #5 (entry_ok compatibility) now codifies this.",
+    "tags": [
+      "implementation-blocked"
+    ],
+    "disposition": "Doctrine empirically validated. Filter pre-flight rule is now stronger. Bug discovery saved a real OBSERVATIONAL candidate (ARF2-MNQ-cont-PL)."
   }
 }
