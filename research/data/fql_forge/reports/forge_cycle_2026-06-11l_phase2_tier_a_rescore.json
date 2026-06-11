@@ -1,0 +1,173 @@
+{
+  "date": "2026-06-11",
+  "purpose": "Phase 2 Tier A V1 inventory rescore (compressed Factory Stabilization)",
+  "v1_doctrine_reference": "docs/fql_forge/PACKET_STANDARD_V1_2026-06-11.md",
+  "rescore": {
+    "Packet1_NFP_MGC_Long_2h": {
+      "archetype": "TAIL_ENGINE",
+      "canonical_filter": "strict+hold-continuity",
+      "n": 42,
+      "pf": 1.25,
+      "median": 12.26,
+      "max_yr": 97.91145756728935,
+      "instance_frac": 0.5,
+      "instance_cv": 3.9934289037992583,
+      "era3_pf": 1.074177399014025,
+      "era3_median_SOFT": -6.239999999999999,
+      "stress_pf": 1.142,
+      "gates": {
+        "n_>=_20": true,
+        "PF_>=_1.30": false,
+        "PASS_STRESS_PF_>=_1.30": false,
+        "max_instance_<=_35pct": false,
+        "positive_instance_frac_>=_60pct": false,
+        "instance_CV_<=_3.0": false,
+        "Era3_PF_>=_1.0": true,
+        "calendar_grade_OK": true
+      },
+      "all_pass": false,
+      "calendar_grade": "OPERATOR_VERIFIED",
+      "v1_verdict": "ARCHIVED / REOPENABLE_WITH_NEW_THESIS"
+    },
+    "BBKC_MNQ_Both_PL": {
+      "archetype": "WORKHORSE",
+      "canonical_filter": "n/a (no event filter)",
+      "n": 838,
+      "pf": 1.211,
+      "median": 2.76,
+      "max_yr": 43.862726603478436,
+      "yrs_pos": 6,
+      "n_yrs": 8,
+      "era3_pf": 1.3249507374590996,
+      "era3_median": 7.01,
+      "stress_median": -0.48,
+      "gates": {
+        "n_>=_500": true,
+        "PF_>=_1.20": true,
+        "positive_median": true,
+        "PASS_STRESS": false,
+        "max_yr_<=_50pct": true,
+        "yrs_pos_>=_50pct": true,
+        "Era3_PF_>=_1.0": true,
+        "Era3_median_>=_0": true
+      },
+      "all_pass": false,
+      "family_review_note": "cycle 10j: corr 0.394 / 78.7% day-overlap to XB-ORB-MNQ probation \u2192 PORTFOLIO_COMPLEMENT",
+      "v1_verdict": "PORTFOLIO_COMPLEMENT (cost-required; family-overlapping with MNQ probation per cycle 10j)"
+    },
+    "FOMC_MGC_Long_4h": {
+      "archetype": "TAIL_ENGINE",
+      "n_clean_events": 0,
+      "v1_verdict": "ARCHIVED (insufficient clean events under canonical filter)"
+    },
+    "NFP_MES_Long_1h": {
+      "archetype": "TAIL_ENGINE",
+      "canonical_filter": "strict-only (hold==60min)",
+      "n": 84,
+      "pf": 1.157,
+      "median": 9.38,
+      "max_yr": 118.97896264055147,
+      "instance_frac": 0.75,
+      "instance_cv": 5.869246657702361,
+      "era3_pf": 1.0250013005254122,
+      "era3_median_SOFT": 10.01,
+      "stress_pf": 0.917,
+      "gates": {
+        "n_>=_20": true,
+        "PF_>=_1.30": false,
+        "PASS_STRESS_PF_>=_1.30": false,
+        "max_instance_<=_35pct": false,
+        "positive_instance_frac_>=_60pct": true,
+        "instance_CV_<=_3.0": false,
+        "Era3_PF_>=_1.0": true,
+        "calendar_grade_OK": true
+      },
+      "all_pass": false,
+      "calendar_grade": "OPERATOR_VERIFIED",
+      "v1_verdict": "ARCHIVED / REOPENABLE_WITH_NEW_THESIS"
+    },
+    "NFP_MNQ_Long_1h": {
+      "archetype": "TAIL_ENGINE",
+      "canonical_filter": "strict-only (hold==60min)",
+      "n": 84,
+      "pf": 1.173,
+      "median": 10.76,
+      "max_yr": 117.35948556515199,
+      "instance_frac": 0.625,
+      "instance_cv": 4.73792566291252,
+      "era3_pf": 1.348515196377253,
+      "era3_median_SOFT": 20.26,
+      "stress_pf": 1.107,
+      "gates": {
+        "n_>=_20": true,
+        "PF_>=_1.30": false,
+        "PASS_STRESS_PF_>=_1.30": false,
+        "max_instance_<=_35pct": false,
+        "positive_instance_frac_>=_60pct": true,
+        "instance_CV_<=_3.0": false,
+        "Era3_PF_>=_1.0": true,
+        "calendar_grade_OK": true
+      },
+      "all_pass": false,
+      "calendar_grade": "OPERATOR_VERIFIED",
+      "v1_verdict": "ARCHIVED / REOPENABLE_WITH_NEW_THESIS"
+    },
+    "CPI_MNQ_Long_1h": {
+      "archetype": "TAIL_ENGINE",
+      "canonical_filter": "strict-only",
+      "n": 82,
+      "pf": 1.198,
+      "median": 16.51,
+      "max_yr": 104.68023172854662,
+      "instance_frac": 0.625,
+      "instance_cv": 4.443752699467671,
+      "era3_pf": 0.8383251087115844,
+      "era3_median_SOFT": -1.2400000000000002,
+      "stress_pf": 1.12,
+      "gates": {
+        "n_>=_20": true,
+        "PF_>=_1.30": false,
+        "PASS_STRESS_PF_>=_1.30": false,
+        "max_instance_<=_35pct": false,
+        "positive_instance_frac_>=_60pct": true,
+        "instance_CV_<=_3.0": false,
+        "Era3_PF_>=_1.0": false,
+        "calendar_grade_OK": false
+      },
+      "all_pass": false,
+      "calendar_grade": "FORGE_COMPILED_DATA_REQUIRED",
+      "v1_verdict": "ARCHIVED / REOPENABLE_WITH_NEW_DATA (calendar grade insufficient)"
+    },
+    "CPI_MNQ_Long_2h": {
+      "archetype": "TAIL_ENGINE",
+      "canonical_filter": "strict+hold-continuity",
+      "n": 82,
+      "pf": 1.151,
+      "median": 49.51,
+      "max_yr": 82.52710515136408,
+      "instance_frac": 0.625,
+      "instance_cv": 3.0728188225023696,
+      "era3_pf": 0.8785215600818825,
+      "era3_median_SOFT": 32.26,
+      "stress_pf": 1.112,
+      "gates": {
+        "n_>=_20": true,
+        "PF_>=_1.30": false,
+        "PASS_STRESS_PF_>=_1.30": false,
+        "max_instance_<=_35pct": false,
+        "positive_instance_frac_>=_60pct": true,
+        "instance_CV_<=_3.0": false,
+        "Era3_PF_>=_1.0": false,
+        "calendar_grade_OK": false
+      },
+      "all_pass": false,
+      "calendar_grade": "FORGE_COMPILED_DATA_REQUIRED",
+      "v1_verdict": "ARCHIVED / REOPENABLE_WITH_NEW_DATA (calendar grade insufficient)"
+    }
+  },
+  "sprint_summary": {
+    "PAPER_PACKET_CANDIDATE": 0,
+    "PORTFOLIO_COMPLEMENT": 1,
+    "ARCHIVED_REOPENABLE": 6
+  }
+}
