@@ -1,0 +1,287 @@
+{
+  "date": "2026-06-11",
+  "purpose": "CPI-MNQ-Long deep-screen + family review per #153",
+  "boundaries": "report-only Lane B; calendar still DATA_REQUIRED per #140",
+  "deep_screens": [
+    {
+      "label": "CPI-MNQ-Long-1h",
+      "exit_bars": 12,
+      "metrics": {
+        "n": 82,
+        "pf": 1.198,
+        "median": 16.51,
+        "net": 700.82
+      },
+      "temporal_split": {
+        "per_year": [
+          {
+            "year": 2019,
+            "n": 6,
+            "pf": 9.659685863874344,
+            "median": 23.26,
+            "net": 231.55999999999995
+          },
+          {
+            "year": 2020,
+            "n": 11,
+            "pf": 0.6889417261085387,
+            "median": 12.26,
+            "net": -149.14000000000004
+          },
+          {
+            "year": 2021,
+            "n": 12,
+            "pf": 14.847112117780291,
+            "median": 31.509999999999998,
+            "net": 733.6199999999999
+          },
+          {
+            "year": 2022,
+            "n": 12,
+            "pf": 0.5377739086121963,
+            "median": -68.49,
+            "net": -435.3800000000001
+          },
+          {
+            "year": 2023,
+            "n": 12,
+            "pf": 2.0717679167087835,
+            "median": 50.76,
+            "net": 424.12
+          },
+          {
+            "year": 2024,
+            "n": 12,
+            "pf": 1.0666774768931406,
+            "median": 19.01,
+            "net": 41.119999999999905
+          },
+          {
+            "year": 2025,
+            "n": 12,
+            "pf": 0.5334771860728201,
+            "median": -59.239999999999995,
+            "net": -445.38
+          },
+          {
+            "year": 2026,
+            "n": 5,
+            "pf": 5.551379205819945,
+            "median": 29.26,
+            "net": 300.29999999999995
+          }
+        ],
+        "eras": [
+          {
+            "era": 1,
+            "n": 27,
+            "pf": 2.37436961264709,
+            "median": 25.26,
+            "net": 768.5199999999999
+          },
+          {
+            "era": 2,
+            "n": 27,
+            "pf": 1.1472892557040757,
+            "median": 15.26,
+            "net": 197.0199999999999
+          },
+          {
+            "era": 3,
+            "n": 28,
+            "pf": 0.8383251087115844,
+            "median": -1.2400000000000002,
+            "net": -264.72
+          }
+        ],
+        "yrs_pos": 5,
+        "n_yrs": 8,
+        "era3_pf": 0.8383251087115844,
+        "era3_median": -1.2400000000000002,
+        "max_yr_share_pct": 104.68023172854662
+      },
+      "strict_gates": {
+        "positive_median": true,
+        "PF_>=_1.30": false,
+        "PASS_STRESS": true,
+        "max_yr_<=_50pct": false,
+        "yrs_pos_>=_50pct": true,
+        "Era3_PF_>=_1.0": false,
+        "Era3_median_>=_0": false
+      },
+      "all_gates_pass": false,
+      "family_review": {
+        "vs_NFP_MGC_2h": {
+          "n_days_a": 82,
+          "n_days_b": 63,
+          "n_days_overlap": 0,
+          "overlap_pct_of_a": 0.0,
+          "daily_pnl_corr": -0.008217183383823967
+        },
+        "vs_XB_ORB_MNQ": {
+          "n_days_a": 82,
+          "n_days_b": 1218,
+          "n_days_overlap": 66,
+          "overlap_pct_of_a": 80.48780487804879,
+          "daily_pnl_corr": -0.011371455542195303
+        },
+        "vs_MES_ORB_Long": {
+          "n_days_a": 82,
+          "n_days_b": 854,
+          "n_days_overlap": 43,
+          "overlap_pct_of_a": 52.4390243902439,
+          "daily_pnl_corr": 0.027015415291389754
+        },
+        "vs_BBKC_MNQ": {
+          "n_days_a": 82,
+          "n_days_b": 838,
+          "n_days_overlap": 28,
+          "overlap_pct_of_a": 34.146341463414636,
+          "daily_pnl_corr": -0.030828882277207537
+        }
+      },
+      "family_classification": "INDEPENDENT (max corr < 0.30)",
+      "final_disposition": "OBSERVATIONAL \u2014 fails gates: PF_>=_1.30, max_yr_<=_50pct, Era3_PF_>=_1.0, Era3_median_>=_0"
+    },
+    {
+      "label": "CPI-MNQ-Long-2h",
+      "exit_bars": 24,
+      "metrics": {
+        "n": 82,
+        "pf": 1.151,
+        "median": 49.51,
+        "net": 1082.82
+      },
+      "temporal_split": {
+        "per_year": [
+          {
+            "year": 2019,
+            "n": 6,
+            "pf": 28.948988566402814,
+            "median": 50.51,
+            "net": 635.56
+          },
+          {
+            "year": 2020,
+            "n": 11,
+            "pf": 1.1294283036551076,
+            "median": 42.76,
+            "net": 82.85999999999996
+          },
+          {
+            "year": 2021,
+            "n": 12,
+            "pf": 1.0208914475636535,
+            "median": -20.489999999999995,
+            "net": 21.11999999999989
+          },
+          {
+            "year": 2022,
+            "n": 12,
+            "pf": 0.9496400156350476,
+            "median": -75.99,
+            "net": -79.88000000000011
+          },
+          {
+            "year": 2023,
+            "n": 12,
+            "pf": 2.7731962854194774,
+            "median": 123.00999999999999,
+            "net": 893.6199999999999
+          },
+          {
+            "year": 2024,
+            "n": 12,
+            "pf": 0.8461767755313634,
+            "median": 77.26,
+            "net": -237.3800000000001
+          },
+          {
+            "year": 2025,
+            "n": 12,
+            "pf": 1.182335251046025,
+            "median": -47.24,
+            "net": 223.1199999999999
+          },
+          {
+            "year": 2026,
+            "n": 5,
+            "pf": 0.27642431163557923,
+            "median": 15.76,
+            "net": -456.20000000000005
+          }
+        ],
+        "eras": [
+          {
+            "era": 1,
+            "n": 27,
+            "pf": 1.4666149680607763,
+            "median": 50.26,
+            "net": 710.0199999999998
+          },
+          {
+            "era": 2,
+            "n": 27,
+            "pf": 1.3368629014089397,
+            "median": 87.76,
+            "net": 777.5199999999998
+          },
+          {
+            "era": 3,
+            "n": 28,
+            "pf": 0.8785215600818825,
+            "median": 32.26,
+            "net": -404.72000000000025
+          }
+        ],
+        "yrs_pos": 5,
+        "n_yrs": 8,
+        "era3_pf": 0.8785215600818825,
+        "era3_median": 32.26,
+        "max_yr_share_pct": 82.52710515136408
+      },
+      "strict_gates": {
+        "positive_median": true,
+        "PF_>=_1.30": false,
+        "PASS_STRESS": true,
+        "max_yr_<=_50pct": false,
+        "yrs_pos_>=_50pct": true,
+        "Era3_PF_>=_1.0": false,
+        "Era3_median_>=_0": true
+      },
+      "all_gates_pass": false,
+      "family_review": {
+        "vs_NFP_MGC_2h": {
+          "n_days_a": 82,
+          "n_days_b": 63,
+          "n_days_overlap": 0,
+          "overlap_pct_of_a": 0.0,
+          "daily_pnl_corr": -0.0070141196804457085
+        },
+        "vs_XB_ORB_MNQ": {
+          "n_days_a": 82,
+          "n_days_b": 1218,
+          "n_days_overlap": 66,
+          "overlap_pct_of_a": 80.48780487804879,
+          "daily_pnl_corr": -0.02108967864085605
+        },
+        "vs_MES_ORB_Long": {
+          "n_days_a": 82,
+          "n_days_b": 854,
+          "n_days_overlap": 43,
+          "overlap_pct_of_a": 52.4390243902439,
+          "daily_pnl_corr": 0.007582509720148982
+        },
+        "vs_BBKC_MNQ": {
+          "n_days_a": 82,
+          "n_days_b": 838,
+          "n_days_overlap": 28,
+          "overlap_pct_of_a": 34.146341463414636,
+          "daily_pnl_corr": -0.03372041082498303
+        }
+      },
+      "family_classification": "INDEPENDENT (max corr < 0.30)",
+      "final_disposition": "OBSERVATIONAL \u2014 fails gates: PF_>=_1.30, max_yr_<=_50pct, Era3_PF_>=_1.0"
+    }
+  ]
+}

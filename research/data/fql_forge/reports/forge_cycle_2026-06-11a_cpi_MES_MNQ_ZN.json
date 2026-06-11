@@ -1,0 +1,374 @@
+{
+  "date": "2026-06-11",
+  "purpose": "CPI event-window first batch on MES/MNQ/ZN (#153)",
+  "calendar_status": "Forge-recall verified; DATA_REQUIRED per #140 \u2014 packet acceptance blocked",
+  "clean_events_filter": "gap <= 1h applied per #146 doctrine",
+  "clean_events_per_asset": {
+    "MES": 82,
+    "MNQ": 82,
+    "ZN": 81
+  },
+  "tier": {
+    "PAPER_PACKET": 0,
+    "OBSERVATIONAL": 2,
+    "KILL": 16
+  },
+  "results": [
+    {
+      "label": "CPI-MES-Long-1h",
+      "asset": "MES",
+      "direction": "long",
+      "exit_bars": 12,
+      "metrics": {
+        "n": 82,
+        "pf": 0.896,
+        "median": -1.87,
+        "net": -222.93,
+        "max_dd": -639.5
+      },
+      "verdict": "KILL (median neg)",
+      "stress": null,
+      "n_clean_events": 82
+    },
+    {
+      "label": "CPI-MES-Long-2h",
+      "asset": "MES",
+      "direction": "long",
+      "exit_bars": 24,
+      "metrics": {
+        "n": 82,
+        "pf": 0.956,
+        "median": 6.26,
+        "net": -179.18,
+        "max_dd": -989.8
+      },
+      "verdict": "KILL (PF<1.15)",
+      "stress": null,
+      "n_clean_events": 82
+    },
+    {
+      "label": "CPI-MES-Long-4h",
+      "asset": "MES",
+      "direction": "long",
+      "exit_bars": 48,
+      "metrics": {
+        "n": 82,
+        "pf": 0.933,
+        "median": 11.26,
+        "net": -329.18,
+        "max_dd": -1284.86
+      },
+      "verdict": "KILL (PF<1.15)",
+      "stress": null,
+      "n_clean_events": 82
+    },
+    {
+      "label": "CPI-MES-Short-1h",
+      "asset": "MES",
+      "direction": "short",
+      "exit_bars": 12,
+      "metrics": {
+        "n": 82,
+        "pf": 0.825,
+        "median": -5.62,
+        "net": -390.43,
+        "max_dd": -720.74
+      },
+      "verdict": "KILL (median neg)",
+      "stress": null,
+      "n_clean_events": 82
+    },
+    {
+      "label": "CPI-MES-Short-2h",
+      "asset": "MES",
+      "direction": "short",
+      "exit_bars": 24,
+      "metrics": {
+        "n": 82,
+        "pf": 0.896,
+        "median": -13.74,
+        "net": -434.18,
+        "max_dd": -1221.92
+      },
+      "verdict": "KILL (median neg)",
+      "stress": null,
+      "n_clean_events": 82
+    },
+    {
+      "label": "CPI-MES-Short-4h",
+      "asset": "MES",
+      "direction": "short",
+      "exit_bars": 48,
+      "metrics": {
+        "n": 82,
+        "pf": 0.943,
+        "median": -18.74,
+        "net": -284.18,
+        "max_dd": -1268.43
+      },
+      "verdict": "KILL (median neg)",
+      "stress": null,
+      "n_clean_events": 82
+    },
+    {
+      "label": "CPI-MNQ-Long-1h",
+      "asset": "MNQ",
+      "direction": "long",
+      "exit_bars": 12,
+      "metrics": {
+        "n": 82,
+        "pf": 1.198,
+        "median": 16.51,
+        "net": 700.82,
+        "max_dd": -707.18
+      },
+      "verdict": "WATCH",
+      "stress": {
+        "rows": [
+          {
+            "stress": "baseline (1x)",
+            "n": 82,
+            "pf": 1.198,
+            "median": 16.51
+          },
+          {
+            "stress": "1.5x cost + 1 tick slip",
+            "n": 82,
+            "pf": 1.158,
+            "median": 14.89
+          },
+          {
+            "stress": "2x cost + 1 tick slip",
+            "n": 82,
+            "pf": 1.143,
+            "median": 14.27
+          },
+          {
+            "stress": "2x cost + 2 ticks slip",
+            "n": 82,
+            "pf": 1.12,
+            "median": 13.27
+          },
+          {
+            "stress": "4x cost + 2 ticks slip",
+            "n": 82,
+            "pf": 1.062,
+            "median": 10.79
+          }
+        ],
+        "verdict": "PASS_STRESS"
+      },
+      "n_clean_events": 82
+    },
+    {
+      "label": "CPI-MNQ-Long-2h",
+      "asset": "MNQ",
+      "direction": "long",
+      "exit_bars": 24,
+      "metrics": {
+        "n": 82,
+        "pf": 1.151,
+        "median": 49.51,
+        "net": 1082.82,
+        "max_dd": -1441.8
+      },
+      "verdict": "WATCH",
+      "stress": {
+        "rows": [
+          {
+            "stress": "baseline (1x)",
+            "n": 82,
+            "pf": 1.151,
+            "median": 49.51
+          },
+          {
+            "stress": "1.5x cost + 1 tick slip",
+            "n": 82,
+            "pf": 1.132,
+            "median": 47.89
+          },
+          {
+            "stress": "2x cost + 1 tick slip",
+            "n": 82,
+            "pf": 1.124,
+            "median": 47.27
+          },
+          {
+            "stress": "2x cost + 2 ticks slip",
+            "n": 82,
+            "pf": 1.112,
+            "median": 46.27
+          },
+          {
+            "stress": "4x cost + 2 ticks slip",
+            "n": 82,
+            "pf": 1.083,
+            "median": 43.79
+          }
+        ],
+        "verdict": "PASS_STRESS"
+      },
+      "n_clean_events": 82
+    },
+    {
+      "label": "CPI-MNQ-Long-4h",
+      "asset": "MNQ",
+      "direction": "long",
+      "exit_bars": 48,
+      "metrics": {
+        "n": 82,
+        "pf": 1.13,
+        "median": 27.76,
+        "net": 1066.82,
+        "max_dd": -1587.12
+      },
+      "verdict": "KILL (PF<1.15)",
+      "stress": null,
+      "n_clean_events": 82
+    },
+    {
+      "label": "CPI-MNQ-Short-1h",
+      "asset": "MNQ",
+      "direction": "short",
+      "exit_bars": 12,
+      "metrics": {
+        "n": 82,
+        "pf": 0.761,
+        "median": -20.99,
+        "net": -1068.18,
+        "max_dd": -1409.06
+      },
+      "verdict": "KILL (median neg)",
+      "stress": null,
+      "n_clean_events": 82
+    },
+    {
+      "label": "CPI-MNQ-Short-2h",
+      "asset": "MNQ",
+      "direction": "short",
+      "exit_bars": 24,
+      "metrics": {
+        "n": 82,
+        "pf": 0.828,
+        "median": -53.99,
+        "net": -1450.18,
+        "max_dd": -2632.92
+      },
+      "verdict": "KILL (median neg)",
+      "stress": null,
+      "n_clean_events": 82
+    },
+    {
+      "label": "CPI-MNQ-Short-4h",
+      "asset": "MNQ",
+      "direction": "short",
+      "exit_bars": 48,
+      "metrics": {
+        "n": 82,
+        "pf": 0.849,
+        "median": -32.24,
+        "net": -1434.18,
+        "max_dd": -2663.42
+      },
+      "verdict": "KILL (median neg)",
+      "stress": null,
+      "n_clean_events": 82
+    },
+    {
+      "label": "CPI-ZN-Long-1h",
+      "asset": "ZN",
+      "direction": "long",
+      "exit_bars": 12,
+      "metrics": {
+        "n": 81,
+        "pf": 0.608,
+        "median": -3.1,
+        "net": -3266.73,
+        "max_dd": -4230.79
+      },
+      "verdict": "KILL (median neg)",
+      "stress": null,
+      "n_clean_events": 81
+    },
+    {
+      "label": "CPI-ZN-Long-2h",
+      "asset": "ZN",
+      "direction": "long",
+      "exit_bars": 24,
+      "metrics": {
+        "n": 81,
+        "pf": 0.75,
+        "median": -18.73,
+        "net": -2954.27,
+        "max_dd": -2951.79
+      },
+      "verdict": "KILL (median neg)",
+      "stress": null,
+      "n_clean_events": 81
+    },
+    {
+      "label": "CPI-ZN-Long-4h",
+      "asset": "ZN",
+      "direction": "long",
+      "exit_bars": 48,
+      "metrics": {
+        "n": 81,
+        "pf": 0.823,
+        "median": 12.52,
+        "net": -2782.37,
+        "max_dd": -4192.56
+      },
+      "verdict": "KILL (PF<1.15)",
+      "stress": null,
+      "n_clean_events": 81
+    },
+    {
+      "label": "CPI-ZN-Short-1h",
+      "asset": "ZN",
+      "direction": "short",
+      "exit_bars": 12,
+      "metrics": {
+        "n": 81,
+        "pf": 0.725,
+        "median": -65.6,
+        "net": -2298.04,
+        "max_dd": -2986.77
+      },
+      "verdict": "KILL (median neg)",
+      "stress": null,
+      "n_clean_events": 81
+    },
+    {
+      "label": "CPI-ZN-Short-2h",
+      "asset": "ZN",
+      "direction": "short",
+      "exit_bars": 24,
+      "metrics": {
+        "n": 81,
+        "pf": 0.781,
+        "median": -49.98,
+        "net": -2610.47,
+        "max_dd": -4608.14
+      },
+      "verdict": "KILL (median neg)",
+      "stress": null,
+      "n_clean_events": 81
+    },
+    {
+      "label": "CPI-ZN-Short-4h",
+      "asset": "ZN",
+      "direction": "short",
+      "exit_bars": 48,
+      "metrics": {
+        "n": 81,
+        "pf": 0.826,
+        "median": -81.22,
+        "net": -2782.37,
+        "max_dd": -5973.6
+      },
+      "verdict": "KILL (median neg)",
+      "stress": null,
+      "n_clean_events": 81
+    }
+  ]
+}
