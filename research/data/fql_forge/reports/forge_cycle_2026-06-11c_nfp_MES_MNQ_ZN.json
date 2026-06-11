@@ -1,0 +1,374 @@
+{
+  "date": "2026-06-11",
+  "purpose": "NFP cross-asset replication on MES/MNQ/ZN (#155)",
+  "calendar_status": "Verified NFP calendar (same as Packet #1)",
+  "clean_events_filter": "gap <= 1h applied per #146 doctrine",
+  "clean_events_per_asset": {
+    "MES": 84,
+    "MNQ": 84,
+    "ZN": 84
+  },
+  "tier": {
+    "PAPER_PACKET_TIER": 0,
+    "OBSERVATIONAL": 2,
+    "KILL": 16
+  },
+  "results": [
+    {
+      "label": "NFP-MES-Long-1h",
+      "asset": "MES",
+      "direction": "long",
+      "exit_bars": 12,
+      "metrics": {
+        "n": 84,
+        "pf": 1.157,
+        "median": 9.38,
+        "net": 330.84,
+        "max_dd": -594.92
+      },
+      "verdict": "WATCH",
+      "stress": {
+        "rows": [
+          {
+            "stress": "baseline (1x)",
+            "n": 84,
+            "pf": 1.157,
+            "median": 9.38
+          },
+          {
+            "stress": "1.5x cost + 1 tick slip",
+            "n": 84,
+            "pf": 1.031,
+            "median": 6.26
+          },
+          {
+            "stress": "2x cost + 1 tick slip",
+            "n": 84,
+            "pf": 1.007,
+            "median": 5.64
+          },
+          {
+            "stress": "2x cost + 2 ticks slip",
+            "n": 84,
+            "pf": 0.917,
+            "median": 3.15
+          },
+          {
+            "stress": "4x cost + 2 ticks slip",
+            "n": 84,
+            "pf": 0.835,
+            "median": 0.67
+          }
+        ],
+        "verdict": "PASS_STRESS"
+      },
+      "n_clean_events": 84
+    },
+    {
+      "label": "NFP-MES-Long-2h",
+      "asset": "MES",
+      "direction": "long",
+      "exit_bars": 24,
+      "metrics": {
+        "n": 84,
+        "pf": 0.839,
+        "median": 13.13,
+        "net": -789.16,
+        "max_dd": -1517.22
+      },
+      "verdict": "KILL (PF<1.15)",
+      "stress": null,
+      "n_clean_events": 84
+    },
+    {
+      "label": "NFP-MES-Long-4h",
+      "asset": "MES",
+      "direction": "long",
+      "exit_bars": 48,
+      "metrics": {
+        "n": 84,
+        "pf": 1.091,
+        "median": 33.13,
+        "net": 462.09,
+        "max_dd": -1653.52
+      },
+      "verdict": "KILL (PF<1.15)",
+      "stress": null,
+      "n_clean_events": 84
+    },
+    {
+      "label": "NFP-MES-Short-1h",
+      "asset": "MES",
+      "direction": "short",
+      "exit_bars": 12,
+      "metrics": {
+        "n": 84,
+        "pf": 0.661,
+        "median": -16.86,
+        "net": -959.16,
+        "max_dd": -1339.31
+      },
+      "verdict": "KILL (median neg)",
+      "stress": null,
+      "n_clean_events": 84
+    },
+    {
+      "label": "NFP-MES-Short-2h",
+      "asset": "MES",
+      "direction": "short",
+      "exit_bars": 24,
+      "metrics": {
+        "n": 84,
+        "pf": 1.036,
+        "median": -20.61,
+        "net": 160.84,
+        "max_dd": -1838.54
+      },
+      "verdict": "KILL (median neg)",
+      "stress": null,
+      "n_clean_events": 84
+    },
+    {
+      "label": "NFP-MES-Short-4h",
+      "asset": "MES",
+      "direction": "short",
+      "exit_bars": 48,
+      "metrics": {
+        "n": 84,
+        "pf": 0.816,
+        "median": -40.62,
+        "net": -1090.41,
+        "max_dd": -2913.55
+      },
+      "verdict": "KILL (median neg)",
+      "stress": null,
+      "n_clean_events": 84
+    },
+    {
+      "label": "NFP-MNQ-Long-1h",
+      "asset": "MNQ",
+      "direction": "long",
+      "exit_bars": 12,
+      "metrics": {
+        "n": 84,
+        "pf": 1.173,
+        "median": 10.76,
+        "net": 743.34,
+        "max_dd": -1295.76
+      },
+      "verdict": "WATCH",
+      "stress": {
+        "rows": [
+          {
+            "stress": "baseline (1x)",
+            "n": 84,
+            "pf": 1.173,
+            "median": 10.76
+          },
+          {
+            "stress": "1.5x cost + 1 tick slip",
+            "n": 84,
+            "pf": 1.139,
+            "median": 9.14
+          },
+          {
+            "stress": "2x cost + 1 tick slip",
+            "n": 84,
+            "pf": 1.127,
+            "median": 8.52
+          },
+          {
+            "stress": "2x cost + 2 ticks slip",
+            "n": 84,
+            "pf": 1.107,
+            "median": 7.52
+          },
+          {
+            "stress": "4x cost + 2 ticks slip",
+            "n": 84,
+            "pf": 1.058,
+            "median": 5.04
+          }
+        ],
+        "verdict": "PASS_STRESS"
+      },
+      "n_clean_events": 84
+    },
+    {
+      "label": "NFP-MNQ-Long-2h",
+      "asset": "MNQ",
+      "direction": "long",
+      "exit_bars": 24,
+      "metrics": {
+        "n": 84,
+        "pf": 0.854,
+        "median": 14.01,
+        "net": -1286.16,
+        "max_dd": -2848.22
+      },
+      "verdict": "KILL (PF<1.15)",
+      "stress": null,
+      "n_clean_events": 84
+    },
+    {
+      "label": "NFP-MNQ-Long-4h",
+      "asset": "MNQ",
+      "direction": "long",
+      "exit_bars": 48,
+      "metrics": {
+        "n": 84,
+        "pf": 1.016,
+        "median": 57.01,
+        "net": 157.34,
+        "max_dd": -2844.88
+      },
+      "verdict": "KILL (PF<1.15)",
+      "stress": null,
+      "n_clean_events": 84
+    },
+    {
+      "label": "NFP-MNQ-Short-1h",
+      "asset": "MNQ",
+      "direction": "short",
+      "exit_bars": 12,
+      "metrics": {
+        "n": 84,
+        "pf": 0.787,
+        "median": -15.24,
+        "net": -1119.66,
+        "max_dd": -1844.42
+      },
+      "verdict": "KILL (median neg)",
+      "stress": null,
+      "n_clean_events": 84
+    },
+    {
+      "label": "NFP-MNQ-Short-2h",
+      "asset": "MNQ",
+      "direction": "short",
+      "exit_bars": 24,
+      "metrics": {
+        "n": 84,
+        "pf": 1.118,
+        "median": -18.49,
+        "net": 909.84,
+        "max_dd": -2938.54
+      },
+      "verdict": "KILL (median neg)",
+      "stress": null,
+      "n_clean_events": 84
+    },
+    {
+      "label": "NFP-MNQ-Short-4h",
+      "asset": "MNQ",
+      "direction": "short",
+      "exit_bars": 48,
+      "metrics": {
+        "n": 84,
+        "pf": 0.948,
+        "median": -61.49,
+        "net": -533.66,
+        "max_dd": -5023.54
+      },
+      "verdict": "KILL (median neg)",
+      "stress": null,
+      "n_clean_events": 84
+    },
+    {
+      "label": "NFP-ZN-Long-1h",
+      "asset": "ZN",
+      "direction": "long",
+      "exit_bars": 12,
+      "metrics": {
+        "n": 84,
+        "pf": 0.655,
+        "median": -49.98,
+        "net": -2994.89,
+        "max_dd": -3395.17
+      },
+      "verdict": "KILL (median neg)",
+      "stress": null,
+      "n_clean_events": 84
+    },
+    {
+      "label": "NFP-ZN-Long-2h",
+      "asset": "ZN",
+      "direction": "long",
+      "exit_bars": 24,
+      "metrics": {
+        "n": 84,
+        "pf": 0.838,
+        "median": -89.03,
+        "net": -1807.29,
+        "max_dd": -4049.36
+      },
+      "verdict": "KILL (median neg)",
+      "stress": null,
+      "n_clean_events": 84
+    },
+    {
+      "label": "NFP-ZN-Long-4h",
+      "asset": "ZN",
+      "direction": "long",
+      "exit_bars": 48,
+      "metrics": {
+        "n": 84,
+        "pf": 0.771,
+        "median": -65.6,
+        "net": -2791.62,
+        "max_dd": -4858.75
+      },
+      "verdict": "KILL (median neg)",
+      "stress": null,
+      "n_clean_events": 84
+    },
+    {
+      "label": "NFP-ZN-Short-1h",
+      "asset": "ZN",
+      "direction": "short",
+      "exit_bars": 12,
+      "metrics": {
+        "n": 84,
+        "pf": 0.662,
+        "median": -18.73,
+        "net": -2776.03,
+        "max_dd": -4520.48
+      },
+      "verdict": "KILL (median neg)",
+      "stress": null,
+      "n_clean_events": 84
+    },
+    {
+      "label": "NFP-ZN-Short-2h",
+      "asset": "ZN",
+      "direction": "short",
+      "exit_bars": 24,
+      "metrics": {
+        "n": 84,
+        "pf": 0.669,
+        "median": 20.34,
+        "net": -3963.5,
+        "max_dd": -6692.33
+      },
+      "verdict": "KILL (PF<1.15)",
+      "stress": null,
+      "n_clean_events": 84
+    },
+    {
+      "label": "NFP-ZN-Short-4h",
+      "asset": "ZN",
+      "direction": "short",
+      "exit_bars": 48,
+      "metrics": {
+        "n": 84,
+        "pf": 0.752,
+        "median": -3.1,
+        "net": -2979.2,
+        "max_dd": -6874.14
+      },
+      "verdict": "KILL (median neg)",
+      "stress": null,
+      "n_clean_events": 84
+    }
+  ]
+}
