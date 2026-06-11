@@ -1,0 +1,149 @@
+{
+  "date": "2026-06-11",
+  "purpose": "FOMC-MGC data-gap audit + first batch (#157)",
+  "calendar_source": "OFFICIAL federalreserve.gov (verified 2026-06-11)",
+  "audit": {
+    "asset": "MGC",
+    "data_span_start": "2019-06-30 20:00:00",
+    "total_events": 58,
+    "exact_match": 42,
+    "gap_lt_1h": 3,
+    "gap_1h_to_1d": 7,
+    "gap_gt_1d": 2,
+    "pre_data_excluded": 4,
+    "clean_pct": 77.58620689655173,
+    "eligibility": "CLEAN_EVENT_USABLE_WITH_WARN"
+  },
+  "clean_events_filter": "gap <= 1h per #146 doctrine",
+  "tier": {
+    "PAPER_PACKET_TIER": 1,
+    "OBSERVATIONAL": 0,
+    "KILL": 5
+  },
+  "results": [
+    {
+      "label": "FOMC-MGC-Long-1h",
+      "direction": "long",
+      "exit_bars": 12,
+      "metrics": {
+        "n": 45,
+        "pf": 0.935,
+        "median": 2.76,
+        "net": -217.8,
+        "max_dd": -964.96
+      },
+      "verdict": "KILL (PF<1.15)",
+      "stress": null,
+      "n_clean_events": 45
+    },
+    {
+      "label": "FOMC-MGC-Long-2h",
+      "direction": "long",
+      "exit_bars": 24,
+      "metrics": {
+        "n": 45,
+        "pf": 1.109,
+        "median": 44.76,
+        "net": 442.2,
+        "max_dd": -1321.92
+      },
+      "verdict": "KILL (PF<1.15)",
+      "stress": null,
+      "n_clean_events": 45
+    },
+    {
+      "label": "FOMC-MGC-Long-4h",
+      "direction": "long",
+      "exit_bars": 48,
+      "metrics": {
+        "n": 45,
+        "pf": 1.403,
+        "median": 40.76,
+        "net": 2024.2,
+        "max_dd": -1589.16
+      },
+      "verdict": "WATCH_FOR_DEEP_SCREEN",
+      "stress": {
+        "rows": [
+          {
+            "stress": "baseline (1x)",
+            "n": 45,
+            "pf": 1.403,
+            "median": 40.76
+          },
+          {
+            "stress": "1.5x cost + 1 tick slip",
+            "n": 45,
+            "pf": 1.376,
+            "median": 38.14
+          },
+          {
+            "stress": "2x cost + 1 tick slip",
+            "n": 45,
+            "pf": 1.37,
+            "median": 37.52
+          },
+          {
+            "stress": "2x cost + 2 ticks slip",
+            "n": 45,
+            "pf": 1.35,
+            "median": 35.52
+          },
+          {
+            "stress": "4x cost + 2 ticks slip",
+            "n": 45,
+            "pf": 1.325,
+            "median": 33.04
+          }
+        ],
+        "verdict": "PASS_STRESS"
+      },
+      "n_clean_events": 45
+    },
+    {
+      "label": "FOMC-MGC-Short-1h",
+      "direction": "short",
+      "exit_bars": 12,
+      "metrics": {
+        "n": 45,
+        "pf": 0.978,
+        "median": -9.24,
+        "net": -73.8,
+        "max_dd": -1259.76
+      },
+      "verdict": "KILL (median neg)",
+      "stress": null,
+      "n_clean_events": 45
+    },
+    {
+      "label": "FOMC-MGC-Short-2h",
+      "direction": "short",
+      "exit_bars": 24,
+      "metrics": {
+        "n": 45,
+        "pf": 0.844,
+        "median": -51.24,
+        "net": -733.8,
+        "max_dd": -1090.24
+      },
+      "verdict": "KILL (median neg)",
+      "stress": null,
+      "n_clean_events": 45
+    },
+    {
+      "label": "FOMC-MGC-Short-4h",
+      "direction": "short",
+      "exit_bars": 48,
+      "metrics": {
+        "n": 45,
+        "pf": 0.68,
+        "median": -47.24,
+        "net": -2315.8,
+        "max_dd": -2179.24
+      },
+      "verdict": "KILL (median neg)",
+      "stress": null,
+      "n_clean_events": 45
+    }
+  ]
+}

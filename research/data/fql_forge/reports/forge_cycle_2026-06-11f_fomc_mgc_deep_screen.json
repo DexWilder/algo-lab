@@ -1,0 +1,157 @@
+{
+  "date": "2026-06-11",
+  "purpose": "FOMC-MGC-Long-4h deep-screen + family review per #157",
+  "calendar_source": "OFFICIAL federalreserve.gov",
+  "boundaries": "report-only Lane B; calendar verification SATISFIED via Fed.gov",
+  "candidate": "FOMC-MGC-Long-4h",
+  "metrics": {
+    "n": 42,
+    "pf": 1.158,
+    "median": 38.26,
+    "net": 721.92
+  },
+  "temporal_split": {
+    "per_year": [
+      {
+        "year": 2019,
+        "n": 2,
+        "pf": 0.18384401114206128,
+        "median": -52.74,
+        "net": -105.48,
+        "win_rate": 0.5
+      },
+      {
+        "year": 2020,
+        "n": 6,
+        "pf": 18.027624309392262,
+        "median": 28.259999999999998,
+        "net": 246.55999999999995,
+        "win_rate": 0.6666666666666666
+      },
+      {
+        "year": 2021,
+        "n": 6,
+        "pf": 0.40608246417779503,
+        "median": 2.760000000000005,
+        "net": -487.44000000000005,
+        "win_rate": 0.5
+      },
+      {
+        "year": 2022,
+        "n": 7,
+        "pf": 1.1865824196246049,
+        "median": 77.76,
+        "net": 80.31999999999994,
+        "win_rate": 0.7142857142857143
+      },
+      {
+        "year": 2023,
+        "n": 6,
+        "pf": 0.48964523680893207,
+        "median": 31.259999999999998,
+        "net": -453.44000000000005,
+        "win_rate": 0.6666666666666666
+      },
+      {
+        "year": 2024,
+        "n": 7,
+        "pf": 1.0454679548639279,
+        "median": 174.76,
+        "net": 49.319999999999936,
+        "win_rate": 0.5714285714285714
+      },
+      {
+        "year": 2025,
+        "n": 5,
+        "pf": 0.3812999652415711,
+        "median": 40.76,
+        "net": -427.2,
+        "win_rate": 0.6
+      },
+      {
+        "year": 2026,
+        "n": 3,
+        "pf": 4.524097319076399,
+        "median": 162.76,
+        "net": 1819.2800000000002,
+        "win_rate": 0.6666666666666666
+      }
+    ],
+    "eras": [
+      {
+        "era": 1,
+        "n": 14,
+        "pf": 0.6408693127618098,
+        "median": 23.76,
+        "net": -346.36
+      },
+      {
+        "era": 2,
+        "n": 14,
+        "pf": 0.6590301003344481,
+        "median": 42.76,
+        "net": -489.3600000000001
+      },
+      {
+        "era": 3,
+        "n": 14,
+        "pf": 1.7160904744391323,
+        "median": 111.26,
+        "net": 1557.64
+      }
+    ],
+    "yrs_pos": 4,
+    "n_yrs": 8,
+    "total_net": 721.92,
+    "era3_pf": 1.7160904744391323,
+    "era3_median": 111.26,
+    "max_yr_share_pct": 252.00576241134755
+  },
+  "strict_gates": {
+    "positive_median": true,
+    "PF_>=_1.30": false,
+    "PASS_STRESS": true,
+    "max_yr_<=_50pct": false,
+    "yrs_pos_>=_50pct": true,
+    "Era3_PF_>=_1.0": true,
+    "Era3_median_>=_0": true
+  },
+  "all_gates_pass": false,
+  "family_review": {
+    "vs_Packet1_NFP_MGC_2h": {
+      "n_days_a": 42,
+      "n_days_b": 63,
+      "n_days_overlap": 0,
+      "overlap_pct_of_a": 0.0,
+      "daily_pnl_corr": -0.004846724944873704,
+      "overlap_day_pnl_corr": NaN
+    },
+    "vs_CPI_MGC_Long_1h_archived": {
+      "n_days_a": 42,
+      "n_days_b": 58,
+      "n_days_overlap": 0,
+      "overlap_pct_of_a": 0.0,
+      "daily_pnl_corr": -0.0003003253825144205,
+      "overlap_day_pnl_corr": NaN
+    },
+    "vs_BBKC_MNQ": {
+      "n_days_a": 42,
+      "n_days_b": 838,
+      "n_days_overlap": 24,
+      "overlap_pct_of_a": 57.14285714285714,
+      "daily_pnl_corr": -0.014958873892007347,
+      "overlap_day_pnl_corr": -0.24774248758593026
+    },
+    "vs_XB_ORB_MNQ_probation": {
+      "n_days_a": 42,
+      "n_days_b": 1218,
+      "n_days_overlap": 31,
+      "overlap_pct_of_a": 73.80952380952381,
+      "daily_pnl_corr": 0.034619276667740485,
+      "overlap_day_pnl_corr": 0.3487022272940598
+    }
+  },
+  "family_classification": "INDEPENDENT (max corr < 0.30)",
+  "final_disposition": "OBSERVATIONAL \u2014 independent but fails gates: PF_>=_1.30, max_yr_<=_50pct",
+  "next_step": "Lock as observational near-miss; consider REOPENABLE criteria"
+}
