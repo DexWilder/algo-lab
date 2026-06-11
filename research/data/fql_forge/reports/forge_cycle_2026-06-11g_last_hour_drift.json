@@ -1,0 +1,76 @@
+{
+  "date": "2026-06-11",
+  "purpose": "Last-hour drift workhorse on MES/MNQ (#159 Option B)",
+  "mechanism": "Enter at 15:00 ET, exit 60min later at 16:00 ET, both directions",
+  "tier": {
+    "PAPER_PACKET_TIER": 0,
+    "OBSERVATIONAL": 0,
+    "KILL": 4
+  },
+  "results": [
+    {
+      "label": "LHD-MES-Long-60m",
+      "asset": "MES",
+      "direction": "long",
+      "exit_bars": 12,
+      "metrics": {
+        "n": 1699,
+        "pf": 0.847,
+        "median": -3.74,
+        "net": -7336.76,
+        "max_dd": -8321.54
+      },
+      "verdict": "KILL (median neg)",
+      "stress": null,
+      "n_session_entries": 1699
+    },
+    {
+      "label": "LHD-MES-Short-60m",
+      "asset": "MES",
+      "direction": "short",
+      "exit_bars": 12,
+      "metrics": {
+        "n": 1699,
+        "pf": 0.885,
+        "median": -3.74,
+        "net": -5371.76,
+        "max_dd": -6494.64
+      },
+      "verdict": "KILL (median neg)",
+      "stress": null,
+      "n_session_entries": 1699
+    },
+    {
+      "label": "LHD-MNQ-Long-60m",
+      "asset": "MNQ",
+      "direction": "long",
+      "exit_bars": 12,
+      "metrics": {
+        "n": 1699,
+        "pf": 0.947,
+        "median": -0.74,
+        "net": -3950.26,
+        "max_dd": -6932.06
+      },
+      "verdict": "KILL (median neg)",
+      "stress": null,
+      "n_session_entries": 1699
+    },
+    {
+      "label": "LHD-MNQ-Short-60m",
+      "asset": "MNQ",
+      "direction": "short",
+      "exit_bars": 12,
+      "metrics": {
+        "n": 1699,
+        "pf": 0.951,
+        "median": -3.74,
+        "net": -3661.26,
+        "max_dd": -5295.34
+      },
+      "verdict": "KILL (median neg)",
+      "stress": null,
+      "n_session_entries": 1699
+    }
+  ]
+}

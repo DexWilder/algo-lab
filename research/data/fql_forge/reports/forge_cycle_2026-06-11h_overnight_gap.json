@@ -1,0 +1,96 @@
+{
+  "date": "2026-06-11",
+  "purpose": "Overnight gap continuation/fade workhorse on MES/MNQ (#159 Option B fallback)",
+  "mechanism": "gap = today_open - prior_close, enter 09:35 ET, hold 60min, no threshold",
+  "tier": {
+    "PAPER_PACKET_TIER": 0,
+    "OBSERVATIONAL": 0,
+    "KILL": 4
+  },
+  "results": [
+    {
+      "label": "GAP-MES-Cont-60m",
+      "asset": "MES",
+      "strategy": "continuation",
+      "hold_bars": 12,
+      "metrics": {
+        "n": 1413,
+        "pf": 0.815,
+        "median": -8.74,
+        "net": -16467.12,
+        "max_dd": -19201.43
+      },
+      "verdict": "KILL (median neg)",
+      "stress": null,
+      "signal_stats": {
+        "n_trades_planned": 1751,
+        "n_no_prior_close": 1,
+        "n_no_signal": 10,
+        "n_dates_with_open": 1762
+      }
+    },
+    {
+      "label": "GAP-MES-Fade-60m",
+      "asset": "MES",
+      "strategy": "fade",
+      "hold_bars": 12,
+      "metrics": {
+        "n": 1208,
+        "pf": 0.853,
+        "median": 1.26,
+        "net": -12691.67,
+        "max_dd": -17651.73
+      },
+      "verdict": "KILL (PF<1.15)",
+      "stress": null,
+      "signal_stats": {
+        "n_trades_planned": 1751,
+        "n_no_prior_close": 1,
+        "n_no_signal": 10,
+        "n_dates_with_open": 1762
+      }
+    },
+    {
+      "label": "GAP-MNQ-Cont-60m",
+      "asset": "MNQ",
+      "strategy": "continuation",
+      "hold_bars": 12,
+      "metrics": {
+        "n": 1423,
+        "pf": 0.877,
+        "median": -6.24,
+        "net": -19176.52,
+        "max_dd": -22721.84
+      },
+      "verdict": "KILL (median neg)",
+      "stress": null,
+      "signal_stats": {
+        "n_trades_planned": 1759,
+        "n_no_prior_close": 1,
+        "n_no_signal": 2,
+        "n_dates_with_open": 1762
+      }
+    },
+    {
+      "label": "GAP-MNQ-Fade-60m",
+      "asset": "MNQ",
+      "strategy": "fade",
+      "hold_bars": 12,
+      "metrics": {
+        "n": 1214,
+        "pf": 0.844,
+        "median": -1.49,
+        "net": -25843.86,
+        "max_dd": -29470.7
+      },
+      "verdict": "KILL (median neg)",
+      "stress": null,
+      "signal_stats": {
+        "n_trades_planned": 1759,
+        "n_no_prior_close": 1,
+        "n_no_signal": 2,
+        "n_dates_with_open": 1762
+      }
+    }
+  ]
+}

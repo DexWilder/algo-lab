@@ -1,0 +1,312 @@
+{
+  "date": "2026-06-11",
+  "purpose": "Strict 8-asset data-gap audit per #161-A (defensive hygiene re-run of 06-10k)",
+  "filter": "strict next-bar gap <= 60 min, no exact-match override",
+  "doctrine_reference": "docs/fql_forge/event_window_clean_events_rule.md (#161-C update)",
+  "results": {
+    "MGC": {
+      "NFP": {
+        "asset": "MGC",
+        "data_span_start": "2019-06-30 20:00:00",
+        "data_span_end": "2026-06-09 19:25:00",
+        "total_events": 96,
+        "clean_events": 63,
+        "gap_1h_to_1d": 14,
+        "gap_gt_1d": 13,
+        "pre_data_excluded": 6,
+        "clean_pct": 65.625,
+        "eligibility": "EVENT_DATA_GAPPED"
+      },
+      "CPI": {
+        "asset": "MGC",
+        "data_span_start": "2019-06-30 20:00:00",
+        "data_span_end": "2026-06-09 19:25:00",
+        "total_events": 90,
+        "clean_events": 58,
+        "gap_1h_to_1d": 18,
+        "gap_gt_1d": 8,
+        "pre_data_excluded": 6,
+        "clean_pct": 64.44444444444444,
+        "eligibility": "EVENT_DATA_GAPPED"
+      },
+      "FOMC": {
+        "asset": "MGC",
+        "data_span_start": "2019-06-30 20:00:00",
+        "data_span_end": "2026-06-09 19:25:00",
+        "total_events": 58,
+        "clean_events": 42,
+        "gap_1h_to_1d": 10,
+        "gap_gt_1d": 2,
+        "pre_data_excluded": 4,
+        "clean_pct": 72.41379310344827,
+        "eligibility": "CLEAN_EVENT_USABLE_WITH_WARN"
+      }
+    },
+    "MES": {
+      "NFP": {
+        "asset": "MES",
+        "data_span_start": "2019-06-30 20:00:00",
+        "data_span_end": "2026-06-09 19:55:00",
+        "total_events": 96,
+        "clean_events": 84,
+        "gap_1h_to_1d": 0,
+        "gap_gt_1d": 6,
+        "pre_data_excluded": 6,
+        "clean_pct": 87.5,
+        "eligibility": "CLEAN_EVENT_USABLE_WITH_WARN"
+      },
+      "CPI": {
+        "asset": "MES",
+        "data_span_start": "2019-06-30 20:00:00",
+        "data_span_end": "2026-06-09 19:55:00",
+        "total_events": 90,
+        "clean_events": 82,
+        "gap_1h_to_1d": 0,
+        "gap_gt_1d": 2,
+        "pre_data_excluded": 6,
+        "clean_pct": 91.11111111111111,
+        "eligibility": "CLEAN_EVENT_READY"
+      },
+      "FOMC": {
+        "asset": "MES",
+        "data_span_start": "2019-06-30 20:00:00",
+        "data_span_end": "2026-06-09 19:55:00",
+        "total_events": 58,
+        "clean_events": 54,
+        "gap_1h_to_1d": 0,
+        "gap_gt_1d": 0,
+        "pre_data_excluded": 4,
+        "clean_pct": 93.10344827586206,
+        "eligibility": "CLEAN_EVENT_READY"
+      }
+    },
+    "MNQ": {
+      "NFP": {
+        "asset": "MNQ",
+        "data_span_start": "2019-06-30 20:00:00",
+        "data_span_end": "2026-06-09 19:55:00",
+        "total_events": 96,
+        "clean_events": 84,
+        "gap_1h_to_1d": 0,
+        "gap_gt_1d": 6,
+        "pre_data_excluded": 6,
+        "clean_pct": 87.5,
+        "eligibility": "CLEAN_EVENT_USABLE_WITH_WARN"
+      },
+      "CPI": {
+        "asset": "MNQ",
+        "data_span_start": "2019-06-30 20:00:00",
+        "data_span_end": "2026-06-09 19:55:00",
+        "total_events": 90,
+        "clean_events": 82,
+        "gap_1h_to_1d": 0,
+        "gap_gt_1d": 2,
+        "pre_data_excluded": 6,
+        "clean_pct": 91.11111111111111,
+        "eligibility": "CLEAN_EVENT_READY"
+      },
+      "FOMC": {
+        "asset": "MNQ",
+        "data_span_start": "2019-06-30 20:00:00",
+        "data_span_end": "2026-06-09 19:55:00",
+        "total_events": 58,
+        "clean_events": 54,
+        "gap_1h_to_1d": 0,
+        "gap_gt_1d": 0,
+        "pre_data_excluded": 4,
+        "clean_pct": 93.10344827586206,
+        "eligibility": "CLEAN_EVENT_READY"
+      }
+    },
+    "MYM": {
+      "NFP": {
+        "asset": "MYM",
+        "data_span_start": "2024-02-29 19:00:00",
+        "data_span_end": "2026-06-09 19:55:00",
+        "total_events": 96,
+        "clean_events": 28,
+        "gap_1h_to_1d": 0,
+        "gap_gt_1d": 6,
+        "pre_data_excluded": 62,
+        "clean_pct": 29.166666666666668,
+        "eligibility": "DATA_REQUIRED (pre-data exclusions: 62)"
+      },
+      "CPI": {
+        "asset": "MYM",
+        "data_span_start": "2024-02-29 19:00:00",
+        "data_span_end": "2026-06-09 19:55:00",
+        "total_events": 90,
+        "clean_events": 27,
+        "gap_1h_to_1d": 0,
+        "gap_gt_1d": 1,
+        "pre_data_excluded": 62,
+        "clean_pct": 30.0,
+        "eligibility": "DATA_REQUIRED (pre-data exclusions: 62)"
+      },
+      "FOMC": {
+        "asset": "MYM",
+        "data_span_start": "2024-02-29 19:00:00",
+        "data_span_end": "2026-06-09 19:55:00",
+        "total_events": 58,
+        "clean_events": 18,
+        "gap_1h_to_1d": 0,
+        "gap_gt_1d": 0,
+        "pre_data_excluded": 40,
+        "clean_pct": 31.03448275862069,
+        "eligibility": "DATA_REQUIRED (pre-data exclusions: 40)"
+      }
+    },
+    "MCL": {
+      "NFP": {
+        "asset": "MCL",
+        "data_span_start": "2021-07-11 18:05:00",
+        "data_span_end": "2026-06-09 19:55:00",
+        "total_events": 96,
+        "clean_events": 57,
+        "gap_1h_to_1d": 0,
+        "gap_gt_1d": 8,
+        "pre_data_excluded": 31,
+        "clean_pct": 59.375,
+        "eligibility": "DATA_REQUIRED (pre-data exclusions: 31)"
+      },
+      "CPI": {
+        "asset": "MCL",
+        "data_span_start": "2021-07-11 18:05:00",
+        "data_span_end": "2026-06-09 19:55:00",
+        "total_events": 90,
+        "clean_events": 59,
+        "gap_1h_to_1d": 0,
+        "gap_gt_1d": 1,
+        "pre_data_excluded": 30,
+        "clean_pct": 65.55555555555556,
+        "eligibility": "DATA_REQUIRED (pre-data exclusions: 30)"
+      },
+      "FOMC": {
+        "asset": "MCL",
+        "data_span_start": "2021-07-11 18:05:00",
+        "data_span_end": "2026-06-09 19:55:00",
+        "total_events": 58,
+        "clean_events": 39,
+        "gap_1h_to_1d": 0,
+        "gap_gt_1d": 0,
+        "pre_data_excluded": 19,
+        "clean_pct": 67.24137931034483,
+        "eligibility": "DATA_REQUIRED (pre-data exclusions: 19)"
+      }
+    },
+    "ZN": {
+      "NFP": {
+        "asset": "ZN",
+        "data_span_start": "2019-06-30 20:00:00",
+        "data_span_end": "2026-06-09 16:50:00",
+        "total_events": 96,
+        "clean_events": 84,
+        "gap_1h_to_1d": 0,
+        "gap_gt_1d": 6,
+        "pre_data_excluded": 6,
+        "clean_pct": 87.5,
+        "eligibility": "CLEAN_EVENT_USABLE_WITH_WARN"
+      },
+      "CPI": {
+        "asset": "ZN",
+        "data_span_start": "2019-06-30 20:00:00",
+        "data_span_end": "2026-06-09 16:50:00",
+        "total_events": 90,
+        "clean_events": 81,
+        "gap_1h_to_1d": 1,
+        "gap_gt_1d": 2,
+        "pre_data_excluded": 6,
+        "clean_pct": 90.0,
+        "eligibility": "CLEAN_EVENT_READY"
+      },
+      "FOMC": {
+        "asset": "ZN",
+        "data_span_start": "2019-06-30 20:00:00",
+        "data_span_end": "2026-06-09 16:50:00",
+        "total_events": 58,
+        "clean_events": 49,
+        "gap_1h_to_1d": 5,
+        "gap_gt_1d": 0,
+        "pre_data_excluded": 4,
+        "clean_pct": 84.48275862068965,
+        "eligibility": "CLEAN_EVENT_USABLE_WITH_WARN"
+      }
+    },
+    "6E": {
+      "NFP": {
+        "asset": "6E",
+        "data_span_start": "2024-02-29 19:00:00",
+        "data_span_end": "2026-06-09 19:55:00",
+        "total_events": 96,
+        "clean_events": 27,
+        "gap_1h_to_1d": 1,
+        "gap_gt_1d": 6,
+        "pre_data_excluded": 62,
+        "clean_pct": 28.125,
+        "eligibility": "DATA_REQUIRED (pre-data exclusions: 62)"
+      },
+      "CPI": {
+        "asset": "6E",
+        "data_span_start": "2024-02-29 19:00:00",
+        "data_span_end": "2026-06-09 19:55:00",
+        "total_events": 90,
+        "clean_events": 27,
+        "gap_1h_to_1d": 0,
+        "gap_gt_1d": 1,
+        "pre_data_excluded": 62,
+        "clean_pct": 30.0,
+        "eligibility": "DATA_REQUIRED (pre-data exclusions: 62)"
+      },
+      "FOMC": {
+        "asset": "6E",
+        "data_span_start": "2024-02-29 19:00:00",
+        "data_span_end": "2026-06-09 19:55:00",
+        "total_events": 58,
+        "clean_events": 18,
+        "gap_1h_to_1d": 0,
+        "gap_gt_1d": 0,
+        "pre_data_excluded": 40,
+        "clean_pct": 31.03448275862069,
+        "eligibility": "DATA_REQUIRED (pre-data exclusions: 40)"
+      }
+    },
+    "6J": {
+      "NFP": {
+        "asset": "6J",
+        "data_span_start": "2024-02-29 19:00:00",
+        "data_span_end": "2026-06-09 19:55:00",
+        "total_events": 96,
+        "clean_events": 24,
+        "gap_1h_to_1d": 4,
+        "gap_gt_1d": 6,
+        "pre_data_excluded": 62,
+        "clean_pct": 25.0,
+        "eligibility": "DATA_REQUIRED (pre-data exclusions: 62)"
+      },
+      "CPI": {
+        "asset": "6J",
+        "data_span_start": "2024-02-29 19:00:00",
+        "data_span_end": "2026-06-09 19:55:00",
+        "total_events": 90,
+        "clean_events": 25,
+        "gap_1h_to_1d": 2,
+        "gap_gt_1d": 1,
+        "pre_data_excluded": 62,
+        "clean_pct": 27.77777777777778,
+        "eligibility": "DATA_REQUIRED (pre-data exclusions: 62)"
+      },
+      "FOMC": {
+        "asset": "6J",
+        "data_span_start": "2024-02-29 19:00:00",
+        "data_span_end": "2026-06-09 19:55:00",
+        "total_events": 58,
+        "clean_events": 18,
+        "gap_1h_to_1d": 0,
+        "gap_gt_1d": 0,
+        "pre_data_excluded": 40,
+        "clean_pct": 31.03448275862069,
+        "eligibility": "DATA_REQUIRED (pre-data exclusions: 40)"
+      }
+    }
+  }
+}

@@ -12,14 +12,32 @@
 
 An event is considered **CLEAN** if and only if:
 
-1. The event timestamp has an exact bar match in the data, OR
-2. The next available bar after the event timestamp occurs within `max_gap_minutes` of the event (default: 60 minutes for non-RTH events; operator-tunable per asset)
-3. The event is AFTER the data file's start date (no pre-data-start events)
+1. The next available bar AFTER the event timestamp (`df[df.dt > event].head(1)`) is within `max_gap_minutes` of the event (default: 60 minutes for non-RTH events; operator-tunable per asset)
+2. The event is AFTER the data file's start date (no pre-data-start events)
 
 An event is **CONTAMINATED** if:
 - Next available bar > `max_gap_minutes` after event (data outage)
 - Event predates data start (engine falls back to first available bar — nonsense)
 - Event timestamp falls in a multi-day data vendor outage
+
+### Doctrine update 2026-06-11: NEXT-BAR GAP MATTERS (per #161-C)
+
+Locked 2026-06-11 after FOMC-MGC filter sensitivity finding (cycle 11e vs 11f):
+
+> **For event-window hold strategies, exact-bar match at the event timestamp is necessary but NOT sufficient.** Event eligibility requires:
+>
+> 1. event timestamp alignment,
+> 2. tradable entry bar (next bar after event within `max_gap_minutes`),
+> 3. next-bar continuity (no session-boundary gap between event and entry),
+> 4. sufficient continuous bars through the intended hold window or defined exit logic.
+
+**Why:** Cycle 11e treated "exact bar match" as automatically clean, finding 45 events. Cycle 11f's strict next-bar-gap filter found 42 events. The 3-event difference drove PF from 1.158 to 1.403 (25% PF swing on 3 trades) — those 3 events had the entry bar but were immediately followed by session-boundary gaps that distorted exits.
+
+**Implementation:** Filters MUST use `df[df_dt > event].head(1)` (strict greater-than), then compute the gap from event to that next bar. An "exact-match" check alone (`df[df_dt == event]`) is INSUFFICIENT and may overcount clean events.
+
+**Contamination tables** must report BOTH:
+- event-bar match status (yes/no), AND
+- next-bar gap status (≤ max_gap_minutes / > max_gap_minutes)
 
 ## Mandatory audit table
 
@@ -59,7 +77,13 @@ A candidate may NOT be accepted to packet status if any gate fails on clean even
 |---|---|---|
 | **MGC** | `data/processed/MGC_5m.csv` | **Data starts 2019-06-30; multi-day gaps at 13/90 CPI events; 12/96 NFP events; identical mid-history gap pattern. Affects entire event_window family.** |
 
-Other assets (MES, MNQ, MYM, MCL, ZN, 6E, 6J) — data-gap status not yet audited. Future event-window candidates on those assets must run this clean-events check before audit GREEN.
+8-asset data-gap audit performed 2026-06-10 (cycle 10k):
+- **CLEAN_EVENT_READY (CPI):** MES (91.1%), MNQ (91.1%), ZN (90.0%)
+- **CLEAN_EVENT_USABLE_WITH_WARN (NFP):** MES, MNQ, ZN (87.5% each), MGC (70.8%)
+- **EVENT_DATA_GAPPED (CPI on MGC):** 67.8%
+- **DATA_REQUIRED:** MYM, MCL, 6E, 6J (insufficient pre-data)
+
+**Important caveat 2026-06-11:** The 06-10k audit used the permissive "exact-match" filter. Per the doctrine update above, the strict next-bar-gap filter is correct. Re-audit pending per #161-A (defensive hygiene). The clean-percent numbers in the 06-10k report should be treated as upper bounds; the strict filter will produce equal or fewer clean events per asset/event.
 
 ## Allowed amendments (e.g., Packet #1)
 
