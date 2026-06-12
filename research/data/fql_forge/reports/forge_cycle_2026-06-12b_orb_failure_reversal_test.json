@@ -1,0 +1,170 @@
+{
+  "date": "2026-06-12",
+  "purpose": "Test ORB-failure-reversal primitive (NEEDS_PRIMITIVE #7) on MNQ/MES",
+  "primitive": "orb_failure_reversal (built 2026-06-12)",
+  "v1_tier": {
+    "PAPER_PACKET_CANDIDATE": 1,
+    "ARCHIVED": 1
+  },
+  "results": [
+    {
+      "label": "WH-MNQ-orb_failure_reversal-ema_slope-PL",
+      "asset": "MNQ",
+      "metrics": {
+        "n": 745,
+        "pf": 1.274,
+        "median": 5.76,
+        "net": 8359.2,
+        "max_dd": -2491.96
+      },
+      "daily_metrics": {
+        "n_trades": 745,
+        "n_days_traded": 745,
+        "trades_per_day": 1.0,
+        "pct_days_traded": 41.5273132664437,
+        "pct_profitable_days": 52.75167785234899
+      },
+      "verdict": "ESCALATE_TO_V1_AUDIT",
+      "v1_gates": {
+        "n_>=_500": true,
+        "PF_>=_1.20": true,
+        "positive_median": true,
+        "PASS_STRESS": true,
+        "max_yr_<=_50pct": true,
+        "yrs_pos_>=_50pct": true,
+        "Era3_PF_>=_1.0": true,
+        "Era3_median_>=_0": true
+      },
+      "v1_verdict": "PAPER_PACKET_CANDIDATE",
+      "temporal_split": {
+        "yrs_pos": 6,
+        "n_yrs": 8,
+        "era3_pf": 1.137995066377174,
+        "era3_median": 3.76,
+        "max_yr_share_pct": 42.78040960857499,
+        "per_year": [
+          {
+            "year": 2019,
+            "n": 46,
+            "pf": 1.6042559425704133,
+            "median": 4.76,
+            "net": 329.9599999999999
+          },
+          {
+            "year": 2020,
+            "n": 119,
+            "pf": 1.216752899830492,
+            "median": 3.26,
+            "net": 976.9399999999996
+          },
+          {
+            "year": 2021,
+            "n": 96,
+            "pf": 0.9162924452885665,
+            "median": -30.24,
+            "net": -312.04000000000036
+          },
+          {
+            "year": 2022,
+            "n": 110,
+            "pf": 1.7675648526943435,
+            "median": 36.76,
+            "net": 3576.1000000000004
+          },
+          {
+            "year": 2023,
+            "n": 110,
+            "pf": 1.8374677912392172,
+            "median": 13.76,
+            "net": 2093.100000000001
+          },
+          {
+            "year": 2024,
+            "n": 107,
+            "pf": 0.788874303757051,
+            "median": -7.24,
+            "net": -1071.1800000000003
+          },
+          {
+            "year": 2025,
+            "n": 108,
+            "pf": 1.3984476807812103,
+            "median": 8.51,
+            "net": 2366.58
+          },
+          {
+            "year": 2026,
+            "n": 49,
+            "pf": 1.1128883767953872,
+            "median": 11.76,
+            "net": 399.73999999999955
+          }
+        ],
+        "eras": [
+          {
+            "era": 1,
+            "n": 248,
+            "pf": 1.1261973885698002,
+            "median": 0.76,
+            "net": 1044.979999999999
+          },
+          {
+            "era": 2,
+            "n": 248,
+            "pf": 1.6514039492794774,
+            "median": 17.51,
+            "net": 5390.979999999999
+          },
+          {
+            "era": 3,
+            "n": 249,
+            "pf": 1.137995066377174,
+            "median": 3.76,
+            "net": 1923.2399999999986
+          }
+        ]
+      },
+      "stress_metrics": {
+        "pf": 1.188,
+        "median": 2.52
+      },
+      "family_review": {
+        "vs_XB_ORB_MNQ_probation": {
+          "daily_pnl_corr": 0.16475485161850137,
+          "overlap_days": 358
+        },
+        "vs_WH_MNQ_stop_run_reversal": {
+          "daily_pnl_corr": 0.4083398824640766,
+          "overlap_days": 709
+        },
+        "vs_WH_MNQ_range_compression_break": {
+          "daily_pnl_corr": 0.25507265198799745,
+          "overlap_days": 411
+        }
+      }
+    },
+    {
+      "label": "WH-MES-orb_failure_reversal-ema_slope-PL",
+      "asset": "MES",
+      "metrics": {
+        "n": 764,
+        "pf": 1.094,
+        "median": -3.74,
+        "net": 1712.64,
+        "max_dd": -1984.29
+      },
+      "daily_metrics": {
+        "n_trades": 764,
+        "n_days_traded": 764,
+        "trades_per_day": 1.0,
+        "pct_days_traded": 42.58639910813824,
+        "pct_profitable_days": 48.42931937172775
+      },
+      "verdict": "KILL (median neg)",
+      "v1_gates": null,
+      "v1_verdict": null,
+      "temporal_split": null,
+      "stress_metrics": null
+    }
+  ]
+}

@@ -1320,6 +1320,57 @@ def filter_session_close(f, i, signal, params):
 # PART 5: GENERIC SIGNAL GENERATOR
 # ═══════════════════════════════════════════════════════════════════════════
 
+def entry_orb_failure_reversal(f, i, state, params):
+    """ORB failure reversal: trades the FAILED breakout, not the breakout itself.
+
+    Mean-reversion mechanism. After ORB (9:30-10:00 ET) completes:
+      - Track whether close has broken above or_high (upside breakout) or
+        below or_low (downside breakout) at any bar today.
+      - If a breakout occurred and the NEXT bar's close reverses back inside
+        the ORB range, trigger an entry in the REVERSE direction.
+
+    Built 2026-06-12 per operator NEEDS_PRIMITIVE #7 (daily workhorse queue).
+    """
+    if not f["or_complete"][i]:
+        return 0, 0, 0
+    or_h = f["or_high"][i]
+    or_l = f["or_low"][i]
+    if np.isnan(or_h) or np.isnan(or_l):
+        return 0, 0, 0
+
+    # Track per-day breakout state ourselves (engine only resets long/short_traded_today)
+    cur_date = state.get("current_date")
+    if state.get("orb_fail_date_marker") != cur_date:
+        state["orb_fail_date_marker"] = cur_date
+        state["orb_upside_broken"] = False
+        state["orb_downside_broken"] = False
+
+    close_i = f["close"][i]
+    close_prev = f["close"][i - 1] if i > 0 else close_i
+
+    # Detect breakouts (cumulative within day)
+    if close_i > or_h or close_prev > or_h:
+        state["orb_upside_broken"] = True
+    if close_i < or_l or close_prev < or_l:
+        state["orb_downside_broken"] = True
+
+    # Detect FAILURE = reversal back into ORB range from outside
+    # SHORT entry: upside breakout occurred, prev_close above or_h, current close back below or_h
+    if (state["orb_upside_broken"] and close_prev > or_h and close_i < or_h
+            and not state["short_traded_today"]):
+        stop = or_h + f["atr"][i] * params.get("stop_mult", 1.0)
+        target = or_l - f["atr"][i] * params.get("target_mult", 1.0)
+        return -1, stop, target
+    # LONG entry: downside breakout occurred, prev_close below or_l, current close back above or_l
+    if (state["orb_downside_broken"] and close_prev < or_l and close_i > or_l
+            and not state["long_traded_today"]):
+        stop = or_l - f["atr"][i] * params.get("stop_mult", 1.0)
+        target = or_h + f["atr"][i] * params.get("target_mult", 1.0)
+        return 1, stop, target
+
+    return 0, 0, 0
+
+
 ENTRY_MAP = {
     "pb_pullback": entry_pb_pullback,
     "orb_breakout": entry_orb_breakout,
@@ -1335,6 +1386,7 @@ ENTRY_MAP = {
     "gap_fill_trigger": entry_gap_fill_trigger,
     "stop_run_reversal": entry_stop_run_reversal,
     "abnormal_range_followup": entry_abnormal_range_followup,
+    "orb_failure_reversal": entry_orb_failure_reversal,
 }
 
 EXIT_MAP = {
