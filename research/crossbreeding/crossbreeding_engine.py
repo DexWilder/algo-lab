@@ -1320,6 +1320,104 @@ def filter_session_close(f, i, signal, params):
 # PART 5: GENERIC SIGNAL GENERATOR
 # ═══════════════════════════════════════════════════════════════════════════
 
+def entry_afternoon_continuation(f, i, state, params):
+    """Afternoon continuation: morning bias continues into afternoon session.
+
+    Mechanism (workhorse):
+      - Determine morning bias: sign(close_at_13_00 - open_of_day)
+      - After 13:00 ET, if morning was up → LONG entry on next bullish close
+      - If morning was down → SHORT entry on next bearish close
+      - One trade per day (state.long/short_traded_today)
+
+    Built 2026-06-12 per operator NEEDS_PRIMITIVE #5 (daily workhorse queue).
+    """
+    if np.isnan(f["atr"][i]) or f["atr"][i] <= 0:
+        return 0, 0, 0
+    if f["hours"][i] < 13:
+        return 0, 0, 0
+    or_h = f["or_high"][i]; or_l = f["or_low"][i]
+    if np.isnan(or_h) or np.isnan(or_l):
+        return 0, 0, 0
+
+    cur_date = state.get("current_date")
+    if state.get("afternoon_date_marker") != cur_date:
+        state["afternoon_date_marker"] = cur_date
+        state["morning_bias"] = 0
+        state["bias_set"] = False
+
+    # First post-13:00 bar of the day: capture morning bias vs ORB midpoint
+    if not state["bias_set"]:
+        or_midpoint = (or_h + or_l) / 2.0
+        state["morning_bias"] = 1 if f["close"][i] > or_midpoint else -1
+        state["bias_set"] = True
+        return 0, 0, 0
+
+    close_i = f["close"][i]
+    close_prev = f["close"][i - 1] if i > 0 else close_i
+    atr_i = f["atr"][i]
+
+    # Continuation: trade in morning bias direction with confirmation
+    if state["morning_bias"] == 1 and close_i > close_prev and not state["long_traded_today"]:
+        stop = close_i - atr_i * params.get("stop_mult", 1.0)
+        target = close_i + atr_i * params.get("target_mult", 2.0)
+        return 1, stop, target
+    if state["morning_bias"] == -1 and close_i < close_prev and not state["short_traded_today"]:
+        stop = close_i + atr_i * params.get("stop_mult", 1.0)
+        target = close_i - atr_i * params.get("target_mult", 2.0)
+        return -1, stop, target
+
+    return 0, 0, 0
+
+
+def entry_afternoon_reversion(f, i, state, params):
+    """Afternoon reversion: morning bias reverses in afternoon session.
+
+    Mechanism (workhorse, mean-reversion):
+      - Determine morning bias: sign(close_at_13_00 - open_of_day)
+      - After 13:00 ET, if morning was up → SHORT entry on next bearish close
+      - If morning was down → LONG entry on next bullish close
+
+    Built 2026-06-12 per operator NEEDS_PRIMITIVE #5 (daily workhorse queue).
+    """
+    if np.isnan(f["atr"][i]) or f["atr"][i] <= 0:
+        return 0, 0, 0
+    if f["hours"][i] < 13:
+        return 0, 0, 0
+    or_h = f["or_high"][i]; or_l = f["or_low"][i]
+    if np.isnan(or_h) or np.isnan(or_l):
+        return 0, 0, 0
+
+    cur_date = state.get("current_date")
+    if state.get("aft_rev_date_marker") != cur_date:
+        state["aft_rev_date_marker"] = cur_date
+        state["aft_rev_morning_bias"] = 0
+        state["aft_rev_bias_set"] = False
+
+    if not state["aft_rev_bias_set"]:
+        or_midpoint = (or_h + or_l) / 2.0
+        state["aft_rev_morning_bias"] = 1 if f["close"][i] > or_midpoint else -1
+        state["aft_rev_bias_set"] = True
+        return 0, 0, 0
+
+    close_i = f["close"][i]
+    close_prev = f["close"][i - 1] if i > 0 else close_i
+    atr_i = f["atr"][i]
+
+    # Reversion: trade OPPOSITE of morning bias
+    # If morning was up → SHORT on bearish confirmation
+    if state["aft_rev_morning_bias"] == 1 and close_i < close_prev and not state["short_traded_today"]:
+        stop = close_i + atr_i * params.get("stop_mult", 1.0)
+        target = close_i - atr_i * params.get("target_mult", 2.0)
+        return -1, stop, target
+    # If morning was down → LONG on bullish confirmation
+    if state["aft_rev_morning_bias"] == -1 and close_i > close_prev and not state["long_traded_today"]:
+        stop = close_i - atr_i * params.get("stop_mult", 1.0)
+        target = close_i + atr_i * params.get("target_mult", 2.0)
+        return 1, stop, target
+
+    return 0, 0, 0
+
+
 def entry_opening_drive_exhaustion(f, i, state, params):
     """Opening drive exhaustion: trade reversals of overextended opening drives.
 
@@ -1604,6 +1702,8 @@ ENTRY_MAP = {
     "first_impulse_pullback": entry_first_impulse_pullback,
     "vwap_reclaim": entry_vwap_reclaim,
     "opening_drive_exhaustion": entry_opening_drive_exhaustion,
+    "afternoon_continuation": entry_afternoon_continuation,
+    "afternoon_reversion": entry_afternoon_reversion,
 }
 
 EXIT_MAP = {

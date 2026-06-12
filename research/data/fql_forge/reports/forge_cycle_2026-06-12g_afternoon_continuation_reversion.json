@@ -1,0 +1,107 @@
+{
+  "date": "2026-06-12",
+  "purpose": "Test afternoon_continuation + afternoon_reversion primitives (NEEDS_PRIMITIVE #5)",
+  "v1_tier": {
+    "PAPER_PACKET_CANDIDATE": 0,
+    "WATCH": 0,
+    "ARCHIVED": 4
+  },
+  "results": [
+    {
+      "label": "WH-MNQ-afternoon_continuation-ema_slope-PL",
+      "asset": "MNQ",
+      "entry": "afternoon_continuation",
+      "metrics": {
+        "n": 1066,
+        "pf": 1.148,
+        "median": 1.26,
+        "net": 3362.16,
+        "max_dd": -2140.02
+      },
+      "daily_metrics": {
+        "n_trades": 1066,
+        "n_days_traded": 1066,
+        "trades_per_day": 1.0,
+        "pct_days_traded": 59.42028985507246,
+        "pct_profitable_days": 50.562851782363985
+      },
+      "verdict": "KILL (PF<1.15)",
+      "v1_gates": null,
+      "v1_verdict": null,
+      "temporal_split": null,
+      "stress_metrics": null
+    },
+    {
+      "label": "WH-MES-afternoon_continuation-ema_slope-PL",
+      "asset": "MES",
+      "entry": "afternoon_continuation",
+      "metrics": {
+        "n": 1056,
+        "pf": 0.889,
+        "median": -3.74,
+        "net": -1623.19,
+        "max_dd": -2355.15
+      },
+      "daily_metrics": {
+        "n_trades": 1056,
+        "n_days_traded": 1056,
+        "trades_per_day": 1.0,
+        "pct_days_traded": 58.862876254180605,
+        "pct_profitable_days": 46.30681818181818
+      },
+      "verdict": "KILL (median neg)",
+      "v1_gates": null,
+      "v1_verdict": null,
+      "temporal_split": null,
+      "stress_metrics": null
+    },
+    {
+      "label": "WH-MNQ-afternoon_reversion-ema_slope-PL",
+      "asset": "MNQ",
+      "entry": "afternoon_reversion",
+      "metrics": {
+        "n": 646,
+        "pf": 1.027,
+        "median": -0.74,
+        "net": 422.46,
+        "max_dd": -1055.26
+      },
+      "daily_metrics": {
+        "n_trades": 646,
+        "n_days_traded": 646,
+        "trades_per_day": 1.0,
+        "pct_days_traded": 36.00891861761427,
+        "pct_profitable_days": 49.38080495356037
+      },
+      "verdict": "KILL (median neg)",
+      "v1_gates": null,
+      "v1_verdict": null,
+      "temporal_split": null,
+      "stress_metrics": null
+    },
+    {
+      "label": "WH-MES-afternoon_reversion-ema_slope-PL",
+      "asset": "MES",
+      "entry": "afternoon_reversion",
+      "metrics": {
+        "n": 657,
+        "pf": 0.836,
+        "median": -4.99,
+        "net": -1599.68,
+        "max_dd": -1895.52
+      },
+      "daily_metrics": {
+        "n_trades": 657,
+        "n_days_traded": 657,
+        "trades_per_day": 1.0,
+        "pct_days_traded": 36.62207357859531,
+        "pct_profitable_days": 46.27092846270928
+      },
+      "verdict": "KILL (median neg)",
+      "v1_gates": null,
+      "v1_verdict": null,
+      "temporal_split": null,
+      "stress_metrics": null
+    }
+  ]
+}
