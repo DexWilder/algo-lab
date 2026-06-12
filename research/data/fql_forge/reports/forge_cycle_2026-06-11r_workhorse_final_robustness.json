@@ -1,0 +1,448 @@
+{
+  "date": "2026-06-12",
+  "purpose": "Daily workhorse final robustness + coexistence matrix per #181 nonstop",
+  "stop_run_reversal_robustness": {
+    "label": "WH-MNQ-stop_run_reversal",
+    "asset": "MNQ",
+    "entry": "stop_run_reversal",
+    "baseline": {
+      "n": 1414,
+      "pf": 1.477,
+      "median": 15.51,
+      "net": 35368.639999999985
+    },
+    "year_exclusion": {
+      "2019": {
+        "pf": 1.49075210726037,
+        "median": 18.26
+      },
+      "2020": {
+        "pf": 1.5207825201670024,
+        "median": 17.26
+      },
+      "2021": {
+        "pf": 1.5036202461785613,
+        "median": 15.76
+      },
+      "2022": {
+        "pf": 1.456852939096681,
+        "median": 13.76
+      },
+      "2023": {
+        "pf": 1.4422295644669532,
+        "median": 15.76
+      },
+      "2024": {
+        "pf": 1.5273047970845048,
+        "median": 15.26
+      },
+      "2025": {
+        "pf": 1.4918275526488356,
+        "median": 15.51
+      },
+      "2026": {
+        "pf": 1.3895321166695256,
+        "median": 12.76
+      }
+    },
+    "year_excl_pf_range": [
+      1.3895321166695256,
+      1.5273047970845048
+    ],
+    "eras": [
+      {
+        "era": 1,
+        "n": 471,
+        "pf": 1.1948420814657335,
+        "median": 7.26,
+        "net": 3671.459999999998
+      },
+      {
+        "era": 2,
+        "n": 471,
+        "pf": 1.598785553519668,
+        "median": 20.76,
+        "net": 14195.959999999995
+      },
+      {
+        "era": 3,
+        "n": 472,
+        "pf": 1.5543420007373816,
+        "median": 23.51,
+        "net": 17501.22
+      }
+    ],
+    "largest_event_removal": {
+      "max_pnl": 1923.76,
+      "max_event": "2025-11-20 09:50:00",
+      "pf_no_max": 1.4512118748544636,
+      "min_pnl": -1457.24,
+      "min_event": "2025-04-07 10:05:00",
+      "pf_no_min": 1.5067890913244457,
+      "max_event_abs_share_pct": 5.439168709907989,
+      "max_is_loss": false
+    },
+    "rolling_60_trade_blocks": {
+      "n_blocks": 23,
+      "pct_>_1.0": 82.6086956521739,
+      "pct_>_1.2": 65.21739130434783,
+      "worst": 0.730812059509071
+    },
+    "concentration": {
+      "max_yr_share_pct": 24.884813213061072,
+      "max_month_share_pct": 7.430141503885931,
+      "max_week_share_pct": 7.897674323920856
+    },
+    "day_of_week": {
+      "Friday": {
+        "n": 246,
+        "pf": 1.5144572537847238,
+        "median": 27.01,
+        "net": 6052.959999999999
+      },
+      "Monday": {
+        "n": 285,
+        "pf": 1.028705901446453,
+        "median": 4.76,
+        "net": 481.099999999999
+      },
+      "Thursday": {
+        "n": 298,
+        "pf": 2.0721522899929954,
+        "median": 18.76,
+        "net": 15123.479999999998
+      },
+      "Tuesday": {
+        "n": 288,
+        "pf": 1.4652386224068317,
+        "median": 15.51,
+        "net": 7219.879999999997
+      },
+      "Wednesday": {
+        "n": 297,
+        "pf": 1.4063966963466232,
+        "median": 13.76,
+        "net": 6491.2199999999975
+      }
+    },
+    "time_of_day": {
+      "9": {
+        "n": 286,
+        "pf": 1.8263965981370742
+      },
+      "10": {
+        "n": 501,
+        "pf": 1.4217660544956698
+      },
+      "11": {
+        "n": 191,
+        "pf": 1.135467994624563
+      },
+      "12": {
+        "n": 195,
+        "pf": 1.7907827718356157
+      },
+      "13": {
+        "n": 153,
+        "pf": 1.0012186590863668
+      },
+      "14": {
+        "n": 88,
+        "pf": 1.573465579209289
+      }
+    },
+    "stress_ladder": [
+      {
+        "label": "baseline",
+        "pf": 1.477,
+        "median": 15.51
+      },
+      {
+        "label": "1.5x+1t",
+        "pf": 1.44,
+        "median": 13.89
+      },
+      {
+        "label": "2x+2t",
+        "pf": 1.404,
+        "median": 12.27
+      },
+      {
+        "label": "3x+2t",
+        "pf": 1.377,
+        "median": 11.03
+      },
+      {
+        "label": "4x+3t",
+        "pf": 1.33,
+        "median": 8.79
+      },
+      {
+        "label": "5x+4t",
+        "pf": 1.284,
+        "median": 6.55
+      }
+    ],
+    "robustness_checks": {
+      "year_excl_min_PF_>=_1.2": true,
+      "Era3_PF_>=_1.0": true,
+      "Era3_median_>=_0": true,
+      "rolling_blocks_>1.0_PF_>_60%": true,
+      "remove_largest_win_PF_>_1.15": true,
+      "remove_largest_loss_PF_>_1.15": true,
+      "max_yr_share_<=_50": true,
+      "max_event_share_<=_15_or_LOSS_TAIL_ABSORPTION": "True",
+      "stress_2x+2t_median_>_0": true,
+      "stress_5x+4t_PF_>_0.8": true
+    },
+    "all_pass": true,
+    "verdict": "ROBUSTNESS GREEN \u2014 confirmed PAPER_PACKET_CANDIDATE"
+  },
+  "range_compression_break_robustness": {
+    "label": "WH-MNQ-range_compression_break",
+    "asset": "MNQ",
+    "entry": "range_compression_break",
+    "baseline": {
+      "n": 1244,
+      "pf": 1.37,
+      "median": 9.01,
+      "net": 18609.939999999995
+    },
+    "year_exclusion": {
+      "2019": {
+        "pf": 1.3774410830775663,
+        "median": 10.76
+      },
+      "2020": {
+        "pf": 1.4147510368123333,
+        "median": 10.01
+      },
+      "2021": {
+        "pf": 1.4007860174131268,
+        "median": 9.26
+      },
+      "2022": {
+        "pf": 1.3939722862714425,
+        "median": 8.26
+      },
+      "2023": {
+        "pf": 1.4090470290197612,
+        "median": 10.26
+      },
+      "2024": {
+        "pf": 1.3069531074551395,
+        "median": 8.26
+      },
+      "2025": {
+        "pf": 1.3007882590241426,
+        "median": 7.01
+      },
+      "2026": {
+        "pf": 1.3547489758563585,
+        "median": 8.01
+      }
+    },
+    "year_excl_pf_range": [
+      1.3007882590241426,
+      1.4147510368123333
+    ],
+    "eras": [
+      {
+        "era": 1,
+        "n": 414,
+        "pf": 1.122237979709205,
+        "median": 2.76,
+        "net": 1591.139999999999
+      },
+      {
+        "era": 2,
+        "n": 415,
+        "pf": 1.2040383165881174,
+        "median": 4.76,
+        "net": 3941.399999999998
+      },
+      {
+        "era": 3,
+        "n": 415,
+        "pf": 1.726936576070582,
+        "median": 20.26,
+        "net": 13077.399999999998
+      }
+    ],
+    "largest_event_removal": {
+      "max_pnl": 1694.26,
+      "max_event": "2025-11-20 11:05:00",
+      "pf_no_max": 1.3361391828539542,
+      "min_pnl": -347.74,
+      "min_event": "2022-08-26 10:05:00",
+      "pf_no_min": 1.3793379582477083,
+      "max_event_abs_share_pct": 9.1040594435017,
+      "max_is_loss": false
+    },
+    "rolling_60_trade_blocks": {
+      "n_blocks": 20,
+      "pct_>_1.0": 80.0,
+      "pct_>_1.2": 65.0,
+      "worst": 0.7641887392928484
+    },
+    "concentration": {
+      "max_yr_share_pct": 32.081242604758536,
+      "max_month_share_pct": 13.309553926557532,
+      "max_week_share_pct": 7.145643672145102
+    },
+    "day_of_week": {
+      "Friday": {
+        "n": 222,
+        "pf": 1.5044449389385466,
+        "median": 10.01,
+        "net": 4579.22
+      },
+      "Monday": {
+        "n": 237,
+        "pf": 1.3716434525264045,
+        "median": 9.26,
+        "net": 3285.119999999999
+      },
+      "Thursday": {
+        "n": 249,
+        "pf": 1.590427270604717,
+        "median": 10.76,
+        "net": 5816.24
+      },
+      "Tuesday": {
+        "n": 270,
+        "pf": 1.3106759175972829,
+        "median": 5.01,
+        "net": 3543.699999999999
+      },
+      "Wednesday": {
+        "n": 266,
+        "pf": 1.1242862550161719,
+        "median": 1.5099999999999998,
+        "net": 1385.6599999999992
+      }
+    },
+    "time_of_day": {
+      "9": {
+        "n": 338,
+        "pf": 1.5957016498973566
+      },
+      "10": {
+        "n": 537,
+        "pf": 1.2754339025601718
+      },
+      "11": {
+        "n": 185,
+        "pf": 1.3549545072455336
+      },
+      "12": {
+        "n": 103,
+        "pf": 1.4812585836075773
+      },
+      "13": {
+        "n": 44,
+        "pf": 4.421625728032412
+      },
+      "14": {
+        "n": 37,
+        "pf": 0.453381761432778
+      }
+    },
+    "stress_ladder": [
+      {
+        "label": "baseline",
+        "pf": 1.37,
+        "median": 9.01
+      },
+      {
+        "label": "1.5x+1t",
+        "pf": 1.324,
+        "median": 7.39
+      },
+      {
+        "label": "2x+2t",
+        "pf": 1.279,
+        "median": 5.77
+      },
+      {
+        "label": "3x+2t",
+        "pf": 1.246,
+        "median": 4.53
+      },
+      {
+        "label": "4x+3t",
+        "pf": 1.189,
+        "median": 2.29
+      },
+      {
+        "label": "5x+4t",
+        "pf": 1.134,
+        "median": 0.05
+      }
+    ],
+    "robustness_checks": {
+      "year_excl_min_PF_>=_1.2": true,
+      "Era3_PF_>=_1.0": true,
+      "Era3_median_>=_0": true,
+      "rolling_blocks_>1.0_PF_>_60%": true,
+      "remove_largest_win_PF_>_1.15": true,
+      "remove_largest_loss_PF_>_1.15": true,
+      "max_yr_share_<=_50": true,
+      "max_event_share_<=_15_or_LOSS_TAIL_ABSORPTION": "True",
+      "stress_2x+2t_median_>_0": true,
+      "stress_5x+4t_PF_>_0.8": true
+    },
+    "all_pass": true,
+    "verdict": "ROBUSTNESS GREEN \u2014 confirmed PAPER_PACKET_CANDIDATE"
+  },
+  "coexistence_correlation_matrix": {
+    "WH_stop_run": {
+      "WH_stop_run": 1.0,
+      "WH_range_compression": 0.2312856003073309,
+      "XB_ORB_MNQ_probation": 0.32728121266473126,
+      "FOMC_MNQ_Long_1h": -0.021164594976934036,
+      "Packet1_NFP_MGC_archive": -0.02377229466105858,
+      "BBKC_MNQ_archive": 0.23767542428954444
+    },
+    "WH_range_compression": {
+      "WH_stop_run": 0.23128560030733095,
+      "WH_range_compression": 1.0,
+      "XB_ORB_MNQ_probation": 0.49498041728327313,
+      "FOMC_MNQ_Long_1h": 0.009231209152136068,
+      "Packet1_NFP_MGC_archive": 0.001718524704009014,
+      "BBKC_MNQ_archive": 0.4204367049566796
+    },
+    "XB_ORB_MNQ_probation": {
+      "WH_stop_run": 0.32728121266473137,
+      "WH_range_compression": 0.49498041728327297,
+      "XB_ORB_MNQ_probation": 1.0,
+      "FOMC_MNQ_Long_1h": 0.008697061576538998,
+      "Packet1_NFP_MGC_archive": -0.022578895442384547,
+      "BBKC_MNQ_archive": 0.3924723691412165
+    },
+    "FOMC_MNQ_Long_1h": {
+      "WH_stop_run": -0.02116459497693405,
+      "WH_range_compression": 0.009231209152136068,
+      "XB_ORB_MNQ_probation": 0.008697061576539008,
+      "FOMC_MNQ_Long_1h": 1.0,
+      "Packet1_NFP_MGC_archive": -0.025167795383005197,
+      "BBKC_MNQ_archive": 0.023104625907814678
+    },
+    "Packet1_NFP_MGC_archive": {
+      "WH_stop_run": -0.023772294661058582,
+      "WH_range_compression": 0.001718524704009011,
+      "XB_ORB_MNQ_probation": -0.022578895442384554,
+      "FOMC_MNQ_Long_1h": -0.025167795383005204,
+      "Packet1_NFP_MGC_archive": 1.0,
+      "BBKC_MNQ_archive": -0.00039396918614623583
+    },
+    "BBKC_MNQ_archive": {
+      "WH_stop_run": 0.23767542428954447,
+      "WH_range_compression": 0.4204367049566795,
+      "XB_ORB_MNQ_probation": 0.3924723691412166,
+      "FOMC_MNQ_Long_1h": 0.023104625907814664,
+      "Packet1_NFP_MGC_archive": -0.00039396918614625757,
+      "BBKC_MNQ_archive": 1.0
+    }
+  }
+}
