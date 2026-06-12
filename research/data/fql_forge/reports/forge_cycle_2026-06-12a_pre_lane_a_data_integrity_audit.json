@@ -1,0 +1,173 @@
+{
+  "date": "2026-06-12",
+  "purpose": "Pre-Lane-A data integrity checkpoint per operator addendum",
+  "boundaries": "report-only Lane B; no registry mutation; no Lane A action",
+  "check_3_mnq_continuity": {
+    "asset": "MNQ",
+    "file_hash_sha256_first_16": "739875437ded8a76",
+    "data_span_start": "2019-06-30 20:00:00",
+    "data_span_end": "2026-06-10 19:55:00",
+    "n_bars_total": 487168,
+    "n_duplicate_timestamps": 0,
+    "monotonically_increasing": true,
+    "bar_gap_distribution": {
+      "exactly_5min": 484683,
+      "sub_5min": 0,
+      "gt_10min": 2373,
+      "gt_60min": 1798,
+      "gt_2h": 420,
+      "gt_1d": 369,
+      "gt_3d": 11
+    },
+    "rth_day_coverage": {
+      "n_days_total": 1794,
+      "n_days_full_coverage": 1700,
+      "n_days_partial_coverage": 61,
+      "n_days_severely_incomplete": 33
+    }
+  },
+  "check_5_fomc_calendar": {
+    "n_events": 58,
+    "all_14_00_ET": true,
+    "all_scheduled_type": true,
+    "sources": [
+      "federalreserve.gov"
+    ],
+    "calendar_grade": "MACHINE_FETCHED_OFFICIAL (federalreserve.gov verified 2026-06-11)",
+    "doctrine_compliance": "PASS \u2014 meets V1 acceptance threshold (>= MACHINE_FETCHED_OFFICIAL)"
+  },
+  "check_8_cost_model": {
+    "asset": "MNQ",
+    "commission_per_side": 0.62,
+    "slippage_ticks": 1,
+    "tick_size": 0.25,
+    "point_value": 2.0,
+    "source": "engine/asset_config.py (FQL Evidence Law canonical)",
+    "v1_1_stress_assumptions": "2x cost + 2 ticks slip (baseline stress); 5x cost + 4 ticks slip (extreme stress)",
+    "verdict": "OK (canonical asset_config; no parallel cost table)"
+  },
+  "checks_1_2_10_candidates": {
+    "WH-MNQ-stop_run_reversal": {
+      "regenerated": {
+        "n": 1414,
+        "pf": 1.477,
+        "median": 15.51,
+        "net": 35368.64,
+        "signal_hash": "d2d31c3f0e7e86bb"
+      },
+      "deltas_vs_11r": {
+        "n": {
+          "regen": 1414,
+          "committed": 1414,
+          "abs_delta": 0,
+          "rel_delta_pct": 0.0,
+          "match_exact": true
+        },
+        "pf": {
+          "regen": 1.477,
+          "committed": 1.477,
+          "abs_delta": 0.0,
+          "rel_delta_pct": 0.0,
+          "match_exact": true
+        },
+        "median": {
+          "regen": 15.51,
+          "committed": 15.51,
+          "abs_delta": 0.0,
+          "rel_delta_pct": 0.0,
+          "match_exact": true
+        },
+        "net": {
+          "regen": 35368.64,
+          "committed": 35368.639999999985,
+          "abs_delta": 1.4551915228366852e-11,
+          "rel_delta_pct": 4.114355323916005e-14,
+          "match_exact": false
+        }
+      },
+      "data_audit_verdict": "needs review"
+    },
+    "WH-MNQ-range_compression_break": {
+      "regenerated": {
+        "n": 1244,
+        "pf": 1.37,
+        "median": 9.01,
+        "net": 18609.94,
+        "signal_hash": "27247233d680c564"
+      },
+      "deltas_vs_11r": {
+        "n": {
+          "regen": 1244,
+          "committed": 1244,
+          "abs_delta": 0,
+          "rel_delta_pct": 0.0,
+          "match_exact": true
+        },
+        "pf": {
+          "regen": 1.37,
+          "committed": 1.37,
+          "abs_delta": 0.0,
+          "rel_delta_pct": 0.0,
+          "match_exact": true
+        },
+        "median": {
+          "regen": 9.01,
+          "committed": 9.01,
+          "abs_delta": 0.0,
+          "rel_delta_pct": 0.0,
+          "match_exact": true
+        },
+        "net": {
+          "regen": 18609.94,
+          "committed": 18609.939999999995,
+          "abs_delta": 3.637978807091713e-12,
+          "rel_delta_pct": 1.954857891584666e-14,
+          "match_exact": false
+        }
+      },
+      "data_audit_verdict": "needs review"
+    },
+    "FOMC-MNQ-Long-1h": {
+      "regenerated": {
+        "n": 54,
+        "pf": 1.774,
+        "median": 67.01,
+        "net": 3253.04,
+        "signal_hash": "7ffb294c76847d76"
+      },
+      "deltas_vs_11n": {
+        "n": {
+          "regen": 54,
+          "committed": 54,
+          "abs_delta": 0,
+          "rel_delta_pct": 0.0,
+          "match_exact": true
+        },
+        "pf": {
+          "regen": 1.774,
+          "committed": 1.774,
+          "abs_delta": 0.0,
+          "rel_delta_pct": 0.0,
+          "match_exact": true
+        },
+        "median": {
+          "regen": 67.01,
+          "committed": 67.01,
+          "abs_delta": 0.0,
+          "rel_delta_pct": 0.0,
+          "match_exact": true
+        },
+        "net": {
+          "regen": 3253.04,
+          "committed": 3253.04,
+          "abs_delta": 0.0,
+          "rel_delta_pct": 0.0,
+          "match_exact": true
+        }
+      },
+      "n_clean_events": 54,
+      "data_audit_verdict": "GREEN"
+    }
+  },
+  "overall_verdict": "DATA_AUDIT_NEEDS_REVIEW \u2014 manual review of deltas required"
+}
