@@ -1320,6 +1320,56 @@ def filter_session_close(f, i, signal, params):
 # PART 5: GENERIC SIGNAL GENERATOR
 # ═══════════════════════════════════════════════════════════════════════════
 
+def entry_vwap_reclaim(f, i, state, params):
+    """VWAP reclaim / rejection: trade crosses of session VWAP.
+
+    Mechanism (workhorse):
+      - LONG when prev_close was below vwap AND current close crosses above
+        vwap (price reclaiming VWAP, momentum shifting up).
+      - SHORT when prev_close was above vwap AND current close crosses below
+        vwap (VWAP rejected from above, momentum shifting down).
+
+    Different from entry_vwap_continuation which trades pullbacks NEAR VWAP
+    in the EMA-trend direction. This trades the CROSS itself.
+
+    Built 2026-06-12 per operator NEEDS_PRIMITIVE #3 (daily workhorse queue).
+    """
+    if i == 0:
+        return 0, 0, 0
+    vwap_i = f["vwap"][i]
+    vwap_prev = f["vwap"][i - 1]
+    if np.isnan(vwap_i) or np.isnan(vwap_prev):
+        return 0, 0, 0
+    if np.isnan(f["atr"][i]) or f["atr"][i] <= 0:
+        return 0, 0, 0
+    close_i = f["close"][i]
+    close_prev = f["close"][i - 1]
+    atr_i = f["atr"][i]
+
+    # Distance from VWAP at the cross — require meaningful displacement before
+    # the cross to filter noise
+    dist_prev = abs(close_prev - vwap_prev) / atr_i
+    min_displacement = params.get("min_vwap_displacement_atr", 0.20)
+
+    # LONG: reclaim from below
+    if (close_prev < vwap_prev and close_i > vwap_i
+            and dist_prev >= min_displacement
+            and not state["long_traded_today"]):
+        stop = close_i - atr_i * params.get("stop_mult", 1.0)
+        target = close_i + atr_i * params.get("target_mult", 2.0)
+        return 1, stop, target
+
+    # SHORT: rejection from above
+    if (close_prev > vwap_prev and close_i < vwap_i
+            and dist_prev >= min_displacement
+            and not state["short_traded_today"]):
+        stop = close_i + atr_i * params.get("stop_mult", 1.0)
+        target = close_i - atr_i * params.get("target_mult", 2.0)
+        return -1, stop, target
+
+    return 0, 0, 0
+
+
 def entry_first_impulse_pullback(f, i, state, params):
     """First-impulse pullback continuation: trade pullbacks in direction of
     the opening impulse (post-ORB directional move).
@@ -1472,6 +1522,7 @@ ENTRY_MAP = {
     "abnormal_range_followup": entry_abnormal_range_followup,
     "orb_failure_reversal": entry_orb_failure_reversal,
     "first_impulse_pullback": entry_first_impulse_pullback,
+    "vwap_reclaim": entry_vwap_reclaim,
 }
 
 EXIT_MAP = {

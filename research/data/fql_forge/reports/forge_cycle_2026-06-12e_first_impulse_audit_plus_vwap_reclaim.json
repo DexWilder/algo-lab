@@ -1,0 +1,78 @@
+{
+  "date": "2026-06-12",
+  "purpose": "DATA_AUDIT first_impulse_pullback (#188 B) + VWAP reclaim test (#189 A)",
+  "data_audit_first_impulse": {
+    "candidate": "WH-MNQ-first_impulse_pullback",
+    "file_hash": "739875437ded8a76",
+    "regenerated": {
+      "n": 1001,
+      "pf": 1.354,
+      "median": 4.26
+    },
+    "signal_hash_run1": "ef6e8209d1a5a84c",
+    "signal_hash_run2": "ef6e8209d1a5a84c",
+    "signal_hash_reproducible": true,
+    "committed_metrics_match": true,
+    "cost_model": {
+      "commission_per_side": 0.62,
+      "slippage_ticks": 1,
+      "tick_size": 0.25,
+      "cost_tier": "VALIDATED"
+    },
+    "verdict": "DATA_AUDIT_GREEN"
+  },
+  "vwap_reclaim_results": [
+    {
+      "label": "WH-MNQ-vwap_reclaim-ema_slope-PL",
+      "asset": "MNQ",
+      "metrics": {
+        "n": 1127,
+        "pf": 1.107,
+        "median": 1.76,
+        "net": 3611.02,
+        "max_dd": -2128.58
+      },
+      "daily_metrics": {
+        "n_trades": 1127,
+        "n_days_traded": 1127,
+        "trades_per_day": 1.0,
+        "pct_days_traded": 62.82051282051282,
+        "pct_profitable_days": 50.399290150842944
+      },
+      "verdict": "KILL (PF<1.15)",
+      "v1_gates": null,
+      "v1_verdict": null,
+      "temporal_split": null,
+      "stress_metrics": null,
+      "signal_hash": "000a04cbbeb7be0e"
+    },
+    {
+      "label": "WH-MES-vwap_reclaim-ema_slope-PL",
+      "asset": "MES",
+      "metrics": {
+        "n": 1185,
+        "pf": 0.918,
+        "median": -4.99,
+        "net": -1694.4,
+        "max_dd": -2551.15
+      },
+      "daily_metrics": {
+        "n_trades": 1185,
+        "n_days_traded": 1185,
+        "trades_per_day": 1.0,
+        "pct_days_traded": 66.05351170568562,
+        "pct_profitable_days": 47.257383966244724
+      },
+      "verdict": "KILL (median neg)",
+      "v1_gates": null,
+      "v1_verdict": null,
+      "temporal_split": null,
+      "stress_metrics": null,
+      "signal_hash": "c20507bf65318ff4"
+    }
+  ],
+  "vwap_reclaim_v1_tier": {
+    "PAPER_PACKET_CANDIDATE": 0,
+    "ARCHIVED": 2
+  }
+}
