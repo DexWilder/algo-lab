@@ -1,0 +1,127 @@
+{
+  "date": "2026-06-11",
+  "purpose": "Daily workhorse V1 8-dim audit + family review per #176 amended trigger",
+  "audits": [
+    {
+      "label": "WH-MNQ-range_compression_break",
+      "asset": "MNQ",
+      "entry": "range_compression_break",
+      "baseline": {
+        "n": 1244,
+        "pf": 1.37,
+        "median": 9.01,
+        "net": 18609.94,
+        "win_rate": 0.5329581993569131
+      },
+      "stress": {
+        "pf": 1.279,
+        "median": 5.77
+      },
+      "reproducible": true,
+      "family_review": {
+        "vs_XB_ORB_MNQ_probation": {
+          "n_days_a": 1244,
+          "n_days_b": 1219,
+          "n_days_overlap": 1088,
+          "overlap_pct_of_a": 87.45980707395499,
+          "daily_pnl_corr": 0.49498041728327313,
+          "overlap_day_pnl_corr": 0.5130484694096699,
+          "classification": "PORTFOLIO_COMPLEMENT (low-moderate corr)"
+        },
+        "vs_FOMC_MNQ_Long_1h": {
+          "n_days_a": 1244,
+          "n_days_b": 54,
+          "n_days_overlap": 48,
+          "overlap_pct_of_a": 3.858520900321544,
+          "daily_pnl_corr": 0.009231209152136068,
+          "overlap_day_pnl_corr": 0.15886429560757467,
+          "classification": "INDEPENDENT (corr < 0.30)"
+        },
+        "vs_Packet1_NFP_MGC_archive": {
+          "n_days_a": 1244,
+          "n_days_b": 63,
+          "n_days_overlap": 41,
+          "overlap_pct_of_a": 3.295819935691318,
+          "daily_pnl_corr": 0.001718524704009014,
+          "overlap_day_pnl_corr": 0.004412993086102275,
+          "classification": "INDEPENDENT (corr < 0.30)"
+        },
+        "vs_BBKC_MNQ_archive": {
+          "n_days_a": 1244,
+          "n_days_b": 839,
+          "n_days_overlap": 645,
+          "overlap_pct_of_a": 51.848874598070736,
+          "daily_pnl_corr": 0.4204367049566796,
+          "overlap_day_pnl_corr": 0.5889962410889261,
+          "classification": "PORTFOLIO_COMPLEMENT (low-moderate corr)"
+        }
+      },
+      "family_verdict": "PORTFOLIO_COMPLEMENT vs XB-ORB-MNQ probation (PORTFOLIO_COMPLEMENT (low-moderate corr))"
+    },
+    {
+      "label": "WH-MNQ-stop_run_reversal",
+      "asset": "MNQ",
+      "entry": "stop_run_reversal",
+      "baseline": {
+        "n": 1414,
+        "pf": 1.477,
+        "median": 15.51,
+        "net": 35368.64,
+        "win_rate": 0.5466760961810466
+      },
+      "stress": {
+        "pf": 1.404,
+        "median": 12.27
+      },
+      "reproducible": true,
+      "family_review": {
+        "vs_XB_ORB_MNQ_probation": {
+          "n_days_a": 1414,
+          "n_days_b": 1219,
+          "n_days_overlap": 888,
+          "overlap_pct_of_a": 62.800565770862804,
+          "daily_pnl_corr": 0.32728121266473126,
+          "overlap_day_pnl_corr": 0.5215076436268392,
+          "classification": "PORTFOLIO_COMPLEMENT (low-moderate corr)"
+        },
+        "vs_FOMC_MNQ_Long_1h": {
+          "n_days_a": 1414,
+          "n_days_b": 54,
+          "n_days_overlap": 47,
+          "overlap_pct_of_a": 3.3239038189533243,
+          "daily_pnl_corr": -0.021164594976934036,
+          "overlap_day_pnl_corr": -0.12505207488042744,
+          "classification": "INDEPENDENT (corr < 0.30)"
+        },
+        "vs_Packet1_NFP_MGC_archive": {
+          "n_days_a": 1414,
+          "n_days_b": 63,
+          "n_days_overlap": 46,
+          "overlap_pct_of_a": 3.253182461103253,
+          "daily_pnl_corr": -0.02377229466105858,
+          "overlap_day_pnl_corr": -0.1811502418419415,
+          "classification": "INDEPENDENT (corr < 0.30)"
+        },
+        "vs_BBKC_MNQ_archive": {
+          "n_days_a": 1414,
+          "n_days_b": 839,
+          "n_days_overlap": 639,
+          "overlap_pct_of_a": 45.19094766619519,
+          "daily_pnl_corr": 0.23767542428954444,
+          "overlap_day_pnl_corr": 0.4373353736883016,
+          "classification": "INDEPENDENT (corr < 0.30)"
+        }
+      },
+      "family_verdict": "PORTFOLIO_COMPLEMENT vs XB-ORB-MNQ probation (PORTFOLIO_COMPLEMENT (low-moderate corr))"
+    }
+  ],
+  "pairwise_workhorse_review": {
+    "n_days_a": 1244,
+    "n_days_b": 1414,
+    "n_days_overlap": 930,
+    "overlap_pct_of_a": 74.7588424437299,
+    "daily_pnl_corr": 0.23128560030733095,
+    "overlap_day_pnl_corr": 0.3570490269216104,
+    "classification": "INDEPENDENT (corr < 0.30)"
+  }
+}

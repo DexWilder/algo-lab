@@ -1,0 +1,691 @@
+{
+  "date": "2026-06-11",
+  "purpose": "Daily workhorse first batch per #176 C \u2014 pivot from event to workhorse",
+  "doctrine_reference": "docs/fql_forge/PACKET_STANDARD_V1_2026-06-11.md (workhorse gates)",
+  "v1_tier": {
+    "PAPER_PACKET_CANDIDATE": 2,
+    "ARCHIVED": 6
+  },
+  "results": [
+    {
+      "label": "WH-MNQ-abnormal_range_followup-ema_slope-PL",
+      "asset": "MNQ",
+      "entry": "abnormal_range_followup",
+      "metrics": {
+        "n": 224,
+        "pf": 1.331,
+        "median": 13.51,
+        "net": 2232.24,
+        "max_dd": -978.02
+      },
+      "verdict": "ESCALATE_TO_V1_AUDIT",
+      "daily_metrics": {
+        "n_trades": 224,
+        "n_days_traded": 224,
+        "trades_per_day": 1.0,
+        "pct_days_traded": 12.486064659977703,
+        "pct_profitable_days": 55.80357142857143,
+        "median_day_pnl": 13.51,
+        "worst_day": -235.24,
+        "avg_losing_day": -68.20464646464647,
+        "max_consecutive_losing_days": 6
+      },
+      "v1_gates": {
+        "n_>=_500": false,
+        "PF_>=_1.20": true,
+        "positive_median": true,
+        "PASS_STRESS": true,
+        "max_yr_<=_50pct": false,
+        "yrs_pos_>=_50pct": true,
+        "Era3_PF_>=_1.0": false,
+        "Era3_median_>=_0": true
+      },
+      "v1_verdict": "ARCHIVED (fails: ['n_>=_500', 'max_yr_<=_50pct', 'Era3_PF_>=_1.0'])",
+      "temporal_split": {
+        "yrs_pos": 5,
+        "n_yrs": 8,
+        "total_net": 2232.24,
+        "era3_pf": 0.9096733340782961,
+        "era3_median": 9.26,
+        "max_yr_share_pct": 57.858473999211554,
+        "per_year": [
+          {
+            "year": 2019,
+            "n": 20,
+            "pf": 1.1607745603126665,
+            "median": 9.01,
+            "net": 36.2
+          },
+          {
+            "year": 2020,
+            "n": 37,
+            "pf": 1.9144663928548142,
+            "median": 22.76,
+            "net": 841.6199999999999
+          },
+          {
+            "year": 2021,
+            "n": 29,
+            "pf": 3.802213061401605,
+            "median": 23.76,
+            "net": 1291.54
+          },
+          {
+            "year": 2022,
+            "n": 24,
+            "pf": 0.6764847608721841,
+            "median": -28.740000000000002,
+            "net": -322.25999999999993
+          },
+          {
+            "year": 2023,
+            "n": 25,
+            "pf": 1.8946095611944482,
+            "median": 29.76,
+            "net": 510.4999999999999
+          },
+          {
+            "year": 2024,
+            "n": 33,
+            "pf": 1.204533323166082,
+            "median": 29.76,
+            "net": 214.58000000000004
+          },
+          {
+            "year": 2025,
+            "n": 42,
+            "pf": 0.8243490932273817,
+            "median": -2.49,
+            "net": -308.58000000000015
+          },
+          {
+            "year": 2026,
+            "n": 14,
+            "pf": 0.9594412829798241,
+            "median": 30.509999999999998,
+            "net": -31.360000000000014
+          }
+        ]
+      },
+      "stress_metrics": {
+        "pf": 1.213,
+        "median": 10.27
+      }
+    },
+    {
+      "label": "WH-MNQ-range_compression_break-ema_slope-PL",
+      "asset": "MNQ",
+      "entry": "range_compression_break",
+      "metrics": {
+        "n": 1244,
+        "pf": 1.37,
+        "median": 9.01,
+        "net": 18609.94,
+        "max_dd": -1235.3
+      },
+      "verdict": "ESCALATE_TO_V1_AUDIT",
+      "daily_metrics": {
+        "n_trades": 1244,
+        "n_days_traded": 1244,
+        "trades_per_day": 1.0,
+        "pct_days_traded": 69.3422519509476,
+        "pct_profitable_days": 53.29581993569131,
+        "median_day_pnl": 9.01,
+        "worst_day": -347.74,
+        "avg_losing_day": -86.61521514629949,
+        "max_consecutive_losing_days": 8
+      },
+      "v1_gates": {
+        "n_>=_500": true,
+        "PF_>=_1.20": true,
+        "positive_median": true,
+        "PASS_STRESS": true,
+        "max_yr_<=_50pct": true,
+        "yrs_pos_>=_50pct": true,
+        "Era3_PF_>=_1.0": true,
+        "Era3_median_>=_0": true
+      },
+      "v1_verdict": "PAPER_PACKET_CANDIDATE",
+      "temporal_split": {
+        "yrs_pos": 8,
+        "n_yrs": 8,
+        "total_net": 18609.939999999995,
+        "era3_pf": 1.726936576070582,
+        "era3_median": 20.26,
+        "max_yr_share_pct": 32.081242604758536,
+        "per_year": [
+          {
+            "year": 2019,
+            "n": 85,
+            "pf": 1.0907422055728848,
+            "median": -2.24,
+            "net": 121.59999999999991
+          },
+          {
+            "year": 2020,
+            "n": 180,
+            "pf": 1.0746941868437194,
+            "median": 7.01,
+            "net": 496.7999999999992
+          },
+          {
+            "year": 2021,
+            "n": 180,
+            "pf": 1.1570283598565276,
+            "median": 5.51,
+            "net": 1004.2999999999992
+          },
+          {
+            "year": 2022,
+            "n": 179,
+            "pf": 1.2704152027651736,
+            "median": 9.76,
+            "net": 2661.539999999999
+          },
+          {
+            "year": 2023,
+            "n": 179,
+            "pf": 1.1351639237398858,
+            "median": -6.74,
+            "net": 974.5399999999993
+          },
+          {
+            "year": 2024,
+            "n": 181,
+            "pf": 1.8211823845383488,
+            "median": 14.76,
+            "net": 5051.06
+          },
+          {
+            "year": 2025,
+            "n": 180,
+            "pf": 1.7191642213902663,
+            "median": 27.76,
+            "net": 5970.299999999999
+          },
+          {
+            "year": 2026,
+            "n": 80,
+            "pf": 1.5257433249688592,
+            "median": 36.26,
+            "net": 2329.7999999999993
+          }
+        ]
+      },
+      "stress_metrics": {
+        "pf": 1.279,
+        "median": 5.77
+      }
+    },
+    {
+      "label": "WH-MNQ-stop_run_reversal-ema_slope-PL",
+      "asset": "MNQ",
+      "entry": "stop_run_reversal",
+      "metrics": {
+        "n": 1414,
+        "pf": 1.477,
+        "median": 15.51,
+        "net": 35368.64,
+        "max_dd": -4018.44
+      },
+      "verdict": "ESCALATE_TO_V1_AUDIT",
+      "daily_metrics": {
+        "n_trades": 1414,
+        "n_days_traded": 1414,
+        "trades_per_day": 1.0,
+        "pct_days_traded": 78.81828316610925,
+        "pct_profitable_days": 54.66760961810466,
+        "median_day_pnl": 15.51,
+        "worst_day": -1457.24,
+        "avg_losing_day": -115.63547581903276,
+        "max_consecutive_losing_days": 6
+      },
+      "v1_gates": {
+        "n_>=_500": true,
+        "PF_>=_1.20": true,
+        "positive_median": true,
+        "PASS_STRESS": true,
+        "max_yr_<=_50pct": true,
+        "yrs_pos_>=_50pct": true,
+        "Era3_PF_>=_1.0": true,
+        "Era3_median_>=_0": true
+      },
+      "v1_verdict": "PAPER_PACKET_CANDIDATE",
+      "temporal_split": {
+        "yrs_pos": 7,
+        "n_yrs": 8,
+        "total_net": 35368.64,
+        "era3_pf": 1.5543420007373816,
+        "era3_median": 23.51,
+        "max_yr_share_pct": 24.884813213061065,
+        "per_year": [
+          {
+            "year": 2019,
+            "n": 96,
+            "pf": 0.9737995749617568,
+            "median": 6.01,
+            "net": -51.04000000000019
+          },
+          {
+            "year": 2020,
+            "n": 205,
+            "pf": 1.1936817439552236,
+            "median": 5.26,
+            "net": 1914.299999999999
+          },
+          {
+            "year": 2021,
+            "n": 200,
+            "pf": 1.2656527606528092,
+            "median": 13.76,
+            "net": 2188.999999999999
+          },
+          {
+            "year": 2022,
+            "n": 205,
+            "pf": 1.574966110629965,
+            "median": 28.76,
+            "net": 7329.299999999999
+          },
+          {
+            "year": 2023,
+            "n": 206,
+            "pf": 1.7439082923646874,
+            "median": 12.26,
+            "net": 6385.5599999999995
+          },
+          {
+            "year": 2024,
+            "n": 206,
+            "pf": 1.215152278721296,
+            "median": 17.26,
+            "net": 2561.5599999999986
+          },
+          {
+            "year": 2025,
+            "n": 204,
+            "pf": 1.4188609418788427,
+            "median": 16.26,
+            "net": 6238.540000000001
+          },
+          {
+            "year": 2026,
+            "n": 92,
+            "pf": 2.4868670009325218,
+            "median": 83.51,
+            "net": 8801.42
+          }
+        ]
+      },
+      "stress_metrics": {
+        "pf": 1.404,
+        "median": 12.27
+      }
+    },
+    {
+      "label": "WH-MNQ-volatility_regime_compound-ema_slope-PL",
+      "asset": "MNQ",
+      "entry": "volatility_regime_compound",
+      "metrics": {
+        "n": 0,
+        "pf": NaN,
+        "median": 0.0,
+        "net": 0.0,
+        "max_dd": 0.0
+      },
+      "verdict": "KILL (n=0, workhorse min 100)",
+      "daily_metrics": {
+        "n_trades": 0,
+        "trades_per_day": 0,
+        "pct_days_traded": 0
+      },
+      "v1_gates": null,
+      "v1_verdict": null,
+      "temporal_split": null,
+      "stress_metrics": null
+    },
+    {
+      "label": "WH-MES-abnormal_range_followup-ema_slope-PL",
+      "asset": "MES",
+      "entry": "abnormal_range_followup",
+      "metrics": {
+        "n": 240,
+        "pf": 1.306,
+        "median": 0.64,
+        "net": 1113.65,
+        "max_dd": -664.79
+      },
+      "verdict": "ESCALATE_TO_V1_AUDIT",
+      "daily_metrics": {
+        "n_trades": 240,
+        "n_days_traded": 240,
+        "trades_per_day": 1.0,
+        "pct_days_traded": 13.377926421404682,
+        "pct_profitable_days": 51.66666666666667,
+        "median_day_pnl": 0.635,
+        "worst_day": -143.74,
+        "avg_losing_day": -31.326206896551717,
+        "max_consecutive_losing_days": 8
+      },
+      "v1_gates": {
+        "n_>=_500": false,
+        "PF_>=_1.20": true,
+        "positive_median": true,
+        "PASS_STRESS": false,
+        "max_yr_<=_50pct": true,
+        "yrs_pos_>=_50pct": true,
+        "Era3_PF_>=_1.0": true,
+        "Era3_median_>=_0": true
+      },
+      "v1_verdict": "ARCHIVED (fails: ['n_>=_500', 'PASS_STRESS'])",
+      "temporal_split": {
+        "yrs_pos": 5,
+        "n_yrs": 8,
+        "total_net": 1113.6499999999999,
+        "era3_pf": 1.187561765674756,
+        "era3_median": 1.8849999999999998,
+        "max_yr_share_pct": 46.96089435639564,
+        "per_year": [
+          {
+            "year": 2019,
+            "n": 16,
+            "pf": 0.36501830365452637,
+            "median": 0.6349999999999999,
+            "net": -102.34
+          },
+          {
+            "year": 2020,
+            "n": 48,
+            "pf": 1.8981435367256867,
+            "median": 2.51,
+            "net": 522.98
+          },
+          {
+            "year": 2021,
+            "n": 32,
+            "pf": 0.8084795321637426,
+            "median": -14.364999999999998,
+            "net": -102.17999999999998
+          },
+          {
+            "year": 2022,
+            "n": 28,
+            "pf": 1.8848916208346815,
+            "median": 21.885,
+            "net": 410.28
+          },
+          {
+            "year": 2023,
+            "n": 29,
+            "pf": 1.377705139765554,
+            "median": 5.01,
+            "net": 134.03999999999996
+          },
+          {
+            "year": 2024,
+            "n": 39,
+            "pf": 2.004416465363687,
+            "median": 2.51,
+            "net": 411.6399999999999
+          },
+          {
+            "year": 2025,
+            "n": 33,
+            "pf": 0.6287682920523293,
+            "median": -11.24,
+            "net": -287.16999999999996
+          },
+          {
+            "year": 2026,
+            "n": 15,
+            "pf": 1.3561165267369129,
+            "median": 20.01,
+            "net": 126.39999999999998
+          }
+        ]
+      },
+      "stress_metrics": {
+        "pf": 0.914,
+        "median": -5.61
+      }
+    },
+    {
+      "label": "WH-MES-range_compression_break-ema_slope-PL",
+      "asset": "MES",
+      "entry": "range_compression_break",
+      "metrics": {
+        "n": 1214,
+        "pf": 1.209,
+        "median": 1.26,
+        "net": 6069.64,
+        "max_dd": -2113.19
+      },
+      "verdict": "ESCALATE_TO_V1_AUDIT",
+      "daily_metrics": {
+        "n_trades": 1214,
+        "n_days_traded": 1214,
+        "trades_per_day": 1.0,
+        "pct_days_traded": 67.67001114827201,
+        "pct_profitable_days": 51.07084019769358,
+        "median_day_pnl": 1.26,
+        "worst_day": -361.24,
+        "avg_losing_day": -48.849427609427615,
+        "max_consecutive_losing_days": 9
+      },
+      "v1_gates": {
+        "n_>=_500": true,
+        "PF_>=_1.20": true,
+        "positive_median": true,
+        "PASS_STRESS": false,
+        "max_yr_<=_50pct": true,
+        "yrs_pos_>=_50pct": true,
+        "Era3_PF_>=_1.0": true,
+        "Era3_median_>=_0": true
+      },
+      "v1_verdict": "ARCHIVED (fails: ['PASS_STRESS'])",
+      "temporal_split": {
+        "yrs_pos": 5,
+        "n_yrs": 8,
+        "total_net": 6069.639999999998,
+        "era3_pf": 1.329708701438244,
+        "era3_median": 0.01,
+        "max_yr_share_pct": 45.584087359382124,
+        "per_year": [
+          {
+            "year": 2019,
+            "n": 79,
+            "pf": 0.9872317690160503,
+            "median": 0.01,
+            "net": -11.709999999999969
+          },
+          {
+            "year": 2020,
+            "n": 161,
+            "pf": 0.6091673055251838,
+            "median": -3.74,
+            "net": -1865.8900000000003
+          },
+          {
+            "year": 2021,
+            "n": 178,
+            "pf": 1.5797611162308494,
+            "median": 3.76,
+            "net": 1610.5299999999997
+          },
+          {
+            "year": 2022,
+            "n": 177,
+            "pf": 1.250018113879372,
+            "median": 7.51,
+            "net": 1449.2699999999995
+          },
+          {
+            "year": 2023,
+            "n": 176,
+            "pf": 1.4948356868277657,
+            "median": 4.385,
+            "net": 1529.2599999999995
+          },
+          {
+            "year": 2024,
+            "n": 183,
+            "pf": 1.2266618943806333,
+            "median": -6.24,
+            "net": 905.5799999999995
+          },
+          {
+            "year": 2025,
+            "n": 179,
+            "pf": 1.5835066200444572,
+            "median": 6.26,
+            "net": 2766.79
+          },
+          {
+            "year": 2026,
+            "n": 81,
+            "pf": 0.8925232525920787,
+            "median": -6.24,
+            "net": -314.19000000000017
+          }
+        ]
+      },
+      "stress_metrics": {
+        "pf": 0.954,
+        "median": -4.98
+      }
+    },
+    {
+      "label": "WH-MES-stop_run_reversal-ema_slope-PL",
+      "asset": "MES",
+      "entry": "stop_run_reversal",
+      "metrics": {
+        "n": 1397,
+        "pf": 1.348,
+        "median": 2.51,
+        "net": 14943.97,
+        "max_dd": -2941.41
+      },
+      "verdict": "ESCALATE_TO_V1_AUDIT",
+      "daily_metrics": {
+        "n_trades": 1397,
+        "n_days_traded": 1397,
+        "trades_per_day": 1.0,
+        "pct_days_traded": 77.87068004459309,
+        "pct_profitable_days": 51.46743020758768,
+        "median_day_pnl": 2.51,
+        "worst_day": -336.24,
+        "avg_losing_day": -63.345457227138645,
+        "max_consecutive_losing_days": 11
+      },
+      "v1_gates": {
+        "n_>=_500": true,
+        "PF_>=_1.20": true,
+        "positive_median": true,
+        "PASS_STRESS": false,
+        "max_yr_<=_50pct": true,
+        "yrs_pos_>=_50pct": true,
+        "Era3_PF_>=_1.0": true,
+        "Era3_median_>=_0": false
+      },
+      "v1_verdict": "ARCHIVED (fails: ['PASS_STRESS', 'Era3_median_>=_0'])",
+      "temporal_split": {
+        "yrs_pos": 7,
+        "n_yrs": 8,
+        "total_net": 14943.969999999996,
+        "era3_pf": 1.1991578954645143,
+        "era3_median": -3.74,
+        "max_yr_share_pct": 40.891476629035,
+        "per_year": [
+          {
+            "year": 2019,
+            "n": 100,
+            "pf": 1.0295870798273847,
+            "median": -1.24,
+            "net": 41.00000000000008
+          },
+          {
+            "year": 2020,
+            "n": 204,
+            "pf": 1.3924587323237945,
+            "median": 5.01,
+            "net": 2255.7899999999995
+          },
+          {
+            "year": 2021,
+            "n": 192,
+            "pf": 1.1480308111528623,
+            "median": -5.615,
+            "net": 718.1699999999994
+          },
+          {
+            "year": 2022,
+            "n": 206,
+            "pf": 1.778408461235684,
+            "median": 12.51,
+            "net": 6110.8099999999995
+          },
+          {
+            "year": 2023,
+            "n": 201,
+            "pf": 1.3929537110415855,
+            "median": -3.74,
+            "net": 1998.2599999999998
+          },
+          {
+            "year": 2024,
+            "n": 205,
+            "pf": 0.7973350596607579,
+            "median": -7.49,
+            "net": -1305.4500000000007
+          },
+          {
+            "year": 2025,
+            "n": 200,
+            "pf": 1.2851760013518747,
+            "median": -8.115,
+            "net": 2379.4999999999995
+          },
+          {
+            "year": 2026,
+            "n": 89,
+            "pf": 1.8469375165785566,
+            "median": 26.26,
+            "net": 2745.8899999999994
+          }
+        ]
+      },
+      "stress_metrics": {
+        "pf": 1.132,
+        "median": -3.73
+      }
+    },
+    {
+      "label": "WH-MES-volatility_regime_compound-ema_slope-PL",
+      "asset": "MES",
+      "entry": "volatility_regime_compound",
+      "metrics": {
+        "n": 3,
+        "pf": 0.0,
+        "median": -83.74,
+        "net": -189.97,
+        "max_dd": -94.98
+      },
+      "verdict": "KILL (n=3, workhorse min 100)",
+      "daily_metrics": {
+        "n_trades": 3,
+        "n_days_traded": 3,
+        "trades_per_day": 1.0,
+        "pct_days_traded": 0.16722408026755853,
+        "pct_profitable_days": 0.0,
+        "median_day_pnl": -83.74,
+        "worst_day": -94.99,
+        "avg_losing_day": -63.32333333333332,
+        "max_consecutive_losing_days": 3
+      },
+      "v1_gates": null,
+      "v1_verdict": null,
+      "temporal_split": null,
+      "stress_metrics": null
+    }
+  ]
+}

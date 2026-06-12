@@ -1,0 +1,224 @@
+{
+  "date": "2026-06-11",
+  "purpose": "FOMC-MNQ-Long-1h final robustness per #174 C",
+  "baseline": {
+    "n": 54,
+    "pf": 1.774,
+    "median": 67.01,
+    "net": 3253.040000000001
+  },
+  "calendar": {
+    "total": 58,
+    "included": 54,
+    "excluded_with_reason": [
+      {
+        "event": "2019-01-30 14:00:00",
+        "reason": "pre-data-start"
+      },
+      {
+        "event": "2019-03-20 14:00:00",
+        "reason": "pre-data-start"
+      },
+      {
+        "event": "2019-05-01 14:00:00",
+        "reason": "pre-data-start"
+      },
+      {
+        "event": "2019-06-19 14:00:00",
+        "reason": "pre-data-start"
+      }
+    ]
+  },
+  "rolling_12_event_PF": {
+    "n_windows": 43,
+    "pct_>_1.0": 93.02325581395348,
+    "pct_>_1.2": 88.37209302325581,
+    "worst": 0.625306507387614
+  },
+  "year_exclusion": {
+    "2019": {
+      "pf": 1.8292820999210444,
+      "median": 82.26
+    },
+    "2020": {
+      "pf": 1.7409105957040762,
+      "median": 86.26
+    },
+    "2021": {
+      "pf": 1.7063005547791474,
+      "median": 74.26
+    },
+    "2022": {
+      "pf": 2.0008711311528216,
+      "median": 58.76
+    },
+    "2023": {
+      "pf": 1.6359379976642965,
+      "median": 67.01
+    },
+    "2024": {
+      "pf": 1.9284957562621012,
+      "median": 66.76
+    },
+    "2025": {
+      "pf": 1.6513242284765717,
+      "median": 63.51
+    },
+    "2026": {
+      "pf": 1.774664873369034,
+      "median": 63.76
+    }
+  },
+  "year_excl_pf_range": [
+    1.6359379976642965,
+    2.0008711311528216
+  ],
+  "largest_event_removal": {
+    "max_event": "2022-05-04 14:10:00",
+    "max_pnl": 548.26,
+    "pf_without_max": 1.6431438381571066,
+    "min_event": "2022-01-26 14:10:00",
+    "min_pnl": -1152.24,
+    "pf_without_min": 2.442783592941454
+  },
+  "2026_sensitivity": {
+    "n_2026": 3,
+    "pf_2026": 1.7470126322977124,
+    "pre_2026_pf": 1.774664873369034
+  },
+  "pre_post_2022": {
+    "pre_2022_n": 19,
+    "pre_2022_pf": 2.005690386092696,
+    "post_2022_n": 35,
+    "post_2022_pf": 1.726912996556864
+  },
+  "per_year": [
+    {
+      "year": 2019,
+      "n": 4,
+      "net": -86.96000000000001,
+      "pf": 0.5114057759298798,
+      "median": -1.7399999999999984
+    },
+    {
+      "year": 2020,
+      "n": 7,
+      "net": 209.32,
+      "pf": 3.1473122691834226,
+      "median": 54.26
+    },
+    {
+      "year": 2021,
+      "n": 8,
+      "net": 584.5799999999999,
+      "pf": 2.3675025732197996,
+      "median": 54.26
+    },
+    {
+      "year": 2022,
+      "n": 8,
+      "net": 518.5799999999999,
+      "pf": 1.3519423405814806,
+      "median": 297.51
+    },
+    {
+      "year": 2023,
+      "n": 8,
+      "net": 857.0799999999999,
+      "pf": 2.9569823728194353,
+      "median": 77.00999999999999
+    },
+    {
+      "year": 2024,
+      "n": 8,
+      "net": 203.07999999999993,
+      "pf": 1.220566513163611,
+      "median": 75.01
+    },
+    {
+      "year": 2025,
+      "n": 8,
+      "net": 836.0799999999999,
+      "pf": 2.6900064683053038,
+      "median": 119.75999999999999
+    },
+    {
+      "year": 2026,
+      "n": 3,
+      "net": 131.27999999999997,
+      "pf": 1.7470126322977124,
+      "median": 99.76
+    }
+  ],
+  "concentration": {
+    "max_yr_share_pct": 26.347047684627306,
+    "instance_cv": 0.792767775954698,
+    "max_event_share_pct": 16.853773700907464
+  },
+  "cost_sensitivity": [
+    {
+      "label": "baseline",
+      "cost_mult": 1.0,
+      "slip_mult": 1.0,
+      "pf": 1.774,
+      "median": 67.01,
+      "net": 3253.04
+    },
+    {
+      "label": "2x + 2t slip",
+      "cost_mult": 2.0,
+      "slip_mult": 3.0,
+      "pf": 1.721,
+      "median": 63.77,
+      "net": 3078.08
+    },
+    {
+      "label": "3x + 2t slip",
+      "cost_mult": 3.0,
+      "slip_mult": 3.0,
+      "pf": 1.702,
+      "median": 62.53,
+      "net": 3011.12
+    },
+    {
+      "label": "4x + 3t slip",
+      "cost_mult": 4.0,
+      "slip_mult": 4.0,
+      "pf": 1.667,
+      "median": 60.29,
+      "net": 2890.16
+    },
+    {
+      "label": "5x + 4t slip",
+      "cost_mult": 5.0,
+      "slip_mult": 5.0,
+      "pf": 1.633,
+      "median": 58.05,
+      "net": 2769.2
+    },
+    {
+      "label": "8x + 5t slip",
+      "cost_mult": 8.0,
+      "slip_mult": 6.0,
+      "pf": 1.562,
+      "median": 53.33,
+      "net": 2514.32
+    }
+  ],
+  "checks": {
+    "rolling_PF>1.0_pct_>_60": "True",
+    "rolling_PF>1.2_pct_>_50": "True",
+    "year_excl_min_PF_>_1.2": true,
+    "remove_largest_win_PF_>_1.2": true,
+    "remove_largest_loss_PF_stays_strong": true,
+    "pre_2026_PF_>_1.3": true,
+    "max_yr_share_<_35": true,
+    "instance_CV_<_3": true,
+    "max_event_share_<_15": "False",
+    "stress_4x_PF_>_1.0": true,
+    "stress_8x_PF_>_0.8": true,
+    "same_day_corr_with_probation_<_0.5": true
+  },
+  "all_robust": false,
+  "verdict": "ROBUSTNESS PARTIAL \u2014 failed: ['max_event_share_<_15']; keep as CANDIDATE pending review"
+}
