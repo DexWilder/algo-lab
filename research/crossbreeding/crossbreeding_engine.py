@@ -1320,6 +1320,86 @@ def filter_session_close(f, i, signal, params):
 # PART 5: GENERIC SIGNAL GENERATOR
 # ═══════════════════════════════════════════════════════════════════════════
 
+def entry_opening_drive_exhaustion(f, i, state, params):
+    """Opening drive exhaustion: trade reversals of overextended opening drives.
+
+    Mechanism (workhorse, mean-reversion):
+      - Measure opening drive as displacement from session open to current
+        intraday extreme: drive_strength = (extreme - open_of_day) / atr
+      - Exhaustion when drive_strength exceeds threshold (default 2.0 ATR)
+        AND price has stalled (no new extreme in last N bars)
+      - Entry: REVERSE direction (mean-reversion to session VWAP / open)
+
+    Different from orb_failure_reversal: that primitive looks at ORB-range
+    BREAKOUT failure; this looks at MAGNITUDE-based exhaustion.
+
+    Built 2026-06-12 per operator NEEDS_PRIMITIVE #4 (daily workhorse queue).
+    """
+    if not f["or_complete"][i]:
+        return 0, 0, 0
+    if np.isnan(f["atr"][i]) or f["atr"][i] <= 0:
+        return 0, 0, 0
+
+    cur_date = state.get("current_date")
+    if state.get("drive_date_marker") != cur_date:
+        state["drive_date_marker"] = cur_date
+        state["session_open"] = f["open"][i]
+        state["session_high"] = f["high"][i]
+        state["session_low"] = f["low"][i]
+        state["bars_since_new_high"] = 0
+        state["bars_since_new_low"] = 0
+        state["up_exhaustion_armed"] = False
+        state["dn_exhaustion_armed"] = False
+
+    if f["high"][i] > state["session_high"]:
+        state["session_high"] = f["high"][i]
+        state["bars_since_new_high"] = 0
+    else:
+        state["bars_since_new_high"] += 1
+
+    if f["low"][i] < state["session_low"]:
+        state["session_low"] = f["low"][i]
+        state["bars_since_new_low"] = 0
+    else:
+        state["bars_since_new_low"] += 1
+
+    atr_i = f["atr"][i]
+    exhaustion_atr = params.get("exhaustion_atr_mult", 2.0)
+    stall_bars = params.get("stall_bars", 3)
+
+    up_drive = (state["session_high"] - state["session_open"]) / atr_i
+    dn_drive = (state["session_open"] - state["session_low"]) / atr_i
+
+    # Arm exhaustion when drive exceeds threshold AND has stalled
+    if (up_drive >= exhaustion_atr
+            and state["bars_since_new_high"] >= stall_bars):
+        state["up_exhaustion_armed"] = True
+    if (dn_drive >= exhaustion_atr
+            and state["bars_since_new_low"] >= stall_bars):
+        state["dn_exhaustion_armed"] = True
+
+    close_i = f["close"][i]
+    close_prev = f["close"][i - 1] if i > 0 else close_i
+
+    # SHORT: upside exhaustion + reversal confirmation
+    if (state["up_exhaustion_armed"]
+            and close_i < close_prev
+            and not state["short_traded_today"]):
+        stop = state["session_high"] + atr_i * params.get("stop_mult", 0.5)
+        target = close_i - atr_i * params.get("target_mult", 1.5)
+        return -1, stop, target
+
+    # LONG: downside exhaustion + reversal confirmation
+    if (state["dn_exhaustion_armed"]
+            and close_i > close_prev
+            and not state["long_traded_today"]):
+        stop = state["session_low"] - atr_i * params.get("stop_mult", 0.5)
+        target = close_i + atr_i * params.get("target_mult", 1.5)
+        return 1, stop, target
+
+    return 0, 0, 0
+
+
 def entry_vwap_reclaim(f, i, state, params):
     """VWAP reclaim / rejection: trade crosses of session VWAP.
 
@@ -1523,6 +1603,7 @@ ENTRY_MAP = {
     "orb_failure_reversal": entry_orb_failure_reversal,
     "first_impulse_pullback": entry_first_impulse_pullback,
     "vwap_reclaim": entry_vwap_reclaim,
+    "opening_drive_exhaustion": entry_opening_drive_exhaustion,
 }
 
 EXIT_MAP = {

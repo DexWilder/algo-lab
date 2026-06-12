@@ -1,0 +1,56 @@
+{
+  "date": "2026-06-12",
+  "purpose": "Test opening_drive_exhaustion primitive (NEEDS_PRIMITIVE #4) on MNQ/MES",
+  "v1_tier": {
+    "PAPER_PACKET_CANDIDATE": 0,
+    "ARCHIVED": 0
+  },
+  "results": [
+    {
+      "label": "WH-MNQ-opening_drive_exhaustion-ema_slope-PL",
+      "asset": "MNQ",
+      "metrics": {
+        "n": 1242,
+        "pf": 1.193,
+        "median": 8.76,
+        "net": 12497.92,
+        "max_dd": -2841.8
+      },
+      "daily_metrics": {
+        "n_trades": 1242,
+        "n_days_traded": 1242,
+        "trades_per_day": 1.0,
+        "pct_days_traded": 69.23076923076923,
+        "pct_profitable_days": 52.73752012882448
+      },
+      "verdict": "WATCH",
+      "v1_gates": null,
+      "v1_verdict": null,
+      "temporal_split": null,
+      "stress_metrics": null
+    },
+    {
+      "label": "WH-MES-opening_drive_exhaustion-ema_slope-PL",
+      "asset": "MES",
+      "metrics": {
+        "n": 1225,
+        "pf": 1.185,
+        "median": 2.51,
+        "net": 6808.5,
+        "max_dd": -1651.01
+      },
+      "daily_metrics": {
+        "n_trades": 1225,
+        "n_days_traded": 1225,
+        "trades_per_day": 1.0,
+        "pct_days_traded": 68.28316610925307,
+        "pct_profitable_days": 52.0
+      },
+      "verdict": "WATCH",
+      "v1_gates": null,
+      "v1_verdict": null,
+      "temporal_split": null,
+      "stress_metrics": null
+    }
+  ]
+}
