@@ -1,0 +1,109 @@
+{
+  "date": "2026-06-11",
+  "purpose": "FOMC-MES/MNQ first batch under V1 doctrine (#173 OK A \u2014 POST-V1 NONSTOP HUNTING)",
+  "doctrine_reference": "docs/fql_forge/PACKET_STANDARD_V1_2026-06-11.md",
+  "calendar_grade": "MACHINE_FETCHED_OFFICIAL (Fed.gov verified 2026-06-11)",
+  "filter": "strict-only (hold==60min per R1 carve-out)",
+  "v1_tier": {
+    "PAPER_PACKET_CANDIDATE": 2,
+    "ARCHIVED": 2
+  },
+  "results": [
+    {
+      "label": "FOMC-MES-Long-1h",
+      "asset": "MES",
+      "direction": "long",
+      "exit_bars": 12,
+      "metrics": {
+        "n": 54,
+        "pf": 1.472,
+        "median": 39.38,
+        "net": 1255.54,
+        "max_dd": -608.74
+      },
+      "cheap_verdict": "ESCALATE_TO_V1_AUDIT",
+      "v1_gates": {
+        "n_>=_20": true,
+        "PF_>=_1.30": true,
+        "PASS_STRESS_PF_>=_1.30": true,
+        "max_instance_<=_35pct": true,
+        "positive_instance_frac_>=_60pct": true,
+        "instance_CV_<=_3.0": true,
+        "Era3_PF_>=_1.0": true,
+        "calendar_grade_OK": true
+      },
+      "v1_verdict": "PAPER_PACKET_CANDIDATE",
+      "stress_metrics": {
+        "pf": 1.329,
+        "median": 33.15
+      },
+      "n_clean_events": 54
+    },
+    {
+      "label": "FOMC-MES-Short-1h",
+      "asset": "MES",
+      "direction": "short",
+      "exit_bars": 12,
+      "metrics": {
+        "n": 54,
+        "pf": 0.601,
+        "median": -46.87,
+        "net": -1659.46,
+        "max_dd": -2188.49
+      },
+      "cheap_verdict": "KILL (median neg)",
+      "v1_gates": null,
+      "v1_verdict": null,
+      "stress_metrics": null,
+      "n_clean_events": 54
+    },
+    {
+      "label": "FOMC-MNQ-Long-1h",
+      "asset": "MNQ",
+      "direction": "long",
+      "exit_bars": 12,
+      "metrics": {
+        "n": 54,
+        "pf": 1.774,
+        "median": 67.01,
+        "net": 3253.04,
+        "max_dd": -1152.24
+      },
+      "cheap_verdict": "ESCALATE_TO_V1_AUDIT",
+      "v1_gates": {
+        "n_>=_20": true,
+        "PF_>=_1.30": true,
+        "PASS_STRESS_PF_>=_1.30": true,
+        "max_instance_<=_35pct": true,
+        "positive_instance_frac_>=_60pct": true,
+        "instance_CV_<=_3.0": true,
+        "Era3_PF_>=_1.0": true,
+        "calendar_grade_OK": true
+      },
+      "v1_verdict": "PAPER_PACKET_CANDIDATE",
+      "stress_metrics": {
+        "pf": 1.721,
+        "median": 63.77
+      },
+      "n_clean_events": 54
+    },
+    {
+      "label": "FOMC-MNQ-Short-1h",
+      "asset": "MNQ",
+      "direction": "short",
+      "exit_bars": 12,
+      "metrics": {
+        "n": 54,
+        "pf": 0.541,
+        "median": -71.49,
+        "net": -3494.96,
+        "max_dd": -3850.66
+      },
+      "cheap_verdict": "KILL (median neg)",
+      "v1_gates": null,
+      "v1_verdict": null,
+      "stress_metrics": null,
+      "n_clean_events": 54
+    }
+  ]
+}

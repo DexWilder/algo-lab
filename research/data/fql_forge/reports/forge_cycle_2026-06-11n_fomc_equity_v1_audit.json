@@ -1,0 +1,633 @@
+{
+  "date": "2026-06-11",
+  "purpose": "FOMC equity-index V1 8-dim audit per #173 escalation trigger",
+  "doctrine_reference": "docs/fql_forge/PACKET_STANDARD_V1_2026-06-11.md",
+  "audits": {
+    "FOMC-MES-Long-1h": {
+      "candidate": "FOMC-MES-Long-1h",
+      "asset": "MES",
+      "baseline_metrics": {
+        "n": 54,
+        "pf": 1.472,
+        "median": 39.38,
+        "mean": 23.25,
+        "net": 1255.54,
+        "max_dd": -608.74
+      },
+      "temporal_split": {
+        "per_year": [
+          {
+            "year": 2019,
+            "n": 4,
+            "pf": 0.571685173089484,
+            "median": -0.6149999999999984,
+            "mean": -13.114999999999998,
+            "net": -52.459999999999994,
+            "win_rate": 0.5
+          },
+          {
+            "year": 2020,
+            "n": 7,
+            "pf": 1.0105625350084022,
+            "median": 3.76,
+            "mean": 0.18857142857142759,
+            "net": 1.3199999999999932,
+            "win_rate": 0.5714285714285714
+          },
+          {
+            "year": 2021,
+            "n": 8,
+            "pf": 1.8482476737107574,
+            "median": 39.385,
+            "mean": 24.385,
+            "net": 195.08,
+            "win_rate": 0.75
+          },
+          {
+            "year": 2022,
+            "n": 8,
+            "pf": 1.36443571794434,
+            "median": 137.51,
+            "mean": 37.35374999999999,
+            "net": 298.8299999999999,
+            "win_rate": 0.75
+          },
+          {
+            "year": 2023,
+            "n": 8,
+            "pf": 2.3948551209715974,
+            "median": 45.635000000000005,
+            "mean": 54.69749999999999,
+            "net": 437.5799999999999,
+            "win_rate": 0.5
+          },
+          {
+            "year": 2024,
+            "n": 8,
+            "pf": 1.1839912151695196,
+            "median": 39.385,
+            "mean": 11.728749999999991,
+            "net": 93.82999999999993,
+            "win_rate": 0.625
+          },
+          {
+            "year": 2025,
+            "n": 8,
+            "pf": 1.6339659503209598,
+            "median": 13.134999999999998,
+            "mean": 34.07249999999999,
+            "net": 272.5799999999999,
+            "win_rate": 0.5
+          },
+          {
+            "year": 2026,
+            "n": 3,
+            "pf": 1.0807430568328125,
+            "median": 41.26,
+            "mean": 2.9266666666666716,
+            "net": 8.780000000000015,
+            "win_rate": 0.6666666666666666
+          }
+        ],
+        "eras": [
+          {
+            "era": 1,
+            "n": 18,
+            "pf": 1.0370316067276877,
+            "median": 11.260000000000002,
+            "mean": 0.9822222222222218,
+            "net": 17.679999999999993
+          },
+          {
+            "era": 2,
+            "n": 18,
+            "pf": 1.6431893195492744,
+            "median": 126.885,
+            "mean": 43.41277777777777,
+            "net": 781.4299999999998
+          },
+          {
+            "era": 3,
+            "n": 18,
+            "pf": 1.4717964090425144,
+            "median": 43.76,
+            "mean": 25.357222222222212,
+            "net": 456.42999999999984
+          }
+        ],
+        "yrs_pos": 7,
+        "n_yrs": 8,
+        "total_net": 1255.5399999999997,
+        "era3_pf": 1.4717964090425144,
+        "era3_median": 43.76,
+        "max_yr_share_pct": 34.85193621867882,
+        "instance_cv": 1.0267213832552156,
+        "positive_instance_fraction": 0.875
+      },
+      "8_dim_audit": {
+        "dim_1_cost_source": {
+          "asset": "MES",
+          "config_source": "engine/asset_config.py (FQL Evidence Law)",
+          "commission_per_side": 0.62,
+          "slippage_ticks": 1,
+          "tick_size": 0.25,
+          "verdict": "OK (asset_config canonical)"
+        },
+        "dim_2_cost_stress": {
+          "baseline_pf": 1.472,
+          "stress_pf_2x_cost_2_ticks": 1.329,
+          "stress_median": 33.15,
+          "verdict": "PASS"
+        },
+        "dim_3_edge_quality": {
+          "n": 54,
+          "pf": 1.472,
+          "win_rate": 0.6111111111111112,
+          "mean_win": 118.64636363636363,
+          "mean_loss": -126.65666666666662,
+          "median_trade": 39.38,
+          "mean_trade": 23.25,
+          "max_dd": -608.74,
+          "per_year": [
+            {
+              "year": 2019,
+              "n": 4,
+              "pf": 0.571685173089484,
+              "median": -0.6149999999999984,
+              "mean": -13.114999999999998,
+              "net": -52.459999999999994,
+              "win_rate": 0.5
+            },
+            {
+              "year": 2020,
+              "n": 7,
+              "pf": 1.0105625350084022,
+              "median": 3.76,
+              "mean": 0.18857142857142759,
+              "net": 1.3199999999999932,
+              "win_rate": 0.5714285714285714
+            },
+            {
+              "year": 2021,
+              "n": 8,
+              "pf": 1.8482476737107574,
+              "median": 39.385,
+              "mean": 24.385,
+              "net": 195.08,
+              "win_rate": 0.75
+            },
+            {
+              "year": 2022,
+              "n": 8,
+              "pf": 1.36443571794434,
+              "median": 137.51,
+              "mean": 37.35374999999999,
+              "net": 298.8299999999999,
+              "win_rate": 0.75
+            },
+            {
+              "year": 2023,
+              "n": 8,
+              "pf": 2.3948551209715974,
+              "median": 45.635000000000005,
+              "mean": 54.69749999999999,
+              "net": 437.5799999999999,
+              "win_rate": 0.5
+            },
+            {
+              "year": 2024,
+              "n": 8,
+              "pf": 1.1839912151695196,
+              "median": 39.385,
+              "mean": 11.728749999999991,
+              "net": 93.82999999999993,
+              "win_rate": 0.625
+            },
+            {
+              "year": 2025,
+              "n": 8,
+              "pf": 1.6339659503209598,
+              "median": 13.134999999999998,
+              "mean": 34.07249999999999,
+              "net": 272.5799999999999,
+              "win_rate": 0.5
+            },
+            {
+              "year": 2026,
+              "n": 3,
+              "pf": 1.0807430568328125,
+              "median": 41.26,
+              "mean": 2.9266666666666716,
+              "net": 8.780000000000015,
+              "win_rate": 0.6666666666666666
+            }
+          ],
+          "eras": [
+            {
+              "era": 1,
+              "n": 18,
+              "pf": 1.0370316067276877,
+              "median": 11.260000000000002,
+              "mean": 0.9822222222222218,
+              "net": 17.679999999999993
+            },
+            {
+              "era": 2,
+              "n": 18,
+              "pf": 1.6431893195492744,
+              "median": 126.885,
+              "mean": 43.41277777777777,
+              "net": 781.4299999999998
+            },
+            {
+              "era": 3,
+              "n": 18,
+              "pf": 1.4717964090425144,
+              "median": 43.76,
+              "mean": 25.357222222222212,
+              "net": 456.42999999999984
+            }
+          ],
+          "verdict": "OK"
+        },
+        "dim_4_lookahead": {
+          "convention": "event_window_engine: entry at event_idx + entry_offset_bars (default 1); fill at next bar's open",
+          "verdict": "OK (FQL standard convention; no future-bar leakage)"
+        },
+        "dim_5_calendar": {
+          "source": "federalreserve.gov FOMC calendars 2019-2026",
+          "verified_date": "2026-06-11",
+          "n_scheduled_events": 58,
+          "n_clean_events_used": 54,
+          "clean_pct": 93.10344827586206,
+          "calendar_grade": "MACHINE_FETCHED_OFFICIAL",
+          "verdict": "PASS (calendar grade >= MACHINE_FETCHED_OFFICIAL per V1)"
+        },
+        "dim_6_survivorship": {
+          "verdict": "N/A (event-window strategy does not rely on cross-sectional asset universe)"
+        },
+        "dim_7_duplicate_exposure": {
+          "vs_packet1_NFP_MGC_archived": {
+            "n_days_a": 54,
+            "n_days_b": 63,
+            "n_days_overlap": 0,
+            "overlap_pct_of_a": 0.0,
+            "daily_pnl_corr": -0.01741581088705945,
+            "overlap_day_pnl_corr": NaN
+          },
+          "vs_XB_ORB_MNQ_probation": {
+            "n_days_a": 54,
+            "n_days_b": 1219,
+            "n_days_overlap": 42,
+            "overlap_pct_of_a": 77.77777777777779,
+            "daily_pnl_corr": 0.007853246295963172,
+            "overlap_day_pnl_corr": 0.06151456558449467
+          },
+          "vs_XB_ORB_MES": {
+            "n_days_a": 54,
+            "n_days_b": 1251,
+            "n_days_overlap": 44,
+            "overlap_pct_of_a": 81.48148148148148,
+            "daily_pnl_corr": 0.018096383784059908,
+            "overlap_day_pnl_corr": 0.11891185080991268
+          },
+          "vs_BBKC_MNQ_archived": {
+            "n_days_a": 54,
+            "n_days_b": 839,
+            "n_days_overlap": 32,
+            "overlap_pct_of_a": 59.25925925925925,
+            "daily_pnl_corr": 0.02512136640969878,
+            "overlap_day_pnl_corr": 0.21761964704176667
+          },
+          "max_daily_corr": 0.02512136640969878,
+          "verdict": "PASS \u2014 INDEPENDENT (max corr < 0.30)"
+        },
+        "dim_8_artifact_reproducibility": {
+          "signal_hash_run1": "0b9fab13992ca9f6",
+          "signal_hash_run2": "0b9fab13992ca9f6",
+          "reproducible": true,
+          "verdict": "PASS"
+        },
+        "soft_flag_era3_median": {
+          "era3_median": 43.76,
+          "note": "Tail-engine soft flag (not auto-fail). Era3 PF is the hard gate."
+        }
+      },
+      "final_verdict": "V1 PAPER_PACKET_CANDIDATE \u2014 AUDIT GREEN",
+      "next_step": "Operator review for paper-promotion decision (Lane A action, separately authorized)"
+    },
+    "FOMC-MNQ-Long-1h": {
+      "candidate": "FOMC-MNQ-Long-1h",
+      "asset": "MNQ",
+      "baseline_metrics": {
+        "n": 54,
+        "pf": 1.774,
+        "median": 67.01,
+        "mean": 60.24,
+        "net": 3253.04,
+        "max_dd": -1152.24
+      },
+      "temporal_split": {
+        "per_year": [
+          {
+            "year": 2019,
+            "n": 4,
+            "pf": 0.5114057759298798,
+            "median": -1.7399999999999984,
+            "mean": -21.740000000000002,
+            "net": -86.96000000000001,
+            "win_rate": 0.5
+          },
+          {
+            "year": 2020,
+            "n": 7,
+            "pf": 3.1473122691834226,
+            "median": 54.26,
+            "mean": 29.90285714285714,
+            "net": 209.32,
+            "win_rate": 0.7142857142857143
+          },
+          {
+            "year": 2021,
+            "n": 8,
+            "pf": 2.3675025732197996,
+            "median": 54.26,
+            "mean": 73.07249999999999,
+            "net": 584.5799999999999,
+            "win_rate": 0.75
+          },
+          {
+            "year": 2022,
+            "n": 8,
+            "pf": 1.3519423405814806,
+            "median": 297.51,
+            "mean": 64.82249999999999,
+            "net": 518.5799999999999,
+            "win_rate": 0.75
+          },
+          {
+            "year": 2023,
+            "n": 8,
+            "pf": 2.9569823728194353,
+            "median": 77.00999999999999,
+            "mean": 107.13499999999999,
+            "net": 857.0799999999999,
+            "win_rate": 0.5
+          },
+          {
+            "year": 2024,
+            "n": 8,
+            "pf": 1.220566513163611,
+            "median": 75.01,
+            "mean": 25.38499999999999,
+            "net": 203.07999999999993,
+            "win_rate": 0.625
+          },
+          {
+            "year": 2025,
+            "n": 8,
+            "pf": 2.6900064683053038,
+            "median": 119.75999999999999,
+            "mean": 104.50999999999999,
+            "net": 836.0799999999999,
+            "win_rate": 0.625
+          },
+          {
+            "year": 2026,
+            "n": 3,
+            "pf": 1.7470126322977124,
+            "median": 99.76,
+            "mean": 43.75999999999999,
+            "net": 131.27999999999997,
+            "win_rate": 0.6666666666666666
+          }
+        ],
+        "eras": [
+          {
+            "era": 1,
+            "n": 18,
+            "pf": 1.5323071670412836,
+            "median": 43.01,
+            "mean": 20.78777777777777,
+            "net": 374.17999999999984
+          },
+          {
+            "era": 2,
+            "n": 18,
+            "pf": 1.79362594020355,
+            "median": 203.01,
+            "mean": 88.98222222222222,
+            "net": 1601.6799999999998
+          },
+          {
+            "era": 3,
+            "n": 18,
+            "pf": 1.860378324486002,
+            "median": 97.76,
+            "mean": 70.95444444444443,
+            "net": 1277.1799999999998
+          }
+        ],
+        "yrs_pos": 7,
+        "n_yrs": 8,
+        "total_net": 3253.0399999999995,
+        "era3_pf": 1.860378324486002,
+        "era3_median": 97.76,
+        "max_yr_share_pct": 26.347047684627306,
+        "instance_cv": 0.792767775954698,
+        "positive_instance_fraction": 0.875
+      },
+      "8_dim_audit": {
+        "dim_1_cost_source": {
+          "asset": "MNQ",
+          "config_source": "engine/asset_config.py (FQL Evidence Law)",
+          "commission_per_side": 0.62,
+          "slippage_ticks": 1,
+          "tick_size": 0.25,
+          "verdict": "OK (asset_config canonical)"
+        },
+        "dim_2_cost_stress": {
+          "baseline_pf": 1.774,
+          "stress_pf_2x_cost_2_ticks": 1.721,
+          "stress_median": 63.77,
+          "verdict": "PASS"
+        },
+        "dim_3_edge_quality": {
+          "n": 54,
+          "pf": 1.774,
+          "win_rate": 0.6481481481481481,
+          "mean_win": 213.10285714285715,
+          "mean_loss": -221.34526315789472,
+          "median_trade": 67.01,
+          "mean_trade": 60.24,
+          "max_dd": -1152.24,
+          "per_year": [
+            {
+              "year": 2019,
+              "n": 4,
+              "pf": 0.5114057759298798,
+              "median": -1.7399999999999984,
+              "mean": -21.740000000000002,
+              "net": -86.96000000000001,
+              "win_rate": 0.5
+            },
+            {
+              "year": 2020,
+              "n": 7,
+              "pf": 3.1473122691834226,
+              "median": 54.26,
+              "mean": 29.90285714285714,
+              "net": 209.32,
+              "win_rate": 0.7142857142857143
+            },
+            {
+              "year": 2021,
+              "n": 8,
+              "pf": 2.3675025732197996,
+              "median": 54.26,
+              "mean": 73.07249999999999,
+              "net": 584.5799999999999,
+              "win_rate": 0.75
+            },
+            {
+              "year": 2022,
+              "n": 8,
+              "pf": 1.3519423405814806,
+              "median": 297.51,
+              "mean": 64.82249999999999,
+              "net": 518.5799999999999,
+              "win_rate": 0.75
+            },
+            {
+              "year": 2023,
+              "n": 8,
+              "pf": 2.9569823728194353,
+              "median": 77.00999999999999,
+              "mean": 107.13499999999999,
+              "net": 857.0799999999999,
+              "win_rate": 0.5
+            },
+            {
+              "year": 2024,
+              "n": 8,
+              "pf": 1.220566513163611,
+              "median": 75.01,
+              "mean": 25.38499999999999,
+              "net": 203.07999999999993,
+              "win_rate": 0.625
+            },
+            {
+              "year": 2025,
+              "n": 8,
+              "pf": 2.6900064683053038,
+              "median": 119.75999999999999,
+              "mean": 104.50999999999999,
+              "net": 836.0799999999999,
+              "win_rate": 0.625
+            },
+            {
+              "year": 2026,
+              "n": 3,
+              "pf": 1.7470126322977124,
+              "median": 99.76,
+              "mean": 43.75999999999999,
+              "net": 131.27999999999997,
+              "win_rate": 0.6666666666666666
+            }
+          ],
+          "eras": [
+            {
+              "era": 1,
+              "n": 18,
+              "pf": 1.5323071670412836,
+              "median": 43.01,
+              "mean": 20.78777777777777,
+              "net": 374.17999999999984
+            },
+            {
+              "era": 2,
+              "n": 18,
+              "pf": 1.79362594020355,
+              "median": 203.01,
+              "mean": 88.98222222222222,
+              "net": 1601.6799999999998
+            },
+            {
+              "era": 3,
+              "n": 18,
+              "pf": 1.860378324486002,
+              "median": 97.76,
+              "mean": 70.95444444444443,
+              "net": 1277.1799999999998
+            }
+          ],
+          "verdict": "OK"
+        },
+        "dim_4_lookahead": {
+          "convention": "event_window_engine: entry at event_idx + entry_offset_bars (default 1); fill at next bar's open",
+          "verdict": "OK (FQL standard convention; no future-bar leakage)"
+        },
+        "dim_5_calendar": {
+          "source": "federalreserve.gov FOMC calendars 2019-2026",
+          "verified_date": "2026-06-11",
+          "n_scheduled_events": 58,
+          "n_clean_events_used": 54,
+          "clean_pct": 93.10344827586206,
+          "calendar_grade": "MACHINE_FETCHED_OFFICIAL",
+          "verdict": "PASS (calendar grade >= MACHINE_FETCHED_OFFICIAL per V1)"
+        },
+        "dim_6_survivorship": {
+          "verdict": "N/A (event-window strategy does not rely on cross-sectional asset universe)"
+        },
+        "dim_7_duplicate_exposure": {
+          "vs_packet1_NFP_MGC_archived": {
+            "n_days_a": 54,
+            "n_days_b": 63,
+            "n_days_overlap": 0,
+            "overlap_pct_of_a": 0.0,
+            "daily_pnl_corr": -0.025167795383005197,
+            "overlap_day_pnl_corr": NaN
+          },
+          "vs_XB_ORB_MNQ_probation": {
+            "n_days_a": 54,
+            "n_days_b": 1219,
+            "n_days_overlap": 42,
+            "overlap_pct_of_a": 77.77777777777779,
+            "daily_pnl_corr": 0.008697061576539008,
+            "overlap_day_pnl_corr": 0.07652504430577084
+          },
+          "vs_XB_ORB_MES": {
+            "n_days_a": 54,
+            "n_days_b": 1251,
+            "n_days_overlap": 44,
+            "overlap_pct_of_a": 81.48148148148148,
+            "daily_pnl_corr": 0.007788321077860958,
+            "overlap_day_pnl_corr": 0.07742784987631177
+          },
+          "vs_BBKC_MNQ_archived": {
+            "n_days_a": 54,
+            "n_days_b": 839,
+            "n_days_overlap": 32,
+            "overlap_pct_of_a": 59.25925925925925,
+            "daily_pnl_corr": 0.023104625907814678,
+            "overlap_day_pnl_corr": 0.22353571403482864
+          },
+          "max_daily_corr": 0.023104625907814678,
+          "verdict": "PASS \u2014 INDEPENDENT (max corr < 0.30)"
+        },
+        "dim_8_artifact_reproducibility": {
+          "signal_hash_run1": "7ffb294c76847d76",
+          "signal_hash_run2": "7ffb294c76847d76",
+          "reproducible": true,
+          "verdict": "PASS"
+        },
+        "soft_flag_era3_median": {
+          "era3_median": 97.76,
+          "note": "Tail-engine soft flag (not auto-fail). Era3 PF is the hard gate."
+        }
+      },
+      "final_verdict": "V1 PAPER_PACKET_CANDIDATE \u2014 AUDIT GREEN",
+      "next_step": "Operator review for paper-promotion decision (Lane A action, separately authorized)"
+    }
+  }
+}
