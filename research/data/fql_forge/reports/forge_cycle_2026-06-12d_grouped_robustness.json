@@ -1,0 +1,235 @@
+{
+  "date": "2026-06-12",
+  "purpose": "Grouped robustness on orb_failure_reversal + first_impulse_pullback per #187",
+  "orb_failure_reversal": {
+    "label": "WH-MNQ-orb_failure_reversal",
+    "asset": "MNQ",
+    "entry": "orb_failure_reversal",
+    "baseline": {
+      "n": 745,
+      "pf": 1.274,
+      "median": 5.76,
+      "net": 8359.199999999997
+    },
+    "year_excl_pf_range": [
+      1.185144183389163,
+      1.3709853177559872
+    ],
+    "eras": [
+      {
+        "era": 1,
+        "n": 248,
+        "pf": 1.1261973885698002,
+        "median": 0.76,
+        "net": 1044.979999999999
+      },
+      {
+        "era": 2,
+        "n": 248,
+        "pf": 1.6514039492794774,
+        "median": 17.51,
+        "net": 5390.979999999999
+      },
+      {
+        "era": 3,
+        "n": 249,
+        "pf": 1.137995066377174,
+        "median": 3.76,
+        "net": 1923.2399999999986
+      }
+    ],
+    "largest_event": {
+      "max_pnl": 1961.26,
+      "min_pnl": -1112.24,
+      "pf_no_max": 1.209813376498845,
+      "pf_no_min": 1.3223635217574208,
+      "max_event_abs_share_pct": 23.46229304239641,
+      "max_is_loss": false
+    },
+    "rolling_blocks": {
+      "n": 12,
+      "pct_>_1.0": 66.66666666666666,
+      "pct_>_1.2": 66.66666666666666
+    },
+    "concentration": {
+      "max_yr": 42.780409608575,
+      "max_month": 27.255478993205102,
+      "max_week": 25.460331132165763
+    },
+    "day_of_week": {
+      "Friday": 0.7310280896022757,
+      "Monday": 1.2422122227711534,
+      "Thursday": 1.6130476815876842,
+      "Tuesday": 1.2081509380329736,
+      "Wednesday": 1.5667983372145007
+    },
+    "time_of_day": {
+      "10": 1.57610134148545,
+      "11": 0.9161840189886782,
+      "12": 1.4971720147462138,
+      "13": 0.30876107546593345,
+      "14": 1.0543653750620963
+    },
+    "stress_ladder": [
+      {
+        "label": "1x",
+        "pf": 1.274,
+        "median": 5.76
+      },
+      {
+        "label": "1.5x+1t",
+        "pf": 1.23,
+        "median": 4.14
+      },
+      {
+        "label": "2x+2t",
+        "pf": 1.188,
+        "median": 2.52
+      },
+      {
+        "label": "3x+2t",
+        "pf": 1.156,
+        "median": 1.28
+      },
+      {
+        "label": "4x+3t",
+        "pf": 1.102,
+        "median": -0.96
+      },
+      {
+        "label": "5x+4t",
+        "pf": 1.05,
+        "median": -3.2
+      }
+    ],
+    "robustness_checks": {
+      "year_excl_min_PF_>=_1.2": false,
+      "Era3_PF_>=_1.0": true,
+      "Era3_median_>=_0": true,
+      "rolling_blocks_>1.0_PF_>_60%": true,
+      "remove_largest_win_PF_>_1.15": true,
+      "remove_largest_loss_PF_>_1.15": true,
+      "max_yr_share_<=_50": true,
+      "max_event_share_<=_15_or_LOSS_TAIL_ABSORPTION": "False",
+      "stress_2x+2t_median_>_0": true,
+      "stress_5x+4t_PF_>_0.8": true
+    },
+    "all_pass": false,
+    "verdict": "ROBUSTNESS PARTIAL \u2014 failed: ['year_excl_min_PF_>=_1.2', 'max_event_share_<=_15_or_LOSS_TAIL_ABSORPTION']"
+  },
+  "first_impulse_pullback": {
+    "label": "WH-MNQ-first_impulse_pullback",
+    "asset": "MNQ",
+    "entry": "first_impulse_pullback",
+    "baseline": {
+      "n": 1001,
+      "pf": 1.354,
+      "median": 4.26,
+      "net": 13191.759999999993
+    },
+    "year_excl_pf_range": [
+      1.3168973606763485,
+      1.399665697763739
+    ],
+    "eras": [
+      {
+        "era": 1,
+        "n": 333,
+        "pf": 1.0376418263085048,
+        "median": -6.24,
+        "net": 341.579999999999
+      },
+      {
+        "era": 2,
+        "n": 334,
+        "pf": 1.4847091420907574,
+        "median": 13.01,
+        "net": 5919.839999999998
+      },
+      {
+        "era": 3,
+        "n": 334,
+        "pf": 1.434062664801061,
+        "median": 15.51,
+        "net": 6930.339999999998
+      }
+    ],
+    "largest_event": {
+      "max_pnl": 1514.76,
+      "min_pnl": -443.74,
+      "pf_no_max": 1.313443861417925,
+      "pf_no_min": 1.3704278223337374,
+      "max_event_abs_share_pct": 11.482622485551593,
+      "max_is_loss": false
+    },
+    "rolling_blocks": {
+      "n": 16,
+      "pct_>_1.0": 68.75,
+      "pct_>_1.2": 43.75
+    },
+    "concentration": {
+      "max_yr": 20.718539451900288,
+      "max_month": 15.153702007920103,
+      "max_week": 11.734749570944293
+    },
+    "day_of_week": {
+      "Friday": 1.5283237108509966,
+      "Monday": 1.0889661331318266,
+      "Thursday": 1.6353672107862052,
+      "Tuesday": 1.497762398446262,
+      "Wednesday": 1.0114463174182975
+    },
+    "time_of_day": {
+      "10": 1.3106769016050246,
+      "11": 1.9750026999410166,
+      "12": 1.2652402519652244,
+      "13": 1.8226082004555813
+    },
+    "stress_ladder": [
+      {
+        "label": "1x",
+        "pf": 1.354,
+        "median": 4.26
+      },
+      {
+        "label": "1.5x+1t",
+        "pf": 1.304,
+        "median": 2.64
+      },
+      {
+        "label": "2x+2t",
+        "pf": 1.256,
+        "median": 1.02
+      },
+      {
+        "label": "3x+2t",
+        "pf": 1.221,
+        "median": -0.22
+      },
+      {
+        "label": "4x+3t",
+        "pf": 1.159,
+        "median": -2.46
+      },
+      {
+        "label": "5x+4t",
+        "pf": 1.101,
+        "median": -4.7
+      }
+    ],
+    "robustness_checks": {
+      "year_excl_min_PF_>=_1.2": true,
+      "Era3_PF_>=_1.0": true,
+      "Era3_median_>=_0": true,
+      "rolling_blocks_>1.0_PF_>_60%": true,
+      "remove_largest_win_PF_>_1.15": true,
+      "remove_largest_loss_PF_>_1.15": true,
+      "max_yr_share_<=_50": true,
+      "max_event_share_<=_15_or_LOSS_TAIL_ABSORPTION": "True",
+      "stress_2x+2t_median_>_0": true,
+      "stress_5x+4t_PF_>_0.8": true
+    },
+    "all_pass": true,
+    "verdict": "ROBUSTNESS GREEN"
+  }
+}
