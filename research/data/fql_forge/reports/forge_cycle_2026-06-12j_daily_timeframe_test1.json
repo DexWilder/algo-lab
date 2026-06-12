@@ -1,0 +1,152 @@
+{
+  "date": "2026-06-12",
+  "purpose": "Daily-Timeframe Test 1 (viability probe) per #200 A",
+  "framing": "if all fail, archive only direct existing-primitives thesis; daily-timeframe lane remains valid for NEW primitives",
+  "v1_tier": {
+    "PAPER_PACKET_CANDIDATE": 0,
+    "WATCH": 1,
+    "ARCHIVED": 3
+  },
+  "results": [
+    {
+      "label": "WH-MNQ-prior_day_break-ema_slope-PL",
+      "asset": "MNQ",
+      "entry": "prior_day_break",
+      "archetype": "WORKHORSE",
+      "metrics": {
+        "n": 705,
+        "pf": 1.166,
+        "median": 8.26,
+        "net": 6513.8,
+        "max_dd": -2380.98
+      },
+      "daily_instrumentation": {
+        "n_trades": 705,
+        "n_days_traded": 705,
+        "trades_per_day": 1.0,
+        "pct_days_traded": 39.297658862876254,
+        "pct_profitable_days": 52.6241134751773,
+        "avg_hold_bars": 28.361702127659573,
+        "avg_hold_minutes": 141.80851063829786,
+        "overnight_pct": 1.702127659574468,
+        "dow_distribution": {
+          "Thursday": 160,
+          "Monday": 144,
+          "Wednesday": 138,
+          "Tuesday": 133,
+          "Friday": 130
+        }
+      },
+      "verdict": "WATCH",
+      "v1_gates": null,
+      "v1_verdict": null,
+      "temporal_split": null,
+      "stress_metrics": null
+    },
+    {
+      "label": "WH-MES-prior_day_break-ema_slope-PL",
+      "asset": "MES",
+      "entry": "prior_day_break",
+      "archetype": "WORKHORSE",
+      "metrics": {
+        "n": 725,
+        "pf": 1.145,
+        "median": -4.99,
+        "net": 3354.75,
+        "max_dd": -2994.96
+      },
+      "daily_instrumentation": {
+        "n_trades": 725,
+        "n_days_traded": 725,
+        "trades_per_day": 1.0,
+        "pct_days_traded": 40.41248606465998,
+        "pct_profitable_days": 47.44827586206897,
+        "avg_hold_bars": 24.6,
+        "avg_hold_minutes": 123.0,
+        "overnight_pct": 0.9655172413793104,
+        "dow_distribution": {
+          "Thursday": 159,
+          "Monday": 158,
+          "Wednesday": 143,
+          "Friday": 136,
+          "Tuesday": 129
+        }
+      },
+      "verdict": "KILL (median neg)",
+      "v1_gates": null,
+      "v1_verdict": null,
+      "temporal_split": null,
+      "stress_metrics": null
+    },
+    {
+      "label": "WH-MNQ-prior_day_fade-ema_slope-PL",
+      "asset": "MNQ",
+      "entry": "prior_day_fade",
+      "archetype": "TAIL_ENGINE",
+      "metrics": {
+        "n": 415,
+        "pf": 1.088,
+        "median": 1.26,
+        "net": 1579.4,
+        "max_dd": -2016.78
+      },
+      "daily_instrumentation": {
+        "n_trades": 415,
+        "n_days_traded": 415,
+        "trades_per_day": 1.0,
+        "pct_days_traded": 23.132664437012263,
+        "pct_profitable_days": 50.36144578313253,
+        "avg_hold_bars": 14.255421686746988,
+        "avg_hold_minutes": 71.27710843373494,
+        "overnight_pct": 0.48192771084337355,
+        "dow_distribution": {
+          "Monday": 139,
+          "Wednesday": 79,
+          "Tuesday": 77,
+          "Thursday": 66,
+          "Friday": 54
+        }
+      },
+      "verdict": "KILL (PF<1.15)",
+      "v1_gates": null,
+      "v1_verdict": null,
+      "temporal_split": null,
+      "stress_metrics": null
+    },
+    {
+      "label": "WH-MES-prior_day_fade-ema_slope-PL",
+      "asset": "MES",
+      "entry": "prior_day_fade",
+      "archetype": "TAIL_ENGINE",
+      "metrics": {
+        "n": 419,
+        "pf": 1.279,
+        "median": -2.49,
+        "net": 2942.94,
+        "max_dd": -1233.67
+      },
+      "daily_instrumentation": {
+        "n_trades": 419,
+        "n_days_traded": 419,
+        "trades_per_day": 1.0,
+        "pct_days_traded": 23.355629877369008,
+        "pct_profitable_days": 47.97136038186158,
+        "avg_hold_bars": 18.307875894988065,
+        "avg_hold_minutes": 91.53937947494033,
+        "overnight_pct": 1.431980906921241,
+        "dow_distribution": {
+          "Monday": 137,
+          "Tuesday": 90,
+          "Thursday": 76,
+          "Wednesday": 65,
+          "Friday": 51
+        }
+      },
+      "verdict": "KILL (asymmetric trap)",
+      "v1_gates": null,
+      "v1_verdict": null,
+      "temporal_split": null,
+      "stress_metrics": null
+    }
+  ]
+}
