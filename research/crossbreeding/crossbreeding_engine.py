@@ -1320,6 +1320,90 @@ def filter_session_close(f, i, signal, params):
 # PART 5: GENERIC SIGNAL GENERATOR
 # ═══════════════════════════════════════════════════════════════════════════
 
+def entry_first_impulse_pullback(f, i, state, params):
+    """First-impulse pullback continuation: trade pullbacks in direction of
+    the opening impulse (post-ORB directional move).
+
+    Mechanism (workhorse):
+      - After ORB period (9:30-10:00 ET) completes, track running high/low.
+      - Establish "impulse direction" once one side dominates by >= 1.5x ATR.
+      - Look for pullback retracement to 50% of impulse range.
+      - Enter in impulse direction when pullback level reached AND close starts
+        reversing back toward impulse extreme.
+
+    Built 2026-06-12 per operator NEEDS_PRIMITIVE #6 (daily workhorse queue).
+    """
+    if not f["or_complete"][i]:
+        return 0, 0, 0
+    or_h = f["or_high"][i]
+    or_l = f["or_low"][i]
+    if np.isnan(or_h) or np.isnan(or_l):
+        return 0, 0, 0
+    if np.isnan(f["atr"][i]) or f["atr"][i] <= 0:
+        return 0, 0, 0
+
+    # Per-day state tracking (engine only resets long/short_traded_today)
+    cur_date = state.get("current_date")
+    if state.get("impulse_date_marker") != cur_date:
+        state["impulse_date_marker"] = cur_date
+        state["impulse_high"] = f["high"][i]
+        state["impulse_low"] = f["low"][i]
+        state["impulse_anchor"] = (or_h + or_l) / 2.0
+        state["impulse_direction"] = 0
+        state["pullback_low_seen"] = float("inf")
+        state["pullback_high_seen"] = float("-inf")
+
+    # Update running impulse extremes
+    if f["high"][i] > state["impulse_high"]:
+        state["impulse_high"] = f["high"][i]
+    if f["low"][i] < state["impulse_low"]:
+        state["impulse_low"] = f["low"][i]
+
+    up_strength = state["impulse_high"] - state["impulse_anchor"]
+    dn_strength = state["impulse_anchor"] - state["impulse_low"]
+    atr_i = f["atr"][i]
+
+    # Establish impulse direction (only once per day, when one side dominates)
+    if state["impulse_direction"] == 0:
+        if up_strength >= atr_i * params.get("impulse_atr_mult", 1.0) and up_strength > dn_strength * 1.3:
+            state["impulse_direction"] = 1
+        elif dn_strength >= atr_i * params.get("impulse_atr_mult", 1.0) and dn_strength > up_strength * 1.3:
+            state["impulse_direction"] = -1
+
+    if state["impulse_direction"] == 0:
+        return 0, 0, 0
+
+    close_i = f["close"][i]
+    close_prev = f["close"][i - 1] if i > 0 else close_i
+
+    if state["impulse_direction"] == 1:
+        # UP impulse: wait for pullback to 50% retracement, then bounce
+        pullback_50 = state["impulse_high"] - 0.5 * up_strength
+        if close_i < state["pullback_low_seen"]:
+            state["pullback_low_seen"] = close_i
+        # Trigger LONG: pullback reached 50%, current close > prev close (bounce starts)
+        if (state["pullback_low_seen"] <= pullback_50
+                and close_i > close_prev
+                and not state["long_traded_today"]):
+            stop = state["pullback_low_seen"] - atr_i * params.get("stop_mult", 0.5)
+            target = state["impulse_high"] + up_strength * params.get("target_mult", 0.5)
+            return 1, stop, target
+    elif state["impulse_direction"] == -1:
+        # DOWN impulse
+        pullback_50 = state["impulse_low"] + 0.5 * dn_strength
+        if close_i > state["pullback_high_seen"]:
+            state["pullback_high_seen"] = close_i
+        # Trigger SHORT: pullback reached 50%, current close < prev close (rejection)
+        if (state["pullback_high_seen"] >= pullback_50
+                and close_i < close_prev
+                and not state["short_traded_today"]):
+            stop = state["pullback_high_seen"] + atr_i * params.get("stop_mult", 0.5)
+            target = state["impulse_low"] - dn_strength * params.get("target_mult", 0.5)
+            return -1, stop, target
+
+    return 0, 0, 0
+
+
 def entry_orb_failure_reversal(f, i, state, params):
     """ORB failure reversal: trades the FAILED breakout, not the breakout itself.
 
@@ -1387,6 +1471,7 @@ ENTRY_MAP = {
     "stop_run_reversal": entry_stop_run_reversal,
     "abnormal_range_followup": entry_abnormal_range_followup,
     "orb_failure_reversal": entry_orb_failure_reversal,
+    "first_impulse_pullback": entry_first_impulse_pullback,
 }
 
 EXIT_MAP = {

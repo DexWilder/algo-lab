@@ -1,0 +1,161 @@
+{
+  "date": "2026-06-12",
+  "purpose": "Test first_impulse_pullback primitive (NEEDS_PRIMITIVE #6) on MNQ/MES",
+  "v1_tier": {
+    "PAPER_PACKET_CANDIDATE": 1,
+    "ARCHIVED": 1
+  },
+  "results": [
+    {
+      "label": "WH-MNQ-first_impulse_pullback-ema_slope-PL",
+      "asset": "MNQ",
+      "metrics": {
+        "n": 1001,
+        "pf": 1.354,
+        "median": 4.26,
+        "net": 13191.76,
+        "max_dd": -1803.94
+      },
+      "daily_metrics": {
+        "n_trades": 1001,
+        "n_days_traded": 1001,
+        "trades_per_day": 1.0,
+        "pct_days_traded": 55.79710144927537,
+        "pct_profitable_days": 51.34865134865135
+      },
+      "verdict": "ESCALATE_TO_V1_AUDIT",
+      "v1_gates": {
+        "n_>=_500": true,
+        "PF_>=_1.20": true,
+        "positive_median": true,
+        "PASS_STRESS": true,
+        "max_yr_<=_50pct": true,
+        "yrs_pos_>=_50pct": true,
+        "Era3_PF_>=_1.0": true,
+        "Era3_median_>=_0": true
+      },
+      "v1_verdict": "PAPER_PACKET_CANDIDATE",
+      "temporal_split": {
+        "yrs_pos": 7,
+        "n_yrs": 8,
+        "era3_pf": 1.434062664801061,
+        "era3_median": 15.51,
+        "max_yr_share_pct": 20.718539451900277,
+        "per_year": [
+          {
+            "year": 2019,
+            "n": 73,
+            "pf": 0.6998979244641035,
+            "median": -9.24,
+            "net": -317.52
+          },
+          {
+            "year": 2020,
+            "n": 148,
+            "pf": 1.0391803724344164,
+            "median": -2.24,
+            "net": 184.47999999999968
+          },
+          {
+            "year": 2021,
+            "n": 154,
+            "pf": 1.1138765144260796,
+            "median": 4.51,
+            "net": 547.0399999999996
+          },
+          {
+            "year": 2022,
+            "n": 137,
+            "pf": 1.4418168819540367,
+            "median": 13.26,
+            "net": 2546.119999999999
+          },
+          {
+            "year": 2023,
+            "n": 148,
+            "pf": 1.522013442942455,
+            "median": 4.76,
+            "net": 2506.9799999999996
+          },
+          {
+            "year": 2024,
+            "n": 139,
+            "pf": 1.5110506948287983,
+            "median": 4.76,
+            "net": 2733.139999999999
+          },
+          {
+            "year": 2025,
+            "n": 144,
+            "pf": 1.3419303632767776,
+            "median": 18.51,
+            "net": 2627.9399999999987
+          },
+          {
+            "year": 2026,
+            "n": 58,
+            "pf": 1.7662715754801404,
+            "median": 41.26,
+            "net": 2363.5799999999995
+          }
+        ],
+        "eras": [
+          {
+            "era": 1,
+            "n": 333,
+            "pf": 1.0376418263085048,
+            "median": -6.24,
+            "net": 341.579999999999
+          },
+          {
+            "era": 2,
+            "n": 334,
+            "pf": 1.4847091420907574,
+            "median": 13.01,
+            "net": 5919.839999999998
+          },
+          {
+            "era": 3,
+            "n": 334,
+            "pf": 1.434062664801061,
+            "median": 15.51,
+            "net": 6930.339999999998
+          }
+        ]
+      },
+      "stress_metrics": {
+        "pf": 1.256,
+        "median": 1.02
+      },
+      "family_review": {
+        "vs_XB_ORB_MNQ": 0.42998153561634966,
+        "vs_WH_stop_run": 0.10984379938605021,
+        "vs_WH_range_compression": 0.2510832944012536,
+        "vs_WH_orb_failure_reversal": 0.02415172378028424
+      }
+    },
+    {
+      "label": "WH-MES-first_impulse_pullback-ema_slope-PL",
+      "asset": "MES",
+      "metrics": {
+        "n": 1008,
+        "pf": 1.242,
+        "median": -2.49,
+        "net": 4947.58,
+        "max_dd": -1095.14
+      },
+      "daily_metrics": {
+        "n_trades": 1008,
+        "n_days_traded": 1008,
+        "trades_per_day": 1.0,
+        "pct_days_traded": 56.187290969899664,
+        "pct_profitable_days": 48.51190476190476
+      },
+      "verdict": "KILL (asymmetric trap)",
+      "v1_gates": null,
+      "v1_verdict": null,
+      "temporal_split": null,
+      "stress_metrics": null
+    }
+  ]
+}
