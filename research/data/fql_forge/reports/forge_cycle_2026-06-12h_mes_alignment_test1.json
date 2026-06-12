@@ -1,0 +1,42 @@
+{
+  "date": "2026-06-12",
+  "purpose": "Test 1: mes_alignment filter on stop_run_reversal per #196 A methodology",
+  "baseline": {
+    "metrics": {
+      "n": 1414,
+      "pf": 1.477,
+      "median": 15.51,
+      "net": 35368.64
+    },
+    "era3_pf": 1.5543420007373816,
+    "stress": {
+      "pf": 1.404,
+      "median": 12.27
+    }
+  },
+  "filtered": {
+    "metrics": {
+      "n": 494,
+      "pf": 0.999,
+      "median": -4.49,
+      "net": -39.06
+    },
+    "era3_pf": 0.9197406618613411,
+    "stress": {
+      "pf": 0.946,
+      "median": -7.73
+    }
+  },
+  "criteria_evaluation": {
+    "pf_delta": -0.4780000000000001,
+    "pf_pass": false,
+    "trade_reduction_pct": 65.06364922206507,
+    "trade_pass": false,
+    "era3_delta": -0.6346013388760405,
+    "era3_pass": false,
+    "stress_pf_delta": -0.45799999999999996,
+    "stress_pass": false
+  },
+  "all_criteria_pass": false,
+  "verdict": "mes_alignment ARCHIVED \u2014 failed criteria: ['PF_improvement', 'trade_reduction', 'Era3_stable', 'stress_stable']; per methodology: NO TUNING, move to ZN port"
+}

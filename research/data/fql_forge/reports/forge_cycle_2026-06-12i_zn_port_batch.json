@@ -1,0 +1,84 @@
+{
+  "date": "2026-06-12",
+  "purpose": "ZN port batch (3 GREEN MNQ workhorses ported as-is) per #197 B",
+  "boundary": "as-is port, no tuning, honest transfer test",
+  "v1_tier": {
+    "PAPER_PACKET_CANDIDATE": 0,
+    "WATCH": 0,
+    "ARCHIVED": 3
+  },
+  "results": [
+    {
+      "label": "WH-ZN-stop_run_reversal-ema_slope-PL",
+      "asset": "ZN",
+      "entry": "stop_run_reversal",
+      "metrics": {
+        "n": 747,
+        "pf": 0.73,
+        "median": -18.73,
+        "net": -13769.02,
+        "max_dd": -14253.65
+      },
+      "daily_metrics": {
+        "n_trades": 747,
+        "n_days_traded": 747,
+        "trades_per_day": 1.0,
+        "pct_days_traded": 41.685267857142854,
+        "pct_profitable_days": 41.09772423025435
+      },
+      "verdict": "KILL (median neg)",
+      "v1_gates": null,
+      "v1_verdict": null,
+      "temporal_split": null,
+      "stress_metrics": null
+    },
+    {
+      "label": "WH-ZN-range_compression_break-ema_slope-PL",
+      "asset": "ZN",
+      "entry": "range_compression_break",
+      "metrics": {
+        "n": 750,
+        "pf": 0.682,
+        "median": -18.73,
+        "net": -14153.49,
+        "max_dd": -14134.76
+      },
+      "daily_metrics": {
+        "n_trades": 750,
+        "n_days_traded": 750,
+        "trades_per_day": 1.0,
+        "pct_days_traded": 41.85267857142857,
+        "pct_profitable_days": 36.0
+      },
+      "verdict": "KILL (median neg)",
+      "v1_gates": null,
+      "v1_verdict": null,
+      "temporal_split": null,
+      "stress_metrics": null
+    },
+    {
+      "label": "WH-ZN-first_impulse_pullback-ema_slope-PL",
+      "asset": "ZN",
+      "entry": "first_impulse_pullback",
+      "metrics": {
+        "n": 899,
+        "pf": 0.585,
+        "median": -34.35,
+        "net": -19912.11,
+        "max_dd": -19821.7
+      },
+      "daily_metrics": {
+        "n_trades": 899,
+        "n_days_traded": 899,
+        "trades_per_day": 1.0,
+        "pct_days_traded": 50.16741071428571,
+        "pct_profitable_days": 33.37041156840934
+      },
+      "verdict": "KILL (median neg)",
+      "v1_gates": null,
+      "v1_verdict": null,
+      "temporal_split": null,
+      "stress_metrics": null
+    }
+  ]
+}
