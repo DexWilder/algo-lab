@@ -231,6 +231,36 @@ def compute_full_risk_report(trades_df: pd.DataFrame, daily_bars: pd.DataFrame,
         f"$10K trailing DD: {'PASS' if trailing_dd_10k_compatible else 'FAIL'}."
     )
 
+    # Per operator #207: deployment suitability summary line
+    intraday_prop_compatible = overnight_pct == 0  # only intraday-flat strategies
+    failure_reasons = []
+    if not daily_dll_2k_compatible:
+        failure_reasons.append(f"largest single-day loss ${largest_single_day_loss:.0f} > $2K")
+    if not daily_dll_3k_compatible and largest_single_day_loss > 3000:
+        failure_reasons.append(f"largest single-day loss > $3K")
+    if not trailing_dd_5k_compatible:
+        failure_reasons.append(f"cumulative unrealized DD ${abs(worst_cum_unrealized):.0f} > $5K")
+    if not gap_protection_pass:
+        failure_reasons.append(f"overnight gap ${abs(worst_overnight_gap):.0f} > 3× avg win")
+
+    deployment_suitability = {
+        "intraday_prop_account_compatible": intraday_prop_compatible,
+        "tradeify_2k_daily_dd_compatible": daily_dll_2k_compatible,
+        "tradeify_3k_daily_dd_compatible": daily_dll_3k_compatible,
+        "trailing_5k_dd_compatible": trailing_dd_5k_compatible,
+        "trailing_10k_dd_compatible": trailing_dd_10k_compatible,
+        "primary_failure_reason": failure_reasons[0] if failure_reasons else "None - all compatible",
+        "all_failure_reasons": failure_reasons,
+        "summary_line": (
+            f"DEPLOYMENT SUITABILITY: "
+            f"intraday-prop {'YES' if intraday_prop_compatible else 'NO (overnight)'} | "
+            f"$2K DLL {'YES' if daily_dll_2k_compatible else 'NO'} | "
+            f"$3K DLL {'YES' if daily_dll_3k_compatible else 'NO'} | "
+            f"$5K trailing {'YES' if trailing_dd_5k_compatible else 'NO'} | "
+            f"reason: {failure_reasons[0] if failure_reasons else 'all PASS'}"
+        ),
+    }
+
     return {
         "n_trades": n,
         "net_pnl": net,
@@ -272,4 +302,5 @@ def compute_full_risk_report(trades_df: pd.DataFrame, daily_bars: pd.DataFrame,
             "gap_protection_pass_3x_avg_win": gap_protection_pass,
             "note": prop_firm_note,
         },
+        "deployment_suitability": deployment_suitability,
     }
