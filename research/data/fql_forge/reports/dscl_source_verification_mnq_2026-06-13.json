@@ -1,0 +1,256 @@
+{
+  "purpose": "DSCL Source Verification \u2014 MNQ in-repo scope",
+  "boundaries": "report-only; external components BLOCKED not faked; no wiring",
+  "lineage": {
+    "vendor": "Databento",
+    "dataset": "GLBX.MDP3",
+    "schema": "ohlcv-1m",
+    "stype_in": "continuous",
+    "raw_symbol": "MNQ.c.0",
+    "roll_method": "front-month continuous, CALENDAR roll (.c.0), raw stitch \u2014 NOT back-adjusted (roll-day price gaps possible)",
+    "timezone": "UTC -> US/Eastern, tz-stripped (naive Eastern)",
+    "bar_construction": "trade-based 1m OHLCV resampled to 5m (label=left, closed=left; O=first H=max L=min C=last V=sum)",
+    "loader_bulk": "data/databento_loader.py",
+    "loader_incremental": "scripts/update_daily_data.py (fetches Databento 1m, resamples, append mode='a')",
+    "incremental_raw_retained": false,
+    "reproducibility_note": "post-March bars NOT re-derivable from a retained raw file; only by re-querying Databento (bulk raw frozen 2026-03-07).",
+    "cost_model": {
+      "commission_per_side": 0.62,
+      "slippage_ticks": 1,
+      "tick_size": 0.25,
+      "cost_tier": "VALIDATED"
+    },
+    "databento_backed": true
+  },
+  "in_repo_audits": {
+    "n_bars": 487444,
+    "span_start": "2019-06-30 20:00:00",
+    "span_end": "2026-06-11 19:55:00",
+    "duplicate_timestamps": 0,
+    "monotonic_increasing": true,
+    "bar_gaps": {
+      "exactly_5min": 484958,
+      "sub_5min": 0,
+      "gt_10min": 2374,
+      "gt_60min_session_boundaries": 1799,
+      "gt_1d": 369,
+      "gt_3d": 11
+    },
+    "session_boundary_big_price_gaps_gt50pt": 96,
+    "rollover_candidate_gaps_gt100pt": [
+      {
+        "datetime": "2020-03-01 18:00:00",
+        "gap_pts": 106.0
+      },
+      {
+        "datetime": "2020-03-22 18:00:00",
+        "gap_pts": 598.25
+      },
+      {
+        "datetime": "2020-03-29 18:00:00",
+        "gap_pts": 113.0
+      },
+      {
+        "datetime": "2020-06-14 18:00:00",
+        "gap_pts": 102.0
+      },
+      {
+        "datetime": "2020-06-21 18:00:00",
+        "gap_pts": 245.5
+      },
+      {
+        "datetime": "2020-09-20 18:00:00",
+        "gap_pts": 194.75
+      },
+      {
+        "datetime": "2021-09-19 18:00:00",
+        "gap_pts": 239.0
+      },
+      {
+        "datetime": "2022-02-27 18:00:00",
+        "gap_pts": 186.25
+      },
+      {
+        "datetime": "2022-03-20 18:00:00",
+        "gap_pts": 334.5
+      },
+      {
+        "datetime": "2022-05-23 18:00:00",
+        "gap_pts": 120.75
+      },
+      {
+        "datetime": "2022-06-19 18:00:00",
+        "gap_pts": 196.75
+      },
+      {
+        "datetime": "2022-09-18 18:00:00",
+        "gap_pts": 143.0
+      },
+      {
+        "datetime": "2023-12-17 18:00:00",
+        "gap_pts": 237.0
+      },
+      {
+        "datetime": "2024-03-17 18:00:00",
+        "gap_pts": 189.75
+      },
+      {
+        "datetime": "2024-06-23 18:00:00",
+        "gap_pts": 244.25
+      },
+      {
+        "datetime": "2024-08-04 18:00:00",
+        "gap_pts": 118.0
+      },
+      {
+        "datetime": "2024-09-22 18:00:00",
+        "gap_pts": 218.5
+      },
+      {
+        "datetime": "2024-12-22 18:00:00",
+        "gap_pts": 584.5
+      },
+      {
+        "datetime": "2025-01-26 18:00:00",
+        "gap_pts": 134.75
+      },
+      {
+        "datetime": "2025-02-02 18:00:00",
+        "gap_pts": 291.0
+      },
+      {
+        "datetime": "2025-02-09 18:00:00",
+        "gap_pts": 110.75
+      },
+      {
+        "datetime": "2025-03-23 18:00:00",
+        "gap_pts": 594.25
+      },
+      {
+        "datetime": "2025-04-02 18:00:00",
+        "gap_pts": 113.5
+      },
+      {
+        "datetime": "2025-04-06 18:00:00",
+        "gap_pts": 360.0
+      },
+      {
+        "datetime": "2025-04-13 18:00:00",
+        "gap_pts": 344.75
+      },
+      {
+        "datetime": "2025-04-15 18:00:00",
+        "gap_pts": 130.0
+      },
+      {
+        "datetime": "2025-04-20 18:00:00",
+        "gap_pts": 122.5
+      },
+      {
+        "datetime": "2025-04-22 18:00:00",
+        "gap_pts": 259.0
+      },
+      {
+        "datetime": "2025-05-11 18:00:00",
+        "gap_pts": 227.25
+      },
+      {
+        "datetime": "2025-06-22 18:00:00",
+        "gap_pts": 207.25
+      },
+      {
+        "datetime": "2025-09-21 18:00:00",
+        "gap_pts": 285.5
+      },
+      {
+        "datetime": "2025-10-12 18:00:00",
+        "gap_pts": 293.75
+      },
+      {
+        "datetime": "2025-10-26 18:00:00",
+        "gap_pts": 188.25
+      },
+      {
+        "datetime": "2025-11-23 18:00:00",
+        "gap_pts": 100.5
+      },
+      {
+        "datetime": "2025-12-11 18:00:00",
+        "gap_pts": 115.5
+      },
+      {
+        "datetime": "2025-12-21 18:00:00",
+        "gap_pts": 515.0
+      },
+      {
+        "datetime": "2026-01-18 18:00:00",
+        "gap_pts": 125.75
+      },
+      {
+        "datetime": "2026-02-01 18:00:00",
+        "gap_pts": 108.75
+      },
+      {
+        "datetime": "2026-03-01 18:00:00",
+        "gap_pts": 267.75
+      },
+      {
+        "datetime": "2026-03-08 18:00:00",
+        "gap_pts": 160.75
+      },
+      {
+        "datetime": "2026-03-22 18:00:00",
+        "gap_pts": 360.0
+      },
+      {
+        "datetime": "2026-04-12 18:00:00",
+        "gap_pts": 328.75
+      },
+      {
+        "datetime": "2026-04-19 18:00:00",
+        "gap_pts": 238.75
+      },
+      {
+        "datetime": "2026-05-03 18:00:00",
+        "gap_pts": 105.25
+      },
+      {
+        "datetime": "2026-05-24 20:00:00",
+        "gap_pts": 322.5
+      },
+      {
+        "datetime": "2026-06-07 20:00:00",
+        "gap_pts": 257.0
+      }
+    ],
+    "ohlcv_hash_full": "4b7cc2503fc0820a",
+    "current_file_hash": "5233e103fbccd7b6"
+  },
+  "rebuild_audit_window": {
+    "truncated_n_bars": 487168,
+    "audit_n_bars": 487168,
+    "n_bars_match_append_only": true,
+    "first_ts": "2019-06-30 20:00:00",
+    "last_ts": "2026-06-10 19:55:00",
+    "ohlcv_hash_window": "267530437f581eb5",
+    "signal_hash": "d2d31c3f0e7e86bb",
+    "signal_hash_matches_audit": true,
+    "n": 1414,
+    "pf": 1.477,
+    "median": 15.51,
+    "net": 35368.64,
+    "largest_single_trade_loss": -1457.24,
+    "largest_single_day_loss": -1457.24,
+    "matches_committed_baseline": true
+  },
+  "external_components": {
+    "component_7_cme_settlement_comparison": "BLOCKED_ON_EXTERNAL_FEED_ACCESS (CME DataMine)",
+    "component_8_secondary_vendor_spotcheck": "BLOCKED_ON_EXTERNAL_FEED_ACCESS (e.g. dxFeed)",
+    "component_9_paper_execution_reconciliation": "BLOCKED_PENDING_PAPER_PERIOD"
+  },
+  "in_repo_verdict": "DSCL_IN_REPO_VERIFIED",
+  "databento_backed": true,
+  "canonical_for_paper": "ACCEPTABLE_AS_CANONICAL_FOR_PAPER",
+  "canonical_for_live_prop": "BLOCKED_until_DSCL_section7",
+  "stop_run_may_proceed_to_phase1c": "ONLY after Org Hygiene/Elite Classification Audit confirms no remaining activation-risk mismatches (operator gate)"
+}
