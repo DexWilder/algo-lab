@@ -1,0 +1,90 @@
+{
+  "purpose": "Phase 1A executable-module port verification (build+verify, hold wiring)",
+  "module_under_test": "strategies/xb_stop_run_reversal_ema_ladder/strategy.py",
+  "boundaries": "report-only; no registry/runner/scheduler mutation; no wiring",
+  "path_a_canonical_current_data": {
+    "n": 1415,
+    "pf": 1.479,
+    "median": 15.76,
+    "net": 35469.9,
+    "signal_hash": "0c0c135ab04f3005",
+    "cost_tier": "VALIDATED",
+    "costs_used": {
+      "commission_per_side": 0.62,
+      "slippage_ticks": 1,
+      "tick_size": 0.25
+    },
+    "loss_stats": {
+      "pnl_col": "pnl",
+      "largest_single_trade_loss": -1457.24,
+      "largest_single_day_loss": -1457.24
+    }
+  },
+  "path_b_production_current_data": {
+    "n": 1415,
+    "pf": 1.479,
+    "median": 15.76,
+    "net": 35469.9,
+    "signal_hash": "0c0c135ab04f3005",
+    "cost_tier": "VALIDATED",
+    "costs_used": {
+      "commission_per_side": 0.62,
+      "slippage_ticks": 1,
+      "tick_size": 0.25
+    },
+    "loss_stats": {
+      "pnl_col": "pnl",
+      "largest_single_trade_loss": -1457.24,
+      "largest_single_day_loss": -1457.24
+    },
+    "point_value_used": 2.0
+  },
+  "path_c_committed_baseline": {
+    "n": 1414,
+    "pf": 1.477,
+    "median": 15.51,
+    "net": 35368.64,
+    "source": "research/data/fql_forge/reports/forge_cycle_2026-06-11r_workhorse_final_robustness.json"
+  },
+  "path_d_audit_window_AUTHORITATIVE": {
+    "n": 1414,
+    "pf": 1.477,
+    "median": 15.51,
+    "net": 35368.64,
+    "signal_hash": "d2d31c3f0e7e86bb",
+    "truncated_n_bars": 487168,
+    "audit_n_bars": 487168,
+    "n_bars_match": true,
+    "loss_stats": {
+      "pnl_col": "pnl",
+      "largest_single_trade_loss": -1457.24,
+      "largest_single_day_loss": -1457.24
+    }
+  },
+  "data_drift_provenance": {
+    "audit_recorded_file_hash": "739875437ded8a76",
+    "current_file_hash": "5233e103fbccd7b6",
+    "file_changed_since_audit": true,
+    "audit_span_end": "2026-06-10 19:55:00",
+    "current_span_end": "2026-06-11 19:55:00",
+    "audit_n_bars": 487168,
+    "current_n_bars": 487444,
+    "appended_bars": 276,
+    "note": "Live feed is append-only; DATA_AUDIT_GREEN file hash is point-in-time (2026-06-12). This is a data-provenance observation for DSCL, not a port defect."
+  },
+  "comparison": {
+    "production_eq_research_exact_incl_hash": true,
+    "audit_window_eq_committed_baseline_exact": true,
+    "audit_window_signal_hash_matches_audit": true,
+    "audit_window_matches_targets": true,
+    "largest_loss_anchor_ok": true,
+    "targets": {
+      "n": 1414,
+      "pf": 1.477,
+      "median": 15.51,
+      "largest_loss": -1457.0
+    }
+  },
+  "verdict": "PORT_VERIFIED_GREEN",
+  "interpretation": "Port introduces ZERO divergence: production path reproduces the research path exactly (incl signal hash), and on the exact DATA_AUDIT_GREEN data window the port reproduces the committed baseline byte-for-byte (n=1414, PF 1.477, median 15.51, signal hash d2d31c3f0e7e86bb). On current (append-only) data the same strategy yields n=1415 due to the post-audit 2026-06-11 session. Not a port defect."
+}
