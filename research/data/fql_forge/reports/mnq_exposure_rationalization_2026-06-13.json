@@ -1,0 +1,89 @@
+{
+  "purpose": "MNQ exposure rationalization before Phase 1C (operator Option 1)",
+  "boundaries": "no stop_run wiring; no FOMC; no Wave 2/3; no live/prop; no OpenClaw/asset_config; no strategy logic changes",
+  "deactivated": [
+    "XB-ORB-EMA-Chandelier-MNQ",
+    "XB-PB-EMA-Chandelier-MNQ"
+  ],
+  "kept_active": [
+    "XB-ORB-EMA-Ladder-MNQ"
+  ],
+  "kept_separate_sparse_event": [
+    "TV-NFP-High-Low-Levels"
+  ],
+  "registry_field_changes": {
+    "XB-ORB-EMA-Chandelier-MNQ": {
+      "before": {
+        "status": "probation",
+        "controller_action": "REDUCED_ON",
+        "controller_state": "ACTIVE",
+        "lifecycle_stage": "discovery",
+        "executable_state": "EXECUTABLE",
+        "asset": "MNQ",
+        "strategy_name": "xb_orb_ema_chandelier"
+      },
+      "after": {
+        "status": "watch",
+        "controller_action": "OFF",
+        "controller_state": "VALIDATED",
+        "lifecycle_stage": "watch",
+        "executable_state": "EXECUTABLE",
+        "asset": "MNQ",
+        "strategy_name": "xb_orb_ema_chandelier"
+      }
+    },
+    "XB-PB-EMA-Chandelier-MNQ": {
+      "before": {
+        "status": "probation",
+        "controller_action": "REDUCED_ON",
+        "controller_state": "ACTIVE",
+        "lifecycle_stage": "discovery",
+        "executable_state": "EXECUTABLE",
+        "asset": "MNQ",
+        "strategy_name": "xb_pb_ema_chandelier"
+      },
+      "after": {
+        "status": "watch",
+        "controller_action": "OFF",
+        "controller_state": "VALIDATED",
+        "lifecycle_stage": "watch",
+        "executable_state": "EXECUTABLE",
+        "asset": "MNQ",
+        "strategy_name": "xb_pb_ema_chandelier"
+      }
+    }
+  },
+  "runner_before": {
+    "tag": "BEFORE",
+    "total_active_books_all_assets": 15,
+    "active_mnq_books_total": 4,
+    "active_mnq_daily_workhorse": [
+      "XB-ORB-EMA-Chandelier-MNQ",
+      "XB-ORB-EMA-Ladder-MNQ",
+      "XB-PB-EMA-Chandelier-MNQ"
+    ],
+    "active_mnq_sparse_event": [
+      "TV-NFP-High-Low-Levels"
+    ],
+    "runtime_max_positions_per_asset": 2
+  },
+  "runner_after": {
+    "tag": "AFTER",
+    "total_active_books_all_assets": 13,
+    "active_mnq_books_total": 2,
+    "active_mnq_daily_workhorse": [
+      "XB-ORB-EMA-Ladder-MNQ"
+    ],
+    "active_mnq_sparse_event": [
+      "TV-NFP-High-Low-Levels"
+    ],
+    "runtime_max_positions_per_asset": 2
+  },
+  "verification": {
+    "chandelier_removed": true,
+    "ladder_kept": true,
+    "tvnfp_kept_separate": true,
+    "stop_run_not_wired": true
+  },
+  "verdict": "MNQ_EXPOSURE_RATIONALIZED"
+}
