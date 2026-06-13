@@ -5,6 +5,16 @@
 > **Status:** REVIEW-ONLY. No scheduler/registry/portfolio mutation. No live/paper execution.
 > **Standard:** Packet Standard V1 + V1.1 amendments.
 
+## ⚠️ DATA_AUDIT_GREEN scope (locked 2026-06-13)
+
+> **DATA_AUDIT_GREEN proved reproducibility WITHIN the current feed.**
+> **It does NOT prove independent feed correctness.**
+> Clean enough to paper. Not yet clean enough for capital.
+
+**Deployment gate:**
+- Paper deployment: ALLOWED on current DATA_AUDIT_GREEN evidence
+- Live / prop promotion: BLOCKED until Data Source Control Layer passes per `docs/fql_forge/data_source_control_layer_policy_2026-06-13.md`
+
 ## Batch summary
 
 | # | Candidate | Lane | Robustness | Data Audit | Pairwise corr to next |
