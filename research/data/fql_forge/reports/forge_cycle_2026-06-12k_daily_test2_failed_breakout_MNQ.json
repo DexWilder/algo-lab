@@ -1,0 +1,431 @@
+{
+  "date": "2026-06-12",
+  "purpose": "Daily Test 2 Stage 3: failed_daily_breakout MNQ baseline per #204 A",
+  "harness_reference": "docs/fql_forge/daily_test2_harness_methodology_2026-06-12.md",
+  "n_total_daily_signals": 295,
+  "results": {
+    "A_fixed_3_day": {
+      "metrics": {
+        "n": 295,
+        "pf": 1.1433819451814111,
+        "median": 92.76,
+        "net": 10781.700000000008,
+        "mean": 36.548135593220366
+      },
+      "verdict": "KILL (PF<1.15)",
+      "temporal_split": {
+        "yrs_pos": 5,
+        "n_yrs": 8,
+        "era3_pf": 1.1635818015897086,
+        "era3_median": 120.26,
+        "max_yr_share_pct": 52.01591585742508,
+        "instance_cv": 2.5175948977433813,
+        "per_year": [
+          {
+            "year": 2019,
+            "n": 17,
+            "pf": 1.0353081488877793,
+            "median": -3.24,
+            "net": 50.9199999999999
+          },
+          {
+            "year": 2020,
+            "n": 46,
+            "pf": 0.7187116304380522,
+            "median": -138.74,
+            "net": -4114.539999999998
+          },
+          {
+            "year": 2021,
+            "n": 44,
+            "pf": 1.7162257243674182,
+            "median": 170.26,
+            "net": 5415.4400000000005
+          },
+          {
+            "year": 2022,
+            "n": 49,
+            "pf": 0.979736660868237,
+            "median": 19.259999999999998,
+            "net": -307.76000000000045
+          },
+          {
+            "year": 2023,
+            "n": 45,
+            "pf": 1.7599866654741483,
+            "median": 154.76,
+            "net": 5608.200000000001
+          },
+          {
+            "year": 2024,
+            "n": 35,
+            "pf": 0.8308475995059158,
+            "median": 120.26,
+            "net": -1988.4000000000003
+          },
+          {
+            "year": 2025,
+            "n": 42,
+            "pf": 1.3964821355615007,
+            "median": 58.76,
+            "net": 4813.420000000001
+          },
+          {
+            "year": 2026,
+            "n": 17,
+            "pf": 1.2556593456130518,
+            "median": 240.76,
+            "net": 1304.4199999999998
+          }
+        ],
+        "eras": [
+          {
+            "era": 1,
+            "n": 98,
+            "pf": 0.9817225137501271,
+            "median": 7.509999999999999,
+            "net": -385.01999999999634
+          },
+          {
+            "era": 2,
+            "n": 98,
+            "pf": 1.2591460944643127,
+            "median": 122.26,
+            "net": 6269.480000000004
+          },
+          {
+            "era": 3,
+            "n": 99,
+            "pf": 1.1635818015897086,
+            "median": 120.26,
+            "net": 4897.240000000003
+          }
+        ]
+      },
+      "risk_report": {
+        "n_trades": 295,
+        "net_pnl": 10781.700000000008,
+        "per_trade_risk_aggregated": {
+          "worst_overnight_gap_pnl": -372.5,
+          "largest_single_day_loss": 2959.5,
+          "worst_close_to_open_loss": -1196.5,
+          "worst_open_to_open_loss": -1923.0,
+          "max_adverse_excursion": -4358.5,
+          "max_cumulative_unrealized_loss": -4199.5
+        },
+        "event_day_exposure": {
+          "n_trades_with_nfp_in_hold": 52,
+          "n_trades_with_fomc_in_hold": 44,
+          "pct_trades_with_fomc_exposure": 14.915254237288137,
+          "event_day_exposure_count": 96,
+          "event_day_exposure_pct_of_trades": 32.54237288135593
+        },
+        "hold_duration": {
+          "avg_trading_days": 4.1084745762711865,
+          "max_trading_days": 5,
+          "avg_calendar_days": 4.315254237288135,
+          "max_calendar_days": 6,
+          "overnight_exposure_pct": 100.0
+        },
+        "concentration": {
+          "top_1_trade_pct_of_net": 17.513564651214544,
+          "top_3_trades_pct_of_net": 48.608104473320495,
+          "top_10_trades_pct_of_net": 141.49994898763637,
+          "max_year_share_pct": 52.01591585742504,
+          "instance_cv": 2.691422156013118
+        },
+        "max_consecutive_losing_trade_days": 6,
+        "prop_firm_compatibility": {
+          "tradeify_2k_daily_dd_compatible": false,
+          "tradeify_3k_daily_dd_compatible": true,
+          "trailing_dd_5k_compatible": true,
+          "trailing_dd_10k_compatible": true,
+          "gap_protection_pass_3x_avg_win": true,
+          "note": "Worst overnight gap: $-372. Largest single-day loss: $2960. Worst close-to-open: $-1196. Worst cumulative unrealized loss: $-4200. Max consecutive losing trade-days: 6. Gap protection (gap \u2264 3\u00d7 avg win $534): PASS. Tradeify $2K daily DD: FAIL. Tradeify $3K daily DD: PASS. $5K trailing DD: PASS. $10K trailing DD: PASS."
+        }
+      }
+    },
+    "B_fixed_5_day": {
+      "metrics": {
+        "n": 295,
+        "pf": 1.0892061235359531,
+        "median": 10.76,
+        "net": 9268.700000000017,
+        "mean": 31.419322033898364
+      },
+      "verdict": "KILL (PF<1.15)",
+      "temporal_split": {
+        "yrs_pos": 6,
+        "n_yrs": 8,
+        "era3_pf": 1.1254914696624383,
+        "era3_median": -11.24,
+        "max_yr_share_pct": 102.95294917302307,
+        "instance_cv": 5.2898552586499825,
+        "per_year": [
+          {
+            "year": 2019,
+            "n": 17,
+            "pf": 1.030702393529819,
+            "median": 17.259999999999998,
+            "net": 67.41999999999985
+          },
+          {
+            "year": 2020,
+            "n": 46,
+            "pf": 0.6306472999149355,
+            "median": -218.49,
+            "net": -7833.039999999997
+          },
+          {
+            "year": 2021,
+            "n": 44,
+            "pf": 1.3430799479994442,
+            "median": 77.76,
+            "net": 3604.9400000000023
+          },
+          {
+            "year": 2022,
+            "n": 49,
+            "pf": 1.1835101957481557,
+            "median": -99.24,
+            "net": 3595.2400000000007
+          },
+          {
+            "year": 2023,
+            "n": 45,
+            "pf": 1.3940151299126087,
+            "median": 192.26,
+            "net": 4228.200000000002
+          },
+          {
+            "year": 2024,
+            "n": 35,
+            "pf": 0.5150923836819318,
+            "median": -291.24,
+            "net": -9542.4
+          },
+          {
+            "year": 2025,
+            "n": 42,
+            "pf": 1.4917216937648092,
+            "median": 111.75999999999999,
+            "net": 7200.920000000002
+          },
+          {
+            "year": 2026,
+            "n": 17,
+            "pf": 2.4867718532874874,
+            "median": 423.76,
+            "net": 7947.420000000001
+          }
+        ],
+        "eras": [
+          {
+            "era": 1,
+            "n": 98,
+            "pf": 0.882708824771647,
+            "median": 7.01,
+            "net": -3493.519999999994
+          },
+          {
+            "era": 2,
+            "n": 98,
+            "pf": 1.2320320868783632,
+            "median": 78.01,
+            "net": 7537.980000000003
+          },
+          {
+            "era": 3,
+            "n": 99,
+            "pf": 1.1254914696624383,
+            "median": -11.24,
+            "net": 5224.240000000007
+          }
+        ]
+      },
+      "risk_report": {
+        "n_trades": 295,
+        "net_pnl": 9268.700000000017,
+        "per_trade_risk_aggregated": {
+          "worst_overnight_gap_pnl": -372.5,
+          "largest_single_day_loss": 5178.5,
+          "worst_close_to_open_loss": -1196.5,
+          "worst_open_to_open_loss": -4171.0,
+          "max_adverse_excursion": -4358.5,
+          "max_cumulative_unrealized_loss": -4199.5
+        },
+        "event_day_exposure": {
+          "n_trades_with_nfp_in_hold": 80,
+          "n_trades_with_fomc_in_hold": 62,
+          "pct_trades_with_fomc_exposure": 21.01694915254237,
+          "event_day_exposure_count": 142,
+          "event_day_exposure_pct_of_trades": 48.13559322033898
+        },
+        "hold_duration": {
+          "avg_trading_days": 6.172881355932203,
+          "max_trading_days": 8,
+          "avg_calendar_days": 7.240677966101695,
+          "max_calendar_days": 11,
+          "overnight_exposure_pct": 100.0
+        },
+        "concentration": {
+          "top_1_trade_pct_of_net": 32.67729023487646,
+          "top_3_trades_pct_of_net": 90.95968150873354,
+          "top_10_trades_pct_of_net": 256.0941663879504,
+          "max_year_share_pct": 102.952949173023,
+          "instance_cv": 5.655093143855061
+        },
+        "max_consecutive_losing_trade_days": 11,
+        "prop_firm_compatibility": {
+          "tradeify_2k_daily_dd_compatible": false,
+          "tradeify_3k_daily_dd_compatible": false,
+          "trailing_dd_5k_compatible": true,
+          "trailing_dd_10k_compatible": true,
+          "gap_protection_pass_3x_avg_win": true,
+          "note": "Worst overnight gap: $-372. Largest single-day loss: $5178. Worst close-to-open: $-1196. Worst cumulative unrealized loss: $-4200. Max consecutive losing trade-days: 11. Gap protection (gap \u2264 3\u00d7 avg win $749): PASS. Tradeify $2K daily DD: FAIL. Tradeify $3K daily DD: FAIL. $5K trailing DD: PASS. $10K trailing DD: PASS."
+        }
+      }
+    },
+    "C_daily_invalidation": {
+      "metrics": {
+        "n": 295,
+        "pf": 0.9569258071405561,
+        "median": -124.24,
+        "net": -3807.799999999997,
+        "mean": -12.90779661016948
+      },
+      "verdict": "KILL (median neg)",
+      "temporal_split": {
+        "yrs_pos": 4,
+        "n_yrs": 8,
+        "era3_pf": 1.0232028097018964,
+        "era3_median": -141.24,
+        "max_yr_share_pct": 0,
+        "instance_cv": -8.563205890427461,
+        "per_year": [
+          {
+            "year": 2019,
+            "n": 17,
+            "pf": 0.687860525182953,
+            "median": -19.240000000000002,
+            "net": -580.0800000000002
+          },
+          {
+            "year": 2020,
+            "n": 46,
+            "pf": 0.4974786711448183,
+            "median": -256.99,
+            "net": -8486.539999999997
+          },
+          {
+            "year": 2021,
+            "n": 44,
+            "pf": 1.01312343794732,
+            "median": -55.74,
+            "net": 149.4400000000005
+          },
+          {
+            "year": 2022,
+            "n": 49,
+            "pf": 1.0525825836004608,
+            "median": -231.24,
+            "net": 868.7399999999996
+          },
+          {
+            "year": 2023,
+            "n": 45,
+            "pf": 1.5421738231442554,
+            "median": -45.74,
+            "net": 3933.2000000000016
+          },
+          {
+            "year": 2024,
+            "n": 35,
+            "pf": 0.6684849656126444,
+            "median": -132.24,
+            "net": -4562.9
+          },
+          {
+            "year": 2025,
+            "n": 42,
+            "pf": 0.9889637617111542,
+            "median": -95.99000000000001,
+            "net": -156.08000000000015
+          },
+          {
+            "year": 2026,
+            "n": 17,
+            "pf": 1.7632950452228955,
+            "median": -277.74,
+            "net": 5026.420000000001
+          }
+        ],
+        "eras": [
+          {
+            "era": 1,
+            "n": 98,
+            "pf": 0.729120508845628,
+            "median": -88.24,
+            "net": -6986.019999999996
+          },
+          {
+            "era": 2,
+            "n": 98,
+            "pf": 1.0860034168722446,
+            "median": -115.74,
+            "net": 2362.9800000000005
+          },
+          {
+            "era": 3,
+            "n": 99,
+            "pf": 1.0232028097018964,
+            "median": -141.24,
+            "net": 815.2400000000039
+          }
+        ]
+      },
+      "risk_report": {
+        "n_trades": 295,
+        "net_pnl": -3807.799999999997,
+        "per_trade_risk_aggregated": {
+          "worst_overnight_gap_pnl": -372.5,
+          "largest_single_day_loss": 5178.5,
+          "worst_close_to_open_loss": -1030.0,
+          "worst_open_to_open_loss": -4171.0,
+          "max_adverse_excursion": -2470.0,
+          "max_cumulative_unrealized_loss": -2396.0
+        },
+        "event_day_exposure": {
+          "n_trades_with_nfp_in_hold": 56,
+          "n_trades_with_fomc_in_hold": 48,
+          "pct_trades_with_fomc_exposure": 16.271186440677965,
+          "event_day_exposure_count": 104,
+          "event_day_exposure_pct_of_trades": 35.25423728813559
+        },
+        "hold_duration": {
+          "avg_trading_days": 4.416949152542373,
+          "max_trading_days": 8,
+          "avg_calendar_days": 4.7322033898305085,
+          "max_calendar_days": 11,
+          "overnight_exposure_pct": 100.0
+        },
+        "concentration": {
+          "top_1_trade_pct_of_net": -79.54094227638014,
+          "top_3_trades_pct_of_net": -221.4081621933927,
+          "top_10_trades_pct_of_net": -613.5721413939813,
+          "max_year_share_pct": -222.8725248174801,
+          "instance_cv": -9.154452164109708
+        },
+        "max_consecutive_losing_trade_days": 13,
+        "prop_firm_compatibility": {
+          "tradeify_2k_daily_dd_compatible": false,
+          "tradeify_3k_daily_dd_compatible": false,
+          "trailing_dd_5k_compatible": true,
+          "trailing_dd_10k_compatible": true,
+          "gap_protection_pass_3x_avg_win": true,
+          "note": "Worst overnight gap: $-372. Largest single-day loss: $5178. Worst close-to-open: $-1030. Worst cumulative unrealized loss: $-2396. Max consecutive losing trade-days: 13. Gap protection (gap \u2264 3\u00d7 avg win $729): PASS. Tradeify $2K daily DD: FAIL. Tradeify $3K daily DD: FAIL. $5K trailing DD: PASS. $10K trailing DD: PASS."
+        }
+      }
+    }
+  }
+}
