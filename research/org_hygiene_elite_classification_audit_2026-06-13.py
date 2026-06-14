@@ -107,7 +107,19 @@ def run():
     print("Organizational Hygiene / Elite Classification Audit — 2026-06-13\n", flush=True)
     reg = json.loads(REG.read_text())
     strategies = reg["strategies"]
-    active = set(build_portfolio_config(include_probation=True)["strategies"].keys())
+    cfg = build_portfolio_config(include_probation=True)
+    active = set(cfg["strategies"].keys())
+    fail_closed = cfg.get("_fail_closed_exclusions", [])
+
+    # Contradictory-approval state: promotion_date set BUT paper_ready/promotion_eligible False.
+    contradictory = []
+    for s in strategies:
+        prom = s.get("promotion_date") or s.get("promoted_date")
+        if prom and (s.get("paper_ready") is False or s.get("promotion_eligible") is False):
+            contradictory.append({"strategy_id": s["strategy_id"], "promotion_date": prom,
+                                  "paper_ready": s.get("paper_ready"),
+                                  "promotion_eligible": s.get("promotion_eligible"),
+                                  "in_runner": s["strategy_id"] in active})
 
     results = {}
     buckets = {}
@@ -158,10 +170,28 @@ def run():
     for sid in sorted(buckets.get("EXPERIMENTAL_FORWARD_CLOCK_SHADOW", [])):
         print(f"  {sid}", flush=True)
 
+    print("\n=== FAIL-CLOSED GATE EXCLUSIONS (controller-eligible but blocked) ===", flush=True)
+    for e in fail_closed:
+        print(f"  {e['strategy_id']:40s} action={e.get('controller_action')} reason={e['reason']}", flush=True)
+    if not fail_closed:
+        print("  (none)", flush=True)
+
+    print("\n=== CONTRADICTORY APPROVAL STATE (promotion_date + paper_ready/promotion_eligible=False) ===", flush=True)
+    for c in contradictory:
+        print(f"  {c['strategy_id']:40s} prom={c['promotion_date']} paper_ready={c['paper_ready']} "
+              f"in_runner={c['in_runner']}", flush=True)
+    if not contradictory:
+        print("  (none)", flush=True)
+
     clean = len(mismatches) == 0
+    # Phase 1C activation-risk gate: nothing executing without approval.
+    # Contradictory books are a hygiene item (safely gated, NOT executing) — surfaced, not blocking.
     verdict = "ORG_HYGIENE_CLEAN" if clean else "ORG_HYGIENE_MISMATCHES_FOUND"
-    print(f"\n  VERDICT: {verdict}", flush=True)
-    print(f"  Phase 1C gate: {'PASS — no remaining activation-risk mismatches' if clean else 'BLOCKED — mismatches must be resolved (operator-authorized) before stop_run wiring'}", flush=True)
+    print(f"\n  ACTIVATION-RISK MISMATCHES: {len(mismatches)}", flush=True)
+    print(f"  CONTRADICTORY-APPROVAL (gated, non-executing, needs operator decision): {len(contradictory)}", flush=True)
+    print(f"  VERDICT: {verdict}", flush=True)
+    print(f"  Phase 1C gate: {'PASS (activation-risk) — no book executes without approval' if clean else 'BLOCKED'}"
+          f"{' | residual hygiene: '+str(len(contradictory))+' contradictory book(s) to resolve' if contradictory else ''}", flush=True)
 
     out = ROOT / "research" / "data" / "fql_forge" / "reports" / "org_hygiene_elite_classification_audit_2026-06-13.json"
     out.write_text(json.dumps({
@@ -171,9 +201,12 @@ def run():
         "class_counts": {k: len(v) for k, v in buckets.items()},
         "buckets": {k: sorted(v) for k, v in buckets.items()},
         "governance_mismatches": mismatches,
+        "fail_closed_gate_exclusions": fail_closed,
+        "contradictory_approval_state": contradictory,
         "all_results": results,
         "verdict": verdict,
-        "phase1c_gate": "PASS" if clean else "BLOCKED",
+        "phase1c_activation_risk_gate": "PASS" if clean else "BLOCKED",
+        "residual_hygiene_contradictory_count": len(contradictory),
     }, indent=2, default=str))
     print(f"\nWrote: {out}", flush=True)
     return verdict

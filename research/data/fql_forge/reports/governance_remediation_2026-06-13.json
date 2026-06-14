@@ -1,0 +1,29 @@
+{
+  "item_1_deactivated": "XB-ORB-EMA-ATRTrail-MES",
+  "item_3_core_provenance_backfilled": [
+    "ORB-MGC-Long",
+    "PB-MGC-Short",
+    "XB-PB-EMA-MES-Short"
+  ],
+  "withheld_ladder_mgc_doclag": "WITHHELD \u2014 contradictory (promotion_date + paper_ready=false); surfaced for operator decision",
+  "active_runner_books": [
+    "DailyTrend-MGC-Long",
+    "ORB-MGC-Long",
+    "PB-MGC-Short",
+    "TV-NFP-High-Low-Levels",
+    "Treasury-Rolldown-Carry-Spread",
+    "VolManaged-EquityIndex-Futures",
+    "XB-ORB-EMA-Ladder-MCL",
+    "XB-ORB-EMA-Ladder-MNQ",
+    "XB-ORB-EMA-Ladder-MYM",
+    "XB-PB-EMA-MES-Short",
+    "ZN-Afternoon-Reversion"
+  ],
+  "fail_closed_exclusions": [
+    {
+      "strategy_id": "XB-ORB-EMA-Ladder-MGC",
+      "controller_action": "REDUCED_ON",
+      "reason": "BLOCKED_PAPER_READY_FALSE"
+    }
+  ]
+}

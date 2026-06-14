@@ -2,14 +2,13 @@
   "purpose": "System-wide elite classification + governance-mismatch audit",
   "boundaries": "report-only; no registry/runner mutation; no deactivation performed",
   "total_strategies": 166,
-  "active_in_runner": 13,
+  "active_in_runner": 11,
   "class_counts": {
     "RETIRED_OR_KILLED": 64,
-    "ELITE_APPROVED_PAPER": 12,
+    "ELITE_APPROVED_PAPER": 11,
     "RESEARCH_ONLY": 86,
-    "CANDIDATE_REVIEW_ONLY": 1,
-    "EXPERIMENTAL_FORWARD_CLOCK_SHADOW": 2,
-    "GOVERNANCE_MISMATCH": 1
+    "CANDIDATE_REVIEW_ONLY": 2,
+    "EXPERIMENTAL_FORWARD_CLOCK_SHADOW": 3
   },
   "buckets": {
     "RETIRED_OR_KILLED": [
@@ -86,7 +85,6 @@
       "Treasury-Rolldown-Carry-Spread",
       "VolManaged-EquityIndex-Futures",
       "XB-ORB-EMA-Ladder-MCL",
-      "XB-ORB-EMA-Ladder-MGC",
       "XB-ORB-EMA-Ladder-MNQ",
       "XB-ORB-EMA-Ladder-MYM",
       "XB-PB-EMA-MES-Short",
@@ -181,34 +179,30 @@
       "wti-term-structure-carry-momentum-switch"
     ],
     "CANDIDATE_REVIEW_ONLY": [
+      "XB-ORB-EMA-Ladder-MGC",
       "XB-PB-EMA-Ladder-MNQ"
     ],
     "EXPERIMENTAL_FORWARD_CLOCK_SHADOW": [
+      "XB-ORB-EMA-ATRTrail-MES",
       "XB-ORB-EMA-Chandelier-MNQ",
       "XB-PB-EMA-Chandelier-MNQ"
-    ],
-    "GOVERNANCE_MISMATCH": [
-      "XB-ORB-EMA-ATRTrail-MES"
     ]
   },
-  "governance_mismatches": [
+  "governance_mismatches": [],
+  "fail_closed_gate_exclusions": [
     {
-      "strategy_id": "XB-ORB-EMA-ATRTrail-MES",
-      "asset": "MES",
-      "status": "probation",
+      "strategy_id": "XB-ORB-EMA-Ladder-MGC",
       "controller_action": "REDUCED_ON",
-      "executable_state": "EXECUTABLE",
-      "lifecycle_stage": "discovery",
-      "portfolio_role": null,
-      "promotion_date": null,
-      "in_runner": true,
-      "has_module": true,
-      "track_tag": "TRACK2_EXPERIMENTAL",
-      "classification": "GOVERNANCE_MISMATCH",
-      "flags": [
-        "EXECUTABLE+RUNNER_INCLUDED+EXPOSURE_CONSUMING_WITHOUT_APPROVAL",
-        "track2_experimental_running_as_probation (paper_ready=false)"
-      ]
+      "reason": "BLOCKED_PAPER_READY_FALSE"
+    }
+  ],
+  "contradictory_approval_state": [
+    {
+      "strategy_id": "XB-ORB-EMA-Ladder-MGC",
+      "promotion_date": "2026-05-28",
+      "paper_ready": false,
+      "promotion_eligible": false,
+      "in_runner": false
     }
   ],
   "all_results": {
@@ -1937,13 +1931,11 @@
       "lifecycle_stage": null,
       "portfolio_role": "workhorse",
       "promotion_date": "2026-05-28",
-      "in_runner": true,
+      "in_runner": false,
       "has_module": true,
       "track_tag": "TRACK1",
-      "classification": "ELITE_APPROVED_PAPER",
-      "flags": [
-        "in_runner_promoted_but_not_in_CLAUDE.md_table (doc-lag)"
-      ]
+      "classification": "CANDIDATE_REVIEW_ONLY",
+      "flags": []
     },
     "XB-ORB-EMA-Ladder-MCL": {
       "strategy_id": "XB-ORB-EMA-Ladder-MCL",
@@ -2668,20 +2660,17 @@
     "XB-ORB-EMA-ATRTrail-MES": {
       "strategy_id": "XB-ORB-EMA-ATRTrail-MES",
       "asset": "MES",
-      "status": "probation",
-      "controller_action": "REDUCED_ON",
+      "status": "watch",
+      "controller_action": "OFF",
       "executable_state": "EXECUTABLE",
-      "lifecycle_stage": "discovery",
+      "lifecycle_stage": "watch",
       "portfolio_role": null,
       "promotion_date": null,
-      "in_runner": true,
+      "in_runner": false,
       "has_module": true,
       "track_tag": "TRACK2_EXPERIMENTAL",
-      "classification": "GOVERNANCE_MISMATCH",
-      "flags": [
-        "EXECUTABLE+RUNNER_INCLUDED+EXPOSURE_CONSUMING_WITHOUT_APPROVAL",
-        "track2_experimental_running_as_probation (paper_ready=false)"
-      ]
+      "classification": "EXPERIMENTAL_FORWARD_CLOCK_SHADOW",
+      "flags": []
     },
     "XB-PB-EMA-Chandelier-MNQ": {
       "strategy_id": "XB-PB-EMA-Chandelier-MNQ",
@@ -2714,6 +2703,7 @@
       "flags": []
     }
   },
-  "verdict": "ORG_HYGIENE_MISMATCHES_FOUND",
-  "phase1c_gate": "BLOCKED"
+  "verdict": "ORG_HYGIENE_CLEAN",
+  "phase1c_activation_risk_gate": "PASS",
+  "residual_hygiene_contradictory_count": 1
 }

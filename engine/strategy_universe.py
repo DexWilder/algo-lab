@@ -42,6 +42,60 @@ ACTION_ELIGIBILITY = {
 # Controller states that are eligible for evaluation
 EVAL_STATES = {"core", "probation", "testing"}
 
+# ── Fail-Closed Execution-Approval Gate (org-hygiene audit 2026-06-13) ────────
+# CONTROLLER INTENT IS NOT APPROVAL EVIDENCE. A strategy may reach the live
+# runner ONLY with positive approval evidence, and NEVER if it is an
+# experimental/shadow forward-clock or explicitly paper_ready=false — regardless
+# of controller_action. This closes the leak where three Track 2
+# EXPERIMENTAL_FORWARD_CLOCK books (2 MNQ Chandelier + XB-ORB-EMA-ATRTrail-MES)
+# executed as status=probation + controller_action=REDUCED_ON without ever being
+# promoted. controller_action eligibility is consulted ONLY after this gate
+# passes (see build_portfolio_config).
+#
+# APPROVED_EXECUTION_ALLOWLIST = the CLAUDE.md "Probation Portfolio" books that
+# predate promotion_date bookkeeping (their approval evidence is the documented
+# portfolio, not a registry field). Long-term, replace with an explicit
+# per-strategy approval field backfilled across the portfolio.
+APPROVED_EXECUTION_ALLOWLIST = {
+    "DailyTrend-MGC-Long",
+    "ZN-Afternoon-Reversion",
+    "TV-NFP-High-Low-Levels",
+    "VolManaged-EquityIndex-Futures",
+    "Treasury-Rolldown-Carry-Spread",
+}
+
+
+def execution_approval_check(strategy: dict) -> tuple[bool, str]:
+    """Return (approved, reason) for whether a strategy may reach the runner.
+
+    Fail-closed: positive approval evidence is REQUIRED, and experimental/shadow
+    forward-clocks and paper_ready=false books are NEVER approved, regardless of
+    controller_action. `reason` is an audit string in every case.
+    """
+    sid = strategy.get("strategy_id", "?")
+    notes = (strategy.get("notes") or "").lower()
+    notes_compact = notes.replace(" ", "")
+    track = strategy.get("candidate_track") or strategy.get("track")
+
+    # ── Hard blocks: never execute, regardless of controller_action/approval ──
+    if ("experimental_forward_clock" in notes or "track 2" in notes
+            or "track2" in notes_compact
+            or str(track).upper() in ("2", "EXPERIMENTAL_FORWARD_CLOCK")):
+        return False, "BLOCKED_EXPERIMENTAL_FORWARD_CLOCK"
+    if strategy.get("paper_ready") is False or "paper_ready=false" in notes_compact:
+        return False, "BLOCKED_PAPER_READY_FALSE"
+    if strategy.get("promotion_eligible") is False or "promotion_eligible=false" in notes_compact:
+        return False, "BLOCKED_PROMOTION_ELIGIBLE_FALSE"
+
+    # ── Positive approval evidence required ──
+    if strategy.get("status") == "core":
+        return True, "APPROVED_CORE_TIER"
+    if strategy.get("promotion_date") or strategy.get("promoted_date"):
+        return True, "APPROVED_PROMOTION_DATE"
+    if sid in APPROVED_EXECUTION_ALLOWLIST:
+        return True, "APPROVED_CLAUDE_DOCUMENTED"
+    return False, "BLOCKED_NO_APPROVAL_EVIDENCE"
+
 # ── Session → Timing Window Defaults ─────────────────────────────────────────
 SESSION_WINDOWS = {
     "morning":   {"preferred": ("09:30", "12:00"), "allowed": ("09:30", "13:00")},
@@ -285,6 +339,7 @@ def build_portfolio_config(include_probation=False) -> dict:
     PENDING_EXECUTABLE_STATES = {"PENDING_EXECUTABLE_MODULE"}
 
     strategies = {}
+    fail_closed_exclusions = []
     for s in registry.get("strategies", []):
         if s.get("status") in DEAD_STATUSES:
             continue
@@ -299,6 +354,25 @@ def build_portfolio_config(include_probation=False) -> dict:
             eligible = True
 
         if not eligible:
+            continue
+
+        # Fail-closed execution-approval gate (org-hygiene 2026-06-13):
+        # controller_action says "execute", but controller intent is NOT approval
+        # authority. Execution requires POSITIVE approval evidence and is NEVER
+        # granted to experimental / paper_ready=false books. This fires precisely
+        # when a controller-eligible book lacks approval — the leak we are closing.
+        approved, approval_reason = execution_approval_check(s)
+        if not approved:
+            logger.warning(
+                f"FAIL-CLOSED execution gate: {s.get('strategy_id')!r} is "
+                f"controller-eligible ({action}) but blocked from the runner — "
+                f"{approval_reason}"
+            )
+            fail_closed_exclusions.append({
+                "strategy_id": s.get("strategy_id"),
+                "controller_action": action,
+                "reason": approval_reason,
+            })
             continue
 
         # Must have execution_config or be buildable from registry fields
@@ -318,4 +392,5 @@ def build_portfolio_config(include_probation=False) -> dict:
         "strategies": strategies,
         "_source": "strategy_registry",
         "_freshness": freshness,
+        "_fail_closed_exclusions": fail_closed_exclusions,
     }

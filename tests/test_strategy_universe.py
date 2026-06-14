@@ -25,7 +25,53 @@ from engine.strategy_universe import (
     check_freshness,
     ACTION_ELIGIBILITY,
     _build_strategy_exec_config,
+    execution_approval_check,
 )
+
+
+class TestExecutionApprovalGate:
+    """Fail-closed execution-approval gate (org-hygiene audit 2026-06-13).
+
+    Core principle: controller intent is NOT approval evidence. A book may
+    execute ONLY with positive approval evidence, and NEVER if it is an
+    experimental/shadow forward-clock or paper_ready=false — regardless of
+    controller_action.
+    """
+
+    def test_experimental_forward_clock_blocked_even_with_promotion_date(self):
+        s = {"strategy_id": "X", "status": "probation", "controller_action": "REDUCED_ON",
+             "promotion_date": "2026-05-28",
+             "notes": "Track 2 EXPERIMENTAL_FORWARD_CLOCK paper_ready=false"}
+        approved, reason = execution_approval_check(s)
+        assert approved is False
+        assert reason == "BLOCKED_EXPERIMENTAL_FORWARD_CLOCK"
+
+    def test_paper_ready_false_blocked_even_if_promoted(self):
+        s = {"strategy_id": "MGC", "status": "probation", "controller_action": "REDUCED_ON",
+             "promotion_date": "2026-05-28", "paper_ready": False}
+        approved, reason = execution_approval_check(s)
+        assert approved is False
+        assert reason == "BLOCKED_PAPER_READY_FALSE"
+
+    def test_controller_action_alone_is_not_approval(self):
+        s = {"strategy_id": "Y", "status": "probation", "controller_action": "REDUCED_ON"}
+        approved, reason = execution_approval_check(s)
+        assert approved is False
+        assert reason == "BLOCKED_NO_APPROVAL_EVIDENCE"
+
+    def test_core_tier_approved(self):
+        approved, reason = execution_approval_check({"strategy_id": "Z", "status": "core"})
+        assert approved is True and reason == "APPROVED_CORE_TIER"
+
+    def test_promotion_date_approved(self):
+        approved, reason = execution_approval_check(
+            {"strategy_id": "MNQ", "status": "probation", "promotion_date": "2026-04-06"})
+        assert approved is True and reason == "APPROVED_PROMOTION_DATE"
+
+    def test_claude_documented_allowlist_approved(self):
+        approved, reason = execution_approval_check(
+            {"strategy_id": "TV-NFP-High-Low-Levels", "status": "probation"})
+        assert approved is True and reason == "APPROVED_CLAUDE_DOCUMENTED"
 
 
 # ── Fixtures ──────────────────────────────────────────────────────────────

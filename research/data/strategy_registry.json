@@ -215,7 +215,9 @@
         "exit",
         "filter"
       ],
-      "crossbreeding_eligible": true
+      "crossbreeding_eligible": true,
+      "approval_provenance": "Core/deployed tier (status=core, lifecycle=deployed, role=enhancer). source=crossbreeding_phase12, created 2026-04-10. Documented in docs/TARGET_PORTFOLIO.md + docs/PORTFOLIO_TRUTH_TABLE.md (only MES core strategy).",
+      "approval_provenance_status": "LEGACY_CORE_DOCUMENTED \u2014 approval evidence exists in repo/docs/git (see approval_provenance); discrete promotion_date predates the field convention (LEGACY_CORE_PROVENANCE_GAP, not invented)."
     },
     {
       "strategy_id": "ORB-MGC-Long",
@@ -320,7 +322,9 @@
       "extractable_components": [
         "entry"
       ],
-      "crossbreeding_eligible": false
+      "crossbreeding_eligible": false,
+      "approval_provenance": "Core/deployed tier (status=core, lifecycle=deployed, role=core). Documented in docs/TARGET_PORTFOLIO.md + docs/PORTFOLIO_TRUTH_TABLE.md + docs/audits/phase_5_regime_portfolio.md + phase_6_deployment.md. source=internal_research, created 2026-04-10.",
+      "approval_provenance_status": "LEGACY_CORE_DOCUMENTED \u2014 approval evidence exists in repo/docs/git (see approval_provenance); discrete promotion_date predates the field convention (LEGACY_CORE_PROVENANCE_GAP, not invented)."
     },
     {
       "strategy_id": "Donchian-MNQ-Long-GRINDING",
@@ -646,7 +650,9 @@
         "entry",
         "filter"
       ],
-      "crossbreeding_eligible": true
+      "crossbreeding_eligible": true,
+      "approval_provenance": "Core/deployed tier (status=core, lifecycle=deployed, role=core). git 0328aad 'Phase 15: BB Equilibrium PROMOTED to 6th Parent'; robustness tests git 7e3555e. Documented in docs/TARGET_PORTFOLIO.md + docs/PORTFOLIO_TRUTH_TABLE.md. source=lucid_v6_extraction.",
+      "approval_provenance_status": "LEGACY_CORE_DOCUMENTED \u2014 approval evidence exists in repo/docs/git (see approval_provenance); discrete promotion_date predates the field convention (LEGACY_CORE_PROVENANCE_GAP, not invented)."
     },
     {
       "strategy_id": "MomIgn-M2K-Short",
@@ -8986,11 +8992,11 @@
       "direction": "both",
       "source": "offensive_forge_sprint_v2_phase3_2026-05-28",
       "rule_summary": "orb_breakout entry + ema_slope filter + atr_trail exit on MES. stop_mult=2.0, trail_mult=2.5. Phase 3 Offensive Forge Sprint v2 verdict PASS_TO_FORWARD_CLOCK: PF=1.413, n=1242, median=-$4.99 (payoff-ratio), top-3=11.1%, max-year=25.4%, H1 PF=1.313, H2 PF=1.509. Chosen over TimeStop-MES (PF 1.36) due to higher PF and H1/H2 stability \u2014 both in same MES+ORB+EMA cluster per correlation guard, pick 1.",
-      "status": "probation",
-      "notes": "Track 2 EXPERIMENTAL_FORWARD_CLOCK candidate, wired 2026-05-28 via Phase 3 Offensive Forge Sprint v2. archetype=PAYOFF_RATIO_WORKHORSE_FREQUENCY. paper_ready=false, promotion_eligible=false. Tests whether payoff-ratio shape generalizes outside MNQ \u2014 first Track 2 wire on a non-MNQ asset (MES) AND different exit mechanism (atr_trail vs chandelier). Median structurally negative by archetype design (-$4.99); mean +$23.69. Forward-clock evidence-only. At 30 forward trades: do NOT auto-promote; triggers archetype review per the 2026-05-28 Track 2 doctrine. Correlation guard: paired with TimeStop-MES (same MES+ORB+EMA family, different exit); TimeStop-MES held off the runner.",
+      "status": "watch",
+      "notes": "Track 2 EXPERIMENTAL_FORWARD_CLOCK candidate, wired 2026-05-28 via Phase 3 Offensive Forge Sprint v2. archetype=PAYOFF_RATIO_WORKHORSE_FREQUENCY. paper_ready=false, promotion_eligible=false. Tests whether payoff-ratio shape generalizes outside MNQ \u2014 first Track 2 wire on a non-MNQ asset (MES) AND different exit mechanism (atr_trail vs chandelier). Median structurally negative by archetype design (-$4.99); mean +$23.69. Forward-clock evidence-only. At 30 forward trades: do NOT auto-promote; triggers archetype review per the 2026-05-28 Track 2 doctrine. Correlation guard: paired with TimeStop-MES (same MES+ORB+EMA family, different exit); TimeStop-MES held off the runner. | 2026-06-13 DEACTIVATED from paper execution (governance cleanup; Track 2 / paper_ready=false; never promoted; records preserved).",
       "last_review_date": "2026-05-28",
       "review_priority": "LOW",
-      "lifecycle_stage": "discovery",
+      "lifecycle_stage": "watch",
       "source_category": "internal",
       "state_history": [
         {
@@ -8998,6 +9004,12 @@
           "from": "PROBATION",
           "to": "ACTIVE",
           "trigger": "Recovery: score=0.68, HL=HEALTHY"
+        },
+        {
+          "date": "2026-06-13",
+          "from": "ACTIVE",
+          "to": "DEACTIVATED_GOVERNANCE",
+          "trigger": "Org-hygiene remediation (operator item #1) \u2014 undocumented Track 2 MES book frozen"
         }
       ],
       "harvest_batch": "forge_hybrid_generation_2026-05-05",
@@ -9029,8 +9041,8 @@
       "extractable_components": [],
       "crossbreeding_eligible": false,
       "why_not_now": "awaiting_full_validation_battery_post_phase_0",
-      "controller_action": "REDUCED_ON",
-      "controller_state": "ACTIVE",
+      "controller_action": "OFF",
+      "controller_state": "VALIDATED",
       "baseline_params": {
         "stop_mult": 2.0,
         "target_mult": 4.0,
@@ -9092,7 +9104,10 @@
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
       "genome_cluster": "unknown",
-      "resurrection_flag": false
+      "resurrection_flag": false,
+      "paper_execution": "DEACTIVATED",
+      "deactivation_date": "2026-06-13",
+      "deactivation_reason": "Governance cleanup (org-hygiene audit, operator-authorized item #1, 2026-06-13). 3rd Track 2 EXPERIMENTAL_FORWARD_CLOCK book (paper_ready=false, promotion_eligible=false, no promotion_date) found trading as status=probation+REDUCED_ON. Never promoted into paper probation. Same pattern as the 2 MNQ Chandelier books; missed by the MNQ-scoped cleanup. Frozen pending explicit operator governance. Records preserved; reactivatable."
     },
     {
       "strategy_id": "XB-PB-EMA-Chandelier-MNQ",
