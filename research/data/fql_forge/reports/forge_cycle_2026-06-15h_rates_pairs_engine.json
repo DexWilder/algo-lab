@@ -1,0 +1,63 @@
+{
+  "cycle": "2026-06-15h_rates_pairs_engine",
+  "mode": "Lane B report-only (new family)",
+  "params": {
+    "beta_win": 500,
+    "z_win": 100,
+    "z_entry": 2.0,
+    "z_exit": 0.5
+  },
+  "results": [
+    {
+      "pair": "ZN/ZF",
+      "n": 1577,
+      "pf": 0.196,
+      "median": -65.15,
+      "net": -100343.19,
+      "win_rate_pct": 16.0,
+      "max_year_share_pct": 0.0,
+      "h1_pf": 0.208,
+      "h2_pf": 0.182,
+      "overnight_holds": 997,
+      "pct_overnight": 63.2,
+      "largest_day_loss": -911.92,
+      "archetype": "UNKNOWN",
+      "gate_verdict": "KILL"
+    },
+    {
+      "pair": "ZN/ZB",
+      "n": 1770,
+      "pf": 0.148,
+      "median": -82.31,
+      "net": -169586.86,
+      "win_rate_pct": 17.3,
+      "max_year_share_pct": 0.0,
+      "h1_pf": 0.159,
+      "h2_pf": 0.137,
+      "overnight_holds": 1090,
+      "pct_overnight": 61.6,
+      "largest_day_loss": -1871.56,
+      "archetype": "UNKNOWN",
+      "gate_verdict": "KILL"
+    },
+    {
+      "pair": "ZF/ZB",
+      "n": 1504,
+      "pf": 0.263,
+      "median": -48.43,
+      "net": -97279.8,
+      "win_rate_pct": 24.5,
+      "max_year_share_pct": 0.0,
+      "h1_pf": 0.246,
+      "h2_pf": 0.279,
+      "overnight_holds": 922,
+      "pct_overnight": 61.3,
+      "largest_day_loss": -1809.65,
+      "archetype": "UNKNOWN",
+      "gate_verdict": "KILL"
+    }
+  ],
+  "candidates": [],
+  "note": "v1 default params, no tuning. RV spreads hold multi-day (overnight exposure reported). Unblocks harvest #01-04. If any pair shows life, follow-up = param sweep + Kalman hedge + ADF/Hurst gate.",
+  "boundaries": "report-only; no promotion/wiring/mutation; canonical feeds untouched"
+}
