@@ -1,0 +1,77 @@
+{
+  "cycle": "2026-06-15i_opex_calendar_window",
+  "mode": "Lane B report-only (new seasonal family)",
+  "mechanism": "OPEX 3rd-Friday windows: long Fri-11..Fri-3, short Fri-2..Fri+4; daily closes",
+  "results": [
+    {
+      "asset": "MES",
+      "long": {
+        "label": "MES-OPEX-long",
+        "n": 84,
+        "pf": 1.947,
+        "median": 138.76,
+        "net": 11834.59,
+        "win_rate_pct": 69.0,
+        "max_year_share_pct": 36.3,
+        "gate_verdict": "PASS_TO_FORWARD_CLOCK"
+      },
+      "short": {
+        "label": "MES-OPEX-short",
+        "n": 83,
+        "pf": 0.634,
+        "median": -116.24,
+        "net": -7022.92,
+        "win_rate_pct": 39.8,
+        "max_year_share_pct": 0.0,
+        "gate_verdict": "KILL"
+      },
+      "combined": {
+        "label": "MES-OPEX-combined",
+        "n": 167,
+        "pf": 1.152,
+        "median": 26.26,
+        "net": 4811.67,
+        "win_rate_pct": 54.5,
+        "max_year_share_pct": 60.2,
+        "gate_verdict": "DEFER"
+      }
+    },
+    {
+      "asset": "MNQ",
+      "long": {
+        "label": "MNQ-OPEX-long",
+        "n": 84,
+        "pf": 2.468,
+        "median": 290.76,
+        "net": 27384.84,
+        "win_rate_pct": 71.4,
+        "max_year_share_pct": 30.1,
+        "gate_verdict": "PASS_TO_FORWARD_CLOCK"
+      },
+      "short": {
+        "label": "MNQ-OPEX-short",
+        "n": 83,
+        "pf": 0.688,
+        "median": -130.74,
+        "net": -10042.42,
+        "win_rate_pct": 45.8,
+        "max_year_share_pct": 0.0,
+        "gate_verdict": "KILL"
+      },
+      "combined": {
+        "label": "MNQ-OPEX-combined",
+        "n": 167,
+        "pf": 1.341,
+        "median": 103.76,
+        "net": 17342.42,
+        "win_rate_pct": 58.7,
+        "max_year_share_pct": 41.3,
+        "gate_verdict": "DEFER"
+      }
+    }
+  ],
+  "candidates": [
+    "MNQ"
+  ],
+  "boundaries": "report-only; no promotion/wiring/mutation; no feed needed"
+}
