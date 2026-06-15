@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.fql.phase1c-24h-verify</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/chasefisher/projects/Algo Trading/algo-lab/scripts/phase1c_24h_verify_cron.sh</string>
+    </array>
+    <!--
+      TEMPORARY verifier. Fires every weekday at 15:30 local (America/Los_Angeles)
+      = 18:30 ET, after the 17:00 ET forward run + reporting. Reports PENDING until
+      the live forward output contains WH-MNQ-stop_run_reversal, then OK (self-
+      disables) or FAIL (stages rollback + alerts; never auto-reverts). Self-removes
+      from LaunchAgents on PHASE1C_24H_VERIFY_OK.
+    -->
+    <key>StartCalendarInterval</key>
+    <array>
+        <dict><key>Weekday</key><integer>1</integer><key>Hour</key><integer>15</integer><key>Minute</key><integer>30</integer></dict>
+        <dict><key>Weekday</key><integer>2</integer><key>Hour</key><integer>15</integer><key>Minute</key><integer>30</integer></dict>
+        <dict><key>Weekday</key><integer>3</integer><key>Hour</key><integer>15</integer><key>Minute</key><integer>30</integer></dict>
+        <dict><key>Weekday</key><integer>4</integer><key>Hour</key><integer>15</integer><key>Minute</key><integer>30</integer></dict>
+        <dict><key>Weekday</key><integer>5</integer><key>Hour</key><integer>15</integer><key>Minute</key><integer>30</integer></dict>
+    </array>
+    <key>RunAtLoad</key>
+    <false/>
+    <key>WorkingDirectory</key>
+    <string>/Users/chasefisher/projects/Algo Trading/algo-lab</string>
+    <key>StandardOutPath</key>
+    <string>/Users/chasefisher/projects/Algo Trading/algo-lab/research/logs/phase1c_24h_verify_stdout.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/chasefisher/projects/Algo Trading/algo-lab/research/logs/phase1c_24h_verify_stderr.log</string>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>HOME</key>
+        <string>/Users/chasefisher</string>
+        <key>PATH</key>
+        <string>/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+        <key>PYTHONUNBUFFERED</key>
+        <string>1</string>
+    </dict>
+</dict>
+</plist>
