@@ -1,0 +1,190 @@
+{
+  "cycle": "2026-06-15b_lane_a_family_cross_asset_screen",
+  "mode": "Lane B report-only (Phase 1C activation frozen)",
+  "mechanisms": [
+    "range_compression_break",
+    "first_impulse_pullback"
+  ],
+  "mnq_baselines": {
+    "range_compression_break": {
+      "n": 1244,
+      "pf": 1.37,
+      "median": 9.01
+    },
+    "first_impulse_pullback": {
+      "n": 1001,
+      "pf": 1.354,
+      "median": 4.26
+    }
+  },
+  "results": [
+    {
+      "mech": "range_compression_break",
+      "asset": "MNQ",
+      "n": 1245,
+      "pf": 1.359,
+      "median": 8.76,
+      "win_rate_pct": 53.3,
+      "top3_share_pct": 20.2,
+      "max_year_share_pct": 32.8,
+      "archetype": "WORKHORSE",
+      "gate_verdict": "PASS_TO_FORWARD_CLOCK",
+      "signal_hash": "673a3321b61cab81"
+    },
+    {
+      "mech": "range_compression_break",
+      "asset": "MES",
+      "n": 1215,
+      "pf": 1.205,
+      "median": 1.26,
+      "win_rate_pct": 51.0,
+      "top3_share_pct": 39.7,
+      "max_year_share_pct": 46.3,
+      "archetype": "WORKHORSE",
+      "gate_verdict": "DEFER",
+      "signal_hash": "25ce8b0f59d4f3b1"
+    },
+    {
+      "mech": "range_compression_break",
+      "asset": "MGC",
+      "n": 592,
+      "pf": 1.252,
+      "median": 0.76,
+      "win_rate_pct": 50.2,
+      "top3_share_pct": 69.1,
+      "max_year_share_pct": 50.8,
+      "archetype": "WORKHORSE",
+      "gate_verdict": "DEFER",
+      "signal_hash": "f8717cf97dc204f8"
+    },
+    {
+      "mech": "range_compression_break",
+      "asset": "M2K",
+      "n": 1227,
+      "pf": 1.096,
+      "median": -0.74,
+      "win_rate_pct": 49.6,
+      "top3_share_pct": 56.4,
+      "max_year_share_pct": 85.6,
+      "archetype": "PAYOFF_RATIO_WORKHORSE_FREQUENCY",
+      "gate_verdict": "KILL",
+      "signal_hash": "f4058176bca5c44b"
+    },
+    {
+      "mech": "range_compression_break",
+      "asset": "MYM",
+      "n": 398,
+      "pf": 1.454,
+      "median": 0.51,
+      "win_rate_pct": 51.0,
+      "top3_share_pct": 27.2,
+      "max_year_share_pct": 68.5,
+      "archetype": "TAIL_ENGINE",
+      "gate_verdict": "DEFER",
+      "signal_hash": "7618bb9b49101aba"
+    },
+    {
+      "mech": "range_compression_break",
+      "asset": "MCL",
+      "n": 769,
+      "pf": 0.96,
+      "median": -3.24,
+      "win_rate_pct": 46.9,
+      "top3_share_pct": 0.0,
+      "max_year_share_pct": 0.0,
+      "archetype": "UNKNOWN",
+      "gate_verdict": "KILL",
+      "signal_hash": "72890254d595dac4"
+    },
+    {
+      "mech": "first_impulse_pullback",
+      "asset": "MNQ",
+      "n": 1002,
+      "pf": 1.337,
+      "median": 4.26,
+      "win_rate_pct": 51.3,
+      "top3_share_pct": 25.4,
+      "max_year_share_pct": 21.5,
+      "archetype": "WORKHORSE",
+      "gate_verdict": "DEFER",
+      "signal_hash": "b77e272c24934ff9"
+    },
+    {
+      "mech": "first_impulse_pullback",
+      "asset": "MES",
+      "n": 1008,
+      "pf": 1.242,
+      "median": -2.49,
+      "win_rate_pct": 48.5,
+      "top3_share_pct": 29.2,
+      "max_year_share_pct": 34.8,
+      "archetype": "PAYOFF_RATIO_WORKHORSE_FREQUENCY",
+      "gate_verdict": "DEFER",
+      "signal_hash": "3b915d2f1ade2e7f"
+    },
+    {
+      "mech": "first_impulse_pullback",
+      "asset": "MGC",
+      "n": 534,
+      "pf": 1.075,
+      "median": -3.74,
+      "win_rate_pct": 47.8,
+      "top3_share_pct": 137.4,
+      "max_year_share_pct": 117.3,
+      "archetype": "PAYOFF_RATIO_WORKHORSE_FREQUENCY",
+      "gate_verdict": "KILL",
+      "signal_hash": "680bd100a038b2c6"
+    },
+    {
+      "mech": "first_impulse_pullback",
+      "asset": "M2K",
+      "n": 987,
+      "pf": 1.057,
+      "median": -1.24,
+      "win_rate_pct": 48.5,
+      "top3_share_pct": 81.1,
+      "max_year_share_pct": 133.4,
+      "archetype": "PAYOFF_RATIO_WORKHORSE_FREQUENCY",
+      "gate_verdict": "KILL",
+      "signal_hash": "f12b407c2f747e61"
+    },
+    {
+      "mech": "first_impulse_pullback",
+      "asset": "MYM",
+      "n": 308,
+      "pf": 1.051,
+      "median": -0.74,
+      "win_rate_pct": 49.7,
+      "top3_share_pct": 257.3,
+      "max_year_share_pct": 180.9,
+      "archetype": "TAIL_ENGINE",
+      "gate_verdict": "KILL",
+      "signal_hash": "12bd6e9ff544943a"
+    },
+    {
+      "mech": "first_impulse_pullback",
+      "asset": "MCL",
+      "n": 707,
+      "pf": 0.931,
+      "median": -3.24,
+      "win_rate_pct": 46.4,
+      "top3_share_pct": 0.0,
+      "max_year_share_pct": 0.0,
+      "archetype": "UNKNOWN",
+      "gate_verdict": "KILL",
+      "signal_hash": "8819f1399c5f90d0"
+    }
+  ],
+  "portability_summary": {
+    "range_compression_break": {
+      "non_mnq_pass": [],
+      "n_non_mnq_pass": 0
+    },
+    "first_impulse_pullback": {
+      "non_mnq_pass": [],
+      "n_non_mnq_pass": 0
+    }
+  },
+  "conclusion": "LANE_A_MOMENTUM_FAMILY_MNQ_SPECIFIC \u2014 stop trying to port; asset-diversification gap requires NEW mechanisms",
+  "boundaries": "report-only; no tuning/promotion/wiring; negative results preserved"
+}
