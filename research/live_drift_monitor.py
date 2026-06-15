@@ -66,6 +66,7 @@ STRATEGY_PROMOTED_DATES = {
     "XB-ORB-EMA-Ladder-MNQ": "2026-04-06",
     "XB-ORB-EMA-Ladder-MCL": "2026-04-08",
     "XB-ORB-EMA-Ladder-MYM": "2026-04-13",
+    "WH-MNQ-stop_run_reversal-ema_slope-PL": "2026-06-14",  # Lane A Wave 1, Phase 1C
 }
 
 # ── Backtest Reference Baselines ─────────────────────────────────────────────
@@ -120,6 +121,18 @@ BASELINE = {
             "avg_pnl": 42.93, "trade_share": None, "pnl_share": None,
             "entered_forward_date": "2026-04-06",
             "source": "research/data/xb_orb_family_sweep_results.json + docs/XB_ORB_PROBATION_FRAMEWORK.md",
+        },
+        "WH-MNQ-stop_run_reversal-ema_slope-PL": {
+            "tier": "full", "asset": "MNQ",
+            "trades": 1414, "backtest_days": 1790, "win_rate": 0.547,
+            "avg_pnl": 25.01, "trade_share": None, "pnl_share": None,
+            "entered_forward_date": "2026-06-14",
+            "source": (
+                "Lane A Wave 1 Phase 1C. Baseline PF 1.477, median $15.51 "
+                "(audit window, signal hash d2d31c3f0e7e86bb). Port-verified b90c501; "
+                "DSCL in-repo d8ea1b6. docs/fql_forge/paper_packet_drafts/"
+                "WAVE1_PHASE1A_PORT_VERIFICATION_2026-06-13.md"
+            ),
         },
         "XB-ORB-EMA-Ladder-MCL": {
             "tier": "full", "asset": "MCL",

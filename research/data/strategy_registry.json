@@ -9289,6 +9289,70 @@
       "extractable_components": [],
       "crossbreeding_eligible": false,
       "why_not_now": "awaiting_full_validation_battery_post_phase_0"
+    },
+    {
+      "strategy_id": "WH-MNQ-stop_run_reversal-ema_slope-PL",
+      "strategy_name": "xb_stop_run_reversal_ema_ladder",
+      "family": "crossbreed_meanreversion",
+      "asset": "MNQ",
+      "session": "all_day",
+      "direction": "both",
+      "source": "lane_a_wave1_forge_workhorse_2026-06-13",
+      "rule_summary": "Stop-run reversal (liquidity sweep + reclaim) + EMA-slope filter + profit_ladder exit. Intraday-flat daily workhorse.",
+      "status": "probation",
+      "controller_action": "PROBATION",
+      "executable_state": "EXECUTABLE",
+      "controller_state": "ACTIVE",
+      "lifecycle_stage": "forward_validation",
+      "portfolio_role": "workhorse",
+      "promotion_date": "2026-06-14",
+      "paper_ready": true,
+      "promotion_eligible": true,
+      "validation_score": 9.0,
+      "trades_6yr": 1414,
+      "profit_factor": 1.477,
+      "created_date": "2026-06-13",
+      "state_entered_date": "2026-06-15",
+      "last_review_date": "2026-06-15",
+      "kill_flag": false,
+      "kill_switches": {
+        "max_dd_realized_usd": 1500,
+        "max_dd_basis": "realized drawdown from paper-start equity, measured on closed-trade equity for this book",
+        "rolling12_era3_pf_min": 1.0,
+        "mon_pf_min_first6_mondays": 0.9,
+        "h13_bucket_pf_min": 0.85
+      },
+      "forward_sla": "30 forward trades OR 30 sessions, whichever later",
+      "monitors": [
+        "MON_WEAKNESS_MONITOR",
+        "H13_KNIFE_EDGE_MONITOR",
+        "ACTIVE_EXPOSURE_WARNING_XB_ORB_PROBATION"
+      ],
+      "execution_config": {
+        "preferred_window": [
+          "09:30",
+          "14:30"
+        ],
+        "allowed_window": [
+          "09:30",
+          "15:15"
+        ],
+        "conviction_threshold_inside": 2,
+        "conviction_threshold_outside": 2,
+        "priority": 9,
+        "avoid_regimes": [],
+        "preferred_regimes": [],
+        "exit_variant": null
+      },
+      "notes": "Lane A Wave 1 PRIMARY daily workhorse. Paper-wired 2026-06-15 (Phase 1C). Baseline n=1414, PF 1.477, median $15.51, largest loss -$1457 (audit window). Port verified byte-identical to DATA_AUDIT_GREEN (commit b90c501, signal hash d2d31c3f0e7e86bb). DSCL in-repo verified Databento-backed (d8ea1b6). Org-hygiene clean + fail-closed gate (09d61ad). exit_variant=null is REQUIRED (runner profit_ladder branch = donchian trap). 1 MNQ paper. Live/prop BLOCKED until DSCL \u00a77.",
+      "state_history": [
+        {
+          "date": "2026-06-15",
+          "from": "VALIDATED",
+          "to": "PROBATION",
+          "trigger": "Phase 1C paper wiring (operator-approved); port-verified + DSCL + org-hygiene gates clear"
+        }
+      ]
     }
   ],
   "_rejection_taxonomy": {
