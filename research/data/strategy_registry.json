@@ -6622,7 +6622,16 @@
       "promotion_eligible": false,
       "experimental_archetype": null,
       "paper_packet_path": null,
-      "promotion_pending_reason": "PENDING_FORWARD_EVIDENCE"
+      "promotion_pending_reason": "PENDING_FORWARD_EVIDENCE",
+      "governance_review": {
+        "status": "OPEN",
+        "opened": "2026-06-14",
+        "issue": "CONTRADICTORY_APPROVAL_STATE: promotion_date=2026-05-28 coexists with paper_ready=false + promotion_eligible=false.",
+        "preliminary_evidence": "2026-05-28 sprint v2 phase3 verdict was PASS_TO_FORWARD_CLOCK (forward-clock, NOT paper promotion); n=652; not in validated MNQ/MCL/MYM set. promotion_date is the likely-erroneous field; paper_ready=false likely reflects true state. NOT resolved per operator decision (c).",
+        "decision": "(c) leave gated pending validation/promotion review; do NOT activate, do NOT clear flags, do NOT add to CLAUDE.md approved table.",
+        "execution_state": "OFF / fail-closed / non-execution-eligible (BLOCKED_PAPER_READY_FALSE via build_portfolio_config gate)",
+        "review_doc": "docs/fql_forge/LADDER_MGC_APPROVAL_REVIEW_2026-06-14.md"
+      }
     },
     {
       "strategy_id": "XB-ORB-EMA-Ladder-MCL",
