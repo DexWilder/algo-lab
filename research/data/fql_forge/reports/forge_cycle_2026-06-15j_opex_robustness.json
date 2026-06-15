@@ -1,0 +1,458 @@
+{
+  "cycle": "2026-06-15j_opex_robustness",
+  "mode": "Lane B report-only",
+  "variants_tested": [
+    [
+      11,
+      3
+    ],
+    [
+      12,
+      3
+    ],
+    [
+      10,
+      3
+    ],
+    [
+      11,
+      2
+    ],
+    [
+      11,
+      4
+    ],
+    [
+      10,
+      2
+    ],
+    [
+      12,
+      4
+    ]
+  ],
+  "base": [
+    11,
+    3
+  ],
+  "long_only": true,
+  "assets": {
+    "MES": {
+      "grid": {
+        "11->3": {
+          "pf": 2.088,
+          "median": 162.51,
+          "win_rate_pct": 67.5,
+          "n": 83,
+          "max_year_share_pct": 30.2
+        },
+        "12->3": {
+          "pf": 1.811,
+          "median": 161.26,
+          "win_rate_pct": 63.9,
+          "n": 83,
+          "max_year_share_pct": 35.0
+        },
+        "10->3": {
+          "pf": 2.107,
+          "median": 140.01,
+          "win_rate_pct": 69.9,
+          "n": 83,
+          "max_year_share_pct": 31.1
+        },
+        "11->2": {
+          "pf": 1.807,
+          "median": 136.26,
+          "win_rate_pct": 66.3,
+          "n": 83,
+          "max_year_share_pct": 29.7
+        },
+        "11->4": {
+          "pf": 2.091,
+          "median": 190.01,
+          "win_rate_pct": 63.9,
+          "n": 83,
+          "max_year_share_pct": 31.0
+        },
+        "10->2": {
+          "pf": 1.755,
+          "median": 98.76,
+          "win_rate_pct": 63.9,
+          "n": 83,
+          "max_year_share_pct": 28.2
+        },
+        "12->4": {
+          "pf": 1.774,
+          "median": 165.01,
+          "win_rate_pct": 63.9,
+          "n": 83,
+          "max_year_share_pct": 36.5
+        }
+      },
+      "base": {
+        "n": 83,
+        "pf": 2.088,
+        "median": 162.51,
+        "mean": 171.89,
+        "net": 14267.0,
+        "win_rate_pct": 67.5,
+        "by_year_net": {
+          "2019": 885.0,
+          "2020": 1503.0,
+          "2021": 1400.0,
+          "2022": -1171.0,
+          "2023": 1933.0,
+          "2024": 4665.0,
+          "2025": 1595.0,
+          "2026": 3458.0
+        },
+        "max_year_share_pct": 30.2,
+        "loo_pf": {
+          "2019": 2.02,
+          "2020": 2.191,
+          "2021": 2.065,
+          "2022": 2.667,
+          "2023": 2.052,
+          "2024": 1.785,
+          "2025": 2.269,
+          "2026": 1.852
+        },
+        "h1_pf": 1.394,
+        "h2_pf": 2.909,
+        "pre2020_pf": Infinity,
+        "post2020_pf": 2.02,
+        "y2022_net": -1171.0,
+        "y2022_pf": 0.696,
+        "largest_window_loss": -2017.49,
+        "max_consecutive_losses": 6,
+        "worst_mtm_dd_usd": -2340.0,
+        "worst_overnight_gap_usd": -450.0,
+        "all_windows_overnight": true,
+        "n_holiday_adjusted_opex": 2,
+        "med_hold_td": 8
+      },
+      "beta_control": {
+        "generic_mean_ret_pct": 0.38,
+        "generic_winrate_pct": 61.4,
+        "generic_pf": 1.416,
+        "always_long_total_ret_pct": 149.7
+      },
+      "cost_stress_pf": {
+        "1x": 2.088,
+        "2x": 2.056,
+        "5x": 1.963
+      },
+      "verdict": "WATCH_SEASONAL (beta-laden; SEASONAL_BETA_TIMING \u2014 review-only candidate, NOT diversifier)"
+    },
+    "MNQ": {
+      "grid": {
+        "11->3": {
+          "pf": 2.517,
+          "median": 334.26,
+          "win_rate_pct": 66.3,
+          "n": 83,
+          "max_year_share_pct": 27.5
+        },
+        "12->3": {
+          "pf": 2.335,
+          "median": 301.76,
+          "win_rate_pct": 61.4,
+          "n": 83,
+          "max_year_share_pct": 28.7
+        },
+        "10->3": {
+          "pf": 2.669,
+          "median": 303.26,
+          "win_rate_pct": 72.3,
+          "n": 83,
+          "max_year_share_pct": 26.2
+        },
+        "11->2": {
+          "pf": 2.29,
+          "median": 214.26,
+          "win_rate_pct": 62.7,
+          "n": 83,
+          "max_year_share_pct": 25.1
+        },
+        "11->4": {
+          "pf": 2.36,
+          "median": 338.26,
+          "win_rate_pct": 65.1,
+          "n": 83,
+          "max_year_share_pct": 30.1
+        },
+        "10->2": {
+          "pf": 2.323,
+          "median": 243.26,
+          "win_rate_pct": 62.7,
+          "n": 83,
+          "max_year_share_pct": 21.7
+        },
+        "12->4": {
+          "pf": 2.164,
+          "median": 319.26,
+          "win_rate_pct": 62.7,
+          "n": 83,
+          "max_year_share_pct": 31.8
+        }
+      },
+      "base": {
+        "n": 83,
+        "pf": 2.517,
+        "median": 334.26,
+        "mean": 377.87,
+        "net": 31364.0,
+        "win_rate_pct": 66.3,
+        "by_year_net": {
+          "2019": 1429.0,
+          "2020": 4543.0,
+          "2021": 2202.0,
+          "2022": -2697.0,
+          "2023": 5232.0,
+          "2024": 9365.0,
+          "2025": 3311.0,
+          "2026": 7979.0
+        },
+        "max_year_share_pct": 27.5,
+        "loo_pf": {
+          "2019": 2.448,
+          "2020": 2.495,
+          "2021": 2.551,
+          "2022": 3.432,
+          "2023": 2.354,
+          "2024": 2.125,
+          "2025": 2.939,
+          "2026": 2.171
+        },
+        "h1_pf": 1.517,
+        "h2_pf": 3.661,
+        "pre2020_pf": Infinity,
+        "post2020_pf": 2.448,
+        "y2022_net": -2697.0,
+        "y2022_pf": 0.596,
+        "largest_window_loss": -2515.24,
+        "max_consecutive_losses": 6,
+        "worst_mtm_dd_usd": -2855.0,
+        "worst_overnight_gap_usd": -720.0,
+        "all_windows_overnight": true,
+        "n_holiday_adjusted_opex": 2,
+        "med_hold_td": 8
+      },
+      "beta_control": {
+        "generic_mean_ret_pct": 0.554,
+        "generic_winrate_pct": 60.2,
+        "generic_pf": 1.477,
+        "always_long_total_ret_pct": 279.5
+      },
+      "cost_stress_pf": {
+        "1x": 2.517,
+        "2x": 2.504,
+        "5x": 2.463
+      },
+      "verdict": "WATCH_SEASONAL (beta-laden; SEASONAL_BETA_TIMING \u2014 review-only candidate, NOT diversifier)"
+    },
+    "MYM": {
+      "grid": {
+        "11->3": {
+          "pf": 2.012,
+          "median": 122.26,
+          "win_rate_pct": 59.3,
+          "n": 27,
+          "max_year_share_pct": 52.7
+        },
+        "12->3": {
+          "pf": 1.549,
+          "median": 60.76,
+          "win_rate_pct": 55.6,
+          "n": 27,
+          "max_year_share_pct": 62.6
+        },
+        "10->3": {
+          "pf": 2.219,
+          "median": 63.26,
+          "win_rate_pct": 59.3,
+          "n": 27,
+          "max_year_share_pct": 57.9
+        },
+        "11->2": {
+          "pf": 2.126,
+          "median": 147.26,
+          "win_rate_pct": 59.3,
+          "n": 27,
+          "max_year_share_pct": 49.6
+        },
+        "11->4": {
+          "pf": 1.997,
+          "median": 93.76,
+          "win_rate_pct": 55.6,
+          "n": 27,
+          "max_year_share_pct": 46.2
+        },
+        "10->2": {
+          "pf": 2.201,
+          "median": 63.26,
+          "win_rate_pct": 66.7,
+          "n": 27,
+          "max_year_share_pct": 54.4
+        },
+        "12->4": {
+          "pf": 1.476,
+          "median": -11.74,
+          "win_rate_pct": 48.1,
+          "n": 27,
+          "max_year_share_pct": 64.0
+        }
+      },
+      "base": {
+        "n": 27,
+        "pf": 2.012,
+        "median": 122.26,
+        "mean": 134.24,
+        "net": 3625.0,
+        "win_rate_pct": 59.3,
+        "by_year_net": {
+          "2024": 1911.0,
+          "2025": 153.0,
+          "2026": 1561.0
+        },
+        "max_year_share_pct": 52.7,
+        "loo_pf": {
+          "2024": 1.707,
+          "2025": 3.347,
+          "2026": 1.632
+        },
+        "h1_pf": 1.771,
+        "h2_pf": 2.251,
+        "pre2020_pf": null,
+        "post2020_pf": 2.012,
+        "y2022_net": null,
+        "y2022_pf": null,
+        "largest_window_loss": -558.24,
+        "max_consecutive_losses": 2,
+        "worst_mtm_dd_usd": -989.5,
+        "worst_overnight_gap_usd": -256.0,
+        "all_windows_overnight": true,
+        "n_holiday_adjusted_opex": 1,
+        "med_hold_td": 8
+      },
+      "beta_control": {
+        "generic_mean_ret_pct": 0.33,
+        "generic_winrate_pct": 57.0,
+        "generic_pf": 1.417,
+        "always_long_total_ret_pct": 30.5
+      },
+      "cost_stress_pf": {
+        "1x": 2.012,
+        "2x": 1.977,
+        "5x": 1.879
+      }
+    },
+    "M2K": {
+      "grid": {
+        "11->3": {
+          "pf": 1.51,
+          "median": 66.76,
+          "win_rate_pct": 56.6,
+          "n": 83,
+          "max_year_share_pct": 38.6
+        },
+        "12->3": {
+          "pf": 1.359,
+          "median": 46.26,
+          "win_rate_pct": 56.6,
+          "n": 83,
+          "max_year_share_pct": 38.7
+        },
+        "10->3": {
+          "pf": 1.46,
+          "median": 41.76,
+          "win_rate_pct": 60.2,
+          "n": 83,
+          "max_year_share_pct": 41.2
+        },
+        "11->2": {
+          "pf": 1.339,
+          "median": 116.76,
+          "win_rate_pct": 59.0,
+          "n": 83,
+          "max_year_share_pct": 39.0
+        },
+        "11->4": {
+          "pf": 1.448,
+          "median": 33.76,
+          "win_rate_pct": 57.8,
+          "n": 83,
+          "max_year_share_pct": 44.1
+        },
+        "10->2": {
+          "pf": 1.273,
+          "median": 42.76,
+          "win_rate_pct": 57.8,
+          "n": 83,
+          "max_year_share_pct": 37.3
+        },
+        "12->4": {
+          "pf": 1.278,
+          "median": 20.26,
+          "win_rate_pct": 50.6,
+          "n": 83,
+          "max_year_share_pct": 46.9
+        }
+      },
+      "base": {
+        "n": 83,
+        "pf": 1.51,
+        "median": 66.76,
+        "mean": 65.26,
+        "net": 5417.0,
+        "win_rate_pct": 56.6,
+        "by_year_net": {
+          "2019": 517.0,
+          "2020": 563.0,
+          "2021": -249.0,
+          "2022": -367.0,
+          "2023": 224.0,
+          "2024": 2330.0,
+          "2025": 288.0,
+          "2026": 2112.0
+        },
+        "max_year_share_pct": 38.6,
+        "loo_pf": {
+          "2019": 1.466,
+          "2020": 1.569,
+          "2021": 1.651,
+          "2022": 1.694,
+          "2023": 1.587,
+          "2024": 1.322,
+          "2025": 1.545,
+          "2026": 1.315
+        },
+        "h1_pf": 1.118,
+        "h2_pf": 2.048,
+        "pre2020_pf": 5.909,
+        "post2020_pf": 1.466,
+        "y2022_net": -367.0,
+        "y2022_pf": 0.84,
+        "largest_window_loss": -1685.74,
+        "max_consecutive_losses": 7,
+        "worst_mtm_dd_usd": -2025.0,
+        "worst_overnight_gap_usd": -240.5,
+        "all_windows_overnight": true,
+        "n_holiday_adjusted_opex": 2,
+        "med_hold_td": 8
+      },
+      "beta_control": {
+        "generic_mean_ret_pct": 0.305,
+        "generic_winrate_pct": 54.0,
+        "generic_pf": 1.161,
+        "always_long_total_ret_pct": 85.2
+      },
+      "cost_stress_pf": {
+        "1x": 1.51,
+        "2x": 1.479,
+        "5x": 1.391
+      }
+    }
+  },
+  "boundaries": "report-only; no promotion/wiring/mutation; long-only; OPEX-week short leg KILLed"
+}
