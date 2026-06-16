@@ -32,3 +32,9 @@ Highest-value next = **Lever-B** (official calendars auction/OPEC/CPI + fundamen
 
 ## Boundaries
 Report-only; no promotion/wiring/mutation; banked sleeve + active books untouched. Phase 1C frozen.
+
+## Addendum — EIA-week crude (MCL), next genuinely-new event×asset (EV: moderate, result: marginal)
+EIA calendar loaded (418 events, deterministic Wed + holiday shifts). Best: MCL post-EIA long (enter EIA day → +2td) PF 1.43, +median $45, H1/H2 2.19/1.12 — but **concentration 55.2% (fails ≤50% gate)** → WATCH-LOW (concentration-blocked). Short direction + other windows KILL. No clean survivor.
+
+## FIRM CONCLUSION — current-data discovery comprehensively exhausted (~9 surface types)
+generic-grid · lead-lag · RV-pairs · equity-seasonal · rates-event/seasonal · deterministic-windows · intraday-decomposition · weekly-horizon · EIA-crude. **Productive output = one banked deployable sleeve (FOMC-week rates) + a scatter of WATCH-LOW marginal leads** (ZN-TOM, ZF-quarter-end, MNQ-abnormal_range, MGC-prior_day_break, MCL-post-EIA). No further deployable candidates emerging from current data. Every additional current-data batch now yields KILL or concentration/small-n-blocked marginals (empirical, not posture). **High-value frontier is unambiguously Lever-B (new data/calendars/feeds) or activation reopen.** Forge remains runnable per standing rule; absent a lever, further batches are low-EV marginal-logging.
