@@ -34,4 +34,4 @@
 3. ZN/ZF-FOMC advance from review-track toward paper, on the same Lane A gauntlet.
 
 ## Mission status
-Non-equity diversification: **SOLVED narrowly** — a real, audited, cross-confirmed Rates-FOMC-week sleeve is banked (review-track). Current-feed event-seasonal vein is well-mapped (FOMC-week = the edge). Further breadth requires lever B (official data) or awaits activation for the executor/packet/wiring path. **Current-feed mining paused.**
+**The FIRST non-equity diversification sleeve has been found and banked in review-track form** — a real, audited, cross-confirmed Rates-FOMC-week sleeve. Solved at the **research-bench level, NOT yet at paper/live deployment** (deployment is gated on executor + V1 packet + external DSCL + activation reopen). Current-feed event-seasonal vein is well-mapped (FOMC-week = the edge). Further breadth requires lever B (official data) or awaits activation. **Current-feed Forge search is PAUSED (mission complete for current-feed diversification search). Next meaningful action is gated, not search-driven: Phase 1C verifier resolution → executor/V1-packet sequencing, or Lever-B feed unlock.**
