@@ -1,0 +1,109 @@
+{
+  "cycle": "2026-06-16b_overnight_gap_bucket",
+  "mode": "Lane B report-only (boundary completion)",
+  "small_max_gap_atr": 0.75,
+  "results": {
+    "MES": {
+      "asset": "MES",
+      "gap_fill": {
+        "label": "MES-gapfill",
+        "n": 1332,
+        "pf": 0.852,
+        "median": 0.01,
+        "win_rate_pct": 50.3,
+        "max_year_share_pct": 70.7,
+        "h1_pf": 0.784,
+        "h2_pf": 0.92,
+        "largest_day_loss": -582.49
+      },
+      "gap_hold": {
+        "label": "MES-gaphold",
+        "n": 269,
+        "pf": 1.123,
+        "median": 16.26,
+        "win_rate_pct": 52.8,
+        "max_year_share_pct": 75.9,
+        "h1_pf": 1.569,
+        "h2_pf": 0.844,
+        "largest_day_loss": -917.49
+      }
+    },
+    "MNQ": {
+      "asset": "MNQ",
+      "gap_fill": {
+        "label": "MNQ-gapfill",
+        "n": 1314,
+        "pf": 0.862,
+        "median": -23.99,
+        "win_rate_pct": 48.2,
+        "max_year_share_pct": 61.7,
+        "h1_pf": 0.838,
+        "h2_pf": 0.881,
+        "largest_day_loss": -903.24
+      },
+      "gap_hold": {
+        "label": "MNQ-gaphold",
+        "n": 259,
+        "pf": 1.101,
+        "median": 42.26,
+        "win_rate_pct": 55.2,
+        "max_year_share_pct": 55.2,
+        "h1_pf": 1.405,
+        "h2_pf": 0.912,
+        "largest_day_loss": -1258.74
+      }
+    },
+    "MGC": {
+      "asset": "MGC",
+      "gap_fill": {
+        "label": "MGC-gapfill",
+        "n": 607,
+        "pf": 0.754,
+        "median": -12.24,
+        "win_rate_pct": 45.8,
+        "max_year_share_pct": 100.0,
+        "h1_pf": 0.91,
+        "h2_pf": 0.672,
+        "largest_day_loss": -513.24
+      },
+      "gap_hold": {
+        "label": "MGC-gaphold",
+        "n": 469,
+        "pf": 1.106,
+        "median": 3.76,
+        "win_rate_pct": 51.2,
+        "max_year_share_pct": 27.1,
+        "h1_pf": 1.154,
+        "h2_pf": 1.083,
+        "largest_day_loss": -1416.24
+      }
+    },
+    "MCL": {
+      "asset": "MCL",
+      "gap_fill": {
+        "label": "MCL-gapfill",
+        "n": 863,
+        "pf": 0.82,
+        "median": -12.24,
+        "win_rate_pct": 48.1,
+        "max_year_share_pct": 100.0,
+        "h1_pf": 0.944,
+        "h2_pf": 0.679,
+        "largest_day_loss": -327.24
+      },
+      "gap_hold": {
+        "label": "MCL-gaphold",
+        "n": 313,
+        "pf": 0.704,
+        "median": -4.24,
+        "win_rate_pct": 46.3,
+        "max_year_share_pct": 0.0,
+        "h1_pf": 0.802,
+        "h2_pf": 0.57,
+        "largest_day_loss": -703.24
+      }
+    }
+  },
+  "verdict": "KILL \u2014 no gap book independently viable",
+  "boundaries": "report-only; no promotion/wiring/mutation; intraday-flat; per-instrument gate"
+}
