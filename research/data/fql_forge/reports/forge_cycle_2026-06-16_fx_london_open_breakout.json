@@ -1,0 +1,106 @@
+{
+  "cycle": "2026-06-16_fx_london_open_breakout",
+  "mode": "Lane B report-only",
+  "windows": {
+    "ET_0200_0300": [
+      "02:00",
+      "03:00"
+    ],
+    "ET_0300_0400": [
+      "03:00",
+      "04:00"
+    ]
+  },
+  "per_instrument_gate": true,
+  "results": {
+    "ET_0200_0300": {
+      "6E": {
+        "asset": "6E",
+        "n": 243,
+        "pf": 0.653,
+        "median": -5.0,
+        "net": -6215.0,
+        "win_rate_pct": 47.7,
+        "max_year_share_pct": 0.0,
+        "h1_pf": 0.862,
+        "h2_pf": 0.501,
+        "largest_day_loss": -442.5,
+        "intraday_flat": true,
+        "pf_2x_slip": 0.527
+      },
+      "6J": {
+        "asset": "6J",
+        "n": 175,
+        "pf": 0.567,
+        "median": -17.5,
+        "net": -4763.0,
+        "win_rate_pct": 45.7,
+        "max_year_share_pct": 0.0,
+        "h1_pf": 0.491,
+        "h2_pf": 0.693,
+        "largest_day_loss": -442.5,
+        "intraday_flat": true,
+        "pf_2x_slip": 0.434
+      },
+      "6B": {
+        "asset": "6B",
+        "n": 145,
+        "pf": 0.509,
+        "median": -17.5,
+        "net": -3087.0,
+        "win_rate_pct": 41.4,
+        "max_year_share_pct": 0.0,
+        "h1_pf": 0.526,
+        "h2_pf": 0.495,
+        "largest_day_loss": -355.0,
+        "intraday_flat": true,
+        "pf_2x_slip": 0.337
+      }
+    },
+    "ET_0300_0400": {
+      "6E": {
+        "asset": "6E",
+        "n": 235,
+        "pf": 0.664,
+        "median": -17.5,
+        "net": -5494.0,
+        "win_rate_pct": 46.0,
+        "max_year_share_pct": 0.0,
+        "h1_pf": 0.781,
+        "h2_pf": 0.569,
+        "largest_day_loss": -530.0,
+        "intraday_flat": true,
+        "pf_2x_slip": 0.531
+      },
+      "6J": {
+        "asset": "6J",
+        "n": 165,
+        "pf": 0.688,
+        "median": -11.25,
+        "net": -2756.0,
+        "win_rate_pct": 44.8,
+        "max_year_share_pct": 100.0,
+        "h1_pf": 0.592,
+        "h2_pf": 0.822,
+        "largest_day_loss": -392.5,
+        "intraday_flat": true,
+        "pf_2x_slip": 0.521
+      },
+      "6B": {
+        "asset": "6B",
+        "n": 137,
+        "pf": 0.761,
+        "median": 1.25,
+        "net": -1254.0,
+        "win_rate_pct": 50.4,
+        "max_year_share_pct": 100.0,
+        "h1_pf": 0.62,
+        "h2_pf": 0.917,
+        "largest_day_loss": -261.25,
+        "intraday_flat": true,
+        "pf_2x_slip": 0.517
+      }
+    }
+  },
+  "verdict": "KILL \u2014 no FX contract independently viable (no pooled pass)"
+}
