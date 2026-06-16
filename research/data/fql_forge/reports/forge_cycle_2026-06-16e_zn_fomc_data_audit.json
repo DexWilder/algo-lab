@@ -1,0 +1,85 @@
+{
+  "cycle": "2026-06-16e_zn_fomc_data_audit",
+  "mode": "Lane B report-only; freeze maintained",
+  "lineage": {
+    "vendor": "Databento",
+    "dataset": "GLBX.MDP3",
+    "schema": "ohlcv-1m",
+    "stype": "continuous",
+    "raw_symbol": "ZN.c.0",
+    "roll": ".c.0 calendar-roll continuous (NOT back-adjusted)"
+  },
+  "file_integrity": {
+    "file_hash": "89cc66f7a275087a",
+    "n_bars": 408963,
+    "span": [
+      "2019-06-30 20:00:00",
+      "2026-06-14 18:50:00"
+    ],
+    "duplicate_ts": 0,
+    "monotonic": true,
+    "n_zero_volume_bars": 0,
+    "gaps_gt_3d": 13,
+    "trading_days": 2156
+  },
+  "fomc_calendar": {
+    "n_events": 58,
+    "all_scheduled": true,
+    "all_1400ET": true,
+    "sources": [
+      "federalreserve.gov"
+    ],
+    "grade": "OFFICIAL_FED_GOV (scheduled only; emergency/notation excluded by module)"
+  },
+  "roll_stitch_candidates": 13,
+  "n_windows": 54,
+  "contaminated_windows": [],
+  "raw_rebuild": {
+    "n": 54,
+    "pf": 1.945,
+    "expectancy": 242.85,
+    "median": 43.77,
+    "largest_loss": -1234.35,
+    "maxyr": 30.2
+  },
+  "clean_rebuild": {
+    "n": 54,
+    "pf": 1.945,
+    "expectancy": 242.85,
+    "median": 43.77,
+    "largest_loss": -1234.35,
+    "maxyr": 30.2
+  },
+  "signal_hash": "3695298c5aa7a9bc",
+  "packet_reconcile": {
+    "match": true,
+    "detail": {
+      "pf": {
+        "packet": 1.945,
+        "rebuilt": 1.945
+      },
+      "expectancy": {
+        "packet": 242.85,
+        "rebuilt": 242.85
+      },
+      "median": {
+        "packet": 43.78,
+        "rebuilt": 43.77
+      },
+      "n": {
+        "packet": 54,
+        "rebuilt": 54
+      },
+      "largest_loss": {
+        "packet": -1234.35,
+        "rebuilt": -1234.35
+      },
+      "maxyr": {
+        "packet": 30.2,
+        "rebuilt": 30.2
+      }
+    }
+  },
+  "verdict": "DATA_AUDIT_GREEN \u2014 ZN feed-internally reproducible, FOMC calendar official, no window contamination, packet reconciles",
+  "boundaries": "report-only; freeze maintained; no executor/wiring/mutation"
+}

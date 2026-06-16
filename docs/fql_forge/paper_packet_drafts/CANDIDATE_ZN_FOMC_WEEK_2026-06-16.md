@@ -37,3 +37,16 @@ ZF/FOMC-week is a weaker secondary (PF ~1.45, conc ~45%). ZB too volatile (DD). 
 
 ## Boundaries
 Report-only; no promotion/wiring/mutation; canonical feeds + active books untouched. Phase 1C frozen pending PHASE1C_24H_VERIFY.
+
+---
+
+## DATA AUDIT UPDATE — 2026-06-16 → **DATA_AUDIT_GREEN**
+Audit `research/forge_cycle_2026-06-16e_zn_fomc_data_audit.py` (+ `.json`):
+- **Lineage:** Databento GLBX.MDP3 `ZN.c.0` (calendar-roll). File clean: 0 dupes, monotonic, 0 zero-volume; hash `89cc66f7`.
+- **FOMC calendar:** 58 events, all scheduled / 14:00 ET / federalreserve.gov (`OFFICIAL_FED_GOV`). n=54 in span.
+- **Contamination (the decisive test):** 13 ZN roll-stitch gaps exist over 7y, but **0 of 54 FOMC windows contaminated** (FOMC mid-month ≠ ZN late-prior-month roll). `.c.0` clean on all windows → no `.v.0` swap needed.
+- **Clean rebuild == raw rebuild** (PF 1.945 unchanged) → edge is NOT a data/roll artifact (where MGC collapsed).
+- **Packet reconciles exactly** to audited rebuild; signal hash `3695298c5aa7a9bc`.
+- **Scope (locked):** DATA_AUDIT_GREEN = feed-internal reproducibility ONLY; external feed correctness (vs CME) still DSCL-gated. Live/prop NOT cleared.
+
+**Status: review-track candidate, DATA_AUDIT_GREEN.** Still NOT approved for paper/live. Remaining gates before wiring (when activation reopens): out-of-band FOMC event executor (unbuilt), full V1 packet, EVENT/TAIL archetype evaluation. Activation freeze maintained.
