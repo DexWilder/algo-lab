@@ -1,0 +1,33 @@
+{
+  "cycle": "2026-06-16i_event_executor_fidelity",
+  "mode": "Lane B report-only; NON-WIRED scaffold",
+  "zn_replay": {
+    "n": 54,
+    "pf": 1.945,
+    "median": 43.77,
+    "net": 13113.85,
+    "largest_loss": -1234.35,
+    "stops": 5
+  },
+  "zn_audit": {
+    "pf": 1.945,
+    "n": 54,
+    "largest_loss": -1234.35
+  },
+  "zn_fidelity": true,
+  "mnq_replay": {
+    "n": 54,
+    "pf": 1.777,
+    "median": 66.76,
+    "net": 3253.04,
+    "largest_loss": -1150.24,
+    "stops": 0
+  },
+  "mnq_engine": {
+    "n": 54,
+    "pf": 1.774
+  },
+  "mnq_fidelity": true,
+  "verdict": "EXECUTOR_SCAFFOLD_FIDELITY_GREEN",
+  "boundaries": "non-wired executor scaffold; no activation/registry/scheduler/portfolio/order mutation"
+}
