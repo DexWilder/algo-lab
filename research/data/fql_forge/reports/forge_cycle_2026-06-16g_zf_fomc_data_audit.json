@@ -1,0 +1,78 @@
+{
+  "cycle": "2026-06-16g_zf_fomc_data_audit",
+  "mode": "Lane B report-only; freeze maintained",
+  "lineage": {
+    "vendor": "Databento",
+    "dataset": "GLBX.MDP3",
+    "schema": "ohlcv-1m",
+    "stype": "continuous",
+    "raw_symbol": "ZF.c.0",
+    "roll": ".c.0 calendar-roll (NOT back-adjusted)",
+    "same_path_as_ZN": true
+  },
+  "file_integrity": {
+    "file_hash": "5acebc3d0554f809",
+    "n_bars": 343142,
+    "span": [
+      "2019-06-30 20:00:00",
+      "2026-06-12 12:45:00"
+    ],
+    "dupes": 0,
+    "monotonic": true,
+    "zero_vol": 0
+  },
+  "fomc_calendar": {
+    "n_events": 58,
+    "all_scheduled": true,
+    "grade": "OFFICIAL_FED_GOV"
+  },
+  "contaminated_windows": [
+    {
+      "fomc": "2023-03-22",
+      "rule": "roll_stitch $1922",
+      "pnl": -1518.72
+    },
+    {
+      "fomc": "2023-12-13",
+      "rule": "roll_stitch $1344",
+      "pnl": 1215.65
+    },
+    {
+      "fomc": "2026-03-18",
+      "rule": "roll_stitch $703",
+      "pnl": -1073.41
+    }
+  ],
+  "raw": {
+    "n": 54,
+    "pf": 1.453,
+    "expectancy": 89.49,
+    "median": 28.15,
+    "max_year_share_pct": 45.7,
+    "h1_pf": 1.316,
+    "h2_pf": 1.566,
+    "largest_loss": -1518.72,
+    "max_adverse_window": -1500.0
+  },
+  "clean": {
+    "n": 51,
+    "pf": 1.769,
+    "expectancy": 121.75,
+    "median": 35.96,
+    "max_year_share_pct": 43.9,
+    "h1_pf": 1.44,
+    "h2_pf": 2.11,
+    "largest_loss": -1518.72,
+    "max_adverse_window": -1500.0
+  },
+  "checks": {
+    "raw_viable_without_filtering": true,
+    "clean_improves": true,
+    "mechanical_rule": true,
+    "robust": true,
+    "prop_ok": true
+  },
+  "verdict": "DATA_AUDIT_GREEN \u2014 ZF FOMC-week valid raw AND clean; mechanical contamination removal refines (not manufactures); curve-confirms ZN",
+  "classification": "ZN+ZF one correlated Rates-FOMC-week sleeve; ZN primary; ZF confirmation not double-size",
+  "boundaries": "report-only; no executor/wiring/mutation; review-track"
+}
