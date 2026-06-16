@@ -50,3 +50,12 @@ Audit `research/forge_cycle_2026-06-16e_zn_fomc_data_audit.py` (+ `.json`):
 - **Scope (locked):** DATA_AUDIT_GREEN = feed-internal reproducibility ONLY; external feed correctness (vs CME) still DSCL-gated. Live/prop NOT cleared.
 
 **Status: review-track candidate, DATA_AUDIT_GREEN.** Still NOT approved for paper/live. Remaining gates before wiring (when activation reopens): out-of-band FOMC event executor (unbuilt), full V1 packet, EVENT/TAIL archetype evaluation. Activation freeze maintained.
+
+---
+
+## ROBUSTNESS-MAP UPDATE — 2026-06-16 → ⚠️ REGIME-DEPENDENT (material caveat)
+Robustness trickle (`forge_cycle_2026-06-16` regime split): the ZN-FOMC-week long edge is **concentrated in the rates-UP regime** (ZN rising / yields falling / easing-biased):
+- rates-UP: n=22, **PF 4.20**, median +$395, net +$11,701
+- rates-DOWN (hiking, e.g. 2022): n=31, **PF 0.99**, median −$128, **net −$99 (flat/no edge)**
+
+**Implication:** NOT all-weather. The sleeve is a rates-easing-conditional FOMC event edge — expect ~flat performance in sustained hiking regimes (like OPEX's 2022 weakness). Still real / DATA_AUDIT_GREEN / prop-safe / decorrelated from MNQ momentum (still a diversifier), but **must be labeled REGIME_DEPENDENT** and sized/expected accordingly. Options (future): add a rate-trend regime filter (concentrates to PF 4.2 but halves n to 22), or carry it as an easing-regime sleeve with conservative sizing. Does NOT downgrade from DATA_AUDIT_GREEN, but is a required disclosure before any promotion/wiring.
