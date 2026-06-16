@@ -1,0 +1,216 @@
+{
+  "cycle": "2026-06-16c_turn_of_month_seasonal",
+  "mode": "Lane B report-only (seasonal pivot)",
+  "window": "penultimate td of M -> 3rd td of M+1, long",
+  "results": {
+    "MGC": {
+      "tag": "NON-EQUITY",
+      "n": 83,
+      "pf": 1.45,
+      "median": 23.76,
+      "net": 4926.0,
+      "win_rate_pct": 51.8,
+      "max_year_share_pct": 38.2,
+      "worst_year_net": -2618.0,
+      "loo_min_pf": 1.193,
+      "h1_pf": 1.955,
+      "h2_pf": 1.228,
+      "largest_window_loss": -1704.24,
+      "worst_mtm_dd_usd": -7794.0,
+      "by_year_net": {
+        "2019": 1249.5599999999986,
+        "2020": 1198.120000000005,
+        "2021": -117.88000000000326,
+        "2022": 1208.119999999998,
+        "2023": -383.8800000000024,
+        "2024": 1314.1200000000108,
+        "2025": 3076.1199999999917,
+        "2026": -2618.199999999998
+      },
+      "beta_control": {
+        "generic_pf": 1.308,
+        "generic_mean": 53.12
+      },
+      "viable": false
+    },
+    "MCL": {
+      "tag": "NON-EQUITY",
+      "n": 59,
+      "pf": 1.037,
+      "median": 20.76,
+      "net": 359.0,
+      "win_rate_pct": 52.5,
+      "max_year_share_pct": 66.1,
+      "worst_year_net": -1249.0,
+      "loo_min_pf": 0.816,
+      "h1_pf": 1.046,
+      "h2_pf": 1.028,
+      "largest_window_loss": -781.24,
+      "worst_mtm_dd_usd": -1427.0,
+      "by_year_net": {
+        "2021": -701.4399999999988,
+        "2022": 1046.1200000000015,
+        "2023": -8.879999999999413,
+        "2024": -763.8799999999991,
+        "2025": -1248.8799999999992,
+        "2026": 2035.799999999999
+      },
+      "beta_control": {
+        "generic_pf": 0.984,
+        "generic_mean": -2.15
+      },
+      "viable": false
+    },
+    "ZN": {
+      "tag": "NON-EQUITY",
+      "n": 83,
+      "pf": 1.451,
+      "median": -96.85,
+      "net": 9696.0,
+      "win_rate_pct": 44.6,
+      "max_year_share_pct": 46.2,
+      "worst_year_net": -1266.0,
+      "loo_min_pf": 1.214,
+      "h1_pf": 1.642,
+      "h2_pf": 1.278,
+      "largest_window_loss": -1503.1,
+      "worst_mtm_dd_usd": -1828.12,
+      "by_year_net": {
+        "2019": 5122.025,
+        "2020": 1759.6750000000006,
+        "2021": -68.45000000000016,
+        "2022": 400.3000000000005,
+        "2023": -52.82499999999959,
+        "2024": 2806.550000000001,
+        "2025": 994.0500000000005,
+        "2026": -1265.5
+      },
+      "beta_control": {
+        "generic_pf": 0.79,
+        "generic_mean": -68.26
+      },
+      "viable": false
+    },
+    "ZF": {
+      "tag": "NON-EQUITY",
+      "n": 83,
+      "pf": 1.31,
+      "median": -18.73,
+      "net": 4586.0,
+      "win_rate_pct": 47.0,
+      "max_year_share_pct": 37.8,
+      "worst_year_net": -2615.0,
+      "loo_min_pf": 1.049,
+      "h1_pf": 1.133,
+      "h2_pf": 1.53,
+      "largest_window_loss": -1096.85,
+      "worst_mtm_dd_usd": -1523.44,
+      "by_year_net": {
+        "2019": 3856.4000000000005,
+        "2020": 1954.9875000000006,
+        "2021": -2615.325,
+        "2022": -2029.3874999999998,
+        "2023": 892.4875000000001,
+        "2024": 2306.5500000000006,
+        "2025": 1197.1750000000002,
+        "2026": -976.4375000000001
+      },
+      "beta_control": {
+        "generic_pf": 0.802,
+        "generic_mean": -40.37
+      },
+      "viable": false
+    },
+    "ZB": {
+      "tag": "NON-EQUITY",
+      "n": 83,
+      "pf": 1.128,
+      "median": -159.35,
+      "net": 6868.0,
+      "win_rate_pct": 43.4,
+      "max_year_share_pct": 63.6,
+      "worst_year_net": -2725.0,
+      "loo_min_pf": 0.951,
+      "h1_pf": 1.21,
+      "h2_pf": 1.029,
+      "largest_window_loss": -3565.6,
+      "worst_mtm_dd_usd": -3875.0,
+      "by_year_net": {
+        "2019": 9450.149999999998,
+        "2020": 56.55000000000064,
+        "2021": -2724.6999999999994,
+        "2022": 1087.800000000001,
+        "2023": -1974.6999999999994,
+        "2024": 4275.299999999999,
+        "2025": -1255.9499999999998,
+        "2026": -2046.7499999999995
+      },
+      "beta_control": {
+        "generic_pf": 0.726,
+        "generic_mean": -209.02
+      },
+      "viable": false
+    },
+    "MES": {
+      "tag": "EQUITY-REF",
+      "n": 83,
+      "pf": 0.919,
+      "median": 21.26,
+      "net": -1155.0,
+      "win_rate_pct": 53.0,
+      "max_year_share_pct": 47.5,
+      "worst_year_net": -1287.0,
+      "loo_min_pf": 0.823,
+      "h1_pf": 0.954,
+      "h2_pf": 0.888,
+      "largest_window_loss": -1029.99,
+      "worst_mtm_dd_usd": -1078.75,
+      "by_year_net": {
+        "2019": -1107.44,
+        "2020": 490.1199999999999,
+        "2021": 425.1199999999999,
+        "2022": -88.63000000000011,
+        "2023": 1065.12,
+        "2024": -913.6300000000001,
+        "2025": -1287.38,
+        "2026": 261.29999999999995
+      },
+      "beta_control": {
+        "generic_pf": 1.258,
+        "generic_mean": 37.24
+      },
+      "viable": false
+    },
+    "MNQ": {
+      "tag": "EQUITY-REF",
+      "n": 83,
+      "pf": 0.917,
+      "median": 85.26,
+      "net": -2081.0,
+      "win_rate_pct": 54.2,
+      "max_year_share_pct": 43.9,
+      "worst_year_net": -1796.0,
+      "loo_min_pf": 0.842,
+      "h1_pf": 0.874,
+      "h2_pf": 0.953,
+      "largest_window_loss": -2215.24,
+      "worst_mtm_dd_usd": -2222.5,
+      "by_year_net": {
+        "2019": -1136.44,
+        "2020": 867.6199999999999,
+        "2021": -1005.3800000000001,
+        "2022": -246.8800000000001,
+        "2023": 1415.1199999999997,
+        "2024": -1120.8799999999997,
+        "2025": -1795.88,
+        "2026": 941.3
+      },
+      "beta_control": {
+        "generic_pf": 1.307,
+        "generic_mean": 77.92
+      },
+      "viable": false
+    }
+  },
+  "verdict": "KILL/NONE \u2014 no non-equity TOM seasonal clears the constrained gates"
+}
