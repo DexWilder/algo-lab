@@ -1,0 +1,90 @@
+{
+  "cycle": "2026-06-16k_fomc_family_boundaries",
+  "mode": "Lane B report-only; reuses fidelity-green executor; NON-WIRED",
+  "zf": {
+    "baseline": {
+      "n": 54,
+      "pf": 1.453,
+      "net": 4832.6
+    },
+    "regime_robustness_own_trend": {
+      "valid": 14,
+      "frac_up_edge": 1.0,
+      "frac_sep": 1.0,
+      "directional_robust": true
+    },
+    "preregistered_42td_sign": {
+      "lookback_td": 42,
+      "threshold": 0.0,
+      "up": {
+        "n": 20,
+        "pf": 9.245,
+        "net": 8141.12
+      },
+      "down": {
+        "n": 33,
+        "pf": 0.577,
+        "net": -4094.49
+      }
+    }
+  },
+  "mnq": {
+    "baseline": {
+      "n": 54,
+      "pf": 1.777,
+      "net": 3253.04
+    },
+    "regime_mnq_equity": {
+      "valid": 15,
+      "frac_up_edge": 1.0,
+      "frac_sep": 0.067,
+      "directional_robust": false
+    },
+    "regime_zn_rate": {
+      "valid": 15,
+      "frac_up_edge": 0.8,
+      "frac_sep": 0.533,
+      "directional_robust": false
+    },
+    "hold_sensitivity": {
+      "6": {
+        "n": 54,
+        "pf": 1.704,
+        "net": 1394.04
+      },
+      "8": {
+        "n": 54,
+        "pf": 1.963,
+        "net": 2626.04
+      },
+      "10": {
+        "n": 54,
+        "pf": 1.811,
+        "net": 2791.54
+      },
+      "12": {
+        "n": 54,
+        "pf": 1.777,
+        "net": 3253.04
+      },
+      "16": {
+        "n": 54,
+        "pf": 1.601,
+        "net": 2764.04
+      },
+      "20": {
+        "n": 54,
+        "pf": 1.264,
+        "net": 1543.04
+      }
+    },
+    "hold_robust_all_pf_ge_1.2": true
+  },
+  "family_map": {
+    "ZN": "regime-gated PRIMARY (16j)",
+    "ZF": "regime-gated like ZN (confirms family)",
+    "MNQ_1h_driver": "NO clean regime driver",
+    "MNQ_hold_robust": true
+  },
+  "boundaries": "no activation/registry/scheduler/portfolio/order mutation"
+}

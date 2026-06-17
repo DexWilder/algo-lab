@@ -46,7 +46,9 @@ One executor (`engine/event_executor.py`), one out-of-band runner, one launchd a
 - **FOMC-MNQ-Long-1h** (intraday 5m, entry +1 bar, hold 12 bars, FOMC, EVENT_TAIL).
 This is the FOMC-MNQ Phase 1D infrastructure too — one build unblocks both.
 
-## 9. ZN-FOMC regime-filter handling (HARD gate — operator-locked 2026-06-16)
+> **Per-member gate asymmetry (boundary-mapped `forge_cycle_2026-06-16k`):** the regime gate is **earned per-member, not inherited by family.** ZN/ZF earned it (block removes a money-loser). **FOMC-MNQ-1h did NOT** — it has no clean regime driver (equity-trend sep 0.067; rate-trend sep 0.533, not robust) and is hold-robust (PF ≥1.2 across 6–20 bar holds). **Do NOT impose a regime gate on FOMC-MNQ-1h** — an evidence-free gate is cargo-cult safety. ZF is correlated to ZN ("one rates sleeve, ZN primary, ZF not double-size") — confirmation depth, not an independent family. See `FOMC_FAMILY_BOUNDARY_MAP_2026-06-16.md`.
+
+## 9. ZN/ZF-FOMC regime-filter handling (HARD gate — operator-locked 2026-06-16)
 **Not optional, not "lower confidence." A hard, audited, packet-visible gate** — the finding was too material (PF 4.20 easing/rates-up vs 0.99 hiking/rates-down). The sleeve only trades its proven regime.
 - **PRE-REGISTERED gate definition (locked, boundary-tested `forge_cycle_2026-06-16j` → `REGIME_GATE_DIRECTIONALLY_ROBUST`):** eligible iff **ZN 42-trading-day price trend > 0** (simple sign; ZN rising = yields falling = easing). Conservative/natural choice — **NOT** optimized to max PF (the grid's PF-39 corner at lb21/thr0.01 n=9 is an overfit trap and is explicitly rejected).
 - **rates-UP/easing regime: ELIGIBLE** — full size (UP n22 PF 11.1 at the pre-registered cut).
