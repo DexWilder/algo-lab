@@ -1,0 +1,336 @@
+{
+  "cycle": "2026-06-16j_zn_fomc_regime_boundary",
+  "mode": "Lane B report-only; reuses fidelity-green executor; NON-WIRED",
+  "baseline": {
+    "n": 54,
+    "pf": 1.945,
+    "net": 13113.85
+  },
+  "grid": [
+    {
+      "lookback_td": 21,
+      "threshold": 0.0,
+      "up": {
+        "n": 25,
+        "pf": 6.467,
+        "net": 14656.88
+      },
+      "down": {
+        "n": 29,
+        "pf": 0.862,
+        "net": -1543.02
+      },
+      "unclassified": 0
+    },
+    {
+      "lookback_td": 21,
+      "threshold": 0.005,
+      "up": {
+        "n": 18,
+        "pf": 8.654,
+        "net": 11241.08
+      },
+      "down": {
+        "n": 36,
+        "pf": 1.151,
+        "net": 1872.78
+      },
+      "unclassified": 0
+    },
+    {
+      "lookback_td": 21,
+      "threshold": 0.01,
+      "up": {
+        "n": 9,
+        "pf": 39.597,
+        "net": 9768.98
+      },
+      "down": {
+        "n": 45,
+        "pf": 1.246,
+        "net": 3344.88
+      },
+      "unclassified": 0
+    },
+    {
+      "lookback_td": 21,
+      "threshold": 0.02,
+      "up": {
+        "n": 2,
+        "pf": Infinity,
+        "net": 3650.05
+      },
+      "down": {
+        "n": 52,
+        "pf": 1.682,
+        "net": 9463.8
+      },
+      "unclassified": 0
+    },
+    {
+      "lookback_td": 42,
+      "threshold": 0.0,
+      "up": {
+        "n": 22,
+        "pf": 11.132,
+        "net": 16463.05
+      },
+      "down": {
+        "n": 31,
+        "pf": 0.603,
+        "net": -4861.72
+      },
+      "unclassified": 1
+    },
+    {
+      "lookback_td": 42,
+      "threshold": 0.005,
+      "up": {
+        "n": 18,
+        "pf": 12.767,
+        "net": 14303.58
+      },
+      "down": {
+        "n": 35,
+        "pf": 0.787,
+        "net": -2702.25
+      },
+      "unclassified": 1
+    },
+    {
+      "lookback_td": 42,
+      "threshold": 0.01,
+      "up": {
+        "n": 13,
+        "pf": 12.858,
+        "net": 11412.82
+      },
+      "down": {
+        "n": 40,
+        "pf": 1.015,
+        "net": 188.5
+      },
+      "unclassified": 1
+    },
+    {
+      "lookback_td": 42,
+      "threshold": 0.02,
+      "up": {
+        "n": 6,
+        "pf": 15.994,
+        "net": 5247.02
+      },
+      "down": {
+        "n": 47,
+        "pf": 1.47,
+        "net": 6354.3
+      },
+      "unclassified": 1
+    },
+    {
+      "lookback_td": 63,
+      "threshold": 0.0,
+      "up": {
+        "n": 23,
+        "pf": 6.676,
+        "net": 13975.57
+      },
+      "down": {
+        "n": 30,
+        "pf": 0.792,
+        "net": -2374.25
+      },
+      "unclassified": 1
+    },
+    {
+      "lookback_td": 63,
+      "threshold": 0.005,
+      "up": {
+        "n": 18,
+        "pf": 5.825,
+        "net": 11022.33
+      },
+      "down": {
+        "n": 35,
+        "pf": 1.05,
+        "net": 579.0
+      },
+      "unclassified": 1
+    },
+    {
+      "lookback_td": 63,
+      "threshold": 0.01,
+      "up": {
+        "n": 16,
+        "pf": 4.515,
+        "net": 8028.53
+      },
+      "down": {
+        "n": 37,
+        "pf": 1.308,
+        "net": 3572.8
+      },
+      "unclassified": 1
+    },
+    {
+      "lookback_td": 63,
+      "threshold": 0.02,
+      "up": {
+        "n": 9,
+        "pf": 21.95,
+        "net": 7331.48
+      },
+      "down": {
+        "n": 44,
+        "pf": 1.316,
+        "net": 4269.85
+      },
+      "unclassified": 1
+    },
+    {
+      "lookback_td": 84,
+      "threshold": 0.0,
+      "up": {
+        "n": 24,
+        "pf": 4.083,
+        "net": 12069.35
+      },
+      "down": {
+        "n": 28,
+        "pf": 0.818,
+        "net": -1808.68
+      },
+      "unclassified": 2
+    },
+    {
+      "lookback_td": 84,
+      "threshold": 0.005,
+      "up": {
+        "n": 18,
+        "pf": 4.722,
+        "net": 9850.45
+      },
+      "down": {
+        "n": 34,
+        "pf": 1.037,
+        "net": 410.23
+      },
+      "unclassified": 2
+    },
+    {
+      "lookback_td": 84,
+      "threshold": 0.01,
+      "up": {
+        "n": 17,
+        "pf": 4.245,
+        "net": 8587.93
+      },
+      "down": {
+        "n": 35,
+        "pf": 1.149,
+        "net": 1672.75
+      },
+      "unclassified": 2
+    },
+    {
+      "lookback_td": 84,
+      "threshold": 0.02,
+      "up": {
+        "n": 8,
+        "pf": 4.245,
+        "net": 3943.95
+      },
+      "down": {
+        "n": 44,
+        "pf": 1.499,
+        "net": 6316.73
+      },
+      "unclassified": 2
+    },
+    {
+      "lookback_td": 126,
+      "threshold": 0.0,
+      "up": {
+        "n": 22,
+        "pf": 3.057,
+        "net": 8059.93
+      },
+      "down": {
+        "n": 29,
+        "pf": 1.126,
+        "net": 1250.72
+      },
+      "unclassified": 3
+    },
+    {
+      "lookback_td": 126,
+      "threshold": 0.005,
+      "up": {
+        "n": 16,
+        "pf": 2.549,
+        "net": 5453.53
+      },
+      "down": {
+        "n": 35,
+        "pf": 1.372,
+        "net": 3857.12
+      },
+      "unclassified": 3
+    },
+    {
+      "lookback_td": 126,
+      "threshold": 0.01,
+      "up": {
+        "n": 15,
+        "pf": 3.924,
+        "net": 6687.87
+      },
+      "down": {
+        "n": 36,
+        "pf": 1.226,
+        "net": 2622.78
+      },
+      "unclassified": 3
+    },
+    {
+      "lookback_td": 126,
+      "threshold": 0.02,
+      "up": {
+        "n": 9,
+        "pf": 2.939,
+        "net": 3143.98
+      },
+      "down": {
+        "n": 42,
+        "pf": 1.503,
+        "net": 6166.68
+      },
+      "unclassified": 3
+    }
+  ],
+  "robustness": {
+    "valid_configs": 18,
+    "up_edge_pf_ge_1.5": 18,
+    "frac_up_edge": 1.0,
+    "down_weaker_pf_le_1.2": 11,
+    "frac_separated_ge_0.8": 1.0,
+    "directional_robust": true
+  },
+  "preregistered_gate": {
+    "lookback_td": 42,
+    "threshold": 0.0,
+    "rule": "block if ZN 42-td trend <= 0",
+    "up": {
+      "n": 22,
+      "pf": 11.132
+    },
+    "down": {
+      "n": 31,
+      "pf": 0.603,
+      "net": -4861.72
+    },
+    "note": "conservative/natural choice, NOT optimized to max PF; threshold is pre-registered to avoid small-n inflation"
+  },
+  "verdict": "REGIME_GATE_DIRECTIONALLY_ROBUST",
+  "boundaries": "no activation/registry/scheduler/portfolio/order mutation"
+}

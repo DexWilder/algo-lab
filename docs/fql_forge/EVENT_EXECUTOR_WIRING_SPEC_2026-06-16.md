@@ -46,9 +46,16 @@ One executor (`engine/event_executor.py`), one out-of-band runner, one launchd a
 - **FOMC-MNQ-Long-1h** (intraday 5m, entry +1 bar, hold 12 bars, FOMC, EVENT_TAIL).
 This is the FOMC-MNQ Phase 1D infrastructure too — one build unblocks both.
 
-## 9. ZN-FOMC regime-filter handling (per the regime-dependence caveat)
-- **rates-UP/easing regime eligible** (ZN 60-td trend > 0): full size (the edge — PF 4.20).
-- **rates-DOWN/hiking regime: BLOCKED or review-only** (flat edge — PF 0.99). Implemented as a fail-closed regime gate in the executor: compute rate-trend at the entry decision; if down-regime, suppress the fire (or flag review-only) per operator choice. This operationalizes the REGIME_DEPENDENT label so the live sleeve only trades its proven regime.
+## 9. ZN-FOMC regime-filter handling (HARD gate — operator-locked 2026-06-16)
+**Not optional, not "lower confidence." A hard, audited, packet-visible gate** — the finding was too material (PF 4.20 easing/rates-up vs 0.99 hiking/rates-down). The sleeve only trades its proven regime.
+- **PRE-REGISTERED gate definition (locked, boundary-tested `forge_cycle_2026-06-16j` → `REGIME_GATE_DIRECTIONALLY_ROBUST`):** eligible iff **ZN 42-trading-day price trend > 0** (simple sign; ZN rising = yields falling = easing). Conservative/natural choice — **NOT** optimized to max PF (the grid's PF-39 corner at lb21/thr0.01 n=9 is an overfit trap and is explicitly rejected).
+- **rates-UP/easing regime: ELIGIBLE** — full size (UP n22 PF 11.1 at the pre-registered cut).
+- **rates-DOWN/hiking regime: BLOCKED** (default) or **review-only** (operator may downgrade to review-only, never to "trade-anyway"). The executor computes the 42-td ZN trend at the entry decision; trend ≤ 0 → **suppress the fire, fail-closed**. (Boundary test: blocking removes a *money-loser* — DOWN n31 PF 0.60 net −$4.9k — not just dead weight.)
+- **Audit + visibility requirements (all required before promotion):**
+  - The regime classification (definition, threshold, value at each historical event) is logged per firing and reproduced in the replay-vs-forward reconciliation (§4).
+  - The regime gate is a **named, visible line item in the V1 packet** (not buried) — operator must see "REGIME GATE: ACTIVE, rates-down BLOCKED."
+  - The regime classifier itself must pass a **boundary-sensitivity check** (the easing/hiking split must not flip under a small threshold perturbation) — see the regime-robustness trickle; a fragile classifier makes the gate fragile.
+  - Any future change to the regime definition/threshold is a gated change (re-validate, re-audit).
 
 ## 10. V1 packet completion checklist (to fill before promotion)
 - [x] Robustness (window-family/era/LOO/H1H2/conc) — ZN done; MNQ per Lane A batch
@@ -57,6 +64,8 @@ This is the FOMC-MNQ Phase 1D infrastructure too — one build unblocks both.
 - [x] Calendar grade OFFICIAL_FED_GOV
 - [x] Executor fidelity GREEN
 - [x] **REGIME_DEPENDENT disclosure (ZN)**
+- [ ] **HARD regime gate (ZN) — active, audited, packet-visible** (operator-locked; rates-down BLOCKED) — see §9
+- [x] **Regime classifier boundary-sensitivity check** — `REGIME_GATE_DIRECTIONALLY_ROBUST` (18/18 configs; pre-registered = ZN 42-td trend > 0; `forge_cycle_2026-06-16j`)
 - [ ] External DSCL (CME settlement / secondary vendor) — BLOCKED until feeds
 - [ ] Atomic registry transition spec — drafted here (§2), unexecuted
 - [ ] Out-of-band scheduler wiring spec — drafted here (§1–2), unexecuted
