@@ -1,0 +1,96 @@
+{
+  "cycle": "2026-06-16m_fomc_mnq_entry_offset",
+  "mode": "Lane B report-only; reuses fidelity-green executor; NON-WIRED",
+  "clean_events": 54,
+  "hold_bars": 12,
+  "entry_offset_sweep": {
+    "0": {
+      "n": 54,
+      "pf": 1.384,
+      "net": 1751.54,
+      "median": 54.26,
+      "mean": 32.44,
+      "std": 279.84,
+      "win_rate": 0.648,
+      "largest_loss": -950.24
+    },
+    "1": {
+      "n": 54,
+      "pf": 1.777,
+      "net": 3253.04,
+      "median": 66.76,
+      "mean": 60.24,
+      "std": 289.55,
+      "win_rate": 0.648,
+      "largest_loss": -1150.24
+    },
+    "2": {
+      "n": 54,
+      "pf": 2.053,
+      "net": 3789.04,
+      "median": 98.01,
+      "mean": 70.17,
+      "std": 257.5,
+      "win_rate": 0.667,
+      "largest_loss": -701.24
+    },
+    "3": {
+      "n": 54,
+      "pf": 1.777,
+      "net": 3122.04,
+      "median": 78.51,
+      "mean": 57.82,
+      "std": 267.27,
+      "win_rate": 0.648,
+      "largest_loss": -800.74
+    },
+    "4": {
+      "n": 54,
+      "pf": 1.767,
+      "net": 3265.04,
+      "median": 56.51,
+      "mean": 60.46,
+      "std": 296.25,
+      "win_rate": 0.63,
+      "largest_loss": -815.74
+    },
+    "5": {
+      "n": 54,
+      "pf": 1.47,
+      "net": 2246.54,
+      "median": 28.76,
+      "mean": 41.6,
+      "std": 302.95,
+      "win_rate": 0.63,
+      "largest_loss": -830.74
+    },
+    "6": {
+      "n": 54,
+      "pf": 1.426,
+      "net": 2328.54,
+      "median": 28.51,
+      "mean": 43.12,
+      "std": 344.13,
+      "win_rate": 0.574,
+      "largest_loss": -824.74
+    }
+  },
+  "analysis": {
+    "pf_ge_1.2_band_0to3": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "edge_survives_avoiding_release_bar": [
+      2,
+      3,
+      4
+    ],
+    "plus1_uniquely_magic": false,
+    "release_bar_noisier": false,
+    "broad_drift_window": true
+  },
+  "verdict": "ENTRY_ROBUST_DRIFT_WINDOW \u2014 credible independent event engine",
+  "boundaries": "no activation/registry/scheduler/portfolio/order mutation"
+}
