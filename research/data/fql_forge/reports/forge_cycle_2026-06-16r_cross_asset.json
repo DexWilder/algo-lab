@@ -1,0 +1,243 @@
+{
+  "cycle": "2026-06-16r_cross_asset",
+  "mode": "Lane B report-only; cross-asset first board; NO-LOOKAHEAD enforced; NON-WIRED",
+  "instrument_overlap": {
+    "MGC": {
+      "start": "2019-06-30",
+      "end": "2026-06-15",
+      "days": 1956
+    },
+    "MES": {
+      "start": "2019-06-30",
+      "end": "2026-06-15",
+      "days": 2168
+    },
+    "MYM": {
+      "start": "2024-02-29",
+      "end": "2026-06-15",
+      "days": 716
+    },
+    "MNQ": {
+      "start": "2019-06-30",
+      "end": "2026-06-15",
+      "days": 2168
+    },
+    "MCL": {
+      "start": "2021-07-11",
+      "end": "2026-06-15",
+      "days": 1533
+    },
+    "ZN": {
+      "start": "2019-06-30",
+      "end": "2026-06-15",
+      "days": 2157
+    },
+    "ZF": {
+      "start": "2019-06-30",
+      "end": "2026-06-15",
+      "days": 2060
+    },
+    "6E": {
+      "start": "2024-02-29",
+      "end": "2026-06-15",
+      "days": 715
+    },
+    "6J": {
+      "start": "2024-02-29",
+      "end": "2026-06-15",
+      "days": 713
+    },
+    "6B": {
+      "start": "2024-02-29",
+      "end": "2026-06-15",
+      "days": 704
+    }
+  },
+  "mode1_confirmation": [
+    {
+      "asset": "MGC",
+      "mechanism": "orb_breakout",
+      "baseline": {
+        "n": 656,
+        "pf": 1.495,
+        "net": 9835.0,
+        "median": 6.26,
+        "max_dd": -1022.0,
+        "top3": 8.4,
+        "yrs_pos": 7,
+        "n_yrs": 8
+      },
+      "filters": {
+        "USD_up": {
+          "n": 97,
+          "pf": 2.122,
+          "net": 4265.0,
+          "median": 27.76,
+          "max_dd": -598.0,
+          "top3": 28.7,
+          "yrs_pos": 3,
+          "n_yrs": 3,
+          "retain_pct": 14.8,
+          "verdict": "OVERFIT_RISK"
+        },
+        "USD_dn": {
+          "n": 101,
+          "pf": 1.082,
+          "net": 456.0,
+          "median": -5.24,
+          "max_dd": -966.0,
+          "top3": 23.1,
+          "yrs_pos": 2,
+          "n_yrs": 3,
+          "retain_pct": 15.4,
+          "verdict": "NO_EDGE"
+        },
+        "RATES_up": {
+          "n": 286,
+          "pf": 1.672,
+          "net": 5730.0,
+          "median": 9.76,
+          "max_dd": -611.0,
+          "top3": 8.5,
+          "yrs_pos": 7,
+          "n_yrs": 8,
+          "retain_pct": 43.6,
+          "verdict": "CONFIRMATION_EDGE"
+        },
+        "RATES_dn": {
+          "n": 354,
+          "pf": 1.314,
+          "net": 3486.0,
+          "median": 2.76,
+          "max_dd": -1060.0,
+          "top3": 17.1,
+          "yrs_pos": 4,
+          "n_yrs": 8,
+          "retain_pct": 54.0,
+          "verdict": "NO_EDGE"
+        }
+      },
+      "proof": {
+        "USD": {
+          "trades_checked": 213,
+          "violations": 0,
+          "min_lag_days": 1,
+          "median_lag_days": 1.0,
+          "unmatched_no_prior_state": 443
+        },
+        "RATES": {
+          "trades_checked": 656,
+          "violations": 0,
+          "min_lag_days": 1,
+          "median_lag_days": 1.0,
+          "unmatched_no_prior_state": 0
+        }
+      }
+    },
+    {
+      "asset": "MGC",
+      "mechanism": "prior_day_break",
+      "baseline": {
+        "n": 405,
+        "pf": 1.341,
+        "net": 5820.0,
+        "median": 6.76,
+        "max_dd": -2314.0,
+        "top3": 14.4,
+        "yrs_pos": 8,
+        "n_yrs": 8
+      },
+      "filters": {
+        "USD_up": {
+          "n": 64,
+          "pf": 1.854,
+          "net": 2832.0,
+          "median": 9.76,
+          "max_dd": -940.0,
+          "top3": 36.1,
+          "yrs_pos": 3,
+          "n_yrs": 3,
+          "retain_pct": 15.8,
+          "verdict": "OVERFIT_RISK"
+        },
+        "USD_dn": {
+          "n": 60,
+          "pf": 1.097,
+          "net": 474.0,
+          "median": 17.76,
+          "max_dd": -2145.0,
+          "top3": 47.3,
+          "yrs_pos": 2,
+          "n_yrs": 3,
+          "retain_pct": 14.8,
+          "verdict": "NO_EDGE"
+        },
+        "RATES_up": {
+          "n": 182,
+          "pf": 0.873,
+          "net": -1276.0,
+          "median": 5.76,
+          "max_dd": -3653.0,
+          "top3": 15.9,
+          "yrs_pos": 5,
+          "n_yrs": 8,
+          "retain_pct": 44.9,
+          "verdict": "NO_EDGE"
+        },
+        "RATES_dn": {
+          "n": 212,
+          "pf": 1.939,
+          "net": 6511.0,
+          "median": 6.26,
+          "max_dd": -858.0,
+          "top3": 24.6,
+          "yrs_pos": 6,
+          "n_yrs": 8,
+          "retain_pct": 52.3,
+          "verdict": "CONFIRMATION_EDGE"
+        }
+      },
+      "proof": {
+        "USD": {
+          "trades_checked": 134,
+          "violations": 0,
+          "min_lag_days": 1,
+          "median_lag_days": 1.0,
+          "unmatched_no_prior_state": 271
+        },
+        "RATES": {
+          "trades_checked": 405,
+          "violations": 0,
+          "min_lag_days": 1,
+          "median_lag_days": 1.0,
+          "unmatched_no_prior_state": 0
+        }
+      }
+    }
+  ],
+  "mode2_standalone": {
+    "mechanism": "index_dispersion_laggard_revert",
+    "stats": {
+      "n": 714,
+      "pf": 1.311,
+      "net": 23187.0,
+      "median": 16.01,
+      "max_dd": -8052.0,
+      "top3": 8.0,
+      "yrs_pos": 3,
+      "n_yrs": 3
+    },
+    "trades_per_yr": 238.0,
+    "corr_mnq": -0.044,
+    "verdict": "FORWARD_CLOCK_CREDIBLE"
+  },
+  "confirmation_edges": [
+    "MGC-orb_breakout:RATES_up",
+    "MGC-prior_day_break:RATES_dn"
+  ],
+  "overfit_risk": [
+    "MGC-orb_breakout:USD_up",
+    "MGC-prior_day_break:USD_up"
+  ],
+  "boundaries": "no activation/registry/scheduler/portfolio/order mutation"
+}
