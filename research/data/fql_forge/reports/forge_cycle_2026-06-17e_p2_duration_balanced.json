@@ -1,0 +1,31 @@
+{
+  "cycle": "2026-06-17e_p2_duration_balanced",
+  "mode": "Lane B report-only; ONE retest; NO-LOOKAHEAD; NON-WIRED",
+  "predeclared_dv01": {
+    "ZF": 45.0,
+    "ZN": 65.0,
+    "ZB": 130.0
+  },
+  "n_rows": 1969,
+  "board": {
+    "n": 1968,
+    "pf": 0.889,
+    "net": -332.0,
+    "median": -0.05,
+    "h1_pf": 0.859,
+    "h2_pf": 0.926,
+    "top3_day_pct": 4.4,
+    "max_year_pct": -63.0,
+    "yrs_pos": "1/8",
+    "era_pf": [
+      0.84,
+      0.921,
+      0.922
+    ],
+    "yr_excl_min": 0.862,
+    "corr_mnq": 0.037,
+    "verdict": "KILL"
+  },
+  "branch_status": "FRED yield-curve branch CLOSED as mapped/dead (rotation, naive spread, AND duration-balanced all fail)",
+  "boundaries": "one variant; no filters/sweep/synthetic-fill/mutation; structural feed-readiness != evidence"
+}

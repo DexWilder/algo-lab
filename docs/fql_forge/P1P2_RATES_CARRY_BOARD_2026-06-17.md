@@ -21,8 +21,12 @@ Rolldown proxy: own-tenor yield − next-shorter yield (ZF=dgs5−dgs2, ZN=dgs10
 - **NOT auto-run (logged as single RETEST pending approval):** the **duration-balanced** spread — the structurally-correct P2 form. Running it now to rescue a KILL would be within-cycle tweaking → withheld per discipline.
 - **STILL FEED-BLOCKED:** the **futures roll-yield** version of P1 (term-structure carry) needs multi-contract per-expiry futures (F2). FRED provides yields, not futures roll. So FRED unlocked the yield-curve form (killed), not the roll-yield form.
 
-## Verdict
-P1/P2 first-cut on the FRED yield curve: **KILL** (both predeclared variants). The yield-curve rolldown is not, by itself, a daily WH2 edge on ZN/ZF/ZB. The richer forms (duration-balanced spread = RETEST-pending-approval; futures roll-yield = feed-blocked) remain distinct, unscreened.
+## Verdict (NARROW — do not over-generalize)
+This KILLs **only** the simple FRED-yield-curve versions — `carry_rotation` and the naïve best-vs-worst `carry_spread` — on **ZN/ZF/ZB, 2019–2026, under the approved first-cut lag/join assumptions.** It does **NOT** establish "daily rates carry/curve is dead." Two distinct branches remain unscreened:
+- **duration-balanced P2 spread** — the structurally-correct curve expression (the naïve 1:1 spread is duration-contaminated, dominated by the ZB leg). Approved as ONE predeclared RETEST → see `P2_DURATION_BALANCED_BOARD_2026-06-17.md`.
+- **futures roll-yield P1** — commodity-style term-structure carry; FRED yields are NOT a substitute for futures roll. **Still feed-blocked** (needs multi-contract F2). Kept separate.
+
+If the duration-balanced retest also fails, the **FRED yield-curve branch** closes as mapped/dead — the futures roll-yield P1 stays open pending its feed.
 
 ## State
 `LEVER_B1_FEED_GATED_NOT_IDLE` holds. WP-B1 (auctions) still first when `treasury_auctions.csv` lands. True daily WH2 remains OPEN. No activation/registry/scheduler/portfolio/live/prop mutation.
