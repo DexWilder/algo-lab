@@ -26,5 +26,16 @@ curl -s "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/acco
 ```
 Drop the CSV at `data/feeds/treasury_auctions.csv` (any superset of the WP-B1 columns is fine — `tenor`/`security_term`, `security_type`, `auction_date` are the minimum). The moment it's there I run WP-B1 validation + first-10-tests, report-only.
 
+### Per-feed acquisition (drop files cleanly; run downloads on YOUR machine — `.gov` is sandbox-blocked)
+Note: **FRED (`fred.stlouisfed.org`) is `.org`, likely sandbox-reachable** unlike `.gov` — I can probe/fetch FRED series if you want me to self-serve those (P1/P2 yields, P5 CPI level, P6 rates). Say the word; otherwise download and drop:
+
+- **P1/P2 — rates curve/yields** → `data/feeds/treasury_yield_curve.csv`. FRED series DGS2,DGS5,DGS10,DGS30 (daily par yields). Min cols: `date, dgs2, dgs5, dgs10, dgs30`. (Or Databento multi-contract ZN/ZF/ZB per-expiry for roll-based carry → `data/feeds/rates_multicontract.csv`, cols `instrument, contract_month, date, settle`.)
+- **P4 — EIA crude stocks** → `data/feeds/eia_crude_stocks.csv`. EIA Weekly Petroleum Status (crude ex-SPR stocks). Min cols: `release_date, period_end, stocks_kbbl` (+ `consensus_kbbl` if available; else I use 5-yr seasonal baseline). Release Wed 10:30 ET.
+- **P5 — CPI** → `data/feeds/cpi_releases.csv`. Min cols: `release_date, ref_month, cpi_mom_pct` (+ `consensus_mom_pct` if available — consensus is the hard part; without it the "surprise" variant can't run, only the realized-acceleration variant). FRED CPIAUCSL gives the level (→ MoM); release dates from the in-house calendar.
+- **P6 — policy rates** → `data/feeds/policy_rates.csv`. Min cols: `date, fed_funds, boj_rate` (FRED FEDFUNDS + BoJ policy rate). Monthly.
+- **P3 — Treasury auctions** → `data/feeds/treasury_auctions.csv` (command above). **First to run.**
+
+Each lands → structural validation (`research/lever_b1_feed_validator.py` pattern), then the locked screen sequence as a separate cycle. No screen runs before the real file.
+
 ## Boundaries
 Queue only. No ingestion until a feed is supplied. No mutation/activation.

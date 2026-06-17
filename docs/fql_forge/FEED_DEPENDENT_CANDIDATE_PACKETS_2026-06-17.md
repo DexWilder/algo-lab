@@ -1,5 +1,7 @@
 # Feed-Dependent Candidate Packets — 2026-06-17
 
+> **Priority reflects expected research leverage and feed availability only; it is NOT a ranking of edge, expectancy, or deployability.** Every packet below is ZERO-EVIDENCE until its real feed is joined and screened. P1/P2 are the highest-priority *daily-WH2 feed-unlock candidates*, not the strongest strategies. P3 is the first *executable feed cycle* because the Treasury CSV is closest, not because edge is presumed. P4–P7 are staged by frequency, feed accessibility, and driver diversity — again, not by edge.
+
 > State: `LEVER_B1_FEED_GATED_NOT_IDLE`. Report-only packetizing while feed-gated — **hypotheses + test plans, NOT results.** No strategy screens run here; no synthetic data; no edge claims; no PASS/WATCH/KILL. Each packet runs ONLY once its required real feed lands. Frequency-first (mission = daily/near-daily WH2); sparse-event ideas catalogued but flagged off-target. Sourced from the 878-note backlog triage + the operator's priority feed families. In-house instruments: ZN/ZF/ZB, MGC, MCL, 6E/6J/6B(2024+), ES/MES/MNQ/MYM/M2K.
 
 Per-packet fields: mechanism · required feed · join key/timestamp · instruments · min sample · no-lookahead risks · cheap-screen plan · kill criteria.
@@ -85,13 +87,15 @@ Per-packet fields: mechanism · required feed · join key/timestamp · instrumen
 
 ---
 
-## Priority for when feeds arrive
-1. **P3 Treasury auctions** — feed nearly in hand (operator CSV); run WP-B1 first.
-2. **P1/P2 rates carry/curve** — top true-daily-WH2 unlock; needs curve/multi-contract feed.
+## Priority for when feeds arrive (research leverage + feed access — NOT edge)
+1. **P3 Treasury auctions** — first executable cycle because the CSV is closest, not because edge is presumed.
+2. **P1/P2 rates carry/curve** — highest *daily-WH2 feed-unlock* potential; needs curve/multi-contract feed. Zero-evidence until screened.
 3. **P4 EIA crude** — near-daily, distinct energy driver, cheap public feed.
-4. **P5 CPI surprise** — revives #T12 with values; monthly.
+4. **P5 CPI surprise** — revives #T12 with real values; monthly.
 5. **P6 FX carry** — distinct driver but short in-house FX history (sample-blocked).
 6. **P7 OPEC** — sparse, catalog only.
+
+Feed acquisition instructions for each (exact source / drop path / schema): see `LEVER_B_QUEUE_2026-06-16.md` → "Feed delivery".
 
 ## Boundaries
 Packets only. No screens, no synthetic data, no edge claims, no labels, no mutation. Each runs only once its real feed exists. Archive of dead/blocked in-house mechanisms unchanged (no circular rediscovery).
