@@ -1,0 +1,75 @@
+{
+  "cycle": "2026-06-16n_daily_workhorse2_mgc_priorday",
+  "mode": "Lane B report-only; targeted WH2 hunt; NON-WIRED",
+  "candidate": "MGC prior_day_break + ema_slope + profit_ladder",
+  "baseline": {
+    "n": 405,
+    "pf": 1.341,
+    "median": 6.76,
+    "win_rate": 0.5407407407407407,
+    "cost_ratio_pct": 18.4,
+    "h1_pf": 1.325,
+    "h2_pf": 1.349,
+    "max_year_share_pct": 26.4,
+    "n_years": 8,
+    "years_positive": 8,
+    "archetype": "TAIL_ENGINE",
+    "gate_verdict": "PASS_TO_FORWARD_CLOCK"
+  },
+  "net": 5820.0,
+  "concentration": {
+    "top3_pct": 14.4,
+    "top5_pct": 18.8,
+    "top10_pct": 28.6,
+    "gross_profit": 22909.0
+  },
+  "drawdown": {
+    "max_dd_usd": -2314.0,
+    "max_dd_duration_trades": 128
+  },
+  "year_exclusion_pf": {
+    "2019": 1.297,
+    "2020": 1.38,
+    "2021": 1.366,
+    "2022": 1.329,
+    "2023": 1.343,
+    "2024": 1.283,
+    "2025": 1.401,
+    "2026": 1.338
+  },
+  "era_thirds_pf": [
+    1.294,
+    1.231,
+    1.418
+  ],
+  "single_event_max_abs_share_pct": 23.4,
+  "single_event_pf_no_max": 1.266,
+  "rolling_60_pct_pos": 83.0,
+  "correlation_to_mnq": {
+    "MNQ-ORB(live)": {
+      "daily_pnl_corr": 0.057,
+      "overlap_days": 280
+    },
+    "MNQ-stop_run_reversal(new WH)": {
+      "daily_pnl_corr": -0.038,
+      "overlap_days": 324
+    }
+  },
+  "gates": {
+    "PF>1.2": true,
+    "median>=0": true,
+    "H1>1.0 & H2>1.0": true,
+    "top3<30": true,
+    "top5<45": true,
+    "top10<55": true,
+    "max_year<40": true,
+    "years_pos>=75%": true,
+    "era_all>1.0": true,
+    "yr_excl_all>1.2": true,
+    "single_event<25%": "True",
+    "decorrelated_<0.3": true
+  },
+  "gates_passed": "12/12",
+  "verdict": "WORKHORSE2_CANDIDATE_CONFIRMED \u2014 advance to forward clock (gated)",
+  "boundaries": "no activation/registry/scheduler/portfolio/order mutation"
+}
