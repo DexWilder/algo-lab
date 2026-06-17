@@ -1,0 +1,50 @@
+{
+  "cycle": "2026-06-17f_p8p9_macro_gold",
+  "mode": "Lane B report-only; first-cut; date-split OOS; NON-WIRED",
+  "classification_rule": "GOLD_SLEEVE_ENHANCER if |corr_longgold|>=0.5; WH2_CANDIDATE if corr_mnq<0.3 AND corr_longgold<0.5; else PORTFOLIO_DIVERSIFIER_CAND; KILL if not quality or OOS-inverts",
+  "results": {
+    "P8_realrate_longshort": {
+      "n": 1936,
+      "pf": 1.022,
+      "net": 3990.0,
+      "median": 1.0,
+      "h1_pf": 1.095,
+      "h2_pf": 0.99,
+      "yrs_pos": "4/8",
+      "train_pf": 1.106,
+      "test_pf": 0.987,
+      "corr_mnq": -0.05,
+      "corr_longgold": -0.045,
+      "verdict": "KILL"
+    },
+    "P8_realrate_longonly_gate": {
+      "n": 1955,
+      "pf": 1.209,
+      "net": 15374.0,
+      "median": 0.0,
+      "h1_pf": 1.14,
+      "h2_pf": 1.256,
+      "yrs_pos": "6/8",
+      "train_pf": 1.121,
+      "test_pf": 1.268,
+      "corr_mnq": 0.085,
+      "corr_longgold": 0.573,
+      "verdict": "GOLD_SLEEVE_ENHANCER"
+    },
+    "P9_breakeven_rotation": {
+      "n": 1946,
+      "pf": 1.046,
+      "net": 10952.0,
+      "median": 8.0,
+      "h1_pf": 1.038,
+      "h2_pf": 1.052,
+      "yrs_pos": "4/8",
+      "train_pf": 1.001,
+      "test_pf": 1.08,
+      "corr_mnq": 0.077,
+      "corr_longgold": 0.608,
+      "verdict": "KILL"
+    }
+  },
+  "boundaries": "no sweep/synthetic-fill/edge-pre-evidence/mutation"
+}
