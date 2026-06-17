@@ -17,5 +17,14 @@
 - **#7 cross-asset confirmation has a no-feed first cut** (Cycle 2) — pursue immediately in parallel; escalate to feeds if the in-repo version shows life.
 - Acquisition priority should follow expected daily-WH2 unlock, not ease — but **#2 (auctions) and #6 (COT) are cheap/public**, so they're fast wins worth grabbing regardless.
 
+## Feed delivery (2026-06-17 — sandbox constraint found)
+Probed from this environment: **general internet works, but `.gov` hosts are blocked (HTTP 000)** — `api.fiscaldata.treasury.gov`, and almost certainly `bls.gov` / `eia.gov`. The `!`-in-prompt shell runs in the same sandbox, so it can't reach `.gov` either. **Therefore the official feeds must be downloaded on the operator's own machine and dropped into the repo as a file** (I then ingest report-only).
+
+Easiest path for the #2 lever (Treasury auctions), run on YOUR terminal (not here):
+```
+curl -s "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/accounting/od/auctions_query?fields=record_date,security_type,security_term,auction_date,issue_date,cusip,offering_amt,bid_to_cover_ratio,high_yield&filter=auction_date:gte:2019-01-01&page[size]=10000&format=csv" -o data/feeds/treasury_auctions.csv
+```
+Drop the CSV at `data/feeds/treasury_auctions.csv` (any superset of the WP-B1 columns is fine — `tenor`/`security_term`, `security_type`, `auction_date` are the minimum). The moment it's there I run WP-B1 validation + first-10-tests, report-only.
+
 ## Boundaries
 Queue only. No ingestion until a feed is supplied. No mutation/activation.
