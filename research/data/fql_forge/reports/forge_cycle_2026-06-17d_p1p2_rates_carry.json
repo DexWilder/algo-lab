@@ -1,0 +1,80 @@
+{
+  "cycle": "2026-06-17d_p1p2_rates_carry",
+  "mode": "Lane B report-only; FIRST-CUT; NO-LOOKAHEAD; NON-WIRED",
+  "feed_rows": 16815,
+  "join_matched": 2053,
+  "coverage_by_year": {
+    "2019": 146,
+    "2020": 281,
+    "2021": 289,
+    "2022": 288,
+    "2023": 279,
+    "2024": 274,
+    "2025": 277,
+    "2026": 135
+  },
+  "results": {
+    "rotation": {
+      "label": "carry_rotation",
+      "n": 1968,
+      "pf": 0.932,
+      "net": -41443.0,
+      "median": -23.44,
+      "h1_pf": 0.924,
+      "h2_pf": 0.94,
+      "top3_day_pct": 3.3,
+      "max_year_pct": -67.2,
+      "yrs_pos": "3/8",
+      "era_pf": [
+        1.002,
+        0.86,
+        0.945
+      ],
+      "yr_excl_min": 0.884,
+      "corr_mnq": 0.039,
+      "verdict": "KILL"
+    },
+    "spread": {
+      "label": "carry_spread",
+      "n": 1968,
+      "pf": 0.913,
+      "net": -41907.0,
+      "median": -15.62,
+      "h1_pf": 0.903,
+      "h2_pf": 0.923,
+      "top3_day_pct": 3.8,
+      "max_year_pct": -65.4,
+      "yrs_pos": "1/8",
+      "era_pf": [
+        0.931,
+        0.882,
+        0.926
+      ],
+      "yr_excl_min": 0.862,
+      "corr_mnq": 0.03,
+      "verdict": "KILL"
+    }
+  },
+  "benchmark_zn_buyhold": {
+    "label": "BENCHMARK_ZN_buyhold",
+    "n": 1968,
+    "pf": 0.942,
+    "net": -17766.0,
+    "median": -15.62,
+    "h1_pf": 0.914,
+    "h2_pf": 0.97,
+    "top3_day_pct": 2.3,
+    "max_year_pct": -102.1,
+    "yrs_pos": "4/8",
+    "era_pf": [
+      1.047,
+      0.855,
+      0.984
+    ],
+    "yr_excl_min": 0.899,
+    "corr_mnq": 0.054,
+    "verdict": "KILL"
+  },
+  "caveats": "spread is 1:1 NOT duration-balanced -> dominated by ZB leg; treat as exploratory. rotation is the cleaner first-cut. Structural feed readiness is NOT evidence.",
+  "boundaries": "no sweep/synthetic-fill/activation/registry/scheduler/portfolio/mutation"
+}
