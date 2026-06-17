@@ -85,7 +85,9 @@ def validate_structure(path: Path = FEED_PATH) -> dict:
 def main():
     import json
     rep = validate_structure()
-    print("Lever-B1 Treasury-auction FEED VALIDATOR (structure-only; NO strategy results)\n", flush=True)
+    print("Lever-B1 Treasury-auction FEED VALIDATOR (structure-only; NO strategy results)", flush=True)
+    print("NOTE: this validator is NOT evidence of edge. It confirms feed PLUMBING readiness only —", flush=True)
+    print("      no no-lookahead claim, no join-quality conclusion, no PASS/WATCH/KILL. State: LEVER_B1_FEED_GATED_NOT_IDLE.\n", flush=True)
     print(json.dumps(rep, indent=2, default=str), flush=True)
     if rep["status"] == "AWAITING_FEED":
         print("\nExpected path: data/feeds/treasury_auctions.csv", flush=True)
