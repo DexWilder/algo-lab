@@ -1,6 +1,9 @@
 # data/feeds — external driver feeds (Lever-B)
 
-## State: `LEVER_B1_FEED_GATED_NOT_IDLE` (2026-06-17) — FRED feeds acquired (structural only); P1/P2/P6 now feed-ready pending separate approved screen cycles; WP-B1 auctions still first.
+## State: `FRED_YIELD_CURVE_BRANCH_CLOSED__FORGE_DISCOVERY_CONTINUES` (2026-06-17)
+FRED yield-curve carry branch closed (mapped/dead: rotation, naïve spread, duration-balanced all KILL). Discovery continues. Batch-2 FRED daily DRIVERS acquired (structural only): `real_rates.csv` (DFII), `inflation_expectations.csv` (breakevens), `dollar_index.csv` (broad USD), `vix.csv`, `energy_spot.csv` (WTI/Brent/HenryHub), `credit_oas.csv` (HY OAS, short 2023+). These open new daily-driver packets P8–P13 (`FEED_DEPENDENT_CANDIDATE_PACKETS_BATCH2_2026-06-17.md`) — several attach to gold (live edge) via a genuinely new macro driver; all zero-evidence until screened (date-split OOS mandatory for gold-conditioning). Prior state line retained below.
+
+## (prior) State: `LEVER_B1_FEED_GATED_NOT_IDLE` (2026-06-17) — FRED structural feeds acquired; WP-B1 auctions still first when CSV lands.
 
 The in-house OHLCV/session/prior-day/EMA/ATR ingredient set has been proven to its ceiling for a generic daily, non-MNQ, driver-diverse second workhorse (see `docs/fql_forge/WH2_CHECKPOINT_2026-06-17.md`). The next real unlock is an **external driver feed**, not another in-house mutation. We are **feed-gated, not idle**:
 - WP-B1 (Treasury auctions) is blocked **only** on the real CSV.

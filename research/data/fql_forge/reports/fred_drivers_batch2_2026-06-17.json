@@ -1,0 +1,115 @@
+{
+  "download_date": "2026-06-17",
+  "source": "FRED keyless fredgraph.csv (.org, reachable)",
+  "status": "FRED_DRIVERS_BATCH2_ACQUIRED_STRUCTURAL_ONLY",
+  "class_note": "STRUCTURAL ONLY \u2014 NOT evidence of edge; screens are separate",
+  "reports": {
+    "real_rates": {
+      "path": "/Users/chasefisher/projects/Algo Trading/algo-lab/data/feeds/real_rates.csv",
+      "series_map": {
+        "dfii5": "DFII5",
+        "dfii10": "DFII10",
+        "dfii30": "DFII30"
+      },
+      "n_rows": 6118,
+      "date_range": [
+        "2003-01-02",
+        "2026-06-15"
+      ],
+      "duplicate_dates": 0,
+      "missing_per_col": {
+        "dfii5": 251,
+        "dfii10": 251,
+        "dfii30": 2036
+      },
+      "missing_handling": "FRED '.' -> NaN; NO synthetic fill"
+    },
+    "inflation_expectations": {
+      "path": "/Users/chasefisher/projects/Algo Trading/algo-lab/data/feeds/inflation_expectations.csv",
+      "series_map": {
+        "t5yie": "T5YIE",
+        "t10yie": "T10YIE"
+      },
+      "n_rows": 6119,
+      "date_range": [
+        "2003-01-02",
+        "2026-06-16"
+      ],
+      "duplicate_dates": 0,
+      "missing_per_col": {
+        "t5yie": 251,
+        "t10yie": 251
+      },
+      "missing_handling": "FRED '.' -> NaN; NO synthetic fill"
+    },
+    "dollar_index": {
+      "path": "/Users/chasefisher/projects/Algo Trading/algo-lab/data/feeds/dollar_index.csv",
+      "series_map": {
+        "usd_broad": "DTWEXBGS"
+      },
+      "n_rows": 5335,
+      "date_range": [
+        "2006-01-02",
+        "2026-06-12"
+      ],
+      "duplicate_dates": 0,
+      "missing_per_col": {
+        "usd_broad": 209
+      },
+      "missing_handling": "FRED '.' -> NaN; NO synthetic fill"
+    },
+    "vix": {
+      "path": "/Users/chasefisher/projects/Algo Trading/algo-lab/data/feeds/vix.csv",
+      "series_map": {
+        "vix": "VIXCLS"
+      },
+      "n_rows": 9511,
+      "date_range": [
+        "1990-01-02",
+        "2026-06-16"
+      ],
+      "duplicate_dates": 0,
+      "missing_per_col": {
+        "vix": 302
+      },
+      "missing_handling": "FRED '.' -> NaN; NO synthetic fill"
+    },
+    "energy_spot": {
+      "path": "/Users/chasefisher/projects/Algo Trading/algo-lab/data/feeds/energy_spot.csv",
+      "series_map": {
+        "wti": "DCOILWTICO",
+        "brent": "DCOILBRENTEU",
+        "henryhub": "DHHNGSP"
+      },
+      "n_rows": 10553,
+      "date_range": [
+        "1986-01-02",
+        "2026-06-15"
+      ],
+      "duplicate_dates": 0,
+      "missing_per_col": {
+        "wti": 376,
+        "brent": 646,
+        "henryhub": 3161
+      },
+      "missing_handling": "FRED '.' -> NaN; NO synthetic fill"
+    },
+    "credit_oas": {
+      "path": "/Users/chasefisher/projects/Algo Trading/algo-lab/data/feeds/credit_oas.csv",
+      "series_map": {
+        "hy_oas": "BAMLH0A0HYM2"
+      },
+      "n_rows": 794,
+      "date_range": [
+        "2023-06-19",
+        "2026-06-16"
+      ],
+      "duplicate_dates": 0,
+      "missing_per_col": {
+        "hy_oas": 8
+      },
+      "missing_handling": "FRED '.' -> NaN; NO synthetic fill"
+    }
+  },
+  "boundaries": "fetch + structural validation only; no screens/edge/labels/synthetic-fill/mutation"
+}
