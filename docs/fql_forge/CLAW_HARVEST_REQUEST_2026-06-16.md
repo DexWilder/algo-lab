@@ -44,5 +44,16 @@ Forced-flow / structural-participant behavior is the richest vein for persistent
 - A clear split: **TESTABLE-NOW** tranche (→ Claude cheap-screens immediately) vs **FEED-BLOCKED** tranche (→ Lever-B queue with feed requests).
 - Flag any idea whose behavioral story is weak or whose mechanism overlaps the archive → drop, don't pad the count.
 
+## PACKET UPGRADE (2026-06-17) — locked requirements after backlog triage
+The 878-note triage found Claw produces **0% hard kills** (defers everything) and re-harvests 6 saturated families. New requirements:
+1. **Hard-kill categories, not just defer/watch.** Any mechanism matching the no-repeat archive (below) → KILL verdict, do not surface.
+2. **Suppress the 6 saturated families** (already no-repeat archived; cap at one canonical each): London-FX breakout (47), PPP FX carry basket (88), Kalman/cointegration stat-arb (59), value-rebalance-timing gates (60), WTI carry slope variants (14), non-equity vol-managed sizing overlays (88).
+3. **Do NOT label feed-blocked ideas "testable-now."** Testable-now requires the feed to exist in-house: 5m for `6B 6E 6J ES M2K MCL MES MGC MNQ MYM ZB ZF ZN` + FOMC/CPI **date** calendars. Anything needing ZT/ZC/ZS/NG/SI/HG, 13th-month contracts, FRED/USDA/BLS-values, COT, curve/F2, DXY → FEED-BLOCKED (route to Lever-B).
+4. **Up-weight** EVENT, STRUCTURAL, RATES, CARRY, CURVE, AUCTION, CPI-detail, inventory-style leads (currently EVENT only 9%). Down-weight VALUE/CARRY-PPP (already 63% and feed-blocked).
+5. **Cadence classification required:** daily / weekly / monthly / sparse-event. Frequency is a hard sort key.
+6. **Every note must state:** mechanism (precise rule), feed requirement, expected cadence, distinctness from archived families, and **why it is NOT just another breakout/momentum variant** (the breakout family — ORB/donchian/dual-thrust — is dead off-MNQ/gold; do not bring back breakouts without a genuinely new structural reason).
+
+Claw remains scout/harvester; Forge remains builder/tester/validator; no activation authority moves to Claw. (Claw is automation-owned — these are recommended config changes for the operator to apply, not self-edited.)
+
 ## Operator note on Claw health (2026-06-16)
 Claw is infrastructure-healthy but (1) throttled by an 18-note/day budget that causes idle spin, (2) sitting on an 868-note unprocessed pickup backlog (Claw→Claude handoff broken — Claude must triage), and (3) skewed toward feed-blocked VALUE/CARRY. This request re-aims it: frequency-first, testable-now daily mechanisms, feed-blocked → Lever-B queue. Recommend raising the note budget for this harvest sprint.

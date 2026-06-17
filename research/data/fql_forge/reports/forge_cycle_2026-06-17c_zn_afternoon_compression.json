@@ -1,0 +1,112 @@
+{
+  "cycle": "2026-06-17c_zn_afternoon_compression",
+  "mode": "Lane B report-only; self-contained no-lookahead; NON-WIRED",
+  "base": {
+    "ZN": {
+      "asset": "ZN",
+      "n": 102,
+      "trades_per_yr": 12.8,
+      "pf": 0.069,
+      "net": -3933.0,
+      "median": -34.35,
+      "h1_pf": 0.123,
+      "h2_pf": 0.012,
+      "max_year_pct": -18.3,
+      "top3": 82.8,
+      "era_pf": [
+        0.091,
+        0.089,
+        0.02
+      ],
+      "yr_excl_min": 0.043,
+      "corr_mnq": -0.031,
+      "verdict": "KILL"
+    },
+    "ZF": {
+      "asset": "ZF",
+      "n": 98,
+      "trades_per_yr": 12.2,
+      "pf": 0.068,
+      "net": -1812.0,
+      "median": -18.73,
+      "h1_pf": 0.022,
+      "h2_pf": 0.119,
+      "max_year_pct": -24.2,
+      "top3": 57.6,
+      "era_pf": [
+        0.007,
+        0.121,
+        0.09
+      ],
+      "yr_excl_min": 0.044,
+      "corr_mnq": -0.03,
+      "verdict": "KILL"
+    },
+    "ZB": {
+      "asset": "ZB",
+      "n": 105,
+      "trades_per_yr": 13.1,
+      "pf": 0.006,
+      "net": -14169.0,
+      "median": -128.1,
+      "h1_pf": 0.008,
+      "h2_pf": 0.004,
+      "max_year_pct": -23.2,
+      "top3": 100.0,
+      "era_pf": [
+        0.012,
+        0.0,
+        0.007
+      ],
+      "yr_excl_min": 0.003,
+      "corr_mnq": -0.01,
+      "verdict": "KILL"
+    }
+  },
+  "param_islands": [
+    {
+      "pct": 0.2,
+      "vol_mult": 1.0,
+      "n": 75,
+      "pf": 0.047,
+      "verdict": "KILL"
+    },
+    {
+      "pct": 0.2,
+      "vol_mult": 1.2,
+      "n": 63,
+      "pf": 0.058,
+      "verdict": "KILL"
+    },
+    {
+      "pct": 0.25,
+      "vol_mult": 1.0,
+      "n": 102,
+      "pf": 0.069,
+      "verdict": "KILL"
+    },
+    {
+      "pct": 0.25,
+      "vol_mult": 1.2,
+      "n": 87,
+      "pf": 0.084,
+      "verdict": "KILL"
+    },
+    {
+      "pct": 0.33,
+      "vol_mult": 1.0,
+      "n": 143,
+      "pf": 0.066,
+      "verdict": "KILL"
+    },
+    {
+      "pct": 0.33,
+      "vol_mult": 1.2,
+      "n": 121,
+      "pf": 0.081,
+      "verdict": "KILL"
+    }
+  ],
+  "robust_across_params": false,
+  "boundaries": "no activation/registry/scheduler/portfolio/order mutation"
+}
