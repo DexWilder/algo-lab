@@ -1,0 +1,82 @@
+{
+  "download_date": "2026-06-17",
+  "source": "FRED keyless fredgraph.csv (.org, sandbox-reachable)",
+  "status": "FRED_FEEDS_ACQUIRED_STRUCTURAL_ONLY",
+  "class_note": "STRUCTURAL ONLY \u2014 NOT evidence of edge; screens are a separate approved cycle",
+  "reports": {
+    "yield_curve": {
+      "file": "treasury_yield_curve.csv",
+      "n_rows": 16815,
+      "date_range": [
+        "1962-01-02",
+        "2026-06-15"
+      ],
+      "columns": [
+        "date",
+        "dgs2",
+        "dgs5",
+        "dgs10",
+        "dgs30"
+      ],
+      "duplicate_dates": 0,
+      "missing_per_col": {
+        "dgs2": 4309,
+        "dgs5": 717,
+        "dgs10": 717,
+        "dgs30": 4487
+      },
+      "missing_handling": "FRED '.' -> NaN; NO synthetic fill (gaps preserved)",
+      "series_map": {
+        "dgs2": "DGS2",
+        "dgs5": "DGS5",
+        "dgs10": "DGS10",
+        "dgs30": "DGS30"
+      },
+      "path": "/Users/chasefisher/projects/Algo Trading/algo-lab/data/feeds/treasury_yield_curve.csv"
+    },
+    "cpi_levels": {
+      "file": "cpi_levels.csv",
+      "n_rows": 953,
+      "date_range": [
+        "1947-01-01",
+        "2026-05-01"
+      ],
+      "columns": [
+        "date",
+        "cpiaucsl"
+      ],
+      "duplicate_dates": 0,
+      "missing_per_col": {
+        "cpiaucsl": 1
+      },
+      "missing_handling": "FRED '.' -> NaN; NO synthetic fill (gaps preserved)",
+      "series_map": {
+        "cpiaucsl": "CPIAUCSL"
+      },
+      "path": "/Users/chasefisher/projects/Algo Trading/algo-lab/data/feeds/cpi_levels.csv"
+    },
+    "policy_rates": {
+      "file": "policy_rates.csv",
+      "n_rows": 863,
+      "date_range": [
+        "1954-07-01",
+        "2026-05-01"
+      ],
+      "columns": [
+        "date",
+        "fed_funds",
+        "boj_rate"
+      ],
+      "duplicate_dates": 0,
+      "missing_per_col": {
+        "fed_funds": 0,
+        "boj_rate": 95
+      },
+      "missing_handling": "FRED '.' -> NaN; NO synthetic fill (gaps preserved)",
+      "fed": "FRED:FEDFUNDS",
+      "boj_note": "BoJ = FRED:IRSTCB01JPM156N (Immediate Rates, Central Bank Rate, Japan)",
+      "path": "/Users/chasefisher/projects/Algo Trading/algo-lab/data/feeds/policy_rates.csv"
+    }
+  },
+  "boundaries": "fetch + structural validation only; no screens/edge/labels/synthetic-fill/mutation"
+}
