@@ -1,0 +1,47 @@
+{
+  "cycle": "2026-06-18c_cot_positioning",
+  "mode": "Lane 1 report-only; reachable COT; NON-WIRED",
+  "results": {
+    "10Y->ZN": {
+      "n": 2157,
+      "pf": 0.932,
+      "net": -6042.0,
+      "median": 0.0,
+      "h1_pf": 0.938,
+      "h2_pf": 0.927,
+      "yrs_pos": "4/8",
+      "train_pf": 0.938,
+      "test_pf": 0.927,
+      "days_in_pos": 589,
+      "verdict": "KILL"
+    },
+    "GOLD->MGC": {
+      "n": 1956,
+      "pf": 1.058,
+      "net": 2643.0,
+      "median": 0.0,
+      "h1_pf": 1.047,
+      "h2_pf": 1.065,
+      "yrs_pos": "5/8",
+      "train_pf": 1.047,
+      "test_pf": 1.065,
+      "days_in_pos": 513,
+      "verdict": "KILL"
+    },
+    "CRUDE->MCL": {
+      "n": 1533,
+      "pf": 1.088,
+      "net": 2332.0,
+      "median": 0.0,
+      "h1_pf": 1.218,
+      "h2_pf": 0.872,
+      "yrs_pos": "4/6",
+      "train_pf": 1.246,
+      "test_pf": 0.898,
+      "days_in_pos": 415,
+      "verdict": "KILL"
+    }
+  },
+  "note": "weekly COT gates daily; no-lookahead Fri-release lag; spec-extreme reversal",
+  "boundaries": "one mechanism; no sweep/mutation"
+}

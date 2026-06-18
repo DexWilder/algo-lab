@@ -1,0 +1,65 @@
+{
+  "source": "CFTC COT legacy futures-only via publicreporting.cftc.gov Socrata",
+  "download_date": "2026-06-18",
+  "path": "/Users/chasefisher/projects/Algo Trading/algo-lab/data/feeds/cot.csv",
+  "n_rows": 3628,
+  "markets": [
+    {
+      "sym": "10Y",
+      "n": 388,
+      "start": "2019-01-08 00:00:00",
+      "end": "2026-06-09 00:00:00"
+    },
+    {
+      "sym": "5Y",
+      "n": 388,
+      "start": "2019-01-08 00:00:00",
+      "end": "2026-06-09 00:00:00"
+    },
+    {
+      "sym": "BOND",
+      "n": 774,
+      "start": "2019-01-08 00:00:00",
+      "end": "2026-06-09 00:00:00"
+    },
+    {
+      "sym": "CRUDE",
+      "n": 538,
+      "start": "2019-01-08 00:00:00",
+      "end": "2026-06-09 00:00:00"
+    },
+    {
+      "sym": "EUR",
+      "n": 388,
+      "start": "2019-01-08 00:00:00",
+      "end": "2026-06-09 00:00:00"
+    },
+    {
+      "sym": "GOLD",
+      "n": 537,
+      "start": "2019-01-08 00:00:00",
+      "end": "2026-06-09 00:00:00"
+    },
+    {
+      "sym": "JPY",
+      "n": 388,
+      "start": "2019-01-08 00:00:00",
+      "end": "2026-06-09 00:00:00"
+    },
+    {
+      "sym": "SP500",
+      "n": 227,
+      "start": "2022-02-08 00:00:00",
+      "end": "2026-06-09 00:00:00"
+    }
+  ],
+  "derived": "spec_net = noncomm_long - noncomm_short; comm_net = comm_long - comm_short",
+  "missing": {
+    "spec_net": 0,
+    "comm_net": 0,
+    "open_interest_all": 0
+  },
+  "status": "COT_ACQUIRED_STRUCTURAL_ONLY",
+  "cadence": "weekly (Tue report, Fri release) -> GATES daily entries, not daily WH2",
+  "note": "S6 reachable (refutes 'everything feed-blocked'); structural readiness != edge; screen is a SEPARATE step"
+}

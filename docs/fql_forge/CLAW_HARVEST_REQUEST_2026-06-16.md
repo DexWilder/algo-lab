@@ -90,7 +90,13 @@ Claw keeps defaulting to saturated families because the directive was abstract. 
 | S11 | Quad-witch expiry-DAY mechanics (not week) | simultaneous futures+options expiry forces unwinds | MES/MNQ | reachable (OPEX-week=beta; expiry-day untested) |
 | S12 | OPEC/EIA crude event calendar | producers/hedgers reprice on supply decisions | MCL | feed (OPEC/EIA calendar) |
 
-**Most structural-flow mechanisms are FEED-BLOCKED** — which is exactly why the highest-EV path is data-staging, not more reachable screens. Reachable-now untested: S10 (settlement-window), S11 (expiry-day), partial S3/S8. Claw should harvest VARIANTS/refinements of these (with behavioral stories) and route feed-blocked ones to the Lever-B queue — NOT regenerate dual-thrust/Kalman/London/PPP-carry.
+**Reachability is broader than first thought (corrected 2026-06-18 — do NOT collapse to "only S10/S11 reachable, everything else blocked"):**
+- **S6 COT = REACHABLE & ACQUIRED** (`publicreporting.cftc.gov` Socrata, public; `data/feeds/cot.csv`, 8 markets weekly 2019+). NOT feed-blocked. Simple standalone spec-extreme reversal screened (`forge_cycle_2026-06-18c`) → KILL (10Y/GOLD/CRUDE PF 0.93–1.09). But COT-as-a-FILTER/gate on existing edges (its more common use), commercial-net, or change-in-positioning formulations are DISTINCT and untested → open.
+- **S3 index reconstitution = PARTIALLY REACHABLE** — Russell (last-Fri-June) + S&P quarterly (3rd-Fri) effective dates are COMPUTABLE (no feed); M2K/MES testable (S&P-rebal ≈ S11 quad-witch; Russell annual = too sparse alone).
+- **S8 FX fixing = PARTIALLY REACHABLE** if 6E/6J/6B 5m cover the 4pm-London window (short 2024+ sample).
+- **S10 settlement-window, S11 quad-witch expiry-day = cleanest reachable-now, untested.**
+- Genuinely feed-blocked: S2 (clean roll), S4 (gamma), S5 (ETF), S7/S12 (EIA/OPEC), S9 (dividend) + S1 auctions (staged).
+Claw should harvest VARIANTS of the reachable seeds (with behavioral stories) AND route feed-blocked ones to Lever-B — NOT regenerate dual-thrust/Kalman/London/PPP-carry. **"Data-gated" applies to the HIGHEST-EV path (auctions), not to all discovery.**
 
 ## Operator note on Claw health (2026-06-16)
 Claw is infrastructure-healthy but (1) throttled by an 18-note/day budget that causes idle spin, (2) sitting on an 868-note unprocessed pickup backlog (Claw→Claude handoff broken — Claude must triage), and (3) skewed toward feed-blocked VALUE/CARRY. This request re-aims it: frequency-first, testable-now daily mechanisms, feed-blocked → Lever-B queue. Recommend raising the note budget for this harvest sprint.
