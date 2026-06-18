@@ -17,6 +17,9 @@
 - The **only survivor (P8 long-only gate)** is a **marginal gold-timing overlay** — OOS-consistent (no inversion, unlike the killed ZN-price gate), but **0.57-correlated to long-gold** → it's better gold *timing*, not new behavior. Capped at `GOLD_SLEEVE_ENHANCER`, and marginal (PF 1.209, barely over gate). The "gold macro driver" loophole did NOT produce a WH2.
 - Real rates / breakevens being the *actual* drivers (vs the killed ZN-price proxy) did help one variant survive OOS — but only as gold timing, which is exactly what the guardrail was built to catch.
 
+## ⚠ RETRACTION (2026-06-17, cycle 17j) — the P8 gate "enhancer" was a NaN-rolling artifact
+The `P8 long-only real-rate gate → GOLD_SLEEVE_ENHANCER (PF 1.209)` classification above is **RETRACTED**. Root cause: `dfii10.rolling(60).mean()` over the raw FRED series (which has holiday NaN holes) returns NaN whenever the window contains a gap → the "below 60d mean" regime was almost never true (~0.8% of days instead of ~53%), so the 17f gate barely fired and its metric was meaningless. **Corrected overlay test (17j) on the gap-cleaned series:** the P8 real-rate gate applied to the combined MGC sleeve (ORB + prior_day_break) **HURTS it** — PF 1.424→1.205, max-DD −2277→−2588, H2 1.449→0.972 (OOS-fail), net $15.7k→$3.8k, retaining only 49.5%. **Verdict: `REJECT_OVERLAY` — the gold sleeve is better WITHOUT the real-rate gate.** P8 is now fully dead: not WH2, not a diversifier, AND not a gold-sleeve overlay. (Evidence-integrity catch: implausible 0.8% retention exposed the bug.)
+
 ## Disposition
 - P8 long/short, P9 rotation → **archived (KILL)**, no-repeat.
 - P8 long-only gate → logged as a **marginal GOLD_SLEEVE_ENHANCER** (available IF we later refine the gold sleeve's timing; NOT the WH2 target, not pursued as diversifier).

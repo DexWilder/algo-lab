@@ -1,0 +1,32 @@
+{
+  "cycle": "2026-06-17j_p8_overlay",
+  "mode": "Lane 2 report-only; gold-sleeve overlay eval; NON-WIRED",
+  "baseline": {
+    "n": 1061,
+    "net": 15654.0,
+    "pf": 1.424,
+    "median": 6.76,
+    "h1_pf": 1.38,
+    "h2_pf": 1.449,
+    "max_dd": -2277.0,
+    "worst_day": -1363.0,
+    "top3_pct": 6.6,
+    "yrs_pos": "7/8"
+  },
+  "p8_gated": {
+    "n": 525,
+    "net": 3841.0,
+    "pf": 1.205,
+    "median": 10.76,
+    "h1_pf": 1.719,
+    "h2_pf": 0.972,
+    "max_dd": -2588.0,
+    "worst_day": -1363.0,
+    "top3_pct": 6.0,
+    "yrs_pos": "6/8"
+  },
+  "retention_pct": 49.5,
+  "verdict": "REJECT_OVERLAY_overcuts",
+  "note": "overlay on existing gold sleeve; stays gold exposure; NOT a WH2/diversifier",
+  "boundaries": "no mutation/promotion/activation"
+}
