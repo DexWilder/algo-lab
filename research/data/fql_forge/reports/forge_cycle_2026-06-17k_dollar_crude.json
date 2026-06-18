@@ -1,0 +1,19 @@
+{
+  "cycle": "2026-06-17k_dollar_crude",
+  "mode": "Lane 1 report-only; non-gold macro; NON-WIRED",
+  "board": {
+    "n": 1533,
+    "pf": 1.068,
+    "net": 6816.0,
+    "median": 2.0,
+    "h1_pf": 1.172,
+    "h2_pf": 0.957,
+    "yrs_pos": "4/6",
+    "train_pf": 1.179,
+    "test_pf": 1.008,
+    "corr_mnq": 0.064,
+    "corr_longcrude": -0.402,
+    "verdict": "KILL"
+  },
+  "boundaries": "one variant; clean-before-rolling; no sweep/synthetic-fill/mutation"
+}
