@@ -1,0 +1,27 @@
+{
+  "cycle": "2026-06-18f_settlement_window",
+  "mode": "Lane 1 report-only; equity event/daily; NON-WIRED",
+  "all": {
+    "n": 312,
+    "pf": 0.981,
+    "net": -123.0,
+    "median": 2.51,
+    "pos_frac": 0.53,
+    "max_single_pct": 2.9,
+    "max_year_pct": -226.8,
+    "yrs_pos": "4/8"
+  },
+  "clean": {
+    "n": 210,
+    "pf": 1.162,
+    "net": 627.0,
+    "median": 2.51,
+    "pos_frac": 0.53,
+    "max_single_pct": 4.1,
+    "max_year_pct": 61.8,
+    "yrs_pos": "5/8"
+  },
+  "verdict": "KILL",
+  "note": "MES equity (not WH2); ZN settlement data-quality-limited (irregular 5m, 22% gap days) + overlaps ZN-Afternoon book",
+  "boundaries": "no sweep/mutation"
+}
