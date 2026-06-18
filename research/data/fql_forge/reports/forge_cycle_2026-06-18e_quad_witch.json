@@ -1,0 +1,82 @@
+{
+  "cycle": "2026-06-18e_quad_witch",
+  "mode": "Lane 1 report-only; equity event/tail; NON-WIRED",
+  "results": {
+    "MES|W1_expiry_day_Thu->Fri_long": {
+      "all": {
+        "n": 27,
+        "pf": 0.781,
+        "net": -390.0,
+        "pos_frac": 0.41,
+        "max_single_pct": 23.1,
+        "max_year_pct": -180.3,
+        "yrs_pos": "3/8"
+      },
+      "clean_of_fomc": {
+        "n": 10,
+        "pf": null
+      },
+      "verdict": "KILL"
+    },
+    "MES|W2_post_witch_week_short": {
+      "all": {
+        "n": 29,
+        "pf": 0.324,
+        "net": -6340.0,
+        "pos_frac": 0.38,
+        "max_single_pct": 18.7,
+        "max_year_pct": -49.3,
+        "yrs_pos": "3/8"
+      },
+      "clean_of_fomc": {
+        "n": 12,
+        "pf": 0.428,
+        "net": -2030.0,
+        "pos_frac": 0.33,
+        "max_single_pct": 33.5,
+        "max_year_pct": -70.1,
+        "yrs_pos": "3/7"
+      },
+      "verdict": "KILL"
+    },
+    "MNQ|W1_expiry_day_Thu->Fri_long": {
+      "all": {
+        "n": 27,
+        "pf": 1.038,
+        "net": 75.0,
+        "pos_frac": 0.52,
+        "max_single_pct": 17.3,
+        "max_year_pct": 996.4,
+        "yrs_pos": "4/8"
+      },
+      "clean_of_fomc": {
+        "n": 10,
+        "pf": null
+      },
+      "verdict": "KILL"
+    },
+    "MNQ|W2_post_witch_week_short": {
+      "all": {
+        "n": 29,
+        "pf": 0.279,
+        "net": -11650.0,
+        "pos_frac": 0.34,
+        "max_single_pct": 23.3,
+        "max_year_pct": -42.9,
+        "yrs_pos": "3/8"
+      },
+      "clean_of_fomc": {
+        "n": 12,
+        "pf": 0.393,
+        "net": -3182.0,
+        "pos_frac": 0.33,
+        "max_single_pct": 50.9,
+        "max_year_pct": -64.9,
+        "yrs_pos": "3/7"
+      },
+      "verdict": "KILL"
+    }
+  },
+  "note": "equity (MES/MNQ) event/tail NOT non-MNQ WH2; ~28 events",
+  "boundaries": "no sweep/mutation"
+}
