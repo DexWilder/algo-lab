@@ -29,5 +29,14 @@ MGC already carries ORB-MGC-Long (core), PB-MGC-Short (core), DailyTrend-MGC-Lon
 ## Caveat
 The repeated surfacing of gold in the WH2 hunt is a *symptom*: off-MNQ daily-elite edge in current single-series data is concentrated in gold-breakout. The cure is a new *driver* (Lever-B rates-curve/carry, dollar/real-rate), not more gold mechanisms.
 
+## DEEP-REVIEW UPDATE (2026-06-17, cycle 17n) — MGC-prior_day_break addition, same rigor as the fip kill
+Applied the per-year-stability + bad-day-offset + distinctness rigor (that downgraded MNQ first_impulse_pullback) to MGC-prior_day_break as a gold-sleeve addition vs incumbent MGC-ORB. **It comes out genuinely different from fip — it survives, but as a RETURN addition, not a risk-reducer:**
+- **Distinctness PASSES** (fip failed this): same-day overlap **34.5%** (fip 87%), overall corr **0.244** (fip 0.43), different entry-hour spread, different mechanism (prior-day level vs opening range). A real separate gold edge.
+- **Adds return:** sleeve net $9,835 → $15,654 (+$5,819); combined PF 1.464.
+- **NOT a risk-reducer:** combined DD deepens −$1,022 → −$2,277 (worse in **7/8 years**); pdb does NOT offset ORB's worst days (10–12% positive). Expected — it's added exposure, not a hedge.
+- **Prop-acceptable combined:** worst day −$1,363 (< $2k); pdb cost-robust (PF 1.34→1.24 @3x slip).
+
+**Verdict: `ADDITION_CANDIDATE` (distinct return-adding gold mechanism) — NOT a risk-reducer, NOT WH2.** Stronger than fip (which was REDUNDANT + a 2025 artifact → dead); pdb is genuinely additive in return + diversity. **The binding gate is GOLD CONCENTRATION** — pdb would be a 5th MGC book; a sleeve-additive return book still deepens portfolio-level gold exposure (MGC soft-cap). So: real candidate, gated on the gold-concentration / soft-cap decision (operator), not promotable until resolved. Honest framing: this expands the gold sleeve's return via a distinct mechanism; it does not solve diversification or reduce risk.
+
 ## Boundaries
 Report-only. No activation, wiring, registry/portfolio mutation, or retune.
