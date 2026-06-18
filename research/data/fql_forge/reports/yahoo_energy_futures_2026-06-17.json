@@ -1,0 +1,21 @@
+{
+  "path": "/Users/chasefisher/projects/Algo Trading/algo-lab/data/feeds/energy_futures_yahoo.csv",
+  "source": "Yahoo Finance query1 chart API (retail-grade, continuous front-month, unadjusted)",
+  "download_date": "2026-06-18",
+  "symbols": {
+    "wti_f": "CL=F",
+    "brent_f": "BZ=F"
+  },
+  "n_rows": 3774,
+  "date_range": [
+    "2011-06-17",
+    "2026-06-18"
+  ],
+  "duplicate_dates": 0,
+  "missing_per_col": {
+    "wti_f": 1,
+    "brent_f": 27
+  },
+  "quality_caveat": "retail-grade continuous front-month; research-only, NOT capital-grade (needs DSCL + controlled vendor before deployment)",
+  "status": "YAHOO_ENERGY_FUTURES_ACQUIRED_STRUCTURAL_ONLY"
+}
