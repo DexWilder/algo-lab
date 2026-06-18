@@ -27,5 +27,17 @@ A strong topline metric alone does NOT earn "diversifier" or even "addition" —
 - **Lane 1** continuing: structural feeds queued (`STAGING_MANIFEST.md` #1 auctions, #2 F2 roll, #3 EIA surprise); reachable cross-asset tests mostly KILL (price/ratio overlays look arbitraged) → frontier = the blocked structural feeds.
 - **Lane 2** re-opened: evaluate the P8 gold overlay properly; hunt MNQ/MGC workhorse replacements/additions with duplicate-family + exposure controls. Gold guardrails still apply (don't double-count gold beta; soft-cap).
 
+## Reachable-surface framing (corrected 2026-06-17 — do NOT over-claim "exhausted")
+**Wrong:** "the reachable-data surface for daily WH2 is mapped/exhausted." **Right:** *"the currently-tested reachable daily macro/ratio OVERLAY surface has produced no WH2; structural forced-flow feeds are now the highest-EV frontier, but reachable discovery continues with tighter mechanism filters."* "Exhausted" quietly becomes "wait for files" — the anti-pattern. So:
+1. **Lane 1 priority = structural feeds now** (auctions → rates F2/roll → EIA surprise). Simple price/ratio overlays demonstrably aren't producing edge.
+2. **Lane 1 keeps a SMALL reachable-discovery thread alive** — NOT random/generic OHLCV screens, but any plausible **forced-flow / calendar / settlement / proxy** mechanism on reachable data (e.g. surfaced by Claw) gets tested.
+3. **Lane 2 sleeve-improvement continues** — MGC-prior_day_break (cat-2 addition) review + MNQ/MGC replacement/addition/overlay candidates.
+
+## Global evidence rule (locked 2026-06-17)
+**Gap-clean any external/feed series BEFORE rolling means, rolling changes, z-scores, percentile ranks, or regime labels** (raw NaN holes poison rolling windows → silent false regimes). Sanity-check derived regime base rates (implausible firing/retention rate = plumbing bug, not a finding). See memory `clean-before-rolling`. This caught + retracted the P8 false-enhancer.
+
+## No-repeat archive (additions)
+- **P8 real-rate gold gate** — fully dead (not WH2 / not diversifier / not overlay; the 17f "enhancer" was a NaN artifact, retracted). Do not re-surface. The gold sleeve is better WITHOUT the real-rate gate.
+
 ## Boundaries
-Both lanes report-only. No mutation, no promotion, no activation without explicit approval. "Keep hunting outside gold/MNQ for diversification, but do not stop improving the strongest sleeves we already have."
+Both lanes report-only. No mutation, no promotion, no activation without explicit approval. "Keep hunting outside gold/MNQ for diversification, but do not stop improving the strongest sleeves we already have." And: structural feeds are highest-EV, but that must NOT become "stop hunting until files arrive."
