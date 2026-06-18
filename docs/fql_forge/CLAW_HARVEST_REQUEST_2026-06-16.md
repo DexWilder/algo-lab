@@ -72,5 +72,25 @@ The session has now screened single-series behavioral (112 cands), cross-asset c
 
 **Required per note:** mechanism + the **structural reason it persists (who is forced to trade what, when, why)** + required feed + expected cadence + instruments + distinctness from archive. A note without a forced-flow / structural story = auto-KILL, not WATCH.
 
+## 2026-06-18 STRUCTURAL SEED-LIST (concrete mechanisms to expand — "harvest structural flow" is too abstract)
+Claw keeps defaulting to saturated families because the directive was abstract. Expand THESE specific forced-flow mechanisms (each has a who-is-forced story). Tag reachable-now vs feed-blocked; do NOT re-surface the dead/saturated list above.
+
+| # | Mechanism | Who is forced (why it persists) | Instrument | Data |
+|--:|---|---|---|---|
+| S1 | Treasury auction concession/reversion | dealers/real-money position around scheduled issuance supply | ZN/ZF/ZB | feed (auctions CSV — staged) |
+| S2 | Futures roll-period flow (clean) | longs MUST roll front→deferred before First Position Day | ZN/MCL/MES | feed (front+deferred / clean roll) |
+| S3 | Index reconstitution (Russell late-Jun, S&P qtrly) | index funds MUST rebalance to new constituents on effective date | M2K/MES | reconstitution dates (partial reachable) |
+| S4 | Options-dealer gamma (OPEX pin/unpin) | dealers hedge gamma into/after 3rd-Fri expiry | MES/MNQ | feed (options gamma/OI) |
+| S5 | ETF creation/redemption pressure | APs transact underlying to clear primary-market flow | MES/MGC | feed (ETF flow) |
+| S6 | COT positioning extremes (commercial vs spec) | crowded specs forced to unwind at extremes | rates/crude/FX | feed (CFTC COT) |
+| S7 | Crude inventory-state (EIA surprise) | hedgers/specs reprice on weekly supply shock | MCL | feed (EIA) |
+| S8 | FX fixing-window flow (London 4pm/WMR) | benchmark-tracking funds MUST trade at the fix | 6E/6J/6B | intraday + fix times (partial 2024+) |
+| S9 | Coupon/dividend ex-date flows | index futures reprice around large dividend/coupon dates | MES | feed (dividend/coupon calendar) |
+| S10 | Settlement-window behavior (cash close vs futures) | hedgers square into cash settlement | ZN/MES | reachable intraday (mostly untested) |
+| S11 | Quad-witch expiry-DAY mechanics (not week) | simultaneous futures+options expiry forces unwinds | MES/MNQ | reachable (OPEX-week=beta; expiry-day untested) |
+| S12 | OPEC/EIA crude event calendar | producers/hedgers reprice on supply decisions | MCL | feed (OPEC/EIA calendar) |
+
+**Most structural-flow mechanisms are FEED-BLOCKED** — which is exactly why the highest-EV path is data-staging, not more reachable screens. Reachable-now untested: S10 (settlement-window), S11 (expiry-day), partial S3/S8. Claw should harvest VARIANTS/refinements of these (with behavioral stories) and route feed-blocked ones to the Lever-B queue — NOT regenerate dual-thrust/Kalman/London/PPP-carry.
+
 ## Operator note on Claw health (2026-06-16)
 Claw is infrastructure-healthy but (1) throttled by an 18-note/day budget that causes idle spin, (2) sitting on an 868-note unprocessed pickup backlog (Claw→Claude handoff broken — Claude must triage), and (3) skewed toward feed-blocked VALUE/CARRY. This request re-aims it: frequency-first, testable-now daily mechanisms, feed-blocked → Lever-B queue. Recommend raising the note budget for this harvest sprint.
