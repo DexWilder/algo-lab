@@ -1,0 +1,20 @@
+{
+  "cycle": "2026-06-17i_copper_gold_rates",
+  "mode": "Lane B report-only; Lane-1 cross-asset; Yahoo research-only; NON-WIRED",
+  "board": {
+    "n": 2138,
+    "pf": 1.026,
+    "net": 7853.0,
+    "median": 0.0,
+    "h1_pf": 1.117,
+    "h2_pf": 0.939,
+    "yrs_pos": "5/8",
+    "train_pf": 1.117,
+    "test_pf": 0.939,
+    "corr_mnq": -0.075,
+    "corr_longZN": 0.145,
+    "verdict": "KILL"
+  },
+  "data_caveat": "Yahoo retail-grade research-only; not capital evidence",
+  "boundaries": "one variant; no sweep/synthetic-fill/mutation"
+}

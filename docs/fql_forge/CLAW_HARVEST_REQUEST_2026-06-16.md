@@ -55,5 +55,20 @@ The 878-note triage found Claw produces **0% hard kills** (defers everything) an
 
 Claw remains scout/harvester; Forge remains builder/tester/validator; no activation authority moves to Claw. (Claw is automation-owned — these are recommended config changes for the operator to apply, not self-edited.)
 
+## 2026-06-17 REFRESH — STRUCTURAL-MECHANISM harvest (the reachable-simple-screen surface is exhausting)
+The session has now screened single-series behavioral (112 cands), cross-asset confirmation, FRED rates curve/carry, macro-gold (real-rate/breakeven), and energy dislocation (stale+fresh) — all KILL for a non-MNQ daily WH2. Data access is NO LONGER the bottleneck (FRED + Yahoo reachable); simple price-pattern mechanisms on liquid futures look arbitraged. So harvest must shift to **market-STRUCTURE / FLOW / participant-behavior** mechanisms.
+
+**Harvest ONLY (frequency-first, non-gold, non-MNQ):**
+- **Auction-flow** (Treasury issuance concession/reversion, bidder composition, allotment stress)
+- **Roll-yield / carry** in true futures term-structure form (front-vs-deferred), not yield-curve proxy
+- **Inventory-surprise** (EIA petroleum/gas vs consensus or seasonal)
+- **Settlement / calendar flow** (month/quarter-end duration rebalance, index reconstitution, options-expiry/gamma, futures roll-week)
+- **Positioning / proxy** (COT extremes, ETF creation/redemption, fund-flow proxies)
+- **Cross-asset forced-flow** (copper/gold growth signal, dollar regime, real-rate→assets, risk-on/off composite)
+
+**EXCLUDE (hard kill, do not surface):** generic OHLCV/ORB/breakout/trend/EMA/ATR variations UNLESS tied to a concrete market-structure reason; gold-timing overlays; MNQ momentum cousins; everything on the no-repeat archive.
+
+**Required per note:** mechanism + the **structural reason it persists (who is forced to trade what, when, why)** + required feed + expected cadence + instruments + distinctness from archive. A note without a forced-flow / structural story = auto-KILL, not WATCH.
+
 ## Operator note on Claw health (2026-06-16)
 Claw is infrastructure-healthy but (1) throttled by an 18-note/day budget that causes idle spin, (2) sitting on an 868-note unprocessed pickup backlog (Claw→Claude handoff broken — Claude must triage), and (3) skewed toward feed-blocked VALUE/CARRY. This request re-aims it: frequency-first, testable-now daily mechanisms, feed-blocked → Lever-B queue. Recommend raising the note budget for this harvest sprint.
