@@ -1,0 +1,96 @@
+{
+  "cycle": "2026-06-18b_nfp_forced_flow",
+  "mode": "Lane 1 report-only; exact-date forced-flow; NON-WIRED",
+  "summary": {
+    "ZN-prdrift": {
+      "all": {
+        "n": 84,
+        "pf": 0.916,
+        "net": -2229.0,
+        "median": -96.85,
+        "pos_frac": 0.43,
+        "max_single_pct": 8.0,
+        "max_year_pct": -99.1,
+        "yrs_pos": "4/8"
+      },
+      "clean": {
+        "n": 56,
+        "pf": 0.833,
+        "net": -2783.0,
+        "median": -120.29,
+        "pos_frac": 0.41,
+        "max_single_pct": 14.1,
+        "max_year_pct": -54.1,
+        "yrs_pos": "3/8"
+      }
+    },
+    "ZN-postday": {
+      "all": {
+        "n": 84,
+        "pf": 0.612,
+        "net": -8807.0,
+        "median": -159.35,
+        "pos_frac": 0.36,
+        "max_single_pct": 9.4,
+        "max_year_pct": -27.7,
+        "yrs_pos": "1/8"
+      },
+      "clean": {
+        "n": 56,
+        "pf": 0.564,
+        "net": -6205.0,
+        "median": -159.35,
+        "pos_frac": 0.34,
+        "max_single_pct": 16.3,
+        "max_year_pct": -35.2,
+        "yrs_pos": "2/8"
+      }
+    },
+    "ZF-prdrift": {
+      "all": {
+        "n": 84,
+        "pf": 0.832,
+        "net": -3042.0,
+        "median": -81.22,
+        "pos_frac": 0.45,
+        "max_single_pct": 9.4,
+        "max_year_pct": -91.1,
+        "yrs_pos": "4/8"
+      },
+      "clean": {
+        "n": 56,
+        "pf": 0.702,
+        "net": -3463.0,
+        "median": -112.47,
+        "pos_frac": 0.41,
+        "max_single_pct": 11.8,
+        "max_year_pct": -26.1,
+        "yrs_pos": "1/8"
+      }
+    },
+    "ZF-postday": {
+      "all": {
+        "n": 84,
+        "pf": 0.675,
+        "net": -4674.0,
+        "median": -77.32,
+        "pos_frac": 0.38,
+        "max_single_pct": 9.9,
+        "max_year_pct": -23.2,
+        "yrs_pos": "1/8"
+      },
+      "clean": {
+        "n": 56,
+        "pf": 0.644,
+        "net": -3142.0,
+        "median": -77.32,
+        "pos_frac": 0.38,
+        "max_single_pct": 17.0,
+        "max_year_pct": -40.3,
+        "yrs_pos": "3/8"
+      }
+    }
+  },
+  "verdict": "KILL/NO-CLEAN-EDGE: NFP-day rates shows no clean (non-roll/non-FOMC) edge that clears gates",
+  "boundaries": "clean-decomposed up front; no sweep/mutation"
+}
