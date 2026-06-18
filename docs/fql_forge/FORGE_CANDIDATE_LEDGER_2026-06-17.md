@@ -25,5 +25,17 @@ MNQ: XB-ORB-EMA-Ladder-MNQ (PF 1.628), WH-MNQ-stop_run_reversal (PF 1.477, Phase
 - **Lane 1 (WH2/diversifier, highest-EV):** structural feeds — Treasury auctions (stage CSV → WP-B1) > rates F2 roll > EIA surprise; PLUS reachable forced-flow tests (calendar/settlement/roll).
 - **Lane 2 (sleeve-improvement):** MNQ open for genuinely-distinct/replacement mechanisms; gold further additions gated by the same soft-cap concern as pdb.
 
+## Rates event/tail MAP (narrowed thesis, banked 2026-06-18 — do not re-grind the cliffs)
+The reachable rates calendar/event vein is now mapped. **Thesis: FOMC-specific rates behavior is real; generic macro-date rates flow is NOT broadly alive.**
+| Surface | Status |
+|---|---|
+| **FOMC-week rates (ZN/ZF)** | **cleanest banked rates event sleeve** (the one real ridge) |
+| Month-end rates | WATCH-marginal — contaminated (roll-adjacent + 29% FOMC overlap); clean edge thin/year-dominated; needs properly-rolled data |
+| Quarter-end rates | subset of month-end, not separate enough |
+| NFP-day rates | KILL (clean non-roll/non-FOMC negative) |
+| FRED yield-curve carry (rotation/spread/duration-balanced) | KILL — branch closed |
+| Reactive overlays (VIX→ZN, copper/gold→ZN, dollar→MCL, real-rate/breakeven→gold) | KILL |
+**Implication:** the rates edge is narrow (FOMC), not broad. Don't re-test generic macro-date rates flow. The unproven-but-plausible one (month-end) is FEED-gated (properly-rolled/F2 data).
+
 ## Note
-PDB is **gated for promotion, not for research.** Forge continues.
+PDB is **gated for promotion, not for research.** Forge continues — but the reachable rates vein is mapped; the next serious progress is feed-gated (stage the feed to unlock the highest-EV test; this is NOT "Forge done"). Highest-EV unlock: **Treasury auctions CSV** (exact dates, not generic-calendar-inferred, not roll-stitch-dependent, economically forced, distinct from FOMC, rates-native — avoids exactly what hurt month-end).
