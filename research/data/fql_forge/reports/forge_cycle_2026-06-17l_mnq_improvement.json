@@ -1,0 +1,148 @@
+{
+  "cycle": "2026-06-17l_mnq_improvement",
+  "mode": "Lane 2 report-only; MNQ improvement vs incumbents; NON-WIRED",
+  "incumbents": {
+    "orb_breakout": {
+      "n": 1222,
+      "pf": 1.628,
+      "net": 51560.0,
+      "median": 43.01,
+      "h1_pf": 1.398,
+      "h2_pf": 1.839,
+      "top3_pct": 3.6,
+      "max_year_pct": 20.0,
+      "max_dd": -2331.0,
+      "worst_day": -850.0,
+      "yrs_pos": "8/8",
+      "quality": true
+    },
+    "stop_run_reversal": {
+      "n": 1418,
+      "pf": 1.477,
+      "net": 35516.0,
+      "median": 15.76,
+      "h1_pf": 1.348,
+      "h2_pf": 1.579,
+      "top3_pct": 3.8,
+      "max_year_pct": 25.2,
+      "max_dd": -4018.0,
+      "worst_day": -1457.0,
+      "yrs_pos": "7/8",
+      "quality": true
+    }
+  },
+  "incumbents_combined": {
+    "pf": 1.635,
+    "max_dd": -4088.0
+  },
+  "candidates": {
+    "range_compression_break": {
+      "board": {
+        "n": 1247,
+        "pf": 1.346,
+        "net": 17702.0,
+        "median": 8.26,
+        "h1_pf": 1.182,
+        "h2_pf": 1.491,
+        "top3_pct": 5.3,
+        "max_year_pct": 33.7,
+        "max_dd": -1235.0,
+        "worst_day": -417.0,
+        "yrs_pos": "8/8",
+        "quality": true
+      },
+      "corr_orb": 0.497,
+      "corr_srr": 0.225,
+      "overlap_orb_pct": 87.5,
+      "overlap_srr_pct": 74.8,
+      "combined_pf": 1.651,
+      "combined_dd": -4885.0,
+      "improves_portfolio": false,
+      "verdict": "NEUTRAL_no_improvement"
+    },
+    "donchian_breakout": {
+      "board": {
+        "n": 1551,
+        "pf": 1.622,
+        "net": 51098.0,
+        "median": 21.76,
+        "h1_pf": 1.453,
+        "h2_pf": 1.768,
+        "top3_pct": 3.7,
+        "max_year_pct": 19.9,
+        "max_dd": -2822.0,
+        "worst_day": -641.0,
+        "yrs_pos": "8/8",
+        "quality": true
+      },
+      "corr_orb": 0.728,
+      "corr_srr": 0.244,
+      "overlap_orb_pct": 76.8,
+      "overlap_srr_pct": 78.1,
+      "combined_pf": 1.718,
+      "combined_dd": -4971.0,
+      "improves_portfolio": false,
+      "verdict": "REDUNDANT_duplicate_exposure"
+    },
+    "first_impulse_pullback": {
+      "board": {
+        "n": 1004,
+        "pf": 1.329,
+        "net": 12527.0,
+        "median": 4.26,
+        "h1_pf": 1.178,
+        "h2_pf": 1.439,
+        "top3_pct": 6.4,
+        "max_year_pct": 21.8,
+        "max_dd": -1804.0,
+        "worst_day": -472.0,
+        "yrs_pos": "7/8",
+        "quality": true
+      },
+      "corr_orb": 0.434,
+      "corr_srr": 0.103,
+      "overlap_orb_pct": 87.2,
+      "overlap_srr_pct": 70.8,
+      "combined_pf": 1.634,
+      "combined_dd": -2615.0,
+      "improves_portfolio": true,
+      "verdict": "ADDITION_CANDIDATE"
+    },
+    "pb_pullback": {
+      "board": {
+        "n": 1490,
+        "pf": 1.393,
+        "net": 23344.0,
+        "median": 3.01,
+        "h1_pf": 1.159,
+        "h2_pf": 1.605,
+        "top3_pct": 4.2,
+        "max_year_pct": 42.8,
+        "max_dd": -1850.0,
+        "worst_day": -472.0,
+        "yrs_pos": "7/8",
+        "quality": false
+      },
+      "verdict": "KILL"
+    },
+    "vwap_continuation": {
+      "board": {
+        "n": 824,
+        "pf": 1.068,
+        "net": 3109.0,
+        "median": -2.24,
+        "h1_pf": 0.807,
+        "h2_pf": 1.348,
+        "top3_pct": 4.5,
+        "max_year_pct": 117.3,
+        "max_dd": -5212.0,
+        "worst_day": -573.0,
+        "yrs_pos": "3/8",
+        "quality": false
+      },
+      "verdict": "KILL"
+    }
+  },
+  "note": "MNQ = equity exposure; NOT WH2 regardless of result. Classification replacement/addition/overlay/redundant only.",
+  "boundaries": "no sweep/synthetic-fill/mutation/promotion"
+}
