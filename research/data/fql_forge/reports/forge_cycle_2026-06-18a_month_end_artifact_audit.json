@@ -1,0 +1,41 @@
+{
+  "cycle": "2026-06-18a_month_end_artifact_audit",
+  "mode": "Lane 1 audit; report-only; NON-WIRED",
+  "zf_all": {
+    "n": 84,
+    "pf": 1.919,
+    "net": 9622.0,
+    "median": 98.46,
+    "pos_frac": 0.61,
+    "max_single_pct": 6.8,
+    "top3_pct": 16.8,
+    "max_year_pct": 36.4,
+    "yrs_pos": "7/8"
+  },
+  "zf_roll_adjacent": {
+    "n": 28,
+    "pf": 3.391,
+    "net": 4718.0,
+    "median": 145.34,
+    "pos_frac": 0.68,
+    "max_single_pct": 11.9,
+    "top3_pct": 32.3,
+    "max_year_pct": 43.0,
+    "yrs_pos": "6/8"
+  },
+  "zf_clean_nonroll": {
+    "n": 56,
+    "pf": 1.577,
+    "net": 4905.0,
+    "median": 98.46,
+    "pos_frac": 0.57,
+    "max_single_pct": 10.2,
+    "top3_pct": 25.2,
+    "max_year_pct": 46.6,
+    "yrs_pos": "6/8"
+  },
+  "roll_gap_big_moves_in_rolladj_me": 0,
+  "fomc_overlap": "24/84",
+  "verdict": "ARTIFACT-CLEAN: edge survives on NON-roll-adjacent month-ends -> month-end settlement flow is REAL, not a roll stitch",
+  "boundaries": "no mutation"
+}
