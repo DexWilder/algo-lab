@@ -42,11 +42,22 @@ OPTIONAL = {"offering_type": ["offering_type", "reopening", "original_or_reopeni
             "settlement_date": ["settlement_date", "issue_date"],
             "bid_to_cover": ["bid_to_cover_ratio", "bid_to_cover", "bidtocoverratio"]}
 
+# RESULT-USAGE RULE (no-lookahead): auction RESULT fields (bid_to_cover, tail, indirect/direct
+# takedown, awarded/high yield, stop) are PUBLIC only AFTER the auction. A window may use them
+# ONLY if it BEGINS after results are public. Calendar/supply metadata known IN ADVANCE (auction
+# date, tenor, new-issue vs reopening flag, scheduled time) is usable in ANY window incl pre-auction.
+# All current mechanisms use ZERO result fields (pure calendar windows) -> all no-lookahead-clean.
+
 # daily-bar windows (entry_off, exit_off in trading days rel to auction T0; dir +1 long bonds)
 DAILY_WINDOWS = [
-    {"name": "pre_auction_drift", "entry_off": -2, "exit_off": 0, "dir": -1, "note": "concession short, NO result used"},
-    {"name": "auction_to_settlement", "entry_off": 0, "exit_off": 2, "dir": 1, "note": "post-auction reversion/settlement long"},
-    {"name": "next_session", "entry_off": 0, "exit_off": 1, "dir": 1, "note": "next-session continuation"},
+    # pre_auction_drift: FIRST-CLASS window — dealer concession is a primary expression. Uses ONLY
+    # calendar/supply-known info (date, tenor, reopening flag); NO result fields. Valid no-lookahead.
+    {"name": "pre_auction_concession", "entry_off": -2, "exit_off": 0, "dir": -1,
+     "result_usage": "calendar/supply-known ONLY (date,tenor,reopening); NO result fields", "note": "concession short into issuance"},
+    {"name": "auction_to_settlement", "entry_off": 0, "exit_off": 2, "dir": 1,
+     "result_usage": "post-event; calendar-based; result fields allowed only if entry strictly after results public", "note": "post-auction/settlement reaction long"},
+    {"name": "next_session", "entry_off": 0, "exit_off": 1, "dir": 1,
+     "result_usage": "post-event, no lookahead; result fields allowed (results public by T+1)", "note": "next-session continuation/reversal"},
 ]
 # same_day_post_auction is intraday (needs auction_time + 5m) — defined; runs only if auction_time present.
 SAMPLE_FLOOR = 40
@@ -98,8 +109,9 @@ def protocol():
     return {"expected_feed": str(FEED),
             "min_columns": "tenor/security_term, security_type, auction_date (+ offering_type, auction_time_et, settlement_date, bid_to_cover enrich)",
             "tenor_routing": TENOR_FUTURE,
-            "event_windows": [f"{w['name']} (T{w['entry_off']:+d}->T{w['exit_off']:+d}, dir {w['dir']}) :: {w['note']}" for w in DAILY_WINDOWS]
-                             + ["same_day_post_auction (intraday T0: first 5m bar >= auction_time -> session close) [needs auction_time]"],
+            "event_windows": [f"{w['name']} (T{w['entry_off']:+d}->T{w['exit_off']:+d}, dir {w['dir']}) :: {w['note']} [result-usage: {w['result_usage']}]" for w in DAILY_WINDOWS]
+                             + ["same_day_post_auction (intraday T0: first 5m bar >= auction_time -> session close) [needs auction_time; post-event no-lookahead]"],
+            "result_usage_rule": "auction RESULT fields (bid_to_cover/tail/indirect-direct/awarded-or-high-yield/stop) are public ONLY after the auction -> usable ONLY in windows that BEGIN post-results. Calendar/supply metadata (date,tenor,reopening flag,scheduled time) known in advance -> usable in ANY window incl pre-auction. pre_auction_concession is a first-class predeclared window using calendar/supply-known ONLY.",
             "contamination_flags": ["FOMC ±3d", "CPI ±2d", "NFP ±2d", "month-end proximity (last 3 td)", "quarter-end", "roll-window (late Feb/May/Aug/Nov)"],
             "no_lookahead_rules": ["auction_date -> first trading day >= date; entry/exit by trading-day offset",
                                    "pre-auction leg uses NO auction result", "result-gated variants only post-T0 and only if result cols present"],
