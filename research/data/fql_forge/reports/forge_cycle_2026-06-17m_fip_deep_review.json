@@ -1,0 +1,58 @@
+{
+  "cycle": "2026-06-17m_fip_deep_review",
+  "mode": "Lane 2 deep review; report-only; NON-WIRED",
+  "full_inc_dd": -4088.0,
+  "full_withfip_dd": -2615.0,
+  "train_inc_dd": -2373.0,
+  "train_withfip_dd": -2353.0,
+  "test_inc_dd": -4088.0,
+  "test_withfip_dd": -2615.0,
+  "per_year_dd": [
+    [
+      2019,
+      -923.0,
+      -1184.0
+    ],
+    [
+      2020,
+      -2373.0,
+      -2353.0
+    ],
+    [
+      2021,
+      -1179.0,
+      -1500.0
+    ],
+    [
+      2022,
+      -1794.0,
+      -2308.0
+    ],
+    [
+      2023,
+      -1130.0,
+      -922.0
+    ],
+    [
+      2024,
+      -1919.0,
+      -2222.0
+    ],
+    [
+      2025,
+      -4088.0,
+      -2615.0
+    ],
+    [
+      2026,
+      -1364.0,
+      -1690.0
+    ]
+  ],
+  "replace_srr_orb_fip": {
+    "pf": 1.602,
+    "dd": -2483.0
+  },
+  "verdict": "REWEIGHT_CANDIDATE (better as srr-replacement than addition)",
+  "boundaries": "no mutation/promotion/activation"
+}

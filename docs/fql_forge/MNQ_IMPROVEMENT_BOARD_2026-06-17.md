@@ -32,5 +32,15 @@
 - donchian_breakout → REDUNDANT (no-repeat as an MNQ addition; it's orb-equivalent).
 - range_compression_break → NEUTRAL; pb_pullback / vwap_continuation → KILL.
 
+## DEEP REVIEW (cycle 17m) → first_impulse_pullback DOWNGRADED to NEUTRAL (DD benefit not robust)
+The first-cut −36% combined-DD reduction does NOT survive the 5 checks. **Auto-label `REWEIGHT_CANDIDATE` OVERRIDDEN → NEUTRAL/effectively-KILL** (the auto-rule missed per-year concentration + bad-day failure):
+1. **NOT OOS-stable — a 2025 artifact.** Combined DD improves in only **3/8 years**; train improvement trivial (−$2,373→−$2,353); the entire headline cut is one year (2025: −$4,088→−$2,615). "Lucky period," as warned.
+2. **Does NOT offset incumbent bad days — piles on.** Worst 10/20/40 incumbent days: fip net *negative* (mean −$39/−$76/−$40; only 30–38% positive). The DD reduction is fip's own positive drift padding equity, NOT hedging.
+3. **Substantially duplicates orb.** Same entry hour (10am: orb 862 / fip 908), 68% same-direction, **same-day PnL corr 0.523** — largely the same opening-hour MNQ momentum, not a distinct mechanism.
+4. **ADD vs REPLACE:** orb+srr+fip PF 1.634 DD −2615 net $99.6k; REPLACE-srr orb+fip PF 1.602 DD −2483 net $64.1k (lower DD but sacrifices ~$23k net for ~$1.6k DD — not clearly better).
+5. **Cost/prop (the one genuine positive):** fip standalone cost-robust (PF 1.329→1.269 @3x slip), worst day −$472, maxDD −$1,804 — a clean prop-friendly book on its own, just not an additive/reweight improvement to the sleeve.
+
+**Verdict: NEUTRAL (lean REDUNDANT-with-orb).** Not promoted, not an addition, not a reweight, not WH2. The "DD reducer" was a 2025 + drift artifact, not a robust hedge. Archived. (The deep-review discipline prevented banking a single-year offset as a risk improvement.)
+
 ## State
 `FRED_YIELD_CURVE_BRANCH_CLOSED__FORGE_DISCOVERY_CONTINUES`. Lane 2 produced a real risk-reducing MNQ addition candidate (gated on deeper review). Lane 1 priority remains structural feeds (auctions first). No activation/registry/scheduler/portfolio/paper/live/prop mutation.
