@@ -66,7 +66,9 @@ The session has now screened single-series behavioral (112 cands), cross-asset c
 - **Positioning / proxy** (COT extremes, ETF creation/redemption, fund-flow proxies)
 - **Cross-asset forced-flow** (copper/gold growth signal, dollar regime, real-rate→assets, risk-on/off composite)
 
-**EXCLUDE (hard kill, do not surface):** generic OHLCV/ORB/breakout/trend/EMA/ATR variations UNLESS tied to a concrete market-structure reason; gold-timing overlays; MNQ momentum cousins; everything on the no-repeat archive.
+**EXCLUDE from LANE 1 (WH2 diversifier) ONLY:** generic OHLCV/ORB/breakout/trend/EMA/ATR variations UNLESS tied to a concrete market-structure reason; gold-timing overlays; MNQ momentum cousins; everything on the no-repeat archive.
+
+**SCOPE CORRECTION (2026-06-17, see `FORGE_TWO_LANE_DOCTRINE_2026-06-17.md`):** the gold/MNQ exclusion is **Lane-1-only**, NOT global. **LANE 2 (paper-bench / sleeve-improvement) WELCOMES MNQ + MGC/gold harvest** — better workhorses, replacements, overlays, packet-grade candidates on existing sleeves. Tag each harvested note `lane:1-diversifier` or `lane:2-sleeve-improvement`. Lane-2 MNQ/MGC notes must still target a genuine improvement (better PF/OOS/DD/concentration or a non-duplicate addition/overlay), not another generic variant.
 
 **Required per note:** mechanism + the **structural reason it persists (who is forced to trade what, when, why)** + required feed + expected cadence + instruments + distinctness from archive. A note without a forced-flow / structural story = auto-KILL, not WATCH.
 
