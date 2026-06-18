@@ -1,0 +1,56 @@
+{
+  "cycle": "2026-06-17o_quarter_end_rates",
+  "mode": "Lane 1 report-only; reachable forced-flow; NON-WIRED",
+  "results": {
+    "ZN_K3": {
+      "label": "ZN-QE-long-K3",
+      "n": 28,
+      "pf": 1.977,
+      "net": 3991.0,
+      "median": 145.34,
+      "pos_frac": 0.57,
+      "h1_net": 2019.0,
+      "h2_net": 1972.0,
+      "top3_pct": 45.2,
+      "verdict": "WATCH_tail"
+    },
+    "ZN_K5": {
+      "label": "ZN-QE-long-K5",
+      "n": 28,
+      "pf": 0.808,
+      "net": -1618.0,
+      "median": -96.85,
+      "pos_frac": 0.39,
+      "h1_net": -247.0,
+      "h2_net": -1372.0,
+      "top3_pct": 54.0,
+      "verdict": "KILL"
+    },
+    "ZF_K3": {
+      "label": "ZF-QE-long-K3",
+      "n": 28,
+      "pf": 1.803,
+      "net": 3694.0,
+      "median": 172.68,
+      "pos_frac": 0.68,
+      "h1_net": 1644.0,
+      "h2_net": 2050.0,
+      "top3_pct": 40.7,
+      "verdict": "STRUCTURE_FOUND_tail"
+    },
+    "ZF_K5": {
+      "label": "ZF-QE-long-K5",
+      "n": 28,
+      "pf": 1.429,
+      "net": 2405.0,
+      "median": 106.28,
+      "pos_frac": 0.61,
+      "h1_net": 519.0,
+      "h2_net": 1886.0,
+      "top3_pct": 48.1,
+      "verdict": "STRUCTURE_FOUND_tail"
+    }
+  },
+  "note": "sparse ~4/yr tail/event, NOT daily WH2; structural forced-flow probe",
+  "boundaries": "no sweep/mutation"
+}
