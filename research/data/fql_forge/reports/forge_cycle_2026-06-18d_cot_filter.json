@@ -1,0 +1,27 @@
+{
+  "cycle": "2026-06-18d_cot_filter",
+  "mode": "Lane 1 report-only; COT-as-filter; NON-WIRED",
+  "results": {
+    "A_MGC_priorday_x_GOLDcot": {
+      "baseline": {
+        "n": 405,
+        "pf": 1.341,
+        "net": 5820.0,
+        "median": 6.76
+      },
+      "improving_partition": null,
+      "verdict": "NO_IMPROVEMENT"
+    },
+    "B_FOMCwk_ZN_x_10Ycot": {
+      "baseline": {
+        "n": 54,
+        "pf": 1.863,
+        "net": 12504.0,
+        "median": 43.77
+      },
+      "improving_partition": null,
+      "verdict": "NO_IMPROVEMENT"
+    }
+  },
+  "boundaries": "overfit-guarded; no-lookahead Fri-release; no sweep/mutation"
+}
