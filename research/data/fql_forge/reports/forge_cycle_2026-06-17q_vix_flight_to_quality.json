@@ -1,0 +1,38 @@
+{
+  "cycle": "2026-06-17q_vix_flight_to_quality",
+  "mode": "Lane 1 report-only; reachable forced-flow; NON-WIRED",
+  "spike_threshold": 1.18,
+  "results": {
+    "V1_spike_followthrough": {
+      "verdict": "KILL",
+      "n": 323,
+      "pf": 0.761,
+      "net": -15566.0,
+      "median": -31.25,
+      "h1_pf": 0.829,
+      "h2_pf": 0.705,
+      "yrs_pos": "1/8",
+      "train_pf": null,
+      "test_pf": null,
+      "corr_mnq": -0.017,
+      "corr_zn": 0.483,
+      "n_fires": 323
+    },
+    "V2_highregime": {
+      "verdict": "KILL",
+      "n": 842,
+      "pf": 1.016,
+      "net": 2263.0,
+      "median": 0.0,
+      "h1_pf": 1.031,
+      "h2_pf": 0.999,
+      "yrs_pos": "3/8",
+      "train_pf": 1.031,
+      "test_pf": 1.0,
+      "corr_mnq": -0.051,
+      "corr_zn": 0.723,
+      "n_fires": 842
+    }
+  },
+  "boundaries": "2 variants; clean-before-rolling; no sweep/mutation"
+}
