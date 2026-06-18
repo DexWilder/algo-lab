@@ -1,0 +1,39 @@
+{
+  "cycle": "2026-06-17g_p12_energy",
+  "mode": "Lane B report-only; first-cut; OOS+cost-sensitivity; NON-WIRED",
+  "base": {
+    "st": {
+      "n": 1475,
+      "pf": 0.928,
+      "net": -3858.0,
+      "median": 0.0,
+      "h1_pf": 0.866,
+      "h2_pf": 1.009,
+      "yrs_pos": "2/6"
+    },
+    "tr": {
+      "n": 400,
+      "pf": 0.887,
+      "net": -2524.0,
+      "median": 0.0,
+      "h1_pf": 1.082,
+      "h2_pf": 0.686,
+      "yrs_pos": "1/2"
+    },
+    "te": {
+      "n": 1075,
+      "pf": 0.957,
+      "net": -1335.0,
+      "median": 0.0,
+      "h1_pf": 0.789,
+      "h2_pf": 1.065,
+      "yrs_pos": "1/4"
+    },
+    "cost_ratio_pct": 1.7,
+    "corr_mnq": 0.046,
+    "corr_longcrude": 0.05
+  },
+  "verdict": "KILL",
+  "caveats": "FRED spot publish-lag ~1wk (stale but no-lookahead); MCL cost-fragile; short train (2021-22)",
+  "boundaries": "one variant; no sweep/synthetic-fill/mutation"
+}
