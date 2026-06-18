@@ -1,0 +1,20 @@
+{
+  "cycle": "2026-06-17r_month_end_rates",
+  "mode": "Lane 1 report-only; calendar/mechanical; NON-WIRED",
+  "zf_all_month_K3": {
+    "n": 84,
+    "pf": 1.919,
+    "net": 9622.0,
+    "median": 98.46,
+    "pos_frac": 0.61,
+    "max_single_pct": 6.8,
+    "top3_pct": 16.8,
+    "max_year_pct": 36.4,
+    "yrs_pos": "7/8",
+    "h1_net": 3596.0,
+    "h2_net": 6026.0
+  },
+  "interpretation": "MONTH-END GENERALIZES (broader candidate, more sample, better concentration)",
+  "note": "extends quarter-end rates WATCH_tail; tests monthly generalization vs QE-specificity",
+  "boundaries": "no sweep/mutation"
+}
