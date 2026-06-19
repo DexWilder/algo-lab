@@ -37,5 +37,18 @@ The reachable rates calendar/event vein is now mapped. **Thesis: FOMC-specific r
 | Reactive overlays (VIX→ZN, copper/gold→ZN, dollar→MCL, real-rate/breakeven→gold) | KILL |
 **Implication:** the rates edge is narrow (FOMC), not broad. Don't re-test generic macro-date rates flow. The unproven-but-plausible one (month-end) is FEED-gated (properly-rolled/F2 data).
 
+## Reachable structural-flow queue — WORKED THROUGH (2026-06-18; archive, do not re-poke)
+The operator's priority queue of reachable-now structural mechanisms is now mapped:
+| # | Item | Status |
+|--:|---|---|
+| 1 | Treasury auctions / WP-B1 | **FEED-GATED (highest-EV, NOT only-path)** — harness ready-but-unrun |
+| 2 | COT positioning | CLOSED — standalone KILL + as-filter NO_IMPROVEMENT (reachable surface banked; Δ-positioning low-pri) |
+| 3 | Quad-witch expiry-day | KILL (post-witch seasonal inverted OOS; equity-event/tail) |
+| 4 | Settlement-window | KILL (self-caught lookahead inflated PF 2.67→0.98; ZN data-quality-limited; MES=equity) |
+| 5 | Index reconstitution | SAMPLE_BLOCKED (Russell annual n=7; S&P-qtrly ≈ quad-witch already KILL) |
+| 6 | FX-fixing (London 4pm) | HISTORY-LIMITED (6E/6J/6B 2024+ only, ~2.4yr, can't year-spread; DST timestamp trap) |
+
+**Conclusion: the reachable structural-flow surface is mapped — no robustly-validatable candidate emerged.** This is NOT "out of ideas." The productive path now: (a) **structural FEEDS** (auctions highest-EV; then F2 rates, EIA, etc.), (b) **apply the Claw config** → fresh harvest supply, (c) any **new reachable source** (FRED/Yahoo/COT were found this way — keep probing). Reachable mechanisms got worked; the next ore is feeds/supply, not more reachable screens.
+
 ## Note
 PDB is **gated for promotion, not for research.** Forge continues — but the reachable rates vein is mapped; the next serious progress is feed-gated (stage the feed to unlock the highest-EV test; this is NOT "Forge done"). Highest-EV unlock: **Treasury auctions CSV** (exact dates, not generic-calendar-inferred, not roll-stitch-dependent, economically forced, distinct from FOMC, rates-native — avoids exactly what hurt month-end).
