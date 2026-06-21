@@ -50,5 +50,12 @@ The operator's priority queue of reachable-now structural mechanisms is now mapp
 
 **Conclusion: the reachable structural-flow surface is mapped — no robustly-validatable candidate emerged.** This is NOT "out of ideas." The productive path now: (a) **structural FEEDS** (auctions highest-EV; then F2 rates, EIA, etc.), (b) **apply the Claw config** → fresh harvest supply, (c) any **new reachable source** (FRED/Yahoo/COT were found this way — keep probing). Reachable mechanisms got worked; the next ore is feeds/supply, not more reachable screens.
 
+## NEW (2026-06-20, fresh discovery loop after queue archived) — Pre-Holiday Equity Drift
+**`STRUCTURE_FOUND_tail` (equity event/tail — NOT the non-MNQ/non-gold WH2).** `forge_cycle_2026-06-20a`. Calendar-mechanical forced-flow (pre-closure short-cover/thin liquidity), proper NYSE holiday calendar (n=69, consistent across instruments). LONG prior-close → pre-holiday close:
+- **M2K (Russell small-cap): clean PF 2.65, pos 69%, max-single 13.5%, max-yr 28.9%, both halves + (3.13/2.33), 6/8 yrs+** — standout; distinct index from MNQ/MES.
+- MES (S&P): clean PF 1.98, pos 61%, max-yr 24.8%, both halves + (2.40/1.75), 7/8 yrs+.
+- MCL/ZN/ZF: KILL (mechanism is equity-specific).
+**Status: banked equity event-tail candidate (≈10/yr sparse), alongside FOMC-MNQ-1h. NOT daily WH2.** Audit-pending before packet: cost/slippage robustness, prop worst-day, clean-events deeper, half-day-session handling. Method note: first run used empirical holiday-from-gaps (unreliable — inconsistent n; produced a ZF false-WATCH artifact); fixed with proper calendar → ZF correctly KILL, equity structure confirmed. (Self-caught broken method, no false bank.)
+
 ## Note
 PDB is **gated for promotion, not for research.** Forge continues — but the reachable rates vein is mapped; the next serious progress is feed-gated (stage the feed to unlock the highest-EV test; this is NOT "Forge done"). Highest-EV unlock: **Treasury auctions CSV** (exact dates, not generic-calendar-inferred, not roll-stitch-dependent, economically forced, distinct from FOMC, rates-native — avoids exactly what hurt month-end).

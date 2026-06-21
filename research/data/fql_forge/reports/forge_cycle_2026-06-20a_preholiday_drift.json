@@ -1,0 +1,152 @@
+{
+  "cycle": "2026-06-20a_preholiday_drift",
+  "mode": "Lane B report-only; fresh reachable discovery; NON-WIRED",
+  "results": {
+    "MES": {
+      "all": {
+        "n": 69,
+        "pf": 1.949,
+        "net": 2118.0,
+        "median": 20.01,
+        "pos_frac": 0.61,
+        "max_single_pct": 8.5,
+        "max_year_pct": 29.2,
+        "yrs_pos": "7/8",
+        "h1_pf": 2.527,
+        "h2_pf": 1.651
+      },
+      "clean": {
+        "n": 67,
+        "pf": 1.978,
+        "net": 2103.0,
+        "median": 20.01,
+        "pos_frac": 0.61,
+        "max_single_pct": 8.7,
+        "max_year_pct": 24.8,
+        "yrs_pos": "7/8",
+        "h1_pf": 2.4,
+        "h2_pf": 1.748
+      },
+      "equity": true,
+      "verdict": "STRUCTURE_FOUND_tail(equity-not-WH2)"
+    },
+    "MYM": {
+      "n": 23,
+      "verdict": "KILL_low_n"
+    },
+    "M2K": {
+      "all": {
+        "n": 69,
+        "pf": 2.513,
+        "net": 1544.0,
+        "median": 13.26,
+        "pos_frac": 0.68,
+        "max_single_pct": 13.3,
+        "max_year_pct": 29.3,
+        "yrs_pos": "6/8",
+        "h1_pf": 2.637,
+        "h2_pf": 2.414
+      },
+      "clean": {
+        "n": 67,
+        "pf": 2.653,
+        "net": 1568.0,
+        "median": 13.26,
+        "pos_frac": 0.69,
+        "max_single_pct": 13.5,
+        "max_year_pct": 28.9,
+        "yrs_pos": "6/8",
+        "h1_pf": 3.131,
+        "h2_pf": 2.33
+      },
+      "equity": true,
+      "verdict": "STRUCTURE_FOUND_tail(equity-not-WH2)"
+    },
+    "MCL": {
+      "all": {
+        "n": 49,
+        "pf": 0.853,
+        "net": -397.0,
+        "median": -17.24,
+        "pos_frac": 0.43,
+        "max_single_pct": 31.9,
+        "max_year_pct": -115.3,
+        "yrs_pos": "3/6",
+        "h1_pf": 0.711,
+        "h2_pf": 1.006
+      },
+      "clean": {
+        "n": 48,
+        "pf": 0.917,
+        "net": -209.0,
+        "median": -16.74,
+        "pos_frac": 0.44,
+        "max_single_pct": 31.9,
+        "max_year_pct": -219.4,
+        "yrs_pos": "3/6",
+        "h1_pf": 0.711,
+        "h2_pf": 1.177
+      },
+      "equity": false,
+      "verdict": "KILL"
+    },
+    "ZN": {
+      "all": {
+        "n": 69,
+        "pf": 0.532,
+        "net": -3886.0,
+        "median": -65.6,
+        "pos_frac": 0.33,
+        "max_single_pct": 14.4,
+        "max_year_pct": -45.4,
+        "yrs_pos": "3/8",
+        "h1_pf": 0.457,
+        "h2_pf": 0.607
+      },
+      "clean": {
+        "n": 66,
+        "pf": 0.537,
+        "net": -3580.0,
+        "median": -65.6,
+        "pos_frac": 0.33,
+        "max_single_pct": 15.4,
+        "max_year_pct": -49.3,
+        "yrs_pos": "3/8",
+        "h1_pf": 0.394,
+        "h2_pf": 0.704
+      },
+      "equity": false,
+      "verdict": "KILL"
+    },
+    "ZF": {
+      "all": {
+        "n": 69,
+        "pf": 0.81,
+        "net": -925.0,
+        "median": -26.54,
+        "pos_frac": 0.3,
+        "max_single_pct": 17.6,
+        "max_year_pct": -169.0,
+        "yrs_pos": "3/8",
+        "h1_pf": 0.275,
+        "h2_pf": 1.482
+      },
+      "clean": {
+        "n": 66,
+        "pf": 0.86,
+        "net": -642.0,
+        "median": -26.54,
+        "pos_frac": 0.32,
+        "max_single_pct": 17.6,
+        "max_year_pct": -243.4,
+        "yrs_pos": "3/8",
+        "h1_pf": 0.275,
+        "h2_pf": 1.702
+      },
+      "equity": false,
+      "verdict": "KILL"
+    }
+  },
+  "note": "calendar-mechanical; equity survivors=Lane2 not WH2; non-equity survivors=WH2-relevant tail",
+  "boundaries": "no sweep/mutation"
+}
