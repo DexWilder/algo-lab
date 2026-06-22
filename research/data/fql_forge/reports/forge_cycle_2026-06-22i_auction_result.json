@@ -1,0 +1,41 @@
+{
+  "cycle": "2026-06-22i_auction_result",
+  "mode": "Lane B report-only; auction-result mechanism packet; NON-WIRED",
+  "results": {
+    "ZF": {
+      "n": 136,
+      "pf": 0.723,
+      "net": -5226.0,
+      "pos": 0.43,
+      "h1_pf": 0.734,
+      "h2_pf": 0.711,
+      "max_single_pct": 6.6,
+      "max_year_pct": -120.5,
+      "verdict": "KILL"
+    },
+    "ZN": {
+      "n": 61,
+      "pf": 0.715,
+      "net": -3767.0,
+      "pos": 0.41,
+      "h1_pf": 0.703,
+      "h2_pf": 0.728,
+      "max_single_pct": 16.6,
+      "max_year_pct": -57.1,
+      "verdict": "KILL"
+    },
+    "ZB": {
+      "n": 66,
+      "pf": 0.508,
+      "net": -19236.0,
+      "pos": 0.36,
+      "h1_pf": 0.748,
+      "h2_pf": 0.246,
+      "max_single_pct": 18.7,
+      "max_year_pct": -33.5,
+      "verdict": "KILL"
+    }
+  },
+  "note": "demand=btc vs trailing tenor norm; strong->long/weak->short matched future T0(post-results)->T+2; contamination-clean",
+  "boundaries": "no sweep/mutation"
+}
