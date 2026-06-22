@@ -1,0 +1,80 @@
+{
+  "cycle": "2026-06-22c_liquidity_vacuum",
+  "mode": "Lane B report-only; conditional microstructure; NON-WIRED",
+  "results": {
+    "MCL": {
+      "vacuum_hour": 19,
+      "next_hour": 20,
+      "n": 375,
+      "pf": 3.644,
+      "pos": 0.57,
+      "net": 2634.0,
+      "train_pf": 4.74,
+      "test_pf": 2.456,
+      "top3_pct": 9.4,
+      "yrs_pos": "6/6",
+      "verdict": "STRUCTURE_FOUND"
+    },
+    "ZN": {
+      "vacuum_hour": 18,
+      "next_hour": 19,
+      "n": 440,
+      "pf": 0.243,
+      "pos": 0.15,
+      "net": -9755.0,
+      "train_pf": 0.222,
+      "test_pf": 0.264,
+      "top3_pct": 17.7,
+      "yrs_pos": "0/8",
+      "verdict": "KILL"
+    },
+    "ZF": {
+      "vacuum_hour": 18,
+      "next_hour": 19,
+      "n": 353,
+      "pf": 0.3,
+      "pos": 0.18,
+      "net": -3665.0,
+      "train_pf": 0.246,
+      "test_pf": 0.354,
+      "top3_pct": 19.3,
+      "yrs_pos": "0/8",
+      "verdict": "KILL"
+    },
+    "M2K": {
+      "vacuum_hour": 1,
+      "next_hour": 2,
+      "n": 631,
+      "pf": 1.519,
+      "pos": 0.5,
+      "net": 1038.0,
+      "train_pf": 1.395,
+      "test_pf": 1.712,
+      "top3_pct": 7.1,
+      "yrs_pos": "7/8",
+      "verdict": "WATCH"
+    },
+    "MES": {
+      "vacuum_hour": 1,
+      "next_hour": 2,
+      "n": 670,
+      "pf": 1.866,
+      "pos": 0.54,
+      "net": 2712.0,
+      "train_pf": 1.842,
+      "test_pf": 1.897,
+      "top3_pct": 8.6,
+      "yrs_pos": "8/8",
+      "verdict": "STRUCTURE_FOUND"
+    }
+  },
+  "survivors": [
+    "MCL-vacuum",
+    "MES-vacuum"
+  ],
+  "noneq_survivors": [
+    "MCL-vacuum"
+  ],
+  "note": "vacuum hour empirical (lowest-vol active hour); conditional on compressed vacuum range; no-lookahead",
+  "boundaries": "no sweep/mutation"
+}
