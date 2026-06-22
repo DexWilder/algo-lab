@@ -1,0 +1,105 @@
+{
+  "cycle": "2026-06-22j_sleeve_construction",
+  "mode": "report-only evidence mapping; NOT portfolio approval; NON-WIRED",
+  "books": {
+    "MNQ-ORB(inc)": {
+      "days": 1222,
+      "net": 51560.0,
+      "max_dd": -2331.0
+    },
+    "MNQ-stoprun(inc)": {
+      "days": 1419,
+      "net": 35110.0,
+      "max_dd": -4018.0
+    },
+    "MGC-ORB(inc)": {
+      "days": 656,
+      "net": 9835.0,
+      "max_dd": -1022.0
+    },
+    "MGC-priorday(cand)": {
+      "days": 403,
+      "net": 5820.0,
+      "max_dd": -2314.0
+    },
+    "FOMCwk-ZN(tail)": {
+      "days": 54,
+      "net": 12504.0,
+      "max_dd": -4462.0
+    },
+    "preholiday-M2K(tail)": {
+      "days": 69,
+      "net": 1544.0,
+      "max_dd": -212.0
+    }
+  },
+  "correlation": {
+    "MNQ-ORB(inc)": {
+      "MNQ-ORB(inc)": 1.0,
+      "MNQ-stoprun(inc)": 0.32,
+      "MGC-ORB(inc)": 0.1,
+      "MGC-priorday(cand)": 0.06,
+      "FOMCwk-ZN(tail)": 0.01,
+      "preholiday-M2K(tail)": 0.02
+    },
+    "MNQ-stoprun(inc)": {
+      "MNQ-ORB(inc)": 0.32,
+      "MNQ-stoprun(inc)": 1.0,
+      "MGC-ORB(inc)": 0.07,
+      "MGC-priorday(cand)": -0.04,
+      "FOMCwk-ZN(tail)": 0.02,
+      "preholiday-M2K(tail)": 0.01
+    },
+    "MGC-ORB(inc)": {
+      "MNQ-ORB(inc)": 0.1,
+      "MNQ-stoprun(inc)": 0.07,
+      "MGC-ORB(inc)": 1.0,
+      "MGC-priorday(cand)": 0.25,
+      "FOMCwk-ZN(tail)": 0.01,
+      "preholiday-M2K(tail)": -0.0
+    },
+    "MGC-priorday(cand)": {
+      "MNQ-ORB(inc)": 0.06,
+      "MNQ-stoprun(inc)": -0.04,
+      "MGC-ORB(inc)": 0.25,
+      "MGC-priorday(cand)": 1.0,
+      "FOMCwk-ZN(tail)": 0.02,
+      "preholiday-M2K(tail)": -0.01
+    },
+    "FOMCwk-ZN(tail)": {
+      "MNQ-ORB(inc)": 0.01,
+      "MNQ-stoprun(inc)": 0.02,
+      "MGC-ORB(inc)": 0.01,
+      "MGC-priorday(cand)": 0.02,
+      "FOMCwk-ZN(tail)": 1.0,
+      "preholiday-M2K(tail)": -0.0
+    },
+    "preholiday-M2K(tail)": {
+      "MNQ-ORB(inc)": 0.02,
+      "MNQ-stoprun(inc)": 0.01,
+      "MGC-ORB(inc)": -0.0,
+      "MGC-priorday(cand)": -0.01,
+      "FOMCwk-ZN(tail)": -0.0,
+      "preholiday-M2K(tail)": 1.0
+    }
+  },
+  "incumbent_dd": -3682.0,
+  "additions": {
+    "MGC-priorday(cand)": {
+      "combined_net": 102325.0,
+      "combined_dd": -3819.0,
+      "dd_delta": -137.0
+    },
+    "FOMCwk-ZN(tail)": {
+      "combined_net": 109009.0,
+      "combined_dd": -3248.0,
+      "dd_delta": 434.0
+    },
+    "preholiday-M2K(tail)": {
+      "combined_net": 98049.0,
+      "combined_dd": -3682.0,
+      "dd_delta": 0.0
+    }
+  },
+  "boundaries": "no promotion/sizing/wiring/mutation"
+}
