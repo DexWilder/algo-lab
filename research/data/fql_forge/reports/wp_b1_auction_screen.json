@@ -1,0 +1,159 @@
+{
+  "mode": "WP-B1 real-feed screen; report-only; NON-WIRED",
+  "n_auctions": 799,
+  "results": {
+    "pre_auction_concession|ZB": {
+      "all": {
+        "n": 173,
+        "pf": 0.755,
+        "pos_frac": 0.42,
+        "max_single_pct": 4.8,
+        "max_year_pct": -61.5
+      },
+      "clean_of_all_contam": {
+        "n": 69,
+        "pf": 0.891,
+        "pos_frac": 0.45,
+        "max_single_pct": 12.0,
+        "max_year_pct": -177.4
+      },
+      "verdict": "KILL"
+    },
+    "pre_auction_concession|ZF": {
+      "all": {
+        "n": 364,
+        "pf": 0.929,
+        "pos_frac": 0.5,
+        "max_single_pct": 4.4,
+        "max_year_pct": -99.2
+      },
+      "clean_of_all_contam": {
+        "n": 136,
+        "pf": 1.02,
+        "pos_frac": 0.52,
+        "max_single_pct": 6.4,
+        "max_year_pct": 462.8
+      },
+      "verdict": "KILL"
+    },
+    "pre_auction_concession|ZN": {
+      "all": {
+        "n": 209,
+        "pf": 0.903,
+        "pos_frac": 0.46,
+        "max_single_pct": 4.5,
+        "max_year_pct": -230.6
+      },
+      "clean_of_all_contam": {
+        "n": 61,
+        "pf": 0.811,
+        "pos_frac": 0.46,
+        "max_single_pct": 10.4,
+        "max_year_pct": -225.3
+      },
+      "verdict": "KILL"
+    },
+    "auction_to_settlement|ZB": {
+      "all": {
+        "n": 180,
+        "pf": 0.675,
+        "pos_frac": 0.42,
+        "max_single_pct": 6.5,
+        "max_year_pct": -42.8
+      },
+      "clean_of_all_contam": {
+        "n": 69,
+        "pf": 0.514,
+        "pos_frac": 0.36,
+        "max_single_pct": 17.8,
+        "max_year_pct": -39.9
+      },
+      "verdict": "KILL"
+    },
+    "auction_to_settlement|ZF": {
+      "all": {
+        "n": 389,
+        "pf": 1.251,
+        "pos_frac": 0.54,
+        "max_single_pct": 2.4,
+        "max_year_pct": 67.5
+      },
+      "clean_of_all_contam": {
+        "n": 136,
+        "pf": 0.992,
+        "pos_frac": 0.46,
+        "max_single_pct": 8.0,
+        "max_year_pct": -2628.1
+      },
+      "verdict": "KILL"
+    },
+    "auction_to_settlement|ZN": {
+      "all": {
+        "n": 225,
+        "pf": 1.054,
+        "pos_frac": 0.52,
+        "max_single_pct": 4.0,
+        "max_year_pct": 244.7
+      },
+      "clean_of_all_contam": {
+        "n": 61,
+        "pf": 0.971,
+        "pos_frac": 0.44,
+        "max_single_pct": 18.0,
+        "max_year_pct": -1174.4
+      },
+      "verdict": "KILL"
+    },
+    "next_session|ZB": {
+      "all": {
+        "n": 180,
+        "pf": 0.573,
+        "pos_frac": 0.41,
+        "max_single_pct": 5.6,
+        "max_year_pct": -24.0
+      },
+      "clean_of_all_contam": {
+        "n": 69,
+        "pf": 0.551,
+        "pos_frac": 0.41,
+        "max_single_pct": 10.0,
+        "max_year_pct": -37.5
+      },
+      "verdict": "KILL"
+    },
+    "next_session|ZF": {
+      "all": {
+        "n": 389,
+        "pf": 0.886,
+        "pos_frac": 0.53,
+        "max_single_pct": 3.4,
+        "max_year_pct": -105.9
+      },
+      "clean_of_all_contam": {
+        "n": 136,
+        "pf": 0.795,
+        "pos_frac": 0.49,
+        "max_single_pct": 10.6,
+        "max_year_pct": -61.0
+      },
+      "verdict": "KILL"
+    },
+    "next_session|ZN": {
+      "all": {
+        "n": 225,
+        "pf": 1.034,
+        "pos_frac": 0.54,
+        "max_single_pct": 5.3,
+        "max_year_pct": 403.8
+      },
+      "clean_of_all_contam": {
+        "n": 61,
+        "pf": 0.844,
+        "pos_frac": 0.44,
+        "max_single_pct": 17.1,
+        "max_year_pct": -108.8
+      },
+      "verdict": "KILL"
+    }
+  }
+}

@@ -76,5 +76,14 @@ Across this session the reachable single-series + calendar + intraday DIRECTIONA
 ## Lane-2 OVERLAY MAP — substantially explored (2026-06-22)
 5 overlay families tested on the strong books (vol-regime, day-after-loss throttle, session-quality, MAE-guard, time-stop). Tally: **CONFIRMED robust** = MGC-ORB low-vol-exclusion (modest DD overlay). **WATCH** = MNQ-ORB trend-exhaustion (real signal/partial), MNQ-stop_run MAE-$250 (DD-cut, fill-caveated). **KILL/no-edge** = day-after-loss throttle, time-stop, vol-on-MNQ, session-q on MNQ-stop/MGC, MAE on ORB books. MNQ books already vol-robust. Overlay vein now diminishing-returns; next genuinely-different active work = new-source probing / sleeve-construction (correlation/sizing), not more single-overlay families. WH2 still feed-gated (auctions highest-EV).
 
+## WP-B1 Treasury auctions — TESTED ON REAL DATA (2026-06-22) → core windows KILL
+Scout found TreasuryDirect API reachable (was blocked) → self-unblocked WP-B1 without operator CSV. Acquired 799 Note/Bond auctions 2019-2026. Ran the locked WP-B1 sequence (by-tenor routing, contamination-decomposed clean-of-FOMC/CPI/NFP/month-end/roll).
+**Routing-bug caught first:** `_norm_tenor` leading-substring matched "20Y"→"2Y", "30Y"→"3Y" → mis-routed 20Y/30Y onto ZF, ZB absent, produced a FALSE ZF WATCH (PF 1.114). "ZB missing" was the tell. Fixed (exact tenor parse) → re-ran.
+**Result (correct routing): ALL 9 cells KILL** — pre_auction_concession / auction_to_settlement / next_session × ZF/ZN/ZB, clean-of-contam PF 0.51-1.02 (no edge). **The highest-EV WH2 forced-flow hypothesis FAILS its first real test for the core predeclared daily windows.**
+HONEST SCOPE (do not over-generalize): UNTESTED auction variants remain — (a) auction-RESULT-conditioned (high_yield is in the feed; bid-to-cover not pulled; only-post-results, no-lookahead), (b) same-day INTRADAY window (needs auction_time field, not in this pull), (c) curve/spread or issuance-size-weighted expressions. The simple directional daily-window auction edge is dead; result-conditioned/intraday are open.
+
+## NEW reachable source (untested, live lane): NY Fed Markets API
+markets.newyorkfed.org reachable: SOFR/EFFR, repo/RRP operations, SOMA holdings (2003+), Treasury ops = genuine forced-flow (Fed transacting). Most promising untested new-source lane (see `REACHABLE_SOURCE_LEDGER_2026-06-22.md`).
+
 ## Note
 PDB is **gated for promotion, not for research.** Forge continues — but the reachable rates vein is mapped; the next serious progress is feed-gated (stage the feed to unlock the highest-EV test; this is NOT "Forge done"). Highest-EV unlock: **Treasury auctions CSV** (exact dates, not generic-calendar-inferred, not roll-stitch-dependent, economically forced, distinct from FOMC, rates-native — avoids exactly what hurt month-end).

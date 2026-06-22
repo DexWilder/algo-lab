@@ -72,11 +72,22 @@ def _resolve(cl, al):
 
 
 def _norm_tenor(v):
-    s = str(v).upper().replace("-", "").replace(" ", "")
-    for t in TENOR_FUTURE:
-        if t.replace("Y", "") in s and ("Y" in s or "YEAR" in s):
-            return t
-    return None
+    """Parse the tenor's leading YEAR number EXACTLY (fix: leading-substring match mis-routed
+    '20Y'->'2Y', '30Y'->'3Y'). Bills (Week/Day) -> None. Fractional reopenings -> nearest std."""
+    import re as _re
+    s = str(v)
+    if "Week" in s or "Day" in s:
+        return None
+    ym = _re.search(r"(\d+)\s*-?\s*(?:Y|Year)", s, _re.IGNORECASE)
+    if not ym:
+        return None
+    yrs = float(ym.group(1))
+    mm = _re.search(r"(\d+)\s*-?\s*Month", s, _re.IGNORECASE)
+    if mm:
+        yrs += int(mm.group(1)) / 12.0
+    std = [2, 3, 5, 7, 10, 20, 30]
+    nearest = min(std, key=lambda t: abs(t - yrs))
+    return f"{nearest}Y"
 
 
 def load_auctions():

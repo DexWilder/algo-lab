@@ -1,0 +1,28 @@
+{
+  "source": "TreasuryDirect Fiscal Data API (api.fiscaldata.treasury.gov, reachable HTTP 200)",
+  "download_date": "2026-06-22",
+  "path": "/Users/chasefisher/projects/Algo Trading/algo-lab/data/feeds/treasury_auctions.csv",
+  "n_rows_all": 3177,
+  "date_range": [
+    "2019-01-03",
+    "2026-06-25"
+  ],
+  "by_security_type": {
+    "Bill": 2378,
+    "Note": 619,
+    "Bond": 180
+  },
+  "note_bond_by_tenor": {
+    "2Y": 182,
+    "10Y": 136,
+    "5Y": 121,
+    "30Y": 105,
+    "3Y": 90,
+    "7Y": 90,
+    "20Y": 75
+  },
+  "note_bond_n": 799,
+  "duplicate_cusip_date": 0,
+  "status": "TREASURY_AUCTIONS_ACQUIRED_STRUCTURAL_ONLY",
+  "note": "Bills (no futures) retained for provenance but tenor=None -> WP-B1 routes only Note/Bond tenors. NOT evidence of edge; WP-B1 screen is separate report-only step."
+}
