@@ -11,6 +11,11 @@
 | **NY Fed Markets** | markets.newyorkfed.org (.org) | ✓ **(NEW)** | SOFR/EFFR ref rates, **repo/RRP operations, SOMA holdings (2003+), Treasury ops** | clean, official | genuine forced-flow (repo/SOMA/Fed ops) — UNTESTED, live lane |
 | BLS / EIA | .gov | ✗ HTTP 000 | — | — | CPI values, EIA inventory (still operator-supplied) |
 
+## NY-Fed / funding forced-flow — acquired + cheapest screen run (2026-06-22)
+Acquired `data/feeds/funding.csv` from FRED (deep daily, reachable): SOFR(2018+), EFFR(2000+), DFF(1954+), RRPONTSYD(RRP volume, 2003+), WALCL(Fed balance sheet, weekly 2002+). Forced participants: repo/money-fund/Fed-balance-sheet mechanics.
+- **Cheapest predeclared screen — SOFR-EFFR funding-stress → rates flight-to-quality (`forge_cycle_2026-06-22h`): KILL** (ZN/ZF, z>0.5 & z>1, clean-before-rolling, lag1d, OOS). PF 0.89-1.09; extreme-stress z>1 mildly positive recent-half only, not robust. The funding-stress directional hypothesis fails.
+- **UNTESTED funding variants (open, lower-priority):** RRP-volume surge (liquidity-glut state), WALCL direction (QT/QE supply pressure), repo/RRP operation-size, SOMA holdings change. Operation-level NY-Fed API gives detail but check history depth; FRED state-series are the backtest-able versions.
+
 ## Notes
 - `.gov` reachability is inconsistent: TreasuryDirect + CFTC-publicreporting work; BLS/EIA blocked. Re-probe periodically (TreasuryDirect flipped 000→200 between 2026-06-17 and 2026-06-22).
 - **NY Fed Markets API is the most promising UNTESTED new source**: repo/RRP operations + SOMA changes are *literal* forced-flow (the Fed transacting), and SOFR/EFFR are reachable daily rate-state variables. Candidate next-vein for rates conditioning.

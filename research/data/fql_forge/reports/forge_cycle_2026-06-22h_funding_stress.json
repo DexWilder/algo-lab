@@ -1,0 +1,48 @@
+{
+  "cycle": "2026-06-22h_funding_stress",
+  "mode": "Lane B report-only; NY-Fed/funding forced-flow; NON-WIRED",
+  "results": {
+    "ZN-stress_long(z>1)": {
+      "n": 310,
+      "pf": 1.091,
+      "net": 4419.0,
+      "median": -15.62,
+      "h1_pf": 0.997,
+      "h2_pf": 1.2,
+      "yrs_pos": "5/8",
+      "verdict": "KILL"
+    },
+    "ZN-stress_long(z>0.5)": {
+      "n": 610,
+      "pf": 0.892,
+      "net": -10816.0,
+      "median": -15.62,
+      "h1_pf": 0.732,
+      "h2_pf": 1.076,
+      "yrs_pos": "4/8",
+      "verdict": "KILL"
+    },
+    "ZF-stress_long(z>1)": {
+      "n": 294,
+      "pf": 1.068,
+      "net": 2059.0,
+      "median": -7.81,
+      "h1_pf": 1.024,
+      "h2_pf": 1.108,
+      "yrs_pos": "4/8",
+      "verdict": "KILL"
+    },
+    "ZF-stress_long(z>0.5)": {
+      "n": 584,
+      "pf": 0.893,
+      "net": -6378.0,
+      "median": -7.81,
+      "h1_pf": 0.736,
+      "h2_pf": 1.042,
+      "yrs_pos": "4/8",
+      "verdict": "KILL"
+    }
+  },
+  "note": "cheapest predeclared funding-stress screen; clean-before-rolling; lag 1d; RRP/SOMA/WALCL variants untested",
+  "boundaries": "no sweep/mutation"
+}
