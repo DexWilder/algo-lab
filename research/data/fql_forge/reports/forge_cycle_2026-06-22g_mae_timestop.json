@@ -1,0 +1,170 @@
+{
+  "cycle": "2026-06-22g_mae_timestop",
+  "mode": "Lane-2 report-only; MAE+time-stop overlays; NON-WIRED",
+  "results": {
+    "MNQ-stop_run_reversal": {
+      "baseline": {
+        "pf": 1.469,
+        "net": 35110.0,
+        "max_dd": -4018.0,
+        "worst": -1457.0
+      },
+      "mae_guard": {
+        "L150": {
+          "pf": 1.349,
+          "net": 25618.0,
+          "max_dd": -2088.0,
+          "worst": -150.0,
+          "verdict": "no-improvement"
+        },
+        "L250": {
+          "pf": 1.447,
+          "net": 33402.0,
+          "max_dd": -2629.0,
+          "worst": -250.0,
+          "verdict": "IMPROVES"
+        },
+        "L400": {
+          "pf": 1.47,
+          "net": 35176.0,
+          "max_dd": -3482.0,
+          "worst": -400.0,
+          "verdict": "IMPROVES"
+        }
+      },
+      "time_stop": {
+        "N6": {
+          "pf": 1.361,
+          "net": 22831.0,
+          "max_dd": -3564.0,
+          "worst": -1504.0,
+          "verdict": "no-improvement"
+        },
+        "N12": {
+          "pf": 1.389,
+          "net": 26917.0,
+          "max_dd": -3465.0,
+          "worst": -1504.0,
+          "verdict": "no-improvement"
+        },
+        "N24": {
+          "pf": 1.42,
+          "net": 30890.0,
+          "max_dd": -4185.0,
+          "worst": -1504.0,
+          "verdict": "no-improvement"
+        }
+      }
+    },
+    "MNQ-orb_breakout": {
+      "baseline": {
+        "pf": 1.628,
+        "net": 51560.0,
+        "max_dd": -2331.0,
+        "worst": -850.0
+      },
+      "mae_guard": {
+        "L150": {
+          "pf": 1.658,
+          "net": 45853.0,
+          "max_dd": -1528.0,
+          "worst": -150.0,
+          "verdict": "IMPROVES"
+        },
+        "L250": {
+          "pf": 1.586,
+          "net": 46871.0,
+          "max_dd": -2302.0,
+          "worst": -250.0,
+          "verdict": "no-improvement"
+        },
+        "L400": {
+          "pf": 1.611,
+          "net": 50100.0,
+          "max_dd": -2304.0,
+          "worst": -400.0,
+          "verdict": "IMPROVES"
+        }
+      },
+      "time_stop": {
+        "N6": {
+          "pf": 1.486,
+          "net": 31850.0,
+          "max_dd": -2047.0,
+          "worst": -655.0,
+          "verdict": "no-improvement"
+        },
+        "N12": {
+          "pf": 1.564,
+          "net": 38752.0,
+          "max_dd": -2500.0,
+          "worst": -725.0,
+          "verdict": "no-improvement"
+        },
+        "N24": {
+          "pf": 1.61,
+          "net": 45680.0,
+          "max_dd": -2113.0,
+          "worst": -641.0,
+          "verdict": "IMPROVES"
+        }
+      }
+    },
+    "MGC-orb_breakout": {
+      "baseline": {
+        "pf": 1.495,
+        "net": 9835.0,
+        "max_dd": -1022.0,
+        "worst": -526.0
+      },
+      "mae_guard": {
+        "L150": {
+          "pf": 1.418,
+          "net": 8418.0,
+          "max_dd": -1275.0,
+          "worst": -152.0,
+          "verdict": "no-improvement"
+        },
+        "L250": {
+          "pf": 1.435,
+          "net": 8896.0,
+          "max_dd": -1059.0,
+          "worst": -250.0,
+          "verdict": "no-improvement"
+        },
+        "L400": {
+          "pf": 1.469,
+          "net": 9477.0,
+          "max_dd": -1022.0,
+          "worst": -400.0,
+          "verdict": "IMPROVES"
+        }
+      },
+      "time_stop": {
+        "N6": {
+          "pf": 1.254,
+          "net": 4528.0,
+          "max_dd": -1368.0,
+          "worst": -526.0,
+          "verdict": "no-improvement"
+        },
+        "N12": {
+          "pf": 1.255,
+          "net": 4818.0,
+          "max_dd": -1027.0,
+          "worst": -515.0,
+          "verdict": "no-improvement"
+        },
+        "N24": {
+          "pf": 1.264,
+          "net": 5617.0,
+          "max_dd": -2009.0,
+          "worst": -526.0,
+          "verdict": "no-improvement"
+        }
+      }
+    }
+  },
+  "note": "intra-trade path reconstructed from 5m; predeclared sparse thresholds; MAE-stop fill approx at -L (caveat)",
+  "boundaries": "no optimization/mutation/wiring"
+}
