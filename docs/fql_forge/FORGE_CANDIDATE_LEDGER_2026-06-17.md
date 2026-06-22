@@ -57,5 +57,18 @@ The operator's priority queue of reachable-now structural mechanisms is now mapp
 - MCL/ZN/ZF: KILL (mechanism is equity-specific).
 **Status: banked equity event-tail candidate (≈10/yr sparse), alongside FOMC-MNQ-1h. NOT daily WH2.** Audit-pending before packet: cost/slippage robustness, prop worst-day, clean-events deeper, half-day-session handling. Method note: first run used empirical holiday-from-gaps (unreliable — inconsistent n; produced a ZF false-WATCH artifact); fixed with proper calendar → ZF correctly KILL, equity structure confirmed. (Self-caught broken method, no false bank.)
 
+## Reachable DIRECTIONAL-structure class — comprehensively MAPPED (2026-06-22)
+Across this session the reachable single-series + calendar + intraday DIRECTIONAL space for a daily non-MNQ/non-gold WH2 is now thoroughly mapped and empty:
+- single-series technical (112 cands), cross-asset overlays, rates curve/carry → dead
+- calendar directional: month-end (contaminated/marginal), NFP/quarter-end (KILL), day-of-week (rates/crude dead; only equity-beta) → dead for target
+- intraday directional: unconditional time-of-day hour-drift → comprehensive KILL (cost eats all)
+- event/tail that DID survive: FOMC-week rates, FOMC-MNQ-1h, pre-holiday equity — all event/tail, not daily; gold sleeve (capped)
+**Honest convergence: the daily non-MNQ/non-gold workhorse is NOT in the reachable DIRECTIONAL-drift class.** Continuing to fire more directional reachable screens = vanity (two consecutive clean-empty maps confirm it). Genuinely-different LIVE avenues (not yet vanity): (1) **feed-gated forced-flow** — auctions highest-EV (structural flow ≠ price/calendar pattern); (2) **conditional/multi-state intraday microstructure** (not unconditional drift — harder, partially covered by crossbreeding); (3) **Lane-2 sleeve-improvement** (MCL/M2K, not WH2); (4) **new reachable data source** (FRED/Yahoo/COT found by probing). Next loops should pick from these, NOT another directional map.
+
+## Lane-2 overlay candidates (2026-06-22, report-only, NOT WH2)
+- **MGC-ORB low-vol-exclusion overlay** (`forge_cycle_2026-06-22d/e`): exclude lowest vol-regime days (entry-day ATR-pctile < ~0.2, lagged). **ROBUST** — predeclared thresholds 0.10-0.30 all improve max-DD (5/5), −$1,022 → −$692..−794 (~22% DD cut), PF held/better, net held, retention 78-93%, both halves +. Modest magnitude, gold (capped sleeve), Lane-2 risk overlay NOT a new strategy/WH2. Status: **confirmed overlay candidate** (would refine the gold sleeve's DD if ever applied; report-only, no wiring).
+- **Day-after-loss throttle** (`22e`): NO clean improvement on any book (MNQ-stop overfit-risk @55% retention; MNQ-ORB/MGC-ORB no-improvement). Contrast hint: post-WIN-day weakness (daily-PnL mean-reversion) on MNQ-ORB/MGC-ORB — WATCH observation only, NOT confirmed (heavy net cut, retention/OOS untested), not pursued.
+- **MNQ books already vol-robust** (vol overlay no improvement) — reassuring about the wired/strong books.
+
 ## Note
 PDB is **gated for promotion, not for research.** Forge continues — but the reachable rates vein is mapped; the next serious progress is feed-gated (stage the feed to unlock the highest-EV test; this is NOT "Forge done"). Highest-EV unlock: **Treasury auctions CSV** (exact dates, not generic-calendar-inferred, not roll-stitch-dependent, economically forced, distinct from FOMC, rates-native — avoids exactly what hurt month-end).
