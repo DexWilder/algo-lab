@@ -1,0 +1,64 @@
+{
+  "cycle": "2026-06-22d_vol_regime_overlay",
+  "mode": "Lane-2 report-only; risk overlay; NON-WIRED",
+  "results": {
+    "MNQ-stop_run_reversal": {
+      "baseline": {
+        "n": 1372,
+        "pf": 1.473,
+        "net": 34954.0,
+        "max_dd": -4018.0,
+        "median": 16.51,
+        "h1_pf": 1.39,
+        "h2_pf": 1.54,
+        "yrs_pos": "7/8"
+      },
+      "improving_overlay": null,
+      "verdict": "NO_IMPROVEMENT"
+    },
+    "MNQ-orb_breakout": {
+      "baseline": {
+        "n": 1186,
+        "pf": 1.634,
+        "net": 51448.0,
+        "max_dd": -2331.0,
+        "median": 45.76,
+        "h1_pf": 1.394,
+        "h2_pf": 1.866,
+        "yrs_pos": "8/8"
+      },
+      "improving_overlay": null,
+      "verdict": "NO_IMPROVEMENT"
+    },
+    "MGC-orb_breakout": {
+      "baseline": {
+        "n": 623,
+        "pf": 1.454,
+        "net": 8767.0,
+        "max_dd": -1022.0,
+        "median": 5.76,
+        "h1_pf": 1.335,
+        "h2_pf": 1.528,
+        "yrs_pos": "6/8"
+      },
+      "improving_overlay": {
+        "tag": "excl_low_vol(keep>=0.2)",
+        "n": 537,
+        "pf": 1.48,
+        "net": 8224.0,
+        "max_dd": -794.0,
+        "median": 6.76,
+        "h1_pf": 1.51,
+        "h2_pf": 1.463,
+        "yrs_pos": "6/8",
+        "retain_pct": 86.2
+      },
+      "verdict": "OVERLAY_IMPROVES"
+    }
+  },
+  "survivors": [
+    "MGC-orb_breakout"
+  ],
+  "note": "overlay on existing books (no new entry); overfit-guarded; report-only even on wired book",
+  "boundaries": "no sweep/mutation/wiring"
+}
