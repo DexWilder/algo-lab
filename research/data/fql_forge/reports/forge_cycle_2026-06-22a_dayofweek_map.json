@@ -1,0 +1,379 @@
+{
+  "cycle": "2026-06-22a_dayofweek_map",
+  "mode": "Lane B report-only; near-daily calendar map; NON-WIRED",
+  "results": {
+    "ZN": {
+      "Mon_long": {
+        "n": 363,
+        "pf": 0.636,
+        "pos": 0.43,
+        "train_pf": 0.485,
+        "test_pf": 0.851,
+        "yrs_pos": "2/8",
+        "ok": false
+      },
+      "Mon_short": {
+        "n": 363,
+        "pf": 0.974,
+        "pos": 0.47,
+        "train_pf": 1.29,
+        "test_pf": 0.711,
+        "yrs_pos": "4/8",
+        "ok": false
+      },
+      "Tue_long": {
+        "n": 364,
+        "pf": 0.772,
+        "pos": 0.47,
+        "train_pf": 0.731,
+        "test_pf": 0.825,
+        "yrs_pos": "2/8",
+        "ok": false
+      },
+      "Tue_short": {
+        "n": 364,
+        "pf": 0.834,
+        "pos": 0.44,
+        "train_pf": 0.909,
+        "test_pf": 0.754,
+        "yrs_pos": "1/8",
+        "ok": false
+      },
+      "Wed_long": {
+        "n": 363,
+        "pf": 1.015,
+        "pos": 0.49,
+        "train_pf": 0.986,
+        "test_pf": 1.042,
+        "yrs_pos": "5/8",
+        "ok": false
+      },
+      "Wed_short": {
+        "n": 363,
+        "pf": 0.642,
+        "pos": 0.41,
+        "train_pf": 0.645,
+        "test_pf": 0.639,
+        "yrs_pos": "2/8",
+        "ok": false
+      },
+      "Thu_long": {
+        "n": 364,
+        "pf": 0.772,
+        "pos": 0.47,
+        "train_pf": 0.765,
+        "test_pf": 0.78,
+        "yrs_pos": "3/8",
+        "ok": false
+      },
+      "Thu_short": {
+        "n": 364,
+        "pf": 0.857,
+        "pos": 0.47,
+        "train_pf": 0.874,
+        "test_pf": 0.84,
+        "yrs_pos": "4/8",
+        "ok": false
+      },
+      "Fri_long": {
+        "n": 355,
+        "pf": 0.648,
+        "pos": 0.41,
+        "train_pf": 0.63,
+        "test_pf": 0.664,
+        "yrs_pos": "0/8",
+        "ok": false
+      },
+      "Fri_short": {
+        "n": 355,
+        "pf": 0.994,
+        "pos": 0.49,
+        "train_pf": 0.985,
+        "test_pf": 1.002,
+        "yrs_pos": "4/8",
+        "ok": false
+      }
+    },
+    "ZF": {
+      "Mon_long": {
+        "n": 354,
+        "pf": 0.82,
+        "pos": 0.44,
+        "train_pf": 0.611,
+        "test_pf": 1.069,
+        "yrs_pos": "3/8",
+        "ok": false
+      },
+      "Mon_short": {
+        "n": 354,
+        "pf": 0.8,
+        "pos": 0.46,
+        "train_pf": 1.048,
+        "test_pf": 0.623,
+        "yrs_pos": "3/8",
+        "ok": false
+      },
+      "Tue_long": {
+        "n": 357,
+        "pf": 0.736,
+        "pos": 0.47,
+        "train_pf": 0.686,
+        "test_pf": 0.79,
+        "yrs_pos": "1/8",
+        "ok": false
+      },
+      "Tue_short": {
+        "n": 357,
+        "pf": 0.927,
+        "pos": 0.45,
+        "train_pf": 0.986,
+        "test_pf": 0.871,
+        "yrs_pos": "2/8",
+        "ok": false
+      },
+      "Wed_long": {
+        "n": 353,
+        "pf": 0.959,
+        "pos": 0.5,
+        "train_pf": 1.004,
+        "test_pf": 0.92,
+        "yrs_pos": "4/8",
+        "ok": false
+      },
+      "Wed_short": {
+        "n": 353,
+        "pf": 0.732,
+        "pos": 0.44,
+        "train_pf": 0.682,
+        "test_pf": 0.78,
+        "yrs_pos": "2/8",
+        "ok": false
+      },
+      "Thu_long": {
+        "n": 354,
+        "pf": 0.771,
+        "pos": 0.44,
+        "train_pf": 0.699,
+        "test_pf": 0.837,
+        "yrs_pos": "2/8",
+        "ok": false
+      },
+      "Thu_short": {
+        "n": 354,
+        "pf": 0.914,
+        "pos": 0.47,
+        "train_pf": 0.97,
+        "test_pf": 0.868,
+        "yrs_pos": "4/8",
+        "ok": false
+      },
+      "Fri_long": {
+        "n": 346,
+        "pf": 0.715,
+        "pos": 0.4,
+        "train_pf": 0.668,
+        "test_pf": 0.753,
+        "yrs_pos": "1/8",
+        "ok": false
+      },
+      "Fri_short": {
+        "n": 346,
+        "pf": 0.97,
+        "pos": 0.5,
+        "train_pf": 0.968,
+        "test_pf": 0.97,
+        "yrs_pos": "2/8",
+        "ok": false
+      }
+    },
+    "MCL": {
+      "Mon_long": {
+        "n": 258,
+        "pf": 0.822,
+        "pos": 0.54,
+        "train_pf": 1.184,
+        "test_pf": 0.662,
+        "yrs_pos": "3/6",
+        "ok": false
+      },
+      "Mon_short": {
+        "n": 258,
+        "pf": 1.055,
+        "pos": 0.43,
+        "train_pf": 0.753,
+        "test_pf": 1.283,
+        "yrs_pos": "2/6",
+        "ok": false
+      },
+      "Tue_long": {
+        "n": 258,
+        "pf": 0.633,
+        "pos": 0.49,
+        "train_pf": 0.654,
+        "test_pf": 0.62,
+        "yrs_pos": "1/6",
+        "ok": false
+      },
+      "Tue_short": {
+        "n": 258,
+        "pf": 1.364,
+        "pos": 0.48,
+        "train_pf": 1.357,
+        "test_pf": 1.368,
+        "yrs_pos": "4/6",
+        "ok": false
+      },
+      "Wed_long": {
+        "n": 257,
+        "pf": 0.97,
+        "pos": 0.49,
+        "train_pf": 0.837,
+        "test_pf": 1.068,
+        "yrs_pos": "2/6",
+        "ok": false
+      },
+      "Wed_short": {
+        "n": 257,
+        "pf": 0.9,
+        "pos": 0.48,
+        "train_pf": 1.077,
+        "test_pf": 0.799,
+        "yrs_pos": "4/6",
+        "ok": false
+      },
+      "Thu_long": {
+        "n": 258,
+        "pf": 1.128,
+        "pos": 0.54,
+        "train_pf": 1.064,
+        "test_pf": 1.166,
+        "yrs_pos": "5/6",
+        "ok": false
+      },
+      "Thu_short": {
+        "n": 258,
+        "pf": 0.755,
+        "pos": 0.44,
+        "train_pf": 0.82,
+        "test_pf": 0.721,
+        "yrs_pos": "1/6",
+        "ok": false
+      },
+      "Fri_long": {
+        "n": 251,
+        "pf": 1.041,
+        "pos": 0.5,
+        "train_pf": 1.172,
+        "test_pf": 0.971,
+        "yrs_pos": "3/6",
+        "ok": false
+      },
+      "Fri_short": {
+        "n": 251,
+        "pf": 0.823,
+        "pos": 0.47,
+        "train_pf": 0.753,
+        "test_pf": 0.866,
+        "yrs_pos": "3/6",
+        "ok": false
+      }
+    },
+    "MES": {
+      "Mon_long": {
+        "n": 364,
+        "pf": 1.69,
+        "pos": 0.58,
+        "train_pf": 1.45,
+        "test_pf": 1.994,
+        "yrs_pos": "7/8",
+        "ok": true
+      },
+      "Mon_short": {
+        "n": 364,
+        "pf": 0.534,
+        "pos": 0.4,
+        "train_pf": 0.625,
+        "test_pf": 0.45,
+        "yrs_pos": "0/8",
+        "ok": false
+      },
+      "Tue_long": {
+        "n": 364,
+        "pf": 1.074,
+        "pos": 0.51,
+        "train_pf": 0.94,
+        "test_pf": 1.206,
+        "yrs_pos": "5/8",
+        "ok": false
+      },
+      "Tue_short": {
+        "n": 364,
+        "pf": 0.845,
+        "pos": 0.48,
+        "train_pf": 0.958,
+        "test_pf": 0.758,
+        "yrs_pos": "2/8",
+        "ok": false
+      },
+      "Wed_long": {
+        "n": 363,
+        "pf": 1.093,
+        "pos": 0.54,
+        "train_pf": 0.93,
+        "test_pf": 1.283,
+        "yrs_pos": "4/8",
+        "ok": false
+      },
+      "Wed_short": {
+        "n": 363,
+        "pf": 0.846,
+        "pos": 0.45,
+        "train_pf": 0.993,
+        "test_pf": 0.72,
+        "yrs_pos": "4/8",
+        "ok": false
+      },
+      "Thu_long": {
+        "n": 363,
+        "pf": 0.907,
+        "pos": 0.53,
+        "train_pf": 0.999,
+        "test_pf": 0.821,
+        "yrs_pos": "4/8",
+        "ok": false
+      },
+      "Thu_short": {
+        "n": 363,
+        "pf": 1.018,
+        "pos": 0.45,
+        "train_pf": 0.924,
+        "test_pf": 1.124,
+        "yrs_pos": "3/8",
+        "ok": false
+      },
+      "Fri_long": {
+        "n": 356,
+        "pf": 0.986,
+        "pos": 0.5,
+        "train_pf": 1.096,
+        "test_pf": 0.898,
+        "yrs_pos": "4/8",
+        "ok": false
+      },
+      "Fri_short": {
+        "n": 356,
+        "pf": 0.929,
+        "pos": 0.48,
+        "train_pf": 0.831,
+        "test_pf": 1.026,
+        "yrs_pos": "3/8",
+        "ok": false
+      }
+    }
+  },
+  "survivors": [
+    "MES-Mon-long"
+  ],
+  "note": "day-of-week close-to-close; survivor=near-daily conditioning candidate (would still need deeper audit); none=clean map-fill",
+  "boundaries": "no sweep/mutation"
+}
