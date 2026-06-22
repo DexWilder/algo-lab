@@ -1,0 +1,23 @@
+{
+  "tracker": "fomc_rates_forward",
+  "mode": "report-only evidence collection; NO activation/wiring/registry/scheduler",
+  "spec": {
+    "sleeve": "FOMC-week-rates (ZN primary, ZF confirmation)",
+    "instrument": "ZN",
+    "entry": "-2 trading days vs FOMC",
+    "exit": "+2 trading days vs FOMC",
+    "stop_usd": 1200,
+    "direction": "long",
+    "regime_gate": "none for the base sleeve (FOMC-week is all-weather per audit; ZN-FOMC-drift variant was regime-gated separately)",
+    "classification": "EVENT/TAIL diversifier (~8/yr), DATA_AUDIT_GREEN, P-SLEEVE-confirmed diversifier",
+    "gates_before_paper": [
+      "external DSCL (CME settlement / 2nd vendor)",
+      "forward-window reconciliation vs replay",
+      "executor wiring (out-of-band, gated)",
+      "operator paper approval"
+    ]
+  },
+  "upcoming_events": [],
+  "forward_ledger": [],
+  "note": "best real find of session; collect forward evidence toward eventual paper packet; gated before paper"
+}
