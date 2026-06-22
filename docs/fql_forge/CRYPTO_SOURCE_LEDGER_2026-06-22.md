@@ -24,5 +24,16 @@
 - Funding is 8h cadence (00/08/16 UTC) → funding-TIME effects testable; align carefully (UTC, no-lookahead: funding known before the period it applies).
 - Crypto trades 24/7 incl weekends → enables weekend-liquidity packet (no equiv in futures).
 
+## ACQUISITION FINDING (2026-06-22) — funding-history DEPTH is the constraint, not reachability
+- **OKX public funding-rate-history is HARD-CAPPED ~3 months** (confirmed: 296 records, oldest 2026-03-16, page-4 empty w/ success code — not rate-limit). → **C1 funding-mean-reversion is DATA-LIMITED (~99 days, ~15 extreme events), NOT a KILL** (`forge_cycle_2026-06-22k`). Cannot validate on free OKX funding.
+- **Crypto PRICE is deep & free** (Coinbase BTC-USD daily paginates years; Kraken too). So PRICE-based crypto packets are immediately testable; FUNDING/basis packets need a deeper funding source.
+- **Deeper-funding paths to retry C1/C3:** Deribit funding (start/end-timestamp pagination — earlier probe returned a custom range, may go deeper); or a public funding dataset; or accept paid. **CHECK DERIBIT FUNDING DEPTH NEXT.**
+- **Immediately runnable now (price-only, deep history):** C5 weekend-liquidity regime (crypto-unique, calendar-mechanical), and price-based MR/momentum — these don't need funding depth.
+
+## Revised priority (post-acquisition-finding)
+1. **C5 weekend-liquidity** (price-only, deep, immediately runnable) — next crypto screen.
+2. **Deribit funding-depth probe** → if deep, retry C1 (funding-mean-reversion) + C3 (perp-basis) properly.
+3. C2/C6 need fine bars / OI depth (check).
+
 ## Boundaries
-Ledger only this turn. Acquire structural + screen via mechanism packets next. Report-only; no mutation.
+Report-only; mechanism-implied direction (no fishing); no mutation. C1 left DATA-LIMITED (not KILL) pending deeper funding source.

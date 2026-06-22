@@ -1,0 +1,29 @@
+{
+  "cycle": "2026-06-22k_crypto_c1_funding",
+  "mode": "report-only; crypto new-vein; NON-WIRED",
+  "inst": "BTC-USD-SWAP",
+  "cost_model": {
+    "taker": 0.0005,
+    "slip": 0.0002,
+    "round_trip": 0.0014
+  },
+  "results": {
+    "z1.0": {
+      "z": 1.0,
+      "n": 15,
+      "verdict": "KILL_low_n"
+    },
+    "z1.5": {
+      "z": 1.5,
+      "n": 5,
+      "verdict": "KILL_low_n"
+    },
+    "z2.0": {
+      "z": 2.0,
+      "n": 1,
+      "verdict": "KILL_low_n"
+    }
+  },
+  "note": "daily funding mean-reversion; PnL decomposed price/funding/cost/net; mechanism-pure direction no-flip; BTC first",
+  "boundaries": "no sweep beyond predeclared z-band; no mutation"
+}
