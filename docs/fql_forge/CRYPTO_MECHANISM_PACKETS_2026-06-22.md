@@ -78,10 +78,21 @@ Probed reachable: **DVOL (Deribit BTC volatility index, VIX-equivalent) — dail
 - **HARD CONSTRAINT — cost:** PF 1.201@10bps → 1.100@20bps → **0.924@40bps (KILL)** → 0.778@60bps. z>1.0 edge DIES at retail crypto spot taker fees (~40-60bps); survives only ≤~25bps (institutional/maker). The **z>1.5 variant (mean +55bps) is materially more cost-robust** (survives ~40bps) — that, not z>1.0, is the tradable expression.
 - **Verdict: STRUCTURE_FOUND (NOT deployable as-is).** First genuine crypto mechanism (every prior crypto test KILLed). Decorrelated-from-equity ensemble property is exactly what WH2-diversification wants. GATED on: (1) realistic BTC-spot execution cost — what can the account actually trade at? if >30bps, z>1.5 only; (2) regime-aware crash guard; (3) ETH/SOL breadth weaker. Report-only; no mutation; no promotion.
 
-## Revised priority (2026-06-23, post-C3-block)
-1. **O1 DVOL vol-risk-premium** (reachable, clean daily, no hedge-sync) — next crypto screen.
-2. C3 carry — blocked pending synchronized perp+index feed (packetized).
-3. Non-beta crypto price rungs (vol-compression, post-large-range MR).
+## O1-z>1.5 FULL-GATE + CRASH-GUARD audit (2026-06-23f) — candidate confirmed STRUCTURE_FOUND, NOT deployable
+Operator correction applied: **z>1.0 = mechanism EVIDENCE; z>1.5 = the CANDIDATE** (cost-robust). Full-gated z>1.5 (n=77):
+- **Cost-robust ✓** PF 1.485@10 → 1.28@30 → 1.19@40 → **1.04@60bps** (z>1.0 died @40). This is why z>1.5 is the candidate.
+- **Decorrelated ✓** MNQ −0.03, MES −0.03, MGC −0.22; low concentration (max-single 9.4%, PF-ex-top3 1.11); beats unconditional hold (55 vs 7.5bps); makes PnL OUTSIDE opex week (diversifier vs existing sleeves).
+- **Temporal stability ✗ (the brake)** H1 PF 0.938 (LOSES, −10.5bps) / H2 2.976; only **4/6 yrs+** (2023 −25, 2025 −12bps); 2024 (+117) & 2026 (+156) carry it. Tightening to cost-robust threshold made per-year stability WORSE (n=77, some yrs n=4). Crash regime (BTC>50% off ATH) PF 0.933.
+- **CRASH-GUARD packet result:** NO regime filter rescues stability — spot>200dSMA (uptrend) still 2025 −390bps on n=34; "not-rising-vol" guard INVERTS edge to PF 0.52. **Mechanistic finding: the VRP-fade edge LIVES in elevated/rising-vol periods, not calm** (fading rich DVOL works when vol is high). 2025 weakness is genuine, not filter-removable.
+- **HEADLINE TENSION: no single threshold is both cost-robust AND temporally stable** — z>1.0 stable(5/6)/cost-fragile(dies@40); z>1.5 cost-robust(60bps)/unstable(4/6, H1<0). Mechanism real; neither expression clean.
+- **Disposition:** STRUCTURE_FOUND / COST-GATED / REPORT-ONLY. Resolution = out-of-sample forward accrual (report-only clock), NOT more filtering. Forward-clock candidate (Track-2 EXPERIMENTAL_FORWARD_CLOCK) pending operator decision; needs real BTC-spot execution cost pinned. NO promotion/wiring/mutation.
+
+## Revised priority (2026-06-23, post-full-gate)
+1. **O2 — DVOL as cross-asset regime/risk-state filter on existing equity/gold/rates sleeves** (execution-cost-FREE; gates books we already trade) — NEXT.
+2. O1 forward-clock (report-only) to accrue OOS years — pending operator go + execution-cost number.
+3. Mechanism Library lane kickoff (Harris + Natenberg/Sinclair first) — standing parallel lane.
+4. SOL/breadth only if data clean (don't force; BTC is the liquid expression, ETH already weaker).
+5. C3 carry — blocked pending synchronized perp+index feed (packetized).
 
 ## Revised priority (2026-06-23)
 1. **C1 via Deribit deep funding** (now unblocked) — flagship forced-flow, mechanism-implied direction, deep data. Acquire Deribit funding 2020+ + price, rerun C1 with full PnL decomposition.

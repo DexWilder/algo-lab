@@ -1,0 +1,144 @@
+{
+  "cycle": "2026-06-23f_o1_z15_full_gate",
+  "mode": "report-only; NON-WIRED",
+  "result": {
+    "variant": "O1 BTC DVOL-VRP z>1.5 LONG",
+    "n": 77,
+    "cadence": {
+      "n": 77,
+      "per_year": 17.0,
+      "span": "2021-07-27..2026-02-05",
+      "median_gap_days": 1
+    },
+    "pf_10bps": 1.485,
+    "mean_bps": 55.2,
+    "win_pct": 50.6,
+    "date_split": {
+      "h1_pf": 0.938,
+      "h2_pf": 2.976,
+      "h1_mean_bps": -10.5,
+      "h2_mean_bps": 119.2
+    },
+    "cost_stress": {
+      "10bps": 1.485,
+      "20bps": 1.38,
+      "30bps": 1.284,
+      "40bps": 1.194,
+      "50bps": 1.112,
+      "60bps": 1.037
+    },
+    "cost_stress_mean_bps": {
+      "10bps": 55.2,
+      "20bps": 45.2,
+      "30bps": 35.2,
+      "40bps": 25.2,
+      "50bps": 15.2,
+      "60bps": 5.2
+    },
+    "per_year": {
+      "2021": {
+        "n": 9,
+        "pf": 1.394,
+        "net_pct": 3.2,
+        "mean_bps": 36.0
+      },
+      "2022": {
+        "n": 18,
+        "pf": 1.03,
+        "net_pct": 1.1,
+        "mean_bps": 6.0
+      },
+      "2023": {
+        "n": 14,
+        "pf": 0.818,
+        "net_pct": -3.5,
+        "mean_bps": -25.1
+      },
+      "2024": {
+        "n": 20,
+        "pf": 2.558,
+        "net_pct": 23.5,
+        "mean_bps": 117.4
+      },
+      "2025": {
+        "n": 4,
+        "pf": 0.895,
+        "net_pct": -0.5,
+        "mean_bps": -11.7
+      },
+      "2026": {
+        "n": 12,
+        "pf": 5.667,
+        "net_pct": 18.7,
+        "mean_bps": 155.7
+      }
+    },
+    "yrs_pos": "4/6",
+    "topk_dependency": {
+      "max_single_pct": 9.4,
+      "top3_pct": 25.2,
+      "top5_pct": 38.4,
+      "pf_ex_top3": 1.111
+    },
+    "drawdown": {
+      "equity_maxdd_pct": -24.0,
+      "worst_trade_pct": -15.52,
+      "best_trade_pct": 12.22,
+      "p05_trade_pct": -4.91,
+      "p95_trade_pct": 8.48,
+      "downside_dev_bps": 300.9
+    },
+    "crash_regime": {
+      "yr2022": {
+        "n": 18,
+        "pf": 1.03,
+        "net_pct": 1.1,
+        "mean_bps": 6.0
+      },
+      "deep_btc_dd_gt50pct": {
+        "n": 26,
+        "pf": 0.933,
+        "net_pct": -3.5
+      },
+      "note": "fade-rich-DVOL fails when fear is UNDERpriced (structural crash) \u2014 see crash guard packet"
+    },
+    "vs_uncond_hold": {
+      "o1_mean_bps": 55.2,
+      "uncond_mean_bps": 7.5,
+      "o1_sharpe_ann": 0.54,
+      "uncond_sharpe_ann": 0.51,
+      "edge_over_hold": true
+    },
+    "corr_liquid_books": {
+      "MNQ": -0.028,
+      "MGC": -0.223,
+      "MES": -0.027
+    },
+    "calendar_overlap": {
+      "month_end": {
+        "share_of_trades_pct": 19.5,
+        "pnl_in_window_pct": 15.8,
+        "pnl_out_window_pct": 26.7
+      },
+      "opex_week": {
+        "share_of_trades_pct": 29.9,
+        "pnl_in_window_pct": 3.2,
+        "pnl_out_window_pct": 39.3
+      },
+      "pre_holiday": {
+        "share_of_trades_pct": 3.9,
+        "pnl_in_window_pct": 13.1,
+        "pnl_out_window_pct": 29.4
+      },
+      "note": "low in-window share => O1 risk does NOT cluster where sparse rates/opex/holiday sleeves live (diversifier). Sparse-sleeve daily Pearson is ~0 by construction; bad-day overlap needs reconstructed sleeve PnL (deferred)."
+    },
+    "verdict": "STRUCTURE_FOUND_COST_GATED_REPORT_ONLY",
+    "deployable": false,
+    "gate_summary": {
+      "structure_clean": false,
+      "cost_robust_to_40bps": true,
+      "note": "Candidate, NOT deployable. Forward-clock only AFTER operator pins real BTC-spot execution cost. z>1.0 retained as mechanism evidence."
+    }
+  },
+  "boundaries": "no mutation; no promotion; mechanism-implied direction; z>1.5 candidate / z>1.0 evidence"
+}
