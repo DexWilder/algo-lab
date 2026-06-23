@@ -1,0 +1,9 @@
+{
+  "cycle": "2026-06-23d_crypto_c3_fixed",
+  "hedge": {
+    "corr": 0.7165,
+    "drift_std_pct": 2.386
+  },
+  "verdict": "CONSTRUCTION-INVALID",
+  "note": "same-timestamp legs still not clean enough; carry not judged"
+}
