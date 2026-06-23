@@ -95,6 +95,21 @@ DVOL as risk-state filter on existing equity/gold daily (no-lookahead DVOL_t →
 - **Status: promising v1 screen (raw returns, pooled).** NOT banked as edge. Needs: full-gate (H1/H2, per-year stability — same brake that hit O1-z>1.5), test on ACTUAL ORB-sleeve PnL (overlay) vs as a standalone long-tilt, DVOL close-stamp vs US-open no-lookahead confirm, cost/robustness. Report-only; no mutation.
 - **NEXT TEST (highest-value):** full-gate "DVOL-spike z>1.5 → next-day long MES" at equity costs — if per-year stable, this is the actually-deployable expression of the VRP mechanism.
 
+## O2-EQUITY FULL GATE (2026-06-23h) → V2 PASS_REVIEW (best lead of session; report-only, not deployable)
+Rigorous no-lookahead (5m bars ET confirmed via 17:00 CME halt; DVOL close 00:00 UTC = ~19-20:00 ET prior eve, known ~13h before T 09:30 entry). DVOL-spike z>1.5 → long MES/MNQ. Predeclared variants V1 intraday / V2 24h-hold.
+- **Edge is OVERNIGHT, not intraday:** V1 (09:30→16:00) KILL both (PF ~1.0, ~0bps — no RTH bounce). V2 (09:30 T→09:30 T+1, overnight-concentrated) PASS_REVIEW both.
+- **V2 stability (clean — the gate O1-z>1.5 failed):** MNQ H1/H2 1.39/1.27, **6/6 yrs+** (2021 +43→2026 +6bps); MES 1.38/1.51, 5/6 (2022 flat). Low concentration (max-single 3.8-5.5%). Survives 6bps cost (PF 1.26-1.34).
+- **DECISIVE incremental validation — DVOL is NOT a VIX proxy:** DVOL-spike WITHOUT VIX-spike (108/123 days) = mean 18.9bps MES / 21.6bps MNQ, PF 1.54-1.65 — STRONGER than pooled. Also survives no-realized-vol-spike control (PF 1.2-1.4). DVOL carries unique info.
+- **Qualifier 1 — ~70% is post-selloff dip-buying:** followDOWN +22-26bps PF 1.6-1.74 vs followUP +5-7bps PF 1.1-1.19. Residual DVOL-specific edge survives after up-days (not PURELY dip-buying) but most of it is.
+- **Qualifier 2 — fat left tail:** worst-5 sum −12.9% MES / −17.3% MNQ vs ~+18% gross. Overnight gap risk material; MES gentler tail, MNQ better consistency. Needs tail-aware sizing.
+- **Verdict: V2 PASS_REVIEW (report-only).** Cross-market translation worked: crypto-discovered fear signal → stable, cost-viable, VIX-incremental equity overnight hold. NOT deployable yet. NEXT: (a) isolate the pure overnight leg (16:00→09:30) + tail clustering audit; (b) marginal-value regression (DVOL coef controlling for prior-ret + VIX); (c) sleeve-overlay on actual MNQ ORB workhorse PnL; (d) MES-vs-MNQ risk-adjusted. No mutation.
+
+## Revised priority (2026-06-23, post-O2-equity PASS_REVIEW)
+1. **O2-equity refinement:** overnight-leg isolation + tail-clustering + marginal-value regression + sleeve overlay on real ORB PnL (standalone long-tilt vs filter/overlay — operator's split).
+2. Mechanism Library lane kickoff (Harris + Natenberg/Sinclair).
+3. O1 crypto = evidence-only unless BTC all-in execution <~30bps (operator input).
+4. C3 carry — blocked pending synchronized perp+index feed.
+
 ## Revised priority (2026-06-23, post-full-gate)
 1. **O2 — DVOL as cross-asset regime/risk-state filter on existing equity/gold/rates sleeves** (execution-cost-FREE; gates books we already trade) — NEXT.
 2. O1 forward-clock (report-only) to accrue OOS years — pending operator go + execution-cost number.
