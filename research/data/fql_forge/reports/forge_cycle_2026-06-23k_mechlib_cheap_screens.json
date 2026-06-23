@@ -1,0 +1,208 @@
+{
+  "cycle": "2026-06-23k_mechlib_cheap_screens",
+  "status": "fast falsification; report-only",
+  "screens": {
+    "D1_stoprun_MNQ": {
+      "verdict": "KILL",
+      "n": 705,
+      "pf": 0.897,
+      "mean_bps": -6.2,
+      "win_pct": 48.4,
+      "h1_pf": 0.795,
+      "h2_pf": 1.015,
+      "n_fail_hi": 354,
+      "n_fail_lo": 351
+    },
+    "D2_NRbreakout_MNQ": {
+      "verdict": "STRUCTURE_FOUND",
+      "n": 198,
+      "pf": 7.624,
+      "mean_bps": 62.6,
+      "win_pct": 71.7,
+      "h1_pf": 9.023,
+      "h2_pf": 6.531
+    },
+    "D3_opendrive_MNQ": {
+      "verdict": "KILL",
+      "n": 881,
+      "pf": 1.067,
+      "mean_bps": 2.6,
+      "win_pct": 53.5,
+      "h1_pf": 1.041,
+      "h2_pf": 1.105
+    },
+    "D4_MOCreversal_MNQ": {
+      "verdict": "STRUCTURE_FOUND",
+      "n": 830,
+      "pf": 1.219,
+      "mean_bps": 7.3,
+      "win_pct": 50.8,
+      "h1_pf": 1.328,
+      "h2_pf": 1.086
+    },
+    "D1_stoprun_MES": {
+      "verdict": "KILL",
+      "n": 709,
+      "pf": 0.892,
+      "mean_bps": -5.0,
+      "win_pct": 48.5,
+      "h1_pf": 0.792,
+      "h2_pf": 1.013,
+      "n_fail_hi": 363,
+      "n_fail_lo": 346
+    },
+    "D2_NRbreakout_MES": {
+      "verdict": "STRUCTURE_FOUND",
+      "n": 222,
+      "pf": 8.82,
+      "mean_bps": 49.1,
+      "win_pct": 75.2,
+      "h1_pf": 8.354,
+      "h2_pf": 9.309
+    },
+    "D3_opendrive_MES": {
+      "verdict": "KILL",
+      "n": 862,
+      "pf": 0.874,
+      "mean_bps": -4.3,
+      "win_pct": 51.5,
+      "h1_pf": 0.836,
+      "h2_pf": 0.931
+    },
+    "D4_MOCreversal_MES": {
+      "verdict": "KILL",
+      "n": 835,
+      "pf": 1.08,
+      "mean_bps": 2.3,
+      "win_pct": 49.2,
+      "h1_pf": 1.166,
+      "h2_pf": 0.96
+    },
+    "D1_stoprun_MGC": {
+      "verdict": "KILL",
+      "n": 345,
+      "pf": 1.008,
+      "mean_bps": 0.3,
+      "win_pct": 50.7,
+      "h1_pf": 0.985,
+      "h2_pf": 1.029,
+      "n_fail_hi": 192,
+      "n_fail_lo": 153
+    },
+    "D2_NRbreakout_MGC": {
+      "verdict": "STRUCTURE_FOUND",
+      "n": 257,
+      "pf": 74.904,
+      "mean_bps": 81.9,
+      "win_pct": 91.4,
+      "h1_pf": 75.329,
+      "h2_pf": 74.484
+    },
+    "D3_opendrive_MGC": {
+      "verdict": "KILL",
+      "n": 475,
+      "pf": 0.964,
+      "mean_bps": -0.8,
+      "win_pct": 45.9,
+      "h1_pf": 1.111,
+      "h2_pf": 0.827
+    },
+    "D4_MOCreversal_MGC": {
+      "verdict": "KILL",
+      "n": 393,
+      "pf": 0.732,
+      "mean_bps": -10.4,
+      "win_pct": 46.8,
+      "h1_pf": 0.877,
+      "h2_pf": 0.604
+    },
+    "H5_COT_GOLD->MGC": {
+      "verdict": "KILL",
+      "n": 51,
+      "pf": 0.968,
+      "mean_bps": -2.8,
+      "win_pct": 45.1,
+      "h1_pf": 0.45,
+      "h2_pf": 1.999,
+      "n_events": 51
+    },
+    "H5_COT_CRUDE->MCL": {
+      "verdict": "WATCH",
+      "n": 45,
+      "pf": 1.133,
+      "mean_bps": 17.8,
+      "win_pct": 57.8,
+      "h1_pf": 2.01,
+      "h2_pf": 0.623,
+      "n_events": 45
+    },
+    "H5_COT_EUR->6E": {
+      "verdict": "KILL",
+      "n": 136,
+      "pf": 0.752,
+      "mean_bps": -10.9,
+      "win_pct": 47.1,
+      "h1_pf": 0.68,
+      "h2_pf": 0.84,
+      "n_events": 136
+    },
+    "H5_COT_JPY->6J": {
+      "verdict": "STRUCTURE_FOUND",
+      "n": 105,
+      "pf": 1.33,
+      "mean_bps": 15.3,
+      "win_pct": 59.0,
+      "h1_pf": 1.564,
+      "h2_pf": 1.122,
+      "n_events": 105
+    },
+    "H5_COT_SP500->MES": {
+      "verdict": "KILL",
+      "n": 43,
+      "pf": 0.492,
+      "mean_bps": -49.5,
+      "win_pct": 44.2,
+      "h1_pf": 0.48,
+      "h2_pf": 0.501,
+      "n_events": 43
+    }
+  },
+  "survivors": [
+    [
+      "D2_NRbreakout_MNQ",
+      "STRUCTURE_FOUND",
+      7.624,
+      62.6
+    ],
+    [
+      "D4_MOCreversal_MNQ",
+      "STRUCTURE_FOUND",
+      1.219,
+      7.3
+    ],
+    [
+      "D2_NRbreakout_MES",
+      "STRUCTURE_FOUND",
+      8.82,
+      49.1
+    ],
+    [
+      "D2_NRbreakout_MGC",
+      "STRUCTURE_FOUND",
+      74.904,
+      81.9
+    ],
+    [
+      "H5_COT_CRUDE->MCL",
+      "WATCH",
+      1.133,
+      17.8
+    ],
+    [
+      "H5_COT_JPY->6J",
+      "STRUCTURE_FOUND",
+      1.33,
+      15.3
+    ]
+  ]
+}

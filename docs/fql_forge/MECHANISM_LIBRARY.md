@@ -131,5 +131,98 @@ Theme: the **variance risk premium** and **vol dynamics** create systematic, beh
 
 Every vol-derived packet (N3/N10/H4) carries the **mandatory incremental-value test** (marginal regression vs VIX/prior-day/RV) baked into its cheap-screen — the O1/O2 lesson, so we don't re-discover a redundant signal.
 
+---
+
+# Batch-1 cheap-screen results (2026-06-23k/l)
+Fast falsification on H5 + daily Harris microstructure. **Survivor: H5 COT-JPY→6J only.**
+- **D1 stop-run reversal (daily):** KILL all (MNQ/MES PF 0.89, MGC 1.01). Next-day close-to-close fade of failed sweep doesn't work; reversal (if any) is intraday — archived.
+- **D2 NR7-breakout (daily): KILL — was a CONSTRUCTION artifact, caught & resolved.** Daily-OHLC version PF 7-75 = (a) lookahead (used T+1 realized hi/lo to pick long/short direction) + (b) gap-through fill optimism (booked overnight gap as breakout profit). Proper intraday first-touch + realistic gapped fills → PF 0.996/1.11/1.02, dies at 8bps → KILL. **Lesson: breakout backtests on daily OHLC are lookahead traps; require intraday first-touch + gap-aware fills.**
+- **D3 opening-drive continuation (daily):** KILL all (PF 0.87-1.07). Raw drive-continuation has no edge (ORB needs the ema_slope filter + ladder exit).
+- **D4 MOC overnight reversal (daily):** MNQ WATCH (PF 1.219, H2 weak 1.086); MES/MGC KILL → NOT cross-asset robust → low priority.
+- **H5 COT positioning reversal (weekly):** GOLD/EUR/SP500 KILL; CRUDE→MCL WATCH (H2 0.623 fails both-halves, lean KILL); **JPY→6J STRUCTURE_FOUND (PF 1.33, n=105, H1/H2 1.564/1.122, both halves hold)** → full-gate queued. JPY is a spec-driven carry currency — documented positioning edge; consistent with Harris informed-commercial vs uninformed-spec.
+
+**Queued next:** full-gate COT-JPY→6J (concentration/cost/per-year/no-lookahead-COT-lag confirm); then batch-2 daily WH from Lehalle (below).
+
+# Cadence classification (queue discipline)
+Every packet tagged: **A** daily/high-cadence WH · **B** sparse-event ensemble · **C** overlay/filter · **D** feed-blocked · **E** validation/process.
+Separate **WH queue (class A only)** kept below so sparse weekly/event ideas don't crowd out daily-workhorse discovery.
+
+| Packet | Class | Status |
+|---|---|---|
+| H2 MOC imbalance, H6 midday-revert, H7 round-number, H8 stealth-volume, D-family | A | D1/D2/D3 KILL; D4 WATCH(MNQ); H2/H6/H8 un-screened |
+| H1 reconstitution, H3 roll, H4 liquidation, H10 expiry, H11 pre-news, H12 month-end | B | un-screened |
+| H5 COT | B | JPY STRUCTURE_FOUND, rest KILL/WATCH |
+| H9 crypto squeeze | B | un-screened |
+| N1 VX-carry, N2 slope-regime, N4 IV-RV sizing, N8 vol-throttle | C/A | un-screened (N1 needs VX probe) |
+| N3/N5/N6/N7/N9/N10 vol packets | B/C | un-screened |
+
+---
+
+# Book 3 — Lehalle & Laruelle, *Market Microstructure in Practice* (execution / intraday liquidity)
+Theme: temporary vs permanent price impact, order-flow dynamics, intraday liquidity seasonality. We have 5m (no L2), so target impact-reversion and signed-volume continuation — the **daily/high-cadence (class A) WH** the lane most needs.
+
+### L1 — Large-print impact reversion *(class A, priority 5)*
+- **mechanism:** a large trade pushes price beyond fair value (temporary impact); liquidity replenishes → partial reversion (Lehalle impact decay). **forced participant:** a metaorder demanding liquidity. **data:** 5m price+volume (HAVE). **instruments:** MNQ/MES/MGC/MCL. **direction:** after a volume-spike bar with outsized range, fade the impulse over next N bars. **cadence:** intraday/daily. **no-lookahead:** rolling volume/range baseline. **cheap-screen:** forward 30-60min return after a volume-z + range-z spike bar, fade direction; per asset, both halves. **kill:** impulse continues (permanent impact) or no edge after cost. **sleeve:** workhorse. **reachability:** HAVE.
+
+### L2 — VWAP-deviation reversion *(class A, priority 5)*
+- **mechanism:** price stretched far from session VWAP mean-reverts as execution algos lean against it. **forced participant:** VWAP-benchmarked execution (buys when below, sells when above). **data:** 5m (HAVE). **instruments:** MNQ/MES/MGC. **direction:** price >Nσ above intraday VWAP → fade short; below → long. **cadence:** intraday/daily. **no-lookahead:** VWAP from session bars up to now. **cheap-screen:** forward return after VWAP-zscore extreme intraday; both halves; cost. **kill:** no reversion / trend dominates. **sleeve:** workhorse. **reachability:** HAVE.
+
+### L3 — Signed-volume / order-flow imbalance continuation *(class A, priority 4)*
+- **mechanism:** trade-sign autocorrelation (Lehalle) — persistent same-side flow → short-horizon continuation. **forced participant:** metaorder splitting. **data:** 5m price+volume (HAVE; sign via tick-rule proxy on 5m close-to-close). **instruments:** MNQ/MES. **direction:** signed-volume imbalance over k bars → continuation next bars. **cadence:** intraday. **no-lookahead:** causal. **cheap-screen:** forward return conditioned on signed-volume-imbalance z; both halves. **kill:** no continuation after cost. **sleeve:** workhorse. **reachability:** HAVE (proxy).
+
+### L4 — Intraday volatility seasonality (open/close vs midday) *(class A/C, priority 4)*
+- **mechanism:** vol & spread are U-shaped intraday (Lehalle); strategies should size/select by time-of-day. **data:** 5m (HAVE). **instruments:** all. **direction:** momentum at open/close, mean-revert midday (links H6). **cadence:** daily. **no-lookahead:** time-of-day is exogenous. **cheap-screen:** per-bucket PF of momentum vs MR; confirm U-shape. **kill:** no exploitable session structure beyond ORB. **sleeve:** overlay/WH. **reachability:** HAVE.
+
+### L5 — Overnight-gap fade vs follow *(class A, priority 4)*
+- **mechanism:** overnight gap incorporates info; partial fade (liquidity provision at open) vs continuation depending on gap size. **data:** 5m (HAVE). **instruments:** MES/MNQ/MGC. **direction:** small gap → fade toward prior close; large gap → follow. **cadence:** daily. **no-lookahead:** gap known at open. **cheap-screen:** open→close return conditioned on gap-size bucket & sign; both halves. **kill:** no gap-conditioned edge after cost. **sleeve:** workhorse. **reachability:** HAVE. *Apply D2 lesson: use open as entry, no stop-fill optimism.*
+
+### L6 — First-hour range → rest-of-day expansion/exhaustion *(class A, priority 3)*
+- **mechanism:** first-hour range sets the day's character; narrow first-hour → trend day; wide → range/exhaustion. **data:** 5m (HAVE). **instruments:** MNQ/MGC. **direction:** conditioned on first-hour range percentile. **cadence:** daily. **no-lookahead:** first-hour complete at 10:30. **cheap-screen:** rest-of-day |return| & directional follow by first-hour-range bucket. **kill:** no conditioning value. **sleeve:** WH/overlay. **reachability:** HAVE.
+
+### L7 — Liquidity-resilience post-news normalization *(class B, priority 3)*
+- **mechanism:** after a news shock, spreads/vol normalize on a known decay path (Lehalle resilience) → tradable normalization. **data:** 5m + econ calendar (HAVE/REACHABLE). **instruments:** ZN/MNQ/MGC. **direction:** post-shock vol-normalization drift. **cadence:** event. **cheap-screen:** post-event range decay + drift. **kill:** subsumed by event sleeves. **sleeve:** tail. **reachability:** HAVE.
+
+### L8 — Persistent-flow (metaorder) detection via volume clustering *(class A, priority 3)*
+- **mechanism:** sustained abnormal volume across consecutive bars = a metaorder working → continuation until it completes. **data:** 5m vol (HAVE). **instruments:** MCL/MGC/MNQ. **direction:** multi-bar volume persistence → continuation. **cadence:** intraday. **cheap-screen:** forward return after k-consecutive high-volume same-direction bars. **kill:** no persistence edge. **sleeve:** WH. **reachability:** HAVE. *Overlaps H8; test together.*
+
+---
+
+# Book 4 — Jack Schwager, *A Complete Guide to the Futures Market* (roll / term structure / seasonality / flow)
+Theme: futures-native structural edges — carry, roll, term structure, COT, seasonality, report reactions. Mostly **class B (carry/event)** but high portfolio-fit for the rates/energy/metals universe.
+
+### S1 — Roll-yield / term-structure carry *(class B/carry, priority 5)*
+- **mechanism:** backwardation → positive roll yield (long earns as price rolls up to spot); contango → negative. Harvest the structural carry (Schwager term structure). **forced participant:** hedgers paying the carry. **data:** front+next futures (HAVE for MCL/MGC outrights; spread needs 2 contracts). **instruments:** MCL/MGC. **direction:** long when backwardated, short/avoid when contango. **cadence:** daily/weekly. **no-lookahead:** term structure observable. **cheap-screen:** forward return conditioned on front-next basis sign. **kill:** no carry edge after roll cost. **sleeve:** carry. **reachability:** HAVE (outright proxy) / REACHABLE (true spread). *Honest reachable VRP-style carry — the commodity analog of N1.*
+
+### S2 — COT commercial-hedger signal *(class B, priority 4)*
+- Extends H5 with Schwager's commercial-hedger emphasis: commercials are the informed hedgers; follow commercial extreme (not just fade spec). **data:** COT (HAVE). **instruments:** MCL/MGC/6J (JPY already STRUCTURE_FOUND). **cheap-screen:** forward return following commercial-net extreme (vs spec-fade — are they the same signal?). **sleeve:** tail/carry. **reachability:** HAVE. *Decompose vs H5 to avoid double-count.*
+
+### S3 — Inventory/report-day reaction (EIA crude, USDA) *(class B, priority 3)*
+- **mechanism:** scheduled inventory reports force repricing; over/under-reaction (Schwager report trading). **forced participant:** hedgers reacting to mandated data. **data:** MCL 5m + EIA calendar (HAVE / REACHABLE — EIA .gov was BLOCKED; calendar dates may be hardcodable Wed 10:30 ET). **instruments:** MCL. **direction:** report-bar impulse fade/follow. **cadence:** weekly (Wed). **cheap-screen:** Wed-10:30 impulse + follow-through vs baseline. **kill:** no systematic reaction edge. **sleeve:** tail. **reachability:** REACHABLE (calendar). 
+
+### S4 — Inter-market lead-lag (copper-gold → rates; crude → equities) *(class B/C, priority 3)*
+- **mechanism:** structural inter-market relationships (Schwager) — one market leads another. **data:** copper-gold (HAVE), yields (HAVE), MCL/MES (HAVE). **instruments:** pairs/overlay. **direction:** lead-market signal → lagging-market position. **cadence:** daily. **cheap-screen:** lagged cross-correlation → forward predictive test (no-lookahead). **kill:** no out-of-sample lead-lag. **sleeve:** overlay/tail. **reachability:** HAVE. *Links to copper-gold-rates work already done.*
+
+### S5 — Seasonal calendar tendency *(class B, priority 2)*
+- **mechanism:** recurring seasonal flows (energy demand, harvest, fiscal). **data:** futures history (HAVE). **instruments:** MCL/MGC. **direction:** month/seasonal-window bias. **cadence:** seasonal. **no-lookahead:** calendar. **cheap-screen:** per-month return stability across years (HIGH overfit risk — require many years + mechanism). **kill:** not stable across years / no mechanism. **sleeve:** tail. **reachability:** HAVE. *Low priority — seasonality is overfit-prone; demand a forced-flow reason.*
+
+### S6 — Open-interest + price confirmation *(class C, priority 3)*
+- **mechanism:** rising OI + rising price = new money confirming trend; rising price + falling OI = short-covering (weak) (Schwager OI analysis). **data:** COT OI (HAVE, weekly) / daily OI (REACHABLE?). **instruments:** MCL/MGC. **direction:** OI-confirmed trends continue; OI-divergent reverse. **cadence:** weekly. **cheap-screen:** forward return by (price-change × OI-change) quadrant. **kill:** no quadrant edge. **sleeve:** overlay. **reachability:** HAVE (weekly OI). 
+
+---
+
+# WH QUEUE (class A only — daily/high-cadence, ranked) — protect from sparse-idea crowding
+1. **L2 VWAP-deviation reversion** (HAVE) — cleanest daily intraday MR; high cadence.
+2. **L1 large-print impact reversion** (HAVE) — impact decay, intraday.
+3. **L5 overnight-gap fade/follow** (HAVE) — daily, apply gap-aware fills (D2 lesson).
+4. **L3 signed-volume continuation** (HAVE) — intraday momentum proxy.
+5. **L4 intraday vol seasonality / H6 midday-revert** (HAVE) — session-conditioned.
+6. **L6 first-hour range conditioning** (HAVE).
+7. **H2 MOC imbalance** (HAVE) — re-test with gap-aware overnight.
+8. **L8/H8 metaorder volume persistence** (HAVE).
+*(D1/D2/D3 KILLed; D4 MNQ-only WATCH parked.)*
+
+# Sparse/carry/overlay queue (class B/C)
+COT-JPY full-gate (live survivor) · S1 roll-carry · N1 VX-carry (probe VX) · N4 IV-RV sizing · H1/H10/H12 calendar-flow · S3 EIA-report · S4 inter-market.
+
 ## Boundaries
-Report-only; no promotion/wiring/scheduler/registry/portfolio mutation. Packets are hypotheses, not candidates, until cheap-screened.
+Report-only; no promotion/wiring/scheduler/registry/portfolio mutation. Packets are hypotheses, not candidates, until cheap-screened. Every breakout/stop-based packet MUST use intraday first-touch + gap-aware fills (D2 lesson). Every vol packet MUST pass the incremental-value test vs VIX/prior-day/RV (O1/O2 lesson).

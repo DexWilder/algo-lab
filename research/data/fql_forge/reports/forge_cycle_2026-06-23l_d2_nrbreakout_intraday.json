@@ -1,0 +1,54 @@
+{
+  "cycle": "2026-06-23l_d2_nrbreakout_intraday",
+  "status": "report-only; proper no-lookahead recon",
+  "assets": {
+    "MNQ": {
+      "n": 266,
+      "pf": 0.996,
+      "mean_bps": -0.1,
+      "win_pct": 51.5,
+      "h1_pf": 0.929,
+      "h2_pf": 1.099,
+      "long_pf": 1.204,
+      "short_pf": 0.81,
+      "n_long": 152,
+      "n_short": 114,
+      "yrs_pos": "4/8",
+      "pf_8bps": 0.895,
+      "max_single_pct": 3.1,
+      "verdict": "KILL"
+    },
+    "MES": {
+      "n": 283,
+      "pf": 1.113,
+      "mean_bps": 2.8,
+      "win_pct": 54.4,
+      "h1_pf": 1.361,
+      "h2_pf": 0.889,
+      "long_pf": 1.118,
+      "short_pf": 1.108,
+      "n_long": 155,
+      "n_short": 128,
+      "yrs_pos": "6/8",
+      "pf_8bps": 0.957,
+      "max_single_pct": 4.9,
+      "verdict": "KILL"
+    },
+    "MGC": {
+      "n": 290,
+      "pf": 1.019,
+      "mean_bps": 0.3,
+      "win_pct": 39.3,
+      "h1_pf": 1.101,
+      "h2_pf": 0.936,
+      "long_pf": 0.834,
+      "short_pf": 1.382,
+      "n_long": 162,
+      "n_short": 128,
+      "yrs_pos": "5/8",
+      "pf_8bps": 0.806,
+      "max_single_pct": 5.5,
+      "verdict": "KILL"
+    }
+  }
+}
