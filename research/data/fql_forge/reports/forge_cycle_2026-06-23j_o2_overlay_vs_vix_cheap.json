@@ -1,0 +1,166 @@
+{
+  "cycle": "2026-06-23j_o2_overlay_vs_vix_cheap",
+  "proxy": "intraday RTH open0930->close1600 (long-biased workhorse-day proxy)",
+  "status": "cheap screen; report-only",
+  "assets": {
+    "MES": {
+      "n_days": 946,
+      "baseline_all_days": {
+        "pf": 1.024,
+        "mean_bps": 0.8,
+        "neg_day_share_pct": 47.0,
+        "maxdd_pct": -23.6
+      },
+      "filters": {
+        "DVOL_spike_z>1.5": {
+          "n_on": 94,
+          "pct_days_flagged": 9.9,
+          "mean_ON_bps": -1.8,
+          "mean_OFF_bps": 1.1,
+          "separation_OFF_minus_ON_bps": 2.9,
+          "ON_neg_share_pct": 46.8,
+          "retained_pf": 1.033,
+          "retained_mean_bps": 1.1,
+          "pf_lift_vs_base": 0.009,
+          "mean_lift_vs_base_bps": 0.3,
+          "opp_cost_trades_removed": 94,
+          "retained_maxdd_pct": -26.8,
+          "maxdd_improve_pct": -3.2
+        },
+        "VIX_spike_z>1.5": {
+          "n_on": 114,
+          "pct_days_flagged": 12.1,
+          "mean_ON_bps": -2.0,
+          "mean_OFF_bps": 1.2,
+          "separation_OFF_minus_ON_bps": 3.2,
+          "ON_neg_share_pct": 54.4,
+          "retained_pf": 1.04,
+          "retained_mean_bps": 1.2,
+          "pf_lift_vs_base": 0.015,
+          "mean_lift_vs_base_bps": 0.4,
+          "opp_cost_trades_removed": 114,
+          "retained_maxdd_pct": -17.4,
+          "maxdd_improve_pct": 6.2
+        },
+        "prior_selloff_cc<-0.7%": {
+          "n_on": 189,
+          "pct_days_flagged": 20.0,
+          "mean_ON_bps": 6.6,
+          "mean_OFF_bps": -0.7,
+          "separation_OFF_minus_ON_bps": -7.2,
+          "ON_neg_share_pct": 47.6,
+          "retained_pf": 0.979,
+          "retained_mean_bps": -0.7,
+          "pf_lift_vs_base": -0.045,
+          "mean_lift_vs_base_bps": -1.4,
+          "opp_cost_trades_removed": 189,
+          "retained_maxdd_pct": -27.6,
+          "maxdd_improve_pct": -4.0
+        },
+        "RV_spike_z>1.5": {
+          "n_on": 126,
+          "pct_days_flagged": 13.3,
+          "mean_ON_bps": 12.3,
+          "mean_OFF_bps": -1.0,
+          "separation_OFF_minus_ON_bps": -13.3,
+          "ON_neg_share_pct": 38.9,
+          "retained_pf": 0.968,
+          "retained_mean_bps": -1.0,
+          "pf_lift_vs_base": -0.056,
+          "mean_lift_vs_base_bps": -1.8,
+          "opp_cost_trades_removed": 126,
+          "retained_maxdd_pct": -27.1,
+          "maxdd_improve_pct": -3.5
+        }
+      },
+      "filter_overlap_jaccard": {
+        "DVOL_spike_z>1.5 \u2229 VIX_spike_z>1.5": 0.078,
+        "DVOL_spike_z>1.5 \u2229 prior_selloff_cc<-0.7%": 0.08,
+        "DVOL_spike_z>1.5 \u2229 RV_spike_z>1.5": 0.084,
+        "VIX_spike_z>1.5 \u2229 prior_selloff_cc<-0.7%": 0.227,
+        "VIX_spike_z>1.5 \u2229 RV_spike_z>1.5": 0.244,
+        "prior_selloff_cc<-0.7% \u2229 RV_spike_z>1.5": 0.113
+      }
+    },
+    "MNQ": {
+      "n_days": 946,
+      "baseline_all_days": {
+        "pf": 1.006,
+        "mean_bps": 0.3,
+        "neg_day_share_pct": 47.3,
+        "maxdd_pct": -33.9
+      },
+      "filters": {
+        "DVOL_spike_z>1.5": {
+          "n_on": 94,
+          "pct_days_flagged": 9.9,
+          "mean_ON_bps": -3.5,
+          "mean_OFF_bps": 0.7,
+          "separation_OFF_minus_ON_bps": 4.2,
+          "ON_neg_share_pct": 48.9,
+          "retained_pf": 1.015,
+          "retained_mean_bps": 0.7,
+          "pf_lift_vs_base": 0.009,
+          "mean_lift_vs_base_bps": 0.4,
+          "opp_cost_trades_removed": 94,
+          "retained_maxdd_pct": -36.6,
+          "maxdd_improve_pct": -2.7
+        },
+        "VIX_spike_z>1.5": {
+          "n_on": 114,
+          "pct_days_flagged": 12.1,
+          "mean_ON_bps": -3.9,
+          "mean_OFF_bps": 0.8,
+          "separation_OFF_minus_ON_bps": 4.8,
+          "ON_neg_share_pct": 53.5,
+          "retained_pf": 1.02,
+          "retained_mean_bps": 0.8,
+          "pf_lift_vs_base": 0.014,
+          "mean_lift_vs_base_bps": 0.6,
+          "opp_cost_trades_removed": 114,
+          "retained_maxdd_pct": -32.6,
+          "maxdd_improve_pct": 1.3
+        },
+        "prior_selloff_cc<-0.7%": {
+          "n_on": 244,
+          "pct_days_flagged": 25.8,
+          "mean_ON_bps": 5.0,
+          "mean_OFF_bps": -1.4,
+          "separation_OFF_minus_ON_bps": -6.4,
+          "ON_neg_share_pct": 46.7,
+          "retained_pf": 0.968,
+          "retained_mean_bps": -1.4,
+          "pf_lift_vs_base": -0.038,
+          "mean_lift_vs_base_bps": -1.6,
+          "opp_cost_trades_removed": 244,
+          "retained_maxdd_pct": -43.2,
+          "maxdd_improve_pct": -9.4
+        },
+        "RV_spike_z>1.5": {
+          "n_on": 134,
+          "pct_days_flagged": 14.2,
+          "mean_ON_bps": -1.1,
+          "mean_OFF_bps": 0.5,
+          "separation_OFF_minus_ON_bps": 1.6,
+          "ON_neg_share_pct": 50.0,
+          "retained_pf": 1.012,
+          "retained_mean_bps": 0.5,
+          "pf_lift_vs_base": 0.006,
+          "mean_lift_vs_base_bps": 0.2,
+          "opp_cost_trades_removed": 134,
+          "retained_maxdd_pct": -35.0,
+          "maxdd_improve_pct": -1.1
+        }
+      },
+      "filter_overlap_jaccard": {
+        "DVOL_spike_z>1.5 \u2229 VIX_spike_z>1.5": 0.078,
+        "DVOL_spike_z>1.5 \u2229 prior_selloff_cc<-0.7%": 0.083,
+        "DVOL_spike_z>1.5 \u2229 RV_spike_z>1.5": 0.112,
+        "VIX_spike_z>1.5 \u2229 prior_selloff_cc<-0.7%": 0.214,
+        "VIX_spike_z>1.5 \u2229 RV_spike_z>1.5": 0.21,
+        "prior_selloff_cc<-0.7% \u2229 RV_spike_z>1.5": 0.135
+      }
+    }
+  },
+  "verdict": "CLOSE_O2_AT_WATCH \u2014 DVOL redundant/weaker vs VIX as overlay; pivot to Mechanism Library"
+}

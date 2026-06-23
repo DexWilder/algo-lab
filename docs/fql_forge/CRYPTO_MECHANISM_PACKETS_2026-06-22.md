@@ -113,6 +113,20 @@ Refinement battery (operator step 2) reveals the composite V2 PASS_REVIEW was fl
 - **CORRECTED VERDICT: WATCH (not PASS_REVIEW).** Fails "adds value beyond controls" (t<2) and "stable by split/year". Mechanism real but DVOL largely REDUNDANT with cheaper equity-native signals; unstable isolated; crash-fragile tail. = the "disguised dip-buying / short-vol rebound" failure mode the operator flagged.
 - **Remaining open question (different value prop):** does DVOL REGIME help the existing ORB workhorse book (bad-day avoidance / filter), as opposed to being a standalone alpha? Lower-probability after the redundancy finding, but distinct. Standalone O2-equity long: not worth a forward clock.
 
+## O2 CHEAP OVERLAY-vs-VIX (2026-06-23j) → O2 CLOSED at WATCH/ARCHIVE
+Cheap workhorse-day proxy (intraday RTH return), no ORB regen. DVOL-spike vs VIX-spike / prior-selloff / RV-spike as avoidance filters:
+- **DVOL weaker than VIX on every axis:** DVOL PF-lift +0.009 (both MES/MNQ) vs VIX +0.015/+0.014; VIX improves DD (+6.2% MES) while DVOL worsens it (−3.2%). Separation DVOL +2.9/+4.2bps vs VIX +3.2/+4.8bps.
+- **Not complementary:** DVOL∩VIX Jaccard 0.078 — DVOL flags DIFFERENT days but they carry no extra value (noise VIX correctly ignores). prior-selloff & RV-spike filters HURT the intraday proxy (remove rebound days).
+- **VERDICT: CLOSE O2 at WATCH/ARCHIVE.** No full ORB-regen warranted (cheap screen did not surprise). DVOL earns no keep as standalone OR overlay vs equity-native VIX/dip/RV.
+
+## DVOL / options-vol VEIN — RESOLVED (2026-06-23)
+- O1 crypto VRP: STRUCTURE_FOUND, evidence-only (cost-gated + unstable; crypto only if BTC all-in <~30bps).
+- O2 equity standalone: WATCH (DVOL marginally insignificant beyond VIX/dip/RV, t<2).
+- O2 equity overlay: CLOSED — DVOL redundant/weaker than VIX.
+- C3 carry: DATA/CONSTRUCTION-BLOCKED (synchronized perp+index feed required).
+- **Net learning:** crypto DVOL is a useful research LENS (the vol-fear→overnight-rebound mechanism is real & cross-asset) but NOT a unique alpha source — equity-native tools (VIX/prior-day/RV) already capture it. Cross-market translation method validated; avoided overbuilding a fancy redundant signal. O3 (expiry/pinning) / O4 (other DVOL risk-states) remain un-run, low priority.
+- **PIVOT: Mechanism Library lane** (docs/fql_forge/MECHANISM_LIBRARY.md) — the bottleneck is now hypothesis/ore quality. Starting Harris + Natenberg/Sinclair.
+
 ## Revised priority (2026-06-23, post-O2-equity PASS_REVIEW)
 1. **O2-equity refinement:** overnight-leg isolation + tail-clustering + marginal-value regression + sleeve overlay on real ORB PnL (standalone long-tilt vs filter/overlay — operator's split).
 2. Mechanism Library lane kickoff (Harris + Natenberg/Sinclair).
