@@ -50,6 +50,10 @@
 - **Test:** funding-carry yield (after both legs' costs + borrow) vs realized vol; is the net carry positive and stable? Market-neutral → judge by Sharpe/consistency + correlation to bench (P-SLEEVE), NOT directional PF.
 - **Status: NEXT** — Deribit funding (have) + spot (Coinbase, have). Delta-neutral so price-direction risk hedged; the question is whether net carry survives execution cost.
 
+## C3 ATTEMPTED → CONSTRUCTION-INVALID (NOT a KILL) — timestamp misalignment (2026-06-23)
+`forge_cycle_2026-06-23c` showed delta-neutral carry net −55% to −95% → SUSPICIOUS (gross funding is +6.8%/yr positive). Audit: **corr(spot_ret, perp_ret)=0.95 (should be ~0.999), daily basis-drift std=1.0% (should be ~0.1-0.2%)** → Deribit perp sampled at a different intraday clock (last hourly funding stamp ~23:xx UTC) than Coinbase daily close (00:00 UTC) → the hedge isn't truly delta-neutral → −55% is a sampling artifact, NOT a carry verdict. **Status: CONSTRUCTION-INVALID / INCONCLUSIVE.** Did NOT report as KILL (would be a false negative from a data bug — same discipline as data-limited≠kill).
+**FIX (next):** sample BOTH legs at the SAME UTC timestamp — either Deribit perp + Deribit-index-spot at matching stamp, or align Coinbase spot to the perp sample time; then basis-drift std should drop to ~0.1-0.2% and the hedge actually neutralizes. Re-run C3 only after same-timestamp alignment. Crypto carry remains a live ensemble candidate (untested-properly), NOT killed.
+
 ## Revised priority (2026-06-23)
 1. **C1 via Deribit deep funding** (now unblocked) — flagship forced-flow, mechanism-implied direction, deep data. Acquire Deribit funding 2020+ + price, rerun C1 with full PnL decomposition.
 2. **C3 perp-basis** (Deribit perp index vs spot) — also unblocked.

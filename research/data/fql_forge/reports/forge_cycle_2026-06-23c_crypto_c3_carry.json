@@ -1,0 +1,65 @@
+{
+  "cycle": "2026-06-23c_crypto_c3_carry",
+  "mode": "report-only; delta-neutral carry; NON-WIRED",
+  "cost_rt": 0.003,
+  "results": {
+    "BTC": {
+      "V1_funding>0": {
+        "ann_ret_pct": -8.7,
+        "ann_vol_pct": 14.1,
+        "sharpe": -0.62,
+        "max_dd_pct": -63.3,
+        "net_pct": -55.3,
+        "days_in_pos": 1856,
+        "yrs_pos": "1/7",
+        "corr_mnq": 0.034,
+        "h1_net_pct": -29.0,
+        "h2_net_pct": -26.4,
+        "verdict_30bps": "KILL"
+      },
+      "V2_funding_z>1": {
+        "ann_ret_pct": -11.8,
+        "ann_vol_pct": 6.8,
+        "sharpe": -1.75,
+        "max_dd_pct": -74.7,
+        "net_pct": -75.0,
+        "days_in_pos": 477,
+        "yrs_pos": "0/7",
+        "corr_mnq": -0.01,
+        "h1_net_pct": -27.7,
+        "h2_net_pct": -47.3,
+        "verdict_30bps": "KILL"
+      }
+    },
+    "ETH": {
+      "V1_funding>0": {
+        "ann_ret_pct": -15.0,
+        "ann_vol_pct": 16.7,
+        "sharpe": -0.9,
+        "max_dd_pct": -99.3,
+        "net_pct": -95.3,
+        "days_in_pos": 1721,
+        "yrs_pos": "1/7",
+        "corr_mnq": 0.045,
+        "h1_net_pct": -50.7,
+        "h2_net_pct": -44.7,
+        "verdict_30bps": "KILL"
+      },
+      "V2_funding_z>1": {
+        "ann_ret_pct": -13.5,
+        "ann_vol_pct": 7.9,
+        "sharpe": -1.71,
+        "max_dd_pct": -85.9,
+        "net_pct": -86.1,
+        "days_in_pos": 432,
+        "yrs_pos": "0/7",
+        "corr_mnq": 0.005,
+        "h1_net_pct": -27.0,
+        "h2_net_pct": -59.1,
+        "verdict_30bps": "KILL"
+      }
+    }
+  },
+  "note": "long-spot/short-perp funding harvest; judged Sharpe/consistency/corr not PF; no fake short-borrow; cost-stressed 30/50bps; market-neutral ensemble candidate",
+  "boundaries": "no mutation; report-only; ensemble-candidate eval not promotion"
+}
