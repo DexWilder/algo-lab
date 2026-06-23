@@ -104,6 +104,15 @@ Rigorous no-lookahead (5m bars ET confirmed via 17:00 CME halt; DVOL close 00:00
 - **Qualifier 2 — fat left tail:** worst-5 sum −12.9% MES / −17.3% MNQ vs ~+18% gross. Overnight gap risk material; MES gentler tail, MNQ better consistency. Needs tail-aware sizing.
 - **Verdict: V2 PASS_REVIEW (report-only).** Cross-market translation worked: crypto-discovered fear signal → stable, cost-viable, VIX-incremental equity overnight hold. NOT deployable yet. NEXT: (a) isolate the pure overnight leg (16:00→09:30) + tail clustering audit; (b) marginal-value regression (DVOL coef controlling for prior-ret + VIX); (c) sleeve-overlay on actual MNQ ORB workhorse PnL; (d) MES-vs-MNQ risk-adjusted. No mutation.
 
+## O2-EQUITY REFINEMENT A (2026-06-23i) → VERDICT DOWNGRADED PASS_REVIEW → WATCH
+Refinement battery (operator step 2) reveals the composite V2 PASS_REVIEW was flattered by sample/window:
+- **(1) Overnight-leg isolation destabilizes it:** pure overnight (16:00→09:30) on controlled sample → H1/H2 0.96/3.19 (MES), 0.93/2.49 (MNQ); H1 LOSES; only 3/5 yrs+; 2026 NEGATIVE both. (V2's 6/6 was the open→open composite incl. 2021.)
+- **(2) Tail crash-clustered (NOT spread):** worst-5 days = 4×2022 + 1×2025 (bear market) both assets. Fragile per "clustered in 1 crash" rule. Same 2022 underpriced-fear failure as O1.
+- **(3) DECISIVE — marginal-value regression FAILS:** `overnight ~ dvol_z + prior_cc + vix_z + rv10z`. DVOL coef +3.4bps(MES)/+4.0bps(MNQ) right direction but **t=1.91/1.72 — NOT significant**. After controlling prior-day selloff + VIX + realized-vol, DVOL adds NO significant unique info. The full-gate "DVOL-without-VIX strongest cell" doesn't survive multivariate. Edge is the generic vol-fear→overnight-rebound complex; **crypto DVOL not needed** (VIX/prior-ret/RV capture it).
+- **(4) Risk-adjusted modest:** Sharpe 0.72-0.80, Sortino ~1.07. MES marginally cleaner (gentler tail).
+- **CORRECTED VERDICT: WATCH (not PASS_REVIEW).** Fails "adds value beyond controls" (t<2) and "stable by split/year". Mechanism real but DVOL largely REDUNDANT with cheaper equity-native signals; unstable isolated; crash-fragile tail. = the "disguised dip-buying / short-vol rebound" failure mode the operator flagged.
+- **Remaining open question (different value prop):** does DVOL REGIME help the existing ORB workhorse book (bad-day avoidance / filter), as opposed to being a standalone alpha? Lower-probability after the redundancy finding, but distinct. Standalone O2-equity long: not worth a forward clock.
+
 ## Revised priority (2026-06-23, post-O2-equity PASS_REVIEW)
 1. **O2-equity refinement:** overnight-leg isolation + tail-clustering + marginal-value regression + sleeve overlay on real ORB PnL (standalone long-tilt vs filter/overlay — operator's split).
 2. Mechanism Library lane kickoff (Harris + Natenberg/Sinclair).

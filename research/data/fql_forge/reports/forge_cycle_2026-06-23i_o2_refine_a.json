@@ -1,0 +1,190 @@
+{
+  "cycle": "2026-06-23i_o2_refine_a",
+  "status": "refinement of V2 PASS_REVIEW; report-only",
+  "assets": {
+    "MES": {
+      "n_spike": 94,
+      "V3_overnight_only_3bps": {
+        "n": 94,
+        "pf": 1.554,
+        "mean_bps": 10.3,
+        "win_pct": 58.5,
+        "h1_pf": 0.96,
+        "h2_pf": 3.194,
+        "yrs_pos": "3/5",
+        "per_year_bps": {
+          "2022": -19.0,
+          "2023": 11.0,
+          "2024": 23.0,
+          "2025": 21.0,
+          "2026": -10.0
+        },
+        "pf_6bps": 1.366
+      },
+      "tail_clustering": {
+        "worst5": [
+          {
+            "date": "2022-06-15",
+            "ret_pct": -2.3
+          },
+          {
+            "date": "2022-11-16",
+            "ret_pct": -1.32
+          },
+          {
+            "date": "2022-05-17",
+            "ret_pct": -1.18
+          },
+          {
+            "date": "2022-06-21",
+            "ret_pct": -1.17
+          },
+          {
+            "date": "2025-11-13",
+            "ret_pct": -1.04
+          }
+        ],
+        "worst5_years": [
+          2022,
+          2025
+        ],
+        "worst5_sum_pct": -7.01,
+        "verdict_note": "spread across >=3 years => sizeable; clustered in 1 crash => fragile"
+      },
+      "marginal_regression": {
+        "model": "overnight ~ const + dvol_z + prior_cc + vix_z + rv10_z",
+        "n": 962,
+        "r2": 0.0076,
+        "coefs": {
+          "const": {
+            "coef": 0.000377,
+            "coef_bps": 3.77,
+            "t": 1.69
+          },
+          "dvol_z": {
+            "coef": 0.000344,
+            "coef_bps": 3.44,
+            "t": 1.91
+          },
+          "prior_cc": {
+            "coef": -0.028839,
+            "coef_bps": -288.39,
+            "t": -1.32
+          },
+          "vix_z": {
+            "coef": 0.000141,
+            "coef_bps": 1.41,
+            "t": 0.55
+          },
+          "rv10_z": {
+            "coef": -0.000248,
+            "coef_bps": -2.48,
+            "t": -0.98
+          }
+        },
+        "dvol_marginal_significant": false,
+        "note": "dvol_z coef>0 & |t|>=2 AFTER controlling prior-day selloff+VIX+RV => DVOL adds unique signal, not just dip/VIX proxy"
+      },
+      "risk_adjusted": {
+        "mean_bps": 10.3,
+        "sharpe_ann": 0.8,
+        "sortino_ann": 1.08,
+        "tail_ratio_p95_p5": 0.95,
+        "worst_trade_pct": -2.33,
+        "downside_dev_bps": 47.5
+      }
+    },
+    "MNQ": {
+      "n_spike": 94,
+      "V3_overnight_only_3bps": {
+        "n": 94,
+        "pf": 1.449,
+        "mean_bps": 11.5,
+        "win_pct": 54.3,
+        "h1_pf": 0.934,
+        "h2_pf": 2.495,
+        "yrs_pos": "3/5",
+        "per_year_bps": {
+          "2022": -27.0,
+          "2023": 14.0,
+          "2024": 25.0,
+          "2025": 30.0,
+          "2026": -24.0
+        },
+        "pf_6bps": 1.315
+      },
+      "tail_clustering": {
+        "worst5": [
+          {
+            "date": "2022-06-15",
+            "ret_pct": -2.59
+          },
+          {
+            "date": "2022-11-16",
+            "ret_pct": -1.61
+          },
+          {
+            "date": "2022-05-17",
+            "ret_pct": -1.55
+          },
+          {
+            "date": "2022-05-11",
+            "ret_pct": -1.53
+          },
+          {
+            "date": "2025-11-13",
+            "ret_pct": -1.5
+          }
+        ],
+        "worst5_years": [
+          2022,
+          2025
+        ],
+        "worst5_sum_pct": -8.79,
+        "verdict_note": "spread across >=3 years => sizeable; clustered in 1 crash => fragile"
+      },
+      "marginal_regression": {
+        "model": "overnight ~ const + dvol_z + prior_cc + vix_z + rv10_z",
+        "n": 962,
+        "r2": 0.006,
+        "coefs": {
+          "const": {
+            "coef": 0.000566,
+            "coef_bps": 5.66,
+            "t": 1.93
+          },
+          "dvol_z": {
+            "coef": 0.000404,
+            "coef_bps": 4.04,
+            "t": 1.72
+          },
+          "prior_cc": {
+            "coef": -0.031548,
+            "coef_bps": -315.48,
+            "t": -1.51
+          },
+          "vix_z": {
+            "coef": -1.7e-05,
+            "coef_bps": -0.17,
+            "t": -0.06
+          },
+          "rv10_z": {
+            "coef": -0.00012,
+            "coef_bps": -1.2,
+            "t": -0.42
+          }
+        },
+        "dvol_marginal_significant": false,
+        "note": "dvol_z coef>0 & |t|>=2 AFTER controlling prior-day selloff+VIX+RV => DVOL adds unique signal, not just dip/VIX proxy"
+      },
+      "risk_adjusted": {
+        "mean_bps": 11.5,
+        "sharpe_ann": 0.72,
+        "sortino_ann": 1.07,
+        "tail_ratio_p95_p5": 1.1,
+        "worst_trade_pct": -2.62,
+        "downside_dev_bps": 53.7
+      }
+    }
+  }
+}
