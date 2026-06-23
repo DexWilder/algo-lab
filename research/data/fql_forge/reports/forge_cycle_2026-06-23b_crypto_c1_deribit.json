@@ -1,0 +1,47 @@
+{
+  "cycle": "2026-06-23b_crypto_c1_deribit",
+  "mode": "report-only; deep Deribit funding; NON-WIRED",
+  "results": {
+    "BTC-PERPETUAL": {
+      "n": 267,
+      "pf": 0.744,
+      "mean_bps": -35.8,
+      "net_pct": -95.5,
+      "win%": 44.6,
+      "h1_pf": 0.994,
+      "h2_pf": 0.44,
+      "price_pct": -83.2,
+      "funding_pct": 19.7,
+      "long_pf": 1.0,
+      "short_pf": 0.683,
+      "long_n": 42,
+      "short_n": 225,
+      "max_single_pct_gross": 4.4,
+      "pf_20bps": 0.696,
+      "yrs_pos": "1/7",
+      "verdict": "KILL"
+    },
+    "ETH-PERPETUAL": {
+      "n": 252,
+      "pf": 0.784,
+      "mean_bps": -39.4,
+      "net_pct": -99.2,
+      "win%": 49.2,
+      "h1_pf": 0.872,
+      "h2_pf": 0.672,
+      "price_pct": -88.3,
+      "funding_pct": 19.3,
+      "long_pf": 0.851,
+      "short_pf": 0.749,
+      "long_n": 74,
+      "short_n": 178,
+      "max_single_pct_gross": 4.7,
+      "pf_20bps": 0.746,
+      "yrs_pos": "1/7",
+      "verdict": "KILL"
+    }
+  },
+  "both_support": false,
+  "note": "C1 funding-mean-rev on deep Deribit; PnL decomposed; mechanism-pure no-flip; pos/neg+long/short+date-split+tail+coststress",
+  "boundaries": "no sweep beyond z1.5 primary; no mutation; no momentum-flip"
+}
