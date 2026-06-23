@@ -87,6 +87,14 @@ Operator correction applied: **z>1.0 = mechanism EVIDENCE; z>1.5 = the CANDIDATE
 - **HEADLINE TENSION: no single threshold is both cost-robust AND temporally stable** — z>1.0 stable(5/6)/cost-fragile(dies@40); z>1.5 cost-robust(60bps)/unstable(4/6, H1<0). Mechanism real; neither expression clean.
 - **Disposition:** STRUCTURE_FOUND / COST-GATED / REPORT-ONLY. Resolution = out-of-sample forward accrual (report-only clock), NOT more filtering. Forward-clock candidate (Track-2 EXPERIMENTAL_FORWARD_CLOCK) pending operator decision; needs real BTC-spot execution cost pinned. NO promotion/wiring/mutation.
 
+## O2 DVOL cross-asset regime overlay (2026-06-23g) — KEY PIVOT: mechanism's tradable home may be EQUITY
+DVOL as risk-state filter on existing equity/gold daily (no-lookahead DVOL_t → ret_t+1; n~1581):
+- **Cross-asset consistent (mechanism validation):** DVOL_spike z>1.5 → next-day **MNQ +20.5bps (PF 1.52) / MES +16.4bps (PF 1.59)**, lift +14/+12bps vs uncond. DVOL high-pct>0.8 → equity +13.8/+10.3 (lift +7.7/+6.1); DVOL low-pct<0.2 → equity −2.2/−0.7 (lift −8/−5). MNQ & MES agree direction+magnitude. MGC largely indifferent (+3-5bps, no strong gold-hedge angle).
+- **INSIGHT: O2 == O1 mechanism (rich/spiking implied vol → next-day risk-asset bounce, fear overpriced) measured on EQUITY.** Cross-asset consistency (BTC + MNQ + MES all show it) = strong mechanism validation.
+- **DEPLOYMENT PIVOT:** crypto expression cost-gated (O1 dies at retail spot fees); **equity execution is ~1-2bps (MES/MNQ futures) → the mechanism's TRADABLE HOME may be equity, not crypto.** "DVOL-spike z>1.5 → next-day long MES/MNQ" could be cost-viable where crypto isn't.
+- **Status: promising v1 screen (raw returns, pooled).** NOT banked as edge. Needs: full-gate (H1/H2, per-year stability — same brake that hit O1-z>1.5), test on ACTUAL ORB-sleeve PnL (overlay) vs as a standalone long-tilt, DVOL close-stamp vs US-open no-lookahead confirm, cost/robustness. Report-only; no mutation.
+- **NEXT TEST (highest-value):** full-gate "DVOL-spike z>1.5 → next-day long MES" at equity costs — if per-year stable, this is the actually-deployable expression of the VRP mechanism.
+
 ## Revised priority (2026-06-23, post-full-gate)
 1. **O2 — DVOL as cross-asset regime/risk-state filter on existing equity/gold/rates sleeves** (execution-cost-FREE; gates books we already trade) — NEXT.
 2. O1 forward-clock (report-only) to accrue OOS years — pending operator go + execution-cost number.
