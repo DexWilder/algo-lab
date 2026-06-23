@@ -58,6 +58,31 @@
 `forge_cycle_2026-06-23d`: tried Deribit perp daily candle (tradingview 1D) + Coinbase daily — hedge STILL not clean (corr 0.72, drift std 2.4%; cross-venue daily-bar boundaries differ). **Hedge-validation gate (printed BEFORE verdict) correctly REFUSED to report carry metrics → CONSTRUCTION-INVALID, no false KILL/bank.** Two alignment attempts failed (funding-stamp index ~23:xx; tradingview 1D ticks) → clean cross-venue DAILY alignment isn't achievable from free daily candles.
 **PROPER FIX (next, deeper acquisition): intraday SAME-TIMESTAMP pairs** — Deribit hourly perp aligned to the funding-record index_price stamps (basis = perp/index at IDENTICAL stamps), or any single-venue perp+index at one resolution. Then corr→~0.999, hedge neutralizes, carry judged. **C3 carry remains UNRESOLVED (not killed, not banked) — DATA/CONSTRUCTION-limited pending same-stamp intraday data.** It is STILL the best crypto ensemble candidate; just genuinely hard to validate on free daily cross-venue data.
 
+## C3 → DATA/CONSTRUCTION-BLOCKED (one proper intraday attempt done; packetized)
+`forge_cycle_2026-06-23d` + intraday probe: tried Deribit perp HOURLY candle vs funding-record index hourly → **corr −0.017** (basis LEVELS tight at 68bps std = same asset, but perp candle-close vs index-stamp are ~59min-offset instants → returns don't align). Free Deribit endpoints cannot deliver synchronized perp-mark + index at the IDENTICAL second. **Verdict: DATA/CONSTRUCTION-BLOCKED (NOT KILL).** One clean intraday attempt done per operator boundary.
+**FEED REQUIREMENT (packetized):** synchronized perp-mark AND index at the identical timestamp — sources: Deribit book/ticker snapshots (build a recorder), a paid crypto data vendor with aligned perp+index, or exchange tick data. Until then C3 carry is UNRESOLVED (best crypto ensemble candidate, blocked on data sync — not a strategy verdict).
+
+## NEW VEIN OPENED — Deribit options / vol-surface (richer ore, reachable)
+Probed reachable: **DVOL (Deribit BTC volatility index, VIX-equivalent) — daily OHLC, deep history** (paginates); 892 live BTC option instruments. DVOL sidesteps the perp/index hedge-timestamp problem (single clean daily series). Mechanism packets:
+- **O1 — vol-risk-premium:** DVOL (implied) vs trailing realized vol → when IV >> RV (rich vol), structural short-vol/vol-mean-reversion bias; forced participant: option buyers overpay for protection. Single daily series, no hedge-sync issue. PRIORITY next.
+- **O2 — DVOL mean-reversion / regime:** DVOL extreme → mean-revert; or DVOL regime as a FILTER/risk-throttle on other sleeves.
+- **O3 — expiry/pinning** (needs option chain history — snapshot-only live; harder).
+- **O4 — DVOL as a cross-asset risk-state** gating equity/crypto sleeves.
+
+## O1 DVOL variance-risk-premium → STRUCTURE_FOUND (first real crypto edge; cost-gated)
+`forge_cycle_2026-06-23e`. DVOL (Deribit BTC implied-vol index, 1918d 2021-2026) vs 30d realized vol → VRP = IV−RV; predeclared **rich VRP (z>1) → LONG spot next day** (fear overpriced; option buyers overpay for protection). NO flip.
+- **BTC: PASS strict gates** — PF 1.201, mean +20.9bps, max-single 3.4%, top3 9.0%, yrs+ 5/6, **corr to MNQ −0.055** (decorrelated), and **beats unconditional long +20.9 vs −3.3bps** (real conditioning edge, not beta).
+- **ETH: same direction confirms** (+16.2 vs −4.9bps) but weaker → KILL on strict gates. Mechanism direction right on both coins.
+- **Monotonic dose-response (key validation):** z>0.5 PF 1.013 / z>1.0 1.201 / z>1.5 1.485 / z>2.0 2.770. Richer overpriced-fear → bigger bounce. Not a threshold cherry-pick.
+- **Per-year:** 2021 +43.8 / 2022 −25.3 (LUNA/FTX crash — fear was UNDERpriced, fade fails: mechanism-coherent regime weakness) / 2023 +7.9 / 2024 +51.7 / 2025 +25.3 / 2026 +21.8 bps. 5/6 positive, bad year bounded.
+- **HARD CONSTRAINT — cost:** PF 1.201@10bps → 1.100@20bps → **0.924@40bps (KILL)** → 0.778@60bps. z>1.0 edge DIES at retail crypto spot taker fees (~40-60bps); survives only ≤~25bps (institutional/maker). The **z>1.5 variant (mean +55bps) is materially more cost-robust** (survives ~40bps) — that, not z>1.0, is the tradable expression.
+- **Verdict: STRUCTURE_FOUND (NOT deployable as-is).** First genuine crypto mechanism (every prior crypto test KILLed). Decorrelated-from-equity ensemble property is exactly what WH2-diversification wants. GATED on: (1) realistic BTC-spot execution cost — what can the account actually trade at? if >30bps, z>1.5 only; (2) regime-aware crash guard; (3) ETH/SOL breadth weaker. Report-only; no mutation; no promotion.
+
+## Revised priority (2026-06-23, post-C3-block)
+1. **O1 DVOL vol-risk-premium** (reachable, clean daily, no hedge-sync) — next crypto screen.
+2. C3 carry — blocked pending synchronized perp+index feed (packetized).
+3. Non-beta crypto price rungs (vol-compression, post-large-range MR).
+
 ## Revised priority (2026-06-23)
 1. **C1 via Deribit deep funding** (now unblocked) — flagship forced-flow, mechanism-implied direction, deep data. Acquire Deribit funding 2020+ + price, rerun C1 with full PnL decomposition.
 2. **C3 perp-basis** (Deribit perp index vs spot) — also unblocked.

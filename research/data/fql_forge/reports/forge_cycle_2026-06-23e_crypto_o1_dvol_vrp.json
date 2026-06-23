@@ -1,0 +1,47 @@
+{
+  "cycle": "2026-06-23e_crypto_o1_dvol_vrp",
+  "mode": "report-only; DVOL VRP-conditioned spot direction; NON-WIRED",
+  "results": {
+    "BTC": {
+      "label": "BTC",
+      "n": 290,
+      "pf": 1.201,
+      "mean_bps": 20.9,
+      "net_pct": 60.6,
+      "win%": 48.6,
+      "h1_pf": 1.013,
+      "h2_pf": 1.52,
+      "max_single_pct_gross": 3.4,
+      "top3_pct_gross": 9.0,
+      "pf_20bps": 1.1,
+      "yrs_pos": "5/6",
+      "corr_mnq": -0.055,
+      "base_pf_uncond": 0.967,
+      "base_mean_bps": -3.3,
+      "edge_over_uncond_long": true,
+      "verdict": "PASS"
+    },
+    "ETH": {
+      "label": "ETH",
+      "n": 334,
+      "pf": 1.122,
+      "mean_bps": 16.2,
+      "net_pct": 54.2,
+      "win%": 51.2,
+      "h1_pf": 1.081,
+      "h2_pf": 1.178,
+      "max_single_pct_gross": 3.5,
+      "top3_pct_gross": 8.8,
+      "pf_20bps": 1.045,
+      "yrs_pos": "4/6",
+      "corr_mnq": -0.062,
+      "base_pf_uncond": 0.963,
+      "base_mean_bps": -4.9,
+      "edge_over_uncond_long": true,
+      "verdict": "KILL"
+    }
+  },
+  "both_support": false,
+  "note": "DVOL implied vs 30d realized -> rich VRP (z>1) predeclared LONG spot (fear overpriced); NO flip; must beat unconditional-long; full gates + cost-stress + bench-corr",
+  "boundaries": "report-only; no mutation; mechanism-implied direction; option-premia VRP harvest not reachable so tested as conditional spot sleeve"
+}
