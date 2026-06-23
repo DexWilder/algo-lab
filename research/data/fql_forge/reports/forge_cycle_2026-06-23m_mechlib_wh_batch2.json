@@ -1,0 +1,131 @@
+{
+  "cycle": "2026-06-23m_mechlib_wh_batch2",
+  "status": "report-only; fast falsification; realistic fills",
+  "screens": {
+    "L2_VWAPrev_MNQ": {
+      "verdict": "KILL",
+      "n": 41621,
+      "pf": 0.673,
+      "mean_bps": -4.88,
+      "win_pct": 39.9,
+      "h1_pf": 0.735,
+      "h2_pf": 0.599,
+      "n_long": 16004,
+      "n_short": 25923
+    },
+    "L1_impactrev_MNQ": {
+      "verdict": "KILL",
+      "n": 1424,
+      "pf": 0.668,
+      "mean_bps": -6.76,
+      "win_pct": 44.3,
+      "h1_pf": 0.788,
+      "h2_pf": 0.555,
+      "n_signals": 1441
+    },
+    "L5gap_smallFADE_MNQ": {
+      "verdict": "KILL",
+      "n": 1307,
+      "pf": 0.876,
+      "mean_bps": -5.13,
+      "win_pct": 46.7,
+      "h1_pf": 0.816,
+      "h2_pf": 0.959
+    },
+    "L5gap_largeFOLLOW_MNQ": {
+      "verdict": "KILL",
+      "n": 112,
+      "pf": 1.017,
+      "mean_bps": 1.12,
+      "win_pct": 55.4,
+      "h1_pf": 1.619,
+      "h2_pf": 0.557
+    },
+    "L2_VWAPrev_MES": {
+      "verdict": "KILL",
+      "n": 40954,
+      "pf": 0.621,
+      "mean_bps": -4.56,
+      "win_pct": 38.1,
+      "h1_pf": 0.702,
+      "h2_pf": 0.522,
+      "n_long": 15501,
+      "n_short": 25772
+    },
+    "L1_impactrev_MES": {
+      "verdict": "KILL",
+      "n": 1876,
+      "pf": 0.638,
+      "mean_bps": -5.84,
+      "win_pct": 42.2,
+      "h1_pf": 0.758,
+      "h2_pf": 0.525,
+      "n_signals": 1896
+    },
+    "L5gap_smallFADE_MES": {
+      "verdict": "KILL",
+      "n": 1334,
+      "pf": 0.965,
+      "mean_bps": -1.0,
+      "win_pct": 48.0,
+      "h1_pf": 0.889,
+      "h2_pf": 1.073
+    },
+    "L5gap_largeFOLLOW_MES": {
+      "verdict": "WATCH",
+      "n": 109,
+      "pf": 1.161,
+      "mean_bps": 8.21,
+      "win_pct": 52.3,
+      "h1_pf": 1.631,
+      "h2_pf": 0.653
+    },
+    "L2_VWAPrev_MGC": {
+      "verdict": "KILL",
+      "n": 20048,
+      "pf": 0.61,
+      "mean_bps": -3.69,
+      "win_pct": 40.4,
+      "h1_pf": 0.65,
+      "h2_pf": 0.57,
+      "n_long": 9455,
+      "n_short": 11444
+    },
+    "L1_impactrev_MGC": {
+      "verdict": "KILL",
+      "n": 899,
+      "pf": 0.802,
+      "mean_bps": -2.3,
+      "win_pct": 42.5,
+      "h1_pf": 0.703,
+      "h2_pf": 0.923,
+      "n_signals": 962
+    },
+    "L5gap_smallFADE_MGC": {
+      "verdict": "KILL",
+      "n": 1086,
+      "pf": 0.673,
+      "mean_bps": -7.93,
+      "win_pct": 38.6,
+      "h1_pf": 0.769,
+      "h2_pf": 0.589
+    },
+    "L5gap_largeFOLLOW_MGC": {
+      "verdict": "KILL",
+      "n": 88,
+      "pf": 0.993,
+      "mean_bps": -0.19,
+      "win_pct": 39.8,
+      "h1_pf": 1.203,
+      "h2_pf": 0.839
+    }
+  },
+  "survivors": [
+    [
+      "L5gap_largeFOLLOW_MES",
+      "WATCH",
+      1.161,
+      8.21
+    ]
+  ]
+}

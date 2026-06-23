@@ -210,6 +210,13 @@ Theme: futures-native structural edges — carry, roll, term structure, COT, sea
 
 ---
 
+# Batch-2 cheap-screen results (2026-06-23m) — Lehalle class-A daily WH
+Realistic intraday fills (D2 lesson applied). **Almost all KILL — informative.**
+- **L2 VWAP-deviation reversion:** KILL all (PF 0.61-0.67, strongly negative). Intraday deviations CONTINUE, don't revert.
+- **L1 large-print impact reversion:** KILL all (PF 0.64-0.80). Volume/range spikes CONTINUE (permanent>temporary impact at 5m/60min).
+- **L5 small-gap fade:** KILL all. **L5 large-gap follow:** MES WATCH (PF 1.16 but H2 0.65) / MNQ,MGC KILL → not robust, parked.
+- **STRATEGIC FINDING:** across batches 1+2 we've systematically falsified the major DAILY/intraday microstructure WH mechanisms from Harris + Lehalle. At reachable 5m resolution (no L2/tick), intraday MEAN-REVERSION is empty — these instruments are MOMENTUM-dominated intraday (which is why the ORB family works and raw MR/impact-reversion does not). **The daily-WH well on reachable microstructure data is largely dry.** Genuine survivors across both batches are SPARSE/weekly: H5 COT-JPY→6J (STRUCTURE_FOUND). Implication: WH scarcity is structural at our data tier; highest-EV veins are sparse-event / positioning (COT) / carry — plus the existing ORB family. Don't keep grinding 5m intraday-MR; either accept WH scarcity or seek a better data tier.
+
 # WH QUEUE (class A only — daily/high-cadence, ranked) — protect from sparse-idea crowding
 1. **L2 VWAP-deviation reversion** (HAVE) — cleanest daily intraday MR; high cadence.
 2. **L1 large-print impact reversion** (HAVE) — impact decay, intraday.
