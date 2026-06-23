@@ -37,5 +37,15 @@
 3. **C5 weekend regime** — calendar-mechanical, crypto-unique, cheap.
 4. C2 funding-time (intraday, needs fine bars), C6 OI-flush, C4 liquidation (data-limited).
 
+## RESULTS / acquisition findings (2026-06-23)
+- **C5 weekend-liquidity → KILL** (`forge_cycle_2026-06-23a`, BTC/ETH/SOL, deep Coinbase price). Predeclared weekend-FADE (Monday fades Fri→Sun move) PF 0.73-0.78 negative all coins, PF@40bps worse → mechanism direction WRONG (weekend moves CONTINUE, not revert). Did NOT flip to continuation (= long-crypto-beta-timing, no forced-flow story = fishing). Exploratory DoW map: consistent cross-coin Thu-weak / Mon-Wed-strong, but beta-timing category (like MES-Monday) — logged, not pursued.
+- **C1/C3 UNBLOCKED via Deribit:** Deribit funding history is DEEP (BTC-PERPETUAL 2020+, hourly, ~744/call → paginate ~31-day windows). Fixes the OKX 3-mo cap that made C1 DATA-LIMITED. **C1 funding-mean-reversion is now properly retestable on deep Deribit funding** = highest-value next crypto step (flagship forced-flow mechanism, now has the data).
+
+## Revised priority (2026-06-23)
+1. **C1 via Deribit deep funding** (now unblocked) — flagship forced-flow, mechanism-implied direction, deep data. Acquire Deribit funding 2020+ + price, rerun C1 with full PnL decomposition.
+2. **C3 perp-basis** (Deribit perp index vs spot) — also unblocked.
+3. More crypto PRICE rungs (vol compression/expansion, post-large-range MR, Asia→US handoff) — but DoW/beta-timing rungs deprioritized (C5 showed they're beta).
+4. C2/C6/C4 — fine-bar/OI/liquidation data checks.
+
 ## Boundaries
-Packets only. Acquire + cheapest screen (C1) next. Report-only; mechanism-implied direction (no fishing/flipping); no mutation.
+Report-only; mechanism-implied direction (no fishing/flipping — C5 honored this); no mutation.

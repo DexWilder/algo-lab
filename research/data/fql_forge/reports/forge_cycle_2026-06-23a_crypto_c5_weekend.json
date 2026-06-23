@@ -1,0 +1,72 @@
+{
+  "cycle": "2026-06-23a_crypto_c5_weekend",
+  "mode": "report-only; crypto price ladder rung1; NON-WIRED",
+  "cost_rt": 0.002,
+  "results": {
+    "BTC-USD": {
+      "dow_bps": {
+        "0": 42.4,
+        "1": 9.1,
+        "2": 34.7,
+        "3": -2.4,
+        "4": 23.4,
+        "5": 25.2,
+        "6": 5.9
+      },
+      "n": 570,
+      "pf": 0.732,
+      "mean_bps": -41.4,
+      "win%": 45.4,
+      "net_sum_pct": -236.2,
+      "h1_pf": 0.891,
+      "h2_pf": 0.595,
+      "pf_40bps": 0.63,
+      "max_single_pct_gross": 2.6,
+      "verdict": "KILL"
+    },
+    "ETH-USD": {
+      "dow_bps": {
+        "0": 35.0,
+        "1": 16.7,
+        "2": 48.5,
+        "3": -12.6,
+        "4": 32.9,
+        "5": 33.1,
+        "6": 22.6
+      },
+      "n": 526,
+      "pf": 0.777,
+      "mean_bps": -45.4,
+      "win%": 47.3,
+      "net_sum_pct": -238.7,
+      "h1_pf": 0.792,
+      "h2_pf": 0.758,
+      "pf_40bps": 0.695,
+      "max_single_pct_gross": 3.1,
+      "verdict": "KILL"
+    },
+    "SOL-USD": {
+      "dow_bps": {
+        "0": -17.9,
+        "1": -5.6,
+        "2": 57.1,
+        "3": -12.6,
+        "4": 33.4,
+        "5": 46.7,
+        "6": 14.6
+      },
+      "n": 262,
+      "pf": 0.776,
+      "mean_bps": -52.0,
+      "win%": 47.7,
+      "net_sum_pct": -136.2,
+      "h1_pf": 0.782,
+      "h2_pf": 0.768,
+      "pf_40bps": 0.703,
+      "max_single_pct_gross": 4.3,
+      "verdict": "KILL"
+    }
+  },
+  "note": "weekend FADE predeclared (mean-rev); no flip to continuation; cost-stressed 20/40bps; DERIBIT funding deep (2020+) -> C1/C3 retestable next",
+  "boundaries": "no sweep/mutation"
+}
