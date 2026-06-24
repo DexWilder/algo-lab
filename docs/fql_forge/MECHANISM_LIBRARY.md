@@ -239,6 +239,12 @@ Book-improvement test (NOT a new WH) on deployed orb_breakout|ema_slope|profit_l
 - **Simple VIX de-risk overlay = modest WATCH:** MNQ Sharpe 2.68→2.91, worst-day −850→−649 via GENUINE bad-day timing (size 0.42 on ORB worst-20 vs 1.06 avg). MES 2.08→2.15. BUT MGC-neutral, peak maxDD marginally worse, and at matched exposure it buys a smoother curve/better worst-day at ~6% less net — risk-RESHAPING, not a free lunch. Low-priority book-improvement WATCH; prop-relevant only where worst-day matters.
 - **KEY: flat 1x ORB is already excellent & hard to beat** — Sharpe 2.68, 8/8 yrs, maxDD −2331, ZERO Tradeify-DLL breaches at 1 contract. No prop-fit problem to fix → no sizing overlay is a slam dunk. inv_vol_target also mixed (helps MNQ/MGC Sharpe, hurts MES). Verdict: IV-RV KILL; vol-sizing overlays NOT adopted (modest/non-uniform); flat confirmed.
 
+# S1 roll-yield carry (2026-06-24c, spot-front basis PROXY) → KILL standalone; effect real-but-thin
+Class-B proxy (WTI spot vs front future, 2011+), NOT true term structure. Basis non-degenerate (std 1.47%) so usable, not FEED-BLOCKED.
+- **Backwardation effect is REAL** (incremental test passes): wti_f backwardation days +18.9bps fwd vs contango −9.8bps vs uncond −6.4bps, across 16yrs — the documented commodity-carry factor, NOT just long-crude-beta.
+- **But untradeable standalone on the proxy:** wti_f PF 1.109, dies at cost (PF@12bps 1.03), 10/16 yrs, and headline CONTAMINATED by 2020 negative-oil blowup (+44.5% Feb–May 2020, basis hit +42% as spot collapsed = non-replicable). **MCL (real micro instrument) PF 0.95 — loses outright**, 3/6 yrs.
+- **Verdict: KILL standalone.** Real-but-thin signal; no tradeable edge alone on reachable proxy. True 2nd-month term-structure = class-C feed need but LOW priority (effect already shown too thin/cost-fragile to justify). Backwardation regime could have minor ENSEMBLE/filter value but not pursued now.
+
 # WH QUEUE (class A only — daily/high-cadence, ranked) — protect from sparse-idea crowding
 1. **L2 VWAP-deviation reversion** (HAVE) — cleanest daily intraday MR; high cadence.
 2. **L1 large-print impact reversion** (HAVE) — impact decay, intraday.
