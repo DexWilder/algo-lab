@@ -357,6 +357,14 @@ Operator-required curve (0.05×→1.0×) before any universal claim. My prior "a
 - **CORRECTED CONCLUSION: the second-sleeve search SUCCEEDED.** Two decorrelated premia (TSMOM ~0.05–0.10×, vol-carry ~$1–3k), sized correctly, lift combined Sharpe+MAR with 0 DLL. Earlier "archive/marginal/can't-improve" verdicts were WRONG-SIZED. A lower-Sharpe diversifier DOES help when small + decorrelated. Scoped insight retained ONLY as: naive OVERSIZED allocations of low-Sharpe premia hurt; small ones help.
 - **VERDICTS UPGRADED → RESEARCH_CANDIDATE (small-sleeve):** TSMOM-0.05–0.10× and vol-carry-$1–3k. Next (report-only): combined-book per-year + walk-forward of the allocation choice + DSR + robustness of the small-size pick, before any deployment discussion. Capital gate intact (no sizing/wiring mutation).
 
+# SMALL-SLEEVE VALIDATION (2026-06-24l) → VALIDATED & ROBUST (session's first combined-book improvement)
+Per-year + walk-forward on the small-allocation candidates. NOT curve-fit:
+- **Per-year (ORB 2.84 → +0.05×TSMOM 2.97 / +$2k VX 2.91 / +both 3.02):** TSMOM improves **6/8 yrs**, VX 5/8. Crucially rescues ORB's WEAK years (2019 ORB −1.16 → +1.85; +both 9.06) — diversification helps most when ORB struggles, slight drag only when ORB already great (2026). Textbook.
+- **Walk-forward OOS PASSES:** allocation chosen on H1 (0.10×) applied blind to H2 → Sharpe 3.58 vs ORB-alone 3.38. Improvement survives OOS.
+- Allocation not knife-edge (0.05× & 0.10× both help), 0 DLL breaches.
+- **VERDICT: TSMOM-0.05–0.10× & vol-carry-$2k = VALIDATED small decorrelated-sleeve RESEARCH_CANDIDATES.** Robust per-year + walk-forward, help ORB's weak years, 0 prop cost. Combined → Sharpe 3.02. Improvement MODEST (+0.13–0.18 Sharpe) but real & robust. 2019 spike on partial data → reliable evidence is consistent 2021-2025 lifts + OOS pass.
+- **First robustly-validated combined-book improvement of the session.** Came directly from the operator's small-sizing pushback. Report-only; actual sizing/deployment GATED (operator decision). Next report-only: DSR on combined, finer walk-forward, vol-carry cleaner-vehicle at small size, and the "both-sleeves" interaction.
+
 # REFILLED PREMIUM QUEUE (immediate short queue empties ≠ program done)
 Different-premium lanes still open (report-only): cross-sectional momentum / relative-strength (rank assets, long-strong/short-weak — distinct from TS-momentum); calendar/settlement/auction flows; vol-regime OVERLAYS on ORB (not standalone); strict cointegration on arb-bounded spreads (WTI-Brent needs Brent leg = class-C); macro-event sparse sleeves; options/expiry/gamma where reachable. Data-tier packetization: true VIX-futures curve, front/2nd futures term structure, tick/L2/order-flow, better COT transforms. Library → 100+ continues. WH-family ideas → engine.
 
