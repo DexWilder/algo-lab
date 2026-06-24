@@ -326,6 +326,14 @@ Volatility premium (genuinely different). ^VIX/^VIX3M slope → contango-only lo
 - **VERDICT: WATCH_vol_carry (NOT PASS_REVIEW).** Auto-logic credited PSR+timing+robust but lacked a decorrelation/tail gate; PSR-pass ≠ research-candidate. STATISTICALLY_CREDIBLE_CANDIDATE pending: (a) sleeve-addition battery vs ORB (does it offset or COMPOUND ORB bad days? 0.50 corr is the flag), (b) tail-sizing for prop viability. First different-premium that didn't die.
 - **DSR-GATE FIX (forge_deflated_sharpe.py):** old fallback mis-scaled deflation benchmark for per-period/daily Sharpes → spurious DSR~0 (bit L3 + VX). Fixed: without trial-dispersion, report PSR (P(SR>0)) not a fabricated benchmark; true multiple-testing deflation requires caller to pass sr_trials_std (works correctly, self-test confirms). L3's bootstrap workaround already gave the honest p=0.098.
 
+# VX sleeve-addition battery (2026-06-24h) → EXPRESSION ARCHIVE / PREMIUM VALIDATED-decorrelated
+Decisive test: does VX offset or compound ORB's worst days?
+- **CORRECTION of 24g's 0.50 corr — it was a buy-and-hold-PROXY artifact.** vs the ACTUAL ORB STRATEGY (long/short intraday), VX-timed corr = **−0.164** (decorrelated). Stress-window corr −0.06, ex-crisis −0.17.
+- **VX OFFSETS ORB's worst days (decisive PASS):** ORB worst-10/20/50 → VX +0.56%/+0.35%/+0.05% (positive). Contango-timing keeps VX OUT of vol stress → does NOT compound. Genuine diversification (opposite of the "risk-on-in-disguise" failure).
+- **But marginal additive benefit:** +$2k VX → combined Sharpe 2.76→2.82, MAR 22.18→22.43, worst-day unchanged −$850, 0 DLL (real but tiny). $5k+ → Sharpe flat/down, tail+DLL grow (VX tail dominates). **VX DRAGS ORB's strong years** (2022 combined +$6.0k vs ORB-alone +$9.2k — short-vol bled while ORB thrived).
+- **VERDICT: ARCHIVE this expression / WATCH the premium.** A +0.06-Sharpe sprinkle that drags good years + huge standalone tail isn't deployment-worthy. BUT vol-carry is now the FIRST VALIDATED genuinely-decorrelated, ORB-offsetting premium — strategically the key finding. Pursue a BETTER vol expression (cleaner instrument / VIX-futures sleeve / optimized crash-filter) rather than the raw SVXY-contango version; or hold as a small future sleeve.
+- Lesson: correlate candidate vs the ACTUAL strategy PnL, never a buy-and-hold proxy (the proxy inflated corr 0.50→true −0.16).
+
 # UPDATED PRIORITY QUEUE (post untried-assets batch)
 **Class-E process (install — hardens the machine, highest leverage):** L1 Deflated-SR+PBO → L2 CPCV → I1 premia-classification.
 **ORB-improvement lead:** L3 meta-labeling on ORB (the one untried improvement angle; N4-sizing failed but feature-based precision filtering is different).

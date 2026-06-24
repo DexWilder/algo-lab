@@ -1,0 +1,100 @@
+{
+  "cycle": "2026-06-24h_VX_sleeve_addition",
+  "n_days": 1199,
+  "bad_day_interaction": {
+    "worst10": {
+      "ORB_mean_$": -641.0,
+      "VX_mean_ret_on_those_days_pct": 0.56,
+      "VX_offsets": true
+    },
+    "worst20": {
+      "ORB_mean_$": -578.0,
+      "VX_mean_ret_on_those_days_pct": 0.35,
+      "VX_offsets": true
+    },
+    "worst50": {
+      "ORB_mean_$": -480.0,
+      "VX_mean_ret_on_those_days_pct": 0.05,
+      "VX_offsets": true
+    }
+  },
+  "stress_window_corr": -0.061,
+  "interaction_verdict": "OFFSETS",
+  "orb_alone": {
+    "net_$": 51717.0,
+    "sharpe": 2.76,
+    "maxDD_$": -2331.0,
+    "worst_day_$": -850.0,
+    "worst_wk_$": -1038.0,
+    "worst_mo_$": -1263.0,
+    "yrs_pos": "8/8",
+    "DLL_breaches": 0,
+    "MAR": 22.18
+  },
+  "combined": {
+    "VX_$2k": {
+      "net_$": 52074.0,
+      "sharpe": 2.82,
+      "maxDD_$": -2321.0,
+      "worst_day_$": -850.0,
+      "worst_wk_$": -1038.0,
+      "worst_mo_$": -1195.0,
+      "yrs_pos": "8/8",
+      "DLL_breaches": 0,
+      "MAR": 22.43,
+      "vx_alloc_$": 2000
+    },
+    "VX_$5k": {
+      "net_$": 52609.0,
+      "sharpe": 2.75,
+      "maxDD_$": -2306.0,
+      "worst_day_$": -1063.0,
+      "worst_wk_$": -1181.0,
+      "worst_mo_$": -1133.0,
+      "yrs_pos": "8/8",
+      "DLL_breaches": 0,
+      "MAR": 22.81,
+      "vx_alloc_$": 5000
+    },
+    "VX_$10k": {
+      "net_$": 53500.0,
+      "sharpe": 2.37,
+      "maxDD_$": -3734.0,
+      "worst_day_$": -1910.0,
+      "worst_wk_$": -2041.0,
+      "worst_mo_$": -2373.0,
+      "yrs_pos": "8/8",
+      "DLL_breaches": 4,
+      "MAR": 14.33,
+      "vx_alloc_$": 10000
+    },
+    "VX_voltarget_halfORB": {
+      "net_$": 52716.0,
+      "sharpe": 2.72,
+      "maxDD_$": -2304.0,
+      "worst_day_$": -1165.0,
+      "worst_wk_$": -1217.0,
+      "worst_mo_$": -1283.0,
+      "yrs_pos": "8/8",
+      "DLL_breaches": 1,
+      "MAR": 22.88,
+      "vx_alloc_$": 5603.0
+    }
+  },
+  "crash_combined_$5kVX_vs_ORBalone": {
+    "feb2018": [
+      0.0,
+      0.0
+    ],
+    "mar2020": [
+      -853.0,
+      -697.0
+    ],
+    "2022": [
+      6030.0,
+      9152.0
+    ]
+  },
+  "corr_ex_crisis": -0.166,
+  "verdict": "ARCHIVE"
+}
