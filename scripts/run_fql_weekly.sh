@@ -58,6 +58,8 @@ log "--- Running weekly operational audit ---"
 python3 scripts/weekly_operational_audit.py --save >> "$LOG_FILE" 2>&1 || true
 log "--- Doctrine integrity (weekly full check) ---"
 python3 scripts/doctrine_integrity_check.py --weekly --save >> "$LOG_FILE" 2>&1 || true
+log "--- Learning-loop audit (memory-index + forge-artifact closed-loop, auto-repair) ---"
+python3 research/forge_learning_loop_audit.py --fix --commit >> "$LOG_FILE" 2>&1 || true
 
 log ""
 if [ "$EXIT_CODE" -eq 0 ]; then
