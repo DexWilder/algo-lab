@@ -1,0 +1,16 @@
+=== V-CRASH GUARD (VIX>35 flatten TSMOM, general) — guard active 40 days (3.5%) ===
+year   ORB   +0.05TSMOM   +0.05TSMOM_GUARDED
+  2019  -1.16        1.85        1.85
+  2020   1.45        1.27        1.42
+  2021   1.76        2.07        2.07
+  2022   3.01        3.19        3.17
+  2023   4.32        4.39        4.39
+  2024   2.92        3.19        3.19
+  2025   2.60        2.76        2.80
+  2026   5.66        5.52        5.52
+  FULL  2.84        2.97        2.99
+
+  PACKAGE unguarded: Sharpe 3.02 maxDD $-2344 2020Sharpe 1.39
+  PACKAGE guarded:   Sharpe 3.04 maxDD $-2344 2020Sharpe 1.53
+
+  DSR (proper trial-dispersion 0.0035, 12 trials): 1.0 (DSR_PASS) deflated=True

@@ -35,8 +35,8 @@ Add small, decorrelated, **regime-complementary stabilizer sleeves** alongside t
 ## 8. "What if ORB AND both sleeves lose together" scenario
 - **2020 COVID is the empirical answer: all three struggled** (ORB weak intraday chop, TSMOM −$616 whipsawed by the V-reversal, VX −$62). **This package is NOT a sharp-V-crash hedge.** It rescues weak *grind* years (2019, 2021), not a violent reversal. Position-sizing must assume a simultaneous-loss day is possible; the small allocation keeps it within DLL, but this is the known failure mode.
 
-## 9. V-crash behavior + guard
-[pending forge_cycle_2026-06-24n — testing a general VIX>35 flatten guard, NOT COVID-tuned; will report whether it helps 2020 without hurting other years or is overfit.]
+## 9. V-crash behavior + guard → GUARD_HELPS (mild, general, not overfit)
+General VIX>35 flatten on TSMOM (active 3.5% of days, NOT COVID-tuned): 2020 package Sharpe 1.39→1.53, full package 3.02→3.04, TSMOM-only 2.97→2.99. **Other years unchanged or slightly better** (2025 2.76→2.80; 2022 3.19→3.17 negligible) → helps the crash window WITHOUT damaging normal-year contribution and is a broad threshold (not overfit to COVID). **Recommended for the package.** Still NOT a full V-crash hedge (improvement is mild) — the small-sizing + caveat in §8 remain the primary protection.
 
 ## 10. Monitoring rules [to finalize]
 - Track each sleeve's realized vs expected per-year contribution; correlation drift to ORB; DLL-proximity on any day both sleeves + ORB align negative; regime tags (trend / vol-state).
@@ -51,9 +51,10 @@ Add small, decorrelated, **regime-complementary stabilizer sleeves** alongside t
 Deployment = operator-gated capital decision. NO live/prop exposure until separately, explicitly approved. This dossier informs that decision; it does not constitute or trigger it.
 
 ## 14. Open items (must close before dossier is deployment-decision-complete)
-- [ ] V-crash guard result (24n) — useful or overfit?
-- [ ] Finer DSR with proper trial-dispersion (24n) — confirm modest lift isn't allocation-grid luck.
-- [ ] True VIX-futures-curve vehicle vs SVXY ETP (execution realism).
-- [ ] MCL TSMOM leg (weakest) — keep or drop from the pool.
+- [x] V-crash guard (24n) → GUARD_HELPS (general VIX>35 flatten, mild, not overfit) — recommended. §9.
+- [x] Finer DSR proper trial-dispersion (24n) → DSR_PASS (deflated SR 1.0, 12 trials, disp 0.0035) — lift is NOT grid-luck.
+- [ ] True VIX-futures-curve vehicle vs SVXY ETP (execution realism). [class-C feed]
+- [ ] MCL TSMOM leg (weakest, negative standalone) — keep for pool-diversification or drop.
 - [ ] Per-year worst day/week/month table for the combined book.
-- [ ] Monitoring/kill-switch/rollout sections finalized.
+- [ ] Monitoring/kill-switch/paper-rollout sections finalized (currently sketched §10-12).
+**Status: 2 of 6 open items closed (both positive). Research evidence is strong enough to BUILD this dossier; 4 items remain before it is deployment-decision-complete. Deployment stays operator-gated.**
