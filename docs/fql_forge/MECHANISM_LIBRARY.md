@@ -259,5 +259,47 @@ Class-B proxy (WTI spot vs front future, 2011+), NOT true term structure. Basis 
 # Sparse/carry/overlay queue (class B/C)
 COT-JPY full-gate (live survivor) · S1 roll-carry · N1 VX-carry (probe VX) · N4 IV-RV sizing · H1/H10/H12 calendar-flow · S3 EIA-report · S4 inter-market.
 
+---
+
+# Book 5 — Ernest Chan, *Quantitative Trading / Algorithmic Trading*
+Theme: statistical-arbitrage & regime methodology. Mostly class-B/C/E — feeds the engine and the rulebook.
+
+### C1 — Cointegration pairs mean-reversion *(class B, priority 3)*
+- **mechanism:** two cointegrated futures' spread is stationary → trade spread reversion. **forced participant:** arbs enforcing the long-run relationship. **data:** 2 futures daily (HAVE: many micros). **instruments:** MES-MNQ, MGC-copper, MCL-Brent, ZN-ZF. **direction:** fade spread z-extreme. **no-lookahead:** rolling cointegration/beta. **cheap-screen:** ADF on spread + forward reversion of spread-z>2. **kill:** spread not stationary OOS / no edge after cost. **reachability:** HAVE. *Note: WTI-Brent already a candidate; ZN-ZF rates pair too.*
+### C2 — ADF/Hurst stationarity REGIME GATE *(class C/E, priority 4)*
+- **mechanism:** only run MR strategies when the series is statistically mean-reverting (Hurst<0.5 / ADF rejects); run momentum when trending. **use:** a meta-gate on entry selection. **data:** HAVE (engine already has hurst_stable_mr/trend filters). **cheap-screen:** does Hurst-gating improve MR vs momentum routing? **reachability:** HAVE. *Partially built — formalize as a router.*
+### C3 — Kelly / optimal-f position sizing *(class E, priority 3)*
+- **process upgrade:** size by edge/odds (fractional Kelly) rather than flat — but N4 showed flat ORB is hard to beat; apply cautiously, half-Kelly cap, prop-DLL-constrained. **rulebook item, not a strategy.**
+
+# Book 6 — López de Prado, *Advances in Financial Machine Learning* (CLASS-E PROCESS UPGRADES — high value)
+Theme: this session ran ~12 backtests/screens; multiple-testing & overfitting controls are now the highest-leverage rulebook upgrades. These harden the very machine that is this session's real yield.
+
+### L1 — Deflated Sharpe Ratio + PBO *(class E, priority 5)*
+- **upgrade:** correct observed Sharpe for the NUMBER of trials run (we sweep dozens of families) → Deflated SR; estimate Probability of Backtest Overfitting. **why:** prevents banking a "winner" that's just the best of many tries (directly relevant to engine sweeps + cheap-screen batches). **apply:** compute DSR for any survivor before PASS; report PBO for each sweep. **reachability:** HAVE (compute from existing trial distributions). *INSTALL FIRST.*
+### L2 — Combinatorial Purged Cross-Validation (CPCV) *(class E, priority 4)*
+- **upgrade:** replace single H1/H2 split with purged/embargoed combinatorial CV → robust OOS estimate without leakage. **why:** H1/H2 is a weak 1-split; CPCV gives a distribution of OOS Sharpes. **apply:** to any survivor before promotion-readiness. **reachability:** HAVE.
+### L3 — Meta-labeling on ORB *(class A/E, priority 5 — potential ORB IMPROVEMENT)*
+- **mechanism:** train a SECONDARY model to predict which ORB primary signals will win → size up high-confidence, skip low-confidence. Improves precision/risk WITHOUT changing the primary edge. **why:** the one ORB-improvement angle not yet tried; N4 sizing failed but meta-labeling sizes by *signal-quality features* (vol regime, time, range, prior-day state) not just vol. **data:** HAVE (ORB trades + features). **cheap-screen:** does meta-label filtering improve ORB Sharpe/DD vs flat at matched exposure? **kill:** no precision lift OOS (CPCV-validated). **reachability:** HAVE. *HIGH PRIORITY — the live ORB-improvement lead.*
+### L4 — Triple-barrier labeling / exit design *(class E, priority 3)*
+- **upgrade:** formalize exits as profit-take / stop / time barriers (profit_ladder is ad-hoc) → principled exit comparison. **reachability:** HAVE.
+### L5 — Fractional differentiation, sample-uniqueness weighting, MDA importance *(class E, priority 2)*
+- **upgrades:** stationary-with-memory features; weight overlapping samples; robust feature importance. **rulebook items for when ML enters.**
+
+# Book 7 — Antti Ilmanen, *Expected Returns* (carry / value / momentum / risk-premia classification)
+Theme: classify every edge by which RISK PREMIUM it harvests → ensures the ensemble is premia-diversified, not redundant.
+
+### I1 — Premia classification of the existing book *(class E, priority 4)*
+- **upgrade:** tag each sleeve by premium harvested (ORB = intraday momentum/trend; COT = positioning; roll-carry = carry; VRP = volatility). **why:** an ensemble of 5 momentum sleeves isn't diversified. Use to GOVERN additions — a new sleeve should add a NEW premium or a decorrelated instance. **reachability:** HAVE (classification exercise). *Explains why FIP failed: same premium (intraday momentum) as ORB → redundant.*
+### I2 — Time-series momentum (trend) across assets *(class A/B, priority 3)*
+- **mechanism:** 1-12mo trend persistence (Ilmanen/Moskowitz TSMOM). **data:** HAVE daily futures. **instruments:** MCL/MGC/MES/ZN/6E. **direction:** long past-winners/short past-losers. **cadence:** daily/weekly. **cheap-screen:** forward return by trailing-trend sign, per asset, cost. **kill:** no persistence after cost / not cross-asset. **reachability:** HAVE.
+### I3 — Defensive / low-vol anomaly *(class B, priority 2)*; ### I4 — Value/mean-reversion to fundamentals *(class B, priority 2)*; ### I5 — VRP harvest *(class B/C — see O1/N1, partially tested)*; ### I6 — Cross-premia business-cycle conditioning *(class C, priority 3 — condition sleeve weights on macro regime via the FRED/rates feeds we have)*.
+
+# UPDATED PRIORITY QUEUE (post untried-assets batch)
+**Class-E process (install — hardens the machine, highest leverage):** L1 Deflated-SR+PBO → L2 CPCV → I1 premia-classification.
+**ORB-improvement lead:** L3 meta-labeling on ORB (the one untried improvement angle; N4-sizing failed but feature-based precision filtering is different).
+**WH engine lane:** untried-assets results (batch-24d) → survivors to sleeve-addition + DSR/PBO; then composite-filter sweeps.
+**Sparse/carry/ensemble:** I2 TSMOM, C1 cointegration pairs (WTI-Brent, ZN-ZF), N1 VX-carry (probe VX), S2 commercial-COT.
+**Packet count:** ~50 across 7 books → continue to 100+.
+
 ## Boundaries
-Report-only; no promotion/wiring/scheduler/registry/portfolio mutation. Packets are hypotheses, not candidates, until cheap-screened. Every breakout/stop-based packet MUST use intraday first-touch + gap-aware fills (D2 lesson). Every vol packet MUST pass the incremental-value test vs VIX/prior-day/RV (O1/O2 lesson).
+Report-only; no promotion/wiring/scheduler/registry/portfolio mutation. Packets are hypotheses, not candidates, until cheap-screened. Every breakout/stop-based packet MUST use intraday first-touch + gap-aware fills (D2 lesson). Every vol packet MUST pass the incremental-value test vs VIX/prior-day/RV (O1/O2 lesson). Every sweep SURVIVOR must clear Deflated-SR/PBO (L1) before being called more than a screen pass (multiple-testing control). Every same-premium addition must pass the sleeve-addition battery (FIP lesson).
