@@ -379,6 +379,13 @@ Decisive question (additive or redundant?) → ADDITIVE / regime-complementary:
   - **AUDIT 2 (data/concentration, decisive):** worst-day −13.8% = MCL −22.2% (rollover-gap artifact; MCL has 18 days >8%, max 26.5% — stitching glitches). Clean re-tests: winsorized ±8% holds (1.41) so NOT pure glitch, BUT **NO-MCL collapses to Sharpe 0.65** → the edge is entirely CRUDE-CONCENTRATED, not a broad cross-sectional premium. A "diversified" sleeve that dies when one asset is removed isn't diversified ([[feedback_concentration_is_load_bearing]]).
   - **Verdict: KILL** as cross-sectional premium. Residual crude-relative-strength = at most WATCH, ONLY on clean roll-adjusted crude data (MCL untrustworthy). Lesson reinforced: audit "too-good" (Sharpe 1.55) + "identical-across-stress" (cost bug) + suspicious tail (data glitch) — all three fired here.
 
+# WH composite-filter sweep (24q + full-gate) → ema_slope baseline CONFIRMED; vol_low = MGC-specific WATCH
+Engine-routed (orb_breakout × filters × profit_ladder, MNQ/MES/MGC), judged vs single ema_slope baseline on RISK not PF.
+- **ema_slope_vol_high → collapses** (PF 0.77/0.83, removes ~93% of trades) — refutes a naive "ORB likes high vol"; it's MODERATE vol ORB likes, EXTREME vol hurts.
+- **session_morning → REJECT (trade-deletion mirage):** PF +0.04 but net $ FELL all 3 assets (MNQ 50835→47602, −176 trades) and maxDD WORSE (−2331→−2503). Higher PF from cutting trades ≠ improvement (risk-over-PF rule).
+- **vol_low → asset-specific MGC WATCH:** MNQ negligible; MES mild (maxDD −1509→−1423, 7/8→8/8 yrs); **MGC genuine (PF 1.495→1.607, net +$877, maxDD −1022→−847, worst-day better, H1/H2 better, −75 trades).** Excluding extreme-vol days helps GOLD specifically (mechanistic; dovetails locked MGC vol-regime sensitivity). NOT universal.
+- **VERDICT: no universal composite beats ema_slope → BASELINE CONFIRMED** (load-bearing). vol_low = MGC-ORB-specific refinement WATCH (overlay-grade, report-only). Discipline note: risk-metrics correctly rejected session_morning's headline PF gain; 5-variant marginal "wins" were noise/deletion.
+
 # STAGED NEXT PACKETS (ready-to-run, 2026-06-24, report-only) — queue stays live while shells compute
 Concrete construction specs, judged by PORTFOLIO ROLE (Sharpe-improver / small-diversifier / tail-overlay / capacity / separate-pool), DSR-gated, corr-vs-actual-ORB-PnL:
 - **XSMOM (cross-sectional momentum / relative-strength)** *(class B, priority 4)* — rank {MNQ,MES,MGC,MCL,M2K} by trailing 1/3mo return; long top-2 / short bottom-2, dollar-neutral, weekly rebalance. DISTINCT from TSMOM (relative not absolute → possibly decorrelated from both ORB AND TSMOM → could add a 3rd regime). Cheap-screen → if decorrelated+positive → small-sleeve allocation curve.
