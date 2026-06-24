@@ -1,0 +1,108 @@
+{
+  "cycle": "2026-06-24a_fip_sleeve_addition",
+  "status": "report-only; sleeve-addition truth test",
+  "overlap": {
+    "orb_trade_days": 1224,
+    "fip_trade_days": 1006,
+    "both_trade_days": 877,
+    "overlap_rate_of_fip_pct": 87.2,
+    "jaccard": 0.648,
+    "same_dir_days": 877,
+    "conflict_dir_days": 0
+  },
+  "pnl_relationship": {
+    "daily_corr_all": 0.435,
+    "daily_corr_cotrade": 0.525,
+    "fip_mean_on_ORB_worst20_$": -99.7,
+    "orb_mean_worst20_$": -580.1,
+    "bad_day_offset": "ADDS_LOSS"
+  },
+  "orb_alone": {
+    "n_trades": 1224,
+    "pf": 1.614,
+    "net_$": 50835.0,
+    "expectancy_$": 41.53,
+    "median_$": 42.76,
+    "h1_pf": 1.396,
+    "h2_pf": 1.811,
+    "maxDD_$": -2331.0,
+    "worst_day_$": -850.0,
+    "worst_week_$": -1038.0,
+    "worst_month_$": -1263.0,
+    "yrs_pos": "8/8",
+    "maxyr_conc_pct": 20.3,
+    "top10_pct": 9.1,
+    "per_year_$": {
+      "2019": 123.0,
+      "2020": 2576.0,
+      "2021": 3612.0,
+      "2022": 9020.0,
+      "2023": 8519.0,
+      "2024": 8026.0,
+      "2025": 10337.0,
+      "2026": 8622.0
+    }
+  },
+  "fip_alone": {
+    "n_trades": 1006,
+    "pf": 1.317,
+    "net_$": 12181.0,
+    "expectancy_$": 12.11,
+    "median_$": 4.01,
+    "h1_pf": 1.182,
+    "h2_pf": 1.415,
+    "maxDD_$": -1804.0,
+    "worst_day_$": -472.0,
+    "worst_week_$": -762.0,
+    "worst_month_$": -721.0,
+    "yrs_pos": "7/8",
+    "maxyr_conc_pct": 21.9,
+    "top10_pct": 14.3,
+    "per_year_$": {
+      "2019": -318.0,
+      "2020": 184.0,
+      "2021": 547.0,
+      "2022": 2546.0,
+      "2023": 2507.0,
+      "2024": 2733.0,
+      "2025": 2628.0,
+      "2026": 1353.0
+    }
+  },
+  "combined": {
+    "n_trades": 2230,
+    "pf": 1.52,
+    "net_$": 63016.0,
+    "expectancy_$": 28.26,
+    "median_$": 18.01,
+    "h1_pf": 1.545,
+    "h2_pf": 1.481,
+    "maxDD_$": -2483.0,
+    "worst_day_$": -1195.0,
+    "worst_week_$": -1138.0,
+    "worst_month_$": -1510.0,
+    "yrs_pos": "7/8",
+    "maxyr_conc_pct": 20.5,
+    "top10_pct": 7.1,
+    "per_year_$": {
+      "2019": -195.0,
+      "2020": 2760.0,
+      "2021": 4159.0,
+      "2022": 11566.0,
+      "2023": 11026.0,
+      "2024": 10759.0,
+      "2025": 12965.0,
+      "2026": 9975.0
+    }
+  },
+  "prop_fit": {
+    "combined_worst_day_$": -1195.0,
+    "orb_worst_day_$": -850.0,
+    "bothfire_worst_day_$": -1195.0,
+    "tradeify_50k_DLL_assumed_$": 1100.0,
+    "combined_worst_day_breaches_DLL": true,
+    "n_days_combined_breaches_DLL": 1,
+    "n_days_orb_breaches_DLL": 0
+  },
+  "verdict": "WATCH"
+}
