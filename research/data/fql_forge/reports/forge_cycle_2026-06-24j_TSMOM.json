@@ -1,0 +1,128 @@
+{
+  "cycle": "2026-06-24j_TSMOM",
+  "assets": {
+    "MNQ": {
+      "lb21": {
+        "pf": 0.979,
+        "net_$": -6557.0,
+        "sharpe": -0.11,
+        "yrs_pos": "3/8",
+        "maxDD_$": -25217.0
+      },
+      "lb63": {
+        "pf": 1.032,
+        "net_$": 9669.0,
+        "sharpe": 0.17,
+        "yrs_pos": "5/8",
+        "maxDD_$": -15557.0
+      },
+      "lb126": {
+        "pf": 1.095,
+        "net_$": 27726.0,
+        "sharpe": 0.5,
+        "yrs_pos": "7/8",
+        "maxDD_$": -12854.0
+      }
+    },
+    "MES": {
+      "lb21": {
+        "pf": 0.988,
+        "net_$": -2073.0,
+        "sharpe": -0.06,
+        "yrs_pos": "3/8",
+        "maxDD_$": -9450.0
+      },
+      "lb63": {
+        "pf": 1.085,
+        "net_$": 13880.0,
+        "sharpe": 0.44,
+        "yrs_pos": "7/8",
+        "maxDD_$": -6497.0
+      },
+      "lb126": {
+        "pf": 1.038,
+        "net_$": 6322.0,
+        "sharpe": 0.2,
+        "yrs_pos": "4/8",
+        "maxDD_$": -7265.0
+      }
+    },
+    "MGC": {
+      "lb21": {
+        "pf": 1.041,
+        "net_$": 7685.0,
+        "sharpe": 0.18,
+        "yrs_pos": "4/8",
+        "maxDD_$": -16356.0
+      },
+      "lb63": {
+        "pf": 1.071,
+        "net_$": 12909.0,
+        "sharpe": 0.3,
+        "yrs_pos": "5/8",
+        "maxDD_$": -21573.0
+      },
+      "lb126": {
+        "pf": 1.102,
+        "net_$": 18093.0,
+        "sharpe": 0.43,
+        "yrs_pos": "3/7",
+        "maxDD_$": -14150.0
+      }
+    },
+    "MCL": {
+      "lb21": {
+        "pf": 1.027,
+        "net_$": 2719.0,
+        "sharpe": 0.13,
+        "yrs_pos": "3/6",
+        "maxDD_$": -7400.0
+      },
+      "lb63": {
+        "pf": 0.989,
+        "net_$": -1070.0,
+        "sharpe": -0.05,
+        "yrs_pos": "2/6",
+        "maxDD_$": -7047.0
+      },
+      "lb126": {
+        "pf": 0.938,
+        "net_$": -6164.0,
+        "sharpe": -0.31,
+        "yrs_pos": "1/6",
+        "maxDD_$": -10580.0
+      }
+    }
+  },
+  "pooled": {
+    "lb21": {
+      "pf": 1.003,
+      "sharpe": 0.02,
+      "net_$": 1774.0,
+      "yrs_pos": "4/8",
+      "corr_to_ORB": 0.154,
+      "psr_or_dsr": 0.5202,
+      "dsr_verdict": "PSR_FAIL_SR_not_sig"
+    },
+    "lb63": {
+      "pf": 1.07,
+      "sharpe": 0.35,
+      "net_$": 35388.0,
+      "yrs_pos": "6/8",
+      "corr_to_ORB": -0.004,
+      "psr_or_dsr": 0.8403,
+      "dsr_verdict": "PSR_FAIL_SR_not_sig"
+    },
+    "lb126": {
+      "pf": 1.092,
+      "sharpe": 0.46,
+      "net_$": 45977.0,
+      "yrs_pos": "8/8",
+      "corr_to_ORB": -0.051,
+      "psr_or_dsr": 0.9012,
+      "dsr_verdict": "DSR_MARGINAL"
+    }
+  },
+  "verdict": "WATCH_marginal",
+  "best_lookback": "lb126"
+}

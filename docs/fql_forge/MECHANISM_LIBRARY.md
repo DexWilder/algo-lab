@@ -342,6 +342,16 @@ Short-VXX (no SVXY leverage-reset), graded-by-slope exposure, 4-guard crash filt
 - **VERDICT: STOP vol-carry branch.** One disciplined attempt spent. **PREMIUM RETAINED as VALIDATED-BUT-SMALL/future-sleeve** (decorrelation −0.09/−0.16 + bad-day offset finding stands); revisit only with actual VIX-futures data (class-C) — marginal benefit doesn't justify the feed now.
 - **Pivot → next different-premium: COT-commercial positioning** (genuinely different; commercial-hedger angle, untested — JPY was spec-fade).
 
+# TSMOM (2026-06-24j) → WATCH premium + the SESSION'S KEY STRUCTURAL INSIGHT
+Pooled 6-mo (lb126) across MNQ/MES/MGC/MCL: Sharpe 0.46, **8/8 yrs+**, **corr-to-ORB −0.05**, PSR 0.90, no catastrophic tail. Cleanest decorrelated premium found. (lb21 noise; per-asset MCL negative — pooled benefit is cross-asset.) Positioning-direction (COT) marked EXHAUSTED (comm=−spec mirror, corr −0.99 → commercial-follow = killed spec-fade relabeled).
+- **Diversification properties GOOD:** decorrelated −0.05, OFFSETS ORB worst-20 (+$74/day).
+- **But cannot improve combined book:** ORB alone Sharpe 2.76 / +0.5×TSMOM 2.21 (maxDD −2331→−7463, 0→19 DLL) / +1.0× 1.65. Net-$ rises = just leverage; Sharpe craters, tail blows out.
+- **KEY STRUCTURAL INSIGHT (durable):** ORB's Sharpe 2.76 is so HIGH that NO decorrelated lower-Sharpe premium improves the combined book risk-adjusted — combined Sharpe blends toward the weaker stream. vol-carry AND TSMOM (the 2 cleanest decorrelated premia) BOTH fail as ORB additions for this identical reason. → the second-sleeve value proposition is NOT Sharpe-improvement; it is (a) decorrelated CAPACITY (more capital at lower blended Sharpe — portfolio-size choice), (b) a SEPARATE capital pool (run standalone, not blended), or (c) a premium with Sharpe COMPARABLE to ORB (none reachable found).
+- **VERDICT: WATCH premium / not a combined-book improver** (same shelf as vol-carry: validated-decorrelated-but-can't-beat-2.76). Naive 1-contract sizing caveat noted (tiny allocations would offset ORB tail marginally but contribution negligible).
+
+# REFILLED PREMIUM QUEUE (immediate short queue empties ≠ program done)
+Different-premium lanes still open (report-only): cross-sectional momentum / relative-strength (rank assets, long-strong/short-weak — distinct from TS-momentum); calendar/settlement/auction flows; vol-regime OVERLAYS on ORB (not standalone); strict cointegration on arb-bounded spreads (WTI-Brent needs Brent leg = class-C); macro-event sparse sleeves; options/expiry/gamma where reachable. Data-tier packetization: true VIX-futures curve, front/2nd futures term structure, tick/L2/order-flow, better COT transforms. Library → 100+ continues. WH-family ideas → engine.
+
 # UPDATED PRIORITY QUEUE (post untried-assets batch)
 **Class-E process (install — hardens the machine, highest leverage):** L1 Deflated-SR+PBO → L2 CPCV → I1 premia-classification.
 **ORB-improvement lead:** L3 meta-labeling on ORB (the one untried improvement angle; N4-sizing failed but feature-based precision filtering is different).
