@@ -16,6 +16,7 @@ Usage: python3 research/forge_learning_loop_audit.py [--fix] [--commit]
 from __future__ import annotations
 
 import argparse
+import datetime as _dt
 import re
 import subprocess
 import sys
@@ -87,7 +88,17 @@ def audit(fix=False, commit=False):
     if fix and missing and commit and repaired:
         subprocess.run(["git", "-C", str(MEM_DIR), "add", "MEMORY.md"], capture_output=True)  # memory dir may be its own repo or not
         print("  (index repaired in place; commit memory dir manually if version-controlled)")
-    print(f"\n=== VERDICT: {'CLEAN — loop closed' if not drift else 'DRIFT_FOUND' + (' (index repaired)' if (fix and repaired) else ' (run with --fix to repair index; commit forge artifacts)')} ===")
+    verdict = 'CLEAN — loop closed' if not drift else 'DRIFT_FOUND' + (' (index repaired)' if (fix and repaired) else ' (run with --fix to repair index; commit forge artifacts)')
+    print(f"\n=== VERDICT: {verdict} ===")
+    # persistent dated HEARTBEAT (append one line per run) — makes scheduled firing self-evidencing
+    try:
+        hist = REPO / "research" / "logs" / "learning_loop_audit_history.log"
+        hist.parent.mkdir(parents=True, exist_ok=True)
+        ts = _dt.datetime.now().astimezone().strftime("%Y-%m-%d %H:%M:%S %Z")
+        with hist.open("a") as fh:
+            fh.write(f"{ts} | verdict={'CLEAN' if not drift else 'DRIFT'} | indexed={len(mem_files)-len(missing)}/{len(mem_files)} | uncommitted={len(uncommitted)} | repaired={repaired} | fix={fix}\n")
+    except Exception:
+        pass
     return 0 if (not drift or (fix and repaired and not uncommitted)) else 1
 
 
