@@ -66,15 +66,22 @@ def deflated_sharpe(returns, n_trials, sr_trials_std=None):
     g3 = float(((r - mu) ** 3).mean() / sd ** 3)    # skew
     g4 = float(((r - mu) ** 4).mean() / sd ** 4)    # kurtosis (normal=3)
     se_sr = math.sqrt(max(1e-12, (1 - g3 * sr + (g4 - 1) / 4 * sr ** 2) / (n - 1)))
-    if sr_trials_std is None:
-        sr_trials_std = se_sr * math.sqrt(n - 1) * 0.5   # conservative fallback dispersion proxy
-    sr0 = expected_max_sharpe(n_trials, sr_trials_std)
-    dsr = _norm_cdf((sr - sr0) / se_sr)
+    # FIX (2026-06-24): the old fallback (se_sr*sqrt(n-1)*0.5) mis-scales the deflation benchmark for
+    # per-period/daily Sharpes -> spurious DSR~0 (bit L3 + VX-carry). Proper deflation REQUIRES the
+    # cross-trial Sharpe dispersion. If not provided, do NOT fabricate a benchmark: report PSR (Probabilistic
+    # Sharpe Ratio = P(true SR > 0)), and flag deflation as not-applied so callers know to pass sr_trials_std.
+    deflated = sr_trials_std is not None
+    sr0 = expected_max_sharpe(n_trials, sr_trials_std) if deflated else 0.0
+    val = _norm_cdf((sr - sr0) / se_sr)   # deflated => DSR; else => PSR(>0)
+    label = "dsr" if deflated else "psr"
+    passes = val >= 0.95
     return {"sr_per_period": round(sr, 4), "sr_annualized_252": round(sr * math.sqrt(252), 3),
             "skew": round(g3, 3), "kurtosis": round(g4, 3), "se_sr": round(se_sr, 5),
-            "n_trials": int(n_trials), "sr0_benchmark": round(sr0, 4),
-            "dsr": round(dsr, 4), "passes": bool(dsr >= 0.95),
-            "verdict": "DSR_PASS" if dsr >= 0.95 else ("DSR_MARGINAL" if dsr >= 0.90 else "DSR_FAIL_likely_overfit")}
+            "n_trials": int(n_trials), "sr0_benchmark": round(sr0, 4), "deflation_applied": deflated,
+            label: round(val, 4), "dsr": round(val, 4), "passes": bool(passes),
+            "verdict": (("DSR_PASS" if deflated else "PSR_PASS_SR>0_significant") if passes else
+                        ("DSR_MARGINAL" if val >= 0.90 else ("DSR_FAIL_likely_overfit" if deflated else "PSR_FAIL_SR_not_sig"))),
+            "note": None if deflated else "PSR only (no trial dispersion passed); pass sr_trials_std (std of Sharpe across sweep trials) for true multiple-testing deflation"}
 
 
 if __name__ == "__main__":

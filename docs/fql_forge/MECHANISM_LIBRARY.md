@@ -317,6 +317,15 @@ Construction-first (audit → rolling no-lookahead beta → stationarity → str
 - **WTI-Brent = CONSTRUCTION-BLOCKED** (more likely-stationary econ spread, but no tradable Brent leg in our data → class-C feed need; not faked on daily proxy).
 - **Lesson:** cointegration on a TRENDING macro series (rate curve) fails; mean-reversion premium needs a genuinely range-bound/arb-bounded spread. The ADF gate prevented overfitting a spread into existence.
 
+# VX term-structure carry / VRP (2026-06-24g) → WATCH_vol_carry (strongest non-ORB lead; 2 caveats) + DSR-gate FIX
+Volatility premium (genuinely different). ^VIX/^VIX3M slope → contango-only long SVXY (short-vol), backwardation→flat. No-lookahead (prior-close slope). 2016-2026.
+- **Term-structure crash-timing WORKS:** maxDD −43% vs −181% (unconditional always-short-vol), Feb-2018 −17% vs −125%, Mar-2020 −14% vs −71%, Sharpe 0.89 vs 0.43, 8/11 yrs+. The carry is real and timing earns its keep.
+- **Statistically credible:** PSR≈significant (Sharpe 0.89 over 10yr ~3SE>0). [DSR auto-verdict said PASS_REVIEW — OVERRIDDEN, see below.]
+- **CAVEAT 1 — only half-diversifying:** corr-to-ORB = 0.50 (short-vol = long-risk-on). Real risk = COINCIDENT drawdowns with ORB in risk-off events (unrun sleeve-addition question).
+- **CAVEAT 2 — prop-incompatible tail:** −43% maxDD, −18% worst-day. Needs vol-targeting / small-sleeve cap; not deployable at size as-is.
+- **VERDICT: WATCH_vol_carry (NOT PASS_REVIEW).** Auto-logic credited PSR+timing+robust but lacked a decorrelation/tail gate; PSR-pass ≠ research-candidate. STATISTICALLY_CREDIBLE_CANDIDATE pending: (a) sleeve-addition battery vs ORB (does it offset or COMPOUND ORB bad days? 0.50 corr is the flag), (b) tail-sizing for prop viability. First different-premium that didn't die.
+- **DSR-GATE FIX (forge_deflated_sharpe.py):** old fallback mis-scaled deflation benchmark for per-period/daily Sharpes → spurious DSR~0 (bit L3 + VX). Fixed: without trial-dispersion, report PSR (P(SR>0)) not a fabricated benchmark; true multiple-testing deflation requires caller to pass sr_trials_std (works correctly, self-test confirms). L3's bootstrap workaround already gave the honest p=0.098.
+
 # UPDATED PRIORITY QUEUE (post untried-assets batch)
 **Class-E process (install — hardens the machine, highest leverage):** L1 Deflated-SR+PBO → L2 CPCV → I1 premia-classification.
 **ORB-improvement lead:** L3 meta-labeling on ORB (the one untried improvement angle; N4-sizing failed but feature-based precision filtering is different).

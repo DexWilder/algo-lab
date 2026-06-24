@@ -1,0 +1,86 @@
+{
+  "cycle": "2026-06-24g_VX_carry",
+  "result": {
+    "timed": {
+      "n": 2510,
+      "ann_ret_pct": 30.9,
+      "sharpe": 0.89,
+      "maxDD_pct": -43.0,
+      "MAR": 7.16,
+      "worst_day_pct": -18.3,
+      "pf": 1.186,
+      "h1_sharpe": 1.1,
+      "h2_sharpe": 0.63,
+      "yrs_pos": "8/11",
+      "per_year_pct": {
+        "2016": 64.8,
+        "2017": 112.6,
+        "2018": -28.8,
+        "2019": 23.4,
+        "2020": 11.4,
+        "2021": 43.3,
+        "2022": -2.9,
+        "2023": 60.6,
+        "2024": 4.7,
+        "2025": 28.8,
+        "2026": -9.9
+      }
+    },
+    "unconditional_shortvol": {
+      "n": 2510,
+      "ann_ret_pct": 21.3,
+      "sharpe": 0.43,
+      "maxDD_pct": -180.6,
+      "MAR": 1.17,
+      "worst_day_pct": -83.0,
+      "pf": 1.102,
+      "h1_sharpe": 0.35,
+      "h2_sharpe": 0.6,
+      "yrs_pos": "9/11",
+      "per_year_pct": {
+        "2016": 82.8,
+        "2017": 115.7,
+        "2018": -137.0,
+        "2019": 47.9,
+        "2020": -31.5,
+        "2021": 47.3,
+        "2022": 1.2,
+        "2023": 60.6,
+        "2024": 5.4,
+        "2025": 17.0,
+        "2026": 2.4
+      }
+    },
+    "crises_timed_vs_uncond_pct": {
+      "feb2018": [
+        -17.4,
+        -124.5
+      ],
+      "mar2020": [
+        -14.4,
+        -70.8
+      ]
+    },
+    "corr_to_ORB_MNQ": 0.501,
+    "DSR": {
+      "sr_per_period": 0.0575,
+      "sr_annualized_252": 0.914,
+      "skew": -1.542,
+      "kurtosis": 12.386,
+      "se_sr": 0.02157,
+      "n_trials": 4,
+      "sr0_benchmark": 0.0,
+      "deflation_applied": false,
+      "psr": 0.9962,
+      "dsr": 0.9962,
+      "passes": true,
+      "verdict": "PSR_PASS_SR>0_significant",
+      "note": "PSR only (no trial dispersion passed); pass sr_trials_std (std of Sharpe across sweep trials) for true multiple-testing deflation"
+    },
+    "term_structure_timing_beats_uncond": "True",
+    "avoids_crises": true,
+    "verdict": "PASS_REVIEW_vol_premium",
+    "contango_pct_days": 92.0
+  },
+  "note": "VIX term-structure-timed short-vol carry; volatility premium; vs unconditional short-vol; crisis-tail tested; report-only"
+}
