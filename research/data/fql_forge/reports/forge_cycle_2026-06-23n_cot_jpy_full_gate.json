@@ -1,0 +1,72 @@
+{
+  "cycle": "2026-06-23n_cot_jpy_full_gate",
+  "primary": {
+    "n": 105,
+    "pf": 1.33,
+    "mean_bps": 15.3,
+    "win_pct": 59.0,
+    "h1_pf": 1.564,
+    "h2_pf": 1.122,
+    "max_single_pct": 5.1,
+    "top3_pct": 13.4,
+    "long_n": 63,
+    "short_n": 42,
+    "long_pf": 4.902,
+    "short_pf": 0.348,
+    "long_mean_bps": 65.1,
+    "short_mean_bps": -59.3,
+    "yrs_pos": "4/8",
+    "per_year_bps": {
+      "2019": -121.0,
+      "2020": -121.0,
+      "2021": 109.0,
+      "2022": -6.0,
+      "2023": 38.0,
+      "2024": 28.0,
+      "2025": -44.0,
+      "2026": 6.0
+    },
+    "worst3_pct": [
+      -2.72,
+      -2.37,
+      -2.17
+    ],
+    "corr_to_MNQ": 0.151
+  },
+  "robustness": {
+    "lag_+1wk_conservative": {
+      "n": 105,
+      "pf": 1.395,
+      "mean_bps": 17.5,
+      "h1_pf": 1.564,
+      "h2_pf": 1.23,
+      "yrs_pos": "3/8"
+    },
+    "horizon_2wk": {
+      "n": 104,
+      "pf": 1.499,
+      "mean_bps": 32.2,
+      "h1_pf": 1.63,
+      "h2_pf": 1.339,
+      "yrs_pos": "4/8"
+    },
+    "z_thr_2.0": {
+      "n": 46,
+      "pf": 1.84,
+      "mean_bps": 32.1,
+      "h1_pf": 2.552,
+      "h2_pf": 1.34,
+      "yrs_pos": "6/7"
+    },
+    "cost_12bps": {
+      "n": 105,
+      "pf": 1.191,
+      "mean_bps": 9.3,
+      "h1_pf": 1.408,
+      "h2_pf": 0.999,
+      "yrs_pos": "3/8"
+    }
+  },
+  "verdict": "KILL",
+  "note": "COT-JPY spec-extreme fade; report-only; sparse/tail archetype; both-sides + cost + lag + per-year gated"
+}
