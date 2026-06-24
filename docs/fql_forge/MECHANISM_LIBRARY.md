@@ -310,6 +310,13 @@ Improve ORB precision via entry-time features (purged/embargoed CV, no leakage, 
 - **DURABLE TAKEAWAY (regime knowledge, corroborated):** stable sign-1.0 coefs say ORB wins more on prior-day-UP (trend-align +0.21), HIGH realized vol (+0.17, RE-CONFIRMS MGC low-vol-exclusion), EARLY entry (entry_hour −0.11). Retained as research note + borderline (p~0.10) WATCH regime-filter to revisit with more data. NOT tradeable now.
 - **STRATEGIC CLOSE:** FIP (add similar entry)=ORB-lite; N4 (broad-vol resize)=hurt; L3 (select ORB signals)=marginal/insignificant. **Flat ORB is hard to improve AND hard to beat.** Confirmed: the second edge needs a DIFFERENT PREMIUM (carry/positioning/vol/value/mean-reversion), not more momentum. → pivot to different-premium queue.
 
+# C1 cointegration ZN-ZF (2026-06-24f, first different-premium test) → KILL_not_stationary
+Construction-first (audit → rolling no-lookahead beta → stationarity → strategy). **Stationarity gate caught it up front:** ADF-t(spread)=−1.05 (need <−2.9), half-life 569d → spread TRENDS (Fed-cycle curve 2019-23), does NOT mean-revert. z-band reversion faded the trend → lost EVERY year (0/8, net −$627k, PF 0.39, no-stop unbounded hold). KILL.
+- **USEFUL: decorrelation confirmed** — corr to ORB/MNQ −0.069. Rates ARE a different premium SPACE that would diversify equity; the problem is the mean-reversion EXPRESSION, not the space.
+- **Reconciles with deployment:** the rates edge that WORKS is CARRY (Treasury-Rolldown-Carry-Spread, already in probation) — carry harvests the curve, reversion fights its trend. Consistent.
+- **WTI-Brent = CONSTRUCTION-BLOCKED** (more likely-stationary econ spread, but no tradable Brent leg in our data → class-C feed need; not faked on daily proxy).
+- **Lesson:** cointegration on a TRENDING macro series (rate curve) fails; mean-reversion premium needs a genuinely range-bound/arb-bounded spread. The ADF gate prevented overfitting a spread into existence.
+
 # UPDATED PRIORITY QUEUE (post untried-assets batch)
 **Class-E process (install — hardens the machine, highest leverage):** L1 Deflated-SR+PBO → L2 CPCV → I1 premia-classification.
 **ORB-improvement lead:** L3 meta-labeling on ORB (the one untried improvement angle; N4-sizing failed but feature-based precision filtering is different).

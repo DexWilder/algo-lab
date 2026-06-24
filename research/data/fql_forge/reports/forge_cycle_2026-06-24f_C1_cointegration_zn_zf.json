@@ -1,0 +1,47 @@
+{
+  "cycle": "2026-06-24f_C1_cointegration_zn_zf",
+  "result": {
+    "adf_t": -1.05,
+    "half_life_d": 569.1,
+    "beta_stability": 0.121,
+    "n_active_days": 1253,
+    "n_trades": 41,
+    "pf": 0.39,
+    "net_$": -627613.0,
+    "mean_$_day": -328.25,
+    "h1_pf": 0.481,
+    "h2_pf": 0.199,
+    "maxDD_$": -627613.0,
+    "worst_day_$": -22220.0,
+    "long_pf": 0.215,
+    "short_pf": 0.53,
+    "top5_pct": 29.4,
+    "yrs_pos": "0/8",
+    "per_year_$": {
+      "2019": 0.0,
+      "2020": -243440.0,
+      "2021": -85889.0,
+      "2022": -35402.0,
+      "2023": -91089.0,
+      "2024": -53417.0,
+      "2025": -81807.0,
+      "2026": -36571.0
+    },
+    "corr_to_MNQ_ORBproxy": -0.069,
+    "cost_rt_$": 29.64,
+    "DSR": {
+      "sr_per_period": -0.182,
+      "sr_annualized_252": -2.889,
+      "skew": 2.063,
+      "kurtosis": 56.537,
+      "se_sr": 0.03799,
+      "n_trials": 4,
+      "sr0_benchmark": 0.7127,
+      "dsr": 0.0,
+      "passes": false,
+      "verdict": "DSR_FAIL_likely_overfit"
+    },
+    "verdict": "KILL_not_stationary"
+  },
+  "note": "ZN-ZF rolling-beta cointegration reversion; construction-audited; relative-value premium; report-only"
+}
