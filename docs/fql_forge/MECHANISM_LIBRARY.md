@@ -334,6 +334,14 @@ Decisive test: does VX offset or compound ORB's worst days?
 - **VERDICT: ARCHIVE this expression / WATCH the premium.** A +0.06-Sharpe sprinkle that drags good years + huge standalone tail isn't deployment-worthy. BUT vol-carry is now the FIRST VALIDATED genuinely-decorrelated, ORB-offsetting premium — strategically the key finding. Pursue a BETTER vol expression (cleaner instrument / VIX-futures sleeve / optimized crash-filter) rather than the raw SVXY-contango version; or hold as a small future sleeve.
 - Lesson: correlate candidate vs the ACTUAL strategy PnL, never a buy-and-hold proxy (the proxy inflated corr 0.50→true −0.16).
 
+# vol-carry CLEANER expression (2026-06-24i, the one disciplined attempt) → STOP branch / premium retained-small
+Short-VXX (no SVXY leverage-reset), graded-by-slope exposure, 4-guard crash filter, prior-close no-lookahead. Judged on combined ORB book.
+- **WORSE than the raw version** — not even tail-reduction success: +$3k → Sharpe 2.76→2.61 (lift −0.15), net $51717→$50484 (VX contributed −$1.2k). $6k+ → DLL breaches. **avg exposure 0.65** (NOT hiding by sitting out — negative result is genuine).
+- **Offset weakened:** worst-10/20 offset (+0.26/+0.19%) but worst-50 COMPOUNDS (−0.16%). Dragged 2022 (+$6.7k vs +$9.2k).
+- **3-WAY (decisive):** ORB alone Sharpe 2.76 | +raw-SVXY-$2k 2.82 (marginal+) | +clean-VXX-$3k 2.61 (worse). Cleaner vehicle did NOT help → limit is the EXTRACTABLE diversification benefit, not the vehicle.
+- **VERDICT: STOP vol-carry branch.** One disciplined attempt spent. **PREMIUM RETAINED as VALIDATED-BUT-SMALL/future-sleeve** (decorrelation −0.09/−0.16 + bad-day offset finding stands); revisit only with actual VIX-futures data (class-C) — marginal benefit doesn't justify the feed now.
+- **Pivot → next different-premium: COT-commercial positioning** (genuinely different; commercial-hedger angle, untested — JPY was spec-fade).
+
 # UPDATED PRIORITY QUEUE (post untried-assets batch)
 **Class-E process (install — hardens the machine, highest leverage):** L1 Deflated-SR+PBO → L2 CPCV → I1 premia-classification.
 **ORB-improvement lead:** L3 meta-labeling on ORB (the one untried improvement angle; N4-sizing failed but feature-based precision filtering is different).
