@@ -294,6 +294,14 @@ Theme: classify every edge by which RISK PREMIUM it harvests → ensures the ens
 - **mechanism:** 1-12mo trend persistence (Ilmanen/Moskowitz TSMOM). **data:** HAVE daily futures. **instruments:** MCL/MGC/MES/ZN/6E. **direction:** long past-winners/short past-losers. **cadence:** daily/weekly. **cheap-screen:** forward return by trailing-trend sign, per asset, cost. **kill:** no persistence after cost / not cross-asset. **reachability:** HAVE.
 ### I3 — Defensive / low-vol anomaly *(class B, priority 2)*; ### I4 — Value/mean-reversion to fundamentals *(class B, priority 2)*; ### I5 — VRP harvest *(class B/C — see O1/N1, partially tested)*; ### I6 — Cross-premia business-cycle conditioning *(class C, priority 3 — condition sleeve weights on macro regime via the FRED/rates feeds we have)*.
 
+# WH untried-assets engine sweep (2026-06-24d) → NO survivor; ORB-dominant across 9-asset universe
+216 runs (M2K/MCL/MYM/6E/6J/6B × 6 entries × 3 filters × 2 exits), 1021s. **No family-supported non-ORB WH** (none clears n≥50 + PF≥1.25 + median>0 + H1/H2>1 + top10<35 + neighbor-filter support).
+- **ORB|ema_slope|profit_ladder is best/near-best on EVERY asset:** M2K PF 1.28 (8/8 yrs, med +6.8), MCL 1.197 (5/6), MYM 1.551 (3/3, capped), 6E 1.406 (3/3), 6J 1.239 (3/3), 6B 1.068 (2/3). Universal across equity/energy/FX micros.
+- **Every non-ORB challenger is fat-tailed, NEGATIVE median** (first_impulse_pullback −12/−14, range_compression −10/−30, vol_expansion −17, prior_day_break −11) → fails workhorse median gate everywhere, same signature as MNQ/MES/MGC. Higher-PF ones (MYM range-comp 1.60, 6B prior-day 1.47) are 3yr + concentrated (top10 30-48%) + median-neg → rejected/capped.
+- **SCOPED conclusion (NOT "WH dead"):** tested engine-routed WH mechanisms are ORB-DOMINATED across the full 9-asset micro universe. Per Ilmanen premia-lens (I1): every WH harvests the SAME premium (intraday momentum) → challengers return ORB-lite or fat-tailed. **Implication: a second WH likely needs a DIFFERENT premium (carry/positioning/vol/value/mean-reversion) or a better data tier — not another momentum entry.**
+- **Minor note:** ORB works on 6E/6J FX (3yr, capped WATCH) — a possible same-premium cross-asset ORB extension, but more momentum instances need decorrelation proof (sleeve-addition); low priority.
+- **Branch → L3 ORB meta-labeling** (improve the proven book) is now the highest-value WH-adjacent test. Non-ORB fat-tailed entries → possible tail-engine archetypes (not pursued now).
+
 # UPDATED PRIORITY QUEUE (post untried-assets batch)
 **Class-E process (install — hardens the machine, highest leverage):** L1 Deflated-SR+PBO → L2 CPCV → I1 premia-classification.
 **ORB-improvement lead:** L3 meta-labeling on ORB (the one untried improvement angle; N4-sizing failed but feature-based precision filtering is different).
