@@ -1,0 +1,162 @@
+{
+  "date": "2026-05-25",
+  "run_mode": "dry-run",
+  "candidates_tested": 5,
+  "verdict_counts": {
+    "PASS": 3,
+    "WATCH": 1,
+    "KILL": 1,
+    "RETEST": 0
+  },
+  "runtime_total_sec": 64.16980504989624,
+  "results": [
+    {
+      "candidate": "XB-BB-EMA-Ladder-MGC",
+      "asset": "MGC",
+      "gap": "Workhorse cross-asset",
+      "metrics": {
+        "label": "XB-BB-EMA-Ladder-MGC",
+        "n": 295,
+        "net": 4440.200000000001,
+        "pf": 1.5214366576946021,
+        "median": 3.76,
+        "max_dd": -637.24,
+        "max_single_pct": 7.8513928658589975,
+        "win_rate": 0.5152542372881356,
+        "sharpe": 0.7010298020873307,
+        "cost_block": {
+          "commission_per_side": 0.62,
+          "slippage_ticks": 1,
+          "tick_size": 0.1,
+          "total_commission": 365.8,
+          "total_slippage": 590.0,
+          "total_friction": 955.8,
+          "cost_tier": "VALIDATED",
+          "symbol": "MGC"
+        }
+      },
+      "verdict": "PASS",
+      "runtime_sec": 11.104023933410645
+    },
+    {
+      "candidate": "XB-BB-EMA-Ladder-MCL",
+      "asset": "MCL",
+      "gap": "Workhorse cross-asset / energy",
+      "metrics": {
+        "label": "XB-BB-EMA-Ladder-MCL",
+        "n": 463,
+        "net": -40.12000000000066,
+        "pf": 0.9966917670185991,
+        "median": -2.24,
+        "max_dd": -1209.8000000000009,
+        "max_single_pct": 1.8532682043666364,
+        "win_rate": 0.47516198704103674,
+        "sharpe": -0.01007258478380218,
+        "cost_block": {
+          "commission_per_side": 0.62,
+          "slippage_ticks": 2,
+          "tick_size": 0.01,
+          "total_commission": 574.12,
+          "total_slippage": 1852.0,
+          "total_friction": 2426.12,
+          "cost_tier": "VALIDATED",
+          "symbol": "MCL"
+        }
+      },
+      "verdict": "KILL",
+      "runtime_sec": 14.453994035720825
+    },
+    {
+      "candidate": "XB-BB-EMA-Ladder-MYM",
+      "asset": "MYM",
+      "gap": "Workhorse cross-asset",
+      "metrics": {
+        "label": "XB-BB-EMA-Ladder-MYM",
+        "n": 239,
+        "net": 3017.640000000001,
+        "pf": 1.5512114215571664,
+        "median": 0.26,
+        "max_dd": -645.9200000000005,
+        "max_single_pct": 6.3848738003660115,
+        "win_rate": 0.502092050209205,
+        "sharpe": 0.7979970532133829,
+        "cost_block": {
+          "commission_per_side": 0.62,
+          "slippage_ticks": 2,
+          "tick_size": 1.0,
+          "total_commission": 296.36,
+          "total_slippage": 478.0,
+          "total_friction": 774.36,
+          "cost_tier": "VALIDATED",
+          "symbol": "MYM"
+        }
+      },
+      "verdict": "PASS",
+      "runtime_sec": 6.863954067230225
+    },
+    {
+      "candidate": "XB-VWAP-EMA-Ladder-MES",
+      "asset": "MES",
+      "gap": "Workhorse cross-asset / VWAP closeout test",
+      "metrics": {
+        "label": "XB-VWAP-EMA-Ladder-MES",
+        "n": 885,
+        "net": 2372.5999999999985,
+        "pf": 1.08806811749295,
+        "median": -2.49,
+        "max_dd": -3543.8699999999917,
+        "max_single_pct": 1.5554732299894658,
+        "win_rate": 0.49265536723163844,
+        "sharpe": 0.36015508679927655,
+        "cost_block": {
+          "commission_per_side": 0.62,
+          "slippage_ticks": 1,
+          "tick_size": 0.25,
+          "total_commission": 1097.4,
+          "total_slippage": 2212.5,
+          "total_friction": 3309.9,
+          "cost_tier": "VALIDATED",
+          "symbol": "MES"
+        }
+      },
+      "verdict": "WATCH",
+      "runtime_sec": 20.804533004760742
+    },
+    {
+      "candidate": "XB-VWAP-EMA-Ladder-MGC",
+      "asset": "MGC",
+      "gap": "Workhorse cross-asset / VWAP closeout test",
+      "metrics": {
+        "label": "XB-VWAP-EMA-Ladder-MGC",
+        "n": 379,
+        "net": 3449.04,
+        "pf": 1.273823738631167,
+        "median": -0.24,
+        "max_dd": -1869.6399999999978,
+        "max_single_pct": 4.927390093545134,
+        "win_rate": 0.49604221635883905,
+        "sharpe": 0.5060564503480842,
+        "cost_block": {
+          "commission_per_side": 0.62,
+          "slippage_ticks": 1,
+          "tick_size": 0.1,
+          "total_commission": 469.96,
+          "total_slippage": 758.0,
+          "total_friction": 1227.96,
+          "cost_tier": "VALIDATED",
+          "symbol": "MGC"
+        }
+      },
+      "verdict": "PASS",
+      "runtime_sec": 10.9432532787323
+    }
+  ],
+  "next_batch_recommendation": [
+    "XB-PB-EMA-Ladder-MES",
+    "XB-PB-EMA-Ladder-MGC",
+    "XB-PB-EMA-Ladder-MCL",
+    "XB-PB-EMA-Ladder-MYM",
+    "XB-BB-EMA-Ladder-MES"
+  ],
+  "tripwires_fired": []
+}

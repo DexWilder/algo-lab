@@ -1,0 +1,112 @@
+{
+  "date": "2026-05-15",
+  "run_mode": "dry-run",
+  "candidates_tested": 5,
+  "verdict_counts": {
+    "PASS": 2,
+    "WATCH": 3,
+    "KILL": 0,
+    "RETEST": 0
+  },
+  "runtime_total_sec": 92.52089595794678,
+  "results": [
+    {
+      "candidate": "XB-ORB-EMA-MorningOnly-MNQ",
+      "asset": "MNQ",
+      "gap": "Sparse-session tail-engine \u2014 morning-only XB",
+      "metrics": {
+        "label": "XB-ORB-EMA-MorningOnly-MNQ",
+        "n": 1643,
+        "net": 4136.179999999988,
+        "pf": 1.0273676448850602,
+        "median": 10.26,
+        "max_dd": -11802.1199999999,
+        "max_single_pct": 0.449001883330136,
+        "win_rate": 0.5246500304321363,
+        "sharpe": 0.1650859122327388
+      },
+      "verdict": "WATCH",
+      "runtime_sec": 20.460093021392822
+    },
+    {
+      "candidate": "XB-ORB-EMA-AfternoonOnly-MNQ",
+      "asset": "MNQ",
+      "gap": "Sparse-session tail-engine \u2014 afternoon-only XB",
+      "metrics": {
+        "label": "XB-ORB-EMA-AfternoonOnly-MNQ",
+        "n": 1646,
+        "net": 7061.959999999992,
+        "pf": 1.0668952472466886,
+        "median": 6.76,
+        "max_dd": -4306.839999999958,
+        "max_single_pct": 0.7760240707427294,
+        "win_rate": 0.5255164034021871,
+        "sharpe": 0.36998335153061224
+      },
+      "verdict": "WATCH",
+      "runtime_sec": 20.667128086090088
+    },
+    {
+      "candidate": "XB-PB-EMA-MorningOnly-MNQ",
+      "asset": "MNQ",
+      "gap": "Sparse-session tail-engine \u2014 morning-only PB entry",
+      "metrics": {
+        "label": "XB-PB-EMA-MorningOnly-MNQ",
+        "n": 2070,
+        "net": 9160.199999999986,
+        "pf": 1.0766856579519284,
+        "median": -2.74,
+        "max_dd": -4399.279999999885,
+        "max_single_pct": 0.4413238004769438,
+        "win_rate": 0.49420289855072463,
+        "sharpe": 0.5038987394461608
+      },
+      "verdict": "WATCH",
+      "runtime_sec": 20.43249487876892
+    },
+    {
+      "candidate": "XB-BB-EMA-AfternoonOnly-MGC",
+      "asset": "MGC",
+      "gap": "Sparse-session tail-engine \u2014 BB entry MGC, afternoon-restricted",
+      "metrics": {
+        "label": "XB-BB-EMA-AfternoonOnly-MGC",
+        "n": 382,
+        "net": 1895.3200000000002,
+        "pf": 1.2135244627302182,
+        "median": -2.24,
+        "max_dd": -2271.959999999999,
+        "max_single_pct": 6.854424156302613,
+        "win_rate": 0.4397905759162304,
+        "sharpe": 0.3202698352686219
+      },
+      "verdict": "PASS",
+      "runtime_sec": 10.681937217712402
+    },
+    {
+      "candidate": "XB-ORB-EMA-Chandelier-MNQ",
+      "asset": "MNQ",
+      "gap": "Asymmetric exit alt \u2014 chandelier trailing exit instead of profit_ladder",
+      "metrics": {
+        "label": "XB-ORB-EMA-Chandelier-MNQ",
+        "n": 1206,
+        "net": 32910.06,
+        "pf": 1.5752748676136046,
+        "median": -4.49,
+        "max_dd": -1650.6200000000001,
+        "max_single_pct": 1.1703773028825901,
+        "win_rate": 0.48507462686567165,
+        "sharpe": 2.06752173454876
+      },
+      "verdict": "PASS",
+      "runtime_sec": 20.27918815612793
+    }
+  ],
+  "next_batch_recommendation": [
+    "XB-PB-EMA-Ladder-MES",
+    "XB-PB-EMA-Ladder-MGC",
+    "XB-PB-EMA-Ladder-MCL",
+    "XB-PB-EMA-Ladder-MYM",
+    "XB-BB-EMA-Ladder-MES"
+  ],
+  "tripwires_fired": []
+}

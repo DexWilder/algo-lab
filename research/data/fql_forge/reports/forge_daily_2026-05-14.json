@@ -1,0 +1,112 @@
+{
+  "date": "2026-05-14",
+  "run_mode": "dry-run",
+  "candidates_tested": 5,
+  "verdict_counts": {
+    "PASS": 4,
+    "WATCH": 1,
+    "KILL": 0,
+    "RETEST": 0
+  },
+  "runtime_total_sec": 59.88106894493103,
+  "results": [
+    {
+      "candidate": "XB-BB-EMA-Ladder-MYM",
+      "asset": "MYM",
+      "gap": "Workhorse cross-asset",
+      "metrics": {
+        "label": "XB-BB-EMA-Ladder-MYM",
+        "n": 238,
+        "net": 3769.0,
+        "pf": 1.7405442577856371,
+        "median": 2.0,
+        "max_dd": -343.0,
+        "max_single_pct": 6.416690564955549,
+        "win_rate": 0.5042016806722689,
+        "sharpe": 0.9967004484144569
+      },
+      "verdict": "PASS",
+      "runtime_sec": 6.770677089691162
+    },
+    {
+      "candidate": "XB-VWAP-EMA-Ladder-MES",
+      "asset": "MES",
+      "gap": "Workhorse cross-asset / VWAP closeout test",
+      "metrics": {
+        "label": "XB-VWAP-EMA-Ladder-MES",
+        "n": 881,
+        "net": 2598.8099999999977,
+        "pf": 1.0974092638897062,
+        "median": -2.49,
+        "max_dd": -3543.8699999999917,
+        "max_single_pct": 1.5637076711404876,
+        "win_rate": 0.49375709421112374,
+        "sharpe": 0.39540935369207153
+      },
+      "verdict": "WATCH",
+      "runtime_sec": 20.812245845794678
+    },
+    {
+      "candidate": "XB-VWAP-EMA-Ladder-MGC",
+      "asset": "MGC",
+      "gap": "Workhorse cross-asset / VWAP closeout test",
+      "metrics": {
+        "label": "XB-VWAP-EMA-Ladder-MGC",
+        "n": 373,
+        "net": 3135.4800000000005,
+        "pf": 1.2516517384185688,
+        "median": -0.24,
+        "max_dd": -1869.6399999999978,
+        "max_single_pct": 5.030319362045834,
+        "win_rate": 0.4906166219839142,
+        "sharpe": 0.4636954965695744
+      },
+      "verdict": "PASS",
+      "runtime_sec": 10.966397047042847
+    },
+    {
+      "candidate": "XB-VWAP-EMA-Ladder-MCL",
+      "asset": "MCL",
+      "gap": "Workhorse cross-asset / VWAP closeout test",
+      "metrics": {
+        "label": "XB-VWAP-EMA-Ladder-MCL",
+        "n": 504,
+        "net": 3226.0,
+        "pf": 1.2833552920509441,
+        "median": 3.5,
+        "max_dd": -1407.0,
+        "max_single_pct": 2.138790583166641,
+        "win_rate": 0.5218253968253969,
+        "sharpe": 0.7931718271093462
+      },
+      "verdict": "PASS",
+      "runtime_sec": 14.58519196510315
+    },
+    {
+      "candidate": "XB-VWAP-EMA-Ladder-MYM",
+      "asset": "MYM",
+      "gap": "Workhorse cross-asset / VWAP closeout test",
+      "metrics": {
+        "label": "XB-VWAP-EMA-Ladder-MYM",
+        "n": 273,
+        "net": 3185.5,
+        "pf": 1.4912104857363147,
+        "median": 9.0,
+        "max_dd": -637.0,
+        "max_single_pct": 3.772708984556343,
+        "win_rate": 0.5531135531135531,
+        "sharpe": 0.9040037656312259
+      },
+      "verdict": "PASS",
+      "runtime_sec": 6.74621319770813
+    }
+  ],
+  "next_batch_recommendation": [
+    "XB-PB-EMA-Ladder-MES",
+    "XB-PB-EMA-Ladder-MGC",
+    "XB-PB-EMA-Ladder-MCL",
+    "XB-PB-EMA-Ladder-MYM",
+    "XB-BB-EMA-Ladder-MES"
+  ],
+  "tripwires_fired": []
+}

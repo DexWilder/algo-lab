@@ -1,0 +1,162 @@
+{
+  "date": "2026-05-27",
+  "run_mode": "dry-run",
+  "candidates_tested": 5,
+  "verdict_counts": {
+    "PASS": 3,
+    "WATCH": 2,
+    "KILL": 0,
+    "RETEST": 0
+  },
+  "runtime_total_sec": 93.93061089515686,
+  "results": [
+    {
+      "candidate": "XB-BB-EMA-AfternoonOnly-MGC",
+      "asset": "MGC",
+      "gap": "Sparse-session tail-engine \u2014 BB entry MGC, afternoon-restricted",
+      "metrics": {
+        "label": "XB-BB-EMA-AfternoonOnly-MGC",
+        "n": 383,
+        "net": 1747.0800000000004,
+        "pf": 1.1935908516720963,
+        "median": -2.24,
+        "max_dd": -2271.959999999999,
+        "max_single_pct": 6.803096339312235,
+        "win_rate": 0.4386422976501306,
+        "sharpe": 0.2946301143043183,
+        "cost_block": {
+          "commission_per_side": 0.62,
+          "slippage_ticks": 1,
+          "tick_size": 0.1,
+          "total_commission": 474.92,
+          "total_slippage": 766.0,
+          "total_friction": 1240.92,
+          "cost_tier": "VALIDATED",
+          "symbol": "MGC"
+        }
+      },
+      "verdict": "PASS",
+      "runtime_sec": 10.889359951019287
+    },
+    {
+      "candidate": "XB-ORB-EMA-Chandelier-MNQ",
+      "asset": "MNQ",
+      "gap": "Asymmetric exit alt \u2014 chandelier trailing exit instead of profit_ladder",
+      "metrics": {
+        "label": "XB-ORB-EMA-Chandelier-MNQ",
+        "n": 1211,
+        "net": 32429.85999999999,
+        "pf": 1.56122074258668,
+        "median": -4.74,
+        "max_dd": -1650.6200000000001,
+        "max_single_pct": 1.1650495145705855,
+        "win_rate": 0.4838976052848885,
+        "sharpe": 2.033210133480084,
+        "cost_block": {
+          "commission_per_side": 0.62,
+          "slippage_ticks": 1,
+          "tick_size": 0.25,
+          "total_commission": 1501.64,
+          "total_slippage": 1211.0,
+          "total_friction": 2712.64,
+          "cost_tier": "VALIDATED",
+          "symbol": "MNQ"
+        }
+      },
+      "verdict": "PASS",
+      "runtime_sec": 20.599549055099487
+    },
+    {
+      "candidate": "XB-ORB-EMA-TimeStop-MNQ",
+      "asset": "MNQ",
+      "gap": "Asymmetric exit alt \u2014 fixed time-stop exit (tail-engine due to forced cutoff)",
+      "metrics": {
+        "label": "XB-ORB-EMA-TimeStop-MNQ",
+        "n": 1211,
+        "net": 27595.85999999999,
+        "pf": 1.4939197589309974,
+        "median": -0.74,
+        "max_dd": -1861.5599999999904,
+        "max_single_pct": 0.8445354588485249,
+        "win_rate": 0.495458298926507,
+        "sharpe": 1.9165455178565933,
+        "cost_block": {
+          "commission_per_side": 0.62,
+          "slippage_ticks": 1,
+          "tick_size": 0.25,
+          "total_commission": 1501.64,
+          "total_slippage": 1211.0,
+          "total_friction": 2712.64,
+          "cost_tier": "VALIDATED",
+          "symbol": "MNQ"
+        }
+      },
+      "verdict": "PASS",
+      "runtime_sec": 20.695080995559692
+    },
+    {
+      "candidate": "XB-ORB-EMA-MidlineTarget-MNQ",
+      "asset": "MNQ",
+      "gap": "Asymmetric exit alt \u2014 midline target (different exit philosophy)",
+      "metrics": {
+        "label": "XB-ORB-EMA-MidlineTarget-MNQ",
+        "n": 1211,
+        "net": 2186.359999999998,
+        "pf": 1.075756032284912,
+        "median": 0.26,
+        "max_dd": -2658.9999999999995,
+        "max_single_pct": 1.001111047308982,
+        "win_rate": 0.5078447563996696,
+        "sharpe": 0.34548431446466404,
+        "cost_block": {
+          "commission_per_side": 0.62,
+          "slippage_ticks": 1,
+          "tick_size": 0.25,
+          "total_commission": 1501.64,
+          "total_slippage": 1211.0,
+          "total_friction": 2712.64,
+          "cost_tier": "VALIDATED",
+          "symbol": "MNQ"
+        }
+      },
+      "verdict": "WATCH",
+      "runtime_sec": 21.063677072525024
+    },
+    {
+      "candidate": "XB-PB-EMA-Ladder-MES",
+      "asset": "MES",
+      "gap": "Workhorse cross-asset (PB + proven trio)",
+      "metrics": {
+        "label": "XB-PB-EMA-Ladder-MES",
+        "n": 1487,
+        "net": 6731.119999999994,
+        "pf": 1.1520818529660628,
+        "median": -3.74,
+        "max_dd": -1876.1100000000001,
+        "max_single_pct": 0.7467232303091984,
+        "win_rate": 0.4855413584398117,
+        "sharpe": 0.7751543974473436,
+        "cost_block": {
+          "commission_per_side": 0.62,
+          "slippage_ticks": 1,
+          "tick_size": 0.25,
+          "total_commission": 1843.88,
+          "total_slippage": 3717.5,
+          "total_friction": 5561.38,
+          "cost_tier": "VALIDATED",
+          "symbol": "MES"
+        }
+      },
+      "verdict": "WATCH",
+      "runtime_sec": 20.682894229888916
+    }
+  ],
+  "next_batch_recommendation": [
+    "XB-PB-EMA-Ladder-MGC",
+    "XB-PB-EMA-Ladder-MCL",
+    "XB-PB-EMA-Ladder-MYM",
+    "XB-BB-EMA-Ladder-MES",
+    "XB-BB-EMA-Ladder-MGC"
+  ],
+  "tripwires_fired": []
+}

@@ -8,7 +8,7 @@
     "KILL": 0,
     "RETEST": 0
   },
-  "runtime_total_sec": 77.3265221118927,
+  "runtime_total_sec": 74.29176211357117,
   "results": [
     {
       "candidate": "XB-PB-EMA-Ladder-MES",
@@ -26,7 +26,7 @@
         "sharpe": 0.7660385250355571
       },
       "verdict": "WATCH",
-      "runtime_sec": 21.254442930221558
+      "runtime_sec": 20.970447063446045
     },
     {
       "candidate": "XB-PB-EMA-Ladder-MGC",
@@ -34,17 +34,17 @@
       "gap": "Workhorse cross-asset",
       "metrics": {
         "label": "XB-PB-EMA-Ladder-MGC",
-        "n": 854,
-        "net": 5338.039999999997,
-        "pf": 1.1936848613447388,
+        "n": 855,
+        "net": 5176.799999999997,
+        "pf": 1.1867419290605763,
         "median": 3.76,
         "max_dd": -2218.599999999986,
-        "max_single_pct": 2.0546844038894507,
-        "win_rate": 0.5245901639344263,
-        "sharpe": 0.5890295705521552
+        "max_single_pct": 2.0492192696291136,
+        "win_rate": 0.5239766081871345,
+        "sharpe": 0.5706536476884105
       },
       "verdict": "WATCH",
-      "runtime_sec": 11.688658952713013
+      "runtime_sec": 11.002266883850098
     },
     {
       "candidate": "XB-PB-EMA-Ladder-MCL",
@@ -52,17 +52,17 @@
       "gap": "Workhorse cross-asset / energy",
       "metrics": {
         "label": "XB-PB-EMA-Ladder-MCL",
-        "n": 1061,
-        "net": 7386.0,
-        "pf": 1.3110156644770086,
+        "n": 1062,
+        "net": 7346.0,
+        "pf": 1.3088111652934253,
         "median": 6.0,
         "max_dd": -1093.0,
-        "max_single_pct": 0.9493094274989979,
-        "win_rate": 0.528746465598492,
-        "sharpe": 1.254332973173969
+        "max_single_pct": 0.9486180401296384,
+        "win_rate": 0.5282485875706214,
+        "sharpe": 1.247302187655817
       },
       "verdict": "PASS",
-      "runtime_sec": 15.560122013092041
+      "runtime_sec": 14.862796068191528
     },
     {
       "candidate": "XB-PB-EMA-Ladder-MYM",
@@ -80,7 +80,7 @@
         "sharpe": 0.9192948237776261
       },
       "verdict": "PASS",
-      "runtime_sec": 7.022078990936279
+      "runtime_sec": 6.67031192779541
     },
     {
       "candidate": "XB-BB-EMA-Ladder-MES",
@@ -88,17 +88,17 @@
       "gap": "Workhorse cross-asset (BB + proven trio)",
       "metrics": {
         "label": "XB-BB-EMA-Ladder-MES",
-        "n": 682,
-        "net": 2500.569999999999,
-        "pf": 1.1227334459278717,
+        "n": 683,
+        "net": 2376.829999999999,
+        "pf": 1.1159557668093,
         "median": -3.74,
         "max_dd": -1830.5400000000004,
-        "max_single_pct": 3.1908815440055216,
-        "win_rate": 0.48533724340175954,
-        "sharpe": 0.3625950225364478
+        "max_single_pct": 3.1817780430777347,
+        "win_rate": 0.48462664714494874,
+        "sharpe": 0.34430026687527554
       },
       "verdict": "WATCH",
-      "runtime_sec": 21.801130056381226
+      "runtime_sec": 20.78587508201599
     }
   ],
   "next_batch_recommendation": [

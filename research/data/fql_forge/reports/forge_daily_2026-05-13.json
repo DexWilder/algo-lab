@@ -1,0 +1,112 @@
+{
+  "date": "2026-05-13",
+  "run_mode": "dry-run",
+  "candidates_tested": 5,
+  "verdict_counts": {
+    "PASS": 4,
+    "WATCH": 1,
+    "KILL": 0,
+    "RETEST": 0
+  },
+  "runtime_total_sec": 67.77383804321289,
+  "results": [
+    {
+      "candidate": "XB-PB-EMA-Ladder-MCL",
+      "asset": "MCL",
+      "gap": "Workhorse cross-asset / energy",
+      "metrics": {
+        "label": "XB-PB-EMA-Ladder-MCL",
+        "n": 1066,
+        "net": 7346.0,
+        "pf": 1.3070685114743135,
+        "median": 6.0,
+        "max_dd": -1093.0,
+        "max_single_pct": 0.9439773880272503,
+        "win_rate": 0.5281425891181989,
+        "sharpe": 1.2450728662528916
+      },
+      "verdict": "PASS",
+      "runtime_sec": 14.727876901626587
+    },
+    {
+      "candidate": "XB-PB-EMA-Ladder-MYM",
+      "asset": "MYM",
+      "gap": "Workhorse cross-asset",
+      "metrics": {
+        "label": "XB-PB-EMA-Ladder-MYM",
+        "n": 467,
+        "net": 4101.0,
+        "pf": 1.3553880150786428,
+        "median": 3.5,
+        "max_dd": -772.0,
+        "max_single_pct": 2.4080206033848417,
+        "win_rate": 0.5117773019271948,
+        "sharpe": 0.9317203637185253
+      },
+      "verdict": "PASS",
+      "runtime_sec": 6.719968795776367
+    },
+    {
+      "candidate": "XB-BB-EMA-Ladder-MES",
+      "asset": "MES",
+      "gap": "Workhorse cross-asset (BB + proven trio)",
+      "metrics": {
+        "label": "XB-BB-EMA-Ladder-MES",
+        "n": 685,
+        "net": 2583.099999999999,
+        "pf": 1.1255900021976184,
+        "median": -3.74,
+        "max_dd": -1830.5400000000004,
+        "max_single_pct": 3.156578421877766,
+        "win_rate": 0.4846715328467153,
+        "sharpe": 0.3723154614572046
+      },
+      "verdict": "WATCH",
+      "runtime_sec": 20.664470672607422
+    },
+    {
+      "candidate": "XB-BB-EMA-Ladder-MGC",
+      "asset": "MGC",
+      "gap": "Workhorse cross-asset",
+      "metrics": {
+        "label": "XB-BB-EMA-Ladder-MGC",
+        "n": 292,
+        "net": 4602.92,
+        "pf": 1.5656193781150771,
+        "median": 3.76,
+        "max_dd": -637.24,
+        "max_single_pct": 8.074104585556503,
+        "win_rate": 0.5171232876712328,
+        "sharpe": 0.733687095375631
+      },
+      "verdict": "PASS",
+      "runtime_sec": 10.938731670379639
+    },
+    {
+      "candidate": "XB-BB-EMA-Ladder-MCL",
+      "asset": "MCL",
+      "gap": "Workhorse cross-asset / energy",
+      "metrics": {
+        "label": "XB-BB-EMA-Ladder-MCL",
+        "n": 461,
+        "net": 2290.0,
+        "pf": 1.2112546125461254,
+        "median": 3.0,
+        "max_dd": -874.0,
+        "max_single_pct": 1.8940342094284524,
+        "win_rate": 0.5140997830802603,
+        "sharpe": 0.5785489086381832
+      },
+      "verdict": "PASS",
+      "runtime_sec": 14.722517967224121
+    }
+  ],
+  "next_batch_recommendation": [
+    "XB-PB-EMA-Ladder-MES",
+    "XB-PB-EMA-Ladder-MGC",
+    "XB-BB-EMA-Ladder-MYM",
+    "XB-VWAP-EMA-Ladder-MES",
+    "XB-VWAP-EMA-Ladder-MGC"
+  ],
+  "tripwires_fired": []
+}
