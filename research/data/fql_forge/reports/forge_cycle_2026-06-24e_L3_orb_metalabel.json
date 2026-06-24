@@ -1,0 +1,58 @@
+{
+  "base_n": 960,
+  "base_pf": 1.684,
+  "base_winrate": 60.4,
+  "base_expectancy": 46.89,
+  "meta_n_retained": 489,
+  "retain_frac": 0.509,
+  "meta_pf": 2.038,
+  "meta_winrate": 63.0,
+  "meta_expectancy": 64.16,
+  "precision_lift_winrate_pp": 2.6,
+  "expectancy_lift_$": 17.27,
+  "feature_sign_stability": {
+    "or_size": 0.8,
+    "prior_range": 0.8,
+    "overnight_gap": 1.0,
+    "prior_ret": 1.0,
+    "entry_hour": 1.0,
+    "dow": 1.0,
+    "vix": 1.0,
+    "rv": 1.0,
+    "is_long": 0.6
+  },
+  "mean_coefs": {
+    "or_size": -0.041,
+    "prior_range": -0.046,
+    "overnight_gap": 0.098,
+    "prior_ret": 0.207,
+    "entry_hour": -0.11,
+    "dow": 0.065,
+    "vix": -0.069,
+    "rv": 0.17,
+    "is_long": -0.03
+  },
+  "lift_significance": {
+    "retained_exp_$": 64.16,
+    "all_exp_$": 46.89,
+    "lift_$": 17.27,
+    "lift_SE_$": 11.61,
+    "lift_t_approx": 1.49,
+    "bootstrap_p_vs_random_selection": 0.153,
+    "significant_at_0.05": false
+  },
+  "DSR_note": "DSR is for multi-trial SWEEPS; a single meta-model's credibility = OOS-lift significance above. Per-trade DSR fallback mis-scales (benchmark >> per-trade Sharpe) and is NOT used as the gate here.",
+  "verdict": "META_IMPROVES_screen_only",
+  "simple_rule": {
+    "rule": "keep ORB when composite z(prior_ret)+z(rv)-z(entry_hour) in top 67%",
+    "n_kept": 645,
+    "kept_frac": 0.672,
+    "kept_pf": 2.036,
+    "kept_exp_$": 66.22,
+    "all_exp_$": 46.89,
+    "lift_$": 19.33,
+    "bootstrap_p_vs_random": 0.098,
+    "significant": false
+  },
+  "regime_knowledge": "Stable coefs (corroborated): ORB wins more with prior-day-UP (trend-align), HIGH realized vol (matches MGC low-vol-exclusion), EARLY entry. Useful regime knowledge even though selection lift is not significant."
+}

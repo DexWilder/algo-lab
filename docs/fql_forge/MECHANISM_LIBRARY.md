@@ -302,6 +302,14 @@ Theme: classify every edge by which RISK PREMIUM it harvests → ensures the ens
 - **Minor note:** ORB works on 6E/6J FX (3yr, capped WATCH) — a possible same-premium cross-asset ORB extension, but more momentum instances need decorrelation proof (sleeve-addition); low priority.
 - **Branch → L3 ORB meta-labeling** (improve the proven book) is now the highest-value WH-adjacent test. Non-ORB fat-tailed entries → possible tail-engine archetypes (not pursued now).
 
+# L3 ORB meta-labeling (2026-06-24e) → META_IMPROVES_screen_only (NOT credible; regime knowledge retained)
+Improve ORB precision via entry-time features (purged/embargoed CV, no leakage, numpy logistic, matched-exposure). Audited a contradiction (PF 1.68→2.04 but DSR=0.0): DSR fallback mis-scales for per-trade single-model (it's for multi-trial SWEEPS, where the self-test confirms it works) → correct gate = OOS-lift significance vs RANDOM same-size selection.
+- **Meta-model (logistic, 51% retained):** PF 2.038, exp $64.16, lift +$17.27/trade, **bootstrap p=0.153 (NOT significant)**.
+- **Simple rule (top-3 stable features, 67% retained):** PF 2.036, exp $66.22, lift +$19.33, **p=0.098** — BEATS the black box (more trades, more significant) = "simple stable rule > fragile model" confirmed. Still sub-0.05.
+- **VERDICT: screen_only — NOT adopted.** Neither clears p<0.05. Deeper validation package NOT run (reserved for a real pass).
+- **DURABLE TAKEAWAY (regime knowledge, corroborated):** stable sign-1.0 coefs say ORB wins more on prior-day-UP (trend-align +0.21), HIGH realized vol (+0.17, RE-CONFIRMS MGC low-vol-exclusion), EARLY entry (entry_hour −0.11). Retained as research note + borderline (p~0.10) WATCH regime-filter to revisit with more data. NOT tradeable now.
+- **STRATEGIC CLOSE:** FIP (add similar entry)=ORB-lite; N4 (broad-vol resize)=hurt; L3 (select ORB signals)=marginal/insignificant. **Flat ORB is hard to improve AND hard to beat.** Confirmed: the second edge needs a DIFFERENT PREMIUM (carry/positioning/vol/value/mean-reversion), not more momentum. → pivot to different-premium queue.
+
 # UPDATED PRIORITY QUEUE (post untried-assets batch)
 **Class-E process (install — hardens the machine, highest leverage):** L1 Deflated-SR+PBO → L2 CPCV → I1 premia-classification.
 **ORB-improvement lead:** L3 meta-labeling on ORB (the one untried improvement angle; N4-sizing failed but feature-based precision filtering is different).
