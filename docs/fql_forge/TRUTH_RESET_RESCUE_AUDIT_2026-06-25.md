@@ -19,7 +19,17 @@
 ## B. Other strategies that use the `ema_slope` filter (same leak class)
 | Branch | Status | Note |
 |---|---|---|
-| xb_stop_run_reversal_ema_ladder (MNQ) — Phase 1A paper-prep port | **CONTAMINATED → RETEST_REQUIRED** | uses `filter_name="ema_slope"`; its PORT_VERIFIED_GREEN validation was against the leaky filter. **Phase 1A/1C paper-prep SUSPENDED** pending clean retest. [retest running; result appended] |
+| xb_stop_run_reversal_ema_ladder (MNQ) — **WIRED to paper probation 2026-06-15 (commit 52eb93c)** | **INVALIDATED — ACTIVE, DEACTIVATION RECOMMENDED** | uses `filter_name="ema_slope"`. Clean-vs-contaminated retest: **contaminated Sharpe 2.54 → clean 0.19** (retains 8% of net; maxDD −3051→−6959). Edge was ~entirely the lookahead. **This book has been executing PAPER probation signals for ~10 days on a contaminated validation.** It (and the ORB MNQ/MCL/MYM books, also wired + invalidated) should be DEACTIVATED — a registry/portfolio mutation that is OPERATOR-GATED (capital gate). Deactivation lever: status OUT of EVAL_STATES + controller_action=OFF. No capital was at risk (paper only). |
+
+## A.5 ACTIVE CONTAMINATED BOOKS — deactivation recommended (operator-gated portfolio mutation)
+All four currently-wired ORB/`ema_slope` probation books are INVALIDATED on clean point-in-time and are
+executing PAPER signals on contaminated validations. Recommend deactivation (NOT executed — registry/portfolio
+mutation is operator-gated):
+- XB-ORB-EMA-Ladder **MNQ** (live-forward probation) — clean Sharpe 0.27
+- XB-ORB-EMA-Ladder **MCL** (live-forward probation) — clean Sharpe −0.84
+- XB-ORB-EMA-Ladder **MYM** (live-forward probation) — clean Sharpe −0.09
+- xb_stop_run_reversal **MNQ** (Phase 1C wired 2026-06-15) — clean Sharpe 0.19
+Paper only — no capital was ever at risk. The fail-closed capital gate is why this stayed paper.
 
 ## C. Independent premia — re-audited STANDALONE (causality-first)
 | Branch | Status | Evidence |
