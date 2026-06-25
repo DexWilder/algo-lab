@@ -7,7 +7,7 @@ Add small, decorrelated, **regime-complementary stabilizer sleeves** alongside t
 
 ## 2. Instruments & exact construction
 - **Primary (incumbent, unchanged):** ORB = `orb_breakout | ema_slope | profit_ladder`, MNQ, params stop_mult 0.5 / target 4.0 / trail 2.5. 1 contract baseline.
-- **Sleeve A — TSMOM:** time-series momentum, 126-day (6mo) trailing-return SIGN, held, daily, pooled equal-contract across MNQ/MES/MGC/MCL. No flip. (MCL leg is the weakest — see open items.)
+- **Sleeve A — TSMOM:** time-series momentum, 126-day (6mo) trailing-return SIGN, held, daily, pooled equal-contract across **MNQ/MES/MGC** (MCL leg DROPPED 2026-06-25 — see §14: standalone Sharpe −0.30/net −$5,891, negative even winsorized, AND the dirtiest series at 18 rollover-artifact days; dropping it marginally improved the package on every OOS axis). No flip. *Caveat: remaining pool is equity-heavy (MNQ/MES correlated) + gold; energy TSMOM could be revisited only via a clean roll-adjusted crude series, not raw MCL.*
 - **Sleeve B — Vol-carry:** contango-only short-vol. Signal = VIX3M/VIX slope > 0 (prior close, no lookahead) → long short-vol. **Expression caveat:** tested via SVXY ETP (ETP decay/leverage-reset artifacts) — a true VIX-futures-curve vehicle is the class-C upgrade; do NOT deploy the raw ETP without the execution-realism section below.
 
 ## 3. Trade schedule / cadence
@@ -48,7 +48,22 @@ All variants: **0 DLL breaches.**
 - Correlation measured vs ACTUAL ORB strategy PnL (−0.05/−0.16), not buy-and-hold proxy.
 
 ## 7. Drawdown expectations
-- Combined maxDD ~−$2,344 (vs ORB-alone −$2,331) at the small allocation — essentially unchanged. Worst-day ~−$919 (vs −$850). [Per-year worst day/week/month to be tabulated in final dossier.]
+- Combined maxDD ~−$2,344 (vs ORB-alone −$2,331) at the small allocation — essentially unchanged. Worst-day ~−$919 (vs −$850).
+- **Per-year worst day / week (5d) / month (21d)** — combined book, full pool, k=0.10 vol-target (CV13, 2026-06-25). Every year stays within the $1,100 DLL on a single-day basis; every year net-positive:
+
+| year | worst day | worst week | worst month | net | Sharpe |
+|---|---|---|---|---|---|
+| 2019 | −61 | −52 | (partial) | +142 | 4.70 |
+| 2020 | −551 | −1606 | −1421 | +2787 | 1.41 |
+| 2021 | −545 | −1240 | −1410 | +4226 | 2.06 |
+| 2022 | −582 | −988 | −579 | +9151 | 3.03 |
+| 2023 | −396 | −534 | −450 | +9060 | 4.55 |
+| 2024 | −529 | −847 | −839 | +8369 | 3.07 |
+| 2025 | −893 | −1195 | −2107 | +10607 | 2.76 |
+| 2026 | −820 | −607 | +668 | +8961 | 5.59 |
+| **ALL** | **−893** | **−1606** | **−2107** | **+53304** | **2.97** |
+
+Worst single day across the whole sample −$893 (2025, within DLL); worst week −$1,606 (2020 COVID); worst month −$2,107 (2025). **2020 is the weakest year (Sharpe 1.41)** — consistent with §8 (the all-lose regime is a violent-V, not a grind). No DLL breaches in any year.
 
 ## 8. "What if ORB AND both sleeves lose together" scenario
 - **2020 COVID is the empirical answer: all three struggled** (ORB weak intraday chop, TSMOM −$616 whipsawed by the V-reversal, VX −$62). **This package is NOT a sharp-V-crash hedge.** It rescues weak *grind* years (2019, 2021), not a violent reversal. Position-sizing must assume a simultaneous-loss day is possible; the small allocation keeps it within DLL, but this is the known failure mode.
@@ -72,7 +87,7 @@ Deployment = operator-gated capital decision. NO live/prop exposure until separa
 - [x] V-crash guard (24n) → GUARD_HELPS (general VIX>35 flatten, mild, not overfit) — recommended. §9.
 - [x] Finer DSR proper trial-dispersion (24n) → DSR_PASS (deflated SR 1.0, 12 trials, disp 0.0035) — lift is NOT grid-luck.
 - [~] True VIX-futures-curve vehicle vs SVXY ETP (24-vc2): RESOLVED FOR RESEARCH CLASSIFICATION ONLY — vehicle is not the limit for the *research* signal (SVXY ≈ short-VXX, combined Sharpe 2.82 vs 2.79; validated leg at reachable-data ceiling; true VX1/VX2 not on Yahoo → class-C). **NOT resolved for DEPLOYMENT** — vehicle/execution realism (actual tradable vehicle, ETP decay/leverage-reset/borrow assumptions, roll/term-structure proxy limitations, vehicle-specific fail/monitoring rules) MUST be stated explicitly before any paper decision. See §5 (still OPEN for deployment). Do not read "resolved" as "deployment-ready."
-- [ ] MCL TSMOM leg (weakest, negative standalone) — keep for pool-diversification or drop.
-- [ ] Per-year worst day/week/month table for the combined book.
+- [x] MCL TSMOM leg (weakest, negative standalone) → **DROP** (CV13, 2026-06-25). Standalone Sharpe −0.30 / net −$5,891 (winsorized −0.36 / −$6,052 → not artifact-inflated, just a drag); 18 rollover-artifact days (dirtiest series). Pool minus MCL is marginally BETTER OOS on every axis (Sharpe 3.54→3.56, MAR 15.51→15.84, maxDD −2283→−2249, net +$207) with no hedge benefit lost. TSMOM pool is now MNQ/MES/MGC. Caveat: equity-heavy remaining pool; energy TSMOM only via clean roll-adjusted crude.
+- [x] Per-year worst day/week/month table for the combined book → §7 (CV13). All years within DLL, all net-positive; 2020 weakest (Sharpe 1.41).
 - [ ] Monitoring/kill-switch/paper-rollout sections finalized (currently sketched §10-12).
-**Status: 2 of 6 fully closed (V-crash guard, DSR); true-VIX vehicle research-resolved but deployment-realism still OPEN (§5); 3 items remain (MCL-leg, per-year worst d/w/m, monitoring/kill/rollout). Sizing is now PRINCIPLED (CV1/CV2 → `PRINCIPLED_SIZING_CONFIRMS`). This is a validated small-diversifier package with principled RESEARCH sizing — NOT a deployment-ready portfolio. Deployment stays operator-gated.**
+**Status: 4 of 6 fully closed (V-crash guard, DSR, MCL-leg DROP, per-year table); true-VIX vehicle research-resolved but deployment-realism still OPEN (§5); 1 item remains (monitoring/kill/rollout finalization, §10-12). Sizing is now PRINCIPLED (CV1/CV2 → `PRINCIPLED_SIZING_CONFIRMS`). This is a validated small-diversifier package with principled RESEARCH sizing — NOT a deployment-ready portfolio. Deployment stays operator-gated.**
