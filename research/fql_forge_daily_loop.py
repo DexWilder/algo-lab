@@ -48,7 +48,10 @@ TRIPWIRE_NO_PASS_RUN_LIMIT = 3
 TRIPWIRE_BLOWUP_PCT = -0.10  # -10% of starting capital (assume $50k)
 ASSUMED_STARTING_CAPITAL = 50000
 TRIPWIRE_REPORTS_AGE_DAYS = 30
-TRIPWIRE_RUNTIME_MAX_SEC = 300  # 5 min
+TRIPWIRE_RUNTIME_MAX_SEC = 1800  # 30 min — offline Lane-B dry-run research loop; raised from 300s
+                                 # (2026-06-25: 300s was unrealistically tight; June-3 ran 1183s/5 candidates
+                                 # → 3-week silent self-halt. Full-loop tripwire now reserved for genuine anomaly.)
+SLOW_CANDIDATE_SOFT_SEC = 150    # per-candidate soft cap: flag SLOW_CANDIDATE_ALERT + continue; does NOT halt loop
 
 
 def _select_candidates(n: int):
@@ -231,6 +234,7 @@ def main():
 
     rows = []
     start_total = time.time()
+    slow_candidates = []
     for cid, info in selection:
         m, v, rt, err = _run_one(cid, info)
         if err:
@@ -239,8 +243,19 @@ def main():
         if _detect_blowup(m):
             _write_tripwire(f"blowup_loss: {cid} netPnL={m['net']:.0f} (< {TRIPWIRE_BLOWUP_PCT*100}% of ${ASSUMED_STARTING_CAPITAL})")
             sys.exit(1)
+        # per-candidate SOFT cap: flag a slow candidate + continue (do NOT halt the whole loop on one slow run)
+        if rt > SLOW_CANDIDATE_SOFT_SEC:
+            slow_candidates.append((cid, round(rt, 1)))
+            print(f"  [SLOW_CANDIDATE_ALERT] {cid} ran {rt:.1f}s > {SLOW_CANDIDATE_SOFT_SEC}s soft-cap — flagged, continuing")
         rows.append((cid, info, m, v, rt))
         print(f"  [{cid}] n={m['n']} PF={m['pf']:.3f} netPnL=${m['net']:.0f} → {v} ({rt:.1f}s)")
+    if slow_candidates:
+        print(f"[SLOW_CANDIDATE_SUMMARY] {len(slow_candidates)} slow candidate(s) flagged (>{SLOW_CANDIDATE_SOFT_SEC}s): {slow_candidates} — included in run, loop NOT halted")
+
+    runtime_total = time.time() - start_total
+    if runtime_total > TRIPWIRE_RUNTIME_MAX_SEC:
+        _write_tripwire(f"runtime_overrun: {runtime_total:.0f}s > {TRIPWIRE_RUNTIME_MAX_SEC}s")
+        sys.exit(1)
 
     runtime_total = time.time() - start_total
     if runtime_total > TRIPWIRE_RUNTIME_MAX_SEC:
