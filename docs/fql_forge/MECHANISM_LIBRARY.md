@@ -386,6 +386,18 @@ Engine-routed (orb_breakout × filters × profit_ladder, MNQ/MES/MGC), judged vs
 - **vol_low → asset-specific MGC WATCH:** MNQ negligible; MES mild (maxDD −1509→−1423, 7/8→8/8 yrs); **MGC genuine (PF 1.495→1.607, net +$877, maxDD −1022→−847, worst-day better, H1/H2 better, −75 trades).** Excluding extreme-vol days helps GOLD specifically (mechanistic; dovetails locked MGC vol-regime sensitivity). NOT universal.
 - **VERDICT: no universal composite beats ema_slope → BASELINE CONFIRMED** (load-bearing). vol_low = MGC-ORB-specific refinement WATCH (overlay-grade, report-only). Discipline note: risk-metrics correctly rejected session_morning's headline PF gain; 5-variant marginal "wins" were noise/deletion.
 
+# FX rate-differential carry (24r) → DATA_LIMITED
+6E/6J/6B futures, only 2.3yr (2024-03+). Per-ccy ann: 6E +2.0% / 6J −2.2% / 6B +1.8%. Short-JPY funding carry Sharpe 0.25 (+2.3%/yr, the known 2024-26 regime, mild positive but not bankable); XS long-short Sharpe 0.12 (noise). DATA_LIMITED (2.3yr, 3 ccy) → not a reachable edge; needs longer FX history / more currencies = DATA-TIER item.
+
+# DATA-TIER UNLOCK PACKET (priority — the evidence-backed next lever; report-only feed requirements)
+Reachable different-premium space now well-mapped; the highest-value unlocks require better DATA, not more grinding of thin veins. Packetized feed requirements:
+1. **Roll-adjusted continuous futures (esp. crude/MCL)** — back-adjusted at roll dates → fixes the rollover-gap artifacts ([[feedback_continuous_contract_rollover_artifacts]]) that contaminated XSMOM/S1; reopens crude relative-strength + commodity carry cleanly.
+2. **True VIX-futures curve (VX1/VX2 term structure)** — a clean vehicle for the ALREADY-VALIDATED vol-carry premium (vs the SVXY-ETP decay/leverage-reset artifacts); could lift vol-carry from "validated-small" toward a deployable sleeve.
+3. **Longer FX history + more currencies** — to make FX carry judgeable (currently 2.3yr/3ccy = data-limited).
+4. **Options/gamma feed (SPX/index OI, dealer-gamma proxies)** — dealer-positioning pinning; currently BLOCKED for single-name; needs reachable OI/GEX source.
+5. **Tick/L2/order-flow** — to reopen the daily-microstructure WH well (raw 5m MR/impact KILLed at 5m resolution; tick may differ).
+**Posture (locked):** stop vanity-grinding mapped thin/redundant veins; prioritize these data-tier unlocks; KEEP report-only Library expansion + new-premium staging active. Reachable space better-mapped ≠ research done.
+
 # STAGED NEXT PACKETS (ready-to-run, 2026-06-24, report-only) — queue stays live while shells compute
 Concrete construction specs, judged by PORTFOLIO ROLE (Sharpe-improver / small-diversifier / tail-overlay / capacity / separate-pool), DSR-gated, corr-vs-actual-ORB-PnL:
 - **XSMOM (cross-sectional momentum / relative-strength)** *(class B, priority 4)* — rank {MNQ,MES,MGC,MCL,M2K} by trailing 1/3mo return; long top-2 / short bottom-2, dollar-neutral, weekly rebalance. DISTINCT from TSMOM (relative not absolute → possibly decorrelated from both ORB AND TSMOM → could add a 3rd regime). Cheap-screen → if decorrelated+positive → small-sleeve allocation curve.
