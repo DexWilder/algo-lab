@@ -13,7 +13,10 @@ Add small, decorrelated, **regime-complementary stabilizer sleeves** alongside t
 ## 3. Trade schedule / cadence
 - ORB: intraday (existing). TSMOM: daily close evaluation, position held overnight, flips infrequent (~6mo signal). Vol-carry: daily close evaluation of slope, position held while contango. All signals computed at/after prior close, acted next session — no lookahead (verified).
 
-## 4. Sizing (validated small allocations — research, not authorized)
+## 4. Sizing — now PRINCIPLED (2026-06-25 CV1/CV2): vol-target, not hand-tuned
+The hand-tuned 0.05×TSMOM / $2k vol-carry is REPRODUCED by principled risk-budgeting: **vol-target each decorrelated diversifier to ~10-15% of ORB's daily $-risk**. Weights derived on H1 ONLY, evaluated OOS on H2 → vol-target k=0.15 (wt 0.047/$1400) H2 Sharpe 3.59 vs hand-tuned 3.61 (within noise); k=0.10 (wt 0.031/$933) marginally better risk (maxDD −2283, MAR 15.51). 0 DLL all variants. NOT overfit (H1-derived, H2-confirmed, no optimizer). Package upgraded from hand-tuned discovery → principled construction. Recommend vol-target k≈0.10-0.15 as the canonical sizing rule.
+
+## 4b. (prior hand-tuned reference)
 - TSMOM ≈ **0.05–0.10×** the pooled-1-contract notional (MAR-optimal ~0.025–0.05×, Sharpe-optimal ~0.10×).
 - Vol-carry ≈ **$1–3k** notional.
 - **Hard finding: oversizing destroys it** — TSMOM ≥0.25× and vol-carry ≥$5k introduce DLL breaches and Sharpe degradation. Sizing discipline is load-bearing.
