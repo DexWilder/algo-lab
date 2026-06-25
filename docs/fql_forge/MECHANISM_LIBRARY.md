@@ -379,6 +379,9 @@ Decisive question (additive or redundant?) → ADDITIVE / regime-complementary:
   - **AUDIT 2 (data/concentration, decisive):** worst-day −13.8% = MCL −22.2% (rollover-gap artifact; MCL has 18 days >8%, max 26.5% — stitching glitches). Clean re-tests: winsorized ±8% holds (1.41) so NOT pure glitch, BUT **NO-MCL collapses to Sharpe 0.65** → the edge is entirely CRUDE-CONCENTRATED, not a broad cross-sectional premium. A "diversified" sleeve that dies when one asset is removed isn't diversified ([[feedback_concentration_is_load_bearing]]).
   - **Verdict: KILL** as cross-sectional premium. Residual crude-relative-strength = at most WATCH, ONLY on clean roll-adjusted crude data (MCL untrustworthy). Lesson reinforced: audit "too-good" (Sharpe 1.55) + "identical-across-stress" (cost bug) + suspicious tail (data glitch) — all three fired here.
 
+# MGC vol_low refinement CLASSIFIED (2026-06-25) → validated asset-specific ORB refinement (overlay-grade WATCH)
+Per-year: vol_low improves MGC-ORB PF in 6/8 yrs (incl. the WEAK years — 2021 0.862→0.939, net −327→−123 — and every recent year 2024/25/26); 2 givebacks (2020/2022) are years ORB already strong. PSR 1.0 (SR>0 significant). With 24q risk-gate (PF 1.495→1.607, better maxDD/worst-day, H1/H2 both better) → VALIDATED asset-specific (MGC) ORB refinement, overlay-grade. NOT universal (MNQ negligible), NOT deployment, report-only. Preserved as a real ORB-refinement WATCH per mature-WH-posture.
+
 # WH composite-filter sweep (24q + full-gate) → ema_slope baseline CONFIRMED; vol_low = MGC-specific WATCH
 Engine-routed (orb_breakout × filters × profit_ladder, MNQ/MES/MGC), judged vs single ema_slope baseline on RISK not PF.
 - **ema_slope_vol_high → collapses** (PF 0.77/0.83, removes ~93% of trades) — refutes a naive "ORB likes high vol"; it's MODERATE vol ORB likes, EXTREME vol hurts.
