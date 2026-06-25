@@ -80,17 +80,43 @@ lookahead; the test clears `_FEATURE_CACHE` between perturbations. Worth a follo
 - Donchian `dc_high/low_N` include the current bar (line ~407, pre-documented) — separate entry-logic note,
   NOT this class; deployed ORB does not use Donchian.
 
-**R4 — ORB family point-in-time revalidation (RUNNING).** `..._R4_orb_family_revalidation.py` re-runs
-MNQ/MES/MGC/MCL/MYM at the DEPLOYED `stop_mult=2.0`, CLEAN (fixed) vs CONTAMINATED (monkeypatched un-shift),
-full metrics + H1/H2. Establishes the true point-in-time baseline. [results appended on completion]
+**R4 — ORB family point-in-time revalidation (DONE — VERDICT: ORB does NOT survive point-in-time).**
+Deployed `stop_mult=2.0`, CLEAN (fixed) vs CONTAMINATED (old same-day lookahead). Full-sample daily PnL:
+
+| asset | CONTAM Sharpe | CLEAN Sharpe | net retained | CLEAN H2 Sh | CLEAN maxDD (vs contam) |
+|---|---|---|---|---|---|
+| MNQ | 2.78 | **0.27** | 9% | 1.10 | −6625 (vs −2399) |
+| MES | 2.58 | **−0.19** | −6% | 0.25 | −4172 (vs −1683) |
+| MGC | 2.45 | **0.86** | 33% | 1.18 | −2115 (vs −1027) |
+| MCL | 1.30 | **−0.84** | −59% | −2.09 | −6364 (vs −1558) |
+| MYM | 2.56 | **−0.09** | −3% | −1.10 | −2027 (vs −739) |
+
+**The XB-ORB-EMA-Ladder edge was almost entirely the `ema_slope` same-day-close lookahead, on ALL FIVE assets.**
+Point-in-time clean: NONE retains a deployable edge — MNQ 0.27, MES/MCL/MYM ~zero-to-negative, MGC 0.86 is the
+least-bad but far below any promotion bar and with doubled drawdown. The lookahead was also suppressing drawdowns
+(clean maxDDs blow out 2–4×). The contaminated column faithfully reproduces the known historical baseline
+(MNQ ~2.78, net ~$56k), confirming the clean column is the honest counterfactual.
+
+**Consequence:** the "proven primary workhorse" was not real. The probation portfolio's ORB family
+(MNQ/MCL/MYM live-forward) is trading a non-edge. This is now a portfolio/lifecycle decision (downgrade/archive) —
+OPERATOR-GATED. Everything ORB-derived this session (small-diversifier dossier PRIMARY, CV1/CV2/CV3/CV3-R, MGC vol_low)
+is built on a non-edge and is VOID pending a different primary.
 
 **R5 — Downstream re-run (PENDING R4).** Small-diversifier package / TSMOM+vol-carry vs CLEAN ORB; MGC vol_low;
 CV3/CV3-R only if a clean ORB edge survives.
 
-**R6 — Forward-runner audit (PENDING).** `run_forward_paper.py` generates signals on full-day data after close →
-the engine fix removes the ema_slope leak from forward signals going forward, but PRIOR forward evidence was
-generated with the leak → mark prior ORB forward evidence contaminated; consider a true intraday point-in-time
-signal path.
+**R6 — Forward-runner audit (DONE — architecture acceptable once features causal).**
+- `run_forward_paper.py` generates signals on the FULL dataset after the 17:00 close, then extracts the day's trades.
+- This is acceptable ONLY insofar as every ENTRY feature is causal. ORB's entry features = opening-range levels
+  (point-in-time after OR completes) + `ema_slope` (now causal after R1). R3 confirmed the ORB feature set is causal.
+  → with the R1 fix, the forward runner now produces **causally-correct ORB entry signals GOING FORWARD.**
+- The deployed XB-ORB-EMA-Ladder (MNQ/MGC/MCL/MYM, all `status=probation`) have `grinding_filter=None` and
+  `exit_variant=None` → they do NOT use the GRINDING regime gate, so that gate's causality does not affect the
+  deployed ORB. (The GRINDING/`trend_persistence` regime gate IS used by some OTHER strategies; auditing its
+  causality is a SEPARATE follow-up, not blocking for ORB.)
+- **PRIOR ORB forward evidence (pre-2026-06-25) was generated with the leaky `ema_slope` → CONTAMINATED.** Future
+  forward evidence (post-fix) is clean. A true bar-by-bar intraday point-in-time forward path is not required for the
+  deployed ORB given causal features, but remains the gold-standard if ever a non-causal feature is introduced.
 
 **Capital gate unchanged throughout:** no promotion, sizing, wiring, registry, scheduler, portfolio, or paper/live action.
 
