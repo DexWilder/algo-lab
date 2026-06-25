@@ -2,6 +2,23 @@
 
 > Standing parallel lane (opened 2026-06-23). The validation engine is strong; the bottleneck is **ore quality**. This lane mines trading books / research into **buildable, testable Forge mechanism packets** — NOT summaries, NOT copied systems. Translate principles into modern packets tailored to our reachable data + micro-futures/crypto universe. Report-only; capital gate unchanged.
 
+# Book 8 — Robert Carver, *Systematic Trading* (risk-budgeting / sizing / diversification — the productive lane)
+Theme: this session's real output was a COMBINED BENCH (ORB + small diversifiers), so the highest-leverage book area is portfolio construction, not new entries. These are mostly class-E (process/architecture) + class-C overlays — directly inform how ORB + TSMOM + vol-carry are sized/combined. Apply with the locked discipline: small sizing matters ([[feedback_high_sharpe_incumbent_diversification]]), correlate vs actual strategy PnL, validate before deploying.
+
+### CV1 — Volatility-target position sizing *(class E, priority 4)*
+- **upgrade:** size every sleeve to a target annualized $-vol (not fixed contracts) so each contributes comparable risk; rebalance as realized vol drifts. **why:** makes the diversifier allocations (TSMOM 0.05×, vol-carry $2k) principled rather than hand-tuned. **apply:** vol-target each bench member to a small risk budget; compare combined Sharpe/DD vs current fixed sizing. **reachability:** HAVE. *Directly relevant to the validated package's sizing.*
+### CV2 — Diversification multiplier / risk-budgeted combination *(class E, priority 4)*
+- **upgrade:** combine sleeves by inverse-correlation risk weights (Carver's diversification multiplier) capped to avoid over-leveraging on estimated correlations. **why:** the right way to weight ORB + decorrelated diversifiers; prevents the oversizing that killed naive TSMOM/VX allocations. **apply:** compute the risk-weighted combination of the bench vs equal/hand weights; check combined-book Sharpe/MAR/DLL. **reachability:** HAVE.
+### CV3 — Forecast strength → position scaling *(class A/E, priority 3)*
+- **mechanism:** scale position by SIGNAL STRENGTH (continuous), not binary on/off — e.g. ORB sized by ema_slope magnitude or breakout extension. **why:** a graded version of the entry; may improve risk-adjusted return without deleting trades (avoids the session_morning trade-deletion trap). **cheap-screen:** does forecast-scaled ORB beat flat-size ORB on Sharpe/MAR at matched exposure? **kill:** no risk-adjusted lift. **reachability:** HAVE.
+### CV4 — Forecast diversification across speeds *(class B, priority 3)*
+- **mechanism:** combine multiple lookback/speed variants of the same signal (fast+slow momentum) — diversifies estimation error. **apply:** to TSMOM (the lb126 winner) — does a fast+slow blend beat single-speed? **reachability:** HAVE.
+### CV5 — Cost-aware turnover budgeting / trading speed limit *(class E, priority 3)*
+- **upgrade:** cap turnover to a cost budget (don't trade faster than the edge supports) — formalizes the cost-fragility checks. **why:** the XSMOM cost-stress / PL-vs-FR studies show cost is load-bearing; budget it explicitly. **reachability:** HAVE.
+### CV6 — Equal-risk-contribution portfolio (ERC) *(class E, priority 2)*; ### CV7 — Skew/fat-tail-aware sizing (size down convex-loss sleeves like short-vol) *(class C, priority 3 — vol-carry tail relevant)*; ### CV8 — Buffering/no-trade-zone to cut churn near thresholds *(class E, priority 2)*.
+
+**Library count: ~58 packets across 8 books → continue to 100+.** Carver lane prioritizes the bench-construction work that's actually been productive; route via [[feedback_book_idea_harness_routing]] (E→rulebook, A/C→engine/overlay test).
+
 ## Packet schema (every packet)
 `mechanism` · `forced participant / behavioral reason` · `required data` · `instruments` · `expected direction` · `cadence` · `no-lookahead risks` · `cheap-screen plan` · `kill criteria` · `likely sleeve class` (workhorse / tail-engine / overlay-filter / carry) · `data reachability` (HAVE / REACHABLE / BLOCKED) · `priority` (1-5; = reachability × mechanism strength × portfolio-fit × non-redundancy).
 
