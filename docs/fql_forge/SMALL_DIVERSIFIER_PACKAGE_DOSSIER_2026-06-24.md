@@ -13,8 +13,23 @@ Add small, decorrelated, **regime-complementary stabilizer sleeves** alongside t
 ## 3. Trade schedule / cadence
 - ORB: intraday (existing). TSMOM: daily close evaluation, position held overnight, flips infrequent (~6mo signal). Vol-carry: daily close evaluation of slope, position held while contango. All signals computed at/after prior close, acted next session — no lookahead (verified).
 
-## 4. Sizing — now PRINCIPLED (2026-06-25 CV1/CV2): vol-target, not hand-tuned
-The hand-tuned 0.05×TSMOM / $2k vol-carry is REPRODUCED by principled risk-budgeting: **vol-target each decorrelated diversifier to ~10-15% of ORB's daily $-risk**. Weights derived on H1 ONLY, evaluated OOS on H2 → vol-target k=0.15 (wt 0.047/$1400) H2 Sharpe 3.59 vs hand-tuned 3.61 (within noise); k=0.10 (wt 0.031/$933) marginally better risk (maxDD −2283, MAR 15.51). 0 DLL all variants. NOT overfit (H1-derived, H2-confirmed, no optimizer). Package upgraded from hand-tuned discovery → principled construction. Recommend vol-target k≈0.10-0.15 as the canonical sizing rule.
+## 4. Sizing — now PRINCIPLED (2026-06-25 CV1/CV2): vol-target, not hand-tuned — `PRINCIPLED_SIZING_CONFIRMS`
+This is a **validated small-diversifier package with principled RESEARCH sizing — NOT a deployment-ready portfolio.** The hand-tuned 0.05×TSMOM / $2k vol-carry is REPRODUCED by principled risk-budgeting: **vol-target each decorrelated diversifier to a small fixed fraction k of ORB's daily $-risk.** Weights derived on H1 ONLY, evaluated OOS on H2; no optimizer, no H2-peeking → not overfit. Discovery became construction: the hand-tuned sizes were NOT magic numbers — they sit in the H1-derived principled neighborhood.
+
+| variant | sleeve weights | H2 Sharpe | risk note |
+|---|---|---|---|
+| ORB alone | — | 3.38 | benchmark |
+| hand-tuned (0.05× / $2k) | 0.05 / $2000 | 3.61 | discovery |
+| **vol-target k=0.10** | 0.031 / $933 | 3.54 | **conservative canonical** — best risk (maxDD −2283, MAR 15.51) |
+| **vol-target k=0.15** | 0.047 / $1400 | 3.59 | **upper research** — closest to hand-tuned perf |
+| inverse-corr capped | 0.056 / $698 | 3.58 | corroborating |
+
+All variants: **0 DLL breaches.**
+
+**Canonical sizing rule (report-only):**
+- **k=0.10 = conservative/default research sizing** (risk-cleanest).
+- **k=0.15 = upper research sizing** (closest to hand-tuned performance).
+- The final deployment-decision dossier presents BOTH, k=0.10 as default. Both remain report-only — NO sizing change, NO portfolio mutation, NO paper/live until separately operator-approved.
 
 ## 4b. (prior hand-tuned reference)
 - TSMOM ≈ **0.05–0.10×** the pooled-1-contract notional (MAR-optimal ~0.025–0.05×, Sharpe-optimal ~0.10×).
@@ -23,7 +38,7 @@ The hand-tuned 0.05×TSMOM / $2k vol-carry is REPRODUCED by principled risk-budg
 
 ## 5. Execution & financing / ETP realism
 - ORB/TSMOM: micro/standard futures — no borrow; overnight = margin only (negligible financing); flip costs (commission + slippage) ARE included in the backtests.
-- Vol-carry via SVXY: long-only (no borrow needed), ETP expense + roll-decay are embedded in the ETP's own return series (already captured). **OPEN:** confirm bid/ask + capacity at small size; evaluate true VIX-futures-curve vehicle vs ETP. [pending]
+- Vol-carry via SVXY: long-only (no borrow needed), ETP expense + roll-decay are embedded in the ETP's own return series (already captured). **OPEN FOR DEPLOYMENT (research-sufficient, NOT deployment-sufficient — see §14):** before any paper decision the vol-carry leg MUST state explicitly: (a) the actual tradable vehicle (SVXY vs short-VXX vs VX1/VX2 futures); (b) borrow / shorting / ETP decay + leverage-reset assumptions; (c) roll / term-structure proxy limitations (VIX3M/VIX slope is a proxy for the true VX1/VX2 curve); (d) vehicle-specific fail / monitoring rules + bid/ask + capacity at small size. The research signal is at its reachable-data ceiling; the *deployment vehicle realism* is a separate, still-open requirement.
 - TSMOM overnight gap risk across 4 markets: covered in drawdown expectations.
 
 ## 6. Validation evidence (CONFIRMED, report-only)
@@ -56,8 +71,8 @@ Deployment = operator-gated capital decision. NO live/prop exposure until separa
 ## 14. Open items (must close before dossier is deployment-decision-complete)
 - [x] V-crash guard (24n) → GUARD_HELPS (general VIX>35 flatten, mild, not overfit) — recommended. §9.
 - [x] Finer DSR proper trial-dispersion (24n) → DSR_PASS (deflated SR 1.0, 12 trials, disp 0.0035) — lift is NOT grid-luck.
-- [x] True VIX-futures-curve vehicle vs SVXY ETP (24-vc2): RESOLVED — vehicle is NOT the limit. SVXY ≈ short-VXX (combined Sharpe 2.82 vs 2.79, corr −0.16 vs −0.15, both small decorrelated). Validated vol-carry leg is at its REACHABLE-DATA CEILING. True VX1/VX2 futures NOT reachable via Yahoo (404) → class-C feed need is the ONLY further upgrade path; until then vol-carry stays validated-small.
+- [~] True VIX-futures-curve vehicle vs SVXY ETP (24-vc2): RESOLVED FOR RESEARCH CLASSIFICATION ONLY — vehicle is not the limit for the *research* signal (SVXY ≈ short-VXX, combined Sharpe 2.82 vs 2.79; validated leg at reachable-data ceiling; true VX1/VX2 not on Yahoo → class-C). **NOT resolved for DEPLOYMENT** — vehicle/execution realism (actual tradable vehicle, ETP decay/leverage-reset/borrow assumptions, roll/term-structure proxy limitations, vehicle-specific fail/monitoring rules) MUST be stated explicitly before any paper decision. See §5 (still OPEN for deployment). Do not read "resolved" as "deployment-ready."
 - [ ] MCL TSMOM leg (weakest, negative standalone) — keep for pool-diversification or drop.
 - [ ] Per-year worst day/week/month table for the combined book.
 - [ ] Monitoring/kill-switch/paper-rollout sections finalized (currently sketched §10-12).
-**Status: 2 of 6 open items closed (both positive). Research evidence is strong enough to BUILD this dossier; 4 items remain before it is deployment-decision-complete. Deployment stays operator-gated.**
+**Status: 2 of 6 fully closed (V-crash guard, DSR); true-VIX vehicle research-resolved but deployment-realism still OPEN (§5); 3 items remain (MCL-leg, per-year worst d/w/m, monitoring/kill/rollout). Sizing is now PRINCIPLED (CV1/CV2 → `PRINCIPLED_SIZING_CONFIRMS`). This is a validated small-diversifier package with principled RESEARCH sizing — NOT a deployment-ready portfolio. Deployment stays operator-gated.**
