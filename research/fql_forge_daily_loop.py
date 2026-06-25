@@ -257,11 +257,6 @@ def main():
         _write_tripwire(f"runtime_overrun: {runtime_total:.0f}s > {TRIPWIRE_RUNTIME_MAX_SEC}s")
         sys.exit(1)
 
-    runtime_total = time.time() - start_total
-    if runtime_total > TRIPWIRE_RUNTIME_MAX_SEC:
-        _write_tripwire(f"runtime_overrun: {runtime_total:.0f}s > {TRIPWIRE_RUNTIME_MAX_SEC}s")
-        sys.exit(1)
-
     md_path, json_path = _write_reports(rows, "dry-run" if args.dry_run else "report-only", runtime_total)
 
     # Summary
