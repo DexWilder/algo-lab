@@ -1,5 +1,7 @@
 # Deployment-Decision Dossier — Small Diversifier Package (DRAFT, report-only)
 
+> 🔴 **CONTAMINATION FLAG (2026-06-25):** the PRIMARY engine of this package (ORB = `orb_breakout | ema_slope | profit_ladder`) was found to carry a **same-day-close lookahead in its `ema_slope` filter** — removing it collapses MNQ ORB Sharpe 2.65→0.49 (see `TRIPWIRE_ORB_EMA_SLOPE_LOOKAHEAD_2026-06-25.md`). Every metric in this dossier is computed against the contaminated ORB primary and is therefore **SUSPECT**. This dossier is **FROZEN** pending a clean point-in-time ORB re-validation. Do NOT act on any number here until the ORB foundation is fixed and the package is re-run. Capital gate already in force.
+
 > **STATUS: research evidence is strong enough to BUILD this dossier — it is NOT "deployment-ready" / "turn it on."** This is a decision-support artifact. Building it is report-only research. NO promotion, wiring, scheduler, registry, sizing, paper, or live/prop mutation. Any deployment is a separate, explicitly operator-gated capital decision. Per [[feedback_validated_candidate_vs_deployment_dossier]].
 
 ## 1. Objective & portfolio role
