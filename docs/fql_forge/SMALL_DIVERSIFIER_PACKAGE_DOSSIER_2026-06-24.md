@@ -71,14 +71,28 @@ Worst single day across the whole sample −$893 (2025, within DLL); worst week 
 ## 9. V-crash behavior + guard → GUARD_HELPS (mild, general, not overfit)
 General VIX>35 flatten on TSMOM (active 3.5% of days, NOT COVID-tuned): 2020 package Sharpe 1.39→1.53, full package 3.02→3.04, TSMOM-only 2.97→2.99. **Other years unchanged or slightly better** (2025 2.76→2.80; 2022 3.19→3.17 negligible) → helps the crash window WITHOUT damaging normal-year contribution and is a broad threshold (not overfit to COVID). **Recommended for the package.** Still NOT a full V-crash hedge (improvement is mild) — the small-sizing + caveat in §8 remain the primary protection.
 
-## 10. Monitoring rules [to finalize]
-- Track each sleeve's realized vs expected per-year contribution; correlation drift to ORB; DLL-proximity on any day both sleeves + ORB align negative; regime tags (trend / vol-state).
+## 10. Monitoring rules (FINALIZED 2026-06-25, report-only)
+Tracked daily once (if) on paper; all are observe-and-alert, none auto-mutate:
+1. **Per-sleeve realized vs expected contribution** — rolling-252d net per sleeve vs the per-year table (§7). Alert if a sleeve's rolling-year net falls below the worst historical year for that sleeve.
+2. **Correlation drift to ORB** — rolling-126d |corr(sleeve, ORB daily PnL)|. Baseline TSMOM 0.09, VC 0.15 (H1). Alert at >0.30, kill-review at >0.40 (diversification lost — see §11).
+3. **Vol-target drift** — recompute each sleeve's trailing-63d σ vs ORB's; alert if the implied k drifts outside [0.07, 0.18] (canonical band 0.10–0.15), i.e. the sleeve has silently grown/shrunk relative to ORB risk.
+4. **DLL-proximity / co-loss days** — flag any day all-three (ORB + both sleeves) align negative; track distance to the $1,100 DLL. Per §7 the historical worst single day is −$893 (within DLL), so a breach would be out-of-distribution and is itself an alert.
+5. **Regime tags** — trend / vol-state (VIX level, VIX3M/VIX slope) attached to each day for post-hoc attribution.
 
-## 11. Kill-switches / fail rules [to finalize]
-- Sleeve disabled if: rolling-year contribution turns persistently negative; correlation-to-ORB rises above ~0.4 (loses diversification); any single day breaches DLL attributable to the sleeve; vol-carry ETP construction issue.
+## 11. Kill-switches / fail rules (FINALIZED 2026-06-25, report-only — disable = revert to ORB-alone, operator-confirmed)
+A sleeve is flagged for DISABLE (operator-confirmed, not auto) if ANY:
+1. Rolling-252d contribution turns net-negative for **2 consecutive quarters** (persistent, not one bad quarter).
+2. Rolling-126d |corr-to-ORB| **> 0.40** (diversification — the entire rationale — is gone).
+3. Any single day breaches the **$1,100 DLL attributable to the sleeve** (out-of-distribution per §7).
+4. Vol-carry vehicle integrity issue (ETP decay/leverage-reset/roll anomaly, or the §5 deployment-vehicle assumptions are violated in practice).
+5. Implied k drifts outside **[0.07, 0.18]** for >21 trading days and is not corrected.
+Whole-package kill = revert to ORB-alone (the incumbent), which is always the safe fallback.
 
-## 12. Paper-only rollout plan [to finalize]
-- Stage 1: paper, smallest validated size (TSMOM 0.025×, VX $1k), report-only tracking vs ORB-alone for ≥1 quarter. Stage 2: review per-year + DLL behavior before any size increase. NO live/prop at any stage without separate explicit approval.
+## 12. Paper-only rollout plan (FINALIZED 2026-06-25, report-only — every stage operator-gated)
+- **Stage 0 (now):** report-only, NO capital. This dossier + CV-series evidence. No paper wiring yet.
+- **Stage 1 (on explicit approval only):** paper, **smallest validated size — vol-target k=0.10 conservative default** (TSMOM≈0.031× / VC≈$933), TSMOM pool MNQ/MES/MGC (MCL dropped), V-crash guard ON (§9). Track all §10 monitors vs ORB-alone for **≥1 quarter**. Success = sleeves behave within the §7 envelope, no §11 trigger, realized corr-to-ORB stays low.
+- **Stage 2 (separate approval):** review per-year + DLL behavior; only then consider k=0.15 upper sizing. Resolve §5 deployment-vehicle realism for vol-carry BEFORE any size increase.
+- **Live/prop:** NOT in scope at any stage of this dossier. Separate explicit capital decision, separate DSCL/vehicle-realism gate. Per [[feedback_data_audit_green_scope]] research-clean ≠ capital-clean.
 
 ## 13. Gates
 Deployment = operator-gated capital decision. NO live/prop exposure until separately, explicitly approved. This dossier informs that decision; it does not constitute or trigger it.
@@ -89,5 +103,5 @@ Deployment = operator-gated capital decision. NO live/prop exposure until separa
 - [~] True VIX-futures-curve vehicle vs SVXY ETP (24-vc2): RESOLVED FOR RESEARCH CLASSIFICATION ONLY — vehicle is not the limit for the *research* signal (SVXY ≈ short-VXX, combined Sharpe 2.82 vs 2.79; validated leg at reachable-data ceiling; true VX1/VX2 not on Yahoo → class-C). **NOT resolved for DEPLOYMENT** — vehicle/execution realism (actual tradable vehicle, ETP decay/leverage-reset/borrow assumptions, roll/term-structure proxy limitations, vehicle-specific fail/monitoring rules) MUST be stated explicitly before any paper decision. See §5 (still OPEN for deployment). Do not read "resolved" as "deployment-ready."
 - [x] MCL TSMOM leg (weakest, negative standalone) → **DROP** (CV13, 2026-06-25). Standalone Sharpe −0.30 / net −$5,891 (winsorized −0.36 / −$6,052 → not artifact-inflated, just a drag); 18 rollover-artifact days (dirtiest series). Pool minus MCL is marginally BETTER OOS on every axis (Sharpe 3.54→3.56, MAR 15.51→15.84, maxDD −2283→−2249, net +$207) with no hedge benefit lost. TSMOM pool is now MNQ/MES/MGC. Caveat: equity-heavy remaining pool; energy TSMOM only via clean roll-adjusted crude.
 - [x] Per-year worst day/week/month table for the combined book → §7 (CV13). All years within DLL, all net-positive; 2020 weakest (Sharpe 1.41).
-- [ ] Monitoring/kill-switch/paper-rollout sections finalized (currently sketched §10-12).
-**Status: 4 of 6 fully closed (V-crash guard, DSR, MCL-leg DROP, per-year table); true-VIX vehicle research-resolved but deployment-realism still OPEN (§5); 1 item remains (monitoring/kill/rollout finalization, §10-12). Sizing is now PRINCIPLED (CV1/CV2 → `PRINCIPLED_SIZING_CONFIRMS`). This is a validated small-diversifier package with principled RESEARCH sizing — NOT a deployment-ready portfolio. Deployment stays operator-gated.**
+- [x] Monitoring/kill-switch/paper-rollout sections finalized (§10-12, 2026-06-25) — concrete thresholds tied to §7 evidence; all observe-and-alert, operator-confirmed, none auto-mutate.
+**Status: 5 of 6 fully closed (V-crash guard, DSR, MCL-leg DROP, per-year table, monitoring/kill/rollout). The ONLY remaining open item is §5 true-VIX DEPLOYMENT-vehicle realism — and that is deployment-gated by design, NOT a research item (it cannot/should not close until a real paper decision). Research-side, this dossier is COMPLETE. Sizing is PRINCIPLED (CV1/CV2 → `PRINCIPLED_SIZING_CONFIRMS`). This is a validated small-diversifier package with principled RESEARCH sizing — NOT a deployment-ready portfolio. Deployment stays operator-gated.**
