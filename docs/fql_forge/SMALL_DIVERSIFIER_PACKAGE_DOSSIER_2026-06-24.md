@@ -53,7 +53,7 @@ Deployment = operator-gated capital decision. NO live/prop exposure until separa
 ## 14. Open items (must close before dossier is deployment-decision-complete)
 - [x] V-crash guard (24n) → GUARD_HELPS (general VIX>35 flatten, mild, not overfit) — recommended. §9.
 - [x] Finer DSR proper trial-dispersion (24n) → DSR_PASS (deflated SR 1.0, 12 trials, disp 0.0035) — lift is NOT grid-luck.
-- [ ] True VIX-futures-curve vehicle vs SVXY ETP (execution realism). [class-C feed]
+- [x] True VIX-futures-curve vehicle vs SVXY ETP (24-vc2): RESOLVED — vehicle is NOT the limit. SVXY ≈ short-VXX (combined Sharpe 2.82 vs 2.79, corr −0.16 vs −0.15, both small decorrelated). Validated vol-carry leg is at its REACHABLE-DATA CEILING. True VX1/VX2 futures NOT reachable via Yahoo (404) → class-C feed need is the ONLY further upgrade path; until then vol-carry stays validated-small.
 - [ ] MCL TSMOM leg (weakest, negative standalone) — keep for pool-diversification or drop.
 - [ ] Per-year worst day/week/month table for the combined book.
 - [ ] Monitoring/kill-switch/paper-rollout sections finalized (currently sketched §10-12).

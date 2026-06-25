@@ -1,0 +1,5 @@
+=== vol-carry vehicle comparison (clean curve signal, ORB combined) ===
+  SVXY (validated)   : standalone Sharpe=0.11 corr-to-ORB=-0.164 | +$2000: combined Sharpe 2.76→2.82 maxDD $-2321 (ORB-alone $-2331) VX-on-ORBworst20=$0
+  short-VXX (cleaner): standalone Sharpe=0.12 corr-to-ORB=-0.154 | +$2000: combined Sharpe 2.76→2.79 maxDD $-2305 (ORB-alone $-2331) VX-on-ORBworst20=$0
+
+  note: true VX1/VX2 futures NOT reachable via Yahoo (404) → class-C feed need. VXX=clean 1x reachable proxy.
