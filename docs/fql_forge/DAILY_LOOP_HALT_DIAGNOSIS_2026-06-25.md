@@ -27,3 +27,6 @@ Hard 300s cap is unrealistically tight for an offline dry-run: 5 rotated candida
 
 ## Capital gate
 No strategy wiring, registry, portfolio, sizing, or paper/live changes. The only mutation proposed is the runtime-budget of a non-capital offline research loop, and only on explicit approval. No auto-resume.
+
+## RESOLVED 2026-06-25 — manual dry-run PASSED
+Runtime 1000.1s < 1800s cap; reports written; NO new tripwire; PASS 3 / WATCH 2. Soft-cap flagged 2 slow candidates (XB-PB-EMA-MorningOnly-MNQ 748.9s — alone exceeds old 300s cap — and XB-BB-EMA-MorningOnly-MGC-v2 244.1s) and CONTINUED without halting. Lane-B dry-run loop MANUAL-VERIFIED RESTORED. Next proof: scheduled 19:00 PT run. Follow-up (option D, non-blocking): XB-PB-EMA-MorningOnly-MNQ is pathologically slow (748.9s vs ~2.5s for ORB variants) — engine per-bar-loop perf candidate.
