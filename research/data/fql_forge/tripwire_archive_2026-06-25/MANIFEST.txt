@@ -1,0 +1,16 @@
+research/data/fql_forge/reports/_TRIPWIRE_2026-06-03_runtime_overrun:.md
+research/data/fql_forge/reports/_TRIPWIRE_2026-06-04_unresolved.md
+research/data/fql_forge/reports/_TRIPWIRE_2026-06-05_unresolved.md
+research/data/fql_forge/reports/_TRIPWIRE_2026-06-08_unresolved.md
+research/data/fql_forge/reports/_TRIPWIRE_2026-06-09_unresolved.md
+research/data/fql_forge/reports/_TRIPWIRE_2026-06-10_unresolved.md
+research/data/fql_forge/reports/_TRIPWIRE_2026-06-11_unresolved.md
+research/data/fql_forge/reports/_TRIPWIRE_2026-06-12_unresolved.md
+research/data/fql_forge/reports/_TRIPWIRE_2026-06-15_unresolved.md
+research/data/fql_forge/reports/_TRIPWIRE_2026-06-16_unresolved.md
+research/data/fql_forge/reports/_TRIPWIRE_2026-06-17_unresolved.md
+research/data/fql_forge/reports/_TRIPWIRE_2026-06-18_unresolved.md
+research/data/fql_forge/reports/_TRIPWIRE_2026-06-19_unresolved.md
+research/data/fql_forge/reports/_TRIPWIRE_2026-06-22_unresolved.md
+research/data/fql_forge/reports/_TRIPWIRE_2026-06-23_unresolved.md
+research/data/fql_forge/reports/_TRIPWIRE_2026-06-24_unresolved.md
