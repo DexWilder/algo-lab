@@ -260,11 +260,17 @@ def compute_features(df: pd.DataFrame) -> dict:
     )
 
     # Daily EMA slope (for macro trend filter)
+    # LOOKAHEAD FIX (2026-06-25): daily_close = groupby(date).last() = each day's SESSION CLOSE.
+    # A day-d INTRADAY entry (ORB fires 09:45-14:45) cannot know day d's 16:00 close, so the trend
+    # used to filter day-d entries must be computed only through the PRIOR completed daily close.
+    # We therefore shift the daily slope by one trading day: bars on day d use sign(slope[d-1]).
+    # Removing this shift was a same-day-close lookahead that inflated MNQ ORB Sharpe 2.65 -> 0.49.
+    # See docs/fql_forge/TRIPWIRE_ORB_EMA_SLOPE_LOOKAHEAD_2026-06-25.md.
     df_temp = df.copy()
     df_temp["_date"] = dates
     daily_close = df_temp.groupby("_date")["close"].last()
     daily_ema20 = daily_close.ewm(span=20, adjust=False).mean()
-    daily_slope = daily_ema20.diff()
+    daily_slope = daily_ema20.diff().shift(1)  # point-in-time: prior completed trading day's slope
     date_trend = {}
     for d in daily_ema20.index:
         s = daily_slope.get(d, 0)

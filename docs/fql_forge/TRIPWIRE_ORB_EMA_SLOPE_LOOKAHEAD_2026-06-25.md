@@ -55,4 +55,43 @@ trades on days that closed in their direction.
 - `research/forge_cycle_2026-06-25_CV3R_lagged_filter_decisive.py` (decisive, monkeypatched)
 - `research/forge_cycle_2026-06-25_CV3R_constant_risk_scaling.py` (where the lagged-vs-same-day gap first surfaced)
 
+---
+
+## REPAIR LOG (operator-approved controlled truth repair — NOT promotion)
+
+**R1 — Engine patch (DONE).** `compute_features()` daily trend now uses `daily_ema20.diff().shift(1)` →
+bars on day d use the PRIOR completed trading day's slope. On-disk engine changed (working state backed up to
+`/tmp` first). The fix takes effect for tonight's 14:00 PT forward-paper run and 19:00 PT research loop.
+
+**R2 — Unit test (DONE, PASS).** `research/test_no_lookahead_daily_filters.py` asserts the point-in-time
+invariant by perturbing day-d's session close UP vs DOWN and checking day-d trend is invariant:
+- FIXED engine: day-d trend invariant to day-d close (PASS); day d+1 correctly responds.
+- PRE-FIX (un-shifted): day-d trend FLIPS with day-d close (FAIL) → the test provably catches the leak.
+(Found en route: `compute_features` has an in-memory cache keyed only by `(len, first_dt, last_dt)` — it ignores
+close CONTENT, so corrected/perturbed same-range data returns STALE features. Secondary sharp-edge, not a
+lookahead; the test clears `_FEATURE_CACHE` between perturbations. Worth a follow-up content-hash key.)
+
+**R3 — Same-day-aggregate filter audit (DONE).** Only `ema_slope` carried the same-day-close lookahead.
+- `ema_slope` daily trend — WAS leaky → FIXED.
+- `vwap_slope` — session VWAP is cumulative-within-session, causal → SAFE.
+- `prev_day_high/low/close/range/midpoint/range_pctrank` — all `.shift(1)` (prior day) → SAFE.
+- `atr_pctrank`, `bw_pctrank`, `range_20_pctrank`, `vol_of_vol_pctrank`, `hurst`, `rsi` — trailing rolling, causal → SAFE.
+- `ema_slope_vol_high/low` — stack bar_trend (now fixed) + atr_pctrank (safe) → now CLEAN.
+- Donchian `dc_high/low_N` include the current bar (line ~407, pre-documented) — separate entry-logic note,
+  NOT this class; deployed ORB does not use Donchian.
+
+**R4 — ORB family point-in-time revalidation (RUNNING).** `..._R4_orb_family_revalidation.py` re-runs
+MNQ/MES/MGC/MCL/MYM at the DEPLOYED `stop_mult=2.0`, CLEAN (fixed) vs CONTAMINATED (monkeypatched un-shift),
+full metrics + H1/H2. Establishes the true point-in-time baseline. [results appended on completion]
+
+**R5 — Downstream re-run (PENDING R4).** Small-diversifier package / TSMOM+vol-carry vs CLEAN ORB; MGC vol_low;
+CV3/CV3-R only if a clean ORB edge survives.
+
+**R6 — Forward-runner audit (PENDING).** `run_forward_paper.py` generates signals on full-day data after close →
+the engine fix removes the ema_slope leak from forward signals going forward, but PRIOR forward evidence was
+generated with the leak → mark prior ORB forward evidence contaminated; consider a true intraday point-in-time
+signal path.
+
+**Capital gate unchanged throughout:** no promotion, sizing, wiring, registry, scheduler, portfolio, or paper/live action.
+
 **Do NOT delete this tripwire or resume ORB-dependent advancement without explicit operator review.**
