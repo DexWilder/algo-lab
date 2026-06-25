@@ -79,7 +79,17 @@ def audit(fix=False, commit=False):
     except Exception:
         st = ""
     forge_pat = re.compile(r"(research/forge_cycle_.*\.(py|json|txt)|research/data/fql_forge/reports/.*|docs/fql_forge/.*\.md|research/forge_.*\.py)")
-    uncommitted = [ln[3:] for ln in st.splitlines() if forge_pat.search(ln[3:])]
+    # exclude operator-owned automation ALERT files (tripwires) from "commit these" — they're surfaced separately
+    uncommitted = [ln[3:] for ln in st.splitlines() if forge_pat.search(ln[3:]) and "_TRIPWIRE_" not in ln]
+
+    # OPERATIONAL ALERTS: surface tripwire self-halts prominently (do NOT auto-delete/resume — operator-gated)
+    trip_dir = REPO / "research" / "data" / "fql_forge" / "reports"
+    trips = sorted(trip_dir.glob("_TRIPWIRE_*")) if trip_dir.exists() else []
+    if trips:
+        print(f"\n=== !! OPERATIONAL ALERT: {len(trips)} TRIPWIRE(S) — daily loop SELF-HALTED, will not auto-resume until cleared (operator-gated) ===")
+        for t in trips[-3:]:
+            print(f"  {t.name}")
+        print("  -> SURFACE to operator; do NOT auto-delete (deleting resumes the loop = runtime decision).")
     print(f"\n=== UNCOMMITTED FORGE ARTIFACTS === {len(uncommitted)}")
     for u in uncommitted[:20]:
         print(f"  {u}")
