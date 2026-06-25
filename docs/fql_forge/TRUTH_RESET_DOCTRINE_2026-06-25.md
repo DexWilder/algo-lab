@@ -31,17 +31,27 @@ The following words are FORBIDDEN for any strategy that has not passed the causa
 `proven`, `validated`, `primary engine`, `workhorse`, `ready`, `dossier-complete`, `deployment candidate`,
 `research-candidate`.
 Until a strategy passes, the ONLY permitted labels are:
-`IDEA` · `SCREEN_PASS` · `UNAUDITED` · `POINT_IN_TIME_PENDING` · `DATA_BLOCKED` · `INVALIDATED` · `CLEAN_RESEARCH_CANDIDATE`
-A strategy reaches `CLEAN_RESEARCH_CANDIDATE` only after: causality CAUSAL_CLEAN + costs wired + data-lineage clean
-+ standard concentration/DSR gates. "Validated/primary/workhorse" requires that PLUS operator review. Language
-drives decisions — the old language got confident too early.
+`IDEA` · `SCREEN_PASS` · `UNAUDITED` · `POINT_IN_TIME_PENDING` · `DATA_BLOCKED` · `INVALIDATED` ·
+`CLEAN_BUT_WEAK_DIVERSIFIER` (a.k.a. `NOT_PRIMARY`/`RESEARCH_ONLY`) · `CLEAN_RESEARCH_CANDIDATE`
+- `CLEAN_BUT_WEAK_DIVERSIFIER / NOT_PRIMARY / RESEARCH_ONLY` = passes causality + costs + data, but FAILS
+  edge-quality bars as a standalone (low Sharpe, large DD, and/or year-concentration). Real but cannot carry a book.
+- `CLEAN_RESEARCH_CANDIDATE` is RESERVED — reached ONLY after causality CAUSAL_CLEAN + costs wired + data-lineage
+  clean + **enough standalone/portfolio gates to justify deeper package work** (Sharpe/MAR/maxDD/concentration/DSR).
+  Do NOT use it loosely. "Validated/primary/workhorse" requires that PLUS operator review.
+Language drives decisions — the old language got confident too early.
 
 ## Label downgrades (effective 2026-06-25)
 - **ORB (XB-ORB-EMA-Ladder, all assets):** `INVALIDATED` (lookahead; clean Sharpe ≤0.86, mostly ≤0).
 - **Small-diversifier dossier:** VOID as written (rationale was "improve ORB").
 - **MGC vol_low:** VOID (ORB refinement).
 - **CV1/CV2/CV3/CV3-R:** VOID (measured against a non-edge).
-- **TSMOM, vol-carry:** `POINT_IN_TIME_PENDING` — independent of ORB, must be re-audited STANDALONE as potential primaries.
+- **TSMOM (pool MNQ/MES/MGC):** audited 2026-06-25 → `CLEAN_BUT_WEAK_DIVERSIFIER / NOT_PRIMARY / RESEARCH_ONLY`
+  (CAUSAL_CLEAN + costs wired + rollover-clean, but standalone Sharpe 0.52, maxDD −$21k, worst day −$5.9k,
+  65% of net from 2024–25). Real but cannot carry a book.
+- **Vol-carry (contango→short-vol via SVXY):** audited 2026-06-25 → `CLEAN_BUT_WEAK_DIVERSIFIER / NOT_PRIMARY`
+  (CAUSAL_CLEAN + costs wired, but standalone Sharpe 0.86, −18.3% worst day [short-vol crash tail], 59% top-2-year
+  concentration, H2 decays 1.07→0.61, negative 2018/2022). Real but dangerous tail; cannot carry a book. SVXY
+  vehicle-realism is a separate deployment item.
 - **All non-ORB probation books** (ZN-Afternoon-Reversion, Treasury-Rolldown, TV-NFP, etc.): `UNAUDITED` until harnessed.
 - **There is currently NO validated primary workhorse.**
 
