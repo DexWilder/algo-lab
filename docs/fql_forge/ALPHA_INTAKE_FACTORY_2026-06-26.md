@@ -113,6 +113,35 @@ Official/calendars (T1 forced-flow): CME specs/roll/settlement, Treasury auction
   (2) **forced-flow BASKET** — combine several decorrelated weak-but-clean legs (ZN month-end + overnight + carry + …)
   and test whether the BASKET clears DSR-at-N where no leg does alone. Neither is a promotion; both are the next honest work.
 
+## §7c Forced-flow BASKET study → BASKET_FAIL (decisive)
+No-optimizer, equal-risk (inverse-vol on H1 applied to H2), predeclared legs, hostile-tested. Legs genuinely
+decorrelated (max pairwise corr 0.25; ZN_ME ~0 with all).
+- **B1 {TSMOM, vol-carry, ZN month-end}: DSR 0.87 at N=15 → FAIL.** The robust clean core does not clear the bar.
+- **B2 {B1 + overnight-net}: DSR 0.96 → PASS only at OPTIMISTIC overnight slippage.** Pass leans on overnight leg
+  (45% of net) concentrated in H2/2025 (MGC gold overnight rally). Hostile slippage stress (overnight needs the open):
+  | overnight slip | DSR | verdict |
+  |---|---|---|
+  | ×1 optimistic | 0.96 | PASS |
+  | ×2 realistic | 0.91 | MARGINAL |
+  | ×3 MOO-realistic | 0.81 | FAIL |
+  → the pass evaporates under realistic execution. **VERDICT: BASKET_FAIL** (no rescue-grind; one clean pass done).
+
+## §7d STRATEGIC CONCLUSION (decisive fork resolved)
+Both single-leg AND no-optimizer-basket approaches on reachable **free-data liquid** instruments are **real but
+sub-threshold** at cost + full-N DSR. The funnel has now established this with discipline across 5 mechanisms + 2 baskets.
+**The honest next move is NOT more free-data search — it is the DATA-TIER unlock (§9).** The edges likely to clear the
+bar live in data we don't have. Free-data liquid systematic alpha, single or basket, is borderline-marginal at best.
+
+## §9 DATA-TIER acquisition list (the honest next lever)
+Ranked by (mechanism strength × feasibility-to-acquire). These unlock the T1 packets currently DATA_BLOCKED:
+1. **Options OI / dealer gamma surface** (OPEX pin, gamma flips) — vendor (CBOE DataShop / ORATS / proprietary). Highest structural prior.
+2. **True VIX futures curve VX1/VX2** (vol-carry upgrade, roll-yield) — CBOE/CFE settlement data. Upgrades existing weak vol-carry.
+3. **CFTC COT** (positioning extremes, timing) — FREE (CFTC weekly) → buildable WITHOUT purchase; just intake work. ELEVATE.
+4. **EIA inventory actual+forecast** (P06 crude surprise) — EIA free API + consensus (consensus is the paid part).
+5. **Treasury auction results detail** (P03 enrichment) — TreasuryDirect free API.
+6. **Intraday order-flow / book imbalance** (microstructure) — expensive (tick/L2). Lowest feasibility.
+Note: COT, EIA, TreasuryDirect are FREE-API → next code work can pursue those without a purchase decision; gamma/VIX-curve/L2 need a buy.
+
 ## §8 Trial ledger (multiple-testing N) — DSR must use this N
 | # | packet | test date | raw Sharpe | counted in N | verdict |
 |---|---|---|---|---|---|
@@ -124,3 +153,7 @@ Official/calendars (T1 forced-flow): CME specs/roll/settlement, Treasury auction
 | 10 | P04 DSR-at-N=10 | 2026-06-26 | DSR=0.86 | — | FAILS gate (<0.95) → SHELVED (basket-leg only) |
 | 11-13 | P13 overnight premium MES/MNQ/MGC | 2026-06-26 | 0.71/0.93/1.12 gross | yes | structural REAL; net-of-cost DSR 0.85 → KILL (cost) |
 | running N = 13 | | | | | no candidate clears DSR-at-N net; see §7b meta-pattern |
+| 14 | Basket B1 (3 clean legs, equal-risk) | 2026-06-26 | DSR 0.87 | yes | FAIL |
+| 15 | Basket B2 (+overnight) optimistic-slip | 2026-06-26 | DSR 0.96 | yes | PASS-but-fragile |
+| 16 | Basket B2 realistic-slip (×2/×3) | 2026-06-26 | DSR 0.91/0.81 | yes | BASKET_FAIL under realistic cost |
+| running N = 16 | | | | | **BASKET_FAIL → pivot to DATA-TIER (§9). Free-data liquid space exhausted at the bar.** |
