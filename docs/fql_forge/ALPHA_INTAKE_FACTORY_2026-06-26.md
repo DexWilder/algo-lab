@@ -85,13 +85,26 @@ Official/calendars (T1 forced-flow): CME specs/roll/settlement, Treasury auction
 ## §6 Retest/rescue links — see TRUTH_RESET_RESCUE_AUDIT_2026-06-25.md (false-kill review pending)
 
 ## §7 Verdicts
-- **P02 equity month-end (MES/MNQ): KILL** — premise false; out-of-window mean > in-window mean. Equity month-end drift is not real here.
-- **P04 ZN month-end duration extension: SCREEN_PASS** (lead) — in-window +$53.9/day vs out −$16.4/day, gross Sharpe 2.38, net $13.6k, 88% years positive; clean economic rationale (bond index duration extension). NEXT: DSR-at-N, window-robustness (avoid window-tuning overfit), recent-decay, MES/MNQ-vs-ZN-vs-ZF/ZB cross-check, then maybe CLEAN_RESEARCH_CANDIDATE. NOT a WH/primary.
+- **P02 equity month-end (MES/MNQ): KILL** — premise false; out-of-window mean > in-window mean.
+- **P04 ZN month-end duration extension: SCREEN_PASS_RETAINED** (deepened 2026-06-26).
+  **METRIC CORRECTION (own it):** the first-pass "Sharpe 2.38" was computed on ACTIVE DAYS ONLY (capital idle ~85% of
+  the month inflates it). Proper full-period strategy Sharpe (flat outside window) = **0.64**. The 2.38 was misleading.
+  **Mechanism is REAL & clean** — passes every robustness check: window-family coherent (last_1→5: 0.13/0.34/0.64/0.53/0.42,
+  builds toward month-end, not a single-window miracle); **cross-tenor confirmed** (ZF 0.81, ZB 0.35 — all positive,
+  coherent duration-extension curve story); survives quarter-end roll-month exclusion (0.49); survives dropping best
+  year 2020 (0.51); survives 3× slippage (0.32); recent years persistent (2022-26 all positive); execution knowable.
+  **BUT FAILS the mandatory DSR-at-N gate: DSR=0.8627 at N=10 (< 0.95, below even 0.90 marginal).** Standalone edge too
+  weak to clear multiple-testing significance. → **SCREEN_PASS_RETAINED, NOT a candidate.** Class = clean-but-weak
+  forced-flow, same tier as TSMOM/vol-carry. Possible future role: a leg in a forced-flow BASKET (curve ZN+ZF + other
+  T1 signals) — a portfolio question for LATER, not now. Not WH/primary/candidate.
 
 ## §8 Trial ledger (multiple-testing N) — DSR must use this N
 | # | packet | test date | raw Sharpe | counted in N | verdict |
 |---|---|---|---|---|---|
 | 1 | P02 equity month-end MES | 2026-06-26 | 0.25 | yes | KILL |
 | 2 | P02 equity month-end MNQ | 2026-06-26 | 0.44 | yes | KILL/weak |
-| 3 | P04 ZN month-end duration | 2026-06-26 | 2.38 | yes | SCREEN_PASS (lead) |
-| running N = 3 | | | | | |
+| 3 | P04 ZN month-end last_3 (canonical) | 2026-06-26 | 0.64* | yes | SCREEN_PASS_RETAINED (*corrected from 2.38 active-days-only artifact) |
+| 4-7 | P04 ZN window family last_{1,2,4,5} | 2026-06-26 | 0.13/0.34/0.53/0.42 | yes | robustness configs |
+| 8-9 | P04 cross-tenor ZF/ZB last_3 | 2026-06-26 | 0.81/0.35 | yes | confirm direction |
+| 10 | P04 DSR-at-N=10 | 2026-06-26 | DSR=0.86 | — | FAILS gate (<0.95) |
+| running N = 10 | | | | | P04 retained-not-promoted |
