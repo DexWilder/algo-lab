@@ -98,6 +98,21 @@ Official/calendars (T1 forced-flow): CME specs/roll/settlement, Treasury auction
   forced-flow, same tier as TSMOM/vol-carry. Possible future role: a leg in a forced-flow BASKET (curve ZN+ZF + other
   T1 signals) — a portfolio question for LATER, not now. Not WH/primary/candidate.
 
+## §7b P13 overnight premium + EMERGING META-PATTERN
+- **P13 overnight-vs-intraday premium (MES/MNQ/MGC): structural effect REAL, tradeable expression KILL.**
+  Overnight >> intraday confirmed (MES 0.71/0.41, MNQ 0.93/0.34, MGC 1.12/−0.58 — gold's entire return is overnight,
+  intraday negative). GROSS DSR_MARGINAL (0.92); **NET-of-cost DSR_FAIL (0.85)** and real open-slippage makes it worse.
+  Tradeable verdict: **KILL (cost)**. Structural fact: real & useful — *intraday is a headwind; index beta lives overnight*
+  (partly explains why intraday-only strategies like ORB struggle).
+
+- **🔑 META-PATTERN (4 tests in):** every real, clean effect found so far is **real-but-sub-threshold net-of-cost at full N**:
+  TSMOM (Sh 0.52), vol-carry (0.86, crash tail), ZN month-end (0.64, DSR 0.86), overnight premium (net DSR 0.85).
+  On reachable free-data + our cost model, the liquid structural effects are genuine but too small to clear cost +
+  multiple-testing solo. **The two honest paths to an edge that clears the bar:** (1) **DATA-TIER unlock** — the
+  effects that likely DO clear (dealer gamma, true VIX curve, COT timing, order flow) are DATA_BLOCKED → feed-acquisition;
+  (2) **forced-flow BASKET** — combine several decorrelated weak-but-clean legs (ZN month-end + overnight + carry + …)
+  and test whether the BASKET clears DSR-at-N where no leg does alone. Neither is a promotion; both are the next honest work.
+
 ## §8 Trial ledger (multiple-testing N) — DSR must use this N
 | # | packet | test date | raw Sharpe | counted in N | verdict |
 |---|---|---|---|---|---|
@@ -106,5 +121,6 @@ Official/calendars (T1 forced-flow): CME specs/roll/settlement, Treasury auction
 | 3 | P04 ZN month-end last_3 (canonical) | 2026-06-26 | 0.64* | yes | SCREEN_PASS_RETAINED (*corrected from 2.38 active-days-only artifact) |
 | 4-7 | P04 ZN window family last_{1,2,4,5} | 2026-06-26 | 0.13/0.34/0.53/0.42 | yes | robustness configs |
 | 8-9 | P04 cross-tenor ZF/ZB last_3 | 2026-06-26 | 0.81/0.35 | yes | confirm direction |
-| 10 | P04 DSR-at-N=10 | 2026-06-26 | DSR=0.86 | — | FAILS gate (<0.95) |
-| running N = 10 | | | | | P04 retained-not-promoted |
+| 10 | P04 DSR-at-N=10 | 2026-06-26 | DSR=0.86 | — | FAILS gate (<0.95) → SHELVED (basket-leg only) |
+| 11-13 | P13 overnight premium MES/MNQ/MGC | 2026-06-26 | 0.71/0.93/1.12 gross | yes | structural REAL; net-of-cost DSR 0.85 → KILL (cost) |
+| running N = 13 | | | | | no candidate clears DSR-at-N net; see §7b meta-pattern |
