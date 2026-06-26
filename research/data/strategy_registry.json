@@ -1,6 +1,6 @@
 {
   "_schema_version": "2.0",
-  "_generated": "2026-06-12",
+  "_generated": "2026-06-25",
   "_description": "FQL Strategy Registry \u2014 institutional memory of all strategy ideas, tested candidates, and deployed strategies",
   "_purpose": "Preserves research knowledge, enables crossbreeding, feeds Strategy Factory",
   "strategies": [
@@ -131,12 +131,12 @@
       "kill_details": null,
       "last_review_date": "2026-03-15",
       "controller_state": "ACTIVE",
-      "controller_action": "FULL_ON",
-      "activation_score": 0.725,
+      "controller_action": "REDUCED_ON",
+      "activation_score": 0.635,
       "controller_reason_codes": [
         "REGIME_MATCH_MODERATE",
         "HALF_LIFE_STRENGTHENING",
-        "PORTFOLIO_ADDS_VALUE",
+        "PORTFOLIO_NEUTRAL",
         "LOW_REDUNDANCY",
         "HEALTH_FAIL",
         "KILL_NONE",
@@ -145,11 +145,11 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-06-12",
+      "last_controller_date": "2026-06-25",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
-      "contribution_status": "ADDS VALUE",
+      "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
       "genome_cluster": "trend_persistence",
       "resurrection_flag": false,
@@ -241,12 +241,12 @@
       "kill_details": null,
       "last_review_date": "2026-03-15",
       "controller_state": "ACTIVE",
-      "controller_action": "REDUCED_ON",
-      "activation_score": 0.685,
+      "controller_action": "FULL_ON",
+      "activation_score": 0.73,
       "controller_reason_codes": [
         "REGIME_MATCH_MODERATE",
         "HALF_LIFE_STRENGTHENING",
-        "PORTFOLIO_NEUTRAL",
+        "PORTFOLIO_ADDS_VALUE",
         "LOW_REDUNDANCY",
         "HEALTH_FAIL",
         "KILL_NONE",
@@ -255,7 +255,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-06-12",
+      "last_controller_date": "2026-06-25",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
@@ -581,7 +581,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-06-12",
+      "last_controller_date": "2026-06-25",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
@@ -3674,7 +3674,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-06-12",
+      "last_controller_date": "2026-06-25",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -4814,7 +4814,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-06-12",
+      "last_controller_date": "2026-06-25",
       "half_life_status": "HEALTHY",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -5751,7 +5751,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-06-12",
+      "last_controller_date": "2026-06-25",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -5925,7 +5925,7 @@
       "status": "probation",
       "notes": "ACTIVE CARRY CHALLENGER. Entered forward runner 2026-03-20. MICRO tier, monthly rebalance, 1 contract per spread leg. Rubric 18 (eff. 20 with gap bonus). Fills CARRY + Rates gaps. June 1 displacement target: MomIgn-M2K-Short. Promote condition: 3mo forward Sharpe > 0 + WF improvement. Archive condition: 3mo consecutive negative forward returns. | ARCHIVED 2026-04-13: 0 forward trades. Structurally broken \u2014 runner tracks ZN but strategy requires ZF/ZB spread. Cannot produce evidence in current infrastructure. | RE-PROBATED 2026-04-14: out-of-band monthly batch via research/run_treasury_rolldown_spread.py. Archive root cause was infrastructure mismatch (intraday runner is single-asset, strategy needs ZN/ZF/ZB spread). Strategy logic was never invalidated \u2014 component_validation_history shows validated with PF 1.11, 79 trades, rate-neutral. Evidence now accrues in logs/spread_rebalance_log.csv; excluded from live_drift_monitor per-trade severity. See docs/PROBATION_REVIEW_CRITERIA.md \u00a76 re-probation banner.",
       "last_review_date": "2026-04-14",
-      "review_priority": "HIGH",
+      "review_priority": "MEDIUM",
       "lifecycle_stage": "forward_evidence",
       "source_category": "academic",
       "tags": [
@@ -5954,7 +5954,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-06-12",
+      "last_controller_date": "2026-06-25",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -6320,7 +6320,7 @@
       "controller_action": "PROBATION",
       "activation_score": 0.545,
       "controller_state": "PAPER",
-      "last_controller_date": "2026-06-12",
+      "last_controller_date": "2026-06-25",
       "execution_config": {
         "avoid_regimes": [],
         "preferred_regimes": [
@@ -6466,15 +6466,15 @@
       "direction": "both",
       "source": "internal_crossbreeding",
       "rule_summary": "ORB + EMA ladder crossbreed. Both directions, 60% win rate, payoff 1.05.",
-      "status": "probation",
+      "status": "watch",
       "validation_score": 9.0,
       "trades_6yr": 1183,
       "profit_factor": 1.62,
       "portfolio_role": "workhorse",
       "promotion_date": "2026-04-06",
       "notes": "PROBATION BASELINE UPGRADED 2026-04-07 from stop=0.5 to stop=2.0 after stop-sweep study (10/10 variants clean across 0.1-3.0 range). stop=2.0 wins on both PF (1.62 vs 1.59) and DD duration. MNQ: 1183 trades, PF 1.62, PnL $50,785, top-10 22.7%, median $43.26, max DD 143 days. Cross-asset confirmed on all 4 equity-index micros. Sits inside broad stability plateau \u2014 this is a baseline selection, not a parameter fit. Edge is WR-based (60% WR, payoff 1.05). | IMPORTANT: This PF is a FLOOR, not a ceiling. target_mult and trail_mult are ignored by exit_profit_ladder (fixed 1R/2R/3R ratchets), so the edge was achieved with no functional exit tuning. Fixing the bug can only raise the family potential, never lower it.",
-      "controller_action": "REDUCED_ON",
-      "last_controller_date": "2026-06-12",
+      "controller_action": "OFF",
+      "last_controller_date": "2026-06-25",
       "execution_config": {
         "preferred_window": [
           "09:30",
@@ -6499,7 +6499,7 @@
       },
       "controller_state": "ACTIVE",
       "prior_state": "ACTIVE",
-      "activation_score": 0.64,
+      "activation_score": 0.66,
       "controller_reason_codes": [
         "REGIME_MATCH_LOW",
         "HALF_LIFE_STRENGTHENING",
@@ -6507,7 +6507,7 @@
         "LOW_REDUNDANCY",
         "HEALTH_FAIL",
         "KILL_NONE",
-        "SESSION_DRIFT_BROKEN",
+        "SESSION_DRIFT_DEGRADED",
         "TIME_WINDOW_MATCH",
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
@@ -6532,7 +6532,16 @@
       "regime_tag": "unclassified",
       "reusable_as_component": false,
       "extractable_components": null,
-      "crossbreeding_eligible": false
+      "crossbreeding_eligible": false,
+      "deactivation_history": [
+        {
+          "date": "2026-06-26",
+          "prior_status": "probation",
+          "prior_controller_action": "REDUCED_ON",
+          "prior_executable_state": null,
+          "reason": "TRUTH_RESET 2026-06-26: INVALIDATED by clean point-in-time retest (ema_slope same-day-close lookahead). Operator-approved deactivation (risk hygiene, paper-only, no capital). See docs/fql_forge/TRUTH_RESET_RESCUE_AUDIT_2026-06-25.md"
+        }
+      ]
     },
     {
       "strategy_id": "XB-ORB-EMA-Ladder-MGC",
@@ -6551,7 +6560,7 @@
       "promotion_date": "2026-05-28",
       "notes": "Track 1 forward-clock candidate, wired 2026-05-28 via Phase 3 Offensive Forge Sprint v2 (docs/reports/2026-05-28_offensive_sprint_v2_phase3.json). Workhorse archetype, all gates clean. Reuses the xb_orb_ema_ladder strategy module (no new code) \u2014 same mechanism as XB-ORB-EMA-Ladder-MNQ/MCL/MYM but on gold. Gold (MGC) has structurally lower correlation with the equity-index family than MES/M2K do, so this adds real cross-asset signal diversification rather than correlated noise. Phase 3 highest workhorse PF in sprint. Paper-readiness eligible ONLY after \u226530 forward trades + operator review at the gate. Per 2026-05-28 doctrine: do NOT auto-promote to paper-ready or core on hitting the 30-trade gate; trigger packet draft.",
       "controller_action": "REDUCED_ON",
-      "last_controller_date": "2026-06-12",
+      "last_controller_date": "2026-06-25",
       "execution_config": {
         "preferred_window": [
           "09:30",
@@ -6642,13 +6651,13 @@
       "direction": "both",
       "source": "internal_crossbreeding_cross_asset_extension",
       "rule_summary": "ORB + EMA ladder crossbreed on crude oil. Same exact code as MNQ variant. stop_mult=2.0.",
-      "status": "probation",
+      "status": "watch",
       "validation_score": 9.0,
       "trades_6yr": 898,
       "profit_factor": 1.33,
       "portfolio_role": "workhorse",
-      "controller_action": "PROBATION",
-      "last_controller_date": "2026-06-12",
+      "controller_action": "OFF",
+      "last_controller_date": "2026-06-25",
       "promotion_date": "2026-04-08",
       "baseline_params": {
         "stop_mult": 2.0,
@@ -6682,7 +6691,7 @@
         "LOW_REDUNDANCY",
         "HEALTH_FAIL",
         "KILL_NONE",
-        "SESSION_DRIFT_NORMAL",
+        "SESSION_DRIFT_DEGRADED",
         "TIME_WINDOW_MATCH",
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
@@ -6709,7 +6718,16 @@
         "cost_pct_of_gross_avg": 34.7,
         "reason": "Net PF 1.298 with conservative slip=2 estimate. 0.10 above gate. Cost = 34.7% of gross avg trade. Highest-priority MCL asset to replace conservative estimates with actual broker rate sheet before any paper/prop deployment.",
         "set_date": "2026-05-20"
-      }
+      },
+      "deactivation_history": [
+        {
+          "date": "2026-06-26",
+          "prior_status": "probation",
+          "prior_controller_action": "PROBATION",
+          "prior_executable_state": null,
+          "reason": "TRUTH_RESET 2026-06-26: INVALIDATED by clean point-in-time retest (ema_slope same-day-close lookahead). Operator-approved deactivation (risk hygiene, paper-only, no capital). See docs/fql_forge/TRUTH_RESET_RESCUE_AUDIT_2026-06-25.md"
+        }
+      ]
     },
     {
       "strategy_id": "XB-ORB-EMA-Ladder-MYM",
@@ -6720,13 +6738,13 @@
       "direction": "both",
       "source": "internal_crossbreeding_cross_asset_extension",
       "rule_summary": "ORB + EMA ladder crossbreed on Micro Dow. Same code as MNQ/MCL variant. stop_mult=2.0.",
-      "status": "probation",
+      "status": "watch",
       "validation_score": 8.0,
       "trades_6yr": 340,
       "profit_factor": 1.67,
       "portfolio_role": "workhorse",
-      "controller_action": "PROBATION",
-      "last_controller_date": "2026-06-12",
+      "controller_action": "OFF",
+      "last_controller_date": "2026-06-25",
       "promotion_date": "2026-04-13",
       "baseline_params": {
         "stop_mult": 2.0,
@@ -6760,14 +6778,14 @@
       "crossbreeding_eligible": false,
       "controller_state": "PROBATION",
       "prior_state": "PROBATION",
-      "activation_score": 0.53,
+      "activation_score": 0.51,
       "controller_reason_codes": [
         "REGIME_MATCH_LOW",
         "PORTFOLIO_NEUTRAL",
         "LOW_REDUNDANCY",
         "HEALTH_FAIL",
         "KILL_NONE",
-        "SESSION_DRIFT_DEGRADED",
+        "SESSION_DRIFT_BROKEN",
         "TIME_WINDOW_MATCH",
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
@@ -6800,7 +6818,16 @@
         "reason": "Workhorse threshold calibrated for 6y; MYM only 2y available"
       },
       "paper_borderline_status": "concentration_risk_failed_this_pass",
-      "paper_borderline_detail": "top-3=31.0%, top-10=58.9%, max-year=67.6%"
+      "paper_borderline_detail": "top-3=31.0%, top-10=58.9%, max-year=67.6%",
+      "deactivation_history": [
+        {
+          "date": "2026-06-26",
+          "prior_status": "probation",
+          "prior_controller_action": "PROBATION",
+          "prior_executable_state": null,
+          "reason": "TRUTH_RESET 2026-06-26: INVALIDATED by clean point-in-time retest (ema_slope same-day-close lookahead). Operator-approved deactivation (risk hygiene, paper-only, no capital). See docs/fql_forge/TRUTH_RESET_RESCUE_AUDIT_2026-06-25.md"
+        }
+      ]
     },
     {
       "strategy_id": "SPX-Lunch-Compression-Afternoon-Release",
@@ -8467,7 +8494,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-06-12",
+      "last_controller_date": "2026-06-25",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -9299,9 +9326,9 @@
       "direction": "both",
       "source": "lane_a_wave1_forge_workhorse_2026-06-13",
       "rule_summary": "Stop-run reversal (liquidity sweep + reclaim) + EMA-slope filter + profit_ladder exit. Intraday-flat daily workhorse.",
-      "status": "probation",
-      "controller_action": "PROBATION",
-      "executable_state": "EXECUTABLE",
+      "status": "watch",
+      "controller_action": "OFF",
+      "executable_state": "DISABLED",
       "controller_state": "ACTIVE",
       "lifecycle_stage": "forward_validation",
       "portfolio_role": "workhorse",
@@ -9351,6 +9378,36 @@
           "from": "VALIDATED",
           "to": "PROBATION",
           "trigger": "Phase 1C paper wiring (operator-approved); port-verified + DSCL + org-hygiene gates clear"
+        }
+      ],
+      "prior_state": "ACTIVE",
+      "activation_score": 0.69,
+      "controller_reason_codes": [
+        "REGIME_MATCH_LOW",
+        "HALF_LIFE_STRENGTHENING",
+        "PORTFOLIO_NEUTRAL",
+        "LOW_REDUNDANCY",
+        "HEALTH_FAIL",
+        "KILL_NONE",
+        "SESSION_DRIFT_NORMAL",
+        "TIME_WINDOW_MATCH",
+        "ASSET_FIT_GOOD",
+        "RECENT_STABLE"
+      ],
+      "last_controller_date": "2026-06-25",
+      "review_priority": "LOW",
+      "half_life_status": "HEALTHY",
+      "contribution_status": "NEUTRAL",
+      "health_status": "FAIL",
+      "genome_cluster": "unknown",
+      "resurrection_flag": false,
+      "deactivation_history": [
+        {
+          "date": "2026-06-26",
+          "prior_status": "probation",
+          "prior_controller_action": "REDUCED_ON",
+          "prior_executable_state": "EXECUTABLE",
+          "reason": "TRUTH_RESET 2026-06-26: INVALIDATED by clean point-in-time retest (ema_slope same-day-close lookahead). Operator-approved deactivation (risk hygiene, paper-only, no capital). See docs/fql_forge/TRUTH_RESET_RESCUE_AUDIT_2026-06-25.md"
         }
       ]
     }
