@@ -1,5 +1,12 @@
 # Paid-Data Decision Memo (2026-06-26) — report-only; an OPERATOR spending decision
 
+> ⚠️ **PROVISIONAL / SUSPENDED (2026-06-26): do not act on this yet.** It was written off an overbroad "free data
+> exhausted" claim. DATA_INVENTORY_RESET found we hold **Databento 1-minute OHLCV + VOLUME (11 instruments)** that is
+> entirely unexplored (all prior tests used close-only). The volume/1m-microstructure vein must be worked BEFORE any
+> paid-data spend is justified. See `DATABENTO_INVENTORY_AND_UNLOCKS_2026-06-26.md`. The items below that are genuinely
+> absent from `ohlcv-1m` (bid/ask, trades, MBP/L2, gamma, VIX-curve) remain valid candidates — but the spend is on hold
+> until the free volume/1m vein is exhausted.
+
 > Context: the funnel has established (with discipline) that free/cheap-data liquid-futures edges are real-but-
 > sub-threshold or dead (5 mechanisms + 2 baskets + naive COT, all killed/shelved at cost + full-N DSR). The
 > strong-prior unexplored edges live in data we'd have to buy. This memo frames that decision. **I cannot and will

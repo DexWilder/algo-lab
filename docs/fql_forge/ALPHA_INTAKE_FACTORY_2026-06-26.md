@@ -170,8 +170,12 @@ The BEST free forced-flow mechanisms have now all been tested and killed/shelved
 overnight (cost-fragile), naive COT (one-sided, dead), auction concession (dead). Combined with §7d (free-OHLC single
 + basket sub-threshold), the conclusion is firm: **free/cheap public data does not contain a liquid systematic edge
 that clears cost + full-N DSR.** Continuing to mine lower-prior free packets toward "100" would be activity, not
-progress (vanity-grinding mapped-thin veins). The decision-relevant fork is now the **PAID-DATA tier**
-(`PAID_DATA_DECISION_MEMO_2026-06-26.md`) — an operator spending decision. One remaining high-prior FREE shot worth
+progress (vanity-grinding mapped-thin veins).
+**⚠️ CORRECTION (2026-06-26, DATA_INVENTORY_RESET):** "free data exhausted" was OVERBROAD. We hold Databento
+**1-minute OHLCV + VOLUME** (11 instruments) that is entirely unexplored — all prior tests used CLOSE-ONLY. The
+volume/1m-microstructure vein (`DATABENTO_INVENTORY_AND_UNLOCKS_2026-06-26.md`) is the real next lane, FREE, BEFORE any
+paid-data spend. The paid-data memo is now PROVISIONAL/SUSPENDED. What's genuinely killed is the *close-based daily/event*
+expression; volume/1m is open. One remaining high-prior FREE shot worth
 taking: **pre-FOMC drift** (Lucca-Moench; needs FOMC dates) — likely arbitraged post-2015 but cheap to test; queued.
 
 ## §8 Trial ledger (multiple-testing N) — DSR must use this N
