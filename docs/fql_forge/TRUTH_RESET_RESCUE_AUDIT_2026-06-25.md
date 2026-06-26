@@ -42,9 +42,9 @@ Paper only — no capital was ever at risk. The fail-closed capital gate is why 
 |---|---|---|
 | zn_afternoon_reversion (ZN) | **LOOKAHEAD_DETECTED** (7/8 splits leaking) | **CONTAMINATED → INVALIDATED pending clean retest; DEACTIVATION RECOMMENDED** (active probation) |
 | fx_daily_trend (MGC) | **LOOKAHEAD_DETECTED** (8/8 splits leaking) | **CONTAMINATED → INVALIDATED pending clean retest; DEACTIVATION RECOMMENDED** (active probation) |
-| vol_managed_equity (MES) | CAUSAL_CLEAN (51 signals, good coverage) | **PROVISIONALLY CLEAN** → next: standalone edge metrics + concentration/DSR |
-| treasury_rolldown_carry (ZN/ZF/ZB) | CAUSAL_CLEAN but **LOW COVERAGE** (1 signal in slice) | harness ill-suited to monthly spread → **BESPOKE carry-lineage audit REQUIRED** before trust |
-| nfp_level_breakout (MNQ) | CAUSAL_CLEAN but **LOW COVERAGE** (2 signals, sparse event) | **EVENT-WINDOW audit REQUIRED** on full data before trust |
+| vol_managed_equity (MES) | CAUSAL_CLEAN (date-aligned, 0/1305) | **LONG_BETA_ONLY → KILL** (TR6b): signal always long; Sharpe 0.66 vs plain buy-and-hold long-1-MES Sharpe 0.70 — vol-targeting adds NO alpha over passive beta. Not a tradable edge. |
+| treasury_rolldown_carry (ZN/ZF/ZB) | probe inconclusive (monthly spread, 82 signals) | **RETEST_REQUIRED_BESPOKE** — needs multi-asset point-in-time carry harness (ranking must use t-1 data). Only active book still standing; unverified. |
+| nfp_level_breakout (MNQ) | **LOOKAHEAD_DETECTED** (1/8) + fails gates | **INVALIDATED/KILL** (TR7): mild leak AND negative median −$280, max single instance 47% (gate<35%), PF 1.30 on 83 events. Dead on edge quality even ignoring the leak. |
 
 **Systemic finding:** the same-day-aggregate→intraday lookahead (daily feature applied to same-day bars without a
 shift) recurs across INDEPENDENTLY-written strategies — ORB, stop_run_reversal, zn_afternoon_reversion, fx_daily_trend
