@@ -158,6 +158,22 @@ Tuesday-position/Friday-release lag (effective +6d, no same-week leakage). 8 ins
 a NON-naive COT hypothesis (commercials-as-smart-money, positioning *rate-of-change*, or COT×trend interaction) could be
 a future packet but must be PRE-REGISTERED — not rescue-grinded now. Next data-tier: EIA / TreasuryDirect (free-API).
 
+## §7f P03 Treasury auction concession/reversal (free, TreasuryDirect) → CLEAN_KILL
+64 ten-year auctions (2021-26), ZN daily, causality clean (dates scheduled). Both directions, predeclared windows.
+Concession (short into): T-3→T0 per-event Sh 0.09 (50% yrs, per-year all over the place); T-1→T0 −0.09.
+Reversal (long after): T0→T+3 −0.14 (thesis fails); T0→T+1 0.02. Best leg **DSR 0.41 at N≈84 → DSR_FAIL.**
+Both-sides incoherent. **CLEAN_KILL** — plausible mechanism, no tradeable edge in ZN futures closes (likely arbitraged
+/ concession lives in cash-dealer market not captured here).
+
+## §7g DECISIVE STATE (free forced-flow shots exhausted)
+The BEST free forced-flow mechanisms have now all been tested and killed/shelved: month-end (equity myth, ZN weak),
+overnight (cost-fragile), naive COT (one-sided, dead), auction concession (dead). Combined with §7d (free-OHLC single
++ basket sub-threshold), the conclusion is firm: **free/cheap public data does not contain a liquid systematic edge
+that clears cost + full-N DSR.** Continuing to mine lower-prior free packets toward "100" would be activity, not
+progress (vanity-grinding mapped-thin veins). The decision-relevant fork is now the **PAID-DATA tier**
+(`PAID_DATA_DECISION_MEMO_2026-06-26.md`) — an operator spending decision. One remaining high-prior FREE shot worth
+taking: **pre-FOMC drift** (Lucca-Moench; needs FOMC dates) — likely arbitraged post-2015 but cheap to test; queued.
+
 ## §8 Trial ledger (multiple-testing N) — DSR must use this N
 | # | packet | test date | raw Sharpe | counted in N | verdict |
 |---|---|---|---|---|---|
