@@ -3617,13 +3617,13 @@
       "direction": "long",
       "source": "batch_first_pass_discovery",
       "rule_summary": "50-day EMA trend direction + 20-day Donchian breakout. Daily bars resampled from 5m. ATR trailing stop. Long only.",
-      "status": "probation",
+      "status": "watch",
       "validation_score": 7.0,
       "profit_factor": 3.65,
       "notes": "PASS (7/8). First multi-horizon strategy. First PASS-level expansion result. PF 3.65, Sharpe 5.13, 44 trades. Bootstrap CI lower bound 1.38 (above 1.0). Parameter stability 100% (PF 2.63-3.96 across all combos). Top-trade removal PF 2.85. Walk-forward H1=1.14, H2=5.62. Only failure: MC ruin at 2K (sample size, not strategy defect). Restrictions: long only, daily bars, REDUCED tier, review after 15+ forward trades. CONVERGENT CONFIRMATION: DualThrust Daily MGC long PF 2.79 (independent entry logic, same edge). Two different systems confirm gold daily long momentum.",
       "last_review_date": "2026-03-16",
       "controller_state": "PROBATION",
-      "controller_action": "PROBATION",
+      "controller_action": "OFF",
       "review_priority": "MEDIUM",
       "deployment_restrictions": {
         "direction": "long_only",
@@ -3709,7 +3709,16 @@
         "entry",
         "exit"
       ],
-      "crossbreeding_eligible": true
+      "crossbreeding_eligible": true,
+      "deactivation_history": [
+        {
+          "date": "2026-06-26",
+          "prior_status": "probation",
+          "prior_controller_action": "PROBATION",
+          "prior_executable_state": null,
+          "reason": "TRUTH_RESET 2026-06-26: causality LOOKAHEAD_DETECTED (same-day-aggregate->intraday leak). Operator-approved deactivation (risk hygiene, paper-only). See TRUTH_RESET_RESCUE_AUDIT."
+        }
+      ]
     },
     {
       "strategy_id": "FVG-Inversion-Signal",
@@ -6287,7 +6296,7 @@
       "direction": "both",
       "source": "fql_falsification_discovery",
       "rule_summary": "Fade outsized 13:45-14:00 ET moves in ZN. Entry 14:00, exit 14:25. Impulse threshold 1.5x 20d median. Short-biased, high-vol activated.",
-      "status": "probation",
+      "status": "watch",
       "notes": "APPROVED for forward runner 2026-03-20. MICRO tier, probation. Discovered as Variant B during Treasury-Cash-Close-Reversion falsification (parent REJECTED). First-pass: PF 1.32, 300 trades, WF H1=1.31 H2=1.33. Short-biased (89% PnL from shorts). MONITORING NOTES: (1) HIGH_VOL dependent \u2014 PF 1.64 high-vol vs 1.04 low-vol. Will underperform in quiet rate regimes. (2) Window-specific \u2014 \u00b115m shift degrades results. If CME changes session times, edge may vanish. (3) ~18% of weekdays excluded due to sparse ZN bars at 14:00-14:25. Forward results are conditioned on afternoon liquidity. (4) Tuesday is the weak day (PF 0.87). PROBATION TARGETS: 30 forward trades, PF > 1.1, contribution review, overlap check vs Treasury-Rolldown-Carry-Spread. DISTINGUISH FROM Treasury-Rolldown: same asset (ZN) but different mechanism (25m intraday reversion vs monthly carry spread), different session (14:00-14:25 vs daily close), different factor (STRUCTURAL vs CARRY).",
       "last_review_date": "2026-03-20",
       "review_priority": "MEDIUM",
@@ -6317,7 +6326,7 @@
       ],
       "spec_path": "research/specs/ZN-Afternoon-Reversion.md",
       "validation_score": null,
-      "controller_action": "PROBATION",
+      "controller_action": "OFF",
       "activation_score": 0.545,
       "controller_state": "PAPER",
       "last_controller_date": "2026-06-25",
@@ -6455,7 +6464,16 @@
         "entry",
         "exit"
       ],
-      "crossbreeding_eligible": true
+      "crossbreeding_eligible": true,
+      "deactivation_history": [
+        {
+          "date": "2026-06-26",
+          "prior_status": "probation",
+          "prior_controller_action": "PROBATION",
+          "prior_executable_state": null,
+          "reason": "TRUTH_RESET 2026-06-26: causality LOOKAHEAD_DETECTED (same-day-aggregate->intraday leak). Operator-approved deactivation (risk hygiene, paper-only). See TRUTH_RESET_RESCUE_AUDIT."
+        }
+      ]
     },
     {
       "strategy_id": "XB-ORB-EMA-Ladder-MNQ",
@@ -6552,14 +6570,14 @@
       "direction": "both",
       "source": "offensive_forge_sprint_v2_phase3_2026-05-28",
       "rule_summary": "orb_breakout entry + ema_slope filter + profit_ladder exit on MGC. stop_mult=2.0. Phase 3 Offensive Forge Sprint v2 verdict PASS_TO_FORWARD_CLOCK: PF=1.601, n=652, median=+$8.76, top-3=20.0%, max-year=28.2%, years 7/8 positive, H1 PF=1.536, H2 PF=1.639. Gold workhorse \u2014 adds cross-asset/cross-sector diversification vs equity-index Ladder family.",
-      "status": "probation",
+      "status": "watch",
       "validation_score": 9.0,
       "trades_6yr": 652,
       "profit_factor": 1.601,
       "portfolio_role": "workhorse",
       "promotion_date": "2026-05-28",
       "notes": "Track 1 forward-clock candidate, wired 2026-05-28 via Phase 3 Offensive Forge Sprint v2 (docs/reports/2026-05-28_offensive_sprint_v2_phase3.json). Workhorse archetype, all gates clean. Reuses the xb_orb_ema_ladder strategy module (no new code) \u2014 same mechanism as XB-ORB-EMA-Ladder-MNQ/MCL/MYM but on gold. Gold (MGC) has structurally lower correlation with the equity-index family than MES/M2K do, so this adds real cross-asset signal diversification rather than correlated noise. Phase 3 highest workhorse PF in sprint. Paper-readiness eligible ONLY after \u226530 forward trades + operator review at the gate. Per 2026-05-28 doctrine: do NOT auto-promote to paper-ready or core on hitting the 30-trade gate; trigger packet draft.",
-      "controller_action": "REDUCED_ON",
+      "controller_action": "OFF",
       "last_controller_date": "2026-06-25",
       "execution_config": {
         "preferred_window": [
@@ -6626,7 +6644,7 @@
       "extractable_components": null,
       "crossbreeding_eligible": false,
       "last_review_date": "2026-05-28",
-      "executable_state": "EXECUTABLE",
+      "executable_state": "DISABLED",
       "paper_ready": false,
       "promotion_eligible": false,
       "experimental_archetype": null,
@@ -6640,7 +6658,16 @@
         "decision": "(c) leave gated pending validation/promotion review; do NOT activate, do NOT clear flags, do NOT add to CLAUDE.md approved table.",
         "execution_state": "OFF / fail-closed / non-execution-eligible (BLOCKED_PAPER_READY_FALSE via build_portfolio_config gate)",
         "review_doc": "docs/fql_forge/LADDER_MGC_APPROVAL_REVIEW_2026-06-14.md"
-      }
+      },
+      "deactivation_history": [
+        {
+          "date": "2026-06-26",
+          "prior_status": "probation",
+          "prior_controller_action": "REDUCED_ON",
+          "prior_executable_state": "EXECUTABLE",
+          "reason": "TRUTH_RESET 2026-06-26: causality LOOKAHEAD_DETECTED (same-day-aggregate->intraday leak). Operator-approved deactivation (risk hygiene, paper-only). See TRUTH_RESET_RESCUE_AUDIT."
+        }
+      ]
     },
     {
       "strategy_id": "XB-ORB-EMA-Ladder-MCL",
