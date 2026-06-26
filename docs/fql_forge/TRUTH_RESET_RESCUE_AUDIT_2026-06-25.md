@@ -37,14 +37,22 @@ Paper only — no capital was ever at risk. The fail-closed capital gate is why 
 | TSMOM (pool MNQ/MES/MGC, lb126) | **CLEAN_BUT_WEAK_DIVERSIFIER / NOT_PRIMARY** | CAUSAL_CLEAN + costs wired + rollover-clean, but Sharpe 0.52, maxDD −$21k, worst day −$5.9k, 65% net from 2024–25 |
 | Vol-carry (contango→short-vol via SVXY) | **CLEAN_BUT_WEAK_DIVERSIFIER / NOT_PRIMARY** | CAUSAL_CLEAN + costs wired, but Sharpe 0.86, −18.3% worst day (crash tail), 59% top-2-year concentration, H2 decays 1.07→0.61 |
 
-## D. Non-ORB probation books — UNAUDITED, must be harnessed
-| Branch | Status | Interface |
+## D. Non-ORB probation books — causality-audited 2026-06-26 (harness)
+| Branch | Causality verdict | Status |
 |---|---|---|
-| zn_afternoon_reversion (ZN) | **UNAUDITED → RETEST_REQUIRED** | standalone `generate_signals(df)` (uses `shift(1)`/prior close — promising but unproven); harness-able |
-| treasury_rolldown_carry (ZN/ZF/ZB) | **UNAUDITED → RETEST_REQUIRED** | monthly carry spread; different interface — needs carry-lineage + point-in-time audit |
-| nfp_level_breakout (MNQ) | **UNAUDITED → RETEST_REQUIRED** | event-box; harness + event-window clean-events check |
-| vol_managed_equity (MES) | **UNAUDITED → RETEST_REQUIRED** | vol-scaled sizing; check vol estimate is causal |
-| fx_daily_trend (MGC) | **UNAUDITED → RETEST_REQUIRED** | daily trend; harness |
+| zn_afternoon_reversion (ZN) | **LOOKAHEAD_DETECTED** (7/8 splits leaking) | **CONTAMINATED → INVALIDATED pending clean retest; DEACTIVATION RECOMMENDED** (active probation) |
+| fx_daily_trend (MGC) | **LOOKAHEAD_DETECTED** (8/8 splits leaking) | **CONTAMINATED → INVALIDATED pending clean retest; DEACTIVATION RECOMMENDED** (active probation) |
+| vol_managed_equity (MES) | CAUSAL_CLEAN (51 signals, good coverage) | **PROVISIONALLY CLEAN** → next: standalone edge metrics + concentration/DSR |
+| treasury_rolldown_carry (ZN/ZF/ZB) | CAUSAL_CLEAN but **LOW COVERAGE** (1 signal in slice) | harness ill-suited to monthly spread → **BESPOKE carry-lineage audit REQUIRED** before trust |
+| nfp_level_breakout (MNQ) | CAUSAL_CLEAN but **LOW COVERAGE** (2 signals, sparse event) | **EVENT-WINDOW audit REQUIRED** on full data before trust |
+
+**Systemic finding:** the same-day-aggregate→intraday lookahead (daily feature applied to same-day bars without a
+shift) recurs across INDEPENDENTLY-written strategies — ORB, stop_run_reversal, zn_afternoon_reversion, fx_daily_trend
+all leak. This is a recurring anti-pattern, not a single bug. The causality harness now catches it at the front door.
+
+**Newly-found contaminated ACTIVE books (NOT in the 2026-06-26 approved-4 deactivation — flagged for approval):**
+zn_afternoon_reversion (ZN, probation) and fx_daily_trend (MGC, probation). Plus XB-ORB-EMA-Ladder-MGC (idx 114,
+`ema_slope`, shows EXECUTABLE) noted earlier. Recommend deactivating these 3 as well — awaiting explicit approval.
 
 ## E. Correctly killed earlier this session (no rescue needed)
 | Branch | Status |
