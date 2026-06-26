@@ -109,7 +109,19 @@ def audit(fix=False, commit=False):
             fh.write(f"{ts} | verdict={'CLEAN' if not drift else 'DRIFT'} | indexed={len(mem_files)-len(missing)}/{len(mem_files)} | uncommitted={len(uncommitted)} | repaired={repaired} | fix={fix}\n")
     except Exception:
         pass
-    return 0 if (not drift or (fix and repaired and not uncommitted)) else 1
+    # SYSTEM GUARDRAILS (P0, 2026-06-26): run the fail-loud execution-memory checks EVERY cycle (teeth).
+    guard_rc = 0
+    try:
+        g = subprocess.run([sys.executable, str(REPO / "research" / "forge_system_guardrails.py")],
+                           capture_output=True, text=True, timeout=120)
+        guard_rc = g.returncode
+        print("\n--- SYSTEM GUARDRAILS ---")
+        print(g.stdout.strip()[-1500:] or "(no output)")
+        if guard_rc != 0:
+            print("*** GUARDRAILS P0_FAIL — execution-memory violation; see research/logs/system_guardrails_status.log ***")
+    except Exception as e:
+        print(f"(guardrails check failed to run: {e})")
+    return 0 if ((not drift or (fix and repaired and not uncommitted)) and guard_rc == 0) else 1
 
 
 if __name__ == "__main__":
