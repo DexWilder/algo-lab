@@ -142,6 +142,22 @@ Ranked by (mechanism strength × feasibility-to-acquire). These unlock the T1 pa
 6. **Intraday order-flow / book imbalance** (microstructure) — expensive (tick/L2). Lowest feasibility.
 Note: COT, EIA, TreasuryDirect are FREE-API → next code work can pursue those without a purchase decision; gamma/VIX-curve/L2 need a buy.
 
+## §7e CFTC COT positioning (NEW DATA VEIN unlocked) → naive reversal CLEAN_KILL
+**Vein unlocked:** CFTC COT is fully accessible (publicreporting.cftc.gov Socrata API, FREE; legacy futures-only).
+Intake built (`forge_cycle_2026-06-26_AIF_cot_intake.py`) — real spec/comm net positioning, 156wk percentile,
+Tuesday-position/Friday-release lag (effective +6d, no same-week leakage). 8 instruments mapped.
+**Strict both-sides test (mandatory per COT-JPY lesson) → KILL:**
+- Crowded-long-fade has NEGATIVE edge on the WELL-SAMPLED instruments (Gold n=66: −0.45/−0.97/−2.07%; SP500 n=242:
+  −0.22/−0.45/−0.90%) → specs are trend-followers, positioning CONTINUES not reverts. The naive "fade the crowd" is wrong.
+- Only crowded-SHORT shows positive edge, but small-sample (SP500 n=17, Gold n=33) and confounded with equity/gold
+  upward drift (crowded-short = selloffs that recover = beta/dip-buying, not a positioning edge).
+- FX/Pound DATA_LIMITED (short futures history, tiny n).
+- **~48 sub-tests run (8 inst × 2 sides × 3 horizons), all count toward N → the few positives are best-of-48, would not
+  survive DSR at N≈64.** The both-sides + trial-N discipline caught the exact one-sided trap that fooled us before (COT-JPY).
+**Verdict: naive COT spec positioning-reversal = CLEAN_KILL.** The DATA VEIN stays valuable (real, free, new class);
+a NON-naive COT hypothesis (commercials-as-smart-money, positioning *rate-of-change*, or COT×trend interaction) could be
+a future packet but must be PRE-REGISTERED — not rescue-grinded now. Next data-tier: EIA / TreasuryDirect (free-API).
+
 ## §8 Trial ledger (multiple-testing N) — DSR must use this N
 | # | packet | test date | raw Sharpe | counted in N | verdict |
 |---|---|---|---|---|---|
@@ -157,3 +173,5 @@ Note: COT, EIA, TreasuryDirect are FREE-API → next code work can pursue those 
 | 15 | Basket B2 (+overnight) optimistic-slip | 2026-06-26 | DSR 0.96 | yes | PASS-but-fragile |
 | 16 | Basket B2 realistic-slip (×2/×3) | 2026-06-26 | DSR 0.91/0.81 | yes | BASKET_FAIL under realistic cost |
 | running N = 16 | | | | | **BASKET_FAIL → pivot to DATA-TIER (§9). Free-data liquid space exhausted at the bar.** |
+| 17-64 | COT positioning, 8 inst × 2 sides × 3 horizons | 2026-06-26 | best-of small-sample | yes | naive COT reversal CLEAN_KILL (both-sides failed; well-sampled long-fade negative) |
+| running N ≈ 64 | | | | | COT vein unlocked (free); naive mechanism dead; non-naive COT needs pre-registration |
