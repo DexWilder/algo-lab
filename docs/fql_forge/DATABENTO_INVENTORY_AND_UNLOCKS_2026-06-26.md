@@ -53,6 +53,14 @@ Still PAID (not in ohlcv-1m): bid/ask spread regime, trade-flow/aggressor imbala
   aggressor-proxy order-flow; (c) RVOL as a regime FILTER on existing signals; (d) volume-climax exhaustion; (e) opening-
   minutes 1m behavior. Vein NOT exhausted by one reversion test.
 
+- **P15 volume-confirmed momentum → CLEAN_KILL** (2026-06-26). High-RVOL momentum follow-through no better than low-RVOL
+  (per-trade Sh ~0/negative net; MES −0.04 vs −0.037, MNQ +0.001 vs −0.005, MGC −0.08 vs −0.051), pooled DSR 0.0.
+  Volume does NOT confirm directional momentum at 1h horizon. Two naive intraday volume-directional packets now dead.
+  **Pivot the volume vein from "directional signal" to "execution/filter":** (a) participation-rate cost model from
+  per-minute volume — upgrades EVERY prior cost estimate, could move marginal verdicts (HIGHEST-value volume use next);
+  (b) volume-climax exhaustion (distinct mechanism); (c) volume as confidence-weight on an already-clean base.
+  Honest note: 2 volume kills + thin-liquid pattern → manage expectations, but vein not exhausted (different uses untested).
+
 ## 6. Revised hunt hierarchy
 1. **Databento-native (1m + volume) packet factory FIRST** — unexplored, free, ~20 packets, truth-gate first, every test counts toward N.
 2. Then the paid-data decision (memo, now provisional) — gamma/VIX-curve/trades/L2.
