@@ -61,6 +61,13 @@ Still PAID (not in ohlcv-1m): bid/ask spread regime, trade-flow/aggressor imbala
   (b) volume-climax exhaustion (distinct mechanism); (c) volume as confidence-weight on an already-clean base.
   Honest note: 2 volume kills + thin-liquid pattern → manage expectations, but vein not exhausted (different uses untested).
 
+- **Participation-rate COST-MODEL REASSESSMENT (2026-06-26) → NO verdict changes (valuable null).** Predeclared volume-scaled
+  half-spread cost (clip(med/vol,0.5,3), conservative, symmetric, bands hs=1/2/3, no tuning). Applied to the marginal effects:
+  overnight (P13) is slightly less punished than flat but STILL fails DSR at all bands (not rescued); ZN month-end (P04)
+  barely moves (0.64->0.66 at 2x). **Prior kills/shelves are ROBUST to realistic cost modeling — not flat-slippage artifacts.**
+  Closes the "blunt costs unfairly killed things" loose end with a clean NO. Participation model now a standing tool for all
+  future tests (more accurate than flat). 3 volume packets run (P14/P15 KILL, cost-model null); vein worked, not exhausted.
+
 ## 6. Revised hunt hierarchy
 1. **Databento-native (1m + volume) packet factory FIRST** — unexplored, free, ~20 packets, truth-gate first, every test counts toward N.
 2. Then the paid-data decision (memo, now provisional) — gamma/VIX-curve/trades/L2.
