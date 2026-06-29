@@ -47,10 +47,17 @@ _FEATURE_CACHE_MISSES = 0
 
 
 def _feature_cache_key(df: pd.DataFrame):
+    # CONTENT-HASH FIX (2026-06-29): the old key (len, first_dt, last_dt) IGNORED close/volume CONTENT, so
+    # corrected/perturbed data within the same date-range returned STALE cached features (hid perturbations in
+    # no-lookahead tests — see TRUTH_RESET). Now fingerprint OHLCV content cheaply so any value change busts the cache.
     try:
         first_dt = str(df["datetime"].iloc[0])
         last_dt = str(df["datetime"].iloc[-1])
-        return (len(df), first_dt, last_dt)
+        def _fp(col):
+            try: return round(float(df[col].astype("float64").sum()), 4)
+            except Exception: return None
+        content = (_fp("close"), _fp("high"), _fp("low"), _fp("open"), _fp("volume"))
+        return (len(df), first_dt, last_dt, content)
     except Exception:
         return None
 

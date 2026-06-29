@@ -59,6 +59,34 @@ if memo.exists():
     if "PROVISIONAL" not in t.upper() and "SUSPENDED" not in t.upper():
         alert("P1","PAID-DATA MEMO not marked PROVISIONAL while Databento volume vein is ACTIVE_PACKET_LANE.")
 
+# --- 5) NO-WH-LANGUAGE SCAN (asserting phrases only; exclude negated/historical/doctrine lines) ---
+ASSERT=[r"is a workhorse", r"validated primary", r"is validated", r"paper-ready", r"deployment candidate",
+        r"primary workhorse", r"deployment-ready"]
+NEG=("not","no ","invalidated","void","forbidden","banned","never","without","≠","pending","not a","is not",
+     "label","vocabulary","taxonomy","rule","only if","must","require","`")  # `=code word-list; meta-rule lines
+META=("DOCTRINE","OVERHAUL","RESCUE","INVENTORY","MEMO","AUDIT")  # docs that DISCUSS the ban, not assert WH
+wh_hits=[]
+import glob as _glob
+recent_docs=[d for d in sorted(_glob.glob(str(REPO/"docs/fql_forge/*.md")), key=lambda p: os.path.getmtime(p), reverse=True)[:10]
+             if not any(m in Path(d).name for m in META)]
+for d in recent_docs:
+    for i,ln in enumerate(Path(d).read_text(errors="ignore").splitlines()):
+        low=ln.lower()
+        if any(re.search(a, low) for a in ASSERT) and not any(n in low for n in NEG):
+            wh_hits.append(f"{Path(d).name}:{i+1}: {ln.strip()[:80]}")
+if wh_hits:
+    alert("P2", f"WH-LANGUAGE: {len(wh_hits)} asserting WH/validated phrase(s) in recent docs (verify gate-passed): "+wh_hits[0])
+else: info.append("no asserting WH/validated language in recent docs")
+
+# --- 6) TRIAL-LEDGER present (multiple-testing N automatic) ---
+if not (REPO/"research/data/forge_trial_ledger.json").exists():
+    alert("P1","TRIAL LEDGER missing — DSR multiple-testing N is manual/uncounted.")
+else:
+    try:
+        import json as _j; tn=len(_j.loads((REPO/"research/data/forge_trial_ledger.json").read_text()).get("trials",[]))
+        info.append(f"trial-ledger N={tn}")
+    except Exception: pass
+
 # --- WRITE STATUS where the next session reads it ---
 stamp=datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
 p0=[m for s,m in alerts if s=="P0"]; p1=[m for s,m in alerts if s=="P1"]; p2=[m for s,m in alerts if s=="P2"]

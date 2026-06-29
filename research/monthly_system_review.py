@@ -938,6 +938,27 @@ def _build_snapshot(month: str, in_window_data: list, registry, loaded_agents: s
     }
 
 
+def section_system_guardrails() -> SectionOutput:
+    """P1 fix (2026-06-29): the monthly review was BLIND to data-usage/directive/git failures. Now it runs the
+    fail-loud guardrails and surfaces P0/P1 as RISKS so the blind-audit root cause cannot recur silently."""
+    body, risks, recs = [], [], []
+    try:
+        g = subprocess.run([sys.executable, str(ROOT / "research" / "forge_system_guardrails.py")],
+                           capture_output=True, text=True, timeout=120)
+        body.append("```")
+        body.append(g.stdout.strip()[-1800:] or "(no output)")
+        body.append("```")
+        for ln in g.stdout.splitlines():
+            s = ln.strip()
+            if s.startswith("[P0]"): risks.append(f"GUARDRAIL {s}")
+            elif s.startswith("[P1]"): risks.append(f"GUARDRAIL {s}")
+        if g.returncode != 0:
+            recs.append("GUARDRAILS P0_FAIL — resolve before trusting research output this month.")
+    except Exception as e:
+        risks.append(f"guardrails failed to run: {e}")
+    return SectionOutput("System Guardrails (fail-loud execution-memory checks)", "\n".join(body), risks=risks, recommendations=recs)
+
+
 def main():
     ap = argparse.ArgumentParser(description="FQL Monthly System Review v1.1 (report-only)")
     ap.add_argument("--month", help="YYYY-MM (default: prior month)")
@@ -1012,8 +1033,10 @@ def main():
     exec_summary = compose_executive_summary(args.month, all_for_aggregation, f"{score}")
 
     # Final ordering — decision report shape
+    guardrails_section = section_system_guardrails()
     ordered = [
         exec_summary,
+        guardrails_section,
         decision_section,
         risks_section,
         vision_section,

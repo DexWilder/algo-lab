@@ -1,0 +1,386 @@
+{
+  "trials": [
+    {
+      "packet": "P02_equity_monthend",
+      "asset": "MES",
+      "verdict": "KILL",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "P02_equity_monthend",
+      "asset": "MNQ",
+      "verdict": "KILL",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "P04_zn_monthend",
+      "asset": "ZN",
+      "verdict": "SCREEN_PASS_RETAINED",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "P04_crosstenor",
+      "asset": "ZF",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "P04_crosstenor",
+      "asset": "ZB",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "basket_B1",
+      "verdict": "FAIL",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "basket_B2",
+      "verdict": "FAIL",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "P03_auction",
+      "asset": "ZN",
+      "verdict": "KILL",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "P14_vwap_reversion",
+      "verdict": "KILL",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "P15_volume_momentum",
+      "verdict": "KILL",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "P04_zn_window",
+      "asset": "ZN",
+      "horizon": "1",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "P04_zn_window",
+      "asset": "ZN",
+      "horizon": "2",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "P04_zn_window",
+      "asset": "ZN",
+      "horizon": "4",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "P04_zn_window",
+      "asset": "ZN",
+      "horizon": "5",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "P13_overnight",
+      "asset": "MES",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "P13_overnight",
+      "asset": "MNQ",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "P13_overnight",
+      "asset": "MGC",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "Gold",
+      "horizon": "L1w",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "Gold",
+      "horizon": "L2w",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "Gold",
+      "horizon": "L4w",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "Gold",
+      "horizon": "S1w",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "Gold",
+      "horizon": "S2w",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "Gold",
+      "horizon": "S4w",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "ZN",
+      "horizon": "L1w",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "ZN",
+      "horizon": "L2w",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "ZN",
+      "horizon": "L4w",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "ZN",
+      "horizon": "S1w",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "ZN",
+      "horizon": "S2w",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "ZN",
+      "horizon": "S4w",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "6E",
+      "horizon": "L1w",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "6E",
+      "horizon": "L2w",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "6E",
+      "horizon": "L4w",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "6E",
+      "horizon": "S1w",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "6E",
+      "horizon": "S2w",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "6E",
+      "horizon": "S4w",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "6J",
+      "horizon": "L1w",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "6J",
+      "horizon": "L2w",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "6J",
+      "horizon": "L4w",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "6J",
+      "horizon": "S1w",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "6J",
+      "horizon": "S2w",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "6J",
+      "horizon": "S4w",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "6B",
+      "horizon": "L1w",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "6B",
+      "horizon": "L2w",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "6B",
+      "horizon": "L4w",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "6B",
+      "horizon": "S1w",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "6B",
+      "horizon": "S2w",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "6B",
+      "horizon": "S4w",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "SP500",
+      "horizon": "L1w",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "SP500",
+      "horizon": "L2w",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "SP500",
+      "horizon": "L4w",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "SP500",
+      "horizon": "S1w",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "SP500",
+      "horizon": "S2w",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "SP500",
+      "horizon": "S4w",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "Nasdaq",
+      "horizon": "L1w",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "Nasdaq",
+      "horizon": "L2w",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "Nasdaq",
+      "horizon": "L4w",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "Nasdaq",
+      "horizon": "S1w",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "Nasdaq",
+      "horizon": "S2w",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "Nasdaq",
+      "horizon": "S4w",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "Crude",
+      "horizon": "L1w",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "Crude",
+      "horizon": "L2w",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "Crude",
+      "horizon": "L4w",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "Crude",
+      "horizon": "S1w",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "Crude",
+      "horizon": "S2w",
+      "ts": "2026-06-26"
+    },
+    {
+      "packet": "COT",
+      "asset": "Crude",
+      "horizon": "S4w",
+      "ts": "2026-06-26"
+    }
+  ],
+  "note": "auto multiple-testing N; every test appends"
+}
