@@ -73,13 +73,16 @@ def _check_tripwires_pre_run() -> tuple[bool, str | None]:
     if existing_tripwires:
         return False, f"unresolved tripwire(s): {[t.name for t in existing_tripwires]}"
 
-    # Tripwire: reports dir age
+    # Tripwire: STALENESS (fixed 2026-06-29). OLD logic checked the OLDEST report's age, which is self-perpetuating
+    # — once any report is >30d old (inevitable after a month) the loop halts FOREVER even while producing fresh
+    # reports. Correct semantic = NEWEST report stale (loop not producing) OR un-archived backlog COUNT too high.
     reports = sorted(REPORTS_DIR.glob("forge_daily_*.md"))
     if reports:
-        oldest = reports[0]
-        age_days = (datetime.now() - datetime.fromtimestamp(oldest.stat().st_mtime)).days
-        if age_days > TRIPWIRE_REPORTS_AGE_DAYS:
-            return False, f"reports dir backlog ({age_days}d old; >{TRIPWIRE_REPORTS_AGE_DAYS}d threshold)"
+        newest_age = (datetime.now() - datetime.fromtimestamp(reports[-1].stat().st_mtime)).days
+        if newest_age > TRIPWIRE_REPORTS_AGE_DAYS:
+            return False, f"loop stale: newest report {newest_age}d old (>{TRIPWIRE_REPORTS_AGE_DAYS}d) — not producing"
+        if len(reports) > 120:  # genuine operator-review backlog by COUNT (archive old reports)
+            return False, f"reports backlog: {len(reports)} un-archived reports (>120) — archive before continuing"
 
     # Tripwire: 3 consecutive zero-PASS runs (read recent JSON files)
     json_reports = sorted(REPORTS_DIR.glob("forge_daily_*.json"))

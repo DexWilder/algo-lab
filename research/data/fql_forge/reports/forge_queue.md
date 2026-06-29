@@ -1,6 +1,6 @@
-# FQL Forge Queue (rolling, last updated 2026-06-25)
+# FQL Forge Queue (rolling, last updated 2026-06-29)
 
-**Latest verdict counts:** {'PASS': 3, 'WATCH': 2, 'KILL': 0, 'RETEST': 0}
+**Latest verdict counts:** {'PASS': 1, 'WATCH': 4, 'KILL': 0, 'RETEST': 0}
 
 **Next safe Forge actions:**
 
