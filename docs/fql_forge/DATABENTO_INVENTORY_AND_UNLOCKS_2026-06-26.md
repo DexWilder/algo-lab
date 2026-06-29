@@ -68,6 +68,13 @@ Still PAID (not in ohlcv-1m): bid/ask spread regime, trade-flow/aggressor imbala
   Closes the "blunt costs unfairly killed things" loose end with a clean NO. Participation model now a standing tool for all
   future tests (more accurate than flat). 3 volume packets run (P14/P15 KILL, cost-model null); vein worked, not exhausted.
 
+- **P16 volume-climax exhaustion → CLEAN_KILL** (2026-06-29). Fade-after-extreme-RVOL-bar negative most sides (MES −0.05/−0.10,
+  MNQ +0.00/−0.05, MGC −0.13/+0.02), pooled −0.042, DSR 0.0 (auto trial-N=68). Even extreme-volume bars CONTINUE, not revert.
+  **3 distinct volume-DIRECTIONAL mechanisms now killed (reversion/momentum-confirm/climax).** Intraday volume-as-directional-
+  alpha is consistently dead on these liquid futures net-of-cost. Remaining DISTINCT volume uses: opening-minutes 1m behavior,
+  volume-imbalance/aggressor-proxy, RVOL-as-regime-filter (modulates an existing base — but our bases are weak). Cost-model = null.
+  Honest: directional-volume vein looking thin; non-directional uses unlikely to create standalone alpha.
+
 ## 6. Revised hunt hierarchy
 1. **Databento-native (1m + volume) packet factory FIRST** — unexplored, free, ~20 packets, truth-gate first, every test counts toward N.
 2. Then the paid-data decision (memo, now provisional) — gamma/VIX-curve/trades/L2.

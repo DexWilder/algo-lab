@@ -380,6 +380,30 @@
       "asset": "Crude",
       "horizon": "S4w",
       "ts": "2026-06-26"
+    },
+    {
+      "packet": "P16_volume_climax",
+      "asset": "MES",
+      "sharpe": -0.07732283075904633,
+      "verdict": "pending",
+      "horizon": "",
+      "ts": "2026-06-29"
+    },
+    {
+      "packet": "P16_volume_climax",
+      "asset": "MNQ",
+      "sharpe": -0.025195506331494266,
+      "verdict": "pending",
+      "horizon": "",
+      "ts": "2026-06-29"
+    },
+    {
+      "packet": "P16_volume_climax",
+      "asset": "MGC",
+      "sharpe": -0.05247215515415077,
+      "verdict": "pending",
+      "horizon": "",
+      "ts": "2026-06-29"
     }
   ],
   "note": "auto multiple-testing N; every test appends"
