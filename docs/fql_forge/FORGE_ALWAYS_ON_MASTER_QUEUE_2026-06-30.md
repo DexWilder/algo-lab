@@ -61,3 +61,5 @@ Remaining honest levers: (a) genuinely-different mechanism classes with REAL fee
 options/vol-surface) — most need data we lack; (b) the paid-data tier (gamma/VIX-curve/L2). Stop sweeping price primitives.
 Database volume = cost/liquidity/regime only (all directional/confirmation uses KILLED). Queue pivots to forced-flow/event/
 data-tier; no more naive single-feature price packets.
+## LANGUAGE CORRECTION (2026-06-30): scope is PRIMITIVE space, not 'free data'
+EXHAUSTED = crossbred price/volume/OHLC primitive expressions (+ the killed mechanism classes). NOT EXHAUSTED = structural/event/feed/source/paid stack. FOMC-drift reconciled=KILL (existing screen, not duplicated). Strategy discovery = ZERO validated primaries. Forge does NOT idle: LANE 1 operator handoff (FORGE_OPERATOR_DATA_HANDOFF_2026-06-30.md) + LANE 2 feasible-now event-path/RV packets (FREE_DATA_STATUS_AND_SOURCE_PACKETS_2026-06-30.md: FX-fix, settlement-close, rates-fly-RV, ES-NQ-lead-lag).
