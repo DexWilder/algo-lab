@@ -87,6 +87,31 @@ else:
         info.append(f"trial-ledger N={tn}")
     except Exception: pass
 
+# --- 7) UNUSED FEEDS (feed exists but no research script references it) ---
+feed_files=[p for p in (REPO/"data/feeds").glob("*.csv")]
+research_blob=scripts  # already concatenated above
+unused_feeds=[]
+for fp in feed_files:
+    # strict: the actual feed filename/stem must appear in a research script (no coarse token match)
+    if fp.name not in research_blob and fp.stem not in research_blob and f"feeds/{fp.stem}" not in research_blob:
+        unused_feeds.append(fp.name)
+if unused_feeds:
+    alert("P2", f"UNUSED FEEDS: {len(unused_feeds)} data/feeds files referenced by NO research script: {unused_feeds[:6]}")
+else: info.append(f"feeds: all {len(feed_files)} referenced")
+
+# --- 8) UNRUN HARNESSES (wp_*/lever_* exist but produced no output) ---
+unrun=[]
+for hp in list((REPO/"research").glob("wp_*.py"))+list((REPO/"research").glob("lever_*.py")):
+    name=hp.stem
+    out_exists = any((REPO/"research/data").glob(f"*{name}*")) or any((REPO/"research/data/fql_forge").rglob(f"*{name.split('_')[0]}*")) \
+                 or any((REPO/"docs/fql_forge").glob(f"*{name}*"))
+    # also: was it referenced (run) in any committed result? heuristic: a screen json mentioning it
+    if not out_exists and name not in ("lever_b1_feed_validator",):  # validators are structure-only
+        unrun.append(hp.name)
+if unrun:
+    alert("P1", f"UNRUN HARNESSES: {len(unrun)} wp_/lever_ harnesses with no output (built-but-never-run): {unrun}")
+else: info.append("harnesses: all have output")
+
 # --- WRITE STATUS where the next session reads it ---
 stamp=datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
 p0=[m for s,m in alerts if s=="P0"]; p1=[m for s,m in alerts if s=="P1"]; p2=[m for s,m in alerts if s=="P2"]
