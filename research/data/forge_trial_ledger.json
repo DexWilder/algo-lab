@@ -8335,6 +8335,5638 @@
       "horizon": "",
       "lane": "crypto_carry",
       "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:prior_day_fade|session_morning|atr_trail",
+      "asset": "MCL",
+      "sharpe": -0.18,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:prior_day_fade|session_morning|atr_trail",
+      "asset": "MYM",
+      "sharpe": -1.09,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:prior_day_fade|session_morning|atr_trail",
+      "asset": "ZN",
+      "sharpe": -3.01,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:prior_day_fade|session_morning|atr_trail",
+      "asset": "M2K",
+      "sharpe": -2.14,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:prior_day_fade|session_morning|chandelier",
+      "asset": "MNQ",
+      "sharpe": 0.4,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:prior_day_fade|session_morning|chandelier",
+      "asset": "MES",
+      "sharpe": -0.23,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:prior_day_fade|session_morning|chandelier",
+      "asset": "MGC",
+      "sharpe": -1.29,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:prior_day_fade|session_morning|chandelier",
+      "asset": "MCL",
+      "sharpe": -0.1,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:prior_day_fade|session_morning|chandelier",
+      "asset": "MYM",
+      "sharpe": 0.03,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:prior_day_fade|session_morning|chandelier",
+      "asset": "ZN",
+      "sharpe": -2.92,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:prior_day_fade|session_morning|chandelier",
+      "asset": "M2K",
+      "sharpe": -2.08,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:prior_day_fade|session_afternoon|profit_ladder",
+      "asset": "MNQ",
+      "sharpe": -1.39,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:prior_day_fade|session_afternoon|profit_ladder",
+      "asset": "MES",
+      "sharpe": -1.34,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:prior_day_fade|session_afternoon|profit_ladder",
+      "asset": "MGC",
+      "sharpe": -1.41,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:prior_day_fade|session_afternoon|profit_ladder",
+      "asset": "MCL",
+      "sharpe": -0.3,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:prior_day_fade|session_afternoon|profit_ladder",
+      "asset": "MYM",
+      "sharpe": -0.94,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:prior_day_fade|session_afternoon|profit_ladder",
+      "asset": "ZN",
+      "sharpe": -7.29,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:prior_day_fade|session_afternoon|profit_ladder",
+      "asset": "M2K",
+      "sharpe": -2.29,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:prior_day_fade|session_afternoon|atr_trail",
+      "asset": "MNQ",
+      "sharpe": -1.96,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:prior_day_fade|session_afternoon|atr_trail",
+      "asset": "MES",
+      "sharpe": -1.3,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:prior_day_fade|session_afternoon|atr_trail",
+      "asset": "MGC",
+      "sharpe": -2.52,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:prior_day_fade|session_afternoon|atr_trail",
+      "asset": "MCL",
+      "sharpe": -0.36,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:prior_day_fade|session_afternoon|atr_trail",
+      "asset": "MYM",
+      "sharpe": 0.4,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:prior_day_fade|session_afternoon|atr_trail",
+      "asset": "ZN",
+      "sharpe": -7.99,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:prior_day_fade|session_afternoon|atr_trail",
+      "asset": "M2K",
+      "sharpe": -1.71,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:prior_day_fade|session_afternoon|chandelier",
+      "asset": "MNQ",
+      "sharpe": -1.98,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:prior_day_fade|session_afternoon|chandelier",
+      "asset": "MES",
+      "sharpe": -1.48,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:prior_day_fade|session_afternoon|chandelier",
+      "asset": "MGC",
+      "sharpe": -2.41,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:prior_day_fade|session_afternoon|chandelier",
+      "asset": "MCL",
+      "sharpe": -0.42,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:prior_day_fade|session_afternoon|chandelier",
+      "asset": "MYM",
+      "sharpe": -0.14,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:prior_day_fade|session_afternoon|chandelier",
+      "asset": "ZN",
+      "sharpe": -7.13,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:prior_day_fade|session_afternoon|chandelier",
+      "asset": "M2K",
+      "sharpe": -1.72,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|none|profit_ladder",
+      "asset": "MNQ",
+      "sharpe": 0.23,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|none|profit_ladder",
+      "asset": "MES",
+      "sharpe": -0.37,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|none|profit_ladder",
+      "asset": "MGC",
+      "sharpe": 0.01,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|none|profit_ladder",
+      "asset": "MCL",
+      "sharpe": -0.9,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|none|profit_ladder",
+      "asset": "MYM",
+      "sharpe": 0.68,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|none|profit_ladder",
+      "asset": "ZN",
+      "sharpe": -2.98,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|none|profit_ladder",
+      "asset": "M2K",
+      "sharpe": -1.08,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|none|atr_trail",
+      "asset": "MNQ",
+      "sharpe": 0.58,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|none|atr_trail",
+      "asset": "MES",
+      "sharpe": -0.15,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|none|atr_trail",
+      "asset": "MGC",
+      "sharpe": -0.31,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|none|atr_trail",
+      "asset": "MCL",
+      "sharpe": -0.92,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|none|atr_trail",
+      "asset": "MYM",
+      "sharpe": 0.56,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|none|atr_trail",
+      "asset": "ZN",
+      "sharpe": -3.25,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|none|atr_trail",
+      "asset": "M2K",
+      "sharpe": -1.08,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|none|chandelier",
+      "asset": "MNQ",
+      "sharpe": 0.78,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|none|chandelier",
+      "asset": "MES",
+      "sharpe": 0.05,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|none|chandelier",
+      "asset": "MGC",
+      "sharpe": -0.33,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|none|chandelier",
+      "asset": "MCL",
+      "sharpe": -0.86,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|none|chandelier",
+      "asset": "MYM",
+      "sharpe": 0.57,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|none|chandelier",
+      "asset": "ZN",
+      "sharpe": -3.44,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|none|chandelier",
+      "asset": "M2K",
+      "sharpe": -1.16,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope|profit_ladder",
+      "asset": "MNQ",
+      "sharpe": 0.74,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope|profit_ladder",
+      "asset": "MES",
+      "sharpe": -0.3,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope|profit_ladder",
+      "asset": "MGC",
+      "sharpe": -0.15,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope|profit_ladder",
+      "asset": "MCL",
+      "sharpe": -0.77,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope|profit_ladder",
+      "asset": "MYM",
+      "sharpe": 0.47,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope|profit_ladder",
+      "asset": "ZN",
+      "sharpe": -3.08,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope|profit_ladder",
+      "asset": "M2K",
+      "sharpe": -1.44,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope|atr_trail",
+      "asset": "MNQ",
+      "sharpe": 0.67,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope|atr_trail",
+      "asset": "MES",
+      "sharpe": -0.43,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope|atr_trail",
+      "asset": "MGC",
+      "sharpe": -1.0,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope|atr_trail",
+      "asset": "MCL",
+      "sharpe": -0.47,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope|atr_trail",
+      "asset": "MYM",
+      "sharpe": 0.26,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope|atr_trail",
+      "asset": "ZN",
+      "sharpe": -3.07,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope|atr_trail",
+      "asset": "M2K",
+      "sharpe": -1.69,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope|chandelier",
+      "asset": "MNQ",
+      "sharpe": 0.7,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope|chandelier",
+      "asset": "MES",
+      "sharpe": -0.25,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope|chandelier",
+      "asset": "MGC",
+      "sharpe": -0.58,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope|chandelier",
+      "asset": "MCL",
+      "sharpe": -0.64,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope|chandelier",
+      "asset": "MYM",
+      "sharpe": 0.42,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope|chandelier",
+      "asset": "ZN",
+      "sharpe": -3.43,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope|chandelier",
+      "asset": "M2K",
+      "sharpe": -1.82,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|vwap_slope|profit_ladder",
+      "asset": "MNQ",
+      "sharpe": 0.26,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|vwap_slope|profit_ladder",
+      "asset": "MES",
+      "sharpe": -0.37,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|vwap_slope|profit_ladder",
+      "asset": "MGC",
+      "sharpe": -0.01,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|vwap_slope|profit_ladder",
+      "asset": "MCL",
+      "sharpe": -0.97,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|vwap_slope|profit_ladder",
+      "asset": "MYM",
+      "sharpe": 0.53,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|vwap_slope|profit_ladder",
+      "asset": "ZN",
+      "sharpe": -2.95,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|vwap_slope|profit_ladder",
+      "asset": "M2K",
+      "sharpe": -1.02,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|vwap_slope|atr_trail",
+      "asset": "MNQ",
+      "sharpe": 0.58,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|vwap_slope|atr_trail",
+      "asset": "MES",
+      "sharpe": -0.09,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|vwap_slope|atr_trail",
+      "asset": "MGC",
+      "sharpe": -0.29,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|vwap_slope|atr_trail",
+      "asset": "MCL",
+      "sharpe": -1.05,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|vwap_slope|atr_trail",
+      "asset": "MYM",
+      "sharpe": 0.44,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|vwap_slope|atr_trail",
+      "asset": "ZN",
+      "sharpe": -3.26,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|vwap_slope|atr_trail",
+      "asset": "M2K",
+      "sharpe": -1.01,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|vwap_slope|chandelier",
+      "asset": "MNQ",
+      "sharpe": 0.81,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|vwap_slope|chandelier",
+      "asset": "MES",
+      "sharpe": 0.11,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|vwap_slope|chandelier",
+      "asset": "MGC",
+      "sharpe": -0.34,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|vwap_slope|chandelier",
+      "asset": "MCL",
+      "sharpe": -0.99,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|vwap_slope|chandelier",
+      "asset": "MYM",
+      "sharpe": 0.45,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|vwap_slope|chandelier",
+      "asset": "ZN",
+      "sharpe": -3.39,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|vwap_slope|chandelier",
+      "asset": "M2K",
+      "sharpe": -1.06,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope_vol_high|profit_ladder",
+      "asset": "MNQ",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope_vol_high|profit_ladder",
+      "asset": "MES",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope_vol_high|profit_ladder",
+      "asset": "MGC",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope_vol_high|profit_ladder",
+      "asset": "MCL",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope_vol_high|profit_ladder",
+      "asset": "MYM",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope_vol_high|profit_ladder",
+      "asset": "ZN",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope_vol_high|profit_ladder",
+      "asset": "M2K",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope_vol_high|atr_trail",
+      "asset": "MNQ",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope_vol_high|atr_trail",
+      "asset": "MES",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope_vol_high|atr_trail",
+      "asset": "MGC",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope_vol_high|atr_trail",
+      "asset": "MCL",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope_vol_high|atr_trail",
+      "asset": "MYM",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope_vol_high|atr_trail",
+      "asset": "ZN",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope_vol_high|atr_trail",
+      "asset": "M2K",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope_vol_high|chandelier",
+      "asset": "MNQ",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope_vol_high|chandelier",
+      "asset": "MES",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope_vol_high|chandelier",
+      "asset": "MGC",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope_vol_high|chandelier",
+      "asset": "MCL",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope_vol_high|chandelier",
+      "asset": "MYM",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope_vol_high|chandelier",
+      "asset": "ZN",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope_vol_high|chandelier",
+      "asset": "M2K",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope_vol_low|profit_ladder",
+      "asset": "MNQ",
+      "sharpe": 0.78,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope_vol_low|profit_ladder",
+      "asset": "MES",
+      "sharpe": -0.44,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope_vol_low|profit_ladder",
+      "asset": "MGC",
+      "sharpe": -0.03,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope_vol_low|profit_ladder",
+      "asset": "MCL",
+      "sharpe": -0.89,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope_vol_low|profit_ladder",
+      "asset": "MYM",
+      "sharpe": 0.38,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope_vol_low|profit_ladder",
+      "asset": "ZN",
+      "sharpe": -3.05,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope_vol_low|profit_ladder",
+      "asset": "M2K",
+      "sharpe": -1.37,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope_vol_low|atr_trail",
+      "asset": "MNQ",
+      "sharpe": 0.7,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope_vol_low|atr_trail",
+      "asset": "MES",
+      "sharpe": -0.54,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope_vol_low|atr_trail",
+      "asset": "MGC",
+      "sharpe": -0.97,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope_vol_low|atr_trail",
+      "asset": "MCL",
+      "sharpe": -0.62,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope_vol_low|atr_trail",
+      "asset": "MYM",
+      "sharpe": 0.29,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope_vol_low|atr_trail",
+      "asset": "ZN",
+      "sharpe": -3.03,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope_vol_low|atr_trail",
+      "asset": "M2K",
+      "sharpe": -1.76,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope_vol_low|chandelier",
+      "asset": "MNQ",
+      "sharpe": 0.73,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope_vol_low|chandelier",
+      "asset": "MES",
+      "sharpe": -0.35,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope_vol_low|chandelier",
+      "asset": "MGC",
+      "sharpe": -0.55,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope_vol_low|chandelier",
+      "asset": "MCL",
+      "sharpe": -0.73,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope_vol_low|chandelier",
+      "asset": "MYM",
+      "sharpe": 0.33,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope_vol_low|chandelier",
+      "asset": "ZN",
+      "sharpe": -3.41,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|ema_slope_vol_low|chandelier",
+      "asset": "M2K",
+      "sharpe": -1.88,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|vol_regime|profit_ladder",
+      "asset": "MNQ",
+      "sharpe": 0.23,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|vol_regime|profit_ladder",
+      "asset": "MES",
+      "sharpe": -0.37,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|vol_regime|profit_ladder",
+      "asset": "MGC",
+      "sharpe": 0.01,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|vol_regime|profit_ladder",
+      "asset": "MCL",
+      "sharpe": -0.9,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|vol_regime|profit_ladder",
+      "asset": "MYM",
+      "sharpe": 0.68,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|vol_regime|profit_ladder",
+      "asset": "ZN",
+      "sharpe": -2.98,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|vol_regime|profit_ladder",
+      "asset": "M2K",
+      "sharpe": -1.08,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|vol_regime|atr_trail",
+      "asset": "MNQ",
+      "sharpe": 0.58,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|vol_regime|atr_trail",
+      "asset": "MES",
+      "sharpe": -0.15,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|vol_regime|atr_trail",
+      "asset": "MGC",
+      "sharpe": -0.31,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|vol_regime|atr_trail",
+      "asset": "MCL",
+      "sharpe": -0.92,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|vol_regime|atr_trail",
+      "asset": "MYM",
+      "sharpe": 0.56,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|vol_regime|atr_trail",
+      "asset": "ZN",
+      "sharpe": -3.25,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|vol_regime|atr_trail",
+      "asset": "M2K",
+      "sharpe": -1.08,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|vol_regime|chandelier",
+      "asset": "MNQ",
+      "sharpe": 0.78,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|vol_regime|chandelier",
+      "asset": "MES",
+      "sharpe": 0.05,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|vol_regime|chandelier",
+      "asset": "MGC",
+      "sharpe": -0.33,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|vol_regime|chandelier",
+      "asset": "MCL",
+      "sharpe": -0.86,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|vol_regime|chandelier",
+      "asset": "MYM",
+      "sharpe": 0.57,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|vol_regime|chandelier",
+      "asset": "ZN",
+      "sharpe": -3.44,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|vol_regime|chandelier",
+      "asset": "M2K",
+      "sharpe": -1.16,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|session_morning|profit_ladder",
+      "asset": "MNQ",
+      "sharpe": 0.41,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|session_morning|profit_ladder",
+      "asset": "MES",
+      "sharpe": -0.19,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|session_morning|profit_ladder",
+      "asset": "MGC",
+      "sharpe": 0.01,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|session_morning|profit_ladder",
+      "asset": "MCL",
+      "sharpe": -0.77,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|session_morning|profit_ladder",
+      "asset": "MYM",
+      "sharpe": 0.82,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|session_morning|profit_ladder",
+      "asset": "ZN",
+      "sharpe": -2.8,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|session_morning|profit_ladder",
+      "asset": "M2K",
+      "sharpe": -0.99,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|session_morning|atr_trail",
+      "asset": "MNQ",
+      "sharpe": 0.61,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|session_morning|atr_trail",
+      "asset": "MES",
+      "sharpe": -0.13,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|session_morning|atr_trail",
+      "asset": "MGC",
+      "sharpe": -0.13,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|session_morning|atr_trail",
+      "asset": "MCL",
+      "sharpe": -0.83,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|session_morning|atr_trail",
+      "asset": "MYM",
+      "sharpe": 0.64,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|session_morning|atr_trail",
+      "asset": "ZN",
+      "sharpe": -3.05,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|session_morning|atr_trail",
+      "asset": "M2K",
+      "sharpe": -1.04,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|session_morning|chandelier",
+      "asset": "MNQ",
+      "sharpe": 0.78,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|session_morning|chandelier",
+      "asset": "MES",
+      "sharpe": 0.06,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|session_morning|chandelier",
+      "asset": "MGC",
+      "sharpe": -0.21,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|session_morning|chandelier",
+      "asset": "MCL",
+      "sharpe": -0.88,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|session_morning|chandelier",
+      "asset": "MYM",
+      "sharpe": 0.74,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|session_morning|chandelier",
+      "asset": "ZN",
+      "sharpe": -3.27,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|session_morning|chandelier",
+      "asset": "M2K",
+      "sharpe": -1.12,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|session_afternoon|profit_ladder",
+      "asset": "MNQ",
+      "sharpe": -0.8,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|session_afternoon|profit_ladder",
+      "asset": "MES",
+      "sharpe": -1.13,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|session_afternoon|profit_ladder",
+      "asset": "MGC",
+      "sharpe": 0.08,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|session_afternoon|profit_ladder",
+      "asset": "MCL",
+      "sharpe": -1.75,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|session_afternoon|profit_ladder",
+      "asset": "MYM",
+      "sharpe": -1.19,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|session_afternoon|profit_ladder",
+      "asset": "ZN",
+      "sharpe": -4.03,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|session_afternoon|profit_ladder",
+      "asset": "M2K",
+      "sharpe": -1.35,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|session_afternoon|atr_trail",
+      "asset": "MNQ",
+      "sharpe": -0.5,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|session_afternoon|atr_trail",
+      "asset": "MES",
+      "sharpe": -1.03,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|session_afternoon|atr_trail",
+      "asset": "MGC",
+      "sharpe": -0.67,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|session_afternoon|atr_trail",
+      "asset": "MCL",
+      "sharpe": -1.53,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|session_afternoon|atr_trail",
+      "asset": "MYM",
+      "sharpe": -0.48,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|session_afternoon|atr_trail",
+      "asset": "ZN",
+      "sharpe": -4.26,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|session_afternoon|atr_trail",
+      "asset": "M2K",
+      "sharpe": -1.32,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|session_afternoon|chandelier",
+      "asset": "MNQ",
+      "sharpe": -0.03,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|session_afternoon|chandelier",
+      "asset": "MES",
+      "sharpe": -0.63,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|session_afternoon|chandelier",
+      "asset": "MGC",
+      "sharpe": -0.5,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|session_afternoon|chandelier",
+      "asset": "MCL",
+      "sharpe": -1.25,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|session_afternoon|chandelier",
+      "asset": "MYM",
+      "sharpe": -0.34,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|session_afternoon|chandelier",
+      "asset": "ZN",
+      "sharpe": -4.26,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:range_compression_break|session_afternoon|chandelier",
+      "asset": "M2K",
+      "sharpe": -1.26,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|none|profit_ladder",
+      "asset": "MNQ",
+      "sharpe": -0.04,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|none|profit_ladder",
+      "asset": "MES",
+      "sharpe": -0.28,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|none|profit_ladder",
+      "asset": "MGC",
+      "sharpe": -0.84,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|none|profit_ladder",
+      "asset": "MCL",
+      "sharpe": -0.48,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|none|profit_ladder",
+      "asset": "MYM",
+      "sharpe": 0.08,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|none|profit_ladder",
+      "asset": "ZN",
+      "sharpe": -2.5,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|none|profit_ladder",
+      "asset": "M2K",
+      "sharpe": -0.79,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|none|atr_trail",
+      "asset": "MNQ",
+      "sharpe": 0.15,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|none|atr_trail",
+      "asset": "MES",
+      "sharpe": -0.37,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|none|atr_trail",
+      "asset": "MGC",
+      "sharpe": -0.89,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|none|atr_trail",
+      "asset": "MCL",
+      "sharpe": -0.66,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|none|atr_trail",
+      "asset": "MYM",
+      "sharpe": 0.17,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|none|atr_trail",
+      "asset": "ZN",
+      "sharpe": -2.57,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|none|atr_trail",
+      "asset": "M2K",
+      "sharpe": -0.67,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|none|chandelier",
+      "asset": "MNQ",
+      "sharpe": 0.22,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|none|chandelier",
+      "asset": "MES",
+      "sharpe": -0.11,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|none|chandelier",
+      "asset": "MGC",
+      "sharpe": -0.84,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|none|chandelier",
+      "asset": "MCL",
+      "sharpe": -0.74,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|none|chandelier",
+      "asset": "MYM",
+      "sharpe": 0.3,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|none|chandelier",
+      "asset": "ZN",
+      "sharpe": -2.61,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|none|chandelier",
+      "asset": "M2K",
+      "sharpe": -0.74,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope|profit_ladder",
+      "asset": "MNQ",
+      "sharpe": -0.27,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope|profit_ladder",
+      "asset": "MES",
+      "sharpe": -1.0,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope|profit_ladder",
+      "asset": "MGC",
+      "sharpe": -0.95,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope|profit_ladder",
+      "asset": "MCL",
+      "sharpe": -1.02,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope|profit_ladder",
+      "asset": "MYM",
+      "sharpe": -0.63,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope|profit_ladder",
+      "asset": "ZN",
+      "sharpe": -2.4,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope|profit_ladder",
+      "asset": "M2K",
+      "sharpe": -0.83,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope|atr_trail",
+      "asset": "MNQ",
+      "sharpe": 0.06,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope|atr_trail",
+      "asset": "MES",
+      "sharpe": -0.84,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope|atr_trail",
+      "asset": "MGC",
+      "sharpe": -1.08,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope|atr_trail",
+      "asset": "MCL",
+      "sharpe": -0.95,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope|atr_trail",
+      "asset": "MYM",
+      "sharpe": -0.82,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope|atr_trail",
+      "asset": "ZN",
+      "sharpe": -2.39,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope|atr_trail",
+      "asset": "M2K",
+      "sharpe": -0.65,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope|chandelier",
+      "asset": "MNQ",
+      "sharpe": -0.08,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope|chandelier",
+      "asset": "MES",
+      "sharpe": -0.43,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope|chandelier",
+      "asset": "MGC",
+      "sharpe": -1.0,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope|chandelier",
+      "asset": "MCL",
+      "sharpe": -1.0,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope|chandelier",
+      "asset": "MYM",
+      "sharpe": -0.77,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope|chandelier",
+      "asset": "ZN",
+      "sharpe": -2.59,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope|chandelier",
+      "asset": "M2K",
+      "sharpe": -0.77,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|vwap_slope|profit_ladder",
+      "asset": "MNQ",
+      "sharpe": -0.19,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|vwap_slope|profit_ladder",
+      "asset": "MES",
+      "sharpe": -1.02,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|vwap_slope|profit_ladder",
+      "asset": "MGC",
+      "sharpe": -2.0,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|vwap_slope|profit_ladder",
+      "asset": "MCL",
+      "sharpe": -0.67,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|vwap_slope|profit_ladder",
+      "asset": "MYM",
+      "sharpe": -0.44,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|vwap_slope|profit_ladder",
+      "asset": "ZN",
+      "sharpe": -1.31,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|vwap_slope|profit_ladder",
+      "asset": "M2K",
+      "sharpe": -0.85,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|vwap_slope|atr_trail",
+      "asset": "MNQ",
+      "sharpe": 0.1,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|vwap_slope|atr_trail",
+      "asset": "MES",
+      "sharpe": -1.07,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|vwap_slope|atr_trail",
+      "asset": "MGC",
+      "sharpe": -1.99,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|vwap_slope|atr_trail",
+      "asset": "MCL",
+      "sharpe": -1.06,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|vwap_slope|atr_trail",
+      "asset": "MYM",
+      "sharpe": -2.33,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|vwap_slope|atr_trail",
+      "asset": "ZN",
+      "sharpe": -0.99,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|vwap_slope|atr_trail",
+      "asset": "M2K",
+      "sharpe": -0.63,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|vwap_slope|chandelier",
+      "asset": "MNQ",
+      "sharpe": 0.02,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|vwap_slope|chandelier",
+      "asset": "MES",
+      "sharpe": -1.1,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|vwap_slope|chandelier",
+      "asset": "MGC",
+      "sharpe": -1.75,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|vwap_slope|chandelier",
+      "asset": "MCL",
+      "sharpe": -1.45,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|vwap_slope|chandelier",
+      "asset": "MYM",
+      "sharpe": -1.78,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|vwap_slope|chandelier",
+      "asset": "ZN",
+      "sharpe": -1.04,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|vwap_slope|chandelier",
+      "asset": "M2K",
+      "sharpe": -0.62,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope_vol_high|profit_ladder",
+      "asset": "MNQ",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope_vol_high|profit_ladder",
+      "asset": "MES",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope_vol_high|profit_ladder",
+      "asset": "MGC",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope_vol_high|profit_ladder",
+      "asset": "MCL",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope_vol_high|profit_ladder",
+      "asset": "MYM",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope_vol_high|profit_ladder",
+      "asset": "ZN",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope_vol_high|profit_ladder",
+      "asset": "M2K",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope_vol_high|atr_trail",
+      "asset": "MNQ",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope_vol_high|atr_trail",
+      "asset": "MES",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope_vol_high|atr_trail",
+      "asset": "MGC",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope_vol_high|atr_trail",
+      "asset": "MCL",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope_vol_high|atr_trail",
+      "asset": "MYM",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope_vol_high|atr_trail",
+      "asset": "ZN",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope_vol_high|atr_trail",
+      "asset": "M2K",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope_vol_high|chandelier",
+      "asset": "MNQ",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope_vol_high|chandelier",
+      "asset": "MES",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope_vol_high|chandelier",
+      "asset": "MGC",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope_vol_high|chandelier",
+      "asset": "MCL",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope_vol_high|chandelier",
+      "asset": "MYM",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope_vol_high|chandelier",
+      "asset": "ZN",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope_vol_high|chandelier",
+      "asset": "M2K",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope_vol_low|profit_ladder",
+      "asset": "MNQ",
+      "sharpe": 0.03,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope_vol_low|profit_ladder",
+      "asset": "MES",
+      "sharpe": -0.92,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope_vol_low|profit_ladder",
+      "asset": "MGC",
+      "sharpe": -0.72,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope_vol_low|profit_ladder",
+      "asset": "MCL",
+      "sharpe": -0.97,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope_vol_low|profit_ladder",
+      "asset": "MYM",
+      "sharpe": 0.17,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope_vol_low|profit_ladder",
+      "asset": "ZN",
+      "sharpe": -2.67,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope_vol_low|profit_ladder",
+      "asset": "M2K",
+      "sharpe": -0.77,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope_vol_low|atr_trail",
+      "asset": "MNQ",
+      "sharpe": 0.21,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope_vol_low|atr_trail",
+      "asset": "MES",
+      "sharpe": -0.81,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope_vol_low|atr_trail",
+      "asset": "MGC",
+      "sharpe": -0.77,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope_vol_low|atr_trail",
+      "asset": "MCL",
+      "sharpe": -0.85,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope_vol_low|atr_trail",
+      "asset": "MYM",
+      "sharpe": -0.49,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope_vol_low|atr_trail",
+      "asset": "ZN",
+      "sharpe": -2.61,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope_vol_low|atr_trail",
+      "asset": "M2K",
+      "sharpe": -0.56,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope_vol_low|chandelier",
+      "asset": "MNQ",
+      "sharpe": 0.02,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope_vol_low|chandelier",
+      "asset": "MES",
+      "sharpe": -0.33,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope_vol_low|chandelier",
+      "asset": "MGC",
+      "sharpe": -0.68,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope_vol_low|chandelier",
+      "asset": "MCL",
+      "sharpe": -0.93,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope_vol_low|chandelier",
+      "asset": "MYM",
+      "sharpe": 0.11,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope_vol_low|chandelier",
+      "asset": "ZN",
+      "sharpe": -2.91,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|ema_slope_vol_low|chandelier",
+      "asset": "M2K",
+      "sharpe": -0.7,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|vol_regime|profit_ladder",
+      "asset": "MNQ",
+      "sharpe": -0.04,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|vol_regime|profit_ladder",
+      "asset": "MES",
+      "sharpe": -0.28,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|vol_regime|profit_ladder",
+      "asset": "MGC",
+      "sharpe": -0.84,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|vol_regime|profit_ladder",
+      "asset": "MCL",
+      "sharpe": -0.48,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|vol_regime|profit_ladder",
+      "asset": "MYM",
+      "sharpe": 0.08,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|vol_regime|profit_ladder",
+      "asset": "ZN",
+      "sharpe": -2.5,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|vol_regime|profit_ladder",
+      "asset": "M2K",
+      "sharpe": -0.79,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|vol_regime|atr_trail",
+      "asset": "MNQ",
+      "sharpe": 0.15,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|vol_regime|atr_trail",
+      "asset": "MES",
+      "sharpe": -0.37,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|vol_regime|atr_trail",
+      "asset": "MGC",
+      "sharpe": -0.89,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|vol_regime|atr_trail",
+      "asset": "MCL",
+      "sharpe": -0.66,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|vol_regime|atr_trail",
+      "asset": "MYM",
+      "sharpe": 0.17,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|vol_regime|atr_trail",
+      "asset": "ZN",
+      "sharpe": -2.57,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|vol_regime|atr_trail",
+      "asset": "M2K",
+      "sharpe": -0.67,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|vol_regime|chandelier",
+      "asset": "MNQ",
+      "sharpe": 0.22,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|vol_regime|chandelier",
+      "asset": "MES",
+      "sharpe": -0.11,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|vol_regime|chandelier",
+      "asset": "MGC",
+      "sharpe": -0.84,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|vol_regime|chandelier",
+      "asset": "MCL",
+      "sharpe": -0.74,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|vol_regime|chandelier",
+      "asset": "MYM",
+      "sharpe": 0.3,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|vol_regime|chandelier",
+      "asset": "ZN",
+      "sharpe": -2.61,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|vol_regime|chandelier",
+      "asset": "M2K",
+      "sharpe": -0.74,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|session_morning|profit_ladder",
+      "asset": "MNQ",
+      "sharpe": -0.04,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|session_morning|profit_ladder",
+      "asset": "MES",
+      "sharpe": -0.28,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|session_morning|profit_ladder",
+      "asset": "MGC",
+      "sharpe": -0.77,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|session_morning|profit_ladder",
+      "asset": "MCL",
+      "sharpe": -0.48,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|session_morning|profit_ladder",
+      "asset": "MYM",
+      "sharpe": 0.08,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|session_morning|profit_ladder",
+      "asset": "ZN",
+      "sharpe": -2.49,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|session_morning|profit_ladder",
+      "asset": "M2K",
+      "sharpe": -0.79,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|session_morning|atr_trail",
+      "asset": "MNQ",
+      "sharpe": 0.15,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|session_morning|atr_trail",
+      "asset": "MES",
+      "sharpe": -0.37,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|session_morning|atr_trail",
+      "asset": "MGC",
+      "sharpe": -0.83,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|session_morning|atr_trail",
+      "asset": "MCL",
+      "sharpe": -0.66,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|session_morning|atr_trail",
+      "asset": "MYM",
+      "sharpe": 0.17,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|session_morning|atr_trail",
+      "asset": "ZN",
+      "sharpe": -2.56,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|session_morning|atr_trail",
+      "asset": "M2K",
+      "sharpe": -0.67,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|session_morning|chandelier",
+      "asset": "MNQ",
+      "sharpe": 0.22,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|session_morning|chandelier",
+      "asset": "MES",
+      "sharpe": -0.11,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|session_morning|chandelier",
+      "asset": "MGC",
+      "sharpe": -0.77,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|session_morning|chandelier",
+      "asset": "MCL",
+      "sharpe": -0.74,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|session_morning|chandelier",
+      "asset": "MYM",
+      "sharpe": 0.3,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|session_morning|chandelier",
+      "asset": "ZN",
+      "sharpe": -2.62,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|session_morning|chandelier",
+      "asset": "M2K",
+      "sharpe": -0.74,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|session_afternoon|profit_ladder",
+      "asset": "MNQ",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|session_afternoon|profit_ladder",
+      "asset": "MES",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|session_afternoon|profit_ladder",
+      "asset": "MGC",
+      "sharpe": -1.5,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|session_afternoon|profit_ladder",
+      "asset": "MCL",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|session_afternoon|profit_ladder",
+      "asset": "MYM",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|session_afternoon|profit_ladder",
+      "asset": "ZN",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|session_afternoon|profit_ladder",
+      "asset": "M2K",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|session_afternoon|atr_trail",
+      "asset": "MNQ",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|session_afternoon|atr_trail",
+      "asset": "MES",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|session_afternoon|atr_trail",
+      "asset": "MGC",
+      "sharpe": -1.49,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|session_afternoon|atr_trail",
+      "asset": "MCL",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|session_afternoon|atr_trail",
+      "asset": "MYM",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|session_afternoon|atr_trail",
+      "asset": "ZN",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|session_afternoon|atr_trail",
+      "asset": "M2K",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|session_afternoon|chandelier",
+      "asset": "MNQ",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|session_afternoon|chandelier",
+      "asset": "MES",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|session_afternoon|chandelier",
+      "asset": "MGC",
+      "sharpe": -1.49,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|session_afternoon|chandelier",
+      "asset": "MCL",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|session_afternoon|chandelier",
+      "asset": "MYM",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|session_afternoon|chandelier",
+      "asset": "ZN",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:gap_fill_trigger|session_afternoon|chandelier",
+      "asset": "M2K",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|none|profit_ladder",
+      "asset": "MNQ",
+      "sharpe": 0.05,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|none|profit_ladder",
+      "asset": "MES",
+      "sharpe": -0.58,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|none|profit_ladder",
+      "asset": "MGC",
+      "sharpe": -0.96,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|none|profit_ladder",
+      "asset": "MCL",
+      "sharpe": -1.3,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|none|profit_ladder",
+      "asset": "MYM",
+      "sharpe": -0.02,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|none|profit_ladder",
+      "asset": "ZN",
+      "sharpe": -3.87,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|none|profit_ladder",
+      "asset": "M2K",
+      "sharpe": -1.17,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|none|atr_trail",
+      "asset": "MNQ",
+      "sharpe": -0.39,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|none|atr_trail",
+      "asset": "MES",
+      "sharpe": -0.73,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|none|atr_trail",
+      "asset": "MGC",
+      "sharpe": -0.86,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|none|atr_trail",
+      "asset": "MCL",
+      "sharpe": -1.73,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|none|atr_trail",
+      "asset": "MYM",
+      "sharpe": -0.77,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|none|atr_trail",
+      "asset": "ZN",
+      "sharpe": -5.95,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|none|atr_trail",
+      "asset": "M2K",
+      "sharpe": -1.81,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|none|chandelier",
+      "asset": "MNQ",
+      "sharpe": -0.49,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|none|chandelier",
+      "asset": "MES",
+      "sharpe": -0.82,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|none|chandelier",
+      "asset": "MGC",
+      "sharpe": -0.97,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|none|chandelier",
+      "asset": "MCL",
+      "sharpe": -1.73,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|none|chandelier",
+      "asset": "MYM",
+      "sharpe": -0.27,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|none|chandelier",
+      "asset": "ZN",
+      "sharpe": -6.13,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|none|chandelier",
+      "asset": "M2K",
+      "sharpe": -1.7,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope|profit_ladder",
+      "asset": "MNQ",
+      "sharpe": -0.77,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope|profit_ladder",
+      "asset": "MES",
+      "sharpe": -1.01,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope|profit_ladder",
+      "asset": "MGC",
+      "sharpe": -0.52,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope|profit_ladder",
+      "asset": "MCL",
+      "sharpe": -1.53,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope|profit_ladder",
+      "asset": "MYM",
+      "sharpe": -1.14,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope|profit_ladder",
+      "asset": "ZN",
+      "sharpe": -4.06,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope|profit_ladder",
+      "asset": "M2K",
+      "sharpe": -1.68,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope|atr_trail",
+      "asset": "MNQ",
+      "sharpe": -1.0,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope|atr_trail",
+      "asset": "MES",
+      "sharpe": -1.16,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope|atr_trail",
+      "asset": "MGC",
+      "sharpe": -0.43,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope|atr_trail",
+      "asset": "MCL",
+      "sharpe": -1.26,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope|atr_trail",
+      "asset": "MYM",
+      "sharpe": -1.66,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope|atr_trail",
+      "asset": "ZN",
+      "sharpe": -5.05,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope|atr_trail",
+      "asset": "M2K",
+      "sharpe": -1.78,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope|chandelier",
+      "asset": "MNQ",
+      "sharpe": -1.22,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope|chandelier",
+      "asset": "MES",
+      "sharpe": -0.92,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope|chandelier",
+      "asset": "MGC",
+      "sharpe": -0.41,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope|chandelier",
+      "asset": "MCL",
+      "sharpe": -1.3,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope|chandelier",
+      "asset": "MYM",
+      "sharpe": -1.04,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope|chandelier",
+      "asset": "ZN",
+      "sharpe": -5.1,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope|chandelier",
+      "asset": "M2K",
+      "sharpe": -1.76,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|vwap_slope|profit_ladder",
+      "asset": "MNQ",
+      "sharpe": 0.71,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|vwap_slope|profit_ladder",
+      "asset": "MES",
+      "sharpe": -0.27,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|vwap_slope|profit_ladder",
+      "asset": "MGC",
+      "sharpe": -0.79,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|vwap_slope|profit_ladder",
+      "asset": "MCL",
+      "sharpe": -0.76,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|vwap_slope|profit_ladder",
+      "asset": "MYM",
+      "sharpe": 0.32,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|vwap_slope|profit_ladder",
+      "asset": "ZN",
+      "sharpe": -2.96,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|vwap_slope|profit_ladder",
+      "asset": "M2K",
+      "sharpe": -0.64,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|vwap_slope|atr_trail",
+      "asset": "MNQ",
+      "sharpe": 0.28,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|vwap_slope|atr_trail",
+      "asset": "MES",
+      "sharpe": -0.27,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|vwap_slope|atr_trail",
+      "asset": "MGC",
+      "sharpe": -0.82,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|vwap_slope|atr_trail",
+      "asset": "MCL",
+      "sharpe": -0.99,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|vwap_slope|atr_trail",
+      "asset": "MYM",
+      "sharpe": -1.02,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|vwap_slope|atr_trail",
+      "asset": "ZN",
+      "sharpe": -4.47,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|vwap_slope|atr_trail",
+      "asset": "M2K",
+      "sharpe": -1.31,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|vwap_slope|chandelier",
+      "asset": "MNQ",
+      "sharpe": 0.28,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|vwap_slope|chandelier",
+      "asset": "MES",
+      "sharpe": -0.16,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|vwap_slope|chandelier",
+      "asset": "MGC",
+      "sharpe": -1.0,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|vwap_slope|chandelier",
+      "asset": "MCL",
+      "sharpe": -1.03,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|vwap_slope|chandelier",
+      "asset": "MYM",
+      "sharpe": -0.43,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|vwap_slope|chandelier",
+      "asset": "ZN",
+      "sharpe": -4.77,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|vwap_slope|chandelier",
+      "asset": "M2K",
+      "sharpe": -1.22,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope_vol_high|profit_ladder",
+      "asset": "MNQ",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope_vol_high|profit_ladder",
+      "asset": "MES",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope_vol_high|profit_ladder",
+      "asset": "MGC",
+      "sharpe": -0.64,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope_vol_high|profit_ladder",
+      "asset": "MCL",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope_vol_high|profit_ladder",
+      "asset": "MYM",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope_vol_high|profit_ladder",
+      "asset": "ZN",
+      "sharpe": -5.16,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope_vol_high|profit_ladder",
+      "asset": "M2K",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope_vol_high|atr_trail",
+      "asset": "MNQ",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope_vol_high|atr_trail",
+      "asset": "MES",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope_vol_high|atr_trail",
+      "asset": "MGC",
+      "sharpe": -0.02,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope_vol_high|atr_trail",
+      "asset": "MCL",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope_vol_high|atr_trail",
+      "asset": "MYM",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope_vol_high|atr_trail",
+      "asset": "ZN",
+      "sharpe": -7.92,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope_vol_high|atr_trail",
+      "asset": "M2K",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope_vol_high|chandelier",
+      "asset": "MNQ",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope_vol_high|chandelier",
+      "asset": "MES",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope_vol_high|chandelier",
+      "asset": "MGC",
+      "sharpe": -1.14,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope_vol_high|chandelier",
+      "asset": "MCL",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope_vol_high|chandelier",
+      "asset": "MYM",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope_vol_high|chandelier",
+      "asset": "ZN",
+      "sharpe": -7.5,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope_vol_high|chandelier",
+      "asset": "M2K",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope_vol_low|profit_ladder",
+      "asset": "MNQ",
+      "sharpe": -0.6,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope_vol_low|profit_ladder",
+      "asset": "MES",
+      "sharpe": -1.03,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope_vol_low|profit_ladder",
+      "asset": "MGC",
+      "sharpe": -0.7,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope_vol_low|profit_ladder",
+      "asset": "MCL",
+      "sharpe": -1.38,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope_vol_low|profit_ladder",
+      "asset": "MYM",
+      "sharpe": -1.11,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope_vol_low|profit_ladder",
+      "asset": "ZN",
+      "sharpe": -4.05,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope_vol_low|profit_ladder",
+      "asset": "M2K",
+      "sharpe": -1.46,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope_vol_low|atr_trail",
+      "asset": "MNQ",
+      "sharpe": -0.82,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope_vol_low|atr_trail",
+      "asset": "MES",
+      "sharpe": -1.11,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope_vol_low|atr_trail",
+      "asset": "MGC",
+      "sharpe": -0.54,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope_vol_low|atr_trail",
+      "asset": "MCL",
+      "sharpe": -0.94,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope_vol_low|atr_trail",
+      "asset": "MYM",
+      "sharpe": -1.61,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope_vol_low|atr_trail",
+      "asset": "ZN",
+      "sharpe": -5.07,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope_vol_low|atr_trail",
+      "asset": "M2K",
+      "sharpe": -1.65,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope_vol_low|chandelier",
+      "asset": "MNQ",
+      "sharpe": -1.05,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope_vol_low|chandelier",
+      "asset": "MES",
+      "sharpe": -0.95,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope_vol_low|chandelier",
+      "asset": "MGC",
+      "sharpe": -0.43,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope_vol_low|chandelier",
+      "asset": "MCL",
+      "sharpe": -0.96,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope_vol_low|chandelier",
+      "asset": "MYM",
+      "sharpe": -0.9,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope_vol_low|chandelier",
+      "asset": "ZN",
+      "sharpe": -5.2,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|ema_slope_vol_low|chandelier",
+      "asset": "M2K",
+      "sharpe": -1.46,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|vol_regime|profit_ladder",
+      "asset": "MNQ",
+      "sharpe": 0.05,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|vol_regime|profit_ladder",
+      "asset": "MES",
+      "sharpe": -0.58,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|vol_regime|profit_ladder",
+      "asset": "MGC",
+      "sharpe": -0.96,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|vol_regime|profit_ladder",
+      "asset": "MCL",
+      "sharpe": -1.3,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|vol_regime|profit_ladder",
+      "asset": "MYM",
+      "sharpe": -0.02,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|vol_regime|profit_ladder",
+      "asset": "ZN",
+      "sharpe": -3.87,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|vol_regime|profit_ladder",
+      "asset": "M2K",
+      "sharpe": -1.17,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|vol_regime|atr_trail",
+      "asset": "MNQ",
+      "sharpe": -0.39,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|vol_regime|atr_trail",
+      "asset": "MES",
+      "sharpe": -0.73,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|vol_regime|atr_trail",
+      "asset": "MGC",
+      "sharpe": -0.86,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|vol_regime|atr_trail",
+      "asset": "MCL",
+      "sharpe": -1.73,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|vol_regime|atr_trail",
+      "asset": "MYM",
+      "sharpe": -0.77,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|vol_regime|atr_trail",
+      "asset": "ZN",
+      "sharpe": -5.95,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|vol_regime|atr_trail",
+      "asset": "M2K",
+      "sharpe": -1.81,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|vol_regime|chandelier",
+      "asset": "MNQ",
+      "sharpe": -0.49,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|vol_regime|chandelier",
+      "asset": "MES",
+      "sharpe": -0.82,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|vol_regime|chandelier",
+      "asset": "MGC",
+      "sharpe": -0.97,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|vol_regime|chandelier",
+      "asset": "MCL",
+      "sharpe": -1.73,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|vol_regime|chandelier",
+      "asset": "MYM",
+      "sharpe": -0.27,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|vol_regime|chandelier",
+      "asset": "ZN",
+      "sharpe": -6.13,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|vol_regime|chandelier",
+      "asset": "M2K",
+      "sharpe": -1.7,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|session_morning|profit_ladder",
+      "asset": "MNQ",
+      "sharpe": 0.24,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|session_morning|profit_ladder",
+      "asset": "MES",
+      "sharpe": -0.43,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|session_morning|profit_ladder",
+      "asset": "MGC",
+      "sharpe": -0.7,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|session_morning|profit_ladder",
+      "asset": "MCL",
+      "sharpe": -1.12,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|session_morning|profit_ladder",
+      "asset": "MYM",
+      "sharpe": 0.12,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|session_morning|profit_ladder",
+      "asset": "ZN",
+      "sharpe": -3.88,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|session_morning|profit_ladder",
+      "asset": "M2K",
+      "sharpe": -0.94,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|session_morning|atr_trail",
+      "asset": "MNQ",
+      "sharpe": -0.11,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|session_morning|atr_trail",
+      "asset": "MES",
+      "sharpe": -0.56,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|session_morning|atr_trail",
+      "asset": "MGC",
+      "sharpe": -0.32,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|session_morning|atr_trail",
+      "asset": "MCL",
+      "sharpe": -1.1,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|session_morning|atr_trail",
+      "asset": "MYM",
+      "sharpe": -0.99,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|session_morning|atr_trail",
+      "asset": "ZN",
+      "sharpe": -5.1,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|session_morning|atr_trail",
+      "asset": "M2K",
+      "sharpe": -1.3,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|session_morning|chandelier",
+      "asset": "MNQ",
+      "sharpe": -0.1,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|session_morning|chandelier",
+      "asset": "MES",
+      "sharpe": -0.5,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|session_morning|chandelier",
+      "asset": "MGC",
+      "sharpe": -0.34,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|session_morning|chandelier",
+      "asset": "MCL",
+      "sharpe": -1.2,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|session_morning|chandelier",
+      "asset": "MYM",
+      "sharpe": -0.23,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|session_morning|chandelier",
+      "asset": "ZN",
+      "sharpe": -5.25,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|session_morning|chandelier",
+      "asset": "M2K",
+      "sharpe": -1.25,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|session_afternoon|profit_ladder",
+      "asset": "MNQ",
+      "sharpe": -0.15,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|session_afternoon|profit_ladder",
+      "asset": "MES",
+      "sharpe": -0.66,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|session_afternoon|profit_ladder",
+      "asset": "MGC",
+      "sharpe": -0.61,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|session_afternoon|profit_ladder",
+      "asset": "MCL",
+      "sharpe": -1.62,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|session_afternoon|profit_ladder",
+      "asset": "MYM",
+      "sharpe": -0.55,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|session_afternoon|profit_ladder",
+      "asset": "ZN",
+      "sharpe": -4.18,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|session_afternoon|profit_ladder",
+      "asset": "M2K",
+      "sharpe": -1.05,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|session_afternoon|atr_trail",
+      "asset": "MNQ",
+      "sharpe": -0.51,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|session_afternoon|atr_trail",
+      "asset": "MES",
+      "sharpe": -1.03,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|session_afternoon|atr_trail",
+      "asset": "MGC",
+      "sharpe": -0.93,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|session_afternoon|atr_trail",
+      "asset": "MCL",
+      "sharpe": -2.57,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|session_afternoon|atr_trail",
+      "asset": "MYM",
+      "sharpe": -1.37,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|session_afternoon|atr_trail",
+      "asset": "ZN",
+      "sharpe": -6.23,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|session_afternoon|atr_trail",
+      "asset": "M2K",
+      "sharpe": -1.78,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|session_afternoon|chandelier",
+      "asset": "MNQ",
+      "sharpe": -0.3,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|session_afternoon|chandelier",
+      "asset": "MES",
+      "sharpe": -0.79,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|session_afternoon|chandelier",
+      "asset": "MGC",
+      "sharpe": -0.89,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|session_afternoon|chandelier",
+      "asset": "MCL",
+      "sharpe": -2.31,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|session_afternoon|chandelier",
+      "asset": "MYM",
+      "sharpe": -1.24,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|session_afternoon|chandelier",
+      "asset": "ZN",
+      "sharpe": -6.51,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:opening_drive_exhaustion|session_afternoon|chandelier",
+      "asset": "M2K",
+      "sharpe": -1.94,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|none|profit_ladder",
+      "asset": "MNQ",
+      "sharpe": -0.08,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|none|profit_ladder",
+      "asset": "MES",
+      "sharpe": -0.35,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|none|profit_ladder",
+      "asset": "MGC",
+      "sharpe": -1.5,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|none|profit_ladder",
+      "asset": "MCL",
+      "sharpe": -0.77,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|none|profit_ladder",
+      "asset": "MYM",
+      "sharpe": -0.8,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|none|profit_ladder",
+      "asset": "ZN",
+      "sharpe": -4.01,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|none|profit_ladder",
+      "asset": "M2K",
+      "sharpe": -0.65,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|none|atr_trail",
+      "asset": "MNQ",
+      "sharpe": -0.28,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|none|atr_trail",
+      "asset": "MES",
+      "sharpe": -0.53,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|none|atr_trail",
+      "asset": "MGC",
+      "sharpe": -1.19,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|none|atr_trail",
+      "asset": "MCL",
+      "sharpe": -1.36,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|none|atr_trail",
+      "asset": "MYM",
+      "sharpe": -0.77,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|none|atr_trail",
+      "asset": "ZN",
+      "sharpe": -4.3,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|none|atr_trail",
+      "asset": "M2K",
+      "sharpe": -1.5,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|none|chandelier",
+      "asset": "MNQ",
+      "sharpe": -0.03,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|none|chandelier",
+      "asset": "MES",
+      "sharpe": -0.08,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|none|chandelier",
+      "asset": "MGC",
+      "sharpe": -1.22,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|none|chandelier",
+      "asset": "MCL",
+      "sharpe": -1.18,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|none|chandelier",
+      "asset": "MYM",
+      "sharpe": -0.6,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|none|chandelier",
+      "asset": "ZN",
+      "sharpe": -4.53,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|none|chandelier",
+      "asset": "M2K",
+      "sharpe": -1.45,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope|profit_ladder",
+      "asset": "MNQ",
+      "sharpe": -0.16,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope|profit_ladder",
+      "asset": "MES",
+      "sharpe": -0.34,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope|profit_ladder",
+      "asset": "MGC",
+      "sharpe": -0.84,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope|profit_ladder",
+      "asset": "MCL",
+      "sharpe": -1.18,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope|profit_ladder",
+      "asset": "MYM",
+      "sharpe": -1.58,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope|profit_ladder",
+      "asset": "ZN",
+      "sharpe": -3.93,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope|profit_ladder",
+      "asset": "M2K",
+      "sharpe": -1.59,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope|atr_trail",
+      "asset": "MNQ",
+      "sharpe": -0.17,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope|atr_trail",
+      "asset": "MES",
+      "sharpe": -0.64,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope|atr_trail",
+      "asset": "MGC",
+      "sharpe": -1.27,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope|atr_trail",
+      "asset": "MCL",
+      "sharpe": -1.31,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope|atr_trail",
+      "asset": "MYM",
+      "sharpe": -2.03,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope|atr_trail",
+      "asset": "ZN",
+      "sharpe": -4.0,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope|atr_trail",
+      "asset": "M2K",
+      "sharpe": -2.06,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope|chandelier",
+      "asset": "MNQ",
+      "sharpe": -0.11,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope|chandelier",
+      "asset": "MES",
+      "sharpe": -0.1,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope|chandelier",
+      "asset": "MGC",
+      "sharpe": -1.26,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope|chandelier",
+      "asset": "MCL",
+      "sharpe": -1.52,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope|chandelier",
+      "asset": "MYM",
+      "sharpe": -0.85,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope|chandelier",
+      "asset": "ZN",
+      "sharpe": -4.5,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope|chandelier",
+      "asset": "M2K",
+      "sharpe": -1.59,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|vwap_slope|profit_ladder",
+      "asset": "MNQ",
+      "sharpe": -0.4,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|vwap_slope|profit_ladder",
+      "asset": "MES",
+      "sharpe": -0.42,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|vwap_slope|profit_ladder",
+      "asset": "MGC",
+      "sharpe": -1.55,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|vwap_slope|profit_ladder",
+      "asset": "MCL",
+      "sharpe": -0.37,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|vwap_slope|profit_ladder",
+      "asset": "MYM",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|vwap_slope|profit_ladder",
+      "asset": "ZN",
+      "sharpe": -2.67,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|vwap_slope|profit_ladder",
+      "asset": "M2K",
+      "sharpe": -0.96,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|vwap_slope|atr_trail",
+      "asset": "MNQ",
+      "sharpe": -0.39,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|vwap_slope|atr_trail",
+      "asset": "MES",
+      "sharpe": -0.83,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|vwap_slope|atr_trail",
+      "asset": "MGC",
+      "sharpe": -1.13,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|vwap_slope|atr_trail",
+      "asset": "MCL",
+      "sharpe": -1.48,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|vwap_slope|atr_trail",
+      "asset": "MYM",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|vwap_slope|atr_trail",
+      "asset": "ZN",
+      "sharpe": -3.01,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|vwap_slope|atr_trail",
+      "asset": "M2K",
+      "sharpe": -1.9,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|vwap_slope|chandelier",
+      "asset": "MNQ",
+      "sharpe": -0.34,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|vwap_slope|chandelier",
+      "asset": "MES",
+      "sharpe": -0.8,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|vwap_slope|chandelier",
+      "asset": "MGC",
+      "sharpe": -1.37,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|vwap_slope|chandelier",
+      "asset": "MCL",
+      "sharpe": -1.28,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|vwap_slope|chandelier",
+      "asset": "MYM",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|vwap_slope|chandelier",
+      "asset": "ZN",
+      "sharpe": -3.2,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|vwap_slope|chandelier",
+      "asset": "M2K",
+      "sharpe": -1.15,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope_vol_high|profit_ladder",
+      "asset": "MNQ",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope_vol_high|profit_ladder",
+      "asset": "MES",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope_vol_high|profit_ladder",
+      "asset": "MGC",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope_vol_high|profit_ladder",
+      "asset": "MCL",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope_vol_high|profit_ladder",
+      "asset": "MYM",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope_vol_high|profit_ladder",
+      "asset": "ZN",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope_vol_high|profit_ladder",
+      "asset": "M2K",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope_vol_high|atr_trail",
+      "asset": "MNQ",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope_vol_high|atr_trail",
+      "asset": "MES",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope_vol_high|atr_trail",
+      "asset": "MGC",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope_vol_high|atr_trail",
+      "asset": "MCL",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope_vol_high|atr_trail",
+      "asset": "MYM",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope_vol_high|atr_trail",
+      "asset": "ZN",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope_vol_high|atr_trail",
+      "asset": "M2K",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope_vol_high|chandelier",
+      "asset": "MNQ",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope_vol_high|chandelier",
+      "asset": "MES",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope_vol_high|chandelier",
+      "asset": "MGC",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope_vol_high|chandelier",
+      "asset": "MCL",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope_vol_high|chandelier",
+      "asset": "MYM",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope_vol_high|chandelier",
+      "asset": "ZN",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope_vol_high|chandelier",
+      "asset": "M2K",
+      "sharpe": null,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope_vol_low|profit_ladder",
+      "asset": "MNQ",
+      "sharpe": -0.26,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope_vol_low|profit_ladder",
+      "asset": "MES",
+      "sharpe": -0.58,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope_vol_low|profit_ladder",
+      "asset": "MGC",
+      "sharpe": -0.93,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope_vol_low|profit_ladder",
+      "asset": "MCL",
+      "sharpe": -1.31,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope_vol_low|profit_ladder",
+      "asset": "MYM",
+      "sharpe": -1.61,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope_vol_low|profit_ladder",
+      "asset": "ZN",
+      "sharpe": -4.06,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope_vol_low|profit_ladder",
+      "asset": "M2K",
+      "sharpe": -1.56,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope_vol_low|atr_trail",
+      "asset": "MNQ",
+      "sharpe": -0.14,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope_vol_low|atr_trail",
+      "asset": "MES",
+      "sharpe": -0.78,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope_vol_low|atr_trail",
+      "asset": "MGC",
+      "sharpe": -1.22,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope_vol_low|atr_trail",
+      "asset": "MCL",
+      "sharpe": -1.33,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope_vol_low|atr_trail",
+      "asset": "MYM",
+      "sharpe": -2.24,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope_vol_low|atr_trail",
+      "asset": "ZN",
+      "sharpe": -4.21,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope_vol_low|atr_trail",
+      "asset": "M2K",
+      "sharpe": -2.08,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope_vol_low|chandelier",
+      "asset": "MNQ",
+      "sharpe": -0.25,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope_vol_low|chandelier",
+      "asset": "MES",
+      "sharpe": -0.42,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope_vol_low|chandelier",
+      "asset": "MGC",
+      "sharpe": -1.05,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope_vol_low|chandelier",
+      "asset": "MCL",
+      "sharpe": -1.63,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope_vol_low|chandelier",
+      "asset": "MYM",
+      "sharpe": -0.99,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope_vol_low|chandelier",
+      "asset": "ZN",
+      "sharpe": -4.63,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|ema_slope_vol_low|chandelier",
+      "asset": "M2K",
+      "sharpe": -1.59,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|vol_regime|profit_ladder",
+      "asset": "MNQ",
+      "sharpe": -0.08,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|vol_regime|profit_ladder",
+      "asset": "MES",
+      "sharpe": -0.35,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|vol_regime|profit_ladder",
+      "asset": "MGC",
+      "sharpe": -1.5,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|vol_regime|profit_ladder",
+      "asset": "MCL",
+      "sharpe": -0.77,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|vol_regime|profit_ladder",
+      "asset": "MYM",
+      "sharpe": -0.8,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|vol_regime|profit_ladder",
+      "asset": "ZN",
+      "sharpe": -4.01,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|vol_regime|profit_ladder",
+      "asset": "M2K",
+      "sharpe": -0.65,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|vol_regime|atr_trail",
+      "asset": "MNQ",
+      "sharpe": -0.28,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|vol_regime|atr_trail",
+      "asset": "MES",
+      "sharpe": -0.53,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|vol_regime|atr_trail",
+      "asset": "MGC",
+      "sharpe": -1.19,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|vol_regime|atr_trail",
+      "asset": "MCL",
+      "sharpe": -1.36,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|vol_regime|atr_trail",
+      "asset": "MYM",
+      "sharpe": -0.77,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|vol_regime|atr_trail",
+      "asset": "ZN",
+      "sharpe": -4.3,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|vol_regime|atr_trail",
+      "asset": "M2K",
+      "sharpe": -1.5,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|vol_regime|chandelier",
+      "asset": "MNQ",
+      "sharpe": -0.03,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|vol_regime|chandelier",
+      "asset": "MES",
+      "sharpe": -0.08,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|vol_regime|chandelier",
+      "asset": "MGC",
+      "sharpe": -1.22,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|vol_regime|chandelier",
+      "asset": "MCL",
+      "sharpe": -1.18,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|vol_regime|chandelier",
+      "asset": "MYM",
+      "sharpe": -0.6,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|vol_regime|chandelier",
+      "asset": "ZN",
+      "sharpe": -4.53,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|vol_regime|chandelier",
+      "asset": "M2K",
+      "sharpe": -1.45,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|session_morning|profit_ladder",
+      "asset": "MNQ",
+      "sharpe": -0.02,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|session_morning|profit_ladder",
+      "asset": "MES",
+      "sharpe": -0.44,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|session_morning|profit_ladder",
+      "asset": "MGC",
+      "sharpe": -1.23,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|session_morning|profit_ladder",
+      "asset": "MCL",
+      "sharpe": -0.6,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|session_morning|profit_ladder",
+      "asset": "MYM",
+      "sharpe": -0.5,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|session_morning|profit_ladder",
+      "asset": "ZN",
+      "sharpe": -4.5,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|session_morning|profit_ladder",
+      "asset": "M2K",
+      "sharpe": -0.84,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|session_morning|atr_trail",
+      "asset": "MNQ",
+      "sharpe": -0.18,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|session_morning|atr_trail",
+      "asset": "MES",
+      "sharpe": -0.41,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|session_morning|atr_trail",
+      "asset": "MGC",
+      "sharpe": -0.96,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|session_morning|atr_trail",
+      "asset": "MCL",
+      "sharpe": -1.05,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|session_morning|atr_trail",
+      "asset": "MYM",
+      "sharpe": -0.66,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|session_morning|atr_trail",
+      "asset": "ZN",
+      "sharpe": -5.01,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|session_morning|atr_trail",
+      "asset": "M2K",
+      "sharpe": -1.38,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|session_morning|chandelier",
+      "asset": "MNQ",
+      "sharpe": 0.2,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|session_morning|chandelier",
+      "asset": "MES",
+      "sharpe": -0.06,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|session_morning|chandelier",
+      "asset": "MGC",
+      "sharpe": -0.92,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|session_morning|chandelier",
+      "asset": "MCL",
+      "sharpe": -0.95,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|session_morning|chandelier",
+      "asset": "MYM",
+      "sharpe": -0.22,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|session_morning|chandelier",
+      "asset": "ZN",
+      "sharpe": -5.0,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|session_morning|chandelier",
+      "asset": "M2K",
+      "sharpe": -1.42,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|session_afternoon|profit_ladder",
+      "asset": "MNQ",
+      "sharpe": -0.77,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|session_afternoon|profit_ladder",
+      "asset": "MES",
+      "sharpe": -0.39,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|session_afternoon|profit_ladder",
+      "asset": "MGC",
+      "sharpe": -1.1,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|session_afternoon|profit_ladder",
+      "asset": "MCL",
+      "sharpe": -0.93,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|session_afternoon|profit_ladder",
+      "asset": "MYM",
+      "sharpe": -1.64,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|session_afternoon|profit_ladder",
+      "asset": "ZN",
+      "sharpe": -3.71,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|session_afternoon|profit_ladder",
+      "asset": "M2K",
+      "sharpe": -1.32,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|session_afternoon|atr_trail",
+      "asset": "MNQ",
+      "sharpe": -0.37,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|session_afternoon|atr_trail",
+      "asset": "MES",
+      "sharpe": -0.64,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|session_afternoon|atr_trail",
+      "asset": "MGC",
+      "sharpe": -0.66,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|session_afternoon|atr_trail",
+      "asset": "MCL",
+      "sharpe": -1.35,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|session_afternoon|atr_trail",
+      "asset": "MYM",
+      "sharpe": -0.91,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|session_afternoon|atr_trail",
+      "asset": "ZN",
+      "sharpe": -3.74,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|session_afternoon|atr_trail",
+      "asset": "M2K",
+      "sharpe": -1.4,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|session_afternoon|chandelier",
+      "asset": "MNQ",
+      "sharpe": -0.65,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|session_afternoon|chandelier",
+      "asset": "MES",
+      "sharpe": -0.35,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|session_afternoon|chandelier",
+      "asset": "MGC",
+      "sharpe": -1.59,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|session_afternoon|chandelier",
+      "asset": "MCL",
+      "sharpe": -1.16,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|session_afternoon|chandelier",
+      "asset": "MYM",
+      "sharpe": -1.49,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|session_afternoon|chandelier",
+      "asset": "ZN",
+      "sharpe": -3.77,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_failure_reversal|session_afternoon|chandelier",
+      "asset": "M2K",
+      "sharpe": -1.6,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
     }
   ],
   "note": "auto multiple-testing N; every test appends"

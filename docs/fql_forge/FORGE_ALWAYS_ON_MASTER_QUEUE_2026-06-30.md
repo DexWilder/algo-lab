@@ -49,3 +49,15 @@
 15 real_rates/inflation regime overlay · 16 reconcile FORGE_CANDIDATE_LEDGER items individually · 17 treasury_rolldown bespoke harness ·
 18 free-data status memo (after 2-5) · 19 finalize paid-data memo · 20 non-naive COT (pre-register) · 21 FOMC/pre-FOMC free test ·
 22 retire phase1c-verify (operator nod) · 23 apply Claw harvest config (operator) · 24 EIA/OPEC (blocked-feed) · 25 gamma/GEX (paid decision).
+
+
+## SWEEP RESULT (DEFINITIVE, 2026-06-30) — primitive space EXHAUSTED
+forge_search_engine.py completed: **1680 combos (20 entry × 12 filter × 6 exit × 7 asset), 1458 with ≥150 trades,
+ZERO concentration-clean survivors, 0 screen-survivors.** No combo passes Sharpe≥1 + maxyr<40% + top3<30% + median≥0
++ H1,H2>0. Top: orb|ema_slope_vol_low|profit_ladder|MGC Sh=1.3 but maxyr74%/top3 48%. **CONCLUSION: the crossbred
+price-primitive space contains no robust point-in-time edge at our cost/data tier.** Trial-N=1763 (primitive_sweep lane).
+**PIVOT (price-primitive sweep is CLOSED):** the edge — if any on free data — is not in price/volume primitive combos.
+Remaining honest levers: (a) genuinely-different mechanism classes with REAL feeds (forced-flow event-path, relative-value,
+options/vol-surface) — most need data we lack; (b) the paid-data tier (gamma/VIX-curve/L2). Stop sweeping price primitives.
+Database volume = cost/liquidity/regime only (all directional/confirmation uses KILLED). Queue pivots to forced-flow/event/
+data-tier; no more naive single-feature price packets.
