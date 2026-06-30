@@ -1,18 +1,9 @@
 {
   "queue": [
     {
-      "id": "P23_rates_fly_rv",
-      "script": "research/forge_cycle_P23_rates_fly_rv.py",
-      "status": "DONE",
-      "verdict": "done",
-      "report": "research/data/fql_forge/reports/runner_P23_rates_fly_rv_20260630_181529.md",
-      "ran": "20260630_181529"
-    },
-    {
       "id": "P24_fx_fix_flow",
       "script": "research/forge_cycle_P24_fx_fix.py",
-      "status": "QUEUED_NEEDS_SCRIPT",
-      "note": "WMR 4pm fix window, 6E/6J/6B 1m"
+      "status": "QUEUED_NEEDS_SCRIPT"
     },
     {
       "id": "P25_settlement_close",
@@ -20,9 +11,16 @@
       "status": "QUEUED_NEEDS_SCRIPT"
     },
     {
-      "id": "P26_es_nq_leadlag",
-      "script": "research/forge_cycle_P26_es_nq_leadlag.py",
-      "status": "QUEUED_NEEDS_SCRIPT"
+      "id": "P23_tradeable_proper",
+      "script": "research/forge_cycle_P23_proper.py",
+      "status": "DATA_BLOCKED",
+      "note": "needs ZT 2y + rates_multicontract roll-adjusted (Lane-1 #1)"
+    },
+    {
+      "id": "P23F_done",
+      "script": "research/forge_cycle_P23F_tradeable_fly.py",
+      "status": "DONE",
+      "verdict": "CLEAN_KILL"
     }
   ]
 }

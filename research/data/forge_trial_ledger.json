@@ -13985,6 +13985,15 @@
       "horizon": "",
       "lane": "forced_flow",
       "ts": "2026-06-30"
+    },
+    {
+      "packet": "P23F_tradeable_fly",
+      "asset": "ZF/ZN/ZB",
+      "sharpe": -1.14,
+      "verdict": "hostile",
+      "horizon": "",
+      "lane": "forced_flow",
+      "ts": "2026-06-30"
     }
   ],
   "note": "auto multiple-testing N; every test appends"

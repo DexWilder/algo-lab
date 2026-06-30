@@ -63,3 +63,11 @@ Database volume = cost/liquidity/regime only (all directional/confirmation uses 
 data-tier; no more naive single-feature price packets.
 ## LANGUAGE CORRECTION (2026-06-30): scope is PRIMITIVE space, not 'free data'
 EXHAUSTED = crossbred price/volume/OHLC primitive expressions (+ the killed mechanism classes). NOT EXHAUSTED = structural/event/feed/source/paid stack. FOMC-drift reconciled=KILL (existing screen, not duplicated). Strategy discovery = ZERO validated primaries. Forge does NOT idle: LANE 1 operator handoff (FORGE_OPERATOR_DATA_HANDOFF_2026-06-30.md) + LANE 2 feasible-now event-path/RV packets (FREE_DATA_STATUS_AND_SOURCE_PACKETS_2026-06-30.md: FX-fix, settlement-close, rates-fly-RV, ES-NQ-lead-lag).
+
+## P23 RATES-FLY: tradeable confirmation = CLEAN_KILL (2026-06-30)
+P23 FRED 2s5s10s yield-curvature MR (annSh 1.63, research-grade) did NOT survive tradeable confirmation. P23-F DV01
+futures fly (ZF/ZN/ZB=5s10s30s, costed, roll-winsorized): Sh=-1.14, DSR 0.0 global-N=1766 & family-N=7 -> CLEAN_KILL.
+Lessons: (1) yield-space edge != futures-space edge (paper-to-tradeable gap is huge, as warned); (2) instrument
+mismatch (signal 2s5s10s; futures 5s10s30s, no ZT 2y); (3) continuous .c.0 roll artifacts. The PROPER tradeable test
+of the 2s5s10s signal is DATA_BLOCKED -> needs ZT 2y + rates_multicontract.csv (Lane-1 #1). No validated primary.
+Queue moves on (Lane-2 feasible-now: FX-fix, settlement-close, ES-NQ-lead-lag).
