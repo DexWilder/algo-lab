@@ -1,11 +1,23 @@
 {
   "queue": [
-    {"id": "P17_opening_drive", "script": "research/forge_cycle_2026-06-30_DB_P17_opening_minutes.py", "status": "DONE", "verdict": "KILL"},
-    {"id": "P18_volume_imbalance", "script": "research/forge_cycle_2026-06-30_DB_P18_volume_imbalance.py", "status": "DONE", "verdict": "KILL"},
-    {"id": "P19_macro_regime", "script": "research/forge_cycle_2026-06-30_MACRO_P19_risk_regime.py", "status": "DONE", "verdict": "KILL (gold flicker 0.91 fails DSR@787)"},
-    {"id": "P20_crypto_funding_carry", "script": "research/forge_cycle_2026-06-30_CRYPTO_P20_funding_carry.py", "status": "DONE", "verdict": "BTC-funding flicker annSh3.01 n=98 crowded -> RETEST_REQUIRED not candidate; DVOL_ETH malformed=DATA_LIMITED"},
-    {"id": "search_survivor_dsr_pass", "script": "research/forge_search_dsr_pass.py", "status": "QUEUED_NEEDS_SCRIPT", "note": "when sweep done: DSR-at-true-N on any concentration-clean survivor"},
-    {"id": "P21_cross_asset_volume", "script": "research/forge_cycle_P21_cross_asset_volume.py", "status": "QUEUED_NEEDS_SCRIPT"},
-    {"id": "P22_btc_funding_hostile_retest", "script": "research/forge_cycle_P22_btc_funding_hostile.py", "status": "QUEUED_NEEDS_SCRIPT", "note": "DSR@787 + tail/exchange-cost audit + clean crypto data; default KILL"}
+    {
+      "id": "P21_cross_asset_volume",
+      "script": "research/forge_cycle_P21_cross_asset_volume.py",
+      "status": "DONE",
+      "verdict": "KILL",
+      "report": "research/data/fql_forge/reports/runner_P21_cross_asset_volume_20260630_172837.md",
+      "ran": "20260630_172837"
+    },
+    {
+      "id": "P22_btc_funding_hostile",
+      "script": "research/forge_cycle_P22_btc_funding_hostile.py",
+      "status": "RUN_NOW"
+    },
+    {
+      "id": "search_full_report",
+      "script": "research/forge_search_dsr_pass.py",
+      "status": "QUEUED_NEEDS_SCRIPT",
+      "note": "on sweep completion"
+    }
   ]
 }
