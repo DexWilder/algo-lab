@@ -11,7 +11,10 @@
     {
       "id": "P19_macro_regime",
       "script": "research/forge_cycle_2026-06-30_MACRO_P19_risk_regime.py",
-      "status": "RUN_NOW"
+      "status": "DONE",
+      "verdict": "KILL",
+      "report": "research/data/fql_forge/reports/runner_P19_macro_regime_20260630_172206.md",
+      "ran": "20260630_172206"
     },
     {
       "id": "P20_crypto_funding_carry",

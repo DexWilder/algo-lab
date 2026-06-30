@@ -5884,6 +5884,86 @@
       "verdict": "screen",
       "horizon": "",
       "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:prior_day_break|none|profit_ladder",
+      "asset": "M2K",
+      "sharpe": -0.35,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:prior_day_break|none|atr_trail",
+      "asset": "MNQ",
+      "sharpe": 0.25,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:prior_day_break|none|atr_trail",
+      "asset": "MES",
+      "sharpe": -0.7,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:prior_day_break|none|atr_trail",
+      "asset": "MGC",
+      "sharpe": -0.61,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:prior_day_break|none|atr_trail",
+      "asset": "MCL",
+      "sharpe": -2.26,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:prior_day_break|none|atr_trail",
+      "asset": "MYM",
+      "sharpe": -0.63,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "P19_macro_regime",
+      "asset": "MES",
+      "sharpe": -0.02,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "P19_macro_regime",
+      "asset": "MGC",
+      "sharpe": 0.91,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:prior_day_break|none|atr_trail",
+      "asset": "ZN",
+      "sharpe": -2.4,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "P19_macro_regime",
+      "asset": "ZN",
+      "sharpe": -0.01,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
     }
   ],
   "note": "auto multiple-testing N; every test appends"
