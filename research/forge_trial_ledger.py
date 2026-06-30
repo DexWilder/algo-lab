@@ -14,14 +14,33 @@ def _load():
         try: return json.loads(LEDGER.read_text())
         except Exception: pass
     return {"trials": [], "note": "auto multiple-testing N; every test appends"}
-def record(packet, asset="", sharpe=None, verdict="", horizon="", stamp=None):
+def _lane_of(packet):
+    """Derive lane/family from packet name so trial-N is layered (global stays strict; family-N is decision-relevant).
+    A giant primitive grid must NOT bury an unrelated forced-flow packet under its N."""
+    p=str(packet).lower()
+    if p.startswith("search:") or "primitive" in p: return "primitive_sweep"
+    if "volume" in p or "vwap" in p or "climax" in p or "imbalance" in p or "opening" in p or p.startswith("p1") and "vol" in p: return "databento_volume"
+    if "macro" in p or "regime" in p: return "macro_regime"
+    if "crypto" in p or "funding" in p or "carry" in p and "rates" not in p: return "crypto_carry"
+    if "auction" in p or "month_end" in p or "monthend" in p or "fomc" in p or "forced" in p: return "forced_flow"
+    if "cot" in p: return "positioning"
+    if "basket" in p: return "portfolio"
+    return "exploratory"
+def record(packet, asset="", sharpe=None, verdict="", horizon="", lane=None, stamp=None):
     d=_load()
     d["trials"].append({"packet":packet,"asset":asset,"sharpe":sharpe,"verdict":verdict,"horizon":horizon,
-                        "ts":stamp or datetime.now(timezone.utc).strftime("%Y-%m-%d")})
+                        "lane":lane or _lane_of(packet),"ts":stamp or datetime.now(timezone.utc).strftime("%Y-%m-%d")})
     LEDGER.parent.mkdir(parents=True, exist_ok=True)
     LEDGER.write_text(json.dumps(d, indent=2))
     return len(d["trials"])
-def count(): return len(_load()["trials"])
+def count(lane=None):
+    trials=_load()["trials"]
+    if lane is None: return len(trials)
+    return sum(1 for t in trials if (t.get("lane") or _lane_of(t.get("packet",""))) == lane)
+def lane_breakdown():
+    from collections import Counter
+    c=Counter((t.get("lane") or _lane_of(t.get("packet",""))) for t in _load()["trials"])
+    return dict(c)
 def seed(entries):
     """One-time backfill of trials already run this session (so N reflects history)."""
     d=_load(); existing={(t["packet"],t.get("asset",""),t.get("horizon","")) for t in d["trials"]}
