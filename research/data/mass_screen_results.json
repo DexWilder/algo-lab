@@ -79,5 +79,67 @@
       "Sufficient trades (1218) but PF 0.88 < 1.1"
     ],
     "timestamp": "20260409_2028"
+  },
+  {
+    "strategy": "xb_orb_ema_atr_trail",
+    "classification": "SALVAGE",
+    "best_pf": 1.526,
+    "best_trades": 1212,
+    "best_asset": "MNQ",
+    "assets_tested": [
+      "MES",
+      "MNQ"
+    ],
+    "reasons": [
+      "Median trade $-0.74 < 0 \u2014 edge is tail-dependent, not distributed. Demoted to SALVAGE."
+    ],
+    "timestamp": "20260528_1814"
+  },
+  {
+    "strategy": "xb_orb_ema_chandelier",
+    "classification": "SALVAGE",
+    "best_pf": 1.562,
+    "best_trades": 1212,
+    "best_asset": "MNQ",
+    "assets_tested": [
+      "MGC",
+      "MES",
+      "MNQ",
+      "M2K"
+    ],
+    "reasons": [
+      "Median trade $-4.74 < 0 \u2014 edge is tail-dependent, not distributed. Demoted to SALVAGE."
+    ],
+    "timestamp": "20260528_1819"
+  },
+  {
+    "strategy": "xb_pb_ema_chandelier",
+    "classification": "SALVAGE",
+    "best_pf": 1.338,
+    "best_trades": 1479,
+    "best_asset": "MNQ",
+    "assets_tested": [
+      "MNQ"
+    ],
+    "reasons": [
+      "Median trade $-13.74 < 0 \u2014 edge is tail-dependent, not distributed. Demoted to SALVAGE."
+    ],
+    "timestamp": "20260528_1821"
+  },
+  {
+    "strategy": "xb_stop_run_reversal_ema_ladder",
+    "classification": "ADVANCE",
+    "best_pf": 1.484,
+    "best_trades": 1417,
+    "best_asset": "MNQ",
+    "assets_tested": [
+      "MNQ"
+    ],
+    "reasons": [
+      "PF 1.48 > 1.2 with 1417 trades",
+      "Walk-forward stable: H1=1.35, H2=1.60",
+      "Concentration clean: top3=12%, top5=16%, top10=27%, max year=26%, median trade $15.76"
+    ],
+    "timestamp": "20260616_1814"
   }
 ]

@@ -1,8 +1,56 @@
 {
-  "report_date": "2026-04-10 17:36",
+  "report_date": "2026-06-29 17:38",
   "allocation_version": "1.0",
   "strategies": {
     "XB-PB-EMA-MES-Short": {
+      "base_tier": "REDUCED",
+      "target_tier": "MICRO",
+      "final_tier": "MICRO",
+      "sessions": {
+        "morning": {
+          "tier": 0,
+          "tier_name": "OFF",
+          "reason_codes": [
+            "ALLOC_SESSION_BLOCK"
+          ]
+        },
+        "midday": {
+          "tier": 1,
+          "tier_name": "MICRO",
+          "reason_codes": []
+        },
+        "afternoon": {
+          "tier": 1,
+          "tier_name": "MICRO",
+          "reason_codes": []
+        }
+      },
+      "adjustments": [
+        {
+          "stage": "contribution",
+          "direction": "UP",
+          "reason": "Strong contribution (marginal_sharpe=0.4)"
+        },
+        {
+          "stage": "session_drift",
+          "session": "morning",
+          "direction": "BLOCK",
+          "reason": "ALARM in morning"
+        },
+        {
+          "stage": "primary_session_blocked",
+          "direction": "CAP",
+          "reason": "Primary session (morning) is blocked"
+        }
+      ],
+      "hard_restricted": false,
+      "reason_codes": [
+        "ALLOC_BASE_FROM_ACTION",
+        "ALLOC_CONTRIB_BOOST",
+        "ALLOC_PRIMARY_SESSION_BLOCKED"
+      ]
+    },
+    "ORB-MGC-Long": {
       "base_tier": "BASE",
       "target_tier": "BOOST",
       "final_tier": "BOOST",
@@ -13,65 +61,13 @@
           "reason_codes": []
         },
         "midday": {
-          "tier": 3,
-          "tier_name": "BASE",
-          "reason_codes": [
-            "ALLOC_SESSION_REDUCE"
-          ]
-        },
-        "afternoon": {
-          "tier": 3,
-          "tier_name": "BASE",
-          "reason_codes": [
-            "ALLOC_SESSION_REDUCE"
-          ]
-        }
-      },
-      "adjustments": [
-        {
-          "stage": "contribution",
-          "direction": "UP",
-          "reason": "Strong contribution (marginal_sharpe=1.0)"
-        },
-        {
-          "stage": "session_drift",
-          "session": "midday",
-          "direction": "DOWN",
-          "reason": "DRIFT in midday"
-        },
-        {
-          "stage": "session_drift",
-          "session": "afternoon",
-          "direction": "DOWN",
-          "reason": "DRIFT in afternoon"
-        }
-      ],
-      "hard_restricted": false,
-      "reason_codes": [
-        "ALLOC_BASE_FROM_ACTION",
-        "ALLOC_CONTRIB_BOOST"
-      ]
-    },
-    "ORB-MGC-Long": {
-      "base_tier": "REDUCED",
-      "target_tier": "BASE",
-      "final_tier": "BASE",
-      "sessions": {
-        "morning": {
-          "tier": 3,
-          "tier_name": "BASE",
+          "tier": 4,
+          "tier_name": "BOOST",
           "reason_codes": []
         },
-        "midday": {
-          "tier": 0,
-          "tier_name": "OFF",
-          "reason_codes": [
-            "ALLOC_SESSION_BLOCK"
-          ]
-        },
         "afternoon": {
-          "tier": 3,
-          "tier_name": "BASE",
+          "tier": 4,
+          "tier_name": "BOOST",
           "reason_codes": []
         }
       },
@@ -79,13 +75,7 @@
         {
           "stage": "contribution",
           "direction": "UP",
-          "reason": "Strong contribution (marginal_sharpe=0.7)"
-        },
-        {
-          "stage": "session_drift",
-          "session": "midday",
-          "direction": "BLOCK",
-          "reason": "ALARM in midday"
+          "reason": "Strong contribution (marginal_sharpe=0.4)"
         }
       ],
       "hard_restricted": false,
@@ -128,296 +118,24 @@
         "ALLOC_CONTRIB_BOOST"
       ]
     },
-    "ORBEnh-M2K-Short": {
-      "base_tier": "MICRO",
-      "target_tier": "REDUCED",
-      "final_tier": "REDUCED",
-      "sessions": {
-        "morning": {
-          "tier": 2,
-          "tier_name": "REDUCED",
-          "reason_codes": []
-        },
-        "midday": {
-          "tier": 2,
-          "tier_name": "REDUCED",
-          "reason_codes": []
-        },
-        "afternoon": {
-          "tier": 2,
-          "tier_name": "REDUCED",
-          "reason_codes": []
-        }
-      },
-      "adjustments": [
-        {
-          "stage": "contribution",
-          "direction": "UP",
-          "reason": "Strong contribution (marginal_sharpe=0.4)"
-        }
-      ],
-      "hard_restricted": false,
-      "reason_codes": [
-        "ALLOC_BASE_FROM_ACTION",
-        "ALLOC_CONTRIB_BOOST"
-      ]
-    },
-    "VWAPMR-MCL-Short": {
-      "base_tier": "MICRO",
-      "target_tier": "REDUCED",
-      "final_tier": "REDUCED",
-      "sessions": {
-        "morning": {
-          "tier": 2,
-          "tier_name": "REDUCED",
-          "reason_codes": []
-        },
-        "midday": {
-          "tier": 2,
-          "tier_name": "REDUCED",
-          "reason_codes": []
-        },
-        "afternoon": {
-          "tier": 2,
-          "tier_name": "REDUCED",
-          "reason_codes": []
-        }
-      },
-      "adjustments": [
-        {
-          "stage": "contribution",
-          "direction": "UP",
-          "reason": "Strong contribution (marginal_sharpe=0.4)"
-        }
-      ],
-      "hard_restricted": false,
-      "reason_codes": [
-        "ALLOC_BASE_FROM_ACTION",
-        "ALLOC_CONTRIB_BOOST"
-      ]
-    },
-    "RangeExpansion": {
-      "base_tier": "MICRO",
-      "target_tier": "OFF",
-      "final_tier": "OFF",
-      "sessions": {
-        "morning": {
-          "tier": 0,
-          "tier_name": "OFF",
-          "reason_codes": [
-            "ALLOC_HARD_RESTRICTED"
-          ]
-        },
-        "midday": {
-          "tier": 0,
-          "tier_name": "OFF",
-          "reason_codes": [
-            "ALLOC_HARD_RESTRICTED"
-          ]
-        },
-        "afternoon": {
-          "tier": 0,
-          "tier_name": "OFF",
-          "reason_codes": [
-            "ALLOC_HARD_RESTRICTED"
-          ]
-        }
-      },
-      "adjustments": [],
-      "hard_restricted": true,
-      "reason_codes": [
-        "ALLOC_BASE_FROM_ACTION",
-        "ALLOC_HARD_RESTRICTED"
-      ]
-    },
-    "NoiseBoundary-MNQ-Long": {
-      "base_tier": "BASE",
-      "target_tier": "BOOST",
-      "final_tier": "BOOST",
-      "sessions": {
-        "morning": {
-          "tier": 4,
-          "tier_name": "BOOST",
-          "reason_codes": []
-        },
-        "midday": {
-          "tier": 4,
-          "tier_name": "BOOST",
-          "reason_codes": []
-        },
-        "afternoon": {
-          "tier": 4,
-          "tier_name": "BOOST",
-          "reason_codes": []
-        }
-      },
-      "adjustments": [
-        {
-          "stage": "contribution",
-          "direction": "UP",
-          "reason": "Strong contribution (marginal_sharpe=0.7)"
-        }
-      ],
-      "hard_restricted": false,
-      "reason_codes": [
-        "ALLOC_BASE_FROM_ACTION",
-        "ALLOC_CONTRIB_BOOST"
-      ]
-    },
-    "MomPB-6J-Long-US": {
-      "base_tier": "MICRO",
-      "target_tier": "REDUCED",
-      "final_tier": "REDUCED",
-      "sessions": {
-        "morning": {
-          "tier": 2,
-          "tier_name": "REDUCED",
-          "reason_codes": []
-        },
-        "midday": {
-          "tier": 2,
-          "tier_name": "REDUCED",
-          "reason_codes": []
-        },
-        "afternoon": {
-          "tier": 2,
-          "tier_name": "REDUCED",
-          "reason_codes": []
-        }
-      },
-      "adjustments": [
-        {
-          "stage": "contribution",
-          "direction": "UP",
-          "reason": "Strong contribution (marginal_sharpe=0.4)"
-        }
-      ],
-      "hard_restricted": false,
-      "reason_codes": [
-        "ALLOC_BASE_FROM_ACTION",
-        "ALLOC_CONTRIB_BOOST"
-      ]
-    },
-    "MomPB-6E-Long-US": {
-      "base_tier": "MICRO",
-      "target_tier": "REDUCED",
-      "final_tier": "REDUCED",
-      "sessions": {
-        "morning": {
-          "tier": 2,
-          "tier_name": "REDUCED",
-          "reason_codes": []
-        },
-        "midday": {
-          "tier": 2,
-          "tier_name": "REDUCED",
-          "reason_codes": []
-        },
-        "afternoon": {
-          "tier": 2,
-          "tier_name": "REDUCED",
-          "reason_codes": []
-        }
-      },
-      "adjustments": [
-        {
-          "stage": "contribution",
-          "direction": "UP",
-          "reason": "Strong contribution (marginal_sharpe=0.4)"
-        }
-      ],
-      "hard_restricted": false,
-      "reason_codes": [
-        "ALLOC_BASE_FROM_ACTION",
-        "ALLOC_CONTRIB_BOOST"
-      ]
-    },
-    "DailyTrend-MGC-Long": {
-      "base_tier": "MICRO",
-      "target_tier": "REDUCED",
-      "final_tier": "REDUCED",
-      "sessions": {
-        "morning": {
-          "tier": 2,
-          "tier_name": "REDUCED",
-          "reason_codes": []
-        },
-        "midday": {
-          "tier": 2,
-          "tier_name": "REDUCED",
-          "reason_codes": []
-        },
-        "afternoon": {
-          "tier": 2,
-          "tier_name": "REDUCED",
-          "reason_codes": []
-        }
-      },
-      "adjustments": [
-        {
-          "stage": "contribution",
-          "direction": "UP",
-          "reason": "Strong contribution (marginal_sharpe=0.4)"
-        }
-      ],
-      "hard_restricted": false,
-      "reason_codes": [
-        "ALLOC_BASE_FROM_ACTION",
-        "ALLOC_CONTRIB_BOOST"
-      ]
-    },
     "TV-NFP-High-Low-Levels": {
-      "base_tier": "MICRO",
-      "target_tier": "REDUCED",
-      "final_tier": "REDUCED",
+      "base_tier": "REDUCED",
+      "target_tier": "BASE",
+      "final_tier": "BASE",
       "sessions": {
         "morning": {
-          "tier": 2,
-          "tier_name": "REDUCED",
+          "tier": 3,
+          "tier_name": "BASE",
           "reason_codes": []
         },
         "midday": {
-          "tier": 2,
-          "tier_name": "REDUCED",
+          "tier": 3,
+          "tier_name": "BASE",
           "reason_codes": []
         },
         "afternoon": {
-          "tier": 2,
-          "tier_name": "REDUCED",
-          "reason_codes": []
-        }
-      },
-      "adjustments": [
-        {
-          "stage": "contribution",
-          "direction": "UP",
-          "reason": "Strong contribution (marginal_sharpe=0.4)"
-        }
-      ],
-      "hard_restricted": false,
-      "reason_codes": [
-        "ALLOC_BASE_FROM_ACTION",
-        "ALLOC_CONTRIB_BOOST"
-      ]
-    },
-    "Commodity-TermStructure-Carry-EnergyMetals": {
-      "base_tier": "MICRO",
-      "target_tier": "REDUCED",
-      "final_tier": "REDUCED",
-      "sessions": {
-        "morning": {
-          "tier": 2,
-          "tier_name": "REDUCED",
-          "reason_codes": []
-        },
-        "midday": {
-          "tier": 2,
-          "tier_name": "REDUCED",
-          "reason_codes": []
-        },
-        "afternoon": {
-          "tier": 2,
-          "tier_name": "REDUCED",
+          "tier": 3,
+          "tier_name": "BASE",
           "reason_codes": []
         }
       },
@@ -502,75 +220,7 @@
         "ALLOC_CONTRIB_BOOST"
       ]
     },
-    "ZN-Afternoon-Reversion": {
-      "base_tier": "MICRO",
-      "target_tier": "REDUCED",
-      "final_tier": "REDUCED",
-      "sessions": {
-        "morning": {
-          "tier": 2,
-          "tier_name": "REDUCED",
-          "reason_codes": []
-        },
-        "midday": {
-          "tier": 2,
-          "tier_name": "REDUCED",
-          "reason_codes": []
-        },
-        "afternoon": {
-          "tier": 2,
-          "tier_name": "REDUCED",
-          "reason_codes": []
-        }
-      },
-      "adjustments": [
-        {
-          "stage": "contribution",
-          "direction": "UP",
-          "reason": "Strong contribution (marginal_sharpe=0.4)"
-        }
-      ],
-      "hard_restricted": false,
-      "reason_codes": [
-        "ALLOC_BASE_FROM_ACTION",
-        "ALLOC_CONTRIB_BOOST"
-      ]
-    },
-    "XB-ORB-EMA-Ladder-MNQ": {
-      "base_tier": "REDUCED",
-      "target_tier": "BASE",
-      "final_tier": "BASE",
-      "sessions": {
-        "morning": {
-          "tier": 3,
-          "tier_name": "BASE",
-          "reason_codes": []
-        },
-        "midday": {
-          "tier": 3,
-          "tier_name": "BASE",
-          "reason_codes": []
-        },
-        "afternoon": {
-          "tier": 3,
-          "tier_name": "BASE",
-          "reason_codes": []
-        }
-      },
-      "adjustments": [
-        {
-          "stage": "contribution",
-          "direction": "UP",
-          "reason": "Strong contribution (marginal_sharpe=0.4)"
-        }
-      ],
-      "hard_restricted": false,
-      "reason_codes": [
-        "ALLOC_BASE_FROM_ACTION",
-        "ALLOC_CONTRIB_BOOST"
-      ]
-    },
-    "XB-ORB-EMA-Ladder-MCL": {
+    "XB-PB-EMA-Ladder-MNQ": {
       "base_tier": "MICRO",
       "target_tier": "REDUCED",
       "final_tier": "REDUCED",
@@ -606,12 +256,12 @@
     }
   },
   "summary": {
-    "total_strategies": 17,
+    "total_strategies": 7,
     "tier_distribution": {
-      "BOOST": 3,
-      "BASE": 2,
-      "REDUCED": 11,
-      "OFF": 1
+      "MICRO": 1,
+      "BOOST": 2,
+      "BASE": 1,
+      "REDUCED": 3
     }
   }
 }

@@ -1,0 +1,91 @@
+{
+  "strategy": "xb_stop_run_reversal_ema_ladder",
+  "run_date": "2026-06-16T18:11:22.373974",
+  "session_filter": null,
+  "asset_results": {
+    "MNQ": {
+      "asset": "MNQ",
+      "bars": 487996,
+      "modes": {
+        "both": {
+          "trades": 1417,
+          "pnl": 35853.42,
+          "pf": 1.484,
+          "sharpe": 2.14,
+          "maxdd": 4018.44,
+          "wr": 54.8,
+          "avg_pnl": 25.3,
+          "mode": "both",
+          "raw_signals": 1417
+        },
+        "long": {
+          "trades": 933,
+          "pnl": 25022.08,
+          "pf": 1.621,
+          "sharpe": 2.75,
+          "maxdd": 1592.58,
+          "wr": 55.1,
+          "avg_pnl": 26.82,
+          "mode": "long",
+          "raw_signals": 1417
+        },
+        "short": {
+          "trades": 484,
+          "pnl": 10831.34,
+          "pf": 1.32,
+          "sharpe": 1.49,
+          "maxdd": 4367.72,
+          "wr": 54.1,
+          "avg_pnl": 22.38,
+          "mode": "short",
+          "raw_signals": 1417
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 702,
+          "pnl": 11472.02,
+          "pf": 1.351,
+          "sharpe": 1.75,
+          "maxdd": 1457.56,
+          "wr": 53.8,
+          "avg_pnl": 16.34
+        },
+        "H2": {
+          "trades": 713,
+          "pnl": 24731.38,
+          "pf": 1.599,
+          "sharpe": 2.5,
+          "maxdd": 4018.44,
+          "wr": 55.7,
+          "avg_pnl": 34.69
+        }
+      },
+      "concentration": {
+        "top3_share": 0.118,
+        "top5_share": 0.164,
+        "top10_share": 0.27,
+        "max_year_share": 0.259,
+        "median_trade": 15.76
+      },
+      "classification": "ADVANCE",
+      "classification_reasons": [
+        "PF 1.48 > 1.2 with 1417 trades",
+        "Walk-forward stable: H1=1.35, H2=1.60",
+        "Concentration clean: top3=12%, top5=16%, top10=27%, max year=26%, median trade $15.76"
+      ]
+    }
+  },
+  "best_result": {
+    "asset": "MNQ",
+    "classification": "ADVANCE",
+    "pf": 1.484,
+    "trades": 1417
+  },
+  "overall_classification": "ADVANCE",
+  "overall_reasons": [
+    "PF 1.48 > 1.2 with 1417 trades",
+    "Walk-forward stable: H1=1.35, H2=1.60",
+    "Concentration clean: top3=12%, top5=16%, top10=27%, max year=26%, median trade $15.76"
+  ]
+}

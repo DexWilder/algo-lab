@@ -189,3 +189,7 @@ volume mechanisms still untested: opening-minutes, imbalance, cross-asset-volume
 - **Active research lanes:** Databento volume (opening/imbalance left); forced-flow (wp_b1 auctions, FOMC free); treasury bespoke; paid-data decision.
 - **For max capacity:** run wp_b1, extend feeds guardrail, reconcile parked packets, finish volume lane, then paid decision.
 - **Next 10 actions:** (1) run wp_b1 auctions; (2) extend guardrail to data/feeds/; (3) reconcile feed-dependent packets; (4) opening-minutes volume packet; (5) volume-imbalance packet; (6) free-data status memo; (7) macro/regime feed packets; (8) finalize paid-data memo; (9) retire phase1c (operator nod); (10) confirm monthly-review next-run includes guardrails.
+
+
+## ADDENDUM (2026-06-30): wp_b1 harness RUN (reconciliation action #1 executed)
+`research/wp_b1_auction_harness.py` run on present `treasury_auctions.csv` (799 auctions ZN/ZF/ZB x 4 windows, FOMC-contamination split): **ALL KILL** (clean-of-contam PF 0.51-1.04, erratic max-year). Auction lane = **CLEAN_KILL via the proper purpose-built harness** — supersedes the cruder P03 (64 ten-year-only). Demonstrates the reconciliation's value: using existing infra gave a more rigorous, multi-tenor, FOMC-clean verdict. P1 #1 DONE.

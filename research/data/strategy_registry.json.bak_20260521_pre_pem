@@ -1,6 +1,6 @@
 {
   "_schema_version": "2.0",
-  "_generated": "2026-06-29",
+  "_generated": "2026-05-21",
   "_description": "FQL Strategy Registry \u2014 institutional memory of all strategy ideas, tested candidates, and deployed strategies",
   "_purpose": "Preserves research knowledge, enables crossbreeding, feeds Strategy Factory",
   "strategies": [
@@ -131,12 +131,12 @@
       "kill_details": null,
       "last_review_date": "2026-03-15",
       "controller_state": "ACTIVE",
-      "controller_action": "REDUCED_ON",
-      "activation_score": 0.635,
+      "controller_action": "FULL_ON",
+      "activation_score": 0.725,
       "controller_reason_codes": [
         "REGIME_MATCH_MODERATE",
         "HALF_LIFE_STRENGTHENING",
-        "PORTFOLIO_NEUTRAL",
+        "PORTFOLIO_ADDS_VALUE",
         "LOW_REDUNDANCY",
         "HEALTH_FAIL",
         "KILL_NONE",
@@ -145,11 +145,11 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-06-29",
+      "last_controller_date": "2026-05-21",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
-      "contribution_status": "NEUTRAL",
+      "contribution_status": "ADDS VALUE",
       "health_status": "FAIL",
       "genome_cluster": "trend_persistence",
       "resurrection_flag": false,
@@ -215,9 +215,7 @@
         "exit",
         "filter"
       ],
-      "crossbreeding_eligible": true,
-      "approval_provenance": "Core/deployed tier (status=core, lifecycle=deployed, role=enhancer). source=crossbreeding_phase12, created 2026-04-10. Documented in docs/TARGET_PORTFOLIO.md + docs/PORTFOLIO_TRUTH_TABLE.md (only MES core strategy).",
-      "approval_provenance_status": "LEGACY_CORE_DOCUMENTED \u2014 approval evidence exists in repo/docs/git (see approval_provenance); discrete promotion_date predates the field convention (LEGACY_CORE_PROVENANCE_GAP, not invented)."
+      "crossbreeding_eligible": true
     },
     {
       "strategy_id": "ORB-MGC-Long",
@@ -241,10 +239,10 @@
       "kill_details": null,
       "last_review_date": "2026-03-15",
       "controller_state": "ACTIVE",
-      "controller_action": "FULL_ON",
-      "activation_score": 0.765,
+      "controller_action": "REDUCED_ON",
+      "activation_score": 0.685,
       "controller_reason_codes": [
-        "REGIME_MATCH_HIGH",
+        "REGIME_MATCH_MODERATE",
         "HALF_LIFE_STRENGTHENING",
         "PORTFOLIO_NEUTRAL",
         "LOW_REDUNDANCY",
@@ -255,7 +253,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-06-29",
+      "last_controller_date": "2026-05-21",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
@@ -322,9 +320,7 @@
       "extractable_components": [
         "entry"
       ],
-      "crossbreeding_eligible": false,
-      "approval_provenance": "Core/deployed tier (status=core, lifecycle=deployed, role=core). Documented in docs/TARGET_PORTFOLIO.md + docs/PORTFOLIO_TRUTH_TABLE.md + docs/audits/phase_5_regime_portfolio.md + phase_6_deployment.md. source=internal_research, created 2026-04-10.",
-      "approval_provenance_status": "LEGACY_CORE_DOCUMENTED \u2014 approval evidence exists in repo/docs/git (see approval_provenance); discrete promotion_date predates the field convention (LEGACY_CORE_PROVENANCE_GAP, not invented)."
+      "crossbreeding_eligible": false
     },
     {
       "strategy_id": "Donchian-MNQ-Long-GRINDING",
@@ -567,10 +563,10 @@
       "kill_details": null,
       "last_review_date": "2026-03-18",
       "controller_state": "ACTIVE",
-      "controller_action": "FULL_ON",
-      "activation_score": 0.81,
+      "controller_action": "REDUCED_ON",
+      "activation_score": 0.61,
       "controller_reason_codes": [
-        "REGIME_MATCH_HIGH",
+        "REGIME_MISMATCH",
         "HALF_LIFE_STRENGTHENING",
         "PORTFOLIO_ADDS_VALUE",
         "LOW_REDUNDANCY",
@@ -581,7 +577,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-06-29",
+      "last_controller_date": "2026-05-21",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
@@ -650,9 +646,7 @@
         "entry",
         "filter"
       ],
-      "crossbreeding_eligible": true,
-      "approval_provenance": "Core/deployed tier (status=core, lifecycle=deployed, role=core). git 0328aad 'Phase 15: BB Equilibrium PROMOTED to 6th Parent'; robustness tests git 7e3555e. Documented in docs/TARGET_PORTFOLIO.md + docs/PORTFOLIO_TRUTH_TABLE.md. source=lucid_v6_extraction.",
-      "approval_provenance_status": "LEGACY_CORE_DOCUMENTED \u2014 approval evidence exists in repo/docs/git (see approval_provenance); discrete promotion_date predates the field convention (LEGACY_CORE_PROVENANCE_GAP, not invented)."
+      "crossbreeding_eligible": true
     },
     {
       "strategy_id": "MomIgn-M2K-Short",
@@ -3617,13 +3611,13 @@
       "direction": "long",
       "source": "batch_first_pass_discovery",
       "rule_summary": "50-day EMA trend direction + 20-day Donchian breakout. Daily bars resampled from 5m. ATR trailing stop. Long only.",
-      "status": "watch",
+      "status": "probation",
       "validation_score": 7.0,
       "profit_factor": 3.65,
       "notes": "PASS (7/8). First multi-horizon strategy. First PASS-level expansion result. PF 3.65, Sharpe 5.13, 44 trades. Bootstrap CI lower bound 1.38 (above 1.0). Parameter stability 100% (PF 2.63-3.96 across all combos). Top-trade removal PF 2.85. Walk-forward H1=1.14, H2=5.62. Only failure: MC ruin at 2K (sample size, not strategy defect). Restrictions: long only, daily bars, REDUCED tier, review after 15+ forward trades. CONVERGENT CONFIRMATION: DualThrust Daily MGC long PF 2.79 (independent entry logic, same edge). Two different systems confirm gold daily long momentum.",
       "last_review_date": "2026-03-16",
       "controller_state": "PROBATION",
-      "controller_action": "OFF",
+      "controller_action": "PROBATION",
       "review_priority": "MEDIUM",
       "deployment_restrictions": {
         "direction": "long_only",
@@ -3674,7 +3668,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-06-25",
+      "last_controller_date": "2026-05-21",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -3709,16 +3703,7 @@
         "entry",
         "exit"
       ],
-      "crossbreeding_eligible": true,
-      "deactivation_history": [
-        {
-          "date": "2026-06-26",
-          "prior_status": "probation",
-          "prior_controller_action": "PROBATION",
-          "prior_executable_state": null,
-          "reason": "TRUTH_RESET 2026-06-26: causality LOOKAHEAD_DETECTED (same-day-aggregate->intraday leak). Operator-approved deactivation (risk hygiene, paper-only). See TRUTH_RESET_RESCUE_AUDIT."
-        }
-      ]
+      "crossbreeding_eligible": true
     },
     {
       "strategy_id": "FVG-Inversion-Signal",
@@ -4823,7 +4808,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-06-29",
+      "last_controller_date": "2026-05-21",
       "half_life_status": "HEALTHY",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -5760,7 +5745,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-06-29",
+      "last_controller_date": "2026-05-21",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -5963,7 +5948,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-06-29",
+      "last_controller_date": "2026-05-21",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -6296,7 +6281,7 @@
       "direction": "both",
       "source": "fql_falsification_discovery",
       "rule_summary": "Fade outsized 13:45-14:00 ET moves in ZN. Entry 14:00, exit 14:25. Impulse threshold 1.5x 20d median. Short-biased, high-vol activated.",
-      "status": "watch",
+      "status": "probation",
       "notes": "APPROVED for forward runner 2026-03-20. MICRO tier, probation. Discovered as Variant B during Treasury-Cash-Close-Reversion falsification (parent REJECTED). First-pass: PF 1.32, 300 trades, WF H1=1.31 H2=1.33. Short-biased (89% PnL from shorts). MONITORING NOTES: (1) HIGH_VOL dependent \u2014 PF 1.64 high-vol vs 1.04 low-vol. Will underperform in quiet rate regimes. (2) Window-specific \u2014 \u00b115m shift degrades results. If CME changes session times, edge may vanish. (3) ~18% of weekdays excluded due to sparse ZN bars at 14:00-14:25. Forward results are conditioned on afternoon liquidity. (4) Tuesday is the weak day (PF 0.87). PROBATION TARGETS: 30 forward trades, PF > 1.1, contribution review, overlap check vs Treasury-Rolldown-Carry-Spread. DISTINGUISH FROM Treasury-Rolldown: same asset (ZN) but different mechanism (25m intraday reversion vs monthly carry spread), different session (14:00-14:25 vs daily close), different factor (STRUCTURAL vs CARRY).",
       "last_review_date": "2026-03-20",
       "review_priority": "MEDIUM",
@@ -6326,10 +6311,10 @@
       ],
       "spec_path": "research/specs/ZN-Afternoon-Reversion.md",
       "validation_score": null,
-      "controller_action": "OFF",
+      "controller_action": "PROBATION",
       "activation_score": 0.545,
       "controller_state": "PAPER",
-      "last_controller_date": "2026-06-25",
+      "last_controller_date": "2026-05-21",
       "execution_config": {
         "avoid_regimes": [],
         "preferred_regimes": [
@@ -6464,16 +6449,7 @@
         "entry",
         "exit"
       ],
-      "crossbreeding_eligible": true,
-      "deactivation_history": [
-        {
-          "date": "2026-06-26",
-          "prior_status": "probation",
-          "prior_controller_action": "PROBATION",
-          "prior_executable_state": null,
-          "reason": "TRUTH_RESET 2026-06-26: causality LOOKAHEAD_DETECTED (same-day-aggregate->intraday leak). Operator-approved deactivation (risk hygiene, paper-only). See TRUTH_RESET_RESCUE_AUDIT."
-        }
-      ]
+      "crossbreeding_eligible": true
     },
     {
       "strategy_id": "XB-ORB-EMA-Ladder-MNQ",
@@ -6484,15 +6460,15 @@
       "direction": "both",
       "source": "internal_crossbreeding",
       "rule_summary": "ORB + EMA ladder crossbreed. Both directions, 60% win rate, payoff 1.05.",
-      "status": "watch",
+      "status": "probation",
       "validation_score": 9.0,
       "trades_6yr": 1183,
       "profit_factor": 1.62,
       "portfolio_role": "workhorse",
       "promotion_date": "2026-04-06",
       "notes": "PROBATION BASELINE UPGRADED 2026-04-07 from stop=0.5 to stop=2.0 after stop-sweep study (10/10 variants clean across 0.1-3.0 range). stop=2.0 wins on both PF (1.62 vs 1.59) and DD duration. MNQ: 1183 trades, PF 1.62, PnL $50,785, top-10 22.7%, median $43.26, max DD 143 days. Cross-asset confirmed on all 4 equity-index micros. Sits inside broad stability plateau \u2014 this is a baseline selection, not a parameter fit. Edge is WR-based (60% WR, payoff 1.05). | IMPORTANT: This PF is a FLOOR, not a ceiling. target_mult and trail_mult are ignored by exit_profit_ladder (fixed 1R/2R/3R ratchets), so the edge was achieved with no functional exit tuning. Fixing the bug can only raise the family potential, never lower it.",
-      "controller_action": "OFF",
-      "last_controller_date": "2026-06-25",
+      "controller_action": "REDUCED_ON",
+      "last_controller_date": "2026-05-21",
       "execution_config": {
         "preferred_window": [
           "09:30",
@@ -6517,7 +6493,7 @@
       },
       "controller_state": "ACTIVE",
       "prior_state": "ACTIVE",
-      "activation_score": 0.66,
+      "activation_score": 0.64,
       "controller_reason_codes": [
         "REGIME_MATCH_LOW",
         "HALF_LIFE_STRENGTHENING",
@@ -6525,7 +6501,7 @@
         "LOW_REDUNDANCY",
         "HEALTH_FAIL",
         "KILL_NONE",
-        "SESSION_DRIFT_DEGRADED",
+        "SESSION_DRIFT_BROKEN",
         "TIME_WINDOW_MATCH",
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
@@ -6550,124 +6526,7 @@
       "regime_tag": "unclassified",
       "reusable_as_component": false,
       "extractable_components": null,
-      "crossbreeding_eligible": false,
-      "deactivation_history": [
-        {
-          "date": "2026-06-26",
-          "prior_status": "probation",
-          "prior_controller_action": "REDUCED_ON",
-          "prior_executable_state": null,
-          "reason": "TRUTH_RESET 2026-06-26: INVALIDATED by clean point-in-time retest (ema_slope same-day-close lookahead). Operator-approved deactivation (risk hygiene, paper-only, no capital). See docs/fql_forge/TRUTH_RESET_RESCUE_AUDIT_2026-06-25.md"
-        }
-      ]
-    },
-    {
-      "strategy_id": "XB-ORB-EMA-Ladder-MGC",
-      "strategy_name": "xb_orb_ema_ladder",
-      "family": "crossbreed_breakout",
-      "asset": "MGC",
-      "session": "all_day",
-      "direction": "both",
-      "source": "offensive_forge_sprint_v2_phase3_2026-05-28",
-      "rule_summary": "orb_breakout entry + ema_slope filter + profit_ladder exit on MGC. stop_mult=2.0. Phase 3 Offensive Forge Sprint v2 verdict PASS_TO_FORWARD_CLOCK: PF=1.601, n=652, median=+$8.76, top-3=20.0%, max-year=28.2%, years 7/8 positive, H1 PF=1.536, H2 PF=1.639. Gold workhorse \u2014 adds cross-asset/cross-sector diversification vs equity-index Ladder family.",
-      "status": "watch",
-      "validation_score": 9.0,
-      "trades_6yr": 652,
-      "profit_factor": 1.601,
-      "portfolio_role": "workhorse",
-      "promotion_date": "2026-05-28",
-      "notes": "Track 1 forward-clock candidate, wired 2026-05-28 via Phase 3 Offensive Forge Sprint v2 (docs/reports/2026-05-28_offensive_sprint_v2_phase3.json). Workhorse archetype, all gates clean. Reuses the xb_orb_ema_ladder strategy module (no new code) \u2014 same mechanism as XB-ORB-EMA-Ladder-MNQ/MCL/MYM but on gold. Gold (MGC) has structurally lower correlation with the equity-index family than MES/M2K do, so this adds real cross-asset signal diversification rather than correlated noise. Phase 3 highest workhorse PF in sprint. Paper-readiness eligible ONLY after \u226530 forward trades + operator review at the gate. Per 2026-05-28 doctrine: do NOT auto-promote to paper-ready or core on hitting the 30-trade gate; trigger packet draft.",
-      "controller_action": "OFF",
-      "last_controller_date": "2026-06-25",
-      "execution_config": {
-        "preferred_window": [
-          "09:30",
-          "14:30"
-        ],
-        "allowed_window": [
-          "09:30",
-          "15:15"
-        ],
-        "conviction_threshold_inside": 2,
-        "conviction_threshold_outside": 2,
-        "priority": 9,
-        "avoid_regimes": [],
-        "preferred_regimes": [],
-        "exit_variant": null
-      },
-      "baseline_update_date": "2026-05-28",
-      "baseline_params": {
-        "stop_mult": 2.0,
-        "target_mult": 4.0,
-        "trail_mult": 2.5
-      },
-      "controller_state": "ACTIVE",
-      "prior_state": "ACTIVE",
-      "activation_score": 0.675,
-      "controller_reason_codes": [
-        "REGIME_MATCH_LOW",
-        "HALF_LIFE_STRENGTHENING",
-        "PORTFOLIO_NEUTRAL",
-        "LOW_REDUNDANCY",
-        "HEALTH_FAIL",
-        "KILL_NONE",
-        "SESSION_DRIFT_NORMAL",
-        "TIME_WINDOW_MATCH",
-        "ASSET_FIT_GOOD",
-        "RECENT_STABLE"
-      ],
-      "review_priority": "LOW",
-      "half_life_status": "HEALTHY",
-      "contribution_status": "NEUTRAL",
-      "health_status": "FAIL",
-      "genome_cluster": "unknown",
-      "resurrection_flag": false,
-      "state_history": [
-        {
-          "date": "2026-04-07",
-          "from": "PROBATION",
-          "to": "ACTIVE",
-          "trigger": "Recovery: score=0.68, HL=HEALTHY"
-        },
-        {
-          "date": "2026-05-28",
-          "from": "PROBATION",
-          "to": "ACTIVE",
-          "trigger": "Recovery: score=0.68, HL=HEALTHY"
-        }
-      ],
-      "state_entered_date": "2026-05-28",
-      "created_date": "2026-05-28",
-      "session_tag": "morning",
-      "regime_tag": "unclassified",
-      "reusable_as_component": false,
-      "extractable_components": null,
-      "crossbreeding_eligible": false,
-      "last_review_date": "2026-05-28",
-      "executable_state": "DISABLED",
-      "paper_ready": false,
-      "promotion_eligible": false,
-      "experimental_archetype": null,
-      "paper_packet_path": null,
-      "promotion_pending_reason": "PENDING_FORWARD_EVIDENCE",
-      "governance_review": {
-        "status": "OPEN",
-        "opened": "2026-06-14",
-        "issue": "CONTRADICTORY_APPROVAL_STATE: promotion_date=2026-05-28 coexists with paper_ready=false + promotion_eligible=false.",
-        "preliminary_evidence": "2026-05-28 sprint v2 phase3 verdict was PASS_TO_FORWARD_CLOCK (forward-clock, NOT paper promotion); n=652; not in validated MNQ/MCL/MYM set. promotion_date is the likely-erroneous field; paper_ready=false likely reflects true state. NOT resolved per operator decision (c).",
-        "decision": "(c) leave gated pending validation/promotion review; do NOT activate, do NOT clear flags, do NOT add to CLAUDE.md approved table.",
-        "execution_state": "OFF / fail-closed / non-execution-eligible (BLOCKED_PAPER_READY_FALSE via build_portfolio_config gate)",
-        "review_doc": "docs/fql_forge/LADDER_MGC_APPROVAL_REVIEW_2026-06-14.md"
-      },
-      "deactivation_history": [
-        {
-          "date": "2026-06-26",
-          "prior_status": "probation",
-          "prior_controller_action": "REDUCED_ON",
-          "prior_executable_state": "EXECUTABLE",
-          "reason": "TRUTH_RESET 2026-06-26: causality LOOKAHEAD_DETECTED (same-day-aggregate->intraday leak). Operator-approved deactivation (risk hygiene, paper-only). See TRUTH_RESET_RESCUE_AUDIT."
-        }
-      ]
+      "crossbreeding_eligible": false
     },
     {
       "strategy_id": "XB-ORB-EMA-Ladder-MCL",
@@ -6678,13 +6537,13 @@
       "direction": "both",
       "source": "internal_crossbreeding_cross_asset_extension",
       "rule_summary": "ORB + EMA ladder crossbreed on crude oil. Same exact code as MNQ variant. stop_mult=2.0.",
-      "status": "watch",
+      "status": "probation",
       "validation_score": 9.0,
       "trades_6yr": 898,
       "profit_factor": 1.33,
       "portfolio_role": "workhorse",
-      "controller_action": "OFF",
-      "last_controller_date": "2026-06-25",
+      "controller_action": "PROBATION",
+      "last_controller_date": "2026-05-21",
       "promotion_date": "2026-04-08",
       "baseline_params": {
         "stop_mult": 2.0,
@@ -6745,16 +6604,7 @@
         "cost_pct_of_gross_avg": 34.7,
         "reason": "Net PF 1.298 with conservative slip=2 estimate. 0.10 above gate. Cost = 34.7% of gross avg trade. Highest-priority MCL asset to replace conservative estimates with actual broker rate sheet before any paper/prop deployment.",
         "set_date": "2026-05-20"
-      },
-      "deactivation_history": [
-        {
-          "date": "2026-06-26",
-          "prior_status": "probation",
-          "prior_controller_action": "PROBATION",
-          "prior_executable_state": null,
-          "reason": "TRUTH_RESET 2026-06-26: INVALIDATED by clean point-in-time retest (ema_slope same-day-close lookahead). Operator-approved deactivation (risk hygiene, paper-only, no capital). See docs/fql_forge/TRUTH_RESET_RESCUE_AUDIT_2026-06-25.md"
-        }
-      ]
+      }
     },
     {
       "strategy_id": "XB-ORB-EMA-Ladder-MYM",
@@ -6765,13 +6615,13 @@
       "direction": "both",
       "source": "internal_crossbreeding_cross_asset_extension",
       "rule_summary": "ORB + EMA ladder crossbreed on Micro Dow. Same code as MNQ/MCL variant. stop_mult=2.0.",
-      "status": "watch",
+      "status": "probation",
       "validation_score": 8.0,
       "trades_6yr": 340,
       "profit_factor": 1.67,
       "portfolio_role": "workhorse",
-      "controller_action": "OFF",
-      "last_controller_date": "2026-06-25",
+      "controller_action": "PROBATION",
+      "last_controller_date": "2026-05-21",
       "promotion_date": "2026-04-13",
       "baseline_params": {
         "stop_mult": 2.0,
@@ -6845,16 +6695,7 @@
         "reason": "Workhorse threshold calibrated for 6y; MYM only 2y available"
       },
       "paper_borderline_status": "concentration_risk_failed_this_pass",
-      "paper_borderline_detail": "top-3=31.0%, top-10=58.9%, max-year=67.6%",
-      "deactivation_history": [
-        {
-          "date": "2026-06-26",
-          "prior_status": "probation",
-          "prior_controller_action": "PROBATION",
-          "prior_executable_state": null,
-          "reason": "TRUTH_RESET 2026-06-26: INVALIDATED by clean point-in-time retest (ema_slope same-day-close lookahead). Operator-approved deactivation (risk hygiene, paper-only, no capital). See docs/fql_forge/TRUTH_RESET_RESCUE_AUDIT_2026-06-25.md"
-        }
-      ]
+      "paper_borderline_detail": "top-3=31.0%, top-10=58.9%, max-year=67.6%"
     },
     {
       "strategy_id": "SPX-Lunch-Compression-Afternoon-Release",
@@ -8442,7 +8283,7 @@
       "source": "forge_hybrid_generation_2026-05-05",
       "rule_summary": "pb_pullback entry + ema_slope filter + profit_ladder exit on MNQ. stop_mult=2.0. Cheap-screen PASS on 2026-05-05; PF=1.403, n=1463, net=$29297, max_DD=$-1732.",
       "status": "probation",
-      "notes": "Hybrid generated via Forge runner sweep 2026-05-05. Cheap-screen verdict PASS (workhorse-archetype, n=1463). Validated against XB-ORB-EMA-Ladder family donor pattern. Source memo: docs/fql_forge/batch_screen_2_2026-05-05.md. Pre-flight: docs/_DRAFT_2026-05-06_batch_register_xb_hybrids.md. PAPER_APPROVE_CONDITIONAL 2026-05-20: added to forward paper runner per operator approval. Paper sizing = 1 MNQ contract. status=probation reflects forward-paper-test mapping; NOT live and NOT promoted to core. PENDING_FORWARD_EVIDENCE \u2014 promotion-eligible only after \u226530 forward trades. Distinct entry family (pullback) \u2014 diversifies beyond ORB. Paper-readiness packet: docs/paper_readiness_packets/XB-PB-EMA-Ladder-MNQ.md. 2026-05-21: forward runner crashed loading this candidate (strategy_name=None, no executable module exists for this entry+exit combination). Disabled pending wire-up of real executable module. Today's 'Under-evidenced 0 trades' brief line was not real evidence \u2014 strategy was never evaluated.",
+      "notes": "Hybrid generated via Forge runner sweep 2026-05-05. Cheap-screen verdict PASS (workhorse-archetype, n=1463). Validated against XB-ORB-EMA-Ladder family donor pattern. Source memo: docs/fql_forge/batch_screen_2_2026-05-05.md. Pre-flight: docs/_DRAFT_2026-05-06_batch_register_xb_hybrids.md. PAPER_APPROVE_CONDITIONAL 2026-05-20: added to forward paper runner per operator approval. Paper sizing = 1 MNQ contract. status=probation reflects forward-paper-test mapping; NOT live and NOT promoted to core. PENDING_FORWARD_EVIDENCE \u2014 promotion-eligible only after \u226530 forward trades. Distinct entry family (pullback) \u2014 diversifies beyond ORB. Paper-readiness packet: docs/paper_readiness_packets/XB-PB-EMA-Ladder-MNQ.md.",
       "last_review_date": "2026-05-06",
       "review_priority": "MEDIUM",
       "lifecycle_stage": "discovery",
@@ -8507,7 +8348,6 @@
       },
       "paper_packet_path": "docs/paper_readiness_packets/XB-PB-EMA-Ladder-MNQ.md",
       "promotion_pending_reason": "PENDING_FORWARD_EVIDENCE",
-      "executable_state": "PENDING_EXECUTABLE_MODULE",
       "prior_state": "PROBATION",
       "activation_score": 0.545,
       "controller_reason_codes": [
@@ -8521,7 +8361,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-06-29",
+      "last_controller_date": "2026-05-21",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -8927,33 +8767,20 @@
     },
     {
       "strategy_id": "XB-ORB-EMA-Chandelier-MNQ",
-      "strategy_name": "xb_orb_ema_chandelier",
+      "strategy_name": null,
       "family": "crossbreed_breakout",
       "asset": "MNQ",
       "session": "all_day",
       "direction": "both",
       "source": "forge_hybrid_generation_2026-05-05",
       "rule_summary": "orb_breakout entry + ema_slope filter + chandelier exit on MNQ. stop_mult=2.0. Cheap-screen PASS on 2026-05-05; PF=1.571, n=1198, net=$32471, max_DD=$-1651.",
-      "status": "watch",
-      "notes": "Hybrid generated via Forge runner sweep 2026-05-05. Cheap-screen verdict PASS (workhorse-archetype, n=1198). Validated against XB-ORB-EMA-Ladder family donor pattern. Source memo: docs/fql_forge/tail_engine_pool_expansion_2026-05-05.md. Pre-flight: docs/_DRAFT_2026-05-06_batch_register_xb_hybrids.md.\n\n2026-05-19 cluster decision: cluster=XB-ORB-EMA-MNQ, role=cluster_leader (PF 1.574 > 1.507 TimeStop). Pearson r=0.883 with TimeStop variant. Per operator approval 2026-05-19 (correlation matrix commit 73b5df1). Cluster metadata only; status unchanged. PAPER_APPROVE_CONDITIONAL 2026-05-20: added to forward paper runner per operator approval. Paper sizing = 1 MNQ contract. status=probation reflects forward-paper-test mapping; NOT live and NOT promoted to core. PENDING_FORWARD_EVIDENCE \u2014 promotion-eligible only after \u226530 forward trades. Cluster leader for XB-ORB-EMA-MNQ exposure; TimeStop variant does NOT separately enter paper. Paper-readiness packet: docs/paper_readiness_packets/XB-ORB-EMA-Chandelier-MNQ.md. 2026-05-21: forward runner crashed loading this candidate (strategy_name=None, no executable module exists for this entry+exit combination). Disabled pending wire-up of real executable module. Today's 'Under-evidenced 0 trades' brief line was not real evidence \u2014 strategy was never evaluated. 2026-05-28: EXPERIMENTAL_FORWARD_CLOCK wire authorized. archetype=PAYOFF_RATIO_WORKHORSE_FREQUENCY. paper_ready=false, promotion_eligible=false. Fails the standard workhorse median-trade->=0 gate (full sample median -$4.74; H1 -$8.74; H2 +$0.26) so NOT eligible for paper-readiness under the existing workhorse rubric. Forward-clocked to determine whether FQL should codify a third archetype for payoff-ratio strategies at workhorse trade frequency. Measurement: docs/reports/2026-05-28_chandelier_mnq_measurement.json (PF 1.561, 1211 trades, top-3 14.7%, top-10 31.9%, max-year 30.0%, 7/8 years positive). At 30 forward trades: do NOT auto-promote \u2014 evaluate whether new archetype gates are warranted first. | 2026-06-13 DEACTIVATED from paper execution (governance cleanup; undocumented MNQ exposure; never promoted into probation; records preserved).",
+      "status": "probation",
+      "notes": "Hybrid generated via Forge runner sweep 2026-05-05. Cheap-screen verdict PASS (workhorse-archetype, n=1198). Validated against XB-ORB-EMA-Ladder family donor pattern. Source memo: docs/fql_forge/tail_engine_pool_expansion_2026-05-05.md. Pre-flight: docs/_DRAFT_2026-05-06_batch_register_xb_hybrids.md.\n\n2026-05-19 cluster decision: cluster=XB-ORB-EMA-MNQ, role=cluster_leader (PF 1.574 > 1.507 TimeStop). Pearson r=0.883 with TimeStop variant. Per operator approval 2026-05-19 (correlation matrix commit 73b5df1). Cluster metadata only; status unchanged. PAPER_APPROVE_CONDITIONAL 2026-05-20: added to forward paper runner per operator approval. Paper sizing = 1 MNQ contract. status=probation reflects forward-paper-test mapping; NOT live and NOT promoted to core. PENDING_FORWARD_EVIDENCE \u2014 promotion-eligible only after \u226530 forward trades. Cluster leader for XB-ORB-EMA-MNQ exposure; TimeStop variant does NOT separately enter paper. Paper-readiness packet: docs/paper_readiness_packets/XB-ORB-EMA-Chandelier-MNQ.md.",
       "last_review_date": "2026-05-06",
-      "review_priority": "LOW",
-      "lifecycle_stage": "watch",
+      "review_priority": "MEDIUM",
+      "lifecycle_stage": "discovery",
       "source_category": "internal",
-      "state_history": [
-        {
-          "date": "2026-05-28",
-          "from": "PROBATION",
-          "to": "ACTIVE",
-          "trigger": "Recovery: score=0.68, HL=HEALTHY"
-        },
-        {
-          "date": "2026-06-13",
-          "from": "ACTIVE",
-          "to": "DEACTIVATED_GOVERNANCE",
-          "trigger": "MNQ exposure rationalization (operator Option 1) \u2014 undocumented Track 2 MNQ book frozen"
-        }
-      ],
+      "state_history": [],
       "harvest_batch": "forge_hybrid_generation_2026-05-05",
       "batch_priority": 2,
       "convergent_sources": [],
@@ -8983,8 +8810,8 @@
       "extractable_components": [],
       "crossbreeding_eligible": false,
       "why_not_now": "awaiting_full_validation_battery_post_phase_0",
-      "controller_action": "OFF",
-      "controller_state": "VALIDATED",
+      "controller_action": "PROBATION",
+      "controller_state": "PROBATION",
       "baseline_params": {
         "stop_mult": 2.0,
         "target_mult": 4.0,
@@ -9017,15 +8844,10 @@
       },
       "paper_packet_path": "docs/paper_readiness_packets/XB-ORB-EMA-Chandelier-MNQ.md",
       "promotion_pending_reason": "PENDING_FORWARD_EVIDENCE",
-      "executable_state": "EXECUTABLE",
-      "experimental_archetype": "PAYOFF_RATIO_WORKHORSE_FREQUENCY",
-      "promotion_eligible": false,
-      "paper_ready": false,
-      "prior_state": "ACTIVE",
-      "activation_score": 0.675,
+      "prior_state": "PROBATION",
+      "activation_score": 0.545,
       "controller_reason_codes": [
         "REGIME_MATCH_LOW",
-        "HALF_LIFE_STRENGTHENING",
         "PORTFOLIO_NEUTRAL",
         "LOW_REDUNDANCY",
         "HEALTH_FAIL",
@@ -9033,270 +8855,14 @@
         "SESSION_DRIFT_NORMAL",
         "TIME_WINDOW_MATCH",
         "ASSET_FIT_GOOD",
-        "RECENT_STABLE"
+        "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-06-12",
-      "half_life_status": "HEALTHY",
+      "last_controller_date": "2026-05-21",
+      "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
       "genome_cluster": "unknown",
-      "resurrection_flag": false,
-      "state_entered_date": "2026-05-28",
-      "paper_execution": "DEACTIVATED",
-      "deactivation_date": "2026-06-13",
-      "deactivation_reason": "Governance cleanup (MNQ exposure rationalization, operator Option 1, 2026-06-13). Undocumented active MNQ exposure: wired 2026-05-28 as Track 2 EXPERIMENTAL_FORWARD_CLOCK (paper_ready=false, promotion_eligible=false, promotion_date=None) but running as status=probation+REDUCED_ON. Never promoted into paper probation. Frozen pending explicit operator governance. Records preserved; not deleted; reactivatable."
-    },
-    {
-      "strategy_id": "XB-ORB-EMA-ATRTrail-MES",
-      "strategy_name": "xb_orb_ema_atr_trail",
-      "family": "crossbreed_breakout",
-      "asset": "MES",
-      "session": "all_day",
-      "direction": "both",
-      "source": "offensive_forge_sprint_v2_phase3_2026-05-28",
-      "rule_summary": "orb_breakout entry + ema_slope filter + atr_trail exit on MES. stop_mult=2.0, trail_mult=2.5. Phase 3 Offensive Forge Sprint v2 verdict PASS_TO_FORWARD_CLOCK: PF=1.413, n=1242, median=-$4.99 (payoff-ratio), top-3=11.1%, max-year=25.4%, H1 PF=1.313, H2 PF=1.509. Chosen over TimeStop-MES (PF 1.36) due to higher PF and H1/H2 stability \u2014 both in same MES+ORB+EMA cluster per correlation guard, pick 1.",
-      "status": "watch",
-      "notes": "Track 2 EXPERIMENTAL_FORWARD_CLOCK candidate, wired 2026-05-28 via Phase 3 Offensive Forge Sprint v2. archetype=PAYOFF_RATIO_WORKHORSE_FREQUENCY. paper_ready=false, promotion_eligible=false. Tests whether payoff-ratio shape generalizes outside MNQ \u2014 first Track 2 wire on a non-MNQ asset (MES) AND different exit mechanism (atr_trail vs chandelier). Median structurally negative by archetype design (-$4.99); mean +$23.69. Forward-clock evidence-only. At 30 forward trades: do NOT auto-promote; triggers archetype review per the 2026-05-28 Track 2 doctrine. Correlation guard: paired with TimeStop-MES (same MES+ORB+EMA family, different exit); TimeStop-MES held off the runner. | 2026-06-13 DEACTIVATED from paper execution (governance cleanup; Track 2 / paper_ready=false; never promoted; records preserved).",
-      "last_review_date": "2026-05-28",
-      "review_priority": "LOW",
-      "lifecycle_stage": "watch",
-      "source_category": "internal",
-      "state_history": [
-        {
-          "date": "2026-06-08",
-          "from": "PROBATION",
-          "to": "ACTIVE",
-          "trigger": "Recovery: score=0.68, HL=HEALTHY"
-        },
-        {
-          "date": "2026-06-13",
-          "from": "ACTIVE",
-          "to": "DEACTIVATED_GOVERNANCE",
-          "trigger": "Org-hygiene remediation (operator item #1) \u2014 undocumented Track 2 MES book frozen"
-        }
-      ],
-      "harvest_batch": "forge_hybrid_generation_2026-05-05",
-      "batch_priority": 2,
-      "convergent_sources": [],
-      "relationships": {
-        "parent": "XB-ORB-EMA-Ladder-MNQ",
-        "children": [],
-        "related": [
-          "XB-ORB-EMA-TimeStop-MNQ"
-        ],
-        "salvaged_from": null,
-        "components_used": [
-          "orb_breakout",
-          "ema_slope",
-          "chandelier"
-        ],
-        "cluster": "XB-ORB-EMA-MNQ",
-        "cluster_role": "cluster_leader"
-      },
-      "component_type": "full_strategy",
-      "created_date": "2026-05-28",
-      "triage_date": "2026-05-06",
-      "triage_reason": "hybrid_generation_lane_validation",
-      "triage_route": "hybrid_generation_lane",
-      "session_tag": "all_day",
-      "regime_tag": "unclassified",
-      "reusable_as_component": false,
-      "extractable_components": [],
-      "crossbreeding_eligible": false,
-      "why_not_now": "awaiting_full_validation_battery_post_phase_0",
-      "controller_action": "OFF",
-      "controller_state": "VALIDATED",
-      "baseline_params": {
-        "stop_mult": 2.0,
-        "target_mult": 4.0,
-        "trail_mult": 2.5
-      },
-      "execution_config": {
-        "preferred_window": [
-          "09:30",
-          "11:30"
-        ],
-        "allowed_window": [
-          "09:30",
-          "15:00"
-        ],
-        "conviction_threshold_inside": 2,
-        "conviction_threshold_outside": 3,
-        "priority": 9,
-        "avoid_regimes": [],
-        "preferred_regimes": [],
-        "grinding_filter": false,
-        "exit_variant": "chandelier"
-      },
-      "paper_runner_addition": {
-        "set_date": "2026-05-20",
-        "sizing_contracts": 1,
-        "asset": "MNQ",
-        "scope": "paper_only",
-        "live_eligible": false,
-        "promotion_eligible_after": "30 forward trades + operator review"
-      },
-      "paper_packet_path": null,
-      "promotion_pending_reason": "TRACK_2_ARCHETYPE_REVIEW_PENDING",
-      "executable_state": "EXECUTABLE",
-      "experimental_archetype": "PAYOFF_RATIO_WORKHORSE_FREQUENCY",
-      "promotion_eligible": false,
-      "paper_ready": false,
-      "baseline_update_date": "2026-05-28",
-      "last_controller_date": "2026-06-12",
-      "state_entered_date": "2026-06-08",
-      "promotion_date": null,
-      "profit_factor": 1.413,
-      "trades_6yr": 1242,
-      "validation_score": 8.0,
-      "prior_state": "ACTIVE",
-      "activation_score": 0.675,
-      "controller_reason_codes": [
-        "REGIME_MATCH_LOW",
-        "HALF_LIFE_STRENGTHENING",
-        "PORTFOLIO_NEUTRAL",
-        "LOW_REDUNDANCY",
-        "HEALTH_FAIL",
-        "KILL_NONE",
-        "SESSION_DRIFT_NORMAL",
-        "TIME_WINDOW_MATCH",
-        "ASSET_FIT_GOOD",
-        "RECENT_STABLE"
-      ],
-      "half_life_status": "HEALTHY",
-      "contribution_status": "NEUTRAL",
-      "health_status": "FAIL",
-      "genome_cluster": "unknown",
-      "resurrection_flag": false,
-      "paper_execution": "DEACTIVATED",
-      "deactivation_date": "2026-06-13",
-      "deactivation_reason": "Governance cleanup (org-hygiene audit, operator-authorized item #1, 2026-06-13). 3rd Track 2 EXPERIMENTAL_FORWARD_CLOCK book (paper_ready=false, promotion_eligible=false, no promotion_date) found trading as status=probation+REDUCED_ON. Never promoted into paper probation. Same pattern as the 2 MNQ Chandelier books; missed by the MNQ-scoped cleanup. Frozen pending explicit operator governance. Records preserved; reactivatable."
-    },
-    {
-      "strategy_id": "XB-PB-EMA-Chandelier-MNQ",
-      "strategy_name": "xb_pb_ema_chandelier",
-      "family": "crossbreed_pullback",
-      "asset": "MNQ",
-      "session": "all_day",
-      "direction": "both",
-      "source": "offensive_forge_sprint_v1_2026-05-28",
-      "rule_summary": "pb_pullback entry + ema_slope filter + chandelier exit on MNQ. stop_mult=2.0, chandelier_mult=3.0, pb_proximity=0.5. Offensive Forge Sprint v1 verdict PASS_TO_FORWARD_CLOCK: PF=1.341, n=1478, top-3=10.9%, top-10=31.4%, max-year=35.8%, years 7/8 positive, H1 PF=1.20, H2 PF=1.47.",
-      "status": "watch",
-      "notes": "Track 2 EXPERIMENTAL_FORWARD_CLOCK candidate, wired 2026-05-28 via Offensive Forge Sprint v1 (docs/reports/2026-05-28_offensive_sprint_v1.json). archetype=PAYOFF_RATIO_WORKHORSE_FREQUENCY. paper_ready=false, promotion_eligible=false. Different entry family from XB-ORB-EMA-Chandelier-MNQ (pullback vs breakout) \u2014 tests whether payoff-ratio shape generalizes across entry families on the same asset. Median structurally negative (-$13.74) by archetype design; mean +$16.05. Fails the standard workhorse median-trade-\u22650 gate by design and is NOT paper-eligible under the existing workhorse rubric. Sprint screen also caught it as PAYOFF_RATIO via auto-classification (no manual hint needed). Forward-clock evidence-only. At 30 forward trades: do NOT auto-promote; triggers archetype review per the 2026-05-28 Track 2 doctrine. | 2026-06-13 DEACTIVATED from paper execution (governance cleanup; undocumented MNQ exposure; never promoted into probation; records preserved).",
-      "last_review_date": "2026-05-28",
-      "review_priority": "LOW",
-      "lifecycle_stage": "watch",
-      "source_category": "internal",
-      "state_history": [
-        {
-          "date": "2026-05-28",
-          "from": "PROBATION",
-          "to": "ACTIVE",
-          "trigger": "Recovery: score=0.68, HL=HEALTHY"
-        },
-        {
-          "date": "2026-06-13",
-          "from": "ACTIVE",
-          "to": "DEACTIVATED_GOVERNANCE",
-          "trigger": "MNQ exposure rationalization (operator Option 1) \u2014 undocumented Track 2 MNQ book frozen"
-        }
-      ],
-      "harvest_batch": "forge_hybrid_generation_2026-05-05",
-      "batch_priority": 2,
-      "convergent_sources": [],
-      "relationships": {
-        "parent": "XB-ORB-EMA-Ladder-MNQ",
-        "children": [],
-        "related": [
-          "XB-ORB-EMA-TimeStop-MNQ"
-        ],
-        "salvaged_from": null,
-        "components_used": [
-          "orb_breakout",
-          "ema_slope",
-          "chandelier"
-        ],
-        "cluster": "XB-ORB-EMA-MNQ",
-        "cluster_role": "cluster_leader"
-      },
-      "component_type": "full_strategy",
-      "created_date": "2026-05-28",
-      "triage_date": "2026-05-06",
-      "triage_reason": "hybrid_generation_lane_validation",
-      "triage_route": "hybrid_generation_lane",
-      "session_tag": "all_day",
-      "regime_tag": "unclassified",
-      "reusable_as_component": false,
-      "extractable_components": [],
-      "crossbreeding_eligible": false,
-      "why_not_now": "awaiting_full_validation_battery_post_phase_0",
-      "controller_action": "OFF",
-      "controller_state": "VALIDATED",
-      "baseline_params": {
-        "stop_mult": 2.0,
-        "target_mult": 4.0,
-        "trail_mult": 2.5
-      },
-      "execution_config": {
-        "preferred_window": [
-          "09:30",
-          "11:30"
-        ],
-        "allowed_window": [
-          "09:30",
-          "15:00"
-        ],
-        "conviction_threshold_inside": 2,
-        "conviction_threshold_outside": 3,
-        "priority": 9,
-        "avoid_regimes": [],
-        "preferred_regimes": [],
-        "grinding_filter": false,
-        "exit_variant": "chandelier"
-      },
-      "paper_runner_addition": {
-        "set_date": "2026-05-20",
-        "sizing_contracts": 1,
-        "asset": "MNQ",
-        "scope": "paper_only",
-        "live_eligible": false,
-        "promotion_eligible_after": "30 forward trades + operator review"
-      },
-      "paper_packet_path": null,
-      "promotion_pending_reason": "TRACK_2_ARCHETYPE_REVIEW_PENDING",
-      "executable_state": "EXECUTABLE",
-      "experimental_archetype": "PAYOFF_RATIO_WORKHORSE_FREQUENCY",
-      "promotion_eligible": false,
-      "paper_ready": false,
-      "baseline_update_date": "2026-05-28",
-      "last_controller_date": "2026-06-12",
-      "state_entered_date": "2026-05-28",
-      "promotion_date": null,
-      "profit_factor": 1.341,
-      "trades_6yr": 1478,
-      "validation_score": 8.0,
-      "prior_state": "ACTIVE",
-      "activation_score": 0.675,
-      "controller_reason_codes": [
-        "REGIME_MATCH_LOW",
-        "HALF_LIFE_STRENGTHENING",
-        "PORTFOLIO_NEUTRAL",
-        "LOW_REDUNDANCY",
-        "HEALTH_FAIL",
-        "KILL_NONE",
-        "SESSION_DRIFT_NORMAL",
-        "TIME_WINDOW_MATCH",
-        "ASSET_FIT_GOOD",
-        "RECENT_STABLE"
-      ],
-      "half_life_status": "HEALTHY",
-      "contribution_status": "NEUTRAL",
-      "health_status": "FAIL",
-      "genome_cluster": "unknown",
-      "resurrection_flag": false,
-      "paper_execution": "DEACTIVATED",
-      "deactivation_date": "2026-06-13",
-      "deactivation_reason": "Governance cleanup (MNQ exposure rationalization, operator Option 1, 2026-06-13). Undocumented active MNQ exposure: wired 2026-05-28 as Track 2 EXPERIMENTAL_FORWARD_CLOCK (paper_ready=false, promotion_eligible=false, promotion_date=None) but running as status=probation+REDUCED_ON. Never promoted into paper probation. Frozen pending explicit operator governance. Records preserved; not deleted; reactivatable."
+      "resurrection_flag": false
     },
     {
       "strategy_id": "XB-ORB-EMA-TimeStop-MNQ",
@@ -9343,100 +8909,6 @@
       "extractable_components": [],
       "crossbreeding_eligible": false,
       "why_not_now": "awaiting_full_validation_battery_post_phase_0"
-    },
-    {
-      "strategy_id": "WH-MNQ-stop_run_reversal-ema_slope-PL",
-      "strategy_name": "xb_stop_run_reversal_ema_ladder",
-      "family": "crossbreed_meanreversion",
-      "asset": "MNQ",
-      "session": "all_day",
-      "direction": "both",
-      "source": "lane_a_wave1_forge_workhorse_2026-06-13",
-      "rule_summary": "Stop-run reversal (liquidity sweep + reclaim) + EMA-slope filter + profit_ladder exit. Intraday-flat daily workhorse.",
-      "status": "watch",
-      "controller_action": "OFF",
-      "executable_state": "DISABLED",
-      "controller_state": "ACTIVE",
-      "lifecycle_stage": "forward_validation",
-      "portfolio_role": "workhorse",
-      "promotion_date": "2026-06-14",
-      "paper_ready": true,
-      "promotion_eligible": true,
-      "validation_score": 9.0,
-      "trades_6yr": 1414,
-      "profit_factor": 1.477,
-      "created_date": "2026-06-13",
-      "state_entered_date": "2026-06-15",
-      "last_review_date": "2026-06-15",
-      "kill_flag": false,
-      "kill_switches": {
-        "max_dd_realized_usd": 1500,
-        "max_dd_basis": "realized drawdown from paper-start equity, measured on closed-trade equity for this book",
-        "rolling12_era3_pf_min": 1.0,
-        "mon_pf_min_first6_mondays": 0.9,
-        "h13_bucket_pf_min": 0.85
-      },
-      "forward_sla": "30 forward trades OR 30 sessions, whichever later",
-      "monitors": [
-        "MON_WEAKNESS_MONITOR",
-        "H13_KNIFE_EDGE_MONITOR",
-        "ACTIVE_EXPOSURE_WARNING_XB_ORB_PROBATION"
-      ],
-      "execution_config": {
-        "preferred_window": [
-          "09:30",
-          "14:30"
-        ],
-        "allowed_window": [
-          "09:30",
-          "15:15"
-        ],
-        "conviction_threshold_inside": 2,
-        "conviction_threshold_outside": 2,
-        "priority": 9,
-        "avoid_regimes": [],
-        "preferred_regimes": [],
-        "exit_variant": null
-      },
-      "notes": "Lane A Wave 1 PRIMARY daily workhorse. Paper-wired 2026-06-15 (Phase 1C). Baseline n=1414, PF 1.477, median $15.51, largest loss -$1457 (audit window). Port verified byte-identical to DATA_AUDIT_GREEN (commit b90c501, signal hash d2d31c3f0e7e86bb). DSCL in-repo verified Databento-backed (d8ea1b6). Org-hygiene clean + fail-closed gate (09d61ad). exit_variant=null is REQUIRED (runner profit_ladder branch = donchian trap). 1 MNQ paper. Live/prop BLOCKED until DSCL \u00a77.",
-      "state_history": [
-        {
-          "date": "2026-06-15",
-          "from": "VALIDATED",
-          "to": "PROBATION",
-          "trigger": "Phase 1C paper wiring (operator-approved); port-verified + DSCL + org-hygiene gates clear"
-        }
-      ],
-      "prior_state": "ACTIVE",
-      "activation_score": 0.69,
-      "controller_reason_codes": [
-        "REGIME_MATCH_LOW",
-        "HALF_LIFE_STRENGTHENING",
-        "PORTFOLIO_NEUTRAL",
-        "LOW_REDUNDANCY",
-        "HEALTH_FAIL",
-        "KILL_NONE",
-        "SESSION_DRIFT_NORMAL",
-        "TIME_WINDOW_MATCH",
-        "ASSET_FIT_GOOD",
-        "RECENT_STABLE"
-      ],
-      "last_controller_date": "2026-06-25",
-      "review_priority": "LOW",
-      "half_life_status": "HEALTHY",
-      "contribution_status": "NEUTRAL",
-      "health_status": "FAIL",
-      "genome_cluster": "unknown",
-      "resurrection_flag": false,
-      "deactivation_history": [
-        {
-          "date": "2026-06-26",
-          "prior_status": "probation",
-          "prior_controller_action": "REDUCED_ON",
-          "prior_executable_state": "EXECUTABLE",
-          "reason": "TRUTH_RESET 2026-06-26: INVALIDATED by clean point-in-time retest (ema_slope same-day-close lookahead). Operator-approved deactivation (risk hygiene, paper-only, no capital). See docs/fql_forge/TRUTH_RESET_RESCUE_AUDIT_2026-06-25.md"
-        }
-      ]
     }
   ],
   "_rejection_taxonomy": {

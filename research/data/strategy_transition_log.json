@@ -48,5 +48,55 @@
       "HALF_LIFE_STRENGTHENING"
     ],
     "trigger": "Recovery: score=0.68, HL=HEALTHY"
+  },
+  {
+    "strategy_id": "TV-NFP-High-Low-Levels",
+    "timestamp": "2026-04-20T17:46:33.600505",
+    "from_state": "PROBATION",
+    "to_state": "ACTIVE",
+    "reason_codes": [
+      "HALF_LIFE_STRENGTHENING"
+    ],
+    "trigger": "Recovery: score=0.68, HL=HEALTHY"
+  },
+  {
+    "strategy_id": "XB-ORB-EMA-Ladder-MGC",
+    "timestamp": "2026-05-28T17:48:12.220053",
+    "from_state": "PROBATION",
+    "to_state": "ACTIVE",
+    "reason_codes": [
+      "HALF_LIFE_STRENGTHENING"
+    ],
+    "trigger": "Recovery: score=0.68, HL=HEALTHY"
+  },
+  {
+    "strategy_id": "XB-ORB-EMA-Chandelier-MNQ",
+    "timestamp": "2026-05-28T17:48:12.220169",
+    "from_state": "PROBATION",
+    "to_state": "ACTIVE",
+    "reason_codes": [
+      "HALF_LIFE_STRENGTHENING"
+    ],
+    "trigger": "Recovery: score=0.68, HL=HEALTHY"
+  },
+  {
+    "strategy_id": "XB-PB-EMA-Chandelier-MNQ",
+    "timestamp": "2026-05-28T17:48:12.220229",
+    "from_state": "PROBATION",
+    "to_state": "ACTIVE",
+    "reason_codes": [
+      "HALF_LIFE_STRENGTHENING"
+    ],
+    "trigger": "Recovery: score=0.68, HL=HEALTHY"
+  },
+  {
+    "strategy_id": "XB-ORB-EMA-ATRTrail-MES",
+    "timestamp": "2026-06-08T17:52:05.869826",
+    "from_state": "PROBATION",
+    "to_state": "ACTIVE",
+    "reason_codes": [
+      "HALF_LIFE_STRENGTHENING"
+    ],
+    "trigger": "Recovery: score=0.68, HL=HEALTHY"
   }
 ]

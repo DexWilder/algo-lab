@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-04-14T08:23:11.447955",
+  "timestamp": "2026-06-29T17:30:06.023460",
   "overall": "HEALTHY",
   "safe_mode": false,
   "checks": {
     "data_freshness": {
       "status": "WARN",
-      "detail": "Stale data: MCL_5m (87h old), MYM_5m (767h old), MES_5m (87h old), ES_5m (767h old)"
+      "detail": "Stale data: ES_5m (2600h old)"
     },
     "scheduler_health": {
-      "status": "WARN",
-      "detail": "1 error(s): weekly_walk_forward"
+      "status": "OK",
+      "detail": "44 jobs in last 7 days, 0 errors"
     },
     "state_integrity": {
       "status": "OK",
@@ -17,7 +17,7 @@
     },
     "process_health": {
       "status": "OK",
-      "detail": "No active lockfile"
+      "detail": "Process 71467 running (0.0h)"
     },
     "drift_alerts": {
       "status": "OK",

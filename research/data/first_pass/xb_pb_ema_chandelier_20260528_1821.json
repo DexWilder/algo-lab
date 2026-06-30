@@ -1,0 +1,87 @@
+{
+  "strategy": "xb_pb_ema_chandelier",
+  "run_date": "2026-05-28T18:19:35.429067",
+  "session_filter": null,
+  "asset_results": {
+    "MNQ": {
+      "asset": "MNQ",
+      "bars": 484456,
+      "modes": {
+        "both": {
+          "trades": 1479,
+          "pnl": 23603.04,
+          "pf": 1.338,
+          "sharpe": 1.62,
+          "maxdd": 1568.14,
+          "wr": 44.6,
+          "avg_pnl": 15.96,
+          "mode": "both",
+          "raw_signals": 1479
+        },
+        "long": {
+          "trades": 990,
+          "pnl": 15046.4,
+          "pf": 1.411,
+          "sharpe": 1.94,
+          "maxdd": 1293.3,
+          "wr": 45.1,
+          "avg_pnl": 15.2,
+          "mode": "long",
+          "raw_signals": 1479
+        },
+        "short": {
+          "trades": 489,
+          "pnl": 8556.64,
+          "pf": 1.259,
+          "sharpe": 1.34,
+          "maxdd": 2479.28,
+          "wr": 43.6,
+          "avg_pnl": 17.5,
+          "mode": "short",
+          "raw_signals": 1479
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 750,
+          "pnl": 6608.5,
+          "pf": 1.195,
+          "sharpe": 0.97,
+          "maxdd": 1458.06,
+          "wr": 43.6,
+          "avg_pnl": 8.81
+        },
+        "H2": {
+          "trades": 728,
+          "pnl": 17030.28,
+          "pf": 1.477,
+          "sharpe": 2.21,
+          "maxdd": 1568.14,
+          "wr": 45.6,
+          "avg_pnl": 23.39
+        }
+      },
+      "concentration": {
+        "top3_share": 0.109,
+        "top5_share": 0.175,
+        "top10_share": 0.315,
+        "max_year_share": 0.359,
+        "median_trade": -13.74
+      },
+      "classification": "SALVAGE",
+      "classification_reasons": [
+        "Median trade $-13.74 < 0 \u2014 edge is tail-dependent, not distributed. Demoted to SALVAGE."
+      ]
+    }
+  },
+  "best_result": {
+    "asset": "MNQ",
+    "classification": "SALVAGE",
+    "pf": 1.338,
+    "trades": 1479
+  },
+  "overall_classification": "SALVAGE",
+  "overall_reasons": [
+    "Median trade $-13.74 < 0 \u2014 edge is tail-dependent, not distributed. Demoted to SALVAGE."
+  ]
+}

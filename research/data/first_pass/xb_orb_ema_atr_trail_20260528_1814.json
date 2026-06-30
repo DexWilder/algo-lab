@@ -1,0 +1,157 @@
+{
+  "strategy": "xb_orb_ema_atr_trail",
+  "run_date": "2026-05-28T18:11:20.725442",
+  "session_filter": null,
+  "asset_results": {
+    "MES": {
+      "asset": "MES",
+      "bars": 484579,
+      "modes": {
+        "both": {
+          "trades": 1243,
+          "pnl": 13836.18,
+          "pf": 1.411,
+          "sharpe": 1.83,
+          "maxdd": 984.06,
+          "wr": 46.4,
+          "avg_pnl": 11.13,
+          "mode": "both",
+          "raw_signals": 1243
+        },
+        "long": {
+          "trades": 850,
+          "pnl": 4804.75,
+          "pf": 1.26,
+          "sharpe": 1.3,
+          "maxdd": 1057.19,
+          "wr": 46.5,
+          "avg_pnl": 5.65,
+          "mode": "long",
+          "raw_signals": 1243
+        },
+        "short": {
+          "trades": 393,
+          "pnl": 9031.43,
+          "pf": 1.597,
+          "sharpe": 2.64,
+          "maxdd": 932.45,
+          "wr": 46.3,
+          "avg_pnl": 22.98,
+          "mode": "short",
+          "raw_signals": 1243
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 617,
+          "pnl": 4878.67,
+          "pf": 1.296,
+          "sharpe": 1.37,
+          "maxdd": 984.06,
+          "wr": 46.8,
+          "avg_pnl": 7.91
+        },
+        "H2": {
+          "trades": 626,
+          "pnl": 8958.76,
+          "pf": 1.522,
+          "sharpe": 2.24,
+          "maxdd": 777.39,
+          "wr": 46.0,
+          "avg_pnl": 14.31
+        }
+      },
+      "concentration": {
+        "top3_share": 0.111,
+        "top5_share": 0.178,
+        "top10_share": 0.326,
+        "max_year_share": 0.255,
+        "median_trade": -4.99
+      },
+      "classification": "SALVAGE",
+      "classification_reasons": [
+        "Median trade $-4.99 < 0 \u2014 edge is tail-dependent, not distributed. Demoted to SALVAGE."
+      ]
+    },
+    "MNQ": {
+      "asset": "MNQ",
+      "bars": 484456,
+      "modes": {
+        "both": {
+          "trades": 1212,
+          "pnl": 29476.12,
+          "pf": 1.526,
+          "sharpe": 2.24,
+          "maxdd": 1642.82,
+          "wr": 49.5,
+          "avg_pnl": 24.32,
+          "mode": "both",
+          "raw_signals": 1212
+        },
+        "long": {
+          "trades": 807,
+          "pnl": 16749.32,
+          "pf": 1.585,
+          "sharpe": 2.55,
+          "maxdd": 1439.04,
+          "wr": 50.2,
+          "avg_pnl": 20.76,
+          "mode": "long",
+          "raw_signals": 1212
+        },
+        "short": {
+          "trades": 405,
+          "pnl": 12726.8,
+          "pf": 1.464,
+          "sharpe": 2.11,
+          "maxdd": 2179.34,
+          "wr": 48.1,
+          "avg_pnl": 31.42,
+          "mode": "short",
+          "raw_signals": 1212
+        }
+      },
+      "walk_forward": {
+        "H1": {
+          "trades": 600,
+          "pnl": 6733.5,
+          "pf": 1.258,
+          "sharpe": 1.24,
+          "maxdd": 1642.82,
+          "wr": 48.7,
+          "avg_pnl": 11.22
+        },
+        "H2": {
+          "trades": 612,
+          "pnl": 22750.12,
+          "pf": 1.759,
+          "sharpe": 3.01,
+          "maxdd": 1283.14,
+          "wr": 50.3,
+          "avg_pnl": 37.17
+        }
+      },
+      "concentration": {
+        "top3_share": 0.101,
+        "top5_share": 0.154,
+        "top10_share": 0.275,
+        "max_year_share": 0.257,
+        "median_trade": -0.74
+      },
+      "classification": "SALVAGE",
+      "classification_reasons": [
+        "Median trade $-0.74 < 0 \u2014 edge is tail-dependent, not distributed. Demoted to SALVAGE."
+      ]
+    }
+  },
+  "best_result": {
+    "asset": "MNQ",
+    "classification": "SALVAGE",
+    "pf": 1.526,
+    "trades": 1212
+  },
+  "overall_classification": "SALVAGE",
+  "overall_reasons": [
+    "Median trade $-0.74 < 0 \u2014 edge is tail-dependent, not distributed. Demoted to SALVAGE."
+  ]
+}
