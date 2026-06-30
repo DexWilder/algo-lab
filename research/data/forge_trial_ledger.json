@@ -8285,6 +8285,56 @@
       "horizon": "",
       "lane": "databento_volume",
       "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:prior_day_fade|session_morning|profit_ladder",
+      "asset": "M2K",
+      "sharpe": -2.35,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:prior_day_fade|session_morning|atr_trail",
+      "asset": "MNQ",
+      "sharpe": 0.17,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:prior_day_fade|session_morning|atr_trail",
+      "asset": "MES",
+      "sharpe": -0.55,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:prior_day_fade|session_morning|atr_trail",
+      "asset": "MGC",
+      "sharpe": -0.78,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "P22_crypto_carry",
+      "asset": "BTC",
+      "sharpe": 2.76,
+      "verdict": "hostile",
+      "horizon": "",
+      "lane": "crypto_carry",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "P22_crypto_carry",
+      "asset": "ETH",
+      "sharpe": -0.22,
+      "verdict": "hostile",
+      "horizon": "",
+      "lane": "crypto_carry",
+      "ts": "2026-06-30"
     }
   ],
   "note": "auto multiple-testing N; every test appends"

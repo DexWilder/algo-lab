@@ -11,7 +11,10 @@
     {
       "id": "P22_btc_funding_hostile",
       "script": "research/forge_cycle_P22_btc_funding_hostile.py",
-      "status": "RUN_NOW"
+      "status": "DONE",
+      "verdict": "KILL",
+      "report": "research/data/fql_forge/reports/runner_P22_btc_funding_hostile_20260630_172909.md",
+      "ran": "20260630_172909"
     },
     {
       "id": "search_full_report",
