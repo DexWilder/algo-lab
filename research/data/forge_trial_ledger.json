@@ -13967,6 +13967,24 @@
       "verdict": "screen",
       "horizon": "",
       "ts": "2026-06-30"
+    },
+    {
+      "packet": "FOMC_drift_reconcile",
+      "asset": "",
+      "sharpe": null,
+      "verdict": "KILL (concentration)",
+      "horizon": "",
+      "lane": "forced_flow",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "P23_rates_fly_rv",
+      "asset": "UST",
+      "sharpe": 1.63,
+      "verdict": "screen",
+      "horizon": "",
+      "lane": "forced_flow",
+      "ts": "2026-06-30"
     }
   ],
   "note": "auto multiple-testing N; every test appends"

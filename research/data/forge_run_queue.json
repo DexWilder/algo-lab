@@ -1,26 +1,28 @@
 {
   "queue": [
     {
-      "id": "P21_cross_asset_volume",
-      "script": "research/forge_cycle_P21_cross_asset_volume.py",
+      "id": "P23_rates_fly_rv",
+      "script": "research/forge_cycle_P23_rates_fly_rv.py",
       "status": "DONE",
-      "verdict": "KILL",
-      "report": "research/data/fql_forge/reports/runner_P21_cross_asset_volume_20260630_172837.md",
-      "ran": "20260630_172837"
+      "verdict": "done",
+      "report": "research/data/fql_forge/reports/runner_P23_rates_fly_rv_20260630_181529.md",
+      "ran": "20260630_181529"
     },
     {
-      "id": "P22_btc_funding_hostile",
-      "script": "research/forge_cycle_P22_btc_funding_hostile.py",
-      "status": "DONE",
-      "verdict": "KILL",
-      "report": "research/data/fql_forge/reports/runner_P22_btc_funding_hostile_20260630_172909.md",
-      "ran": "20260630_172909"
-    },
-    {
-      "id": "search_full_report",
-      "script": "research/forge_search_dsr_pass.py",
+      "id": "P24_fx_fix_flow",
+      "script": "research/forge_cycle_P24_fx_fix.py",
       "status": "QUEUED_NEEDS_SCRIPT",
-      "note": "on sweep completion"
+      "note": "WMR 4pm fix window, 6E/6J/6B 1m"
+    },
+    {
+      "id": "P25_settlement_close",
+      "script": "research/forge_cycle_P25_settlement_close.py",
+      "status": "QUEUED_NEEDS_SCRIPT"
+    },
+    {
+      "id": "P26_es_nq_leadlag",
+      "script": "research/forge_cycle_P26_es_nq_leadlag.py",
+      "status": "QUEUED_NEEDS_SCRIPT"
     }
   ]
 }

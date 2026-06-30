@@ -1,0 +1,442 @@
+{
+  "date": "2026-06-30",
+  "calendar_fidelity": "canonical-rule-based (FOMC scheduled meeting dates 2019-2026)",
+  "operator_approval": "OK pivot to event-window (2026-06-04)",
+  "candidates": [
+    {
+      "spec": {
+        "asset": "MES",
+        "label": "EVT-FOMC-Drift-MES-Long",
+        "direction": "long",
+        "entry_offset_bars": 1,
+        "exit_offset_bars": 24
+      },
+      "metrics": {
+        "n": 55,
+        "pf": 0.817,
+        "median": 16.26,
+        "net": -879.45,
+        "max_dd": -1769.81,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "top10_share_pct": 0.0,
+        "h1_pf": 0.934,
+        "h2_pf": 0.71,
+        "win_rate_pct": 56.4,
+        "n_years": 8,
+        "years_positive": 3,
+        "archetype": "UNKNOWN",
+        "gate_verdict": "KILL",
+        "cost_block": {
+          "commission_per_side": 0.62,
+          "slippage_ticks": 1,
+          "tick_size": 0.25,
+          "total_commission": 68.2,
+          "total_slippage": 137.5,
+          "total_friction": 205.7,
+          "cost_tier": "VALIDATED",
+          "symbol": "MES"
+        }
+      },
+      "per_year": [
+        {
+          "year": 2019,
+          "n": 5,
+          "pf": 0.9495593692022263,
+          "net": -8.700000000000006
+        },
+        {
+          "year": 2020,
+          "n": 7,
+          "pf": 0.31623909564858305,
+          "net": -264.93
+        },
+        {
+          "year": 2021,
+          "n": 8,
+          "pf": 1.507689572406436,
+          "net": 171.32999999999996
+        },
+        {
+          "year": 2022,
+          "n": 8,
+          "pf": 0.9964411524300708,
+          "net": -4.920000000000073
+        },
+        {
+          "year": 2023,
+          "n": 8,
+          "pf": 1.0383775724820956,
+          "net": 28.829999999999927
+        },
+        {
+          "year": 2024,
+          "n": 8,
+          "pf": 0.25695086762322616,
+          "net": -939.9200000000001
+        },
+        {
+          "year": 2025,
+          "n": 8,
+          "pf": 2.442322795994502,
+          "net": 293.83
+        },
+        {
+          "year": 2026,
+          "n": 3,
+          "pf": 0.47242459317764,
+          "net": -154.97000000000003
+        }
+      ],
+      "verdict": "KILL (PF < 1.15)"
+    },
+    {
+      "spec": {
+        "asset": "MES",
+        "label": "EVT-FOMC-Drift-MES-Short",
+        "direction": "short",
+        "entry_offset_bars": 1,
+        "exit_offset_bars": 24
+      },
+      "metrics": {
+        "n": 55,
+        "pf": 1.113,
+        "median": -23.74,
+        "net": 468.05,
+        "max_dd": -1388.63,
+        "max_year_share_pct": 188.0,
+        "top3_share_pct": 423.6,
+        "top10_share_pct": 787.9,
+        "h1_pf": 0.977,
+        "h2_pf": 1.273,
+        "win_rate_pct": 43.6,
+        "n_years": 8,
+        "years_positive": 3,
+        "archetype": "TAIL_ENGINE",
+        "gate_verdict": "KILL",
+        "cost_block": {
+          "commission_per_side": 0.62,
+          "slippage_ticks": 1,
+          "tick_size": 0.25,
+          "total_commission": 68.2,
+          "total_slippage": 137.5,
+          "total_friction": 205.7,
+          "cost_tier": "VALIDATED",
+          "symbol": "MES"
+        }
+      },
+      "per_year": [
+        {
+          "year": 2019,
+          "n": 5,
+          "pf": 0.8458812157662978,
+          "net": -28.700000000000006
+        },
+        {
+          "year": 2020,
+          "n": 7,
+          "pf": 2.4663033731116784,
+          "net": 212.57
+        },
+        {
+          "year": 2021,
+          "n": 8,
+          "pf": 0.5767667521054558,
+          "net": -231.17000000000004
+        },
+        {
+          "year": 2022,
+          "n": 8,
+          "pf": 0.9611859076292448,
+          "net": -54.92000000000007
+        },
+        {
+          "year": 2023,
+          "n": 8,
+          "pf": 0.8915285338552816,
+          "net": -88.67000000000007
+        },
+        {
+          "year": 2024,
+          "n": 8,
+          "pf": 3.532822977523239,
+          "net": 880.0799999999999
+        },
+        {
+          "year": 2025,
+          "n": 8,
+          "pf": 0.33887279184970553,
+          "net": -353.67
+        },
+        {
+          "year": 2026,
+          "n": 3,
+          "pf": 1.862095882391205,
+          "net": 132.52999999999997
+        }
+      ],
+      "verdict": "KILL (median negative)"
+    },
+    {
+      "spec": {
+        "asset": "ZN",
+        "label": "EVT-FOMC-Drift-ZN-Long",
+        "direction": "long",
+        "entry_offset_bars": 1,
+        "exit_offset_bars": 24
+      },
+      "metrics": {
+        "n": 55,
+        "pf": 1.349,
+        "median": 43.78,
+        "net": 2079.48,
+        "max_dd": -2334.09,
+        "max_year_share_pct": 99.5,
+        "top3_share_pct": 104.7,
+        "top10_share_pct": 240.5,
+        "h1_pf": 1.333,
+        "h2_pf": 1.365,
+        "win_rate_pct": 61.8,
+        "n_years": 8,
+        "years_positive": 5,
+        "archetype": "TAIL_ENGINE",
+        "gate_verdict": "DEFER",
+        "cost_block": {
+          "commission_per_side": 1.55,
+          "slippage_ticks": 1,
+          "tick_size": 0.015625,
+          "total_commission": 170.5,
+          "total_slippage": 1718.75,
+          "total_friction": 1889.25,
+          "cost_tier": "VALIDATED",
+          "symbol": "ZN"
+        }
+      },
+      "per_year": [
+        {
+          "year": 2019,
+          "n": 5,
+          "pf": Infinity,
+          "net": 750.1299999999999
+        },
+        {
+          "year": 2020,
+          "n": 7,
+          "pf": 4.455511929930535,
+          "net": 572.06
+        },
+        {
+          "year": 2021,
+          "n": 8,
+          "pf": 1.036113639630144,
+          "net": 37.68999999999983
+        },
+        {
+          "year": 2022,
+          "n": 8,
+          "pf": 0.7630646327442543,
+          "net": -399.8000000000002
+        },
+        {
+          "year": 2023,
+          "n": 8,
+          "pf": 8.197599582536094,
+          "net": 2068.95
+        },
+        {
+          "year": 2024,
+          "n": 8,
+          "pf": 3.991754360674643,
+          "net": 1037.6899999999998
+        },
+        {
+          "year": 2025,
+          "n": 8,
+          "pf": 0.3093003146756522,
+          "net": -774.8200000000002
+        },
+        {
+          "year": 2026,
+          "n": 3,
+          "pf": 0.069566485300099,
+          "net": -1212.4199999999998
+        }
+      ],
+      "verdict": "TEMPORAL_SPLIT_REQUIRED"
+    },
+    {
+      "spec": {
+        "asset": "ZN",
+        "label": "EVT-FOMC-Drift-ZN-Short",
+        "direction": "short",
+        "entry_offset_bars": 1,
+        "exit_offset_bars": 24
+      },
+      "metrics": {
+        "n": 55,
+        "pf": 0.451,
+        "median": -112.48,
+        "net": -5857.97,
+        "max_dd": -7348.81,
+        "max_year_share_pct": 0.0,
+        "top3_share_pct": 0.0,
+        "top10_share_pct": 0.0,
+        "h1_pf": 0.453,
+        "h2_pf": 0.449,
+        "win_rate_pct": 27.3,
+        "n_years": 8,
+        "years_positive": 2,
+        "archetype": "UNKNOWN",
+        "gate_verdict": "KILL",
+        "cost_block": {
+          "commission_per_side": 1.55,
+          "slippage_ticks": 1,
+          "tick_size": 0.015625,
+          "total_commission": 170.5,
+          "total_slippage": 1718.75,
+          "total_friction": 1889.25,
+          "cost_tier": "VALIDATED",
+          "symbol": "ZN"
+        }
+      },
+      "per_year": [
+        {
+          "year": 2019,
+          "n": 5,
+          "pf": 0.0,
+          "net": -1093.63
+        },
+        {
+          "year": 2020,
+          "n": 7,
+          "pf": 0.026038053482069355,
+          "net": -1052.9599999999998
+        },
+        {
+          "year": 2021,
+          "n": 8,
+          "pf": 0.5869216593751317,
+          "net": -587.2900000000002
+        },
+        {
+          "year": 2022,
+          "n": 8,
+          "pf": 0.9078085766333515,
+          "net": -149.80000000000018
+        },
+        {
+          "year": 2023,
+          "n": 8,
+          "pf": 0.054197262866657755,
+          "net": -2618.54
+        },
+        {
+          "year": 2024,
+          "n": 8,
+          "pf": 0.14910611380632016,
+          "net": -1587.3000000000002
+        },
+        {
+          "year": 2025,
+          "n": 8,
+          "pf": 1.3622239734950221,
+          "net": 225.21999999999986
+        },
+        {
+          "year": 2026,
+          "n": 3,
+          "pf": 6.195302013422819,
+          "net": 1006.33
+        }
+      ],
+      "verdict": "KILL (median negative)"
+    },
+    {
+      "spec": {
+        "asset": "MES",
+        "label": "EVT-FOMC-Drift-MES-Long-30min",
+        "direction": "long",
+        "entry_offset_bars": 1,
+        "exit_offset_bars": 6
+      },
+      "metrics": {
+        "n": 55,
+        "pf": 1.254,
+        "median": 21.26,
+        "net": 350.55,
+        "max_dd": -512.44,
+        "max_year_share_pct": 97.0,
+        "top3_share_pct": 124.1,
+        "top10_share_pct": 282.1,
+        "h1_pf": 1.052,
+        "h2_pf": 1.423,
+        "win_rate_pct": 61.8,
+        "n_years": 8,
+        "years_positive": 3,
+        "archetype": "TAIL_ENGINE",
+        "gate_verdict": "KILL",
+        "cost_block": {
+          "commission_per_side": 0.62,
+          "slippage_ticks": 1,
+          "tick_size": 0.25,
+          "total_commission": 68.2,
+          "total_slippage": 137.5,
+          "total_friction": 205.7,
+          "cost_tier": "VALIDATED",
+          "symbol": "MES"
+        }
+      },
+      "per_year": [
+        {
+          "year": 2019,
+          "n": 5,
+          "pf": 0.023879080401371773,
+          "net": -153.70000000000002
+        },
+        {
+          "year": 2020,
+          "n": 7,
+          "pf": 5.347673836918459,
+          "net": 173.82
+        },
+        {
+          "year": 2021,
+          "n": 8,
+          "pf": 0.8017168291649003,
+          "net": -37.41999999999999
+        },
+        {
+          "year": 2022,
+          "n": 8,
+          "pf": 0.8899637978765477,
+          "net": -36.17000000000004
+        },
+        {
+          "year": 2023,
+          "n": 8,
+          "pf": 9.003765591903976,
+          "net": 340.08000000000004
+        },
+        {
+          "year": 2024,
+          "n": 8,
+          "pf": 4.4696695921528145,
+          "net": 268.83
+        },
+        {
+          "year": 2025,
+          "n": 8,
+          "pf": 0.7377775704422466,
+          "net": -112.42000000000007
+        },
+        {
+          "year": 2026,
+          "n": 3,
+          "pf": 0.20442226619633488,
+          "net": -92.46999999999998
+        }
+      ],
+      "verdict": "TEMPORAL_SPLIT_REQUIRED"
+    }
+  ]
+}
