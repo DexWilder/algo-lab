@@ -19,7 +19,10 @@
     {
       "id": "P20_crypto_funding_carry",
       "script": "research/forge_cycle_2026-06-30_CRYPTO_P20_funding_carry.py",
-      "status": "RUN_NOW"
+      "status": "DONE",
+      "verdict": "done",
+      "report": "research/data/fql_forge/reports/runner_P20_crypto_funding_carry_20260630_172219.md",
+      "ran": "20260630_172219"
     },
     {
       "id": "P17_opening_drive",

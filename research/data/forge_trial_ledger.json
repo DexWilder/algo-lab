@@ -5964,6 +5964,54 @@
       "verdict": "screen",
       "horizon": "",
       "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:prior_day_break|none|atr_trail",
+      "asset": "M2K",
+      "sharpe": -0.7,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:prior_day_break|none|chandelier",
+      "asset": "MNQ",
+      "sharpe": 0.1,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:prior_day_break|none|chandelier",
+      "asset": "MES",
+      "sharpe": -0.69,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "P20_crypto_funding",
+      "asset": "BTC",
+      "sharpe": 3.01,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:prior_day_break|none|chandelier",
+      "asset": "MGC",
+      "sharpe": -0.65,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "P20_crypto_carry",
+      "asset": "ETH",
+      "sharpe": -0.14,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
     }
   ],
   "note": "auto multiple-testing N; every test appends"
