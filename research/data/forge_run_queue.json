@@ -1,0 +1,22 @@
+{
+  "queue": [
+    {
+      "id": "P17_opening_drive",
+      "script": "research/forge_cycle_2026-06-30_DB_P17_opening_minutes.py",
+      "status": "DONE",
+      "verdict": "KILL",
+      "report": "research/data/fql_forge/reports/runner_P17_opening_drive_20260630_165531.md",
+      "ran": "20260630_165531"
+    },
+    {
+      "id": "search_engine_sweep",
+      "script": "research/forge_search_engine.py",
+      "status": "RUNNING_BACKGROUND"
+    },
+    {
+      "id": "P18_volume_imbalance",
+      "script": "research/forge_cycle_2026-06-30_DB_P18_volume_imbalance.py",
+      "status": "QUEUED_NEEDS_SCRIPT"
+    }
+  ]
+}

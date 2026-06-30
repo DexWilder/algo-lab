@@ -404,6 +404,54 @@
       "verdict": "pending",
       "horizon": "",
       "ts": "2026-06-29"
+    },
+    {
+      "packet": "SEARCH:orb_breakout|none|profit_ladder",
+      "asset": "MNQ",
+      "sharpe": 0.32,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "SEARCH:orb_breakout|none|profit_ladder",
+      "asset": "MES",
+      "sharpe": 0.25,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "P17_opening_drive",
+      "asset": "MES",
+      "sharpe": -0.053061352809972546,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "P17_opening_drive",
+      "asset": "MNQ",
+      "sharpe": -0.03362206471586862,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "P17_opening_drive",
+      "asset": "MGC",
+      "sharpe": -0.05185012066871528,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
+    },
+    {
+      "packet": "P17_opening_drive",
+      "asset": "MCL",
+      "sharpe": 0.012482302089713758,
+      "verdict": "screen",
+      "horizon": "",
+      "ts": "2026-06-30"
     }
   ],
   "note": "auto multiple-testing N; every test appends"
