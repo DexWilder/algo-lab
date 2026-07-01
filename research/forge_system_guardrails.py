@@ -141,6 +141,21 @@ try:
     else: info.append("per-contract data files pass validator")
 except Exception as e: info.append(f"data-validator check skipped: {e}")
 
+# --- 11) INBOUND CAPTURE (organizational memory — nothing floats) ---
+try:
+    from research.capture_inbound import stats as _inb_stats
+    ib=_inb_stats()
+    if ib["stale_new"]: alert("P1", f"INBOUND STALE: {len(ib['stale_new'])} NEW items >4d untriaged: {ib['stale_new'][:5]}")
+    if ib["untriaged_directives"]: alert("P1", f"INBOUND: {len(ib['untriaged_directives'])} operator directive(s) not operationalized (no control/queue/packet): {ib['untriaged_directives'][:5]}")
+    if ib["mistakes_no_control"]: alert("P1", f"INBOUND: {len(ib['mistakes_no_control'])} mistake/validation item(s) with NO durable control: {ib['mistakes_no_control'][:5]} (no control = not fixed)")
+    if ib["feeds_no_lane"]: alert("P2", f"INBOUND: {len(ib['feeds_no_lane'])} data feed(s) INVENTORIED_UNUSED (no packet lane): {ib['feeds_no_lane'][:5]}")
+    if ib["ideas_unmapped"]: alert("P2", f"INBOUND: {len(ib['ideas_unmapped'])} strategy idea(s) missing family/harness/data mapping: {ib['ideas_unmapped'][:5]}")
+    if ib["queued_missing"]: alert("P1", f"INBOUND: {len(ib['queued_missing'])} QUEUED/ACTIVE inbound item(s) missing from forge queue: {ib['queued_missing'][:5]}")
+    if ib["source_unresolved"]: alert("P2", f"INBOUND: {len(ib['source_unresolved'])} source note(s) with no packet and not archived: {ib['source_unresolved'][:5]}")
+    info.append(f"inbound ledger: {ib['total']} items ({ib['new']} NEW, P0={ib['p0']} P1={ib['p1']}); status={ib['by_status']}")
+except Exception as e:
+    alert("P1", f"INBOUND LEDGER check failed (organizational memory offline): {e}")
+
 # --- WRITE STATUS where the next session reads it ---
 stamp=datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
 p0=[m for s,m in alerts if s=="P0"]; p1=[m for s,m in alerts if s=="P1"]; p2=[m for s,m in alerts if s=="P2"]

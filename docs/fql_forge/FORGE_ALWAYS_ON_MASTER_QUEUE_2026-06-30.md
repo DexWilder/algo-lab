@@ -1,8 +1,14 @@
 # FORGE ALWAYS-ON MASTER QUEUE (2026-06-30)
 
-> The machine's worklist. Forge = `queue → run → preflight → truth-gate → record → report → update-queue → commit →
-> push → guardrails → next`. NOT "Claude picks next." Report-only; capital gate fail-closed. Runner:
-> `research/forge_always_on_runner.py`; machine queue: `research/data/forge_run_queue.json`; guardrails enforce no-idle.
+> The machine's worklist. Forge = `inbound → triage → queue → run → preflight → truth-gate → record → report →
+> control-map(if mistake) → update-queue → commit → push → guardrails → next`. NOT "Claude picks next." Report-only;
+> capital gate fail-closed. Runner: `research/forge_always_on_runner.py`; machine queue: `research/data/forge_run_queue.json`;
+> guardrails enforce no-idle.
+>
+> **Feeder = inbound capture (organizational memory).** Every directive/discovery/source/feed/mistake enters via
+> `research/capture_inbound.py` → `research/data/inbound_research_ledger.json` (view: `docs/fql_forge/INBOUND_RESEARCH_LEDGER.md`).
+> Inbound items with status QUEUED/ACTIVE_PACKET_LANE auto-appear here (lane=`inbound`); guardrails fail-loud if any float.
+> Operating law: **if it is not in inbound/queue/dashboard/control-map (or archived), the system does not know it.**
 
 ## P0 / P1 SYSTEM ISSUES
 - **P0:** none open (git backlog 0 + persistent; guardrails firing; forge-loop un-halted + scheduled-proven 06-29 19:02).

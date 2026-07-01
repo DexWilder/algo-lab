@@ -1,0 +1,31 @@
+# Inbound Research Ledger (rendered 2026-07-01 17:09 UTC)
+> **Operating law:** if it is not in this ledger, the queue, the dashboard, or the control map — the system does not know it.
+> Source of truth: `research/data/inbound_research_ledger.json`. Capture: `python3 research/capture_inbound.py`. Items: **24**.
+> NEW:0 | P0/P1:4/14 | untriaged directives:0 | mistakes w/o control:1 | unused feeds:0 | source notes unresolved:0
+
+| id | date | type | status | P | family | mechanism / issue | next action | linked (packet/queue/control) |
+|---|---|---|---|---|---|---|---|---|
+| INB-20260701-008 | 2026-07-01 | operator directive | ACTIVE_PACKET_LANE | P0 | organizational memory | inbound ledger->triage->queue->control->dashboard | operationalize + backfill (this build) | queue:INB-20260701-008 capture_inbound.py + INBOUND_TRIAGE_R |
+| INB-20260625-001 | 2026-06-25 | bug | TRIAGED | P0 | causality | same-day-close lookahead | ORB family INVALIDATED | causality_audit.py + memory project_orb_ema_slope_lookahead |
+| INB-20260626-001 | 2026-06-26 | operator directive | TRIAGED | P0 | data governance | inventory-before-exhausted-claim | keep databento/1m lane active | forge_system_guardrails.py (unused-databento) + memory inven |
+| INB-20260630-001 | 2026-06-30 | bug | TRIAGED | P0 | data governance | unproven blocker claim | none — control locked | DATA_BLOCKER_CERTIFICATES + guardrail P1 (cert required) |
+| INB-20260613-001 | 2026-06-13 | validation failure | RETEST_REQUIRED | P1 | port fidelity | port byte-fidelity | prove signal-hash on audit window before wiring | feedback_port_fidelity_discipline |
+| INB-20260701-006 | 2026-07-01 | validation failure | RETEST_REQUIRED | P1 | execution realism | roll-adjacent concentration | 2-leg calendar-spread exec model + tick/1m near ro | deepen_spreadMR_GC_execution |
+| INB-20260701-001 | 2026-07-01 | paid-data idea | NEEDS_BESPOKE_HARNESS | P1 | gamma/dealer | dealer gamma / OPEX pin | build chunked loader then approx-GEX | — |
+| INB-20260701-005 | 2026-07-01 | validation failure | NEEDS_BESPOKE_HARNESS | P1 | multiple-testing | layered-N ambiguity | pin honest search-N; blocks advancement past SCREE | deepen_spreadMR_GC_searchN practice: report costed-DSR acros |
+| INB-20260626-005 | 2026-06-26 | data feed | ACTIVE_PACKET_LANE | P1 | macro/carry | unused feeds | attach each feed to a packet lane | queue:INB-20260626-005 guardrail unused-feeds |
+| INB-20260630-002 | 2026-06-30 | data feed | ACTIVE_PACKET_LANE | P1 | term structure | term-structure curve data | — | term_structure.py queue:INB-20260630-002 |
+| INB-20260701-002 | 2026-07-01 | claude discovery | ACTIVE_PACKET_LANE | P1 | carry_commodity | roll-yield carry + spread | naive carry KILLed; refined -> spreadMR_GC | SPRINT_COMMODITY_CARRY_VERDICT_2026-07-01.md queue:INB-20260 |
+| INB-20260625-003 | 2026-06-25 | bug | TRIAGED | P1 | causality | cache key ignores close | none — audit clears cache | causality_audit.py _clear_cache() |
+| INB-20260626-003 | 2026-06-26 | guardrail finding | TRIAGED | P1 | governance | non-fail-loud enforcement | run guardrails each cycle | forge_system_guardrails.py (every-cycle) + memory system_gua |
+| INB-20260626-004 | 2026-06-26 | guardrail finding | TRIAGED | P1 | labeling | overclaim language | scan recent docs each cycle | forge_system_guardrails.py WH-scan + candidate ladder |
+| INB-20260629-001 | 2026-06-29 | guardrail finding | TRIAGED | P1 | multiple-testing | uncounted multiple-testing N | DSR reads count() | forge_trial_ledger.py (automatic count) |
+| INB-20260630-004 | 2026-06-30 | operator directive | TRIAGED | P1 | sourcing | grow opportunity surface | run novelty engine, keep BACKLOG full | forge_novelty_engine.py (generative) + ALPHA_RESEARCH_OS_ELI |
+| INB-20260630-005 | 2026-06-30 | operator directive | TRIAGED | P1 | validation | hostile second-pass | review every hardening result; later OpenClaw red- | adversarial_result_review.py |
+| INB-20260701-003 | 2026-07-01 | claude discovery | PROMOTED_TO_PACKET | P1 | carry_commodity | gold calendar-spread mean-reversion | Lane G deepening (operator-gated for capital) | SCREEN_PASS_CANDIDATE_spreadMR_GC_2026-07-01.md deepen_sprea |
+| INB-20260625-002 | 2026-06-25 | bug | CONTROL_REQUIRED | P2 | automation | stale tripwire not firing | add freshness check to loop | — |
+| INB-20260616-001 | 2026-06-16 | old report | RETEST_REQUIRED | P2 | rescue (Lane F) | dormant inventory | retest under truth-gated harness, ranked | Lane F rescue |
+| INB-20260626-002 | 2026-06-26 | bug | TRIAGED | P2 | harness hygiene | duplicate/bypassed harness | none | guardrail unrun-harnesses + forge_trial_ledger dedup |
+| INB-20260630-003 | 2026-06-30 | bug | TRIAGED | P2 | data integrity | save-time column loss | none — validator guards | validate_data_file.py |
+| INB-20260701-004 | 2026-07-01 | bug | TRIAGED | P2 | review calibration | side-share over all days not active | none — fixed | adversarial_result_review.py (active-side + SPARSE_LOW_N) |
+| INB-20260701-007 | 2026-07-01 | validation failure | CLEAN_KILL | P2 | carry_commodity | cross-asset generalization | gold-specific noted; not a family win | — |

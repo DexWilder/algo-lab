@@ -191,6 +191,30 @@
       "status": "RUN_NOW",
       "lane": "commodity_carry",
       "note": "Lane G: param robustness spreadMR_GC (z 1.0/2.0, lookback 126/252, hold rule) + tail-engine gates"
+    },
+    {
+      "id": "INB-20260630-002",
+      "status": "BACKLOG",
+      "lane": "inbound",
+      "note": "[term structure] Per-contract Databento re-pull (ZT/ZF/ZN/ZB/CL/GC ohlcv-1d)"
+    },
+    {
+      "id": "INB-20260626-005",
+      "status": "BACKLOG",
+      "lane": "inbound",
+      "note": "[macro/carry] Local data/feeds library (yield curve, policy rates, vix, cot) under-used"
+    },
+    {
+      "id": "INB-20260701-002",
+      "status": "BACKLOG",
+      "lane": "inbound",
+      "note": "[carry_commodity] Commodity term-structure sprint (CL/GC carry)"
+    },
+    {
+      "id": "INB-20260701-008",
+      "status": "BACKLOG",
+      "lane": "inbound",
+      "note": "[organizational memory] Build the inbound capture system (no terminal-only discoveries)"
     }
   ]
 }
