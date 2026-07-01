@@ -522,6 +522,24 @@
       "linked_packet": null,
       "linked_queue": null,
       "linked_control": "forge_self_audit.py"
+    },
+    {
+      "inbound_id": "INB-20260701-014",
+      "date": "2026-07-01",
+      "source_type": "claude discovery",
+      "source_ref": null,
+      "raw_note": "1m+volume T3 microstructure harness built+run (tz-agnostic session detect); opening-range continuation/reversal/volshock batch on MES/MNQ = CLEAN_KILL at T3 (best volshock Sh0.46 sparse, DSR-fail). Units-bug caught by audit-tell + fixed. Frontier now active.",
+      "mechanism": null,
+      "family": "intraday_micro",
+      "required_data": null,
+      "available_data": null,
+      "required_harness": "forge_microstructure_1m.py",
+      "status": "RETEST_REQUIRED",
+      "priority": "P1",
+      "next_action": "next T3 packets: intraday 1m-path MR, settlement-window, closing-imbalance, ES-NQ lead-lag w/ volume",
+      "linked_packet": null,
+      "linked_queue": null,
+      "linked_control": null
     }
   ]
 }

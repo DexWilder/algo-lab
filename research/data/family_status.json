@@ -12,17 +12,33 @@
       "untested": [
         "pooled vol-target trend",
         "trend+carry combo"
-      ]
+      ],
+      "tested_tiers": [
+        "T0",
+        "T2"
+      ],
+      "richest_applicable_tier": "T3",
+      "tier_gap": true,
+      "data_tier": "T2",
+      "tier_gap_reason": "tested to T2, T3 untested"
     },
     "mean_reversion": {
       "lane": "primitive_sweep",
-      "status": "CLEAN_KILL",
+      "status": "TIER_INCOMPLETE",
       "data": "LOCAL",
       "tested": [
         "VWAP-revert",
         "5m-MR-primitive"
       ],
-      "untested": []
+      "untested": [],
+      "tested_tiers": [
+        "T0",
+        "T2"
+      ],
+      "richest_applicable_tier": "T3",
+      "tier_gap": true,
+      "data_tier": "T2",
+      "tier_gap_reason": "session-level OR tested @T3 (kill); intraday 1m-path MR still untested @T3"
     },
     "carry_rates": {
       "lane": "curve_rv",
@@ -32,7 +48,13 @@
         "naive roll-yield sign",
         "xsec carry-rank"
       ],
-      "untested": []
+      "untested": [],
+      "tested_tiers": [
+        "T4"
+      ],
+      "richest_applicable_tier": "T4",
+      "tier_gap": false,
+      "data_tier": "T4"
     },
     "carry_commodity": {
       "lane": "commodity_carry",
@@ -49,7 +71,13 @@
       ],
       "untested": [
         "roll-window pressure"
-      ]
+      ],
+      "tested_tiers": [
+        "T4"
+      ],
+      "richest_applicable_tier": "T4",
+      "tier_gap": false,
+      "data_tier": "T4"
     },
     "curve_rv": {
       "lane": "curve_rv",
@@ -62,7 +90,13 @@
       "untested": [
         "2s10s slope momentum",
         "Kalman spread"
-      ]
+      ],
+      "tested_tiers": [
+        "T4"
+      ],
+      "richest_applicable_tier": "T4",
+      "tier_gap": false,
+      "data_tier": "T4"
     },
     "vol_risk_premium": {
       "lane": "exploratory",
@@ -74,7 +108,14 @@
       ],
       "untested": [
         "true-curve VRP (paid)"
-      ]
+      ],
+      "tested_tiers": [
+        "T5"
+      ],
+      "richest_applicable_tier": "T6",
+      "tier_gap": true,
+      "data_tier": "T5",
+      "tier_gap_reason": "tested to T5, T6 untested"
     },
     "gamma_dealer": {
       "lane": "exploratory",
@@ -88,7 +129,12 @@
         "approx-GEX",
         "GEX-regime pin",
         "gamma-flip accel"
-      ]
+      ],
+      "tested_tiers": [],
+      "richest_applicable_tier": "T6",
+      "tier_gap": true,
+      "data_tier": "none",
+      "tier_gap_reason": "tested to none, T6 untested"
     },
     "positioning_cot": {
       "lane": "positioning",
@@ -99,7 +145,13 @@
       ],
       "untested": [
         "COT+price-break conditional"
-      ]
+      ],
+      "tested_tiers": [
+        "T5"
+      ],
+      "richest_applicable_tier": "T5",
+      "tier_gap": false,
+      "data_tier": "T5"
     },
     "auction_issuance": {
       "lane": "forced_flow",
@@ -110,7 +162,13 @@
       ],
       "untested": [
         "tenor-divergence concession"
-      ]
+      ],
+      "tested_tiers": [
+        "T5"
+      ],
+      "richest_applicable_tier": "T5",
+      "tier_gap": false,
+      "data_tier": "T5"
     },
     "inventory_eia": {
       "lane": "forced_flow",
@@ -119,7 +177,12 @@
       "tested": [],
       "untested": [
         "EIA surprise hedge"
-      ]
+      ],
+      "tested_tiers": [],
+      "richest_applicable_tier": "T5",
+      "tier_gap": true,
+      "data_tier": "none",
+      "tier_gap_reason": "tested to none, T5 untested"
     },
     "macro_event_drift": {
       "lane": "macro_regime",
@@ -132,7 +195,14 @@
       "untested": [
         "CPI drift",
         "event-1m-path"
-      ]
+      ],
+      "tested_tiers": [
+        "T1"
+      ],
+      "richest_applicable_tier": "T3",
+      "tier_gap": true,
+      "data_tier": "T1",
+      "tier_gap_reason": "tested to T1, T3 untested"
     },
     "monthend_settlement": {
       "lane": "forced_flow",
@@ -145,7 +215,14 @@
         "ZF/ZB month-end",
         "settlement-1m revert",
         "index-rebal"
-      ]
+      ],
+      "tested_tiers": [
+        "T1"
+      ],
+      "richest_applicable_tier": "T3",
+      "tier_gap": true,
+      "data_tier": "T1",
+      "tier_gap_reason": "tested to T1, T3 untested"
     },
     "expiry_opex": {
       "lane": "exploratory",
@@ -154,19 +231,34 @@
       "tested": [],
       "untested": [
         "OPEX-gamma-pin (via gamma lane)"
-      ]
+      ],
+      "tested_tiers": [],
+      "richest_applicable_tier": "T6",
+      "tier_gap": true,
+      "data_tier": "none",
+      "tier_gap_reason": "tested to none, T6 untested"
     },
     "open_close_liquidity": {
       "lane": "databento_volume",
       "status": "CLEAN_BUT_WEAK",
       "data": "LOCAL",
       "tested": [
-        "opening-drive"
+        "opening-drive",
+        "OR continuation/reversal/volshock @T3 (kill)"
       ],
       "untested": [
-        "settlement-close revert",
-        "opening-imbalance re-spec"
-      ]
+        "settlement-window revert @T3",
+        "closing-imbalance @T3",
+        "liquidity-hole reversal @T3"
+      ],
+      "tested_tiers": [
+        "T2",
+        "T3"
+      ],
+      "richest_applicable_tier": "T3",
+      "tier_gap": false,
+      "data_tier": "T3",
+      "tier_gap_reason": "tested to T2, T3 untested"
     },
     "intraday_micro": {
       "lane": "databento_volume",
@@ -177,7 +269,14 @@
       ],
       "untested": [
         "ES-NQ lead-lag latency"
-      ]
+      ],
+      "tested_tiers": [
+        "T3"
+      ],
+      "richest_applicable_tier": "T6",
+      "tier_gap": true,
+      "data_tier": "T3",
+      "tier_gap_reason": "tested to T3, T6 untested"
     },
     "xasset_leadlag": {
       "lane": "exploratory",
@@ -188,7 +287,14 @@
       ],
       "untested": [
         "pure latency lead-lag"
-      ]
+      ],
+      "tested_tiers": [
+        "T2"
+      ],
+      "richest_applicable_tier": "T3",
+      "tier_gap": true,
+      "data_tier": "T2",
+      "tier_gap_reason": "tested to T2, T3 untested"
     },
     "regime_filters": {
       "lane": "macro_regime",
@@ -199,7 +305,13 @@
       ],
       "untested": [
         "regime overlay on a survivor (needs survivor)"
-      ]
+      ],
+      "tested_tiers": [
+        "T5"
+      ],
+      "richest_applicable_tier": "T5",
+      "tier_gap": false,
+      "data_tier": "T5"
     },
     "execution_cost": {
       "lane": "exploratory",
@@ -210,7 +322,13 @@
       ],
       "untested": [
         "liquidity risk-filter"
-      ]
+      ],
+      "tested_tiers": [
+        "T3"
+      ],
+      "richest_applicable_tier": "T3",
+      "tier_gap": false,
+      "data_tier": "T3"
     },
     "crypto_funding": {
       "lane": "crypto_carry",
@@ -219,7 +337,13 @@
       "tested": [
         "perp funding carry P22"
       ],
-      "untested": []
+      "untested": [],
+      "tested_tiers": [
+        "T5"
+      ],
+      "richest_applicable_tier": "T5",
+      "tier_gap": false,
+      "data_tier": "T5"
     },
     "fx_fixing_ratediv": {
       "lane": "exploratory",
@@ -229,20 +353,31 @@
       "untested": [
         "WMR 16:00 fix flow",
         "policy-rate divergence"
-      ]
+      ],
+      "tested_tiers": [],
+      "richest_applicable_tier": "T3",
+      "tier_gap": true,
+      "data_tier": "none",
+      "tier_gap_reason": "tested to none, T3 untested"
     },
     "carry_legacy_fx_rates": {
       "lane": "carry",
       "status": "CLEAN_KILL",
       "data": "LOCAL",
-      "data_tier": "daily-feed",
+      "data_tier": "T1",
       "tested": [
         "rates rolldown ZN",
         "cross-tenor rank",
         "FX carry USDJPY"
       ],
       "untested": [],
-      "note": "superseded by carry_rates + carry_commodity"
+      "note": "superseded by carry_rates + carry_commodity",
+      "tested_tiers": [
+        "T1"
+      ],
+      "richest_applicable_tier": "T4",
+      "tier_gap": true,
+      "tier_gap_reason": "tested to T1, T4 untested"
     }
   }
 }

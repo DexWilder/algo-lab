@@ -14147,6 +14147,150 @@
       "horizon": "",
       "lane": "commodity_carry",
       "ts": "2026-07-01"
+    },
+    {
+      "packet": "MICRO_1m:MES:OR_continuation_hivol",
+      "asset": "MES",
+      "sharpe": -12.01,
+      "verdict": "micro",
+      "horizon": "",
+      "lane": "databento_volume",
+      "ts": "2026-07-01"
+    },
+    {
+      "packet": "MICRO_1m:MES:OR_reversal_hivol",
+      "asset": "MES",
+      "sharpe": -12.01,
+      "verdict": "micro",
+      "horizon": "",
+      "lane": "databento_volume",
+      "ts": "2026-07-01"
+    },
+    {
+      "packet": "MICRO_1m:MES:volshock_restofday",
+      "asset": "MES",
+      "sharpe": -6.64,
+      "verdict": "micro",
+      "horizon": "",
+      "lane": "databento_volume",
+      "ts": "2026-07-01"
+    },
+    {
+      "packet": "MICRO_1m:MES:OR_lowvol_reversion",
+      "asset": "MES",
+      "sharpe": -11.96,
+      "verdict": "micro",
+      "horizon": "",
+      "lane": "databento_volume",
+      "ts": "2026-07-01"
+    },
+    {
+      "packet": "MICRO_1m:MNQ:OR_continuation_hivol",
+      "asset": "MNQ",
+      "sharpe": -12.01,
+      "verdict": "micro",
+      "horizon": "",
+      "lane": "databento_volume",
+      "ts": "2026-07-01"
+    },
+    {
+      "packet": "MICRO_1m:MNQ:OR_reversal_hivol",
+      "asset": "MNQ",
+      "sharpe": -12.0,
+      "verdict": "micro",
+      "horizon": "",
+      "lane": "databento_volume",
+      "ts": "2026-07-01"
+    },
+    {
+      "packet": "MICRO_1m:MNQ:volshock_restofday",
+      "asset": "MNQ",
+      "sharpe": -6.11,
+      "verdict": "micro",
+      "horizon": "",
+      "lane": "databento_volume",
+      "ts": "2026-07-01"
+    },
+    {
+      "packet": "MICRO_1m:MNQ:OR_lowvol_reversion",
+      "asset": "MNQ",
+      "sharpe": -10.97,
+      "verdict": "micro",
+      "horizon": "",
+      "lane": "databento_volume",
+      "ts": "2026-07-01"
+    },
+    {
+      "packet": "MICRO_1m:MES:OR_continuation_hivol",
+      "asset": "MES",
+      "sharpe": -0.28,
+      "verdict": "micro",
+      "horizon": "",
+      "lane": "databento_volume",
+      "ts": "2026-07-01"
+    },
+    {
+      "packet": "MICRO_1m:MES:OR_reversal_hivol",
+      "asset": "MES",
+      "sharpe": 0.1,
+      "verdict": "micro",
+      "horizon": "",
+      "lane": "databento_volume",
+      "ts": "2026-07-01"
+    },
+    {
+      "packet": "MICRO_1m:MES:volshock_restofday",
+      "asset": "MES",
+      "sharpe": 0.46,
+      "verdict": "micro",
+      "horizon": "",
+      "lane": "databento_volume",
+      "ts": "2026-07-01"
+    },
+    {
+      "packet": "MICRO_1m:MES:OR_lowvol_reversion",
+      "asset": "MES",
+      "sharpe": -0.83,
+      "verdict": "micro",
+      "horizon": "",
+      "lane": "databento_volume",
+      "ts": "2026-07-01"
+    },
+    {
+      "packet": "MICRO_1m:MNQ:OR_continuation_hivol",
+      "asset": "MNQ",
+      "sharpe": -0.08,
+      "verdict": "micro",
+      "horizon": "",
+      "lane": "databento_volume",
+      "ts": "2026-07-01"
+    },
+    {
+      "packet": "MICRO_1m:MNQ:OR_reversal_hivol",
+      "asset": "MNQ",
+      "sharpe": -0.06,
+      "verdict": "micro",
+      "horizon": "",
+      "lane": "databento_volume",
+      "ts": "2026-07-01"
+    },
+    {
+      "packet": "MICRO_1m:MNQ:volshock_restofday",
+      "asset": "MNQ",
+      "sharpe": 0.15,
+      "verdict": "micro",
+      "horizon": "",
+      "lane": "databento_volume",
+      "ts": "2026-07-01"
+    },
+    {
+      "packet": "MICRO_1m:MNQ:OR_lowvol_reversion",
+      "asset": "MNQ",
+      "sharpe": -1.24,
+      "verdict": "micro",
+      "horizon": "",
+      "lane": "databento_volume",
+      "ts": "2026-07-01"
     }
   ],
   "note": "auto multiple-testing N; every test appends"

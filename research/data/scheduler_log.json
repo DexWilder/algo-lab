@@ -2,85 +2,6 @@
   {
     "job": "daily_drift_monitor",
     "cadence": "daily",
-    "started": "2026-04-13T19:16:21.542840",
-    "status": "SUCCESS",
-    "finished": "2026-04-13T19:16:21.618294",
-    "duration_sec": 0.075458
-  },
-  {
-    "job": "biweekly_candidate_scan",
-    "cadence": "twice_weekly",
-    "started": "2026-04-14T18:06:31.832729",
-    "status": "PLACEHOLDER",
-    "message": "Job not yet automated: Scan for new strategy candidates from sources"
-  },
-  {
-    "job": "biweekly_batch_first_pass",
-    "cadence": "twice_weekly",
-    "started": "2026-04-14T18:06:31.832835",
-    "status": "SUCCESS",
-    "finished": "2026-04-14T18:06:33.770249",
-    "duration_sec": 1.93744
-  },
-  {
-    "job": "biweekly_baseline_backtest",
-    "cadence": "twice_weekly",
-    "started": "2026-04-14T18:06:33.770349",
-    "status": "SUCCESS",
-    "finished": "2026-04-14T21:20:03.012496",
-    "duration_sec": 11609.242231
-  },
-  {
-    "job": "daily_system_watchdog",
-    "cadence": "daily",
-    "started": "2026-04-14T17:31:20.612769",
-    "status": "SUCCESS",
-    "finished": "2026-04-14T17:31:20.772904",
-    "duration_sec": 0.160168
-  },
-  {
-    "job": "daily_health_check",
-    "cadence": "daily",
-    "started": "2026-04-14T17:31:20.773011",
-    "status": "SUCCESS",
-    "finished": "2026-04-14T17:31:44.330665",
-    "duration_sec": 23.557688
-  },
-  {
-    "job": "daily_half_life",
-    "cadence": "daily",
-    "started": "2026-04-14T17:31:44.330872",
-    "status": "SUCCESS",
-    "finished": "2026-04-14T21:03:19.367576",
-    "duration_sec": 12695.036728
-  },
-  {
-    "job": "daily_contribution",
-    "cadence": "daily",
-    "started": "2026-04-14T21:03:19.368464",
-    "status": "SUCCESS",
-    "finished": "2026-04-14T21:10:19.401325",
-    "duration_sec": 420.032948
-  },
-  {
-    "job": "daily_activation_matrix",
-    "cadence": "daily",
-    "started": "2026-04-14T21:10:19.401798",
-    "status": "SUCCESS",
-    "finished": "2026-04-14T21:30:10.728922",
-    "duration_sec": 1191.327134
-  },
-  {
-    "job": "daily_decision_report",
-    "cadence": "daily",
-    "started": "2026-04-14T21:30:10.729172",
-    "status": "SUCCESS",
-    "finished": "2026-04-14T21:30:11.756324",
-    "duration_sec": 1.027196
-  },
-  {
-    "job": "daily_drift_monitor",
-    "cadence": "daily",
     "started": "2026-04-14T21:30:11.756470",
     "status": "SUCCESS",
     "finished": "2026-04-14T21:30:11.835332",
@@ -3954,5 +3875,84 @@
     "status": "SUCCESS",
     "finished": "2026-06-29T17:47:50.823621",
     "duration_sec": 0.072443
+  },
+  {
+    "job": "daily_system_watchdog",
+    "cadence": "daily",
+    "started": "2026-06-30T17:30:00.572368",
+    "status": "SUCCESS",
+    "finished": "2026-06-30T17:30:00.641616",
+    "duration_sec": 0.069275
+  },
+  {
+    "job": "daily_health_check",
+    "cadence": "daily",
+    "started": "2026-06-30T17:30:00.641686",
+    "status": "SUCCESS",
+    "finished": "2026-06-30T17:30:02.999030",
+    "duration_sec": 2.357349
+  },
+  {
+    "job": "daily_half_life",
+    "cadence": "daily",
+    "started": "2026-06-30T17:30:02.999075",
+    "status": "SUCCESS",
+    "finished": "2026-06-30T17:34:43.428231",
+    "duration_sec": 280.429177
+  },
+  {
+    "job": "daily_contribution",
+    "cadence": "daily",
+    "started": "2026-06-30T17:34:43.428429",
+    "status": "SUCCESS",
+    "finished": "2026-06-30T17:38:42.392720",
+    "duration_sec": 238.964337
+  },
+  {
+    "job": "daily_activation_matrix",
+    "cadence": "daily",
+    "started": "2026-06-30T17:38:42.393387",
+    "status": "SUCCESS",
+    "finished": "2026-06-30T17:47:53.458524",
+    "duration_sec": 551.065145
+  },
+  {
+    "job": "daily_decision_report",
+    "cadence": "daily",
+    "started": "2026-06-30T17:47:53.458565",
+    "status": "SUCCESS",
+    "finished": "2026-06-30T17:47:54.165246",
+    "duration_sec": 0.706719
+  },
+  {
+    "job": "daily_drift_monitor",
+    "cadence": "daily",
+    "started": "2026-06-30T17:47:54.165366",
+    "status": "SUCCESS",
+    "finished": "2026-06-30T17:47:54.238717",
+    "duration_sec": 0.073359
+  },
+  {
+    "job": "biweekly_candidate_scan",
+    "cadence": "twice_weekly",
+    "started": "2026-06-30T18:00:05.000342",
+    "status": "PLACEHOLDER",
+    "message": "Job not yet automated: Scan for new strategy candidates from sources"
+  },
+  {
+    "job": "biweekly_batch_first_pass",
+    "cadence": "twice_weekly",
+    "started": "2026-06-30T18:00:05.000370",
+    "status": "SUCCESS",
+    "finished": "2026-06-30T18:00:05.712342",
+    "duration_sec": 0.711981
+  },
+  {
+    "job": "biweekly_baseline_backtest",
+    "cadence": "twice_weekly",
+    "started": "2026-06-30T18:00:05.712370",
+    "status": "SUCCESS",
+    "finished": "2026-06-30T18:12:23.427219",
+    "duration_sec": 737.714902
   }
 ]

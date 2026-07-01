@@ -221,6 +221,42 @@
       "status": "BACKLOG",
       "lane": "inbound",
       "note": "[governance] Make learning+improvement automatic each step; regular self-audit of every implemented fac"
+    },
+    {
+      "id": "nov_contango_bleed_CL",
+      "status": "BACKLOG",
+      "lane": "novelty",
+      "note": "roll/settlement: long-ETF holders bleed roll return in steep contango [CL] harness=term-structure-carry (validators first, predeclared)"
+    },
+    {
+      "id": "nov_contango_bleed_GC",
+      "status": "BACKLOG",
+      "lane": "novelty",
+      "note": "roll/settlement: long-ETF holders bleed roll return in steep contango [GC] harness=term-structure-carry (validators first, predeclared)"
+    },
+    {
+      "id": "nov_contango_bleed_ZB",
+      "status": "BACKLOG",
+      "lane": "novelty",
+      "note": "roll/settlement: long-ETF holders bleed roll return in steep contango [ZB] harness=term-structure-carry (validators first, predeclared)"
+    },
+    {
+      "id": "nov_contango_bleed_ZF",
+      "status": "BACKLOG",
+      "lane": "novelty",
+      "note": "roll/settlement: long-ETF holders bleed roll return in steep contango [ZF] harness=term-structure-carry (validators first, predeclared)"
+    },
+    {
+      "id": "nov_contango_bleed_ZN",
+      "status": "BACKLOG",
+      "lane": "novelty",
+      "note": "roll/settlement: long-ETF holders bleed roll return in steep contango [ZN] harness=term-structure-carry (validators first, predeclared)"
+    },
+    {
+      "id": "nov_contango_bleed_ZT",
+      "status": "BACKLOG",
+      "lane": "novelty",
+      "note": "roll/settlement: long-ETF holders bleed roll return in steep contango [ZT] harness=term-structure-carry (validators first, predeclared)"
     }
   ]
 }

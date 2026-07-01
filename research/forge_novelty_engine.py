@@ -58,17 +58,27 @@ def _load(p,default):
     try: return json.loads(p.read_text())
     except Exception: return default
 
+DATA_TIER={"PERCONTRACT":"T4","OPTIONS_OI":"T6","M1":"T3","CALENDAR":"T5","FEED_EXT":"T5"}
+def _learning_weights():
+    try: return _load(REPO/"research/data/learning_state.json",{}).get("novelty_weights",{})
+    except Exception: return {}
+def _quality(t):
+    # mechanism-driven (not indicator mashup): forced participant + economic reason + timing + data-tier present
+    ok=all([t.get("who"),t.get("mech"),t.get("horizon"),t.get("data")])
+    return "OK" if ok else "NOVELTY_QUALITY_WEAK"
 def generate(emit=12):
     store=_load(STORE,{"packets":{}}); seen=set(store["packets"].keys())
-    cand=[]
+    W=_learning_weights(); cand=[]
     for t in TEMPLATES:
         for sym,a in INSTR.items():
             if not applies(t,sym,a): continue
             k=key(t["id"],sym)
             if k in seen: continue
             avail,fw=availability(t,sym,a)
+            lw=W.get(t["dim"],1.0)                      # LEARNING: down-weight dead families, up-weight tier-gap frontier + survivors
             cand.append(dict(key=k,tid=t["id"],dim=t["dim"],sym=sym,mech=t["mech"],who=t["who"],
-                             horizon=t["horizon"],harness=t["harness"],data=t["data"],avail=avail,score=fw*t["prior"]))
+                             horizon=t["horizon"],harness=t["harness"],data=t["data"],data_tier=DATA_TIER.get(t["data"],"?"),
+                             avail=avail,quality=_quality(t),lw=lw,score=round(fw*t["prior"]*lw,2)))
     cand.sort(key=lambda c:(-c["score"],c["key"]))
     total_space=sum(1 for t in TEMPLATES for sym,a in INSTR.items() if applies(t,sym,a))
     new=cand[:emit]; stamp=datetime.now(timezone.utc).strftime("%Y-%m-%d")

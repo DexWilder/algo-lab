@@ -13,6 +13,11 @@ def review(r):
     if r.get("harness_checked") is False: fails.append("EXISTING_HARNESS_NOT_CHECKED (grep wp_/lever_/forge_cycle first)")
     if r.get("family_exhausted_claim") and r.get("expressions_tested",0)<3: fails.append("FAMILY_OVERKILL (<3 expressions before exhaustion claim)")
     if r.get("data_blocked_claim") and not r.get("certificate"): fails.append("DATA_BLOCKED_NO_CERT")
+    # DATA-TIER sufficiency (doctrine A): a family-level kill/exhaustion below the richest applicable tier is false exhaustion
+    _T={f"T{i}":i for i in range(8)}
+    dt=r.get("data_tier"); rt=r.get("richest_applicable_tier")
+    if dt and rt and _T.get(dt,9)<_T.get(rt,0) and any(k in r.get("label","").upper() for k in ("EXHAUST","FAMILY_KILL","CLEAN_KILL")):
+        fails.append(f"DATA_TIER_INSUFFICIENT (killed at {dt}, richest applicable {rt} untested — expression-kill only)")
     ok=len(fails)==0
     print(f"  [adversarial-review {r.get('id','?')}] {'PASS' if ok else 'FAIL'}" + ("" if ok else " | "+"; ".join(fails)))
     return ok, fails

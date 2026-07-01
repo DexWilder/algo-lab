@@ -25,6 +25,11 @@ fam_cov=round(100*sum(len(f["tested"]) for f in reg.values())/max(1,sum(len(f["t
 lstate=ladder_state(); hi=highest_rung()
 from research.capture_inbound import stats as inb_stats
 ib=inb_stats()
+ds=json.loads((REPO/"research/data/data_sources.json").read_text())["sources"] if (REPO/"research/data/data_sources.json").exists() else []
+from collections import Counter as _C
+ds_stat=dict(_C(s["status"] for s in ds)); ds_active=sum(1 for s in ds if s["status"]=="ACTIVE_IN_TESTS")
+ls=json.loads((REPO/"research/data/learning_state.json").read_text()) if (REPO/"research/data/learning_state.json").exists() else {}
+next25=ls.get("next_25_actions",[]); gaps=ls.get("data_utilization_gaps",[])
 g=subprocess.run([sys.executable,str(REPO/"research/forge_system_guardrails.py")],capture_output=True,text=True,timeout=120)
 gv="P0_FAIL" if g.returncode!=0 else "clean/P1"
 p0=[l.strip() for l in g.stdout.splitlines() if "[P0]" in l]; p1=[l.strip() for l in g.stdout.splitlines() if "[P1]" in l]
@@ -61,6 +66,17 @@ out=f"""# ALPHA RESEARCH DASHBOARD (auto-generated {stamp})
 ## Queue depth
 - RUN_NOW: {len(runnow)} | total queue items: {len(q['queue'])}
 {chr(10).join(f"- [{x.get('status')}] {x['id']}: {x.get('verdict') or x.get('note','')[:70]}" for x in q['queue'][:12])}
+
+## Data-utilization map ({ds_active}/{len(ds)} ACTIVE_IN_TESTS — no asset floats)
+{chr(10).join(f"- [{s['tier']}] {s['source']} — {s['status']} ({s.get('lane','')})" for s in ds)}
+- status mix: {ds_stat}
+
+## Roadmap (operational) — Phase 1: foundation hardening
+- **Exit criteria:** data-tier gate live ✅ · learning-state updater live ✅ · close-only kills rescoped ✅ · 1m+volume harness running ✅ (OR batch=kill) · data-util dashboard ✅ · self-audit artifact ✅ | REMAINING: ≥1 close-only family re-scoped edge found OR cleanly killed at T3 (in progress); self-audit clean streak ≥5
+- **Blockers:** gamma T6 needs chunked-OI loader (+$11.54 gate); intraday 1m-path MR + settlement/lead-lag T3 packets not yet run
+- **Data-util gaps (richer tier unused):** {len(gaps)} families — {[g['family'] for g in gaps][:8]}
+- **Next-25 (from learning_state):**
+{chr(10).join(f"  {i+1}. {a}" for i,a in enumerate(next25[:12]))}
 
 ## Guardrail alerts
 {chr(10).join(p0+p1) or '- none (P0 clear)'}

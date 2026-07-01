@@ -1,6 +1,6 @@
 {
   "_schema_version": "2.0",
-  "_generated": "2026-06-29",
+  "_generated": "2026-06-30",
   "_description": "FQL Strategy Registry \u2014 institutional memory of all strategy ideas, tested candidates, and deployed strategies",
   "_purpose": "Preserves research knowledge, enables crossbreeding, feeds Strategy Factory",
   "strategies": [
@@ -132,7 +132,7 @@
       "last_review_date": "2026-03-15",
       "controller_state": "ACTIVE",
       "controller_action": "REDUCED_ON",
-      "activation_score": 0.635,
+      "activation_score": 0.617,
       "controller_reason_codes": [
         "REGIME_MATCH_MODERATE",
         "HALF_LIFE_STRENGTHENING",
@@ -143,9 +143,9 @@
         "SESSION_DRIFT_BROKEN",
         "TIME_WINDOW_PARTIAL",
         "ASSET_FIT_GOOD",
-        "RECENT_STABLE"
+        "RECENT_VOLATILE"
       ],
-      "last_controller_date": "2026-06-29",
+      "last_controller_date": "2026-06-30",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
@@ -241,10 +241,10 @@
       "kill_details": null,
       "last_review_date": "2026-03-15",
       "controller_state": "ACTIVE",
-      "controller_action": "FULL_ON",
-      "activation_score": 0.765,
+      "controller_action": "REDUCED_ON",
+      "activation_score": 0.685,
       "controller_reason_codes": [
-        "REGIME_MATCH_HIGH",
+        "REGIME_MATCH_MODERATE",
         "HALF_LIFE_STRENGTHENING",
         "PORTFOLIO_NEUTRAL",
         "LOW_REDUNDANCY",
@@ -255,7 +255,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-06-29",
+      "last_controller_date": "2026-06-30",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
@@ -568,9 +568,9 @@
       "last_review_date": "2026-03-18",
       "controller_state": "ACTIVE",
       "controller_action": "FULL_ON",
-      "activation_score": 0.81,
+      "activation_score": 0.73,
       "controller_reason_codes": [
-        "REGIME_MATCH_HIGH",
+        "REGIME_MATCH_MODERATE",
         "HALF_LIFE_STRENGTHENING",
         "PORTFOLIO_ADDS_VALUE",
         "LOW_REDUNDANCY",
@@ -581,7 +581,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-06-29",
+      "last_controller_date": "2026-06-30",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
@@ -4823,7 +4823,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-06-29",
+      "last_controller_date": "2026-06-30",
       "half_life_status": "HEALTHY",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -5760,7 +5760,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-06-29",
+      "last_controller_date": "2026-06-30",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -5963,7 +5963,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-06-29",
+      "last_controller_date": "2026-06-30",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -8521,7 +8521,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-06-29",
+      "last_controller_date": "2026-06-30",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",

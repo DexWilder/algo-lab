@@ -19,14 +19,15 @@ for fam,d in REG.items():
     st=d["status"]
     if st in STRONG_KILL and untested: flags.append(f"OVER-CLAIM: {fam} is {st} but {len(untested)} untested expr remain: {untested}")
     if st in ("ACTIVE_EXPANSION","UNDERTESTED") and not untested: flags.append(f"STALE: {fam} is {st} but 0 untested expr — advance or re-status")
-    rows.append((fam,st,d["data"],cov,len(tested),len(untested),ln,"; ".join(untested[:3]) or "—"))
+    tier=f"{d.get('data_tier','?')}→{d.get('richest_applicable_tier','?')}"+(" ⚠gap" if d.get("tier_gap") else "")
+    rows.append((fam,st,tier,cov,len(tested),len(untested),ln,"; ".join(untested[:3]) or "—"))
 rows.sort(key=lambda r:(r[1] in KILLED, -r[5]))   # active families with most untested first
 stamp=datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
 n_active=sum(1 for _,st,*_ in rows if st not in KILLED)
 lines=[f"# Edge-Family Map (computed {stamp}) — from family_status.json x trial ledger",
        f"> Regenerate: `python3 research/forge_family_map.py`. Coverage=tested/(tested+untested). family-N from ledger lane.",
        f"> **Families: {len(rows)} | active (not killed): {n_active} | global trial-N: {count()} | drift flags: {len(flags)}**","",
-       "| family | status | data | coverage | tested | untested | family-N | next untested expressions |",
+       "| family | status | tier(tested→applicable) | coverage | tested | untested | family-N | next untested expressions |",
        "|---|---|---|---|---|---|---|---|"]
 for fam,st,data,cov,nt,nu,ln,nxt in rows:
     lines.append(f"| {fam} | {st} | {data} | {cov}% | {nt} | {nu} | {ln} | {nxt} |")

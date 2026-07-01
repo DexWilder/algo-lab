@@ -72,17 +72,21 @@ except Exception as e: rec("candidate_ladder","BROKEN","per-promotion",str(e)[:5
 # 10 dashboard freshness (per-cycle)
 a=_age_days("docs/fql_forge/ALPHA_RESEARCH_DASHBOARD.md")
 rec("dashboard","PASS" if a<1 else "STALE","per-cycle",f"regenerated {a:.1f}d ago")
-# 11 data_tier_gate (DESIGNED — doctrine A, not yet built): every CLEAN_KILL must record data_tier
+# 11 data_tier_gate (BUILT — doctrine A): every family carries data_tier; 0 false-exhaustion
 try:
     reg=json.loads((REPO/"research/data/family_status.json").read_text())["families"]
-    have_tier=sum(1 for f in reg.values() if f.get("data_tier"))
-    rec("data_tier_gate","DESIGNED","per-kill",f"{have_tier}/{len(reg)} families carry data_tier — build gate (doctrine A)")
-except Exception: rec("data_tier_gate","DESIGNED","per-kill","not yet implemented (roadmap P1)")
+    have_tier=sum(1 for f in reg.values() if f.get("data_tier")); gaps=sum(1 for f in reg.values() if f.get("tier_gap"))
+    _T={f"T{i}":i for i in range(8)}
+    false_exh=[k for k,f in reg.items() if f.get("status") in ("CLEAN_KILL","FAMILY_EXHAUSTED") and f.get("richest_applicable_tier") and _T.get(f.get("data_tier","T7"),9)<_T.get(f["richest_applicable_tier"],0) and k!="carry_legacy_fx_rates"]
+    st="PASS" if have_tier==len(reg) and not false_exh else "STALE"
+    rec("data_tier_gate",st,"per-kill",f"{have_tier}/{len(reg)} tiered; {gaps} tier_gap; false-exhaustion={false_exh or 0}")
+except Exception as e: rec("data_tier_gate","BROKEN","per-kill",str(e)[:50])
 # 12 learning_loop closure (per-step) — is generation reading results yet?
-nov_reads=("trial_ledger" in (REPO/"research/forge_novelty_engine.py").read_text() or "verdict" in (REPO/"research/forge_novelty_engine.py").read_text())
-fam_auto="family_status" in " ".join((REPO/p).read_text(errors="ignore") for p in ["research/forge_family_map.py"]) and False  # auto-update not built
-rec("learning_loop","DESIGNED" if not nov_reads else "PASS","per-step",
-    f"novelty reads results={nov_reads}; family_status auto-update={'yes' if fam_auto else 'NO (hand-edited) — roadmap P1'}")
+updater=(REPO/"research/update_learning_state.py").exists()
+ls=REPO/"research/data/learning_state.json"; ls_fresh=_age_days("research/data/learning_state.json")<2 if ls.exists() else False
+nov_reads="learning_state" in (REPO/"research/forge_novelty_engine.py").read_text()
+st="PASS" if (updater and nov_reads and ls_fresh) else ("STALE" if updater and nov_reads else "DESIGNED")
+rec("learning_loop",st,"per-step",f"updater={updater}; novelty reads learning_state={nov_reads}; learning_state fresh={ls_fresh}")
 
 STATE.write_text(json.dumps(newstate,indent=2))
 broken=[r for r in rows if r[1]=="BROKEN"]; stale=[r for r in rows if r[1]=="STALE"]; designed=[r for r in rows if r[1]=="DESIGNED"]
@@ -91,5 +95,14 @@ lines=[f"# FORGE SELF-AUDIT — {stamp}", f"facets={len(rows)} PASS={sum(1 for r
 for f,s,c,d in rows: lines.append(f"  [{s:8}] {f:20} ({c}) — {d}")
 verdict="BROKEN_FACET" if broken else ("STALE_FACET" if stale else "SELF_AUDIT_CLEAN")
 lines.append(f"\nVERDICT: {verdict}  (DESIGNED = on roadmap, not a failure)")
-out="\n".join(lines); (REPO/"research/logs/self_audit_status.log").write_text(out+"\n"); print(out)
+out="\n".join(lines); (REPO/"research/logs/self_audit_status.log").write_text(out+"\n")
+# machine-readable artifact (mandatory — consumed by dashboard + final reports)
+nxt = ("fix BROKEN facet: "+broken[0][0]) if broken else (("refresh STALE facet: "+stale[0][0]) if stale else
+       ("build DESIGNED: "+", ".join(r[0] for r in designed) if designed else "none"))
+(REPO/"research/data/self_audit_latest.json").write_text(json.dumps(dict(
+    timestamp=stamp, verdict=verdict, path="research/data/self_audit_latest.json",
+    facets=len(rows), passed=sum(1 for r in rows if r[1]=="PASS"),
+    failed=[r[0] for r in broken], stale=[r[0] for r in stale], designed_not_built=[r[0] for r in designed],
+    next_required_action=nxt, facet_detail=[{"facet":f,"status":s,"cadence":c,"detail":d} for f,s,c,d in rows]),indent=2))
+print(out)
 sys.exit(1 if broken else 0)

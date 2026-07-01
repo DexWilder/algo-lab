@@ -1,19 +1,19 @@
-# ALPHA RESEARCH DASHBOARD (auto-generated 2026-07-01 17:27 UTC)
+# ALPHA RESEARCH DASHBOARD (auto-generated 2026-07-01 17:49 UTC)
 > `python3 research/forge_dashboard.py` regenerates this. Single canonical state view.
 
 ## HEADLINE
 - **Validated primaries: 0** (highest ladder rung: **SCREEN_PASS**; capital gate FAIL-CLOSED, PAPER_APPROVED+ operator-only).
-- Guardrails: **clean/P1** | Self-audit: **SELF_AUDIT_CLEAN** (facets=12 PASS=10 STALE=0 BROKEN=0 DESIGNED-not-built=2) | Git backlog: **0** | Global trial-N: **1783**
+- Guardrails: **clean/P1** | Self-audit: **SELF_AUDIT_CLEAN** (facets=12 PASS=12 STALE=0 BROKEN=0 DESIGNED-not-built=0) | Git backlog: **0** | Global trial-N: **1799**
 - **Roadmap:** end Phase 0 → entering Phase 1 (foundation hardening: data-tier gate, learning-loop closure, infra freeze, 1m/volume harness). Doctrine: `docs/fql_forge/FOUNDATION_DOCTRINE_AND_ELITE_ROADMAP_2026-07-01.md`
 
 ## Throughput (computed live)
-- Tests logged today: **17** | total kills: 6 | screen-passes: 2
-- Novelty packets: **24** stored (24 today) of 108 template×instrument space
-- Families: **13 active** / 21 | coverage 54% (tested exprs / total exprs)
+- Tests logged today: **33** | total kills: 6 | screen-passes: 2
+- Novelty packets: **30** stored (30 today) of 108 template×instrument space
+- Families: **14 active** / 21 | coverage 54% (tested exprs / total exprs)
 - Candidate ladder: SCREEN_PASS=1
 
 ## Inbound capture (organizational memory — nothing floats)
-- Items: **29** | NEW: 0 | P0/P1: 7/16 | source packets today: 0
+- Items: **30** | NEW: 0 | P0/P1: 7/17 | source packets today: 0
 - Untriaged directives: 0 | mistakes w/o control: **3** ['INB-20260625-002', 'INB-20260701-010', 'INB-20260701-011'] | unused feeds: 0
 - QUEUED-missing-from-queue: 0 | source notes unresolved: 0 | oldest untriaged: 0d
 - Ledger: `docs/fql_forge/INBOUND_RESEARCH_LEDGER.md` (capture: `python3 research/capture_inbound.py`)
@@ -21,7 +21,7 @@
 ## Trial-N by lane (family diagnostics)
 - primitive_sweep: 1679
 - positioning: 48
-- databento_volume: 14
+- databento_volume: 30
 - commodity_carry: 10
 - exploratory: 9
 - forced_flow: 7
@@ -32,7 +32,7 @@
 - portfolio: 2
 
 ## Queue depth
-- RUN_NOW: 3 | total queue items: 37
+- RUN_NOW: 3 | total queue items: 43
 - [ACTIVE_PACKET_LANE] gamma_chunked_loader_then_regime: chunked OI loader -> approx-GEX -> predeclared GEX-regime test (feasib
 - [DONE] gc_detrended_carry_zscore: refined commodity TS expr (naive carry-sign KILLed 2026-07-01); de-tre
 - [DONE] clgc_spread_momentum: refined commodity TS expr (naive carry-sign KILLed 2026-07-01); de-tre
@@ -45,6 +45,46 @@
 - [BACKLOG] nov_benchmark_fix_MCL: execution window: benchmark-tracking funds transact at a known fix (16
 - [BACKLOG] nov_benchmark_fix_MES: execution window: benchmark-tracking funds transact at a known fix (16
 - [BACKLOG] nov_benchmark_fix_MGC: execution window: benchmark-tracking funds transact at a known fix (16
+
+## Data-utilization map (12/19 ACTIVE_IN_TESTS — no asset floats)
+- [T2] Databento 1m OHLCV (11 instr) — ACTIVE_IN_TESTS (microstructure)
+- [T3] Databento 1m + VOLUME (11 instr, ~7.9M bars) — ACTIVE_IN_TESTS (microstructure)
+- [T2] 5m/downsampled processed (13) — ACTIVE_IN_TESTS (legacy)
+- [T4] Per-contract rates ZT/ZF/ZN/ZB — ACTIVE_IN_TESTS (curve_rv)
+- [T4] Per-contract CL/GC — ACTIVE_IN_TESTS (carry_commodity)
+- [T6] Gamma/options/OI (ES.OPT) — NEEDS_LOADER (gamma_dealer)
+- [T5] COT positioning — ACTIVE_IN_TESTS (positioning)
+- [T5] CPI levels — QUEUED_FOR_PACKET (macro_event_drift)
+- [T5] EIA stocks — CERTIFIED_BLOCKED (inventory_eia)
+- [T5] Treasury auctions — ACTIVE_IN_TESTS (auction_issuance)
+- [T5] FOMC/NFP calendars — ACTIVE_IN_TESTS (macro_event_drift)
+- [T5] Policy rates — ACTIVE_IN_TESTS (carry_rates)
+- [T5] Treasury yield curve — ACTIVE_IN_TESTS (carry_rates)
+- [T5] VIX — ACTIVE_IN_TESTS (vol_risk_premium)
+- [T6] DVOL BTC/ETH — ACTIVE_IN_TESTS (vol_risk_premium)
+- [T5] Deribit/OKX crypto perp — ARCHIVED_LOW_VALUE (crypto_funding)
+- [T5] Credit OAS — QUEUED_FOR_PACKET (regime_filters)
+- [T5] Copper/gold ratio — QUEUED_FOR_PACKET (regime_filters)
+- [T5] Dollar index / real rates / inflation exp — VALIDATION_PENDING (macro_regime)
+- status mix: {'ACTIVE_IN_TESTS': 12, 'NEEDS_LOADER': 1, 'QUEUED_FOR_PACKET': 3, 'CERTIFIED_BLOCKED': 1, 'ARCHIVED_LOW_VALUE': 1, 'VALIDATION_PENDING': 1}
+
+## Roadmap (operational) — Phase 1: foundation hardening
+- **Exit criteria:** data-tier gate live ✅ · learning-state updater live ✅ · close-only kills rescoped ✅ · 1m+volume harness running ✅ (OR batch=kill) · data-util dashboard ✅ · self-audit artifact ✅ | REMAINING: ≥1 close-only family re-scoped edge found OR cleanly killed at T3 (in progress); self-audit clean streak ≥5
+- **Blockers:** gamma T6 needs chunked-OI loader (+$11.54 gate); intraday 1m-path MR + settlement/lead-lag T3 packets not yet run
+- **Data-util gaps (richer tier unused):** 12 families — ['trend_momentum', 'mean_reversion', 'vol_risk_premium', 'gamma_dealer', 'inventory_eia', 'macro_event_drift', 'monthend_settlement', 'expiry_opex']
+- **Next-25 (from learning_state):**
+  1. RETEST mean_reversion at T3 (reopened false-exhaustion)
+  2. TEST trend_momentum at richer tier T3 (T2 done)
+  3. TEST mean_reversion at richer tier T3 (T2 done)
+  4. TEST vol_risk_premium at richer tier T6 (T5 done)
+  5. TEST gamma_dealer at richer tier T6 (none done)
+  6. TEST inventory_eia at richer tier T5 (none done)
+  7. TEST macro_event_drift at richer tier T3 (T1 done)
+  8. TEST monthend_settlement at richer tier T3 (T1 done)
+  9. TEST expiry_opex at richer tier T6 (none done)
+  10. TEST xasset_leadlag at richer tier T3 (T2 done)
+  11. TEST fx_fixing_ratediv at richer tier T3 (none done)
+  12. QUEUE deepen_spreadMR_GC_execution: Lane G: real 2-leg calendar-spread execution model (deferred
 
 ## Guardrail alerts
 [P1] CLOSE-ONLY BIAS: only 15/194 forge_cycle scripts use 'volume' (8%). Databento volume vein under-worked (target: keep ACTIVE_PACKET_LANE).

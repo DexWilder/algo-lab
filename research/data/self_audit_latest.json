@@ -1,0 +1,85 @@
+{
+  "timestamp": "2026-07-01 17:49 UTC",
+  "verdict": "SELF_AUDIT_CLEAN",
+  "path": "research/data/self_audit_latest.json",
+  "facets": 12,
+  "passed": 12,
+  "failed": [],
+  "stale": [],
+  "designed_not_built": [],
+  "next_required_action": "none",
+  "facet_detail": [
+    {
+      "facet": "causality_audit",
+      "status": "PASS",
+      "cadence": "per-candidate",
+      "detail": "future-perturbation harness importable"
+    },
+    {
+      "facet": "deflated_sharpe",
+      "status": "PASS",
+      "cadence": "per-survivor",
+      "detail": "DSR/PBO gate importable"
+    },
+    {
+      "facet": "trial_ledger",
+      "status": "PASS",
+      "cadence": "per-test",
+      "detail": "N=1799 (+0 since last audit)"
+    },
+    {
+      "facet": "guardrails",
+      "status": "PASS",
+      "cadence": "per-cycle",
+      "detail": "status log 0.0d old"
+    },
+    {
+      "facet": "inbound_capture",
+      "status": "PASS",
+      "cadence": "per-cycle",
+      "detail": "30 items; floating=0; mistakes_no_control=3"
+    },
+    {
+      "facet": "family_map",
+      "status": "PASS",
+      "cadence": "per-sprint",
+      "detail": "lanes w/o family=none; over-claims=none"
+    },
+    {
+      "facet": "novelty_engine",
+      "status": "PASS",
+      "cadence": "per-day",
+      "detail": "30/108 covered (+0); space open"
+    },
+    {
+      "facet": "adversarial_review",
+      "status": "PASS",
+      "cadence": "per-result",
+      "detail": "11-check red-team importable"
+    },
+    {
+      "facet": "candidate_ladder",
+      "status": "PASS",
+      "cadence": "per-promotion",
+      "detail": "highest rung=SCREEN_PASS"
+    },
+    {
+      "facet": "dashboard",
+      "status": "PASS",
+      "cadence": "per-cycle",
+      "detail": "regenerated 0.0d ago"
+    },
+    {
+      "facet": "data_tier_gate",
+      "status": "PASS",
+      "cadence": "per-kill",
+      "detail": "21/21 tiered; 12 tier_gap; false-exhaustion=0"
+    },
+    {
+      "facet": "learning_loop",
+      "status": "PASS",
+      "cadence": "per-step",
+      "detail": "updater=True; novelty reads learning_state=True; learning_state fresh=True"
+    }
+  ]
+}

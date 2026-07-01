@@ -1,8 +1,8 @@
 {
-  "report_date": "2026-06-29 17:38",
+  "report_date": "2026-06-30 17:38",
   "regime_snapshot": {
     "MES": {
-      "vol_regime": "HIGH_VOL",
+      "vol_regime": "NORMAL",
       "trend_regime": "RANGING",
       "rv_regime": "NORMAL_RV",
       "trend_persistence": "CHOPPY"
@@ -14,13 +14,13 @@
       "trend_persistence": "CHOPPY"
     },
     "MGC": {
-      "vol_regime": "NORMAL",
+      "vol_regime": "LOW_VOL",
       "trend_regime": "TRENDING",
       "rv_regime": "HIGH_RV",
       "trend_persistence": "CHOPPY"
     },
     "M2K": {
-      "vol_regime": "HIGH_VOL",
+      "vol_regime": "NORMAL",
       "trend_regime": "TRENDING",
       "rv_regime": "LOW_RV",
       "trend_persistence": "CHOPPY"
@@ -29,7 +29,7 @@
       "vol_regime": "NORMAL",
       "trend_regime": "TRENDING",
       "rv_regime": "NORMAL_RV",
-      "trend_persistence": "GRINDING"
+      "trend_persistence": "CHOPPY"
     }
   },
   "activation_matrix": [
@@ -41,7 +41,7 @@
       "current_state": "ACTIVE",
       "new_state": "ACTIVE",
       "state_changed": false,
-      "activation_score": 0.635,
+      "activation_score": 0.617,
       "sub_scores": {
         "regime_fit": 0.6,
         "half_life": 1.0,
@@ -52,7 +52,7 @@
         "session_drift": 0.0,
         "time_of_day": 0.5,
         "asset_fit": 1.0,
-        "recent_stability": 1.0
+        "recent_stability": 0.4
       },
       "recommended_action": "REDUCED_ON",
       "situation": "HEALTHY",
@@ -66,7 +66,7 @@
         "SESSION_DRIFT_BROKEN",
         "TIME_WINDOW_PARTIAL",
         "ASSET_FIT_GOOD",
-        "RECENT_STABLE"
+        "RECENT_VOLATILE"
       ],
       "transition_trigger": "No transition \u2014 current state appropriate",
       "confidence": 1.0,
@@ -80,7 +80,7 @@
           "session": "morning",
           "severity": "ALARM",
           "action": "BLOCK",
-          "reason": "Edge broken in morning (WR delta -12.8%, PnL ratio -0.40)"
+          "reason": "Edge broken in morning (WR delta -15.7%, PnL ratio -0.64)"
         }
       ],
       "_signals": {
@@ -151,9 +151,9 @@
       "current_state": "ACTIVE",
       "new_state": "ACTIVE",
       "state_changed": false,
-      "activation_score": 0.765,
+      "activation_score": 0.685,
       "sub_scores": {
-        "regime_fit": 1.0,
+        "regime_fit": 0.6,
         "half_life": 1.0,
         "contribution": 0.4,
         "redundancy": 0.7,
@@ -164,10 +164,10 @@
         "asset_fit": 1.0,
         "recent_stability": 1.0
       },
-      "recommended_action": "FULL_ON",
+      "recommended_action": "REDUCED_ON",
       "situation": "HEALTHY",
       "reason_codes": [
-        "REGIME_MATCH_HIGH",
+        "REGIME_MATCH_MODERATE",
         "HALF_LIFE_STRENGTHENING",
         "PORTFOLIO_NEUTRAL",
         "LOW_REDUNDANCY",
@@ -180,7 +180,7 @@
       ],
       "transition_trigger": "No transition \u2014 current state appropriate",
       "confidence": 1.0,
-      "uncertainty": false,
+      "uncertainty": true,
       "warnings": [],
       "review_priority": "LOW",
       "session_restrictions": [],
@@ -193,26 +193,26 @@
       },
       "allocation": {
         "strategy_id": "ORB-MGC-Long",
-        "base_tier": 3,
-        "base_tier_name": "BASE",
-        "target_tier": 4,
-        "target_tier_name": "BOOST",
-        "final_tier": 4,
-        "final_tier_name": "BOOST",
+        "base_tier": 2,
+        "base_tier_name": "REDUCED",
+        "target_tier": 3,
+        "target_tier_name": "BASE",
+        "final_tier": 3,
+        "final_tier_name": "BASE",
         "sessions": {
           "morning": {
-            "tier": 4,
-            "tier_name": "BOOST",
+            "tier": 3,
+            "tier_name": "BASE",
             "reason_codes": []
           },
           "midday": {
-            "tier": 4,
-            "tier_name": "BOOST",
+            "tier": 3,
+            "tier_name": "BASE",
             "reason_codes": []
           },
           "afternoon": {
-            "tier": 4,
-            "tier_name": "BOOST",
+            "tier": 3,
+            "tier_name": "BASE",
             "reason_codes": []
           }
         },
@@ -238,9 +238,9 @@
       "current_state": "ACTIVE",
       "new_state": "ACTIVE",
       "state_changed": false,
-      "activation_score": 0.81,
+      "activation_score": 0.73,
       "sub_scores": {
-        "regime_fit": 1.0,
+        "regime_fit": 0.6,
         "half_life": 1.0,
         "contribution": 0.7,
         "redundancy": 0.7,
@@ -254,7 +254,7 @@
       "recommended_action": "FULL_ON",
       "situation": "HEALTHY",
       "reason_codes": [
-        "REGIME_MATCH_HIGH",
+        "REGIME_MATCH_MODERATE",
         "HALF_LIFE_STRENGTHENING",
         "PORTFOLIO_ADDS_VALUE",
         "LOW_REDUNDANCY",
@@ -267,7 +267,7 @@
       ],
       "transition_trigger": "No transition \u2014 current state appropriate",
       "confidence": 1.0,
-      "uncertainty": false,
+      "uncertainty": true,
       "warnings": [],
       "review_priority": "LOW",
       "session_restrictions": [],
@@ -671,7 +671,7 @@
     "disabled_or_off": 0,
     "state_changes": 0,
     "health_status": "FAIL",
-    "avg_activation_score": 0.6457
+    "avg_activation_score": 0.6203
   },
   "health_signals": {
     "overall": "FAIL",
@@ -682,8 +682,8 @@
     "total_strategies": 7,
     "tier_distribution": {
       "MICRO": 1,
-      "BOOST": 2,
-      "BASE": 1,
+      "BASE": 2,
+      "BOOST": 1,
       "REDUCED": 3
     }
   }

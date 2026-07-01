@@ -215,6 +215,60 @@
       "score": 6,
       "harness": "event-adapter",
       "created": "2026-07-01"
+    },
+    "contango_bleed::CL": {
+      "tid": "contango_bleed",
+      "sym": "CL",
+      "dim": "roll/settlement",
+      "avail": "LOCAL",
+      "score": 9.6,
+      "harness": "term-structure-carry",
+      "created": "2026-07-01"
+    },
+    "contango_bleed::GC": {
+      "tid": "contango_bleed",
+      "sym": "GC",
+      "dim": "roll/settlement",
+      "avail": "LOCAL",
+      "score": 9.6,
+      "harness": "term-structure-carry",
+      "created": "2026-07-01"
+    },
+    "contango_bleed::ZB": {
+      "tid": "contango_bleed",
+      "sym": "ZB",
+      "dim": "roll/settlement",
+      "avail": "LOCAL",
+      "score": 9.6,
+      "harness": "term-structure-carry",
+      "created": "2026-07-01"
+    },
+    "contango_bleed::ZF": {
+      "tid": "contango_bleed",
+      "sym": "ZF",
+      "dim": "roll/settlement",
+      "avail": "LOCAL",
+      "score": 9.6,
+      "harness": "term-structure-carry",
+      "created": "2026-07-01"
+    },
+    "contango_bleed::ZN": {
+      "tid": "contango_bleed",
+      "sym": "ZN",
+      "dim": "roll/settlement",
+      "avail": "LOCAL",
+      "score": 9.6,
+      "harness": "term-structure-carry",
+      "created": "2026-07-01"
+    },
+    "contango_bleed::ZT": {
+      "tid": "contango_bleed",
+      "sym": "ZT",
+      "dim": "roll/settlement",
+      "avail": "LOCAL",
+      "score": 9.6,
+      "harness": "term-structure-carry",
+      "created": "2026-07-01"
     }
   }
 }

@@ -141,6 +141,21 @@ try:
     else: info.append("per-contract data files pass validator")
 except Exception as e: info.append(f"data-validator check skipped: {e}")
 
+# --- 12) DATA-TIER GATE (doctrine A — no false exhaustion) ---
+try:
+    import json as _dj
+    reg=_dj.loads((REPO/"research/data/family_status.json").read_text())["families"]
+    _T={f"T{i}":i for i in range(8)}
+    no_tier=[k for k,f in reg.items() if not f.get("data_tier")]
+    false_exh=[k for k,f in reg.items() if f.get("status") in ("CLEAN_KILL","FAMILY_EXHAUSTED")
+               and f.get("richest_applicable_tier") and _T.get(f.get("data_tier","T7"),9)<_T.get(f["richest_applicable_tier"],0)
+               and k!="carry_legacy_fx_rates"]
+    gap_active=[k for k,f in reg.items() if f.get("tier_gap") and f.get("status") not in ("CLEAN_KILL","FAMILY_EXHAUSTED","TIER_INCOMPLETE","SUBFAMILY_KILLED","DATA_BLOCKED_CERT")]
+    if no_tier: alert("P1", f"DATA-TIER: {len(no_tier)} families have no data_tier field (stale pre-tier labels): {no_tier[:6]}")
+    if false_exh: alert("P0", f"FALSE EXHAUSTION: {len(false_exh)} family-level kills below richest applicable tier (must be expression-kill): {false_exh}")
+    else: info.append(f"data-tier gate: 0 false-exhaustion; {sum(1 for f in reg.values() if f.get('tier_gap'))} families have untested richer tier (TIER_INCOMPLETE ok)")
+except Exception as e: alert("P1", f"data-tier gate check failed: {e}")
+
 # --- 11) INBOUND CAPTURE (organizational memory — nothing floats) ---
 try:
     from research.capture_inbound import stats as _inb_stats

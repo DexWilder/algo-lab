@@ -1,0 +1,340 @@
+{
+  "timestamp": "2026-07-01 17:49 UTC",
+  "global_trial_N": 1799,
+  "lane_breakdown": {
+    "forced_flow": 7,
+    "exploratory": 9,
+    "portfolio": 2,
+    "databento_volume": 30,
+    "positioning": 48,
+    "primitive_sweep": 1679,
+    "macro_regime": 3,
+    "crypto_carry": 4,
+    "carry": 4,
+    "curve_rv": 3,
+    "commodity_carry": 10
+  },
+  "families": {
+    "trend_momentum": {
+      "status": "CLEAN_BUT_WEAK",
+      "data_tier": "T2",
+      "richest_applicable_tier": "T3",
+      "tier_gap": true
+    },
+    "mean_reversion": {
+      "status": "TIER_INCOMPLETE",
+      "data_tier": "T2",
+      "richest_applicable_tier": "T3",
+      "tier_gap": true
+    },
+    "carry_rates": {
+      "status": "CLEAN_KILL",
+      "data_tier": "T4",
+      "richest_applicable_tier": "T4",
+      "tier_gap": false
+    },
+    "carry_commodity": {
+      "status": "SCREEN_PASS_RETAINED",
+      "data_tier": "T4",
+      "richest_applicable_tier": "T4",
+      "tier_gap": false
+    },
+    "curve_rv": {
+      "status": "SUBFAMILY_KILLED",
+      "data_tier": "T4",
+      "richest_applicable_tier": "T4",
+      "tier_gap": false
+    },
+    "vol_risk_premium": {
+      "status": "CLEAN_BUT_WEAK",
+      "data_tier": "T5",
+      "richest_applicable_tier": "T6",
+      "tier_gap": true
+    },
+    "gamma_dealer": {
+      "status": "FEASIBLE",
+      "data_tier": "none",
+      "richest_applicable_tier": "T6",
+      "tier_gap": true
+    },
+    "positioning_cot": {
+      "status": "SUBFAMILY_KILLED",
+      "data_tier": "T5",
+      "richest_applicable_tier": "T5",
+      "tier_gap": false
+    },
+    "auction_issuance": {
+      "status": "SUBFAMILY_KILLED",
+      "data_tier": "T5",
+      "richest_applicable_tier": "T5",
+      "tier_gap": false
+    },
+    "inventory_eia": {
+      "status": "DATA_BLOCKED_CERT",
+      "data_tier": "none",
+      "richest_applicable_tier": "T5",
+      "tier_gap": true
+    },
+    "macro_event_drift": {
+      "status": "CLEAN_BUT_WEAK",
+      "data_tier": "T1",
+      "richest_applicable_tier": "T3",
+      "tier_gap": true
+    },
+    "monthend_settlement": {
+      "status": "CLEAN_BUT_WEAK",
+      "data_tier": "T1",
+      "richest_applicable_tier": "T3",
+      "tier_gap": true
+    },
+    "expiry_opex": {
+      "status": "FEASIBLE",
+      "data_tier": "none",
+      "richest_applicable_tier": "T6",
+      "tier_gap": true
+    },
+    "open_close_liquidity": {
+      "status": "CLEAN_BUT_WEAK",
+      "data_tier": "T3",
+      "richest_applicable_tier": "T3",
+      "tier_gap": false
+    },
+    "intraday_micro": {
+      "status": "SUBFAMILY_KILLED",
+      "data_tier": "T3",
+      "richest_applicable_tier": "T6",
+      "tier_gap": true
+    },
+    "xasset_leadlag": {
+      "status": "UNDERTESTED",
+      "data_tier": "T2",
+      "richest_applicable_tier": "T3",
+      "tier_gap": true
+    },
+    "regime_filters": {
+      "status": "UNDERTESTED",
+      "data_tier": "T5",
+      "richest_applicable_tier": "T5",
+      "tier_gap": false
+    },
+    "execution_cost": {
+      "status": "ACTIVE_TOOL",
+      "data_tier": "T3",
+      "richest_applicable_tier": "T3",
+      "tier_gap": false
+    },
+    "crypto_funding": {
+      "status": "CLEAN_KILL",
+      "data_tier": "T5",
+      "richest_applicable_tier": "T5",
+      "tier_gap": false
+    },
+    "fx_fixing_ratediv": {
+      "status": "UNDERTESTED",
+      "data_tier": "none",
+      "richest_applicable_tier": "T3",
+      "tier_gap": true
+    },
+    "carry_legacy_fx_rates": {
+      "status": "CLEAN_KILL",
+      "data_tier": "T1",
+      "richest_applicable_tier": "T4",
+      "tier_gap": true
+    }
+  },
+  "tested_tiers_by_family": {
+    "trend_momentum": [
+      "T0",
+      "T2"
+    ],
+    "mean_reversion": [
+      "T0",
+      "T2"
+    ],
+    "carry_rates": [
+      "T4"
+    ],
+    "carry_commodity": [
+      "T4"
+    ],
+    "curve_rv": [
+      "T4"
+    ],
+    "vol_risk_premium": [
+      "T5"
+    ],
+    "gamma_dealer": [],
+    "positioning_cot": [
+      "T5"
+    ],
+    "auction_issuance": [
+      "T5"
+    ],
+    "inventory_eia": [],
+    "macro_event_drift": [
+      "T1"
+    ],
+    "monthend_settlement": [
+      "T1"
+    ],
+    "expiry_opex": [],
+    "open_close_liquidity": [
+      "T2",
+      "T3"
+    ],
+    "intraday_micro": [
+      "T3"
+    ],
+    "xasset_leadlag": [
+      "T2"
+    ],
+    "regime_filters": [
+      "T5"
+    ],
+    "execution_cost": [
+      "T3"
+    ],
+    "crypto_funding": [
+      "T5"
+    ],
+    "fx_fixing_ratediv": [],
+    "carry_legacy_fx_rates": [
+      "T1"
+    ]
+  },
+  "killed_expressions": [
+    "carry_rates:naive roll-yield sign",
+    "carry_rates:xsec carry-rank",
+    "curve_rv:2s5s10s DV01 fly",
+    "curve_rv:5s10s30s fly",
+    "positioning_cot:naive COT fade x48",
+    "auction_issuance:wp_b1 concession",
+    "intraday_micro:volume-direction x3",
+    "crypto_funding:perp funding carry P22",
+    "carry_legacy_fx_rates:rates rolldown ZN",
+    "carry_legacy_fx_rates:cross-tenor rank",
+    "carry_legacy_fx_rates:FX carry USDJPY"
+  ],
+  "survivor_neighborhoods": [
+    {
+      "candidate": "spreadMR_GC",
+      "rung": "SCREEN_PASS",
+      "neighbor_dims": [
+        "roll/settlement",
+        "carry"
+      ]
+    }
+  ],
+  "candidate_rungs": {
+    "spreadMR_GC": "SCREEN_PASS"
+  },
+  "data_utilization_gaps": [
+    {
+      "family": "trend_momentum",
+      "data_tier": "T2",
+      "richest": "T3",
+      "reason": "tested to T2, T3 untested"
+    },
+    {
+      "family": "mean_reversion",
+      "data_tier": "T2",
+      "richest": "T3",
+      "reason": "session-level OR tested @T3 (kill); intraday 1m-path MR still untested @T3"
+    },
+    {
+      "family": "vol_risk_premium",
+      "data_tier": "T5",
+      "richest": "T6",
+      "reason": "tested to T5, T6 untested"
+    },
+    {
+      "family": "gamma_dealer",
+      "data_tier": "none",
+      "richest": "T6",
+      "reason": "tested to none, T6 untested"
+    },
+    {
+      "family": "inventory_eia",
+      "data_tier": "none",
+      "richest": "T5",
+      "reason": "tested to none, T5 untested"
+    },
+    {
+      "family": "macro_event_drift",
+      "data_tier": "T1",
+      "richest": "T3",
+      "reason": "tested to T1, T3 untested"
+    },
+    {
+      "family": "monthend_settlement",
+      "data_tier": "T1",
+      "richest": "T3",
+      "reason": "tested to T1, T3 untested"
+    },
+    {
+      "family": "expiry_opex",
+      "data_tier": "none",
+      "richest": "T6",
+      "reason": "tested to none, T6 untested"
+    },
+    {
+      "family": "intraday_micro",
+      "data_tier": "T3",
+      "richest": "T6",
+      "reason": "tested to T3, T6 untested"
+    },
+    {
+      "family": "xasset_leadlag",
+      "data_tier": "T2",
+      "richest": "T3",
+      "reason": "tested to T2, T3 untested"
+    },
+    {
+      "family": "fx_fixing_ratediv",
+      "data_tier": "none",
+      "richest": "T3",
+      "reason": "tested to none, T3 untested"
+    },
+    {
+      "family": "carry_legacy_fx_rates",
+      "data_tier": "T1",
+      "richest": "T4",
+      "reason": "tested to T1, T4 untested"
+    }
+  ],
+  "novelty_weights": {
+    "roll/settlement": 1.6,
+    "carry": 1.6,
+    "curve RV": 0.4,
+    "hedging reflexivity": 1.5,
+    "microstructure": 1.5,
+    "execution window": 1.5,
+    "month-end/rebalance": 1.5,
+    "event uncertainty": 1.5,
+    "inventory pressure": 1.5,
+    "crowding": 0.4,
+    "cross-asset": 1.5
+  },
+  "next_25_actions": [
+    "RETEST mean_reversion at T3 (reopened false-exhaustion)",
+    "TEST trend_momentum at richer tier T3 (T2 done)",
+    "TEST mean_reversion at richer tier T3 (T2 done)",
+    "TEST vol_risk_premium at richer tier T6 (T5 done)",
+    "TEST gamma_dealer at richer tier T6 (none done)",
+    "TEST inventory_eia at richer tier T5 (none done)",
+    "TEST macro_event_drift at richer tier T3 (T1 done)",
+    "TEST monthend_settlement at richer tier T3 (T1 done)",
+    "TEST expiry_opex at richer tier T6 (none done)",
+    "TEST xasset_leadlag at richer tier T3 (T2 done)",
+    "TEST fx_fixing_ratediv at richer tier T3 (none done)",
+    "QUEUE deepen_spreadMR_GC_execution: Lane G: real 2-leg calendar-spread execution model (deferred",
+    "QUEUE deepen_spreadMR_GC_searchN: Lane G: pin honest search-N for spreadMR_GC DSR (credible N<",
+    "QUEUE deepen_spreadMR_GC_robustness: Lane G: param robustness spreadMR_GC (z 1.0/2.0, lookback 12"
+  ],
+  "stale_labels": [],
+  "unresolved_learning_gaps": [
+    "INB-20260625-002",
+    "INB-20260701-010",
+    "INB-20260701-011"
+  ]
+}

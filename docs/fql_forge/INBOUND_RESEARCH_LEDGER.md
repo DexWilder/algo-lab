@@ -1,7 +1,7 @@
-# Inbound Research Ledger (rendered 2026-07-01 17:27 UTC)
+# Inbound Research Ledger (rendered 2026-07-01 17:49 UTC)
 > **Operating law:** if it is not in this ledger, the queue, the dashboard, or the control map — the system does not know it.
-> Source of truth: `research/data/inbound_research_ledger.json`. Capture: `python3 research/capture_inbound.py`. Items: **29**.
-> NEW:0 | P0/P1:7/16 | untriaged directives:0 | mistakes w/o control:3 | unused feeds:0 | source notes unresolved:0
+> Source of truth: `research/data/inbound_research_ledger.json`. Capture: `python3 research/capture_inbound.py`. Items: **30**.
+> NEW:0 | P0/P1:7/17 | untriaged directives:0 | mistakes w/o control:3 | unused feeds:0 | source notes unresolved:0
 
 | id | date | type | status | P | family | mechanism / issue | next action | linked (packet/queue/control) |
 |---|---|---|---|---|---|---|---|---|
@@ -15,6 +15,7 @@
 | INB-20260701-011 | 2026-07-01 | guardrail finding | CONTROL_REQUIRED | P1 | learning | LEARNING LOOP HALF-OPEN: novelty engine is template-only (blind to the | novelty reads ledger (down-weight dead families/up | — |
 | INB-20260613-001 | 2026-06-13 | validation failure | RETEST_REQUIRED | P1 | port fidelity | port byte-fidelity | prove signal-hash on audit window before wiring | feedback_port_fidelity_discipline |
 | INB-20260701-006 | 2026-07-01 | validation failure | RETEST_REQUIRED | P1 | execution realism | roll-adjacent concentration | 2-leg calendar-spread exec model + tick/1m near ro | deepen_spreadMR_GC_execution |
+| INB-20260701-014 | 2026-07-01 | claude discovery | RETEST_REQUIRED | P1 | intraday_micro | 1m+volume T3 microstructure harness built+run (tz-agnostic session det | next T3 packets: intraday 1m-path MR, settlement-w | — |
 | INB-20260701-001 | 2026-07-01 | paid-data idea | NEEDS_BESPOKE_HARNESS | P1 | gamma/dealer | dealer gamma / OPEX pin | build chunked loader then approx-GEX | — |
 | INB-20260701-005 | 2026-07-01 | validation failure | NEEDS_BESPOKE_HARNESS | P1 | multiple-testing | layered-N ambiguity | pin honest search-N; blocks advancement past SCREE | deepen_spreadMR_GC_searchN practice: report costed-DSR acros |
 | INB-20260626-005 | 2026-06-26 | data feed | ACTIVE_PACKET_LANE | P1 | macro/carry | unused feeds | attach each feed to a packet lane | queue:INB-20260626-005 guardrail unused-feeds |

@@ -1,5 +1,5 @@
 {
-  "report_date": "2026-06-29 17:38",
+  "report_date": "2026-06-30 17:38",
   "allocation_version": "1.0",
   "strategies": {
     "XB-PB-EMA-MES-Short": {
@@ -51,23 +51,23 @@
       ]
     },
     "ORB-MGC-Long": {
-      "base_tier": "BASE",
-      "target_tier": "BOOST",
-      "final_tier": "BOOST",
+      "base_tier": "REDUCED",
+      "target_tier": "BASE",
+      "final_tier": "BASE",
       "sessions": {
         "morning": {
-          "tier": 4,
-          "tier_name": "BOOST",
+          "tier": 3,
+          "tier_name": "BASE",
           "reason_codes": []
         },
         "midday": {
-          "tier": 4,
-          "tier_name": "BOOST",
+          "tier": 3,
+          "tier_name": "BASE",
           "reason_codes": []
         },
         "afternoon": {
-          "tier": 4,
-          "tier_name": "BOOST",
+          "tier": 3,
+          "tier_name": "BASE",
           "reason_codes": []
         }
       },
@@ -259,8 +259,8 @@
     "total_strategies": 7,
     "tier_distribution": {
       "MICRO": 1,
-      "BOOST": 2,
-      "BASE": 1,
+      "BASE": 2,
+      "BOOST": 1,
       "REDUCED": 3
     }
   }
