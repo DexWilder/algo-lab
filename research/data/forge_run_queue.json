@@ -29,6 +29,150 @@
       "status": "RUN_NOW",
       "lane": "commodity_carry",
       "note": "refined commodity TS expr (naive carry-sign KILLed 2026-07-01); de-trended/spread/roll \u2014 validators first, predeclared"
+    },
+    {
+      "id": "nov_benchmark_fix_6B",
+      "status": "BACKLOG",
+      "lane": "novelty",
+      "note": "execution window: benchmark-tracking funds transact at a known fix (16:00 WMR) [6B] harness=event-path-1m (validators first, predeclared)"
+    },
+    {
+      "id": "nov_benchmark_fix_6E",
+      "status": "BACKLOG",
+      "lane": "novelty",
+      "note": "execution window: benchmark-tracking funds transact at a known fix (16:00 WMR) [6E] harness=event-path-1m (validators first, predeclared)"
+    },
+    {
+      "id": "nov_benchmark_fix_6J",
+      "status": "BACKLOG",
+      "lane": "novelty",
+      "note": "execution window: benchmark-tracking funds transact at a known fix (16:00 WMR) [6J] harness=event-path-1m (validators first, predeclared)"
+    },
+    {
+      "id": "nov_benchmark_fix_M2K",
+      "status": "BACKLOG",
+      "lane": "novelty",
+      "note": "execution window: benchmark-tracking funds transact at a known fix (16:00 WMR) [M2K] harness=event-path-1m (validators first, predeclared)"
+    },
+    {
+      "id": "nov_benchmark_fix_MCL",
+      "status": "BACKLOG",
+      "lane": "novelty",
+      "note": "execution window: benchmark-tracking funds transact at a known fix (16:00 WMR) [MCL] harness=event-path-1m (validators first, predeclared)"
+    },
+    {
+      "id": "nov_benchmark_fix_MES",
+      "status": "BACKLOG",
+      "lane": "novelty",
+      "note": "execution window: benchmark-tracking funds transact at a known fix (16:00 WMR) [MES] harness=event-path-1m (validators first, predeclared)"
+    },
+    {
+      "id": "nov_benchmark_fix_MGC",
+      "status": "BACKLOG",
+      "lane": "novelty",
+      "note": "execution window: benchmark-tracking funds transact at a known fix (16:00 WMR) [MGC] harness=event-path-1m (validators first, predeclared)"
+    },
+    {
+      "id": "nov_benchmark_fix_MNQ",
+      "status": "BACKLOG",
+      "lane": "novelty",
+      "note": "execution window: benchmark-tracking funds transact at a known fix (16:00 WMR) [MNQ] harness=event-path-1m (validators first, predeclared)"
+    },
+    {
+      "id": "nov_benchmark_fix_MYM",
+      "status": "BACKLOG",
+      "lane": "novelty",
+      "note": "execution window: benchmark-tracking funds transact at a known fix (16:00 WMR) [MYM] harness=event-path-1m (validators first, predeclared)"
+    },
+    {
+      "id": "nov_benchmark_fix_ZN",
+      "status": "BACKLOG",
+      "lane": "novelty",
+      "note": "execution window: benchmark-tracking funds transact at a known fix (16:00 WMR) [ZN] harness=event-path-1m (validators first, predeclared)"
+    },
+    {
+      "id": "nov_roll_pressure_CL",
+      "status": "BACKLOG",
+      "lane": "novelty",
+      "note": "roll/settlement: longs must roll front->deferred over the roll window [CL] harness=term-structure (validators first, predeclared)"
+    },
+    {
+      "id": "nov_roll_pressure_GC",
+      "status": "BACKLOG",
+      "lane": "novelty",
+      "note": "roll/settlement: longs must roll front->deferred over the roll window [GC] harness=term-structure (validators first, predeclared)"
+    },
+    {
+      "id": "nov_roll_pressure_ZB",
+      "status": "BACKLOG",
+      "lane": "novelty",
+      "note": "roll/settlement: longs must roll front->deferred over the roll window [ZB] harness=term-structure (validators first, predeclared)"
+    },
+    {
+      "id": "nov_roll_pressure_ZF",
+      "status": "BACKLOG",
+      "lane": "novelty",
+      "note": "roll/settlement: longs must roll front->deferred over the roll window [ZF] harness=term-structure (validators first, predeclared)"
+    },
+    {
+      "id": "nov_roll_pressure_ZN",
+      "status": "BACKLOG",
+      "lane": "novelty",
+      "note": "roll/settlement: longs must roll front->deferred over the roll window [ZN] harness=term-structure (validators first, predeclared)"
+    },
+    {
+      "id": "nov_roll_pressure_ZT",
+      "status": "BACKLOG",
+      "lane": "novelty",
+      "note": "roll/settlement: longs must roll front->deferred over the roll window [ZT] harness=term-structure (validators first, predeclared)"
+    },
+    {
+      "id": "nov_auction_concession_M2K",
+      "status": "BACKLOG",
+      "lane": "novelty",
+      "note": "roll/settlement: dealers demand concession pre-auction, unwind post-auction [M2K] harness=event-adapter (validators first, predeclared)"
+    },
+    {
+      "id": "nov_auction_concession_MES",
+      "status": "BACKLOG",
+      "lane": "novelty",
+      "note": "roll/settlement: dealers demand concession pre-auction, unwind post-auction [MES] harness=event-adapter (validators first, predeclared)"
+    },
+    {
+      "id": "nov_auction_concession_MNQ",
+      "status": "BACKLOG",
+      "lane": "novelty",
+      "note": "roll/settlement: dealers demand concession pre-auction, unwind post-auction [MNQ] harness=event-adapter (validators first, predeclared)"
+    },
+    {
+      "id": "nov_auction_concession_MYM",
+      "status": "BACKLOG",
+      "lane": "novelty",
+      "note": "roll/settlement: dealers demand concession pre-auction, unwind post-auction [MYM] harness=event-adapter (validators first, predeclared)"
+    },
+    {
+      "id": "nov_auction_concession_ZB",
+      "status": "BACKLOG",
+      "lane": "novelty",
+      "note": "roll/settlement: dealers demand concession pre-auction, unwind post-auction [ZB] harness=event-adapter (validators first, predeclared)"
+    },
+    {
+      "id": "nov_auction_concession_ZF",
+      "status": "BACKLOG",
+      "lane": "novelty",
+      "note": "roll/settlement: dealers demand concession pre-auction, unwind post-auction [ZF] harness=event-adapter (validators first, predeclared)"
+    },
+    {
+      "id": "nov_auction_concession_ZN",
+      "status": "BACKLOG",
+      "lane": "novelty",
+      "note": "roll/settlement: dealers demand concession pre-auction, unwind post-auction [ZN] harness=event-adapter (validators first, predeclared)"
+    },
+    {
+      "id": "nov_auction_concession_ZT",
+      "status": "BACKLOG",
+      "lane": "novelty",
+      "note": "roll/settlement: dealers demand concession pre-auction, unwind post-auction [ZT] harness=event-adapter (validators first, predeclared)"
     }
   ]
 }

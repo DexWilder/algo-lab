@@ -1,0 +1,234 @@
+{
+  "note": "Family status registry. forge_family_map.py reads this + the trial ledger and computes coverage; it FLAGS drift (status=EXHAUSTED but coverage<100%, or status=ACTIVE but 0 untested). Update tested/untested as expressions run.",
+  "families": {
+    "trend_momentum": {
+      "lane": "primitive_sweep",
+      "status": "CLEAN_BUT_WEAK",
+      "data": "LOCAL",
+      "tested": [
+        "TSMOM",
+        "primitive-sweep"
+      ],
+      "untested": [
+        "pooled vol-target trend",
+        "trend+carry combo"
+      ]
+    },
+    "mean_reversion": {
+      "lane": "primitive_sweep",
+      "status": "CLEAN_KILL",
+      "data": "LOCAL",
+      "tested": [
+        "VWAP-revert",
+        "5m-MR-primitive"
+      ],
+      "untested": []
+    },
+    "carry_rates": {
+      "lane": "curve_rv",
+      "status": "CLEAN_KILL",
+      "data": "LOCAL",
+      "tested": [
+        "naive roll-yield sign",
+        "xsec carry-rank"
+      ],
+      "untested": []
+    },
+    "carry_commodity": {
+      "lane": "commodity_carry",
+      "status": "ACTIVE_EXPANSION",
+      "data": "LOCAL",
+      "tested": [
+        "CL naive carry-sign",
+        "GC naive carry-sign(EXPR_INVALID)",
+        "xsec CL/GC"
+      ],
+      "untested": [
+        "GC de-trended z-carry",
+        "spread momentum",
+        "spread mean-reversion",
+        "roll-window pressure"
+      ]
+    },
+    "curve_rv": {
+      "lane": "curve_rv",
+      "status": "SUBFAMILY_KILLED",
+      "data": "LOCAL",
+      "tested": [
+        "2s5s10s DV01 fly",
+        "5s10s30s fly"
+      ],
+      "untested": [
+        "2s10s slope momentum",
+        "Kalman spread"
+      ]
+    },
+    "vol_risk_premium": {
+      "lane": "exploratory",
+      "status": "CLEAN_BUT_WEAK",
+      "data": "LOCAL",
+      "tested": [
+        "vol-carry vix.csv",
+        "DVOL_ETH"
+      ],
+      "untested": [
+        "true-curve VRP (paid)"
+      ]
+    },
+    "gamma_dealer": {
+      "lane": "exploratory",
+      "status": "FEASIBLE",
+      "data": "REPULL_PAID",
+      "tested": [
+        "feasibility-memo"
+      ],
+      "untested": [
+        "chunked-OI loader",
+        "approx-GEX",
+        "GEX-regime pin",
+        "gamma-flip accel"
+      ]
+    },
+    "positioning_cot": {
+      "lane": "positioning",
+      "status": "SUBFAMILY_KILLED",
+      "data": "LOCAL",
+      "tested": [
+        "naive COT fade x48"
+      ],
+      "untested": [
+        "COT+price-break conditional"
+      ]
+    },
+    "auction_issuance": {
+      "lane": "forced_flow",
+      "status": "SUBFAMILY_KILLED",
+      "data": "LOCAL",
+      "tested": [
+        "wp_b1 concession"
+      ],
+      "untested": [
+        "tenor-divergence concession"
+      ]
+    },
+    "inventory_eia": {
+      "lane": "forced_flow",
+      "status": "DATA_BLOCKED_CERT",
+      "data": "CERT",
+      "tested": [],
+      "untested": [
+        "EIA surprise hedge"
+      ]
+    },
+    "macro_event_drift": {
+      "lane": "macro_regime",
+      "status": "CLEAN_BUT_WEAK",
+      "data": "LOCAL",
+      "tested": [
+        "FOMC drift",
+        "NFP levels"
+      ],
+      "untested": [
+        "CPI drift",
+        "event-1m-path"
+      ]
+    },
+    "monthend_settlement": {
+      "lane": "forced_flow",
+      "status": "CLEAN_BUT_WEAK",
+      "data": "LOCAL",
+      "tested": [
+        "ZN month-end"
+      ],
+      "untested": [
+        "ZF/ZB month-end",
+        "settlement-1m revert",
+        "index-rebal"
+      ]
+    },
+    "expiry_opex": {
+      "lane": "exploratory",
+      "status": "FEASIBLE",
+      "data": "REPULL_PAID",
+      "tested": [],
+      "untested": [
+        "OPEX-gamma-pin (via gamma lane)"
+      ]
+    },
+    "open_close_liquidity": {
+      "lane": "databento_volume",
+      "status": "CLEAN_BUT_WEAK",
+      "data": "LOCAL",
+      "tested": [
+        "opening-drive"
+      ],
+      "untested": [
+        "settlement-close revert",
+        "opening-imbalance re-spec"
+      ]
+    },
+    "intraday_micro": {
+      "lane": "databento_volume",
+      "status": "SUBFAMILY_KILLED",
+      "data": "LOCAL",
+      "tested": [
+        "volume-direction x3"
+      ],
+      "untested": [
+        "ES-NQ lead-lag latency"
+      ]
+    },
+    "xasset_leadlag": {
+      "lane": "exploratory",
+      "status": "UNDERTESTED",
+      "data": "LOCAL",
+      "tested": [
+        "cross-asset-vol"
+      ],
+      "untested": [
+        "pure latency lead-lag"
+      ]
+    },
+    "regime_filters": {
+      "lane": "macro_regime",
+      "status": "UNDERTESTED",
+      "data": "LOCAL",
+      "tested": [
+        "P19 credit/vol (weak)"
+      ],
+      "untested": [
+        "regime overlay on a survivor (needs survivor)"
+      ]
+    },
+    "execution_cost": {
+      "lane": "exploratory",
+      "status": "ACTIVE_TOOL",
+      "data": "LOCAL",
+      "tested": [
+        "participation-cost model"
+      ],
+      "untested": [
+        "liquidity risk-filter"
+      ]
+    },
+    "crypto_funding": {
+      "lane": "crypto_carry",
+      "status": "CLEAN_KILL",
+      "data": "LOCAL",
+      "tested": [
+        "perp funding carry P22"
+      ],
+      "untested": []
+    },
+    "fx_fixing_ratediv": {
+      "lane": "exploratory",
+      "status": "UNDERTESTED",
+      "data": "LOCAL",
+      "tested": [],
+      "untested": [
+        "WMR 16:00 fix flow",
+        "policy-rate divergence"
+      ]
+    }
+  }
+}

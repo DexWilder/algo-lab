@@ -1,0 +1,220 @@
+{
+  "packets": {
+    "benchmark_fix::6B": {
+      "tid": "benchmark_fix",
+      "sym": "6B",
+      "dim": "execution window",
+      "avail": "LOCAL",
+      "score": 9,
+      "harness": "event-path-1m",
+      "created": "2026-07-01"
+    },
+    "benchmark_fix::6E": {
+      "tid": "benchmark_fix",
+      "sym": "6E",
+      "dim": "execution window",
+      "avail": "LOCAL",
+      "score": 9,
+      "harness": "event-path-1m",
+      "created": "2026-07-01"
+    },
+    "benchmark_fix::6J": {
+      "tid": "benchmark_fix",
+      "sym": "6J",
+      "dim": "execution window",
+      "avail": "LOCAL",
+      "score": 9,
+      "harness": "event-path-1m",
+      "created": "2026-07-01"
+    },
+    "benchmark_fix::M2K": {
+      "tid": "benchmark_fix",
+      "sym": "M2K",
+      "dim": "execution window",
+      "avail": "LOCAL",
+      "score": 9,
+      "harness": "event-path-1m",
+      "created": "2026-07-01"
+    },
+    "benchmark_fix::MCL": {
+      "tid": "benchmark_fix",
+      "sym": "MCL",
+      "dim": "execution window",
+      "avail": "LOCAL",
+      "score": 9,
+      "harness": "event-path-1m",
+      "created": "2026-07-01"
+    },
+    "benchmark_fix::MES": {
+      "tid": "benchmark_fix",
+      "sym": "MES",
+      "dim": "execution window",
+      "avail": "LOCAL",
+      "score": 9,
+      "harness": "event-path-1m",
+      "created": "2026-07-01"
+    },
+    "benchmark_fix::MGC": {
+      "tid": "benchmark_fix",
+      "sym": "MGC",
+      "dim": "execution window",
+      "avail": "LOCAL",
+      "score": 9,
+      "harness": "event-path-1m",
+      "created": "2026-07-01"
+    },
+    "benchmark_fix::MNQ": {
+      "tid": "benchmark_fix",
+      "sym": "MNQ",
+      "dim": "execution window",
+      "avail": "LOCAL",
+      "score": 9,
+      "harness": "event-path-1m",
+      "created": "2026-07-01"
+    },
+    "benchmark_fix::MYM": {
+      "tid": "benchmark_fix",
+      "sym": "MYM",
+      "dim": "execution window",
+      "avail": "LOCAL",
+      "score": 9,
+      "harness": "event-path-1m",
+      "created": "2026-07-01"
+    },
+    "benchmark_fix::ZN": {
+      "tid": "benchmark_fix",
+      "sym": "ZN",
+      "dim": "execution window",
+      "avail": "LOCAL",
+      "score": 9,
+      "harness": "event-path-1m",
+      "created": "2026-07-01"
+    },
+    "roll_pressure::CL": {
+      "tid": "roll_pressure",
+      "sym": "CL",
+      "dim": "roll/settlement",
+      "avail": "LOCAL",
+      "score": 9,
+      "harness": "term-structure",
+      "created": "2026-07-01"
+    },
+    "roll_pressure::GC": {
+      "tid": "roll_pressure",
+      "sym": "GC",
+      "dim": "roll/settlement",
+      "avail": "LOCAL",
+      "score": 9,
+      "harness": "term-structure",
+      "created": "2026-07-01"
+    },
+    "roll_pressure::ZB": {
+      "tid": "roll_pressure",
+      "sym": "ZB",
+      "dim": "roll/settlement",
+      "avail": "LOCAL",
+      "score": 9,
+      "harness": "term-structure",
+      "created": "2026-07-01"
+    },
+    "roll_pressure::ZF": {
+      "tid": "roll_pressure",
+      "sym": "ZF",
+      "dim": "roll/settlement",
+      "avail": "LOCAL",
+      "score": 9,
+      "harness": "term-structure",
+      "created": "2026-07-01"
+    },
+    "roll_pressure::ZN": {
+      "tid": "roll_pressure",
+      "sym": "ZN",
+      "dim": "roll/settlement",
+      "avail": "LOCAL",
+      "score": 9,
+      "harness": "term-structure",
+      "created": "2026-07-01"
+    },
+    "roll_pressure::ZT": {
+      "tid": "roll_pressure",
+      "sym": "ZT",
+      "dim": "roll/settlement",
+      "avail": "LOCAL",
+      "score": 9,
+      "harness": "term-structure",
+      "created": "2026-07-01"
+    },
+    "auction_concession::M2K": {
+      "tid": "auction_concession",
+      "sym": "M2K",
+      "dim": "roll/settlement",
+      "avail": "LOCAL",
+      "score": 6,
+      "harness": "event-adapter",
+      "created": "2026-07-01"
+    },
+    "auction_concession::MES": {
+      "tid": "auction_concession",
+      "sym": "MES",
+      "dim": "roll/settlement",
+      "avail": "LOCAL",
+      "score": 6,
+      "harness": "event-adapter",
+      "created": "2026-07-01"
+    },
+    "auction_concession::MNQ": {
+      "tid": "auction_concession",
+      "sym": "MNQ",
+      "dim": "roll/settlement",
+      "avail": "LOCAL",
+      "score": 6,
+      "harness": "event-adapter",
+      "created": "2026-07-01"
+    },
+    "auction_concession::MYM": {
+      "tid": "auction_concession",
+      "sym": "MYM",
+      "dim": "roll/settlement",
+      "avail": "LOCAL",
+      "score": 6,
+      "harness": "event-adapter",
+      "created": "2026-07-01"
+    },
+    "auction_concession::ZB": {
+      "tid": "auction_concession",
+      "sym": "ZB",
+      "dim": "roll/settlement",
+      "avail": "LOCAL",
+      "score": 6,
+      "harness": "event-adapter",
+      "created": "2026-07-01"
+    },
+    "auction_concession::ZF": {
+      "tid": "auction_concession",
+      "sym": "ZF",
+      "dim": "roll/settlement",
+      "avail": "LOCAL",
+      "score": 6,
+      "harness": "event-adapter",
+      "created": "2026-07-01"
+    },
+    "auction_concession::ZN": {
+      "tid": "auction_concession",
+      "sym": "ZN",
+      "dim": "roll/settlement",
+      "avail": "LOCAL",
+      "score": 6,
+      "harness": "event-adapter",
+      "created": "2026-07-01"
+    },
+    "auction_concession::ZT": {
+      "tid": "auction_concession",
+      "sym": "ZT",
+      "dim": "roll/settlement",
+      "avail": "LOCAL",
+      "score": 6,
+      "harness": "event-adapter",
+      "created": "2026-07-01"
+    }
+  }
+}
