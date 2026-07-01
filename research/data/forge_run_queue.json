@@ -1,28 +1,28 @@
 {
   "queue": [
     {
-      "id": "family_value",
-      "script": "research/forge_family_value.py",
+      "id": "commodity_carry_CLGC",
+      "script": "research/forge_sprint_commodity_carry.py",
       "status": "QUEUED_NEEDS_SCRIPT",
-      "note": "FX-PPP/real-yield value on macro feeds"
+      "note": "CL/GC contango-backwardation carry on deep per-contract curves (real premium)"
     },
     {
-      "id": "family_carry_proper",
+      "id": "rates_xsec_carry",
       "script": "-",
-      "status": "DATA_BLOCKED",
-      "note": "cross-sectional roll-yield + commodity term-structure: needs rates_multicontract + commodity curves (Lane-1)"
+      "status": "FAMILY_UNDERTESTED",
+      "note": "proper cross-sectional DV01-normalized long/short carry (1 clean variant left; naive roll-yield=KILL)"
     },
     {
-      "id": "event_1m_path",
-      "script": "research/forge_family_event_1m.py",
-      "status": "QUEUED_NEEDS_SCRIPT",
-      "note": "FOMC/NFP/CPI/settlement Databento 1m path"
+      "id": "gamma_options",
+      "script": "-",
+      "status": "OPERATOR_COST_APPROVAL_REQUIRED",
+      "note": "ES.OPT gamma/OI pull $9.58 + statistics schema for OI"
     },
     {
-      "id": "carry_family",
-      "script": "research/forge_family_carry.py",
+      "id": "rates_ts_sprint",
+      "script": "research/forge_sprint_rates_termstructure.py",
       "status": "DONE",
-      "verdict": "CLEAN_KILL (available); proper=DATA_BLOCKED"
+      "verdict": "CLEAN_KILL (naive carry + 2s5s10s RV dead on real data)"
     }
   ]
 }

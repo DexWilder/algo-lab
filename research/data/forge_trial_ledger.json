@@ -14021,6 +14021,33 @@
       "horizon": "",
       "lane": "carry",
       "ts": "2026-07-01"
+    },
+    {
+      "packet": "RATES_TS:carry_pooled",
+      "asset": "",
+      "sharpe": 0.11,
+      "verdict": "family",
+      "horizon": "",
+      "lane": "curve_rv",
+      "ts": "2026-07-01"
+    },
+    {
+      "packet": "RATES_TS:carry_rank",
+      "asset": "",
+      "sharpe": 0.24,
+      "verdict": "family",
+      "horizon": "",
+      "lane": "curve_rv",
+      "ts": "2026-07-01"
+    },
+    {
+      "packet": "RATES_TS:2s5s10s_rv",
+      "asset": "",
+      "sharpe": -0.99,
+      "verdict": "family",
+      "horizon": "",
+      "lane": "curve_rv",
+      "ts": "2026-07-01"
     }
   ],
   "note": "auto multiple-testing N; every test appends"
