@@ -71,3 +71,6 @@ Lessons: (1) yield-space edge != futures-space edge (paper-to-tradeable gap is h
 mismatch (signal 2s5s10s; futures 5s10s30s, no ZT 2y); (3) continuous .c.0 roll artifacts. The PROPER tradeable test
 of the 2s5s10s signal is DATA_BLOCKED -> needs ZT 2y + rates_multicontract.csv (Lane-1 #1). No validated primary.
 Queue moves on (Lane-2 feasible-now: FX-fix, settlement-close, ES-NQ-lead-lag).
+
+## WORDING PRECISION (2026-07-01): rates kill is SCOPED
+CLEAN_KILL applies to: **daily per-contract ZT/ZF/ZN/ZB carry (naive+cross-sectional) + 2s5s10s DV01 RV**. NOT 'all rates exhausted'. SEPARATE untested rates families: intraday event-path, FOMC/rate-settlement, auction microstructure. Gamma FEASIBLE (memo). Commodity carry = RUN_NOW next.

@@ -4,19 +4,13 @@
       "id": "commodity_carry_CLGC",
       "script": "research/forge_sprint_commodity_carry.py",
       "status": "RUN_NOW",
-      "note": "CL/GC contango-backwardation carry, deep curves; validate data+expr first"
+      "note": "family-aware: CL carry, GC carry, xsec, front/deferred spread mom+MR, roll-window; validators first; CL/MCL GC/MGC mapping stated"
     },
     {
-      "id": "gamma_options",
+      "id": "gamma_chunked_loader_then_regime",
       "script": "-",
-      "status": "OPERATOR_COST_APPROVAL_REQUIRED",
-      "note": "ES.OPT $9.58 > $5 auto-threshold; needs nod + statistics schema for OI"
-    },
-    {
-      "id": "rates_xsec_carry",
-      "script": "research/forge_sprint_rates_xsec_carry.py",
-      "status": "DONE",
-      "verdict": "CLEAN_KILL (long-leg 81% ZB; family fairly exhausted: naive+xsec carry+2s5s10s RV all dead)"
+      "status": "ACTIVE_PACKET_LANE",
+      "note": "chunked OI loader -> approx-GEX -> predeclared GEX-regime test (feasibility done)"
     }
   ]
 }
