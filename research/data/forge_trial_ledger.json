@@ -14057,6 +14057,33 @@
       "horizon": "",
       "lane": "carry",
       "ts": "2026-07-01"
+    },
+    {
+      "packet": "COMMODITY_CARRY:CL",
+      "asset": "CL",
+      "sharpe": 0.11,
+      "verdict": "family",
+      "horizon": "",
+      "lane": "commodity_carry",
+      "ts": "2026-07-01"
+    },
+    {
+      "packet": "COMMODITY_CARRY:GC",
+      "asset": "GC",
+      "sharpe": -0.48,
+      "verdict": "family",
+      "horizon": "",
+      "lane": "commodity_carry",
+      "ts": "2026-07-01"
+    },
+    {
+      "packet": "COMMODITY_CARRY:xsec",
+      "asset": "",
+      "sharpe": 0.32,
+      "verdict": "family",
+      "horizon": "",
+      "lane": "commodity_carry",
+      "ts": "2026-07-01"
     }
   ],
   "note": "auto multiple-testing N; every test appends"

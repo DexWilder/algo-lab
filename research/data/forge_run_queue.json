@@ -1,16 +1,34 @@
 {
   "queue": [
     {
-      "id": "commodity_carry_CLGC",
-      "script": "research/forge_sprint_commodity_carry.py",
-      "status": "RUN_NOW",
-      "note": "family-aware: CL carry, GC carry, xsec, front/deferred spread mom+MR, roll-window; validators first; CL/MCL GC/MGC mapping stated"
-    },
-    {
       "id": "gamma_chunked_loader_then_regime",
       "script": "-",
       "status": "ACTIVE_PACKET_LANE",
       "note": "chunked OI loader -> approx-GEX -> predeclared GEX-regime test (feasibility done)"
+    },
+    {
+      "id": "gc_detrended_carry_zscore",
+      "status": "RUN_NOW",
+      "lane": "commodity_carry",
+      "note": "refined commodity TS expr (naive carry-sign KILLed 2026-07-01); de-trended/spread/roll \u2014 validators first, predeclared"
+    },
+    {
+      "id": "clgc_spread_momentum",
+      "status": "RUN_NOW",
+      "lane": "commodity_carry",
+      "note": "refined commodity TS expr (naive carry-sign KILLed 2026-07-01); de-trended/spread/roll \u2014 validators first, predeclared"
+    },
+    {
+      "id": "clgc_spread_meanreversion",
+      "status": "RUN_NOW",
+      "lane": "commodity_carry",
+      "note": "refined commodity TS expr (naive carry-sign KILLed 2026-07-01); de-trended/spread/roll \u2014 validators first, predeclared"
+    },
+    {
+      "id": "roll_window_pressure_contango",
+      "status": "RUN_NOW",
+      "lane": "commodity_carry",
+      "note": "refined commodity TS expr (naive carry-sign KILLed 2026-07-01); de-trended/spread/roll \u2014 validators first, predeclared"
     }
   ]
 }
