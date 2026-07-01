@@ -230,6 +230,19 @@
         "WMR 16:00 fix flow",
         "policy-rate divergence"
       ]
+    },
+    "carry_legacy_fx_rates": {
+      "lane": "carry",
+      "status": "CLEAN_KILL",
+      "data": "LOCAL",
+      "data_tier": "daily-feed",
+      "tested": [
+        "rates rolldown ZN",
+        "cross-tenor rank",
+        "FX carry USDJPY"
+      ],
+      "untested": [],
+      "note": "superseded by carry_rates + carry_commodity"
     }
   }
 }

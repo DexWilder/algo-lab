@@ -486,6 +486,42 @@
       "linked_packet": null,
       "linked_queue": null,
       "linked_control": null
+    },
+    {
+      "inbound_id": "INB-20260701-012",
+      "date": "2026-07-01",
+      "source_type": "operator directive",
+      "source_ref": null,
+      "raw_note": "Make learning+improvement automatic each step; regular self-audit of every implemented facet; track roadmap; goal = most novel+elite machine",
+      "mechanism": null,
+      "family": "governance",
+      "required_data": null,
+      "available_data": null,
+      "required_harness": "forge_self_audit.py + FOUNDATION_DOCTRINE_AND_ELITE_ROADMAP",
+      "status": "ACTIVE_PACKET_LANE",
+      "priority": "P0",
+      "next_action": "Phase 1: data-tier gate + learning-loop closure + infra freeze + 1m/volume harness",
+      "linked_packet": null,
+      "linked_queue": "queue:INB-20260701-012",
+      "linked_control": "forge_self_audit.py + FOUNDATION_DOCTRINE doc"
+    },
+    {
+      "inbound_id": "INB-20260701-013",
+      "date": "2026-07-01",
+      "source_type": "guardrail finding",
+      "source_ref": null,
+      "raw_note": "Self-audit watchdog built: audits 12 facets/cycle (present+functioning+fresh+consistent); enforces per-step learning (flags stale family_status/dashboard/inbound)",
+      "mechanism": null,
+      "family": "governance",
+      "required_data": null,
+      "available_data": null,
+      "required_harness": null,
+      "status": "TRIAGED",
+      "priority": "P1",
+      "next_action": "wire into every-cycle runner",
+      "linked_packet": null,
+      "linked_queue": null,
+      "linked_control": "forge_self_audit.py"
     }
   ]
 }

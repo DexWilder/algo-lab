@@ -215,6 +215,12 @@
       "status": "BACKLOG",
       "lane": "inbound",
       "note": "[organizational memory] Build the inbound capture system (no terminal-only discoveries)"
+    },
+    {
+      "id": "INB-20260701-012",
+      "status": "BACKLOG",
+      "lane": "inbound",
+      "note": "[governance] Make learning+improvement automatic each step; regular self-audit of every implemented fac"
     }
   ]
 }

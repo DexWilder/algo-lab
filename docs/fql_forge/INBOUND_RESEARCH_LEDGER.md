@@ -1,13 +1,14 @@
-# Inbound Research Ledger (rendered 2026-07-01 17:16 UTC)
+# Inbound Research Ledger (rendered 2026-07-01 17:27 UTC)
 > **Operating law:** if it is not in this ledger, the queue, the dashboard, or the control map — the system does not know it.
-> Source of truth: `research/data/inbound_research_ledger.json`. Capture: `python3 research/capture_inbound.py`. Items: **27**.
-> NEW:0 | P0/P1:6/15 | untriaged directives:0 | mistakes w/o control:3 | unused feeds:0 | source notes unresolved:0
+> Source of truth: `research/data/inbound_research_ledger.json`. Capture: `python3 research/capture_inbound.py`. Items: **29**.
+> NEW:0 | P0/P1:7/16 | untriaged directives:0 | mistakes w/o control:3 | unused feeds:0 | source notes unresolved:0
 
 | id | date | type | status | P | family | mechanism / issue | next action | linked (packet/queue/control) |
 |---|---|---|---|---|---|---|---|---|
 | INB-20260701-010 | 2026-07-01 | guardrail finding | CONTROL_REQUIRED | P0 | governance | INFRA DRIFT: 250 infra scripts + 138 forge docs + 90 memory files; new | declare INFRA FREEZE; retire dormant one-off scrip | — |
 | INB-20260701-009 | 2026-07-01 | claude discovery | RETEST_REQUIRED | P0 | data governance | DATA GAP: hold 11 instruments x ~7.9M 1m bars+volume (441MB) + 6 per-c | build ONE clean 1m/volume/microstructure harness;  | — |
 | INB-20260701-008 | 2026-07-01 | operator directive | ACTIVE_PACKET_LANE | P0 | organizational memory | inbound ledger->triage->queue->control->dashboard | operationalize + backfill (this build) | queue:INB-20260701-008 capture_inbound.py + INBOUND_TRIAGE_R |
+| INB-20260701-012 | 2026-07-01 | operator directive | ACTIVE_PACKET_LANE | P0 | governance | Make learning+improvement automatic each step; regular self-audit of e | Phase 1: data-tier gate + learning-loop closure +  | queue:INB-20260701-012 forge_self_audit.py + FOUNDATION_DOCT |
 | INB-20260625-001 | 2026-06-25 | bug | TRIAGED | P0 | causality | same-day-close lookahead | ORB family INVALIDATED | causality_audit.py + memory project_orb_ema_slope_lookahead |
 | INB-20260626-001 | 2026-06-26 | operator directive | TRIAGED | P0 | data governance | inventory-before-exhausted-claim | keep databento/1m lane active | forge_system_guardrails.py (unused-databento) + memory inven |
 | INB-20260630-001 | 2026-06-30 | bug | TRIAGED | P0 | data governance | unproven blocker claim | none — control locked | DATA_BLOCKER_CERTIFICATES + guardrail P1 (cert required) |
@@ -25,6 +26,7 @@
 | INB-20260629-001 | 2026-06-29 | guardrail finding | TRIAGED | P1 | multiple-testing | uncounted multiple-testing N | DSR reads count() | forge_trial_ledger.py (automatic count) |
 | INB-20260630-004 | 2026-06-30 | operator directive | TRIAGED | P1 | sourcing | grow opportunity surface | run novelty engine, keep BACKLOG full | forge_novelty_engine.py (generative) + ALPHA_RESEARCH_OS_ELI |
 | INB-20260630-005 | 2026-06-30 | operator directive | TRIAGED | P1 | validation | hostile second-pass | review every hardening result; later OpenClaw red- | adversarial_result_review.py |
+| INB-20260701-013 | 2026-07-01 | guardrail finding | TRIAGED | P1 | governance | Self-audit watchdog built: audits 12 facets/cycle (present+functioning | wire into every-cycle runner | forge_self_audit.py |
 | INB-20260701-003 | 2026-07-01 | claude discovery | PROMOTED_TO_PACKET | P1 | carry_commodity | gold calendar-spread mean-reversion | Lane G deepening (operator-gated for capital) | SCREEN_PASS_CANDIDATE_spreadMR_GC_2026-07-01.md deepen_sprea |
 | INB-20260625-002 | 2026-06-25 | bug | CONTROL_REQUIRED | P2 | automation | stale tripwire not firing | add freshness check to loop | — |
 | INB-20260616-001 | 2026-06-16 | old report | RETEST_REQUIRED | P2 | rescue (Lane F) | dormant inventory | retest under truth-gated harness, ranked | Lane F rescue |

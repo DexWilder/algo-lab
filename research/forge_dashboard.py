@@ -29,6 +29,9 @@ g=subprocess.run([sys.executable,str(REPO/"research/forge_system_guardrails.py")
 gv="P0_FAIL" if g.returncode!=0 else "clean/P1"
 p0=[l.strip() for l in g.stdout.splitlines() if "[P0]" in l]; p1=[l.strip() for l in g.stdout.splitlines() if "[P1]" in l]
 backlog=sh("rev-list","--count","origin/main..HEAD") or "0"
+sa=subprocess.run([sys.executable,str(REPO/"research/forge_self_audit.py")],capture_output=True,text=True,timeout=120)
+sav=next((l.split("VERDICT:")[1].split("(")[0].strip() for l in sa.stdout.splitlines() if "VERDICT:" in l),"?")
+sa_line=next((l.strip() for l in sa.stdout.splitlines() if l.startswith("facets=")),"")
 ncycle=len(glob.glob(str(REPO/"research/forge_cycle_*.py")))+len(glob.glob(str(REPO/"research/forge_sprint_*.py")))+len(glob.glob(str(REPO/"research/forge_family_*.py")))
 lanes=lane_breakdown()
 stamp=datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
@@ -37,7 +40,8 @@ out=f"""# ALPHA RESEARCH DASHBOARD (auto-generated {stamp})
 
 ## HEADLINE
 - **Validated primaries: 0** (highest ladder rung: **{hi}**; capital gate FAIL-CLOSED, PAPER_APPROVED+ operator-only).
-- Guardrails: **{gv}** | Git backlog: **{backlog}** | Test scripts run: {ncycle} | Global trial-N: **{count()}**
+- Guardrails: **{gv}** | Self-audit: **{sav}** ({sa_line}) | Git backlog: **{backlog}** | Global trial-N: **{count()}**
+- **Roadmap:** end Phase 0 → entering Phase 1 (foundation hardening: data-tier gate, learning-loop closure, infra freeze, 1m/volume harness). Doctrine: `docs/fql_forge/FOUNDATION_DOCTRINE_AND_ELITE_ROADMAP_2026-07-01.md`
 
 ## Throughput (computed live)
 - Tests logged today: **{tested_today}** | total kills: {kills} | screen-passes: {screenpass}
