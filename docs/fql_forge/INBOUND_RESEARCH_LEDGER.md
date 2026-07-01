@@ -1,14 +1,17 @@
-# Inbound Research Ledger (rendered 2026-07-01 17:09 UTC)
+# Inbound Research Ledger (rendered 2026-07-01 17:16 UTC)
 > **Operating law:** if it is not in this ledger, the queue, the dashboard, or the control map — the system does not know it.
-> Source of truth: `research/data/inbound_research_ledger.json`. Capture: `python3 research/capture_inbound.py`. Items: **24**.
-> NEW:0 | P0/P1:4/14 | untriaged directives:0 | mistakes w/o control:1 | unused feeds:0 | source notes unresolved:0
+> Source of truth: `research/data/inbound_research_ledger.json`. Capture: `python3 research/capture_inbound.py`. Items: **27**.
+> NEW:0 | P0/P1:6/15 | untriaged directives:0 | mistakes w/o control:3 | unused feeds:0 | source notes unresolved:0
 
 | id | date | type | status | P | family | mechanism / issue | next action | linked (packet/queue/control) |
 |---|---|---|---|---|---|---|---|---|
+| INB-20260701-010 | 2026-07-01 | guardrail finding | CONTROL_REQUIRED | P0 | governance | INFRA DRIFT: 250 infra scripts + 138 forge docs + 90 memory files; new | declare INFRA FREEZE; retire dormant one-off scrip | — |
+| INB-20260701-009 | 2026-07-01 | claude discovery | RETEST_REQUIRED | P0 | data governance | DATA GAP: hold 11 instruments x ~7.9M 1m bars+volume (441MB) + 6 per-c | build ONE clean 1m/volume/microstructure harness;  | — |
 | INB-20260701-008 | 2026-07-01 | operator directive | ACTIVE_PACKET_LANE | P0 | organizational memory | inbound ledger->triage->queue->control->dashboard | operationalize + backfill (this build) | queue:INB-20260701-008 capture_inbound.py + INBOUND_TRIAGE_R |
 | INB-20260625-001 | 2026-06-25 | bug | TRIAGED | P0 | causality | same-day-close lookahead | ORB family INVALIDATED | causality_audit.py + memory project_orb_ema_slope_lookahead |
 | INB-20260626-001 | 2026-06-26 | operator directive | TRIAGED | P0 | data governance | inventory-before-exhausted-claim | keep databento/1m lane active | forge_system_guardrails.py (unused-databento) + memory inven |
 | INB-20260630-001 | 2026-06-30 | bug | TRIAGED | P0 | data governance | unproven blocker claim | none — control locked | DATA_BLOCKER_CERTIFICATES + guardrail P1 (cert required) |
+| INB-20260701-011 | 2026-07-01 | guardrail finding | CONTROL_REQUIRED | P1 | learning | LEARNING LOOP HALF-OPEN: novelty engine is template-only (blind to the | novelty reads ledger (down-weight dead families/up | — |
 | INB-20260613-001 | 2026-06-13 | validation failure | RETEST_REQUIRED | P1 | port fidelity | port byte-fidelity | prove signal-hash on audit window before wiring | feedback_port_fidelity_discipline |
 | INB-20260701-006 | 2026-07-01 | validation failure | RETEST_REQUIRED | P1 | execution realism | roll-adjacent concentration | 2-leg calendar-spread exec model + tick/1m near ro | deepen_spreadMR_GC_execution |
 | INB-20260701-001 | 2026-07-01 | paid-data idea | NEEDS_BESPOKE_HARNESS | P1 | gamma/dealer | dealer gamma / OPEX pin | build chunked loader then approx-GEX | — |
