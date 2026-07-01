@@ -112,6 +112,22 @@ if unrun:
     alert("P1", f"UNRUN HARNESSES: {len(unrun)} wp_/lever_ harnesses with no output (built-but-never-run): {unrun}")
 else: info.append("harnesses: all have output")
 
+# --- 9) DATA_BLOCKED requires a CERTIFICATE (the $0.30-was-not-blocked failure class) ---
+cert=REPO/"docs/fql_forge/DATA_BLOCKER_CERTIFICATES_2026-06-30.md"
+recent_md=sorted(_glob.glob(str(REPO/"docs/fql_forge/*.md")), key=lambda p: os.path.getmtime(p), reverse=True)[:6]
+blocked_hits=[]
+for d in recent_md:
+    if Path(d).name==cert.name: continue
+    for i,ln in enumerate(Path(d).read_text(errors="ignore").splitlines()):
+        if re.search(r"DATA_BLOCKED|PAID_DATA_REQUIRED", ln) and "certificate" not in ln.lower() and "DATA_STATUS_UNPROVEN" not in ln:
+            blocked_hits.append(f"{Path(d).name}:{i+1}")
+if blocked_hits and not cert.exists():
+    alert("P1", f"DATA_BLOCKED without certificate: {len(blocked_hits)} mentions, no DATA_BLOCKER_CERTIFICATES doc. Prove it or label DATA_STATUS_UNPROVEN.")
+elif not cert.exists():
+    info.append("no DATA_BLOCKED claims / cert n/a")
+else:
+    info.append(f"data-blocker certificates present ({len(blocked_hits)} recent blocked-mentions, cert exists)")
+
 # --- WRITE STATUS where the next session reads it ---
 stamp=datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
 p0=[m for s,m in alerts if s=="P0"]; p1=[m for s,m in alerts if s=="P1"]; p2=[m for s,m in alerts if s=="P2"]
