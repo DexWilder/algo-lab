@@ -128,6 +128,19 @@ elif not cert.exists():
 else:
     info.append(f"data-blocker certificates present ({len(blocked_hits)} recent blocked-mentions, cert exists)")
 
+# --- 10) VALIDATION LAYER present + per-contract files pass data-validator ---
+for vf in ["research/validate_strategy_expression.py","research/validate_data_file.py"]:
+    if not (REPO/vf).exists(): alert("P1", f"VALIDATION LAYER missing: {vf} (expression/data validator required pre-sprint).")
+try:
+    sys.path.insert(0,str(REPO)); from research.validate_data_file import validate_data_file
+    bad=[]
+    for f in (REPO/"data/databento").glob("*_percontract_1d.csv"):
+        ok,fl=validate_data_file(str(f))
+        if not ok: bad.append(f"{f.name}:{fl}")
+    if bad: alert("P1", f"PER-CONTRACT DATA INVALID (validator): {bad[:3]}")
+    else: info.append("per-contract data files pass validator")
+except Exception as e: info.append(f"data-validator check skipped: {e}")
+
 # --- WRITE STATUS where the next session reads it ---
 stamp=datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
 p0=[m for s,m in alerts if s=="P0"]; p1=[m for s,m in alerts if s=="P1"]; p2=[m for s,m in alerts if s=="P2"]
