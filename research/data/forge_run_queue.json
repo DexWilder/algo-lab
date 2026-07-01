@@ -1,26 +1,28 @@
 {
   "queue": [
     {
-      "id": "P24_fx_fix_flow",
-      "script": "research/forge_cycle_P24_fx_fix.py",
-      "status": "QUEUED_NEEDS_SCRIPT"
+      "id": "family_value",
+      "script": "research/forge_family_value.py",
+      "status": "QUEUED_NEEDS_SCRIPT",
+      "note": "FX-PPP/real-yield value on macro feeds"
     },
     {
-      "id": "P25_settlement_close",
-      "script": "research/forge_cycle_P25_settlement_close.py",
-      "status": "QUEUED_NEEDS_SCRIPT"
-    },
-    {
-      "id": "P23_tradeable_proper",
-      "script": "research/forge_cycle_P23_proper.py",
+      "id": "family_carry_proper",
+      "script": "-",
       "status": "DATA_BLOCKED",
-      "note": "needs ZT 2y + rates_multicontract roll-adjusted (Lane-1 #1)"
+      "note": "cross-sectional roll-yield + commodity term-structure: needs rates_multicontract + commodity curves (Lane-1)"
     },
     {
-      "id": "P23F_done",
-      "script": "research/forge_cycle_P23F_tradeable_fly.py",
+      "id": "event_1m_path",
+      "script": "research/forge_family_event_1m.py",
+      "status": "QUEUED_NEEDS_SCRIPT",
+      "note": "FOMC/NFP/CPI/settlement Databento 1m path"
+    },
+    {
+      "id": "carry_family",
+      "script": "research/forge_family_carry.py",
       "status": "DONE",
-      "verdict": "CLEAN_KILL"
+      "verdict": "CLEAN_KILL (available); proper=DATA_BLOCKED"
     }
   ]
 }

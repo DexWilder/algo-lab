@@ -13994,6 +13994,33 @@
       "horizon": "",
       "lane": "forced_flow",
       "ts": "2026-06-30"
+    },
+    {
+      "packet": "CARRY:rates_rolldown_ZN",
+      "asset": "",
+      "sharpe": -0.08,
+      "verdict": "family",
+      "horizon": "",
+      "lane": "carry",
+      "ts": "2026-07-01"
+    },
+    {
+      "packet": "CARRY:rates_carry_rank",
+      "asset": "",
+      "sharpe": -0.28,
+      "verdict": "family",
+      "horizon": "",
+      "lane": "carry",
+      "ts": "2026-07-01"
+    },
+    {
+      "packet": "CARRY:fx_carry_usdjpy",
+      "asset": "",
+      "sharpe": 0,
+      "verdict": "family",
+      "horizon": "",
+      "lane": "carry",
+      "ts": "2026-07-01"
     }
   ],
   "note": "auto multiple-testing N; every test appends"
