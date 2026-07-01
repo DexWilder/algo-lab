@@ -1,3 +1,14 @@
 {
-  "candidates": {}
+  "candidates": {
+    "spreadMR_GC": {
+      "rung": "SCREEN_PASS",
+      "ts": "2026-07-01",
+      "history": [
+        "IDEA",
+        "PACKET",
+        "DATA_READY",
+        "CAUSAL_READY"
+      ]
+    }
+  }
 }

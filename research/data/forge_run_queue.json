@@ -8,25 +8,25 @@
     },
     {
       "id": "gc_detrended_carry_zscore",
-      "status": "RUN_NOW",
+      "status": "DONE",
       "lane": "commodity_carry",
       "note": "refined commodity TS expr (naive carry-sign KILLed 2026-07-01); de-trended/spread/roll \u2014 validators first, predeclared"
     },
     {
       "id": "clgc_spread_momentum",
-      "status": "RUN_NOW",
+      "status": "DONE",
       "lane": "commodity_carry",
       "note": "refined commodity TS expr (naive carry-sign KILLed 2026-07-01); de-trended/spread/roll \u2014 validators first, predeclared"
     },
     {
       "id": "clgc_spread_meanreversion",
-      "status": "RUN_NOW",
+      "status": "DONE",
       "lane": "commodity_carry",
       "note": "refined commodity TS expr (naive carry-sign KILLed 2026-07-01); de-trended/spread/roll \u2014 validators first, predeclared"
     },
     {
       "id": "roll_window_pressure_contango",
-      "status": "RUN_NOW",
+      "status": "DONE",
       "lane": "commodity_carry",
       "note": "refined commodity TS expr (naive carry-sign KILLed 2026-07-01); de-trended/spread/roll \u2014 validators first, predeclared"
     },
@@ -173,6 +173,24 @@
       "status": "BACKLOG",
       "lane": "novelty",
       "note": "roll/settlement: dealers demand concession pre-auction, unwind post-auction [ZT] harness=event-adapter (validators first, predeclared)"
+    },
+    {
+      "id": "deepen_spreadMR_GC_execution",
+      "status": "RUN_NOW",
+      "lane": "commodity_carry",
+      "note": "Lane G: real 2-leg calendar-spread execution model (deferred liquidity, near-roll fills) for spreadMR_GC"
+    },
+    {
+      "id": "deepen_spreadMR_GC_searchN",
+      "status": "RUN_NOW",
+      "lane": "commodity_carry",
+      "note": "Lane G: pin honest search-N for spreadMR_GC DSR (credible N<=20, fails N>=30) \u2014 resolve layered-N"
+    },
+    {
+      "id": "deepen_spreadMR_GC_robustness",
+      "status": "RUN_NOW",
+      "lane": "commodity_carry",
+      "note": "Lane G: param robustness spreadMR_GC (z 1.0/2.0, lookback 126/252, hold rule) + tail-engine gates"
     }
   ]
 }

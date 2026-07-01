@@ -1,16 +1,16 @@
-# Edge-Family Map (computed 2026-07-01 16:50 UTC) — from family_status.json x trial ledger
+# Edge-Family Map (computed 2026-07-01 17:00 UTC) — from family_status.json x trial ledger
 > Regenerate: `python3 research/forge_family_map.py`. Coverage=tested/(tested+untested). family-N from ledger lane.
-> **Families: 20 | active (not killed): 13 | global trial-N: 1776 | drift flags: 0**
+> **Families: 20 | active (not killed): 13 | global trial-N: 1783 | drift flags: 0**
 
 | family | status | data | coverage | tested | untested | family-N | next untested expressions |
 |---|---|---|---|---|---|---|---|
-| carry_commodity | ACTIVE_EXPANSION | LOCAL | 43% | 3 | 4 | 3 | GC de-trended z-carry; spread momentum; spread mean-reversion |
 | gamma_dealer | FEASIBLE | REPULL_PAID | 20% | 1 | 4 | 9 | chunked-OI loader; approx-GEX; GEX-regime pin |
 | monthend_settlement | CLEAN_BUT_WEAK | LOCAL | 25% | 1 | 3 | 7 | ZF/ZB month-end; settlement-1m revert; index-rebal |
 | trend_momentum | CLEAN_BUT_WEAK | LOCAL | 50% | 2 | 2 | 1679 | pooled vol-target trend; trend+carry combo |
 | macro_event_drift | CLEAN_BUT_WEAK | LOCAL | 50% | 2 | 2 | 3 | CPI drift; event-1m-path |
 | open_close_liquidity | CLEAN_BUT_WEAK | LOCAL | 33% | 1 | 2 | 14 | settlement-close revert; opening-imbalance re-spec |
 | fx_fixing_ratediv | UNDERTESTED | LOCAL | 0% | 0 | 2 | 9 | WMR 16:00 fix flow; policy-rate divergence |
+| carry_commodity | SCREEN_PASS_RETAINED | LOCAL | 88% | 7 | 1 | 10 | roll-window pressure |
 | vol_risk_premium | CLEAN_BUT_WEAK | LOCAL | 67% | 2 | 1 | 9 | true-curve VRP (paid) |
 | inventory_eia | DATA_BLOCKED_CERT | CERT | 0% | 0 | 1 | 7 | EIA surprise hedge |
 | expiry_opex | FEASIBLE | REPULL_PAID | 0% | 0 | 1 | 9 | OPEX-gamma-pin (via gamma lane) |

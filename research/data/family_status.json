@@ -36,17 +36,18 @@
     },
     "carry_commodity": {
       "lane": "commodity_carry",
-      "status": "ACTIVE_EXPANSION",
+      "status": "SCREEN_PASS_RETAINED",
       "data": "LOCAL",
       "tested": [
         "CL naive carry-sign",
         "GC naive carry-sign(EXPR_INVALID)",
-        "xsec CL/GC"
+        "xsec CL/GC",
+        "GC spreadMR (SCREEN_PASS)",
+        "CL spreadMR(kill)",
+        "zcarry CL/GC",
+        "spread mom CL/GC"
       ],
       "untested": [
-        "GC de-trended z-carry",
-        "spread momentum",
-        "spread mean-reversion",
         "roll-window pressure"
       ]
     },

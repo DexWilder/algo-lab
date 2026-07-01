@@ -14084,6 +14084,69 @@
       "horizon": "",
       "lane": "commodity_carry",
       "ts": "2026-07-01"
+    },
+    {
+      "packet": "COMMODITY_CARRY_V2:zcarry_CL",
+      "asset": "",
+      "sharpe": 0.34,
+      "verdict": "family",
+      "horizon": "",
+      "lane": "commodity_carry",
+      "ts": "2026-07-01"
+    },
+    {
+      "packet": "COMMODITY_CARRY_V2:spreadmom_CL",
+      "asset": "",
+      "sharpe": 0.04,
+      "verdict": "family",
+      "horizon": "",
+      "lane": "commodity_carry",
+      "ts": "2026-07-01"
+    },
+    {
+      "packet": "COMMODITY_CARRY_V2:spreadMR_CL",
+      "asset": "",
+      "sharpe": -0.01,
+      "verdict": "family",
+      "horizon": "",
+      "lane": "commodity_carry",
+      "ts": "2026-07-01"
+    },
+    {
+      "packet": "COMMODITY_CARRY_V2:zcarry_GC",
+      "asset": "",
+      "sharpe": -0.71,
+      "verdict": "family",
+      "horizon": "",
+      "lane": "commodity_carry",
+      "ts": "2026-07-01"
+    },
+    {
+      "packet": "COMMODITY_CARRY_V2:spreadmom_GC",
+      "asset": "",
+      "sharpe": -4.43,
+      "verdict": "family",
+      "horizon": "",
+      "lane": "commodity_carry",
+      "ts": "2026-07-01"
+    },
+    {
+      "packet": "COMMODITY_CARRY_V2:spreadMR_GC",
+      "asset": "",
+      "sharpe": 2.67,
+      "verdict": "family",
+      "horizon": "",
+      "lane": "commodity_carry",
+      "ts": "2026-07-01"
+    },
+    {
+      "packet": "SCREEN_PASS_CANDIDATE:spreadMR_GC",
+      "asset": "GC",
+      "sharpe": 1.93,
+      "verdict": "SCREEN_PASS",
+      "horizon": "",
+      "lane": "commodity_carry",
+      "ts": "2026-07-01"
     }
   ],
   "note": "auto multiple-testing N; every test appends"
