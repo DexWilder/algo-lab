@@ -14048,6 +14048,15 @@
       "horizon": "",
       "lane": "curve_rv",
       "ts": "2026-07-01"
+    },
+    {
+      "packet": "RATES_XSEC:dv01_carry",
+      "asset": "",
+      "sharpe": -0.2,
+      "verdict": "family",
+      "horizon": "",
+      "lane": "carry",
+      "ts": "2026-07-01"
     }
   ],
   "note": "auto multiple-testing N; every test appends"

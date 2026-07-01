@@ -3,26 +3,20 @@
     {
       "id": "commodity_carry_CLGC",
       "script": "research/forge_sprint_commodity_carry.py",
-      "status": "QUEUED_NEEDS_SCRIPT",
-      "note": "CL/GC contango-backwardation carry on deep per-contract curves (real premium)"
-    },
-    {
-      "id": "rates_xsec_carry",
-      "script": "-",
-      "status": "FAMILY_UNDERTESTED",
-      "note": "proper cross-sectional DV01-normalized long/short carry (1 clean variant left; naive roll-yield=KILL)"
+      "status": "RUN_NOW",
+      "note": "CL/GC contango-backwardation carry, deep curves; validate data+expr first"
     },
     {
       "id": "gamma_options",
       "script": "-",
       "status": "OPERATOR_COST_APPROVAL_REQUIRED",
-      "note": "ES.OPT gamma/OI pull $9.58 + statistics schema for OI"
+      "note": "ES.OPT $9.58 > $5 auto-threshold; needs nod + statistics schema for OI"
     },
     {
-      "id": "rates_ts_sprint",
-      "script": "research/forge_sprint_rates_termstructure.py",
+      "id": "rates_xsec_carry",
+      "script": "research/forge_sprint_rates_xsec_carry.py",
       "status": "DONE",
-      "verdict": "CLEAN_KILL (naive carry + 2s5s10s RV dead on real data)"
+      "verdict": "CLEAN_KILL (long-leg 81% ZB; family fairly exhausted: naive+xsec carry+2s5s10s RV all dead)"
     }
   ]
 }
