@@ -684,6 +684,42 @@
       "linked_packet": null,
       "linked_queue": "queue:INB-20260702-009",
       "linked_control": null
+    },
+    {
+      "inbound_id": "INB-20260702-010",
+      "date": "2026-07-02",
+      "source_type": "claude discovery",
+      "source_ref": null,
+      "raw_note": "bbo-1m: ES spread uniform 1-tick(0.25pt) all hours, 95pct 2-tick. VALIDATES MES flat-$3 cost assumption (closing-window kills stand, not cost-artifacts). ES spread-execution-alpha unlikely (too tight) -> redirect execution realism to less-liquid (MCL/MGC/rates) or depth(mbp).",
+      "mechanism": null,
+      "family": "execution_cost",
+      "required_data": null,
+      "available_data": null,
+      "required_harness": null,
+      "status": "TRIAGED",
+      "priority": "P2",
+      "next_action": "time-of-day spread only material for less-liquid instruments; use mbp for depth-imbalance",
+      "linked_packet": null,
+      "linked_queue": null,
+      "linked_control": "data/databento/ES_bbo_1m_sample.csv analysis"
+    },
+    {
+      "inbound_id": "INB-20260702-011",
+      "date": "2026-07-02",
+      "source_type": "data feed",
+      "source_ref": null,
+      "raw_note": "Databento 504/connection-reset on ES weekly-OI pull: parents EW1-4/E1A/E3C, window 2025-01/04, def+stat schema. 3-month multi-parent scope timed out; RESOLVED via single-parent/1-2mo retry (EW1-4 landed 62d/50d<=2DTE). E1A/E3C 0DTE-daily still pending. NOT data_blocked.",
+      "mechanism": null,
+      "family": "data governance",
+      "required_data": null,
+      "available_data": null,
+      "required_harness": null,
+      "status": "TRIAGED",
+      "priority": "P1",
+      "next_action": "run EW GEX expiry test now; retry E1A/E3C 0DTE next window",
+      "linked_packet": null,
+      "linked_queue": null,
+      "linked_control": "DATABENTO_TRANSIENT_FAILURE_RETRY_POLICY.md + provider_retry_state.json"
     }
   ]
 }

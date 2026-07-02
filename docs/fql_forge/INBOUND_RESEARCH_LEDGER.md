@@ -1,7 +1,7 @@
-# Inbound Research Ledger (rendered 2026-07-02 15:21 UTC)
+# Inbound Research Ledger (rendered 2026-07-02 17:26 UTC)
 > **Operating law:** if it is not in this ledger, the queue, the dashboard, or the control map — the system does not know it.
-> Source of truth: `research/data/inbound_research_ledger.json`. Capture: `python3 research/capture_inbound.py`. Items: **38**.
-> NEW:0 | P0/P1:10/20 | untriaged directives:0 | mistakes w/o control:2 | unused feeds:0 | source notes unresolved:0
+> Source of truth: `research/data/inbound_research_ledger.json`. Capture: `python3 research/capture_inbound.py`. Items: **40**.
+> NEW:0 | P0/P1:10/21 | untriaged directives:0 | mistakes w/o control:2 | unused feeds:0 | source notes unresolved:0
 
 | id | date | type | status | P | family | mechanism / issue | next action | linked (packet/queue/control) |
 |---|---|---|---|---|---|---|---|---|
@@ -32,6 +32,7 @@
 | INB-20260630-004 | 2026-06-30 | operator directive | TRIAGED | P1 | sourcing | grow opportunity surface | run novelty engine, keep BACKLOG full | forge_novelty_engine.py (generative) + ALPHA_RESEARCH_OS_ELI |
 | INB-20260630-005 | 2026-06-30 | operator directive | TRIAGED | P1 | validation | hostile second-pass | review every hardening result; later OpenClaw red- | adversarial_result_review.py |
 | INB-20260701-013 | 2026-07-01 | guardrail finding | TRIAGED | P1 | governance | Self-audit watchdog built: audits 12 facets/cycle (present+functioning | wire into every-cycle runner | forge_self_audit.py |
+| INB-20260702-011 | 2026-07-02 | data feed | TRIAGED | P1 | data governance | Databento 504/connection-reset on ES weekly-OI pull: parents EW1-4/E1A | run EW GEX expiry test now; retry E1A/E3C 0DTE nex | DATABENTO_TRANSIENT_FAILURE_RETRY_POLICY.md + provider_retry |
 | INB-20260701-003 | 2026-07-01 | claude discovery | PROMOTED_TO_PACKET | P1 | carry_commodity | gold calendar-spread mean-reversion | Lane G deepening (operator-gated for capital) | SCREEN_PASS_CANDIDATE_spreadMR_GC_2026-07-01.md deepen_sprea |
 | INB-20260702-003 | 2026-07-02 | source | PROMOTED_TO_PACKET | P1 | carry_commodity | CME roll methodology docs -> roll-window pressure: index/ETF funds mus | — | src_roll_window_pressure |
 | INB-20260702-004 | 2026-07-02 | source | PROMOTED_TO_PACKET | P1 | gamma_dealer | Options dealer-hedging (SqueezeMetrics/Nomura) -> GEX-regime pin: deal | — | src_gex_regime_pin |
@@ -41,5 +42,6 @@
 | INB-20260630-003 | 2026-06-30 | bug | TRIAGED | P2 | data integrity | save-time column loss | none — validator guards | validate_data_file.py |
 | INB-20260701-004 | 2026-07-01 | bug | TRIAGED | P2 | review calibration | side-share over all days not active | none — fixed | adversarial_result_review.py (active-side + SPARSE_LOW_N) |
 | INB-20260702-007 | 2026-07-02 | bug | TRIAGED | P2 | — | failure_class labeler mis-tagged negative-Sharpe as concentration (max | sweeps use classify_failure going forward | forge_trial_ledger.classify_failure() canonical order |
+| INB-20260702-010 | 2026-07-02 | claude discovery | TRIAGED | P2 | execution_cost | bbo-1m: ES spread uniform 1-tick(0.25pt) all hours, 95pct 2-tick. VALI | time-of-day spread only material for less-liquid i | data/databento/ES_bbo_1m_sample.csv analysis |
 | INB-20260702-005 | 2026-07-02 | source | PROMOTED_TO_PACKET | P2 | intraday_micro | Microstructure (Kyle/VPIN/Easley) -> liquidity-hole reversal: informed | — | src_liquidity_hole |
 | INB-20260701-007 | 2026-07-01 | validation failure | CLEAN_KILL | P2 | carry_commodity | cross-asset generalization | gold-specific noted; not a family win | — |

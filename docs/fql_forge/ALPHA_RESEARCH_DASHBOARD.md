@@ -1,19 +1,19 @@
-# ALPHA RESEARCH DASHBOARD (auto-generated 2026-07-02 15:21 UTC)
+# ALPHA RESEARCH DASHBOARD (auto-generated 2026-07-02 17:28 UTC)
 > `python3 research/forge_dashboard.py` regenerates this. Single canonical state view.
 
 ## HEADLINE
 - **Validated primaries: 0** (highest ladder rung: **SCREEN_PASS**; capital gate FAIL-CLOSED, PAPER_APPROVED+ operator-only).
-- Guardrails: **clean/P1** | Self-audit: **SELF_AUDIT_CLEAN** (facets=12 PASS=12 STALE=0 BROKEN=0 DESIGNED-not-built=0) | Git backlog: **0** | Global trial-N: **1822**
+- Guardrails: **clean/P1** | Self-audit: **SELF_AUDIT_CLEAN** (facets=12 PASS=12 STALE=0 BROKEN=0 DESIGNED-not-built=0) | Git backlog: **0** | Global trial-N: **1823**
 - **Roadmap:** end Phase 0 → entering Phase 1 (foundation hardening: data-tier gate, learning-loop closure, infra freeze, 1m/volume harness). Doctrine: `docs/fql_forge/FOUNDATION_DOCTRINE_AND_ELITE_ROADMAP_2026-07-01.md`
 
 ## Throughput (computed live)
-- Tests logged today: **23** | total kills: 6 | screen-passes: 2
+- Tests logged today: **24** | total kills: 6 | screen-passes: 2
 - Novelty packets: **38** stored (8 today) of 108 template×instrument space
-- Families: **13 active** / 21 | coverage 58% (tested exprs / total exprs)
+- Families: **12 active** / 21 | coverage 58% (tested exprs / total exprs)
 - Candidate ladder: SCREEN_PASS=1
 
 ## Inbound capture (organizational memory — nothing floats)
-- Items: **38** | NEW: 0 | P0/P1: 10/20 | source packets today: 3
+- Items: **40** | NEW: 0 | P0/P1: 10/21 | source packets today: 3
 - Untriaged directives: 0 | mistakes w/o control: **2** ['INB-20260701-010', 'INB-20260701-011'] | unused feeds: 0
 - QUEUED-missing-from-queue: 0 | source notes unresolved: 0 | oldest untriaged: 0d
 - Ledger: `docs/fql_forge/INBOUND_RESEARCH_LEDGER.md` (capture: `python3 research/capture_inbound.py`)
@@ -22,7 +22,7 @@
 - primitive_sweep: 1679
 - databento_volume: 51
 - positioning: 48
-- exploratory: 11
+- exploratory: 12
 - commodity_carry: 10
 - forced_flow: 7
 - crypto_carry: 4
@@ -32,7 +32,7 @@
 - portfolio: 2
 
 ## Queue depth
-- RUN_NOW: 17 | total queue items: 66
+- RUN_NOW: 16 | total queue items: 66
 - [ACTIVE_PACKET_LANE] gamma_chunked_loader_then_regime: chunked OI loader -> approx-GEX -> predeclared GEX-regime test (feasib
 - [DONE] gc_detrended_carry_zscore: refined commodity TS expr (naive carry-sign KILLed 2026-07-01); de-tre
 - [DONE] clgc_spread_momentum: refined commodity TS expr (naive carry-sign KILLed 2026-07-01); de-tre
@@ -71,20 +71,20 @@
 ## Roadmap (operational) — Phase 1: foundation hardening
 - **Exit criteria:** data-tier gate live ✅ · learning-state updater live ✅ · close-only kills rescoped ✅ · 1m+volume harness running ✅ (OR batch=kill) · data-util dashboard ✅ · self-audit artifact ✅ | REMAINING: ≥1 close-only family re-scoped edge found OR cleanly killed at T3 (in progress); self-audit clean streak ≥5
 - **Blockers:** gamma T6 needs chunked-OI loader (+$11.54 gate); intraday 1m-path MR + settlement/lead-lag T3 packets not yet run
-- **Data-util gaps (richer tier unused):** 10 families — ['trend_momentum', 'vol_risk_premium', 'inventory_eia', 'macro_event_drift', 'monthend_settlement', 'expiry_opex', 'intraday_micro', 'xasset_leadlag']
+- **Data-util gaps (richer tier unused):** 9 families — ['vol_risk_premium', 'inventory_eia', 'macro_event_drift', 'monthend_settlement', 'expiry_opex', 'intraday_micro', 'xasset_leadlag', 'fx_fixing_ratediv']
 - **Next-25 (from learning_state):**
-  1. TEST trend_momentum at richer tier T3 (T2 done)
-  2. TEST vol_risk_premium at richer tier T6 (T5 done)
-  3. TEST inventory_eia at richer tier T5 (none done)
-  4. TEST macro_event_drift at richer tier T3 (T1 done)
-  5. TEST monthend_settlement at richer tier T3 (T1 done)
-  6. TEST expiry_opex at richer tier T6 (none done)
-  7. TEST xasset_leadlag at richer tier T3 (T2 done)
-  8. TEST fx_fixing_ratediv at richer tier T3 (none done)
-  9. QUEUE deepen_spreadMR_GC_execution: Lane G: real 2-leg calendar-spread execution model (deferred
-  10. QUEUE deepen_spreadMR_GC_searchN: Lane G: pin honest search-N for spreadMR_GC DSR (credible N<
-  11. QUEUE deepen_spreadMR_GC_robustness: Lane G: param robustness spreadMR_GC (z 1.0/2.0, lookback 12
-  12. QUEUE gex_expiry_0dte_pin: T6: expiry/0DTE gamma-pin — target last 1-2 days to expiry (
+  1. TEST vol_risk_premium at richer tier T6 (T5 done)
+  2. TEST inventory_eia at richer tier T5 (none done)
+  3. TEST macro_event_drift at richer tier T3 (T1 done)
+  4. TEST monthend_settlement at richer tier T3 (T1 done)
+  5. TEST expiry_opex at richer tier T6 (none done)
+  6. TEST xasset_leadlag at richer tier T3 (T2 done)
+  7. TEST fx_fixing_ratediv at richer tier T3 (none done)
+  8. QUEUE deepen_spreadMR_GC_execution: Lane G: real 2-leg calendar-spread execution model (deferred
+  9. QUEUE deepen_spreadMR_GC_searchN: Lane G: pin honest search-N for spreadMR_GC DSR (credible N<
+  10. QUEUE deepen_spreadMR_GC_robustness: Lane G: param robustness spreadMR_GC (z 1.0/2.0, lookback 12
+  11. QUEUE gex_expiry_0dte_pin: T6: expiry/0DTE gamma-pin — target last 1-2 days to expiry (
+  12. QUEUE gex_0dte_pin_real: 0DTE/expiry-week pin on weekly OI (EW1-4/E1A/E3C) — the mech
 
 ## Guardrail alerts
 [P1] CLOSE-ONLY BIAS: only 15/194 forge_cycle scripts use 'volume' (8%). Databento volume vein under-worked (target: keep ACTIVE_PACKET_LANE).

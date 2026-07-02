@@ -308,16 +308,16 @@
     },
     {
       "id": "gex_full_oi_coverage",
-      "status": "RUN_NOW",
+      "status": "PROVIDER_UNSTABLE_RETRY_LATER",
       "lane": "exploratory",
-      "note": "T6 data: expand ES.OPT OI (Mar/Apr 2025 retry + more years, incl expiry days) \u2014 cost trivial (~$2)"
+      "note": "E1A/E3C 0DTE + Mar/Apr monthly \u2014 retry next healthy-gateway window (transient 504s)"
     },
     {
       "id": "gex_0dte_pin_real",
       "status": "RUN_NOW",
       "lane": "exploratory",
       "surface": "B GEX T6",
-      "note": "0DTE/expiry-week pin on weekly OI (EW1-4/E1A/E3C) \u2014 the mechanism's home regime"
+      "note": "0DTE/expiry-week pin on weekly OI (EW1-4/E1A/E3C) \u2014 the mechanism's home regime [EW weekly OI landed 62d/50d<=2DTE; E1A/E3C 0DTE pending RETRY_LATER]"
     },
     {
       "id": "gex_flip_range",

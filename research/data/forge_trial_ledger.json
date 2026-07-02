@@ -15973,6 +15973,18 @@
       "failure_class": "no_edge",
       "data_tier": "T6",
       "n": 60
+    },
+    {
+      "packet": "GEX_EXPIRY:pin_drift:ES",
+      "asset": "ES",
+      "sharpe": 0.17,
+      "verdict": "micro",
+      "horizon": "",
+      "lane": "exploratory",
+      "ts": "2026-07-02",
+      "failure_class": "no_edge",
+      "data_tier": "T6",
+      "n": 20
     }
   ],
   "note": "auto multiple-testing N; every test appends"

@@ -1,0 +1,20 @@
+{
+  "provider": "Databento GLBX.MDP3",
+  "last_incident": "2025-07-02",
+  "incidents": [
+    {
+      "pull": "ES weekly/0DTE OI",
+      "parents": [
+        "EW1-4.OPT",
+        "E1A.OPT",
+        "E3C.OPT"
+      ],
+      "window": "2025-01/2025-04",
+      "schema": "definition+statistics",
+      "error": "504 gateway timeout + connection reset",
+      "scope_that_failed": "3-month multi-parent",
+      "resolution": "RESOLVED via single-parent/1-2-month retry (4x backoff) \u2014 EW1-4 landed 31942 OI rows, 62 days, 50 days DTE<=2",
+      "remaining": "E1A/E3C (0DTE Mon/Wed) still unpulled \u2014 RETRY_LATER, EW weeklies sufficient for first expiry test"
+    }
+  ]
+}

@@ -126,12 +126,15 @@
       "data": "REPULL_PAID",
       "tested": [
         "OI/GEX feasibility (real ES.OPT)",
-        "naive pin proxy @T6 (no effect, CLEAN_KILL_expression)"
+        "naive pin proxy @monthly (wrong surface, kill)",
+        "naive pin-drift @weekly/near-expiry n=20 (no effect, UNDERPOWERED)"
       ],
       "untested": [
-        "expiry/0DTE gamma pin (mechanism home regime)",
-        "gamma-flip accel",
-        "full-history OI (Mar/Apr + more years)"
+        "signed GEX (dealer positioning) not raw OI-concentration",
+        "gamma-flip range asymmetry",
+        "call/put-wall drift",
+        "true 0DTE (E1A/E3C pending)",
+        "more weekly coverage (n=20 too thin)"
       ],
       "tested_tiers": [
         "T6"
@@ -139,7 +142,7 @@
       "richest_applicable_tier": "T6",
       "tier_gap": false,
       "data_tier": "T6",
-      "tier_gap_reason": "T6 reached; naive pin dead; expiry-regime variant is the live branch"
+      "tier_gap_reason": "correct surface reached; naive proxy dead but underpowered; signed-GEX/flip/wall variants + more coverage are the live branch"
     },
     "positioning_cot": {
       "lane": "positioning",

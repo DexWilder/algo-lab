@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-07-02 15:22 UTC",
-  "global_trial_N": 1822,
+  "timestamp": "2026-07-02 17:28 UTC",
+  "global_trial_N": 1823,
   "lane_breakdown": {
     "forced_flow": 7,
-    "exploratory": 11,
+    "exploratory": 12,
     "portfolio": 2,
     "databento_volume": 51,
     "positioning": 48,
@@ -321,7 +321,6 @@
     "QUEUE deepen_spreadMR_GC_searchN: Lane G: pin honest search-N for spreadMR_GC DSR (credible N<",
     "QUEUE deepen_spreadMR_GC_robustness: Lane G: param robustness spreadMR_GC (z 1.0/2.0, lookback 12",
     "QUEUE gex_expiry_0dte_pin: T6: expiry/0DTE gamma-pin \u2014 target last 1-2 days to expiry (",
-    "QUEUE gex_full_oi_coverage: T6 data: expand ES.OPT OI (Mar/Apr 2025 retry + more years, ",
     "QUEUE gex_0dte_pin_real: 0DTE/expiry-week pin on weekly OI (EW1-4/E1A/E3C) \u2014 the mech",
     "QUEUE gex_flip_range: gamma-flip -> realized-range asymmetry (above flip compress ",
     "QUEUE gex_call_put_wall: call-wall/put-wall proxy: distance to largest OI wall -> nex",
