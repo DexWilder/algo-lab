@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-02 07:30 UTC",
+  "timestamp": "2026-07-02 15:21 UTC",
   "global_trial_N": 1822,
   "lane_breakdown": {
     "forced_flow": 7,
@@ -324,7 +324,19 @@
     "QUEUE deepen_spreadMR_GC_searchN: Lane G: pin honest search-N for spreadMR_GC DSR (credible N<",
     "QUEUE deepen_spreadMR_GC_robustness: Lane G: param robustness spreadMR_GC (z 1.0/2.0, lookback 12",
     "QUEUE gex_expiry_0dte_pin: T6: expiry/0DTE gamma-pin \u2014 target last 1-2 days to expiry (",
-    "QUEUE gex_full_oi_coverage: T6 data: expand ES.OPT OI (Mar/Apr 2025 retry + more years, "
+    "QUEUE gex_full_oi_coverage: T6 data: expand ES.OPT OI (Mar/Apr 2025 retry + more years, ",
+    "QUEUE gex_0dte_pin_real: 0DTE/expiry-week pin on weekly OI (EW1-4/E1A/E3C) \u2014 the mech",
+    "QUEUE gex_flip_range: gamma-flip -> realized-range asymmetry (above flip compress ",
+    "QUEUE gex_call_put_wall: call-wall/put-wall proxy: distance to largest OI wall -> nex",
+    "QUEUE spread_cond_close: bbo-1m spread-conditioned closing-window behavior (real spre",
+    "QUEUE post_open_absorption: post-open absorption: first-15m quote imbalance -> rest-of-s",
+    "QUEUE spreadMR_gc_execreal: spreadMR_GC execution-realism sim (2-leg calendar, real fill",
+    "QUEUE roll_window_cl: roll-window pressure CL/GC (index/fund forced roll)",
+    "QUEUE crossmkt_gold_realyield: gold vs real-yield shock (regime-conditioned, not generic le",
+    "QUEUE crossmkt_nq_es_gamma: NQ vs ES conditioned on gamma-state",
+    "QUEUE cot_pricebreak_conditional: COT extreme + price-break conditional (not naive fade)",
+    "QUEUE event_surprise_prep: acquire CPI/NFP consensus+actual (surprise) \u2014 data-unlock ce",
+    "QUEUE vol_crush_drift: post-vol-crush drift (DVOL/VIX regime)"
   ],
   "stale_labels": [],
   "unresolved_learning_gaps": [

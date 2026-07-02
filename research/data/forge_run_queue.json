@@ -311,6 +311,102 @@
       "status": "RUN_NOW",
       "lane": "exploratory",
       "note": "T6 data: expand ES.OPT OI (Mar/Apr 2025 retry + more years, incl expiry days) \u2014 cost trivial (~$2)"
+    },
+    {
+      "id": "gex_0dte_pin_real",
+      "status": "RUN_NOW",
+      "lane": "exploratory",
+      "surface": "B GEX T6",
+      "note": "0DTE/expiry-week pin on weekly OI (EW1-4/E1A/E3C) \u2014 the mechanism's home regime"
+    },
+    {
+      "id": "gex_flip_range",
+      "status": "RUN_NOW",
+      "lane": "exploratory",
+      "surface": "B GEX T6",
+      "note": "gamma-flip -> realized-range asymmetry (above flip compress / below expand)"
+    },
+    {
+      "id": "gex_call_put_wall",
+      "status": "RUN_NOW",
+      "lane": "exploratory",
+      "surface": "B GEX T6",
+      "note": "call-wall/put-wall proxy: distance to largest OI wall -> next-day drift"
+    },
+    {
+      "id": "spread_cond_close",
+      "status": "RUN_NOW",
+      "lane": "exploratory",
+      "surface": "C exec T3",
+      "note": "bbo-1m spread-conditioned closing-window behavior (real spread cost)"
+    },
+    {
+      "id": "post_open_absorption",
+      "status": "RUN_NOW",
+      "lane": "exploratory",
+      "surface": "C exec T3",
+      "note": "post-open absorption: first-15m quote imbalance -> rest-of-session"
+    },
+    {
+      "id": "spreadMR_gc_execreal",
+      "status": "RUN_NOW",
+      "lane": "exploratory",
+      "surface": "D term T4",
+      "note": "spreadMR_GC execution-realism sim (2-leg calendar, real fills)"
+    },
+    {
+      "id": "roll_window_cl",
+      "status": "RUN_NOW",
+      "lane": "exploratory",
+      "surface": "A forced T4",
+      "note": "roll-window pressure CL/GC (index/fund forced roll)"
+    },
+    {
+      "id": "crossmkt_gold_realyield",
+      "status": "RUN_NOW",
+      "lane": "exploratory",
+      "surface": "E xmkt T4/T5",
+      "note": "gold vs real-yield shock (regime-conditioned, not generic lead-lag)"
+    },
+    {
+      "id": "crossmkt_nq_es_gamma",
+      "status": "RUN_NOW",
+      "lane": "exploratory",
+      "surface": "E xmkt T3/T6",
+      "note": "NQ vs ES conditioned on gamma-state"
+    },
+    {
+      "id": "cot_pricebreak_conditional",
+      "status": "RUN_NOW",
+      "lane": "exploratory",
+      "surface": "F pos T5",
+      "note": "COT extreme + price-break conditional (not naive fade)"
+    },
+    {
+      "id": "event_surprise_prep",
+      "status": "RUN_NOW",
+      "lane": "exploratory",
+      "surface": "D event T5",
+      "note": "acquire CPI/NFP consensus+actual (surprise) \u2014 data-unlock cert"
+    },
+    {
+      "id": "vol_crush_drift",
+      "status": "RUN_NOW",
+      "lane": "exploratory",
+      "surface": "G vol T5/T6",
+      "note": "post-vol-crush drift (DVOL/VIX regime)"
+    },
+    {
+      "id": "INB-20260702-008",
+      "status": "BACKLOG",
+      "lane": "inbound",
+      "note": "[governance] SEARCH-SURFACE AUDIT: GEX kill was WRONG DATA (ES.OPT=monthly only, 0 rows<20DTE; pinning "
+    },
+    {
+      "id": "INB-20260702-009",
+      "status": "BACKLOG",
+      "lane": "inbound",
+      "note": "[execution_cost] bbo-1m quotes/spread unlocked (ES median spread 0.25pt=1tick, /bin/zsh.009/wk) \u2014 execution"
     }
   ]
 }

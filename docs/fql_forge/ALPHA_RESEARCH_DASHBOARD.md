@@ -1,4 +1,4 @@
-# ALPHA RESEARCH DASHBOARD (auto-generated 2026-07-02 07:31 UTC)
+# ALPHA RESEARCH DASHBOARD (auto-generated 2026-07-02 15:21 UTC)
 > `python3 research/forge_dashboard.py` regenerates this. Single canonical state view.
 
 ## HEADLINE
@@ -13,7 +13,7 @@
 - Candidate ladder: SCREEN_PASS=1
 
 ## Inbound capture (organizational memory — nothing floats)
-- Items: **36** | NEW: 0 | P0/P1: 9/19 | source packets today: 3
+- Items: **38** | NEW: 0 | P0/P1: 10/20 | source packets today: 3
 - Untriaged directives: 0 | mistakes w/o control: **2** ['INB-20260701-010', 'INB-20260701-011'] | unused feeds: 0
 - QUEUED-missing-from-queue: 0 | source notes unresolved: 0 | oldest untriaged: 0d
 - Ledger: `docs/fql_forge/INBOUND_RESEARCH_LEDGER.md` (capture: `python3 research/capture_inbound.py`)
@@ -32,7 +32,7 @@
 - portfolio: 2
 
 ## Queue depth
-- RUN_NOW: 5 | total queue items: 52
+- RUN_NOW: 17 | total queue items: 66
 - [ACTIVE_PACKET_LANE] gamma_chunked_loader_then_regime: chunked OI loader -> approx-GEX -> predeclared GEX-regime test (feasib
 - [DONE] gc_detrended_carry_zscore: refined commodity TS expr (naive carry-sign KILLed 2026-07-01); de-tre
 - [DONE] clgc_spread_momentum: refined commodity TS expr (naive carry-sign KILLed 2026-07-01); de-tre

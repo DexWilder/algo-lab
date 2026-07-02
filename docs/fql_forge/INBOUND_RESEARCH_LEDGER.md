@@ -1,7 +1,7 @@
-# Inbound Research Ledger (rendered 2026-07-02 07:30 UTC)
+# Inbound Research Ledger (rendered 2026-07-02 15:21 UTC)
 > **Operating law:** if it is not in this ledger, the queue, the dashboard, or the control map — the system does not know it.
-> Source of truth: `research/data/inbound_research_ledger.json`. Capture: `python3 research/capture_inbound.py`. Items: **36**.
-> NEW:0 | P0/P1:9/19 | untriaged directives:0 | mistakes w/o control:2 | unused feeds:0 | source notes unresolved:0
+> Source of truth: `research/data/inbound_research_ledger.json`. Capture: `python3 research/capture_inbound.py`. Items: **38**.
+> NEW:0 | P0/P1:10/20 | untriaged directives:0 | mistakes w/o control:2 | unused feeds:0 | source notes unresolved:0
 
 | id | date | type | status | P | family | mechanism / issue | next action | linked (packet/queue/control) |
 |---|---|---|---|---|---|---|---|---|
@@ -10,6 +10,7 @@
 | INB-20260701-008 | 2026-07-01 | operator directive | ACTIVE_PACKET_LANE | P0 | organizational memory | inbound ledger->triage->queue->control->dashboard | operationalize + backfill (this build) | queue:INB-20260701-008 capture_inbound.py + INBOUND_TRIAGE_R |
 | INB-20260701-012 | 2026-07-01 | operator directive | ACTIVE_PACKET_LANE | P0 | governance | Make learning+improvement automatic each step; regular self-audit of e | Phase 1: data-tier gate + learning-loop closure +  | queue:INB-20260701-012 forge_self_audit.py + FOUNDATION_DOCT |
 | INB-20260702-001 | 2026-07-02 | operator directive | ACTIVE_PACKET_LANE | P0 | governance | Full-spectrum Elite Novelty System Assessment: grade every layer, buil | P1: failure_class backfill, source->packet x3, exe | queue:INB-20260702-001 ELITE_NOVELTY_SYSTEM_ASSESSMENT_2026- |
+| INB-20260702-008 | 2026-07-02 | claude discovery | ACTIVE_PACKET_LANE | P0 | governance | SEARCH-SURFACE AUDIT: GEX kill was WRONG DATA (ES.OPT=monthly only, 0  | weekly-OI pull -> real 0DTE GEX; integrate bbo-1m  | queue:INB-20260702-008 SEARCH_SURFACE_AND_DATA_FIT_AUDIT_202 |
 | INB-20260625-001 | 2026-06-25 | bug | TRIAGED | P0 | causality | same-day-close lookahead | ORB family INVALIDATED | causality_audit.py + memory project_orb_ema_slope_lookahead |
 | INB-20260626-001 | 2026-06-26 | operator directive | TRIAGED | P0 | data governance | inventory-before-exhausted-claim | keep databento/1m lane active | forge_system_guardrails.py (unused-databento) + memory inven |
 | INB-20260630-001 | 2026-06-30 | bug | TRIAGED | P0 | data governance | unproven blocker claim | none — control locked | DATA_BLOCKER_CERTIFICATES + guardrail P1 (cert required) |
@@ -23,6 +24,7 @@
 | INB-20260626-005 | 2026-06-26 | data feed | ACTIVE_PACKET_LANE | P1 | macro/carry | unused feeds | attach each feed to a packet lane | queue:INB-20260626-005 guardrail unused-feeds |
 | INB-20260630-002 | 2026-06-30 | data feed | ACTIVE_PACKET_LANE | P1 | term structure | term-structure curve data | — | term_structure.py queue:INB-20260630-002 |
 | INB-20260701-002 | 2026-07-01 | claude discovery | ACTIVE_PACKET_LANE | P1 | carry_commodity | roll-yield carry + spread | naive carry KILLed; refined -> spreadMR_GC | SPRINT_COMMODITY_CARRY_VERDICT_2026-07-01.md queue:INB-20260 |
+| INB-20260702-009 | 2026-07-02 | data feed | ACTIVE_PACKET_LANE | P1 | execution_cost | bbo-1m quotes/spread unlocked (ES median spread 0.25pt=1tick, /bin/zsh | real spread cost in harnesses; spread-conditioned  | queue:INB-20260702-009 |
 | INB-20260625-003 | 2026-06-25 | bug | TRIAGED | P1 | causality | cache key ignores close | none — audit clears cache | causality_audit.py _clear_cache() |
 | INB-20260626-003 | 2026-06-26 | guardrail finding | TRIAGED | P1 | governance | non-fail-loud enforcement | run guardrails each cycle | forge_system_guardrails.py (every-cycle) + memory system_gua |
 | INB-20260626-004 | 2026-06-26 | guardrail finding | TRIAGED | P1 | labeling | overclaim language | scan recent docs each cycle | forge_system_guardrails.py WH-scan + candidate ladder |

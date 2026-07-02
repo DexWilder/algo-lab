@@ -33,6 +33,17 @@
       "path": "data/databento/ES_OPT_oi_daily.csv",
       "purpose": "GEX-regime pin test",
       "validation": "OI rows>0"
+    },
+    {
+      "date": "2025-06-02/09",
+      "asset": "ES.c.0",
+      "schemas": [
+        "bbo-1m"
+      ],
+      "cost_usd": 0.01,
+      "path": "data/databento/ES_bbo_1m_sample.csv",
+      "purpose": "execution-realism + spread microstructure unlock",
+      "validation": "spread present"
     }
   ]
 }

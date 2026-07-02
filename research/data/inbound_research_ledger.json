@@ -648,6 +648,42 @@
       "linked_packet": null,
       "linked_queue": null,
       "linked_control": "forge_trial_ledger.classify_failure() canonical order"
+    },
+    {
+      "inbound_id": "INB-20260702-008",
+      "date": "2026-07-02",
+      "source_type": "claude discovery",
+      "source_ref": null,
+      "raw_note": "SEARCH-SURFACE AUDIT: GEX kill was WRONG DATA (ES.OPT=monthly only, 0 rows<20DTE; pinning lives at 0DTE/weekly=separate parents EW1-4/E1A/E3C). bbo-1m spread UNLOCKED (/bin/zsh.009/wk). Event-surprise data MISSING (flags not consensus). Over-testing generic price/volume. Queue rebalanced across 7 surfaces.",
+      "mechanism": null,
+      "family": "governance",
+      "required_data": null,
+      "available_data": null,
+      "required_harness": null,
+      "status": "ACTIVE_PACKET_LANE",
+      "priority": "P0",
+      "next_action": "weekly-OI pull -> real 0DTE GEX; integrate bbo-1m exec realism; acquire event surprise; cap generic p/v",
+      "linked_packet": null,
+      "linked_queue": "queue:INB-20260702-008",
+      "linked_control": "SEARCH_SURFACE_AND_DATA_FIT_AUDIT_2026-07-02.md"
+    },
+    {
+      "inbound_id": "INB-20260702-009",
+      "date": "2026-07-02",
+      "source_type": "data feed",
+      "source_ref": null,
+      "raw_note": "bbo-1m quotes/spread unlocked (ES median spread 0.25pt=1tick, /bin/zsh.009/wk) \u2014 execution realism + spread microstructure",
+      "mechanism": null,
+      "family": "execution_cost",
+      "required_data": "bbo-1m T3",
+      "available_data": null,
+      "required_harness": null,
+      "status": "ACTIVE_PACKET_LANE",
+      "priority": "P1",
+      "next_action": "real spread cost in harnesses; spread-conditioned close/open packets",
+      "linked_packet": null,
+      "linked_queue": "queue:INB-20260702-009",
+      "linked_control": null
     }
   ]
 }
