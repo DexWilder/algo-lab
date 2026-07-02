@@ -720,6 +720,24 @@
       "linked_packet": null,
       "linked_queue": null,
       "linked_control": "DATABENTO_TRANSIENT_FAILURE_RETRY_POLICY.md + provider_retry_state.json"
+    },
+    {
+      "inbound_id": "INB-20260702-012",
+      "date": "2026-07-02",
+      "source_type": "bug",
+      "source_ref": null,
+      "raw_note": "DATA-PROVENANCE RACE: ran GEX test on weekly-OI file while background pull was still overwriting it (analyzed 62-day intermediate; final was 40-day). Re-ran on known-final -> same kill verdict. Lesson: never analyze a file a background task is writing.",
+      "mechanism": null,
+      "family": "data governance",
+      "required_data": null,
+      "available_data": null,
+      "required_harness": null,
+      "status": "TRIAGED",
+      "priority": "P1",
+      "next_action": "append 'no mid-pull analysis' rule to retry policy",
+      "linked_packet": null,
+      "linked_queue": null,
+      "linked_control": "retry-policy: analyze ONLY after task completion + validate_data_file; harnesses assert file mtime stable"
     }
   ]
 }

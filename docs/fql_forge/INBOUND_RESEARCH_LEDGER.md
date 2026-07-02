@@ -1,7 +1,7 @@
-# Inbound Research Ledger (rendered 2026-07-02 17:26 UTC)
+# Inbound Research Ledger (rendered 2026-07-02 17:33 UTC)
 > **Operating law:** if it is not in this ledger, the queue, the dashboard, or the control map — the system does not know it.
-> Source of truth: `research/data/inbound_research_ledger.json`. Capture: `python3 research/capture_inbound.py`. Items: **40**.
-> NEW:0 | P0/P1:10/21 | untriaged directives:0 | mistakes w/o control:2 | unused feeds:0 | source notes unresolved:0
+> Source of truth: `research/data/inbound_research_ledger.json`. Capture: `python3 research/capture_inbound.py`. Items: **41**.
+> NEW:0 | P0/P1:10/22 | untriaged directives:0 | mistakes w/o control:2 | unused feeds:0 | source notes unresolved:0
 
 | id | date | type | status | P | family | mechanism / issue | next action | linked (packet/queue/control) |
 |---|---|---|---|---|---|---|---|---|
@@ -33,6 +33,7 @@
 | INB-20260630-005 | 2026-06-30 | operator directive | TRIAGED | P1 | validation | hostile second-pass | review every hardening result; later OpenClaw red- | adversarial_result_review.py |
 | INB-20260701-013 | 2026-07-01 | guardrail finding | TRIAGED | P1 | governance | Self-audit watchdog built: audits 12 facets/cycle (present+functioning | wire into every-cycle runner | forge_self_audit.py |
 | INB-20260702-011 | 2026-07-02 | data feed | TRIAGED | P1 | data governance | Databento 504/connection-reset on ES weekly-OI pull: parents EW1-4/E1A | run EW GEX expiry test now; retry E1A/E3C 0DTE nex | DATABENTO_TRANSIENT_FAILURE_RETRY_POLICY.md + provider_retry |
+| INB-20260702-012 | 2026-07-02 | bug | TRIAGED | P1 | data governance | DATA-PROVENANCE RACE: ran GEX test on weekly-OI file while background  | append 'no mid-pull analysis' rule to retry policy | retry-policy: analyze ONLY after task completion + validate_ |
 | INB-20260701-003 | 2026-07-01 | claude discovery | PROMOTED_TO_PACKET | P1 | carry_commodity | gold calendar-spread mean-reversion | Lane G deepening (operator-gated for capital) | SCREEN_PASS_CANDIDATE_spreadMR_GC_2026-07-01.md deepen_sprea |
 | INB-20260702-003 | 2026-07-02 | source | PROMOTED_TO_PACKET | P1 | carry_commodity | CME roll methodology docs -> roll-window pressure: index/ETF funds mus | — | src_roll_window_pressure |
 | INB-20260702-004 | 2026-07-02 | source | PROMOTED_TO_PACKET | P1 | gamma_dealer | Options dealer-hedging (SqueezeMetrics/Nomura) -> GEX-regime pin: deal | — | src_gex_regime_pin |

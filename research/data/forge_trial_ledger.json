@@ -15985,6 +15985,30 @@
       "failure_class": "no_edge",
       "data_tier": "T6",
       "n": 20
+    },
+    {
+      "packet": "GEX_EXPIRY:pin_drift:ES",
+      "asset": "ES",
+      "sharpe": -3.58,
+      "verdict": "micro",
+      "horizon": "",
+      "lane": "exploratory",
+      "ts": "2026-07-02",
+      "failure_class": "no_edge",
+      "data_tier": "T6",
+      "n": 19
+    },
+    {
+      "packet": "GEX_SIGNED:regime:ES",
+      "asset": "ES",
+      "sharpe": -5.97,
+      "verdict": "micro",
+      "horizon": "",
+      "lane": "exploratory",
+      "ts": "2026-07-02",
+      "failure_class": "instability",
+      "data_tier": "T6",
+      "n": 19
     }
   ],
   "note": "auto multiple-testing N; every test appends"

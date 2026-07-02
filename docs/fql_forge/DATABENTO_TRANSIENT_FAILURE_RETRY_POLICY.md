@@ -31,3 +31,6 @@ While a pull is `RUN_NOW_PENDING_PROVIDER_HEALTH`, the runner MUST execute the n
 - `RUN_NOW_PENDING_PROVIDER_HEALTH` — queue item needs data that's mid-retry.
 - `PROVIDER_UNSTABLE_RETRY_LATER` — repeated failure; defer to next window.
 - NONE of these are `DATA_BLOCKED` (that requires a certificate proving data is unavailable/paid).
+
+## Data-provenance rule (added 2026-07-02)
+- NEVER analyze a data file while a background pull may still be writing it. Wait for task completion, then `validate_data_file`, then use. (A GEX test was run on a mid-write intermediate; re-run on final gave the same verdict but the race is banned.)
