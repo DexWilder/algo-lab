@@ -1,16 +1,16 @@
-# FORGE GUARDRAILS — 2026-07-02 06:08 UTC
+# FORGE GUARDRAILS — 2026-07-02 07:31 UTC
 P0=0 P1=2 P2=0
   [P1] CLOSE-ONLY BIAS: only 15/194 forge_cycle scripts use 'volume' (8%). Databento volume vein under-worked (target: keep ACTIVE_PACKET_LANE).
   [P1] INBOUND: 2 mistake/validation item(s) with NO durable control: ['INB-20260701-010', 'INB-20260701-011'] (no control = not fixed)
   [ok] git backlog 0
   [ok] watchdog log 0.0d old
-  [ok] forge-morning-digest log 0.6d old
-  [ok] learning-loop log 0.2d old
+  [ok] forge-morning-digest log 0.7d old
+  [ok] learning-loop log 0.3d old
   [ok] no asserting WH/validated language in recent docs
-  [ok] trial-ledger N=1814
+  [ok] trial-ledger N=1822
   [ok] feeds: all 19 referenced
   [ok] harnesses: all have output
   [ok] data-blocker certificates present (1 recent blocked-mentions, cert exists)
   [ok] per-contract data files pass validator
-  [ok] data-tier gate: 0 false-exhaustion; 11 families have untested richer tier (TIER_INCOMPLETE ok)
-  [ok] inbound ledger: 35 items (0 NEW, P0=9 P1=19); status={'TRIAGED': 15, 'ACTIVE_PACKET_LANE': 6, 'RETEST_REQUIRED': 5, 'NEEDS_BESPOKE_HARNESS': 2, 'PROMOTED_TO_PACKET': 4, 'CLEAN_KILL': 1, 'CONTROL_REQUIRED': 2}
+  [ok] data-tier gate: 0 false-exhaustion; 10 families have untested richer tier (TIER_INCOMPLETE ok)
+  [ok] inbound ledger: 36 items (0 NEW, P0=9 P1=19); status={'TRIAGED': 16, 'ACTIVE_PACKET_LANE': 6, 'RETEST_REQUIRED': 5, 'NEEDS_BESPOKE_HARNESS': 2, 'PROMOTED_TO_PACKET': 4, 'CLEAN_KILL': 1, 'CONTROL_REQUIRED': 2}

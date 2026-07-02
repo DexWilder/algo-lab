@@ -121,22 +121,24 @@
     },
     "gamma_dealer": {
       "lane": "exploratory",
-      "status": "FEASIBLE",
+      "status": "FEASIBILITY_PROVEN",
       "data": "REPULL_PAID",
       "tested": [
-        "feasibility-memo"
+        "OI/GEX feasibility (real ES.OPT)",
+        "naive pin proxy @T6 (no effect, CLEAN_KILL_expression)"
       ],
       "untested": [
-        "chunked-OI loader",
-        "approx-GEX",
-        "GEX-regime pin",
-        "gamma-flip accel"
+        "expiry/0DTE gamma pin (mechanism home regime)",
+        "gamma-flip accel",
+        "full-history OI (Mar/Apr + more years)"
       ],
-      "tested_tiers": [],
+      "tested_tiers": [
+        "T6"
+      ],
       "richest_applicable_tier": "T6",
-      "tier_gap": true,
-      "data_tier": "none",
-      "tier_gap_reason": "tested to none, T6 untested"
+      "tier_gap": false,
+      "data_tier": "T6",
+      "tier_gap_reason": "T6 reached; naive pin dead; expiry-regime variant is the live branch"
     },
     "positioning_cot": {
       "lane": "positioning",

@@ -41,6 +41,14 @@ def record(packet, asset="", sharpe=None, verdict="", horizon="", lane=None, sta
     return len(d["trials"])
 FAILURE_CLASSES=["no_edge","costs_killed","concentration","side_degeneracy","artifact","data_issue",
                  "insufficient_tier","dsr_searchN_fail","instability","execution_impossible"]
+def classify_failure(sharpe=None, maxyr=None, degenerate=False, suspicious=False, dsr=None):
+    """Canonical failure taxonomy (use everywhere so the meta-DB is consistent). Order matters: structural first."""
+    if degenerate: return "side_degeneracy"
+    if suspicious: return "instability"
+    if sharpe is not None and sharpe<0.3: return "no_edge"        # includes negative Sharpe (was mislabeled concentration)
+    if maxyr is not None and maxyr>60: return "concentration"
+    if dsr is not None and dsr<0.95: return "dsr_searchN_fail"
+    return None
 def failure_taxonomy():
     from collections import Counter
     return dict(Counter(t.get("failure_class","unclassified") for t in _load()["trials"] if "KILL" in str(t.get("verdict","")).upper() or t.get("failure_class")))

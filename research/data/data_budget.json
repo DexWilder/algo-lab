@@ -21,6 +21,18 @@
       "path": "data/databento/ES_OPT_*_sample.csv",
       "purpose": "GEX feasibility memo",
       "validation": "pending"
+    },
+    {
+      "date": "2025-01-01/2025-06-01",
+      "asset": "ES.OPT",
+      "schemas": [
+        "definition",
+        "statistics-OI"
+      ],
+      "cost_usd": 1.97,
+      "path": "data/databento/ES_OPT_oi_daily.csv",
+      "purpose": "GEX-regime pin test",
+      "validation": "OI rows>0"
     }
   ]
 }

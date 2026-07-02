@@ -69,20 +69,14 @@
       "next_tier_action": "test at T6"
     },
     "gamma_dealer": {
-      "tested_tiers": [],
-      "highest_tested_tier": "none",
-      "richest_applicable_tier": "T6",
-      "untested_available_tiers": [
-        "T0",
-        "T1",
-        "T2",
-        "T3",
-        "T4",
-        "T5",
+      "tested_tiers": [
         "T6"
       ],
-      "exhaustion_allowed": false,
-      "next_tier_action": "test at T0"
+      "highest_tested_tier": "T6",
+      "richest_applicable_tier": "T6",
+      "untested_available_tiers": [],
+      "exhaustion_allowed": true,
+      "next_tier_action": "family-complete"
     },
     "positioning_cot": {
       "tested_tiers": [

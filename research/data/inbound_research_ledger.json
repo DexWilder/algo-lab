@@ -630,6 +630,24 @@
       "linked_packet": null,
       "linked_queue": "src_liquidity_hole",
       "linked_control": null
+    },
+    {
+      "inbound_id": "INB-20260702-007",
+      "date": "2026-07-02",
+      "source_type": "bug",
+      "source_ref": null,
+      "raw_note": "failure_class labeler mis-tagged negative-Sharpe as concentration (maxyr-on-negative-sum quirk)",
+      "mechanism": null,
+      "family": null,
+      "required_data": null,
+      "available_data": null,
+      "required_harness": null,
+      "status": "TRIAGED",
+      "priority": "P2",
+      "next_action": "sweeps use classify_failure going forward",
+      "linked_packet": null,
+      "linked_queue": null,
+      "linked_control": "forge_trial_ledger.classify_failure() canonical order"
     }
   ]
 }

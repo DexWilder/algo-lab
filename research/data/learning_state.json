@@ -1,11 +1,11 @@
 {
-  "timestamp": "2026-07-02 06:08 UTC",
-  "global_trial_N": 1814,
+  "timestamp": "2026-07-02 07:30 UTC",
+  "global_trial_N": 1822,
   "lane_breakdown": {
     "forced_flow": 7,
-    "exploratory": 9,
+    "exploratory": 11,
     "portfolio": 2,
-    "databento_volume": 45,
+    "databento_volume": 51,
     "positioning": 48,
     "primitive_sweep": 1679,
     "macro_regime": 3,
@@ -52,10 +52,10 @@
       "tier_gap": true
     },
     "gamma_dealer": {
-      "status": "FEASIBLE",
-      "data_tier": "none",
+      "status": "FEASIBILITY_PROVEN",
+      "data_tier": "T6",
       "richest_applicable_tier": "T6",
-      "tier_gap": true
+      "tier_gap": false
     },
     "positioning_cot": {
       "status": "SUBFAMILY_KILLED",
@@ -164,7 +164,9 @@
     "vol_risk_premium": [
       "T5"
     ],
-    "gamma_dealer": [],
+    "gamma_dealer": [
+      "T6"
+    ],
     "positioning_cot": [
       "T5"
     ],
@@ -248,12 +250,6 @@
       "reason": "tested to T5, T6 untested"
     },
     {
-      "family": "gamma_dealer",
-      "data_tier": "none",
-      "richest": "T6",
-      "reason": "tested to none, T6 untested"
-    },
-    {
       "family": "inventory_eia",
       "data_tier": "none",
       "richest": "T5",
@@ -306,7 +302,7 @@
     "roll/settlement": 1.6,
     "carry": 1.6,
     "curve RV": 0.4,
-    "hedging reflexivity": 1.5,
+    "hedging reflexivity": 1.0,
     "microstructure": 1.5,
     "execution window": 1.5,
     "month-end/rebalance": 1.5,
@@ -318,7 +314,6 @@
   "next_25_actions": [
     "TEST trend_momentum at richer tier T3 (T2 done)",
     "TEST vol_risk_premium at richer tier T6 (T5 done)",
-    "TEST gamma_dealer at richer tier T6 (none done)",
     "TEST inventory_eia at richer tier T5 (none done)",
     "TEST macro_event_drift at richer tier T3 (T1 done)",
     "TEST monthend_settlement at richer tier T3 (T1 done)",
@@ -327,7 +322,9 @@
     "TEST fx_fixing_ratediv at richer tier T3 (none done)",
     "QUEUE deepen_spreadMR_GC_execution: Lane G: real 2-leg calendar-spread execution model (deferred",
     "QUEUE deepen_spreadMR_GC_searchN: Lane G: pin honest search-N for spreadMR_GC DSR (credible N<",
-    "QUEUE deepen_spreadMR_GC_robustness: Lane G: param robustness spreadMR_GC (z 1.0/2.0, lookback 12"
+    "QUEUE deepen_spreadMR_GC_robustness: Lane G: param robustness spreadMR_GC (z 1.0/2.0, lookback 12",
+    "QUEUE gex_expiry_0dte_pin: T6: expiry/0DTE gamma-pin \u2014 target last 1-2 days to expiry (",
+    "QUEUE gex_full_oi_coverage: T6 data: expand ES.OPT OI (Mar/Apr 2025 retry + more years, "
   ],
   "stale_labels": [],
   "unresolved_learning_gaps": [

@@ -1,6 +1,6 @@
-# Inbound Research Ledger (rendered 2026-07-02 06:07 UTC)
+# Inbound Research Ledger (rendered 2026-07-02 07:30 UTC)
 > **Operating law:** if it is not in this ledger, the queue, the dashboard, or the control map — the system does not know it.
-> Source of truth: `research/data/inbound_research_ledger.json`. Capture: `python3 research/capture_inbound.py`. Items: **35**.
+> Source of truth: `research/data/inbound_research_ledger.json`. Capture: `python3 research/capture_inbound.py`. Items: **36**.
 > NEW:0 | P0/P1:9/19 | untriaged directives:0 | mistakes w/o control:2 | unused feeds:0 | source notes unresolved:0
 
 | id | date | type | status | P | family | mechanism / issue | next action | linked (packet/queue/control) |
@@ -38,5 +38,6 @@
 | INB-20260626-002 | 2026-06-26 | bug | TRIAGED | P2 | harness hygiene | duplicate/bypassed harness | none | guardrail unrun-harnesses + forge_trial_ledger dedup |
 | INB-20260630-003 | 2026-06-30 | bug | TRIAGED | P2 | data integrity | save-time column loss | none — validator guards | validate_data_file.py |
 | INB-20260701-004 | 2026-07-01 | bug | TRIAGED | P2 | review calibration | side-share over all days not active | none — fixed | adversarial_result_review.py (active-side + SPARSE_LOW_N) |
+| INB-20260702-007 | 2026-07-02 | bug | TRIAGED | P2 | — | failure_class labeler mis-tagged negative-Sharpe as concentration (max | sweeps use classify_failure going forward | forge_trial_ledger.classify_failure() canonical order |
 | INB-20260702-005 | 2026-07-02 | source | PROMOTED_TO_PACKET | P2 | intraday_micro | Microstructure (Kyle/VPIN/Easley) -> liquidity-hole reversal: informed | — | src_liquidity_hole |
 | INB-20260701-007 | 2026-07-01 | validation failure | CLEAN_KILL | P2 | carry_commodity | cross-asset generalization | gold-specific noted; not a family win | — |

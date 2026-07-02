@@ -299,6 +299,18 @@
       "status": "BACKLOG",
       "lane": "inbound",
       "note": "[governance] Full-spectrum Elite Novelty System Assessment: grade every layer, build P0/P1 automation g"
+    },
+    {
+      "id": "gex_expiry_0dte_pin",
+      "status": "RUN_NOW",
+      "lane": "exploratory",
+      "note": "T6: expiry/0DTE gamma-pin \u2014 target last 1-2 days to expiry (naive proxy killed; mechanism lives at expiry). Needs OI on expiry days."
+    },
+    {
+      "id": "gex_full_oi_coverage",
+      "status": "RUN_NOW",
+      "lane": "exploratory",
+      "note": "T6 data: expand ES.OPT OI (Mar/Apr 2025 retry + more years, incl expiry days) \u2014 cost trivial (~$2)"
     }
   ]
 }
