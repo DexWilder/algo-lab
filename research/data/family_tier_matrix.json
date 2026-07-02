@@ -1,0 +1,260 @@
+{
+  "note": "anti-false-exhaustion matrix; exhaustion_allowed=False blocks FAMILY_EXHAUSTED",
+  "families": {
+    "trend_momentum": {
+      "tested_tiers": [
+        "T0",
+        "T2"
+      ],
+      "highest_tested_tier": "T2",
+      "richest_applicable_tier": "T3",
+      "untested_available_tiers": [
+        "T3"
+      ],
+      "exhaustion_allowed": false,
+      "next_tier_action": "test at T3"
+    },
+    "mean_reversion": {
+      "tested_tiers": [
+        "T0",
+        "T2"
+      ],
+      "highest_tested_tier": "T2",
+      "richest_applicable_tier": "T3",
+      "untested_available_tiers": [
+        "T3"
+      ],
+      "exhaustion_allowed": false,
+      "next_tier_action": "test at T3"
+    },
+    "carry_rates": {
+      "tested_tiers": [
+        "T4"
+      ],
+      "highest_tested_tier": "T4",
+      "richest_applicable_tier": "T4",
+      "untested_available_tiers": [],
+      "exhaustion_allowed": true,
+      "next_tier_action": "family-complete"
+    },
+    "carry_commodity": {
+      "tested_tiers": [
+        "T4"
+      ],
+      "highest_tested_tier": "T4",
+      "richest_applicable_tier": "T4",
+      "untested_available_tiers": [],
+      "exhaustion_allowed": true,
+      "next_tier_action": "family-complete"
+    },
+    "curve_rv": {
+      "tested_tiers": [
+        "T4"
+      ],
+      "highest_tested_tier": "T4",
+      "richest_applicable_tier": "T4",
+      "untested_available_tiers": [],
+      "exhaustion_allowed": true,
+      "next_tier_action": "family-complete"
+    },
+    "vol_risk_premium": {
+      "tested_tiers": [
+        "T5"
+      ],
+      "highest_tested_tier": "T5",
+      "richest_applicable_tier": "T6",
+      "untested_available_tiers": [
+        "T6"
+      ],
+      "exhaustion_allowed": false,
+      "next_tier_action": "test at T6"
+    },
+    "gamma_dealer": {
+      "tested_tiers": [],
+      "highest_tested_tier": "none",
+      "richest_applicable_tier": "T6",
+      "untested_available_tiers": [
+        "T0",
+        "T1",
+        "T2",
+        "T3",
+        "T4",
+        "T5",
+        "T6"
+      ],
+      "exhaustion_allowed": false,
+      "next_tier_action": "test at T0"
+    },
+    "positioning_cot": {
+      "tested_tiers": [
+        "T5"
+      ],
+      "highest_tested_tier": "T5",
+      "richest_applicable_tier": "T5",
+      "untested_available_tiers": [],
+      "exhaustion_allowed": true,
+      "next_tier_action": "family-complete"
+    },
+    "auction_issuance": {
+      "tested_tiers": [
+        "T5"
+      ],
+      "highest_tested_tier": "T5",
+      "richest_applicable_tier": "T5",
+      "untested_available_tiers": [],
+      "exhaustion_allowed": true,
+      "next_tier_action": "family-complete"
+    },
+    "inventory_eia": {
+      "tested_tiers": [],
+      "highest_tested_tier": "none",
+      "richest_applicable_tier": "T5",
+      "untested_available_tiers": [
+        "T0",
+        "T1",
+        "T2",
+        "T3",
+        "T4",
+        "T5"
+      ],
+      "exhaustion_allowed": true,
+      "next_tier_action": "family-complete"
+    },
+    "macro_event_drift": {
+      "tested_tiers": [
+        "T1"
+      ],
+      "highest_tested_tier": "T1",
+      "richest_applicable_tier": "T3",
+      "untested_available_tiers": [
+        "T2",
+        "T3"
+      ],
+      "exhaustion_allowed": false,
+      "next_tier_action": "test at T2"
+    },
+    "monthend_settlement": {
+      "tested_tiers": [
+        "T1"
+      ],
+      "highest_tested_tier": "T1",
+      "richest_applicable_tier": "T3",
+      "untested_available_tiers": [
+        "T2",
+        "T3"
+      ],
+      "exhaustion_allowed": false,
+      "next_tier_action": "test at T2"
+    },
+    "expiry_opex": {
+      "tested_tiers": [],
+      "highest_tested_tier": "none",
+      "richest_applicable_tier": "T6",
+      "untested_available_tiers": [
+        "T0",
+        "T1",
+        "T2",
+        "T3",
+        "T4",
+        "T5",
+        "T6"
+      ],
+      "exhaustion_allowed": false,
+      "next_tier_action": "test at T0"
+    },
+    "open_close_liquidity": {
+      "tested_tiers": [
+        "T2",
+        "T3"
+      ],
+      "highest_tested_tier": "T3",
+      "richest_applicable_tier": "T3",
+      "untested_available_tiers": [],
+      "exhaustion_allowed": true,
+      "next_tier_action": "family-complete"
+    },
+    "intraday_micro": {
+      "tested_tiers": [
+        "T3"
+      ],
+      "highest_tested_tier": "T3",
+      "richest_applicable_tier": "T6",
+      "untested_available_tiers": [
+        "T4",
+        "T5",
+        "T6"
+      ],
+      "exhaustion_allowed": false,
+      "next_tier_action": "test at T4"
+    },
+    "xasset_leadlag": {
+      "tested_tiers": [
+        "T2"
+      ],
+      "highest_tested_tier": "T2",
+      "richest_applicable_tier": "T3",
+      "untested_available_tiers": [
+        "T3"
+      ],
+      "exhaustion_allowed": false,
+      "next_tier_action": "test at T3"
+    },
+    "regime_filters": {
+      "tested_tiers": [
+        "T5"
+      ],
+      "highest_tested_tier": "T5",
+      "richest_applicable_tier": "T5",
+      "untested_available_tiers": [],
+      "exhaustion_allowed": true,
+      "next_tier_action": "family-complete"
+    },
+    "execution_cost": {
+      "tested_tiers": [
+        "T3"
+      ],
+      "highest_tested_tier": "T3",
+      "richest_applicable_tier": "T3",
+      "untested_available_tiers": [],
+      "exhaustion_allowed": true,
+      "next_tier_action": "family-complete"
+    },
+    "crypto_funding": {
+      "tested_tiers": [
+        "T5"
+      ],
+      "highest_tested_tier": "T5",
+      "richest_applicable_tier": "T5",
+      "untested_available_tiers": [],
+      "exhaustion_allowed": true,
+      "next_tier_action": "family-complete"
+    },
+    "fx_fixing_ratediv": {
+      "tested_tiers": [],
+      "highest_tested_tier": "none",
+      "richest_applicable_tier": "T3",
+      "untested_available_tiers": [
+        "T0",
+        "T1",
+        "T2",
+        "T3"
+      ],
+      "exhaustion_allowed": false,
+      "next_tier_action": "test at T0"
+    },
+    "carry_legacy_fx_rates": {
+      "tested_tiers": [
+        "T1"
+      ],
+      "highest_tested_tier": "T1",
+      "richest_applicable_tier": "T4",
+      "untested_available_tiers": [
+        "T2",
+        "T3",
+        "T4"
+      ],
+      "exhaustion_allowed": false,
+      "next_tier_action": "test at T2"
+    }
+  }
+}

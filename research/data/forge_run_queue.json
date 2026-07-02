@@ -257,6 +257,48 @@
       "status": "BACKLOG",
       "lane": "novelty",
       "note": "roll/settlement: long-ETF holders bleed roll return in steep contango [ZT] harness=term-structure-carry (validators first, predeclared)"
+    },
+    {
+      "id": "nov_detrended_carry_CL",
+      "status": "BACKLOG",
+      "lane": "novelty",
+      "note": "carry: carry vs own rolling term-structure baseline (not raw sign) [CL] harness=term-structure-carry (validators first, predeclared)"
+    },
+    {
+      "id": "nov_detrended_carry_GC",
+      "status": "BACKLOG",
+      "lane": "novelty",
+      "note": "carry: carry vs own rolling term-structure baseline (not raw sign) [GC] harness=term-structure-carry (validators first, predeclared)"
+    },
+    {
+      "id": "nov_month_end_extend_M2K",
+      "status": "BACKLOG",
+      "lane": "novelty",
+      "note": "month-end/rebalance: duration/equity index funds rebalance in the last session(s) [M2K] harness=calendar-adapter (validators first, predeclared)"
+    },
+    {
+      "id": "nov_month_end_extend_MES",
+      "status": "BACKLOG",
+      "lane": "novelty",
+      "note": "month-end/rebalance: duration/equity index funds rebalance in the last session(s) [MES] harness=calendar-adapter (validators first, predeclared)"
+    },
+    {
+      "id": "nov_opening_imbalance_6B",
+      "status": "BACKLOG",
+      "lane": "novelty",
+      "note": "microstructure: overnight order imbalance resolves in the opening auction [6B] harness=intraday-path (validators first, predeclared)"
+    },
+    {
+      "id": "nov_opening_imbalance_6E",
+      "status": "BACKLOG",
+      "lane": "novelty",
+      "note": "microstructure: overnight order imbalance resolves in the opening auction [6E] harness=intraday-path (validators first, predeclared)"
+    },
+    {
+      "id": "INB-20260702-001",
+      "status": "BACKLOG",
+      "lane": "inbound",
+      "note": "[governance] Full-spectrum Elite Novelty System Assessment: grade every layer, build P0/P1 automation g"
     }
   ]
 }

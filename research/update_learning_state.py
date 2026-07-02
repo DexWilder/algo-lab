@@ -59,6 +59,18 @@ state=dict(timestamp=datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
     candidate_rungs={cid:rung for rung,cids in lad.items() for cid in cids}, data_utilization_gaps=util_gaps,
     novelty_weights=weights, next_25_actions=next25, stale_labels=stale_labels, unresolved_learning_gaps=unresolved)
 OUT.write_text(json.dumps(state,indent=2))
+# family_tier_matrix.json — the anti-false-exhaustion matrix (item 4)
+_T={f"T{i}":i for i in range(8)}
+matrix={}
+for k,f in reg.items():
+    tt=f.get("tested_tiers",[]); tmax=max([_T[t] for t in tt],default=-1); rich=f.get("richest_applicable_tier","?")
+    untested=[f"T{i}" for i in range(tmax+1,_T.get(rich,tmax)+1)] if rich in _T else []
+    exhaustion_allowed = (tmax>=_T.get(rich,99)) or f.get("status")=="DATA_BLOCKED_CERT"
+    matrix[k]={"tested_tiers":tt,"highest_tested_tier":(f"T{tmax}" if tmax>=0 else "none"),
+        "richest_applicable_tier":rich,"untested_available_tiers":untested,
+        "exhaustion_allowed":bool(exhaustion_allowed),
+        "next_tier_action":("family-complete" if exhaustion_allowed else f"test at {untested[0]}" if untested else f"test at {rich}")}
+(REPO/"research/data/family_tier_matrix.json").write_text(json.dumps({"note":"anti-false-exhaustion matrix; exhaustion_allowed=False blocks FAMILY_EXHAUSTED","families":matrix},indent=2))
 print(f"learning_state updated: {len(reg)} families, {len(killed_expressions)} killed exprs, {len(survivor_neighborhoods)} survivors,")
 print(f"  {len(util_gaps)} data-util gaps, novelty weights up>1: {[d for d,w in weights.items() if w>1]}")
 print(f"  next-25 head: {next25[0] if next25 else '-'} | unresolved learning gaps: {len(unresolved)}")

@@ -1,0 +1,152 @@
+FAIL-CLOSED execution gate: 'XB-ORB-EMA-Ladder-MGC' is controller-eligible (REDUCED_ON) but blocked from the runner — BLOCKED_PAPER_READY_FALSE
+VERDICT: PHASE1C_24H_VERIFY_PENDING
+  1_in_live_forward_output: no  {'signal_log.csv': {'exists': True, 'contains_book': False}, 'trade_log.csv': {'exists': True, 'contains_book': False}, 'daily_report.csv': {'exists': True, 'contains_book': False}}
+  2_paper_probation_1mnq: PASS  {'status': 'probation', 'controller_action': 'PROBATION'}
+  3_exit_variant_null: PASS  {'registry': None, 'runner': None}
+  4_mnq_workhorse_count: PASS  ['WH-MNQ-stop_run_reversal-ema_slope-PL', 'XB-ORB-EMA-Ladder-MNQ']
+  5_excluded_books_excluded: PASS  {'XB-ORB-EMA-Ladder-MGC': True, 'XB-ORB-EMA-Chandelier-MNQ': True, 'XB-PB-EMA-Chandelier-MNQ': True, 'XB-ORB-EMA-ATRTrail-MES': True}
+  6_monitor_scorecard_recognized: PASS  {'drift': True, 'eval_set': True}
+  7_no_live_prop_route: PASS  {'live_route': False}
+Wrote: /Users/chasefisher/projects/Algo Trading/algo-lab/docs/fql_forge/PHASE1C_24H_VERIFY_2026-06-15.md
+PENDING — awaiting live forward-runner output; verifier remains scheduled.
+FAIL-CLOSED execution gate: 'XB-ORB-EMA-Ladder-MGC' is controller-eligible (REDUCED_ON) but blocked from the runner — BLOCKED_PAPER_READY_FALSE
+VERDICT: PHASE1C_24H_VERIFY_FAIL
+  1_in_live_forward_output: PASS  {'signal_log.csv': {'exists': True, 'contains_book': True}, 'trade_log.csv': {'exists': True, 'contains_book': True}, 'daily_report.csv': {'exists': True, 'contains_book': False}}
+  2_paper_probation_1mnq: no  {'status': 'probation', 'controller_action': 'REDUCED_ON'}
+  3_exit_variant_null: PASS  {'registry': None, 'runner': None}
+  4_mnq_workhorse_count: PASS  ['WH-MNQ-stop_run_reversal-ema_slope-PL', 'XB-ORB-EMA-Ladder-MNQ']
+  5_excluded_books_excluded: PASS  {'XB-ORB-EMA-Ladder-MGC': True, 'XB-ORB-EMA-Chandelier-MNQ': True, 'XB-PB-EMA-Chandelier-MNQ': True, 'XB-ORB-EMA-ATRTrail-MES': True}
+  6_monitor_scorecard_recognized: PASS  {'drift': True, 'eval_set': True}
+  7_no_live_prop_route: PASS  {'live_route': False}
+Wrote: /Users/chasefisher/projects/Algo Trading/algo-lab/docs/fql_forge/PHASE1C_24H_VERIFY_2026-06-16.md
+Rollback backup: /tmp/strategy_registry_pre_phase1c_rollback_2026-06-16.json (rollback NOT executed unless --execute-rollback)
+ALERT: PHASE1C_24H_VERIFY_FAIL — rollback staged, NOT executed. Human confirmation required.
+FAIL-CLOSED execution gate: 'XB-ORB-EMA-Ladder-MGC' is controller-eligible (REDUCED_ON) but blocked from the runner — BLOCKED_PAPER_READY_FALSE
+VERDICT: PHASE1C_24H_VERIFY_FAIL
+  1_in_live_forward_output: PASS  {'signal_log.csv': {'exists': True, 'contains_book': True}, 'trade_log.csv': {'exists': True, 'contains_book': True}, 'daily_report.csv': {'exists': True, 'contains_book': False}}
+  2_paper_probation_1mnq: no  {'status': 'probation', 'controller_action': 'REDUCED_ON'}
+  3_exit_variant_null: PASS  {'registry': None, 'runner': None}
+  4_mnq_workhorse_count: PASS  ['WH-MNQ-stop_run_reversal-ema_slope-PL', 'XB-ORB-EMA-Ladder-MNQ']
+  5_excluded_books_excluded: PASS  {'XB-ORB-EMA-Ladder-MGC': True, 'XB-ORB-EMA-Chandelier-MNQ': True, 'XB-PB-EMA-Chandelier-MNQ': True, 'XB-ORB-EMA-ATRTrail-MES': True}
+  6_monitor_scorecard_recognized: PASS  {'drift': True, 'eval_set': True}
+  7_no_live_prop_route: PASS  {'live_route': False}
+Wrote: /Users/chasefisher/projects/Algo Trading/algo-lab/docs/fql_forge/PHASE1C_24H_VERIFY_2026-06-17.md
+Rollback backup: /tmp/strategy_registry_pre_phase1c_rollback_2026-06-17.json (rollback NOT executed unless --execute-rollback)
+ALERT: PHASE1C_24H_VERIFY_FAIL — rollback staged, NOT executed. Human confirmation required.
+FAIL-CLOSED execution gate: 'XB-ORB-EMA-Ladder-MGC' is controller-eligible (REDUCED_ON) but blocked from the runner — BLOCKED_PAPER_READY_FALSE
+VERDICT: PHASE1C_24H_VERIFY_FAIL
+  1_in_live_forward_output: PASS  {'signal_log.csv': {'exists': True, 'contains_book': True}, 'trade_log.csv': {'exists': True, 'contains_book': True}, 'daily_report.csv': {'exists': True, 'contains_book': False}}
+  2_paper_probation_1mnq: no  {'status': 'probation', 'controller_action': 'REDUCED_ON'}
+  3_exit_variant_null: PASS  {'registry': None, 'runner': None}
+  4_mnq_workhorse_count: PASS  ['WH-MNQ-stop_run_reversal-ema_slope-PL', 'XB-ORB-EMA-Ladder-MNQ']
+  5_excluded_books_excluded: PASS  {'XB-ORB-EMA-Ladder-MGC': True, 'XB-ORB-EMA-Chandelier-MNQ': True, 'XB-PB-EMA-Chandelier-MNQ': True, 'XB-ORB-EMA-ATRTrail-MES': True}
+  6_monitor_scorecard_recognized: PASS  {'drift': True, 'eval_set': True}
+  7_no_live_prop_route: PASS  {'live_route': False}
+Wrote: /Users/chasefisher/projects/Algo Trading/algo-lab/docs/fql_forge/PHASE1C_24H_VERIFY_2026-06-18.md
+Rollback backup: /tmp/strategy_registry_pre_phase1c_rollback_2026-06-18.json (rollback NOT executed unless --execute-rollback)
+ALERT: PHASE1C_24H_VERIFY_FAIL — rollback staged, NOT executed. Human confirmation required.
+FAIL-CLOSED execution gate: 'XB-ORB-EMA-Ladder-MGC' is controller-eligible (REDUCED_ON) but blocked from the runner — BLOCKED_PAPER_READY_FALSE
+VERDICT: PHASE1C_24H_VERIFY_FAIL
+  1_in_live_forward_output: PASS  {'signal_log.csv': {'exists': True, 'contains_book': True}, 'trade_log.csv': {'exists': True, 'contains_book': True}, 'daily_report.csv': {'exists': True, 'contains_book': False}}
+  2_paper_probation_1mnq: no  {'status': 'probation', 'controller_action': 'REDUCED_ON'}
+  3_exit_variant_null: PASS  {'registry': None, 'runner': None}
+  4_mnq_workhorse_count: PASS  ['WH-MNQ-stop_run_reversal-ema_slope-PL', 'XB-ORB-EMA-Ladder-MNQ']
+  5_excluded_books_excluded: PASS  {'XB-ORB-EMA-Ladder-MGC': True, 'XB-ORB-EMA-Chandelier-MNQ': True, 'XB-PB-EMA-Chandelier-MNQ': True, 'XB-ORB-EMA-ATRTrail-MES': True}
+  6_monitor_scorecard_recognized: PASS  {'drift': True, 'eval_set': True}
+  7_no_live_prop_route: PASS  {'live_route': False}
+Wrote: /Users/chasefisher/projects/Algo Trading/algo-lab/docs/fql_forge/PHASE1C_24H_VERIFY_2026-06-19.md
+Rollback backup: /tmp/strategy_registry_pre_phase1c_rollback_2026-06-19.json (rollback NOT executed unless --execute-rollback)
+ALERT: PHASE1C_24H_VERIFY_FAIL — rollback staged, NOT executed. Human confirmation required.
+FAIL-CLOSED execution gate: 'XB-ORB-EMA-Ladder-MGC' is controller-eligible (REDUCED_ON) but blocked from the runner — BLOCKED_PAPER_READY_FALSE
+VERDICT: PHASE1C_24H_VERIFY_FAIL
+  1_in_live_forward_output: PASS  {'signal_log.csv': {'exists': True, 'contains_book': True}, 'trade_log.csv': {'exists': True, 'contains_book': True}, 'daily_report.csv': {'exists': True, 'contains_book': False}}
+  2_paper_probation_1mnq: no  {'status': 'probation', 'controller_action': 'REDUCED_ON'}
+  3_exit_variant_null: PASS  {'registry': None, 'runner': None}
+  4_mnq_workhorse_count: PASS  ['WH-MNQ-stop_run_reversal-ema_slope-PL', 'XB-ORB-EMA-Ladder-MNQ']
+  5_excluded_books_excluded: PASS  {'XB-ORB-EMA-Ladder-MGC': True, 'XB-ORB-EMA-Chandelier-MNQ': True, 'XB-PB-EMA-Chandelier-MNQ': True, 'XB-ORB-EMA-ATRTrail-MES': True}
+  6_monitor_scorecard_recognized: PASS  {'drift': True, 'eval_set': True}
+  7_no_live_prop_route: PASS  {'live_route': False}
+Wrote: /Users/chasefisher/projects/Algo Trading/algo-lab/docs/fql_forge/PHASE1C_24H_VERIFY_2026-06-22.md
+Rollback backup: /tmp/strategy_registry_pre_phase1c_rollback_2026-06-22.json (rollback NOT executed unless --execute-rollback)
+ALERT: PHASE1C_24H_VERIFY_FAIL — rollback staged, NOT executed. Human confirmation required.
+FAIL-CLOSED execution gate: 'XB-ORB-EMA-Ladder-MGC' is controller-eligible (REDUCED_ON) but blocked from the runner — BLOCKED_PAPER_READY_FALSE
+VERDICT: PHASE1C_24H_VERIFY_FAIL
+  1_in_live_forward_output: PASS  {'signal_log.csv': {'exists': True, 'contains_book': True}, 'trade_log.csv': {'exists': True, 'contains_book': True}, 'daily_report.csv': {'exists': True, 'contains_book': False}}
+  2_paper_probation_1mnq: no  {'status': 'probation', 'controller_action': 'REDUCED_ON'}
+  3_exit_variant_null: PASS  {'registry': None, 'runner': None}
+  4_mnq_workhorse_count: PASS  ['WH-MNQ-stop_run_reversal-ema_slope-PL', 'XB-ORB-EMA-Ladder-MNQ']
+  5_excluded_books_excluded: PASS  {'XB-ORB-EMA-Ladder-MGC': True, 'XB-ORB-EMA-Chandelier-MNQ': True, 'XB-PB-EMA-Chandelier-MNQ': True, 'XB-ORB-EMA-ATRTrail-MES': True}
+  6_monitor_scorecard_recognized: PASS  {'drift': True, 'eval_set': True}
+  7_no_live_prop_route: PASS  {'live_route': False}
+Wrote: /Users/chasefisher/projects/Algo Trading/algo-lab/docs/fql_forge/PHASE1C_24H_VERIFY_2026-06-23.md
+Rollback backup: /tmp/strategy_registry_pre_phase1c_rollback_2026-06-23.json (rollback NOT executed unless --execute-rollback)
+ALERT: PHASE1C_24H_VERIFY_FAIL — rollback staged, NOT executed. Human confirmation required.
+FAIL-CLOSED execution gate: 'XB-ORB-EMA-Ladder-MGC' is controller-eligible (REDUCED_ON) but blocked from the runner — BLOCKED_PAPER_READY_FALSE
+VERDICT: PHASE1C_24H_VERIFY_FAIL
+  1_in_live_forward_output: PASS  {'signal_log.csv': {'exists': True, 'contains_book': True}, 'trade_log.csv': {'exists': True, 'contains_book': True}, 'daily_report.csv': {'exists': True, 'contains_book': False}}
+  2_paper_probation_1mnq: no  {'status': 'probation', 'controller_action': 'REDUCED_ON'}
+  3_exit_variant_null: PASS  {'registry': None, 'runner': None}
+  4_mnq_workhorse_count: PASS  ['WH-MNQ-stop_run_reversal-ema_slope-PL', 'XB-ORB-EMA-Ladder-MNQ']
+  5_excluded_books_excluded: PASS  {'XB-ORB-EMA-Ladder-MGC': True, 'XB-ORB-EMA-Chandelier-MNQ': True, 'XB-PB-EMA-Chandelier-MNQ': True, 'XB-ORB-EMA-ATRTrail-MES': True}
+  6_monitor_scorecard_recognized: PASS  {'drift': True, 'eval_set': True}
+  7_no_live_prop_route: PASS  {'live_route': False}
+Wrote: /Users/chasefisher/projects/Algo Trading/algo-lab/docs/fql_forge/PHASE1C_24H_VERIFY_2026-06-24.md
+Rollback backup: /tmp/strategy_registry_pre_phase1c_rollback_2026-06-24.json (rollback NOT executed unless --execute-rollback)
+ALERT: PHASE1C_24H_VERIFY_FAIL — rollback staged, NOT executed. Human confirmation required.
+FAIL-CLOSED execution gate: 'XB-ORB-EMA-Ladder-MGC' is controller-eligible (REDUCED_ON) but blocked from the runner — BLOCKED_PAPER_READY_FALSE
+VERDICT: PHASE1C_24H_VERIFY_FAIL
+  1_in_live_forward_output: PASS  {'signal_log.csv': {'exists': True, 'contains_book': True}, 'trade_log.csv': {'exists': True, 'contains_book': True}, 'daily_report.csv': {'exists': True, 'contains_book': False}}
+  2_paper_probation_1mnq: no  {'status': 'probation', 'controller_action': 'REDUCED_ON'}
+  3_exit_variant_null: PASS  {'registry': None, 'runner': None}
+  4_mnq_workhorse_count: PASS  ['WH-MNQ-stop_run_reversal-ema_slope-PL', 'XB-ORB-EMA-Ladder-MNQ']
+  5_excluded_books_excluded: PASS  {'XB-ORB-EMA-Ladder-MGC': True, 'XB-ORB-EMA-Chandelier-MNQ': True, 'XB-PB-EMA-Chandelier-MNQ': True, 'XB-ORB-EMA-ATRTrail-MES': True}
+  6_monitor_scorecard_recognized: PASS  {'drift': True, 'eval_set': True}
+  7_no_live_prop_route: PASS  {'live_route': False}
+Wrote: /Users/chasefisher/projects/Algo Trading/algo-lab/docs/fql_forge/PHASE1C_24H_VERIFY_2026-06-25.md
+Rollback backup: /tmp/strategy_registry_pre_phase1c_rollback_2026-06-25.json (rollback NOT executed unless --execute-rollback)
+ALERT: PHASE1C_24H_VERIFY_FAIL — rollback staged, NOT executed. Human confirmation required.
+VERDICT: PHASE1C_24H_VERIFY_FAIL
+  1_in_live_forward_output: PASS  {'signal_log.csv': {'exists': True, 'contains_book': True}, 'trade_log.csv': {'exists': True, 'contains_book': True}, 'daily_report.csv': {'exists': True, 'contains_book': False}}
+  2_paper_probation_1mnq: no  {'status': 'watch', 'controller_action': 'OFF'}
+  3_exit_variant_null: PASS  {'registry': None, 'runner': None}
+  4_mnq_workhorse_count: no  []
+  5_excluded_books_excluded: PASS  {'XB-ORB-EMA-Ladder-MGC': True, 'XB-ORB-EMA-Chandelier-MNQ': True, 'XB-PB-EMA-Chandelier-MNQ': True, 'XB-ORB-EMA-ATRTrail-MES': True}
+  6_monitor_scorecard_recognized: no  {'drift': True, 'eval_set': False}
+  7_no_live_prop_route: PASS  {'live_route': False}
+Wrote: /Users/chasefisher/projects/Algo Trading/algo-lab/docs/fql_forge/PHASE1C_24H_VERIFY_2026-06-26.md
+Rollback backup: /tmp/strategy_registry_pre_phase1c_rollback_2026-06-26.json (rollback NOT executed unless --execute-rollback)
+WARN: push failed (commit is local); verdict packet still written.
+ALERT: PHASE1C_24H_VERIFY_FAIL — rollback staged, NOT executed. Human confirmation required.
+VERDICT: PHASE1C_24H_VERIFY_FAIL
+  1_in_live_forward_output: PASS  {'signal_log.csv': {'exists': True, 'contains_book': True}, 'trade_log.csv': {'exists': True, 'contains_book': True}, 'daily_report.csv': {'exists': True, 'contains_book': False}}
+  2_paper_probation_1mnq: no  {'status': 'watch', 'controller_action': 'OFF'}
+  3_exit_variant_null: PASS  {'registry': None, 'runner': None}
+  4_mnq_workhorse_count: no  []
+  5_excluded_books_excluded: PASS  {'XB-ORB-EMA-Ladder-MGC': True, 'XB-ORB-EMA-Chandelier-MNQ': True, 'XB-PB-EMA-Chandelier-MNQ': True, 'XB-ORB-EMA-ATRTrail-MES': True}
+  6_monitor_scorecard_recognized: no  {'drift': True, 'eval_set': False}
+  7_no_live_prop_route: PASS  {'live_route': False}
+Wrote: /Users/chasefisher/projects/Algo Trading/algo-lab/docs/fql_forge/PHASE1C_24H_VERIFY_2026-06-29.md
+Rollback backup: /tmp/strategy_registry_pre_phase1c_rollback_2026-06-29.json (rollback NOT executed unless --execute-rollback)
+ALERT: PHASE1C_24H_VERIFY_FAIL — rollback staged, NOT executed. Human confirmation required.
+VERDICT: PHASE1C_24H_VERIFY_FAIL
+  1_in_live_forward_output: PASS  {'signal_log.csv': {'exists': True, 'contains_book': True}, 'trade_log.csv': {'exists': True, 'contains_book': True}, 'daily_report.csv': {'exists': True, 'contains_book': False}}
+  2_paper_probation_1mnq: no  {'status': 'watch', 'controller_action': 'OFF'}
+  3_exit_variant_null: PASS  {'registry': None, 'runner': None}
+  4_mnq_workhorse_count: no  []
+  5_excluded_books_excluded: PASS  {'XB-ORB-EMA-Ladder-MGC': True, 'XB-ORB-EMA-Chandelier-MNQ': True, 'XB-PB-EMA-Chandelier-MNQ': True, 'XB-ORB-EMA-ATRTrail-MES': True}
+  6_monitor_scorecard_recognized: no  {'drift': True, 'eval_set': False}
+  7_no_live_prop_route: PASS  {'live_route': False}
+Wrote: /Users/chasefisher/projects/Algo Trading/algo-lab/docs/fql_forge/PHASE1C_24H_VERIFY_2026-06-30.md
+Rollback backup: /tmp/strategy_registry_pre_phase1c_rollback_2026-06-30.json (rollback NOT executed unless --execute-rollback)
+ALERT: PHASE1C_24H_VERIFY_FAIL — rollback staged, NOT executed. Human confirmation required.
+VERDICT: PHASE1C_24H_VERIFY_FAIL
+  1_in_live_forward_output: PASS  {'signal_log.csv': {'exists': True, 'contains_book': True}, 'trade_log.csv': {'exists': True, 'contains_book': True}, 'daily_report.csv': {'exists': True, 'contains_book': False}}
+  2_paper_probation_1mnq: no  {'status': 'watch', 'controller_action': 'OFF'}
+  3_exit_variant_null: PASS  {'registry': None, 'runner': None}
+  4_mnq_workhorse_count: no  []
+  5_excluded_books_excluded: PASS  {'XB-ORB-EMA-Ladder-MGC': True, 'XB-ORB-EMA-Chandelier-MNQ': True, 'XB-PB-EMA-Chandelier-MNQ': True, 'XB-ORB-EMA-ATRTrail-MES': True}
+  6_monitor_scorecard_recognized: no  {'drift': True, 'eval_set': False}
+  7_no_live_prop_route: PASS  {'live_route': False}
+Wrote: /Users/chasefisher/projects/Algo Trading/algo-lab/docs/fql_forge/PHASE1C_24H_VERIFY_2026-07-01.md
+Rollback backup: /tmp/strategy_registry_pre_phase1c_rollback_2026-07-01.json (rollback NOT executed unless --execute-rollback)
+ALERT: PHASE1C_24H_VERIFY_FAIL — rollback staged, NOT executed. Human confirmation required.

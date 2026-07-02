@@ -1,14 +1,14 @@
 {
-  "report_date": "2026-06-30 17:38",
+  "report_date": "2026-07-01 17:38",
   "regime_snapshot": {
     "MES": {
       "vol_regime": "NORMAL",
-      "trend_regime": "RANGING",
+      "trend_regime": "TRENDING",
       "rv_regime": "NORMAL_RV",
       "trend_persistence": "CHOPPY"
     },
     "MNQ": {
-      "vol_regime": "HIGH_VOL",
+      "vol_regime": "NORMAL",
       "trend_regime": "TRENDING",
       "rv_regime": "NORMAL_RV",
       "trend_persistence": "CHOPPY"
@@ -20,7 +20,7 @@
       "trend_persistence": "CHOPPY"
     },
     "M2K": {
-      "vol_regime": "NORMAL",
+      "vol_regime": "LOW_VOL",
       "trend_regime": "TRENDING",
       "rv_regime": "LOW_RV",
       "trend_persistence": "CHOPPY"
@@ -29,7 +29,7 @@
       "vol_regime": "NORMAL",
       "trend_regime": "TRENDING",
       "rv_regime": "NORMAL_RV",
-      "trend_persistence": "CHOPPY"
+      "trend_persistence": "GRINDING"
     }
   },
   "activation_matrix": [

@@ -1,19 +1,19 @@
-# ALPHA RESEARCH DASHBOARD (auto-generated 2026-07-01 17:49 UTC)
+# ALPHA RESEARCH DASHBOARD (auto-generated 2026-07-02 05:58 UTC)
 > `python3 research/forge_dashboard.py` regenerates this. Single canonical state view.
 
 ## HEADLINE
 - **Validated primaries: 0** (highest ladder rung: **SCREEN_PASS**; capital gate FAIL-CLOSED, PAPER_APPROVED+ operator-only).
-- Guardrails: **clean/P1** | Self-audit: **SELF_AUDIT_CLEAN** (facets=12 PASS=12 STALE=0 BROKEN=0 DESIGNED-not-built=0) | Git backlog: **0** | Global trial-N: **1799**
+- Guardrails: **clean/P1** | Self-audit: **SELF_AUDIT_CLEAN** (facets=12 PASS=12 STALE=0 BROKEN=0 DESIGNED-not-built=0) | Git backlog: **0** | Global trial-N: **1801**
 - **Roadmap:** end Phase 0 → entering Phase 1 (foundation hardening: data-tier gate, learning-loop closure, infra freeze, 1m/volume harness). Doctrine: `docs/fql_forge/FOUNDATION_DOCTRINE_AND_ELITE_ROADMAP_2026-07-01.md`
 
 ## Throughput (computed live)
-- Tests logged today: **33** | total kills: 6 | screen-passes: 2
-- Novelty packets: **30** stored (30 today) of 108 template×instrument space
+- Tests logged today: **2** | total kills: 6 | screen-passes: 2
+- Novelty packets: **38** stored (8 today) of 108 template×instrument space
 - Families: **14 active** / 21 | coverage 54% (tested exprs / total exprs)
 - Candidate ladder: SCREEN_PASS=1
 
 ## Inbound capture (organizational memory — nothing floats)
-- Items: **30** | NEW: 0 | P0/P1: 7/17 | source packets today: 0
+- Items: **31** | NEW: 0 | P0/P1: 8/17 | source packets today: 0
 - Untriaged directives: 0 | mistakes w/o control: **3** ['INB-20260625-002', 'INB-20260701-010', 'INB-20260701-011'] | unused feeds: 0
 - QUEUED-missing-from-queue: 0 | source notes unresolved: 0 | oldest untriaged: 0d
 - Ledger: `docs/fql_forge/INBOUND_RESEARCH_LEDGER.md` (capture: `python3 research/capture_inbound.py`)
@@ -21,7 +21,7 @@
 ## Trial-N by lane (family diagnostics)
 - primitive_sweep: 1679
 - positioning: 48
-- databento_volume: 30
+- databento_volume: 32
 - commodity_carry: 10
 - exploratory: 9
 - forced_flow: 7
@@ -32,7 +32,7 @@
 - portfolio: 2
 
 ## Queue depth
-- RUN_NOW: 3 | total queue items: 43
+- RUN_NOW: 3 | total queue items: 50
 - [ACTIVE_PACKET_LANE] gamma_chunked_loader_then_regime: chunked OI loader -> approx-GEX -> predeclared GEX-regime test (feasib
 - [DONE] gc_detrended_carry_zscore: refined commodity TS expr (naive carry-sign KILLed 2026-07-01); de-tre
 - [DONE] clgc_spread_momentum: refined commodity TS expr (naive carry-sign KILLed 2026-07-01); de-tre

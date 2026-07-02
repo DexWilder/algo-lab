@@ -540,6 +540,24 @@
       "linked_packet": null,
       "linked_queue": null,
       "linked_control": null
+    },
+    {
+      "inbound_id": "INB-20260702-001",
+      "date": "2026-07-02",
+      "source_type": "operator directive",
+      "source_ref": null,
+      "raw_note": "Full-spectrum Elite Novelty System Assessment: grade every layer, build P0/P1 automation gaps, keep report-only sprint parallel. Goal = self-improving creative alpha factory.",
+      "mechanism": null,
+      "family": "governance",
+      "required_data": null,
+      "available_data": null,
+      "required_harness": null,
+      "status": "ACTIVE_PACKET_LANE",
+      "priority": "P0",
+      "next_action": "P1: failure_class backfill, source->packet x3, exercise queue-runner, execution-realism sim, per-instrument 1m coverage audit",
+      "linked_packet": null,
+      "linked_queue": "queue:INB-20260702-001",
+      "linked_control": "ELITE_NOVELTY_SYSTEM_ASSESSMENT_2026-07-01.md + artifact_detectors + post_run_learning_hook"
     }
   ]
 }

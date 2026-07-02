@@ -1,0 +1,440 @@
+FQL Forge Daily Loop — 2026-05-05 — DRY-RUN
+==============================================================================
+Selected 5 candidate(s)
+  [XB-PB-EMA-Ladder-MES] n=1473 PF=1.151 netPnL=$6627 → WATCH (21.0s)
+  [XB-PB-EMA-Ladder-MGC] n=855 PF=1.187 netPnL=$5177 → WATCH (11.0s)
+  [XB-PB-EMA-Ladder-MCL] n=1062 PF=1.309 netPnL=$7346 → PASS (14.9s)
+  [XB-PB-EMA-Ladder-MYM] n=462 PF=1.351 netPnL=$4044 → PASS (6.7s)
+  [XB-BB-EMA-Ladder-MES] n=683 PF=1.116 netPnL=$2377 → WATCH (20.8s)
+
+[RESULT] {'PASS': 2, 'WATCH': 3, 'KILL': 0, 'RETEST': 0} (total runtime 74.3s)
+[REPORT] forge_daily_2026-05-05.md
+[REPORT] forge_daily_2026-05-05.json
+[QUEUE]  forge_queue.md (updated)
+
+[SAFETY] No registry mutation. No Lane A surfaces touched. Operator approves any append.
+FQL Forge Daily Loop — 2026-05-06 — DRY-RUN
+==============================================================================
+Selected 5 candidate(s)
+  [XB-BB-EMA-Ladder-MGC] n=289 PF=1.522 netPnL=$4146 → PASS (11.0s)
+  [XB-BB-EMA-Ladder-MCL] n=460 PF=1.223 netPnL=$2397 → PASS (14.2s)
+  [XB-BB-EMA-Ladder-MYM] n=235 PF=1.756 netPnL=$3796 → PASS (6.6s)
+  [XB-VWAP-EMA-Ladder-MES] n=881 PF=1.097 netPnL=$2599 → WATCH (20.2s)
+  [XB-VWAP-EMA-Ladder-MGC] n=370 PF=1.263 netPnL=$3211 → PASS (10.9s)
+
+[RESULT] {'PASS': 4, 'WATCH': 1, 'KILL': 0, 'RETEST': 0} (total runtime 63.0s)
+[REPORT] forge_daily_2026-05-06.md
+[REPORT] forge_daily_2026-05-06.json
+[QUEUE]  forge_queue.md (updated)
+
+[SAFETY] No registry mutation. No Lane A surfaces touched. Operator approves any append.
+FQL Forge Daily Loop — 2026-05-07 — DRY-RUN
+==============================================================================
+Selected 5 candidate(s)
+  [XB-VWAP-EMA-Ladder-MCL] n=503 PF=1.277 netPnL=$3153 → PASS (14.5s)
+  [XB-VWAP-EMA-Ladder-MYM] n=272 PF=1.489 netPnL=$3172 → PASS (6.7s)
+  [XB-ORB-EMA-MorningOnly-MNQ] n=1637 PF=1.024 netPnL=$3629 → WATCH (20.4s)
+  [XB-ORB-EMA-AfternoonOnly-MNQ] n=1640 PF=1.069 netPnL=$7211 → WATCH (20.8s)
+  [XB-PB-EMA-MorningOnly-MNQ] n=2063 PF=1.074 netPnL=$8848 → WATCH (20.7s)
+
+[RESULT] {'PASS': 2, 'WATCH': 3, 'KILL': 0, 'RETEST': 0} (total runtime 83.1s)
+[REPORT] forge_daily_2026-05-07.md
+[REPORT] forge_daily_2026-05-07.json
+[QUEUE]  forge_queue.md (updated)
+
+[SAFETY] No registry mutation. No Lane A surfaces touched. Operator approves any append.
+FQL Forge Daily Loop — 2026-05-08 — DRY-RUN
+==============================================================================
+Selected 5 candidate(s)
+  [XB-BB-EMA-AfternoonOnly-MGC] n=379 PF=1.191 netPnL=$1693 → PASS (11.2s)
+  [XB-ORB-EMA-Chandelier-MNQ] n=1202 PF=1.565 netPnL=$32310 → PASS (20.9s)
+  [XB-ORB-EMA-TimeStop-MNQ] n=1202 PF=1.488 netPnL=$26972 → PASS (20.6s)
+  [XB-ORB-EMA-MidlineTarget-MNQ] n=1202 PF=1.085 netPnL=$2416 → WATCH (20.6s)
+  [XB-PB-EMA-Ladder-MES] n=1476 PF=1.155 netPnL=$6799 → WATCH (20.9s)
+
+[RESULT] {'PASS': 3, 'WATCH': 2, 'KILL': 0, 'RETEST': 0} (total runtime 94.3s)
+[REPORT] forge_daily_2026-05-08.md
+[REPORT] forge_daily_2026-05-08.json
+[QUEUE]  forge_queue.md (updated)
+
+[SAFETY] No registry mutation. No Lane A surfaces touched. Operator approves any append.
+FQL Forge Daily Loop — 2026-05-11 — DRY-RUN
+==============================================================================
+Selected 5 candidate(s)
+  [XB-VWAP-EMA-Ladder-MYM] n=272 PF=1.489 netPnL=$3172 → PASS (7.0s)
+  [XB-ORB-EMA-MorningOnly-MNQ] n=1639 PF=1.024 netPnL=$3647 → WATCH (20.8s)
+  [XB-ORB-EMA-AfternoonOnly-MNQ] n=1642 PF=1.071 netPnL=$7478 → WATCH (21.0s)
+  [XB-PB-EMA-MorningOnly-MNQ] n=2065 PF=1.076 netPnL=$8991 → WATCH (21.1s)
+  [XB-BB-EMA-AfternoonOnly-MGC] n=380 PF=1.194 netPnL=$1715 → PASS (11.2s)
+
+[RESULT] {'PASS': 2, 'WATCH': 3, 'KILL': 0, 'RETEST': 0} (total runtime 81.1s)
+[REPORT] forge_daily_2026-05-11.md
+[REPORT] forge_daily_2026-05-11.json
+[QUEUE]  forge_queue.md (updated)
+
+[SAFETY] No registry mutation. No Lane A surfaces touched. Operator approves any append.
+FQL Forge Daily Loop — 2026-05-12 — DRY-RUN
+==============================================================================
+Selected 5 candidate(s)
+  [XB-ORB-EMA-Chandelier-MNQ] n=1204 PF=1.569 netPnL=$32551 → PASS (23.6s)
+  [XB-ORB-EMA-TimeStop-MNQ] n=1204 PF=1.493 netPnL=$27295 → PASS (41.8s)
+  [XB-ORB-EMA-MidlineTarget-MNQ] n=1204 PF=1.087 netPnL=$2475 → WATCH (40.1s)
+  [XB-PB-EMA-Ladder-MES] n=1478 PF=1.155 netPnL=$6797 → WATCH (36.0s)
+  [XB-PB-EMA-Ladder-MGC] n=860 PF=1.164 netPnL=$4636 → WATCH (18.9s)
+
+[RESULT] {'PASS': 2, 'WATCH': 3, 'KILL': 0, 'RETEST': 0} (total runtime 160.4s)
+[REPORT] forge_daily_2026-05-12.md
+[REPORT] forge_daily_2026-05-12.json
+[QUEUE]  forge_queue.md (updated)
+
+[SAFETY] No registry mutation. No Lane A surfaces touched. Operator approves any append.
+FQL Forge Daily Loop — 2026-05-13 — DRY-RUN
+==============================================================================
+Selected 5 candidate(s)
+  [XB-PB-EMA-Ladder-MCL] n=1066 PF=1.307 netPnL=$7346 → PASS (14.7s)
+  [XB-PB-EMA-Ladder-MYM] n=467 PF=1.355 netPnL=$4101 → PASS (6.7s)
+  [XB-BB-EMA-Ladder-MES] n=685 PF=1.126 netPnL=$2583 → WATCH (20.7s)
+  [XB-BB-EMA-Ladder-MGC] n=292 PF=1.566 netPnL=$4603 → PASS (10.9s)
+  [XB-BB-EMA-Ladder-MCL] n=461 PF=1.211 netPnL=$2290 → PASS (14.7s)
+
+[RESULT] {'PASS': 4, 'WATCH': 1, 'KILL': 0, 'RETEST': 0} (total runtime 67.8s)
+[REPORT] forge_daily_2026-05-13.md
+[REPORT] forge_daily_2026-05-13.json
+[QUEUE]  forge_queue.md (updated)
+
+[SAFETY] No registry mutation. No Lane A surfaces touched. Operator approves any append.
+FQL Forge Daily Loop — 2026-05-14 — DRY-RUN
+==============================================================================
+Selected 5 candidate(s)
+  [XB-BB-EMA-Ladder-MYM] n=238 PF=1.741 netPnL=$3769 → PASS (6.8s)
+  [XB-VWAP-EMA-Ladder-MES] n=881 PF=1.097 netPnL=$2599 → WATCH (20.8s)
+  [XB-VWAP-EMA-Ladder-MGC] n=373 PF=1.252 netPnL=$3135 → PASS (11.0s)
+  [XB-VWAP-EMA-Ladder-MCL] n=504 PF=1.283 netPnL=$3226 → PASS (14.6s)
+  [XB-VWAP-EMA-Ladder-MYM] n=273 PF=1.491 netPnL=$3186 → PASS (6.7s)
+
+[RESULT] {'PASS': 4, 'WATCH': 1, 'KILL': 0, 'RETEST': 0} (total runtime 59.9s)
+[REPORT] forge_daily_2026-05-14.md
+[REPORT] forge_daily_2026-05-14.json
+[QUEUE]  forge_queue.md (updated)
+
+[SAFETY] No registry mutation. No Lane A surfaces touched. Operator approves any append.
+FQL Forge Daily Loop — 2026-05-15 — DRY-RUN
+==============================================================================
+Selected 5 candidate(s)
+  [XB-ORB-EMA-MorningOnly-MNQ] n=1643 PF=1.027 netPnL=$4136 → WATCH (20.5s)
+  [XB-ORB-EMA-AfternoonOnly-MNQ] n=1646 PF=1.067 netPnL=$7062 → WATCH (20.7s)
+  [XB-PB-EMA-MorningOnly-MNQ] n=2070 PF=1.077 netPnL=$9160 → WATCH (20.4s)
+  [XB-BB-EMA-AfternoonOnly-MGC] n=382 PF=1.214 netPnL=$1895 → PASS (10.7s)
+  [XB-ORB-EMA-Chandelier-MNQ] n=1206 PF=1.575 netPnL=$32910 → PASS (20.3s)
+
+[RESULT] {'PASS': 2, 'WATCH': 3, 'KILL': 0, 'RETEST': 0} (total runtime 92.5s)
+[REPORT] forge_daily_2026-05-15.md
+[REPORT] forge_daily_2026-05-15.json
+[QUEUE]  forge_queue.md (updated)
+
+[SAFETY] No registry mutation. No Lane A surfaces touched. Operator approves any append.
+FQL Forge Daily Loop — 2026-05-18 — DRY-RUN
+==============================================================================
+Selected 5 candidate(s)
+  [XB-VWAP-EMA-Ladder-MES] n=882 PF=1.095 netPnL=$2538 → WATCH (20.8s)
+  [XB-VWAP-EMA-Ladder-MGC] n=375 PF=1.289 netPnL=$3571 → PASS (10.9s)
+  [XB-VWAP-EMA-Ladder-MCL] n=505 PF=1.276 netPnL=$3159 → PASS (14.5s)
+  [XB-VWAP-EMA-Ladder-MYM] n=275 PF=1.497 netPnL=$3222 → PASS (6.8s)
+  [XB-ORB-EMA-MorningOnly-MNQ] n=1644 PF=1.028 netPnL=$4158 → WATCH (20.7s)
+
+[RESULT] {'PASS': 3, 'WATCH': 2, 'KILL': 0, 'RETEST': 0} (total runtime 73.7s)
+[REPORT] forge_daily_2026-05-18.md
+[REPORT] forge_daily_2026-05-18.json
+[QUEUE]  forge_queue.md (updated)
+
+[SAFETY] No registry mutation. No Lane A surfaces touched. Operator approves any append.
+FQL Forge Daily Loop — 2026-05-19 — DRY-RUN
+==============================================================================
+Selected 5 candidate(s)
+  [XB-ORB-EMA-AfternoonOnly-MNQ] n=1648 PF=1.067 netPnL=$7124 → WATCH (20.8s)
+  [XB-PB-EMA-MorningOnly-MNQ] n=2073 PF=1.074 netPnL=$8904 → WATCH (20.7s)
+  [XB-BB-EMA-AfternoonOnly-MGC] n=382 PF=1.214 netPnL=$1895 → PASS (10.9s)
+  [XB-ORB-EMA-Chandelier-MNQ] n=1207 PF=1.574 netPnL=$32869 → PASS (20.8s)
+  [XB-ORB-EMA-TimeStop-MNQ] n=1207 PF=1.507 netPnL=$28076 → PASS (20.4s)
+
+[RESULT] {'PASS': 3, 'WATCH': 2, 'KILL': 0, 'RETEST': 0} (total runtime 93.5s)
+[REPORT] forge_daily_2026-05-19.md
+[REPORT] forge_daily_2026-05-19.json
+[QUEUE]  forge_queue.md (updated)
+
+[SAFETY] No registry mutation. No Lane A surfaces touched. Operator approves any append.
+FQL Forge Daily Loop — 2026-05-21 — DRY-RUN
+==============================================================================
+Selected 5 candidate(s)
+  [XB-BB-EMA-Ladder-MES] n=686 PF=1.131 netPnL=$2701 → WATCH (20.8s)
+  [XB-BB-EMA-Ladder-MGC] n=294 PF=1.548 netPnL=$4588 → PASS (11.0s)
+  [XB-BB-EMA-Ladder-MCL] n=462 PF=0.983 netPnL=$-204 → KILL (14.6s)
+  [XB-BB-EMA-Ladder-MYM] n=239 PF=1.551 netPnL=$3018 → PASS (6.8s)
+  [XB-VWAP-EMA-Ladder-MES] n=884 PF=1.087 netPnL=$2338 → WATCH (20.5s)
+
+[RESULT] {'PASS': 2, 'WATCH': 2, 'KILL': 1, 'RETEST': 0} (total runtime 73.7s)
+[REPORT] forge_daily_2026-05-21.md
+[REPORT] forge_daily_2026-05-21.json
+[QUEUE]  forge_queue.md (updated)
+
+[SAFETY] No registry mutation. No Lane A surfaces touched. Operator approves any append.
+FQL Forge Daily Loop — 2026-05-22 — DRY-RUN
+==============================================================================
+Selected 5 candidate(s)
+  [XB-VWAP-EMA-Ladder-MGC] n=378 PF=1.277 netPnL=$3478 → PASS (17.7s)
+  [XB-VWAP-EMA-Ladder-MCL] n=507 PF=1.056 netPnL=$716 → WATCH (19.0s)
+  [XB-VWAP-EMA-Ladder-MYM] n=278 PF=1.346 netPnL=$2403 → PASS (8.1s)
+  [XB-ORB-EMA-MorningOnly-MNQ] n=1648 PF=1.029 netPnL=$4375 → WATCH (24.7s)
+  [XB-ORB-EMA-AfternoonOnly-MNQ] n=1651 PF=1.066 netPnL=$6974 → WATCH (31.1s)
+
+[RESULT] {'PASS': 2, 'WATCH': 3, 'KILL': 0, 'RETEST': 0} (total runtime 100.6s)
+[REPORT] forge_daily_2026-05-22.md
+[REPORT] forge_daily_2026-05-22.json
+[QUEUE]  forge_queue.md (updated)
+
+[SAFETY] No registry mutation. No Lane A surfaces touched. Operator approves any append.
+FQL Forge Daily Loop — 2026-05-25 — DRY-RUN
+==============================================================================
+Selected 5 candidate(s)
+  [XB-BB-EMA-Ladder-MGC] n=295 PF=1.521 netPnL=$4440 → PASS (11.1s)
+  [XB-BB-EMA-Ladder-MCL] n=463 PF=0.997 netPnL=$-40 → KILL (14.5s)
+  [XB-BB-EMA-Ladder-MYM] n=239 PF=1.551 netPnL=$3018 → PASS (6.9s)
+  [XB-VWAP-EMA-Ladder-MES] n=885 PF=1.088 netPnL=$2373 → WATCH (20.8s)
+  [XB-VWAP-EMA-Ladder-MGC] n=379 PF=1.274 netPnL=$3449 → PASS (10.9s)
+
+[RESULT] {'PASS': 3, 'WATCH': 1, 'KILL': 1, 'RETEST': 0} (total runtime 64.2s)
+[REPORT] forge_daily_2026-05-25.md
+[REPORT] forge_daily_2026-05-25.json
+[QUEUE]  forge_queue.md (updated)
+
+[SAFETY] No registry mutation. No Lane A surfaces touched. Operator approves any append.
+FQL Forge Daily Loop — 2026-05-26 — DRY-RUN
+==============================================================================
+Selected 5 candidate(s)
+  [XB-VWAP-EMA-Ladder-MCL] n=508 PF=1.076 netPnL=$967 → WATCH (14.7s)
+  [XB-VWAP-EMA-Ladder-MYM] n=279 PF=1.364 netPnL=$2533 → PASS (6.7s)
+  [XB-ORB-EMA-MorningOnly-MNQ] n=1649 PF=1.028 netPnL=$4269 → WATCH (20.4s)
+  [XB-ORB-EMA-AfternoonOnly-MNQ] n=1652 PF=1.063 netPnL=$6642 → WATCH (20.4s)
+  [XB-PB-EMA-MorningOnly-MNQ] n=2077 PF=1.073 netPnL=$8764 → WATCH (20.7s)
+
+[RESULT] {'PASS': 1, 'WATCH': 4, 'KILL': 0, 'RETEST': 0} (total runtime 82.9s)
+[REPORT] forge_daily_2026-05-26.md
+[REPORT] forge_daily_2026-05-26.json
+[QUEUE]  forge_queue.md (updated)
+
+[SAFETY] No registry mutation. No Lane A surfaces touched. Operator approves any append.
+FQL Forge Daily Loop — 2026-05-27 — DRY-RUN
+==============================================================================
+Selected 5 candidate(s)
+  [XB-BB-EMA-AfternoonOnly-MGC] n=383 PF=1.194 netPnL=$1747 → PASS (10.9s)
+  [XB-ORB-EMA-Chandelier-MNQ] n=1211 PF=1.561 netPnL=$32430 → PASS (20.6s)
+  [XB-ORB-EMA-TimeStop-MNQ] n=1211 PF=1.494 netPnL=$27596 → PASS (20.7s)
+  [XB-ORB-EMA-MidlineTarget-MNQ] n=1211 PF=1.076 netPnL=$2186 → WATCH (21.1s)
+  [XB-PB-EMA-Ladder-MES] n=1487 PF=1.152 netPnL=$6731 → WATCH (20.7s)
+
+[RESULT] {'PASS': 3, 'WATCH': 2, 'KILL': 0, 'RETEST': 0} (total runtime 93.9s)
+[REPORT] forge_daily_2026-05-27.md
+[REPORT] forge_daily_2026-05-27.json
+[QUEUE]  forge_queue.md (updated)
+
+[SAFETY] No registry mutation. No Lane A surfaces touched. Operator approves any append.
+FQL Forge Daily Loop — 2026-05-28 — DRY-RUN
+==============================================================================
+Selected 5 candidate(s)
+  [XB-PB-EMA-Ladder-MGC] n=870 PF=1.136 netPnL=$3989 → WATCH (10.9s)
+  [XB-PB-EMA-Ladder-MCL] n=1076 PF=1.068 netPnL=$1826 → WATCH (14.4s)
+  [XB-PB-EMA-Ladder-MYM] n=477 PF=1.214 netPnL=$2668 → PASS (6.8s)
+  [XB-BB-EMA-Ladder-MES] n=690 PF=1.130 netPnL=$2689 → WATCH (20.6s)
+  [XB-BB-EMA-Ladder-MGC] n=296 PF=1.532 netPnL=$4532 → PASS (11.1s)
+
+[RESULT] {'PASS': 2, 'WATCH': 3, 'KILL': 0, 'RETEST': 0} (total runtime 63.8s)
+[REPORT] forge_daily_2026-05-28.md
+[REPORT] forge_daily_2026-05-28.json
+[QUEUE]  forge_queue.md (updated)
+
+[SAFETY] No registry mutation. No Lane A surfaces touched. Operator approves any append.
+FQL Forge Daily Loop — 2026-05-29 — DRY-RUN
+==============================================================================
+Selected 5 candidate(s)
+  [XB-BB-EMA-Ladder-MCL] n=465 PF=1.003 netPnL=$39 → KILL (14.7s)
+  [XB-BB-EMA-Ladder-MYM] n=240 PF=1.536 netPnL=$2963 → PASS (6.9s)
+  [XB-VWAP-EMA-Ladder-MES] n=887 PF=1.085 netPnL=$2290 → WATCH (20.8s)
+  [XB-VWAP-EMA-Ladder-MGC] n=381 PF=1.285 netPnL=$3614 → PASS (11.1s)
+  [XB-VWAP-EMA-Ladder-MCL] n=509 PF=1.084 netPnL=$1076 → WATCH (14.8s)
+
+[RESULT] {'PASS': 2, 'WATCH': 2, 'KILL': 1, 'RETEST': 0} (total runtime 68.2s)
+[REPORT] forge_daily_2026-05-29.md
+[REPORT] forge_daily_2026-05-29.json
+[QUEUE]  forge_queue.md (updated)
+
+[SAFETY] No registry mutation. No Lane A surfaces touched. Operator approves any append.
+FQL Forge Daily Loop — 2026-06-01 — DRY-RUN
+==============================================================================
+Selected 5 candidate(s)
+  [XB-PB-EMA-Ladder-MCL] n=1078 PF=1.073 netPnL=$1992 → WATCH (15.0s)
+  [XB-PB-EMA-Ladder-MYM] n=479 PF=1.222 netPnL=$2764 → PASS (7.0s)
+  [XB-BB-EMA-Ladder-MES] n=690 PF=1.130 netPnL=$2689 → WATCH (21.0s)
+  [XB-BB-EMA-Ladder-MGC] n=298 PF=1.502 netPnL=$4460 → PASS (11.0s)
+  [XB-BB-EMA-Ladder-MCL] n=466 PF=1.007 netPnL=$80 → KILL (14.7s)
+
+[RESULT] {'PASS': 2, 'WATCH': 2, 'KILL': 1, 'RETEST': 0} (total runtime 68.6s)
+[REPORT] forge_daily_2026-06-01.md
+[REPORT] forge_daily_2026-06-01.json
+[QUEUE]  forge_queue.md (updated)
+
+[SAFETY] No registry mutation. No Lane A surfaces touched. Operator approves any append.
+FQL Forge Daily Loop — 2026-06-02 — DRY-RUN
+==============================================================================
+Selected 5 candidate(s)
+  [XB-BB-EMA-Ladder-MYM] n=241 PF=1.545 netPnL=$3012 → PASS (7.0s)
+  [XB-VWAP-EMA-Ladder-MES] n=888 PF=1.082 netPnL=$2213 → WATCH (20.6s)
+  [XB-VWAP-EMA-Ladder-MGC] n=381 PF=1.285 netPnL=$3614 → PASS (10.8s)
+  [XB-VWAP-EMA-Ladder-MCL] n=511 PF=1.087 netPnL=$1106 → WATCH (14.5s)
+  [XB-VWAP-EMA-Ladder-MYM] n=282 PF=1.375 netPnL=$2605 → PASS (6.8s)
+
+[RESULT] {'PASS': 3, 'WATCH': 2, 'KILL': 0, 'RETEST': 0} (total runtime 59.7s)
+[REPORT] forge_daily_2026-06-02.md
+[REPORT] forge_daily_2026-06-02.json
+[QUEUE]  forge_queue.md (updated)
+
+[SAFETY] No registry mutation. No Lane A surfaces touched. Operator approves any append.
+FQL Forge Daily Loop — 2026-06-03 — DRY-RUN
+==============================================================================
+Selected 5 candidate(s)
+  [XB-PB-EMA-MorningOnly-MNQ] n=2084 PF=1.068 netPnL=$8231 → WATCH (49.3s)
+  [XB-BB-EMA-MorningOnly-MGC-v2] n=497 PF=1.053 netPnL=$1050 → WATCH (25.5s)
+  [XB-BB-EMA-AfternoonOnly-MGC] n=386 PF=1.207 netPnL=$1892 → PASS (26.6s)
+  [XB-ORB-EMA-Chandelier-MNQ] n=1215 PF=1.568 netPnL=$32831 → PASS (101.0s)
+  [XB-ORB-EMA-TimeStop-MNQ] n=1215 PF=1.500 netPnL=$27944 → PASS (980.1s)
+[TRIPWIRE] runtime_overrun: 1183s > 300s
+[TRIPWIRE] wrote: /Users/chasefisher/projects/Algo Trading/algo-lab/research/data/fql_forge/reports/_TRIPWIRE_2026-06-03_runtime_overrun:.md
+FQL Forge Daily Loop — 2026-06-04 — DRY-RUN
+==============================================================================
+[TRIPWIRE] unresolved tripwire(s): ['_TRIPWIRE_2026-06-03_runtime_overrun:.md']
+[TRIPWIRE] wrote: /Users/chasefisher/projects/Algo Trading/algo-lab/research/data/fql_forge/reports/_TRIPWIRE_2026-06-04_unresolved.md
+[HALT] tripwire fired: unresolved tripwire(s): ['_TRIPWIRE_2026-06-03_runtime_overrun:.md']
+FQL Forge Daily Loop — 2026-06-05 — DRY-RUN
+==============================================================================
+[TRIPWIRE] unresolved tripwire(s): ['_TRIPWIRE_2026-06-04_unresolved.md', '_TRIPWIRE_2026-06-03_runtime_overrun:.md']
+[TRIPWIRE] wrote: /Users/chasefisher/projects/Algo Trading/algo-lab/research/data/fql_forge/reports/_TRIPWIRE_2026-06-05_unresolved.md
+[HALT] tripwire fired: unresolved tripwire(s): ['_TRIPWIRE_2026-06-04_unresolved.md', '_TRIPWIRE_2026-06-03_runtime_overrun:.md']
+FQL Forge Daily Loop — 2026-06-08 — DRY-RUN
+==============================================================================
+[TRIPWIRE] unresolved tripwire(s): ['_TRIPWIRE_2026-06-04_unresolved.md', '_TRIPWIRE_2026-06-03_runtime_overrun:.md', '_TRIPWIRE_2026-06-05_unresolved.md']
+[TRIPWIRE] wrote: /Users/chasefisher/projects/Algo Trading/algo-lab/research/data/fql_forge/reports/_TRIPWIRE_2026-06-08_unresolved.md
+[HALT] tripwire fired: unresolved tripwire(s): ['_TRIPWIRE_2026-06-04_unresolved.md', '_TRIPWIRE_2026-06-03_runtime_overrun:.md', '_TRIPWIRE_2026-06-05_unresolved.md']
+FQL Forge Daily Loop — 2026-06-09 — DRY-RUN
+==============================================================================
+[TRIPWIRE] unresolved tripwire(s): ['_TRIPWIRE_2026-06-04_unresolved.md', '_TRIPWIRE_2026-06-03_runtime_overrun:.md', '_TRIPWIRE_2026-06-05_unresolved.md', '_TRIPWIRE_2026-06-08_unresolved.md']
+[TRIPWIRE] wrote: /Users/chasefisher/projects/Algo Trading/algo-lab/research/data/fql_forge/reports/_TRIPWIRE_2026-06-09_unresolved.md
+[HALT] tripwire fired: unresolved tripwire(s): ['_TRIPWIRE_2026-06-04_unresolved.md', '_TRIPWIRE_2026-06-03_runtime_overrun:.md', '_TRIPWIRE_2026-06-05_unresolved.md', '_TRIPWIRE_2026-06-08_unresolved.md']
+FQL Forge Daily Loop — 2026-06-10 — DRY-RUN
+==============================================================================
+[TRIPWIRE] unresolved tripwire(s): ['_TRIPWIRE_2026-06-09_unresolved.md', '_TRIPWIRE_2026-06-04_unresolved.md', '_TRIPWIRE_2026-06-03_runtime_overrun:.md', '_TRIPWIRE_2026-06-05_unresolved.md', '_TRIPWIRE_2026-06-08_unresolved.md']
+[TRIPWIRE] wrote: /Users/chasefisher/projects/Algo Trading/algo-lab/research/data/fql_forge/reports/_TRIPWIRE_2026-06-10_unresolved.md
+[HALT] tripwire fired: unresolved tripwire(s): ['_TRIPWIRE_2026-06-09_unresolved.md', '_TRIPWIRE_2026-06-04_unresolved.md', '_TRIPWIRE_2026-06-03_runtime_overrun:.md', '_TRIPWIRE_2026-06-05_unresolved.md', '_TRIPWIRE_2026-06-08_unresolved.md']
+FQL Forge Daily Loop — 2026-06-11 — DRY-RUN
+==============================================================================
+[TRIPWIRE] unresolved tripwire(s): ['_TRIPWIRE_2026-06-09_unresolved.md', '_TRIPWIRE_2026-06-10_unresolved.md', '_TRIPWIRE_2026-06-04_unresolved.md', '_TRIPWIRE_2026-06-03_runtime_overrun:.md', '_TRIPWIRE_2026-06-05_unresolved.md', '_TRIPWIRE_2026-06-08_unresolved.md']
+[TRIPWIRE] wrote: /Users/chasefisher/projects/Algo Trading/algo-lab/research/data/fql_forge/reports/_TRIPWIRE_2026-06-11_unresolved.md
+[HALT] tripwire fired: unresolved tripwire(s): ['_TRIPWIRE_2026-06-09_unresolved.md', '_TRIPWIRE_2026-06-10_unresolved.md', '_TRIPWIRE_2026-06-04_unresolved.md', '_TRIPWIRE_2026-06-03_runtime_overrun:.md', '_TRIPWIRE_2026-06-05_unresolved.md', '_TRIPWIRE_2026-06-08_unresolved.md']
+FQL Forge Daily Loop — 2026-06-12 — DRY-RUN
+==============================================================================
+[TRIPWIRE] unresolved tripwire(s): ['_TRIPWIRE_2026-06-09_unresolved.md', '_TRIPWIRE_2026-06-10_unresolved.md', '_TRIPWIRE_2026-06-04_unresolved.md', '_TRIPWIRE_2026-06-03_runtime_overrun:.md', '_TRIPWIRE_2026-06-05_unresolved.md', '_TRIPWIRE_2026-06-11_unresolved.md', '_TRIPWIRE_2026-06-08_unresolved.md']
+[TRIPWIRE] wrote: /Users/chasefisher/projects/Algo Trading/algo-lab/research/data/fql_forge/reports/_TRIPWIRE_2026-06-12_unresolved.md
+[HALT] tripwire fired: unresolved tripwire(s): ['_TRIPWIRE_2026-06-09_unresolved.md', '_TRIPWIRE_2026-06-10_unresolved.md', '_TRIPWIRE_2026-06-04_unresolved.md', '_TRIPWIRE_2026-06-03_runtime_overrun:.md', '_TRIPWIRE_2026-06-05_unresolved.md', '_TRIPWIRE_2026-06-11_unresolved.md', '_TRIPWIRE_2026-06-08_unresolved.md']
+FQL Forge Daily Loop — 2026-06-15 — DRY-RUN
+==============================================================================
+[TRIPWIRE] unresolved tripwire(s): ['_TRIPWIRE_2026-06-09_unresolved.md', '_TRIPWIRE_2026-06-10_unresolved.md', '_TRIPWIRE_2026-06-04_unresolved.md', '_TRIPWIRE_2026-06-12_unresolved.md', '_TRIPWIRE_2026-06-03_runtime_overrun:.md', '_TRIPWIRE_2026-06-05_unresolved.md', '_TRIPWIRE_2026-06-11_unresolved.md', '_TRIPWIRE_2026-06-08_unresolved.md']
+[TRIPWIRE] wrote: /Users/chasefisher/projects/Algo Trading/algo-lab/research/data/fql_forge/reports/_TRIPWIRE_2026-06-15_unresolved.md
+[HALT] tripwire fired: unresolved tripwire(s): ['_TRIPWIRE_2026-06-09_unresolved.md', '_TRIPWIRE_2026-06-10_unresolved.md', '_TRIPWIRE_2026-06-04_unresolved.md', '_TRIPWIRE_2026-06-12_unresolved.md', '_TRIPWIRE_2026-06-03_runtime_overrun:.md', '_TRIPWIRE_2026-06-05_unresolved.md', '_TRIPWIRE_2026-06-11_unresolved.md', '_TRIPWIRE_2026-06-08_unresolved.md']
+FQL Forge Daily Loop — 2026-06-16 — DRY-RUN
+==============================================================================
+[TRIPWIRE] unresolved tripwire(s): ['_TRIPWIRE_2026-06-09_unresolved.md', '_TRIPWIRE_2026-06-10_unresolved.md', '_TRIPWIRE_2026-06-04_unresolved.md', '_TRIPWIRE_2026-06-12_unresolved.md', '_TRIPWIRE_2026-06-03_runtime_overrun:.md', '_TRIPWIRE_2026-06-05_unresolved.md', '_TRIPWIRE_2026-06-15_unresolved.md', '_TRIPWIRE_2026-06-11_unresolved.md', '_TRIPWIRE_2026-06-08_unresolved.md']
+[TRIPWIRE] wrote: /Users/chasefisher/projects/Algo Trading/algo-lab/research/data/fql_forge/reports/_TRIPWIRE_2026-06-16_unresolved.md
+[HALT] tripwire fired: unresolved tripwire(s): ['_TRIPWIRE_2026-06-09_unresolved.md', '_TRIPWIRE_2026-06-10_unresolved.md', '_TRIPWIRE_2026-06-04_unresolved.md', '_TRIPWIRE_2026-06-12_unresolved.md', '_TRIPWIRE_2026-06-03_runtime_overrun:.md', '_TRIPWIRE_2026-06-05_unresolved.md', '_TRIPWIRE_2026-06-15_unresolved.md', '_TRIPWIRE_2026-06-11_unresolved.md', '_TRIPWIRE_2026-06-08_unresolved.md']
+FQL Forge Daily Loop — 2026-06-17 — DRY-RUN
+==============================================================================
+[TRIPWIRE] unresolved tripwire(s): ['_TRIPWIRE_2026-06-09_unresolved.md', '_TRIPWIRE_2026-06-10_unresolved.md', '_TRIPWIRE_2026-06-04_unresolved.md', '_TRIPWIRE_2026-06-16_unresolved.md', '_TRIPWIRE_2026-06-12_unresolved.md', '_TRIPWIRE_2026-06-03_runtime_overrun:.md', '_TRIPWIRE_2026-06-05_unresolved.md', '_TRIPWIRE_2026-06-15_unresolved.md', '_TRIPWIRE_2026-06-11_unresolved.md', '_TRIPWIRE_2026-06-08_unresolved.md']
+[TRIPWIRE] wrote: /Users/chasefisher/projects/Algo Trading/algo-lab/research/data/fql_forge/reports/_TRIPWIRE_2026-06-17_unresolved.md
+[HALT] tripwire fired: unresolved tripwire(s): ['_TRIPWIRE_2026-06-09_unresolved.md', '_TRIPWIRE_2026-06-10_unresolved.md', '_TRIPWIRE_2026-06-04_unresolved.md', '_TRIPWIRE_2026-06-16_unresolved.md', '_TRIPWIRE_2026-06-12_unresolved.md', '_TRIPWIRE_2026-06-03_runtime_overrun:.md', '_TRIPWIRE_2026-06-05_unresolved.md', '_TRIPWIRE_2026-06-15_unresolved.md', '_TRIPWIRE_2026-06-11_unresolved.md', '_TRIPWIRE_2026-06-08_unresolved.md']
+FQL Forge Daily Loop — 2026-06-18 — DRY-RUN
+==============================================================================
+[TRIPWIRE] unresolved tripwire(s): ['_TRIPWIRE_2026-06-09_unresolved.md', '_TRIPWIRE_2026-06-10_unresolved.md', '_TRIPWIRE_2026-06-04_unresolved.md', '_TRIPWIRE_2026-06-17_unresolved.md', '_TRIPWIRE_2026-06-16_unresolved.md', '_TRIPWIRE_2026-06-12_unresolved.md', '_TRIPWIRE_2026-06-03_runtime_overrun:.md', '_TRIPWIRE_2026-06-05_unresolved.md', '_TRIPWIRE_2026-06-15_unresolved.md', '_TRIPWIRE_2026-06-11_unresolved.md', '_TRIPWIRE_2026-06-08_unresolved.md']
+[TRIPWIRE] wrote: /Users/chasefisher/projects/Algo Trading/algo-lab/research/data/fql_forge/reports/_TRIPWIRE_2026-06-18_unresolved.md
+[HALT] tripwire fired: unresolved tripwire(s): ['_TRIPWIRE_2026-06-09_unresolved.md', '_TRIPWIRE_2026-06-10_unresolved.md', '_TRIPWIRE_2026-06-04_unresolved.md', '_TRIPWIRE_2026-06-17_unresolved.md', '_TRIPWIRE_2026-06-16_unresolved.md', '_TRIPWIRE_2026-06-12_unresolved.md', '_TRIPWIRE_2026-06-03_runtime_overrun:.md', '_TRIPWIRE_2026-06-05_unresolved.md', '_TRIPWIRE_2026-06-15_unresolved.md', '_TRIPWIRE_2026-06-11_unresolved.md', '_TRIPWIRE_2026-06-08_unresolved.md']
+FQL Forge Daily Loop — 2026-06-19 — DRY-RUN
+==============================================================================
+[TRIPWIRE] unresolved tripwire(s): ['_TRIPWIRE_2026-06-09_unresolved.md', '_TRIPWIRE_2026-06-10_unresolved.md', '_TRIPWIRE_2026-06-04_unresolved.md', '_TRIPWIRE_2026-06-17_unresolved.md', '_TRIPWIRE_2026-06-16_unresolved.md', '_TRIPWIRE_2026-06-12_unresolved.md', '_TRIPWIRE_2026-06-03_runtime_overrun:.md', '_TRIPWIRE_2026-06-05_unresolved.md', '_TRIPWIRE_2026-06-15_unresolved.md', '_TRIPWIRE_2026-06-11_unresolved.md', '_TRIPWIRE_2026-06-08_unresolved.md', '_TRIPWIRE_2026-06-18_unresolved.md']
+[TRIPWIRE] wrote: /Users/chasefisher/projects/Algo Trading/algo-lab/research/data/fql_forge/reports/_TRIPWIRE_2026-06-19_unresolved.md
+[HALT] tripwire fired: unresolved tripwire(s): ['_TRIPWIRE_2026-06-09_unresolved.md', '_TRIPWIRE_2026-06-10_unresolved.md', '_TRIPWIRE_2026-06-04_unresolved.md', '_TRIPWIRE_2026-06-17_unresolved.md', '_TRIPWIRE_2026-06-16_unresolved.md', '_TRIPWIRE_2026-06-12_unresolved.md', '_TRIPWIRE_2026-06-03_runtime_overrun:.md', '_TRIPWIRE_2026-06-05_unresolved.md', '_TRIPWIRE_2026-06-15_unresolved.md', '_TRIPWIRE_2026-06-11_unresolved.md', '_TRIPWIRE_2026-06-08_unresolved.md', '_TRIPWIRE_2026-06-18_unresolved.md']
+FQL Forge Daily Loop — 2026-06-22 — DRY-RUN
+==============================================================================
+[TRIPWIRE] unresolved tripwire(s): ['_TRIPWIRE_2026-06-19_unresolved.md', '_TRIPWIRE_2026-06-09_unresolved.md', '_TRIPWIRE_2026-06-10_unresolved.md', '_TRIPWIRE_2026-06-04_unresolved.md', '_TRIPWIRE_2026-06-17_unresolved.md', '_TRIPWIRE_2026-06-16_unresolved.md', '_TRIPWIRE_2026-06-12_unresolved.md', '_TRIPWIRE_2026-06-03_runtime_overrun:.md', '_TRIPWIRE_2026-06-05_unresolved.md', '_TRIPWIRE_2026-06-15_unresolved.md', '_TRIPWIRE_2026-06-11_unresolved.md', '_TRIPWIRE_2026-06-08_unresolved.md', '_TRIPWIRE_2026-06-18_unresolved.md']
+[TRIPWIRE] wrote: /Users/chasefisher/projects/Algo Trading/algo-lab/research/data/fql_forge/reports/_TRIPWIRE_2026-06-22_unresolved.md
+[HALT] tripwire fired: unresolved tripwire(s): ['_TRIPWIRE_2026-06-19_unresolved.md', '_TRIPWIRE_2026-06-09_unresolved.md', '_TRIPWIRE_2026-06-10_unresolved.md', '_TRIPWIRE_2026-06-04_unresolved.md', '_TRIPWIRE_2026-06-17_unresolved.md', '_TRIPWIRE_2026-06-16_unresolved.md', '_TRIPWIRE_2026-06-12_unresolved.md', '_TRIPWIRE_2026-06-03_runtime_overrun:.md', '_TRIPWIRE_2026-06-05_unresolved.md', '_TRIPWIRE_2026-06-15_unresolved.md', '_TRIPWIRE_2026-06-11_unresolved.md', '_TRIPWIRE_2026-06-08_unresolved.md', '_TRIPWIRE_2026-06-18_unresolved.md']
+FQL Forge Daily Loop — 2026-06-23 — DRY-RUN
+==============================================================================
+[TRIPWIRE] unresolved tripwire(s): ['_TRIPWIRE_2026-06-19_unresolved.md', '_TRIPWIRE_2026-06-09_unresolved.md', '_TRIPWIRE_2026-06-10_unresolved.md', '_TRIPWIRE_2026-06-04_unresolved.md', '_TRIPWIRE_2026-06-17_unresolved.md', '_TRIPWIRE_2026-06-16_unresolved.md', '_TRIPWIRE_2026-06-12_unresolved.md', '_TRIPWIRE_2026-06-03_runtime_overrun:.md', '_TRIPWIRE_2026-06-05_unresolved.md', '_TRIPWIRE_2026-06-15_unresolved.md', '_TRIPWIRE_2026-06-11_unresolved.md', '_TRIPWIRE_2026-06-22_unresolved.md', '_TRIPWIRE_2026-06-08_unresolved.md', '_TRIPWIRE_2026-06-18_unresolved.md']
+[TRIPWIRE] wrote: /Users/chasefisher/projects/Algo Trading/algo-lab/research/data/fql_forge/reports/_TRIPWIRE_2026-06-23_unresolved.md
+[HALT] tripwire fired: unresolved tripwire(s): ['_TRIPWIRE_2026-06-19_unresolved.md', '_TRIPWIRE_2026-06-09_unresolved.md', '_TRIPWIRE_2026-06-10_unresolved.md', '_TRIPWIRE_2026-06-04_unresolved.md', '_TRIPWIRE_2026-06-17_unresolved.md', '_TRIPWIRE_2026-06-16_unresolved.md', '_TRIPWIRE_2026-06-12_unresolved.md', '_TRIPWIRE_2026-06-03_runtime_overrun:.md', '_TRIPWIRE_2026-06-05_unresolved.md', '_TRIPWIRE_2026-06-15_unresolved.md', '_TRIPWIRE_2026-06-11_unresolved.md', '_TRIPWIRE_2026-06-22_unresolved.md', '_TRIPWIRE_2026-06-08_unresolved.md', '_TRIPWIRE_2026-06-18_unresolved.md']
+FQL Forge Daily Loop — 2026-06-24 — DRY-RUN
+==============================================================================
+[TRIPWIRE] unresolved tripwire(s): ['_TRIPWIRE_2026-06-19_unresolved.md', '_TRIPWIRE_2026-06-09_unresolved.md', '_TRIPWIRE_2026-06-23_unresolved.md', '_TRIPWIRE_2026-06-10_unresolved.md', '_TRIPWIRE_2026-06-04_unresolved.md', '_TRIPWIRE_2026-06-17_unresolved.md', '_TRIPWIRE_2026-06-16_unresolved.md', '_TRIPWIRE_2026-06-12_unresolved.md', '_TRIPWIRE_2026-06-03_runtime_overrun:.md', '_TRIPWIRE_2026-06-05_unresolved.md', '_TRIPWIRE_2026-06-15_unresolved.md', '_TRIPWIRE_2026-06-11_unresolved.md', '_TRIPWIRE_2026-06-22_unresolved.md', '_TRIPWIRE_2026-06-08_unresolved.md', '_TRIPWIRE_2026-06-18_unresolved.md']
+[TRIPWIRE] wrote: /Users/chasefisher/projects/Algo Trading/algo-lab/research/data/fql_forge/reports/_TRIPWIRE_2026-06-24_unresolved.md
+[HALT] tripwire fired: unresolved tripwire(s): ['_TRIPWIRE_2026-06-19_unresolved.md', '_TRIPWIRE_2026-06-09_unresolved.md', '_TRIPWIRE_2026-06-23_unresolved.md', '_TRIPWIRE_2026-06-10_unresolved.md', '_TRIPWIRE_2026-06-04_unresolved.md', '_TRIPWIRE_2026-06-17_unresolved.md', '_TRIPWIRE_2026-06-16_unresolved.md', '_TRIPWIRE_2026-06-12_unresolved.md', '_TRIPWIRE_2026-06-03_runtime_overrun:.md', '_TRIPWIRE_2026-06-05_unresolved.md', '_TRIPWIRE_2026-06-15_unresolved.md', '_TRIPWIRE_2026-06-11_unresolved.md', '_TRIPWIRE_2026-06-22_unresolved.md', '_TRIPWIRE_2026-06-08_unresolved.md', '_TRIPWIRE_2026-06-18_unresolved.md']
+FQL Forge Daily Loop — 2026-06-25 — DRY-RUN
+==============================================================================
+Selected 5 candidate(s)
+  [XB-PB-EMA-MorningOnly-MNQ] n=2104 PF=1.063 netPnL=$7830 → WATCH (85.9s)
+  [XB-BB-EMA-MorningOnly-MGC-v2] n=500 PF=1.027 netPnL=$555 → WATCH (45.2s)
+  [XB-BB-EMA-AfternoonOnly-MGC] n=388 PF=1.221 netPnL=$2037 → PASS (0.5s)
+  [XB-ORB-EMA-Chandelier-MNQ] n=1090 PF=1.134 netPnL=$7928 → WATCH (0.8s)
+  [XB-ORB-EMA-TimeStop-MNQ] n=1090 PF=1.117 netPnL=$6734 → WATCH (0.8s)
+
+[RESULT] {'PASS': 1, 'WATCH': 4, 'KILL': 0, 'RETEST': 0} (total runtime 133.2s)
+[REPORT] forge_daily_2026-06-25.md
+[REPORT] forge_daily_2026-06-25.json
+[QUEUE]  forge_queue.md (updated)
+
+[SAFETY] No registry mutation. No Lane A surfaces touched. Operator approves any append.
+FQL Forge Daily Loop — 2026-06-26 — DRY-RUN
+==============================================================================
+[TRIPWIRE] reports dir backlog (31d old; >30d threshold)
+[TRIPWIRE] wrote: /Users/chasefisher/projects/Algo Trading/algo-lab/research/data/fql_forge/reports/_TRIPWIRE_2026-06-26_reports.md
+[HALT] tripwire fired: reports dir backlog (31d old; >30d threshold)
+FQL Forge Daily Loop — 2026-06-29 — DRY-RUN
+==============================================================================
+Selected 5 candidate(s)
+  [XB-ORB-EMA-MorningOnly-MNQ] n=1671 PF=1.031 netPnL=$4798 → WATCH (86.9s)
+  [XB-ORB-EMA-AfternoonOnly-MNQ] n=1673 PF=1.081 netPnL=$8751 → WATCH (0.9s)
+  [XB-PB-EMA-MorningOnly-MNQ] n=2107 PF=1.056 netPnL=$7100 → WATCH (0.8s)
+  [XB-BB-EMA-MorningOnly-MGC-v2] n=501 PF=1.027 netPnL=$562 → WATCH (45.2s)
+  [XB-BB-EMA-AfternoonOnly-MGC] n=388 PF=1.221 netPnL=$2037 → PASS (0.5s)
+
+[RESULT] {'PASS': 1, 'WATCH': 4, 'KILL': 0, 'RETEST': 0} (total runtime 134.2s)
+[REPORT] forge_daily_2026-06-29.md
+[REPORT] forge_daily_2026-06-29.json
+[QUEUE]  forge_queue.md (updated)
+
+[SAFETY] No registry mutation. No Lane A surfaces touched. Operator approves any append.
+FQL Forge Daily Loop — 2026-06-30 — DRY-RUN
+==============================================================================
+Selected 5 candidate(s)
+  [XB-ORB-EMA-Chandelier-MNQ] n=1091 PF=1.131 netPnL=$7749 → WATCH (85.5s)
+  [XB-ORB-EMA-TimeStop-MNQ] n=1091 PF=1.116 netPnL=$6728 → WATCH (0.8s)
+  [XB-ORB-EMA-MidlineTarget-MNQ] n=1091 PF=0.919 netPnL=$-2258 → KILL (0.9s)
+  [XB-DC-EMA-Ladder-MCL] n=1040 PF=0.824 netPnL=$-4794 → KILL (60.2s)
+  [XB-DC-EMA-Ladder-MGC] n=912 PF=0.991 netPnL=$-276 → KILL (44.4s)
+
+[RESULT] {'PASS': 0, 'WATCH': 2, 'KILL': 3, 'RETEST': 0} (total runtime 191.8s)
+[REPORT] forge_daily_2026-06-30.md
+[REPORT] forge_daily_2026-06-30.json
+[QUEUE]  forge_queue.md (updated)
+
+[SAFETY] No registry mutation. No Lane A surfaces touched. Operator approves any append.
+FQL Forge Daily Loop — 2026-07-01 — DRY-RUN
+==============================================================================
+Selected 5 candidate(s)
+[TRIPWIRE] blowup_loss: XB-DC-EMA-Ladder-ZN netPnL=-39790 (< -10.0% of $50000)
+[TRIPWIRE] wrote: /Users/chasefisher/projects/Algo Trading/algo-lab/research/data/fql_forge/reports/_TRIPWIRE_2026-07-01_blowup_loss:.md

@@ -1,0 +1,117 @@
+=== MEMORY INDEX AUDIT === 76 memory files | 76 indexed | 0 MISSING
+
+=== UNCOMMITTED FORGE ARTIFACTS === 0
+
+=== VERDICT: CLEAN — loop closed ===
+=== MEMORY INDEX AUDIT === 76 memory files | 76 indexed | 0 MISSING
+
+=== UNCOMMITTED FORGE ARTIFACTS === 1
+  research/forge_learning_loop_audit.py
+
+=== VERDICT: DRIFT_FOUND (run with --fix to repair index; commit forge artifacts) ===
+=== MEMORY INDEX AUDIT === 76 memory files | 76 indexed | 0 MISSING
+
+=== UNCOMMITTED FORGE ARTIFACTS === 0
+
+=== VERDICT: CLEAN — loop closed ===
+=== MEMORY INDEX AUDIT === 78 memory files | 78 indexed | 0 MISSING
+
+=== UNCOMMITTED FORGE ARTIFACTS === 0
+
+=== VERDICT: CLEAN — loop closed ===
+=== MEMORY INDEX AUDIT === 84 memory files | 84 indexed | 0 MISSING
+
+=== UNCOMMITTED FORGE ARTIFACTS === 0
+
+=== VERDICT: CLEAN — loop closed ===
+=== MEMORY INDEX AUDIT === 87 memory files | 84 indexed | 3 MISSING
+  MISSING: feedback_alpha_intake_factory.md  (type=feedback)  — ALPHA_INTAKE_FACTORY (locked 2026-06-26) — external-source mechanism funnel unde
+  MISSING: feedback_inventory_before_exhausted_claim.md  (type=feedback)  — Inventory actual data holdings BEFORE declaring a data vein exhausted or conclud
+  MISSING: feedback_system_guardrails_fail_loud.md  (type=feedback)  — Automations RUNNING is not the same as automations CHECKING the right things. En
+  REPAIRED: appended 3 index line(s) to MEMORY.md
+
+=== UNCOMMITTED FORGE ARTIFACTS === 3
+  research/data/fql_forge/reports/forge_daily_2026-06-25.json
+  research/data/fql_forge/reports/forge_daily_2026-06-25.md
+  research/data/fql_forge/reports/forge_queue.md
+
+=== VERDICT: DRIFT_FOUND (index repaired) ===
+
+--- SYSTEM GUARDRAILS ---
+# FORGE GUARDRAILS — 2026-06-27 01:15 UTC
+P0=1 P1=1 P2=0
+  [P0] GIT BACKLOG: 16 commits unpushed (>5). Restore auth (gh auth login) and push.
+  [P1] CLOSE-ONLY BIAS: only 9/183 forge_cycle scripts use 'volume' (5%). Databento volume vein under-worked (target: keep ACTIVE_PACKET_LANE).
+  [ok] watchdog log 0.0d old
+  [ok] forge-morning-digest log 0.4d old
+  [ok] learning-loop log 0.0d old
+
+VERDICT: P0_FAIL — fix before trusting research
+*** GUARDRAILS P0_FAIL — execution-memory violation; see research/logs/system_guardrails_status.log ***
+=== MEMORY INDEX AUDIT === 87 memory files | 87 indexed | 0 MISSING
+
+=== UNCOMMITTED FORGE ARTIFACTS === 0
+
+=== VERDICT: CLEAN — loop closed ===
+
+--- SYSTEM GUARDRAILS ---
+# FORGE GUARDRAILS — 2026-06-30 01:15 UTC
+P0=0 P1=1 P2=0
+  [P1] CLOSE-ONLY BIAS: only 12/186 forge_cycle scripts use 'volume' (6%). Databento volume vein under-worked (target: keep ACTIVE_PACKET_LANE).
+  [ok] git backlog 0
+  [ok] watchdog log 0.0d old
+  [ok] forge-morning-digest log 0.4d old
+  [ok] learning-loop log 0.0d old
+  [ok] no asserting WH/validated language in recent docs
+  [ok] trial-ledger N=68
+
+VERDICT: P1_WARN
+=== MEMORY INDEX AUDIT === 87 memory files | 87 indexed | 0 MISSING
+
+=== UNCOMMITTED FORGE ARTIFACTS === 0
+
+=== VERDICT: CLEAN — loop closed ===
+
+--- SYSTEM GUARDRAILS ---
+# FORGE GUARDRAILS — 2026-07-01 01:15 UTC
+P0=0 P1=1 P2=0
+  [P1] CLOSE-ONLY BIAS: only 15/194 forge_cycle scripts use 'volume' (8%). Databento volume vein under-worked (target: keep ACTIVE_PACKET_LANE).
+  [ok] git backlog 0
+  [ok] watchdog log 0.0d old
+  [ok] forge-morning-digest log 0.4d old
+  [ok] learning-loop log 0.0d old
+  [ok] no asserting WH/validated language in recent docs
+  [ok] trial-ledger N=1766
+  [ok] feeds: all 19 referenced
+  [ok] harnesses: all have output
+
+VERDICT: P1_WARN
+=== MEMORY INDEX AUDIT === 90 memory files | 90 indexed | 0 MISSING
+
+=== UNCOMMITTED FORGE ARTIFACTS === 4
+  docs/fql_forge/NOVELTY_PACKETS_2026-07-01.md
+  research/data/fql_forge/reports/forge_queue.md
+  research/data/fql_forge/reports/forge_daily_2026-06-30.json
+  research/data/fql_forge/reports/forge_daily_2026-06-30.md
+
+=== VERDICT: DRIFT_FOUND (run with --fix to repair index; commit forge artifacts) ===
+
+--- SYSTEM GUARDRAILS ---
+# FORGE GUARDRAILS — 2026-07-02 01:15 UTC
+P0=0 P1=2 P2=0
+  [P1] CLOSE-ONLY BIAS: only 15/194 forge_cycle scripts use 'volume' (8%). Databento volume vein under-worked (target: keep ACTIVE_PACKET_LANE).
+  [P1] INBOUND: 3 mistake/validation item(s) with NO durable control: ['INB-20260625-002', 'INB-20260701-010', 'INB-20260701-011'] (no control = not fixed)
+  [ok] git backlog 0
+  [ok] watchdog log 0.0d old
+  [ok] forge-morning-digest log 0.4d old
+  [ok] learning-loop log 0.0d old
+  [ok] no asserting WH/validated language in recent docs
+  [ok] trial-ledger N=1799
+  [ok] feeds: all 19 referenced
+  [ok] harnesses: all have output
+  [ok] data-blocker certificates present (1 recent blocked-mentions, cert exists)
+  [ok] per-contract data files pass validator
+  [ok] data-tier gate: 0 false-exhaustion; 12 families have untested richer tier (TIER_INCOMPLETE ok)
+  [ok] inbound ledger: 30 items (0 NEW, P0=7 P1=17); status={'TRIAGED': 13, 'ACTIVE_PACKET_LANE': 5, 'RETEST_REQUIRED': 5, 'CONTROL_REQUIRED': 3, 'NEEDS_BESPOKE_HARNESS': 2, 'PROMOTED_TO_PACKET': 1, 'CLEAN_KILL': 1}
+
+VERDICT: P1_WARN

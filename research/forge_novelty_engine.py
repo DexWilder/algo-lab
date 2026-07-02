@@ -81,7 +81,17 @@ def generate(emit=12):
                              avail=avail,quality=_quality(t),lw=lw,score=round(fw*t["prior"]*lw,2)))
     cand.sort(key=lambda c:(-c["score"],c["key"]))
     total_space=sum(1 for t in TEMPLATES for sym,a in INSTR.items() if applies(t,sym,a))
-    new=cand[:emit]; stamp=datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    # DIVERSITY: cap per-dim so the batch EXPLORES (not just exploits the survivor neighborhood = monoculture bug)
+    per_dim_cap=max(2, emit//4); by_dim={}; new=[]
+    for c in cand:
+        if by_dim.get(c["dim"],0)>=per_dim_cap: continue
+        new.append(c); by_dim[c["dim"]]=by_dim.get(c["dim"],0)+1
+        if len(new)>=emit: break
+    if len(new)<emit:  # backfill if diversity cap left room
+        for c in cand:
+            if c not in new: new.append(c)
+            if len(new)>=emit: break
+    stamp=datetime.now(timezone.utc).strftime("%Y-%m-%d")
     for c in new: store["packets"][c["key"]]=dict(**{x:c[x] for x in ("tid","sym","dim","avail","score","harness")},created=stamp)
     STORE.parent.mkdir(parents=True,exist_ok=True); STORE.write_text(json.dumps(store,indent=2))
     q=_load(QUEUE,{"queue":[]}); qids={x.get("id") for x in q["queue"]}; queued=0

@@ -269,6 +269,78 @@
       "score": 9.6,
       "harness": "term-structure-carry",
       "created": "2026-07-01"
+    },
+    "detrended_carry::CL": {
+      "tid": "detrended_carry",
+      "sym": "CL",
+      "dim": "carry",
+      "avail": "LOCAL",
+      "score": 9.6,
+      "harness": "term-structure-carry",
+      "created": "2026-07-02"
+    },
+    "detrended_carry::GC": {
+      "tid": "detrended_carry",
+      "sym": "GC",
+      "dim": "carry",
+      "avail": "LOCAL",
+      "score": 9.6,
+      "harness": "term-structure-carry",
+      "created": "2026-07-02"
+    },
+    "roll_pressure::MES": {
+      "tid": "roll_pressure",
+      "sym": "MES",
+      "dim": "roll/settlement",
+      "avail": "REPULL",
+      "score": 9.6,
+      "harness": "term-structure",
+      "created": "2026-07-02"
+    },
+    "roll_pressure::MNQ": {
+      "tid": "roll_pressure",
+      "sym": "MNQ",
+      "dim": "roll/settlement",
+      "avail": "REPULL",
+      "score": 9.6,
+      "harness": "term-structure",
+      "created": "2026-07-02"
+    },
+    "month_end_extend::M2K": {
+      "tid": "month_end_extend",
+      "sym": "M2K",
+      "dim": "month-end/rebalance",
+      "avail": "LOCAL",
+      "score": 9.0,
+      "harness": "calendar-adapter",
+      "created": "2026-07-02"
+    },
+    "month_end_extend::MES": {
+      "tid": "month_end_extend",
+      "sym": "MES",
+      "dim": "month-end/rebalance",
+      "avail": "LOCAL",
+      "score": 9.0,
+      "harness": "calendar-adapter",
+      "created": "2026-07-02"
+    },
+    "opening_imbalance::6B": {
+      "tid": "opening_imbalance",
+      "sym": "6B",
+      "dim": "microstructure",
+      "avail": "LOCAL",
+      "score": 9.0,
+      "harness": "intraday-path",
+      "created": "2026-07-02"
+    },
+    "opening_imbalance::6E": {
+      "tid": "opening_imbalance",
+      "sym": "6E",
+      "dim": "microstructure",
+      "avail": "LOCAL",
+      "score": 9.0,
+      "harness": "intraday-path",
+      "created": "2026-07-02"
     }
   }
 }

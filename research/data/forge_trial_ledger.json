@@ -14291,6 +14291,30 @@
       "horizon": "",
       "lane": "databento_volume",
       "ts": "2026-07-01"
+    },
+    {
+      "packet": "MICRO_T3:settlement_revert:MES",
+      "asset": "MES",
+      "sharpe": 0.8,
+      "verdict": "micro",
+      "horizon": "",
+      "lane": "databento_volume",
+      "ts": "2026-07-02",
+      "failure_class": "dsr_searchN_fail",
+      "data_tier": "T3",
+      "n": 510
+    },
+    {
+      "packet": "MICRO_T3:settlement_revert:ZN",
+      "asset": "ZN",
+      "sharpe": 0.14,
+      "verdict": "micro",
+      "horizon": "",
+      "lane": "databento_volume",
+      "ts": "2026-07-02",
+      "failure_class": "no_edge",
+      "data_tier": "T3",
+      "n": 964
     }
   ],
   "note": "auto multiple-testing N; every test appends"

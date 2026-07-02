@@ -26,13 +26,24 @@ def _lane_of(packet):
     if "cot" in p: return "positioning"
     if "basket" in p: return "portfolio"
     return "exploratory"
-def record(packet, asset="", sharpe=None, verdict="", horizon="", lane=None, stamp=None):
+def record(packet, asset="", sharpe=None, verdict="", horizon="", lane=None, stamp=None,
+           failure_class=None, data_tier=None, dsr=None, maxyr=None, n=None):
+    """Trial ledger doubles as the META-RESEARCH DB: failure_class (taxonomy), data_tier, dsr, maxyr, n are mineable
+    for future idea-generation (avoid repeating failure modes; find survivor neighborhoods)."""
     d=_load()
-    d["trials"].append({"packet":packet,"asset":asset,"sharpe":sharpe,"verdict":verdict,"horizon":horizon,
-                        "lane":lane or _lane_of(packet),"ts":stamp or datetime.now(timezone.utc).strftime("%Y-%m-%d")})
+    row={"packet":packet,"asset":asset,"sharpe":sharpe,"verdict":verdict,"horizon":horizon,
+         "lane":lane or _lane_of(packet),"ts":stamp or datetime.now(timezone.utc).strftime("%Y-%m-%d")}
+    for k,v in (("failure_class",failure_class),("data_tier",data_tier),("dsr",dsr),("maxyr",maxyr),("n",n)):
+        if v is not None: row[k]=v
+    d["trials"].append(row)
     LEDGER.parent.mkdir(parents=True, exist_ok=True)
     LEDGER.write_text(json.dumps(d, indent=2))
     return len(d["trials"])
+FAILURE_CLASSES=["no_edge","costs_killed","concentration","side_degeneracy","artifact","data_issue",
+                 "insufficient_tier","dsr_searchN_fail","instability","execution_impossible"]
+def failure_taxonomy():
+    from collections import Counter
+    return dict(Counter(t.get("failure_class","unclassified") for t in _load()["trials"] if "KILL" in str(t.get("verdict","")).upper() or t.get("failure_class")))
 def count(lane=None):
     trials=_load()["trials"]
     if lane is None: return len(trials)
