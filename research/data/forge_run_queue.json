@@ -308,9 +308,10 @@
     },
     {
       "id": "gex_full_oi_coverage",
-      "status": "PROVIDER_UNSTABLE_RETRY_LATER",
+      "status": "RUN_NOW",
       "lane": "exploratory",
-      "note": "E1A/E3C 0DTE + Mar/Apr monthly \u2014 retry next healthy-gateway window (transient 504s)"
+      "note": "HIGH: gates promising signed-GEX compression signal \u2014 pull E1A/E3C 0DTE + Mar/Apr + extend months (single-parent/1mo per retry policy)",
+      "priority": "P1"
     },
     {
       "id": "gex_0dte_pin_real",
@@ -407,6 +408,13 @@
       "status": "BACKLOG",
       "lane": "inbound",
       "note": "[execution_cost] bbo-1m quotes/spread unlocked (ES median spread 0.25pt=1tick, /bin/zsh.009/wk) \u2014 execution"
+    },
+    {
+      "id": "gex_signed_compression_retest",
+      "status": "RUN_NOW",
+      "lane": "exploratory",
+      "surface": "B GEX T6",
+      "note": "re-run signed-GEX compression once coverage lands (n>=60); the one GEX result pointing right way"
     }
   ]
 }
