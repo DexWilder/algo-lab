@@ -3,24 +3,25 @@
   "families": {
     "trend_momentum": {
       "lane": "primitive_sweep",
-      "status": "CLEAN_BUT_WEAK",
+      "status": "SUBFAMILY_KILLED",
       "data": "LOCAL",
       "tested": [
         "TSMOM",
-        "primitive-sweep"
+        "primitive-sweep",
+        "trend_mom vol-confirmed @T3 (Sh<0)"
       ],
       "untested": [
-        "pooled vol-target trend",
-        "trend+carry combo"
+        "regime-conditioned trend (needs regime library)"
       ],
       "tested_tiers": [
         "T0",
-        "T2"
+        "T2",
+        "T3"
       ],
       "richest_applicable_tier": "T3",
-      "tier_gap": true,
-      "data_tier": "T2",
-      "tier_gap_reason": "tested to T2, T3 untested"
+      "tier_gap": false,
+      "data_tier": "T3",
+      "tier_gap_reason": "T3 tested (naive trend dead); residual=regime-conditioned"
     },
     "mean_reversion": {
       "lane": "primitive_sweep",

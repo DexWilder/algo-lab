@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-02 15:21 UTC",
+  "timestamp": "2026-07-02 15:22 UTC",
   "global_trial_N": 1822,
   "lane_breakdown": {
     "forced_flow": 7,
@@ -16,10 +16,10 @@
   },
   "families": {
     "trend_momentum": {
-      "status": "CLEAN_BUT_WEAK",
-      "data_tier": "T2",
+      "status": "SUBFAMILY_KILLED",
+      "data_tier": "T3",
       "richest_applicable_tier": "T3",
-      "tier_gap": true
+      "tier_gap": false
     },
     "mean_reversion": {
       "status": "CLEAN_KILL",
@@ -145,7 +145,8 @@
   "tested_tiers_by_family": {
     "trend_momentum": [
       "T0",
-      "T2"
+      "T2",
+      "T3"
     ],
     "mean_reversion": [
       "T0",
@@ -206,6 +207,9 @@
     ]
   },
   "killed_expressions": [
+    "trend_momentum:TSMOM",
+    "trend_momentum:primitive-sweep",
+    "trend_momentum:trend_mom vol-confirmed @T3 (Sh<0)",
     "mean_reversion:VWAP-revert",
     "mean_reversion:5m-MR-primitive",
     "mean_reversion:intraday MR volcond/plain @T3 (Sh<0, cost-dominated)",
@@ -237,12 +241,6 @@
     "spreadMR_GC": "SCREEN_PASS"
   },
   "data_utilization_gaps": [
-    {
-      "family": "trend_momentum",
-      "data_tier": "T2",
-      "richest": "T3",
-      "reason": "tested to T2, T3 untested"
-    },
     {
       "family": "vol_risk_premium",
       "data_tier": "T5",
@@ -312,7 +310,6 @@
     "cross-asset": 1.5
   },
   "next_25_actions": [
-    "TEST trend_momentum at richer tier T3 (T2 done)",
     "TEST vol_risk_premium at richer tier T6 (T5 done)",
     "TEST inventory_eia at richer tier T5 (none done)",
     "TEST macro_event_drift at richer tier T3 (T1 done)",
