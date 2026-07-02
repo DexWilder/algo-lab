@@ -1,0 +1,26 @@
+{
+  "note": "operator-approved report-only data-pull budget (2026-07-01). Auto-approve under per-pull cap; ask for special needs.",
+  "auto_approve_per_pull_usd": 25,
+  "daily_cap_usd": 100,
+  "cadence_guidance": "~weekly for $15-tier pulls; ask operator for special/more",
+  "rules": [
+    "report-only research only",
+    "every pull records cost+schema+path+validation+queue_purpose",
+    "no subscription/recurring vendor",
+    "no capital-facing / paper / live / registry / scheduler / sizing change"
+  ],
+  "pulls": [
+    {
+      "date": "2025-06-02/07-sample",
+      "asset": "ES.OPT",
+      "schemas": [
+        "definition",
+        "statistics"
+      ],
+      "cost_usd": 0.07,
+      "path": "data/databento/ES_OPT_*_sample.csv",
+      "purpose": "GEX feasibility memo",
+      "validation": "pending"
+    }
+  ]
+}

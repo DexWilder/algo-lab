@@ -24,21 +24,23 @@
     },
     "mean_reversion": {
       "lane": "primitive_sweep",
-      "status": "TIER_INCOMPLETE",
+      "status": "CLEAN_KILL",
       "data": "LOCAL",
       "tested": [
         "VWAP-revert",
-        "5m-MR-primitive"
+        "5m-MR-primitive",
+        "intraday MR volcond/plain @T3 (Sh<0, cost-dominated)"
       ],
       "untested": [],
       "tested_tiers": [
         "T0",
-        "T2"
+        "T2",
+        "T3"
       ],
       "richest_applicable_tier": "T3",
-      "tier_gap": true,
-      "data_tier": "T2",
-      "tier_gap_reason": "session-level OR tested @T3 (kill); intraday 1m-path MR still untested @T3"
+      "tier_gap": false,
+      "data_tier": "T3",
+      "tier_gap_reason": "richest applicable T3 TESTED (intraday MR dead, cost-dominated) -> exhaustion allowed"
     },
     "carry_rates": {
       "lane": "curve_rv",
@@ -265,7 +267,9 @@
       "status": "SUBFAMILY_KILLED",
       "data": "LOCAL",
       "tested": [
-        "volume-direction x3"
+        "volume-direction x3",
+        "vol-cond continuation Sh0.41(conc)",
+        "liquidity-hole Sh0.35(sparse)@T3"
       ],
       "untested": [
         "ES-NQ lead-lag latency"

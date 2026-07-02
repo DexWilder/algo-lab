@@ -17,15 +17,14 @@
     "mean_reversion": {
       "tested_tiers": [
         "T0",
-        "T2"
-      ],
-      "highest_tested_tier": "T2",
-      "richest_applicable_tier": "T3",
-      "untested_available_tiers": [
+        "T2",
         "T3"
       ],
-      "exhaustion_allowed": false,
-      "next_tier_action": "test at T3"
+      "highest_tested_tier": "T3",
+      "richest_applicable_tier": "T3",
+      "untested_available_tiers": [],
+      "exhaustion_allowed": true,
+      "next_tier_action": "family-complete"
     },
     "carry_rates": {
       "tested_tiers": [

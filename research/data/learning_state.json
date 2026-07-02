@@ -1,11 +1,11 @@
 {
-  "timestamp": "2026-07-02 05:58 UTC",
-  "global_trial_N": 1801,
+  "timestamp": "2026-07-02 06:08 UTC",
+  "global_trial_N": 1814,
   "lane_breakdown": {
     "forced_flow": 7,
     "exploratory": 9,
     "portfolio": 2,
-    "databento_volume": 32,
+    "databento_volume": 45,
     "positioning": 48,
     "primitive_sweep": 1679,
     "macro_regime": 3,
@@ -22,10 +22,10 @@
       "tier_gap": true
     },
     "mean_reversion": {
-      "status": "TIER_INCOMPLETE",
-      "data_tier": "T2",
+      "status": "CLEAN_KILL",
+      "data_tier": "T3",
       "richest_applicable_tier": "T3",
-      "tier_gap": true
+      "tier_gap": false
     },
     "carry_rates": {
       "status": "CLEAN_KILL",
@@ -149,7 +149,8 @@
     ],
     "mean_reversion": [
       "T0",
-      "T2"
+      "T2",
+      "T3"
     ],
     "carry_rates": [
       "T4"
@@ -203,6 +204,9 @@
     ]
   },
   "killed_expressions": [
+    "mean_reversion:VWAP-revert",
+    "mean_reversion:5m-MR-primitive",
+    "mean_reversion:intraday MR volcond/plain @T3 (Sh<0, cost-dominated)",
     "carry_rates:naive roll-yield sign",
     "carry_rates:xsec carry-rank",
     "curve_rv:2s5s10s DV01 fly",
@@ -210,6 +214,8 @@
     "positioning_cot:naive COT fade x48",
     "auction_issuance:wp_b1 concession",
     "intraday_micro:volume-direction x3",
+    "intraday_micro:vol-cond continuation Sh0.41(conc)",
+    "intraday_micro:liquidity-hole Sh0.35(sparse)@T3",
     "crypto_funding:perp funding carry P22",
     "carry_legacy_fx_rates:rates rolldown ZN",
     "carry_legacy_fx_rates:cross-tenor rank",
@@ -234,12 +240,6 @@
       "data_tier": "T2",
       "richest": "T3",
       "reason": "tested to T2, T3 untested"
-    },
-    {
-      "family": "mean_reversion",
-      "data_tier": "T2",
-      "richest": "T3",
-      "reason": "session-level OR tested @T3 (kill); intraday 1m-path MR still untested @T3"
     },
     {
       "family": "vol_risk_premium",
@@ -316,9 +316,7 @@
     "cross-asset": 1.5
   },
   "next_25_actions": [
-    "RETEST mean_reversion at T3 (reopened false-exhaustion)",
     "TEST trend_momentum at richer tier T3 (T2 done)",
-    "TEST mean_reversion at richer tier T3 (T2 done)",
     "TEST vol_risk_premium at richer tier T6 (T5 done)",
     "TEST gamma_dealer at richer tier T6 (none done)",
     "TEST inventory_eia at richer tier T5 (none done)",
@@ -333,7 +331,6 @@
   ],
   "stale_labels": [],
   "unresolved_learning_gaps": [
-    "INB-20260625-002",
     "INB-20260701-010",
     "INB-20260701-011"
   ]
