@@ -1,7 +1,7 @@
-# Inbound Research Ledger (rendered 2026-07-06 17:04 UTC)
+# Inbound Research Ledger (rendered 2026-07-06 17:23 UTC)
 > **Operating law:** if it is not in this ledger, the queue, the dashboard, or the control map — the system does not know it.
-> Source of truth: `research/data/inbound_research_ledger.json`. Capture: `python3 research/capture_inbound.py`. Items: **50**.
-> NEW:0 | P0/P1:11/27 | untriaged directives:0 | mistakes w/o control:2 | unused feeds:0 | source notes unresolved:1
+> Source of truth: `research/data/inbound_research_ledger.json`. Capture: `python3 research/capture_inbound.py`. Items: **53**.
+> NEW:0 | P0/P1:11/28 | untriaged directives:0 | mistakes w/o control:2 | unused feeds:0 | source notes unresolved:1
 
 | id | date | type | status | P | family | mechanism / issue | next action | linked (packet/queue/control) |
 |---|---|---|---|---|---|---|---|---|
@@ -43,7 +43,9 @@
 | INB-20260706-007 | 2026-07-06 | source | PROMOTED_TO_PACKET | P1 | auction_issuance | Event-surprise INDEX packet v2: Treasury auction TAIL (high-yield minu | pull TreasuryDirect auction results | — |
 | INB-20260706-002 | 2026-07-06 | data feed | NEEDS_LOADER | P1 | data governance | MYM (Micro Dow) has NO 1m data — core WH1 workhorse instrument. Have M | pull MYM 1m from Databento (cheap, like other micr | — |
 | INB-20260706-006 | 2026-07-06 | data feed | PROVIDER_UNSTABLE_RETRY_LATER | P1 | data governance | GEX coverage extend pull KILLED (stalled 0-progress, gateway thrashing | single-slice retry next window; meanwhile run WH1- | background_tasks.json retry_plan + DATABENTO_TRANSIENT_FAILU |
+| INB-20260706-010 | 2026-07-06 | data feed | ACTIVE_IN_TESTS | P1 | auction_issuance | TreasuryDirect auction details PULLED (free keyless API): 609 auctions | — | data/feeds/treasury_auction_details.csv |
 | INB-20260616-001 | 2026-06-16 | old report | RETEST_REQUIRED | P2 | rescue (Lane F) | dormant inventory | retest under truth-gated harness, ranked | Lane F rescue |
+| INB-20260706-011 | 2026-07-06 | claude discovery | RETEST_REQUIRED | P2 | macro_event_drift | Auction-demand->index test (INDEX_REGIME_INPUT): weak-BTC auctions ->  | better surprise (tail), intraday reaction window,  | — |
 | INB-20260625-002 | 2026-07-02 | bug | TRIAGED | P2 | automation | stale tripwire not firing | resolved: freshness enforced every cycle | guardrail #3 stale-automation freshness check covers loop lo |
 | INB-20260626-002 | 2026-06-26 | bug | TRIAGED | P2 | harness hygiene | duplicate/bypassed harness | none | guardrail unrun-harnesses + forge_trial_ledger dedup |
 | INB-20260630-003 | 2026-06-30 | bug | TRIAGED | P2 | data integrity | save-time column loss | none — validator guards | validate_data_file.py |
@@ -54,4 +56,5 @@
 | INB-20260706-005 | 2026-07-06 | source | PROMOTED_TO_PACKET | P2 | open_close_liquidity | Institutional execution-window INDEX packet: closing-auction approach  | — | spread_cond_close |
 | INB-20260706-008 | 2026-07-06 | source | PROMOTED_TO_PACKET | P2 | open_close_liquidity | Institutional CLOSING-window INDEX packet: MES/MNQ/MYM last-15m order  | — | — |
 | INB-20260701-007 | 2026-07-01 | validation failure | CLEAN_KILL | P2 | carry_commodity | cross-asset generalization | gold-specific noted; not a family win | — |
+| INB-20260706-012 | 2026-07-06 | data feed | SOURCE_REQUIRED | P2 | inventory_eia | EIA inventory data needs FREE API key (register eia.gov). SOURCE_REQUI | operator: free EIA key OR skip; index-regime use o | — |
 | INB-20260706-009 | 2026-07-06 | source | PROMOTED_TO_PACKET | P3 | xasset_leadlag | Cross-index DISLOCATION packet: NQ/ES/YM triangle relative-value at ex | proper MT-correction before belief | — |

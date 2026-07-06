@@ -16165,6 +16165,18 @@
       "dsr": 0.0006,
       "maxyr": 116,
       "n": 510
+    },
+    {
+      "packet": "WH1_COND:auction_btc_index_relative:MNQ",
+      "asset": "MNQ",
+      "sharpe": -1.06,
+      "verdict": "micro",
+      "horizon": "",
+      "lane": "macro_regime",
+      "ts": "2026-07-06",
+      "failure_class": "no_edge",
+      "data_tier": "T5",
+      "n": 162
     }
   ],
   "note": "auto multiple-testing N; every test appends"

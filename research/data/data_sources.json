@@ -1,22 +1,145 @@
-{"note":"data-utilization map — every owned asset with tier + status. Rendered on dashboard. Statuses: ACTIVE_IN_TESTS/QUEUED_FOR_PACKET/VALIDATION_PENDING/NEEDS_LOADER/DATA_STATUS_UNPROVEN/CERTIFIED_BLOCKED/ARCHIVED_LOW_VALUE",
-"sources":[
- {"source":"Databento 1m OHLCV (11 instr)","tier":"T2","status":"ACTIVE_IN_TESTS","lane":"microstructure","note":"forge_microstructure_1m.py"},
- {"source":"Databento 1m + VOLUME (11 instr, ~7.9M bars)","tier":"T3","status":"ACTIVE_IN_TESTS","lane":"microstructure","note":"Phase-1 frontier; OR batch run (kill); intraday-path/lead-lag/settlement pending"},
- {"source":"5m/downsampled processed (13)","tier":"T2","status":"ACTIVE_IN_TESTS","lane":"legacy","note":"69 scripts; close-only legacy — kills scoped to tier"},
- {"source":"Per-contract rates ZT/ZF/ZN/ZB","tier":"T4","status":"ACTIVE_IN_TESTS","lane":"curve_rv","note":"carry+RV killed at T4"},
- {"source":"Per-contract CL/GC","tier":"T4","status":"ACTIVE_IN_TESTS","lane":"carry_commodity","note":"spreadMR_GC SCREEN_PASS"},
- {"source":"Gamma/options/OI (ES.OPT)","tier":"T6","status":"NEEDS_LOADER","lane":"gamma_dealer","note":"feasibility memo done; chunked-OI loader pending; $11.54 >$5 gate"},
- {"source":"COT positioning","tier":"T5","status":"ACTIVE_IN_TESTS","lane":"positioning","note":"naive fade killed; conditional untested"},
- {"source":"CPI levels","tier":"T5","status":"QUEUED_FOR_PACKET","lane":"macro_event_drift","note":"CPI drift untested"},
- {"source":"EIA stocks","tier":"T5","status":"CERTIFIED_BLOCKED","lane":"inventory_eia","note":"free API not wired; certificate"},
- {"source":"Treasury auctions","tier":"T5","status":"ACTIVE_IN_TESTS","lane":"auction_issuance","note":"concession killed; tenor-divergence untested"},
- {"source":"FOMC/NFP calendars","tier":"T5","status":"ACTIVE_IN_TESTS","lane":"macro_event_drift","note":"tested; 1m event-path untested"},
- {"source":"Policy rates","tier":"T5","status":"ACTIVE_IN_TESTS","lane":"carry_rates","note":"used in carry family"},
- {"source":"Treasury yield curve","tier":"T5","status":"ACTIVE_IN_TESTS","lane":"carry_rates","note":"used in curve/carry"},
- {"source":"VIX","tier":"T5","status":"ACTIVE_IN_TESTS","lane":"vol_risk_premium","note":"vol-carry weak"},
- {"source":"DVOL BTC/ETH","tier":"T6","status":"ACTIVE_IN_TESTS","lane":"vol_risk_premium","note":"DVOL vein opened"},
- {"source":"Deribit/OKX crypto perp","tier":"T5","status":"ARCHIVED_LOW_VALUE","lane":"crypto_funding","note":"funding carry killed"},
- {"source":"Credit OAS","tier":"T5","status":"QUEUED_FOR_PACKET","lane":"regime_filters","note":"regime overlay needs a survivor"},
- {"source":"Copper/gold ratio","tier":"T5","status":"QUEUED_FOR_PACKET","lane":"regime_filters","note":"regime proxy untested"},
- {"source":"Dollar index / real rates / inflation exp","tier":"T5","status":"VALIDATION_PENDING","lane":"macro_regime","note":"macro feeds under-tested"}
-]}
+{
+  "note": "data-utilization map \u2014 every owned asset with tier + status. Rendered on dashboard. Statuses: ACTIVE_IN_TESTS/QUEUED_FOR_PACKET/VALIDATION_PENDING/NEEDS_LOADER/DATA_STATUS_UNPROVEN/CERTIFIED_BLOCKED/ARCHIVED_LOW_VALUE",
+  "sources": [
+    {
+      "source": "Databento 1m OHLCV (11 instr)",
+      "tier": "T2",
+      "status": "ACTIVE_IN_TESTS",
+      "lane": "microstructure",
+      "note": "forge_microstructure_1m.py"
+    },
+    {
+      "source": "Databento 1m + VOLUME (11 instr, ~7.9M bars)",
+      "tier": "T3",
+      "status": "ACTIVE_IN_TESTS",
+      "lane": "microstructure",
+      "note": "Phase-1 frontier; OR batch run (kill); intraday-path/lead-lag/settlement pending"
+    },
+    {
+      "source": "5m/downsampled processed (13)",
+      "tier": "T2",
+      "status": "ACTIVE_IN_TESTS",
+      "lane": "legacy",
+      "note": "69 scripts; close-only legacy \u2014 kills scoped to tier"
+    },
+    {
+      "source": "Per-contract rates ZT/ZF/ZN/ZB",
+      "tier": "T4",
+      "status": "ACTIVE_IN_TESTS",
+      "lane": "curve_rv",
+      "note": "carry+RV killed at T4"
+    },
+    {
+      "source": "Per-contract CL/GC",
+      "tier": "T4",
+      "status": "ACTIVE_IN_TESTS",
+      "lane": "carry_commodity",
+      "note": "spreadMR_GC SCREEN_PASS"
+    },
+    {
+      "source": "Gamma/options/OI (ES.OPT)",
+      "tier": "T6",
+      "status": "NEEDS_LOADER",
+      "lane": "gamma_dealer",
+      "note": "feasibility memo done; chunked-OI loader pending; $11.54 >$5 gate"
+    },
+    {
+      "source": "COT positioning",
+      "tier": "T5",
+      "status": "ACTIVE_IN_TESTS",
+      "lane": "positioning",
+      "note": "naive fade killed; conditional untested"
+    },
+    {
+      "source": "CPI levels",
+      "tier": "T5",
+      "status": "QUEUED_FOR_PACKET",
+      "lane": "macro_event_drift",
+      "note": "CPI drift untested"
+    },
+    {
+      "source": "EIA stocks",
+      "tier": "T5",
+      "status": "CERTIFIED_BLOCKED",
+      "lane": "inventory_eia",
+      "note": "free API not wired; certificate"
+    },
+    {
+      "source": "Treasury auctions",
+      "tier": "T5",
+      "status": "ACTIVE_IN_TESTS",
+      "lane": "auction_issuance",
+      "note": "concession killed; tenor-divergence untested"
+    },
+    {
+      "source": "FOMC/NFP calendars",
+      "tier": "T5",
+      "status": "ACTIVE_IN_TESTS",
+      "lane": "macro_event_drift",
+      "note": "tested; 1m event-path untested"
+    },
+    {
+      "source": "Policy rates",
+      "tier": "T5",
+      "status": "ACTIVE_IN_TESTS",
+      "lane": "carry_rates",
+      "note": "used in carry family"
+    },
+    {
+      "source": "Treasury yield curve",
+      "tier": "T5",
+      "status": "ACTIVE_IN_TESTS",
+      "lane": "carry_rates",
+      "note": "used in curve/carry"
+    },
+    {
+      "source": "VIX",
+      "tier": "T5",
+      "status": "ACTIVE_IN_TESTS",
+      "lane": "vol_risk_premium",
+      "note": "vol-carry weak"
+    },
+    {
+      "source": "DVOL BTC/ETH",
+      "tier": "T6",
+      "status": "ACTIVE_IN_TESTS",
+      "lane": "vol_risk_premium",
+      "note": "DVOL vein opened"
+    },
+    {
+      "source": "Deribit/OKX crypto perp",
+      "tier": "T5",
+      "status": "ARCHIVED_LOW_VALUE",
+      "lane": "crypto_funding",
+      "note": "funding carry killed"
+    },
+    {
+      "source": "Credit OAS",
+      "tier": "T5",
+      "status": "QUEUED_FOR_PACKET",
+      "lane": "regime_filters",
+      "note": "regime overlay needs a survivor"
+    },
+    {
+      "source": "Copper/gold ratio",
+      "tier": "T5",
+      "status": "QUEUED_FOR_PACKET",
+      "lane": "regime_filters",
+      "note": "regime proxy untested"
+    },
+    {
+      "source": "Dollar index / real rates / inflation exp",
+      "tier": "T5",
+      "status": "VALIDATION_PENDING",
+      "lane": "macro_regime",
+      "note": "macro feeds under-tested"
+    },
+    {
+      "source": "TreasuryDirect auction bid-to-cover (609 auctions)",
+      "tier": "T5",
+      "status": "ACTIVE_IN_TESTS",
+      "lane": "auction_issuance",
+      "note": "free keyless; BTC=demand surprise; weak-auction->index relative tested (underpowered)"
+    }
+  ]
+}

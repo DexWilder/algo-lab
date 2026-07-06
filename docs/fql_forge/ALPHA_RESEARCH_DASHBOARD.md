@@ -1,20 +1,20 @@
-# ALPHA RESEARCH DASHBOARD (auto-generated 2026-07-06 17:04 UTC)
+# ALPHA RESEARCH DASHBOARD (auto-generated 2026-07-06 17:23 UTC)
 > `python3 research/forge_dashboard.py` regenerates this. Single canonical state view.
 
 ## HEADLINE
 - **Validated primaries: 0** (highest ladder rung: **SCREEN_PASS**; capital gate FAIL-CLOSED, PAPER_APPROVED+ operator-only).
-- Guardrails: **clean/P1** | Self-audit: **SELF_AUDIT_CLEAN** (facets=12 PASS=12 STALE=0 BROKEN=0 DESIGNED-not-built=0) | Git backlog: **0** | Global trial-N: **1837**
+- Guardrails: **clean/P1** | Self-audit: **SELF_AUDIT_CLEAN** (facets=12 PASS=12 STALE=0 BROKEN=0 DESIGNED-not-built=0) | Git backlog: **0** | Global trial-N: **1838**
 - **Mission:** MNQ/MES/MYM index workhorse (WH1). RUN_NOW mission-weighting: 15/20 WH1-aligned ({'DIVERSIFIER': 5, 'INDEX_REGIME_INPUT': 12, 'INDEX_DIRECT': 3})
 - **Search posture:** the NAIVE direct-index price/volume surface (gap/fade/trend/MR/OR) is picked-over UNDER TESTED EXPRESSIONS. WH1 direct-index remains LIVE via GEX/event/regime/source-CONDITIONED mechanisms + MYM (1m now pulled). Structural surfaces (GEX/dealer-flow, event-surprise, forced-flow) are EARLY — prove over 20–50 cycles, not solved.
 
 ## Throughput (computed live)
-- Tests logged today: **12** | total kills: 6 | screen-passes: 2
+- Tests logged today: **13** | total kills: 6 | screen-passes: 2
 - Novelty packets: **38** stored (0 today) of 108 template×instrument space
 - Families: **12 active** / 21 | coverage 59% (tested exprs / total exprs)
 - Candidate ladder: SCREEN_PASS=1
 
 ## Inbound capture (organizational memory — nothing floats)
-- Items: **50** | NEW: 0 | P0/P1: 11/27 | source packets today: 6
+- Items: **53** | NEW: 0 | P0/P1: 11/28 | source packets today: 6
 - Untriaged directives: 0 | mistakes w/o control: **2** ['INB-20260701-010', 'INB-20260701-011'] | unused feeds: 0
 - QUEUED-missing-from-queue: 0 | source notes unresolved: 1 | oldest untriaged: 0d
 - Ledger: `docs/fql_forge/INBOUND_RESEARCH_LEDGER.md` (capture: `python3 research/capture_inbound.py`)
@@ -26,9 +26,9 @@
 - exploratory: 14
 - commodity_carry: 10
 - forced_flow: 7
+- macro_regime: 4
 - crypto_carry: 4
 - carry: 4
-- macro_regime: 3
 - curve_rv: 3
 - portfolio: 2
 
@@ -47,7 +47,7 @@
 - [BACKLOG] nov_benchmark_fix_MES: execution window: benchmark-tracking funds transact at a known fix (16
 - [BACKLOG] nov_benchmark_fix_MGC: execution window: benchmark-tracking funds transact at a known fix (16
 
-## Data-utilization map (12/19 ACTIVE_IN_TESTS — no asset floats)
+## Data-utilization map (13/20 ACTIVE_IN_TESTS — no asset floats)
 - [T2] Databento 1m OHLCV (11 instr) — ACTIVE_IN_TESTS (microstructure)
 - [T3] Databento 1m + VOLUME (11 instr, ~7.9M bars) — ACTIVE_IN_TESTS (microstructure)
 - [T2] 5m/downsampled processed (13) — ACTIVE_IN_TESTS (legacy)
@@ -67,7 +67,8 @@
 - [T5] Credit OAS — QUEUED_FOR_PACKET (regime_filters)
 - [T5] Copper/gold ratio — QUEUED_FOR_PACKET (regime_filters)
 - [T5] Dollar index / real rates / inflation exp — VALIDATION_PENDING (macro_regime)
-- status mix: {'ACTIVE_IN_TESTS': 12, 'NEEDS_LOADER': 1, 'QUEUED_FOR_PACKET': 3, 'CERTIFIED_BLOCKED': 1, 'ARCHIVED_LOW_VALUE': 1, 'VALIDATION_PENDING': 1}
+- [T5] TreasuryDirect auction bid-to-cover (609 auctions) — ACTIVE_IN_TESTS (auction_issuance)
+- status mix: {'ACTIVE_IN_TESTS': 13, 'NEEDS_LOADER': 1, 'QUEUED_FOR_PACKET': 3, 'CERTIFIED_BLOCKED': 1, 'ARCHIVED_LOW_VALUE': 1, 'VALIDATION_PENDING': 1}
 
 ## Roadmap (operational) — Phase 1: foundation hardening
 - **Exit criteria:** data-tier gate live ✅ · learning-state updater live ✅ · close-only kills rescoped ✅ · 1m+volume harness running ✅ (OR batch=kill) · data-util dashboard ✅ · self-audit artifact ✅ | REMAINING: ≥1 close-only family re-scoped edge found OR cleanly killed at T3 (in progress); self-audit clean streak ≥5
