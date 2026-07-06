@@ -1,16 +1,16 @@
-# ALPHA RESEARCH DASHBOARD (auto-generated 2026-07-06 17:23 UTC)
+# ALPHA RESEARCH DASHBOARD (auto-generated 2026-07-06 17:26 UTC)
 > `python3 research/forge_dashboard.py` regenerates this. Single canonical state view.
 
 ## HEADLINE
 - **Validated primaries: 0** (highest ladder rung: **SCREEN_PASS**; capital gate FAIL-CLOSED, PAPER_APPROVED+ operator-only).
-- Guardrails: **clean/P1** | Self-audit: **SELF_AUDIT_CLEAN** (facets=12 PASS=12 STALE=0 BROKEN=0 DESIGNED-not-built=0) | Git backlog: **0** | Global trial-N: **1838**
-- **Mission:** MNQ/MES/MYM index workhorse (WH1). RUN_NOW mission-weighting: 15/20 WH1-aligned ({'DIVERSIFIER': 5, 'INDEX_REGIME_INPUT': 12, 'INDEX_DIRECT': 3})
+- Guardrails: **clean/P1** | Self-audit: **SELF_AUDIT_CLEAN** (facets=12 PASS=12 STALE=0 BROKEN=0 DESIGNED-not-built=0) | Git backlog: **0** | Global trial-N: **1841**
+- **Mission:** MNQ/MES/MYM index workhorse (WH1). RUN_NOW mission-weighting: 18/23 WH1-aligned ({'DIVERSIFIER': 5, 'INDEX_REGIME_INPUT': 15, 'INDEX_DIRECT': 3})
 - **Search posture:** the NAIVE direct-index price/volume surface (gap/fade/trend/MR/OR) is picked-over UNDER TESTED EXPRESSIONS. WH1 direct-index remains LIVE via GEX/event/regime/source-CONDITIONED mechanisms + MYM (1m now pulled). Structural surfaces (GEX/dealer-flow, event-surprise, forced-flow) are EARLY — prove over 20–50 cycles, not solved.
 
 ## Throughput (computed live)
-- Tests logged today: **13** | total kills: 6 | screen-passes: 2
+- Tests logged today: **16** | total kills: 6 | screen-passes: 2
 - Novelty packets: **38** stored (0 today) of 108 template×instrument space
-- Families: **12 active** / 21 | coverage 59% (tested exprs / total exprs)
+- Families: **12 active** / 21 | coverage 58% (tested exprs / total exprs)
 - Candidate ladder: SCREEN_PASS=1
 
 ## Inbound capture (organizational memory — nothing floats)
@@ -21,9 +21,9 @@
 
 ## Trial-N by lane (family diagnostics)
 - primitive_sweep: 1679
-- databento_volume: 63
+- databento_volume: 65
 - positioning: 48
-- exploratory: 14
+- exploratory: 15
 - commodity_carry: 10
 - forced_flow: 7
 - macro_regime: 4
@@ -33,7 +33,7 @@
 - portfolio: 2
 
 ## Queue depth
-- RUN_NOW: 20 | total queue items: 73
+- RUN_NOW: 23 | total queue items: 75
 - [ACTIVE_PACKET_LANE] gamma_chunked_loader_then_regime: chunked OI loader -> approx-GEX -> predeclared GEX-regime test (feasib
 - [DONE] gc_detrended_carry_zscore: refined commodity TS expr (naive carry-sign KILLed 2026-07-01); de-tre
 - [DONE] clgc_spread_momentum: refined commodity TS expr (naive carry-sign KILLed 2026-07-01); de-tre

@@ -19,6 +19,13 @@
       "next_nonblocked_wh1": "VIX-conditioned MES/MNQ (proper-n), MYM T3 micro, overnight-gap \u2014 do NOT wait on this pull",
       "resolution": "thrashed on gateway (0 progress, 40 days); killed per policy",
       "retry_plan": "single-parent x single-month, Mar/Apr/May/Jun 2025 + Sep-Dec 2024, next healthy-gateway window; validate each partial; merge-append"
+    },
+    {
+      "id": "byczjoj0d",
+      "desc": "bounded GEX slice retry",
+      "status": "GEX_COVERAGE_VALIDATED",
+      "result": "124 days (was 40), 47 days<=2DTE, validation NO_SYMBOL/PRICE (by design, usable)",
+      "next": "extend more months for DSR>=0.95"
     }
   ]
 }

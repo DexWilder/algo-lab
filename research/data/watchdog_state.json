@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-07-01T17:30:05.413377",
+  "timestamp": "2026-07-03T17:30:02.217894",
   "overall": "HEALTHY",
   "safe_mode": false,
   "checks": {
     "data_freshness": {
       "status": "WARN",
-      "detail": "Stale data: ES_5m (2648h old)"
+      "detail": "Stale data: ES_5m (2696h old)"
     },
     "scheduler_health": {
       "status": "OK",
-      "detail": "44 jobs in last 7 days, 0 errors"
+      "detail": "46 jobs in last 7 days, 0 errors"
     },
     "state_integrity": {
       "status": "OK",
@@ -17,7 +17,7 @@
     },
     "process_health": {
       "status": "OK",
-      "detail": "Process 97798 running (0.0h)"
+      "detail": "Process 3659 running (0.0h)"
     },
     "drift_alerts": {
       "status": "OK",

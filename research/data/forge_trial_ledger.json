@@ -16177,6 +16177,47 @@
       "failure_class": "no_edge",
       "data_tier": "T5",
       "n": 162
+    },
+    {
+      "packet": "GEX_SIGNED:compression_propN:ES",
+      "asset": "ES",
+      "sharpe": -1.13,
+      "verdict": "micro",
+      "horizon": "",
+      "lane": "exploratory",
+      "ts": "2026-07-06",
+      "failure_class": "no_edge",
+      "data_tier": "T6",
+      "dsr": 0.3052,
+      "n": 51
+    },
+    {
+      "packet": "WH1_GEXvol:breakout_range:MES",
+      "asset": "MES",
+      "sharpe": 1.04,
+      "verdict": "micro",
+      "horizon": "",
+      "lane": "databento_volume",
+      "ts": "2026-07-06",
+      "failure_class": "concentration",
+      "data_tier": "T6",
+      "dsr": 0.6857,
+      "maxyr": 86,
+      "n": 50
+    },
+    {
+      "packet": "WH1_GEXvol:breakout_range:MNQ",
+      "asset": "MNQ",
+      "sharpe": 1.52,
+      "verdict": "micro",
+      "horizon": "",
+      "lane": "databento_volume",
+      "ts": "2026-07-06",
+      "failure_class": "concentration",
+      "data_tier": "T6",
+      "dsr": 0.7672,
+      "maxyr": 75,
+      "n": 50
     }
   ],
   "note": "auto multiple-testing N; every test appends"

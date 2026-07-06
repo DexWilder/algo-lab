@@ -1,5 +1,5 @@
 {
-  "report_date": "2026-07-01 17:38",
+  "report_date": "2026-07-03 17:38",
   "regime_snapshot": {
     "MES": {
       "vol_regime": "NORMAL",
@@ -8,7 +8,7 @@
       "trend_persistence": "CHOPPY"
     },
     "MNQ": {
-      "vol_regime": "NORMAL",
+      "vol_regime": "HIGH_VOL",
       "trend_regime": "TRENDING",
       "rv_regime": "NORMAL_RV",
       "trend_persistence": "CHOPPY"
@@ -20,16 +20,16 @@
       "trend_persistence": "CHOPPY"
     },
     "M2K": {
-      "vol_regime": "LOW_VOL",
+      "vol_regime": "NORMAL",
       "trend_regime": "TRENDING",
       "rv_regime": "LOW_RV",
       "trend_persistence": "CHOPPY"
     },
     "MCL": {
-      "vol_regime": "NORMAL",
+      "vol_regime": "LOW_VOL",
       "trend_regime": "TRENDING",
       "rv_regime": "NORMAL_RV",
-      "trend_persistence": "GRINDING"
+      "trend_persistence": "CHOPPY"
     }
   },
   "activation_matrix": [
@@ -151,7 +151,7 @@
       "current_state": "ACTIVE",
       "new_state": "ACTIVE",
       "state_changed": false,
-      "activation_score": 0.685,
+      "activation_score": 0.655,
       "sub_scores": {
         "regime_fit": 0.6,
         "half_life": 1.0,
@@ -159,7 +159,7 @@
         "redundancy": 0.7,
         "health": 0.0,
         "kill_criteria": 1.0,
-        "session_drift": 1.0,
+        "session_drift": 0.4,
         "time_of_day": 0.5,
         "asset_fit": 1.0,
         "recent_stability": 1.0
@@ -173,7 +173,7 @@
         "LOW_REDUNDANCY",
         "HEALTH_FAIL",
         "KILL_NONE",
-        "SESSION_DRIFT_NORMAL",
+        "SESSION_DRIFT_DEGRADED",
         "TIME_WINDOW_PARTIAL",
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
@@ -181,15 +181,24 @@
       "transition_trigger": "No transition \u2014 current state appropriate",
       "confidence": 1.0,
       "uncertainty": true,
-      "warnings": [],
+      "warnings": [
+        "Session drift detected \u2014 degraded in one or more sessions"
+      ],
       "review_priority": "LOW",
-      "session_restrictions": [],
+      "session_restrictions": [
+        {
+          "session": "morning",
+          "severity": "DRIFT",
+          "action": "REDUCE",
+          "reason": "Degraded in morning (WR delta -16.5%)"
+        }
+      ],
       "_signals": {
         "half_life_status": "HEALTHY",
         "contribution_verdict": "NEUTRAL",
         "health_status": "FAIL",
         "genome_cluster": "opening_range",
-        "session_drift_severity": "NORMAL"
+        "session_drift_severity": "DRIFT"
       },
       "allocation": {
         "strategy_id": "ORB-MGC-Long",
@@ -201,9 +210,11 @@
         "final_tier_name": "BASE",
         "sessions": {
           "morning": {
-            "tier": 3,
-            "tier_name": "BASE",
-            "reason_codes": []
+            "tier": 2,
+            "tier_name": "REDUCED",
+            "reason_codes": [
+              "ALLOC_SESSION_REDUCE"
+            ]
           },
           "midday": {
             "tier": 3,
@@ -226,6 +237,12 @@
             "stage": "contribution",
             "direction": "UP",
             "reason": "Strong contribution (marginal_sharpe=0.4)"
+          },
+          {
+            "stage": "session_drift",
+            "session": "morning",
+            "direction": "DOWN",
+            "reason": "DRIFT in morning"
           }
         ]
       }
@@ -342,7 +359,7 @@
       "situation": "HEALTHY",
       "reason_codes": [
         "REGIME_MATCH_LOW",
-        "HALF_LIFE_STRENGTHENING",
+        "HALF_LIFE_STABLE",
         "PORTFOLIO_NEUTRAL",
         "LOW_REDUNDANCY",
         "HEALTH_FAIL",
@@ -671,7 +688,7 @@
     "disabled_or_off": 0,
     "state_changes": 0,
     "health_status": "FAIL",
-    "avg_activation_score": 0.6203
+    "avg_activation_score": 0.616
   },
   "health_signals": {
     "overall": "FAIL",

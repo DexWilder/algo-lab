@@ -1,6 +1,6 @@
 {
   "_schema_version": "2.0",
-  "_generated": "2026-07-01",
+  "_generated": "2026-07-03",
   "_description": "FQL Strategy Registry \u2014 institutional memory of all strategy ideas, tested candidates, and deployed strategies",
   "_purpose": "Preserves research knowledge, enables crossbreeding, feeds Strategy Factory",
   "strategies": [
@@ -145,7 +145,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_VOLATILE"
       ],
-      "last_controller_date": "2026-07-01",
+      "last_controller_date": "2026-07-03",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
@@ -242,7 +242,7 @@
       "last_review_date": "2026-03-15",
       "controller_state": "ACTIVE",
       "controller_action": "REDUCED_ON",
-      "activation_score": 0.685,
+      "activation_score": 0.655,
       "controller_reason_codes": [
         "REGIME_MATCH_MODERATE",
         "HALF_LIFE_STRENGTHENING",
@@ -250,12 +250,12 @@
         "LOW_REDUNDANCY",
         "HEALTH_FAIL",
         "KILL_NONE",
-        "SESSION_DRIFT_NORMAL",
+        "SESSION_DRIFT_DEGRADED",
         "TIME_WINDOW_PARTIAL",
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-07-01",
+      "last_controller_date": "2026-07-03",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
@@ -581,7 +581,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-07-01",
+      "last_controller_date": "2026-07-03",
       "review_priority": "LOW",
       "prior_state": "ACTIVE",
       "half_life_status": "HEALTHY",
@@ -4813,7 +4813,7 @@
       "activation_score": 0.675,
       "controller_reason_codes": [
         "REGIME_MATCH_LOW",
-        "HALF_LIFE_STRENGTHENING",
+        "HALF_LIFE_STABLE",
         "PORTFOLIO_NEUTRAL",
         "LOW_REDUNDANCY",
         "HEALTH_FAIL",
@@ -4823,7 +4823,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_STABLE"
       ],
-      "last_controller_date": "2026-07-01",
+      "last_controller_date": "2026-07-03",
       "half_life_status": "HEALTHY",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -5760,7 +5760,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-07-01",
+      "last_controller_date": "2026-07-03",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -5934,7 +5934,7 @@
       "status": "probation",
       "notes": "ACTIVE CARRY CHALLENGER. Entered forward runner 2026-03-20. MICRO tier, monthly rebalance, 1 contract per spread leg. Rubric 18 (eff. 20 with gap bonus). Fills CARRY + Rates gaps. June 1 displacement target: MomIgn-M2K-Short. Promote condition: 3mo forward Sharpe > 0 + WF improvement. Archive condition: 3mo consecutive negative forward returns. | ARCHIVED 2026-04-13: 0 forward trades. Structurally broken \u2014 runner tracks ZN but strategy requires ZF/ZB spread. Cannot produce evidence in current infrastructure. | RE-PROBATED 2026-04-14: out-of-band monthly batch via research/run_treasury_rolldown_spread.py. Archive root cause was infrastructure mismatch (intraday runner is single-asset, strategy needs ZN/ZF/ZB spread). Strategy logic was never invalidated \u2014 component_validation_history shows validated with PF 1.11, 79 trades, rate-neutral. Evidence now accrues in logs/spread_rebalance_log.csv; excluded from live_drift_monitor per-trade severity. See docs/PROBATION_REVIEW_CRITERIA.md \u00a76 re-probation banner.",
       "last_review_date": "2026-04-14",
-      "review_priority": "MEDIUM",
+      "review_priority": "HIGH",
       "lifecycle_stage": "forward_evidence",
       "source_category": "academic",
       "tags": [
@@ -5963,7 +5963,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-07-01",
+      "last_controller_date": "2026-07-03",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",
@@ -8521,7 +8521,7 @@
         "ASSET_FIT_GOOD",
         "RECENT_COLLAPSE"
       ],
-      "last_controller_date": "2026-07-01",
+      "last_controller_date": "2026-07-03",
       "half_life_status": "ERROR",
       "contribution_status": "NEUTRAL",
       "health_status": "FAIL",

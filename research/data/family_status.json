@@ -130,20 +130,18 @@
     },
     "gamma_dealer": {
       "lane": "exploratory",
-      "status": "RETEST_PENDING_COVERAGE",
+      "status": "SCREEN_PASS_PENDING_COVERAGE",
       "data": "REPULL_PAID",
       "tested": [
-        "OI/GEX feasibility (real ES.OPT)",
-        "naive pin proxy @monthly (wrong surface, kill)",
-        "naive pin-drift @weekly/near-expiry n=20 (no effect, UNDERPOWERED)",
-        "signed-GEX compression regime @weekly (DIRECTIONALLY CORRECT: pos-GEX range 0.76% vs neg-GEX 1.13%, n=19 UNDERPOWERED)"
+        "signed-GEX compression n=51 (robust, both years)",
+        "GEX-cond breakout/range cross-asset MES/MNQ (Sh1.04/1.52, DSR<0.95, n=50)"
       ],
       "untested": [
-        "signed-GEX compression RETEST w/ proper n (needs coverage)",
-        "gamma-flip level (zero-cross)",
-        "call/put-wall drift",
-        "gamma-flip range asymmetry",
-        "call/put-wall drift"
+        "more GEX coverage (extend months -> proper DSR)",
+        "execution realism",
+        "robustness (OR window, GEX threshold, rule)",
+        "MYM version",
+        "gamma-flip level"
       ],
       "tested_tiers": [
         "T6"
@@ -152,7 +150,7 @@
       "tier_gap": false,
       "data_tier": "T6",
       "tier_gap_reason": "correct surface reached; naive proxy dead but underpowered; signed-GEX/flip/wall variants + more coverage are the live branch",
-      "note": "GEX n=19 tests are UNDERPOWERED SMOKE TESTS only. signed-GEX compression directionally right but NOT concluded. Coverage pull running -> real read pending. Do NOT kill or promote on n=19.",
+      "note": "BEST LEAD. Signed-GEX COMPRESSION effect ROBUST at n=51 (pos-GEX range ~half neg-GEX, BOTH years). Monetized: GEX-conditioned breakout(expansion)/range-fade(compression) on index = CROSS-ASSET both-years-positive (MES Sh1.04/MNQ Sh1.52) BUT n=50, DSR 0.69-0.77 (<0.95), maxyr 75-86%. NOT DSR-credible/validated. RETEST with more GEX coverage before belief.",
       "mission_class": "INDEX_REGIME_INPUT"
     },
     "positioning_cot": {

@@ -1,11 +1,11 @@
 {
-  "timestamp": "2026-07-06 17:23 UTC",
-  "global_trial_N": 1838,
+  "timestamp": "2026-07-06 17:26 UTC",
+  "global_trial_N": 1841,
   "lane_breakdown": {
     "forced_flow": 7,
-    "exploratory": 14,
+    "exploratory": 15,
     "portfolio": 2,
-    "databento_volume": 63,
+    "databento_volume": 65,
     "positioning": 48,
     "primitive_sweep": 1679,
     "macro_regime": 4,
@@ -52,7 +52,7 @@
       "tier_gap": true
     },
     "gamma_dealer": {
-      "status": "RETEST_PENDING_COVERAGE",
+      "status": "SCREEN_PASS_PENDING_COVERAGE",
       "data_tier": "T6",
       "richest_applicable_tier": "T6",
       "tier_gap": false
