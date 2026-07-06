@@ -43,6 +43,14 @@
       "on_fail": "partials persisted per chunk; next WH1 lane",
       "progress": "167 days (2024:85, 2025:82), <=5DTE 78",
       "completion_trigger": "research/run_frozen_gex_oos.py (self-guarded)"
+    },
+    {
+      "id": "bogz58svk",
+      "desc": "2023 GEX OI extension (EW1-2, incremental)",
+      "status": "RUNNING_INCREMENTAL_PULL_WITH_PROGRESS",
+      "expected": "ES_OPT_weekly_oi.csv + gex_oos_2023_DONE.json marker",
+      "completion_trigger": "run_frozen_gex_oos.py (self-guarded)",
+      "purpose": "n 77->target>=120 for DSR power; 2023 index 1m already merged"
     }
   ]
 }

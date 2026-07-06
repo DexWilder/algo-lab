@@ -55,6 +55,39 @@
       "path": "data/databento/MYM_1m.csv",
       "purpose": "WH1 core workhorse instrument (was missing)",
       "validation": "rows>0 vol present"
+    },
+    {
+      "date": "2023-01/2024-03",
+      "asset": "MES.c.0",
+      "schemas": [
+        "ohlcv-1m"
+      ],
+      "cost_usd": 1.5,
+      "path": "data/databento/MES_1m.csv",
+      "purpose": "extend GEX trade window to 2023 (DSR sample)",
+      "validation": "merged"
+    },
+    {
+      "date": "2023-01/2024-03",
+      "asset": "MNQ.c.0",
+      "schemas": [
+        "ohlcv-1m"
+      ],
+      "cost_usd": 1.5,
+      "path": "data/databento/MNQ_1m.csv",
+      "purpose": "extend GEX trade window to 2023 (DSR sample)",
+      "validation": "merged"
+    },
+    {
+      "date": "2023-01/2024-03",
+      "asset": "MYM.c.0",
+      "schemas": [
+        "ohlcv-1m"
+      ],
+      "cost_usd": 1.5,
+      "path": "data/databento/MYM_1m.csv",
+      "purpose": "extend GEX trade window to 2023 (DSR sample)",
+      "validation": "merged"
     }
   ]
 }

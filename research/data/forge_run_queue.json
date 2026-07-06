@@ -571,11 +571,11 @@
     },
     {
       "id": "gex_extend_more_history",
-      "status": "RUN_NOW",
+      "status": "DONE",
       "lane": "exploratory",
       "mission_class": "INDEX_REGIME_INPUT",
       "surface": "B GEX",
-      "note": "HIGH: extend GEX OI to 2023 + more 2026 (more trading days -> n>150 -> DSR power). Binding constraint on the lead is sample size."
+      "note": "2023 index 1m merged (+1.2M rows); 2023 OI extending (bogz58svk)"
     },
     {
       "id": "gex_broaden_trigger",
@@ -584,6 +584,13 @@
       "mission_class": "INDEX_REGIME_INPUT",
       "surface": "B GEX",
       "note": "increase n: test DTE<=8 and/or wider strike band to get more GEX-conditioned days (re-freeze rule if changed)"
+    },
+    {
+      "id": "RUN_FROZEN_GEX_AFTER_2023",
+      "status": "WAITING_ON_COMPLETION_MARKER",
+      "lane": "exploratory",
+      "mission_class": "INDEX_REGIME_INPUT",
+      "note": "trigger: run research/run_frozen_gex_oos.py when gex_oos_2023_DONE.json exists \u2014 re-runs FROZEN rule on extended 2023-2026 sample, new n + DSR. NO tuning."
     }
   ]
 }
