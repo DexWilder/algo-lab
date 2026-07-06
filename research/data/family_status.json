@@ -21,7 +21,8 @@
       "richest_applicable_tier": "T3",
       "tier_gap": false,
       "data_tier": "T3",
-      "tier_gap_reason": "T3 tested (naive trend dead); residual=regime-conditioned"
+      "tier_gap_reason": "T3 tested (naive trend dead); residual=regime-conditioned",
+      "mission_class": "INDEX_DIRECT"
     },
     "mean_reversion": {
       "lane": "primitive_sweep",
@@ -41,7 +42,8 @@
       "richest_applicable_tier": "T3",
       "tier_gap": false,
       "data_tier": "T3",
-      "tier_gap_reason": "richest applicable T3 TESTED (intraday MR dead, cost-dominated) -> exhaustion allowed"
+      "tier_gap_reason": "richest applicable T3 TESTED (intraday MR dead, cost-dominated) -> exhaustion allowed",
+      "mission_class": "INDEX_DIRECT"
     },
     "carry_rates": {
       "lane": "curve_rv",
@@ -57,7 +59,8 @@
       ],
       "richest_applicable_tier": "T4",
       "tier_gap": false,
-      "data_tier": "T4"
+      "data_tier": "T4",
+      "mission_class": "DIVERSIFIER"
     },
     "carry_commodity": {
       "lane": "commodity_carry",
@@ -80,7 +83,8 @@
       ],
       "richest_applicable_tier": "T4",
       "tier_gap": false,
-      "data_tier": "T4"
+      "data_tier": "T4",
+      "mission_class": "DIVERSIFIER"
     },
     "curve_rv": {
       "lane": "curve_rv",
@@ -99,7 +103,8 @@
       ],
       "richest_applicable_tier": "T4",
       "tier_gap": false,
-      "data_tier": "T4"
+      "data_tier": "T4",
+      "mission_class": "DIVERSIFIER"
     },
     "vol_risk_premium": {
       "lane": "exploratory",
@@ -118,7 +123,8 @@
       "richest_applicable_tier": "T6",
       "tier_gap": true,
       "data_tier": "T5",
-      "tier_gap_reason": "tested to T5, T6 untested"
+      "tier_gap_reason": "tested to T5, T6 untested",
+      "mission_class": "INDEX_REGIME_INPUT"
     },
     "gamma_dealer": {
       "lane": "exploratory",
@@ -144,7 +150,8 @@
       "tier_gap": false,
       "data_tier": "T6",
       "tier_gap_reason": "correct surface reached; naive proxy dead but underpowered; signed-GEX/flip/wall variants + more coverage are the live branch",
-      "note": "LIVE BRANCH: signed-GEX compression effect points right way but n=19 too thin. Gated on more OI coverage (0DTE E1A/E3C + Mar/Apr + more months). Naive pin/drift dead; compression regime is the serious deepening branch."
+      "note": "LIVE BRANCH: signed-GEX compression effect points right way but n=19 too thin. Gated on more OI coverage (0DTE E1A/E3C + Mar/Apr + more months). Naive pin/drift dead; compression regime is the serious deepening branch.",
+      "mission_class": "INDEX_REGIME_INPUT"
     },
     "positioning_cot": {
       "lane": "positioning",
@@ -161,7 +168,8 @@
       ],
       "richest_applicable_tier": "T5",
       "tier_gap": false,
-      "data_tier": "T5"
+      "data_tier": "T5",
+      "mission_class": "DIVERSIFIER"
     },
     "auction_issuance": {
       "lane": "forced_flow",
@@ -178,7 +186,8 @@
       ],
       "richest_applicable_tier": "T5",
       "tier_gap": false,
-      "data_tier": "T5"
+      "data_tier": "T5",
+      "mission_class": "DIVERSIFIER"
     },
     "inventory_eia": {
       "lane": "forced_flow",
@@ -192,7 +201,8 @@
       "richest_applicable_tier": "T5",
       "tier_gap": true,
       "data_tier": "none",
-      "tier_gap_reason": "tested to none, T5 untested"
+      "tier_gap_reason": "tested to none, T5 untested",
+      "mission_class": "DIVERSIFIER"
     },
     "macro_event_drift": {
       "lane": "macro_regime",
@@ -212,7 +222,8 @@
       "richest_applicable_tier": "T3",
       "tier_gap": true,
       "data_tier": "T1",
-      "tier_gap_reason": "tested to T1, T3 untested"
+      "tier_gap_reason": "tested to T1, T3 untested",
+      "mission_class": "INDEX_REGIME_INPUT"
     },
     "monthend_settlement": {
       "lane": "forced_flow",
@@ -232,7 +243,8 @@
       "richest_applicable_tier": "T3",
       "tier_gap": true,
       "data_tier": "T1",
-      "tier_gap_reason": "tested to T1, T3 untested"
+      "tier_gap_reason": "tested to T1, T3 untested",
+      "mission_class": "INDEX_DIRECT"
     },
     "expiry_opex": {
       "lane": "exploratory",
@@ -246,7 +258,8 @@
       "richest_applicable_tier": "T6",
       "tier_gap": true,
       "data_tier": "none",
-      "tier_gap_reason": "tested to none, T6 untested"
+      "tier_gap_reason": "tested to none, T6 untested",
+      "mission_class": "INDEX_REGIME_INPUT"
     },
     "open_close_liquidity": {
       "lane": "databento_volume",
@@ -268,7 +281,8 @@
       "richest_applicable_tier": "T3",
       "tier_gap": false,
       "data_tier": "T3",
-      "tier_gap_reason": "tested to T2, T3 untested"
+      "tier_gap_reason": "tested to T2, T3 untested",
+      "mission_class": "INDEX_DIRECT"
     },
     "intraday_micro": {
       "lane": "databento_volume",
@@ -288,7 +302,8 @@
       "richest_applicable_tier": "T6",
       "tier_gap": true,
       "data_tier": "T3",
-      "tier_gap_reason": "tested to T3, T6 untested"
+      "tier_gap_reason": "tested to T3, T6 untested",
+      "mission_class": "INDEX_DIRECT"
     },
     "xasset_leadlag": {
       "lane": "exploratory",
@@ -306,7 +321,8 @@
       "richest_applicable_tier": "T3",
       "tier_gap": true,
       "data_tier": "T2",
-      "tier_gap_reason": "tested to T2, T3 untested"
+      "tier_gap_reason": "tested to T2, T3 untested",
+      "mission_class": "INDEX_DIRECT"
     },
     "regime_filters": {
       "lane": "macro_regime",
@@ -323,7 +339,8 @@
       ],
       "richest_applicable_tier": "T5",
       "tier_gap": false,
-      "data_tier": "T5"
+      "data_tier": "T5",
+      "mission_class": "INDEX_REGIME_INPUT"
     },
     "execution_cost": {
       "lane": "exploratory",
@@ -340,7 +357,8 @@
       ],
       "richest_applicable_tier": "T3",
       "tier_gap": false,
-      "data_tier": "T3"
+      "data_tier": "T3",
+      "mission_class": "INDEX_REGIME_INPUT"
     },
     "crypto_funding": {
       "lane": "crypto_carry",
@@ -355,7 +373,8 @@
       ],
       "richest_applicable_tier": "T5",
       "tier_gap": false,
-      "data_tier": "T5"
+      "data_tier": "T5",
+      "mission_class": "LOW_PRIORITY_ARCHIVE"
     },
     "fx_fixing_ratediv": {
       "lane": "exploratory",
@@ -370,7 +389,8 @@
       "richest_applicable_tier": "T3",
       "tier_gap": true,
       "data_tier": "none",
-      "tier_gap_reason": "tested to none, T3 untested"
+      "tier_gap_reason": "tested to none, T3 untested",
+      "mission_class": "DIVERSIFIER"
     },
     "carry_legacy_fx_rates": {
       "lane": "carry",
@@ -389,7 +409,8 @@
       ],
       "richest_applicable_tier": "T4",
       "tier_gap": true,
-      "tier_gap_reason": "tested to T1, T4 untested"
+      "tier_gap_reason": "tested to T1, T4 untested",
+      "mission_class": "DIVERSIFIER"
     }
   }
 }

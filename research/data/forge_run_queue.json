@@ -4,417 +4,514 @@
       "id": "gamma_chunked_loader_then_regime",
       "script": "-",
       "status": "ACTIVE_PACKET_LANE",
-      "note": "chunked OI loader -> approx-GEX -> predeclared GEX-regime test (feasibility done)"
+      "note": "chunked OI loader -> approx-GEX -> predeclared GEX-regime test (feasibility done)",
+      "mission_class": "INDEX_REGIME_INPUT"
     },
     {
       "id": "gc_detrended_carry_zscore",
       "status": "DONE",
       "lane": "commodity_carry",
-      "note": "refined commodity TS expr (naive carry-sign KILLed 2026-07-01); de-trended/spread/roll \u2014 validators first, predeclared"
+      "note": "refined commodity TS expr (naive carry-sign KILLed 2026-07-01); de-trended/spread/roll \u2014 validators first, predeclared",
+      "mission_class": "DIVERSIFIER"
     },
     {
       "id": "clgc_spread_momentum",
       "status": "DONE",
       "lane": "commodity_carry",
-      "note": "refined commodity TS expr (naive carry-sign KILLed 2026-07-01); de-trended/spread/roll \u2014 validators first, predeclared"
+      "note": "refined commodity TS expr (naive carry-sign KILLed 2026-07-01); de-trended/spread/roll \u2014 validators first, predeclared",
+      "mission_class": "DIVERSIFIER"
     },
     {
       "id": "clgc_spread_meanreversion",
       "status": "DONE",
       "lane": "commodity_carry",
-      "note": "refined commodity TS expr (naive carry-sign KILLed 2026-07-01); de-trended/spread/roll \u2014 validators first, predeclared"
+      "note": "refined commodity TS expr (naive carry-sign KILLed 2026-07-01); de-trended/spread/roll \u2014 validators first, predeclared",
+      "mission_class": "DIVERSIFIER"
     },
     {
       "id": "roll_window_pressure_contango",
       "status": "DONE",
       "lane": "commodity_carry",
-      "note": "refined commodity TS expr (naive carry-sign KILLed 2026-07-01); de-trended/spread/roll \u2014 validators first, predeclared"
+      "note": "refined commodity TS expr (naive carry-sign KILLed 2026-07-01); de-trended/spread/roll \u2014 validators first, predeclared",
+      "mission_class": "DIVERSIFIER"
     },
     {
       "id": "nov_benchmark_fix_6B",
       "status": "BACKLOG",
       "lane": "novelty",
-      "note": "execution window: benchmark-tracking funds transact at a known fix (16:00 WMR) [6B] harness=event-path-1m (validators first, predeclared)"
+      "note": "execution window: benchmark-tracking funds transact at a known fix (16:00 WMR) [6B] harness=event-path-1m (validators first, predeclared)",
+      "mission_class": "INDEX_REGIME_INPUT"
     },
     {
       "id": "nov_benchmark_fix_6E",
       "status": "BACKLOG",
       "lane": "novelty",
-      "note": "execution window: benchmark-tracking funds transact at a known fix (16:00 WMR) [6E] harness=event-path-1m (validators first, predeclared)"
+      "note": "execution window: benchmark-tracking funds transact at a known fix (16:00 WMR) [6E] harness=event-path-1m (validators first, predeclared)",
+      "mission_class": "INDEX_REGIME_INPUT"
     },
     {
       "id": "nov_benchmark_fix_6J",
       "status": "BACKLOG",
       "lane": "novelty",
-      "note": "execution window: benchmark-tracking funds transact at a known fix (16:00 WMR) [6J] harness=event-path-1m (validators first, predeclared)"
+      "note": "execution window: benchmark-tracking funds transact at a known fix (16:00 WMR) [6J] harness=event-path-1m (validators first, predeclared)",
+      "mission_class": "INDEX_REGIME_INPUT"
     },
     {
       "id": "nov_benchmark_fix_M2K",
       "status": "BACKLOG",
       "lane": "novelty",
-      "note": "execution window: benchmark-tracking funds transact at a known fix (16:00 WMR) [M2K] harness=event-path-1m (validators first, predeclared)"
+      "note": "execution window: benchmark-tracking funds transact at a known fix (16:00 WMR) [M2K] harness=event-path-1m (validators first, predeclared)",
+      "mission_class": "INDEX_REGIME_INPUT"
     },
     {
       "id": "nov_benchmark_fix_MCL",
       "status": "BACKLOG",
       "lane": "novelty",
-      "note": "execution window: benchmark-tracking funds transact at a known fix (16:00 WMR) [MCL] harness=event-path-1m (validators first, predeclared)"
+      "note": "execution window: benchmark-tracking funds transact at a known fix (16:00 WMR) [MCL] harness=event-path-1m (validators first, predeclared)",
+      "mission_class": "INDEX_REGIME_INPUT"
     },
     {
       "id": "nov_benchmark_fix_MES",
       "status": "BACKLOG",
       "lane": "novelty",
-      "note": "execution window: benchmark-tracking funds transact at a known fix (16:00 WMR) [MES] harness=event-path-1m (validators first, predeclared)"
+      "note": "execution window: benchmark-tracking funds transact at a known fix (16:00 WMR) [MES] harness=event-path-1m (validators first, predeclared)",
+      "mission_class": "INDEX_DIRECT"
     },
     {
       "id": "nov_benchmark_fix_MGC",
       "status": "BACKLOG",
       "lane": "novelty",
-      "note": "execution window: benchmark-tracking funds transact at a known fix (16:00 WMR) [MGC] harness=event-path-1m (validators first, predeclared)"
+      "note": "execution window: benchmark-tracking funds transact at a known fix (16:00 WMR) [MGC] harness=event-path-1m (validators first, predeclared)",
+      "mission_class": "INDEX_REGIME_INPUT"
     },
     {
       "id": "nov_benchmark_fix_MNQ",
       "status": "BACKLOG",
       "lane": "novelty",
-      "note": "execution window: benchmark-tracking funds transact at a known fix (16:00 WMR) [MNQ] harness=event-path-1m (validators first, predeclared)"
+      "note": "execution window: benchmark-tracking funds transact at a known fix (16:00 WMR) [MNQ] harness=event-path-1m (validators first, predeclared)",
+      "mission_class": "INDEX_DIRECT"
     },
     {
       "id": "nov_benchmark_fix_MYM",
       "status": "BACKLOG",
       "lane": "novelty",
-      "note": "execution window: benchmark-tracking funds transact at a known fix (16:00 WMR) [MYM] harness=event-path-1m (validators first, predeclared)"
+      "note": "execution window: benchmark-tracking funds transact at a known fix (16:00 WMR) [MYM] harness=event-path-1m (validators first, predeclared)",
+      "mission_class": "INDEX_DIRECT"
     },
     {
       "id": "nov_benchmark_fix_ZN",
       "status": "BACKLOG",
       "lane": "novelty",
-      "note": "execution window: benchmark-tracking funds transact at a known fix (16:00 WMR) [ZN] harness=event-path-1m (validators first, predeclared)"
+      "note": "execution window: benchmark-tracking funds transact at a known fix (16:00 WMR) [ZN] harness=event-path-1m (validators first, predeclared)",
+      "mission_class": "INDEX_REGIME_INPUT"
     },
     {
       "id": "nov_roll_pressure_CL",
       "status": "BACKLOG",
       "lane": "novelty",
-      "note": "roll/settlement: longs must roll front->deferred over the roll window [CL] harness=term-structure (validators first, predeclared)"
+      "note": "roll/settlement: longs must roll front->deferred over the roll window [CL] harness=term-structure (validators first, predeclared)",
+      "mission_class": "INDEX_REGIME_INPUT"
     },
     {
       "id": "nov_roll_pressure_GC",
       "status": "BACKLOG",
       "lane": "novelty",
-      "note": "roll/settlement: longs must roll front->deferred over the roll window [GC] harness=term-structure (validators first, predeclared)"
+      "note": "roll/settlement: longs must roll front->deferred over the roll window [GC] harness=term-structure (validators first, predeclared)",
+      "mission_class": "INDEX_REGIME_INPUT"
     },
     {
       "id": "nov_roll_pressure_ZB",
       "status": "BACKLOG",
       "lane": "novelty",
-      "note": "roll/settlement: longs must roll front->deferred over the roll window [ZB] harness=term-structure (validators first, predeclared)"
+      "note": "roll/settlement: longs must roll front->deferred over the roll window [ZB] harness=term-structure (validators first, predeclared)",
+      "mission_class": "DIVERSIFIER"
     },
     {
       "id": "nov_roll_pressure_ZF",
       "status": "BACKLOG",
       "lane": "novelty",
-      "note": "roll/settlement: longs must roll front->deferred over the roll window [ZF] harness=term-structure (validators first, predeclared)"
+      "note": "roll/settlement: longs must roll front->deferred over the roll window [ZF] harness=term-structure (validators first, predeclared)",
+      "mission_class": "DIVERSIFIER"
     },
     {
       "id": "nov_roll_pressure_ZN",
       "status": "BACKLOG",
       "lane": "novelty",
-      "note": "roll/settlement: longs must roll front->deferred over the roll window [ZN] harness=term-structure (validators first, predeclared)"
+      "note": "roll/settlement: longs must roll front->deferred over the roll window [ZN] harness=term-structure (validators first, predeclared)",
+      "mission_class": "DIVERSIFIER"
     },
     {
       "id": "nov_roll_pressure_ZT",
       "status": "BACKLOG",
       "lane": "novelty",
-      "note": "roll/settlement: longs must roll front->deferred over the roll window [ZT] harness=term-structure (validators first, predeclared)"
+      "note": "roll/settlement: longs must roll front->deferred over the roll window [ZT] harness=term-structure (validators first, predeclared)",
+      "mission_class": "INDEX_REGIME_INPUT"
     },
     {
       "id": "nov_auction_concession_M2K",
       "status": "BACKLOG",
       "lane": "novelty",
-      "note": "roll/settlement: dealers demand concession pre-auction, unwind post-auction [M2K] harness=event-adapter (validators first, predeclared)"
+      "note": "roll/settlement: dealers demand concession pre-auction, unwind post-auction [M2K] harness=event-adapter (validators first, predeclared)",
+      "mission_class": "INDEX_REGIME_INPUT"
     },
     {
       "id": "nov_auction_concession_MES",
       "status": "BACKLOG",
       "lane": "novelty",
-      "note": "roll/settlement: dealers demand concession pre-auction, unwind post-auction [MES] harness=event-adapter (validators first, predeclared)"
+      "note": "roll/settlement: dealers demand concession pre-auction, unwind post-auction [MES] harness=event-adapter (validators first, predeclared)",
+      "mission_class": "INDEX_DIRECT"
     },
     {
       "id": "nov_auction_concession_MNQ",
       "status": "BACKLOG",
       "lane": "novelty",
-      "note": "roll/settlement: dealers demand concession pre-auction, unwind post-auction [MNQ] harness=event-adapter (validators first, predeclared)"
+      "note": "roll/settlement: dealers demand concession pre-auction, unwind post-auction [MNQ] harness=event-adapter (validators first, predeclared)",
+      "mission_class": "INDEX_DIRECT"
     },
     {
       "id": "nov_auction_concession_MYM",
       "status": "BACKLOG",
       "lane": "novelty",
-      "note": "roll/settlement: dealers demand concession pre-auction, unwind post-auction [MYM] harness=event-adapter (validators first, predeclared)"
+      "note": "roll/settlement: dealers demand concession pre-auction, unwind post-auction [MYM] harness=event-adapter (validators first, predeclared)",
+      "mission_class": "INDEX_DIRECT"
     },
     {
       "id": "nov_auction_concession_ZB",
       "status": "BACKLOG",
       "lane": "novelty",
-      "note": "roll/settlement: dealers demand concession pre-auction, unwind post-auction [ZB] harness=event-adapter (validators first, predeclared)"
+      "note": "roll/settlement: dealers demand concession pre-auction, unwind post-auction [ZB] harness=event-adapter (validators first, predeclared)",
+      "mission_class": "INDEX_REGIME_INPUT"
     },
     {
       "id": "nov_auction_concession_ZF",
       "status": "BACKLOG",
       "lane": "novelty",
-      "note": "roll/settlement: dealers demand concession pre-auction, unwind post-auction [ZF] harness=event-adapter (validators first, predeclared)"
+      "note": "roll/settlement: dealers demand concession pre-auction, unwind post-auction [ZF] harness=event-adapter (validators first, predeclared)",
+      "mission_class": "INDEX_REGIME_INPUT"
     },
     {
       "id": "nov_auction_concession_ZN",
       "status": "BACKLOG",
       "lane": "novelty",
-      "note": "roll/settlement: dealers demand concession pre-auction, unwind post-auction [ZN] harness=event-adapter (validators first, predeclared)"
+      "note": "roll/settlement: dealers demand concession pre-auction, unwind post-auction [ZN] harness=event-adapter (validators first, predeclared)",
+      "mission_class": "INDEX_REGIME_INPUT"
     },
     {
       "id": "nov_auction_concession_ZT",
       "status": "BACKLOG",
       "lane": "novelty",
-      "note": "roll/settlement: dealers demand concession pre-auction, unwind post-auction [ZT] harness=event-adapter (validators first, predeclared)"
+      "note": "roll/settlement: dealers demand concession pre-auction, unwind post-auction [ZT] harness=event-adapter (validators first, predeclared)",
+      "mission_class": "INDEX_REGIME_INPUT"
     },
     {
       "id": "deepen_spreadMR_GC_execution",
       "status": "RUN_NOW",
       "lane": "commodity_carry",
-      "note": "Lane G: real 2-leg calendar-spread execution model (deferred liquidity, near-roll fills) for spreadMR_GC"
+      "note": "Lane G: real 2-leg calendar-spread execution model (deferred liquidity, near-roll fills) for spreadMR_GC",
+      "mission_class": "DIVERSIFIER"
     },
     {
       "id": "deepen_spreadMR_GC_searchN",
       "status": "RUN_NOW",
       "lane": "commodity_carry",
-      "note": "Lane G: pin honest search-N for spreadMR_GC DSR (credible N<=20, fails N>=30) \u2014 resolve layered-N"
+      "note": "Lane G: pin honest search-N for spreadMR_GC DSR (credible N<=20, fails N>=30) \u2014 resolve layered-N",
+      "mission_class": "DIVERSIFIER"
     },
     {
       "id": "deepen_spreadMR_GC_robustness",
       "status": "RUN_NOW",
       "lane": "commodity_carry",
-      "note": "Lane G: param robustness spreadMR_GC (z 1.0/2.0, lookback 126/252, hold rule) + tail-engine gates"
+      "note": "Lane G: param robustness spreadMR_GC (z 1.0/2.0, lookback 126/252, hold rule) + tail-engine gates",
+      "mission_class": "DIVERSIFIER"
     },
     {
       "id": "INB-20260630-002",
       "status": "BACKLOG",
       "lane": "inbound",
-      "note": "[term structure] Per-contract Databento re-pull (ZT/ZF/ZN/ZB/CL/GC ohlcv-1d)"
+      "note": "[term structure] Per-contract Databento re-pull (ZT/ZF/ZN/ZB/CL/GC ohlcv-1d)",
+      "mission_class": "DIVERSIFIER"
     },
     {
       "id": "INB-20260626-005",
       "status": "BACKLOG",
       "lane": "inbound",
-      "note": "[macro/carry] Local data/feeds library (yield curve, policy rates, vix, cot) under-used"
+      "note": "[macro/carry] Local data/feeds library (yield curve, policy rates, vix, cot) under-used",
+      "mission_class": "INDEX_REGIME_INPUT"
     },
     {
       "id": "INB-20260701-002",
       "status": "BACKLOG",
       "lane": "inbound",
-      "note": "[carry_commodity] Commodity term-structure sprint (CL/GC carry)"
+      "note": "[carry_commodity] Commodity term-structure sprint (CL/GC carry)",
+      "mission_class": "DIVERSIFIER"
     },
     {
       "id": "INB-20260701-008",
       "status": "BACKLOG",
       "lane": "inbound",
-      "note": "[organizational memory] Build the inbound capture system (no terminal-only discoveries)"
+      "note": "[organizational memory] Build the inbound capture system (no terminal-only discoveries)",
+      "mission_class": "INDEX_REGIME_INPUT"
     },
     {
       "id": "INB-20260701-012",
       "status": "BACKLOG",
       "lane": "inbound",
-      "note": "[governance] Make learning+improvement automatic each step; regular self-audit of every implemented fac"
+      "note": "[governance] Make learning+improvement automatic each step; regular self-audit of every implemented fac",
+      "mission_class": "INDEX_REGIME_INPUT"
     },
     {
       "id": "nov_contango_bleed_CL",
       "status": "BACKLOG",
       "lane": "novelty",
-      "note": "roll/settlement: long-ETF holders bleed roll return in steep contango [CL] harness=term-structure-carry (validators first, predeclared)"
+      "note": "roll/settlement: long-ETF holders bleed roll return in steep contango [CL] harness=term-structure-carry (validators first, predeclared)",
+      "mission_class": "DIVERSIFIER"
     },
     {
       "id": "nov_contango_bleed_GC",
       "status": "BACKLOG",
       "lane": "novelty",
-      "note": "roll/settlement: long-ETF holders bleed roll return in steep contango [GC] harness=term-structure-carry (validators first, predeclared)"
+      "note": "roll/settlement: long-ETF holders bleed roll return in steep contango [GC] harness=term-structure-carry (validators first, predeclared)",
+      "mission_class": "DIVERSIFIER"
     },
     {
       "id": "nov_contango_bleed_ZB",
       "status": "BACKLOG",
       "lane": "novelty",
-      "note": "roll/settlement: long-ETF holders bleed roll return in steep contango [ZB] harness=term-structure-carry (validators first, predeclared)"
+      "note": "roll/settlement: long-ETF holders bleed roll return in steep contango [ZB] harness=term-structure-carry (validators first, predeclared)",
+      "mission_class": "DIVERSIFIER"
     },
     {
       "id": "nov_contango_bleed_ZF",
       "status": "BACKLOG",
       "lane": "novelty",
-      "note": "roll/settlement: long-ETF holders bleed roll return in steep contango [ZF] harness=term-structure-carry (validators first, predeclared)"
+      "note": "roll/settlement: long-ETF holders bleed roll return in steep contango [ZF] harness=term-structure-carry (validators first, predeclared)",
+      "mission_class": "DIVERSIFIER"
     },
     {
       "id": "nov_contango_bleed_ZN",
       "status": "BACKLOG",
       "lane": "novelty",
-      "note": "roll/settlement: long-ETF holders bleed roll return in steep contango [ZN] harness=term-structure-carry (validators first, predeclared)"
+      "note": "roll/settlement: long-ETF holders bleed roll return in steep contango [ZN] harness=term-structure-carry (validators first, predeclared)",
+      "mission_class": "DIVERSIFIER"
     },
     {
       "id": "nov_contango_bleed_ZT",
       "status": "BACKLOG",
       "lane": "novelty",
-      "note": "roll/settlement: long-ETF holders bleed roll return in steep contango [ZT] harness=term-structure-carry (validators first, predeclared)"
+      "note": "roll/settlement: long-ETF holders bleed roll return in steep contango [ZT] harness=term-structure-carry (validators first, predeclared)",
+      "mission_class": "DIVERSIFIER"
     },
     {
       "id": "nov_detrended_carry_CL",
       "status": "BACKLOG",
       "lane": "novelty",
-      "note": "carry: carry vs own rolling term-structure baseline (not raw sign) [CL] harness=term-structure-carry (validators first, predeclared)"
+      "note": "carry: carry vs own rolling term-structure baseline (not raw sign) [CL] harness=term-structure-carry (validators first, predeclared)",
+      "mission_class": "DIVERSIFIER"
     },
     {
       "id": "nov_detrended_carry_GC",
       "status": "BACKLOG",
       "lane": "novelty",
-      "note": "carry: carry vs own rolling term-structure baseline (not raw sign) [GC] harness=term-structure-carry (validators first, predeclared)"
+      "note": "carry: carry vs own rolling term-structure baseline (not raw sign) [GC] harness=term-structure-carry (validators first, predeclared)",
+      "mission_class": "DIVERSIFIER"
     },
     {
       "id": "nov_month_end_extend_M2K",
       "status": "BACKLOG",
       "lane": "novelty",
-      "note": "month-end/rebalance: duration/equity index funds rebalance in the last session(s) [M2K] harness=calendar-adapter (validators first, predeclared)"
+      "note": "month-end/rebalance: duration/equity index funds rebalance in the last session(s) [M2K] harness=calendar-adapter (validators first, predeclared)",
+      "mission_class": "INDEX_DIRECT"
     },
     {
       "id": "nov_month_end_extend_MES",
       "status": "BACKLOG",
       "lane": "novelty",
-      "note": "month-end/rebalance: duration/equity index funds rebalance in the last session(s) [MES] harness=calendar-adapter (validators first, predeclared)"
+      "note": "month-end/rebalance: duration/equity index funds rebalance in the last session(s) [MES] harness=calendar-adapter (validators first, predeclared)",
+      "mission_class": "INDEX_DIRECT"
     },
     {
       "id": "nov_opening_imbalance_6B",
       "status": "BACKLOG",
       "lane": "novelty",
-      "note": "microstructure: overnight order imbalance resolves in the opening auction [6B] harness=intraday-path (validators first, predeclared)"
+      "note": "microstructure: overnight order imbalance resolves in the opening auction [6B] harness=intraday-path (validators first, predeclared)",
+      "mission_class": "DIVERSIFIER"
     },
     {
       "id": "nov_opening_imbalance_6E",
       "status": "BACKLOG",
       "lane": "novelty",
-      "note": "microstructure: overnight order imbalance resolves in the opening auction [6E] harness=intraday-path (validators first, predeclared)"
+      "note": "microstructure: overnight order imbalance resolves in the opening auction [6E] harness=intraday-path (validators first, predeclared)",
+      "mission_class": "DIVERSIFIER"
     },
     {
       "id": "INB-20260702-001",
       "status": "BACKLOG",
       "lane": "inbound",
-      "note": "[governance] Full-spectrum Elite Novelty System Assessment: grade every layer, build P0/P1 automation g"
+      "note": "[governance] Full-spectrum Elite Novelty System Assessment: grade every layer, build P0/P1 automation g",
+      "mission_class": "INDEX_REGIME_INPUT"
     },
     {
       "id": "gex_expiry_0dte_pin",
       "status": "RUN_NOW",
       "lane": "exploratory",
-      "note": "T6: expiry/0DTE gamma-pin \u2014 target last 1-2 days to expiry (naive proxy killed; mechanism lives at expiry). Needs OI on expiry days."
+      "note": "T6: expiry/0DTE gamma-pin \u2014 target last 1-2 days to expiry (naive proxy killed; mechanism lives at expiry). Needs OI on expiry days.",
+      "mission_class": "INDEX_REGIME_INPUT"
     },
     {
       "id": "gex_full_oi_coverage",
       "status": "RUN_NOW",
       "lane": "exploratory",
       "note": "HIGH: gates promising signed-GEX compression signal \u2014 pull E1A/E3C 0DTE + Mar/Apr + extend months (single-parent/1mo per retry policy)",
-      "priority": "P1"
+      "priority": "P1",
+      "mission_class": "INDEX_REGIME_INPUT"
     },
     {
       "id": "gex_0dte_pin_real",
       "status": "RUN_NOW",
       "lane": "exploratory",
       "surface": "B GEX T6",
-      "note": "0DTE/expiry-week pin on weekly OI (EW1-4/E1A/E3C) \u2014 the mechanism's home regime [EW weekly OI landed 62d/50d<=2DTE; E1A/E3C 0DTE pending RETRY_LATER]"
+      "note": "0DTE/expiry-week pin on weekly OI (EW1-4/E1A/E3C) \u2014 the mechanism's home regime [EW weekly OI landed 62d/50d<=2DTE; E1A/E3C 0DTE pending RETRY_LATER]",
+      "mission_class": "INDEX_REGIME_INPUT"
     },
     {
       "id": "gex_flip_range",
       "status": "RUN_NOW",
       "lane": "exploratory",
       "surface": "B GEX T6",
-      "note": "gamma-flip -> realized-range asymmetry (above flip compress / below expand)"
+      "note": "gamma-flip -> realized-range asymmetry (above flip compress / below expand)",
+      "mission_class": "INDEX_REGIME_INPUT"
     },
     {
       "id": "gex_call_put_wall",
       "status": "RUN_NOW",
       "lane": "exploratory",
       "surface": "B GEX T6",
-      "note": "call-wall/put-wall proxy: distance to largest OI wall -> next-day drift"
+      "note": "call-wall/put-wall proxy: distance to largest OI wall -> next-day drift",
+      "mission_class": "INDEX_REGIME_INPUT"
     },
     {
       "id": "spread_cond_close",
       "status": "RUN_NOW",
       "lane": "exploratory",
       "surface": "C exec T3",
-      "note": "bbo-1m spread-conditioned closing-window behavior (real spread cost)"
+      "note": "bbo-1m spread-conditioned closing-window behavior (real spread cost)",
+      "mission_class": "INDEX_DIRECT"
     },
     {
       "id": "post_open_absorption",
       "status": "RUN_NOW",
       "lane": "exploratory",
       "surface": "C exec T3",
-      "note": "post-open absorption: first-15m quote imbalance -> rest-of-session"
+      "note": "post-open absorption: first-15m quote imbalance -> rest-of-session",
+      "mission_class": "INDEX_REGIME_INPUT"
     },
     {
       "id": "spreadMR_gc_execreal",
       "status": "RUN_NOW",
       "lane": "exploratory",
       "surface": "D term T4",
-      "note": "spreadMR_GC execution-realism sim (2-leg calendar, real fills)"
+      "note": "spreadMR_GC execution-realism sim (2-leg calendar, real fills)",
+      "mission_class": "DIVERSIFIER"
     },
     {
       "id": "roll_window_cl",
       "status": "RUN_NOW",
       "lane": "exploratory",
       "surface": "A forced T4",
-      "note": "roll-window pressure CL/GC (index/fund forced roll)"
+      "note": "roll-window pressure CL/GC (index/fund forced roll)",
+      "mission_class": "INDEX_DIRECT"
     },
     {
       "id": "crossmkt_gold_realyield",
       "status": "RUN_NOW",
       "lane": "exploratory",
       "surface": "E xmkt T4/T5",
-      "note": "gold vs real-yield shock (regime-conditioned, not generic lead-lag)"
+      "note": "gold vs real-yield shock (regime-conditioned, not generic lead-lag)",
+      "mission_class": "INDEX_REGIME_INPUT"
     },
     {
       "id": "crossmkt_nq_es_gamma",
       "status": "RUN_NOW",
       "lane": "exploratory",
       "surface": "E xmkt T3/T6",
-      "note": "NQ vs ES conditioned on gamma-state"
+      "note": "NQ vs ES conditioned on gamma-state",
+      "mission_class": "INDEX_REGIME_INPUT"
     },
     {
       "id": "cot_pricebreak_conditional",
       "status": "RUN_NOW",
       "lane": "exploratory",
       "surface": "F pos T5",
-      "note": "COT extreme + price-break conditional (not naive fade)"
+      "note": "COT extreme + price-break conditional (not naive fade)",
+      "mission_class": "DIVERSIFIER"
     },
     {
       "id": "event_surprise_prep",
       "status": "RUN_NOW",
       "lane": "exploratory",
       "surface": "D event T5",
-      "note": "acquire CPI/NFP consensus+actual (surprise) \u2014 data-unlock cert"
+      "note": "acquire CPI/NFP consensus+actual (surprise) \u2014 data-unlock cert",
+      "mission_class": "INDEX_REGIME_INPUT"
     },
     {
       "id": "vol_crush_drift",
       "status": "RUN_NOW",
       "lane": "exploratory",
       "surface": "G vol T5/T6",
-      "note": "post-vol-crush drift (DVOL/VIX regime)"
+      "note": "post-vol-crush drift (DVOL/VIX regime)",
+      "mission_class": "INDEX_REGIME_INPUT"
     },
     {
       "id": "INB-20260702-008",
       "status": "BACKLOG",
       "lane": "inbound",
-      "note": "[governance] SEARCH-SURFACE AUDIT: GEX kill was WRONG DATA (ES.OPT=monthly only, 0 rows<20DTE; pinning "
+      "note": "[governance] SEARCH-SURFACE AUDIT: GEX kill was WRONG DATA (ES.OPT=monthly only, 0 rows<20DTE; pinning ",
+      "mission_class": "INDEX_REGIME_INPUT"
     },
     {
       "id": "INB-20260702-009",
       "status": "BACKLOG",
       "lane": "inbound",
-      "note": "[execution_cost] bbo-1m quotes/spread unlocked (ES median spread 0.25pt=1tick, /bin/zsh.009/wk) \u2014 execution"
+      "note": "[execution_cost] bbo-1m quotes/spread unlocked (ES median spread 0.25pt=1tick, /bin/zsh.009/wk) \u2014 execution",
+      "mission_class": "INDEX_REGIME_INPUT"
     },
     {
       "id": "gex_signed_compression_retest",
       "status": "RUN_NOW",
       "lane": "exploratory",
       "surface": "B GEX T6",
-      "note": "re-run signed-GEX compression once coverage lands (n>=60); the one GEX result pointing right way"
+      "note": "re-run signed-GEX compression once coverage lands (n>=60); the one GEX result pointing right way",
+      "mission_class": "INDEX_REGIME_INPUT"
+    },
+    {
+      "id": "gex_cond_mes_range",
+      "status": "RUN_NOW",
+      "lane": "databento_volume",
+      "surface": "A/B index",
+      "mission_class": "INDEX_DIRECT",
+      "note": "INDEX_DIRECT: GEX-regime-conditioned MES/MNQ opening-range fade(compress)/follow(expand) \u2014 the WH1 use of GEX"
+    },
+    {
+      "id": "t3_index_micro_mym",
+      "status": "RUN_NOW",
+      "lane": "databento_volume",
+      "surface": "A/B index",
+      "mission_class": "INDEX_DIRECT",
+      "note": "INDEX_DIRECT: T3 microstructure sweep on MYM (untested index workhorse; full 1m sample)"
+    },
+    {
+      "id": "gex_cond_mnq_close",
+      "status": "RUN_NOW",
+      "lane": "databento_volume",
+      "surface": "A/B index",
+      "mission_class": "INDEX_DIRECT",
+      "note": "INDEX_DIRECT: GEX-regime-conditioned MNQ closing-window behavior"
+    },
+    {
+      "id": "INB-20260706-001",
+      "status": "BACKLOG",
+      "lane": "inbound",
+      "note": "[governance] WH1 recentering: core mission = MNQ/MES/MYM index workhorse. All packets mission-classifie"
     }
   ]
 }

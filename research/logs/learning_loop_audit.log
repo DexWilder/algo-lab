@@ -115,3 +115,74 @@ P0=0 P1=2 P2=0
   [ok] inbound ledger: 30 items (0 NEW, P0=7 P1=17); status={'TRIAGED': 13, 'ACTIVE_PACKET_LANE': 5, 'RETEST_REQUIRED': 5, 'CONTROL_REQUIRED': 3, 'NEEDS_BESPOKE_HARNESS': 2, 'PROMOTED_TO_PACKET': 1, 'CLEAN_KILL': 1}
 
 VERDICT: P1_WARN
+=== MEMORY INDEX AUDIT === 90 memory files | 90 indexed | 0 MISSING
+
+=== !! OPERATIONAL ALERT: 1 TRIPWIRE(S) — daily loop SELF-HALTED, will not auto-resume until cleared (operator-gated) ===
+  _TRIPWIRE_2026-07-01_blowup_loss:.md
+  -> SURFACE to operator; do NOT auto-delete (deleting resumes the loop = runtime decision).
+
+=== UNCOMMITTED FORGE ARTIFACTS === 6
+  docs/fql_forge/EDGE_FAMILY_MAP_2026-06-30.md
+  docs/fql_forge/NOVELTY_PACKETS_2026-07-01.md
+  research/data/fql_forge/reports/forge_queue.md
+  docs/fql_forge/NOVELTY_PACKETS_2026-07-02.md
+  research/data/fql_forge/reports/forge_daily_2026-06-30.json
+  research/data/fql_forge/reports/forge_daily_2026-06-30.md
+
+=== VERDICT: DRIFT_FOUND (run with --fix to repair index; commit forge artifacts) ===
+
+--- SYSTEM GUARDRAILS ---
+# FORGE GUARDRAILS — 2026-07-03 01:15 UTC
+P0=0 P1=2 P2=0
+  [P1] CLOSE-ONLY BIAS: only 15/194 forge_cycle scripts use 'volume' (8%). Databento volume vein under-worked (target: keep ACTIVE_PACKET_LANE).
+  [P1] INBOUND: 2 mistake/validation item(s) with NO durable control: ['INB-20260701-010', 'INB-20260701-011'] (no control = not fixed)
+  [ok] git backlog 0
+  [ok] watchdog log 0.0d old
+  [ok] forge-morning-digest log 0.4d old
+  [ok] learning-loop log 0.0d old
+  [ok] no asserting WH/validated language in recent docs
+  [ok] trial-ledger N=1825
+  [ok] feeds: all 19 referenced
+  [ok] harnesses: all have output
+  [ok] data-blocker certificates present (2 recent blocked-mentions, cert exists)
+  [ok] per-contract data files pass validator
+  [ok] data-tier gate: 0 false-exhaustion; 9 families have untested richer tier (TIER_INCOMPLETE ok)
+  [ok] inbound ledger: 41 items (0 NEW, P0=10 P1=22); status={'TRIAGED': 19, 'ACTIVE_PACKET_LANE': 8, 'RETEST_REQUIRED': 5, 'NEEDS_BESPOKE_HARNESS': 2, 'PROMOTED_TO_PACKET': 4, 'CLEAN_KILL': 1, 'CONTROL_REQUIRED': 2}
+
+VERDICT: P1_WARN
+=== MEMORY INDEX AUDIT === 90 memory files | 90 indexed | 0 MISSING
+
+=== !! OPERATIONAL ALERT: 2 TRIPWIRE(S) — daily loop SELF-HALTED, will not auto-resume until cleared (operator-gated) ===
+  _TRIPWIRE_2026-07-01_blowup_loss:.md
+  _TRIPWIRE_2026-07-02_unresolved.md
+  -> SURFACE to operator; do NOT auto-delete (deleting resumes the loop = runtime decision).
+
+=== UNCOMMITTED FORGE ARTIFACTS === 6
+  docs/fql_forge/EDGE_FAMILY_MAP_2026-06-30.md
+  docs/fql_forge/NOVELTY_PACKETS_2026-07-01.md
+  research/data/fql_forge/reports/forge_queue.md
+  docs/fql_forge/NOVELTY_PACKETS_2026-07-02.md
+  research/data/fql_forge/reports/forge_daily_2026-06-30.json
+  research/data/fql_forge/reports/forge_daily_2026-06-30.md
+
+=== VERDICT: DRIFT_FOUND (run with --fix to repair index; commit forge artifacts) ===
+
+--- SYSTEM GUARDRAILS ---
+# FORGE GUARDRAILS — 2026-07-04 01:15 UTC
+P0=0 P1=2 P2=0
+  [P1] CLOSE-ONLY BIAS: only 15/194 forge_cycle scripts use 'volume' (8%). Databento volume vein under-worked (target: keep ACTIVE_PACKET_LANE).
+  [P1] INBOUND: 2 mistake/validation item(s) with NO durable control: ['INB-20260701-010', 'INB-20260701-011'] (no control = not fixed)
+  [ok] git backlog 0
+  [ok] watchdog log 0.0d old
+  [ok] forge-morning-digest log 0.4d old
+  [ok] learning-loop log 0.0d old
+  [ok] no asserting WH/validated language in recent docs
+  [ok] trial-ledger N=1825
+  [ok] feeds: all 19 referenced
+  [ok] harnesses: all have output
+  [ok] data-blocker certificates present (2 recent blocked-mentions, cert exists)
+  [ok] per-contract data files pass validator
+  [ok] data-tier gate: 0 false-exhaustion; 9 families have untested richer tier (TIER_INCOMPLETE ok)
+  [ok] inbound ledger: 41 items (0 NEW, P0=10 P1=22); status={'TRIAGED': 19, 'ACTIVE_PACKET_LANE': 8, 'RETEST_REQUIRED': 5, 'NEEDS_BESPOKE_HARNESS': 2, 'PROMOTED_TO_PACKET': 4, 'CLEAN_KILL': 1, 'CONTROL_REQUIRED': 2}
+
+VERDICT: P1_WARN

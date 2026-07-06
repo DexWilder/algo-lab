@@ -738,6 +738,24 @@
       "linked_packet": null,
       "linked_queue": null,
       "linked_control": "retry-policy: analyze ONLY after task completion + validate_data_file; harnesses assert file mtime stable"
+    },
+    {
+      "inbound_id": "INB-20260706-001",
+      "date": "2026-07-06",
+      "source_type": "operator directive",
+      "source_ref": null,
+      "raw_note": "WH1 recentering: core mission = MNQ/MES/MYM index workhorse. All packets mission-classified (INDEX_DIRECT/INDEX_REGIME_INPUT/DIVERSIFIER/LOW_PRIORITY). spreadMR_GC=DIVERSIFIER not WH1. Autonomous runner requires safety contract first; 1-2 clean turn cycles before scheduling.",
+      "mechanism": null,
+      "family": "governance",
+      "required_data": null,
+      "available_data": null,
+      "required_harness": null,
+      "status": "ACTIVE_PACKET_LANE",
+      "priority": "P0",
+      "next_action": "WH1-weighted batch: GEX-cond index, T3 index micro MYM, event-surprise, vol regime; spreadMR_GC in Lane G not dominant",
+      "linked_packet": null,
+      "linked_queue": "queue:INB-20260706-001",
+      "linked_control": "AUTONOMOUS_RUNNER_SAFETY_CONTRACT + mission_classify.py"
     }
   ]
 }

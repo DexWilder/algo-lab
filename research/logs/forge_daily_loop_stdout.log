@@ -438,3 +438,13 @@ FQL Forge Daily Loop — 2026-07-01 — DRY-RUN
 Selected 5 candidate(s)
 [TRIPWIRE] blowup_loss: XB-DC-EMA-Ladder-ZN netPnL=-39790 (< -10.0% of $50000)
 [TRIPWIRE] wrote: /Users/chasefisher/projects/Algo Trading/algo-lab/research/data/fql_forge/reports/_TRIPWIRE_2026-07-01_blowup_loss:.md
+FQL Forge Daily Loop — 2026-07-02 — DRY-RUN
+==============================================================================
+[TRIPWIRE] unresolved tripwire(s): ['_TRIPWIRE_2026-07-01_blowup_loss:.md']
+[TRIPWIRE] wrote: /Users/chasefisher/projects/Algo Trading/algo-lab/research/data/fql_forge/reports/_TRIPWIRE_2026-07-02_unresolved.md
+[HALT] tripwire fired: unresolved tripwire(s): ['_TRIPWIRE_2026-07-01_blowup_loss:.md']
+FQL Forge Daily Loop — 2026-07-03 — DRY-RUN
+==============================================================================
+[TRIPWIRE] unresolved tripwire(s): ['_TRIPWIRE_2026-07-01_blowup_loss:.md', '_TRIPWIRE_2026-07-02_unresolved.md']
+[TRIPWIRE] wrote: /Users/chasefisher/projects/Algo Trading/algo-lab/research/data/fql_forge/reports/_TRIPWIRE_2026-07-03_unresolved.md
+[HALT] tripwire fired: unresolved tripwire(s): ['_TRIPWIRE_2026-07-01_blowup_loss:.md', '_TRIPWIRE_2026-07-02_unresolved.md']

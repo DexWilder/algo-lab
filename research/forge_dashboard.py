@@ -11,6 +11,9 @@ from research.forge_trial_ledger import count, lane_breakdown, _load as _ledload
 from research.forge_candidate_ladder import highest_rung, ladder_state
 q=json.loads((REPO/"research/data/forge_run_queue.json").read_text()) if (REPO/"research/data/forge_run_queue.json").exists() else {"queue":[]}
 runnow=[x for x in q["queue"] if x.get("status")=="RUN_NOW"]
+from collections import Counter as _MC
+_mc=_MC(x.get("mission_class","?") for x in runnow); _wh1=sum(v for k,v in _mc.items() if k in ("INDEX_DIRECT","INDEX_REGIME_INPUT"))
+mission_wt=f"{_wh1}/{len(runnow)} WH1-aligned ({dict(_mc)})"
 # --- throughput (computed from live state) ---
 today=datetime.now(timezone.utc).strftime("%Y-%m-%d")
 trials=_ledload()["trials"]
@@ -46,7 +49,8 @@ out=f"""# ALPHA RESEARCH DASHBOARD (auto-generated {stamp})
 ## HEADLINE
 - **Validated primaries: 0** (highest ladder rung: **{hi}**; capital gate FAIL-CLOSED, PAPER_APPROVED+ operator-only).
 - Guardrails: **{gv}** | Self-audit: **{sav}** ({sa_line}) | Git backlog: **{backlog}** | Global trial-N: **{count()}**
-- **Roadmap:** end Phase 0 → entering Phase 1 (foundation hardening: data-tier gate, learning-loop closure, infra freeze, 1m/volume harness). Doctrine: `docs/fql_forge/FOUNDATION_DOCTRINE_AND_ELITE_ROADMAP_2026-07-01.md`
+- **Mission:** MNQ/MES/MYM index workhorse (WH1). RUN_NOW mission-weighting: {mission_wt}
+- **Search posture:** now pointed at more appropriate STRUCTURAL surfaces (GEX/dealer-flow, index microstructure, event-surprise, term-structure, forced-flow, source-derived). Coverage is EARLY — must be proven over the next 20–50 cycles, not solved.
 
 ## Throughput (computed live)
 - Tests logged today: **{tested_today}** | total kills: {kills} | screen-passes: {screenpass}

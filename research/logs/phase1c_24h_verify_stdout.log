@@ -150,3 +150,25 @@ VERDICT: PHASE1C_24H_VERIFY_FAIL
 Wrote: /Users/chasefisher/projects/Algo Trading/algo-lab/docs/fql_forge/PHASE1C_24H_VERIFY_2026-07-01.md
 Rollback backup: /tmp/strategy_registry_pre_phase1c_rollback_2026-07-01.json (rollback NOT executed unless --execute-rollback)
 ALERT: PHASE1C_24H_VERIFY_FAIL — rollback staged, NOT executed. Human confirmation required.
+VERDICT: PHASE1C_24H_VERIFY_FAIL
+  1_in_live_forward_output: PASS  {'signal_log.csv': {'exists': True, 'contains_book': True}, 'trade_log.csv': {'exists': True, 'contains_book': True}, 'daily_report.csv': {'exists': True, 'contains_book': False}}
+  2_paper_probation_1mnq: no  {'status': 'watch', 'controller_action': 'OFF'}
+  3_exit_variant_null: PASS  {'registry': None, 'runner': None}
+  4_mnq_workhorse_count: no  []
+  5_excluded_books_excluded: PASS  {'XB-ORB-EMA-Ladder-MGC': True, 'XB-ORB-EMA-Chandelier-MNQ': True, 'XB-PB-EMA-Chandelier-MNQ': True, 'XB-ORB-EMA-ATRTrail-MES': True}
+  6_monitor_scorecard_recognized: no  {'drift': True, 'eval_set': False}
+  7_no_live_prop_route: PASS  {'live_route': False}
+Wrote: /Users/chasefisher/projects/Algo Trading/algo-lab/docs/fql_forge/PHASE1C_24H_VERIFY_2026-07-02.md
+Rollback backup: /tmp/strategy_registry_pre_phase1c_rollback_2026-07-02.json (rollback NOT executed unless --execute-rollback)
+ALERT: PHASE1C_24H_VERIFY_FAIL — rollback staged, NOT executed. Human confirmation required.
+VERDICT: PHASE1C_24H_VERIFY_FAIL
+  1_in_live_forward_output: PASS  {'signal_log.csv': {'exists': True, 'contains_book': True}, 'trade_log.csv': {'exists': True, 'contains_book': True}, 'daily_report.csv': {'exists': True, 'contains_book': False}}
+  2_paper_probation_1mnq: no  {'status': 'watch', 'controller_action': 'OFF'}
+  3_exit_variant_null: PASS  {'registry': None, 'runner': None}
+  4_mnq_workhorse_count: no  []
+  5_excluded_books_excluded: PASS  {'XB-ORB-EMA-Ladder-MGC': True, 'XB-ORB-EMA-Chandelier-MNQ': True, 'XB-PB-EMA-Chandelier-MNQ': True, 'XB-ORB-EMA-ATRTrail-MES': True}
+  6_monitor_scorecard_recognized: no  {'drift': True, 'eval_set': False}
+  7_no_live_prop_route: PASS  {'live_route': False}
+Wrote: /Users/chasefisher/projects/Algo Trading/algo-lab/docs/fql_forge/PHASE1C_24H_VERIFY_2026-07-03.md
+Rollback backup: /tmp/strategy_registry_pre_phase1c_rollback_2026-07-03.json (rollback NOT executed unless --execute-rollback)
+ALERT: PHASE1C_24H_VERIFY_FAIL — rollback staged, NOT executed. Human confirmation required.

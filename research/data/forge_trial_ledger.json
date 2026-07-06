@@ -16009,6 +16009,18 @@
       "failure_class": "instability",
       "data_tier": "T6",
       "n": 19
+    },
+    {
+      "packet": "WH1_GEXcond:MES_ORB:MES",
+      "asset": "MES",
+      "sharpe": -0.07,
+      "verdict": "micro",
+      "horizon": "",
+      "lane": "databento_volume",
+      "ts": "2026-07-06",
+      "failure_class": "no_edge",
+      "data_tier": "T6",
+      "n": 19
     }
   ],
   "note": "auto multiple-testing N; every test appends"
