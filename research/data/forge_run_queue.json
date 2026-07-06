@@ -488,7 +488,7 @@
       "status": "RUN_NOW",
       "lane": "databento_volume",
       "surface": "A/B index",
-      "mission_class": "INDEX_DIRECT",
+      "mission_class": "INDEX_REGIME_INPUT",
       "note": "INDEX_DIRECT: GEX-regime-conditioned MES/MNQ opening-range fade(compress)/follow(expand) \u2014 the WH1 use of GEX"
     },
     {
@@ -504,14 +504,23 @@
       "status": "RUN_NOW",
       "lane": "databento_volume",
       "surface": "A/B index",
-      "mission_class": "INDEX_DIRECT",
+      "mission_class": "INDEX_REGIME_INPUT",
       "note": "INDEX_DIRECT: GEX-regime-conditioned MNQ closing-window behavior"
     },
     {
       "id": "INB-20260706-001",
       "status": "BACKLOG",
       "lane": "inbound",
-      "note": "[governance] WH1 recentering: core mission = MNQ/MES/MYM index workhorse. All packets mission-classifie"
+      "note": "[governance] WH1 recentering: core mission = MNQ/MES/MYM index workhorse. All packets mission-classifie",
+      "mission_class": "INDEX_DIRECT"
+    },
+    {
+      "id": "pull_mym_1m",
+      "status": "RUN_NOW",
+      "lane": "databento_volume",
+      "mission_class": "INDEX_DIRECT",
+      "surface": "A index data",
+      "note": "pull MYM 1m (workhorse instrument, currently missing) \u2014 cheap Databento, per retry policy single-window"
     }
   ]
 }

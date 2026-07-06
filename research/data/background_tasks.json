@@ -1,0 +1,22 @@
+{
+  "note": "durable background-process registry (no memory-only states). Completion detector = output file mtime + row check.",
+  "tasks": [
+    {
+      "id": "b72uq7mq6",
+      "desc": "signed-GEX coverage extension",
+      "script": "data/databento_weekly_oi_extend.py",
+      "log": "/private/tmp/.../tasks/b72uq7mq6.output",
+      "expected_output": "data/databento/ES_OPT_weekly_oi.csv (merged)",
+      "parents": [
+        "EW1-4.OPT"
+      ],
+      "window": "2024-09..2025-06",
+      "schema": "definition+statistics(OI)",
+      "status": "RUNNING",
+      "completion_detector": "file mtime advances + days>=100",
+      "retry_status": "4x backoff per chunk (policy)",
+      "on_fail": "persist partial (loader merges), classify PROVIDER_UNSTABLE_RETRY_LATER, NOT data_blocked, run next WH1 item",
+      "next_nonblocked_wh1": "VIX-conditioned MES/MNQ (proper-n), MYM T3 micro, overnight-gap \u2014 do NOT wait on this pull"
+    }
+  ]
+}

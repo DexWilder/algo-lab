@@ -1,7 +1,7 @@
-# Inbound Research Ledger (rendered 2026-07-06 15:53 UTC)
+# Inbound Research Ledger (rendered 2026-07-06 16:22 UTC)
 > **Operating law:** if it is not in this ledger, the queue, the dashboard, or the control map — the system does not know it.
-> Source of truth: `research/data/inbound_research_ledger.json`. Capture: `python3 research/capture_inbound.py`. Items: **42**.
-> NEW:0 | P0/P1:11/22 | untriaged directives:0 | mistakes w/o control:2 | unused feeds:0 | source notes unresolved:0
+> Source of truth: `research/data/inbound_research_ledger.json`. Capture: `python3 research/capture_inbound.py`. Items: **43**.
+> NEW:0 | P0/P1:11/23 | untriaged directives:0 | mistakes w/o control:2 | unused feeds:0 | source notes unresolved:0
 
 | id | date | type | status | P | family | mechanism / issue | next action | linked (packet/queue/control) |
 |---|---|---|---|---|---|---|---|---|
@@ -38,6 +38,7 @@
 | INB-20260701-003 | 2026-07-01 | claude discovery | PROMOTED_TO_PACKET | P1 | carry_commodity | gold calendar-spread mean-reversion | Lane G deepening (operator-gated for capital) | SCREEN_PASS_CANDIDATE_spreadMR_GC_2026-07-01.md deepen_sprea |
 | INB-20260702-003 | 2026-07-02 | source | PROMOTED_TO_PACKET | P1 | carry_commodity | CME roll methodology docs -> roll-window pressure: index/ETF funds mus | — | src_roll_window_pressure |
 | INB-20260702-004 | 2026-07-02 | source | PROMOTED_TO_PACKET | P1 | gamma_dealer | Options dealer-hedging (SqueezeMetrics/Nomura) -> GEX-regime pin: deal | — | src_gex_regime_pin |
+| INB-20260706-002 | 2026-07-06 | data feed | NEEDS_LOADER | P1 | data governance | MYM (Micro Dow) has NO 1m data — core WH1 workhorse instrument. Have M | pull MYM 1m from Databento (cheap, like other micr | — |
 | INB-20260616-001 | 2026-06-16 | old report | RETEST_REQUIRED | P2 | rescue (Lane F) | dormant inventory | retest under truth-gated harness, ranked | Lane F rescue |
 | INB-20260625-002 | 2026-07-02 | bug | TRIAGED | P2 | automation | stale tripwire not firing | resolved: freshness enforced every cycle | guardrail #3 stale-automation freshness check covers loop lo |
 | INB-20260626-002 | 2026-06-26 | bug | TRIAGED | P2 | harness hygiene | duplicate/bypassed harness | none | guardrail unrun-harnesses + forge_trial_ledger dedup |

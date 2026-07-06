@@ -1,11 +1,11 @@
 {
-  "timestamp": "2026-07-06 15:53 UTC",
-  "global_trial_N": 1826,
+  "timestamp": "2026-07-06 16:22 UTC",
+  "global_trial_N": 1833,
   "lane_breakdown": {
     "forced_flow": 7,
     "exploratory": 14,
     "portfolio": 2,
-    "databento_volume": 52,
+    "databento_volume": 59,
     "positioning": 48,
     "primitive_sweep": 1679,
     "macro_regime": 3,
@@ -52,7 +52,7 @@
       "tier_gap": true
     },
     "gamma_dealer": {
-      "status": "FEASIBILITY_PROVEN",
+      "status": "RETEST_PENDING_COVERAGE",
       "data_tier": "T6",
       "richest_applicable_tier": "T6",
       "tier_gap": false

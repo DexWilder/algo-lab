@@ -756,6 +756,24 @@
       "linked_packet": null,
       "linked_queue": "queue:INB-20260706-001",
       "linked_control": "AUTONOMOUS_RUNNER_SAFETY_CONTRACT + mission_classify.py"
+    },
+    {
+      "inbound_id": "INB-20260706-002",
+      "date": "2026-07-06",
+      "source_type": "data feed",
+      "source_ref": null,
+      "raw_note": "MYM (Micro Dow) has NO 1m data \u2014 core WH1 workhorse instrument. Have MES/MNQ/M2K 1m only. WH1 index-direct tests on MYM are DATA-BLOCKED at T3 until pulled.",
+      "mechanism": null,
+      "family": "data governance",
+      "required_data": "MYM 1m T3",
+      "available_data": null,
+      "required_harness": null,
+      "status": "NEEDS_LOADER",
+      "priority": "P1",
+      "next_action": "pull MYM 1m from Databento (cheap, like other micros) to test the actual workhorse instrument",
+      "linked_packet": null,
+      "linked_queue": null,
+      "linked_control": null
     }
   ]
 }

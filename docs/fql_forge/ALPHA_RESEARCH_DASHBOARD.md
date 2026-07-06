@@ -1,27 +1,27 @@
-# ALPHA RESEARCH DASHBOARD (auto-generated 2026-07-06 15:53 UTC)
+# ALPHA RESEARCH DASHBOARD (auto-generated 2026-07-06 16:22 UTC)
 > `python3 research/forge_dashboard.py` regenerates this. Single canonical state view.
 
 ## HEADLINE
 - **Validated primaries: 0** (highest ladder rung: **SCREEN_PASS**; capital gate FAIL-CLOSED, PAPER_APPROVED+ operator-only).
-- Guardrails: **clean/P1** | Self-audit: **SELF_AUDIT_CLEAN** (facets=12 PASS=12 STALE=0 BROKEN=0 DESIGNED-not-built=0) | Git backlog: **0** | Global trial-N: **1826**
-- **Mission:** MNQ/MES/MYM index workhorse (WH1). RUN_NOW mission-weighting: 16/21 WH1-aligned ({'DIVERSIFIER': 5, 'INDEX_REGIME_INPUT': 11, 'INDEX_DIRECT': 5})
+- Guardrails: **clean/P1** | Self-audit: **SELF_AUDIT_CLEAN** (facets=12 PASS=12 STALE=0 BROKEN=0 DESIGNED-not-built=0) | Git backlog: **0** | Global trial-N: **1833**
+- **Mission:** MNQ/MES/MYM index workhorse (WH1). RUN_NOW mission-weighting: 17/22 WH1-aligned ({'DIVERSIFIER': 5, 'INDEX_REGIME_INPUT': 13, 'INDEX_DIRECT': 4})
 - **Search posture:** now pointed at more appropriate STRUCTURAL surfaces (GEX/dealer-flow, index microstructure, event-surprise, term-structure, forced-flow, source-derived). Coverage is EARLY — must be proven over the next 20–50 cycles, not solved.
 
 ## Throughput (computed live)
-- Tests logged today: **1** | total kills: 6 | screen-passes: 2
+- Tests logged today: **8** | total kills: 6 | screen-passes: 2
 - Novelty packets: **38** stored (0 today) of 108 template×instrument space
 - Families: **12 active** / 21 | coverage 59% (tested exprs / total exprs)
 - Candidate ladder: SCREEN_PASS=1
 
 ## Inbound capture (organizational memory — nothing floats)
-- Items: **42** | NEW: 0 | P0/P1: 11/22 | source packets today: 0
+- Items: **43** | NEW: 0 | P0/P1: 11/23 | source packets today: 0
 - Untriaged directives: 0 | mistakes w/o control: **2** ['INB-20260701-010', 'INB-20260701-011'] | unused feeds: 0
 - QUEUED-missing-from-queue: 0 | source notes unresolved: 0 | oldest untriaged: 0d
 - Ledger: `docs/fql_forge/INBOUND_RESEARCH_LEDGER.md` (capture: `python3 research/capture_inbound.py`)
 
 ## Trial-N by lane (family diagnostics)
 - primitive_sweep: 1679
-- databento_volume: 52
+- databento_volume: 59
 - positioning: 48
 - exploratory: 14
 - commodity_carry: 10
@@ -33,7 +33,7 @@
 - portfolio: 2
 
 ## Queue depth
-- RUN_NOW: 21 | total queue items: 71
+- RUN_NOW: 22 | total queue items: 72
 - [ACTIVE_PACKET_LANE] gamma_chunked_loader_then_regime: chunked OI loader -> approx-GEX -> predeclared GEX-regime test (feasib
 - [DONE] gc_detrended_carry_zscore: refined commodity TS expr (naive carry-sign KILLed 2026-07-01); de-tre
 - [DONE] clgc_spread_momentum: refined commodity TS expr (naive carry-sign KILLed 2026-07-01); de-tre

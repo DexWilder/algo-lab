@@ -128,7 +128,7 @@
     },
     "gamma_dealer": {
       "lane": "exploratory",
-      "status": "FEASIBILITY_PROVEN",
+      "status": "RETEST_PENDING_COVERAGE",
       "data": "REPULL_PAID",
       "tested": [
         "OI/GEX feasibility (real ES.OPT)",
@@ -150,7 +150,7 @@
       "tier_gap": false,
       "data_tier": "T6",
       "tier_gap_reason": "correct surface reached; naive proxy dead but underpowered; signed-GEX/flip/wall variants + more coverage are the live branch",
-      "note": "LIVE BRANCH: signed-GEX compression effect points right way but n=19 too thin. Gated on more OI coverage (0DTE E1A/E3C + Mar/Apr + more months). Naive pin/drift dead; compression regime is the serious deepening branch.",
+      "note": "GEX n=19 tests are UNDERPOWERED SMOKE TESTS only. signed-GEX compression directionally right but NOT concluded. Coverage pull running -> real read pending. Do NOT kill or promote on n=19.",
       "mission_class": "INDEX_REGIME_INPUT"
     },
     "positioning_cot": {
