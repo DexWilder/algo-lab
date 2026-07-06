@@ -1,4 +1,4 @@
-# FORGE GUARDRAILS — 2026-07-06 17:38 UTC
+# FORGE GUARDRAILS — 2026-07-06 17:48 UTC
 P0=0 P1=2 P2=2
   [P1] CLOSE-ONLY BIAS: only 15/194 forge_cycle scripts use 'volume' (8%). Databento volume vein under-worked (target: keep ACTIVE_PACKET_LANE).
   [P2] UNUSED FEEDS: 1 data/feeds files referenced by NO research script: ['treasury_auction_details.csv']
@@ -9,7 +9,7 @@ P0=0 P1=2 P2=2
   [ok] forge-morning-digest log 0.1d old
   [ok] learning-loop log 2.7d old
   [ok] no asserting WH/validated language in recent docs
-  [ok] trial-ledger N=1841
+  [ok] trial-ledger N=1844
   [ok] harnesses: all have output
   [ok] data-blocker certificates present (1 recent blocked-mentions, cert exists)
   [ok] per-contract data files pass validator
