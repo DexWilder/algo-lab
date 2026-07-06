@@ -130,7 +130,7 @@
     },
     "gamma_dealer": {
       "lane": "exploratory",
-      "status": "SCREEN_PASS_OOS_SURVIVED",
+      "status": "SCREEN_PASS_OOS_SURVIVED_ROBUST_NOT_DSR_CREDIBLE",
       "data": "REPULL_PAID",
       "tested": [
         "signed-GEX compression robust",
@@ -150,7 +150,7 @@
       "tier_gap": false,
       "data_tier": "T6",
       "tier_gap_reason": "correct surface reached; naive proxy dead but underpowered; signed-GEX/flip/wall variants + more coverage are the live branch",
-      "note": "FROZEN rule SURVIVED expanded OOS (311 days, 2024:190/2025:83/2026:38). NOT a 2025 artifact: MES positive ALL 3 YEARS + balanced (maxyr 50%, Sh0.90); MNQ all-3-positive (Sh1.31, but maxyr 81%); MYM Sh2.6 (2025-driven, 2024 neg). DECISIVE OOS test PASSED. BUT still NOT DSR-credible (MES DSR0.70/MNQ0.78 <0.95) + adversarial FAIL on MNQ concentration. Strongest lead yet; SCREEN_PASS not candidate/WH/validated. MES is cleanest instrument. Next: robustness(OR/threshold)+DSR-at-search-N+exec-realism.",
+      "note": "STRONGEST LEAD of the search, fully honest picture: (1) SURVIVED OOS 311d all-3-years (MES +all-yrs maxyr50%, MNQ all-yrs+, MYM 2025-driven); (2) ROBUST to params (MES+MNQ positive across ALL 9 OR{15,30,45}xthr{33,50,66} cells, no sign flips); (3) cross-asset + mechanism-driven. BUT FAILS DSR AT EVERY N (MES 0.42@N10->0.14@Nglobal; MNQ 0.51->0.20) because n=77 is TOO SHORT for Sh~0.9-1.3 (single-strategy PSR~0.69). BINDING CONSTRAINT = SAMPLE SIZE, not tuning. MNQ H1/H2 2.82/0.70 (front-loaded, possible decay). NOT DSR-credible, NOT candidate/validated/WH. To advance: MORE GEX coverage -> more trading days -> re-test DSR. Regime (compression) separately robust on larger descriptive sample.",
       "mission_class": "INDEX_REGIME_INPUT"
     },
     "positioning_cot": {

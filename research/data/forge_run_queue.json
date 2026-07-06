@@ -547,19 +547,19 @@
     },
     {
       "id": "gex_frozen_robustness",
-      "status": "RUN_NOW",
+      "status": "DONE",
       "lane": "exploratory",
       "mission_class": "INDEX_REGIME_INPUT",
       "surface": "B GEX",
-      "note": "SENSITIVITY (now allowed, frozen OOS done): OR window {15,45}, GEX threshold {33/66pct}, breakout-vs-fade rule \u2014 is MES Sh0.90/MNQ Sh1.31 stable or knife-edge?"
+      "note": "ROBUST: positive across full OR x threshold grid, no knife-edge"
     },
     {
       "id": "gex_dsr_searchN",
-      "status": "RUN_NOW",
+      "status": "DONE",
       "lane": "exploratory",
       "mission_class": "INDEX_REGIME_INPUT",
       "surface": "B GEX",
-      "note": "honest DSR at proper search-N for GEX-breakout (currently 0.70-0.78 at global-N)"
+      "note": "DSR fails at ALL N (n=77 too short); needs more sample"
     },
     {
       "id": "gex_mym_2024_neg",
@@ -568,6 +568,22 @@
       "mission_class": "INDEX_REGIME_INPUT",
       "surface": "B GEX",
       "note": "investigate why MYM 2024 negative while MES/MNQ positive (Dow gamma weighting?)"
+    },
+    {
+      "id": "gex_extend_more_history",
+      "status": "RUN_NOW",
+      "lane": "exploratory",
+      "mission_class": "INDEX_REGIME_INPUT",
+      "surface": "B GEX",
+      "note": "HIGH: extend GEX OI to 2023 + more 2026 (more trading days -> n>150 -> DSR power). Binding constraint on the lead is sample size."
+    },
+    {
+      "id": "gex_broaden_trigger",
+      "status": "RUN_NOW",
+      "lane": "exploratory",
+      "mission_class": "INDEX_REGIME_INPUT",
+      "surface": "B GEX",
+      "note": "increase n: test DTE<=8 and/or wider strike band to get more GEX-conditioned days (re-freeze rule if changed)"
     }
   ]
 }

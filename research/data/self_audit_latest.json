@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-06 18:09 UTC",
+  "timestamp": "2026-07-06 18:15 UTC",
   "verdict": "SELF_AUDIT_CLEAN",
   "path": "research/data/self_audit_latest.json",
   "facets": 12,
@@ -25,7 +25,7 @@
       "facet": "trial_ledger",
       "status": "PASS",
       "cadence": "per-test",
-      "detail": "N=1847 (+0 since last audit)"
+      "detail": "N=1849 (+0 since last audit)"
     },
     {
       "facet": "guardrails",

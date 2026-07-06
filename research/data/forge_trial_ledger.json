@@ -16299,6 +16299,28 @@
       "dsr": 0.9664,
       "maxyr": 99,
       "n": 77
+    },
+    {
+      "packet": "GEX_ROBUST:MES",
+      "asset": "MES",
+      "sharpe": 0.9,
+      "verdict": "micro",
+      "horizon": "",
+      "lane": "exploratory",
+      "ts": "2026-07-06",
+      "data_tier": "T6",
+      "n": 77
+    },
+    {
+      "packet": "GEX_ROBUST:MNQ",
+      "asset": "MNQ",
+      "sharpe": 1.31,
+      "verdict": "micro",
+      "horizon": "",
+      "lane": "exploratory",
+      "ts": "2026-07-06",
+      "data_tier": "T6",
+      "n": 77
     }
   ],
   "note": "auto multiple-testing N; every test appends"
