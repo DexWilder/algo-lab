@@ -1026,6 +1026,24 @@
       "linked_packet": null,
       "linked_queue": null,
       "linked_control": null
+    },
+    {
+      "inbound_id": "INB-20260706-017",
+      "date": "2026-07-06",
+      "source_type": "claude discovery",
+      "source_ref": null,
+      "raw_note": "GEX OUTCOME B (full 563d OOS w/ 2023): standalone GEX-cond breakout/range TRADE RULE FAILED (diluted 0.9->0.62, no year-consistency, DSR<0.95, regime-specific 2024-25). But GEX COMPRESSION REGIME SURVIVED all 3 years (pos-GEX ~40% lower next-day vol, both metrics). = durable INDEX_REGIME_INPUT ingredient (filter/sizing/vol-forecast), NOT standalone WH1. The professional outcome.",
+      "mechanism": null,
+      "family": "gamma_dealer",
+      "required_data": null,
+      "available_data": null,
+      "required_harness": null,
+      "status": "REGIME_INGREDIENT_DURABLE",
+      "priority": "P1",
+      "next_action": "build GEX regime as filter/sizing on a clean index entry",
+      "linked_packet": null,
+      "linked_queue": null,
+      "linked_control": "gex_oos_pull_DONE.json + GEX_BREAKOUT_RANGE_PREREGISTERED_RULE"
     }
   ]
 }

@@ -16346,6 +16346,48 @@
       "dsr": 0.8746,
       "maxyr": 78,
       "n": 255
+    },
+    {
+      "packet": "GEX_FROZEN_OOS:MES",
+      "asset": "MES",
+      "sharpe": 0.62,
+      "verdict": "micro",
+      "horizon": "",
+      "lane": "exploratory",
+      "ts": "2026-07-06",
+      "failure_class": "concentration",
+      "data_tier": "T6",
+      "dsr": 0.7005,
+      "maxyr": 71,
+      "n": 166
+    },
+    {
+      "packet": "GEX_FROZEN_OOS:MNQ",
+      "asset": "MNQ",
+      "sharpe": 0.63,
+      "verdict": "micro",
+      "horizon": "",
+      "lane": "exploratory",
+      "ts": "2026-07-06",
+      "failure_class": "dsr_searchN_fail",
+      "data_tier": "T6",
+      "dsr": 0.7036,
+      "maxyr": 58,
+      "n": 166
+    },
+    {
+      "packet": "GEX_FROZEN_OOS:MYM",
+      "asset": "MYM",
+      "sharpe": 0.97,
+      "verdict": "micro",
+      "horizon": "",
+      "lane": "exploratory",
+      "ts": "2026-07-06",
+      "failure_class": "concentration",
+      "data_tier": "T6",
+      "dsr": 0.8093,
+      "maxyr": 151,
+      "n": 166
     }
   ],
   "note": "auto multiple-testing N; every test appends"

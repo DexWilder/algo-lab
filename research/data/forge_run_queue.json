@@ -547,7 +547,7 @@
     },
     {
       "id": "gex_frozen_robustness",
-      "status": "DONE",
+      "status": "SUPERSEDED_BY_OUTCOME_B",
       "lane": "exploratory",
       "mission_class": "INDEX_REGIME_INPUT",
       "surface": "B GEX",
@@ -555,7 +555,7 @@
     },
     {
       "id": "gex_dsr_searchN",
-      "status": "DONE",
+      "status": "SUPERSEDED_BY_OUTCOME_B",
       "lane": "exploratory",
       "mission_class": "INDEX_REGIME_INPUT",
       "surface": "B GEX",
@@ -563,23 +563,15 @@
     },
     {
       "id": "gex_mym_2024_neg",
-      "status": "RUN_NOW",
+      "status": "SUPERSEDED_BY_OUTCOME_B",
       "lane": "exploratory",
       "mission_class": "INDEX_REGIME_INPUT",
       "surface": "B GEX",
       "note": "investigate why MYM 2024 negative while MES/MNQ positive (Dow gamma weighting?)"
     },
     {
-      "id": "gex_extend_more_history",
-      "status": "DONE",
-      "lane": "exploratory",
-      "mission_class": "INDEX_REGIME_INPUT",
-      "surface": "B GEX",
-      "note": "2023 index 1m merged (+1.2M rows); 2023 OI extending (bogz58svk)"
-    },
-    {
       "id": "gex_broaden_trigger",
-      "status": "RUN_NOW",
+      "status": "SUPERSEDED_BY_OUTCOME_B",
       "lane": "exploratory",
       "mission_class": "INDEX_REGIME_INPUT",
       "surface": "B GEX",
@@ -587,10 +579,18 @@
     },
     {
       "id": "RUN_FROZEN_GEX_AFTER_2023",
-      "status": "WAITING_ON_COMPLETION_MARKER",
+      "status": "DONE",
       "lane": "exploratory",
       "mission_class": "INDEX_REGIME_INPUT",
-      "note": "trigger: run research/run_frozen_gex_oos.py when gex_oos_2023_DONE.json exists \u2014 re-runs FROZEN rule on extended 2023-2026 sample, new n + DSR. NO tuning."
+      "note": "OUTCOME B: trade rule failed OOS, regime survived as ingredient"
+    },
+    {
+      "id": "gex_regime_as_ingredient",
+      "status": "RUN_NOW",
+      "lane": "databento_volume",
+      "mission_class": "INDEX_REGIME_INPUT",
+      "surface": "B GEX ingredient",
+      "note": "USE GEX compression regime as a FILTER/SIZING on a separate clean index entry (the durable-ingredient path). E.g. neg-GEX=allow breakouts / pos-GEX=no-trade-or-size-down. This is how GEX contributes to WH1, not as standalone."
     }
   ]
 }

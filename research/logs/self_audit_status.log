@@ -1,11 +1,11 @@
-# FORGE SELF-AUDIT — 2026-07-06 18:51 UTC
+# FORGE SELF-AUDIT — 2026-07-06 19:28 UTC
 facets=12 PASS=12 STALE=0 BROKEN=0 DESIGNED-not-built=0
 
   [PASS    ] causality_audit      (per-candidate) — future-perturbation harness importable
   [PASS    ] deflated_sharpe      (per-survivor) — DSR/PBO gate importable
-  [PASS    ] trial_ledger         (per-test) — N=1851 (+0 since last audit)
+  [PASS    ] trial_ledger         (per-test) — N=1854 (+0 since last audit)
   [PASS    ] guardrails           (per-cycle) — status log 0.0d old
-  [PASS    ] inbound_capture      (per-cycle) — 57 items; floating=0; mistakes_no_control=2
+  [PASS    ] inbound_capture      (per-cycle) — 58 items; floating=0; mistakes_no_control=2
   [PASS    ] family_map           (per-sprint) — lanes w/o family=none; over-claims=none
   [PASS    ] novelty_engine       (per-day) — 38/108 covered (+0); space open
   [PASS    ] adversarial_review   (per-result) — 11-check red-team importable

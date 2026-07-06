@@ -130,18 +130,16 @@
     },
     "gamma_dealer": {
       "lane": "exploratory",
-      "status": "SCREEN_PASS_OOS_SURVIVED_ROBUST_NOT_DSR_CREDIBLE",
+      "status": "TRADE_RULE_REGIME_SPECIFIC / REGIME_INGREDIENT_DURABLE",
       "data": "REPULL_PAID",
       "tested": [
-        "signed-GEX compression robust",
-        "GEX-cond breakout/range FROZEN OOS 311d: MES Sh0.90/all-3-yrs/maxyr50%, MNQ Sh1.31, MYM Sh2.6 (survived, DSR<0.95, adversarial-conc-FAIL)"
+        "standalone GEX trade rule: FAILED full OOS (regime-specific)",
+        "GEX compression regime: SURVIVED full 563d all-3-years (durable ingredient)"
       ],
       "untested": [
-        "robustness: OR window {15,45}, GEX threshold {33/66}, breakout/fade rule",
-        "DSR at proper search-N",
-        "execution realism",
-        "why MYM 2024 negative",
-        "gamma-flip level"
+        "GEX regime AS FILTER/SIZING on a separate index entry (the productive use)",
+        "gamma-flip level",
+        "vol-forecast model from GEX"
       ],
       "tested_tiers": [
         "T6"
@@ -150,7 +148,7 @@
       "tier_gap": false,
       "data_tier": "T6",
       "tier_gap_reason": "correct surface reached; naive proxy dead but underpowered; signed-GEX/flip/wall variants + more coverage are the live branch",
-      "note": "STRONGEST LEAD of the search, fully honest picture: (1) SURVIVED OOS 311d all-3-years (MES +all-yrs maxyr50%, MNQ all-yrs+, MYM 2025-driven); (2) ROBUST to params (MES+MNQ positive across ALL 9 OR{15,30,45}xthr{33,50,66} cells, no sign flips); (3) cross-asset + mechanism-driven. BUT FAILS DSR AT EVERY N (MES 0.42@N10->0.14@Nglobal; MNQ 0.51->0.20) because n=77 is TOO SHORT for Sh~0.9-1.3 (single-strategy PSR~0.69). BINDING CONSTRAINT = SAMPLE SIZE, not tuning. MNQ H1/H2 2.82/0.70 (front-loaded, possible decay). NOT DSR-credible, NOT candidate/validated/WH. To advance: MORE GEX coverage -> more trading days -> re-test DSR. Regime (compression) separately robust on larger descriptive sample.",
+      "note": "OUTCOME B (full 563-day OOS incl 2023). STANDALONE TRADE RULE FAILED: GEX-cond breakout/range diluted with 2023 (MES Sh0.90->0.62, MNQ1.31->0.63, MYM2.6->0.97), NO year-consistency (MES 2024 neg, MYM 2023 -996), DSR still 0.70-0.81 <0.95 even at n=166 -> regime-specific/fragile, DOWN-WEIGHTED, NOT WH1 candidate. But GEX COMPRESSION REGIME SURVIVED: pos-GEX ~40% lower next-day realized vol on BOTH high-low & c2c, COMPRESSES in ALL 3 years (2023/2024/2025). = DURABLE INDEX_REGIME_INPUT ingredient: breakout-permission / no-trade / sizing / range-vs-trend classifier / stop-target / vol-forecast. NOT a standalone workhorse. This is the professional outcome: regime signal, not magic entry.",
       "mission_class": "INDEX_REGIME_INPUT"
     },
     "positioning_cot": {

@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-06 18:51 UTC",
+  "timestamp": "2026-07-06 19:28 UTC",
   "verdict": "SELF_AUDIT_CLEAN",
   "path": "research/data/self_audit_latest.json",
   "facets": 12,
@@ -25,7 +25,7 @@
       "facet": "trial_ledger",
       "status": "PASS",
       "cadence": "per-test",
-      "detail": "N=1851 (+0 since last audit)"
+      "detail": "N=1854 (+0 since last audit)"
     },
     {
       "facet": "guardrails",
@@ -37,7 +37,7 @@
       "facet": "inbound_capture",
       "status": "PASS",
       "cadence": "per-cycle",
-      "detail": "57 items; floating=0; mistakes_no_control=2"
+      "detail": "58 items; floating=0; mistakes_no_control=2"
     },
     {
       "facet": "family_map",
