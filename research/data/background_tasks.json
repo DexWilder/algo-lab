@@ -47,10 +47,11 @@
     {
       "id": "bogz58svk",
       "desc": "2023 GEX OI extension (EW1-2, incremental)",
-      "status": "RUNNING_INCREMENTAL_PULL_WITH_PROGRESS",
+      "status": "RUNNING_INCREMENTAL_WITH_PROGRESS",
       "expected": "ES_OPT_weekly_oi.csv + gex_oos_2023_DONE.json marker",
       "completion_trigger": "run_frozen_gex_oos.py (self-guarded)",
-      "purpose": "n 77->target>=120 for DSR power; 2023 index 1m already merged"
+      "purpose": "n 77->target>=120 for DSR power; 2023 index 1m already merged",
+      "progress": "311->350 days, 2023: 0->38 days (climbing); partials persisted"
     }
   ]
 }

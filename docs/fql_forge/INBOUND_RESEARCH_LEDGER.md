@@ -1,6 +1,6 @@
-# Inbound Research Ledger (rendered 2026-07-06 18:08 UTC)
+# Inbound Research Ledger (rendered 2026-07-06 18:32 UTC)
 > **Operating law:** if it is not in this ledger, the queue, the dashboard, or the control map — the system does not know it.
-> Source of truth: `research/data/inbound_research_ledger.json`. Capture: `python3 research/capture_inbound.py`. Items: **55**.
+> Source of truth: `research/data/inbound_research_ledger.json`. Capture: `python3 research/capture_inbound.py`. Items: **56**.
 > NEW:0 | P0/P1:11/30 | untriaged directives:0 | mistakes w/o control:2 | unused feeds:0 | source notes unresolved:1
 
 | id | date | type | status | P | family | mechanism / issue | next action | linked (packet/queue/control) |
@@ -59,4 +59,5 @@
 | INB-20260706-008 | 2026-07-06 | source | PROMOTED_TO_PACKET | P2 | open_close_liquidity | Institutional CLOSING-window INDEX packet: MES/MNQ/MYM last-15m order  | — | — |
 | INB-20260701-007 | 2026-07-01 | validation failure | CLEAN_KILL | P2 | carry_commodity | cross-asset generalization | gold-specific noted; not a family win | — |
 | INB-20260706-012 | 2026-07-06 | data feed | SOURCE_REQUIRED | P2 | inventory_eia | EIA inventory data needs FREE API key (register eia.gov). SOURCE_REQUI | operator: free EIA key OR skip; index-regime use o | — |
+| INB-20260706-015 | 2026-07-06 | claude discovery | CLEAN_BUT_WEAK | P2 | macro_event_drift | Auction-demand INTRADAY (post-1pm BTC-surprise -> index): survives cau | secondary INDEX_REGIME_INPUT; not a workhorse | — |
 | INB-20260706-009 | 2026-07-06 | source | PROMOTED_TO_PACKET | P3 | xasset_leadlag | Cross-index DISLOCATION packet: NQ/ES/YM triangle relative-value at ex | proper MT-correction before belief | — |

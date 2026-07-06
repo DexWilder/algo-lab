@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-07-06 18:15 UTC",
-  "global_trial_N": 1849,
+  "timestamp": "2026-07-06 18:32 UTC",
+  "global_trial_N": 1851,
   "lane_breakdown": {
     "forced_flow": 7,
     "exploratory": 20,
@@ -8,7 +8,7 @@
     "databento_volume": 68,
     "positioning": 48,
     "primitive_sweep": 1679,
-    "macro_regime": 4,
+    "macro_regime": 6,
     "crypto_carry": 4,
     "carry": 4,
     "curve_rv": 3,

@@ -990,6 +990,24 @@
       "linked_packet": null,
       "linked_queue": null,
       "linked_control": "gex_oos_pull_DONE.json + GEX_BREAKOUT_RANGE_PREREGISTERED_RULE"
+    },
+    {
+      "inbound_id": "INB-20260706-015",
+      "date": "2026-07-06",
+      "source_type": "claude discovery",
+      "source_ref": null,
+      "raw_note": "Auction-demand INTRADAY (post-1pm BTC-surprise -> index): survives causal-safe 13:10 entry (Sh0.94 MNQ, n=255, was 1.19 at 13:00) so NOT pure lookahead. Cross-asset direction intuitive (strong-auction->up). BUT 2023 NEGATIVE (-1710), H1/H2 -0.78/1.89 back-loaded, DSR0.87<0.95, maxyr78% -> 2024-2025-specific, CLEAN_BUT_WEAK regime observation, NOT WH1 candidate. Note: 2023 data breaks it (preview of what GEX 2023 extension may show).",
+      "mechanism": null,
+      "family": "macro_event_drift",
+      "required_data": "auction BTC T5 + index 1m T3",
+      "available_data": null,
+      "required_harness": null,
+      "status": "CLEAN_BUT_WEAK",
+      "priority": "P2",
+      "next_action": "secondary INDEX_REGIME_INPUT; not a workhorse",
+      "linked_packet": null,
+      "linked_queue": null,
+      "linked_control": null
     }
   ]
 }

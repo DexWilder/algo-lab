@@ -16321,6 +16321,31 @@
       "ts": "2026-07-06",
       "data_tier": "T6",
       "n": 77
+    },
+    {
+      "packet": "WH1_COND:auction_intraday_MNQ",
+      "asset": "MNQ",
+      "sharpe": 1.19,
+      "verdict": "micro",
+      "horizon": "",
+      "lane": "macro_regime",
+      "ts": "2026-07-06",
+      "data_tier": "T5",
+      "n": 255
+    },
+    {
+      "packet": "WH1_COND:auction_intraday_causal:MNQ",
+      "asset": "MNQ",
+      "sharpe": 0.94,
+      "verdict": "micro",
+      "horizon": "",
+      "lane": "macro_regime",
+      "ts": "2026-07-06",
+      "failure_class": "concentration",
+      "data_tier": "T5",
+      "dsr": 0.8746,
+      "maxyr": 78,
+      "n": 255
     }
   ],
   "note": "auto multiple-testing N; every test appends"
