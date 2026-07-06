@@ -954,6 +954,24 @@
       "linked_packet": null,
       "linked_queue": null,
       "linked_control": null
+    },
+    {
+      "inbound_id": "INB-20260706-013",
+      "date": "2026-07-06",
+      "source_type": "claude discovery",
+      "source_ref": null,
+      "raw_note": "GEX regime-only verification (descriptive): compression BROAD+ROBUST \u2014 pos-GEX next-day vol ~2-3x lower on BOTH close-to-close (0.55 vs 1.73%) AND high-low (0.88 vs 2.27%), both DTE buckets, survives excl top-5% range days. Durable REGIME. Trade monetization stays fragile (2025-conc). CAUGHT own alignment bug (pos.shift vs OR); corrected causal RETRACTS 'both-years-positive'.",
+      "mechanism": null,
+      "family": "gamma_dealer",
+      "required_data": null,
+      "available_data": null,
+      "required_harness": null,
+      "status": "SCREEN_PASS_PENDING_COVERAGE",
+      "priority": "P1",
+      "next_action": "OOS coverage -> frozen-rule test 2024/2026; regime as vol-sizing/filter not just direction",
+      "linked_packet": null,
+      "linked_queue": null,
+      "linked_control": "GEX_BREAKOUT_RANGE_PREREGISTERED_RULE_2026-07-06.md"
     }
   ]
 }
