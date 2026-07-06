@@ -1,20 +1,20 @@
-# ALPHA RESEARCH DASHBOARD (auto-generated 2026-07-06 17:48 UTC)
+# ALPHA RESEARCH DASHBOARD (auto-generated 2026-07-06 18:09 UTC)
 > `python3 research/forge_dashboard.py` regenerates this. Single canonical state view.
 
 ## HEADLINE
 - **Validated primaries: 0** (highest ladder rung: **SCREEN_PASS**; capital gate FAIL-CLOSED, PAPER_APPROVED+ operator-only).
-- Guardrails: **clean/P1** | Self-audit: **SELF_AUDIT_CLEAN** (facets=12 PASS=12 STALE=0 BROKEN=0 DESIGNED-not-built=0) | Git backlog: **0** | Global trial-N: **1844**
-- **Mission:** MNQ/MES/MYM index workhorse (WH1). RUN_NOW mission-weighting: 18/23 WH1-aligned ({'DIVERSIFIER': 5, 'INDEX_REGIME_INPUT': 15, 'INDEX_DIRECT': 3})
+- Guardrails: **clean/P1** | Self-audit: **SELF_AUDIT_CLEAN** (facets=12 PASS=12 STALE=0 BROKEN=0 DESIGNED-not-built=0) | Git backlog: **0** | Global trial-N: **1847**
+- **Mission:** MNQ/MES/MYM index workhorse (WH1). RUN_NOW mission-weighting: 20/25 WH1-aligned ({'DIVERSIFIER': 5, 'INDEX_REGIME_INPUT': 17, 'INDEX_DIRECT': 3})
 - **Search posture:** the NAIVE direct-index price/volume surface (gap/fade/trend/MR/OR) is picked-over UNDER TESTED EXPRESSIONS. WH1 direct-index remains LIVE via GEX/event/regime/source-CONDITIONED mechanisms + MYM (1m now pulled). Structural surfaces (GEX/dealer-flow, event-surprise, forced-flow) are EARLY — prove over 20–50 cycles, not solved.
 
 ## Throughput (computed live)
-- Tests logged today: **19** | total kills: 6 | screen-passes: 2
+- Tests logged today: **22** | total kills: 6 | screen-passes: 2
 - Novelty packets: **38** stored (0 today) of 108 template×instrument space
 - Families: **12 active** / 21 | coverage 58% (tested exprs / total exprs)
 - Candidate ladder: SCREEN_PASS=1
 
 ## Inbound capture (organizational memory — nothing floats)
-- Items: **54** | NEW: 0 | P0/P1: 11/29 | source packets today: 6
+- Items: **55** | NEW: 0 | P0/P1: 11/30 | source packets today: 6
 - Untriaged directives: 0 | mistakes w/o control: **2** ['INB-20260701-010', 'INB-20260701-011'] | unused feeds: 0
 - QUEUED-missing-from-queue: 0 | source notes unresolved: 1 | oldest untriaged: 0d
 - Ledger: `docs/fql_forge/INBOUND_RESEARCH_LEDGER.md` (capture: `python3 research/capture_inbound.py`)
@@ -23,7 +23,7 @@
 - primitive_sweep: 1679
 - databento_volume: 68
 - positioning: 48
-- exploratory: 15
+- exploratory: 18
 - commodity_carry: 10
 - forced_flow: 7
 - macro_regime: 4
@@ -33,7 +33,7 @@
 - portfolio: 2
 
 ## Queue depth
-- RUN_NOW: 23 | total queue items: 75
+- RUN_NOW: 25 | total queue items: 78
 - [ACTIVE_PACKET_LANE] gamma_chunked_loader_then_regime: chunked OI loader -> approx-GEX -> predeclared GEX-regime test (feasib
 - [DONE] gc_detrended_carry_zscore: refined commodity TS expr (naive carry-sign KILLed 2026-07-01); de-tre
 - [DONE] clgc_spread_momentum: refined commodity TS expr (naive carry-sign KILLed 2026-07-01); de-tre

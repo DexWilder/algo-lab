@@ -523,14 +523,6 @@
       "note": "GEX-conditioned MES/MNQ/MYM range+close family at proper n (when coverage lands)"
     },
     {
-      "id": "gex_coverage_extend_dsr",
-      "status": "RUN_NOW",
-      "lane": "databento_volume",
-      "mission_class": "INDEX_REGIME_INPUT",
-      "surface": "B GEX index",
-      "note": "HIGH: extend weekly OI (single-slice, more 2024-2025 months) -> n>=120 for proper DSR on GEX-breakout/range (best WH1 lead)"
-    },
-    {
       "id": "gex_breakout_range_mym",
       "status": "RUN_NOW",
       "lane": "databento_volume",
@@ -548,10 +540,34 @@
     },
     {
       "id": "RUN_FROZEN_GEX_OOS_AFTER_DONE",
-      "status": "WAITING_ON_COMPLETION_MARKER",
+      "status": "DONE",
       "lane": "exploratory",
       "mission_class": "INDEX_REGIME_INPUT",
-      "note": "trigger: run research/run_frozen_gex_oos.py \u2014 self-guards (refuses if pull alive/mid-write); fires frozen pre-registered rule OOS on MES/MNQ/MYM by year + DSR + adversarial; writes gex_oos_pull_DONE.json"
+      "note": "OOS survived 311d; verdict in gex_oos_pull_DONE.json"
+    },
+    {
+      "id": "gex_frozen_robustness",
+      "status": "RUN_NOW",
+      "lane": "exploratory",
+      "mission_class": "INDEX_REGIME_INPUT",
+      "surface": "B GEX",
+      "note": "SENSITIVITY (now allowed, frozen OOS done): OR window {15,45}, GEX threshold {33/66pct}, breakout-vs-fade rule \u2014 is MES Sh0.90/MNQ Sh1.31 stable or knife-edge?"
+    },
+    {
+      "id": "gex_dsr_searchN",
+      "status": "RUN_NOW",
+      "lane": "exploratory",
+      "mission_class": "INDEX_REGIME_INPUT",
+      "surface": "B GEX",
+      "note": "honest DSR at proper search-N for GEX-breakout (currently 0.70-0.78 at global-N)"
+    },
+    {
+      "id": "gex_mym_2024_neg",
+      "status": "RUN_NOW",
+      "lane": "exploratory",
+      "mission_class": "INDEX_REGIME_INPUT",
+      "surface": "B GEX",
+      "note": "investigate why MYM 2024 negative while MES/MNQ positive (Dow gamma weighting?)"
     }
   ]
 }

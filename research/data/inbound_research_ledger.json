@@ -972,6 +972,24 @@
       "linked_packet": null,
       "linked_queue": null,
       "linked_control": "GEX_BREAKOUT_RANGE_PREREGISTERED_RULE_2026-07-06.md"
+    },
+    {
+      "inbound_id": "INB-20260706-014",
+      "date": "2026-07-06",
+      "source_type": "claude discovery",
+      "source_ref": null,
+      "raw_note": "GEX FROZEN-rule OOS SURVIVED (311 days, all 3 years): MES Sh0.90 all-3-yrs-positive maxyr50%, MNQ Sh1.31, MYM Sh2.6. NOT a 2025 artifact (MES IMPROVED with 2024/2026 data). BUT DSR 0.70-0.78 (<0.95) + adversarial FAIL on MNQ 81% concentration. SCREEN_PASS_OOS_SURVIVED, strongest lead yet, NOT candidate/validated/WH. MES cleanest.",
+      "mechanism": null,
+      "family": "gamma_dealer",
+      "required_data": null,
+      "available_data": null,
+      "required_harness": null,
+      "status": "SCREEN_PASS_OOS_SURVIVED",
+      "priority": "P1",
+      "next_action": "robustness (OR/threshold) + DSR-at-search-N + exec realism; frozen-first done, sensitivity now allowed",
+      "linked_packet": null,
+      "linked_queue": null,
+      "linked_control": "gex_oos_pull_DONE.json + GEX_BREAKOUT_RANGE_PREREGISTERED_RULE"
     }
   ]
 }

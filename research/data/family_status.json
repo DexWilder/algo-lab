@@ -130,17 +130,17 @@
     },
     "gamma_dealer": {
       "lane": "exploratory",
-      "status": "SCREEN_PASS_PENDING_COVERAGE",
+      "status": "SCREEN_PASS_OOS_SURVIVED",
       "data": "REPULL_PAID",
       "tested": [
-        "signed-GEX compression n=51 (robust, both years)",
-        "GEX-cond breakout/range cross-asset MES/MNQ (Sh1.04/1.52, DSR<0.95, n=50)"
+        "signed-GEX compression robust",
+        "GEX-cond breakout/range FROZEN OOS 311d: MES Sh0.90/all-3-yrs/maxyr50%, MNQ Sh1.31, MYM Sh2.6 (survived, DSR<0.95, adversarial-conc-FAIL)"
       ],
       "untested": [
-        "more GEX coverage (extend months -> proper DSR)",
+        "robustness: OR window {15,45}, GEX threshold {33/66}, breakout/fade rule",
+        "DSR at proper search-N",
         "execution realism",
-        "robustness (OR window, GEX threshold, rule)",
-        "MYM version",
+        "why MYM 2024 negative",
         "gamma-flip level"
       ],
       "tested_tiers": [
@@ -150,7 +150,7 @@
       "tier_gap": false,
       "data_tier": "T6",
       "tier_gap_reason": "correct surface reached; naive proxy dead but underpowered; signed-GEX/flip/wall variants + more coverage are the live branch",
-      "note": "REGIME finding ROBUST+BROAD (pos-GEX compresses next-day vol ~2-3x on BOTH close-to-close & high-low, both DTE buckets, survives excluding top-5% range days, both years). TRADE monetization FRAGILE (2025-concentrated, DSR<0.95, adversarial-FAIL, n=50). Earlier 'both-years-positive' RETRACTED (alignment-bug artifact; corrected causal = 2024 flat/neg, 2025-driven). Rule PRE-REGISTERED (GEX_BREAKOUT_RANGE_PREREGISTERED_RULE_2026-07-06). OOS coverage extending -> frozen-rule test.",
+      "note": "FROZEN rule SURVIVED expanded OOS (311 days, 2024:190/2025:83/2026:38). NOT a 2025 artifact: MES positive ALL 3 YEARS + balanced (maxyr 50%, Sh0.90); MNQ all-3-positive (Sh1.31, but maxyr 81%); MYM Sh2.6 (2025-driven, 2024 neg). DECISIVE OOS test PASSED. BUT still NOT DSR-credible (MES DSR0.70/MNQ0.78 <0.95) + adversarial FAIL on MNQ concentration. Strongest lead yet; SCREEN_PASS not candidate/WH/validated. MES is cleanest instrument. Next: robustness(OR/threshold)+DSR-at-search-N+exec-realism.",
       "mission_class": "INDEX_REGIME_INPUT"
     },
     "positioning_cot": {

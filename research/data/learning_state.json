@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-07-06 17:47 UTC",
-  "global_trial_N": 1844,
+  "timestamp": "2026-07-06 18:08 UTC",
+  "global_trial_N": 1847,
   "lane_breakdown": {
     "forced_flow": 7,
-    "exploratory": 15,
+    "exploratory": 18,
     "portfolio": 2,
     "databento_volume": 68,
     "positioning": 48,
@@ -52,7 +52,7 @@
       "tier_gap": true
     },
     "gamma_dealer": {
-      "status": "SCREEN_PASS_PENDING_COVERAGE",
+      "status": "SCREEN_PASS_OOS_SURVIVED",
       "data_tier": "T6",
       "richest_applicable_tier": "T6",
       "tier_gap": false
