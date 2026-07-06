@@ -545,6 +545,13 @@
       "mission_class": "INDEX_REGIME_INPUT",
       "surface": "B GEX index",
       "note": "robustness: OR window {15,45}, GEX threshold {33/66pct}, breakout-vs-fade rule \u2014 is Sh1.5 stable?"
+    },
+    {
+      "id": "RUN_FROZEN_GEX_OOS_AFTER_DONE",
+      "status": "WAITING_ON_COMPLETION_MARKER",
+      "lane": "exploratory",
+      "mission_class": "INDEX_REGIME_INPUT",
+      "note": "trigger: run research/run_frozen_gex_oos.py \u2014 self-guards (refuses if pull alive/mid-write); fires frozen pre-registered rule OOS on MES/MNQ/MYM by year + DSR + adversarial; writes gex_oos_pull_DONE.json"
     }
   ]
 }
