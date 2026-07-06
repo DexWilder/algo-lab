@@ -1,11 +1,11 @@
 {
-  "timestamp": "2026-07-06 16:22 UTC",
-  "global_trial_N": 1833,
+  "timestamp": "2026-07-06 16:53 UTC",
+  "global_trial_N": 1836,
   "lane_breakdown": {
     "forced_flow": 7,
     "exploratory": 14,
     "portfolio": 2,
-    "databento_volume": 59,
+    "databento_volume": 62,
     "positioning": 48,
     "primitive_sweep": 1679,
     "macro_regime": 3,

@@ -44,6 +44,17 @@
       "path": "data/databento/ES_bbo_1m_sample.csv",
       "purpose": "execution-realism + spread microstructure unlock",
       "validation": "spread present"
+    },
+    {
+      "date": "2024-02-29/2026-03-07",
+      "asset": "MYM.c.0",
+      "schemas": [
+        "ohlcv-1m"
+      ],
+      "cost_usd": 2.47,
+      "path": "data/databento/MYM_1m.csv",
+      "purpose": "WH1 core workhorse instrument (was missing)",
+      "validation": "rows>0 vol present"
     }
   ]
 }

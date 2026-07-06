@@ -22,7 +22,8 @@
       "tier_gap": false,
       "data_tier": "T3",
       "tier_gap_reason": "T3 tested (naive trend dead); residual=regime-conditioned",
-      "mission_class": "INDEX_DIRECT"
+      "mission_class": "INDEX_DIRECT",
+      "note": "NAIVE price/volume expressions picked-over under tested set. Direct-index still live via CONDITIONING (GEX/VIX/event/regime) + MYM (1m now available). Not exhausted."
     },
     "mean_reversion": {
       "lane": "primitive_sweep",
@@ -43,7 +44,8 @@
       "tier_gap": false,
       "data_tier": "T3",
       "tier_gap_reason": "richest applicable T3 TESTED (intraday MR dead, cost-dominated) -> exhaustion allowed",
-      "mission_class": "INDEX_DIRECT"
+      "mission_class": "INDEX_DIRECT",
+      "note": "NAIVE price/volume expressions picked-over under tested set. Direct-index still live via CONDITIONING (GEX/VIX/event/regime) + MYM (1m now available). Not exhausted."
     },
     "carry_rates": {
       "lane": "curve_rv",
@@ -223,7 +225,8 @@
       "tier_gap": true,
       "data_tier": "T1",
       "tier_gap_reason": "tested to T1, T3 untested",
-      "mission_class": "INDEX_REGIME_INPUT"
+      "mission_class": "INDEX_REGIME_INPUT",
+      "note": "Event-surprise data MISSING (levels/dates only, no actual-vs-consensus). DATA_STATUS_UNPROVEN \u2014 sourceable, not blocked. Biggest missing WH1 frontier."
     },
     "monthend_settlement": {
       "lane": "forced_flow",
@@ -282,7 +285,8 @@
       "tier_gap": false,
       "data_tier": "T3",
       "tier_gap_reason": "tested to T2, T3 untested",
-      "mission_class": "INDEX_DIRECT"
+      "mission_class": "INDEX_DIRECT",
+      "note": "NAIVE price/volume expressions picked-over under tested set. Direct-index still live via CONDITIONING (GEX/VIX/event/regime) + MYM (1m now available). Not exhausted."
     },
     "intraday_micro": {
       "lane": "databento_volume",
@@ -303,7 +307,8 @@
       "tier_gap": true,
       "data_tier": "T3",
       "tier_gap_reason": "tested to T3, T6 untested",
-      "mission_class": "INDEX_DIRECT"
+      "mission_class": "INDEX_DIRECT",
+      "note": "NAIVE price/volume expressions picked-over under tested set. Direct-index still live via CONDITIONING (GEX/VIX/event/regime) + MYM (1m now available). Not exhausted."
     },
     "xasset_leadlag": {
       "lane": "exploratory",
@@ -322,7 +327,8 @@
       "tier_gap": true,
       "data_tier": "T2",
       "tier_gap_reason": "tested to T2, T3 untested",
-      "mission_class": "INDEX_DIRECT"
+      "mission_class": "INDEX_DIRECT",
+      "note": "NAIVE price/volume expressions picked-over under tested set. Direct-index still live via CONDITIONING (GEX/VIX/event/regime) + MYM (1m now available). Not exhausted."
     },
     "regime_filters": {
       "lane": "macro_regime",

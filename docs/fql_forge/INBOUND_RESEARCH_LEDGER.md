@@ -1,7 +1,7 @@
-# Inbound Research Ledger (rendered 2026-07-06 16:22 UTC)
+# Inbound Research Ledger (rendered 2026-07-06 16:52 UTC)
 > **Operating law:** if it is not in this ledger, the queue, the dashboard, or the control map — the system does not know it.
-> Source of truth: `research/data/inbound_research_ledger.json`. Capture: `python3 research/capture_inbound.py`. Items: **43**.
-> NEW:0 | P0/P1:11/23 | untriaged directives:0 | mistakes w/o control:2 | unused feeds:0 | source notes unresolved:0
+> Source of truth: `research/data/inbound_research_ledger.json`. Capture: `python3 research/capture_inbound.py`. Items: **46**.
+> NEW:0 | P0/P1:11/25 | untriaged directives:0 | mistakes w/o control:2 | unused feeds:0 | source notes unresolved:1
 
 | id | date | type | status | P | family | mechanism / issue | next action | linked (packet/queue/control) |
 |---|---|---|---|---|---|---|---|---|
@@ -17,6 +17,7 @@
 | INB-20260630-001 | 2026-06-30 | bug | TRIAGED | P0 | data governance | unproven blocker claim | none — control locked | DATA_BLOCKER_CERTIFICATES + guardrail P1 (cert required) |
 | INB-20260702-002 | 2026-07-02 | operator directive | TRIAGED | P0 | governance | Data budget: auto-approve report-only pulls <=/pull, /day cap, ~weekly | gamma OI sample pull -> GEX feasibility memo | research/data/data_budget.json |
 | INB-20260701-011 | 2026-07-01 | guardrail finding | CONTROL_REQUIRED | P1 | learning | LEARNING LOOP HALF-OPEN: novelty engine is template-only (blind to the | novelty reads ledger (down-weight dead families/up | — |
+| INB-20260706-004 | 2026-07-06 | source | DATA_STATUS_UNPROVEN | P1 | macro_event_drift | Event-surprise INDEX packet: CPI/NFP actual-minus-consensus -> MES/MNQ | acquire consensus feed | — |
 | INB-20260613-001 | 2026-06-13 | validation failure | RETEST_REQUIRED | P1 | port fidelity | port byte-fidelity | prove signal-hash on audit window before wiring | feedback_port_fidelity_discipline |
 | INB-20260701-006 | 2026-07-01 | validation failure | RETEST_REQUIRED | P1 | execution realism | roll-adjacent concentration | 2-leg calendar-spread exec model + tick/1m near ro | deepen_spreadMR_GC_execution |
 | INB-20260701-014 | 2026-07-01 | claude discovery | RETEST_REQUIRED | P1 | intraday_micro | 1m+volume T3 microstructure harness built+run (tz-agnostic session det | next T3 packets: intraday 1m-path MR, settlement-w | — |
@@ -38,6 +39,7 @@
 | INB-20260701-003 | 2026-07-01 | claude discovery | PROMOTED_TO_PACKET | P1 | carry_commodity | gold calendar-spread mean-reversion | Lane G deepening (operator-gated for capital) | SCREEN_PASS_CANDIDATE_spreadMR_GC_2026-07-01.md deepen_sprea |
 | INB-20260702-003 | 2026-07-02 | source | PROMOTED_TO_PACKET | P1 | carry_commodity | CME roll methodology docs -> roll-window pressure: index/ETF funds mus | — | src_roll_window_pressure |
 | INB-20260702-004 | 2026-07-02 | source | PROMOTED_TO_PACKET | P1 | gamma_dealer | Options dealer-hedging (SqueezeMetrics/Nomura) -> GEX-regime pin: deal | — | src_gex_regime_pin |
+| INB-20260706-003 | 2026-07-06 | source | PROMOTED_TO_PACKET | P1 | gamma_dealer | GEX/dealer-flow INDEX packet: signed-GEX regime -> MES/MNQ intraday ra | — | gex_signed_compression_retest |
 | INB-20260706-002 | 2026-07-06 | data feed | NEEDS_LOADER | P1 | data governance | MYM (Micro Dow) has NO 1m data — core WH1 workhorse instrument. Have M | pull MYM 1m from Databento (cheap, like other micr | — |
 | INB-20260616-001 | 2026-06-16 | old report | RETEST_REQUIRED | P2 | rescue (Lane F) | dormant inventory | retest under truth-gated harness, ranked | Lane F rescue |
 | INB-20260625-002 | 2026-07-02 | bug | TRIAGED | P2 | automation | stale tripwire not firing | resolved: freshness enforced every cycle | guardrail #3 stale-automation freshness check covers loop lo |
@@ -47,4 +49,5 @@
 | INB-20260702-007 | 2026-07-02 | bug | TRIAGED | P2 | — | failure_class labeler mis-tagged negative-Sharpe as concentration (max | sweeps use classify_failure going forward | forge_trial_ledger.classify_failure() canonical order |
 | INB-20260702-010 | 2026-07-02 | claude discovery | TRIAGED | P2 | execution_cost | bbo-1m: ES spread uniform 1-tick(0.25pt) all hours, 95pct 2-tick. VALI | time-of-day spread only material for less-liquid i | data/databento/ES_bbo_1m_sample.csv analysis |
 | INB-20260702-005 | 2026-07-02 | source | PROMOTED_TO_PACKET | P2 | intraday_micro | Microstructure (Kyle/VPIN/Easley) -> liquidity-hole reversal: informed | — | src_liquidity_hole |
+| INB-20260706-005 | 2026-07-06 | source | PROMOTED_TO_PACKET | P2 | open_close_liquidity | Institutional execution-window INDEX packet: closing-auction approach  | — | spread_cond_close |
 | INB-20260701-007 | 2026-07-01 | validation failure | CLEAN_KILL | P2 | carry_commodity | cross-asset generalization | gold-specific noted; not a family win | — |

@@ -516,11 +516,19 @@
     },
     {
       "id": "pull_mym_1m",
-      "status": "RUN_NOW",
+      "status": "DONE",
       "lane": "databento_volume",
       "mission_class": "INDEX_DIRECT",
       "surface": "A index data",
-      "note": "pull MYM 1m (workhorse instrument, currently missing) \u2014 cheap Databento, per retry policy single-window"
+      "note": "MYM 1m pulled 677k rows, validated"
+    },
+    {
+      "id": "gex_cond_index_family",
+      "status": "RUN_NOW",
+      "lane": "databento_volume",
+      "mission_class": "INDEX_REGIME_INPUT",
+      "surface": "B GEX index",
+      "note": "GEX-conditioned MES/MNQ/MYM range+close family at proper n (when coverage lands)"
     }
   ]
 }

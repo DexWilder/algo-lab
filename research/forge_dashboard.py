@@ -50,7 +50,7 @@ out=f"""# ALPHA RESEARCH DASHBOARD (auto-generated {stamp})
 - **Validated primaries: 0** (highest ladder rung: **{hi}**; capital gate FAIL-CLOSED, PAPER_APPROVED+ operator-only).
 - Guardrails: **{gv}** | Self-audit: **{sav}** ({sa_line}) | Git backlog: **{backlog}** | Global trial-N: **{count()}**
 - **Mission:** MNQ/MES/MYM index workhorse (WH1). RUN_NOW mission-weighting: {mission_wt}
-- **Search posture:** now pointed at more appropriate STRUCTURAL surfaces (GEX/dealer-flow, index microstructure, event-surprise, term-structure, forced-flow, source-derived). Coverage is EARLY — must be proven over the next 20–50 cycles, not solved.
+- **Search posture:** the NAIVE direct-index price/volume surface (gap/fade/trend/MR/OR) is picked-over UNDER TESTED EXPRESSIONS. WH1 direct-index remains LIVE via GEX/event/regime/source-CONDITIONED mechanisms + MYM (1m now pulled). Structural surfaces (GEX/dealer-flow, event-surprise, forced-flow) are EARLY — prove over 20–50 cycles, not solved.
 
 ## Throughput (computed live)
 - Tests logged today: **{tested_today}** | total kills: {kills} | screen-passes: {screenpass}
