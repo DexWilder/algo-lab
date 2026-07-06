@@ -1,11 +1,11 @@
 {
-  "timestamp": "2026-07-06 16:53 UTC",
-  "global_trial_N": 1836,
+  "timestamp": "2026-07-06 17:04 UTC",
+  "global_trial_N": 1837,
   "lane_breakdown": {
     "forced_flow": 7,
     "exploratory": 14,
     "portfolio": 2,
-    "databento_volume": 62,
+    "databento_volume": 63,
     "positioning": 48,
     "primitive_sweep": 1679,
     "macro_regime": 3,
@@ -321,7 +321,6 @@
     "QUEUE deepen_spreadMR_GC_searchN: Lane G: pin honest search-N for spreadMR_GC DSR (credible N<",
     "QUEUE deepen_spreadMR_GC_robustness: Lane G: param robustness spreadMR_GC (z 1.0/2.0, lookback 12",
     "QUEUE gex_expiry_0dte_pin: T6: expiry/0DTE gamma-pin \u2014 target last 1-2 days to expiry (",
-    "QUEUE gex_full_oi_coverage: HIGH: gates promising signed-GEX compression signal \u2014 pull E",
     "QUEUE gex_0dte_pin_real: 0DTE/expiry-week pin on weekly OI (EW1-4/E1A/E3C) \u2014 the mech",
     "QUEUE gex_flip_range: gamma-flip -> realized-range asymmetry (above flip compress ",
     "QUEUE gex_call_put_wall: call-wall/put-wall proxy: distance to largest OI wall -> nex",
@@ -334,7 +333,8 @@
     "QUEUE cot_pricebreak_conditional: COT extreme + price-break conditional (not naive fade)",
     "QUEUE event_surprise_prep: acquire CPI/NFP consensus+actual (surprise) \u2014 data-unlock ce",
     "QUEUE vol_crush_drift: post-vol-crush drift (DVOL/VIX regime)",
-    "QUEUE gex_signed_compression_retest: re-run signed-GEX compression once coverage lands (n>=60); t"
+    "QUEUE gex_cond_mes_range: INDEX_DIRECT: GEX-regime-conditioned MES/MNQ opening-range f",
+    "QUEUE t3_index_micro_mym: INDEX_DIRECT: T3 microstructure sweep on MYM (untested index"
   ],
   "stale_labels": [],
   "unresolved_learning_gaps": [

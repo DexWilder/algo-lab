@@ -16151,6 +16151,20 @@
       "data_tier": "T3",
       "maxyr": 999,
       "n": 510
+    },
+    {
+      "packet": "WH1_COND:xindex_disp_audit:MNQ",
+      "asset": "MNQ",
+      "sharpe": 0.45,
+      "verdict": "micro",
+      "horizon": "",
+      "lane": "databento_volume",
+      "ts": "2026-07-06",
+      "failure_class": "concentration",
+      "data_tier": "T3",
+      "dsr": 0.0006,
+      "maxyr": 116,
+      "n": 510
     }
   ],
   "note": "auto multiple-testing N; every test appends"

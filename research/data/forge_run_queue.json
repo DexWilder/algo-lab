@@ -359,9 +359,9 @@
     },
     {
       "id": "gex_full_oi_coverage",
-      "status": "RUN_NOW",
+      "status": "RUN_NOW_PENDING_PROVIDER_HEALTH",
       "lane": "exploratory",
-      "note": "HIGH: gates promising signed-GEX compression signal \u2014 pull E1A/E3C 0DTE + Mar/Apr + extend months (single-parent/1mo per retry policy)",
+      "note": "HIGH: gates promising signed-GEX compression signal \u2014 pull E1A/E3C 0DTE + Mar/Apr + extend months (single-parent/1mo per retry policy) [coverage pull KILLED-stalled; retry single-parent/month next healthy window; 40-day partial persisted]",
       "priority": "P1",
       "mission_class": "INDEX_REGIME_INPUT"
     },
@@ -477,10 +477,10 @@
     },
     {
       "id": "gex_signed_compression_retest",
-      "status": "RUN_NOW",
+      "status": "RUN_NOW_PENDING_PROVIDER_HEALTH",
       "lane": "exploratory",
       "surface": "B GEX T6",
-      "note": "re-run signed-GEX compression once coverage lands (n>=60); the one GEX result pointing right way",
+      "note": "re-run signed-GEX compression once coverage lands (n>=60); the one GEX result pointing right way [coverage pull KILLED-stalled; retry single-parent/month next healthy window; 40-day partial persisted]",
       "mission_class": "INDEX_REGIME_INPUT"
     },
     {

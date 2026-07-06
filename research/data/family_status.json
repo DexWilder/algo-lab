@@ -328,7 +328,7 @@
       "data_tier": "T2",
       "tier_gap_reason": "tested to T2, T3 untested",
       "mission_class": "INDEX_DIRECT",
-      "note": "NAIVE price/volume expressions picked-over under tested set. Direct-index still live via CONDITIONING (GEX/VIX/event/regime) + MYM (1m now available). Not exhausted."
+      "note": "NQ-vs-ES dispersion MR: z>2 Sh1.44 but THRESHOLD-SELECTED + DSR0.009 fail + concentrated. Relative-value DIVERSIFIER, not WH1-direct. CLEAN_BUT_WEAK/RETEST."
     },
     "regime_filters": {
       "lane": "macro_regime",

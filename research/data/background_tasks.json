@@ -12,11 +12,13 @@
       ],
       "window": "2024-09..2025-06",
       "schema": "definition+statistics(OI)",
-      "status": "RUNNING",
+      "status": "KILLED_STALLED",
       "completion_detector": "file mtime advances + days>=100",
       "retry_status": "4x backoff per chunk (policy)",
       "on_fail": "persist partial (loader merges), classify PROVIDER_UNSTABLE_RETRY_LATER, NOT data_blocked, run next WH1 item",
-      "next_nonblocked_wh1": "VIX-conditioned MES/MNQ (proper-n), MYM T3 micro, overnight-gap \u2014 do NOT wait on this pull"
+      "next_nonblocked_wh1": "VIX-conditioned MES/MNQ (proper-n), MYM T3 micro, overnight-gap \u2014 do NOT wait on this pull",
+      "resolution": "thrashed on gateway (0 progress, 40 days); killed per policy",
+      "retry_plan": "single-parent x single-month, Mar/Apr/May/Jun 2025 + Sep-Dec 2024, next healthy-gateway window; validate each partial; merge-append"
     }
   ]
 }
