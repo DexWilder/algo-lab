@@ -1008,6 +1008,24 @@
       "linked_packet": null,
       "linked_queue": null,
       "linked_control": null
+    },
+    {
+      "inbound_id": "INB-20260706-016",
+      "date": "2026-07-06",
+      "source_type": "source",
+      "source_ref": null,
+      "raw_note": "Event-surprise NORMALIZATION packet (from auction-tail warning): stratify auction/event surprise by RATE-REGIME (Fed hiking vs cutting vs hold) + tenor before testing index reaction \u2014 a 2024-25 edge may be a hiking-regime artifact. INDEX_REGIME_INPUT. Data: auction BTC + policy_rates + index 1m (have). Kill: no reaction within a rate-regime stratum. Fail: regime confound.",
+      "mechanism": null,
+      "family": "macro_event_drift",
+      "required_data": "auction+policy+index (have)",
+      "available_data": null,
+      "required_harness": null,
+      "status": "PROMOTED_TO_PACKET",
+      "priority": "P2",
+      "next_action": "stratify by rate regime; revisit auction-tail as regime ingredient not standalone",
+      "linked_packet": null,
+      "linked_queue": null,
+      "linked_control": null
     }
   ]
 }

@@ -1,6 +1,6 @@
-# Inbound Research Ledger (rendered 2026-07-06 18:32 UTC)
+# Inbound Research Ledger (rendered 2026-07-06 18:50 UTC)
 > **Operating law:** if it is not in this ledger, the queue, the dashboard, or the control map — the system does not know it.
-> Source of truth: `research/data/inbound_research_ledger.json`. Capture: `python3 research/capture_inbound.py`. Items: **56**.
+> Source of truth: `research/data/inbound_research_ledger.json`. Capture: `python3 research/capture_inbound.py`. Items: **57**.
 > NEW:0 | P0/P1:11/30 | untriaged directives:0 | mistakes w/o control:2 | unused feeds:0 | source notes unresolved:1
 
 | id | date | type | status | P | family | mechanism / issue | next action | linked (packet/queue/control) |
@@ -57,6 +57,7 @@
 | INB-20260702-005 | 2026-07-02 | source | PROMOTED_TO_PACKET | P2 | intraday_micro | Microstructure (Kyle/VPIN/Easley) -> liquidity-hole reversal: informed | — | src_liquidity_hole |
 | INB-20260706-005 | 2026-07-06 | source | PROMOTED_TO_PACKET | P2 | open_close_liquidity | Institutional execution-window INDEX packet: closing-auction approach  | — | spread_cond_close |
 | INB-20260706-008 | 2026-07-06 | source | PROMOTED_TO_PACKET | P2 | open_close_liquidity | Institutional CLOSING-window INDEX packet: MES/MNQ/MYM last-15m order  | — | — |
+| INB-20260706-016 | 2026-07-06 | source | PROMOTED_TO_PACKET | P2 | macro_event_drift | Event-surprise NORMALIZATION packet (from auction-tail warning): strat | stratify by rate regime; revisit auction-tail as r | — |
 | INB-20260701-007 | 2026-07-01 | validation failure | CLEAN_KILL | P2 | carry_commodity | cross-asset generalization | gold-specific noted; not a family win | — |
 | INB-20260706-012 | 2026-07-06 | data feed | SOURCE_REQUIRED | P2 | inventory_eia | EIA inventory data needs FREE API key (register eia.gov). SOURCE_REQUI | operator: free EIA key OR skip; index-regime use o | — |
 | INB-20260706-015 | 2026-07-06 | claude discovery | CLEAN_BUT_WEAK | P2 | macro_event_drift | Auction-demand INTRADAY (post-1pm BTC-surprise -> index): survives cau | secondary INDEX_REGIME_INPUT; not a workhorse | — |

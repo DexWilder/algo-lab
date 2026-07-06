@@ -51,7 +51,7 @@
       "expected": "ES_OPT_weekly_oi.csv + gex_oos_2023_DONE.json marker",
       "completion_trigger": "run_frozen_gex_oos.py (self-guarded)",
       "purpose": "n 77->target>=120 for DSR power; 2023 index 1m already merged",
-      "progress": "311->350 days, 2023: 0->38 days (climbing); partials persisted"
+      "progress": "350->499 days, 2023: 38->187 (near-complete full year); partials persisted"
     }
   ]
 }

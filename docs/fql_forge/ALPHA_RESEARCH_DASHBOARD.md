@@ -1,4 +1,4 @@
-# ALPHA RESEARCH DASHBOARD (auto-generated 2026-07-06 18:32 UTC)
+# ALPHA RESEARCH DASHBOARD (auto-generated 2026-07-06 18:51 UTC)
 > `python3 research/forge_dashboard.py` regenerates this. Single canonical state view.
 
 ## HEADLINE
@@ -14,7 +14,7 @@
 - Candidate ladder: SCREEN_PASS=1
 
 ## Inbound capture (organizational memory — nothing floats)
-- Items: **56** | NEW: 0 | P0/P1: 11/30 | source packets today: 6
+- Items: **57** | NEW: 0 | P0/P1: 11/30 | source packets today: 7
 - Untriaged directives: 0 | mistakes w/o control: **2** ['INB-20260701-010', 'INB-20260701-011'] | unused feeds: 0
 - QUEUED-missing-from-queue: 0 | source notes unresolved: 1 | oldest untriaged: 0d
 - Ledger: `docs/fql_forge/INBOUND_RESEARCH_LEDGER.md` (capture: `python3 research/capture_inbound.py`)
