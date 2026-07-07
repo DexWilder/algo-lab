@@ -1062,6 +1062,24 @@
       "linked_packet": null,
       "linked_queue": null,
       "linked_control": "research/gex_regime_feature.py"
+    },
+    {
+      "inbound_id": "INB-20260707-002",
+      "date": "2026-07-07",
+      "source_type": "operator directive",
+      "source_ref": null,
+      "raw_note": "OPERATING-MODEL RESET assessment: diagnosis = inverted funnel (371 infra scripts / 10 source packets / 1 diversifier), DATA is binding constraint on forced-flow mechanisms, market breadth illusory (index sweep replicated), external harvest absent. Verdict PARTIAL RESET: keep validator+memory+2 assets, rebuild generation/breadth/data factory. Next: STOP infra, acquire feeds, broad native screens on NG/FX/crypto.",
+      "mechanism": null,
+      "family": "governance",
+      "required_data": null,
+      "available_data": null,
+      "required_harness": null,
+      "status": "ACTIVE_PACKET_LANE",
+      "priority": "P0",
+      "next_action": "prune infra, acquire EIA/event feeds, build batch-screen runner, native screens NG/FX/crypto",
+      "linked_packet": null,
+      "linked_queue": "queue:INB-20260707-002",
+      "linked_control": "OPERATING_MODEL_RESET_ASSESSMENT_2026-07-07.md"
     }
   ]
 }
