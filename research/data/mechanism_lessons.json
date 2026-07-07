@@ -1,88 +1,49 @@
 {
   "note": "structured failure lessons \u2014 mechanism != implementation; retest_this_impl=NO always; materially_different flag governs revival",
-  "lessons": {
-    "M18_stop_runs": {
-      "mechanism": "Stop runs / liquidity sweeps",
-      "hypothesis": "sweep prior-20-low then close-above -> long reversal",
-      "result": "PF 1.06, Sh 0.26 (MES/MNQ), -0.15 (M2K)",
-      "failure_reason": "insufficient edge",
+  "lessons": [
+    {
+      "mechanism": "M53_opening_imbalance_conditioned",
+      "date": "2026-07-07",
+      "hypothesis": "large overnight gaps (|z|>1) continue intraday open->close, cross-asset MES/MNQ/MYM",
+      "result": "MNQ-only Sh1.29; MES~0, MYM weak; real DSR 0.73@N8 -> 0.0001 honest-N",
+      "failure_reason": "multiple_testing_fragile + not cross-asset",
       "possible_explanations": [
-        "crowded/arbed",
-        "entry too late (need tick, not 5m)",
-        "wrong def of 'sweep'",
-        "wrong timeframe"
+        "Nasdaq-specific microstructure quirk not general index effect",
+        "surfaced BECAUSE best-of-search; deflation removes it",
+        "small n ~65/instrument"
       ],
       "retest_this_impl": false,
       "materially_different_allowed": true,
-      "future_research": "tick-level sweep detection or depth-based; NOT this 5m definition"
-    },
-    "M38_leadlag_hf": {
-      "mechanism": "HF cross-index lead-lag",
-      "hypothesis": "MES 1m return predicts MNQ next 1m",
-      "result": "corr -0.001, Sh -0.07",
-      "failure_reason": "efficient market",
-      "possible_explanations": [
-        "arbed at 1m",
-        "lead-lag exists only sub-second"
+      "ruled_out": [
+        "roll-gap artifact (survives excluding roll windows)"
       ],
-      "retest_this_impl": false,
-      "materially_different_allowed": false,
-      "future_research": "RETIRE at accessible frequencies (need sub-ms infra we don't have)"
+      "future_research": "ONE more pre-registered impl conditioning on overnight-volume regime or news-gap classification; raw z-gap retired"
     },
-    "M54_dealer_inventory_unwind": {
-      "mechanism": "Dealer/MM inventory unwind",
-      "hypothesis": "large 5m move (z>2.5) reverts next bar",
-      "result": "Sh -0.12/-0.39",
-      "failure_reason": "insufficient edge",
+    {
+      "mechanism": "PROCESS_dsr_misread",
+      "date": "2026-07-07",
+      "hypothesis": "(meta) deflated_sharpe(returns,N) reported a valid multiple-testing DSR",
+      "result": "It returned PSR (P(SR>0)) NOT DSR \u2014 sr_trials_std omitted -> deflation_applied=False, N-independent. M53 'DSR 0.996' was really PSR.",
+      "failure_reason": "tool_misuse_false_positive",
+      "retest_this_impl": true,
+      "materially_different_allowed": true,
+      "future_research": "CONTROLS: (a) dsr_verdict() always deflates; (b) detect_psr_misread() flags deflation_applied=False & dsr>=0.9. Kills unaffected (low Sharpe->low PSR); only M53 pass contaminated, now corrected."
+    },
+    {
+      "mechanism": "M19_opex_gamma_pin",
+      "date": "2026-07-07",
+      "hypothesis": "on expiry day price pins to max-OI strike; trade toward pin open->close (MES)",
+      "result": "Sh-1.03 PF0.83 neg 3/4yr; DSR fail",
+      "failure_reason": "no_edge (pin-convergence absent/reversed at max-OI proxy)",
       "possible_explanations": [
-        "large moves are informed not inventory",
-        "reversion horizon wrong",
-        "need order-flow/depth to identify MM inventory"
+        "max-OI is a crude pin proxy; true pin is signed-GEX-weighted",
+        "MES/ES pin effect weaker than SPX (where dealer gamma concentrates)",
+        "expiry-day gamma UNCLAMP may cause momentum AWAY from pin, not toward"
       ],
       "retest_this_impl": false,
       "materially_different_allowed": true,
-      "future_research": "need actual inventory proxy (depth/imbalance), not price-move; mechanism NOT falsified, this impl is"
-    },
-    "M22_vol_target_cta": {
-      "mechanism": "Vol-target/CTA mechanical de-lever",
-      "hypothesis": "VIX-up prior day -> short index today",
-      "result": "Sh -0.21/-0.24",
-      "failure_reason": "insufficient edge / wrong sign",
-      "possible_explanations": [
-        "de-lever already priced by close",
-        "need intraday timing",
-        "VIX-change too coarse a proxy for flow"
-      ],
-      "retest_this_impl": false,
-      "materially_different_allowed": true,
-      "future_research": "realized-vol-target model + intraday flow timing, not daily VIX-change"
-    },
-    "M37_intraday_ushape": {
-      "mechanism": "Intraday U-shape (midday lull)",
-      "hypothesis": "fade midday 30m moves (low-vol MR)",
-      "result": "Sh 0.38 (MES) / 0.79 (MNQ) \u2014 borderline",
-      "failure_reason": "weak, not DSR-credible",
-      "possible_explanations": [
-        "midday MR real but tiny after cost",
-        "window def suboptimal"
-      ],
-      "retest_this_impl": false,
-      "materially_different_allowed": true,
-      "future_research": "MNQ 0.79 is borderline -> ONE materially-different attempt (tighter midday window / vol-conditioned) allowed before retire"
-    },
-    "M21_fx_fixing_wmr": {
-      "mechanism": "WMR 16:00 benchmark fix flow",
-      "hypothesis": "trade FX in the fix hour",
-      "result": "naive best-of-24 Sh6 = SNOOP; PRE-REGISTERED hr15 a-priori = -0.02/-1.27/+0.10 DEAD",
-      "failure_reason": "no edge at pre-registered fix hour (snoop rejected)",
-      "possible_explanations": [
-        "fix flow arbed",
-        "wrong exact fix minute (need 15:59-16:00 not full hour)",
-        "fix effect in vol not direction"
-      ],
-      "retest_this_impl": false,
-      "materially_different_allowed": true,
-      "future_research": "minute-precise fix window (15:58-16:02) or fix-vol not fix-direction; hour-level dead"
+      "ruled_out": [],
+      "future_research": "GEX-weighted pin (BS-gamma x OI x dealer-sign) via gex_regime_feature; did NOT sign-fish the anti-pin +1.03"
     }
-  }
+  ]
 }

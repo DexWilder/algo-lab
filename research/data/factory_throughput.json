@@ -1,0 +1,21 @@
+{
+  "updated": "2026-07-07",
+  "high_ev_backlog": 1,
+  "high_ev_ids": [
+    "M47_settlement_basis"
+  ],
+  "completed_verdicts": 24,
+  "remaining_testable": 23,
+  "blocked_on_data": 18,
+  "lifecycle": {
+    "Retired": 21,
+    "Validated": 3,
+    "Blocked": 18,
+    "Harvested": 23
+  },
+  "mechanisms_per_active_day": 25.0,
+  "mechanism_research_trials": 25,
+  "active_test_days": 1,
+  "verdict_dated_count": 3,
+  "note": "time-to-verdict needs verdict_date stamping (started 2026-07-07); mechanisms/day from real ledger ts"
+}

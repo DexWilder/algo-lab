@@ -735,10 +735,11 @@
     },
     {
       "id": "prereg_opening_imbalance",
-      "status": "RUN_NOW",
+      "status": "DONE",
       "lane": "mechanism_research",
       "mission_class": "INDEX_DIRECT",
-      "note": "PRE-REGISTERED: large-gap continuation (gz>1 follow gap intraday) MES/MNQ/MYM \u2014 OOS+cost+DSR+per-year. Cheap-screen MNQ1.39/MES0.96; materially diff from dead naive-gap."
+      "note": "PRE-REGISTERED: large-gap continuation (gz>1 follow gap intraday) MES/MNQ/MYM \u2014 OOS+cost+DSR+per-year. Cheap-screen MNQ1.39/MES0.96; materially diff from dead naive-gap.",
+      "verdict": "KILL_impl (MNQ-only, real DSR fails; roll-artifact ruled out; mechanism open for materially-diff impl)"
     }
   ]
 }

@@ -77,6 +77,15 @@ def detect_dsr_cliff(dsr_by_n):
     if lo>=0.95 and hi<0.5: return True, f"DSR CLIFF: {lo:.2f}@N={ns[0]} -> {hi:.2f}@N={ns[-1]} — multiple-testing fragile, not DSR-credible."
     return False,""
 
+
+def detect_psr_misread(dsr_result):
+    """CATCH (2026-07-07): deflated_sharpe WITHOUT sr_trials_std returns PSR (P(SR>0)), NOT multiple-testing-corrected DSR,
+    and is N-INDEPENDENT. Reading its 'dsr' field as a DSR pass is a false-positive trap (M53 gap: PSR 0.996 misread).
+    ALWAYS pass sr_trials_std for a real DSR verdict; else flag."""
+    if isinstance(dsr_result,dict) and dsr_result.get("deflation_applied") is False and dsr_result.get("dsr",0)>=0.9:
+        return True, f"PSR_MISREAD: dsr={dsr_result.get('dsr')} is PSR (deflation_applied=False), NOT multiple-testing-corrected. Pass sr_trials_std."
+    return False,""
+
 def scan_result(r):
     """Run all applicable detectors from a result dict; return fired flags. Fields optional."""
     fired=[]

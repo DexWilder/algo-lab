@@ -1,23 +1,23 @@
-# ALPHA RESEARCH DASHBOARD (auto-generated 2026-07-07 15:58 UTC)
+# ALPHA RESEARCH DASHBOARD (auto-generated 2026-07-07 16:40 UTC)
 > `python3 research/forge_dashboard.py` regenerates this. Single canonical state view.
 
 ## HEADLINE
 - **Validated primaries: 0** (highest ladder rung: **SCREEN_PASS**; capital gate FAIL-CLOSED, PAPER_APPROVED+ operator-only).
-- Guardrails: **clean/P1** | Self-audit: **SELF_AUDIT_CLEAN** (facets=12 PASS=12 STALE=0 BROKEN=0 DESIGNED-not-built=0) | Git backlog: **0** | Global trial-N: **2991**
-- **Mission:** MNQ/MES/MYM index workhorse (WH1). RUN_NOW mission-weighting: 31/37 WH1-aligned ({'DIVERSIFIER': 6, 'INDEX_REGIME_INPUT': 28, 'INDEX_DIRECT': 3})
+- Guardrails: **clean/P1** | Self-audit: **SELF_AUDIT_CLEAN** (facets=12 PASS=12 STALE=0 BROKEN=0 DESIGNED-not-built=0) | Git backlog: **0** | Global trial-N: **3016**
+- **Mission:** MNQ/MES/MYM index workhorse (WH1). RUN_NOW mission-weighting: 30/36 WH1-aligned ({'DIVERSIFIER': 6, 'INDEX_REGIME_INPUT': 27, 'INDEX_DIRECT': 3})
 - **Search posture:** the NAIVE direct-index price/volume surface (gap/fade/trend/MR/OR) is picked-over UNDER TESTED EXPRESSIONS. WH1 direct-index remains LIVE via GEX/event/regime/source-CONDITIONED mechanisms + MYM (1m now pulled). Structural surfaces (GEX/dealer-flow, event-surprise, forced-flow) are EARLY — prove over 20–50 cycles, not solved.
 
 ## Throughput (computed live)
-- Tests logged today: **1137** | total kills: 6 | screen-passes: 2
+- Tests logged today: **1162** | total kills: 10 | screen-passes: 2
 - Novelty packets: **38** stored (0 today) of 108 template×instrument space
 - Families: **12 active** / 21 | coverage 60% (tested exprs / total exprs)
 - Candidate ladder: SCREEN_PASS=1
 
 ## Factory metrics (MECHANISM-FIRST — "are we learning about markets faster than last week?", not Sharpe/PF)
-- **DISCOVERY layer:** mechanisms in library **65** (Tier-A: 62) | tested 15 | **discovery surface (untested Tier-A): 46** | goal: 100s — grow every week
+- **DISCOVERY layer:** mechanisms in library **65** (Tier-A: 62) | tested 24 | **discovery surface (untested Tier-A): 37** | goal: 100s — grow every week
 - **RESEARCH layer:** batch hypotheses 1134 across 15 markets. *714 hyps ≈ 4 price mechanisms — hypotheses ≠ breadth; MECHANISMS are breadth.*
 - **VALIDATION layer:** candidate COMPONENTS **3** (spreadMR_GC · GEX-ingredient · month-end-WATCH) — NOT established engines; each still needs full validation. Validated primaries: 0
-- **LIFECYCLE (nothing sits):** {'Retired': 12, 'Validated': 3, 'Harvested': 50} — every mechanism is Harvested/Testing/Validated/Retired
+- **LIFECYCLE (nothing sits):** {'Retired': 21, 'Validated': 3, 'Blocked': 18, 'Harvested': 23} — every mechanism is Harvested/Testing/Validated/Retired
 - **COVERAGE HOLES (0 tested):** ['Macro_Event', 'Commodity', 'Calendar'] — under-mined categories where non-arbed edge likely lives (we over-mined Price, all dead)
 - **HIGH-EV research backlog (data-ready, next):** 11 — ['M18_stop_runs', 'M19_opex_gamma_pin', 'M21_fx_fixing_wmr', 'M22_vol_target_cta', 'M36_quarter_end_window_dressing', 'M37_intraday_ushape']
 - Honest: real breadth = ~14 tested mechanisms; the pipeline works, library GROWS via ranked data + permanent harvest. No overclaims. Keepers = candidate COMPONENTS not engines.
@@ -33,6 +33,7 @@
 - batch_screen: 1134
 - databento_volume: 70
 - positioning: 48
+- mechanism_research: 25
 - exploratory: 23
 - commodity_carry: 10
 - forced_flow: 8
@@ -43,7 +44,7 @@
 - portfolio: 2
 
 ## Queue depth
-- RUN_NOW: 37 | total queue items: 100
+- RUN_NOW: 36 | total queue items: 102
 - [ACTIVE_PACKET_LANE] gamma_chunked_loader_then_regime: chunked OI loader -> approx-GEX -> predeclared GEX-regime test (feasib
 - [DONE] gc_detrended_carry_zscore: refined commodity TS expr (naive carry-sign KILLed 2026-07-01); de-tre
 - [DONE] clgc_spread_momentum: refined commodity TS expr (naive carry-sign KILLed 2026-07-01); de-tre

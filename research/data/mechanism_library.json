@@ -235,15 +235,20 @@
     },
     "M19_opex_gamma_pin": {
       "class": "options",
-      "status": "untested",
+      "status": "dead",
       "mechanism_backed": true,
       "data_have": "weekly-OI",
-      "note": "expiry pinning to max-OI strike",
+      "note": "mechanism OPEN for ONE materially-different impl: proper signed-GEX-weighted pin (BS-gamma x OI x dealer-sign) via gex_regime_feature.py, not raw max-OI. Did NOT sign-fish the +1.03 anti-pin result.",
       "tier": "A",
       "category": "Volatility",
-      "confidence": 0,
-      "lifecycle": "Harvested",
-      "ev": "H"
+      "confidence": 1,
+      "lifecycle": "Retired",
+      "ev": "H",
+      "verdict": "KILL_impl",
+      "verdict_date": "2026-07-07",
+      "failure_reason": "max-OI pin convergence FAILS on MES: trading TOWARD pin Sh-1.03 PF0.83 neg in 3/4yrs, real DSR 0.14@8->0.03@N. Pin-convergence effect absent (or reversed) at this proxy.",
+      "materially_different_allowed": true,
+      "exprs_tested": 1
     },
     "M20_eia_inventory": {
       "class": "event",
@@ -580,14 +585,16 @@
     "M46_options_skew_ts": {
       "class": "options",
       "tier": "A",
-      "status": "untested",
+      "status": "data_blocked",
       "mechanism_backed": true,
       "data_have": "OI partial",
-      "note": "implied-vol skew/term-structure signal",
+      "note": "skew term-structure needs IV by strike/expiry; ES_OPT_weekly_oi.csv is OI-only. Blocked queue, not HIGH-EV-ready. Unlock: pull option settlement prices/IV.",
       "category": "Volatility",
       "confidence": 0,
-      "lifecycle": "Harvested",
-      "ev": "H"
+      "lifecycle": "Blocked",
+      "ev": "H",
+      "data_needed": "option_IV_surface_by_strike (have ES OI only, no implied vols)",
+      "verdict_date": "2026-07-07"
     },
     "M47_settlement_basis": {
       "class": "microstructure",
@@ -668,14 +675,19 @@
     "M53_opening_imbalance_conditioned": {
       "class": "microstructure",
       "tier": "B",
-      "status": "weak",
+      "status": "dead",
       "mechanism_backed": true,
       "data_have": "1m",
-      "note": "opening imbalance conditioned on overnight range (B: refinement of M17) [INTERESTING: large-gap continuation MNQ1.39/MES0.96 (materially diff from dead naive-gap M03) -> pre-register+OOS+DSR]",
+      "note": "mechanism OPEN for ONE materially-different pre-registered impl: condition on overnight-volume or news-gap-vs-drift-gap, not raw z-gap. Roll-gap artifact RULED OUT (survives excluding roll windows).",
       "category": "Liquidity_Microstructure",
-      "confidence": 2,
-      "lifecycle": "Testing",
-      "ev": "H"
+      "confidence": 1,
+      "lifecycle": "Retired",
+      "ev": "H",
+      "verdict": "KILL_impl",
+      "verdict_date": "2026-07-07",
+      "failure_reason": "raw large-gap continuation: MNQ-only (MES~0, MYM weak/2-of-4yr); real DSR (deflation applied) 0.73@N8 -> 0.0001@honest-N. The PSR 0.996 that looked like a pass was NOT multiple-testing corrected.",
+      "materially_different_allowed": true,
+      "exprs_tested": 1
     },
     "M54_dealer_inventory_unwind": {
       "class": "microstructure",

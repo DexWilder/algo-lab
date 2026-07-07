@@ -84,6 +84,17 @@ def deflated_sharpe(returns, n_trials, sr_trials_std=None):
             "note": None if deflated else "PSR only (no trial dispersion passed); pass sr_trials_std (std of Sharpe across sweep trials) for true multiple-testing deflation"}
 
 
+def dsr_verdict(returns, n_trials, sr_trials_std=0.05):
+    """CANONICAL DSR GATE — ALWAYS deflates (defaults sr_trials_std=0.05). Use THIS, never the raw deflated_sharpe
+    without sr_trials_std, so a PSR can never be misread as a DSR pass (M53 gap trap, 2026-07-07). Returns the full
+    dict with deflation_applied=True guaranteed. sr_trials_std=0.05 is the conservative default cross-trial Sharpe
+    dispersion for daily per-period returns; pass a measured value when the sweep provides one."""
+    res = deflated_sharpe(returns, n_trials, sr_trials_std=sr_trials_std)
+    if res.get("deflation_applied") is not True and res.get("dsr") is not None:
+        res["_WARN"] = "deflation unexpectedly not applied — treat as PSR, do NOT call a pass"
+    return res
+
+
 if __name__ == "__main__":
     rng = np.random.default_rng(42)
     # self-test: a genuinely good strategy (SR~1.5 ann) selected from 50 trials

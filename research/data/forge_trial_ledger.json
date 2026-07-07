@@ -29098,6 +29098,70 @@
       "lane": "mechanism_research",
       "ts": "2026-07-07",
       "n": 369
+    },
+    {
+      "packet": "PREREG:opening_imbalance:POOLED",
+      "asset": "MES+MNQ+MYM",
+      "sharpe": 1.06,
+      "verdict": "prereg",
+      "horizon": "",
+      "lane": "mechanism_research",
+      "ts": "2026-07-07",
+      "dsr": 0.9955,
+      "maxyr": 48,
+      "n": 991
+    },
+    {
+      "packet": "M53:opening_imbalance:gap_continuation:REAL_DSR",
+      "asset": "MNQ(only)",
+      "sharpe": 1.29,
+      "verdict": "KILL_impl",
+      "horizon": "",
+      "lane": "mechanism_research",
+      "ts": "2026-07-07",
+      "failure_class": "multiple_testing_fragile",
+      "dsr": 0.0001,
+      "maxyr": 45,
+      "n": 65
+    },
+    {
+      "packet": "M53:opening_imbalance:gap_continuation:REAL_DSR",
+      "asset": "MNQ(only)",
+      "sharpe": 1.29,
+      "verdict": "KILL_impl",
+      "horizon": "",
+      "lane": "mechanism_research",
+      "ts": "2026-07-07",
+      "failure_class": "multiple_testing_fragile",
+      "dsr": 0.0001,
+      "maxyr": 45,
+      "n": 65
+    },
+    {
+      "packet": "M19:opex_gamma_pin:MES:prereg",
+      "asset": "MES",
+      "sharpe": -1.03,
+      "verdict": "KILL",
+      "horizon": "",
+      "lane": "mechanism_research",
+      "ts": "2026-07-07",
+      "failure_class": "no_edge",
+      "dsr": 0.139,
+      "maxyr": 999,
+      "n": 71
+    },
+    {
+      "packet": "M19:opex_gamma_pin:MES:prereg",
+      "asset": "MES",
+      "sharpe": -1.03,
+      "verdict": "KILL_impl",
+      "horizon": "",
+      "lane": "mechanism_research",
+      "ts": "2026-07-07",
+      "failure_class": "no_edge",
+      "dsr": 0.028,
+      "maxyr": 999,
+      "n": 71
     }
   ],
   "note": "auto multiple-testing N; every test appends"
