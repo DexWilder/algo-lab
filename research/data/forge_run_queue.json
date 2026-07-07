@@ -604,45 +604,51 @@
       "id": "INB-20260707-002",
       "status": "BACKLOG",
       "lane": "inbound",
-      "note": "[governance] OPERATING-MODEL RESET assessment: diagnosis = inverted funnel (371 infra scripts / 10 sour"
+      "note": "[governance] OPERATING-MODEL RESET assessment: diagnosis = inverted funnel (371 infra scripts / 10 sour",
+      "mission_class": "INDEX_REGIME_INPUT"
     },
     {
       "id": "INB-20260707-003",
       "status": "BACKLOG",
       "lane": "inbound",
-      "note": "[governance] BATCH-SCREEN funnel built + run: 420 daily price/volume hypotheses x 12 markets in one com"
+      "note": "[governance] BATCH-SCREEN funnel built + run: 420 daily price/volume hypotheses x 12 markets in one com",
+      "mission_class": "INDEX_REGIME_INPUT"
     },
     {
       "id": "batch_screen_microstructure",
       "status": "RUN_NOW",
       "lane": "batch_screen",
-      "note": "point batch-runner at INTRADAY microstructure mechanisms (1m: opening-imbalance, liquidity-hole, vol-shock, lead-lag) x 12 markets \u2014 richer than daily price/volume (now proven dead)"
+      "note": "point batch-runner at INTRADAY microstructure mechanisms (1m: opening-imbalance, liquidity-hole, vol-shock, lead-lag) x 12 markets \u2014 richer than daily price/volume (now proven dead)",
+      "mission_class": "INDEX_REGIME_INPUT"
     },
     {
       "id": "batch_screen_forced_flow",
       "status": "RUN_NOW",
       "lane": "batch_screen",
-      "note": "batch-screen FORCED-FLOW mechanisms (roll-window, auction, OPEX, month-end, seasonal) \u2014 needs flow data acquisition first"
+      "note": "batch-screen FORCED-FLOW mechanisms (roll-window, auction, OPEX, month-end, seasonal) \u2014 needs flow data acquisition first",
+      "mission_class": "INDEX_REGIME_INPUT"
     },
     {
       "id": "acquire_eia_free_key",
       "status": "RUN_NOW",
       "lane": "batch_screen",
-      "note": "acquire EIA free API key + event-surprise proxy (FRED actual - AR forecast) \u2014 the data the funnel needs"
+      "note": "acquire EIA free API key + event-surprise proxy (FRED actual - AR forecast) \u2014 the data the funnel needs",
+      "mission_class": "INDEX_REGIME_INPUT"
     },
     {
       "id": "batch_screen_termstructure",
       "status": "RUN_NOW",
       "lane": "batch_screen",
-      "note": "batch-screen term-structure/carry mechanisms across CL/GC/rates per-contract (richer expression than daily close)"
+      "note": "batch-screen term-structure/carry mechanisms across CL/GC/rates per-contract (richer expression than daily close)",
+      "mission_class": "DIVERSIFIER"
     },
     {
       "id": "prereg_turnofmonth_rates",
-      "status": "RUN_NOW",
+      "status": "DONE",
       "lane": "forced_flow",
       "mission_class": "DIVERSIFIER",
       "surface": "A forced-flow T3",
-      "note": "PRE-REGISTERED: month-end duration-extension (long ZN/ZF/ZB last-2/first-2 sessions). Mechanism=bond-index rebalance forced buy. Test cross-instrument + OOS (search-N=1 a-priori, NOT batch-N). Surfaced by batch_screen but tested as independent hypothesis."
+      "note": "WATCH: real mechanism-backed diversifier (corr 0.02) but decaying + DSR0.877 + ZN tail-driven"
     }
   ]
 }

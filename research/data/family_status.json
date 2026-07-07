@@ -226,10 +226,11 @@
     },
     "monthend_settlement": {
       "lane": "forced_flow",
-      "status": "CLEAN_BUT_WEAK",
+      "status": "WATCH_turnofmonth_rates",
       "data": "LOCAL",
       "tested": [
-        "ZN month-end"
+        "ZN month-end",
+        "turn-of-month duration ZN/ZF/ZB pre-registered (WATCH: real+diversifier but decaying, DSR0.877)"
       ],
       "untested": [
         "ZF/ZB month-end",
@@ -243,7 +244,8 @@
       "tier_gap": true,
       "data_tier": "T1",
       "tier_gap_reason": "tested to T1, T3 untested",
-      "mission_class": "INDEX_DIRECT"
+      "mission_class": "INDEX_DIRECT",
+      "note": "PRE-REGISTERED turn-of-month duration test (batch surfaced -> graduated, NOT rescued): pooled ZN+ZF+ZB long dom<=2|>=27. REAL+mechanism-backed (all 6 years positive 2019-24, PF1.19, corr 0.02 to spreadMR_GC = genuine diversifier). BUT WATCH: DECAYING hard (H1/H2 0.90/0.18, 2019-20 big -> 2024 +156, being arbed); DSR 0.877<0.95 even @N=1; ZN tail-driven (top-2%-days=109% of PnL, roll-gap risk). Not PASS (decay+DSR), not KILL (real+diversifying). The batch->graduate->prereg PIPELINE worked end-to-end: surfaced a real forced-flow effect, tested it properly, verdicted honestly."
     },
     "expiry_opex": {
       "lane": "exploratory",

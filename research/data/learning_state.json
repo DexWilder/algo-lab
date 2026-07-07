@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-07-07 01:08 UTC",
-  "global_trial_N": 1856,
+  "timestamp": "2026-07-07 15:04 UTC",
+  "global_trial_N": 2991,
   "lane_breakdown": {
-    "forced_flow": 7,
+    "forced_flow": 8,
     "exploratory": 23,
     "portfolio": 2,
     "databento_volume": 70,
@@ -12,7 +12,8 @@
     "crypto_carry": 4,
     "carry": 4,
     "curve_rv": 3,
-    "commodity_carry": 10
+    "commodity_carry": 10,
+    "batch_screen": 1134
   },
   "families": {
     "trend_momentum": {
@@ -82,7 +83,7 @@
       "tier_gap": true
     },
     "monthend_settlement": {
-      "status": "CLEAN_BUT_WEAK",
+      "status": "WATCH_turnofmonth_rates",
       "data_tier": "T1",
       "richest_applicable_tier": "T3",
       "tier_gap": true

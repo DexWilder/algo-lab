@@ -28884,6 +28884,20 @@
       "ts": "2026-07-07",
       "maxyr": 106,
       "n": 635
+    },
+    {
+      "packet": "PREREG:turnofmonth_rates:POOLED",
+      "asset": "ZN+ZF+ZB",
+      "sharpe": 0.48,
+      "verdict": "prereg",
+      "horizon": "",
+      "lane": "forced_flow",
+      "ts": "2026-07-07",
+      "failure_class": "dsr_searchN_fail",
+      "data_tier": "T3",
+      "dsr": 0.8768,
+      "maxyr": 46,
+      "n": 1447
     }
   ],
   "note": "auto multiple-testing N; every test appends"

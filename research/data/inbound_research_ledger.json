@@ -1134,6 +1134,24 @@
       "linked_packet": null,
       "linked_queue": null,
       "linked_control": null
+    },
+    {
+      "inbound_id": "INB-20260707-006",
+      "date": "2026-07-07",
+      "source_type": "claude discovery",
+      "source_ref": null,
+      "raw_note": "Turn-of-month rates PRE-REGISTERED verdict = WATCH. Real mechanism-backed forced-flow (month-end duration): ZN+ZF+ZB all-6-yrs-positive, PF1.19, corr 0.02 to spreadMR_GC (genuine diversifier). BUT decaying (H1/H2 0.90/0.18, being arbed), DSR0.877<0.95, ZN tail-driven (top2%=109% PnL, roll risk). Not PASS/not KILL. KEY: the batch->mechanism-map->graduate->pre-register->full-stack->honest-verdict PIPELINE worked end-to-end (first time).",
+      "mechanism": null,
+      "family": "monthend_settlement",
+      "required_data": "rates 1m + calendar (have)",
+      "available_data": null,
+      "required_harness": null,
+      "status": "WATCH",
+      "priority": "P2",
+      "next_action": "bank as WATCH diversifier; revisit if decay stabilizes or as portfolio component; roll-clean ZN before belief",
+      "linked_packet": null,
+      "linked_queue": null,
+      "linked_control": null
     }
   ]
 }
