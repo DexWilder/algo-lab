@@ -686,7 +686,7 @@
     },
     {
       "id": "research_M18_stop_runs",
-      "status": "RUN_NOW",
+      "status": "DONE",
       "lane": "mechanism_research",
       "mission_class": "INDEX_REGIME_INPUT",
       "note": "HIGH-EV data-ready: M18_stop_runs \u2014 liquidity sweeps of stop clusters (cheap-screen/pre-register)"
@@ -725,6 +725,13 @@
       "lane": "mechanism_research",
       "mission_class": "INDEX_REGIME_INPUT",
       "note": "HIGH-EV data-ready: M37_intraday_ushape \u2014 U-shape vol/volume timing edges (cheap-screen/pre-register)"
+    },
+    {
+      "id": "prereg_fx_fixing",
+      "status": "RUN_NOW",
+      "lane": "mechanism_research",
+      "mission_class": "DIVERSIFIER",
+      "note": "PRE-REGISTERED: WMR 16:00-London fix hour (a-priori, NOT best-of-24) on 6E/6J/6B; OOS + costs. naive snoop rejected."
     }
   ]
 }

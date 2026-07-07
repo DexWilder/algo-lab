@@ -190,7 +190,7 @@
       "tier": "A",
       "category": "InstitutionalFlow",
       "confidence": 0,
-      "lifecycle": "Harvested",
+      "lifecycle": "Blocked",
       "ev": "L"
     },
     "M16_etf_create_redeem": {
@@ -203,7 +203,7 @@
       "tier": "A",
       "category": "InstitutionalFlow",
       "confidence": 0,
-      "lifecycle": "Harvested",
+      "lifecycle": "Blocked",
       "ev": "L"
     },
     "M17_closing_auction_moc": {
@@ -221,15 +221,17 @@
     },
     "M18_stop_runs": {
       "class": "microstructure",
-      "status": "untested",
+      "status": "dead",
       "mechanism_backed": true,
       "data_have": "1m",
       "note": "liquidity sweeps of stop clusters",
       "tier": "A",
       "category": "Liquidity_Microstructure",
-      "confidence": 0,
-      "lifecycle": "Harvested",
-      "ev": "H"
+      "confidence": 1,
+      "lifecycle": "Retired",
+      "ev": "H",
+      "failure_reason": "no-edge (sweep-recover doesn't reverse, PF~1.06)",
+      "exprs_tested": 1
     },
     "M19_opex_gamma_pin": {
       "class": "options",
@@ -253,7 +255,7 @@
       "tier": "A",
       "category": "Macro_Event",
       "confidence": 0,
-      "lifecycle": "Harvested",
+      "lifecycle": "Blocked",
       "ev": "L"
     },
     "M21_fx_fixing_wmr": {
@@ -261,11 +263,11 @@
       "status": "untested",
       "mechanism_backed": true,
       "data_have": "1m",
-      "note": "16:00 benchmark-tracking fund flow",
+      "note": "16:00 benchmark-tracking fund flow [naive best-of-24-hour Sh6 = SNOOP; needs PRE-REGISTERED 16:00-London fix hour]",
       "tier": "A",
       "category": "InstitutionalFlow",
       "confidence": 0,
-      "lifecycle": "Harvested",
+      "lifecycle": "Testing",
       "ev": "H"
     },
     "M22_vol_target_cta": {
@@ -290,7 +292,7 @@
       "tier": "A",
       "category": "InstitutionalFlow",
       "confidence": 0,
-      "lifecycle": "Harvested",
+      "lifecycle": "Blocked",
       "ev": "L"
     },
     "M24_buyback_blackout": {
@@ -303,7 +305,7 @@
       "tier": "A",
       "category": "InstitutionalFlow",
       "confidence": 0,
-      "lifecycle": "Harvested",
+      "lifecycle": "Blocked",
       "ev": "L"
     },
     "M25_bond_issuance": {
@@ -328,7 +330,7 @@
       "tier": "A",
       "category": "InstitutionalFlow",
       "confidence": 0,
-      "lifecycle": "Harvested",
+      "lifecycle": "Blocked",
       "ev": "L"
     },
     "M27_dividend_reinvest": {
@@ -341,7 +343,7 @@
       "tier": "A",
       "category": "InstitutionalFlow",
       "confidence": 0,
-      "lifecycle": "Harvested",
+      "lifecycle": "Blocked",
       "ev": "L"
     },
     "M28_commodity_seasonal": {
@@ -367,7 +369,7 @@
       "tier": "A",
       "category": "Macro_Event",
       "confidence": 0,
-      "lifecycle": "Harvested",
+      "lifecycle": "Blocked",
       "ev": "L"
     },
     "M30_pre_fomc_drift": {
@@ -404,7 +406,7 @@
       "note": "VIX term-structure roll yield",
       "category": "Volatility",
       "confidence": 0,
-      "lifecycle": "Harvested",
+      "lifecycle": "Blocked",
       "ev": "L"
     },
     "M33_variance_risk_premium": {
@@ -471,14 +473,16 @@
     "M38_leadlag_hf": {
       "class": "microstructure",
       "tier": "A",
-      "status": "untested",
+      "status": "dead",
       "mechanism_backed": true,
       "data_have": "1m",
       "note": "ES leads NQ/YM sub-minute",
       "category": "Liquidity_Microstructure",
-      "confidence": 0,
-      "lifecycle": "Harvested",
-      "ev": "H"
+      "confidence": 1,
+      "lifecycle": "Retired",
+      "ev": "H",
+      "failure_reason": "efficient: MES->MNQ 1m corr -0.001, no lead-lag",
+      "exprs_tested": 1
     },
     "M39_rates_curve_momentum": {
       "class": "carry",
@@ -538,7 +542,7 @@
       "note": "macro-surprise-index momentum",
       "category": "Macro_Event",
       "confidence": 0,
-      "lifecycle": "Harvested",
+      "lifecycle": "Blocked",
       "ev": "L"
     },
     "M44_crypto_basis": {
@@ -563,7 +567,7 @@
       "note": "vol-of-vol regime conditioning",
       "category": "Volatility",
       "confidence": 0,
-      "lifecycle": "Harvested",
+      "lifecycle": "Blocked",
       "ev": "L"
     },
     "M46_options_skew_ts": {
@@ -600,7 +604,7 @@
       "note": "funding-stress -> rates/risk",
       "category": "Macro_Event",
       "confidence": 0,
-      "lifecycle": "Harvested",
+      "lifecycle": "Blocked",
       "ev": "L"
     },
     "M49_ecb_boj_drift": {
@@ -613,7 +617,7 @@
       "note": "FX/rates drift into non-Fed CB meetings",
       "category": "Macro_Event",
       "confidence": 0,
-      "lifecycle": "Harvested",
+      "lifecycle": "Blocked",
       "ev": "L"
     },
     "M50_energy_seasonal": {
@@ -626,7 +630,7 @@
       "note": "NG/power winter-demand seasonality",
       "category": "Commodity",
       "confidence": 0,
-      "lifecycle": "Harvested",
+      "lifecycle": "Blocked",
       "ev": "L"
     },
     "M51_momentum_crash_timing": {
@@ -651,7 +655,7 @@
       "note": "index-vs-component dispersion",
       "category": "Volatility",
       "confidence": 0,
-      "lifecycle": "Harvested",
+      "lifecycle": "Blocked",
       "ev": "L"
     },
     "M53_opening_imbalance_conditioned": {
@@ -669,14 +673,16 @@
     "M54_dealer_inventory_unwind": {
       "class": "microstructure",
       "tier": "A",
-      "status": "untested",
+      "status": "dead",
       "mechanism_backed": true,
       "data_have": "1m",
       "category": "Liquidity_Microstructure",
-      "confidence": 0,
-      "lifecycle": "Harvested",
+      "confidence": 1,
+      "lifecycle": "Retired",
       "ev": "H",
-      "note": "market-maker inventory MR (hole: dealer inventory)"
+      "note": "market-maker inventory MR (hole: dealer inventory)",
+      "failure_reason": "no-edge: large index moves don't revert next-bar",
+      "exprs_tested": 1
     },
     "M55_commodity_logistics": {
       "class": "seasonal",
@@ -687,7 +693,7 @@
       "data_needed": "storage/transport",
       "category": "Commodity",
       "confidence": 0,
-      "lifecycle": "Harvested",
+      "lifecycle": "Blocked",
       "ev": "L",
       "note": "storage/transport constraints (hole: commodity logistics)"
     },
@@ -785,7 +791,7 @@
       "data_needed": "xccy basis",
       "category": "CrossAsset_Carry",
       "confidence": 0,
-      "lifecycle": "Harvested",
+      "lifecycle": "Blocked",
       "ev": "L",
       "note": "cross-currency funding basis"
     },

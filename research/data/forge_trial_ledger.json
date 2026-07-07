@@ -28898,6 +28898,96 @@
       "dsr": 0.8768,
       "maxyr": 46,
       "n": 1447
+    },
+    {
+      "packet": "MECH:M18_stoprun:MES",
+      "asset": "MES",
+      "sharpe": 0.26,
+      "verdict": "mechanism_research",
+      "horizon": "",
+      "lane": "mechanism_research",
+      "ts": "2026-07-07",
+      "n": 223691
+    },
+    {
+      "packet": "MECH:M18_stoprun:MNQ",
+      "asset": "MNQ",
+      "sharpe": 0.28,
+      "verdict": "mechanism_research",
+      "horizon": "",
+      "lane": "mechanism_research",
+      "ts": "2026-07-07",
+      "n": 223691
+    },
+    {
+      "packet": "MECH:M18_stoprun:M2K",
+      "asset": "M2K",
+      "sharpe": -0.15,
+      "verdict": "mechanism_research",
+      "horizon": "",
+      "lane": "mechanism_research",
+      "ts": "2026-07-07",
+      "n": 141524
+    },
+    {
+      "packet": "MECH:M38_leadlag:MNQ",
+      "asset": "MNQ",
+      "sharpe": -0.07,
+      "verdict": "mechanism_research",
+      "horizon": "",
+      "lane": "mechanism_research",
+      "ts": "2026-07-07",
+      "n": 1116518
+    },
+    {
+      "packet": "MECH:M21_fxfix:6E",
+      "asset": "6E",
+      "sharpe": 6.74,
+      "verdict": "mechanism_research",
+      "horizon": "",
+      "lane": "mechanism_research",
+      "ts": "2026-07-07",
+      "n": 496
+    },
+    {
+      "packet": "MECH:M21_fxfix:6J",
+      "asset": "6J",
+      "sharpe": 6.09,
+      "verdict": "mechanism_research",
+      "horizon": "",
+      "lane": "mechanism_research",
+      "ts": "2026-07-07",
+      "n": 497
+    },
+    {
+      "packet": "MECH:M21_fxfix:6B",
+      "asset": "6B",
+      "sharpe": 5.96,
+      "verdict": "mechanism_research",
+      "horizon": "",
+      "lane": "mechanism_research",
+      "ts": "2026-07-07",
+      "n": 474
+    },
+    {
+      "packet": "MECH:M54_dealerinv:MES",
+      "asset": "MES",
+      "sharpe": -0.12,
+      "verdict": "mechanism_research",
+      "horizon": "",
+      "lane": "mechanism_research",
+      "ts": "2026-07-07",
+      "n": 223691
+    },
+    {
+      "packet": "MECH:M54_dealerinv:MNQ",
+      "asset": "MNQ",
+      "sharpe": -0.39,
+      "verdict": "mechanism_research",
+      "horizon": "",
+      "lane": "mechanism_research",
+      "ts": "2026-07-07",
+      "n": 223691
     }
   ],
   "note": "auto multiple-testing N; every test appends"
