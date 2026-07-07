@@ -683,6 +683,48 @@
       "status": "BACKLOG",
       "lane": "inbound",
       "note": "[governance] MECHANISM-FIRST reframe: measure DISTINCT MECHANISMS not hypotheses. 714 hyps = ~4 price m"
+    },
+    {
+      "id": "research_M18_stop_runs",
+      "status": "RUN_NOW",
+      "lane": "mechanism_research",
+      "mission_class": "INDEX_REGIME_INPUT",
+      "note": "HIGH-EV data-ready: M18_stop_runs \u2014 liquidity sweeps of stop clusters (cheap-screen/pre-register)"
+    },
+    {
+      "id": "research_M19_opex_gamma_pin",
+      "status": "RUN_NOW",
+      "lane": "mechanism_research",
+      "mission_class": "INDEX_REGIME_INPUT",
+      "note": "HIGH-EV data-ready: M19_opex_gamma_pin \u2014 expiry pinning to max-OI strike (cheap-screen/pre-register)"
+    },
+    {
+      "id": "research_M21_fx_fixing_wmr",
+      "status": "RUN_NOW",
+      "lane": "mechanism_research",
+      "mission_class": "INDEX_REGIME_INPUT",
+      "note": "HIGH-EV data-ready: M21_fx_fixing_wmr \u2014 16:00 benchmark-tracking fund flow (cheap-screen/pre-register)"
+    },
+    {
+      "id": "research_M22_vol_target_cta",
+      "status": "RUN_NOW",
+      "lane": "mechanism_research",
+      "mission_class": "INDEX_REGIME_INPUT",
+      "note": "HIGH-EV data-ready: M22_vol_target_cta \u2014 mechanical de/re-leverage on vol shocks (cheap-screen/pre-register)"
+    },
+    {
+      "id": "research_M36_quarter_end_window_dressing",
+      "status": "RUN_NOW",
+      "lane": "mechanism_research",
+      "mission_class": "INDEX_REGIME_INPUT",
+      "note": "HIGH-EV data-ready: M36_quarter_end_window_dressing \u2014 quarter-end institutional window dressing (cheap-screen/pre-register)"
+    },
+    {
+      "id": "research_M37_intraday_ushape",
+      "status": "RUN_NOW",
+      "lane": "mechanism_research",
+      "mission_class": "INDEX_REGIME_INPUT",
+      "note": "HIGH-EV data-ready: M37_intraday_ushape \u2014 U-shape vol/volume timing edges (cheap-screen/pre-register)"
     }
   ]
 }

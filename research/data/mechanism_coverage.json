@@ -1,0 +1,65 @@
+{
+  "coverage": {
+    "Price_CrossAsset": {
+      "total": 9,
+      "tested": 5,
+      "validated": 0,
+      "harvested": 4
+    },
+    "Liquidity_Microstructure": {
+      "total": 10,
+      "tested": 2,
+      "validated": 0,
+      "harvested": 8
+    },
+    "Volatility": {
+      "total": 10,
+      "tested": 2,
+      "validated": 1,
+      "harvested": 8
+    },
+    "InstitutionalFlow": {
+      "total": 11,
+      "tested": 2,
+      "validated": 1,
+      "harvested": 9
+    },
+    "CrossAsset_Carry": {
+      "total": 10,
+      "tested": 4,
+      "validated": 1,
+      "harvested": 6
+    },
+    "Macro_Event": {
+      "total": 9,
+      "tested": 0,
+      "validated": 0,
+      "harvested": 9
+    },
+    "Commodity": {
+      "total": 4,
+      "tested": 0,
+      "validated": 0,
+      "harvested": 4
+    },
+    "Calendar": {
+      "total": 2,
+      "tested": 0,
+      "validated": 0,
+      "harvested": 2
+    }
+  },
+  "high_ev_ready": [
+    "M18_stop_runs",
+    "M19_opex_gamma_pin",
+    "M21_fx_fixing_wmr",
+    "M22_vol_target_cta",
+    "M36_quarter_end_window_dressing",
+    "M37_intraday_ushape",
+    "M38_leadlag_hf",
+    "M46_options_skew_ts",
+    "M47_settlement_basis",
+    "M53_opening_imbalance_conditioned",
+    "M54_dealer_inventory_unwind"
+  ]
+}

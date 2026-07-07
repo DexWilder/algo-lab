@@ -36,6 +36,11 @@ _keepers=sum(1 for v in _ml.values() if v.get("status") in ("watch","ingredient"
 _untested=sum(1 for v in _ml.values() if v.get("status") in ("untested","data_blocked"))
 _tierA=sum(1 for v in _ml.values() if v.get("tier")=="A")
 _disc_surface=sum(1 for v in _ml.values() if v.get("status")=="untested" and v.get("tier")=="A")
+from collections import Counter as _LC
+_life=dict(_LC(v.get("lifecycle","Harvested") for v in _ml.values()))
+_cov=json.loads((REPO/"research/data/mechanism_coverage.json").read_text()) if (REPO/"research/data/mechanism_coverage.json").exists() else {"coverage":{},"high_ev_ready":[]}
+_holes=[c for c,x in _cov["coverage"].items() if x["tested"]==0]
+_highev=_cov.get("high_ev_ready",[])
 factory=dict(batch_hypotheses=len(_bt), markets_screened=len(set(t.get("asset") for t in _bt)),
              mechanisms=len(_ml), mechanisms_tested=_tested, mechanisms_untested=_untested, keepers=_keepers, tierA=_tierA, discovery_surface=_disc_surface)
 ds=json.loads((REPO/"research/data/data_sources.json").read_text())["sources"] if (REPO/"research/data/data_sources.json").exists() else []
@@ -72,7 +77,10 @@ out=f"""# ALPHA RESEARCH DASHBOARD (auto-generated {stamp})
 - **DISCOVERY layer:** mechanisms in library **{factory['mechanisms']}** (Tier-A: {factory['tierA']}) | tested {factory['mechanisms_tested']} | **discovery surface (untested Tier-A): {factory['discovery_surface']}** | goal: 100s — grow every week
 - **RESEARCH layer:** batch hypotheses {factory['batch_hypotheses']} across {factory['markets_screened']} markets. *714 hyps ≈ 4 price mechanisms — hypotheses ≠ breadth; MECHANISMS are breadth.*
 - **VALIDATION layer:** candidate COMPONENTS **{factory['keepers']}** (spreadMR_GC · GEX-ingredient · month-end-WATCH) — NOT established engines; each still needs full validation. Validated primaries: 0
-- Honest: real breadth = **~14 tested mechanisms**, most dead; the pipeline (surface→graduate→pre-register→verdict) works but the library must GROW via ranked data acquisition (`DATA_ACQUISITION_ROADMAP_2026-07-07.md`) + external harvest. No overclaims — one generator ≠ a domain.
+- **LIFECYCLE (nothing sits):** {_life} — every mechanism is Harvested/Testing/Validated/Retired
+- **COVERAGE HOLES (0 tested):** {_holes} — under-mined categories where non-arbed edge likely lives (we over-mined Price, all dead)
+- **HIGH-EV research backlog (data-ready, next):** {len(_highev)} — {_highev[:6]}
+- Honest: real breadth = ~14 tested mechanisms; the pipeline works, library GROWS via ranked data + permanent harvest. No overclaims. Keepers = candidate COMPONENTS not engines.
 
 ## Inbound capture (organizational memory — nothing floats)
 - Items: **{ib['total']}** | NEW: {ib['new']} | P0/P1: {ib['p0']}/{ib['p1']} | source packets today: {ib['source_packets_today']}
