@@ -1,35 +1,461 @@
 {
-  "note": "LIVING MECHANISM LIBRARY — distinct MARKET MECHANISMS (a forced-participant/structural story), NOT expressions. 714 price hypotheses = 1-4 mechanisms. This is the real breadth metric. Goal: grow to 50-100+. status: dead/weak/watch/ingredient/screen_pass/untested/data_blocked. mechanism_backed=has a forced-participant story.",
+  "note": "LIVING MECHANISM LIBRARY \u2014 distinct MARKET MECHANISMS (a forced-participant/structural story), NOT expressions. 714 price hypotheses = 1-4 mechanisms. This is the real breadth metric. Goal: grow to 50-100+. status: dead/weak/watch/ingredient/screen_pass/untested/data_blocked. mechanism_backed=has a forced-participant story. | ORIGINALITY TIERS: A=distinct behavioral mechanism, B=existing mechanism in new market, C=new expression of existing. Library = institutional knowledge base (falsified + partial + waiting-on-data + harvested). Batch's 714 hyps were mostly Tier-C expressions of ~4 Tier-A mechanisms. Track Tier-A ADDED per week.",
   "mechanisms": {
-    "M01_price_trend":        {"class":"price","status":"dead","mechanism_backed":false,"data_have":true,"exprs_tested":14,"verdict":"0 DSR-credible at honest N (batch)"},
-    "M02_price_meanrev":      {"class":"price","status":"dead","mechanism_backed":false,"data_have":true,"exprs_tested":12,"verdict":"0 DSR-credible"},
-    "M03_gap_overnight":      {"class":"price","status":"dead","mechanism_backed":false,"data_have":true,"exprs_tested":6,"verdict":"0 DSR-credible"},
-    "M04_volume_direction":   {"class":"microstructure","status":"dead","mechanism_backed":false,"data_have":true,"exprs_tested":6,"verdict":"dead"},
-    "M05_vol_state":          {"class":"vol","status":"weak","mechanism_backed":true,"data_have":true,"exprs_tested":6,"verdict":"weak, no DSR"},
-    "M06_cross_sectional_rv": {"class":"price","status":"weak","mechanism_backed":true,"data_have":true,"exprs_tested":9,"verdict":"weak/dead"},
-    "M07_month_end_flow":     {"class":"flow","status":"watch","mechanism_backed":true,"data_have":true,"exprs_tested":3,"verdict":"WATCH: real diversifier corr0.02 but DECAYING, DSR0.877"},
-    "M08_dealer_gamma":       {"class":"options","status":"ingredient","mechanism_backed":true,"data_have":"weekly-OI 563d","exprs_tested":8,"verdict":"regime FILTER validated (improves breakout); standalone trade rule dead OOS"},
-    "M09_commodity_termstruct":{"class":"carry","status":"screen_pass","mechanism_backed":true,"data_have":true,"exprs_tested":6,"verdict":"spreadMR_GC SCREEN_PASS gold-specific DSR-borderline diversifier"},
-    "M10_rates_carry_curve":  {"class":"carry","status":"dead","mechanism_backed":true,"data_have":true,"exprs_tested":9,"verdict":"dead daily per-contract"},
-    "M11_auction_demand":     {"class":"flow","status":"weak","mechanism_backed":true,"data_have":true,"exprs_tested":4,"verdict":"regime-specific 2024-25, DSR<0.95"},
-    "M12_crypto_funding":     {"class":"carry","status":"dead","mechanism_backed":true,"data_have":"partial","exprs_tested":3,"verdict":"dead"},
-    "M13_intraday_micro":     {"class":"microstructure","status":"dead","mechanism_backed":true,"data_have":true,"exprs_tested":10,"verdict":"OR/settlement/liquidity-hole dead"},
-    "M14_cross_index_rv":     {"class":"price","status":"weak","mechanism_backed":true,"data_have":true,"exprs_tested":4,"verdict":"threshold-selected diversifier, DSR<0.95"},
-
-    "M15_index_rebalance":    {"class":"flow","status":"untested","mechanism_backed":true,"data_have":false,"data_needed":"reconstitution calendar","note":"index funds forced-buy adds at close"},
-    "M16_etf_create_redeem":  {"class":"flow","status":"untested","mechanism_backed":true,"data_have":false,"data_needed":"ETF flow feed","note":"primary-market creation flow"},
-    "M17_closing_auction_moc":{"class":"microstructure","status":"untested","mechanism_backed":true,"data_have":"partial","data_needed":"MOC imbalance feed","note":"MOC imbalance resolution"},
-    "M18_stop_runs":          {"class":"microstructure","status":"untested","mechanism_backed":true,"data_have":"1m","note":"liquidity sweeps of stop clusters"},
-    "M19_opex_gamma_pin":     {"class":"options","status":"untested","mechanism_backed":true,"data_have":"weekly-OI","note":"expiry pinning to max-OI strike"},
-    "M20_eia_inventory":      {"class":"event","status":"data_blocked","mechanism_backed":true,"data_have":false,"data_needed":"EIA API free key","note":"producer hedge post-surprise"},
-    "M21_fx_fixing_wmr":      {"class":"flow","status":"untested","mechanism_backed":true,"data_have":"1m","note":"16:00 benchmark-tracking fund flow"},
-    "M22_vol_target_cta":     {"class":"flow","status":"untested","mechanism_backed":true,"data_have":"vix","note":"mechanical de/re-leverage on vol shocks"},
-    "M23_pension_rebalance":  {"class":"flow","status":"untested","mechanism_backed":true,"data_have":false,"data_needed":"proxy","note":"quarterly duration rebalance"},
-    "M24_buyback_blackout":   {"class":"flow","status":"untested","mechanism_backed":true,"data_have":false,"data_needed":"earnings calendar","note":"corp buyback blackout windows"},
-    "M25_bond_issuance":      {"class":"event","status":"untested","mechanism_backed":true,"data_have":"TreasuryDirect","note":"supply pressure (overlaps auction)"},
-    "M26_crypto_liquidation": {"class":"flow","status":"untested","mechanism_backed":true,"data_have":false,"data_needed":"liquidation feed","note":"cascade liquidations"},
-    "M27_dividend_reinvest":  {"class":"flow","status":"untested","mechanism_backed":true,"data_have":false,"data_needed":"ex-div calendar","note":"scheduled reinvestment inflow"},
-    "M28_commodity_seasonal": {"class":"seasonal","status":"untested","mechanism_backed":true,"data_have":"partial (no NG 1m)","data_needed":"NG 1m","note":"NG winter/weather seasonality"},
-    "M29_macro_surprise":     {"class":"event","status":"data_blocked","mechanism_backed":true,"data_have":false,"data_needed":"CPI/NFP consensus","note":"actual-vs-expected reaction path"}
+    "M01_price_trend": {
+      "class": "price",
+      "status": "dead",
+      "mechanism_backed": false,
+      "data_have": true,
+      "exprs_tested": 14,
+      "verdict": "0 DSR-credible at honest N (batch)",
+      "tier": "A"
+    },
+    "M02_price_meanrev": {
+      "class": "price",
+      "status": "dead",
+      "mechanism_backed": false,
+      "data_have": true,
+      "exprs_tested": 12,
+      "verdict": "0 DSR-credible",
+      "tier": "A"
+    },
+    "M03_gap_overnight": {
+      "class": "price",
+      "status": "dead",
+      "mechanism_backed": false,
+      "data_have": true,
+      "exprs_tested": 6,
+      "verdict": "0 DSR-credible",
+      "tier": "A"
+    },
+    "M04_volume_direction": {
+      "class": "microstructure",
+      "status": "dead",
+      "mechanism_backed": false,
+      "data_have": true,
+      "exprs_tested": 6,
+      "verdict": "dead",
+      "tier": "A"
+    },
+    "M05_vol_state": {
+      "class": "vol",
+      "status": "weak",
+      "mechanism_backed": true,
+      "data_have": true,
+      "exprs_tested": 6,
+      "verdict": "weak, no DSR",
+      "tier": "A"
+    },
+    "M06_cross_sectional_rv": {
+      "class": "price",
+      "status": "weak",
+      "mechanism_backed": true,
+      "data_have": true,
+      "exprs_tested": 9,
+      "verdict": "weak/dead",
+      "tier": "A"
+    },
+    "M07_month_end_flow": {
+      "class": "flow",
+      "status": "watch",
+      "mechanism_backed": true,
+      "data_have": true,
+      "exprs_tested": 3,
+      "verdict": "WATCH: real diversifier corr0.02 but DECAYING, DSR0.877",
+      "tier": "A"
+    },
+    "M08_dealer_gamma": {
+      "class": "options",
+      "status": "ingredient",
+      "mechanism_backed": true,
+      "data_have": "weekly-OI 563d",
+      "exprs_tested": 8,
+      "verdict": "regime FILTER validated (improves breakout); standalone trade rule dead OOS",
+      "tier": "A"
+    },
+    "M09_commodity_termstruct": {
+      "class": "carry",
+      "status": "screen_pass",
+      "mechanism_backed": true,
+      "data_have": true,
+      "exprs_tested": 6,
+      "verdict": "spreadMR_GC SCREEN_PASS gold-specific DSR-borderline diversifier",
+      "tier": "A"
+    },
+    "M10_rates_carry_curve": {
+      "class": "carry",
+      "status": "dead",
+      "mechanism_backed": true,
+      "data_have": true,
+      "exprs_tested": 9,
+      "verdict": "dead daily per-contract",
+      "tier": "A"
+    },
+    "M11_auction_demand": {
+      "class": "flow",
+      "status": "weak",
+      "mechanism_backed": true,
+      "data_have": true,
+      "exprs_tested": 4,
+      "verdict": "regime-specific 2024-25, DSR<0.95",
+      "tier": "A"
+    },
+    "M12_crypto_funding": {
+      "class": "carry",
+      "status": "dead",
+      "mechanism_backed": true,
+      "data_have": "partial",
+      "exprs_tested": 3,
+      "verdict": "dead",
+      "tier": "A"
+    },
+    "M13_intraday_micro": {
+      "class": "microstructure",
+      "status": "dead",
+      "mechanism_backed": true,
+      "data_have": true,
+      "exprs_tested": 10,
+      "verdict": "OR/settlement/liquidity-hole dead",
+      "tier": "A"
+    },
+    "M14_cross_index_rv": {
+      "class": "price",
+      "status": "weak",
+      "mechanism_backed": true,
+      "data_have": true,
+      "exprs_tested": 4,
+      "verdict": "threshold-selected diversifier, DSR<0.95",
+      "tier": "A"
+    },
+    "M15_index_rebalance": {
+      "class": "flow",
+      "status": "untested",
+      "mechanism_backed": true,
+      "data_have": false,
+      "data_needed": "reconstitution calendar",
+      "note": "index funds forced-buy adds at close",
+      "tier": "A"
+    },
+    "M16_etf_create_redeem": {
+      "class": "flow",
+      "status": "untested",
+      "mechanism_backed": true,
+      "data_have": false,
+      "data_needed": "ETF flow feed",
+      "note": "primary-market creation flow",
+      "tier": "A"
+    },
+    "M17_closing_auction_moc": {
+      "class": "microstructure",
+      "status": "untested",
+      "mechanism_backed": true,
+      "data_have": "partial",
+      "data_needed": "MOC imbalance feed",
+      "note": "MOC imbalance resolution",
+      "tier": "A"
+    },
+    "M18_stop_runs": {
+      "class": "microstructure",
+      "status": "untested",
+      "mechanism_backed": true,
+      "data_have": "1m",
+      "note": "liquidity sweeps of stop clusters",
+      "tier": "A"
+    },
+    "M19_opex_gamma_pin": {
+      "class": "options",
+      "status": "untested",
+      "mechanism_backed": true,
+      "data_have": "weekly-OI",
+      "note": "expiry pinning to max-OI strike",
+      "tier": "A"
+    },
+    "M20_eia_inventory": {
+      "class": "event",
+      "status": "data_blocked",
+      "mechanism_backed": true,
+      "data_have": false,
+      "data_needed": "EIA API free key",
+      "note": "producer hedge post-surprise",
+      "tier": "A"
+    },
+    "M21_fx_fixing_wmr": {
+      "class": "flow",
+      "status": "untested",
+      "mechanism_backed": true,
+      "data_have": "1m",
+      "note": "16:00 benchmark-tracking fund flow",
+      "tier": "A"
+    },
+    "M22_vol_target_cta": {
+      "class": "flow",
+      "status": "untested",
+      "mechanism_backed": true,
+      "data_have": "vix",
+      "note": "mechanical de/re-leverage on vol shocks",
+      "tier": "A"
+    },
+    "M23_pension_rebalance": {
+      "class": "flow",
+      "status": "untested",
+      "mechanism_backed": true,
+      "data_have": false,
+      "data_needed": "proxy",
+      "note": "quarterly duration rebalance",
+      "tier": "A"
+    },
+    "M24_buyback_blackout": {
+      "class": "flow",
+      "status": "untested",
+      "mechanism_backed": true,
+      "data_have": false,
+      "data_needed": "earnings calendar",
+      "note": "corp buyback blackout windows",
+      "tier": "A"
+    },
+    "M25_bond_issuance": {
+      "class": "event",
+      "status": "untested",
+      "mechanism_backed": true,
+      "data_have": "TreasuryDirect",
+      "note": "supply pressure (overlaps auction)",
+      "tier": "A"
+    },
+    "M26_crypto_liquidation": {
+      "class": "flow",
+      "status": "untested",
+      "mechanism_backed": true,
+      "data_have": false,
+      "data_needed": "liquidation feed",
+      "note": "cascade liquidations",
+      "tier": "A"
+    },
+    "M27_dividend_reinvest": {
+      "class": "flow",
+      "status": "untested",
+      "mechanism_backed": true,
+      "data_have": false,
+      "data_needed": "ex-div calendar",
+      "note": "scheduled reinvestment inflow",
+      "tier": "A"
+    },
+    "M28_commodity_seasonal": {
+      "class": "seasonal",
+      "status": "untested",
+      "mechanism_backed": true,
+      "data_have": "partial (no NG 1m)",
+      "data_needed": "NG 1m",
+      "note": "NG winter/weather seasonality",
+      "tier": "A"
+    },
+    "M29_macro_surprise": {
+      "class": "event",
+      "status": "data_blocked",
+      "mechanism_backed": true,
+      "data_have": false,
+      "data_needed": "CPI/NFP consensus",
+      "note": "actual-vs-expected reaction path",
+      "tier": "A"
+    },
+    "M30_pre_fomc_drift": {
+      "class": "event",
+      "tier": "A",
+      "status": "untested",
+      "mechanism_backed": true,
+      "data_have": "FOMC cal",
+      "note": "equity drift into FOMC decision"
+    },
+    "M31_overnight_risk_premium": {
+      "class": "price",
+      "tier": "A",
+      "status": "untested",
+      "mechanism_backed": true,
+      "data_have": "1m",
+      "note": "equity return concentrated overnight vs intraday"
+    },
+    "M32_vix_futures_carry": {
+      "class": "vol",
+      "tier": "A",
+      "status": "untested",
+      "mechanism_backed": true,
+      "data_have": false,
+      "data_needed": "VX futures",
+      "note": "VIX term-structure roll yield"
+    },
+    "M33_variance_risk_premium": {
+      "class": "vol",
+      "tier": "A",
+      "status": "untested",
+      "mechanism_backed": true,
+      "data_have": "partial",
+      "data_needed": "clean realized+implied",
+      "note": "realized < implied -> sell vol premium"
+    },
+    "M34_pre_holiday_drift": {
+      "class": "calendar",
+      "tier": "A",
+      "status": "untested",
+      "mechanism_backed": true,
+      "data_have": true,
+      "note": "pre-holiday positive drift (thin-liquidity risk-on)"
+    },
+    "M35_turn_of_year": {
+      "class": "calendar",
+      "tier": "A",
+      "status": "untested",
+      "mechanism_backed": true,
+      "data_have": true,
+      "note": "Santa rally / January effect"
+    },
+    "M36_quarter_end_window_dressing": {
+      "class": "flow",
+      "tier": "A",
+      "status": "untested",
+      "mechanism_backed": true,
+      "data_have": "calendar",
+      "note": "quarter-end institutional window dressing"
+    },
+    "M37_intraday_ushape": {
+      "class": "microstructure",
+      "tier": "A",
+      "status": "untested",
+      "mechanism_backed": true,
+      "data_have": "1m",
+      "note": "U-shape vol/volume timing edges"
+    },
+    "M38_leadlag_hf": {
+      "class": "microstructure",
+      "tier": "A",
+      "status": "untested",
+      "mechanism_backed": true,
+      "data_have": "1m",
+      "note": "ES leads NQ/YM sub-minute"
+    },
+    "M39_rates_curve_momentum": {
+      "class": "carry",
+      "tier": "A",
+      "status": "untested",
+      "mechanism_backed": true,
+      "data_have": "per-contract",
+      "note": "2s10s steepener/flattener trend (distinct from carry-level)"
+    },
+    "M40_commodity_roll_yield": {
+      "class": "carry",
+      "tier": "A",
+      "status": "untested",
+      "mechanism_backed": true,
+      "data_have": "per-contract",
+      "note": "contango/backwardation roll carry (distinct from spread-MR)"
+    },
+    "M41_fx_carry_ratediff": {
+      "class": "carry",
+      "tier": "A",
+      "status": "untested",
+      "mechanism_backed": true,
+      "data_have": "policy_rates+FX",
+      "note": "interest-rate-differential FX carry"
+    },
+    "M42_cross_asset_riskonoff": {
+      "class": "price",
+      "tier": "A",
+      "status": "untested",
+      "mechanism_backed": true,
+      "data_have": true,
+      "note": "bond-equity beta rotation / risk-on-off"
+    },
+    "M43_econ_surprise_momentum": {
+      "class": "macro",
+      "tier": "A",
+      "status": "untested",
+      "mechanism_backed": true,
+      "data_have": false,
+      "data_needed": "surprise index",
+      "note": "macro-surprise-index momentum"
+    },
+    "M44_crypto_basis": {
+      "class": "carry",
+      "tier": "A",
+      "status": "untested",
+      "mechanism_backed": true,
+      "data_have": "partial",
+      "note": "perp-spot / futures-spot basis"
+    },
+    "M45_vol_of_vol": {
+      "class": "vol",
+      "tier": "A",
+      "status": "untested",
+      "mechanism_backed": true,
+      "data_have": false,
+      "data_needed": "VVIX",
+      "note": "vol-of-vol regime conditioning"
+    },
+    "M46_options_skew_ts": {
+      "class": "options",
+      "tier": "A",
+      "status": "untested",
+      "mechanism_backed": true,
+      "data_have": "OI partial",
+      "note": "implied-vol skew/term-structure signal"
+    },
+    "M47_settlement_basis": {
+      "class": "microstructure",
+      "tier": "A",
+      "status": "untested",
+      "mechanism_backed": true,
+      "data_have": "1m",
+      "note": "cash-settlement print behavior"
+    },
+    "M48_repo_funding_stress": {
+      "class": "event",
+      "tier": "A",
+      "status": "untested",
+      "mechanism_backed": true,
+      "data_have": false,
+      "data_needed": "repo/SOFR spread",
+      "note": "funding-stress -> rates/risk"
+    },
+    "M49_ecb_boj_drift": {
+      "class": "event",
+      "tier": "A",
+      "status": "untested",
+      "mechanism_backed": true,
+      "data_have": false,
+      "data_needed": "ECB/BOJ calendars",
+      "note": "FX/rates drift into non-Fed CB meetings"
+    },
+    "M50_energy_seasonal": {
+      "class": "seasonal",
+      "tier": "A",
+      "status": "untested",
+      "mechanism_backed": true,
+      "data_have": false,
+      "data_needed": "NG 1m",
+      "note": "NG/power winter-demand seasonality"
+    },
+    "M51_momentum_crash_timing": {
+      "class": "price",
+      "tier": "A",
+      "status": "untested",
+      "mechanism_backed": true,
+      "data_have": true,
+      "note": "trend crowding/capacity -> reversal timing"
+    },
+    "M52_index_dispersion": {
+      "class": "vol",
+      "tier": "A",
+      "status": "untested",
+      "mechanism_backed": true,
+      "data_have": false,
+      "data_needed": "index+component vols",
+      "note": "index-vs-component dispersion"
+    },
+    "M53_opening_imbalance_conditioned": {
+      "class": "microstructure",
+      "tier": "B",
+      "status": "untested",
+      "mechanism_backed": true,
+      "data_have": "1m",
+      "note": "opening imbalance conditioned on overnight range (B: refinement of M17)"
+    }
   }
 }
