@@ -1098,6 +1098,42 @@
       "linked_packet": null,
       "linked_queue": "queue:INB-20260707-003",
       "linked_control": "forge_batch_screen.py"
+    },
+    {
+      "inbound_id": "INB-20260707-004",
+      "date": "2026-07-07",
+      "source_type": "bug",
+      "source_ref": null,
+      "raw_note": "OVERCLAIM CORRECTED: last turn I wrote 'daily price/volume space DEAD across 12 markets' \u2014 420 hyps from ONE generator can't prove that. Evidence supports only 'this generator produced 0 DSR-credible survivors'. Untested families: vol-state/cross-sectional/dispersion/breadth/term-structure/adaptive-exit/calendar/hybrid. Fixed dashboard wording.",
+      "mechanism": null,
+      "family": "governance",
+      "required_data": null,
+      "available_data": null,
+      "required_harness": null,
+      "status": "TRIAGED",
+      "priority": "P1",
+      "next_action": "keep conclusions tightly matched to evidence; one generator != the domain",
+      "linked_packet": null,
+      "linked_queue": null,
+      "linked_control": "forge_dashboard.py wording fix + expanded generator (10 families)"
+    },
+    {
+      "inbound_id": "INB-20260707-005",
+      "date": "2026-07-07",
+      "source_type": "claude discovery",
+      "source_ref": null,
+      "raw_note": "Expanded batch: 714 hyps, 10 families, 12 markets -> 9 orthogonal cheap-gate survivors, 0 clear DSR at honest N=2990 (data-mining finds noise, correctly). BUT funnel SURFACED calendar_turnofmonth:ZN (Sh0.88, PF1.41, maxyr36%, 5/6yrs+) which maps to a KNOWN forced-flow mechanism (month-end bond duration extension). GRADUATES to pre-registered cross-instrument OOS test (ZN/ZF/ZB, search-N=1 a-priori), NOT an N-shop rescue. This is the funnel's real job: surface mechanism-backed hypotheses.",
+      "mechanism": null,
+      "family": "monthend_settlement",
+      "required_data": "rates 1m T3 (have)",
+      "available_data": null,
+      "required_harness": null,
+      "status": "PROMOTED_TO_PACKET",
+      "priority": "P1",
+      "next_action": "pre-register + test turn-of-month duration in ZN/ZF/ZB OOS",
+      "linked_packet": null,
+      "linked_queue": null,
+      "linked_control": null
     }
   ]
 }

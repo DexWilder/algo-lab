@@ -1,0 +1,21 @@
+{
+  "batch_hypotheses": 714,
+  "families": 10,
+  "markets": 12,
+  "cheap_survivors": 11,
+  "survivor_rate_pct": 1.54,
+  "orthogonal_streams": 9,
+  "family_list": [
+    "acceleration",
+    "breakout",
+    "calendar",
+    "channel",
+    "gap",
+    "meanrev",
+    "momentum",
+    "realvol",
+    "vol",
+    "xsec"
+  ],
+  "note": "ONE generator's output \u2014 a null means THIS generator found nothing, not that the domain is dead"
+}

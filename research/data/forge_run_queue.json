@@ -635,6 +635,14 @@
       "status": "RUN_NOW",
       "lane": "batch_screen",
       "note": "batch-screen term-structure/carry mechanisms across CL/GC/rates per-contract (richer expression than daily close)"
+    },
+    {
+      "id": "prereg_turnofmonth_rates",
+      "status": "RUN_NOW",
+      "lane": "forced_flow",
+      "mission_class": "DIVERSIFIER",
+      "surface": "A forced-flow T3",
+      "note": "PRE-REGISTERED: month-end duration-extension (long ZN/ZF/ZB last-2/first-2 sessions). Mechanism=bond-index rebalance forced buy. Test cross-instrument + OOS (search-N=1 a-priori, NOT batch-N). Surfaced by batch_screen but tested as independent hypothesis."
     }
   ]
 }

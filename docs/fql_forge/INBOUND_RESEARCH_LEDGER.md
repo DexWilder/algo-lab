@@ -1,7 +1,7 @@
-# Inbound Research Ledger (rendered 2026-07-07 12:52 UTC)
+# Inbound Research Ledger (rendered 2026-07-07 13:00 UTC)
 > **Operating law:** if it is not in this ledger, the queue, the dashboard, or the control map — the system does not know it.
-> Source of truth: `research/data/inbound_research_ledger.json`. Capture: `python3 research/capture_inbound.py`. Items: **61**.
-> NEW:0 | P0/P1:13/32 | untriaged directives:0 | mistakes w/o control:2 | unused feeds:0 | source notes unresolved:1
+> Source of truth: `research/data/inbound_research_ledger.json`. Capture: `python3 research/capture_inbound.py`. Items: **63**.
+> NEW:0 | P0/P1:13/34 | untriaged directives:0 | mistakes w/o control:2 | unused feeds:0 | source notes unresolved:1
 
 | id | date | type | status | P | family | mechanism / issue | next action | linked (packet/queue/control) |
 |---|---|---|---|---|---|---|---|---|
@@ -38,11 +38,13 @@
 | INB-20260701-013 | 2026-07-01 | guardrail finding | TRIAGED | P1 | governance | Self-audit watchdog built: audits 12 facets/cycle (present+functioning | wire into every-cycle runner | forge_self_audit.py |
 | INB-20260702-011 | 2026-07-02 | data feed | TRIAGED | P1 | data governance | Databento 504/connection-reset on ES weekly-OI pull: parents EW1-4/E1A | run EW GEX expiry test now; retry E1A/E3C 0DTE nex | DATABENTO_TRANSIENT_FAILURE_RETRY_POLICY.md + provider_retry |
 | INB-20260702-012 | 2026-07-02 | bug | TRIAGED | P1 | data governance | DATA-PROVENANCE RACE: ran GEX test on weekly-OI file while background  | append 'no mid-pull analysis' rule to retry policy | retry-policy: analyze ONLY after task completion + validate_ |
+| INB-20260707-004 | 2026-07-07 | bug | TRIAGED | P1 | governance | OVERCLAIM CORRECTED: last turn I wrote 'daily price/volume space DEAD  | keep conclusions tightly matched to evidence; one  | forge_dashboard.py wording fix + expanded generator (10 fami |
 | INB-20260701-003 | 2026-07-01 | claude discovery | PROMOTED_TO_PACKET | P1 | carry_commodity | gold calendar-spread mean-reversion | Lane G deepening (operator-gated for capital) | SCREEN_PASS_CANDIDATE_spreadMR_GC_2026-07-01.md deepen_sprea |
 | INB-20260702-003 | 2026-07-02 | source | PROMOTED_TO_PACKET | P1 | carry_commodity | CME roll methodology docs -> roll-window pressure: index/ETF funds mus | — | src_roll_window_pressure |
 | INB-20260702-004 | 2026-07-02 | source | PROMOTED_TO_PACKET | P1 | gamma_dealer | Options dealer-hedging (SqueezeMetrics/Nomura) -> GEX-regime pin: deal | — | src_gex_regime_pin |
 | INB-20260706-003 | 2026-07-06 | source | PROMOTED_TO_PACKET | P1 | gamma_dealer | GEX/dealer-flow INDEX packet: signed-GEX regime -> MES/MNQ intraday ra | — | gex_signed_compression_retest |
 | INB-20260706-007 | 2026-07-06 | source | PROMOTED_TO_PACKET | P1 | auction_issuance | Event-surprise INDEX packet v2: Treasury auction TAIL (high-yield minu | pull TreasuryDirect auction results | — |
+| INB-20260707-005 | 2026-07-07 | claude discovery | PROMOTED_TO_PACKET | P1 | monthend_settlement | Expanded batch: 714 hyps, 10 families, 12 markets -> 9 orthogonal chea | pre-register + test turn-of-month duration in ZN/Z | — |
 | INB-20260706-002 | 2026-07-06 | data feed | NEEDS_LOADER | P1 | data governance | MYM (Micro Dow) has NO 1m data — core WH1 workhorse instrument. Have M | pull MYM 1m from Databento (cheap, like other micr | — |
 | INB-20260706-006 | 2026-07-06 | data feed | PROVIDER_UNSTABLE_RETRY_LATER | P1 | data governance | GEX coverage extend pull KILLED (stalled 0-progress, gateway thrashing | single-slice retry next window; meanwhile run WH1- | background_tasks.json retry_plan + DATABENTO_TRANSIENT_FAILU |
 | INB-20260706-010 | 2026-07-06 | data feed | ACTIVE_IN_TESTS | P1 | auction_issuance | TreasuryDirect auction details PULLED (free keyless API): 609 auctions | — | data/feeds/treasury_auction_details.csv |

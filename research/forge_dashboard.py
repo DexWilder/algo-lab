@@ -65,7 +65,7 @@ out=f"""# ALPHA RESEARCH DASHBOARD (auto-generated {stamp})
 
 ## Factory metrics (product = validated DISCOVERIES; measure the factory)
 - Batch hypotheses run: **{factory['batch_hypotheses']}** across {factory['markets_screened']} markets | DSR-credible ever: {factory['dsr_credible']} | validated assets: {factory['validated_assets']} (spreadMR_GC diversifier + GEX regime ingredient)
-- **Daily price/volume space: EXHAUSTED across 12 markets (0 survive DSR at honest N).** Edge is in flow/forced-flow/options data + richer expressions, not price transforms.
+- **Evidence-matched claim (NOT overclaimed):** the batch generator's templates produced 0 DSR-credible daily price/volume survivors at honest N — *this generator's output, not "the whole daily price/volume space is dead."* Untested families: vol-state, cross-sectional RV, dispersion, breadth, term-structure, cross-asset conditioning, adaptive exits, calendar, execution-timing, hybrid. Redirect = richer generators + flow data, not "domain solved."
 
 ## Inbound capture (organizational memory — nothing floats)
 - Items: **{ib['total']}** | NEW: {ib['new']} | P0/P1: {ib['p0']}/{ib['p1']} | source packets today: {ib['source_packets_today']}
