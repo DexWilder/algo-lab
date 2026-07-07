@@ -1,25 +1,24 @@
 {
   "updated": "2026-07-07",
   "library_size": 85,
-  "high_ev_backlog": 5,
+  "high_ev_backlog": 3,
   "high_ev_ids": [
     "M46_options_skew_ts",
     "M66_fomc_preannouncement_drift",
-    "M67_treasury_auction_cycle",
-    "M70_commodity_roll_yield_carry",
     "M77_skew_meanrev"
   ],
-  "completed_verdicts": 26,
-  "remaining_testable": 43,
+  "completed_verdicts": 29,
+  "remaining_testable": 40,
   "blocked_on_data": 16,
   "lifecycle": {
-    "Retired": 23,
+    "Retired": 26,
     "Validated": 3,
     "Blocked": 16,
-    "Harvested": 43
+    "Harvested": 39,
+    "Testing": 1
   },
   "mechanisms_per_active_day": 30.0,
-  "mechanism_research_trials": 30,
+  "mechanism_research_trials": 35,
   "weekly_quota": {
     "external_mechanisms": 20,
     "test_packets": 6,

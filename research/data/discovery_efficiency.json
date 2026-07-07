@@ -1,0 +1,19 @@
+{
+  "updated": "2026-07-07",
+  "cohort": "2026-07-07 named-source harvest (M66-M85)",
+  "harvested": 20,
+  "runnable_immediately": 16,
+  "blocked": 4,
+  "cheap_screen_run": 6,
+  "cheap_screen_survivors_clean": 0,
+  "watch_borderline": 1,
+  "watch_which": "M75_sofr_funding_stress (regime filter)",
+  "deep_validation_candidates": 0,
+  "validated": 0,
+  "conversion": {
+    "harvest_to_runnable": "80%",
+    "runnable_to_clean_survivor": "0% (1 WATCH filter)",
+    "survivor_to_validated": "n/a"
+  },
+  "read": "harvest QUALITY high on testability (80% runnable, structurally-motivated) but 0 clean survivors this cohort -> bottleneck is now EDGE-EXISTENCE not testability. Expect mostly kills; the funding-stress filter is the single live thread. Don't assume staged data hides gold."
+}

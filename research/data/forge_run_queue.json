@@ -743,33 +743,36 @@
     },
     {
       "id": "pkt_commodity_roll_carry",
-      "status": "RUN_NOW",
+      "status": "DONE",
       "mission_class": "DIVERSIFIER",
       "mechanism": "M70",
       "note": "Long-backwardation/short-contango basket from *_percontract term structure (F1 vs F2 roll yield); weekly rebal, DSR@N, per-year, corr to spreadMR_GC",
       "data_source": "GC/CL/ZN percontract (HAVE)",
       "created": "2026-07-07",
-      "prereg": true
+      "prereg": true,
+      "verdict": "KILL Sh-0.44"
     },
     {
       "id": "pkt_treasury_auction_cycle",
-      "status": "RUN_NOW",
+      "status": "DONE",
       "mission_class": "DIVERSIFIER",
       "mechanism": "M67",
       "note": "Rates (ZN/ZF/ZB) drift in [-3,+1]d window around auction settlement dates from treasury_auction_details; pre-reg direction=yields-up-into/down-after",
       "data_source": "auction_details (HAVE)",
       "created": "2026-07-07",
-      "prereg": true
+      "prereg": true,
+      "verdict": "KILL Sh0.19 (5Y sub-lead)"
     },
     {
       "id": "pkt_sofr_funding_stress",
-      "status": "RUN_NOW",
+      "status": "DONE",
       "mission_class": "DIVERSIFIER",
       "mechanism": "M75",
       "note": "Regime filter: SOFR-EFFR spread & RRP z-score gate on MES exposure; test conditional Sharpe uplift vs unconditional",
       "data_source": "funding.csv (HAVE)",
       "created": "2026-07-07",
-      "prereg": true
+      "prereg": true,
+      "verdict": "WATCH (regime filter: stress -$27 vs calm +$102)"
     },
     {
       "id": "pkt_skew_meanrev",
@@ -783,23 +786,25 @@
     },
     {
       "id": "pkt_gold_real_rate",
-      "status": "RUN_NOW",
+      "status": "DONE",
       "mission_class": "DIVERSIFIER",
       "mechanism": "M72",
       "note": "MGC vs real_rates(dfii10) residual z-score reversion; weekly; pre-reg fade divergence",
       "data_source": "MGC+real_rates (HAVE)",
       "created": "2026-07-07",
-      "prereg": true
+      "prereg": true,
+      "verdict": "KILL Sh-1.3 (divergence continues)"
     },
     {
       "id": "pkt_cot_positioning_follow",
-      "status": "RUN_NOW",
+      "status": "DONE",
       "mission_class": "DIVERSIFIER",
       "mechanism": "M73",
       "note": "PRE-REGISTERED follow (positioning momentum) across 8 COT instruments; the ONLY sanctioned COT direction after fade-KILL",
       "data_source": "cot.csv (HAVE)",
       "created": "2026-07-07",
-      "prereg": true
+      "prereg": true,
+      "verdict": "KILL Sh0.4 DSR0.37 thin"
     }
   ]
 }

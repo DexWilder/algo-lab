@@ -864,20 +864,22 @@
       "testable_now": true
     },
     "M67_treasury_auction_cycle": {
-      "status": "untested",
-      "lifecycle": "Harvested",
+      "status": "weak",
+      "lifecycle": "Retired",
       "tier": "A",
       "mechanism_backed": true,
       "confidence": 2,
-      "exprs_tested": 0,
-      "verdict_date": null,
+      "exprs_tested": 1,
+      "verdict_date": "2026-07-07",
       "category": "CrossAsset_Carry",
       "ev": "H",
       "source": "Lou-Yan-Zhang 2013: yields rise into auction settle, fall after (dealer inventory)",
       "data_needed": null,
       "data_have": "treasury_auction_details.csv (HAVE)",
-      "note": "Lou-Yan-Zhang 2013: yields rise into auction settle, fall after (dealer inventory) | TESTABLE NOW on held data",
-      "testable_now": true
+      "note": "concession-window pooled Sh0.19 DSR0.01; 5Y sub-lead (ZF Sh0.59) term-specific \u2014 open for 5Y-only materially-diff test",
+      "testable_now": true,
+      "verdict": "KILL_impl",
+      "materially_different_allowed": true
     },
     "M68_variance_risk_premium": {
       "status": "untested",
@@ -912,20 +914,22 @@
       "testable_now": false
     },
     "M70_commodity_roll_yield_carry": {
-      "status": "untested",
-      "lifecycle": "Harvested",
+      "status": "dead",
+      "lifecycle": "Retired",
       "tier": "A",
       "mechanism_backed": true,
       "confidence": 2,
-      "exprs_tested": 0,
-      "verdict_date": null,
+      "exprs_tested": 1,
+      "verdict_date": "2026-07-07",
       "category": "Commodity",
       "ev": "H",
       "source": "Gorton-Rouwenhorst 2006: long backwardated/short contango futures",
       "data_needed": null,
       "data_have": "*_percontract_1d (HAVE GC/CL/ZN/ZF/ZB/ZT)",
-      "note": "Gorton-Rouwenhorst 2006: long backwardated/short contango futures | TESTABLE NOW on held data",
-      "testable_now": true
+      "note": "naive time-series sign(F1-F2) carry pooled Sh-0.44; GC persistent-contango makes signal near-constant. Real carry premium needs BROAD cross-section (10+ commodities) \u2014 materially-diff, needs data",
+      "testable_now": true,
+      "verdict": "KILL_impl",
+      "materially_different_allowed": true
     },
     "M71_overnight_intraday_anomaly": {
       "status": "weak",
@@ -963,20 +967,22 @@
       "testable_now": true
     },
     "M73_cot_positioning_momentum": {
-      "status": "untested",
-      "lifecycle": "Harvested",
+      "status": "dead",
+      "lifecycle": "Retired",
       "tier": "A",
       "mechanism_backed": true,
       "confidence": 2,
-      "exprs_tested": 0,
-      "verdict_date": null,
+      "exprs_tested": 1,
+      "verdict_date": "2026-07-07",
       "category": "InstitutionalFlow",
       "ev": "M",
       "source": "Specs trend-follow; positioning CONTINUES (today's FOLLOW +0.4 lead)",
       "data_needed": null,
       "data_have": "cot.csv (HAVE)",
-      "note": "FADE direction KILLED today (Sh-0.47 DSR0.004); FOLLOW +0.4 DSR0.37 is a diagnostic lead -> pre-registered as packet (NOT yet a claim)",
-      "testable_now": true
+      "note": "FADE killed (-0.47); FOLLOW pre-registered thin (Sh0.4 DSR0.37) \u2014 both directions fail the gate",
+      "testable_now": true,
+      "verdict": "KILL",
+      "materially_different_allowed": false
     },
     "M74_hy_credit_regime": {
       "status": "untested",
@@ -995,20 +1001,22 @@
       "testable_now": true
     },
     "M75_sofr_effr_funding_stress": {
-      "status": "untested",
-      "lifecycle": "Harvested",
+      "status": "watch",
+      "lifecycle": "Testing",
       "tier": "A",
       "mechanism_backed": true,
       "confidence": 2,
-      "exprs_tested": 0,
-      "verdict_date": null,
+      "exprs_tested": 1,
+      "verdict_date": "2026-07-07",
       "category": "Macro_Event",
       "ev": "M",
       "source": "SOFR-EFFR spread + RRP spikes = funding stress -> risk assets",
       "data_needed": null,
       "data_have": "funding.csv (HAVE)",
-      "note": "SOFR-EFFR spread + RRP spikes = funding stress -> risk assets | TESTABLE NOW on held data",
-      "testable_now": true
+      "note": "REGIME FILTER (not standalone): MES wk-ret stress-weeks -$27 vs calm +$102; standalone short Sh0.6 DSR0.56 marginal. Value = condition/reduce equity in funding-stress weeks. The one live thread from this cohort.",
+      "testable_now": true,
+      "verdict": "WATCH",
+      "materially_different_allowed": true
     },
     "M76_post_event_vol_crush": {
       "status": "untested",
