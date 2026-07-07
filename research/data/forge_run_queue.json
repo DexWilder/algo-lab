@@ -586,11 +586,19 @@
     },
     {
       "id": "gex_regime_as_ingredient",
+      "status": "DONE",
+      "lane": "databento_volume",
+      "mission_class": "INDEX_REGIME_INPUT",
+      "surface": "B GEX ingredient",
+      "note": "CONFIRMED: GEX improves breakout/fade cross-asset (mechanism 4/4); but filtered entry still not candidate (n=83/DSR0.72)"
+    },
+    {
+      "id": "wh1_strong_entry_plus_gex",
       "status": "RUN_NOW",
       "lane": "databento_volume",
       "mission_class": "INDEX_REGIME_INPUT",
       "surface": "B GEX ingredient",
-      "note": "USE GEX compression regime as a FILTER/SIZING on a separate clean index entry (the durable-ingredient path). E.g. neg-GEX=allow breakouts / pos-GEX=no-trade-or-size-down. This is how GEX contributes to WH1, not as standalone."
+      "note": "find/build a STRONGER base index entry (source-derived, event-conditioned, or volume-microstructure) then apply the VALIDATED GEX regime filter+sizing. GEX-as-filter is proven; bottleneck is now base-entry quality + sample."
     }
   ]
 }

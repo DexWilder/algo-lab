@@ -1,11 +1,11 @@
 {
-  "timestamp": "2026-07-03T17:30:02.217894",
+  "timestamp": "2026-07-06T17:30:05.630434",
   "overall": "HEALTHY",
   "safe_mode": false,
   "checks": {
     "data_freshness": {
       "status": "WARN",
-      "detail": "Stale data: ES_5m (2696h old)"
+      "detail": "Stale data: ES_5m (2768h old)"
     },
     "scheduler_health": {
       "status": "OK",
@@ -17,7 +17,7 @@
     },
     "process_health": {
       "status": "OK",
-      "detail": "Process 3659 running (0.0h)"
+      "detail": "Process 64748 running (0.0h)"
     },
     "drift_alerts": {
       "status": "OK",

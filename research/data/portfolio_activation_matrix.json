@@ -1,21 +1,21 @@
 {
-  "report_date": "2026-07-03 17:38",
+  "report_date": "2026-07-06 17:49",
   "regime_snapshot": {
     "MES": {
       "vol_regime": "NORMAL",
       "trend_regime": "TRENDING",
-      "rv_regime": "NORMAL_RV",
+      "rv_regime": "LOW_RV",
       "trend_persistence": "CHOPPY"
     },
     "MNQ": {
       "vol_regime": "HIGH_VOL",
-      "trend_regime": "TRENDING",
+      "trend_regime": "RANGING",
       "rv_regime": "NORMAL_RV",
       "trend_persistence": "CHOPPY"
     },
     "MGC": {
-      "vol_regime": "LOW_VOL",
-      "trend_regime": "TRENDING",
+      "vol_regime": "NORMAL",
+      "trend_regime": "RANGING",
       "rv_regime": "HIGH_RV",
       "trend_persistence": "CHOPPY"
     },
@@ -23,13 +23,13 @@
       "vol_regime": "NORMAL",
       "trend_regime": "TRENDING",
       "rv_regime": "LOW_RV",
-      "trend_persistence": "CHOPPY"
+      "trend_persistence": "GRINDING"
     },
     "MCL": {
-      "vol_regime": "LOW_VOL",
+      "vol_regime": "NORMAL",
       "trend_regime": "TRENDING",
       "rv_regime": "NORMAL_RV",
-      "trend_persistence": "CHOPPY"
+      "trend_persistence": "GRINDING"
     }
   },
   "activation_matrix": [
@@ -41,9 +41,9 @@
       "current_state": "ACTIVE",
       "new_state": "ACTIVE",
       "state_changed": false,
-      "activation_score": 0.617,
+      "activation_score": 0.697,
       "sub_scores": {
-        "regime_fit": 0.6,
+        "regime_fit": 1.0,
         "half_life": 1.0,
         "contribution": 0.4,
         "redundancy": 0.7,
@@ -57,7 +57,7 @@
       "recommended_action": "REDUCED_ON",
       "situation": "HEALTHY",
       "reason_codes": [
-        "REGIME_MATCH_MODERATE",
+        "REGIME_MATCH_HIGH",
         "HALF_LIFE_STRENGTHENING",
         "PORTFOLIO_NEUTRAL",
         "LOW_REDUNDANCY",
@@ -70,7 +70,7 @@
       ],
       "transition_trigger": "No transition \u2014 current state appropriate",
       "confidence": 1.0,
-      "uncertainty": false,
+      "uncertainty": true,
       "warnings": [
         "Session drift ALARM \u2014 edge broken in one or more sessions"
       ],
@@ -151,9 +151,9 @@
       "current_state": "ACTIVE",
       "new_state": "ACTIVE",
       "state_changed": false,
-      "activation_score": 0.655,
+      "activation_score": 0.535,
       "sub_scores": {
-        "regime_fit": 0.6,
+        "regime_fit": 0.0,
         "half_life": 1.0,
         "contribution": 0.4,
         "redundancy": 0.7,
@@ -164,10 +164,10 @@
         "asset_fit": 1.0,
         "recent_stability": 1.0
       },
-      "recommended_action": "REDUCED_ON",
-      "situation": "HEALTHY",
+      "recommended_action": "PROBATION",
+      "situation": "REGIME_MISMATCH",
       "reason_codes": [
-        "REGIME_MATCH_MODERATE",
+        "REGIME_MISMATCH",
         "HALF_LIFE_STRENGTHENING",
         "PORTFOLIO_NEUTRAL",
         "LOW_REDUNDANCY",
@@ -182,9 +182,10 @@
       "confidence": 1.0,
       "uncertainty": true,
       "warnings": [
+        "Current regime in avoid list",
         "Session drift detected \u2014 degraded in one or more sessions"
       ],
-      "review_priority": "LOW",
+      "review_priority": "MEDIUM",
       "session_restrictions": [
         {
           "session": "morning",
@@ -202,28 +203,28 @@
       },
       "allocation": {
         "strategy_id": "ORB-MGC-Long",
-        "base_tier": 2,
-        "base_tier_name": "REDUCED",
-        "target_tier": 3,
-        "target_tier_name": "BASE",
-        "final_tier": 3,
-        "final_tier_name": "BASE",
+        "base_tier": 1,
+        "base_tier_name": "MICRO",
+        "target_tier": 2,
+        "target_tier_name": "REDUCED",
+        "final_tier": 2,
+        "final_tier_name": "REDUCED",
         "sessions": {
           "morning": {
-            "tier": 2,
-            "tier_name": "REDUCED",
+            "tier": 1,
+            "tier_name": "MICRO",
             "reason_codes": [
               "ALLOC_SESSION_REDUCE"
             ]
           },
           "midday": {
-            "tier": 3,
-            "tier_name": "BASE",
+            "tier": 2,
+            "tier_name": "REDUCED",
             "reason_codes": []
           },
           "afternoon": {
-            "tier": 3,
-            "tier_name": "BASE",
+            "tier": 2,
+            "tier_name": "REDUCED",
             "reason_codes": []
           }
         },
@@ -683,12 +684,12 @@
   "state_transitions": [],
   "portfolio_summary": {
     "total_strategies": 7,
-    "active": 4,
-    "probation": 3,
+    "active": 3,
+    "probation": 4,
     "disabled_or_off": 0,
     "state_changes": 0,
     "health_status": "FAIL",
-    "avg_activation_score": 0.616
+    "avg_activation_score": 0.6103
   },
   "health_signals": {
     "overall": "FAIL",
@@ -699,9 +700,9 @@
     "total_strategies": 7,
     "tier_distribution": {
       "MICRO": 1,
-      "BASE": 2,
+      "REDUCED": 4,
       "BOOST": 1,
-      "REDUCED": 3
+      "BASE": 1
     }
   }
 }

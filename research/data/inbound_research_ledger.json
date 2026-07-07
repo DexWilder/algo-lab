@@ -1044,6 +1044,24 @@
       "linked_packet": null,
       "linked_queue": null,
       "linked_control": "gex_oos_pull_DONE.json + GEX_BREAKOUT_RANGE_PREREGISTERED_RULE"
+    },
+    {
+      "inbound_id": "INB-20260707-001",
+      "date": "2026-07-07",
+      "source_type": "claude discovery",
+      "source_ref": null,
+      "raw_note": "GEX-AS-FILTER CONFIRMED: mechanism holds 4/4 cross-asset (within-regime, not sample-loss) \u2014 breakouts better in neg-GEX expansion (MES 0.82->1.17, MNQ 0.61->1.01), fades better in pos-GEX compression. GEX = validated INDEX_REGIME_INPUT ingredient that improves entries. BUT filtered breakout still n=83/DSR0.72/concentrated -> not candidate. Bottleneck now = base-entry quality + sample, NOT whether GEX is real. gex_regime_feature.py reusable.",
+      "mechanism": null,
+      "family": "gamma_dealer",
+      "required_data": null,
+      "available_data": null,
+      "required_harness": null,
+      "status": "REGIME_INGREDIENT_VALIDATED",
+      "priority": "P1",
+      "next_action": "strong base index entry + GEX filter/sizing",
+      "linked_packet": null,
+      "linked_queue": null,
+      "linked_control": "research/gex_regime_feature.py"
     }
   ]
 }

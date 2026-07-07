@@ -130,16 +130,16 @@
     },
     "gamma_dealer": {
       "lane": "exploratory",
-      "status": "TRADE_RULE_REGIME_SPECIFIC / REGIME_INGREDIENT_DURABLE",
+      "status": "REGIME_INGREDIENT_VALIDATED",
       "data": "REPULL_PAID",
       "tested": [
-        "standalone GEX trade rule: FAILED full OOS (regime-specific)",
-        "GEX compression regime: SURVIVED full 563d all-3-years (durable ingredient)"
+        "GEX regime = validated entry-classifier (improves breakout/fade 4/4 cross-asset, within-regime)",
+        "GEX-filtered breakout: improved but still n=83/DSR0.72/concentrated -> not candidate"
       ],
       "untested": [
-        "GEX regime AS FILTER/SIZING on a separate index entry (the productive use)",
-        "gamma-flip level",
-        "vol-forecast model from GEX"
+        "combine GEX filter with a STRONGER base index entry (source-derived / event-conditioned)",
+        "more GEX sample",
+        "GEX sizing (not just filter)"
       ],
       "tested_tiers": [
         "T6"
@@ -148,7 +148,7 @@
       "tier_gap": false,
       "data_tier": "T6",
       "tier_gap_reason": "correct surface reached; naive proxy dead but underpowered; signed-GEX/flip/wall variants + more coverage are the live branch",
-      "note": "OUTCOME B (full 563-day OOS incl 2023). STANDALONE TRADE RULE FAILED: GEX-cond breakout/range diluted with 2023 (MES Sh0.90->0.62, MNQ1.31->0.63, MYM2.6->0.97), NO year-consistency (MES 2024 neg, MYM 2023 -996), DSR still 0.70-0.81 <0.95 even at n=166 -> regime-specific/fragile, DOWN-WEIGHTED, NOT WH1 candidate. But GEX COMPRESSION REGIME SURVIVED: pos-GEX ~40% lower next-day realized vol on BOTH high-low & c2c, COMPRESSES in ALL 3 years (2023/2024/2025). = DURABLE INDEX_REGIME_INPUT ingredient: breakout-permission / no-trade / sizing / range-vs-trend classifier / stop-target / vol-forecast. NOT a standalone workhorse. This is the professional outcome: regime signal, not magic entry.",
+      "note": "GEX regime CONFIRMED as a real entry-regime classifier (research/gex_regime_feature.py): mechanism holds 4/4 cross-asset via WITHIN-regime comparison (not sample-loss) \u2014 breakouts better in neg-GEX/expansion (MES 0.82->1.17, MNQ 0.61->1.01, PF up), fades better in pos-GEX/compression. GEX-FILTERING IMPROVES entries = durable INDEX_REGIME_INPUT ingredient. BUT filtered breakout still NOT candidate-grade (n=83, DSR 0.71-0.73<0.95, maxyr~100%, year-inconsistent). Bottleneck shifted: GEX-as-regime is REAL+validated; need a STRONGER base index entry (or more sample) for GEX-filtering to reach candidate-grade. Standalone GEX trade rule stays DEAD.",
       "mission_class": "INDEX_REGIME_INPUT"
     },
     "positioning_cot": {

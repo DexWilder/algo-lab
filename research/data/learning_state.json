@@ -1,11 +1,11 @@
 {
-  "timestamp": "2026-07-06 19:28 UTC",
-  "global_trial_N": 1854,
+  "timestamp": "2026-07-07 01:08 UTC",
+  "global_trial_N": 1856,
   "lane_breakdown": {
     "forced_flow": 7,
     "exploratory": 23,
     "portfolio": 2,
-    "databento_volume": 68,
+    "databento_volume": 70,
     "positioning": 48,
     "primitive_sweep": 1679,
     "macro_regime": 6,
@@ -52,7 +52,7 @@
       "tier_gap": true
     },
     "gamma_dealer": {
-      "status": "TRADE_RULE_REGIME_SPECIFIC / REGIME_INGREDIENT_DURABLE",
+      "status": "REGIME_INGREDIENT_VALIDATED",
       "data_tier": "T6",
       "richest_applicable_tier": "T6",
       "tier_gap": false

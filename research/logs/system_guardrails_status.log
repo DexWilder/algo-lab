@@ -1,4 +1,4 @@
-# FORGE GUARDRAILS — 2026-07-06 19:28 UTC
+# FORGE GUARDRAILS — 2026-07-07 01:08 UTC
 P0=0 P1=2 P2=2
   [P1] CLOSE-ONLY BIAS: only 15/194 forge_cycle scripts use 'volume' (8%). Databento volume vein under-worked (target: keep ACTIVE_PACKET_LANE).
   [P2] UNUSED FEEDS: 1 data/feeds files referenced by NO research script: ['treasury_auction_details.csv']
@@ -6,12 +6,12 @@ P0=0 P1=2 P2=2
   [P2] INBOUND: 1 source note(s) with no packet and not archived: ['INB-20260706-004']
   [ok] git backlog 0
   [ok] watchdog log 0.0d old
-  [ok] forge-morning-digest log 0.2d old
-  [ok] learning-loop log 2.7d old
+  [ok] forge-morning-digest log 0.4d old
+  [ok] learning-loop log 3.0d old
   [ok] no asserting WH/validated language in recent docs
-  [ok] trial-ledger N=1854
+  [ok] trial-ledger N=1856
   [ok] harnesses: all have output
   [ok] data-blocker certificates present (1 recent blocked-mentions, cert exists)
   [ok] per-contract data files pass validator
   [ok] data-tier gate: 0 false-exhaustion; 9 families have untested richer tier (TIER_INCOMPLETE ok)
-  [ok] inbound ledger: 58 items (0 NEW, P0=11 P1=31); status={'TRIAGED': 19, 'ACTIVE_PACKET_LANE': 9, 'RETEST_REQUIRED': 6, 'NEEDS_BESPOKE_HARNESS': 2, 'PROMOTED_TO_PACKET': 10, 'CLEAN_KILL': 1, 'CONTROL_REQUIRED': 2, 'NEEDS_LOADER': 1, 'DATA_STATUS_UNPROVEN': 1, 'PROVIDER_UNSTABLE_RETRY_LATER': 1, 'ACTIVE_IN_TESTS': 1, 'SOURCE_REQUIRED': 1, 'SCREEN_PASS_PENDING_COVERAGE': 1, 'SCREEN_PASS_OOS_SURVIVED': 1, 'CLEAN_BUT_WEAK': 1, 'REGIME_INGREDIENT_DURABLE': 1}
+  [ok] inbound ledger: 59 items (0 NEW, P0=11 P1=32); status={'TRIAGED': 19, 'ACTIVE_PACKET_LANE': 9, 'RETEST_REQUIRED': 6, 'NEEDS_BESPOKE_HARNESS': 2, 'PROMOTED_TO_PACKET': 10, 'CLEAN_KILL': 1, 'CONTROL_REQUIRED': 2, 'NEEDS_LOADER': 1, 'DATA_STATUS_UNPROVEN': 1, 'PROVIDER_UNSTABLE_RETRY_LATER': 1, 'ACTIVE_IN_TESTS': 1, 'SOURCE_REQUIRED': 1, 'SCREEN_PASS_PENDING_COVERAGE': 1, 'SCREEN_PASS_OOS_SURVIVED': 1, 'CLEAN_BUT_WEAK': 1, 'REGIME_INGREDIENT_DURABLE': 1, 'REGIME_INGREDIENT_VALIDATED': 1}

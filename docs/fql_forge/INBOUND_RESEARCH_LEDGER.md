@@ -1,7 +1,7 @@
-# Inbound Research Ledger (rendered 2026-07-06 19:28 UTC)
+# Inbound Research Ledger (rendered 2026-07-07 01:08 UTC)
 > **Operating law:** if it is not in this ledger, the queue, the dashboard, or the control map — the system does not know it.
-> Source of truth: `research/data/inbound_research_ledger.json`. Capture: `python3 research/capture_inbound.py`. Items: **58**.
-> NEW:0 | P0/P1:11/31 | untriaged directives:0 | mistakes w/o control:2 | unused feeds:0 | source notes unresolved:1
+> Source of truth: `research/data/inbound_research_ledger.json`. Capture: `python3 research/capture_inbound.py`. Items: **59**.
+> NEW:0 | P0/P1:11/32 | untriaged directives:0 | mistakes w/o control:2 | unused feeds:0 | source notes unresolved:1
 
 | id | date | type | status | P | family | mechanism / issue | next action | linked (packet/queue/control) |
 |---|---|---|---|---|---|---|---|---|
@@ -47,6 +47,7 @@
 | INB-20260706-013 | 2026-07-06 | claude discovery | SCREEN_PASS_PENDING_COVERAGE | P1 | gamma_dealer | GEX regime-only verification (descriptive): compression BROAD+ROBUST — | OOS coverage -> frozen-rule test 2024/2026; regime | GEX_BREAKOUT_RANGE_PREREGISTERED_RULE_2026-07-06.md |
 | INB-20260706-014 | 2026-07-06 | claude discovery | SCREEN_PASS_OOS_SURVIVED | P1 | gamma_dealer | GEX FROZEN-rule OOS SURVIVED (311 days, all 3 years): MES Sh0.90 all-3 | robustness (OR/threshold) + DSR-at-search-N + exec | gex_oos_pull_DONE.json + GEX_BREAKOUT_RANGE_PREREGISTERED_RU |
 | INB-20260706-017 | 2026-07-06 | claude discovery | REGIME_INGREDIENT_DURABLE | P1 | gamma_dealer | GEX OUTCOME B (full 563d OOS w/ 2023): standalone GEX-cond breakout/ra | build GEX regime as filter/sizing on a clean index | gex_oos_pull_DONE.json + GEX_BREAKOUT_RANGE_PREREGISTERED_RU |
+| INB-20260707-001 | 2026-07-07 | claude discovery | REGIME_INGREDIENT_VALIDATED | P1 | gamma_dealer | GEX-AS-FILTER CONFIRMED: mechanism holds 4/4 cross-asset (within-regim | strong base index entry + GEX filter/sizing | research/gex_regime_feature.py |
 | INB-20260616-001 | 2026-06-16 | old report | RETEST_REQUIRED | P2 | rescue (Lane F) | dormant inventory | retest under truth-gated harness, ranked | Lane F rescue |
 | INB-20260706-011 | 2026-07-06 | claude discovery | RETEST_REQUIRED | P2 | macro_event_drift | Auction-demand->index test (INDEX_REGIME_INPUT): weak-BTC auctions ->  | better surprise (tail), intraday reaction window,  | — |
 | INB-20260625-002 | 2026-07-02 | bug | TRIAGED | P2 | automation | stale tripwire not firing | resolved: freshness enforced every cycle | guardrail #3 stale-automation freshness check covers loop lo |

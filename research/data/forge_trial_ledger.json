@@ -16388,6 +16388,28 @@
       "dsr": 0.8093,
       "maxyr": 151,
       "n": 166
+    },
+    {
+      "packet": "GEX_FILTER:breakout:MES",
+      "asset": "MES",
+      "sharpe": 1.17,
+      "verdict": "micro",
+      "horizon": "",
+      "lane": "databento_volume",
+      "ts": "2026-07-07",
+      "data_tier": "T6",
+      "n": 83
+    },
+    {
+      "packet": "GEX_FILTER:breakout:MNQ",
+      "asset": "MNQ",
+      "sharpe": 1.01,
+      "verdict": "micro",
+      "horizon": "",
+      "lane": "databento_volume",
+      "ts": "2026-07-07",
+      "data_tier": "T6",
+      "n": 83
     }
   ],
   "note": "auto multiple-testing N; every test appends"
