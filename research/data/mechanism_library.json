@@ -260,27 +260,31 @@
     },
     "M21_fx_fixing_wmr": {
       "class": "flow",
-      "status": "untested",
+      "status": "dead",
       "mechanism_backed": true,
       "data_have": "1m",
       "note": "16:00 benchmark-tracking fund flow [naive best-of-24-hour Sh6 = SNOOP; needs PRE-REGISTERED 16:00-London fix hour]",
       "tier": "A",
       "category": "InstitutionalFlow",
-      "confidence": 0,
-      "lifecycle": "Testing",
-      "ev": "H"
+      "confidence": 1,
+      "lifecycle": "Retired",
+      "ev": "H",
+      "failure_reason": "no edge at pre-registered fix hour (snoop rejected)",
+      "materially_different_allowed": true
     },
     "M22_vol_target_cta": {
       "class": "flow",
-      "status": "untested",
+      "status": "dead",
       "mechanism_backed": true,
       "data_have": "vix",
       "note": "mechanical de/re-leverage on vol shocks",
       "tier": "A",
       "category": "InstitutionalFlow",
-      "confidence": 0,
-      "lifecycle": "Harvested",
-      "ev": "H"
+      "confidence": 1,
+      "lifecycle": "Retired",
+      "ev": "H",
+      "failure_reason": "insufficient edge / wrong sign",
+      "materially_different_allowed": true
     },
     "M23_pension_rebalance": {
       "class": "flow",
@@ -449,26 +453,29 @@
     "M36_quarter_end_window_dressing": {
       "class": "flow",
       "tier": "A",
-      "status": "untested",
+      "status": "weak",
       "mechanism_backed": true,
       "data_have": "calendar",
       "note": "quarter-end institutional window dressing",
       "category": "InstitutionalFlow",
-      "confidence": 0,
-      "lifecycle": "Harvested",
-      "ev": "H"
+      "confidence": 2,
+      "lifecycle": "Retired",
+      "ev": "H",
+      "failure_reason": "equity dead, rates marginal (like month-end M07)",
+      "materially_different_allowed": false
     },
     "M37_intraday_ushape": {
       "class": "microstructure",
       "tier": "A",
-      "status": "untested",
+      "status": "weak",
       "mechanism_backed": true,
       "data_have": "1m",
       "note": "U-shape vol/volume timing edges",
       "category": "Liquidity_Microstructure",
-      "confidence": 0,
-      "lifecycle": "Harvested",
-      "ev": "H"
+      "confidence": 2,
+      "lifecycle": "Retired",
+      "ev": "H",
+      "materially_different_allowed": true
     },
     "M38_leadlag_hf": {
       "class": "microstructure",
@@ -661,13 +668,13 @@
     "M53_opening_imbalance_conditioned": {
       "class": "microstructure",
       "tier": "B",
-      "status": "untested",
+      "status": "weak",
       "mechanism_backed": true,
       "data_have": "1m",
-      "note": "opening imbalance conditioned on overnight range (B: refinement of M17)",
+      "note": "opening imbalance conditioned on overnight range (B: refinement of M17) [INTERESTING: large-gap continuation MNQ1.39/MES0.96 (materially diff from dead naive-gap M03) -> pre-register+OOS+DSR]",
       "category": "Liquidity_Microstructure",
-      "confidence": 0,
-      "lifecycle": "Harvested",
+      "confidence": 2,
+      "lifecycle": "Testing",
       "ev": "H"
     },
     "M54_dealer_inventory_unwind": {

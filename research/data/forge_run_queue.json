@@ -728,10 +728,17 @@
     },
     {
       "id": "prereg_fx_fixing",
-      "status": "RUN_NOW",
+      "status": "DONE_KILLED",
       "lane": "mechanism_research",
       "mission_class": "DIVERSIFIER",
       "note": "PRE-REGISTERED: WMR 16:00-London fix hour (a-priori, NOT best-of-24) on 6E/6J/6B; OOS + costs. naive snoop rejected."
+    },
+    {
+      "id": "prereg_opening_imbalance",
+      "status": "RUN_NOW",
+      "lane": "mechanism_research",
+      "mission_class": "INDEX_DIRECT",
+      "note": "PRE-REGISTERED: large-gap continuation (gz>1 follow gap intraday) MES/MNQ/MYM \u2014 OOS+cost+DSR+per-year. Cheap-screen MNQ1.39/MES0.96; materially diff from dead naive-gap."
     }
   ]
 }

@@ -28988,6 +28988,116 @@
       "lane": "mechanism_research",
       "ts": "2026-07-07",
       "n": 223691
+    },
+    {
+      "packet": "MECH:M22_voltarget:MES",
+      "asset": "MES",
+      "sharpe": -0.21,
+      "verdict": "mechanism_research",
+      "horizon": "",
+      "lane": "mechanism_research",
+      "ts": "2026-07-07",
+      "n": 988
+    },
+    {
+      "packet": "MECH:M22_voltarget:MNQ",
+      "asset": "MNQ",
+      "sharpe": -0.24,
+      "verdict": "mechanism_research",
+      "horizon": "",
+      "lane": "mechanism_research",
+      "ts": "2026-07-07",
+      "n": 988
+    },
+    {
+      "packet": "MECH:M36_qend:MES",
+      "asset": "MES",
+      "sharpe": -0.25,
+      "verdict": "mechanism_research",
+      "horizon": "",
+      "lane": "mechanism_research",
+      "ts": "2026-07-07",
+      "n": 990
+    },
+    {
+      "packet": "MECH:M36_qend:ZN",
+      "asset": "ZN",
+      "sharpe": 0.24,
+      "verdict": "mechanism_research",
+      "horizon": "",
+      "lane": "mechanism_research",
+      "ts": "2026-07-07",
+      "n": 1445
+    },
+    {
+      "packet": "MECH:M37_ushape:MES",
+      "asset": "MES",
+      "sharpe": 0.38,
+      "verdict": "mechanism_research",
+      "horizon": "",
+      "lane": "mechanism_research",
+      "ts": "2026-07-07",
+      "n": 10418
+    },
+    {
+      "packet": "MECH:M37_ushape:MNQ",
+      "asset": "MNQ",
+      "sharpe": 0.79,
+      "verdict": "mechanism_research",
+      "horizon": "",
+      "lane": "mechanism_research",
+      "ts": "2026-07-07",
+      "n": 10418
+    },
+    {
+      "packet": "MECH:M53_openimb:MES",
+      "asset": "MES",
+      "sharpe": 0.96,
+      "verdict": "mechanism_research",
+      "horizon": "",
+      "lane": "mechanism_research",
+      "ts": "2026-07-07",
+      "n": 991
+    },
+    {
+      "packet": "MECH:M53_openimb:MNQ",
+      "asset": "MNQ",
+      "sharpe": 1.39,
+      "verdict": "mechanism_research",
+      "horizon": "",
+      "lane": "mechanism_research",
+      "ts": "2026-07-07",
+      "n": 991
+    },
+    {
+      "packet": "MECH:M21_fxfix_prereg:6E",
+      "asset": "6E",
+      "sharpe": -0.02,
+      "verdict": "mechanism_research",
+      "horizon": "",
+      "lane": "mechanism_research",
+      "ts": "2026-07-07",
+      "n": 460
+    },
+    {
+      "packet": "MECH:M21_fxfix_prereg:6J",
+      "asset": "6J",
+      "sharpe": -1.27,
+      "verdict": "mechanism_research",
+      "horizon": "",
+      "lane": "mechanism_research",
+      "ts": "2026-07-07",
+      "n": 404
+    },
+    {
+      "packet": "MECH:M21_fxfix_prereg:6B",
+      "asset": "6B",
+      "sharpe": 0.1,
+      "verdict": "mechanism_research",
+      "horizon": "",
+      "lane": "mechanism_research",
+      "ts": "2026-07-07",
+      "n": 369
     }
   ],
   "note": "auto multiple-testing N; every test appends"

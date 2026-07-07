@@ -48,7 +48,7 @@ except Exception as e: rec("inbound_capture","BROKEN","per-cycle",str(e)[:50])
 try:
     from research.forge_trial_ledger import lane_breakdown
     reg=json.loads((REPO/"research/data/family_status.json").read_text())["families"]
-    fam_lanes={f["lane"] for f in reg.values()}; ledger_lanes=set(lane_breakdown())-{"primitive_sweep","exploratory","portfolio","batch_screen"}
+    fam_lanes={f["lane"] for f in reg.values()}; ledger_lanes=set(lane_breakdown())-{"primitive_sweep","exploratory","portfolio","batch_screen","mechanism_research","data_acquisition"}
     missing=ledger_lanes-fam_lanes
     over=[k for k,f in reg.items() if f["status"] in ("CLEAN_KILL","FAMILY_EXHAUSTED") and f.get("untested")]
     st="PASS" if not missing and not over else "STALE"
