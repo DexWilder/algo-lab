@@ -29162,6 +29162,71 @@
       "dsr": 0.028,
       "maxyr": 999,
       "n": 71
+    },
+    {
+      "packet": "M47:settlement_window_reversal:prereg",
+      "asset": "MES",
+      "sharpe": -0.87,
+      "verdict": "KILL",
+      "horizon": "",
+      "lane": "mechanism_research",
+      "ts": "2026-07-07",
+      "failure_class": "no_edge",
+      "dsr": 0.0,
+      "maxyr": 999,
+      "n": 202
+    },
+    {
+      "packet": "M47:settlement_window_reversal:prereg",
+      "asset": "MES+MNQ",
+      "sharpe": -0.87,
+      "verdict": "KILL_impl",
+      "horizon": "",
+      "lane": "mechanism_research",
+      "ts": "2026-07-07",
+      "failure_class": "no_edge",
+      "dsr": 0.0,
+      "maxyr": 999,
+      "n": 202
+    },
+    {
+      "packet": "M-NEW:cot_positioning_fade:POOLED",
+      "asset": "8-instrument",
+      "sharpe": -0.47,
+      "verdict": "kill",
+      "horizon": "",
+      "lane": "mechanism_research",
+      "ts": "2026-07-07",
+      "failure_class": "no_edge",
+      "dsr": 0.0043,
+      "maxyr": 999,
+      "n": 200
+    },
+    {
+      "packet": "HARVEST:overnight_drift:POOLED_net",
+      "asset": "MES+MNQ+MYM",
+      "sharpe": 0.34,
+      "verdict": "kill",
+      "horizon": "",
+      "lane": "mechanism_research",
+      "ts": "2026-07-07",
+      "failure_class": "no_edge",
+      "dsr": 0.0412,
+      "maxyr": 124,
+      "n": 990
+    },
+    {
+      "packet": "M-NEW:cot_positioning_fade:POOLED",
+      "asset": "8-instrument",
+      "sharpe": -0.47,
+      "verdict": "kill",
+      "horizon": "",
+      "lane": "mechanism_research",
+      "ts": "2026-07-07",
+      "failure_class": "no_edge",
+      "dsr": 0.004,
+      "maxyr": 999,
+      "n": 350
     }
   ],
   "note": "auto multiple-testing N; every test appends"

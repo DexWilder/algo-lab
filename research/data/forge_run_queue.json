@@ -740,6 +740,66 @@
       "mission_class": "INDEX_DIRECT",
       "note": "PRE-REGISTERED: large-gap continuation (gz>1 follow gap intraday) MES/MNQ/MYM \u2014 OOS+cost+DSR+per-year. Cheap-screen MNQ1.39/MES0.96; materially diff from dead naive-gap.",
       "verdict": "KILL_impl (MNQ-only, real DSR fails; roll-artifact ruled out; mechanism open for materially-diff impl)"
+    },
+    {
+      "id": "pkt_commodity_roll_carry",
+      "status": "RUN_NOW",
+      "mission_class": "DIVERSIFIER",
+      "mechanism": "M70",
+      "note": "Long-backwardation/short-contango basket from *_percontract term structure (F1 vs F2 roll yield); weekly rebal, DSR@N, per-year, corr to spreadMR_GC",
+      "data_source": "GC/CL/ZN percontract (HAVE)",
+      "created": "2026-07-07",
+      "prereg": true
+    },
+    {
+      "id": "pkt_treasury_auction_cycle",
+      "status": "RUN_NOW",
+      "mission_class": "DIVERSIFIER",
+      "mechanism": "M67",
+      "note": "Rates (ZN/ZF/ZB) drift in [-3,+1]d window around auction settlement dates from treasury_auction_details; pre-reg direction=yields-up-into/down-after",
+      "data_source": "auction_details (HAVE)",
+      "created": "2026-07-07",
+      "prereg": true
+    },
+    {
+      "id": "pkt_sofr_funding_stress",
+      "status": "RUN_NOW",
+      "mission_class": "DIVERSIFIER",
+      "mechanism": "M75",
+      "note": "Regime filter: SOFR-EFFR spread & RRP z-score gate on MES exposure; test conditional Sharpe uplift vs unconditional",
+      "data_source": "funding.csv (HAVE)",
+      "created": "2026-07-07",
+      "prereg": true
+    },
+    {
+      "id": "pkt_skew_meanrev",
+      "status": "RUN_NOW",
+      "mission_class": "DIVERSIFIER",
+      "mechanism": "M77",
+      "note": "Invert ES option settlement (stat_type=3) to IV, build 25d risk-reversal, fade extremes; DSR, causal",
+      "data_source": "ES_OPT_statistics (HAVE, inversion work)",
+      "created": "2026-07-07",
+      "prereg": true
+    },
+    {
+      "id": "pkt_gold_real_rate",
+      "status": "RUN_NOW",
+      "mission_class": "DIVERSIFIER",
+      "mechanism": "M72",
+      "note": "MGC vs real_rates(dfii10) residual z-score reversion; weekly; pre-reg fade divergence",
+      "data_source": "MGC+real_rates (HAVE)",
+      "created": "2026-07-07",
+      "prereg": true
+    },
+    {
+      "id": "pkt_cot_positioning_follow",
+      "status": "RUN_NOW",
+      "mission_class": "DIVERSIFIER",
+      "mechanism": "M73",
+      "note": "PRE-REGISTERED follow (positioning momentum) across 8 COT instruments; the ONLY sanctioned COT direction after fade-KILL",
+      "data_source": "cot.csv (HAVE)",
+      "created": "2026-07-07",
+      "prereg": true
     }
   ]
 }
