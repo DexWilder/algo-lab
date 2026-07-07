@@ -1,13 +1,15 @@
 {
-  "timestamp": "2026-07-07 01:08 UTC",
-  "verdict": "SELF_AUDIT_CLEAN",
+  "timestamp": "2026-07-07 12:52 UTC",
+  "verdict": "STALE_FACET",
   "path": "research/data/self_audit_latest.json",
   "facets": 12,
-  "passed": 12,
+  "passed": 11,
   "failed": [],
-  "stale": [],
+  "stale": [
+    "family_map"
+  ],
   "designed_not_built": [],
-  "next_required_action": "none",
+  "next_required_action": "refresh STALE facet: family_map",
   "facet_detail": [
     {
       "facet": "causality_audit",
@@ -25,7 +27,7 @@
       "facet": "trial_ledger",
       "status": "PASS",
       "cadence": "per-test",
-      "detail": "N=1856 (+0 since last audit)"
+      "detail": "N=2276 (+420 since last audit)"
     },
     {
       "facet": "guardrails",
@@ -37,13 +39,13 @@
       "facet": "inbound_capture",
       "status": "PASS",
       "cadence": "per-cycle",
-      "detail": "59 items; floating=0; mistakes_no_control=2"
+      "detail": "61 items; floating=0; mistakes_no_control=2"
     },
     {
       "facet": "family_map",
-      "status": "PASS",
+      "status": "STALE",
       "cadence": "per-sprint",
-      "detail": "lanes w/o family=none; over-claims=none"
+      "detail": "lanes w/o family=['batch_screen']; over-claims=none"
     },
     {
       "facet": "novelty_engine",
@@ -67,7 +69,7 @@
       "facet": "dashboard",
       "status": "PASS",
       "cadence": "per-cycle",
-      "detail": "regenerated 0.0d ago"
+      "detail": "regenerated 0.5d ago"
     },
     {
       "facet": "data_tier_gate",

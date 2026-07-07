@@ -599,6 +599,42 @@
       "mission_class": "INDEX_REGIME_INPUT",
       "surface": "B GEX ingredient",
       "note": "find/build a STRONGER base index entry (source-derived, event-conditioned, or volume-microstructure) then apply the VALIDATED GEX regime filter+sizing. GEX-as-filter is proven; bottleneck is now base-entry quality + sample."
+    },
+    {
+      "id": "INB-20260707-002",
+      "status": "BACKLOG",
+      "lane": "inbound",
+      "note": "[governance] OPERATING-MODEL RESET assessment: diagnosis = inverted funnel (371 infra scripts / 10 sour"
+    },
+    {
+      "id": "INB-20260707-003",
+      "status": "BACKLOG",
+      "lane": "inbound",
+      "note": "[governance] BATCH-SCREEN funnel built + run: 420 daily price/volume hypotheses x 12 markets in one com"
+    },
+    {
+      "id": "batch_screen_microstructure",
+      "status": "RUN_NOW",
+      "lane": "batch_screen",
+      "note": "point batch-runner at INTRADAY microstructure mechanisms (1m: opening-imbalance, liquidity-hole, vol-shock, lead-lag) x 12 markets \u2014 richer than daily price/volume (now proven dead)"
+    },
+    {
+      "id": "batch_screen_forced_flow",
+      "status": "RUN_NOW",
+      "lane": "batch_screen",
+      "note": "batch-screen FORCED-FLOW mechanisms (roll-window, auction, OPEX, month-end, seasonal) \u2014 needs flow data acquisition first"
+    },
+    {
+      "id": "acquire_eia_free_key",
+      "status": "RUN_NOW",
+      "lane": "batch_screen",
+      "note": "acquire EIA free API key + event-surprise proxy (FRED actual - AR forecast) \u2014 the data the funnel needs"
+    },
+    {
+      "id": "batch_screen_termstructure",
+      "status": "RUN_NOW",
+      "lane": "batch_screen",
+      "note": "batch-screen term-structure/carry mechanisms across CL/GC/rates per-contract (richer expression than daily close)"
     }
   ]
 }

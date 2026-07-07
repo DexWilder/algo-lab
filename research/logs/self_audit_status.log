@@ -1,17 +1,17 @@
-# FORGE SELF-AUDIT — 2026-07-07 01:08 UTC
-facets=12 PASS=12 STALE=0 BROKEN=0 DESIGNED-not-built=0
+# FORGE SELF-AUDIT — 2026-07-07 12:52 UTC
+facets=12 PASS=11 STALE=1 BROKEN=0 DESIGNED-not-built=0
 
   [PASS    ] causality_audit      (per-candidate) — future-perturbation harness importable
   [PASS    ] deflated_sharpe      (per-survivor) — DSR/PBO gate importable
-  [PASS    ] trial_ledger         (per-test) — N=1856 (+0 since last audit)
+  [PASS    ] trial_ledger         (per-test) — N=2276 (+420 since last audit)
   [PASS    ] guardrails           (per-cycle) — status log 0.0d old
-  [PASS    ] inbound_capture      (per-cycle) — 59 items; floating=0; mistakes_no_control=2
-  [PASS    ] family_map           (per-sprint) — lanes w/o family=none; over-claims=none
+  [PASS    ] inbound_capture      (per-cycle) — 61 items; floating=0; mistakes_no_control=2
+  [STALE   ] family_map           (per-sprint) — lanes w/o family=['batch_screen']; over-claims=none
   [PASS    ] novelty_engine       (per-day) — 38/108 covered (+0); space open
   [PASS    ] adversarial_review   (per-result) — 11-check red-team importable
   [PASS    ] candidate_ladder     (per-promotion) — highest rung=SCREEN_PASS
-  [PASS    ] dashboard            (per-cycle) — regenerated 0.0d ago
+  [PASS    ] dashboard            (per-cycle) — regenerated 0.5d ago
   [PASS    ] data_tier_gate       (per-kill) — 21/21 tiered; 9 tier_gap; false-exhaustion=0
   [PASS    ] learning_loop        (per-step) — updater=True; novelty reads learning_state=True; learning_state fresh=True
 
-VERDICT: SELF_AUDIT_CLEAN  (DESIGNED = on roadmap, not a failure)
+VERDICT: STALE_FACET  (DESIGNED = on roadmap, not a failure)

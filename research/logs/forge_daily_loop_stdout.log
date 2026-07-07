@@ -448,3 +448,8 @@ FQL Forge Daily Loop — 2026-07-03 — DRY-RUN
 [TRIPWIRE] unresolved tripwire(s): ['_TRIPWIRE_2026-07-01_blowup_loss:.md', '_TRIPWIRE_2026-07-02_unresolved.md']
 [TRIPWIRE] wrote: /Users/chasefisher/projects/Algo Trading/algo-lab/research/data/fql_forge/reports/_TRIPWIRE_2026-07-03_unresolved.md
 [HALT] tripwire fired: unresolved tripwire(s): ['_TRIPWIRE_2026-07-01_blowup_loss:.md', '_TRIPWIRE_2026-07-02_unresolved.md']
+FQL Forge Daily Loop — 2026-07-06 — DRY-RUN
+==============================================================================
+[TRIPWIRE] unresolved tripwire(s): ['_TRIPWIRE_2026-07-03_unresolved.md', '_TRIPWIRE_2026-07-01_blowup_loss:.md', '_TRIPWIRE_2026-07-02_unresolved.md']
+[TRIPWIRE] wrote: /Users/chasefisher/projects/Algo Trading/algo-lab/research/data/fql_forge/reports/_TRIPWIRE_2026-07-06_unresolved.md
+[HALT] tripwire fired: unresolved tripwire(s): ['_TRIPWIRE_2026-07-03_unresolved.md', '_TRIPWIRE_2026-07-01_blowup_loss:.md', '_TRIPWIRE_2026-07-02_unresolved.md']

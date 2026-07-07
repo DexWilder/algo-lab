@@ -1080,6 +1080,24 @@
       "linked_packet": null,
       "linked_queue": "queue:INB-20260707-002",
       "linked_control": "OPERATING_MODEL_RESET_ASSESSMENT_2026-07-07.md"
+    },
+    {
+      "inbound_id": "INB-20260707-003",
+      "date": "2026-07-07",
+      "source_type": "claude discovery",
+      "source_ref": null,
+      "raw_note": "BATCH-SCREEN funnel built + run: 420 daily price/volume hypotheses x 12 markets in one command. 5 passed cheap gate (1.2%) but ALL DSR=0.000 at honest N=2276 -> daily price/volume space EXHAUSTED across all 12 markets (incl under-tested ZB/MYM/FX). The funnel+validator together delivered a clean category-level null. REDIRECT: edge is NOT in price transforms (now proven at scale); it's in flow/forced-flow/options/event data + richer expressions (intraday microstructure, cross-sectional, term-structure). Stop batch-screening price/volume; point funnel at data we must acquire.",
+      "mechanism": null,
+      "family": "governance",
+      "required_data": null,
+      "available_data": null,
+      "required_harness": null,
+      "status": "ACTIVE_PACKET_LANE",
+      "priority": "P0",
+      "next_action": "acquire flow/event data; batch-screen forced-flow + microstructure mechanisms, not price transforms",
+      "linked_packet": null,
+      "linked_queue": "queue:INB-20260707-003",
+      "linked_control": "forge_batch_screen.py"
     }
   ]
 }

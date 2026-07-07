@@ -28,6 +28,11 @@ fam_cov=round(100*sum(len(f["tested"]) for f in reg.values())/max(1,sum(len(f["t
 lstate=ladder_state(); hi=highest_rung()
 from research.capture_inbound import stats as inb_stats
 ib=inb_stats()
+# FACTORY METRICS (measure the factory, not the strategy)
+_bt=[t for t in _ledload()["trials"] if t.get("lane")=="batch_screen"]
+factory=dict(batch_hypotheses=len(_bt), markets_screened=len(set(t.get("asset") for t in _bt)),
+             dsr_credible=sum(1 for t in _ledload()["trials"] if isinstance(t.get("dsr"),(int,float)) and t.get("dsr",0)>=0.95),
+             validated_assets=2)
 ds=json.loads((REPO/"research/data/data_sources.json").read_text())["sources"] if (REPO/"research/data/data_sources.json").exists() else []
 from collections import Counter as _C
 ds_stat=dict(_C(s["status"] for s in ds)); ds_active=sum(1 for s in ds if s["status"]=="ACTIVE_IN_TESTS")
@@ -57,6 +62,10 @@ out=f"""# ALPHA RESEARCH DASHBOARD (auto-generated {stamp})
 - Novelty packets: **{nov_total}** stored ({nov_today} today) of {108} template×instrument space
 - Families: **{fam_active} active** / {len(reg)} | coverage {fam_cov}% (tested exprs / total exprs)
 - Candidate ladder: {', '.join(f'{k}={len(v)}' for k,v in lstate.items()) or 'empty (nothing promoted)'}
+
+## Factory metrics (product = validated DISCOVERIES; measure the factory)
+- Batch hypotheses run: **{factory['batch_hypotheses']}** across {factory['markets_screened']} markets | DSR-credible ever: {factory['dsr_credible']} | validated assets: {factory['validated_assets']} (spreadMR_GC diversifier + GEX regime ingredient)
+- **Daily price/volume space: EXHAUSTED across 12 markets (0 survive DSR at honest N).** Edge is in flow/forced-flow/options data + richer expressions, not price transforms.
 
 ## Inbound capture (organizational memory — nothing floats)
 - Items: **{ib['total']}** | NEW: {ib['new']} | P0/P1: {ib['p0']}/{ib['p1']} | source packets today: {ib['source_packets_today']}
