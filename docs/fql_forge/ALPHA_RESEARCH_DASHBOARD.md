@@ -1,4 +1,4 @@
-# ALPHA RESEARCH DASHBOARD (auto-generated 2026-07-07 15:04 UTC)
+# ALPHA RESEARCH DASHBOARD (auto-generated 2026-07-07 15:45 UTC)
 > `python3 research/forge_dashboard.py` regenerates this. Single canonical state view.
 
 ## HEADLINE
@@ -13,9 +13,11 @@
 - Families: **12 active** / 21 | coverage 60% (tested exprs / total exprs)
 - Candidate ladder: SCREEN_PASS=1
 
-## Factory metrics (product = validated DISCOVERIES; measure the factory)
-- Batch hypotheses run: **1134** across 15 markets | DSR-credible ever: 1 | validated assets: 2 (spreadMR_GC diversifier + GEX regime ingredient)
-- **Evidence-matched claim (NOT overclaimed):** the batch generator's templates produced 0 DSR-credible daily price/volume survivors at honest N — *this generator's output, not "the whole daily price/volume space is dead."* Untested families: vol-state, cross-sectional RV, dispersion, breadth, term-structure, cross-asset conditioning, adaptive exits, calendar, execution-timing, hybrid. Redirect = richer generators + flow data, not "domain solved."
+## Factory metrics (MECHANISM-FIRST — "are we learning about markets faster than last week?", not Sharpe/PF)
+- **DISCOVERY layer:** distinct mechanisms in library **29** | tested 14 | untested/data-gapped 15 | **goal: 50–100+**
+- **RESEARCH layer:** batch hypotheses 1134 across 15 markets. *714 hyps ≈ 4 price mechanisms — hypotheses ≠ breadth; MECHANISMS are breadth.*
+- **VALIDATION layer:** keepers **3** (spreadMR_GC SCREEN_PASS diversifier · GEX regime ingredient · month-end-rates WATCH) | validated primaries: 0
+- Honest: real breadth = **~14 tested mechanisms**, most dead; the pipeline (surface→graduate→pre-register→verdict) works but the library must GROW via ranked data acquisition (`DATA_ACQUISITION_ROADMAP_2026-07-07.md`) + external harvest. No overclaims — one generator ≠ a domain.
 
 ## Inbound capture (organizational memory — nothing floats)
 - Items: **64** | NEW: 0 | P0/P1: 13/34 | source packets today: 0

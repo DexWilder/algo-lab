@@ -17,5 +17,9 @@
     "vol",
     "xsec"
   ],
-  "note": "ONE generator's output \u2014 a null means THIS generator found nothing, not that the domain is dead"
+  "note": "mechanism-first: distinct mechanisms matter, not hypothesis count. 714 hyps = ~4 price mechanisms.",
+  "DISCOVERY_mechanisms_in_library": 29,
+  "DISCOVERY_mechanisms_tested": 14,
+  "DISCOVERY_mechanisms_untested_datagapped": 15,
+  "VALIDATION_keepers": 3
 }

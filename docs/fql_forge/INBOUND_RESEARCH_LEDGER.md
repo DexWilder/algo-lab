@@ -1,7 +1,7 @@
-# Inbound Research Ledger (rendered 2026-07-07 15:04 UTC)
+# Inbound Research Ledger (rendered 2026-07-07 15:45 UTC)
 > **Operating law:** if it is not in this ledger, the queue, the dashboard, or the control map — the system does not know it.
-> Source of truth: `research/data/inbound_research_ledger.json`. Capture: `python3 research/capture_inbound.py`. Items: **64**.
-> NEW:0 | P0/P1:13/34 | untriaged directives:0 | mistakes w/o control:2 | unused feeds:0 | source notes unresolved:1
+> Source of truth: `research/data/inbound_research_ledger.json`. Capture: `python3 research/capture_inbound.py`. Items: **65**.
+> NEW:0 | P0/P1:14/34 | untriaged directives:0 | mistakes w/o control:2 | unused feeds:0 | source notes unresolved:1
 
 | id | date | type | status | P | family | mechanism / issue | next action | linked (packet/queue/control) |
 |---|---|---|---|---|---|---|---|---|
@@ -14,6 +14,7 @@
 | INB-20260706-001 | 2026-07-06 | operator directive | ACTIVE_PACKET_LANE | P0 | governance | WH1 recentering: core mission = MNQ/MES/MYM index workhorse. All packe | WH1-weighted batch: GEX-cond index, T3 index micro | queue:INB-20260706-001 AUTONOMOUS_RUNNER_SAFETY_CONTRACT + m |
 | INB-20260707-002 | 2026-07-07 | operator directive | ACTIVE_PACKET_LANE | P0 | governance | OPERATING-MODEL RESET assessment: diagnosis = inverted funnel (371 inf | prune infra, acquire EIA/event feeds, build batch- | queue:INB-20260707-002 OPERATING_MODEL_RESET_ASSESSMENT_2026 |
 | INB-20260707-003 | 2026-07-07 | claude discovery | ACTIVE_PACKET_LANE | P0 | governance | BATCH-SCREEN funnel built + run: 420 daily price/volume hypotheses x 1 | acquire flow/event data; batch-screen forced-flow  | queue:INB-20260707-003 forge_batch_screen.py |
+| INB-20260707-007 | 2026-07-07 | operator directive | ACTIVE_PACKET_LANE | P0 | governance | MECHANISM-FIRST reframe: measure DISTINCT MECHANISMS not hypotheses. 7 | acquire #1-3 datasets (free/cheap) + harvest exter | queue:INB-20260707-007 mechanism_library.json + DATA_ACQUISI |
 | INB-20260625-001 | 2026-06-25 | bug | TRIAGED | P0 | causality | same-day-close lookahead | ORB family INVALIDATED | causality_audit.py + memory project_orb_ema_slope_lookahead |
 | INB-20260626-001 | 2026-06-26 | operator directive | TRIAGED | P0 | data governance | inventory-before-exhausted-claim | keep databento/1m lane active | forge_system_guardrails.py (unused-databento) + memory inven |
 | INB-20260630-001 | 2026-06-30 | bug | TRIAGED | P0 | data governance | unproven blocker claim | none — control locked | DATA_BLOCKER_CERTIFICATES + guardrail P1 (cert required) |

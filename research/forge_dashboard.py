@@ -28,11 +28,14 @@ fam_cov=round(100*sum(len(f["tested"]) for f in reg.values())/max(1,sum(len(f["t
 lstate=ladder_state(); hi=highest_rung()
 from research.capture_inbound import stats as inb_stats
 ib=inb_stats()
-# FACTORY METRICS (measure the factory, not the strategy)
+# FACTORY METRICS (measure the FACTORY, mechanism-first — not Sharpe/PF)
 _bt=[t for t in _ledload()["trials"] if t.get("lane")=="batch_screen"]
+_ml=json.loads((REPO/"research/data/mechanism_library.json").read_text())["mechanisms"] if (REPO/"research/data/mechanism_library.json").exists() else {}
+_tested=sum(1 for v in _ml.values() if v.get("status") in ("dead","weak","watch","ingredient","screen_pass"))
+_keepers=sum(1 for v in _ml.values() if v.get("status") in ("watch","ingredient","screen_pass"))
+_untested=sum(1 for v in _ml.values() if v.get("status") in ("untested","data_blocked"))
 factory=dict(batch_hypotheses=len(_bt), markets_screened=len(set(t.get("asset") for t in _bt)),
-             dsr_credible=sum(1 for t in _ledload()["trials"] if isinstance(t.get("dsr"),(int,float)) and t.get("dsr",0)>=0.95),
-             validated_assets=2)
+             mechanisms=len(_ml), mechanisms_tested=_tested, mechanisms_untested=_untested, keepers=_keepers)
 ds=json.loads((REPO/"research/data/data_sources.json").read_text())["sources"] if (REPO/"research/data/data_sources.json").exists() else []
 from collections import Counter as _C
 ds_stat=dict(_C(s["status"] for s in ds)); ds_active=sum(1 for s in ds if s["status"]=="ACTIVE_IN_TESTS")
@@ -63,9 +66,11 @@ out=f"""# ALPHA RESEARCH DASHBOARD (auto-generated {stamp})
 - Families: **{fam_active} active** / {len(reg)} | coverage {fam_cov}% (tested exprs / total exprs)
 - Candidate ladder: {', '.join(f'{k}={len(v)}' for k,v in lstate.items()) or 'empty (nothing promoted)'}
 
-## Factory metrics (product = validated DISCOVERIES; measure the factory)
-- Batch hypotheses run: **{factory['batch_hypotheses']}** across {factory['markets_screened']} markets | DSR-credible ever: {factory['dsr_credible']} | validated assets: {factory['validated_assets']} (spreadMR_GC diversifier + GEX regime ingredient)
-- **Evidence-matched claim (NOT overclaimed):** the batch generator's templates produced 0 DSR-credible daily price/volume survivors at honest N — *this generator's output, not "the whole daily price/volume space is dead."* Untested families: vol-state, cross-sectional RV, dispersion, breadth, term-structure, cross-asset conditioning, adaptive exits, calendar, execution-timing, hybrid. Redirect = richer generators + flow data, not "domain solved."
+## Factory metrics (MECHANISM-FIRST — "are we learning about markets faster than last week?", not Sharpe/PF)
+- **DISCOVERY layer:** distinct mechanisms in library **{factory['mechanisms']}** | tested {factory['mechanisms_tested']} | untested/data-gapped {factory['mechanisms_untested']} | **goal: 50–100+**
+- **RESEARCH layer:** batch hypotheses {factory['batch_hypotheses']} across {factory['markets_screened']} markets. *714 hyps ≈ 4 price mechanisms — hypotheses ≠ breadth; MECHANISMS are breadth.*
+- **VALIDATION layer:** keepers **{factory['keepers']}** (spreadMR_GC SCREEN_PASS diversifier · GEX regime ingredient · month-end-rates WATCH) | validated primaries: 0
+- Honest: real breadth = **~14 tested mechanisms**, most dead; the pipeline (surface→graduate→pre-register→verdict) works but the library must GROW via ranked data acquisition (`DATA_ACQUISITION_ROADMAP_2026-07-07.md`) + external harvest. No overclaims — one generator ≠ a domain.
 
 ## Inbound capture (organizational memory — nothing floats)
 - Items: **{ib['total']}** | NEW: {ib['new']} | P0/P1: {ib['p0']}/{ib['p1']} | source packets today: {ib['source_packets_today']}

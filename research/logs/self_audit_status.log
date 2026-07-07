@@ -1,4 +1,4 @@
-# FORGE SELF-AUDIT — 2026-07-07 15:04 UTC
+# FORGE SELF-AUDIT — 2026-07-07 15:45 UTC
 facets=12 PASS=12 STALE=0 BROKEN=0 DESIGNED-not-built=0
 
   [PASS    ] causality_audit      (per-candidate) — future-perturbation harness importable

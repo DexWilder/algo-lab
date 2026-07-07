@@ -1152,6 +1152,24 @@
       "linked_packet": null,
       "linked_queue": null,
       "linked_control": null
+    },
+    {
+      "inbound_id": "INB-20260707-007",
+      "date": "2026-07-07",
+      "source_type": "operator directive",
+      "source_ref": null,
+      "raw_note": "MECHANISM-FIRST reframe: measure DISTINCT MECHANISMS not hypotheses. 714 hyps = ~4 price mechanisms; real breadth = ~14 tested / 3 keepers / goal 50-100+. mechanism_library.json (29 mechanisms) + ranked DATA_ACQUISITION_ROADMAP (by discovery-rate ROI). Metrics = Discovery/Research/Validation layers, NOT Sharpe. Prove pipeline REPEATABLE across many mechanisms, not one.",
+      "mechanism": null,
+      "family": "governance",
+      "required_data": null,
+      "available_data": null,
+      "required_harness": null,
+      "status": "ACTIVE_PACKET_LANE",
+      "priority": "P0",
+      "next_action": "acquire #1-3 datasets (free/cheap) + harvest external mechanisms -> grow library",
+      "linked_packet": null,
+      "linked_queue": "queue:INB-20260707-007",
+      "linked_control": "mechanism_library.json + DATA_ACQUISITION_ROADMAP_2026-07-07.md"
     }
   ]
 }

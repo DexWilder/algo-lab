@@ -649,6 +649,40 @@
       "mission_class": "DIVERSIFIER",
       "surface": "A forced-flow T3",
       "note": "WATCH: real mechanism-backed diversifier (corr 0.02) but decaying + DSR0.877 + ZN tail-driven"
+    },
+    {
+      "id": "acquire_index_rebalance_cal",
+      "status": "RUN_NOW",
+      "lane": "data_acquisition",
+      "mission_class": "INDEX_REGIME_INPUT",
+      "note": "#1 ROI: scrape S&P/Russell reconstitution calendar (free) -> unlocks M15 index-rebalance forced-flow (WH1)"
+    },
+    {
+      "id": "acquire_ng_1m",
+      "status": "RUN_NOW",
+      "lane": "data_acquisition",
+      "mission_class": "INDEX_REGIME_INPUT",
+      "note": "#2 ROI: pull NG 1m Databento (~$3) -> unlocks M28 commodity-seasonal (untapped market)"
+    },
+    {
+      "id": "acquire_eia_key",
+      "status": "RUN_NOW",
+      "lane": "data_acquisition",
+      "mission_class": "INDEX_REGIME_INPUT",
+      "note": "#3 ROI: register free EIA API key -> unlocks M20 inventory-surprise"
+    },
+    {
+      "id": "harvest_external_mechanisms",
+      "status": "RUN_NOW",
+      "lane": "data_acquisition",
+      "mission_class": "INDEX_REGIME_INPUT",
+      "note": "GROW library: harvest 10 EXTERNAL mechanisms (papers/exchange/SSRN) -> new distinct mechanisms, not expressions. Target library 29->40+"
+    },
+    {
+      "id": "INB-20260707-007",
+      "status": "BACKLOG",
+      "lane": "inbound",
+      "note": "[governance] MECHANISM-FIRST reframe: measure DISTINCT MECHANISMS not hypotheses. 714 hyps = ~4 price m"
     }
   ]
 }
