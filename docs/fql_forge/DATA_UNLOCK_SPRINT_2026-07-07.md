@@ -12,7 +12,7 @@ Re-inventory of `data/feeds/` + `ES_OPT_statistics` (per the `inventory-before-b
 
 | Mechanism | EV | Unblocked by (staged data) |
 |---|---|---|
-| M46/M77 options-skew term-structure | H | `ES_OPT_statistics` **stat_type=3 settlement prices/strike** → invert Black-Scholes to IV surface |
+| ~~M46/M77 options-skew~~ **CORRECTED 2026-07-07** | H | ❌ NOT unblocked — held `ES_OPT_statistics` is a **5-day sample** (2025-06-02..06), not history. Back to Blocked; needs full option-settlement pull (now acquisition #0). I over-unblocked this last turn; owning it. |
 | M48/M75 repo/funding stress | M | `funding.csv` = SOFR/EFFR/DFF/RRP_vol/WALCL, 2018–2026 |
 | M50/M81 natgas seasonal | M | `energy_spot.csv` Henry Hub NG spot (daily) |
 | M63/M82 cross-currency basis | M | 6E/6J/6B 1m + `treasury_yield_curve` + `policy_rates` → CIP deviation |
@@ -26,6 +26,17 @@ Re-inventory of `data/feeds/` + `ES_OPT_statistics` (per the `inventory-before-b
 ---
 
 ## RANKED ACQUISITION — genuinely-missing data (EV × unlock-count × attainability)
+
+### #0 (NEW TOP PRIORITY) — Full ES option settlement history  ·  EV **H**  ·  gates the entire observability test
+This is now the highest-value purchase because it is the **only** way to run the observability discriminator (`RESEARCH_UNIVERSE_FALSIFICATION.md` Test 1). Held stats file is a 5-day sample. Need daily settlement price per option strike (stat_type=3) + definition, 2019–2026, to invert a real IV surface → signed dealer GEX → test as a conditioner vs the killed max-OI proxy. Exact command (operator, key required):
+```python
+import os, databento as db
+c = db.Historical(os.environ["DATABENTO_API_KEY"])
+c.timeseries.get_range(dataset="GLBX.MDP3", symbols=["ES.OPT"], stype_in="parent",
+    schema="statistics", start="2019-01-01", end="2026-06-30").to_csv("data/databento/ES_OPT_statistics_full.csv")
+# (chunk by quarter if the range is too large; definition schema pull in parallel for strike/cp/expiry)
+```
+Cost: moderate (statistics is lighter than trades/mbo; chunk to stay near budget). **Without it, H-observability cannot be tested at all.**
 
 ### #1 — VIX futures term structure  ·  EV **H**  ·  ~$8 (auto-approve)
 Unlocks **M69 vix_term_structure_carry** (short VX front in contango — Simon-Campasano 2014), strengthens M32/M45.

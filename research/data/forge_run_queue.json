@@ -2,14 +2,15 @@
   "queue": [
     {
       "id": "pkt_dealer_gamma_DIRECT_discriminator",
-      "status": "RUN_NOW",
+      "status": "BLOCKED_ON_ACQUISITION",
       "mission_class": "INDEX_REGIME_INPUT",
       "mechanism": "M19->M08 direct",
-      "note": "OBSERVABILITY DISCRIMINATOR (Test 1a): invert ES option settlements (stat_type=3) to real IV surface -> signed dealer GEX -> test as INTRADAY CONDITIONER of MES realized-vol/MR (NOT outright pin). If survives where max-OI proxy died = H-observability confirmed. Pre-registered per RESEARCH_UNIVERSE_FALSIFICATION.",
+      "note": "OBSERVABILITY DISCRIMINATOR (Test 1a) \u2014 BLOCKED: held ES_OPT_statistics is a 5-DAY sample, not history. Needs full daily ES option settlement pull (2019-2026). PRE-REGISTERED symmetric reading (written before run): SURVIVES-OOS-as-conditioner & beats flat-vol-proxy GEX -> supports H-observability FOR DEALER GAMMA ONLY (N=1 of >=3, not universal). CLEAN-KILL -> weakens H-observability for this mechanism ONLY, NOT proof no edges exist. Outcome updates, does not determine.",
       "data_source": "ES_OPT_statistics (HAVE) + definition",
       "created": "2026-07-07",
       "prereg": true,
-      "priority": "P0_discriminator"
+      "priority": "P0_discriminator",
+      "data_needed": "full ES option settlement history"
     },
     {
       "id": "gamma_chunked_loader_then_regime",

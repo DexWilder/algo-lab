@@ -23,5 +23,6 @@
     "direct_survive": "41%",
     "intraday_survive": "12%",
     "high_res_direct_tested": 0
-  }
+  },
+  "parallel_tracks": "TWO first-class tracks (anti-overswing): (A) DIRECT+conditioning [acquisition-gated: observability discriminator needs full option-settlement pull] and (B) PRICE-native diversified [TSMOM 12-mkt WATCH Sh0.89/DSR0.24 runnable NOW]. survivor_fit is priority-order not a filter; price-only is deprioritized NOT abandoned (trend-following counterexample)."
 }

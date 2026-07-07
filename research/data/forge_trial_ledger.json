@@ -29292,6 +29292,19 @@
       "dsr": 0.37,
       "maxyr": 153,
       "n": 250
+    },
+    {
+      "packet": "PRICE-TRACK:tsmom_portfolio_12mkt",
+      "asset": "12-market",
+      "sharpe": 0.89,
+      "verdict": "watch_thin",
+      "horizon": "",
+      "lane": "mechanism_research",
+      "ts": "2026-07-07",
+      "failure_class": "none",
+      "dsr": 0.2361,
+      "maxyr": 0,
+      "n": 1771
     }
   ],
   "note": "auto multiple-testing N; every test appends"

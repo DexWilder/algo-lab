@@ -28,5 +28,12 @@ These are not mutually exclusive, but they imply *different next moves*, so we m
 - Test 1 produces ≥1 OOS-surviving direct conditioner, OR
 - The provisional funding-stress filter (passed OOS: DD −18%, Sharpe +0.16 in H2) is joined by ≥2 more OOS-validated conditioning overlays → the "6 mediocre orthogonal filters > 1 workhorse" portfolio thesis becomes buildable, which is itself a valid product even with 0 standalone workhorses.
 
+## Interpretation discipline (pre-registered — binds BOTH outcomes, written before running)
+The outcome must *update* beliefs, not *determine* them. Guardrails locked in advance so neither result can be over-read:
+1. **N≥3 before any observability conclusion.** One discriminator settles nothing. The observability hypothesis is only supported/weakened after ≥3 *independent* direct-vs-proxy pairs (dealer gamma, dispersion/single-name IV, one more). A single survivor supports observability **for that mechanism only** — never a universal law ("all structural-flow ideas are good"). A single death weakens it **for that mechanism only** — never "no durable edges exist anywhere."
+2. **The autopsy is a prior, not a law.** "Conditioning survived 71% *in this program so far*" ≠ "conditioning always works." `survivor_fit` is a **priority ordering**, not a filter or a truth-claim. We still test outright/price mechanisms — just ordered lower. We do not refuse a hypothesis because it scores low.
+3. **Do NOT become "the direct-data lab."** Direct measurement is ONE promising direction, not the only one. PRICE-only survived 28% (not 0), and cross-market **trend-following is a decades-proven counterexample built entirely from price.** A price-native track (trend/momentum across the futures set, done properly) stays alive in parallel — deprioritized, not abandoned.
+4. **Symmetric standard.** The pre-committed reading of BOTH outcomes (below, per experiment) is written before the run. If I find myself explaining a result in a way I didn't pre-register, that's the tell I'm rationalizing.
+
 ## Honest status
 We are at Test 1. We have **not** earned any universe-level conclusion. The next months are Test 1: run the 3 direct-conditioner discriminators. Scenario A (≥1 survives) validates mechanism-first. Scenario B (all kill) triggers Test 2 and this document's kill criterion — deliberately, not by drift.

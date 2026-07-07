@@ -1,6 +1,6 @@
 {
   "updated": "2026-07-07",
-  "library_size": 85,
+  "library_size": 86,
   "high_ev_backlog": 3,
   "high_ev_ids": [
     "M46_options_skew_ts",
@@ -8,14 +8,14 @@
     "M77_skew_meanrev"
   ],
   "completed_verdicts": 29,
-  "remaining_testable": 40,
+  "remaining_testable": 39,
   "blocked_on_data": 16,
   "lifecycle": {
     "Retired": 26,
     "Validated": 3,
-    "Blocked": 16,
-    "Harvested": 39,
-    "Testing": 1
+    "Blocked": 18,
+    "Harvested": 37,
+    "Testing": 2
   },
   "mechanisms_per_active_day": 30.0,
   "mechanism_research_trials": 35,
@@ -33,5 +33,11 @@
     "direct_survive": "41%",
     "queue_reranked_by": "survivor_fit",
     "edge_existence_claim": "RETRACTED"
-  }
+  },
+  "watch_threads": [
+    "M07_month_end_flow",
+    "M75_sofr_effr_funding_stress",
+    "M86_tsmom_diversified_portfolio"
+  ],
+  "two_tracks": "A=direct+conditioning (acquisition-gated) | B=price-native diversified (TSMOM WATCH runnable)"
 }
