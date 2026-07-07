@@ -15,5 +15,13 @@
     "runnable_to_clean_survivor": "0% (1 WATCH filter)",
     "survivor_to_validated": "n/a"
   },
-  "read": "harvest QUALITY high on testability (80% runnable, structurally-motivated) but 0 clean survivors this cohort -> bottleneck is now EDGE-EXISTENCE not testability. Expect mostly kills; the funding-stress filter is the single live thread. Don't assume staged data hides gold."
+  "read": "RETRACTED prior claim 'bottleneck is edge-existence' \u2014 unearned. Kill-autopsy (KILL_AUTOPSY_2026-07-07) shows failure is STRUCTURED not uniform: outright-directional survives 6% vs regime-conditioning 71%; proxy 10% vs direct 41%; intraday 12% vs event/weekly ~30%. Two live hypotheses, NOT distinguishable yet: (H-edge) durable edges are rare; (H-observ) we've only tested PROXIES + COARSE-direct measurements (0 high-resolution direct institutional measurements ever tested). Reshape: prioritize CONDITIONING over outright, DIRECT over proxy; the discriminating experiment = one high-res DIRECT measurement vs its killed PROXY (dealer gamma: real signed-GEX vs max-OI).",
+  "autopsy": {
+    "outright_survive": "6%",
+    "conditioning_survive": "71%",
+    "proxy_survive": "10%",
+    "direct_survive": "41%",
+    "intraday_survive": "12%",
+    "high_res_direct_tested": 0
+  }
 }

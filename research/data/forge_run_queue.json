@@ -1,6 +1,17 @@
 {
   "queue": [
     {
+      "id": "pkt_dealer_gamma_DIRECT_discriminator",
+      "status": "RUN_NOW",
+      "mission_class": "INDEX_REGIME_INPUT",
+      "mechanism": "M19->M08 direct",
+      "note": "OBSERVABILITY DISCRIMINATOR (Test 1a): invert ES option settlements (stat_type=3) to real IV surface -> signed dealer GEX -> test as INTRADAY CONDITIONER of MES realized-vol/MR (NOT outright pin). If survives where max-OI proxy died = H-observability confirmed. Pre-registered per RESEARCH_UNIVERSE_FALSIFICATION.",
+      "data_source": "ES_OPT_statistics (HAVE) + definition",
+      "created": "2026-07-07",
+      "prereg": true,
+      "priority": "P0_discriminator"
+    },
+    {
       "id": "gamma_chunked_loader_then_regime",
       "script": "-",
       "status": "ACTIVE_PACKET_LANE",

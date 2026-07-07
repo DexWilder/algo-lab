@@ -12,7 +12,11 @@
       "category": "Price_CrossAsset",
       "confidence": 1,
       "lifecycle": "Retired",
-      "failure_reason": "arbitraged/not-structural"
+      "failure_reason": "arbitraged/not-structural",
+      "observability": "PRICE",
+      "frequency": "daily",
+      "mtype": "outright",
+      "survivor_fit": 2
     },
     "M02_price_meanrev": {
       "class": "price",
@@ -25,7 +29,11 @@
       "category": "Price_CrossAsset",
       "confidence": 1,
       "lifecycle": "Retired",
-      "failure_reason": "arbitraged"
+      "failure_reason": "arbitraged",
+      "observability": "PRICE",
+      "frequency": "daily",
+      "mtype": "outright",
+      "survivor_fit": 2
     },
     "M03_gap_overnight": {
       "class": "price",
@@ -38,7 +46,11 @@
       "category": "Price_CrossAsset",
       "confidence": 1,
       "lifecycle": "Retired",
-      "failure_reason": "arbitraged+costs"
+      "failure_reason": "arbitraged+costs",
+      "observability": "PRICE",
+      "frequency": "daily",
+      "mtype": "outright",
+      "survivor_fit": 2
     },
     "M04_volume_direction": {
       "class": "microstructure",
@@ -51,7 +63,11 @@
       "category": "Liquidity_Microstructure",
       "confidence": 1,
       "lifecycle": "Retired",
-      "failure_reason": "not-structural"
+      "failure_reason": "not-structural",
+      "observability": "PRICE",
+      "frequency": "daily",
+      "mtype": "outright",
+      "survivor_fit": 2
     },
     "M05_vol_state": {
       "class": "vol",
@@ -64,7 +80,11 @@
       "category": "Volatility",
       "confidence": 2,
       "lifecycle": "Retired",
-      "failure_reason": "weak-not-DSR"
+      "failure_reason": "weak-not-DSR",
+      "observability": "PRICE",
+      "frequency": "daily",
+      "mtype": "conditioning",
+      "survivor_fit": 5
     },
     "M06_cross_sectional_rv": {
       "class": "price",
@@ -77,7 +97,11 @@
       "category": "Price_CrossAsset",
       "confidence": 2,
       "lifecycle": "Retired",
-      "failure_reason": "weak-not-DSR"
+      "failure_reason": "weak-not-DSR",
+      "observability": "PRICE",
+      "frequency": "daily",
+      "mtype": "carry",
+      "survivor_fit": 4
     },
     "M07_month_end_flow": {
       "class": "flow",
@@ -89,7 +113,11 @@
       "tier": "A",
       "category": "InstitutionalFlow",
       "confidence": 3,
-      "lifecycle": "Validated"
+      "lifecycle": "Validated",
+      "observability": "DIRECT",
+      "frequency": "event",
+      "mtype": "conditioning",
+      "survivor_fit": 7
     },
     "M08_dealer_gamma": {
       "class": "options",
@@ -101,7 +129,11 @@
       "tier": "A",
       "category": "Volatility",
       "confidence": 3,
-      "lifecycle": "Validated"
+      "lifecycle": "Validated",
+      "observability": "PROXY",
+      "frequency": "daily",
+      "mtype": "conditioning",
+      "survivor_fit": 4
     },
     "M09_commodity_termstruct": {
       "class": "carry",
@@ -113,7 +145,11 @@
       "tier": "A",
       "category": "CrossAsset_Carry",
       "confidence": 3,
-      "lifecycle": "Validated"
+      "lifecycle": "Validated",
+      "observability": "DIRECT",
+      "frequency": "daily",
+      "mtype": "carry",
+      "survivor_fit": 5
     },
     "M10_rates_carry_curve": {
       "class": "carry",
@@ -126,7 +162,11 @@
       "category": "CrossAsset_Carry",
       "confidence": 1,
       "lifecycle": "Retired",
-      "failure_reason": "no-edge-at-daily-tier"
+      "failure_reason": "no-edge-at-daily-tier",
+      "observability": "DIRECT",
+      "frequency": "weekly",
+      "mtype": "carry",
+      "survivor_fit": 6
     },
     "M11_auction_demand": {
       "class": "flow",
@@ -139,7 +179,11 @@
       "category": "InstitutionalFlow",
       "confidence": 2,
       "lifecycle": "Retired",
-      "failure_reason": "regime-specific-2024-25"
+      "failure_reason": "regime-specific-2024-25",
+      "observability": "DIRECT",
+      "frequency": "event",
+      "mtype": "outright",
+      "survivor_fit": 4
     },
     "M12_crypto_funding": {
       "class": "carry",
@@ -152,7 +196,11 @@
       "category": "CrossAsset_Carry",
       "confidence": 1,
       "lifecycle": "Retired",
-      "failure_reason": "arbitraged+costs"
+      "failure_reason": "arbitraged+costs",
+      "observability": "DIRECT",
+      "frequency": "daily",
+      "mtype": "carry",
+      "survivor_fit": 5
     },
     "M13_intraday_micro": {
       "class": "microstructure",
@@ -165,7 +213,11 @@
       "category": "Liquidity_Microstructure",
       "confidence": 1,
       "lifecycle": "Retired",
-      "failure_reason": "costs>edge"
+      "failure_reason": "costs>edge",
+      "observability": "PROXY",
+      "frequency": "intraday",
+      "mtype": "outright",
+      "survivor_fit": 0
     },
     "M14_cross_index_rv": {
       "class": "price",
@@ -178,7 +230,11 @@
       "category": "Price_CrossAsset",
       "confidence": 2,
       "lifecycle": "Retired",
-      "failure_reason": "threshold-selected-DSR-fail"
+      "failure_reason": "threshold-selected-DSR-fail",
+      "observability": "PRICE",
+      "frequency": "daily",
+      "mtype": "carry",
+      "survivor_fit": 4
     },
     "M15_index_rebalance": {
       "class": "flow",
@@ -231,7 +287,11 @@
       "lifecycle": "Retired",
       "ev": "H",
       "failure_reason": "no-edge (sweep-recover doesn't reverse, PF~1.06)",
-      "exprs_tested": 1
+      "exprs_tested": 1,
+      "observability": "PROXY",
+      "frequency": "intraday",
+      "mtype": "outright",
+      "survivor_fit": 0
     },
     "M19_opex_gamma_pin": {
       "class": "options",
@@ -248,7 +308,11 @@
       "verdict_date": "2026-07-07",
       "failure_reason": "max-OI pin convergence FAILS on MES: trading TOWARD pin Sh-1.03 PF0.83 neg in 3/4yrs, real DSR 0.14@8->0.03@N. Pin-convergence effect absent (or reversed) at this proxy.",
       "materially_different_allowed": true,
-      "exprs_tested": 1
+      "exprs_tested": 1,
+      "observability": "PROXY",
+      "frequency": "event",
+      "mtype": "outright",
+      "survivor_fit": 2
     },
     "M20_eia_inventory": {
       "class": "event",
@@ -275,7 +339,11 @@
       "lifecycle": "Retired",
       "ev": "H",
       "failure_reason": "no edge at pre-registered fix hour (snoop rejected)",
-      "materially_different_allowed": true
+      "materially_different_allowed": true,
+      "observability": "PROXY",
+      "frequency": "event",
+      "mtype": "outright",
+      "survivor_fit": 2
     },
     "M22_vol_target_cta": {
       "class": "flow",
@@ -289,7 +357,11 @@
       "lifecycle": "Retired",
       "ev": "H",
       "failure_reason": "insufficient edge / wrong sign",
-      "materially_different_allowed": true
+      "materially_different_allowed": true,
+      "observability": "PROXY",
+      "frequency": "daily",
+      "mtype": "outright",
+      "survivor_fit": 1
     },
     "M23_pension_rebalance": {
       "class": "flow",
@@ -468,7 +540,11 @@
       "lifecycle": "Retired",
       "ev": "H",
       "failure_reason": "equity dead, rates marginal (like month-end M07)",
-      "materially_different_allowed": false
+      "materially_different_allowed": false,
+      "observability": "DIRECT",
+      "frequency": "event",
+      "mtype": "conditioning",
+      "survivor_fit": 7
     },
     "M37_intraday_ushape": {
       "class": "microstructure",
@@ -481,7 +557,11 @@
       "confidence": 2,
       "lifecycle": "Retired",
       "ev": "H",
-      "materially_different_allowed": true
+      "materially_different_allowed": true,
+      "observability": "PRICE",
+      "frequency": "intraday",
+      "mtype": "conditioning",
+      "survivor_fit": 4
     },
     "M38_leadlag_hf": {
       "class": "microstructure",
@@ -495,7 +575,11 @@
       "lifecycle": "Retired",
       "ev": "H",
       "failure_reason": "efficient: MES->MNQ 1m corr -0.001, no lead-lag",
-      "exprs_tested": 1
+      "exprs_tested": 1,
+      "observability": "PROXY",
+      "frequency": "intraday",
+      "mtype": "outright",
+      "survivor_fit": 0
     },
     "M39_rates_curve_momentum": {
       "class": "carry",
@@ -612,7 +696,11 @@
       "verdict": "KILL_impl",
       "verdict_date": "2026-07-07",
       "failure_reason": "settlement-window imbalance reversal fails MES-0.87/MNQ-0.53, DSR~0, neg all yrs",
-      "materially_different_allowed": true
+      "materially_different_allowed": true,
+      "observability": "PROXY",
+      "frequency": "event",
+      "mtype": "outright",
+      "survivor_fit": 2
     },
     "M48_repo_funding_stress": {
       "class": "event",
@@ -695,7 +783,11 @@
       "verdict_date": "2026-07-07",
       "failure_reason": "raw large-gap continuation: MNQ-only (MES~0, MYM weak/2-of-4yr); real DSR (deflation applied) 0.73@N8 -> 0.0001@honest-N. The PSR 0.996 that looked like a pass was NOT multiple-testing corrected.",
       "materially_different_allowed": true,
-      "exprs_tested": 1
+      "exprs_tested": 1,
+      "observability": "PROXY",
+      "frequency": "daily",
+      "mtype": "outright",
+      "survivor_fit": 1
     },
     "M54_dealer_inventory_unwind": {
       "class": "microstructure",
@@ -709,7 +801,11 @@
       "ev": "H",
       "note": "market-maker inventory MR (hole: dealer inventory)",
       "failure_reason": "no-edge: large index moves don't revert next-bar",
-      "exprs_tested": 1
+      "exprs_tested": 1,
+      "observability": "PROXY",
+      "frequency": "daily",
+      "mtype": "outright",
+      "survivor_fit": 1
     },
     "M55_commodity_logistics": {
       "class": "seasonal",
@@ -807,7 +903,11 @@
       "confidence": 1,
       "lifecycle": "Retired",
       "failure_reason": "2s5s10s fly killed prior",
-      "note": "(C: expression of curve RV, already dead)"
+      "note": "(C: expression of curve RV, already dead)",
+      "observability": "DIRECT",
+      "frequency": "weekly",
+      "mtype": "carry",
+      "survivor_fit": 6
     },
     "M63_cross_currency_basis": {
       "class": "carry",
@@ -861,7 +961,11 @@
       "data_needed": null,
       "data_have": "FOMC calendar (free/hardcode)",
       "note": "Lucca-Moench 2015 JF: equity drifts up in 24h pre-scheduled-FOMC | TESTABLE NOW on held data",
-      "testable_now": true
+      "testable_now": true,
+      "observability": "DIRECT",
+      "frequency": "event",
+      "mtype": "conditioning",
+      "survivor_fit": 7
     },
     "M67_treasury_auction_cycle": {
       "status": "weak",
@@ -879,7 +983,11 @@
       "note": "concession-window pooled Sh0.19 DSR0.01; 5Y sub-lead (ZF Sh0.59) term-specific \u2014 open for 5Y-only materially-diff test",
       "testable_now": true,
       "verdict": "KILL_impl",
-      "materially_different_allowed": true
+      "materially_different_allowed": true,
+      "observability": "DIRECT",
+      "frequency": "event",
+      "mtype": "outright",
+      "survivor_fit": 4
     },
     "M68_variance_risk_premium": {
       "status": "untested",
@@ -895,7 +1003,11 @@
       "data_needed": null,
       "data_have": "vix.csv + realized (HAVE)",
       "note": "Carr-Wu 2009: IV systematically > realized; short vol | TESTABLE NOW on held data",
-      "testable_now": true
+      "testable_now": true,
+      "observability": "DIRECT",
+      "frequency": "daily",
+      "mtype": "conditioning",
+      "survivor_fit": 6
     },
     "M69_vix_term_structure_carry": {
       "status": "data_blocked",
@@ -911,7 +1023,11 @@
       "data_needed": "VX futures (NEED, Databento ~$8)",
       "data_have": null,
       "note": "Simon-Campasano 2014: short VX front in contango (roll carry) | needs acquisition",
-      "testable_now": false
+      "testable_now": false,
+      "observability": "DIRECT",
+      "frequency": "daily",
+      "mtype": "carry",
+      "survivor_fit": 5
     },
     "M70_commodity_roll_yield_carry": {
       "status": "dead",
@@ -929,7 +1045,11 @@
       "note": "naive time-series sign(F1-F2) carry pooled Sh-0.44; GC persistent-contango makes signal near-constant. Real carry premium needs BROAD cross-section (10+ commodities) \u2014 materially-diff, needs data",
       "testable_now": true,
       "verdict": "KILL_impl",
-      "materially_different_allowed": true
+      "materially_different_allowed": true,
+      "observability": "DIRECT",
+      "frequency": "daily",
+      "mtype": "carry",
+      "survivor_fit": 5
     },
     "M71_overnight_intraday_anomaly": {
       "status": "weak",
@@ -948,7 +1068,11 @@
       "testable_now": true,
       "verdict": "KILL_impl",
       "failure_reason": "gross Sh~1.1 consistent but net cost-fragile (0.34 pooled, DSR0.04); beta-contaminated (intraday ALSO positive in bull sample)",
-      "materially_different_allowed": true
+      "materially_different_allowed": true,
+      "observability": "PRICE",
+      "frequency": "daily",
+      "mtype": "conditioning",
+      "survivor_fit": 5
     },
     "M72_gold_real_rate_beta": {
       "status": "untested",
@@ -982,7 +1106,11 @@
       "note": "FADE killed (-0.47); FOLLOW pre-registered thin (Sh0.4 DSR0.37) \u2014 both directions fail the gate",
       "testable_now": true,
       "verdict": "KILL",
-      "materially_different_allowed": false
+      "materially_different_allowed": false,
+      "observability": "DIRECT",
+      "frequency": "weekly",
+      "mtype": "outright",
+      "survivor_fit": 4
     },
     "M74_hy_credit_regime": {
       "status": "untested",
@@ -998,7 +1126,11 @@
       "data_needed": null,
       "data_have": "credit_oas.csv (HAVE)",
       "note": "HY-OAS widening = risk-off; conditions equity/vol exposure | TESTABLE NOW on held data",
-      "testable_now": true
+      "testable_now": true,
+      "observability": "DIRECT",
+      "frequency": "weekly",
+      "mtype": "conditioning",
+      "survivor_fit": 7
     },
     "M75_sofr_effr_funding_stress": {
       "status": "watch",
@@ -1013,10 +1145,14 @@
       "source": "SOFR-EFFR spread + RRP spikes = funding stress -> risk assets",
       "data_needed": null,
       "data_have": "funding.csv (HAVE)",
-      "note": "REGIME FILTER (not standalone): MES wk-ret stress-weeks -$27 vs calm +$102; standalone short Sh0.6 DSR0.56 marginal. Value = condition/reduce equity in funding-stress weeks. The one live thread from this cohort.",
+      "note": "PASSED OOS filter bar: H2 conditioning MES-long cut maxDD 18% ($5184->$4258), Sharpe 0.92->1.08, PnL +$867. Modest, not uniform (cost $1011 in 2023). Provisional conditioning overlay, NOT a validated primary. Filters earn evidence like signals \u2014 this one did, OOS.",
       "testable_now": true,
-      "verdict": "WATCH",
-      "materially_different_allowed": true
+      "verdict": "PROVISIONAL_FILTER",
+      "materially_different_allowed": true,
+      "observability": "DIRECT",
+      "frequency": "weekly",
+      "mtype": "conditioning",
+      "survivor_fit": 7
     },
     "M76_post_event_vol_crush": {
       "status": "untested",
@@ -1032,7 +1168,11 @@
       "data_needed": null,
       "data_have": "vix.csv + calendar (HAVE)",
       "note": "IV collapses day-after scheduled macro events (FOMC/CPI/NFP) | TESTABLE NOW on held data",
-      "testable_now": true
+      "testable_now": true,
+      "observability": "DIRECT",
+      "frequency": "event",
+      "mtype": "conditioning",
+      "survivor_fit": 7
     },
     "M77_skew_meanrev": {
       "status": "untested",
@@ -1048,7 +1188,11 @@
       "data_needed": null,
       "data_have": "ES_OPT_statistics settlement->invert BS IV (HAVE, work)",
       "note": "25d risk-reversal / put-skew mean-reverts | TESTABLE NOW on held data",
-      "testable_now": true
+      "testable_now": true,
+      "observability": "DIRECT",
+      "frequency": "daily",
+      "mtype": "conditioning",
+      "survivor_fit": 6
     },
     "M78_index_dispersion": {
       "status": "data_blocked",
@@ -1064,7 +1208,11 @@
       "data_needed": "single-name options (NEED, Databento OPRA)",
       "data_have": null,
       "note": "Index IV > wtd single-name IV (correlation premium); short corr | needs acquisition",
-      "testable_now": false
+      "testable_now": false,
+      "observability": "DIRECT",
+      "frequency": "daily",
+      "mtype": "carry",
+      "survivor_fit": 5
     },
     "M79_russell_reconstitution": {
       "status": "data_blocked",
@@ -1080,7 +1228,11 @@
       "data_needed": "reconstitution calendar (NEED, free FTSE-Russell)",
       "data_have": null,
       "note": "Front-run June Russell rebalance add/delete demand | needs acquisition",
-      "testable_now": false
+      "testable_now": false,
+      "observability": "DIRECT",
+      "frequency": "event",
+      "mtype": "outright",
+      "survivor_fit": 4
     },
     "M80_eia_inventory_surprise": {
       "status": "data_blocked",
@@ -1096,7 +1248,11 @@
       "data_needed": "EIA API (NEED free key)",
       "data_have": null,
       "note": "Crude/NG jump on EIA weekly inventory surprise vs consensus | needs acquisition",
-      "testable_now": false
+      "testable_now": false,
+      "observability": "DIRECT",
+      "frequency": "event",
+      "mtype": "outright",
+      "survivor_fit": 4
     },
     "M81_natgas_winter_seasonal": {
       "status": "untested",
@@ -1112,7 +1268,11 @@
       "data_needed": null,
       "data_have": "energy_spot henryhub (HAVE daily)",
       "note": "NG demand seasonality Oct-Feb (weather/storage) | TESTABLE NOW on held data",
-      "testable_now": true
+      "testable_now": true,
+      "observability": "DIRECT",
+      "frequency": "event",
+      "mtype": "conditioning",
+      "survivor_fit": 7
     },
     "M82_cross_currency_basis_carry": {
       "status": "untested",
@@ -1128,7 +1288,11 @@
       "data_needed": null,
       "data_have": "6E/6J/6B + rates (HAVE, derivable)",
       "note": "CIP-deviation xccy basis carry (JPY/EUR) | TESTABLE NOW on held data",
-      "testable_now": true
+      "testable_now": true,
+      "observability": "DIRECT",
+      "frequency": "weekly",
+      "mtype": "carry",
+      "survivor_fit": 6
     },
     "M83_bbo_orderflow_imbalance": {
       "status": "untested",
@@ -1144,7 +1308,11 @@
       "data_needed": null,
       "data_have": "ES_bbo_1m_sample (HAVE sample)",
       "note": "Top-of-book size imbalance predicts short-horizon return | TESTABLE NOW on held data",
-      "testable_now": true
+      "testable_now": true,
+      "observability": "DIRECT",
+      "frequency": "intraday",
+      "mtype": "outright",
+      "survivor_fit": 2
     },
     "M84_turn_of_month_equity": {
       "status": "untested",
@@ -1160,7 +1328,11 @@
       "data_needed": null,
       "data_have": "1m (HAVE)",
       "note": "Equity strength around month-end (pension/401k inflows) | TESTABLE NOW on held data",
-      "testable_now": true
+      "testable_now": true,
+      "observability": "DIRECT",
+      "frequency": "event",
+      "mtype": "conditioning",
+      "survivor_fit": 7
     },
     "M85_implied_vol_momentum": {
       "status": "untested",
@@ -1176,7 +1348,11 @@
       "data_needed": null,
       "data_have": "vix.csv (HAVE)",
       "note": "IV trend continues (vol momentum, not just level) | TESTABLE NOW on held data",
-      "testable_now": true
+      "testable_now": true,
+      "observability": "DIRECT",
+      "frequency": "daily",
+      "mtype": "outright",
+      "survivor_fit": 3
     }
   }
 }

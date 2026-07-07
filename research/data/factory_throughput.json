@@ -25,5 +25,13 @@
     "dataset_staged_or_failed": "VX_futures_explicit_fail_no_key",
     "ranking_updated": true
   },
-  "note": "16 of 20 new harvest testable-now on held data; edge hunt shifted OHLCV->staged-feeds+acquisition"
+  "note": "16 of 20 new harvest testable-now on held data; edge hunt shifted OHLCV->staged-feeds+acquisition",
+  "autopsy_reshaped": {
+    "outright_survive": "6%",
+    "conditioning_survive": "71%",
+    "proxy_survive": "10%",
+    "direct_survive": "41%",
+    "queue_reranked_by": "survivor_fit",
+    "edge_existence_claim": "RETRACTED"
+  }
 }
