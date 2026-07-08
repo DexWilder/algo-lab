@@ -105,19 +105,21 @@
     },
     "M07_month_end_flow": {
       "class": "flow",
-      "status": "watch",
+      "status": "dead",
       "mechanism_backed": true,
       "data_have": true,
       "exprs_tested": 3,
-      "verdict": "WATCH: real diversifier corr0.02 but DECAYING, DSR0.877",
+      "verdict": "KILL",
       "tier": "A",
       "category": "InstitutionalFlow",
       "confidence": 3,
-      "lifecycle": "Validated",
+      "lifecycle": "Retired",
       "observability": "DIRECT",
       "frequency": "event",
       "mtype": "conditioning",
-      "survivor_fit": 7
+      "survivor_fit": 7,
+      "verdict_date": "2026-07-08",
+      "note": "CLOSED WATCH->KILL: turn-of-month rates DECAYING (H1/H2 0.81->0.60), 4/6yr, maxyr47%, DSR@8 0.11. Real but decayed post-2022; not a candidate."
     },
     "M08_dealer_gamma": {
       "class": "options",
@@ -238,7 +240,7 @@
     },
     "M15_index_rebalance": {
       "class": "flow",
-      "status": "untested",
+      "status": "archived",
       "mechanism_backed": true,
       "data_have": false,
       "data_needed": "reconstitution calendar",
@@ -246,12 +248,15 @@
       "tier": "A",
       "category": "InstitutionalFlow",
       "confidence": 0,
-      "lifecycle": "Blocked",
-      "ev": "L"
+      "lifecycle": "Archived",
+      "ev": "L",
+      "disposition": "ARCHIVE",
+      "disposition_reason": "free calendar but low-EV for index futures; defer indefinitely",
+      "verdict_date": "2026-07-08"
     },
     "M16_etf_create_redeem": {
       "class": "flow",
-      "status": "untested",
+      "status": "archived",
       "mechanism_backed": true,
       "data_have": false,
       "data_needed": "ETF flow feed",
@@ -259,8 +264,11 @@
       "tier": "A",
       "category": "InstitutionalFlow",
       "confidence": 0,
-      "lifecycle": "Blocked",
-      "ev": "L"
+      "lifecycle": "Archived",
+      "ev": "L",
+      "disposition": "ARCHIVE",
+      "disposition_reason": "ETF flow data costly/hard, low EV",
+      "verdict_date": "2026-07-08"
     },
     "M17_closing_auction_moc": {
       "class": "microstructure",
@@ -316,7 +324,7 @@
     },
     "M20_eia_inventory": {
       "class": "event",
-      "status": "data_blocked",
+      "status": "archived",
       "mechanism_backed": true,
       "data_have": false,
       "data_needed": "EIA API free key",
@@ -324,8 +332,11 @@
       "tier": "A",
       "category": "Macro_Event",
       "confidence": 0,
-      "lifecycle": "Blocked",
-      "ev": "L"
+      "lifecycle": "Archived",
+      "ev": "L",
+      "disposition": "ARCHIVE",
+      "disposition_reason": "unreviewed -> archive by default",
+      "verdict_date": "2026-07-08"
     },
     "M21_fx_fixing_wmr": {
       "class": "flow",
@@ -365,7 +376,7 @@
     },
     "M23_pension_rebalance": {
       "class": "flow",
-      "status": "untested",
+      "status": "archived",
       "mechanism_backed": true,
       "data_have": false,
       "data_needed": "proxy",
@@ -373,12 +384,15 @@
       "tier": "A",
       "category": "InstitutionalFlow",
       "confidence": 0,
-      "lifecycle": "Blocked",
-      "ev": "L"
+      "lifecycle": "Archived",
+      "ev": "L",
+      "disposition": "ARCHIVE",
+      "disposition_reason": "proxy-only, weak; month-end already KILLED",
+      "verdict_date": "2026-07-08"
     },
     "M24_buyback_blackout": {
       "class": "flow",
-      "status": "untested",
+      "status": "archived",
       "mechanism_backed": true,
       "data_have": false,
       "data_needed": "earnings calendar",
@@ -386,8 +400,11 @@
       "tier": "A",
       "category": "InstitutionalFlow",
       "confidence": 0,
-      "lifecycle": "Blocked",
-      "ev": "L"
+      "lifecycle": "Archived",
+      "ev": "L",
+      "disposition": "ARCHIVE",
+      "disposition_reason": "earnings-calendar dependency, low EV for index",
+      "verdict_date": "2026-07-08"
     },
     "M25_bond_issuance": {
       "class": "event",
@@ -417,7 +434,7 @@
     },
     "M27_dividend_reinvest": {
       "class": "flow",
-      "status": "untested",
+      "status": "archived",
       "mechanism_backed": true,
       "data_have": false,
       "data_needed": "ex-div calendar",
@@ -425,8 +442,11 @@
       "tier": "A",
       "category": "InstitutionalFlow",
       "confidence": 0,
-      "lifecycle": "Blocked",
-      "ev": "L"
+      "lifecycle": "Archived",
+      "ev": "L",
+      "disposition": "ARCHIVE",
+      "disposition_reason": "niche, low EV",
+      "verdict_date": "2026-07-08"
     },
     "M28_commodity_seasonal": {
       "class": "seasonal",
@@ -443,7 +463,7 @@
     },
     "M29_macro_surprise": {
       "class": "event",
-      "status": "data_blocked",
+      "status": "archived",
       "mechanism_backed": true,
       "data_have": false,
       "data_needed": "CPI/NFP consensus",
@@ -451,8 +471,11 @@
       "tier": "A",
       "category": "Macro_Event",
       "confidence": 0,
-      "lifecycle": "Blocked",
-      "ev": "L"
+      "lifecycle": "Archived",
+      "ev": "L",
+      "disposition": "ARCHIVE",
+      "disposition_reason": "needs consensus; reaction-proxy possible but low priority",
+      "verdict_date": "2026-07-08"
     },
     "M30_pre_fomc_drift": {
       "class": "event",
@@ -489,7 +512,10 @@
       "category": "Volatility",
       "confidence": 0,
       "lifecycle": "Blocked",
-      "ev": "L"
+      "ev": "L",
+      "disposition": "PURSUE",
+      "disposition_reason": "acq#1 VX futures (merges w/ M69)",
+      "verdict_date": "2026-07-08"
     },
     "M33_variance_risk_premium": {
       "class": "vol",
@@ -632,15 +658,18 @@
     "M43_econ_surprise_momentum": {
       "class": "macro",
       "tier": "A",
-      "status": "untested",
+      "status": "archived",
       "mechanism_backed": true,
       "data_have": false,
       "data_needed": "surprise index",
       "note": "macro-surprise-index momentum",
       "category": "Macro_Event",
       "confidence": 0,
-      "lifecycle": "Blocked",
-      "ev": "L"
+      "lifecycle": "Archived",
+      "ev": "L",
+      "disposition": "ARCHIVE",
+      "disposition_reason": "needs surprise index, low priority",
+      "verdict_date": "2026-07-08"
     },
     "M44_crypto_basis": {
       "class": "carry",
@@ -680,8 +709,10 @@
       "lifecycle": "Blocked",
       "ev": "H",
       "data_needed": "FULL ES option settlement history (held ES_OPT_statistics is a 5-DAY SAMPLE 2025-06-02..06, not history)",
-      "verdict_date": "2026-07-07",
-      "testable_now": false
+      "verdict_date": "2026-07-08",
+      "testable_now": false,
+      "disposition": "PURSUE",
+      "disposition_reason": "acq#0 full ES option settlement (gates observability test)"
     },
     "M47_settlement_basis": {
       "class": "microstructure",
@@ -720,15 +751,18 @@
     "M49_ecb_boj_drift": {
       "class": "event",
       "tier": "A",
-      "status": "untested",
+      "status": "archived",
       "mechanism_backed": true,
       "data_have": false,
       "data_needed": "ECB/BOJ calendars",
       "note": "FX/rates drift into non-Fed CB meetings",
       "category": "Macro_Event",
       "confidence": 0,
-      "lifecycle": "Blocked",
-      "ev": "L"
+      "lifecycle": "Archived",
+      "ev": "L",
+      "disposition": "ARCHIVE",
+      "disposition_reason": "non-US calendars, low EV",
+      "verdict_date": "2026-07-08"
     },
     "M50_energy_seasonal": {
       "class": "seasonal",
@@ -767,7 +801,10 @@
       "category": "Volatility",
       "confidence": 0,
       "lifecycle": "Blocked",
-      "ev": "L"
+      "ev": "L",
+      "disposition": "PURSUE_DEFER",
+      "disposition_reason": "dup of M78",
+      "verdict_date": "2026-07-08"
     },
     "M53_opening_imbalance_conditioned": {
       "class": "microstructure",
@@ -811,15 +848,18 @@
     "M55_commodity_logistics": {
       "class": "seasonal",
       "tier": "A",
-      "status": "untested",
+      "status": "archived",
       "mechanism_backed": true,
       "data_have": false,
       "data_needed": "storage/transport",
       "category": "Commodity",
       "confidence": 0,
-      "lifecycle": "Blocked",
+      "lifecycle": "Archived",
       "ev": "L",
-      "note": "storage/transport constraints (hole: commodity logistics)"
+      "note": "storage/transport constraints (hole: commodity logistics)",
+      "disposition": "ARCHIVE",
+      "disposition_reason": "niche storage/transport data impractical",
+      "verdict_date": "2026-07-08"
     },
     "M56_credit_spread_regime": {
       "class": "macro",
@@ -1017,7 +1057,7 @@
       "mechanism_backed": true,
       "confidence": 2,
       "exprs_tested": 0,
-      "verdict_date": null,
+      "verdict_date": "2026-07-08",
       "category": "Volatility",
       "ev": "H",
       "source": "Simon-Campasano 2014: short VX front in contango (roll carry)",
@@ -1028,7 +1068,9 @@
       "observability": "DIRECT",
       "frequency": "daily",
       "mtype": "carry",
-      "survivor_fit": 5
+      "survivor_fit": 5,
+      "disposition": "PURSUE",
+      "disposition_reason": "acq#1 VX futures ~$8"
     },
     "M70_commodity_roll_yield_carry": {
       "status": "dead",
@@ -1134,21 +1176,21 @@
       "survivor_fit": 7
     },
     "M75_sofr_effr_funding_stress": {
-      "status": "watch",
-      "lifecycle": "Testing",
+      "status": "ingredient",
+      "lifecycle": "Retired",
       "tier": "A",
       "mechanism_backed": true,
       "confidence": 2,
       "exprs_tested": 1,
-      "verdict_date": "2026-07-07",
+      "verdict_date": "2026-07-08",
       "category": "Macro_Event",
       "ev": "M",
       "source": "SOFR-EFFR spread + RRP spikes = funding stress -> risk assets",
       "data_needed": null,
       "data_have": "funding.csv (HAVE)",
-      "note": "PASSED OOS filter bar: H2 conditioning MES-long cut maxDD 18% ($5184->$4258), Sharpe 0.92->1.08, PnL +$867. Modest, not uniform (cost $1011 in 2023). Provisional conditioning overlay, NOT a validated primary. Filters earn evidence like signals \u2014 this one did, OOS.",
+      "note": "CLOSED WATCH->KILL as standalone (0.6/DSR0.56); BANKED as conditioning INGREDIENT (like GEX): funding-stress z>1 flags lower fwd equity (passed an OOS filter bar DD-18%). Retrievable overlay input; no live-candidate status. Applies once a validated book exists to condition.",
       "testable_now": true,
-      "verdict": "PROVISIONAL_FILTER",
+      "verdict": "KILL_standalone_BANK_ingredient",
       "materially_different_allowed": true,
       "observability": "DIRECT",
       "frequency": "weekly",
@@ -1182,7 +1224,7 @@
       "mechanism_backed": true,
       "confidence": 2,
       "exprs_tested": 0,
-      "verdict_date": "2026-07-07",
+      "verdict_date": "2026-07-08",
       "category": "Volatility",
       "ev": "H",
       "source": "25d risk-reversal / put-skew mean-reverts",
@@ -1193,7 +1235,9 @@
       "observability": "DIRECT",
       "frequency": "daily",
       "mtype": "conditioning",
-      "survivor_fit": 6
+      "survivor_fit": 6,
+      "disposition": "PURSUE",
+      "disposition_reason": "acq#0 full ES option settlement"
     },
     "M78_index_dispersion": {
       "status": "data_blocked",
@@ -1202,7 +1246,7 @@
       "mechanism_backed": true,
       "confidence": 2,
       "exprs_tested": 0,
-      "verdict_date": null,
+      "verdict_date": "2026-07-08",
       "category": "Volatility",
       "ev": "M",
       "source": "Index IV > wtd single-name IV (correlation premium); short corr",
@@ -1213,16 +1257,18 @@
       "observability": "DIRECT",
       "frequency": "daily",
       "mtype": "carry",
-      "survivor_fit": 5
+      "survivor_fit": 5,
+      "disposition": "PURSUE_DEFER",
+      "disposition_reason": "single-name options, after acq#0 survives"
     },
     "M79_russell_reconstitution": {
-      "status": "data_blocked",
-      "lifecycle": "Blocked",
+      "status": "archived",
+      "lifecycle": "Archived",
       "tier": "A",
       "mechanism_backed": true,
       "confidence": 2,
       "exprs_tested": 0,
-      "verdict_date": null,
+      "verdict_date": "2026-07-08",
       "category": "InstitutionalFlow",
       "ev": "M",
       "source": "Front-run June Russell rebalance add/delete demand",
@@ -1233,7 +1279,9 @@
       "observability": "DIRECT",
       "frequency": "event",
       "mtype": "outright",
-      "survivor_fit": 4
+      "survivor_fit": 4,
+      "disposition": "ARCHIVE",
+      "disposition_reason": "unreviewed -> archive by default"
     },
     "M80_eia_inventory_surprise": {
       "status": "data_blocked",
@@ -1242,7 +1290,7 @@
       "mechanism_backed": true,
       "confidence": 2,
       "exprs_tested": 0,
-      "verdict_date": null,
+      "verdict_date": "2026-07-08",
       "category": "Macro_Event",
       "ev": "M",
       "source": "Crude/NG jump on EIA weekly inventory surprise vs consensus",
@@ -1253,7 +1301,9 @@
       "observability": "DIRECT",
       "frequency": "event",
       "mtype": "outright",
-      "survivor_fit": 4
+      "survivor_fit": 4,
+      "disposition": "PURSUE",
+      "disposition_reason": "EIA free key"
     },
     "M81_natgas_winter_seasonal": {
       "status": "untested",
@@ -1359,8 +1409,8 @@
       "category": "Price",
       "class_": "price",
       "tier": "B",
-      "status": "watch",
-      "lifecycle": "Testing",
+      "status": "candidate",
+      "lifecycle": "ForwardClock",
       "ev": "M",
       "mechanism_backed": true,
       "confidence": 2,
@@ -1369,14 +1419,14 @@
       "mtype": "conditioning",
       "survivor_fit": 5,
       "source": "Moskowitz-Ooi-Pedersen 2012 TSMOM",
-      "verdict": "WATCH",
-      "verdict_date": "2026-07-07",
+      "verdict": "PASS_FORWARD_CLOCK",
+      "verdict_date": "2026-07-08",
       "exprs_tested": 1,
       "materially_different_allowed": true,
       "data_have": "1m (HAVE, 12 markets)",
       "data_needed": null,
       "testable_now": true,
-      "note": "Diversified vol-targeted 12-market TSMOM: Sh0.89 H1/H2 0.90/0.87 STABLE, 6/7yr+, maxDD low. But DSR@8=0.24 (FAILS gate) + maxyr45%. WATCH not validated. KEY: naive single-market momentum (mean solo 0.48) DIED in batch_screen; the DIVERSIFIED PORTFOLIO is much better -> 'price is dead' was an over-generalization from the naive version. Price track stays FIRST-CLASS, deprioritized-not-abandoned."
+      "note": "GRADUATED WATCH->Track2 EXPERIMENTAL_FORWARD_CLOCK. a-priori DSR@N=1=0.99, diversified (no mkt>40%, MGC26%), H1/H2 0.90/0.87, 6/7yr+. CAVEAT: 2022=45% of PnL (trend banner yr) -> forward observation must confirm it's not a 2022 artifact. NOT deployed, NOT validated-primary. paper_ready=false, report-only."
     }
   }
 }

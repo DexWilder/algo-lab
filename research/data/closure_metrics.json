@@ -1,0 +1,42 @@
+{
+  "updated": "2026-07-08",
+  "UNRESOLVED_THREADS": 0,
+  "unresolved_prev": 21,
+  "closed_this_period": {
+    "watch_to_verdict": 3,
+    "blocked_resolved": 18,
+    "graduations_to_forward_clock": 1
+  },
+  "watch_resolution": {
+    "PASS_forward_clock": [
+      "M86_tsmom"
+    ],
+    "KILL": [
+      "M07_month_end",
+      "M75_funding(standalone)"
+    ],
+    "banked_ingredient": [
+      "M75_funding"
+    ]
+  },
+  "blocked_disposition": {
+    "ARCHIVE": 11,
+    "PURSUE": 5,
+    "PURSUE_DEFER": 2
+  },
+  "lifecycle": {
+    "Retired": 28,
+    "Validated": 2,
+    "Archived": 11,
+    "Harvested": 37,
+    "Blocked": 7,
+    "ForwardClock": 1
+  },
+  "conversion": {
+    "harvested_to_verdict": "27%",
+    "verdicts": 23,
+    "portfolio_track_candidates": 1,
+    "validated_primaries": 0
+  },
+  "standing_rule": "Judged by CLOSURES not discoveries. Every month ends with FEWER unresolved threads than it began. No WATCH limbo; no blocked without a pursue/archive decision."
+}

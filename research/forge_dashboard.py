@@ -44,6 +44,9 @@ _highev=_cov.get("high_ev_ready",[])
 _funnel=json.loads((REPO/"research/data/discovery_efficiency.json").read_text()) if (REPO/"research/data/discovery_efficiency.json").exists() else {}
 _tput=json.loads((REPO/"research/data/factory_throughput.json").read_text()) if (REPO/"research/data/factory_throughput.json").exists() else {}
 _conv=_funnel.get("conversion") or {}
+_clo=json.loads((REPO/"research/data/closure_metrics.json").read_text()) if (REPO/"research/data/closure_metrics.json").exists() else {}
+_cthis=_clo.get("closed_this_period") or {}
+_cconv=_clo.get("conversion") or {}
 factory=dict(batch_hypotheses=len(_bt), markets_screened=len(set(t.get("asset") for t in _bt)),
              mechanisms=len(_ml), mechanisms_tested=_tested, mechanisms_untested=_untested, keepers=_keepers, tierA=_tierA, discovery_surface=_disc_surface)
 ds=json.loads((REPO/"research/data/data_sources.json").read_text())["sources"] if (REPO/"research/data/data_sources.json").exists() else []
@@ -77,6 +80,7 @@ out=f"""# ALPHA RESEARCH DASHBOARD (auto-generated {stamp})
 - Candidate ladder: {', '.join(f'{k}={len(v)}' for k,v in lstate.items()) or 'empty (nothing promoted)'}
 
 ## Factory metrics (MECHANISM-FIRST — "are we learning about markets faster than last week?", not Sharpe/PF)
+- **CLOSURES (THE metric — decisions, not discoveries):** UNRESOLVED THREADS **{_clo.get('UNRESOLVED_THREADS','?')}** (was {_clo.get('unresolved_prev','?')}) · closed this period: {_cthis.get('watch_to_verdict','?')} WATCH→verdict, {_cthis.get('blocked_resolved','?')} blocked resolved, {_cthis.get('graduations_to_forward_clock','?')} graduated→forward-clock · harvested→verdict {_cconv.get('harvested_to_verdict','?')} · **judged by closures, no WATCH limbo**
 - **THE QUEUE IS THE ASSET (not the library):** testable backlog **{_tput.get('remaining_testable','?')}** runnable mechanisms · HIGH-EV backlog {_tput.get('high_ev_backlog','?')} · (library {factory['mechanisms']} = working backlog, NOT a trophy shelf — quantity is not the metric)
 - **DISCOVERY-EFFICIENCY FUNNEL** (conversion>quantity; cohort {_funnel.get('cohort','?')}): harvested {_funnel.get('harvested','?')} → runnable {_funnel.get('runnable_immediately','?')} ({_conv.get('harvest_to_runnable','?')}) → screened {_funnel.get('cheap_screen_run','?')} → **clean-survivors {_funnel.get('cheap_screen_survivors_clean','?')}** (+{_funnel.get('watch_borderline','?')} WATCH) → deep-cand {_funnel.get('deep_validation_candidates','?')} → validated {_funnel.get('validated','?')}. {_funnel.get('read','')}
 - **RESEARCH layer:** batch hypotheses {factory['batch_hypotheses']} across {factory['markets_screened']} markets. *714 hyps ≈ 4 price mechanisms — hypotheses ≠ breadth; MECHANISMS are breadth.*

@@ -29305,6 +29305,45 @@
       "dsr": 0.2361,
       "maxyr": 0,
       "n": 1771
+    },
+    {
+      "packet": "CLOSURE:M86_tsmom",
+      "asset": "12-market",
+      "sharpe": 0.89,
+      "verdict": "pass_forward_clock",
+      "horizon": "",
+      "lane": "mechanism_research",
+      "ts": "2026-07-08",
+      "failure_class": "none",
+      "dsr": 0.99,
+      "maxyr": 45,
+      "n": 1771
+    },
+    {
+      "packet": "CLOSURE:M07_monthend",
+      "asset": "ZN+ZF+ZB",
+      "sharpe": 0.66,
+      "verdict": "kill",
+      "horizon": "",
+      "lane": "mechanism_research",
+      "ts": "2026-07-08",
+      "failure_class": "decaying_oos",
+      "dsr": 0.11,
+      "maxyr": 47,
+      "n": 1700
+    },
+    {
+      "packet": "CLOSURE:M75_funding_ingredient",
+      "asset": "MES",
+      "sharpe": 0.6,
+      "verdict": "kill_standalone_ingredient",
+      "horizon": "",
+      "lane": "mechanism_research",
+      "ts": "2026-07-08",
+      "failure_class": "below_bar_standalone",
+      "dsr": 0.56,
+      "maxyr": 0,
+      "n": 161
     }
   ],
   "note": "auto multiple-testing N; every test appends"
