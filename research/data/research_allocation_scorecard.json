@@ -1,10 +1,10 @@
 {
   "updated": "2026-07-08",
   "target_pct": {
-    "data_acquisition": 40,
-    "mechanism_generation": 25,
-    "validation": 20,
-    "portfolio_integration": 10,
+    "information_acquisition": 60,
+    "mechanism_generation": 15,
+    "validation": 15,
+    "portfolio_integration": 5,
     "infrastructure": 5
   },
   "this_session_actual_pct": {
@@ -19,5 +19,7 @@
     "infrastructure 15% vs 5% \u2014 acceptable this session (scorecard is a one-time build), watch it doesn't recur"
   ],
   "rule": "Every ~2 weeks: classify actual research-time split across the 5 buckets; if data_acquisition stays near 0 or infrastructure creeps >15%, that's drift. Research-time (attention) is the scarce resource, not compute.",
-  "note": "This is a scorecard, not a dashboard. Living ROI ranking (RESEARCH_ROI_RANKING) updated biweekly as evidence arrives."
+  "note": "This is a scorecard, not a dashboard. Living ROI ranking (RESEARCH_ROI_RANKING) updated biweekly as evidence arrives.",
+  "reallocation_note": "Q REALLOCATION 2026-07-08 (tactical, one quarter): 40->60% information acquisition. Rationale: validation strong, false-positive detection strong, marginal return of current-style held-data mining measurably falling (3 domains->1 thin sleeve; spreadMR was artifact). Binding constraint = quality of ideas ENTERING the system, not our ability to reject. Buy better inputs. Revert next quarter if acquisitions don't yield.",
+  "decision_pending": "RESEARCH_CAPITAL_ALLOCATION_2026-07-08.md \u2014 Tier0(free)/Tier1($8 VX)/Tier2(ES option settlement, get quote). Forcing decision: invest or consciously decline, default = execute free tier + defer rest at next biweekly review. NOT indefinite limbo."
 }
