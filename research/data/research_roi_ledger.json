@@ -1,0 +1,16 @@
+{
+  "updated": "2026-07-08",
+  "quarter": "2026-Q3 (Jul-start, information-acquisition reallocation)",
+  "metrics": {
+    "data_acquired": 0,
+    "mechanisms_tested_this_q": 1,
+    "runnable_packets_generated": 6,
+    "deep_validations_run": 15,
+    "portfolio_improvements": 0,
+    "candidates_killed": 20,
+    "candidates_advanced": 3,
+    "cost_proxy": "research-session attention (not $/compute) \u2014 the scarce resource"
+  },
+  "read": "This quarter's ROI is dominated by KILLS + one advance (TSMOM) + a reallocation decision. data_acquired=0 is the binding gap. The ledger will show which future investment (data vs mining vs construction) produced the most value per unit attention.",
+  "note": "Updated each cycle boundary. Pairs with program_checkpoints (did-we-succeed) \u2014 this answers what-produced-value."
+}

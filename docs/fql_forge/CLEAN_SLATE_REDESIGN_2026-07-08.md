@@ -2,10 +2,10 @@
 2026-07-08 · zero backtests · a first-principles review, forced deliberately.
 
 ## The reframe that reorganizes everything: two different capabilities
-- **Capability 1 — hard to fool.** BUILT, and it's rare. DSR, causality audit, artifact detectors, execution-lag/autocorr audits, block-bootstrap, closures, memory. Six months proved it: it caught its own broken bootstrap, killed a Sharpe-2.9 mirage (spreadMR), refused the FOMC/overnight decays. This is genuinely hard and most shops never build it.
-- **Capability 2 — good at finding opportunity.** UNPROVEN. One thin real sleeve (TSMOM). The next chapter's entire job is to test, *efficiently*, whether capability 2 can be built — not to polish capability 1 further.
+- **Capability 1 — hard to fool.** GOOD ENOUGH that it should no longer *dominate* engineering time — NOT "solved forever." No validation system is ever finished (there's always another artifact, another audit — spreadMR's execution-lag test was one we only added last week). The claim is about *resource allocation*: six months ago more validation infrastructure was the highest-value work; today it probably isn't. DSR, causality audit, artifact detectors, execution-lag/autocorr audits, block-bootstrap, closures, memory — this caught its own broken bootstrap, killed a Sharpe-2.9 mirage, refused the FOMC/overnight decays. Keep extending it opportunistically; stop letting it be the default sink for effort.
+- **Capability 2 — good at finding opportunity.** UNPROVEN. One thin real sleeve (TSMOM). The next chapter's entire job is to test, *efficiently*, whether capability 2 can be built — not to keep polishing capability 1.
 
-Those are different capabilities. Conflating them is why the lab felt stuck: we kept scoring capability 1 (rigor) and calling the low output a failure, when the honest statement is "rigor is done; opportunity-finding is unproven."
+Those are different capabilities. Conflating them is why the lab felt stuck: we kept scoring capability 1 (rigor) and calling the low output a failure, when the honest statement is "rigor is good enough to stop dominating effort; opportunity-finding is unproven."
 
 ## The old implicit thesis — now doubted by our own evidence
 *"Many independent, accessible, directional edges exist in micro-futures on daily/intraday bars; find them one at a time via mechanism testing."* Evidence against it: outright-directional mechanisms survive 6% (vs conditioning 71%); intraday is a 12% graveyard; 3 mined domains → 1 thin sleeve; the one prior "win" was an artifact; famous anomalies (FOMC drift, overnight) had already decayed. The thesis is probably too optimistic. That is a *finding*, not a failure.
@@ -20,7 +20,7 @@ Those are different capabilities. Conflating them is why the lab felt stuck: we 
 2. **Construction / overlay / execution / sizing are FIRST-CLASS research products, not afterthoughts.** With ~1 sleeve, the leverage is in *using* few weak-but-real components well — dynamic sizing, risk overlays, regime conditioning (survives 71%), capital allocation. Your question — "why assume the next win is another signal?" — is right: the next win may be a *better use of what we have*.
 3. **Source from advantage, not arbitraged literature.** Published anomalies are crowded by definition (FOMC/overnight proved it). Source from: our own observability edge, structural/capacity-constrained edges big players ignore, and combinations of banked components.
 4. **Execution & capacity are a gate from day 1.** Every candidate priced for impact/capacity *before* it's called a sleeve. spreadMR would have died on day 1, not week 2.
-5. **Deprioritize intraday-directional entirely.** It's our measured graveyard and it's where our retail data/cost tier is weakest. Stop hunting there.
+5. **Deprioritize intraday-directional UNTIL new evidence changes its EV** (not permanently). Current evidence shows diminishing returns in our *current* intraday search (12% survival) and it's where our retail data/cost tier is weakest — so stop hunting there *now*. But that's a stance conditioned on present evidence, not a proof the domain is empty: new data, a different horizon, or a different formulation can reopen it. Revisit when the expected value changes, not on a whim and not never.
 6. **Pre-committed checkpoints** (below) replace open-ended hope with bounded decisions — the structural fix for "wasting years."
 
 ## The pre-committed checkpoints — decisions, not vibes

@@ -1,4 +1,4 @@
-# ALPHA RESEARCH DASHBOARD (auto-generated 2026-07-08 18:26 UTC)
+# ALPHA RESEARCH DASHBOARD (auto-generated 2026-07-08 18:42 UTC)
 > `python3 research/forge_dashboard.py` regenerates this. Single canonical state view.
 
 ## HEADLINE
@@ -14,6 +14,7 @@
 - Candidate ladder: SCREEN_PASS=1
 
 ## Factory metrics (MECHANISM-FIRST — "are we learning about markets faster than last week?", not Sharpe/PF)
+- **NEXT PROGRAM CHECKPOINT (pre-committed, anti-sunk-cost):** CP-90d due 2026-10-06: Did we unlock materially new observability (option/vol-struc — miss defaults to course-change
 - **CLOSURES (THE metric — decisions, not discoveries):** UNRESOLVED THREADS **0** (was 21) · closed this period: 3 WATCH→verdict, 18 blocked resolved, 1 graduated→forward-clock · harvested→verdict 27% · **judged by closures, no WATCH limbo**
 - **THE QUEUE IS THE ASSET (not the library):** testable backlog **39** runnable mechanisms · HIGH-EV backlog 3 · (library 87 = working backlog, NOT a trophy shelf — quantity is not the metric)
 - **DISCOVERY-EFFICIENCY FUNNEL** (conversion>quantity; cohort 2026-07-07 named-source harvest (M66-M85)): harvested 20 → runnable 16 (80%) → screened 6 → **clean-survivors 0** (+1 WATCH) → deep-cand 0 → validated 0. RETRACTED prior claim 'bottleneck is edge-existence' — unearned. Kill-autopsy (KILL_AUTOPSY_2026-07-07) shows failure is STRUCTURED not uniform: outright-directional survives 6% vs regime-conditioning 71%; proxy 10% vs direct 41%; intraday 12% vs event/weekly ~30%. Two live hypotheses, NOT distinguishable yet: (H-edge) durable edges are rare; (H-observ) we've only tested PROXIES + COARSE-direct measurements (0 high-resolution direct institutional measurements ever tested). Reshape: prioritize CONDITIONING over outright, DIRECT over proxy; the discriminating experiment = one high-res DIRECT measurement vs its killed PROXY (dealer gamma: real signed-GEX vs max-OI).

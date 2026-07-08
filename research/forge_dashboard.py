@@ -47,6 +47,14 @@ _conv=_funnel.get("conversion") or {}
 _clo=json.loads((REPO/"research/data/closure_metrics.json").read_text()) if (REPO/"research/data/closure_metrics.json").exists() else {}
 _cthis=_clo.get("closed_this_period") or {}
 _cconv=_clo.get("conversion") or {}
+_cp=json.loads((REPO/"research/data/program_checkpoints.json").read_text()) if (REPO/"research/data/program_checkpoints.json").exists() else {"checkpoints":[]}
+def _next_cp():
+    pend=[c for c in _cp.get("checkpoints",[]) if not c.get("resolution")]
+    if not pend: return "none pending"
+    today_s=datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    overdue=[c for c in pend if c.get("due","9999")<today_s]
+    if overdue: return f"OVERDUE+UNRESOLVED {overdue[0]['id']} (due {overdue[0]['due']}) -> DEFAULT=COURSE-CHANGE, decide NOW (sunk cost not a valid reason to continue)"
+    nxt=min(pend,key=lambda c:c.get("due","9999")); return f"{nxt['id']} due {nxt['due']}: {nxt['question'][:60]} — miss defaults to course-change"
 factory=dict(batch_hypotheses=len(_bt), markets_screened=len(set(t.get("asset") for t in _bt)),
              mechanisms=len(_ml), mechanisms_tested=_tested, mechanisms_untested=_untested, keepers=_keepers, tierA=_tierA, discovery_surface=_disc_surface)
 ds=json.loads((REPO/"research/data/data_sources.json").read_text())["sources"] if (REPO/"research/data/data_sources.json").exists() else []
@@ -80,6 +88,7 @@ out=f"""# ALPHA RESEARCH DASHBOARD (auto-generated {stamp})
 - Candidate ladder: {', '.join(f'{k}={len(v)}' for k,v in lstate.items()) or 'empty (nothing promoted)'}
 
 ## Factory metrics (MECHANISM-FIRST — "are we learning about markets faster than last week?", not Sharpe/PF)
+- **NEXT PROGRAM CHECKPOINT (pre-committed, anti-sunk-cost):** {_next_cp()}
 - **CLOSURES (THE metric — decisions, not discoveries):** UNRESOLVED THREADS **{_clo.get('UNRESOLVED_THREADS','?')}** (was {_clo.get('unresolved_prev','?')}) · closed this period: {_cthis.get('watch_to_verdict','?')} WATCH→verdict, {_cthis.get('blocked_resolved','?')} blocked resolved, {_cthis.get('graduations_to_forward_clock','?')} graduated→forward-clock · harvested→verdict {_cconv.get('harvested_to_verdict','?')} · **judged by closures, no WATCH limbo**
 - **THE QUEUE IS THE ASSET (not the library):** testable backlog **{_tput.get('remaining_testable','?')}** runnable mechanisms · HIGH-EV backlog {_tput.get('high_ev_backlog','?')} · (library {factory['mechanisms']} = working backlog, NOT a trophy shelf — quantity is not the metric)
 - **DISCOVERY-EFFICIENCY FUNNEL** (conversion>quantity; cohort {_funnel.get('cohort','?')}): harvested {_funnel.get('harvested','?')} → runnable {_funnel.get('runnable_immediately','?')} ({_conv.get('harvest_to_runnable','?')}) → screened {_funnel.get('cheap_screen_run','?')} → **clean-survivors {_funnel.get('cheap_screen_survivors_clean','?')}** (+{_funnel.get('watch_borderline','?')} WATCH) → deep-cand {_funnel.get('deep_validation_candidates','?')} → validated {_funnel.get('validated','?')}. {_funnel.get('read','')}
