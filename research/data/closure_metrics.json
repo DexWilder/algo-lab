@@ -39,7 +39,7 @@
     "validated_primaries": 0
   },
   "standing_rule": "Judged by CLOSURES not discoveries. Every month ends with FEWER unresolved threads than it began. No WATCH limbo; no blocked without a pursue/archive decision.",
-  "production_outcome_this_run": "CAPITAL-ALLOCATION DECISION forced: computed data-acquisition investment ranking from library (ES-option-settlement 17.5 / VX 11.2 / EIA-free 7.5 dominate); Q reallocation to 60% info-acquisition; tiered buy-list w/ costs + Databento cost-quote command; default breaks limbo. Reframed sleeve#2 -> research ROI.",
+  "production_outcome_this_run": "STRATEGY REVIEW (zero backtests): clean-slate redesign + two-capabilities reframe (hard-to-fool BUILT / find-opportunity UNPROVEN) + 3 pre-committed program checkpoints (90/180/365d) with miss-branches that trigger course-change not more grinding. Keep 80% (anti-fooling stack), change 20% (data-first, construction-first, exec-gate, deprioritize intraday).",
   "four_outcome_rule": "Every run must produce one of: (1) candidate advanced, (2) candidate killed, (3) dataset acquired/staged, (4) validated book improvement. Anything else = noise.",
   "candidates_paper_ready": [
     "M86_tsmom_diversified_portfolio"
@@ -59,5 +59,6 @@
     "combined-FX book (extend sample)",
     "+ the option-data observability class (operator-gated, now higher-EV)"
   ],
-  "overclaim_corrected": "NOT 'held-data universe is sleeve-poor' (universe-exhaustion overreach). Supported claim: 'the marginal return of the CURRENT STYLE of held-data exploration is falling' (narrower + stronger)."
+  "overclaim_corrected": "NOT 'held-data universe is sleeve-poor' (universe-exhaustion overreach). Supported claim: 'the marginal return of the CURRENT STYLE of held-data exploration is falling' (narrower + stronger).",
+  "program_checkpoints": "research/data/program_checkpoints.json \u2014 CP-90d observability / CP-180d component-or-retire / CP-365d repeatable-survivors; miss => strategy re-eval."
 }

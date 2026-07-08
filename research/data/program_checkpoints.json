@@ -1,0 +1,43 @@
+{
+  "established": "2026-07-08",
+  "reframe": "Two capabilities: (1) hard-to-fool = BUILT; (2) good-at-finding-opportunity = UNPROVEN. Next chapter tests capability 2 efficiently via observability+construction, not more directional mining. Not attached to the architecture.",
+  "checkpoints": [
+    {
+      "id": "CP-90d",
+      "due": "2026-10-06",
+      "question": "Did we unlock materially new observability (option/vol-structure class acquired + tested)?",
+      "miss_branch": "Acquisition decision has been frozen too long -> force invest-or-abandon on that branch.",
+      "status": "pending"
+    },
+    {
+      "id": "CP-180d",
+      "due": "2027-01-04",
+      "question": "\u22651 additional portfolio-improving component graduated OR observability class decisively retired?",
+      "miss_branch": "'Accessible-edges' thesis is failing -> begin explicit universe/horizon/return-target change, not more mining.",
+      "status": "pending"
+    },
+    {
+      "id": "CP-365d",
+      "due": "2027-07-08",
+      "question": "Has the process repeatedly generated candidates surviving rigorous validation (\u22653 independent survivors)?",
+      "miss_branch": "Current data/markets/research-model is the wrong vehicle -> change course. Sunk cost is not a reason to continue.",
+      "status": "pending"
+    }
+  ],
+  "keep_80pct": [
+    "anti-fooling validation stack (crown jewel)",
+    "memory/lifecycle/closures/audit",
+    "report-only+capital-gate",
+    "TSMOM (thin real)",
+    "library as map-of-where-edge-isnt"
+  ],
+  "change_20pct": [
+    "data-first not mechanism-first",
+    "construction/overlay/execution/sizing as first-class products",
+    "source from advantage not arbitraged literature",
+    "execution+capacity gate from day 1",
+    "deprioritize intraday-directional (graveyard)",
+    "pre-committed checkpoints"
+  ],
+  "doc": "docs/fql_forge/CLEAN_SLATE_REDESIGN_2026-07-08.md"
+}

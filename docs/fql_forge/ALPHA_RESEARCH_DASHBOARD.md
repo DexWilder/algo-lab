@@ -1,4 +1,4 @@
-# ALPHA RESEARCH DASHBOARD (auto-generated 2026-07-08 18:02 UTC)
+# ALPHA RESEARCH DASHBOARD (auto-generated 2026-07-08 18:26 UTC)
 > `python3 research/forge_dashboard.py` regenerates this. Single canonical state view.
 
 ## HEADLINE
