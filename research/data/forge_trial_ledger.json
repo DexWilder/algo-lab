@@ -29395,6 +29395,19 @@
       "failure_class": "none",
       "maxyr": 0,
       "n": 1831
+    },
+    {
+      "packet": "CLIMB2:xsec_rv:6cand",
+      "asset": "EQ+RATES+FX",
+      "sharpe": 0.87,
+      "verdict": "kill_0_clean_sleeves_FXrev_lead",
+      "horizon": "",
+      "lane": "portfolio",
+      "ts": "2026-07-08",
+      "failure_class": "below_bar",
+      "dsr": 0.4,
+      "maxyr": 0,
+      "n": 6
     }
   ],
   "note": "auto multiple-testing N; every test appends"
