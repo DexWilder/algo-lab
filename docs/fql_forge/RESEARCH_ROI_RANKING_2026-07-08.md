@@ -1,5 +1,9 @@
 # Where is the next week of research time most valuable? (2026-07-08)
 
+> **LIVING DOCUMENT** — re-ranked ~every 2 weeks as evidence arrives (not a one-time verdict). Paired with `research_allocation_scorecard.json` (actual vs target research-time split; prevents infrastructure creep).
+>
+> **Parallel-streams rule (never idle on one gated branch):** if the #1 investment is operator-gated (option data), these are ALWAYS already moving without approval — execution/spread audits (spreadMR killed as artifact today), literature harvest, the next untouched mechanism family, portfolio analytics, CV rigor. Research does not wait; only capital wiring does.
+
 The research-business question, answered scientifically. Not "is this hypothesis true?" but "what is the highest-EV allocation of the next research-week?" Estimates are my honest judgments *with reasoning* — they are not precise; the point (your point) is to make the tradeoff **explicit** instead of defaulting to "mine another domain."
 
 ## The evidence that anchors this

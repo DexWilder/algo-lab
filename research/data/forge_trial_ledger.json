@@ -29408,6 +29408,18 @@
       "dsr": 0.4,
       "maxyr": 0,
       "n": 6
+    },
+    {
+      "packet": "AUDIT:spreadMR_GC:KILL_artifact",
+      "asset": "GC",
+      "sharpe": 2.89,
+      "verdict": "kill_data_artifact",
+      "horizon": "",
+      "lane": "portfolio",
+      "ts": "2026-07-08",
+      "failure_class": "bidask_bounce_roll_stale",
+      "maxyr": 0,
+      "n": 441
     }
   ],
   "note": "auto multiple-testing N; every test appends"

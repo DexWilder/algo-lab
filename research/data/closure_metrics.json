@@ -39,7 +39,7 @@
     "validated_primaries": 0
   },
   "standing_rule": "Judged by CLOSURES not discoveries. Every month ends with FEWER unresolved threads than it began. No WATCH limbo; no blocked without a pursue/archive decision.",
-  "production_outcome_this_run": "RIGOROUS re-verdict of sleeve supply (block-bootstrap) + scientific research-ROI ranking. Sleeve supply revised 1.5 -> ~1 thin. TSMOM real-but-thin; spreadMR flagged as likely data artifact. ROI ranking -> option-settlement acquisition is highest-EV next week.",
+  "production_outcome_this_run": "KILLED a mirage: spreadMR_GC confirmed data artifact (lag-collapse + bounce autocorr -0.38 + 51% roll-adjacent). Sleeve supply 1.5->1. Built research-allocation scorecard. Corrected sleeve-poor overclaim.",
   "four_outcome_rule": "Every run must produce one of: (1) candidate advanced, (2) candidate killed, (3) dataset acquired/staged, (4) validated book improvement. Anything else = noise.",
   "candidates_paper_ready": [
     "M86_tsmom_diversified_portfolio"
@@ -52,11 +52,12 @@
   ],
   "strategic_gap_roadmap": "docs/fql_forge/RESEARCH_ORG_GAP_ANALYSIS_2026-07-08.md \u2014 10 closeable gaps; #1 portfolio/sleeve-supply STARTED; drivable-now: CV rigor, sourcing, capacity gate, decay-aware, overlay framework; operator-gated: option-data, TSMOM-paper.",
   "honest_combined_book": "TSMOM-led ~0.9 Sharpe (NOT the inflated 2.6); spreadMR down-weighted as fragile",
-  "sleeve_supply": "~1 THIN real sleeve (TSMOM bootstrap-CI [0.17,1.29]); spreadMR_GC EXCLUDED pending data-integrity audit (Sharpe 2.9 implausible). Even thinner than the ~1.5 previously asserted.",
+  "sleeve_supply": "1 THIN real sleeve (TSMOM, CI [0.17,1.29]). spreadMR_GC KILLED (data artifact). Validated components 2->1 (GEX only, itself a proxy conditioner \u2014 audit pending).",
   "next_generation_domains": [
     "volatility-based sleeves",
     "carry relative-value (curve/fly)",
     "combined-FX book (extend sample)",
     "+ the option-data observability class (operator-gated, now higher-EV)"
-  ]
+  ],
+  "overclaim_corrected": "NOT 'held-data universe is sleeve-poor' (universe-exhaustion overreach). Supported claim: 'the marginal return of the CURRENT STYLE of held-data exploration is falling' (narrower + stronger)."
 }

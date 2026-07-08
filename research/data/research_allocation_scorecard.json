@@ -1,0 +1,23 @@
+{
+  "updated": "2026-07-08",
+  "target_pct": {
+    "data_acquisition": 40,
+    "mechanism_generation": 25,
+    "validation": 20,
+    "portfolio_integration": 10,
+    "infrastructure": 5
+  },
+  "this_session_actual_pct": {
+    "data_acquisition": 0,
+    "mechanism_generation": 0,
+    "validation": 65,
+    "portfolio_integration": 20,
+    "infrastructure": 15
+  },
+  "drift_flags": [
+    "data_acquisition 0% vs 40% target \u2014 the HIGHEST-value bucket is stalled because it's operator-gated (option-settlement decision). The cost of not deciding is now visible.",
+    "infrastructure 15% vs 5% \u2014 acceptable this session (scorecard is a one-time build), watch it doesn't recur"
+  ],
+  "rule": "Every ~2 weeks: classify actual research-time split across the 5 buckets; if data_acquisition stays near 0 or infrastructure creeps >15%, that's drift. Research-time (attention) is the scarce resource, not compute.",
+  "note": "This is a scorecard, not a dashboard. Living ROI ranking (RESEARCH_ROI_RANKING) updated biweekly as evidence arrives."
+}

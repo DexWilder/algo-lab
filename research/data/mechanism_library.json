@@ -139,21 +139,21 @@
     },
     "M09_commodity_termstruct": {
       "class": "carry",
-      "status": "screen_pass",
+      "status": "dead",
       "mechanism_backed": true,
       "data_have": true,
       "exprs_tested": 6,
-      "verdict": "spreadMR_GC SCREEN_PASS gold-specific DSR-borderline diversifier",
+      "verdict": "KILL_data_artifact",
       "tier": "A",
       "category": "CrossAsset_Carry",
       "confidence": 3,
-      "lifecycle": "Validated",
+      "lifecycle": "Retired",
       "observability": "DIRECT",
       "frequency": "daily",
       "mtype": "carry",
       "survivor_fit": 5,
       "verdict_date": "2026-07-08",
-      "note": "RE-AUDITED 2026-07-08 during portfolio climb: NOT a cost artifact (Sharpe 2.75 even @ $50/turn) \u2014 but DSR-BORDERLINE: ~20-30 independent MR episodes (441 autocorrelated trades), gold-specific, TINY-CAPACITY (calendar spread). High-Sharpe-but-thin. Usable as a SMALL fragile sleeve; do NOT build a book narrative on it (naive risk-parity combo w/ TSMOM LOWERED Sharpe 2.89->2.6). | RIGOR 2026-07-08: block-bootstrap CI [2.6,3.26] tight+high AND cost-robust -> implausibly good for a retail calendar spread => DATA-INTEGRITY artifact suspected (roll/stale-price in F1-F2 construction). Needs a DATA audit, not a stats one. NOT counted in sleeve supply until verified."
+      "note": "KILLED 2026-07-08 data-integrity audit: Sharpe 2.89 is ARTIFACT. Edge collapses at execution-lag (2.89->0.36@lag2->-0.16@lag3); spread-change lag1 autocorr -0.38 (bid-ask bounce, uncapturable at mid); 51% of PnL within +-2d of a roll (stale deferred-price). Not a sleeve, never was. Prior SCREEN_PASS/diversifier status RETRACTED."
     },
     "M10_rates_carry_curve": {
       "class": "carry",
