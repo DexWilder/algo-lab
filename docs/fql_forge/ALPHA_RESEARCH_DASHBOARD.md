@@ -1,14 +1,14 @@
-# ALPHA RESEARCH DASHBOARD (auto-generated 2026-07-08 15:52 UTC)
+# ALPHA RESEARCH DASHBOARD (auto-generated 2026-07-08 15:58 UTC)
 > `python3 research/forge_dashboard.py` regenerates this. Single canonical state view.
 
 ## HEADLINE
 - **Validated primaries: 0** (highest ladder rung: **SCREEN_PASS**; capital gate FAIL-CLOSED, PAPER_APPROVED+ operator-only).
-- Guardrails: **clean/P1** | Self-audit: **SELF_AUDIT_CLEAN** (facets=12 PASS=12 STALE=0 BROKEN=0 DESIGNED-not-built=0) | Git backlog: **0** | Global trial-N: **3031**
+- Guardrails: **clean/P1** | Self-audit: **SELF_AUDIT_CLEAN** (facets=12 PASS=12 STALE=0 BROKEN=0 DESIGNED-not-built=0) | Git backlog: **0** | Global trial-N: **3033**
 - **Mission:** MNQ/MES/MYM index workhorse (WH1). RUN_NOW mission-weighting: 30/37 WH1-aligned ({'DIVERSIFIER': 7, 'INDEX_REGIME_INPUT': 27, 'INDEX_DIRECT': 3})
 - **Search posture:** the NAIVE direct-index price/volume surface (gap/fade/trend/MR/OR) is picked-over UNDER TESTED EXPRESSIONS. WH1 direct-index remains LIVE via GEX/event/regime/source-CONDITIONED mechanisms + MYM (1m now pulled). Structural surfaces (GEX/dealer-flow, event-surprise, forced-flow) are EARLY — prove over 20–50 cycles, not solved.
 
 ## Throughput (computed live)
-- Tests logged today: **4** | total kills: 22 | screen-passes: 2
+- Tests logged today: **6** | total kills: 24 | screen-passes: 2
 - Novelty packets: **38** stored (0 today) of 108 template×instrument space
 - Families: **12 active** / 21 | coverage 60% (tested exprs / total exprs)
 - Candidate ladder: SCREEN_PASS=1
@@ -18,8 +18,8 @@
 - **THE QUEUE IS THE ASSET (not the library):** testable backlog **39** runnable mechanisms · HIGH-EV backlog 3 · (library 86 = working backlog, NOT a trophy shelf — quantity is not the metric)
 - **DISCOVERY-EFFICIENCY FUNNEL** (conversion>quantity; cohort 2026-07-07 named-source harvest (M66-M85)): harvested 20 → runnable 16 (80%) → screened 6 → **clean-survivors 0** (+1 WATCH) → deep-cand 0 → validated 0. RETRACTED prior claim 'bottleneck is edge-existence' — unearned. Kill-autopsy (KILL_AUTOPSY_2026-07-07) shows failure is STRUCTURED not uniform: outright-directional survives 6% vs regime-conditioning 71%; proxy 10% vs direct 41%; intraday 12% vs event/weekly ~30%. Two live hypotheses, NOT distinguishable yet: (H-edge) durable edges are rare; (H-observ) we've only tested PROXIES + COARSE-direct measurements (0 high-resolution direct institutional measurements ever tested). Reshape: prioritize CONDITIONING over outright, DIRECT over proxy; the discriminating experiment = one high-res DIRECT measurement vs its killed PROXY (dealer gamma: real signed-GEX vs max-OI).
 - **RESEARCH layer:** batch hypotheses 1134 across 15 markets. *714 hyps ≈ 4 price mechanisms — hypotheses ≠ breadth; MECHANISMS are breadth.*
-- **VALIDATION layer:** candidate COMPONENTS **3** (spreadMR_GC · GEX-ingredient · month-end-WATCH) — NOT established engines; each still needs full validation. Validated primaries: 0
-- **LIFECYCLE (nothing sits):** {'Retired': 28, 'Validated': 2, 'Archived': 11, 'Harvested': 37, 'Blocked': 7, 'PaperCandidate': 1} — every mechanism is Harvested/Testing/Validated/Retired
+- **VALIDATION layer:** candidate COMPONENTS **4** (spreadMR_GC · GEX-ingredient · month-end-WATCH) — NOT established engines; each still needs full validation. Validated primaries: 0
+- **LIFECYCLE (nothing sits):** {'Retired': 30, 'Validated': 2, 'Archived': 11, 'Harvested': 35, 'Blocked': 7, 'PaperCandidate': 1} — every mechanism is Harvested/Testing/Validated/Retired
 - **COVERAGE HOLES (0 tested):** ['Macro_Event', 'Commodity', 'Calendar'] — under-mined categories where non-arbed edge likely lives (we over-mined Price, all dead)
 - **HIGH-EV research backlog (data-ready, next):** 11 — ['M18_stop_runs', 'M19_opex_gamma_pin', 'M21_fx_fixing_wmr', 'M22_vol_target_cta', 'M36_quarter_end_window_dressing', 'M37_intraday_ushape']
 - Honest: real breadth = ~14 tested mechanisms; the pipeline works, library GROWS via ranked data + permanent harvest. No overclaims. Keepers = candidate COMPONENTS not engines.
@@ -35,7 +35,7 @@
 - batch_screen: 1134
 - databento_volume: 70
 - positioning: 48
-- mechanism_research: 40
+- mechanism_research: 42
 - exploratory: 23
 - commodity_carry: 10
 - forced_flow: 8

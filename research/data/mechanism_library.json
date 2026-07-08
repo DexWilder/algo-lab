@@ -989,24 +989,25 @@
       "note": "IV crush after scheduled events"
     },
     "M66_fomc_preannouncement_drift": {
-      "status": "untested",
-      "lifecycle": "Harvested",
+      "status": "dead",
+      "lifecycle": "Retired",
       "tier": "A",
       "mechanism_backed": true,
       "confidence": 2,
       "exprs_tested": 0,
-      "verdict_date": null,
+      "verdict_date": "2026-07-08",
       "category": "Macro_Event",
       "ev": "H",
       "source": "Lucca-Moench 2015 JF: equity drifts up in 24h pre-scheduled-FOMC",
       "data_needed": null,
       "data_have": "FOMC calendar (free/hardcode)",
-      "note": "Lucca-Moench 2015 JF: equity drifts up in 24h pre-scheduled-FOMC | TESTABLE NOW on held data",
+      "note": "KILL (overrode own auto-PASS): real Lucca-Moench pre-FOMC drift but DECAYED monotonically 2023:+42bp->2024:+39->2025:+13->2026:-8bp = classic post-publication arbitrage; negative most-recent yr. n=25 (MES 1m from 2023, DSR uncomputable). Same decay standard that killed M07. Real historical effect, not forward-viable.",
       "testable_now": true,
       "observability": "DIRECT",
       "frequency": "event",
       "mtype": "conditioning",
-      "survivor_fit": 7
+      "survivor_fit": 7,
+      "verdict": "KILL"
     },
     "M67_treasury_auction_cycle": {
       "status": "weak",
@@ -1156,24 +1157,25 @@
       "survivor_fit": 4
     },
     "M74_hy_credit_regime": {
-      "status": "untested",
-      "lifecycle": "Harvested",
+      "status": "ingredient",
+      "lifecycle": "Retired",
       "tier": "A",
       "mechanism_backed": true,
       "confidence": 2,
       "exprs_tested": 0,
-      "verdict_date": null,
+      "verdict_date": "2026-07-08",
       "category": "CrossAsset_Carry",
       "ev": "M",
       "source": "HY-OAS widening = risk-off; conditions equity/vol exposure",
       "data_needed": null,
       "data_have": "credit_oas.csv (HAVE)",
-      "note": "HY-OAS widening = risk-off; conditions equity/vol exposure | TESTABLE NOW on held data",
+      "note": "KILL standalone (Sh0.12/DSR0.23); BANKED as conditioning ingredient: HY-OAS widening z>1 flags lower fwd MES wk-ret (-$68 vs +$96). Same shape as funding-stress M75. Two macro-stress ingredients now (funding+credit) -> combinable into one regime filter ONCE a validated book exists to condition. No live-candidate status.",
       "testable_now": true,
       "observability": "DIRECT",
       "frequency": "weekly",
       "mtype": "conditioning",
-      "survivor_fit": 7
+      "survivor_fit": 7,
+      "verdict": "KILL_standalone_BANK_ingredient"
     },
     "M75_sofr_effr_funding_stress": {
       "status": "ingredient",

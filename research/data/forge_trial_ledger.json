@@ -29357,6 +29357,32 @@
       "dsr": 0.99,
       "maxyr": 45,
       "n": 1771
+    },
+    {
+      "packet": "BATTERY:M66_fomc_drift:KILL",
+      "asset": "MES",
+      "sharpe": 0,
+      "verdict": "kill",
+      "horizon": "",
+      "lane": "mechanism_research",
+      "ts": "2026-07-08",
+      "failure_class": "decaying_post_publication",
+      "dsr": 0,
+      "maxyr": 0,
+      "n": 25
+    },
+    {
+      "packet": "BATTERY:M74_credit_regime:KILL_ingredient",
+      "asset": "MES",
+      "sharpe": 0.12,
+      "verdict": "kill_standalone_ingredient",
+      "horizon": "",
+      "lane": "mechanism_research",
+      "ts": "2026-07-08",
+      "failure_class": "below_bar_standalone",
+      "dsr": 0.23,
+      "maxyr": 0,
+      "n": 133
     }
   ],
   "note": "auto multiple-testing N; every test appends"
