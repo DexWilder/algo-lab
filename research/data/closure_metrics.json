@@ -38,5 +38,11 @@
     "portfolio_track_candidates": 1,
     "validated_primaries": 0
   },
-  "standing_rule": "Judged by CLOSURES not discoveries. Every month ends with FEWER unresolved threads than it began. No WATCH limbo; no blocked without a pursue/archive decision."
+  "standing_rule": "Judged by CLOSURES not discoveries. Every month ends with FEWER unresolved threads than it began. No WATCH limbo; no blocked without a pursue/archive decision.",
+  "production_outcome_this_run": "CANDIDATE_ADVANCED: M86 TSMOM ForwardClock->PaperCandidate (passed full validation battery)",
+  "four_outcome_rule": "Every run must produce one of: (1) candidate advanced, (2) candidate killed, (3) dataset acquired/staged, (4) validated book improvement. Anything else = noise.",
+  "candidates_paper_ready": [
+    "M86_tsmom_diversified_portfolio"
+  ],
+  "validated_primaries": 0
 }

@@ -29344,6 +29344,19 @@
       "dsr": 0.56,
       "maxyr": 0,
       "n": 161
+    },
+    {
+      "packet": "BATTERY:M86_tsmom:PASS",
+      "asset": "12-market",
+      "sharpe": 0.89,
+      "verdict": "pass_validation_battery",
+      "horizon": "",
+      "lane": "mechanism_research",
+      "ts": "2026-07-08",
+      "failure_class": "none",
+      "dsr": 0.99,
+      "maxyr": 45,
+      "n": 1771
     }
   ],
   "note": "auto multiple-testing N; every test appends"

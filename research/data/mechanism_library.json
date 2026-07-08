@@ -1409,8 +1409,8 @@
       "category": "Price",
       "class_": "price",
       "tier": "B",
-      "status": "candidate",
-      "lifecycle": "ForwardClock",
+      "status": "paper_candidate",
+      "lifecycle": "PaperCandidate",
       "ev": "M",
       "mechanism_backed": true,
       "confidence": 2,
@@ -1419,14 +1419,27 @@
       "mtype": "conditioning",
       "survivor_fit": 5,
       "source": "Moskowitz-Ooi-Pedersen 2012 TSMOM",
-      "verdict": "PASS_FORWARD_CLOCK",
+      "verdict": "PASS_VALIDATION_BATTERY",
       "verdict_date": "2026-07-08",
       "exprs_tested": 1,
       "materially_different_allowed": true,
       "data_have": "1m (HAVE, 12 markets)",
       "data_needed": null,
       "testable_now": true,
-      "note": "GRADUATED WATCH->Track2 EXPERIMENTAL_FORWARD_CLOCK. a-priori DSR@N=1=0.99, diversified (no mkt>40%, MGC26%), H1/H2 0.90/0.87, 6/7yr+. CAVEAT: 2022=45% of PnL (trend banner yr) -> forward observation must confirm it's not a 2022 artifact. NOT deployed, NOT validated-primary. paper_ready=false, report-only."
+      "note": "ADVANCED ForwardClock->PaperCandidate: passed FULL offline validation battery (beta-neutral 0.12, ex-2022 survives Sh0.60/DSR0.93, cost-robust to 10x, config-robust, orthogonal corr0.02 to spreadMR_GC). First candidate to clear the full battery. NOT validated-primary, NOT deployed. Known weakness: 2020 trend-reversal -0.98; a-priori N=1 basis (search-N=8 DSR=0.24). Operator decision: approve paper allocation Y/N (report-only, capital gate closed).",
+      "paper_ready_packet": true,
+      "wired": false,
+      "battery": {
+        "beta_to_MES": 0.12,
+        "ex2022_Sh": 0.6,
+        "ex2022_DSR_N1": 0.93,
+        "cost_10x_Sh": 0.52,
+        "config_range": "0.70-0.97",
+        "corr_spreadMR_GC": 0.02,
+        "H1_H2": "0.90/0.87",
+        "posyrs": "6/7",
+        "only_neg_year": "2020(-0.98 COVID whipsaw)"
+      }
     }
   }
 }
