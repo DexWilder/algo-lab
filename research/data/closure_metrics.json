@@ -39,7 +39,7 @@
     "validated_primaries": 0
   },
   "standing_rule": "Judged by CLOSURES not discoveries. Every month ends with FEWER unresolved threads than it began. No WATCH limbo; no blocked without a pursue/archive decision.",
-  "production_outcome_this_run": "GENERATED+TESTED 6 new orthogonal-sleeve candidates (cross-sectional RV, untouched domain) -> 0 clean sleeves; FX-reversal = orthogonal-but-thin lead. Sleeve supply still ~1.5. Meta-finding: clean orthogonal sleeves are SCARCE in held-data universe -> raises EV of observability-data acquisition; continue generating from vol/carry domains next.",
+  "production_outcome_this_run": "RIGOROUS re-verdict of sleeve supply (block-bootstrap) + scientific research-ROI ranking. Sleeve supply revised 1.5 -> ~1 thin. TSMOM real-but-thin; spreadMR flagged as likely data artifact. ROI ranking -> option-settlement acquisition is highest-EV next week.",
   "four_outcome_rule": "Every run must produce one of: (1) candidate advanced, (2) candidate killed, (3) dataset acquired/staged, (4) validated book improvement. Anything else = noise.",
   "candidates_paper_ready": [
     "M86_tsmom_diversified_portfolio"
@@ -52,7 +52,7 @@
   ],
   "strategic_gap_roadmap": "docs/fql_forge/RESEARCH_ORG_GAP_ANALYSIS_2026-07-08.md \u2014 10 closeable gaps; #1 portfolio/sleeve-supply STARTED; drivable-now: CV rigor, sourcing, capacity gate, decay-aware, overlay framework; operator-gated: option-data, TSMOM-paper.",
   "honest_combined_book": "TSMOM-led ~0.9 Sharpe (NOT the inflated 2.6); spreadMR down-weighted as fragile",
-  "sleeve_supply": "~1.5 of 5-6 (TSMOM clean 0.72costed; spreadMR_GC fragile; FX-rev sub-bar lead)",
+  "sleeve_supply": "~1 THIN real sleeve (TSMOM bootstrap-CI [0.17,1.29]); spreadMR_GC EXCLUDED pending data-integrity audit (Sharpe 2.9 implausible). Even thinner than the ~1.5 previously asserted.",
   "next_generation_domains": [
     "volatility-based sleeves",
     "carry relative-value (curve/fly)",

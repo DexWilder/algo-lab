@@ -153,7 +153,7 @@
       "mtype": "carry",
       "survivor_fit": 5,
       "verdict_date": "2026-07-08",
-      "note": "RE-AUDITED 2026-07-08 during portfolio climb: NOT a cost artifact (Sharpe 2.75 even @ $50/turn) \u2014 but DSR-BORDERLINE: ~20-30 independent MR episodes (441 autocorrelated trades), gold-specific, TINY-CAPACITY (calendar spread). High-Sharpe-but-thin. Usable as a SMALL fragile sleeve; do NOT build a book narrative on it (naive risk-parity combo w/ TSMOM LOWERED Sharpe 2.89->2.6)."
+      "note": "RE-AUDITED 2026-07-08 during portfolio climb: NOT a cost artifact (Sharpe 2.75 even @ $50/turn) \u2014 but DSR-BORDERLINE: ~20-30 independent MR episodes (441 autocorrelated trades), gold-specific, TINY-CAPACITY (calendar spread). High-Sharpe-but-thin. Usable as a SMALL fragile sleeve; do NOT build a book narrative on it (naive risk-parity combo w/ TSMOM LOWERED Sharpe 2.89->2.6). | RIGOR 2026-07-08: block-bootstrap CI [2.6,3.26] tight+high AND cost-robust -> implausibly good for a retail calendar spread => DATA-INTEGRITY artifact suspected (roll/stale-price in F1-F2 construction). Needs a DATA audit, not a stats one. NOT counted in sleeve supply until verified."
     },
     "M10_rates_carry_curve": {
       "class": "carry",
@@ -1430,7 +1430,7 @@
       "data_have": "1m (HAVE, 12 markets)",
       "data_needed": null,
       "testable_now": true,
-      "note": "ADVANCED ForwardClock->PaperCandidate: passed FULL offline validation battery (beta-neutral 0.12, ex-2022 survives Sh0.60/DSR0.93, cost-robust to 10x, config-robust, orthogonal corr0.02 to spreadMR_GC). First candidate to clear the full battery. NOT validated-primary, NOT deployed. Known weakness: 2020 trend-reversal -0.98; a-priori N=1 basis (search-N=8 DSR=0.24). Operator decision: approve paper allocation Y/N (report-only, capital gate closed).",
+      "note": "ADVANCED ForwardClock->PaperCandidate: passed FULL offline validation battery (beta-neutral 0.12, ex-2022 survives Sh0.60/DSR0.93, cost-robust to 10x, config-robust, orthogonal corr0.02 to spreadMR_GC). First candidate to clear the full battery. NOT validated-primary, NOT deployed. Known weakness: 2020 trend-reversal -0.98; a-priori N=1 basis (search-N=8 DSR=0.24). Operator decision: approve paper allocation Y/N (report-only, capital gate closed). | RIGOR 2026-07-08: block-bootstrap 90% CI [0.17,1.29] -> real (CI>0) but THIN; honest Sharpe modest ~0.2-0.75, not 0.89. Still the one real sleeve.",
       "paper_ready_packet": true,
       "wired": false,
       "battery": {
@@ -1443,7 +1443,8 @@
         "H1_H2": "0.90/0.87",
         "posyrs": "6/7",
         "only_neg_year": "2020(-0.98 COVID whipsaw)"
-      }
+      },
+      "bootstrap_ci_90": "[0.17, 1.29]"
     },
     "M87_xsec_relative_value": {
       "category": "Price",
