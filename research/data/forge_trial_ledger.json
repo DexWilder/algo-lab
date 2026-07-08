@@ -29383,6 +29383,18 @@
       "dsr": 0.23,
       "maxyr": 0,
       "n": 133
+    },
+    {
+      "packet": "CLIMB:portfolio_construction_layer",
+      "asset": "TSMOM+spreadMR_GC",
+      "sharpe": 0.9,
+      "verdict": "layer_built_sleeve_supply_is_constraint",
+      "horizon": "",
+      "lane": "portfolio",
+      "ts": "2026-07-08",
+      "failure_class": "none",
+      "maxyr": 0,
+      "n": 1831
     }
   ],
   "note": "auto multiple-testing N; every test appends"

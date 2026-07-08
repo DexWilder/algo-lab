@@ -1,14 +1,14 @@
-# ALPHA RESEARCH DASHBOARD (auto-generated 2026-07-08 15:58 UTC)
+# ALPHA RESEARCH DASHBOARD (auto-generated 2026-07-08 16:07 UTC)
 > `python3 research/forge_dashboard.py` regenerates this. Single canonical state view.
 
 ## HEADLINE
 - **Validated primaries: 0** (highest ladder rung: **SCREEN_PASS**; capital gate FAIL-CLOSED, PAPER_APPROVED+ operator-only).
-- Guardrails: **clean/P1** | Self-audit: **SELF_AUDIT_CLEAN** (facets=12 PASS=12 STALE=0 BROKEN=0 DESIGNED-not-built=0) | Git backlog: **0** | Global trial-N: **3033**
+- Guardrails: **clean/P1** | Self-audit: **SELF_AUDIT_CLEAN** (facets=12 PASS=12 STALE=0 BROKEN=0 DESIGNED-not-built=0) | Git backlog: **0** | Global trial-N: **3034**
 - **Mission:** MNQ/MES/MYM index workhorse (WH1). RUN_NOW mission-weighting: 30/37 WH1-aligned ({'DIVERSIFIER': 7, 'INDEX_REGIME_INPUT': 27, 'INDEX_DIRECT': 3})
 - **Search posture:** the NAIVE direct-index price/volume surface (gap/fade/trend/MR/OR) is picked-over UNDER TESTED EXPRESSIONS. WH1 direct-index remains LIVE via GEX/event/regime/source-CONDITIONED mechanisms + MYM (1m now pulled). Structural surfaces (GEX/dealer-flow, event-surprise, forced-flow) are EARLY — prove over 20–50 cycles, not solved.
 
 ## Throughput (computed live)
-- Tests logged today: **6** | total kills: 24 | screen-passes: 2
+- Tests logged today: **7** | total kills: 24 | screen-passes: 2
 - Novelty packets: **38** stored (0 today) of 108 template×instrument space
 - Families: **12 active** / 21 | coverage 60% (tested exprs / total exprs)
 - Candidate ladder: SCREEN_PASS=1
@@ -42,8 +42,8 @@
 - macro_regime: 6
 - crypto_carry: 4
 - carry: 4
+- portfolio: 3
 - curve_rv: 3
-- portfolio: 2
 
 ## Queue depth
 - RUN_NOW: 37 | total queue items: 109

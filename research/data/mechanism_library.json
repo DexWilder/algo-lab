@@ -151,7 +151,9 @@
       "observability": "DIRECT",
       "frequency": "daily",
       "mtype": "carry",
-      "survivor_fit": 5
+      "survivor_fit": 5,
+      "verdict_date": "2026-07-08",
+      "note": "RE-AUDITED 2026-07-08 during portfolio climb: NOT a cost artifact (Sharpe 2.75 even @ $50/turn) \u2014 but DSR-BORDERLINE: ~20-30 independent MR episodes (441 autocorrelated trades), gold-specific, TINY-CAPACITY (calendar spread). High-Sharpe-but-thin. Usable as a SMALL fragile sleeve; do NOT build a book narrative on it (naive risk-parity combo w/ TSMOM LOWERED Sharpe 2.89->2.6)."
     },
     "M10_rates_carry_curve": {
       "class": "carry",
