@@ -1444,7 +1444,9 @@
         "posyrs": "6/7",
         "only_neg_year": "2020(-0.98 COVID whipsaw)"
       },
-      "bootstrap_ci_90": "[0.17, 1.29]"
+      "bootstrap_ci_90": "[0.17, 1.29]",
+      "construction_audit": "No construction improvement (2026-07-09): conviction-sizing NEUTRAL (diff-CI spans 0); drawdown-overlay was LOOKAHEAD (used same-day DD) \u2014 causal version does NOT beat baseline. Baseline near-optimal.",
+      "forward_behavior": "CONSISTENT (2026-07-09): last 252d/126d/63d Sh 1.36/1.16/1.14 all ABOVE full-sample 0.97 \u2014 not decaying (freshest data to 2026-03; true forward OOS still needs paper)."
     },
     "M87_xsec_relative_value": {
       "category": "Price",

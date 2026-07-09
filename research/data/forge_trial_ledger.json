@@ -29420,6 +29420,30 @@
       "failure_class": "bidask_bounce_roll_stale",
       "maxyr": 0,
       "n": 441
+    },
+    {
+      "packet": "CONSTRUCTION:tsmom_improve:KILL",
+      "asset": "12-market",
+      "sharpe": 0.97,
+      "verdict": "kill_no_improvement_lookahead_caught",
+      "horizon": "",
+      "lane": "portfolio",
+      "ts": "2026-07-09",
+      "failure_class": "lookahead",
+      "maxyr": 0,
+      "n": 1771
+    },
+    {
+      "packet": "AUDIT:tsmom_forward_behavior:CONSISTENT",
+      "asset": "12-market",
+      "sharpe": 1.36,
+      "verdict": "forward_consistent",
+      "horizon": "",
+      "lane": "portfolio",
+      "ts": "2026-07-09",
+      "failure_class": "none",
+      "maxyr": 0,
+      "n": 252
     }
   ],
   "note": "auto multiple-testing N; every test appends"

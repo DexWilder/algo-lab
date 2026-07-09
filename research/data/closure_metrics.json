@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-08",
+  "updated": "2026-07-09",
   "UNRESOLVED_THREADS": 0,
   "unresolved_prev": 21,
   "closed_this_period": {
@@ -39,7 +39,7 @@
     "validated_primaries": 0
   },
   "standing_rule": "Judged by CLOSURES not discoveries. Every month ends with FEWER unresolved threads than it began. No WATCH limbo; no blocked without a pursue/archive decision.",
-  "production_outcome_this_run": "STRATEGY REVIEW (zero backtests): clean-slate redesign + two-capabilities reframe (hard-to-fool BUILT / find-opportunity UNPROVEN) + 3 pre-committed program checkpoints (90/180/365d) with miss-branches that trigger course-change not more grinding. Keep 80% (anti-fooling stack), change 20% (data-first, construction-first, exec-gate, deprioritize intraday).",
+  "production_outcome_this_run": "OFFENSIVE: attempted to improve the one asset (TSMOM construction) -> KILLED (conviction neutral; DD-overlay was lookahead, caught before claiming). TSMOM forward-behavior CONSISTENT (recent Sh 1.14-1.36 > full 0.97). No option-data dependence. Drivable offensive queue: GEX causal audit / IV-GEX pipeline on 5-day sample / vol-carry(VRP) generation.",
   "four_outcome_rule": "Every run must produce one of: (1) candidate advanced, (2) candidate killed, (3) dataset acquired/staged, (4) validated book improvement. Anything else = noise.",
   "candidates_paper_ready": [
     "M86_tsmom_diversified_portfolio"
@@ -60,5 +60,11 @@
     "+ the option-data observability class (operator-gated, now higher-EV)"
   ],
   "overclaim_corrected": "NOT 'held-data universe is sleeve-poor' (universe-exhaustion overreach). Supported claim: 'the marginal return of the CURRENT STYLE of held-data exploration is falling' (narrower + stronger).",
-  "program_checkpoints": "research/data/program_checkpoints.json \u2014 CP-90d observability / CP-180d component-or-retire / CP-365d repeatable-survivors; miss => strategy re-eval."
+  "program_checkpoints": "research/data/program_checkpoints.json \u2014 CP-90d observability / CP-180d component-or-retire / CP-365d repeatable-survivors; miss => strategy re-eval.",
+  "drivable_offensive_queue": [
+    "GEX(M08) causal audit (is our other validated component real, like spreadMR wasnt?)",
+    "build IV->signed-GEX pipeline on held 5-day option SAMPLE (de-risk the #1 investment + cheaper substitute test)",
+    "generate vol-carry / VRP-as-conditioner (VIX held)",
+    "curve-carry sleeve"
+  ]
 }

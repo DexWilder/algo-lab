@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-07-07 15:04 UTC",
-  "global_trial_N": 2991,
+  "timestamp": "2026-07-09 16:06 UTC",
+  "global_trial_N": 3038,
   "lane_breakdown": {
     "forced_flow": 8,
     "exploratory": 23,
-    "portfolio": 2,
+    "portfolio": 7,
     "databento_volume": 70,
     "positioning": 48,
     "primitive_sweep": 1679,
@@ -13,7 +13,8 @@
     "carry": 4,
     "curve_rv": 3,
     "commodity_carry": 10,
-    "batch_screen": 1134
+    "batch_screen": 1134,
+    "mechanism_research": 42
   },
   "families": {
     "trend_momentum": {
